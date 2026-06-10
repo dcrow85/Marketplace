@@ -121,6 +121,8 @@ def classify_outcome(attempt: Attempt, result: dict[str, Any]) -> str:
         if decision in {"continue", "save_collection_memory"}:
             return "low_friction_pass"
         return decision
+    if result.get("candidate_source") == "no_in_set_match":
+        return "no_in_set_match"
     if "inferred_stance" in result:
         return f"stance:{result['inferred_stance']}"
     if "required_or_recommended_evidence" in result:
@@ -163,6 +165,12 @@ def tournament() -> list[Trader]:
                     "interpret_human_text",
                     {"text": "Add my Japanese no rarity Caterpie and Weedle binder page to my collection", "limit": 4},
                     "stance:have",
+                ),
+                Attempt(
+                    "Off-set Umbreon want must not bind to a row",
+                    "interpret_human_text",
+                    {"text": "Looking for a no rarity Umbreon to finish my set", "limit": 4},
+                    "no_in_set_match",
                 ),
             ],
         ),
@@ -209,6 +217,12 @@ def tournament() -> list[Trader]:
                     "evaluate_gate",
                     {"card_ref": "Mewtwo", "stance": "want", "evidence_level": "NR-D", "seller_trust": "thin"},
                     "human_or_verifier_review",
+                ),
+                Attempt(
+                    "Off-set slabbed Espeon claim must not bind to a row",
+                    "interpret_human_text",
+                    {"text": "I want a PSA No Rarity Espeon slab with cert trail", "limit": 4},
+                    "no_in_set_match",
                 ),
             ],
         ),

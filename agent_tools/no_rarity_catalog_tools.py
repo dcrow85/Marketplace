@@ -421,9 +421,57 @@ def _fallback_candidates_from_text(text: str, *, limit: int = 8) -> list[dict[st
     return [card_brief(card) for card in candidates[: max(1, min(limit, 50))]]
 
 
+MARKET_INTENT_TERMS = {
+    "common", "commons", "uncommon", "uncommons", "rare", "rares",
+    "holo", "holographic", "cheap", "filler",
+}
+
+INTERPRET_STOP_TERMS = {
+    "a", "add", "an", "and", "any", "anyone", "are", "ask", "asking", "asks", "at",
+    "basic", "be", "bgs", "big", "binder", "but", "buy", "buying", "can", "card",
+    "cards", "cert", "cgc", "collection", "complete", "completing", "condition",
+    "copies", "copy", "deal", "do", "doing", "edition", "else", "english", "era",
+    "find", "finding", "finish", "finishing", "first", "for", "from", "get", "got",
+    "grade", "graded", "grail", "has", "have", "help", "hunt", "hunting", "i", "if",
+    "im", "in", "is", "it", "its", "japan", "japanese", "just", "know", "like",
+    "look", "looking", "lp", "me", "might", "mint", "money", "my", "near", "need",
+    "needs", "nm", "no", "not", "of", "on", "one", "or", "page", "please", "premium",
+    "price", "priced", "psa", "rarity", "raw", "real", "sale", "sell", "seller",
+    "selling", "serious", "set", "sets", "slab", "slabbed", "so", "some", "someone",
+    "that", "the", "there", "this", "to", "trail", "trying", "unless", "value",
+    "version", "vintage", "want", "wants", "with", "worth", "would", "you", "your",
+}
+
+
+def _catalog_name_terms() -> set[str]:
+    tokens: set[str] = set()
+    for card in cards():
+        for name in (
+            str(card.get("name_en", "")),
+            _ja(card),
+            _romaji(card),
+            _card_id(card),
+            str(card.get("local_id", "")),
+        ):
+            tokens.update(_terms(name))
+    return tokens
+
+
+def _unmatched_card_terms(text: str) -> list[str]:
+    name_terms = _catalog_name_terms()
+    return sorted(
+        term
+        for term in set(_terms(text))
+        if term not in INTERPRET_STOP_TERMS
+        and term not in MARKET_INTENT_TERMS
+        and term not in name_terms
+    )
+
+
 def interpret_human_text(text: str, *, limit: int = 8) -> dict[str, Any]:
     stance = infer_stance(text)
     named_matches = named_card_matches(text, limit=limit)
+    boundary = "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
     if named_matches:
         candidates = named_matches
         source = "named_card_match"
@@ -432,15 +480,54 @@ def interpret_human_text(text: str, *, limit: int = 8) -> dict[str, Any]:
         candidates = result["cards"]
         source = "catalog_search"
         if not candidates:
+            unmatched = _unmatched_card_terms(text)
+            market_intent = bool(MARKET_INTENT_TERMS & set(_terms(text))) or "binder filler" in text.lower()
+            if not market_intent:
+                # No in-set name matched and the text is not a generic market
+                # browse. Returning browse candidates here would invite binding
+                # the human's intent to a wrong row.
+                return {
+                    "input": text,
+                    "inferred_stance": stance,
+                    "candidate_source": "no_in_set_match",
+                    "candidates": [],
+                    "unmatched_terms": unmatched,
+                    "set_scope": load_catalog().get("set", {}),
+                    "catalog_release": catalog_release(),
+                    "human_summary": (
+                        "No catalog row in this set family matches the named terms. "
+                        "The card may belong to a different set or era."
+                    ),
+                    "agent_next": [
+                        "tell the human which terms had no in-set match",
+                        "confirm whether they meant a different set or era",
+                        "do not attach this intent to a different catalog row without explicit confirmation",
+                    ],
+                    "boundary": boundary,
+                }
             candidates = _fallback_candidates_from_text(text, limit=limit)
             source = "fallback_market_intent"
+            if unmatched:
+                return {
+                    "input": text,
+                    "inferred_stance": stance,
+                    "candidate_source": source,
+                    "candidates": candidates,
+                    "unmatched_terms": unmatched,
+                    "human_summary": (
+                        "Some named terms had no in-set match; candidates are market-intent "
+                        "browse results, not the named card."
+                    ),
+                    "agent_next": _agent_next_for_stance(stance),
+                    "boundary": boundary,
+                }
     return {
         "input": text,
         "inferred_stance": stance,
         "candidate_source": source,
         "candidates": candidates,
         "agent_next": _agent_next_for_stance(stance),
-        "boundary": "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability.",
+        "boundary": boundary,
     }
 
 
