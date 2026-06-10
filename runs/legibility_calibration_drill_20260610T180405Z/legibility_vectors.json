@@ -1,0 +1,585 @@
+[
+  {
+    "canonicalization": "canonical-json-payload-v1",
+    "dimensions": {
+      "continuity": {
+        "band": "high",
+        "breaks": [],
+        "checkpoints": [
+          "nonce_photo"
+        ],
+        "expired_refs": [],
+        "freshness_window": "24h",
+        "not_claiming": [
+          "unbroken_custody",
+          "swap_impossible"
+        ]
+      },
+      "cost_to_fake": {
+        "estimate_band": "high",
+        "not_claiming": [
+          "fraud_impossible",
+          "deterrence_adequate"
+        ],
+        "rationale": "Attacker must defeat the named evidence shape, not the chain.",
+        "unpriced_attack_paths": [
+          "borrowed_real_card",
+          "high_quality_counterfeit"
+        ]
+      },
+      "coverage": {
+        "band": "complete",
+        "measured_by": "evidence_profile_field_count",
+        "missing": [],
+        "not_claiming": [
+          "honesty",
+          "authenticity",
+          "condition_truth"
+        ],
+        "present": [
+          "front",
+          "back"
+        ],
+        "waived": []
+      },
+      "independence": {
+        "band": "high",
+        "channel_count": 3,
+        "correlated_but_not_independent": [
+          "seller_controlled_listing"
+        ],
+        "not_claiming": [
+          "independent_sources_prove_truth",
+          "source_saw_physical_object"
+        ],
+        "party_count": 2,
+        "source_count": 3,
+        "source_refs": [
+          "seller_photo",
+          "contact_receipt",
+          "verifier_note"
+        ]
+      },
+      "scope_fit": {
+        "band": "high",
+        "claim_supported": [
+          "item_reference",
+          "evidence_shape"
+        ],
+        "gate_supported": [
+          "offer_review"
+        ],
+        "not_claiming": [
+          "gate_spendability",
+          "truth",
+          "cross_gate_authority"
+        ],
+        "out_of_scope": [
+          "authenticity",
+          "condition_truth"
+        ]
+      },
+      "source_calibration": {
+        "band": "strong",
+        "caveats": [
+          "simulated fixture",
+          "not universal reputation"
+        ],
+        "cohort_ref": "prior:lv_shop_strong",
+        "not_claiming": [
+          "future_truth",
+          "possession",
+          "authenticity"
+        ],
+        "observed_claim_rate_bps": 650,
+        "observed_clean_settlement_rate_bps": 9350,
+        "outcome_window": "simulated_prior_90d",
+        "sample_size": 92
+      }
+    },
+    "emitted_by": "simulated_legibility_tool",
+    "gate_context": "offer_review",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "human_summary": "Evidence shape is measurable, but the vector is not a verdict.",
+    "input_refs": [
+      "evidence_profile",
+      "proof_vector_scope",
+      "contact_receipts"
+    ],
+    "no_aggregate_score": true,
+    "schema": "marketplace.legibility_vector.v0.1",
+    "signature_or_execution_receipt": "simulated-tool-receipt",
+    "subject_ref": "subject:lv_shop_strong",
+    "tool_or_agent_version": "legibility_calibration_drill.v0.1",
+    "trade_id_or_session_id": "session:lv_shop_strong",
+    "vector_id": "lv_shop_strong"
+  },
+  {
+    "canonicalization": "canonical-json-payload-v1",
+    "dimensions": {
+      "continuity": {
+        "band": "medium",
+        "breaks": [
+          "post_photo_custody_gap"
+        ],
+        "checkpoints": [
+          "nonce_photo"
+        ],
+        "expired_refs": [],
+        "freshness_window": "unknown_or_stale",
+        "not_claiming": [
+          "unbroken_custody",
+          "swap_impossible"
+        ]
+      },
+      "cost_to_fake": {
+        "estimate_band": "moderate",
+        "not_claiming": [
+          "fraud_impossible",
+          "deterrence_adequate"
+        ],
+        "rationale": "Attacker must defeat the named evidence shape, not the chain.",
+        "unpriced_attack_paths": [
+          "borrowed_real_card",
+          "high_quality_counterfeit"
+        ]
+      },
+      "coverage": {
+        "band": "partial",
+        "measured_by": "evidence_profile_field_count",
+        "missing": [
+          "corner_closeups"
+        ],
+        "not_claiming": [
+          "honesty",
+          "authenticity",
+          "condition_truth"
+        ],
+        "present": [
+          "front",
+          "back"
+        ],
+        "waived": []
+      },
+      "independence": {
+        "band": "low",
+        "channel_count": 1,
+        "correlated_but_not_independent": [
+          "seller_controlled_listing"
+        ],
+        "not_claiming": [
+          "independent_sources_prove_truth",
+          "source_saw_physical_object"
+        ],
+        "party_count": 1,
+        "source_count": 1,
+        "source_refs": [
+          "seller_photo",
+          "contact_receipt",
+          "verifier_note"
+        ]
+      },
+      "scope_fit": {
+        "band": "medium",
+        "claim_supported": [
+          "item_reference",
+          "evidence_shape"
+        ],
+        "gate_supported": [
+          "offer_review"
+        ],
+        "not_claiming": [
+          "gate_spendability",
+          "truth",
+          "cross_gate_authority"
+        ],
+        "out_of_scope": [
+          "authenticity",
+          "condition_truth"
+        ]
+      },
+      "source_calibration": {
+        "band": "thin",
+        "caveats": [
+          "simulated fixture",
+          "not universal reputation"
+        ],
+        "cohort_ref": "prior:lv_thin_sparse",
+        "not_claiming": [
+          "future_truth",
+          "possession",
+          "authenticity"
+        ],
+        "observed_claim_rate_bps": 2100,
+        "observed_clean_settlement_rate_bps": 7900,
+        "outcome_window": "simulated_prior_90d",
+        "sample_size": 18
+      }
+    },
+    "emitted_by": "simulated_legibility_tool",
+    "gate_context": "offer_review",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "human_summary": "Evidence shape is measurable, but the vector is not a verdict.",
+    "input_refs": [
+      "evidence_profile",
+      "proof_vector_scope",
+      "contact_receipts"
+    ],
+    "no_aggregate_score": true,
+    "schema": "marketplace.legibility_vector.v0.1",
+    "signature_or_execution_receipt": "simulated-tool-receipt",
+    "subject_ref": "subject:lv_thin_sparse",
+    "tool_or_agent_version": "legibility_calibration_drill.v0.1",
+    "trade_id_or_session_id": "session:lv_thin_sparse",
+    "vector_id": "lv_thin_sparse"
+  },
+  {
+    "canonicalization": "canonical-json-payload-v1",
+    "dimensions": {
+      "continuity": {
+        "band": "medium",
+        "breaks": [
+          "post_photo_custody_gap"
+        ],
+        "checkpoints": [
+          "nonce_photo"
+        ],
+        "expired_refs": [],
+        "freshness_window": "unknown_or_stale",
+        "not_claiming": [
+          "unbroken_custody",
+          "swap_impossible"
+        ]
+      },
+      "cost_to_fake": {
+        "estimate_band": "moderate",
+        "not_claiming": [
+          "fraud_impossible",
+          "deterrence_adequate"
+        ],
+        "rationale": "Attacker must defeat the named evidence shape, not the chain.",
+        "unpriced_attack_paths": [
+          "borrowed_real_card",
+          "high_quality_counterfeit"
+        ]
+      },
+      "coverage": {
+        "band": "high",
+        "measured_by": "evidence_profile_field_count",
+        "missing": [],
+        "not_claiming": [
+          "honesty",
+          "authenticity",
+          "condition_truth"
+        ],
+        "present": [
+          "front",
+          "back"
+        ],
+        "waived": []
+      },
+      "independence": {
+        "band": "medium",
+        "channel_count": 3,
+        "correlated_but_not_independent": [
+          "seller_controlled_listing"
+        ],
+        "not_claiming": [
+          "independent_sources_prove_truth",
+          "source_saw_physical_object"
+        ],
+        "party_count": 2,
+        "source_count": 3,
+        "source_refs": [
+          "seller_photo",
+          "contact_receipt",
+          "verifier_note"
+        ]
+      },
+      "scope_fit": {
+        "band": "medium",
+        "claim_supported": [
+          "item_reference",
+          "evidence_shape"
+        ],
+        "gate_supported": [
+          "offer_review"
+        ],
+        "not_claiming": [
+          "gate_spendability",
+          "truth",
+          "cross_gate_authority"
+        ],
+        "out_of_scope": [
+          "authenticity",
+          "condition_truth"
+        ]
+      },
+      "source_calibration": {
+        "band": "medium",
+        "caveats": [
+          "simulated fixture",
+          "not universal reputation"
+        ],
+        "cohort_ref": "prior:lv_slab_weak_binding",
+        "not_claiming": [
+          "future_truth",
+          "possession",
+          "authenticity"
+        ],
+        "observed_claim_rate_bps": 1250,
+        "observed_clean_settlement_rate_bps": 8750,
+        "outcome_window": "simulated_prior_90d",
+        "sample_size": 40
+      }
+    },
+    "emitted_by": "simulated_legibility_tool",
+    "gate_context": "offer_review",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "human_summary": "Evidence shape is measurable, but the vector is not a verdict.",
+    "input_refs": [
+      "evidence_profile",
+      "proof_vector_scope",
+      "contact_receipts"
+    ],
+    "no_aggregate_score": true,
+    "schema": "marketplace.legibility_vector.v0.1",
+    "signature_or_execution_receipt": "simulated-tool-receipt",
+    "subject_ref": "subject:lv_slab_weak_binding",
+    "tool_or_agent_version": "legibility_calibration_drill.v0.1",
+    "trade_id_or_session_id": "session:lv_slab_weak_binding",
+    "vector_id": "lv_slab_weak_binding"
+  },
+  {
+    "canonicalization": "canonical-json-payload-v1",
+    "dimensions": {
+      "continuity": {
+        "band": "high",
+        "breaks": [],
+        "checkpoints": [
+          "nonce_photo"
+        ],
+        "expired_refs": [],
+        "freshness_window": "24h",
+        "not_claiming": [
+          "unbroken_custody",
+          "swap_impossible"
+        ]
+      },
+      "cost_to_fake": {
+        "estimate_band": "moderate",
+        "not_claiming": [
+          "fraud_impossible",
+          "deterrence_adequate"
+        ],
+        "rationale": "Attacker must defeat the named evidence shape, not the chain.",
+        "unpriced_attack_paths": [
+          "borrowed_real_card",
+          "high_quality_counterfeit"
+        ]
+      },
+      "coverage": {
+        "band": "high",
+        "measured_by": "evidence_profile_field_count",
+        "missing": [],
+        "not_claiming": [
+          "honesty",
+          "authenticity",
+          "condition_truth"
+        ],
+        "present": [
+          "front",
+          "back"
+        ],
+        "waived": []
+      },
+      "independence": {
+        "band": "medium",
+        "channel_count": 3,
+        "correlated_but_not_independent": [
+          "seller_controlled_listing"
+        ],
+        "not_claiming": [
+          "independent_sources_prove_truth",
+          "source_saw_physical_object"
+        ],
+        "party_count": 2,
+        "source_count": 3,
+        "source_refs": [
+          "seller_photo",
+          "contact_receipt",
+          "verifier_note"
+        ]
+      },
+      "scope_fit": {
+        "band": "medium",
+        "claim_supported": [
+          "item_reference",
+          "evidence_shape"
+        ],
+        "gate_supported": [
+          "offer_review"
+        ],
+        "not_claiming": [
+          "gate_spendability",
+          "truth",
+          "cross_gate_authority"
+        ],
+        "out_of_scope": [
+          "authenticity",
+          "condition_truth"
+        ]
+      },
+      "source_calibration": {
+        "band": "medium",
+        "caveats": [
+          "simulated fixture",
+          "not universal reputation"
+        ],
+        "cohort_ref": "prior:lv_qs_sensitive",
+        "not_claiming": [
+          "future_truth",
+          "possession",
+          "authenticity"
+        ],
+        "observed_claim_rate_bps": 1850,
+        "observed_clean_settlement_rate_bps": 8150,
+        "outcome_window": "simulated_prior_90d",
+        "sample_size": 54
+      }
+    },
+    "emitted_by": "simulated_legibility_tool",
+    "gate_context": "offer_review",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "human_summary": "Evidence shape is measurable, but the vector is not a verdict.",
+    "input_refs": [
+      "evidence_profile",
+      "proof_vector_scope",
+      "contact_receipts"
+    ],
+    "no_aggregate_score": true,
+    "schema": "marketplace.legibility_vector.v0.1",
+    "signature_or_execution_receipt": "simulated-tool-receipt",
+    "subject_ref": "subject:lv_qs_sensitive",
+    "tool_or_agent_version": "legibility_calibration_drill.v0.1",
+    "trade_id_or_session_id": "session:lv_qs_sensitive",
+    "vector_id": "lv_qs_sensitive"
+  },
+  {
+    "canonicalization": "canonical-json-payload-v1",
+    "dimensions": {
+      "continuity": {
+        "band": "medium",
+        "breaks": [
+          "post_photo_custody_gap"
+        ],
+        "checkpoints": [
+          "nonce_photo"
+        ],
+        "expired_refs": [],
+        "freshness_window": "unknown_or_stale",
+        "not_claiming": [
+          "unbroken_custody",
+          "swap_impossible"
+        ]
+      },
+      "cost_to_fake": {
+        "estimate_band": "moderate",
+        "not_claiming": [
+          "fraud_impossible",
+          "deterrence_adequate"
+        ],
+        "rationale": "Attacker must defeat the named evidence shape, not the chain.",
+        "unpriced_attack_paths": [
+          "borrowed_real_card",
+          "high_quality_counterfeit"
+        ]
+      },
+      "coverage": {
+        "band": "high",
+        "measured_by": "evidence_profile_field_count",
+        "missing": [],
+        "not_claiming": [
+          "honesty",
+          "authenticity",
+          "condition_truth"
+        ],
+        "present": [
+          "front",
+          "back"
+        ],
+        "waived": []
+      },
+      "independence": {
+        "band": "medium",
+        "channel_count": 3,
+        "correlated_but_not_independent": [
+          "seller_controlled_listing"
+        ],
+        "not_claiming": [
+          "independent_sources_prove_truth",
+          "source_saw_physical_object"
+        ],
+        "party_count": 2,
+        "source_count": 3,
+        "source_refs": [
+          "seller_photo",
+          "contact_receipt",
+          "verifier_note"
+        ]
+      },
+      "scope_fit": {
+        "band": "medium",
+        "claim_supported": [
+          "item_reference",
+          "evidence_shape"
+        ],
+        "gate_supported": [
+          "offer_review"
+        ],
+        "not_claiming": [
+          "gate_spendability",
+          "truth",
+          "cross_gate_authority"
+        ],
+        "out_of_scope": [
+          "authenticity",
+          "condition_truth"
+        ]
+      },
+      "source_calibration": {
+        "band": "overconfident",
+        "caveats": [
+          "simulated fixture",
+          "not universal reputation"
+        ],
+        "cohort_ref": "prior:lv_miscalibrated",
+        "not_claiming": [
+          "future_truth",
+          "possession",
+          "authenticity"
+        ],
+        "observed_claim_rate_bps": 500,
+        "observed_clean_settlement_rate_bps": 9500,
+        "outcome_window": "simulated_prior_90d",
+        "sample_size": 60
+      }
+    },
+    "emitted_by": "simulated_legibility_tool",
+    "gate_context": "offer_review",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "human_summary": "Evidence shape is measurable, but the vector is not a verdict.",
+    "input_refs": [
+      "evidence_profile",
+      "proof_vector_scope",
+      "contact_receipts"
+    ],
+    "no_aggregate_score": true,
+    "schema": "marketplace.legibility_vector.v0.1",
+    "signature_or_execution_receipt": "simulated-tool-receipt",
+    "subject_ref": "subject:lv_miscalibrated",
+    "tool_or_agent_version": "legibility_calibration_drill.v0.1",
+    "trade_id_or_session_id": "session:lv_miscalibrated",
+    "vector_id": "lv_miscalibrated"
+  }
+]

@@ -345,9 +345,12 @@ Pass criteria:
 - no `legibility_vector` contains an aggregate score or verdict,
 - all vector dimensions preserve `not_claiming`,
 - agent policy projection is separate from the vector,
-- cohort spread stays within configured tolerance,
+- calibrated cohort spread stays within the sample-size-aware tolerance,
 - deliberately miscalibrated cohorts are detected,
-- score-laundering attempts are blocked.
+- field-level score laundering is blocked by schema allowlist,
+- prose-level laundering ("trust 94/100, safe to buy" in a free-text field)
+  trips a named heuristic. The heuristic is a tripwire, not a guarantee;
+  agent instructions and review still police prose.
 
 This is the measurement sibling to the wall and gap drills:
 

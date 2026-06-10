@@ -1,0 +1,77 @@
+[
+  {
+    "authority_label": "judged",
+    "buyer_aperture": "simulated_alpha_buyer",
+    "decision": "continue",
+    "legibility_vector_ref": "lv_shop_strong",
+    "not_claiming": [
+      "truth",
+      "authenticity",
+      "protocol_enforcement"
+    ],
+    "policy_id": "buyer_policy.alpha_calibration_fixture.v0.1",
+    "projected_claim_rate_bps": 700,
+    "risk_band": "low_named_risk",
+    "schema": "marketplace.agent_policy_projection.v0.1"
+  },
+  {
+    "authority_label": "judged",
+    "buyer_aperture": "simulated_alpha_buyer",
+    "decision": "continue_only_with_waiver",
+    "legibility_vector_ref": "lv_thin_sparse",
+    "not_claiming": [
+      "truth",
+      "authenticity",
+      "protocol_enforcement"
+    ],
+    "policy_id": "buyer_policy.alpha_calibration_fixture.v0.1",
+    "projected_claim_rate_bps": 2200,
+    "risk_band": "high_named_risk",
+    "schema": "marketplace.agent_policy_projection.v0.1"
+  },
+  {
+    "authority_label": "judged",
+    "buyer_aperture": "simulated_alpha_buyer",
+    "decision": "human_or_verifier_review",
+    "legibility_vector_ref": "lv_slab_weak_binding",
+    "not_claiming": [
+      "truth",
+      "authenticity",
+      "protocol_enforcement"
+    ],
+    "policy_id": "buyer_policy.alpha_calibration_fixture.v0.1",
+    "projected_claim_rate_bps": 1200,
+    "risk_band": "medium_named_risk",
+    "schema": "marketplace.agent_policy_projection.v0.1"
+  },
+  {
+    "authority_label": "judged",
+    "buyer_aperture": "simulated_alpha_buyer",
+    "decision": "request_text_layout_check",
+    "legibility_vector_ref": "lv_qs_sensitive",
+    "not_claiming": [
+      "truth",
+      "authenticity",
+      "protocol_enforcement"
+    ],
+    "policy_id": "buyer_policy.alpha_calibration_fixture.v0.1",
+    "projected_claim_rate_bps": 1800,
+    "risk_band": "high_named_variant_risk",
+    "schema": "marketplace.agent_policy_projection.v0.1"
+  },
+  {
+    "authority_label": "judged",
+    "buyer_aperture": "simulated_alpha_buyer",
+    "decision": "continue",
+    "legibility_vector_ref": "lv_miscalibrated",
+    "not_claiming": [
+      "truth",
+      "authenticity",
+      "protocol_enforcement"
+    ],
+    "policy_id": "buyer_policy.alpha_calibration_fixture.v0.1",
+    "projected_claim_rate_bps": 500,
+    "risk_band": "low_named_risk",
+    "schema": "marketplace.agent_policy_projection.v0.1"
+  }
+]

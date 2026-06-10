@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -106,6 +107,37 @@ def utc_stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
+# Prose-laundering tripwire: a clean-schema vector can still smuggle a verdict
+# through free-text fields ("trust 94/100, safe to buy"). This is a heuristic,
+# not a guarantee — agent instructions and review still police prose — but a
+# vector that trips it is certainly laundering.
+PROSE_AGGREGATE_PATTERNS = [
+    re.compile(pattern, re.IGNORECASE)
+    for pattern in (
+        r"\b\d{1,3}\s*/\s*(?:10|100)\b",
+        r"\btrust\s+(?:score|meter|rating)\b",
+        r"\bsafe\s+to\s+buy\b",
+        r"\b\d{1,3}\s*%\s*safe\b",
+        r"\boverall\s+(?:score|rating|grade)\b",
+    )
+]
+
+
+def prose_aggregate_hits(value: Any, path: str = "") -> list[str]:
+    hits: list[str] = []
+    if isinstance(value, str):
+        for pattern in PROSE_AGGREGATE_PATTERNS:
+            if pattern.search(value):
+                hits.append(f"{path or 'value'} matches {pattern.pattern!r}")
+    elif isinstance(value, dict):
+        for key, inner in value.items():
+            hits.extend(prose_aggregate_hits(inner, f"{path}.{key}" if path else key))
+    elif isinstance(value, list):
+        for index, inner in enumerate(value):
+            hits.extend(prose_aggregate_hits(inner, f"{path}[{index}]"))
+    return hits
+
+
 def has_forbidden_field(value: Any, path: str = "") -> list[str]:
     hits: list[str] = []
     if isinstance(value, dict):
@@ -148,6 +180,9 @@ def validate_vector(vector: dict[str, Any]) -> list[str]:
     forbidden = has_forbidden_field(vector)
     if forbidden:
         errors.append("forbidden aggregate field(s): " + ", ".join(forbidden))
+    prose_hits = prose_aggregate_hits(vector)
+    if prose_hits:
+        errors.append("prose aggregate language: " + "; ".join(prose_hits))
     dimensions = vector.get("dimensions", {})
     if not isinstance(dimensions, dict):
         return errors + ["dimensions must be object"]
@@ -443,21 +478,42 @@ def score_laundering_attempt() -> dict[str, Any]:
     }
 
 
-def write_report(run_dir: Path, cohorts: list[Cohort], blocked_attempt: dict[str, Any]) -> bool:
+def prose_laundering_attempt() -> dict[str, Any]:
+    bad = vector(
+        "lv_bad_prose",
+        coverage_band="complete",
+        independence_band="high",
+        continuity_band="high",
+        scope_band="high",
+        cost_to_fake_band="high",
+        source_calibration_band="strong",
+        observed_prior_claim_rate_bps=200,
+        sample_size=200,
+    )
+    bad["human_summary"] = "Coverage is complete. Overall trust 94/100, safe to buy."
+    bad["dimensions"]["cost_to_fake"]["rationale"] = "Trust score is strong for this seller."
+    return {
+        "attempt": "prose trust meter in clean schema",
+        "expected": "blocked_prose_laundering",
+        "errors": validate_vector(bad),
+    }
+
+
+def write_report(run_dir: Path, cohorts: list[Cohort], blocked_attempts: list[dict[str, Any]]) -> bool:
     results = [evaluate_cohort(cohort) for cohort in cohorts]
-    blocked = bool(blocked_attempt["errors"])
+    all_blocked = all(bool(attempt["errors"]) for attempt in blocked_attempts)
     passed = (
         all(not result["vector_errors"] for result in results)
         and all(result["projection_is_separate_judgment"] for result in results)
         and all(result["calibration_expectation_met"] for result in results)
-        and blocked
+        and all_blocked
     )
     summary = {
         "run_id": run_dir.name,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "passed": passed,
-        "pass_definition": "Legibility vectors remain vector-shaped, policy projection is separate judgment, calibrated cohorts stay within tolerance, miscalibrated cohorts are detected, and score laundering is blocked.",
-        "blocked_score_laundering_attempt": blocked_attempt,
+        "pass_definition": "Legibility vectors remain vector-shaped, policy projection is separate judgment, calibrated cohorts stay within tolerance, miscalibrated cohorts are detected, and field-level and prose-level score laundering are blocked.",
+        "blocked_laundering_attempts": blocked_attempts,
         "cohorts": results,
     }
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -478,22 +534,29 @@ def write_report(run_dir: Path, cohorts: list[Cohort], blocked_attempt: dict[str
         f"# Legibility Calibration Drill: {run_dir.name}",
         "",
         f"- Passed: `{passed}`",
-        "- Pass definition: vectors stay unaggregated, policy projection remains judged, calibrated cohorts stay within tolerance, miscalibrated cohorts are detected, and score laundering is blocked.",
+        "- Pass definition: vectors stay unaggregated, policy projection remains judged, calibrated cohorts stay within tolerance, miscalibrated cohorts are detected, and field-level and prose-level score laundering are blocked.",
         "",
         "## Rule Under Test",
         "",
         "The protocol may measure legibility, but it must never aggregate legibility into a verdict. A vector can inform a buyer-agent policy; the policy owns the judgment. Vector signatures are cohort keys for calibration, not mini-scores.",
         "",
-        "## Score-Laundering Attempt",
+        "## Score-Laundering Attempts",
         "",
-        f"- Attempt: `{blocked_attempt['attempt']}`",
-        f"- Expected: `{blocked_attempt['expected']}`",
-        f"- Blocked: `{blocked}`",
-        "- Errors:",
     ]
-    for error in blocked_attempt["errors"]:
-        lines.append(f"  - {error}")
-    lines.extend(["", "## Cohorts", ""])
+    for attempt in blocked_attempts:
+        lines.extend(
+            [
+                f"### {attempt['attempt']}",
+                "",
+                f"- Expected: `{attempt['expected']}`",
+                f"- Blocked: `{bool(attempt['errors'])}`",
+                "- Errors:",
+            ]
+        )
+        for error in attempt["errors"]:
+            lines.append(f"  - {error}")
+        lines.append("")
+    lines.extend(["## Cohorts", ""])
     for result in results:
         lines.extend(
             [
@@ -522,6 +585,7 @@ def write_report(run_dir: Path, cohorts: list[Cohort], blocked_attempt: dict[str
             "- Calibration is measured against settled outcomes, not asserted by a trust meter.",
             "- A deliberately miscalibrated cohort is detected as overconfident.",
             "- A composite score/verdict is blocked as certainty laundering.",
+            "- A verdict smuggled through free-text fields trips the prose heuristic.",
         ]
     )
     (run_dir / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -530,7 +594,11 @@ def write_report(run_dir: Path, cohorts: list[Cohort], blocked_attempt: dict[str
 
 def main() -> int:
     run_dir = RUNS / f"legibility_calibration_drill_{utc_stamp()}"
-    passed = write_report(run_dir, fixtures(), score_laundering_attempt())
+    passed = write_report(
+        run_dir,
+        fixtures(),
+        [score_laundering_attempt(), prose_laundering_attempt()],
+    )
     print(f"Wrote {run_dir / 'REPORT.md'}")
     return 0 if passed else 1
 
