@@ -1,0 +1,1463 @@
+{
+  "generated_at": "2026-06-10T17:21:13.321295+00:00",
+  "overclaim_attempts": [
+    {
+      "attempt": "account_control_equals_history_ownership",
+      "blocked_by": "control proof means current control only",
+      "claim": "The seller controls the eBay account now, so they own the whole history.",
+      "passed": true
+    },
+    {
+      "attempt": "seller_channels_are_independent",
+      "blocked_by": "correlated_but_not_independent",
+      "claim": "The eBay profile, shop site, and Discord are three independent sources.",
+      "passed": true
+    },
+    {
+      "attempt": "low_value_feedback_supports_high_value_trade",
+      "blocked_by": "value-tier scope fit",
+      "claim": "Thousands of low-value feedback events support a high-value raw-card bond waiver.",
+      "passed": true
+    },
+    {
+      "attempt": "relief_exceeds_acquisition_cost",
+      "blocked_by": "imported_trust_bond_relief <= acquisition_cost",
+      "claim": "A $500 bought-account risk can justify $1,200 of bond relief.",
+      "passed": true
+    },
+    {
+      "attempt": "snapshot_is_durable_source",
+      "blocked_by": "source terms and platform availability fragility",
+      "claim": "A scraped profile snapshot will always be available and platform-approved.",
+      "passed": true
+    }
+  ],
+  "pass_definition": "External reputation remains observable but bounded; imported bond relief is capped by acquisition cost, value-tier scope, and exit-scam visibility.",
+  "passed": true,
+  "results": [
+    {
+      "acquisition_cost_estimate_usd": 1200,
+      "applied_bond_relief_usd": 120,
+      "base_bond_usd": 180,
+      "case_id": "tier_matched_strong_import",
+      "description": "A seller imports a mature, tier-matched marketplace profile for a mid-value card.",
+      "exit_scam_ev_usd": -860,
+      "final_bond_relief_cap_usd": 120,
+      "flags": [
+        "continuity_seam",
+        "source_fragility"
+      ],
+      "hard_errors": [],
+      "import_packet": {
+        "acquisition_cost_estimate": {
+          "amount_usd": 1200,
+          "basis": "gray_market_or_farming_cost_estimate_for_import_bundle",
+          "not_claiming": [
+            "objective_exact_price",
+            "fraud_impossible"
+          ]
+        },
+        "bond_relief_cap": {
+          "amount_usd": 120,
+          "applied_bond_relief_usd": 120,
+          "cap_rule": "min(requested_relief, acquisition_cost, value_tier_scope_cap, base_bond_minus_floor)",
+          "not_claiming": [
+            "seller_is_honest",
+            "bond_adequacy"
+          ]
+        },
+        "control_proofs": [
+          {
+            "content_hash": "sha256:control:tier_matched_strong_import:1",
+            "nonce": "trust-import-tier_matched_strong_import",
+            "nonce_location": "about_me",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321116+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:tier_matched_strong_import:1",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:shop-alpha",
+            "signature_or_execution_receipt": "receipt:control:tier_matched_strong_import:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/shop-alpha"
+          },
+          {
+            "content_hash": "sha256:control:tier_matched_strong_import:2",
+            "nonce": "trust-import-tier_matched_strong_import",
+            "nonce_location": "dns_or_well_known",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321116+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:tier_matched_strong_import:2",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:shop-alpha",
+            "signature_or_execution_receipt": "receipt:control:tier_matched_strong_import:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://shop-alpha.example.invalid/.well-known/marketplace.txt"
+          }
+        ],
+        "decay_policy": {
+          "continuity_reproof_required": true,
+          "maximum_import_share_after_native_receipts": "buyer_policy_defined",
+          "native_receipt_substitution_rate": "import_share_declines_as_clean_receipts_accrue",
+          "refresh_interval": "30d",
+          "revocation_or_platform_loss_path": "mark_import_stale_and_recompute_bond"
+        },
+        "expires_at": "2026-07-10T17:21:13.321120+00:00",
+        "import_id": "external_import:tier_matched_strong_import",
+        "issued_at": "2026-06-10T17:21:13.321116+00:00",
+        "legibility_vector_ref": "legibility:external_import:tier_matched_strong_import",
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "future_platform_availability",
+          "high_value_scope_if_history_is_low_tier",
+          "independence_when_sources_share_control",
+          "ownership_of_account_history",
+          "platform_endorsement",
+          "possession"
+        ],
+        "observation_receipts": [
+          {
+            "content_hash": "sha256:observation:tier_matched_strong_import:1",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321116+00:00",
+            "observed_fields": {
+              "account_age_years": 7.0,
+              "feedback_count": 2080,
+              "feedback_percent": 99.7,
+              "public_identity_match": "seller_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 500,
+              "mid": 78
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:tier_matched_strong_import:1",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:shop-alpha",
+            "signature_or_execution_receipt": "receipt:observation:tier_matched_strong_import:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/shop-alpha",
+            "visibility": "public_or_seller_supplied"
+          },
+          {
+            "content_hash": "sha256:observation:tier_matched_strong_import:2",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321116+00:00",
+            "observed_fields": {
+              "account_age_years": 7.0,
+              "feedback_count": null,
+              "feedback_percent": null,
+              "public_identity_match": "domain_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 500,
+              "mid": 78
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:tier_matched_strong_import:2",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:shop-alpha",
+            "signature_or_execution_receipt": "receipt:observation:tier_matched_strong_import:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://shop-alpha.example.invalid/.well-known/marketplace.txt",
+            "visibility": "public_or_seller_supplied"
+          }
+        ],
+        "observed_value_tiers": {
+          "high": 0,
+          "low": 500,
+          "mid": 78
+        },
+        "schema": "marketplace.external_trust_import.v0.1",
+        "seller_ref": "seller:shop-alpha",
+        "signature_or_execution_receipt": "receipt:external_import:tier_matched_strong_import",
+        "tos_fragility": "seller_placed_nonce_clean_snapshot_fragile"
+      },
+      "legibility_vector": {
+        "canonicalization": "json_sorted_keys_v0.1",
+        "dimensions": {
+          "continuity": {
+            "breaks": [
+              "current_control_not_historical_ownership"
+            ],
+            "checkpoints": [
+              "current_nonce_control",
+              "current_observation_snapshot"
+            ],
+            "expired_refs": [],
+            "freshness_window": "30d",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "unbroken_operator_identity"
+            ]
+          },
+          "cost_to_fake": {
+            "estimate_band": "$1200",
+            "not_claiming": [
+              "objective_market_price",
+              "fraud_impossible"
+            ],
+            "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
+            "unpriced_attack_paths": [
+              "private_account_sale",
+              "undetected_operator_change"
+            ]
+          },
+          "coverage": {
+            "measured_by": "observed_external_surfaces",
+            "missing": [],
+            "not_claiming": [
+              "complete_reputation",
+              "seller_inventory"
+            ],
+            "present": [
+              "ebay_profile",
+              "shop_domain"
+            ],
+            "waived": []
+          },
+          "independence": {
+            "channel_count": 2,
+            "correlated_but_not_independent": [],
+            "not_claiming": [
+              "channel_count_equals_independence",
+              "platform_endorsement"
+            ],
+            "party_count": 2,
+            "source_count": 2,
+            "source_refs": [
+              "ebay_profile",
+              "shop_domain"
+            ]
+          },
+          "scope_fit": {
+            "claim_supported": "external_seller_reputation_observed",
+            "gate_supported": "bond_and_friction_projection_only",
+            "not_claiming": [
+              "low_value_feedback_supports_high_value_trade",
+              "scope_fit_proves_honesty"
+            ],
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 500,
+              "mid": 78
+            },
+            "out_of_scope": [
+              "authenticity",
+              "possession",
+              "condition",
+              "route_success"
+            ],
+            "status": "tier_matched",
+            "trade_tier": "mid"
+          },
+          "source_calibration": {
+            "caveats": [
+              "calibration_pending_for_alpha"
+            ],
+            "cohort_ref": "external_import_shape:tier_matched",
+            "not_claiming": [
+              "future_truth",
+              "universal_reputation"
+            ],
+            "observed_claim_rate_bps": null,
+            "observed_clean_settlement_rate_bps": null,
+            "outcome_window": "future_protocol_receipts",
+            "sample_size": 0
+          }
+        },
+        "emitted_by": "external_trust_import_drill",
+        "gate_context": "seller_trust_import",
+        "hash_algorithm": "sha256",
+        "human_summary": "External surfaces are observed and bounded; they do not become seller truth.",
+        "input_refs": [
+          "ebay_profile",
+          "shop_domain"
+        ],
+        "no_aggregate_score": true,
+        "schema": "marketplace.legibility_vector.v0.1",
+        "signature_or_execution_receipt": "receipt:legibility:tier_matched_strong_import",
+        "subject_ref": "seller:shop-alpha",
+        "tool_or_agent_version": "v0.1",
+        "trade_id_or_session_id": "session:tier_matched_strong_import",
+        "vector_id": "legibility:external_import:tier_matched_strong_import"
+      },
+      "minimum_bond_floor_usd": 40,
+      "passed": true,
+      "policy_projection": {
+        "authority_label": "judged",
+        "decision": "continue_with_bounded_import",
+        "legibility_vector_ref": "legibility:external_import:tier_matched_strong_import",
+        "not_claiming": [
+          "protocol_enforcement",
+          "seller_truth",
+          "bond_adequacy"
+        ],
+        "schema": "marketplace.external_trust_policy_projection.v0.1"
+      },
+      "remaining_bond_usd": 60,
+      "requested_bond_relief_usd": 120,
+      "scope_relief_cap_usd": 140,
+      "trade_value_usd": 400,
+      "unexpected_flags": []
+    },
+    {
+      "acquisition_cost_estimate_usd": 500,
+      "applied_bond_relief_usd": 224,
+      "base_bond_usd": 288,
+      "case_id": "bought_aged_account",
+      "description": "An aged account is controlled now, but the continuity seam is invisible.",
+      "exit_scam_ev_usd": 76,
+      "final_bond_relief_cap_usd": 224,
+      "flags": [
+        "continuity_seam",
+        "positive_exit_scam_ev",
+        "source_fragility"
+      ],
+      "hard_errors": [],
+      "import_packet": {
+        "acquisition_cost_estimate": {
+          "amount_usd": 500,
+          "basis": "gray_market_or_farming_cost_estimate_for_import_bundle",
+          "not_claiming": [
+            "objective_exact_price",
+            "fraud_impossible"
+          ]
+        },
+        "bond_relief_cap": {
+          "amount_usd": 224,
+          "applied_bond_relief_usd": 224,
+          "cap_rule": "min(requested_relief, acquisition_cost, value_tier_scope_cap, base_bond_minus_floor)",
+          "not_claiming": [
+            "seller_is_honest",
+            "bond_adequacy"
+          ]
+        },
+        "control_proofs": [
+          {
+            "content_hash": "sha256:control:bought_aged_account:1",
+            "nonce": "trust-import-bought_aged_account",
+            "nonce_location": "about_me",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321156+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:bought_aged_account:1",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:aged-import",
+            "signature_or_execution_receipt": "receipt:control:bought_aged_account:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/aged-import"
+          }
+        ],
+        "decay_policy": {
+          "continuity_reproof_required": true,
+          "maximum_import_share_after_native_receipts": "buyer_policy_defined",
+          "native_receipt_substitution_rate": "import_share_declines_as_clean_receipts_accrue",
+          "refresh_interval": "30d",
+          "revocation_or_platform_loss_path": "mark_import_stale_and_recompute_bond"
+        },
+        "expires_at": "2026-07-10T17:21:13.321157+00:00",
+        "import_id": "external_import:bought_aged_account",
+        "issued_at": "2026-06-10T17:21:13.321156+00:00",
+        "legibility_vector_ref": "legibility:external_import:bought_aged_account",
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "future_platform_availability",
+          "high_value_scope_if_history_is_low_tier",
+          "independence_when_sources_share_control",
+          "ownership_of_account_history",
+          "platform_endorsement",
+          "possession"
+        ],
+        "observation_receipts": [
+          {
+            "content_hash": "sha256:observation:bought_aged_account:1",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321156+00:00",
+            "observed_fields": {
+              "account_age_years": 9.0,
+              "feedback_count": 961,
+              "feedback_percent": 99.2,
+              "public_identity_match": "seller_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 950,
+              "mid": 11
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:bought_aged_account:1",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:aged-import",
+            "signature_or_execution_receipt": "receipt:observation:bought_aged_account:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/aged-import",
+            "visibility": "public_or_seller_supplied"
+          }
+        ],
+        "observed_value_tiers": {
+          "high": 0,
+          "low": 950,
+          "mid": 11
+        },
+        "schema": "marketplace.external_trust_import.v0.1",
+        "seller_ref": "seller:aged-import",
+        "signature_or_execution_receipt": "receipt:external_import:bought_aged_account",
+        "tos_fragility": "seller_placed_nonce_clean_snapshot_fragile"
+      },
+      "legibility_vector": {
+        "canonicalization": "json_sorted_keys_v0.1",
+        "dimensions": {
+          "continuity": {
+            "breaks": [
+              "current_control_not_historical_ownership"
+            ],
+            "checkpoints": [
+              "current_nonce_control",
+              "current_observation_snapshot"
+            ],
+            "expired_refs": [],
+            "freshness_window": "30d",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "unbroken_operator_identity"
+            ]
+          },
+          "cost_to_fake": {
+            "estimate_band": "$500",
+            "not_claiming": [
+              "objective_market_price",
+              "fraud_impossible"
+            ],
+            "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
+            "unpriced_attack_paths": [
+              "private_account_sale",
+              "undetected_operator_change"
+            ]
+          },
+          "coverage": {
+            "measured_by": "observed_external_surfaces",
+            "missing": [],
+            "not_claiming": [
+              "complete_reputation",
+              "seller_inventory"
+            ],
+            "present": [
+              "ebay_profile"
+            ],
+            "waived": []
+          },
+          "independence": {
+            "channel_count": 1,
+            "correlated_but_not_independent": [],
+            "not_claiming": [
+              "channel_count_equals_independence",
+              "platform_endorsement"
+            ],
+            "party_count": 1,
+            "source_count": 1,
+            "source_refs": [
+              "ebay_profile"
+            ]
+          },
+          "scope_fit": {
+            "claim_supported": "external_seller_reputation_observed",
+            "gate_supported": "bond_and_friction_projection_only",
+            "not_claiming": [
+              "low_value_feedback_supports_high_value_trade",
+              "scope_fit_proves_honesty"
+            ],
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 950,
+              "mid": 11
+            },
+            "out_of_scope": [
+              "authenticity",
+              "possession",
+              "condition",
+              "route_success"
+            ],
+            "status": "tier_matched",
+            "trade_tier": "mid"
+          },
+          "source_calibration": {
+            "caveats": [
+              "calibration_pending_for_alpha"
+            ],
+            "cohort_ref": "external_import_shape:tier_matched",
+            "not_claiming": [
+              "future_truth",
+              "universal_reputation"
+            ],
+            "observed_claim_rate_bps": null,
+            "observed_clean_settlement_rate_bps": null,
+            "outcome_window": "future_protocol_receipts",
+            "sample_size": 0
+          }
+        },
+        "emitted_by": "external_trust_import_drill",
+        "gate_context": "seller_trust_import",
+        "hash_algorithm": "sha256",
+        "human_summary": "External surfaces are observed and bounded; they do not become seller truth.",
+        "input_refs": [
+          "ebay_profile"
+        ],
+        "no_aggregate_score": true,
+        "schema": "marketplace.legibility_vector.v0.1",
+        "signature_or_execution_receipt": "receipt:legibility:bought_aged_account",
+        "subject_ref": "seller:aged-import",
+        "tool_or_agent_version": "v0.1",
+        "trade_id_or_session_id": "session:bought_aged_account",
+        "vector_id": "legibility:external_import:bought_aged_account"
+      },
+      "minimum_bond_floor_usd": 64,
+      "passed": true,
+      "policy_projection": {
+        "authority_label": "judged",
+        "decision": "needs_extra_bond_or_value_cap",
+        "legibility_vector_ref": "legibility:external_import:bought_aged_account",
+        "not_claiming": [
+          "protocol_enforcement",
+          "seller_truth",
+          "bond_adequacy"
+        ],
+        "schema": "marketplace.external_trust_policy_projection.v0.1"
+      },
+      "remaining_bond_usd": 64,
+      "requested_bond_relief_usd": 600,
+      "scope_relief_cap_usd": 224,
+      "trade_value_usd": 640,
+      "unexpected_flags": []
+    },
+    {
+      "acquisition_cost_estimate_usd": 2500,
+      "applied_bond_relief_usd": 0,
+      "base_bond_usd": 675,
+      "case_id": "tier_mismatched_feedback",
+      "description": "Huge low-value feedback does not support a high-value raw-card bond waiver.",
+      "exit_scam_ev_usd": -1675,
+      "final_bond_relief_cap_usd": 0,
+      "flags": [
+        "continuity_seam",
+        "source_fragility",
+        "tier_mismatch"
+      ],
+      "hard_errors": [],
+      "import_packet": {
+        "acquisition_cost_estimate": {
+          "amount_usd": 2500,
+          "basis": "gray_market_or_farming_cost_estimate_for_import_bundle",
+          "not_claiming": [
+            "objective_exact_price",
+            "fraud_impossible"
+          ]
+        },
+        "bond_relief_cap": {
+          "amount_usd": 0,
+          "applied_bond_relief_usd": 0,
+          "cap_rule": "min(requested_relief, acquisition_cost, value_tier_scope_cap, base_bond_minus_floor)",
+          "not_claiming": [
+            "seller_is_honest",
+            "bond_adequacy"
+          ]
+        },
+        "control_proofs": [
+          {
+            "content_hash": "sha256:control:tier_mismatched_feedback:1",
+            "nonce": "trust-import-tier_mismatched_feedback",
+            "nonce_location": "seller_profile_note",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321176+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:tier_mismatched_feedback:1",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:low-tier-volume",
+            "signature_or_execution_receipt": "receipt:control:tier_mismatched_feedback:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "tcgplayer_profile",
+            "source_url_or_handle": "https://example.invalid/tcgplayer/low-tier-volume"
+          }
+        ],
+        "decay_policy": {
+          "continuity_reproof_required": true,
+          "maximum_import_share_after_native_receipts": "buyer_policy_defined",
+          "native_receipt_substitution_rate": "import_share_declines_as_clean_receipts_accrue",
+          "refresh_interval": "30d",
+          "revocation_or_platform_loss_path": "mark_import_stale_and_recompute_bond"
+        },
+        "expires_at": "2026-07-10T17:21:13.321177+00:00",
+        "import_id": "external_import:tier_mismatched_feedback",
+        "issued_at": "2026-06-10T17:21:13.321176+00:00",
+        "legibility_vector_ref": "legibility:external_import:tier_mismatched_feedback",
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "future_platform_availability",
+          "high_value_scope_if_history_is_low_tier",
+          "independence_when_sources_share_control",
+          "ownership_of_account_history",
+          "platform_endorsement",
+          "possession"
+        ],
+        "observation_receipts": [
+          {
+            "content_hash": "sha256:observation:tier_mismatched_feedback:1",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321176+00:00",
+            "observed_fields": {
+              "account_age_years": 5.5,
+              "feedback_count": 5000,
+              "feedback_percent": 99.9,
+              "public_identity_match": "seller_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 5000,
+              "mid": 0
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:tier_mismatched_feedback:1",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:low-tier-volume",
+            "signature_or_execution_receipt": "receipt:observation:tier_mismatched_feedback:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "tcgplayer_profile",
+            "source_url_or_handle": "https://example.invalid/tcgplayer/low-tier-volume",
+            "visibility": "public_or_seller_supplied"
+          }
+        ],
+        "observed_value_tiers": {
+          "high": 0,
+          "low": 5000,
+          "mid": 0
+        },
+        "schema": "marketplace.external_trust_import.v0.1",
+        "seller_ref": "seller:low-tier-volume",
+        "signature_or_execution_receipt": "receipt:external_import:tier_mismatched_feedback",
+        "tos_fragility": "seller_placed_nonce_clean_snapshot_fragile"
+      },
+      "legibility_vector": {
+        "canonicalization": "json_sorted_keys_v0.1",
+        "dimensions": {
+          "continuity": {
+            "breaks": [
+              "current_control_not_historical_ownership"
+            ],
+            "checkpoints": [
+              "current_nonce_control",
+              "current_observation_snapshot"
+            ],
+            "expired_refs": [],
+            "freshness_window": "30d",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "unbroken_operator_identity"
+            ]
+          },
+          "cost_to_fake": {
+            "estimate_band": "$2500",
+            "not_claiming": [
+              "objective_market_price",
+              "fraud_impossible"
+            ],
+            "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
+            "unpriced_attack_paths": [
+              "private_account_sale",
+              "undetected_operator_change"
+            ]
+          },
+          "coverage": {
+            "measured_by": "observed_external_surfaces",
+            "missing": [],
+            "not_claiming": [
+              "complete_reputation",
+              "seller_inventory"
+            ],
+            "present": [
+              "tcgplayer_profile"
+            ],
+            "waived": []
+          },
+          "independence": {
+            "channel_count": 1,
+            "correlated_but_not_independent": [],
+            "not_claiming": [
+              "channel_count_equals_independence",
+              "platform_endorsement"
+            ],
+            "party_count": 1,
+            "source_count": 1,
+            "source_refs": [
+              "tcgplayer_profile"
+            ]
+          },
+          "scope_fit": {
+            "claim_supported": "external_seller_reputation_observed",
+            "gate_supported": "bond_and_friction_projection_only",
+            "not_claiming": [
+              "low_value_feedback_supports_high_value_trade",
+              "scope_fit_proves_honesty"
+            ],
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 5000,
+              "mid": 0
+            },
+            "out_of_scope": [
+              "authenticity",
+              "possession",
+              "condition",
+              "route_success"
+            ],
+            "status": "tier_mismatch_lower_history",
+            "trade_tier": "high"
+          },
+          "source_calibration": {
+            "caveats": [
+              "calibration_pending_for_alpha"
+            ],
+            "cohort_ref": "external_import_shape:tier_mismatch_lower_history",
+            "not_claiming": [
+              "future_truth",
+              "universal_reputation"
+            ],
+            "observed_claim_rate_bps": null,
+            "observed_clean_settlement_rate_bps": null,
+            "outcome_window": "future_protocol_receipts",
+            "sample_size": 0
+          }
+        },
+        "emitted_by": "external_trust_import_drill",
+        "gate_context": "seller_trust_import",
+        "hash_algorithm": "sha256",
+        "human_summary": "External surfaces are observed and bounded; they do not become seller truth.",
+        "input_refs": [
+          "tcgplayer_profile"
+        ],
+        "no_aggregate_score": true,
+        "schema": "marketplace.legibility_vector.v0.1",
+        "signature_or_execution_receipt": "receipt:legibility:tier_mismatched_feedback",
+        "subject_ref": "seller:low-tier-volume",
+        "tool_or_agent_version": "v0.1",
+        "trade_id_or_session_id": "session:tier_mismatched_feedback",
+        "vector_id": "legibility:external_import:tier_mismatched_feedback"
+      },
+      "minimum_bond_floor_usd": 150,
+      "passed": true,
+      "policy_projection": {
+        "authority_label": "judged",
+        "decision": "continue_without_imported_bond_relief",
+        "legibility_vector_ref": "legibility:external_import:tier_mismatched_feedback",
+        "not_claiming": [
+          "protocol_enforcement",
+          "seller_truth",
+          "bond_adequacy"
+        ],
+        "schema": "marketplace.external_trust_policy_projection.v0.1"
+      },
+      "remaining_bond_usd": 675,
+      "requested_bond_relief_usd": 500,
+      "scope_relief_cap_usd": 0,
+      "trade_value_usd": 1500,
+      "unexpected_flags": []
+    },
+    {
+      "acquisition_cost_estimate_usd": 900,
+      "applied_bond_relief_usd": 80,
+      "base_bond_usd": 158,
+      "case_id": "seller_controlled_independence",
+      "description": "Several surfaces exist, but they share one controlling party.",
+      "exit_scam_ev_usd": -628,
+      "final_bond_relief_cap_usd": 80,
+      "flags": [
+        "continuity_seam",
+        "correlated_sources",
+        "source_fragility"
+      ],
+      "hard_errors": [],
+      "import_packet": {
+        "acquisition_cost_estimate": {
+          "amount_usd": 900,
+          "basis": "gray_market_or_farming_cost_estimate_for_import_bundle",
+          "not_claiming": [
+            "objective_exact_price",
+            "fraud_impossible"
+          ]
+        },
+        "bond_relief_cap": {
+          "amount_usd": 80,
+          "applied_bond_relief_usd": 80,
+          "cap_rule": "min(requested_relief, acquisition_cost, value_tier_scope_cap, base_bond_minus_floor)",
+          "not_claiming": [
+            "seller_is_honest",
+            "bond_adequacy"
+          ]
+        },
+        "control_proofs": [
+          {
+            "content_hash": "sha256:control:seller_controlled_independence:1",
+            "nonce": "trust-import-seller_controlled_independence",
+            "nonce_location": "well_known",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:seller_controlled_independence:1",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:control:seller_controlled_independence:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://one-party.example.invalid"
+          },
+          {
+            "content_hash": "sha256:control:seller_controlled_independence:2",
+            "nonce": "trust-import-seller_controlled_independence",
+            "nonce_location": "public_post",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:seller_controlled_independence:2",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:control:seller_controlled_independence:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "discord_account",
+            "source_url_or_handle": "@one-party-dealer"
+          },
+          {
+            "content_hash": "sha256:control:seller_controlled_independence:3",
+            "nonce": "trust-import-seller_controlled_independence",
+            "nonce_location": "linked_website",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:seller_controlled_independence:3",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:control:seller_controlled_independence:3",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "google_business_profile",
+            "source_url_or_handle": "https://example.invalid/google/one-party"
+          }
+        ],
+        "decay_policy": {
+          "continuity_reproof_required": true,
+          "maximum_import_share_after_native_receipts": "buyer_policy_defined",
+          "native_receipt_substitution_rate": "import_share_declines_as_clean_receipts_accrue",
+          "refresh_interval": "30d",
+          "revocation_or_platform_loss_path": "mark_import_stale_and_recompute_bond"
+        },
+        "expires_at": "2026-07-10T17:21:13.321192+00:00",
+        "import_id": "external_import:seller_controlled_independence",
+        "issued_at": "2026-06-10T17:21:13.321191+00:00",
+        "legibility_vector_ref": "legibility:external_import:seller_controlled_independence",
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "future_platform_availability",
+          "high_value_scope_if_history_is_low_tier",
+          "independence_when_sources_share_control",
+          "ownership_of_account_history",
+          "platform_endorsement",
+          "possession"
+        ],
+        "observation_receipts": [
+          {
+            "content_hash": "sha256:observation:seller_controlled_independence:1",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_fields": {
+              "account_age_years": 3.0,
+              "feedback_count": null,
+              "feedback_percent": null,
+              "public_identity_match": "domain_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 42,
+              "mid": 9
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:seller_controlled_independence:1",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:observation:seller_controlled_independence:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://one-party.example.invalid",
+            "visibility": "public_or_seller_supplied"
+          },
+          {
+            "content_hash": "sha256:observation:seller_controlled_independence:2",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_fields": {
+              "account_age_years": null,
+              "feedback_count": null,
+              "feedback_percent": null,
+              "public_identity_match": "seller_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 42,
+              "mid": 9
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:seller_controlled_independence:2",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:observation:seller_controlled_independence:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "discord_account",
+            "source_url_or_handle": "@one-party-dealer",
+            "visibility": "public_or_seller_supplied"
+          },
+          {
+            "content_hash": "sha256:observation:seller_controlled_independence:3",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321191+00:00",
+            "observed_fields": {
+              "account_age_years": 3.0,
+              "feedback_count": 48,
+              "feedback_percent": 97.5,
+              "public_identity_match": "same_domain_and_address"
+            },
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 42,
+              "mid": 9
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:seller_controlled_independence:3",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:one-party-many-channels",
+            "signature_or_execution_receipt": "receipt:observation:seller_controlled_independence:3",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "google_business_profile",
+            "source_url_or_handle": "https://example.invalid/google/one-party",
+            "visibility": "public_or_seller_supplied"
+          }
+        ],
+        "observed_value_tiers": {
+          "high": 0,
+          "low": 42,
+          "mid": 9
+        },
+        "schema": "marketplace.external_trust_import.v0.1",
+        "seller_ref": "seller:one-party-many-channels",
+        "signature_or_execution_receipt": "receipt:external_import:seller_controlled_independence",
+        "tos_fragility": "seller_placed_nonce_clean_snapshot_fragile"
+      },
+      "legibility_vector": {
+        "canonicalization": "json_sorted_keys_v0.1",
+        "dimensions": {
+          "continuity": {
+            "breaks": [
+              "current_control_not_historical_ownership"
+            ],
+            "checkpoints": [
+              "current_nonce_control",
+              "current_observation_snapshot"
+            ],
+            "expired_refs": [],
+            "freshness_window": "30d",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "unbroken_operator_identity"
+            ]
+          },
+          "cost_to_fake": {
+            "estimate_band": "$900",
+            "not_claiming": [
+              "objective_market_price",
+              "fraud_impossible"
+            ],
+            "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
+            "unpriced_attack_paths": [
+              "private_account_sale",
+              "undetected_operator_change"
+            ]
+          },
+          "coverage": {
+            "measured_by": "observed_external_surfaces",
+            "missing": [],
+            "not_claiming": [
+              "complete_reputation",
+              "seller_inventory"
+            ],
+            "present": [
+              "shop_domain",
+              "discord_account",
+              "google_business_profile"
+            ],
+            "waived": []
+          },
+          "independence": {
+            "channel_count": 3,
+            "correlated_but_not_independent": [
+              "multiple_channels_share_seller_control"
+            ],
+            "not_claiming": [
+              "channel_count_equals_independence",
+              "platform_endorsement"
+            ],
+            "party_count": 1,
+            "source_count": 3,
+            "source_refs": [
+              "shop_domain",
+              "discord_account",
+              "google_business_profile"
+            ]
+          },
+          "scope_fit": {
+            "claim_supported": "external_seller_reputation_observed",
+            "gate_supported": "bond_and_friction_projection_only",
+            "not_claiming": [
+              "low_value_feedback_supports_high_value_trade",
+              "scope_fit_proves_honesty"
+            ],
+            "observed_value_tier_distribution": {
+              "high": 0,
+              "low": 42,
+              "mid": 9
+            },
+            "out_of_scope": [
+              "authenticity",
+              "possession",
+              "condition",
+              "route_success"
+            ],
+            "status": "tier_matched",
+            "trade_tier": "mid"
+          },
+          "source_calibration": {
+            "caveats": [
+              "calibration_pending_for_alpha"
+            ],
+            "cohort_ref": "external_import_shape:tier_matched",
+            "not_claiming": [
+              "future_truth",
+              "universal_reputation"
+            ],
+            "observed_claim_rate_bps": null,
+            "observed_clean_settlement_rate_bps": null,
+            "outcome_window": "future_protocol_receipts",
+            "sample_size": 0
+          }
+        },
+        "emitted_by": "external_trust_import_drill",
+        "gate_context": "seller_trust_import",
+        "hash_algorithm": "sha256",
+        "human_summary": "External surfaces are observed and bounded; they do not become seller truth.",
+        "input_refs": [
+          "shop_domain",
+          "discord_account",
+          "google_business_profile"
+        ],
+        "no_aggregate_score": true,
+        "schema": "marketplace.legibility_vector.v0.1",
+        "signature_or_execution_receipt": "receipt:legibility:seller_controlled_independence",
+        "subject_ref": "seller:one-party-many-channels",
+        "tool_or_agent_version": "v0.1",
+        "trade_id_or_session_id": "session:seller_controlled_independence",
+        "vector_id": "legibility:external_import:seller_controlled_independence"
+      },
+      "minimum_bond_floor_usd": 35,
+      "passed": true,
+      "policy_projection": {
+        "authority_label": "judged",
+        "decision": "continue_with_bounded_import",
+        "legibility_vector_ref": "legibility:external_import:seller_controlled_independence",
+        "not_claiming": [
+          "protocol_enforcement",
+          "seller_truth",
+          "bond_adequacy"
+        ],
+        "schema": "marketplace.external_trust_policy_projection.v0.1"
+      },
+      "remaining_bond_usd": 78,
+      "requested_bond_relief_usd": 80,
+      "scope_relief_cap_usd": 123,
+      "trade_value_usd": 350,
+      "unexpected_flags": []
+    },
+    {
+      "acquisition_cost_estimate_usd": 600,
+      "applied_bond_relief_usd": 600,
+      "base_bond_usd": 810,
+      "case_id": "exit_scam_ev_check",
+      "description": "A shiny import still leaves a positive exit-scam path unless extra bond or value caps apply.",
+      "exit_scam_ev_usd": 990,
+      "final_bond_relief_cap_usd": 600,
+      "flags": [
+        "continuity_seam",
+        "positive_exit_scam_ev",
+        "source_fragility"
+      ],
+      "hard_errors": [],
+      "import_packet": {
+        "acquisition_cost_estimate": {
+          "amount_usd": 600,
+          "basis": "gray_market_or_farming_cost_estimate_for_import_bundle",
+          "not_claiming": [
+            "objective_exact_price",
+            "fraud_impossible"
+          ]
+        },
+        "bond_relief_cap": {
+          "amount_usd": 600,
+          "applied_bond_relief_usd": 600,
+          "cap_rule": "min(requested_relief, acquisition_cost, value_tier_scope_cap, base_bond_minus_floor)",
+          "not_claiming": [
+            "seller_is_honest",
+            "bond_adequacy"
+          ]
+        },
+        "control_proofs": [
+          {
+            "content_hash": "sha256:control:exit_scam_ev_check:1",
+            "nonce": "trust-import-exit_scam_ev_check",
+            "nonce_location": "about_me",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321205+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:exit_scam_ev_check:1",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:exit-scam-risk",
+            "signature_or_execution_receipt": "receipt:control:exit_scam_ev_check:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/exit-risk"
+          },
+          {
+            "content_hash": "sha256:control:exit_scam_ev_check:2",
+            "nonce": "trust-import-exit_scam_ev_check",
+            "nonce_location": "well_known",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "platform_endorsement",
+              "future_platform_availability"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321205+00:00",
+            "observed_by": "external_trust_import_drill",
+            "observer_tool_version": "v0.1",
+            "proof_id": "control:exit_scam_ev_check:2",
+            "schema": "marketplace.external_control_proof.v0.1",
+            "seller_ref": "seller:exit-scam-risk",
+            "signature_or_execution_receipt": "receipt:control:exit_scam_ev_check:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://exit-risk.example.invalid"
+          }
+        ],
+        "decay_policy": {
+          "continuity_reproof_required": true,
+          "maximum_import_share_after_native_receipts": "buyer_policy_defined",
+          "native_receipt_substitution_rate": "import_share_declines_as_clean_receipts_accrue",
+          "refresh_interval": "30d",
+          "revocation_or_platform_loss_path": "mark_import_stale_and_recompute_bond"
+        },
+        "expires_at": "2026-07-10T17:21:13.321206+00:00",
+        "import_id": "external_import:exit_scam_ev_check",
+        "issued_at": "2026-06-10T17:21:13.321205+00:00",
+        "legibility_vector_ref": "legibility:external_import:exit_scam_ev_check",
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "future_platform_availability",
+          "high_value_scope_if_history_is_low_tier",
+          "independence_when_sources_share_control",
+          "ownership_of_account_history",
+          "platform_endorsement",
+          "possession"
+        ],
+        "observation_receipts": [
+          {
+            "content_hash": "sha256:observation:exit_scam_ev_check:1",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321205+00:00",
+            "observed_fields": {
+              "account_age_years": 4.0,
+              "feedback_count": 760,
+              "feedback_percent": 99.1,
+              "public_identity_match": "seller_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 3,
+              "low": 0,
+              "mid": 40
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:exit_scam_ev_check:1",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:exit-scam-risk",
+            "signature_or_execution_receipt": "receipt:observation:exit_scam_ev_check:1",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "ebay_profile",
+            "source_url_or_handle": "https://example.invalid/ebay/exit-risk",
+            "visibility": "public_or_seller_supplied"
+          },
+          {
+            "content_hash": "sha256:observation:exit_scam_ev_check:2",
+            "not_claiming": [
+              "platform_truth",
+              "seller_continuity",
+              "future_platform_availability",
+              "inventory_or_possession"
+            ],
+            "observed_at": "2026-06-10T17:21:13.321205+00:00",
+            "observed_fields": {
+              "account_age_years": 4.0,
+              "feedback_count": null,
+              "feedback_percent": null,
+              "public_identity_match": "domain_nonce_present"
+            },
+            "observed_value_tier_distribution": {
+              "high": 3,
+              "low": 0,
+              "mid": 40
+            },
+            "observer_tool_version": "v0.1",
+            "receipt_id": "observation:exit_scam_ev_check:2",
+            "schema": "marketplace.external_observation_receipt.v0.1",
+            "seller_ref": "seller:exit-scam-risk",
+            "signature_or_execution_receipt": "receipt:observation:exit_scam_ev_check:2",
+            "source_terms_fragility": "seller_placed_nonce_clean_snapshot_fragile",
+            "source_type": "shop_domain",
+            "source_url_or_handle": "https://exit-risk.example.invalid",
+            "visibility": "public_or_seller_supplied"
+          }
+        ],
+        "observed_value_tiers": {
+          "high": 3,
+          "low": 0,
+          "mid": 40
+        },
+        "schema": "marketplace.external_trust_import.v0.1",
+        "seller_ref": "seller:exit-scam-risk",
+        "signature_or_execution_receipt": "receipt:external_import:exit_scam_ev_check",
+        "tos_fragility": "seller_placed_nonce_clean_snapshot_fragile"
+      },
+      "legibility_vector": {
+        "canonicalization": "json_sorted_keys_v0.1",
+        "dimensions": {
+          "continuity": {
+            "breaks": [
+              "current_control_not_historical_ownership"
+            ],
+            "checkpoints": [
+              "current_nonce_control",
+              "current_observation_snapshot"
+            ],
+            "expired_refs": [],
+            "freshness_window": "30d",
+            "not_claiming": [
+              "ownership_of_account_history",
+              "unbroken_operator_identity"
+            ]
+          },
+          "cost_to_fake": {
+            "estimate_band": "$600",
+            "not_claiming": [
+              "objective_market_price",
+              "fraud_impossible"
+            ],
+            "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
+            "unpriced_attack_paths": [
+              "private_account_sale",
+              "undetected_operator_change"
+            ]
+          },
+          "coverage": {
+            "measured_by": "observed_external_surfaces",
+            "missing": [],
+            "not_claiming": [
+              "complete_reputation",
+              "seller_inventory"
+            ],
+            "present": [
+              "ebay_profile",
+              "shop_domain"
+            ],
+            "waived": []
+          },
+          "independence": {
+            "channel_count": 2,
+            "correlated_but_not_independent": [],
+            "not_claiming": [
+              "channel_count_equals_independence",
+              "platform_endorsement"
+            ],
+            "party_count": 2,
+            "source_count": 2,
+            "source_refs": [
+              "ebay_profile",
+              "shop_domain"
+            ]
+          },
+          "scope_fit": {
+            "claim_supported": "external_seller_reputation_observed",
+            "gate_supported": "bond_and_friction_projection_only",
+            "not_claiming": [
+              "low_value_feedback_supports_high_value_trade",
+              "scope_fit_proves_honesty"
+            ],
+            "observed_value_tier_distribution": {
+              "high": 3,
+              "low": 0,
+              "mid": 40
+            },
+            "out_of_scope": [
+              "authenticity",
+              "possession",
+              "condition",
+              "route_success"
+            ],
+            "status": "tier_matched",
+            "trade_tier": "high"
+          },
+          "source_calibration": {
+            "caveats": [
+              "calibration_pending_for_alpha"
+            ],
+            "cohort_ref": "external_import_shape:tier_matched",
+            "not_claiming": [
+              "future_truth",
+              "universal_reputation"
+            ],
+            "observed_claim_rate_bps": null,
+            "observed_clean_settlement_rate_bps": null,
+            "outcome_window": "future_protocol_receipts",
+            "sample_size": 0
+          }
+        },
+        "emitted_by": "external_trust_import_drill",
+        "gate_context": "seller_trust_import",
+        "hash_algorithm": "sha256",
+        "human_summary": "External surfaces are observed and bounded; they do not become seller truth.",
+        "input_refs": [
+          "ebay_profile",
+          "shop_domain"
+        ],
+        "no_aggregate_score": true,
+        "schema": "marketplace.legibility_vector.v0.1",
+        "signature_or_execution_receipt": "receipt:legibility:exit_scam_ev_check",
+        "subject_ref": "seller:exit-scam-risk",
+        "tool_or_agent_version": "v0.1",
+        "trade_id_or_session_id": "session:exit_scam_ev_check",
+        "vector_id": "legibility:external_import:exit_scam_ev_check"
+      },
+      "minimum_bond_floor_usd": 180,
+      "passed": true,
+      "policy_projection": {
+        "authority_label": "judged",
+        "decision": "needs_extra_bond_or_value_cap",
+        "legibility_vector_ref": "legibility:external_import:exit_scam_ev_check",
+        "not_claiming": [
+          "protocol_enforcement",
+          "seller_truth",
+          "bond_adequacy"
+        ],
+        "schema": "marketplace.external_trust_policy_projection.v0.1"
+      },
+      "remaining_bond_usd": 210,
+      "requested_bond_relief_usd": 600,
+      "scope_relief_cap_usd": 630,
+      "trade_value_usd": 1800,
+      "unexpected_flags": []
+    }
+  ],
+  "run_id": "external_trust_import_drill_20260610T172113Z"
+}

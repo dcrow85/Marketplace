@@ -1,0 +1,57 @@
+{
+  "anchoring": {
+    "anchor_target": "catalog_hash per release; chain stores anchors, never rows",
+    "on_chain_anchor_status": "not_anchored_yet"
+  },
+  "bundle": {
+    "bundle_hash": "52730fd4d6cbf4c46790f76ceeb98ea76fc3e733f336aff5cacc6591dda7016e",
+    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+    "hash_algorithm": "sha256",
+    "preimage": {
+      "catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+      "policy_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+      "release_family": "no_rarity_base_set",
+      "schema": "marketplace.catalog_release_bundle.v0.1"
+    }
+  },
+  "catalog": {
+    "active_no_rarity_rows": 96,
+    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+    "catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+    "caveat_rows": 6,
+    "hash_algorithm": "sha256",
+    "not_claiming": [
+      "seller_possession",
+      "authenticity",
+      "condition_truth",
+      "price_truth",
+      "policy_defaults"
+    ],
+    "path": "data/no-rarity-base-set.json",
+    "row_citation_shape": [
+      "catalog_hash",
+      "row_id"
+    ],
+    "row_count": 102,
+    "row_id_field": "tcgdex_id",
+    "schema": "marketplace.no_rarity_base_set.v0.6"
+  },
+  "generated_at": "2026-06-10T17:49:21Z",
+  "policy": {
+    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+    "hash_algorithm": "sha256",
+    "not_claiming": [
+      "catalog_fact",
+      "seller_possession",
+      "authenticity",
+      "condition_truth",
+      "price_truth",
+      "spendability"
+    ],
+    "path": "data/no-rarity-catalog-policy.json",
+    "policy_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+    "schema": "marketplace.no_rarity_catalog_policy.v0.1"
+  },
+  "release_id": "no_rarity_base_set:02b979ccfd4ff215",
+  "schema": "marketplace.catalog_release_manifest.v0.1"
+}

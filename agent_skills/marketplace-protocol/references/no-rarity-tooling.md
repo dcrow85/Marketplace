@@ -15,6 +15,7 @@ python3 agent_tools/no_rarity_agent_cli.py evidence_plan PMCG1-071 --seller-trus
 python3 agent_tools/no_rarity_agent_cli.py evidence_plan PMCG1-038 --evidence-profile NR-D
 python3 agent_tools/no_rarity_agent_cli.py evaluate_gate PMCG1-021 --stance want --evidence-level NR-A --seller-trust thin
 python3 agent_tools/no_rarity_agent_cli.py agent_test_packet
+python3 agent_tools/no_rarity_agent_cli.py catalog_release
 ```
 
 ## MCP Server
@@ -33,10 +34,16 @@ Available MCP tools:
 - `no_rarity_evidence_plan`
 - `no_rarity_evaluate_gate`
 - `no_rarity_agent_test_packet`
+- `no_rarity_catalog_release`
 
 All tool results preserve the protocol boundary: catalog rows can identify
 candidates and evidence needs, but they do not prove seller possession,
 authenticity, condition, price, or physical No Rarity truth.
+
+Search and card results include `catalog_citation` / `catalog_release` fields.
+Agents should cite `(catalog_hash, row_id)` rather than "the catalog." Evidence
+defaults live in `data/no-rarity-catalog-policy.json`, separate from the fact
+catalog.
 
 `NR-D` is intentionally treated as an unchecked slab/cert claim unless the
 agent has a checked slab packet, such as `NR-D-checked` or `slab_packet`.

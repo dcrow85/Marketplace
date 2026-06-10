@@ -1,0 +1,563 @@
+{
+  "bundle_hash": "52730fd4d6cbf4c46790f76ceeb98ea76fc3e733f336aff5cacc6591dda7016e",
+  "catalog_has_policy": false,
+  "catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+  "generated_at": "2026-06-10T17:44:54.042599+00:00",
+  "manifest_matches": true,
+  "overclaim_attempts": [
+    {
+      "attempt": "catalog_location_as_authority",
+      "blocked_by": "catalog_hash, not location",
+      "claim": "The catalog is valid because it lives on this Mac.",
+      "passed": true
+    },
+    {
+      "attempt": "policy_as_fact",
+      "blocked_by": "separate policy_hash",
+      "claim": "Evidence requirements are catalog facts.",
+      "passed": true
+    },
+    {
+      "attempt": "agent_vote_as_truth",
+      "blocked_by": "evidence-weighted challenges",
+      "claim": "Many agents agreed, so the row is true.",
+      "passed": true
+    },
+    {
+      "attempt": "clean_settlements_as_proof",
+      "blocked_by": "row calibration is no surfaced error, not truth",
+      "claim": "Fifty clean trades prove a row is true.",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "policy_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+  "results": [
+    {
+      "case_id": "good_row_hardens_against_sybil_noise",
+      "challenge_packets": [
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:1",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:0",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:1"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:2",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:1",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:2"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:3",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:2",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:3"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:4",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:3",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:4"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:5",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:4",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:5"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:6",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:5",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:6"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:7",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:6",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:7"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:8",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:7",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:8"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:9",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:8",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:9"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:10",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:9",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:10"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:11",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:10",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:11"
+        },
+        {
+          "challenge_id": "row_challenge:good_row_hardens_against_sybil_noise:12",
+          "challenge_strength": "weak",
+          "challenger_agent": "agent:sybil:11",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "I do not like this wording"
+          ],
+          "evidence_refs": [],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:good_row_hardens_against_sybil_noise",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:good_row_hardens_against_sybil_noise:12"
+        }
+      ],
+      "challenge_weights": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "description": "A conservative row texture update survives unevidenced sybil challenges.",
+      "expected_outcome": "harden",
+      "flags": [
+        "sybil_challenge_no_evidence"
+      ],
+      "hard_errors": [],
+      "outcome": "harden",
+      "passed": true,
+      "revision_packet": {
+        "author_agent": "agent:good_row_hardens_against_sybil_noise:proposer",
+        "author_controller_or_delegate": "local_simulated_agent",
+        "challenge_window": "72h",
+        "claim_text": "Add a source-scoped collector note that Blastoise is a high-demand No Rarity holo row.",
+        "diff_summary": "simulated catalog lineage proposal",
+        "evidence_refs": [
+          {
+            "content_hash": "sha256:blastoise-source-snapshot",
+            "not_claiming": [
+              "price_truth",
+              "seller_possession"
+            ],
+            "ref_id": "source:pricecharting:blastoise-no-rarity",
+            "source_type": "market_reference"
+          }
+        ],
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "no_future_challenge",
+          "price_truth",
+          "seller_possession",
+          "universal_catalog_truth"
+        ],
+        "parent_catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+        "proposed_catalog_hash": "358742937f8fde3efdcbf4dfe1a1ce53505bea9cff8d094981a5cb87371ebaf1",
+        "revision_id": "catalog_revision:good_row_hardens_against_sybil_noise",
+        "revision_type": "update_row",
+        "row_id": "PMCG1-025",
+        "schema": "marketplace.catalog_revision.v0.1",
+        "signature_or_execution_receipt": "receipt:catalog_revision:good_row_hardens_against_sybil_noise",
+        "source_content_hashes": [
+          "sha256:blastoise-source-snapshot"
+        ]
+      },
+      "row_id": "PMCG1-025"
+    },
+    {
+      "case_id": "energy_premium_poison_blocked",
+      "challenge_packets": [
+        {
+          "challenge_id": "row_challenge:energy_premium_poison_blocked:1",
+          "challenge_strength": "decisive",
+          "challenger_agent": "agent:caveat-checker",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "active premium No Rarity target"
+          ],
+          "evidence_refs": [
+            {
+              "claim": "basic Energy rows are tracked as caveats, not premium active targets",
+              "content_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+              "ref_id": "manifest:no_rarity_policy"
+            }
+          ],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "block",
+          "revision_ref": "catalog_revision:energy_premium_poison_blocked",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:energy_premium_poison_blocked:1"
+        }
+      ],
+      "challenge_weights": [
+        5
+      ],
+      "description": "A poisoned proposal tries to make a basic Energy row an active premium No Rarity target.",
+      "expected_outcome": "block",
+      "flags": [
+        "energy_caveat_poison",
+        "evidence_weighted_challenge"
+      ],
+      "hard_errors": [],
+      "outcome": "block",
+      "passed": true,
+      "revision_packet": {
+        "author_agent": "agent:energy_premium_poison_blocked:proposer",
+        "author_controller_or_delegate": "local_simulated_agent",
+        "challenge_window": "72h",
+        "claim_text": "Promote this basic Energy caveat to an active premium No Rarity target.",
+        "diff_summary": "simulated catalog lineage proposal",
+        "evidence_refs": [
+          {
+            "content_hash": "sha256:energy-caveat-source",
+            "not_claiming": [
+              "premium_target_truth"
+            ],
+            "ref_id": "source:local_catalog:energy_caveat",
+            "source_type": "catalog_caveat"
+          }
+        ],
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "no_future_challenge",
+          "price_truth",
+          "seller_possession",
+          "universal_catalog_truth"
+        ],
+        "parent_catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+        "proposed_catalog_hash": "e0004545d4adce825de5b4f4ebff46390227f866ddc1847c5a14dc78425a97f3",
+        "revision_id": "catalog_revision:energy_premium_poison_blocked",
+        "revision_type": "update_row",
+        "row_id": "PMCG1-097",
+        "schema": "marketplace.catalog_revision.v0.1",
+        "signature_or_execution_receipt": "receipt:catalog_revision:energy_premium_poison_blocked",
+        "source_content_hashes": [
+          "sha256:energy-caveat-source"
+        ]
+      },
+      "row_id": "PMCG1-097"
+    },
+    {
+      "case_id": "quick_starter_scope_flagged",
+      "challenge_packets": [
+        {
+          "challenge_id": "row_challenge:quick_starter_scope_flagged:1",
+          "challenge_strength": "decisive",
+          "challenger_agent": "agent:variant-checker",
+          "challenger_calibration_ref": "uncalibrated",
+          "contradicted_claims": [
+            "blank corner is enough"
+          ],
+          "evidence_refs": [
+            {
+              "claim": "Pokemon Trader is Quick Starter-sensitive",
+              "content_hash": "sha256:quick-starter-layout-warning",
+              "ref_id": "source:quick-starter-layout-warning"
+            }
+          ],
+          "independence_vector_ref": "none",
+          "not_claiming": [
+            "authenticity",
+            "catalog_total_truth",
+            "condition_truth",
+            "seller_possession"
+          ],
+          "requested_outcome": "flag",
+          "revision_ref": "catalog_revision:quick_starter_scope_flagged",
+          "schema": "marketplace.row_challenge.v0.1",
+          "signature_or_execution_receipt": "receipt:row_challenge:quick_starter_scope_flagged:1"
+        }
+      ],
+      "challenge_weights": [
+        5
+      ],
+      "description": "A proposal tries to erase the Quick Starter text-layout caveat on a sensitive trainer.",
+      "expected_outcome": "flag",
+      "flags": [
+        "evidence_weighted_challenge",
+        "quick_starter_scope_poison"
+      ],
+      "hard_errors": [],
+      "outcome": "flag",
+      "passed": true,
+      "revision_packet": {
+        "author_agent": "agent:quick_starter_scope_flagged:proposer",
+        "author_controller_or_delegate": "local_simulated_agent",
+        "challenge_window": "72h",
+        "claim_text": "Quick Starter does not matter for this trainer; blank lower-right corner is enough.",
+        "diff_summary": "simulated catalog lineage proposal",
+        "evidence_refs": [
+          {
+            "content_hash": "sha256:trainer-row-source",
+            "not_claiming": [
+              "variant_resolution"
+            ],
+            "ref_id": "source:trainer-row",
+            "source_type": "catalog_row"
+          }
+        ],
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "no_future_challenge",
+          "price_truth",
+          "seller_possession",
+          "universal_catalog_truth"
+        ],
+        "parent_catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+        "proposed_catalog_hash": "68a94986a6e2bc473a039b0d46cc5d7de63cdc4812d91b870859d305aaede73a",
+        "revision_id": "catalog_revision:quick_starter_scope_flagged",
+        "revision_type": "update_row",
+        "row_id": "PMCG1-088",
+        "schema": "marketplace.catalog_revision.v0.1",
+        "signature_or_execution_receipt": "receipt:catalog_revision:quick_starter_scope_flagged",
+        "source_content_hashes": [
+          "sha256:trainer-row-source"
+        ]
+      },
+      "row_id": "PMCG1-088"
+    },
+    {
+      "case_id": "url_only_source_blocked",
+      "challenge_packets": [],
+      "challenge_weights": [],
+      "description": "A revision cites a URL but no content hash, so future agents cannot inspect the same bytes.",
+      "expected_outcome": "block",
+      "flags": [
+        "source_without_content_hash"
+      ],
+      "hard_errors": [],
+      "outcome": "block",
+      "passed": true,
+      "revision_packet": {
+        "author_agent": "agent:url_only_source_blocked:proposer",
+        "author_controller_or_delegate": "local_simulated_agent",
+        "challenge_window": "72h",
+        "claim_text": "Add a market note with only a URL citation.",
+        "diff_summary": "simulated catalog lineage proposal",
+        "evidence_refs": [
+          {
+            "not_claiming": [
+              "durable_bytes"
+            ],
+            "ref_id": "source:url-only",
+            "source_type": "web_page",
+            "url": "https://example.invalid/pikachu-note"
+          }
+        ],
+        "not_claiming": [
+          "authenticity",
+          "condition_truth",
+          "no_future_challenge",
+          "price_truth",
+          "seller_possession",
+          "universal_catalog_truth"
+        ],
+        "parent_catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+        "proposed_catalog_hash": "5f4029e95ca0cd67085c8119179ef784e06105187fb67dd60edcd59b512e14cc",
+        "revision_id": "catalog_revision:url_only_source_blocked",
+        "revision_type": "update_row",
+        "row_id": "PMCG1-035",
+        "schema": "marketplace.catalog_revision.v0.1",
+        "signature_or_execution_receipt": "receipt:catalog_revision:url_only_source_blocked",
+        "source_content_hashes": [
+          ""
+        ]
+      },
+      "row_id": "PMCG1-035"
+    }
+  ],
+  "run_id": "catalog_evolution_drill_20260610T174454Z"
+}

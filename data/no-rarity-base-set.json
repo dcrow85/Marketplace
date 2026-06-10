@@ -32104,13 +32104,6 @@
     }
   ],
   "collector_texture_policy": "Collector texture is agent-readable context derived from catalog metadata, reference sources, and conservative card-row interpretation. It is never transaction evidence by itself.",
-  "evidence_requirements": [
-    "full front image",
-    "lower-right rarity-symbol region crop",
-    "full back image",
-    "fresh nonce possession image",
-    "slab label or cert lookup if graded"
-  ],
   "generated_at": "2026-05-22T00:15:28Z",
   "illustrator_policy": "Illustrator is a first-class metadata field. Prefer direct Japanese row metadata when available; otherwise use Pokemon TCG API English Base Set crosswalk metadata and label it as crosswalk-only.",
   "information_audit_policy": "Each row separates information that earns primary UI space from agent-only provenance and disposable primary-surface clutter.",

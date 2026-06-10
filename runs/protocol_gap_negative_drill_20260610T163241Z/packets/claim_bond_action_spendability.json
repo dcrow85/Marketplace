@@ -1,0 +1,66 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":null,\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:arbiter:anvil-2\",\"actor_role\":\"arbiter\",\"authority_hash\":\"0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"bond_action:2:condition-ruling\",\"gate_type\":\"bond_action\",\"leg\":\"return\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-10T16:32:43.301518+00:00\",\"issued_by\":\"did:market:arbiter:anvil-2\",\"issued_role\":\"arbiter\",\"manifest_hash\":\"0xa46baefc284875930e0e1b98a3c5cedf3a11fbbd0ac179b28aedee1e4afdf963\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7\",\"requires\":[\"arbiter_assignment\",\"claim_opened\",\"verifier_attestation\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"claim_bond_action_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"condition_support\",\"not_claiming\":[\"authenticity\",\"carrier_damage\"],\"spend_limit\":\"moves_funds\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":2,\"wall_bundle_hash\":null,\"window\":{\"after_state\":{\"state_hash\":\"0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df\",\"state_name\":\"ClaimOrDisputePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": null,
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:arbiter:anvil-2",
+      "actor_role": "arbiter",
+      "authority_hash": "0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "bond_action:2:condition-ruling",
+      "gate_type": "bond_action",
+      "leg": "return"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-10T16:32:43.301518+00:00",
+    "issued_by": "did:market:arbiter:anvil-2",
+    "issued_role": "arbiter",
+    "manifest_hash": "0xa46baefc284875930e0e1b98a3c5cedf3a11fbbd0ac179b28aedee1e4afdf963",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7",
+    "requires": [
+      "arbiter_assignment",
+      "claim_opened",
+      "verifier_attestation"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "claim_bond_action_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "condition_support",
+        "not_claiming": [
+          "authenticity",
+          "carrier_damage"
+        ],
+        "spend_limit": "moves_funds",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 2,
+    "wall_bundle_hash": null,
+    "window": {
+      "after_state": {
+        "state_hash": "0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df",
+        "state_name": "ClaimOrDisputePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0x2142f82368162df7633c95c930036a39f9ea440a1ad784486642881c8aae8c88",
+  "signature": "0xbadd0ad2ad2e3f692497473c40ad0df2fc6356d8736fc7c0fe861c4d7a3f72e275c0bdce7851a6af07ea8df1f6390ad833d5bbca2346bb0d01e43468e9017f761c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+}

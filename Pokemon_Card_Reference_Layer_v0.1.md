@@ -63,6 +63,12 @@ domain: tcg
 game: pokemon
 source:
 source_card_id:
+catalog_hash:
+row_id:
+row_hash:
+policy_hash:
+canonicalization:
+hash_algorithm:
 source_url:
 source_language:
 printed_name:
@@ -82,6 +88,25 @@ not_claiming:
   - seller_inventory_existence
   - seller_card_language
   - price_truth
+```
+
+For the local No Rarity catalog, `catalog_hash + row_id` is the durable
+reference. Storage location is secondary. The release manifest is:
+
+```text
+data/no-rarity-catalog-manifest.json
+```
+
+Evidence defaults are policy bytes rather than catalog facts:
+
+```text
+data/no-rarity-catalog-policy.json
+```
+
+Key rule:
+
+```text
+Catalog hash + row id != physical card proof.
 ```
 
 Manual database-gap packets additionally require:

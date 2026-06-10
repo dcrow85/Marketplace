@@ -23,6 +23,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT / "runs"
 CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
+MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
 OLLAMA_HOST = os.environ.get("MARKETPLACE_OLLAMA_HOST", "http://127.0.0.1:11434")
 OLLAMA_MODEL = os.environ.get("MARKETPLACE_BUYER_AGENT_MODEL", "gemma4:31b")
 DEFAULT_TIMEOUT_SECONDS = int(os.environ.get("MARKETPLACE_BUYER_AGENT_TIMEOUT", "90"))
@@ -69,6 +70,40 @@ def normalize(value: str) -> str:
 
 def load_catalog() -> dict[str, Any]:
     return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+
+
+def load_catalog_manifest() -> dict[str, Any]:
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+
+
+def row_citation(card: dict[str, Any] | None) -> dict[str, Any]:
+    manifest = load_catalog_manifest()
+    catalog = manifest.get("catalog", {})
+    policy = manifest.get("policy", {})
+    if not card:
+        row_id = ""
+        row_hash = ""
+    else:
+        row_id = str(card.get("tcgdex_id", ""))
+        row_hash = hashlib.sha256(
+            json.dumps(card, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+    return {
+        "release_id": manifest.get("release_id", ""),
+        "catalog_hash": catalog.get("catalog_hash", ""),
+        "row_id": row_id,
+        "row_hash": row_hash,
+        "policy_hash": policy.get("policy_hash", ""),
+        "canonicalization": catalog.get("canonicalization", ""),
+        "hash_algorithm": catalog.get("hash_algorithm", ""),
+        "not_claiming": [
+            "seller_possession",
+            "authenticity",
+            "condition_truth",
+            "price_truth",
+            "spendability",
+        ],
+    }
 
 
 def find_card(catalog: dict[str, Any], parsed: dict[str, Any], human_text: str) -> tuple[dict[str, Any] | None, str]:
@@ -271,13 +306,21 @@ def build_buyer_want(human_text: str, parsed: dict[str, Any], card: dict[str, An
     max_total_price = clean_price(parsed.get("max_total_price"))
     currency = str(parsed.get("currency") or "USD").upper()
     profile = (card or {}).get("agent_decision_profile", {})
+    citation = row_citation(card)
     catalog_ref = {
         "catalog": "japanese_no_rarity_base_set",
+        "release_id": citation["release_id"],
+        "catalog_hash": citation["catalog_hash"],
         "row_id": card.get("tcgdex_id", "") if card else str(parsed.get("row_id") or ""),
+        "row_hash": citation["row_hash"],
+        "policy_hash": citation["policy_hash"],
         "local_id": card.get("local_id", "") if card else "",
         "card": card.get("name_en", parsed.get("card_name") or "") if card else str(parsed.get("card_name") or ""),
         "variant_claim": "no_rarity" if parsed.get("variant_hint") == "no_rarity" else "candidate_no_rarity",
         "match_kind": match_kind,
+        "canonicalization": citation["canonicalization"],
+        "hash_algorithm": citation["hash_algorithm"],
+        "not_claiming": citation["not_claiming"],
     }
     hard_walls = []
     if not card:

@@ -1,0 +1,24 @@
+{
+  "applies_to_catalog_family": "marketplace.no_rarity_base_set",
+  "domain": "tcg.pokemon.no_rarity",
+  "evidence_requirements": [
+    "full front image",
+    "lower-right rarity-symbol region crop",
+    "full back image",
+    "fresh nonce possession image",
+    "slab label or cert lookup if graded"
+  ],
+  "fact_catalog_schema": "marketplace.no_rarity_base_set.v0.6",
+  "generated_at": "2026-05-22T00:15:28Z",
+  "not_claiming": [
+    "catalog_fact",
+    "seller_possession",
+    "authenticity",
+    "condition_truth",
+    "price_truth",
+    "spendability"
+  ],
+  "policy_boundary": "This policy recommends evidence defaults for agent planning. It is not part of the fact catalog hash and does not prove possession, authenticity, condition, or price.",
+  "policy_id": "no_rarity_evidence_requirements.v0.1",
+  "schema": "marketplace.no_rarity_catalog_policy.v0.1"
+}

@@ -100,6 +100,16 @@ TOOLS: list[dict[str, Any]] = [
         },
         "_dispatch": "agent_test_packet",
     },
+    {
+        "name": "no_rarity_catalog_release",
+        "description": "Return content-addressed release metadata for the No Rarity catalog and separated evidence policy.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+        },
+        "_dispatch": "catalog_release",
+    },
 ]
 
 
@@ -176,4 +186,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

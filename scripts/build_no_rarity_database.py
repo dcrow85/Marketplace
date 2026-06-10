@@ -2114,6 +2114,9 @@ def main() -> None:
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     payload = build()
     OUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    from pin_no_rarity_catalog import main as pin_no_rarity_catalog
+
+    pin_no_rarity_catalog()
     print(OUT_PATH)
     print(json.dumps({"cards": len(payload["cards"]), "targets": payload["set"]["no_rarity_target_cards"]}))
 

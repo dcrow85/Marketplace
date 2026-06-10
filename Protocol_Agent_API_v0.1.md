@@ -28,6 +28,12 @@ Alpha actions should attach a `CardReferenceCandidate` before offer acceptance. 
 card_reference_packet:
   source:
   source_card_id:
+  catalog_hash:
+  row_id:
+  row_hash:
+  policy_hash:
+  canonicalization:
+  hash_algorithm:
   source_url:
   source_language:
   printed_name:
@@ -68,10 +74,16 @@ GET /api/catalog/cards/<source_card_id>
 
 Catalog endpoints return an `ExternalContactReceipt` so agents can cite the lookup as contact evidence without treating it as object proof. `agent-search` also returns the catalog agent's parsed field read, API query, and caveats.
 
+For the No Rarity alpha catalog, local endpoints also return a `catalog_citation`
+with `(catalog_hash, row_id)` plus `row_hash` and `policy_hash`. Historical
+packets cite bytes, not a storage location.
+
 Hard API rule:
 
 ```text
 catalog_candidate cannot become possession, condition, authenticity, price truth, route success, or seller trust.
+catalog_hash plus row_id anchors a catalog row; it does not prove a physical seller card.
+policy_hash anchors evidence defaults; it is policy, not fact.
 ```
 
 ## Buyer Want Drafting
@@ -156,6 +168,123 @@ Hard API rule:
 
 ```text
 seller work requests that affect seller time, inventory hold, item preparation, privacy, or opportunity cost must disclose payment, credit, refund, and expiry terms before the seller is obligated to act.
+```
+
+## Settlement Rail Terms
+
+Agents should expose the rail as a settlement fact, not a payment vibe.
+
+```text
+settlement_rail_terms:
+  schema: marketplace.settlement_rail_terms.v0.1
+  rail_type: native_eth | erc20_stablecoin | offchain_fiat_reference
+  asset:
+  chain_id:
+  escrow_contract:
+  escrow_funded:
+  bond_asset:
+  buyer_display_currency:
+  seller_payout_currency:
+  finality_model:
+  chargeback_surface:
+  issuer_or_admin_controls:
+  freeze_or_blacklist_surface:
+  custody_or_money_transmission_notes:
+  conversion_provider:
+  conversion_failure_path:
+  not_claiming:
+```
+
+Hard API rules:
+
+```text
+fiat payment != settlement.
+stablecoin escrow must preserve issuer, blacklist, custody, off-ramp, and regulatory caveats.
+escrowed digital money proves funds and rule-bound movement; it does not prove physical-card truth.
+```
+
+## Seller Bootstrap Terms
+
+A seller-facing alpha action should make bilateral accountability visible.
+
+```text
+seller_bootstrap_terms:
+  buyer_prefunded:
+  seller_attention_fee_terms_ref:
+  seller_bond_ref:
+  bond_history_exchange_ref:
+  item_fingerprint_ref:
+  claim_matrix_ref:
+  return_leg_requirements:
+  settlement_rail_terms_ref:
+  seller_payout_conditions:
+  buyer_claim_conditions:
+  not_claiming:
+```
+
+Hard API rule:
+
+```text
+Bond reductions require clean receipts, imported proof, or accountable underwriting. Do not reduce bond because an agent feels good about the seller.
+```
+
+## External Trust Import
+
+Seller onboarding may include outside reputation, but the API must keep it
+observable rather than bindable.
+
+```text
+external_trust_import:
+  schema: marketplace.external_trust_import.v0.1
+  import_id:
+  seller_ref:
+  issued_at:
+  expires_at:
+  control_proofs:
+    - source_type:
+      source_url_or_handle:
+      nonce:
+      nonce_location:
+      content_hash:
+      observed_at:
+      observed_by:
+      source_terms_fragility:
+      not_claiming:
+  observation_receipts:
+    - source_type:
+      observed_fields:
+      observed_value_tier_distribution:
+      content_hash:
+      observed_at:
+      source_terms_fragility:
+      not_claiming:
+  observed_value_tiers:
+  legibility_vector_ref:
+  acquisition_cost_estimate:
+  bond_relief_cap:
+  decay_policy:
+  tos_fragility:
+  not_claiming:
+  signature_or_execution_receipt:
+```
+
+Agent-facing actions:
+
+```text
+createExternalTrustImport()
+refreshExternalTrustImport()
+projectImportBondRelief()
+explainImportedTrustLimits()
+```
+
+Hard API rules:
+
+```text
+external_trust_import cannot prove possession, authenticity, condition, or seller honesty.
+current account control cannot become ownership of historical account reputation.
+seller-controlled surfaces must be marked correlated_but_not_independent.
+imported_trust_bond_relief cannot exceed acquisition-cost estimate or value-tier scope.
+source fragility and platform terms risk must remain visible.
 ```
 
 ## Cost Dimensional Integrity
@@ -268,6 +397,73 @@ trajectory_capacity cannot move funds, route, bond, claim, or reputation by itse
 assembly_placement can become spendable only at the named gate.
 ```
 
+## Legibility Vectors
+
+Agents may measure evidence shape, but they must not collapse it into a trust meter.
+
+```text
+legibility_vector:
+  schema: marketplace.legibility_vector.v0.1
+  vector_id:
+  subject_ref:
+  gate_context:
+  dimensions:
+    coverage:
+      present:
+      missing:
+      waived:
+      not_claiming:
+    independence:
+      source_count:
+      party_count:
+      channel_count:
+      not_claiming:
+    continuity:
+      checkpoints:
+      breaks:
+      not_claiming:
+    scope_fit:
+      claim_supported:
+      gate_supported:
+      out_of_scope:
+      not_claiming:
+    cost_to_fake:
+      estimate_band:
+      rationale:
+      unpriced_attack_paths:
+      not_claiming:
+    source_calibration:
+      cohort_ref:
+      sample_size:
+      observed_claim_rate_bps:
+      caveats:
+      not_claiming:
+  no_aggregate_score: true
+```
+
+If an agent turns a legibility vector into a recommendation, it must emit a separate judged projection:
+
+```text
+agent_policy_projection:
+  schema: marketplace.agent_policy_projection.v0.1
+  policy_id:
+  legibility_vector_ref:
+  authority_label: judged
+  projected_claim_rate_bps:
+  risk_band:
+  decision:
+  not_claiming:
+```
+
+Hard API rules:
+
+```text
+legibility_vector cannot contain score, trust_score, rating, grade, verdict, probability_of_truth, or authenticity_probability.
+legibility_vector uses an allowlisted schema; synonym fields like confidence, safety_index, or overall must be rejected.
+legibility_vector cannot move funds, route, bond, claim, reputation, or settlement.
+source_calibration is a track record from receipts and claims, not proof this card is true.
+```
+
 ## Response Envelope
 
 All actions return:
@@ -279,9 +475,15 @@ decision:
 cost_dimensional_integrity:
 human_availability:
 currency_integrity:
+settlement_rail_terms:
+seller_bootstrap_terms:
 memory:
   trajectory_capacity:
   assembly_placement:
+legibility:
+  vector:
+  policy_projection:
+  calibration_caveats:
 spendability:
   gate:
   required:

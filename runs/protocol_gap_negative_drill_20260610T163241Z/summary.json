@@ -1,0 +1,571 @@
+{
+  "contract": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "generated_at": "2026-06-10T16:32:43.844126+00:00",
+  "overclaim_hits": [],
+  "pass_definition": "The protocol-compliant EVM flows settled while the hidden physical oracle preserved a fake/swap truth the protocol cannot enforce, and no packet overclaimed authenticity.",
+  "passed": true,
+  "predicate_verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "rpc_url": "http://127.0.0.1:18547",
+  "run_id": "protocol_gap_negative_drill_20260610T163241Z",
+  "scenarios": [
+    {
+      "final_state": "Settled",
+      "name": "happy_path_insured_card",
+      "observations": [
+        "Item EvidenceManifest v0.3 validated fixture bytes, subject hash, and asset root before anchoring.",
+        "verifier cannot attach loose review evidence reverted as expected.",
+        "happy_route_spendability spendability accepted at route_commitment.",
+        "unapproved verifier commits fingerprint reverted as expected.",
+        "replay item evidence reverted as expected.",
+        "commit inventory lock with wrong fingerprint binding reverted as expected.",
+        "Buyer-funded intent became locked escrow.",
+        "Seller attention stayed bounded: one trust proof, one item packet, one route packet.",
+        "Final receipt closed the trade and released escrow plus bond."
+      ],
+      "packets": [
+        {
+          "packet_id": "happy_intent",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_intent.json",
+          "payload_hash": "0xd08e450e965d052d9201f63e8df5e8e149e61b65950b3739f0cee1d23d293caf",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x23ede2d787ec52cdd419d0484cfc8a01e91f0a1ee3577182f720d179c23d4546004fd4fb0b732cb867ca7a78397220cbba6b44527964c40c76077ae9ac7a04ed1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "happy_escrow_terms",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_escrow_terms.json",
+          "payload_hash": "0x8af2c1dc98101abcc55159fb64ab52e1765e12d006ff445ec93fd8c9a0e64f7e",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x36741a907b1433606a5235a122d37c05003e14b056ec33d0cea7d3363691c26903d97a61c464f5d14041f664a49c8ce6b8d971dc1e996385af0fa75d8fbd98d01c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "happy_trust_offer",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_trust_offer.json",
+          "payload_hash": "0xb07613fb8aab82663a1dc4aeb2f4ea48cca97e4fadbbcc309dc07a0c3f2f6a54",
+          "schema": "marketplace.trust_offer.v0.2",
+          "signature": "0x5aa2994e69eba0512c1f586e61bca79aa84cf313dc88175652d65fc0bfa4357035c17191285c9fd7fc112768443de3dd703cb5f0bb3290a796f1f759f3cd5a721c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_item_fingerprint",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_item_fingerprint.json",
+          "payload_hash": "0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0xe4d2a09536d6f94e539b0656848732f04efdc3ef796ea55e63b621988ee9fc332f803d0dfa7ad024e00fb2f6f296ec2dfb2597f01da262c38b75ae80dae260b01b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_inventory_lock",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_inventory_lock.json",
+          "payload_hash": "0xab872b3a04b07160c206d83f4f618a9e9ed5f60c23f07e58e1b246cbc7762b5b",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xbb4c6ca25da2bd4e3273fa82f59282e449e3eef577e9cafe8f696e950b4c9e6144a4db2a4b93300abe6e891a9f2d99eb7fc80d333a709b959d04eb300e1363431c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_seller_private_predicate",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_seller_private_predicate.json",
+          "payload_hash": "0xb39ae7bb0f70910dcc7cbd998f364ec329345f47f142dd25e05011238f26f7a9",
+          "schema": "marketplace.private_predicate_proof.v0.2",
+          "signature": "0xe008e937c3bb56a4850c3d427407e541ce42eeb8b3c6ff7beef0684bb3298e3e4b5b118c41f11f7f3b163a8443b32ee2ea5ebacf451b0e7be38dd72ee970f85b1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_buyer_funding_predicate",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_buyer_funding_predicate.json",
+          "payload_hash": "0x027318902dfaeb3f7fec8c77c1f6957821f9527c41f4726b3a052c02080079c0",
+          "schema": "marketplace.private_predicate_proof.v0.2",
+          "signature": "0xd8ead1cd10abbe54c5e87b468f86bde45eb282e1512e3744d72aded3b8c43b9b72ee24f0f5a1fa598f87f7206abf746461e3861d79e8afc43eab789d0f945a971b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "happy_item_evidence",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_item_evidence.json",
+          "payload_hash": "0x30909d2d47142b7cd046c89d47df4a1256d92cf77118b3bc4f21ff8d088d9b06",
+          "schema": "marketplace.evidence_manifest.v0.3",
+          "signature": "0x496524d0d686f451581decff5e329e1fa5644434d7650cbd79663e6d2cabfa884c40b5bf519642e4dfe48ac1c425bc23ecb56cb8a1a079cd94673c851aaf03b01b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_verifier_scope_approval",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_verifier_scope_approval.json",
+          "payload_hash": "0xf16c10d26d9be0f8881d6bdc9ce86a92207226551ff9c250ae0fed48b265424f",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x6fc64a991cada73e0d7b294128ba3961ac64fe5710ebb2144097cbcede19e2d8517abb637ae808dc7b1440dcb1e0d38dac3a3a23e368b5f2eb5a1ceebe3073781c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "happy_verifier_review",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_verifier_review.json",
+          "payload_hash": "0x7d421ae307aba141faefe3931634d72ae125f40a999c51d49734de0f60b68ba4",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0x5862f364e826a353468478c2dca1a6468821ae16e5c11b973132f500a872910130319e8da4dcbe9f7ab71b9c58838b9f81fd8808211f1ba08c2e9572dc43ff951b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "happy_unapproved_verifier_fingerprint",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_unapproved_verifier_fingerprint.json",
+          "payload_hash": "0x9be4b41518a3f02c38ab04a23a5404a5e4c840be118bada4f82bf73acdf4a752",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x1c02c65dd80a2b2a0a50fecb40d547493a34be6b19dbfad34acc4b4c829f4fe766e6c931d44adcc89f204950022beb02c544c80e812c3d4a14f324ac0d14ec3b1b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "happy_route_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_route_spendability.json",
+          "payload_hash": "0x8d4b331a739271417b4a7c66841130c79fabe45b0fd836ee097d7fd83c5dc3f3",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x32d013a6ae599b2f6af7efe044f29e60f4c77253fcdb757eb9d6954dced09c2b2c33359337e2acbc785827cf177b3506279f8f7eb7ce2648483e4c3e62a7c69f1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "happy_route",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_route.json",
+          "payload_hash": "0x0d06a99d4d88711f7046bc0ae133e6989de37e92f924b17daeec77970d3a15e7",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xaef72fbd97bf2499c3418afac45b5f5e1b552c6809bd56e64a17518d580c35971aa415017460f4fd9c29529b92f7ed6db82ec2b0c847a1fca4b25e89f60aa5be1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_delivery_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_delivery_spendability.json",
+          "payload_hash": "0x58259d6cd1af9bc393a604df7cc282875daff0a990c625b4224a7b8b28aac686",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x87c92ef17469fcddafc11b21c695f2415594a20f408a2ccb7347384023aea28575f36c1d538ffc1a8e64ba592ec94481a9575b7043677f582b158ee1c5bff0bf1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_delivery",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_delivery.json",
+          "payload_hash": "0x61d65d4a617114f5a2bf5003000124c34d5ec625c58d817f9c4cd5b766b9e9d1",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0xeaff21e502ed98e5fd9b6f2cda8189b634a29db663ab6db1534a81d44ab16a980a32d8498b9f79ed74815a5366f2b34a63c788736320bf97fd0ffa73aaf6b00a1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "happy_final_receipt",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/happy_final_receipt.json",
+          "payload_hash": "0x5154efb32d52def53079b00ba5d5f156656ccd33e52838fbfdc4238cb443ddd8",
+          "schema": "marketplace.trade_receipt.v0.2",
+          "signature": "0x45fec6f37cca1e6d7009a09c32e74ad8dbf388eb227837a0572c8297390ce90d13a8618b915201b3b9ae946c88a4752d2c068bdfe78c693ce23392f5213223241b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "physical_oracle": {
+        "gap_path": [
+          "G1.BindingGap",
+          "G2.SensorGap",
+          "G3.ContinuityGap",
+          "G6.EgressRemedyGap"
+        ],
+        "oracle_status": "counterfeit_not_detected_during_inspection",
+        "physical_truth": "The shipped card is a convincing counterfeit. Seller-supplied scans and nonce evidence were internally consistent, but they did not prove physical authenticity.",
+        "residue_to_use_later": [
+          "seller-signed item fingerprint",
+          "seller evidence manifest",
+          "inventory lock",
+          "route packet",
+          "delivery packet",
+          "buyer final receipt",
+          "all on-chain state transitions"
+        ],
+        "where_loss_lands": "Buyer accepted during inspection, so escrow and seller bond released. Later recovery is outside the ledger except through the signed residue."
+      },
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "create insured trade",
+          "tx_hash": "0xd4e7b856e5dd10fda540416b3f722e1ecf5141bdfdec72232a0eafe31fdd6d3d"
+        },
+        {
+          "label": "seller posts bond",
+          "tx_hash": "0x7e41e6a4829201dcdc76e914d1e44c9ec678b395fcd9f0135a125264ad7d0cba"
+        },
+        {
+          "label": "attach trust proof",
+          "tx_hash": "0x16dcba69f1eeaac390f08015e60b1f48da20c82dd78b2336e1d9200dadedfea1"
+        },
+        {
+          "label": "accept seller private predicate hash",
+          "tx_hash": "0x40a63d39736967c32428d70741b9491d7ff81da82aa84b5537a6e35a3e86e998"
+        },
+        {
+          "label": "attach seller private predicate",
+          "tx_hash": "0x2e6d737712f8dd43a2db3bb7fa7f729fc2ba264a5fbd333b6cf2d9026aec301e"
+        },
+        {
+          "label": "accept buyer funding predicate hash",
+          "tx_hash": "0xe7f77217bacfbfacc2f517bf26cc64db1db2e0db8d3733a4e5e98db06ddf7631"
+        },
+        {
+          "label": "attach buyer funding predicate",
+          "tx_hash": "0x918816532b937dcda0c4399e2f4da253dd403992137288f9990f798a51377222"
+        },
+        {
+          "label": "attach item evidence",
+          "tx_hash": "0x2412d18b121dd1830dea5d639f2395a07bf893a6150cdef7079f5e079a68a7c7"
+        },
+        {
+          "label": "approve verifier review scope",
+          "tx_hash": "0x2ab60be08a7db6a4af64db2b34559d79088390dd078e65d08915dfa17258d02a"
+        },
+        {
+          "label": "commit scoped verifier review",
+          "tx_hash": "0xfb55c030961196c6121d188f9538b6ec678c0885d99f74ca45f127a38ef77308"
+        },
+        {
+          "label": "commit item fingerprint",
+          "tx_hash": "0x828b63243490d98d5eb57336b3620ee9357268c053a01c0aac86e8246eea34aa"
+        },
+        {
+          "label": "commit inventory lock",
+          "tx_hash": "0x982305a9ace670d773bbcb42701742242485f19d576cbef07f33369d23d6e56d"
+        },
+        {
+          "label": "commit insured route",
+          "tx_hash": "0xfc5b87127a4f0bcab20e85fa2844c478f0404958caba343bda33b73062b90bd9"
+        },
+        {
+          "label": "mark route in progress",
+          "tx_hash": "0x144a81af5272bdec2e601e597b49b3a53f2e7255d725d6cebbebd0ce9cdcd626"
+        },
+        {
+          "label": "mark delivered",
+          "tx_hash": "0x6739e5ed85f3271efe68a5fa20948bc6139fa0066033950a5d53b19736b0b54e"
+        },
+        {
+          "label": "buyer accepts",
+          "tx_hash": "0x3cfb04a8bd782f7d828dec6f1d2c62c554ef43af069bc6ff81ec2f9b30e118ca"
+        }
+      ]
+    },
+    {
+      "final_state": "Settled",
+      "name": "new_seller_material_claim",
+      "observations": [
+        "Seller item and buyer claim EvidenceManifest v0.3 packets validated fixture bytes, subject hashes, asset roots, and claim retention before anchoring.",
+        "commit route while fingerprint challenge is active reverted as expected.",
+        "claim_challenge_clearance_spendability spendability accepted at challenge_clearance.",
+        "claim_route_spendability spendability accepted at route_commitment.",
+        "claim_support_spendability spendability accepted at claim_support.",
+        "claim_bond_action_spendability spendability accepted at bond_action.",
+        "A brand-new seller can still clear the trade by posting a larger bond.",
+        "Weak trust proof did not need to become a scalar score; it became an explicit gap.",
+        "The claim packet and ruling hash give the agent a clean evidence trail after settlement."
+      ],
+      "packets": [
+        {
+          "packet_id": "claim_intent",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_intent.json",
+          "payload_hash": "0xa2c6c605f6cb21b462f51aad0998b7055b91fa748060cb5f40a8cf451655afff",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x9778b41be4da4919ae79494b23d82e901863d0d709d209000292e91f4fef865200d099d7c686ea1f0420117c2c48e8127b64c9b21f5e0110dcca0dabf690bf0b1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_escrow_terms",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_escrow_terms.json",
+          "payload_hash": "0x843b56e06b3432dc115305530d5e3c45cca81b6304034e9d1f949527fcd8d2b3",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x5d5131129c8f5bdbcb39636e1dde896deeec41d160a239c25f4b4e01d5d0d32537e52c1d19a3dc39bc9d61d74ed405da7115474657219245c12b968cce5db2d91b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_new_seller_proof",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_new_seller_proof.json",
+          "payload_hash": "0xa08a4c76121162c499aa94991c71558e4523d3b509f92cb6047e05b4ce9a4432",
+          "schema": "marketplace.trust_offer.v0.2",
+          "signature": "0x2049e4d7040057b0490c9a4bd42e26376e40ff7cb90585d28aac42d5d09c7ca450aca2dea8c6807dceae0c7dca4d9377b9b5cf4dc1642c14060c9aac3aebfd311c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_item_fingerprint",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_item_fingerprint.json",
+          "payload_hash": "0xf1e170e691a741dfd0e09a495eb62ca4e4d2c417af7309b0fa15eb4d48e7cb30",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x6b07dd12d08d4766a41387330c7e69685465f4730fe13a49bbc7a5270ef012312610039d37c481412db5dc1b549ae8ffcd7c1d1119fcb3e46cc378156827be3b1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_inventory_lock",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_inventory_lock.json",
+          "payload_hash": "0xc5d8a46b258027cfee7d7e4a2c8a729ebca8c994096874a5bc48e64eb6cecc86",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x44a639f075c86ee50bf85c04bae522c3dcd2752ce34acac21c0e49c0997ac55f20b18415d5dfa49353720d356760830948a14d8907c15c39091c7fdafed9f8de1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_fingerprint_challenge",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_fingerprint_challenge.json",
+          "payload_hash": "0xd108882740b0596e4430809278b674f1c6267ba374f7668fe65cb70da7c6f50c",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0x149f3dd8cc8d0312bdba39858d921ab61eb57de27d225c6e5927a725275e8b005c9473437521873a8e3070fe07155cec9603fe19fa523dd97fa7e1117b9de2811b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_fingerprint_challenge_clear",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_fingerprint_challenge_clear.json",
+          "payload_hash": "0x4ec6f20d6d91d80fe72415b61f6bb4fb6143b2c8a28535a07aba17d820b2e3cf",
+          "schema": "marketplace.fingerprint_challenge_resolution.v0.1",
+          "signature": "0xbd22df14cfc1a72d5dd91bd526609273a141713885c06a70b48e1e4c89fe2e400cb0b7103a7765c33531b15412b47b7805d57e868f7f9300691bfeb816dece751c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_seller_private_predicate",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_seller_private_predicate.json",
+          "payload_hash": "0xf2592e4c7733714fdb7e9deb5dc9d3b70c783ddfe88f9701c18f8de84147435f",
+          "schema": "marketplace.private_predicate_proof.v0.2",
+          "signature": "0x55149a7ac263b220b7e77479e55303188403226fa590278fa4b070a257754166632cdaf3597823a7dee97d2fd10d84db342a91000c51e4f30abbbfcf08faaea51c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_circuit_profile",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_circuit_profile.json",
+          "payload_hash": "0xee5543b528ff31f9ca671b364af58634f7abafb2e7aaf82e573228573ac4dd5d",
+          "schema": "marketplace.circuit_profile.v0.2",
+          "signature": "0x291c3d14797c88e080c153eb0e83c2f8fa9a28432e55631b51928fc070ec00ce2ad914d88aa915f4f407e9c543360e7ce2303b497347282ac880f6691f92c47d1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_sparse_item_evidence",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_sparse_item_evidence.json",
+          "payload_hash": "0xbf01f71d107679985862a3f645ec9f5970a474c2cd72fcb4bfe2ced3d6e221fb",
+          "schema": "marketplace.evidence_manifest.v0.3",
+          "signature": "0x7ac65db9dd4bd44b5c05ae6da9e7ee9ec163cce8cc525b9d0f7324f5b938e9146145a2e1b31b296571f539d9e9ed5846f45b304d5379c0a5a5d9ff5fede459901b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_verifier_scope_approval",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_verifier_scope_approval.json",
+          "payload_hash": "0x1f7af25a6c96908eef75b731f6c4abf8c58b7664235e7a7f02fbf12fee6a8176",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0xa7a09ff97dbcdf3163207bf2616e73fbe387e03ab461df12d653e24f7eaa364157912bc4edd83d4445b6614386ca099efb698edebe5fd9c0c55e01a0074efd3a1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_route_uninsured",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_route_uninsured.json",
+          "payload_hash": "0x930cbca8b807a09d66c65437b4e84dad39566173b2ab445f69d2ef757509fdfc",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xa1836c2208bd5024e4e36226a966e32d41c3866a1f479837734d2def0a36c9947c71210574e56e96e0f582bcdf1b61e4c15f89ba341f0e3a4676f491eba330151b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_delivery_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_delivery_spendability.json",
+          "payload_hash": "0x33975092838d1bf83ee60b0132d122368e45541a346cadb8ef48be58f707b65a",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x6791bdd3d49f1e055db4ba08ddf5c1690710341c2ecfbd9e34b69fb666ba7d963938c5f556ed72a725035dc150cc88e578abd3d11e9cd68149fa0bd2a61bb91a1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_delivery",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_delivery.json",
+          "payload_hash": "0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0x1431587c92a2080911bd92e84318cc739b4a6c402c5688b0d0505fc65c9edbfe707f6fb9bfee0543e3f48afb773f9e9a1ab0c7a681c71c997b47a74acc6c59b81c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "claim_received_item_evidence",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_received_item_evidence.json",
+          "payload_hash": "0xa46baefc284875930e0e1b98a3c5cedf3a11fbbd0ac179b28aedee1e4afdf963",
+          "schema": "marketplace.evidence_manifest.v0.3",
+          "signature": "0xe13e6e349a1249814688df931c23fcca46d82899a3c029cfcb7a813d4f3569e859612a6eb3f669b86f234ce8c40649f1de95e73250e40766add540c5a543d8c41b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_packet",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_packet.json",
+          "payload_hash": "0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824",
+          "schema": "marketplace.dispute_case.v0.2",
+          "signature": "0x10882079e8cabe572836d8885c15603fc5155f30166a0db3fe3c725b83c2654036fe3a8d5ed5ebc0f3d9f36749bdf51e1c836435e395a498a6d3a8bc3cec07d71b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_verifier_note",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_verifier_note.json",
+          "payload_hash": "0x9b09dd6209d8419fddb315ee0e3b3d75498e10e3ef8707c09c67e38bb401be53",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0x5d4bcddb3c0d7e0b930fabb1a5fd084155442bf403efe8dc85e65e8435799dde7dcbf049655ea0045d1faf786e6f631b2c03cc708b0cbad22f63558041f8cbb21b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "claim_challenge_clearance_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_challenge_clearance_spendability.json",
+          "payload_hash": "0xd3b21659865dcea89cc2265e7c04787340069dd1b4feaf4cdab4a48c7d6d7054",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x04db35ec1b55c5aadd2b570095c86f7e8225aa330d4e61414bd0c51324a3769f64c56c48a47303773043a0b9c439b8cd11273139cfeda6e2e1788309958c76f01c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_route_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_route_spendability.json",
+          "payload_hash": "0xb9bf58d62138a019d5767ff083b65f09f50099e2cfa18e5cd999fbf6a10a5348",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x4aafa88797fe417bd91cdf501cd6353923608a26e8736b65e6c9c602bb06d15c3c275981c2842d0e31e65881c2a841737de7afffdf3b2e426bf89e5ee220a0681c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_support_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_support_spendability.json",
+          "payload_hash": "0xa4d7c60ce230ba0d5aaea77189cea44edf95e1a9c32b2629753b8ec4feabb4c6",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x88461992139dc46a9525ee6c4fe1e77219c9458dea6874a5605651b752f9d53d4b3086873233855519aeb04704f38e4dd75ddc91e262b747b205ee8fd0af33421b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "claim_bond_action_spendability",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_bond_action_spendability.json",
+          "payload_hash": "0x2142f82368162df7633c95c930036a39f9ea440a1ad784486642881c8aae8c88",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0xbadd0ad2ad2e3f692497473c40ad0df2fc6356d8736fc7c0fe861c4d7a3f72e275c0bdce7851a6af07ea8df1f6390ad833d5bbca2346bb0d01e43468e9017f761c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        },
+        {
+          "packet_id": "claim_ruling",
+          "path": "runs/protocol_gap_negative_drill_20260610T163241Z/packets/claim_ruling.json",
+          "payload_hash": "0x30bbb5ace10e30f52951b865de73469de9f747a111e122e46ac1086f3e95bf3c",
+          "schema": "marketplace.resolve_or_claim.v0.2",
+          "signature": "0x3967e1ec20e54cebd478c7d8c28e3c3e1e7d2eb1fd403232cb472a80eb9b5ad7158c9b1339c0f91f9fae5e3e01c8d110f25ce5d0ae24e0e4f35362522a0552ad1c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "physical_oracle": {
+        "gap_path": [
+          "G1.BindingGap",
+          "G2.SensorGap",
+          "G5.JudgmentGap",
+          "G6.EgressRemedyGap"
+        ],
+        "oracle_status": "counterfeit_discovered_during_inspection",
+        "physical_truth": "The card is fake or materially misrepresented, but the chain only sees the buyer claim packet, verifier-scoped note, arbiter ruling, and remedy math.",
+        "residue_to_use_later": [
+          "buyer claim packet",
+          "buyer received-item manifest",
+          "verifier scope approval",
+          "verifier claim note",
+          "arbiter ruling",
+          "bond disposition",
+          "settlement event"
+        ],
+        "where_loss_lands": "Claim path moves the dispute into arbiter judgment; escrow and bond can compensate, but the protocol still cannot recover or authenticate the physical card by itself."
+      },
+      "trade_id": 2,
+      "transactions": [
+        {
+          "label": "create new-seller trade",
+          "tx_hash": "0x6949f7daea440c93c121ef6428a16feb35676c7214e09d8b84a99dc6d9fcdd19"
+        },
+        {
+          "label": "seller posts larger bond",
+          "tx_hash": "0x25881adca3d50ee7cc10f92936278d7902b46746f5749fb18861cda12fa9a69c"
+        },
+        {
+          "label": "attach weak proof",
+          "tx_hash": "0x23a1b5b4c0a87365a448c7712d965f313799fbf4fffaadd7295e3c1adbeb695c"
+        },
+        {
+          "label": "accept claim seller predicate hash",
+          "tx_hash": "0xb7c833b816de4ae069deddb8728471a246743a4faae092153a25237215b535d3"
+        },
+        {
+          "label": "attach seller activity predicate",
+          "tx_hash": "0xa0e0cb7d37288d8bca19b0522605127cc9e4a9c4f169ec8f8592c35f44082ce6"
+        },
+        {
+          "label": "attach circuit profile hook",
+          "tx_hash": "0x82aa3f09393f03e8d93e7f3016b6269a035296c80fd1b9676cb8cd7363003494"
+        },
+        {
+          "label": "approve claim verifier scope",
+          "tx_hash": "0xd69da234d75167c7adfe890997ac9464172e6db573feb8b0dd528a06de769cb4"
+        },
+        {
+          "label": "attach sparse evidence",
+          "tx_hash": "0x66bc183b726c5dec111ab9e80f21925b20aa0b208026b57d08da7a10d51b804d"
+        },
+        {
+          "label": "commit claim item fingerprint",
+          "tx_hash": "0x5a5e1e5de9f14ed15cd394353781895e958d29fe387d2e6dd82db11c93fbacc8"
+        },
+        {
+          "label": "commit claim inventory lock",
+          "tx_hash": "0x72a7f1c1e24d8206b8aeea7d9df28d690105c24131f3472f98c6c63f096e43af"
+        },
+        {
+          "label": "open fingerprint challenge",
+          "tx_hash": "0xe99fed0029212e4d5b649ae0030d566eed2451b4416b3d8cbcae426ff521fc96"
+        },
+        {
+          "label": "clear fingerprint challenge",
+          "tx_hash": "0x8328681940808c4e3cd2d25378187f03cfc932b1c10284e306919ecbcfa9159a"
+        },
+        {
+          "label": "commit uninsured route",
+          "tx_hash": "0xfad8417351f59571249a4305a406b5bc983a4ec82e27e757227e706e7655ef1b"
+        },
+        {
+          "label": "mark delivered",
+          "tx_hash": "0x25b16f456c18b90fec29576250edbc763634c3973060cb6a10fa0be93c409669"
+        },
+        {
+          "label": "attach received-item claim evidence",
+          "tx_hash": "0x4bbbb0bdc1435630d0a1608471f75ce71e5f377d0b486604924254952270bd15"
+        },
+        {
+          "label": "commit verifier claim note",
+          "tx_hash": "0x9a3953ecce336be5e6159366eda305d691f3d10b490d3b85af795600147a826e"
+        },
+        {
+          "label": "open claim with buyer dispute bond",
+          "tx_hash": "0x16e8daf27d572794a78b7b6fdd2746f6b4f045cfb0c19f653615392445f348d4"
+        },
+        {
+          "label": "arbiter resolves claim",
+          "tx_hash": "0x4a5845ca4b6df0013755729b94ea6c1375ce05d7ceb3be169c1161f61e4ef816"
+        }
+      ]
+    }
+  ]
+}

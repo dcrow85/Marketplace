@@ -9,6 +9,7 @@ spendability.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from functools import lru_cache
@@ -18,6 +19,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
+POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
+MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
 
 PROFILE_RANK = {
     "NR-0": 0,
@@ -63,6 +66,58 @@ def load_catalog() -> dict[str, Any]:
     return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 
 
+@lru_cache(maxsize=1)
+def load_policy() -> dict[str, Any]:
+    return json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
+def load_manifest() -> dict[str, Any]:
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+
+
+def _canonical_hash(value: Any) -> str:
+    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def catalog_release() -> dict[str, Any]:
+    manifest = load_manifest()
+    catalog = manifest.get("catalog", {})
+    policy = manifest.get("policy", {})
+    bundle = manifest.get("bundle", {})
+    return {
+        "release_id": manifest.get("release_id"),
+        "catalog_hash": catalog.get("catalog_hash"),
+        "policy_hash": policy.get("policy_hash"),
+        "bundle_hash": bundle.get("bundle_hash"),
+        "canonicalization": catalog.get("canonicalization"),
+        "hash_algorithm": catalog.get("hash_algorithm"),
+        "row_id_field": catalog.get("row_id_field"),
+        "row_citation_shape": catalog.get("row_citation_shape"),
+        "on_chain_anchor_status": manifest.get("anchoring", {}).get("on_chain_anchor_status"),
+    }
+
+
+def row_citation(card: dict[str, Any]) -> dict[str, Any]:
+    release = catalog_release()
+    return {
+        "catalog_hash": release["catalog_hash"],
+        "row_id": _card_id(card),
+        "row_hash": _canonical_hash(card),
+        "policy_hash": release["policy_hash"],
+        "canonicalization": release["canonicalization"],
+        "hash_algorithm": release["hash_algorithm"],
+        "not_claiming": [
+            "seller_possession",
+            "authenticity",
+            "condition_truth",
+            "price_truth",
+            "spendability",
+        ],
+    }
+
+
 def cards() -> list[dict[str, Any]]:
     return load_catalog()["cards"]
 
@@ -98,6 +153,7 @@ def card_brief(card: dict[str, Any]) -> dict[str, Any]:
     pokemon = _pokemon_profile(card)
     return {
         "card_ref": _card_id(card),
+        "catalog_citation": row_citation(card),
         "local_id": card.get("local_id"),
         "name": {
             "ja": _ja(card),
@@ -255,6 +311,7 @@ def search_catalog(
     return {
         "query": query,
         "count": len(results),
+        "catalog_release": catalog_release(),
         "cards": [card_brief(card) for _, card in results[: max(1, min(limit, 50))]],
         "boundary": "Catalog search returns row candidates, not seller possession, authenticity, condition, or price truth.",
     }
@@ -283,6 +340,13 @@ def get_card(card_ref: str) -> dict[str, Any]:
     brief = card_brief(card)
     return {
         "card": brief,
+        "catalog_release": catalog_release(),
+        "catalog_policy": {
+            "policy_hash": catalog_release()["policy_hash"],
+            "evidence_requirements": load_policy().get("evidence_requirements", []),
+            "boundary": load_policy().get("policy_boundary", ""),
+            "not_claiming": load_policy().get("not_claiming", []),
+        },
         "set_boundary": load_catalog().get("set", {}),
         "agent_catalog_contract": load_catalog().get("agent_catalog_contract", {}),
         "boundary": "This is a catalog row. It is not proof of a physical seller card.",
@@ -524,6 +588,7 @@ def agent_test_packet(card_ref: str | None = None) -> dict[str, Any]:
     return {
         "skill": str(ROOT / "agent_skills" / "marketplace-protocol" / "SKILL.md"),
         "catalog": str(CATALOG_PATH),
+        "catalog_release": catalog_release(),
         "cards": sample_cards,
         "prompts": [
             "I want a Japanese No Rarity Raichu, LP or better, not trophy-priced. What do you need before asking me for money?",
@@ -588,6 +653,16 @@ def dispatch(tool: str, args: dict[str, Any]) -> dict[str, Any]:
     if tool == "agent_test_packet":
         card_ref = args.get("card_ref")
         return agent_test_packet(str(card_ref) if card_ref else None)
+    if tool == "catalog_release":
+        return {
+            "catalog_release": catalog_release(),
+            "policy": {
+                "path": str(POLICY_PATH),
+                "evidence_requirements": load_policy().get("evidence_requirements", []),
+                "not_claiming": load_policy().get("not_claiming", []),
+            },
+            "boundary": "Catalog bytes are content-addressed. Policy bytes are separate. Neither proves a physical seller card.",
+        }
     raise KeyError(f"unknown tool: {tool}")
 
 
@@ -600,6 +675,7 @@ def main() -> int:
         "evidence_plan",
         "evaluate_gate",
         "agent_test_packet",
+        "catalog_release",
     ])
     parser.add_argument("value", nargs="?", default="")
     parser.add_argument("--limit", type=int, default=12)

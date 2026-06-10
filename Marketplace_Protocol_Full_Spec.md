@@ -18,6 +18,17 @@ Evidence is memory. Spendability is permission. A packet can be valid, durable, 
 
 The protocol must be explicit about its own boundary. It can enforce signatures, hashes, deposits, timeouts, role membership, packet uniqueness, typed state transitions, and whether a required commitment has been cited. It cannot directly know whether a physical card is authentic, whether a photo honestly depicts the shipped object, whether a seller is trustworthy, whether a verifier did careful work, or whether a condition dispute is fair. Those questions belong to intelligent judgment by agents, humans, verifiers, and arbiters, with the protocol making the evidence legible and the consequences enforceable.
 
+The boundary, bootstrap, and catalog-lineage model are now documented in six active artifacts:
+
+- `Protocol_Walls_v0.1.md` names what the protocol can block, gate, validate, or make spendable.
+- `Protocol_Gaps_v0.1.md` names what remains permanently open at the physical/digital crossings.
+- `Protocol_Legibility_v0.1.md` names how evidence shape can be measured without aggregating it into truth.
+- `Protocol_Bootstrap_v0.1.md` names why seller-first, pre-funded escrow, and bonds are the alpha wedge.
+- `Protocol_Trust_Import_v0.1.md` names how outside seller reputation can be observed without becoming bindable trust.
+- `Protocol_Catalog_Lineage_v0.1.md` names how catalogs are content-addressed, cited, revised, challenged, and calibrated.
+
+The goal is falsification symmetry. Every wall should have a drill that proves it holds. Every permanent gap should have a negative drill that proves it remains open while leaving signed, attributable residue.
+
 ## External Review Synthesis
 
 An external ChatGPT Pro review agreed that the design is conceptually strong but operationally fragile. The review identified spendability as the strongest primitive: a gate-scoped capability system for evidence. It also warned that the current local harness is not yet a fraud-resistant production protocol because it still relies on off-chain schema validation, verifier honesty, arbiter judgment, and seller usability.
@@ -36,6 +47,7 @@ P0 before real alpha:
 4. Buyer-side fraud evidence requirements.
 5. Arbiter policy hash binding.
 6. Scoped bond schedule.
+7. Bounded external trust import with acquisition-cost, value-tier, continuity, and decay limits.
 
 The full review synthesis is tracked in `Marketplace_Protocol_External_Review_Synthesis.md`.
 
@@ -55,6 +67,25 @@ The protocol is designed so a buyer can say something like:
 > Buy me this vintage Pokemon card in LP or better condition for $X or less, shipped or available for local handoff, with enough evidence for my risk tolerance.
 
 The buyer's agent can then search, negotiate, ask for extra proof when worth it, avoid wasting seller attention when not worth it, and present the buyer with a legible path to settlement.
+
+The seller-facing counterpart is just as important for bootstrap:
+
+> Answer funded buyers only, price your scarce attention, bind claims to evidence, and get final settlement instead of a reversible platform promise.
+
+Seller-first does not mean buyer-hostile. It means accountability becomes bilateral. The buyer posts real funds before the seller spends scarce attention; the seller posts scoped bond before the buyer trusts a new or thin-history source; claims and returns become signed packets against the pre-committed item fingerprint rather than loose narrative.
+
+## Bootstrap Thesis
+
+The alpha should begin where collectors already use irreversible money: Discord, Facebook groups, local shows, direct dealer relationships, and high-trust private sales. The pitch is not "give up chargebacks for crypto." The pitch is:
+
+```text
+You already use irreversible money in serious direct trades.
+Use irreversible money with escrow, bonds, inspection, evidence, and receipts.
+```
+
+Digital escrow and bonds are the strongest bootstrap walls because money is the only object in the trade that lives entirely on the digital side. The card has physical gaps. Escrowed digital currency does not: the contract can prove funds exist, are locked, and move only by rule.
+
+Early protocol is capital-heavy and data-light. A new seller can substitute scoped bond for missing history. Mature protocol should become data-heavy and capital-lighter as clean receipts, claims, rulings, and bond outcomes calibrate how much stake different sellers need.
 
 ## Alpha Market Aperture
 
@@ -601,10 +632,24 @@ The protocol should be neutral to databases, but Pokemon alpha needs a card-refe
 
 Alpha accepts either:
 
-- a `CardReferenceCandidate` packet from a known source such as Pokemon TCG API or TCGdex, or
+- a `CardReferenceCandidate` packet from a known source such as the pinned No Rarity catalog, Pokemon TCG API, or TCGdex, or
 - a `ManualCardReferenceGap` packet when a claimed Japanese vintage, promo, or unusual print is not well covered by the source.
 
 The database packet is assembly placement only as a catalog candidate. It gives the lock a name for the object class; it does not make the physical card real.
+
+For the No Rarity alpha catalog, card references cite exact bytes:
+
+```text
+catalog_hash
+row_id
+optional row_hash
+policy_hash when evidence defaults are used
+```
+
+The current release manifest lives at `data/no-rarity-catalog-manifest.json`.
+The fact catalog lives at `data/no-rarity-base-set.json`. Evidence defaults now
+live separately at `data/no-rarity-catalog-policy.json`, so a policy change does
+not silently rewrite the fact catalog.
 
 For Japanese Base Set No Rarity, alpha should not wait for a perfect database. The correct path is a layered reference:
 
@@ -647,6 +692,42 @@ The seller can list inventory too. The protocol supports both buyer-led intent a
 - Exclusions.
 
 Escrow is funded by the buyer. Seller posts bond before evidence and route can proceed.
+
+### 4a. Settlement Rail Terms
+
+`SettlementRailTerms` name the money rail and its finality boundaries.
+
+```text
+schema: marketplace.settlement_rail_terms.v0.1
+trade_id
+rail_type: native_eth | erc20_stablecoin | offchain_fiat_reference
+asset
+chain_id
+escrow_contract
+escrow_funded
+bond_asset
+buyer_display_currency
+seller_payout_currency
+finality_model
+chargeback_surface
+issuer_or_admin_controls
+freeze_or_blacklist_surface
+custody_or_money_transmission_notes
+conversion_provider
+conversion_failure_path
+not_claiming
+human_summary
+```
+
+Hard rules:
+
+```text
+fiat payment != settlement
+stablecoin escrow != no third-party risk
+escrowed digital money != physical truth
+```
+
+An off-chain fiat payment can be referenced as a cost or settlement-adjacent fact, but it is not mechanically final in the same way as contract-held escrow. A stablecoin escrow can provide contract settlement and remove card-network chargeback risk, but it must preserve issuer, blacklist, wallet, bridge, off-ramp, custody, and regulatory caveats.
 
 ### 5. Item Fingerprint
 
@@ -1022,6 +1103,31 @@ The current on-chain implementation enforces route spendability as a hash citati
 
 Trust is not a universal score. It is a bundle of weighted proof vectors interpreted through the buyer's aperture.
 
+Legibility is also not a universal score. Evidence shape can be measured as a vector, but aggregation into a decision is judgment. The protocol may enforce vector shape and provenance; the buyer agent owns any policy projection from that vector; the human or mandate owns risk acceptance.
+
+Forbidden protocol move:
+
+```text
+coverage + independence + continuity + source history -> 87/100 trust
+```
+
+Allowed protocol move:
+
+```text
+legibility_vector:
+  coverage: high
+  independence: medium
+  continuity: gap_after_nonce
+  scope_fit: route_ready_not_authenticity
+  cost_to_fake: moderate
+  source_calibration: 7 percent prior claim rate in this cohort
+agent_policy_projection:
+  projected_claim_rate_bps: 900
+  authority_label: judged
+```
+
+Calibration is the feedback loop. Receipts and claims let agents measure whether vector-shaped evidence with a named buyer policy actually produced outcomes close to the risk shown to the human. The target is not certainty; it is calibrated uncertainty.
+
 Possible seller proof vectors:
 
 - Marketplace reputation proof.
@@ -1038,6 +1144,38 @@ Possible seller proof vectors:
 - Fresh custody evidence.
 
 The seller can add any proof. More signed proof is better, but unsigned or weak proof can still inform a buyer agent if presented with its limits.
+
+### External Trust Import
+
+External reputation is observable, not bindable.
+
+The protocol can ask a seller to place a nonce on an outside surface and can
+record what was visible there at a specific time. That proves current contact
+with the surface, not ownership of its history or the truth of a card.
+
+Imported seller trust should use:
+
+- control proofs: nonce on shop domain, marketplace profile, forum account, or
+  public seller surface,
+- observation receipts: feedback count, feedback percentage, account age,
+  review profile, visible sale-tier distribution, source URL, timestamp, and
+  content hash,
+- legibility vector: coverage, independence, continuity, scope fit,
+  cost-to-fake, and source calibration,
+- judged policy projection: friction relief, value-cap relief, or scoped bond
+  relief under a buyer policy.
+
+Hard rule:
+
+```text
+imported_trust_bond_relief <= estimated_acquisition_cost_of_import_bundle
+```
+
+The cap is paired with value-tier scope. Thousands of low-value sales may help a
+buyer agent trust that a seller can ship low-value goods, but it should not
+waive meaningful bond on a high-value raw vintage card. Seller-controlled
+surfaces must be marked as correlated, not independent. Imported trust decays
+as native protocol receipts accumulate.
 
 Example: physical card shop proof
 
@@ -1103,6 +1241,8 @@ Implemented in `/Users/che/Marketplace/chain`.
 - Active item-fingerprint collision checks.
 - Active inventory-lock collision checks.
 - Delivery, inspection, acceptance, claim, resolution, and settlement events.
+- Protocol gap negative drill proving a compliant EVM settlement can still coexist with a hidden physical-world counterfeit oracle without overclaiming authenticity.
+- Legibility calibration drill proving vector-shaped evidence stays unaggregated and projected risk is checked against settled outcomes.
 
 ### Off-Chain By Design
 
@@ -1123,6 +1263,12 @@ Implemented in `/Users/che/Marketplace/chain`.
 ## Enforcement vs Judgment Boundary
 
 This section is a guardrail against overclaim. "Typed" does not mean "true." "Signed" does not mean "honest." "Anchored" does not mean "sufficient." The protocol should always expose whether a fact was mechanically enforced, merely made legible, or left to intelligent judgment.
+
+Three additional boundaries are load-bearing for the alpha:
+
+1. Deterministic does not mean enforced. A local catalog tool, exact search result, image matcher, pricing crawler, or agent validator can be consistent and still remain legible logic rather than spendable truth.
+2. Accountability is economic. A bond, fee, identity proof, verifier note, or arbiter policy only deters fraud if the expected loss for cheating is greater than the expected gain and the remedy can actually be applied.
+3. Judgment requires supply. A registry-listed verifier or arbiter is not enough; the trade needs a scoped provider, response window, fee source, remedy cap, conflict disclosure, and fallback path.
 
 ### Protocol Can Enforce
 
@@ -1156,6 +1302,7 @@ These are suitable for smart contracts, deterministic validators, or strict agen
 
 These can be represented as typed packets, manifests, claims, and attestations. They become easier to inspect, compare, dispute, and arbitrate, but the protocol should not pretend the typed object settles the truth by itself.
 
+- Deterministic catalog, image, pricing, and evidence-plan outputs.
 - Seller reputation from eBay, TCGplayer, Google, shop domain, prior receipts, or social proof.
 - Whether a shop proof chain is persuasive for this buyer.
 - Whether a marketplace account-control proof really belongs to the same seller identity over time.
@@ -1170,6 +1317,9 @@ These can be represented as typed packets, manifests, claims, and attestations. 
 - Whether a verifier stayed inside the "not claiming" boundary.
 - Whether an automated arbiter recommendation is appropriate or must escalate.
 - Whether a bond amount adequately prices trust, route, and condition risk.
+- Whether posted bond, seller identity cost, and remedy cap make fraud uneconomic.
+- Whether verifier or arbiter availability is operationally sufficient for this trade.
+- Whether a legibility vector is calibrated against settled outcomes for this buyer policy and value tier.
 
 ### Judgment Layer Must Decide
 
@@ -1182,6 +1332,8 @@ These remain human/agent/arbiter/verifier judgments. The protocol should require
 - Whether a seller cure actually resolves a challenge.
 - Whether a verifier was competent, conflicted, careless, or collusive.
 - Whether an arbiter's policy is fair for the trade category and value.
+- Whether the economics deter a rational bad actor.
+- Whether a verifier, arbiter, or automated arbiter is worth trusting for the specific scope.
 - Whether seller curation should be trusted.
 - Whether a buyer should accept weak evidence in exchange for lower price.
 - Whether a claim deserves partial refund, full refund, bond penalty, or denial.
@@ -1206,6 +1358,10 @@ The claim that the card is LP or better is still judged.
 ```
 
 This display rule is especially important for verifier attestations and spendability. A spendability packet can enforce that a gate had permission to advance. It does not, by itself, prove that the evidence was true, sufficient, or fair.
+
+The same rule applies to deterministic tools. A `low_friction_pass`, exact catalog match, price band, or image similarity result is legible tool output unless another packet makes it spendable at a gate. Agents must not promote repeatability into authority.
+
+The same rule applies to legibility vectors. A vector can measure coverage, independence, continuity, scope fit, cost-to-fake, and source calibration. It cannot contain a score, verdict, grade, or probability of truth. Any decision derived from it must be labeled `judged`.
 
 ## Protocol Walls Agent Testbed
 
@@ -1255,6 +1411,112 @@ notes:
 ```
 
 This makes the protocol falsifiable by agent behavior. If agents repeatedly treat a legible claim as enforced, that is a UI/instruction failure. If adversarial agents can advance state while preserving semantic ambiguity, that is a missing wall. If honest agents keep needing human judgment in the same place, that is either a needed protocol wall or a domain judgment that should be named and priced.
+
+## Protocol Gaps Negative Testbed
+
+The walls testbed asks whether a digital attack can cross a gate. The gaps testbed asks whether the project is honest about what no digital gate can close.
+
+Primary artifacts:
+
+- `Protocol_Gaps_v0.1.md`
+- `chain/script/protocol_gap_negative_drill.py`
+
+The first gap drill runs protocol-compliant EVM settlement paths while a hidden physical-world oracle marks the card as counterfeit or materially false. A passing drill means:
+
+- packets validate,
+- route gates and settlement complete,
+- no packet claims the protocol proved authenticity,
+- the report names the permanent gap,
+- the signed residue is sufficient for later judgment, deterrence, insurance, arbitration, or reputation.
+
+This drill should remain passing. If a future change makes it fail by claiming the protocol closed bytes-to-atoms truth, that is an overclaim alarm.
+
+## Protocol Legibility Calibration Testbed
+
+The legibility testbed asks whether evidence instruments are calibrated rather than merely confident.
+
+Primary artifacts:
+
+- `Protocol_Legibility_v0.1.md`
+- `simulations/legibility_calibration_drill.py`
+
+The first calibration drill uses simulated settled cohorts to verify:
+
+- legibility vectors contain dimensions, not scores,
+- each dimension preserves `not_claiming`,
+- buyer policy projection is a separate judged packet,
+- observed claim rates stay near projected claim rates,
+- score-laundering attempts are blocked.
+
+This drill does not prove truth. It tests whether uncertainty is being shown honestly.
+
+## Protocol Bootstrap Testbed
+
+The bootstrap testbed asks whether the alpha wedge is operationally coherent for sellers.
+
+Primary artifacts:
+
+- `Protocol_Bootstrap_v0.1.md`
+- `simulations/seller_bootstrap_drill.py`
+
+The first bootstrap drill verifies:
+
+- fiat payment is not treated as final settlement,
+- stablecoin escrow preserves issuer, blacklist, custody, off-ramp, and regulatory caveats,
+- buyer seriousness is represented by funded escrow,
+- seller attention is priced before extra work,
+- new sellers can substitute scoped bond for missing history,
+- clean receipts, imported proof, or underwriters can reduce but not erase bond,
+- "bonded seller is safe" is blocked as an overclaim.
+
+This is the seller-facing complement to buyer intent. The product claim is not "more crypto." It is "irreversible money with escrow, bonds, evidence, inspection, and receipts."
+
+## Protocol External Trust Import Testbed
+
+The trust-import testbed asks whether a seller can reuse outside reputation
+without laundering it into protocol-native trust.
+
+Primary artifacts:
+
+- `Protocol_Trust_Import_v0.1.md`
+- `simulations/external_trust_import_drill.py`
+
+The first import drill verifies:
+
+- current account/domain control is not ownership of account history,
+- seller-controlled channels are correlation, not independence,
+- low-value feedback cannot justify high-value bond relief,
+- imported bond relief is capped by estimated acquisition cost,
+- positive exit-scam expected value becomes a visible need for more bond or a lower value cap,
+- source and platform terms fragility remains visible.
+
+This is the seller onboarding bridge. It should make good sellers easier to
+start with, while making bought accounts and scope laundering economically
+legible.
+
+## Protocol Catalog Lineage Testbed
+
+The catalog-lineage testbed asks whether agents can grow a catalog without
+quietly corrupting it.
+
+Primary artifacts:
+
+- `Protocol_Catalog_Lineage_v0.1.md`
+- `scripts/pin_no_rarity_catalog.py`
+- `simulations/catalog_evolution_drill.py`
+
+The first catalog evolution drill verifies:
+
+- the No Rarity fact catalog is cited by content hash, not file location,
+- evidence requirements are split into a separate policy hash,
+- card references can cite `(catalog_hash, row_id)`,
+- a good revision survives unevidenced sybil noise,
+- a poisoned basic-Energy premium proposal is blocked,
+- a Quick Starter scope-laundering proposal is flagged,
+- a URL-only source without content hash is blocked.
+
+This makes the No Rarity catalog an agent-readable substrate that can outgrow
+its author without becoming a wiki-style trust blob.
 
 ## Current Solidity Contracts
 
@@ -1508,6 +1770,14 @@ P0 before real alpha:
 5. Add seller cure workflow after fingerprint challenge.
 6. Bind trades to arbiter policy hash, fee schedule hash, remedy cap, automation allowance, human escalation rules, and availability window.
 7. Define scoped seller bond schedule and default remedy schedule for TCG claims.
+8. Add `DeterministicToolBoundary` packets so No Rarity catalog, image, pricing, and evidence-plan outputs cannot leak into intent, route, claim, bond, reputation, or settlement authority.
+9. Add an `EconomicDeterrenceProfile` and adversarial seller simulation that compares expected fraud profit against bond loss, identity cost, verifier/remedy liability, detection assumptions, and dispute friction across price tiers.
+10. Add `JudgmentSupplyCommitment` packets for verifier and arbiter availability, scope, fee source, conflict disclosure, remedy cap, escalation trigger, and fallback/replacement path.
+11. Add `LegibilityVectorIntegrity` packets and calibration drills so evidence coverage, independence, continuity, scope fit, cost-to-fake, and source calibration stay vector-shaped instead of becoming a composite trust score.
+12. Add `SettlementRailTerms` and stablecoin/ERC-20 escrow for real alpha, including issuer, blacklist, custody, off-ramp, and regulatory caveats.
+13. Add `BondHistoryExchange` and seller bootstrap drills so bond requirements fall only through clean receipts, imported proof, or accountable underwriting.
+14. Add `ExternalTrustImport` packets and drills so marketplace/shop/social reputation is bounded by current control, value-tier scope, acquisition-cost cap, source fragility, decay, and later native receipts.
+15. Add catalog lineage anchors and drills so card references cite `(catalog_hash, row_id)`, evidence policy remains separate, and agent-authored revisions survive evidence-weighted challenge rather than agent-count voting.
 
 P1 for credible pilots:
 
@@ -1516,8 +1786,8 @@ P1 for credible pilots:
 3. Encrypted evidence access controls.
 4. Verifier conflict disclosure packets.
 5. Human-readable "not claiming" summaries for verifier attestations.
-6. Stablecoin or ERC-20 escrow.
-7. Agent API that hides packet complexity.
+6. Agent API that hides packet complexity.
+7. Bond underwriting actor templates.
 
 P2 defer:
 
@@ -1641,6 +1911,9 @@ Primary API artifact:
 - `simulations/protocol_wall_packets.py`
 - `runs/protocol_agent_api_pokemon_alpha_check/REPORT.md`
 - `chain/script/wall_bundle_route_spendability_drill.py`
+- `chain/script/protocol_gap_negative_drill.py`
+- `simulations/legibility_calibration_drill.py`
+- `simulations/seller_bootstrap_drill.py`
 - `runs/wall_bundle_route_spendability_drill_20260520T030358Z/REPORT.md`
 
 Trade actions:
