@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Masaki Gengar\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"route_offered\":\"local_meetup\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"low\",\"seller_bond_bps_from_sim\":0,\"seller_bond_eth_local_probe\":\"0.005\",\"seller_trust\":\"new\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1\",\"friction_policy\":\"sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c\",\"intent\":\"sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a\",\"seller_offer\":\"sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b\"},\"source_simulation_trade\":\"SIM-0018\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Masaki Gengar",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "route_offered": "local_meetup",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "low",
+    "seller_bond_bps_from_sim": 0,
+    "seller_bond_eth_local_probe": "0.005",
+    "seller_trust": "new",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1",
+      "friction_policy": "sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c",
+      "intent": "sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a",
+      "seller_offer": "sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b"
+    },
+    "source_simulation_trade": "SIM-0018"
+  },
+  "payload_hash": "0x5e554992f284c9c9afd28522c1c09ec3040d33f62501b39659d118100280bf46",
+  "signature": "0xc9d81e4df1f3d642834bc285d2c62855ca9f3339477448bab85ba3eb5fe456482810c62c70293b52aa5999400e55366b647be3c90505f2b8f5538fcdc4ca36801b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

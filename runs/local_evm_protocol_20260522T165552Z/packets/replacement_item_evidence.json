@@ -1,0 +1,84 @@
+{
+  "canonical_payload": "{\"asset_descriptors\":[{\"asset_id\":\"replacement-front-scan\",\"byte_length\":40,\"captured_at\":\"2026-05-22T16:55:55.551674+00:00\",\"created_at\":\"2026-05-22T16:55:55.551674+00:00\",\"keccak256\":\"0xc718755e6042291d78850f27fc4eaec6186601f39f306377686ed9968715cf7a\",\"media_type\":\"image/png\",\"role\":\"front_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"cd43a19927a99634d68a809246982d6e5c365aada983d76d84f34313f150a119\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260522T165552Z/assets/replacement_item_evidence/replacement-front-scan.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"replacement-back-scan\",\"byte_length\":39,\"captured_at\":\"2026-05-22T16:55:55.551674+00:00\",\"created_at\":\"2026-05-22T16:55:55.551674+00:00\",\"keccak256\":\"0xdda1f2124b9a04dbdb3c6877e8fd06bd530c45c270980dc9db3611b2372ecda8\",\"media_type\":\"image/png\",\"role\":\"back_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"95ef3849c5ac26534778830b31aa2589ead9b24a7a50ac12788666e452cdf0f2\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260522T165552Z/assets/replacement_item_evidence/replacement-back-scan.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false}],\"asset_root_hash\":\"0x11f0c2bc97976415b0bf472d2e1fd1e98624d6f1a206c0d759515371ce7e9ac9\",\"canonicalization\":\"canonical-json-payload-v1\",\"evidence_tier\":\"standard\",\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-22T16:55:55.551674+00:00\",\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"known_limits\":[\"Manifest integrity only; route exception claim still requires arbiter review.\"],\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_id\":\"replacement_item_evidence\",\"schema\":\"marketplace.evidence_manifest.v0.3\",\"subject\":{\"anchor_hash\":\"0x8dcd9aff7eb44b0607f46f0cce9c9fe62bbb9697c88aeec63d27b755b6e9e36b\",\"subject_hash\":\"0xa342ba598454207d4b94f39f7fba4dacd756ee2efb14b7df56788bbbcf23b6c4\",\"subject_type\":\"item_fingerprint\",\"trade_id\":3},\"tier_basis\":\"manifest_integrity_only\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "asset_descriptors": [
+      {
+        "asset_id": "replacement-front-scan",
+        "byte_length": 40,
+        "captured_at": "2026-05-22T16:55:55.551674+00:00",
+        "created_at": "2026-05-22T16:55:55.551674+00:00",
+        "keccak256": "0xc718755e6042291d78850f27fc4eaec6186601f39f306377686ed9968715cf7a",
+        "media_type": "image/png",
+        "role": "front_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "cd43a19927a99634d68a809246982d6e5c365aada983d76d84f34313f150a119",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260522T165552Z/assets/replacement_item_evidence/replacement-front-scan.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "replacement-back-scan",
+        "byte_length": 39,
+        "captured_at": "2026-05-22T16:55:55.551674+00:00",
+        "created_at": "2026-05-22T16:55:55.551674+00:00",
+        "keccak256": "0xdda1f2124b9a04dbdb3c6877e8fd06bd530c45c270980dc9db3611b2372ecda8",
+        "media_type": "image/png",
+        "role": "back_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "95ef3849c5ac26534778830b31aa2589ead9b24a7a50ac12788666e452cdf0f2",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260522T165552Z/assets/replacement_item_evidence/replacement-back-scan.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      }
+    ],
+    "asset_root_hash": "0x11f0c2bc97976415b0bf472d2e1fd1e98624d6f1a206c0d759515371ce7e9ac9",
+    "canonicalization": "canonical-json-payload-v1",
+    "evidence_tier": "standard",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-22T16:55:55.551674+00:00",
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "known_limits": [
+      "Manifest integrity only; route exception claim still requires arbiter review."
+    ],
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_id": "replacement_item_evidence",
+    "schema": "marketplace.evidence_manifest.v0.3",
+    "subject": {
+      "anchor_hash": "0x8dcd9aff7eb44b0607f46f0cce9c9fe62bbb9697c88aeec63d27b755b6e9e36b",
+      "subject_hash": "0xa342ba598454207d4b94f39f7fba4dacd756ee2efb14b7df56788bbbcf23b6c4",
+      "subject_type": "item_fingerprint",
+      "trade_id": 3
+    },
+    "tier_basis": "manifest_integrity_only",
+    "trade_id": 3
+  },
+  "payload_hash": "0xe3c35f999b1b5edda5d7eaa368987b8b24122c9557cf8b98706b69fe9da8d858",
+  "signature": "0xa971f893e76c6f131362ed6b491372dc7e50a502109ca35afb0dfa3de3cc17ec5effe440441f21a7c0f199ce480227c0b10bdcec84dde9ca1debdfb93a5a54321b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

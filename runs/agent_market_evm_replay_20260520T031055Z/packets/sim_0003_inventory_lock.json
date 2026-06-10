@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"MP\",\"inventory_key\":\"tcg:pokemon:sim-0003\",\"item_fingerprint_hash\":\"0xbcbd02c4f5abcfdb5e961a8ac604d86a50fe8c5a62a493036f2de55d97c37e35\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\",\"visible_identifiers\":[\"sim-0003-front-photo-hash\",\"sim-0003-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "MP",
+    "inventory_key": "tcg:pokemon:sim-0003",
+    "item_fingerprint_hash": "0xbcbd02c4f5abcfdb5e961a8ac604d86a50fe8c5a62a493036f2de55d97c37e35",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003",
+    "visible_identifiers": [
+      "sim-0003-front-photo-hash",
+      "sim-0003-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xf8fffcdcc0e8b063da46186df5c611e6653f243a1a9fa1114ec4c6bc2951ea33",
+  "signature": "0x03d00e3fb29bd7714371420c8fb552b45841b483dc6edef6803416cc47054e342c48e8680f7552c95a026ee8f8b295de67c75414c9ad690b478e020f39bab30a1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

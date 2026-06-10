@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0025: uninsured_lost on a $57 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: friction_threshold_crossed. Friction: evidence_ambiguity, route_gap_owner_review.\",\"friction_triggers\":[\"evidence_ambiguity\",\"route_gap_owner_review\"],\"human_questions\":[\"ask_human_or_human_arbiter_to_review_evidence\",\"confirm_who_accepted_route_value_gap\"],\"outcome\":\"uninsured_lost\",\"path\":\"friction_threshold_crossed\",\"route_failure_surrogate\":true,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a\",\"escrow_terms\":\"sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9\",\"friction_policy\":\"sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a\",\"intent\":\"sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9\",\"seller_offer\":\"sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb\"},\"source_simulation_trade\":\"SIM-0025\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0025: uninsured_lost on a $57 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: friction_threshold_crossed. Friction: evidence_ambiguity, route_gap_owner_review.",
+    "friction_triggers": [
+      "evidence_ambiguity",
+      "route_gap_owner_review"
+    ],
+    "human_questions": [
+      "ask_human_or_human_arbiter_to_review_evidence",
+      "confirm_who_accepted_route_value_gap"
+    ],
+    "outcome": "uninsured_lost",
+    "path": "friction_threshold_crossed",
+    "route_failure_surrogate": true,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a",
+      "escrow_terms": "sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9",
+      "friction_policy": "sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a",
+      "intent": "sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9",
+      "seller_offer": "sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb"
+    },
+    "source_simulation_trade": "SIM-0025"
+  },
+  "payload_hash": "0x5cfa9586d6b4a44adfc86f9079f57f51b98d8fc84c8ed97ec0793df06e4bda1a",
+  "signature": "0x26a1baf6e27933123a4dd92de670abc94f6a276e3a5529b8d883a36fd271e8826dc311b3b7156beee4110ab06ce2ab83aeb1ad0e804bae20419d98258be213161b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

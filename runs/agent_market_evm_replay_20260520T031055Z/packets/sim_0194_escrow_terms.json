@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.003\",\"escrow_model\":\"on_chain_native_eth_local_probe\",\"inspection_seconds\":86400,\"price_eth_local_probe\":\"0.087\",\"release_gate\":\"buyer_accepts_or_claim_resolves\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"selected_arbiter\":\"did:market:arbiter:raw-condition-1\",\"selected_arbiter_controller_for_local_evm\":\"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC\",\"seller_bond_eth_local_probe\":\"0.005\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024\",\"friction_policy\":\"sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184\",\"intent\":\"sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e\",\"seller_offer\":\"sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f\"},\"source_simulation_trade\":\"SIM-0194\",\"source_value_usd\":87,\"trade_template\":\"tcg_single_card\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.003",
+    "escrow_model": "on_chain_native_eth_local_probe",
+    "inspection_seconds": 86400,
+    "price_eth_local_probe": "0.087",
+    "release_gate": "buyer_accepts_or_claim_resolves",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "selected_arbiter": "did:market:arbiter:raw-condition-1",
+    "selected_arbiter_controller_for_local_evm": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "seller_bond_eth_local_probe": "0.005",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024",
+      "friction_policy": "sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184",
+      "intent": "sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e",
+      "seller_offer": "sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f"
+    },
+    "source_simulation_trade": "SIM-0194",
+    "source_value_usd": 87,
+    "trade_template": "tcg_single_card"
+  },
+  "payload_hash": "0x73df070c87075905cfc484cfa1a5cb1f3bb28e37c46c67fa3e774cfc2b9b290d",
+  "signature": "0x9261c9a57a580409c110635669545f54f82b54f2cb30a7cc301d32ccf6668bf131126d54f3333acc3d4d6102b0bc30897cf1ea449f91a56c225bb22df606e1c11c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

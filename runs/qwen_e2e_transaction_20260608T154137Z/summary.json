@@ -1,0 +1,1953 @@
+{
+  "api": {
+    "claim": {
+      "action": "openClaim",
+      "currency_integrity": {
+        "blocked_missing": [],
+        "missing_not_claiming": [],
+        "ordinary_acceptance_allowed": true,
+        "trajectory_overclaims": [],
+        "waived_ambiguity": [],
+        "waiver_required": []
+      },
+      "decision": "no_claim_opened",
+      "enforced_facts": [
+        "POKEMON_ALPHA_SCOPE:pass"
+      ],
+      "human_question_if_any": "",
+      "judgment_needed": [
+        "BuyerRiskAcceptance:pass",
+        "ClaimClosureEvidenceMatrix:pass"
+      ],
+      "legible_evidence": [
+        "CardReferenceCandidate:pass",
+        "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:pass",
+        "BondScope:pass",
+        "ProofVectorScope:pass",
+        "RouteInsuranceRiskOwner:pass",
+        "ExternalAvailabilityCovenant:pass"
+      ],
+      "memory": {
+        "assembly_placement": [
+          {
+            "currency": "assembly_placement",
+            "placement": "arbiter_policy_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "bond_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "card_reference_packet",
+            "spendable_as": "catalog_candidate_only"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "evidence_profile_id",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "inventory_lock_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "item_fingerprint_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "proof_vector_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_insurance_risk_owner_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_spendability_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "external_availability_covenant",
+            "spendable_as": "external_availability_promise"
+          }
+        ],
+        "trajectory_capacity": [
+          {
+            "claim": "seller_controls_ebay_account",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          },
+          {
+            "claim": "seller_controls_shop_domain",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          }
+        ]
+      },
+      "packet_commitments": {
+        "packet_refs": {
+          "arbiter_policy_hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+          "bond_scope": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+          "card_reference": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+          "evidence_profile_id": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+          "external_availability_covenant": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+          "inventory_lock_hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+          "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+          "pokemon_acceptance_profile": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+          "proof_vector_scope": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+          "route_insurance_risk_owner": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+          "route_spendability": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79"
+        },
+        "packets": {
+          "arbiter_policy_hash": {
+            "hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+            "packet_id": "arbiter_policy_hash",
+            "payload": {
+              "packet_id": "arbiter_policy_hash",
+              "schema": "marketplace.arbiter_policy.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:arbiter_policy_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.arbiter_policy.stub.v0.1"
+          },
+          "bond_scope": {
+            "hash": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+            "packet_id": "bond_scope",
+            "payload": {
+              "arbiter_policy_hash": "sha256:890ddfbd4658ad3c7e551f49d924a86f4cafaa134a019882d8cb3290cc4b3d43",
+              "bond_amount": "fixture:moderate",
+              "claim_window": "fixture:inspection_window",
+              "covered_failures": [
+                "failure_to_cure",
+                "material_condition_mismatch",
+                "nonship",
+                "route_negligence",
+                "underinsurance_without_buyer_acceptance",
+                "wrong_item"
+              ],
+              "excluded_failures": [],
+              "missing_default_failures": [],
+              "packet_id": "bond_scope",
+              "penalty_caps": {
+                "default_bps": 2500
+              },
+              "release_conditions": [
+                "clean_settlement",
+                "arbiter_ruling"
+              ],
+              "schema": "marketplace.bond_scope.v0.1",
+              "signature": "fixture:seller_signature",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.bond_scope.v0.1"
+          },
+          "card_reference": {
+            "hash": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+            "packet_id": "card_reference",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "packet_id": "card_reference",
+              "reference": {
+                "card_number": "1",
+                "match_kind": "language_equivalent",
+                "not_claiming": [
+                  "authenticity",
+                  "condition",
+                  "possession",
+                  "price_truth",
+                  "seller_card_language",
+                  "seller_inventory_existence"
+                ],
+                "printed_name": "Espeon",
+                "selected_by": "buyer_agent",
+                "set_name": "Neo Discovery",
+                "source": "pokemontcg.io",
+                "source_card_id": "neo2-1",
+                "source_coverage": "english_catalog_anchor_for_japanese_claim",
+                "source_language": "en",
+                "source_url": "https://api.pokemontcg.io/v2/cards/neo2-1"
+              },
+              "required_not_claiming": [
+                "authenticity",
+                "condition",
+                "possession",
+                "price_truth",
+                "seller_card_language",
+                "seller_inventory_existence"
+              ],
+              "schema": "marketplace.pokemon_card_reference.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_card_reference.v0.1"
+          },
+          "evidence_profile_id": {
+            "hash": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+            "packet_id": "evidence_profile_id",
+            "payload": {
+              "packet_id": "evidence_profile_id",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "schema": "marketplace.evidence_profile_ref.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.evidence_profile_ref.v0.1"
+          },
+          "external_availability_covenant": {
+            "hash": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+            "packet_id": "external_availability_covenant",
+            "payload": {
+              "bond_scope_ref": "sha256:ef1c0fe12f021ef49ebc4bbc1a3abb2d08b13ea440c37844696467a1a41e28ee",
+              "covered_failure": "nonship_or_double_sale",
+              "expires_at": "fixture:route_lock_or_cancel",
+              "external_channels_covered": [
+                "shop",
+                "marketplace",
+                "direct"
+              ],
+              "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+              "packet_id": "external_availability_covenant",
+              "promise_scope": "no_external_sale_during_lock",
+              "schema": "marketplace.external_availability_covenant.v0.1",
+              "seller": "fixture:seller",
+              "signature": "fixture:seller_signature",
+              "starts_at": "fixture:lock_start",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.external_availability_covenant.v0.1"
+          },
+          "inventory_lock_hash": {
+            "hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+            "packet_id": "inventory_lock_hash",
+            "payload": {
+              "packet_id": "inventory_lock_hash",
+              "schema": "marketplace.inventory_lock.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:inventory_lock_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.inventory_lock.stub.v0.1"
+          },
+          "item_fingerprint_hash": {
+            "hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+            "packet_id": "item_fingerprint_hash",
+            "payload": {
+              "packet_id": "item_fingerprint_hash",
+              "schema": "marketplace.item_fingerprint.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:item_fingerprint_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.item_fingerprint.stub.v0.1"
+          },
+          "pokemon_acceptance_profile": {
+            "hash": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+            "packet_id": "pokemon_acceptance_profile",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "hard_packets_present": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "item_form": "raw_card",
+              "packet_id": "pokemon_acceptance_profile",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "required_hard_packets": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "schema": "marketplace.pokemon_acceptance_profile.v0.1",
+              "seller_evidence_missing": [],
+              "seller_evidence_present": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "seller_evidence_required": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "trade_template": "pokemon_single_card_alpha",
+              "value_usd": 750,
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_acceptance_profile.v0.1"
+          },
+          "proof_vector_scope": {
+            "hash": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+            "packet_id": "proof_vector_scope",
+            "payload": {
+              "freshness": "fixture",
+              "missing_not_claiming": [],
+              "not_claiming": [
+                "authenticity",
+                "current_possession",
+                "raw_card_condition",
+                "shipment_completion"
+              ],
+              "packet_id": "proof_vector_scope",
+              "positive_claims": [
+                "seller_controls_ebay_account",
+                "seller_controls_shop_domain"
+              ],
+              "proof_source": "shop_domain_and_marketplace_account",
+              "proof_vector_id": "fixture:seller_shop_and_marketplace",
+              "revocation_or_expiry": "fixture",
+              "schema": "marketplace.proof_vector_scope.v0.1",
+              "signature_or_reference": "fixture:seller_signature",
+              "subject_binding": "seller_identity",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.proof_vector_scope.v0.1"
+          },
+          "route_insurance_risk_owner": {
+            "hash": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+            "packet_id": "route_insurance_risk_owner",
+            "payload": {
+              "accepted_by_buyer": true,
+              "accepted_by_seller": true,
+              "carrier_or_handoff_method": "carrier",
+              "declared_value": 750,
+              "insurance_amount": 750,
+              "packet_id": "route_insurance_risk_owner",
+              "risk_owner_for_gap": "",
+              "route_type": "insured_ship",
+              "schema": "marketplace.route_insurance_risk_owner.v0.1",
+              "ship_by": "2026-05-22T18:00:00Z",
+              "signature_required": true,
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.route_insurance_risk_owner.v0.1"
+          },
+          "route_spendability": {
+            "hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+            "packet_id": "route_spendability",
+            "payload": {
+              "decision_authority": "buyer_agent_or_protocol",
+              "gate": {
+                "consumption": "single_use",
+                "gate_id": "qwen_full_wall_compliant_offer:route_commitment",
+                "gate_type": "route_commitment",
+                "leg": "forward"
+              },
+              "not_claiming": [
+                "physical_truth",
+                "authenticity",
+                "condition_truth"
+              ],
+              "packet_id": "route_spendability",
+              "schema": "marketplace.evidence_spendability.v0.1",
+              "spendable_claims": [
+                "route_readiness",
+                "wall_bundle_satisfied"
+              ],
+              "status": "active",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+            },
+            "schema": "marketplace.evidence_spendability.v0.1"
+          }
+        },
+        "placement_integrity": {
+          "complete": true,
+          "missing_packet_refs": [],
+          "required_packet_refs": [
+            "arbiter_policy_hash",
+            "bond_scope",
+            "card_reference",
+            "evidence_profile_id",
+            "external_availability_covenant",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope",
+            "route_insurance_risk_owner",
+            "route_spendability"
+          ]
+        },
+        "route_spendability_hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+        "route_wall_bundle_evm_hash": "0x150a1df40a45dcda660e3dbae3e0b069a456c2abdf91b0dbba04aefabc15e189",
+        "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+      },
+      "packets_required": [],
+      "packets_to_generate": [],
+      "spendability": {
+        "gate": "claim_support",
+        "missing": [],
+        "present": [
+          "ClaimClosureEvidenceMatrix"
+        ],
+        "required": [
+          "ClaimClosureEvidenceMatrix"
+        ]
+      },
+      "trade_id": "qwen_full_wall_compliant_offer",
+      "walls": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    "funding": {
+      "action": "acceptOfferAndFundEscrow",
+      "currency_integrity": {
+        "blocked_missing": [],
+        "missing_not_claiming": [],
+        "ordinary_acceptance_allowed": true,
+        "rationale": "all active walls passed",
+        "trajectory_overclaims": [],
+        "waived_ambiguity": [],
+        "waiver_required": []
+      },
+      "decision": "escrow_fundable",
+      "enforced_facts": [
+        "POKEMON_ALPHA_SCOPE:pass"
+      ],
+      "human_question_if_any": "",
+      "judgment_needed": [
+        "BuyerRiskAcceptance:pass",
+        "ClaimClosureEvidenceMatrix:pass"
+      ],
+      "legible_evidence": [
+        "CardReferenceCandidate:pass",
+        "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:pass",
+        "BondScope:pass",
+        "ProofVectorScope:pass",
+        "RouteInsuranceRiskOwner:pass",
+        "ExternalAvailabilityCovenant:pass"
+      ],
+      "memory": {
+        "assembly_placement": [
+          {
+            "currency": "assembly_placement",
+            "placement": "arbiter_policy_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "bond_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "card_reference_packet",
+            "spendable_as": "catalog_candidate_only"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "evidence_profile_id",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "inventory_lock_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "item_fingerprint_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "proof_vector_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_insurance_risk_owner_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_spendability_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "external_availability_covenant",
+            "spendable_as": "external_availability_promise"
+          }
+        ],
+        "trajectory_capacity": [
+          {
+            "claim": "seller_controls_ebay_account",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          },
+          {
+            "claim": "seller_controls_shop_domain",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          }
+        ]
+      },
+      "packet_commitments": {
+        "packet_refs": {
+          "arbiter_policy_hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+          "bond_scope": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+          "card_reference": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+          "evidence_profile_id": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+          "external_availability_covenant": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+          "inventory_lock_hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+          "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+          "pokemon_acceptance_profile": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+          "proof_vector_scope": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+          "route_insurance_risk_owner": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+          "route_spendability": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79"
+        },
+        "packets": {
+          "arbiter_policy_hash": {
+            "hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+            "packet_id": "arbiter_policy_hash",
+            "payload": {
+              "packet_id": "arbiter_policy_hash",
+              "schema": "marketplace.arbiter_policy.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:arbiter_policy_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.arbiter_policy.stub.v0.1"
+          },
+          "bond_scope": {
+            "hash": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+            "packet_id": "bond_scope",
+            "payload": {
+              "arbiter_policy_hash": "sha256:890ddfbd4658ad3c7e551f49d924a86f4cafaa134a019882d8cb3290cc4b3d43",
+              "bond_amount": "fixture:moderate",
+              "claim_window": "fixture:inspection_window",
+              "covered_failures": [
+                "failure_to_cure",
+                "material_condition_mismatch",
+                "nonship",
+                "route_negligence",
+                "underinsurance_without_buyer_acceptance",
+                "wrong_item"
+              ],
+              "excluded_failures": [],
+              "missing_default_failures": [],
+              "packet_id": "bond_scope",
+              "penalty_caps": {
+                "default_bps": 2500
+              },
+              "release_conditions": [
+                "clean_settlement",
+                "arbiter_ruling"
+              ],
+              "schema": "marketplace.bond_scope.v0.1",
+              "signature": "fixture:seller_signature",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.bond_scope.v0.1"
+          },
+          "card_reference": {
+            "hash": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+            "packet_id": "card_reference",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "packet_id": "card_reference",
+              "reference": {
+                "card_number": "1",
+                "match_kind": "language_equivalent",
+                "not_claiming": [
+                  "authenticity",
+                  "condition",
+                  "possession",
+                  "price_truth",
+                  "seller_card_language",
+                  "seller_inventory_existence"
+                ],
+                "printed_name": "Espeon",
+                "selected_by": "buyer_agent",
+                "set_name": "Neo Discovery",
+                "source": "pokemontcg.io",
+                "source_card_id": "neo2-1",
+                "source_coverage": "english_catalog_anchor_for_japanese_claim",
+                "source_language": "en",
+                "source_url": "https://api.pokemontcg.io/v2/cards/neo2-1"
+              },
+              "required_not_claiming": [
+                "authenticity",
+                "condition",
+                "possession",
+                "price_truth",
+                "seller_card_language",
+                "seller_inventory_existence"
+              ],
+              "schema": "marketplace.pokemon_card_reference.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_card_reference.v0.1"
+          },
+          "evidence_profile_id": {
+            "hash": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+            "packet_id": "evidence_profile_id",
+            "payload": {
+              "packet_id": "evidence_profile_id",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "schema": "marketplace.evidence_profile_ref.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.evidence_profile_ref.v0.1"
+          },
+          "external_availability_covenant": {
+            "hash": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+            "packet_id": "external_availability_covenant",
+            "payload": {
+              "bond_scope_ref": "sha256:ef1c0fe12f021ef49ebc4bbc1a3abb2d08b13ea440c37844696467a1a41e28ee",
+              "covered_failure": "nonship_or_double_sale",
+              "expires_at": "fixture:route_lock_or_cancel",
+              "external_channels_covered": [
+                "shop",
+                "marketplace",
+                "direct"
+              ],
+              "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+              "packet_id": "external_availability_covenant",
+              "promise_scope": "no_external_sale_during_lock",
+              "schema": "marketplace.external_availability_covenant.v0.1",
+              "seller": "fixture:seller",
+              "signature": "fixture:seller_signature",
+              "starts_at": "fixture:lock_start",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.external_availability_covenant.v0.1"
+          },
+          "inventory_lock_hash": {
+            "hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+            "packet_id": "inventory_lock_hash",
+            "payload": {
+              "packet_id": "inventory_lock_hash",
+              "schema": "marketplace.inventory_lock.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:inventory_lock_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.inventory_lock.stub.v0.1"
+          },
+          "item_fingerprint_hash": {
+            "hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+            "packet_id": "item_fingerprint_hash",
+            "payload": {
+              "packet_id": "item_fingerprint_hash",
+              "schema": "marketplace.item_fingerprint.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:item_fingerprint_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.item_fingerprint.stub.v0.1"
+          },
+          "pokemon_acceptance_profile": {
+            "hash": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+            "packet_id": "pokemon_acceptance_profile",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "hard_packets_present": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "item_form": "raw_card",
+              "packet_id": "pokemon_acceptance_profile",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "required_hard_packets": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "schema": "marketplace.pokemon_acceptance_profile.v0.1",
+              "seller_evidence_missing": [],
+              "seller_evidence_present": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "seller_evidence_required": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "trade_template": "pokemon_single_card_alpha",
+              "value_usd": 750,
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_acceptance_profile.v0.1"
+          },
+          "proof_vector_scope": {
+            "hash": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+            "packet_id": "proof_vector_scope",
+            "payload": {
+              "freshness": "fixture",
+              "missing_not_claiming": [],
+              "not_claiming": [
+                "authenticity",
+                "current_possession",
+                "raw_card_condition",
+                "shipment_completion"
+              ],
+              "packet_id": "proof_vector_scope",
+              "positive_claims": [
+                "seller_controls_ebay_account",
+                "seller_controls_shop_domain"
+              ],
+              "proof_source": "shop_domain_and_marketplace_account",
+              "proof_vector_id": "fixture:seller_shop_and_marketplace",
+              "revocation_or_expiry": "fixture",
+              "schema": "marketplace.proof_vector_scope.v0.1",
+              "signature_or_reference": "fixture:seller_signature",
+              "subject_binding": "seller_identity",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.proof_vector_scope.v0.1"
+          },
+          "route_insurance_risk_owner": {
+            "hash": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+            "packet_id": "route_insurance_risk_owner",
+            "payload": {
+              "accepted_by_buyer": true,
+              "accepted_by_seller": true,
+              "carrier_or_handoff_method": "carrier",
+              "declared_value": 750,
+              "insurance_amount": 750,
+              "packet_id": "route_insurance_risk_owner",
+              "risk_owner_for_gap": "",
+              "route_type": "insured_ship",
+              "schema": "marketplace.route_insurance_risk_owner.v0.1",
+              "ship_by": "2026-05-22T18:00:00Z",
+              "signature_required": true,
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.route_insurance_risk_owner.v0.1"
+          },
+          "route_spendability": {
+            "hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+            "packet_id": "route_spendability",
+            "payload": {
+              "decision_authority": "buyer_agent_or_protocol",
+              "gate": {
+                "consumption": "single_use",
+                "gate_id": "qwen_full_wall_compliant_offer:route_commitment",
+                "gate_type": "route_commitment",
+                "leg": "forward"
+              },
+              "not_claiming": [
+                "physical_truth",
+                "authenticity",
+                "condition_truth"
+              ],
+              "packet_id": "route_spendability",
+              "schema": "marketplace.evidence_spendability.v0.1",
+              "spendable_claims": [
+                "route_readiness",
+                "wall_bundle_satisfied"
+              ],
+              "status": "active",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+            },
+            "schema": "marketplace.evidence_spendability.v0.1"
+          }
+        },
+        "placement_integrity": {
+          "complete": true,
+          "missing_packet_refs": [],
+          "required_packet_refs": [
+            "arbiter_policy_hash",
+            "bond_scope",
+            "card_reference",
+            "evidence_profile_id",
+            "external_availability_covenant",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope",
+            "route_insurance_risk_owner",
+            "route_spendability"
+          ]
+        },
+        "route_spendability_hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+        "route_wall_bundle_evm_hash": "0x150a1df40a45dcda660e3dbae3e0b069a456c2abdf91b0dbba04aefabc15e189",
+        "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+      },
+      "packets_required": [],
+      "packets_to_generate": [
+        "AcceptanceReceipt",
+        "EscrowTerms"
+      ],
+      "spendability": {
+        "gate": "offer_acceptance",
+        "missing": [],
+        "present": [
+          "arbiter_policy_hash",
+          "bond_scope_packet",
+          "card_reference_packet",
+          "evidence_profile_id",
+          "inventory_lock_hash",
+          "item_fingerprint_hash",
+          "proof_vector_scope_packet",
+          "route_insurance_risk_owner_packet"
+        ],
+        "required": [
+          "arbiter_policy_hash",
+          "bond_scope_packet",
+          "card_reference_packet",
+          "evidence_profile_id",
+          "inventory_lock_hash",
+          "item_fingerprint_hash",
+          "proof_vector_scope_packet",
+          "route_insurance_risk_owner_packet"
+        ]
+      },
+      "trade_id": "qwen_full_wall_compliant_offer",
+      "walls": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    "route": {
+      "action": "sellerCommitRoute",
+      "currency_integrity": {
+        "blocked_missing": [],
+        "missing_not_claiming": [],
+        "ordinary_acceptance_allowed": true,
+        "trajectory_overclaims": [],
+        "waived_ambiguity": [],
+        "waiver_required": []
+      },
+      "decision": "route_locked",
+      "enforced_facts": [
+        "POKEMON_ALPHA_SCOPE:pass"
+      ],
+      "human_question_if_any": "",
+      "judgment_needed": [
+        "BuyerRiskAcceptance:pass",
+        "ClaimClosureEvidenceMatrix:pass"
+      ],
+      "legible_evidence": [
+        "CardReferenceCandidate:pass",
+        "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:pass",
+        "BondScope:pass",
+        "ProofVectorScope:pass",
+        "RouteInsuranceRiskOwner:pass",
+        "ExternalAvailabilityCovenant:pass"
+      ],
+      "memory": {
+        "assembly_placement": [
+          {
+            "currency": "assembly_placement",
+            "placement": "arbiter_policy_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "bond_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "card_reference_packet",
+            "spendable_as": "catalog_candidate_only"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "evidence_profile_id",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "inventory_lock_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "item_fingerprint_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "proof_vector_scope_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_insurance_risk_owner_packet",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "route_spendability_hash",
+            "spendable_as": "gate_prerequisite"
+          },
+          {
+            "currency": "assembly_placement",
+            "placement": "external_availability_covenant",
+            "spendable_as": "external_availability_promise"
+          }
+        ],
+        "trajectory_capacity": [
+          {
+            "claim": "seller_controls_ebay_account",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          },
+          {
+            "claim": "seller_controls_shop_domain",
+            "currency": "trajectory_capacity",
+            "spendable_as": "trust_weight_only"
+          }
+        ]
+      },
+      "packet_commitments": {
+        "packet_refs": {
+          "arbiter_policy_hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+          "bond_scope": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+          "card_reference": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+          "evidence_profile_id": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+          "external_availability_covenant": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+          "inventory_lock_hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+          "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+          "pokemon_acceptance_profile": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+          "proof_vector_scope": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+          "route_insurance_risk_owner": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+          "route_spendability": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79"
+        },
+        "packets": {
+          "arbiter_policy_hash": {
+            "hash": "sha256:1668fa90bc11b4ac3523bbe794576c0783093fdb95233b7c2a81a62220a0de24",
+            "packet_id": "arbiter_policy_hash",
+            "payload": {
+              "packet_id": "arbiter_policy_hash",
+              "schema": "marketplace.arbiter_policy.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:arbiter_policy_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.arbiter_policy.stub.v0.1"
+          },
+          "bond_scope": {
+            "hash": "sha256:126af98674f3456774357e7858ccc829cdadd01e3db00addb2c4927c4346dbe2",
+            "packet_id": "bond_scope",
+            "payload": {
+              "arbiter_policy_hash": "sha256:890ddfbd4658ad3c7e551f49d924a86f4cafaa134a019882d8cb3290cc4b3d43",
+              "bond_amount": "fixture:moderate",
+              "claim_window": "fixture:inspection_window",
+              "covered_failures": [
+                "failure_to_cure",
+                "material_condition_mismatch",
+                "nonship",
+                "route_negligence",
+                "underinsurance_without_buyer_acceptance",
+                "wrong_item"
+              ],
+              "excluded_failures": [],
+              "missing_default_failures": [],
+              "packet_id": "bond_scope",
+              "penalty_caps": {
+                "default_bps": 2500
+              },
+              "release_conditions": [
+                "clean_settlement",
+                "arbiter_ruling"
+              ],
+              "schema": "marketplace.bond_scope.v0.1",
+              "signature": "fixture:seller_signature",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.bond_scope.v0.1"
+          },
+          "card_reference": {
+            "hash": "sha256:cfd5904e6f3b352d46323ccf4cfd1cad858a6b2c1bfaa1b9ae4abc5bcc6a34fb",
+            "packet_id": "card_reference",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "packet_id": "card_reference",
+              "reference": {
+                "card_number": "1",
+                "match_kind": "language_equivalent",
+                "not_claiming": [
+                  "authenticity",
+                  "condition",
+                  "possession",
+                  "price_truth",
+                  "seller_card_language",
+                  "seller_inventory_existence"
+                ],
+                "printed_name": "Espeon",
+                "selected_by": "buyer_agent",
+                "set_name": "Neo Discovery",
+                "source": "pokemontcg.io",
+                "source_card_id": "neo2-1",
+                "source_coverage": "english_catalog_anchor_for_japanese_claim",
+                "source_language": "en",
+                "source_url": "https://api.pokemontcg.io/v2/cards/neo2-1"
+              },
+              "required_not_claiming": [
+                "authenticity",
+                "condition",
+                "possession",
+                "price_truth",
+                "seller_card_language",
+                "seller_inventory_existence"
+              ],
+              "schema": "marketplace.pokemon_card_reference.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_card_reference.v0.1"
+          },
+          "evidence_profile_id": {
+            "hash": "sha256:ab2bdc56d7412b917c1d3778410ac79cd550c2371dfe710d5775ad67aa0dc10a",
+            "packet_id": "evidence_profile_id",
+            "payload": {
+              "packet_id": "evidence_profile_id",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "schema": "marketplace.evidence_profile_ref.v0.1",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.evidence_profile_ref.v0.1"
+          },
+          "external_availability_covenant": {
+            "hash": "sha256:b15e217fe2a290f5dc0c60ca1723301ae4f122c6b8901d4a98c653d34aa1c572",
+            "packet_id": "external_availability_covenant",
+            "payload": {
+              "bond_scope_ref": "sha256:ef1c0fe12f021ef49ebc4bbc1a3abb2d08b13ea440c37844696467a1a41e28ee",
+              "covered_failure": "nonship_or_double_sale",
+              "expires_at": "fixture:route_lock_or_cancel",
+              "external_channels_covered": [
+                "shop",
+                "marketplace",
+                "direct"
+              ],
+              "item_fingerprint_hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+              "packet_id": "external_availability_covenant",
+              "promise_scope": "no_external_sale_during_lock",
+              "schema": "marketplace.external_availability_covenant.v0.1",
+              "seller": "fixture:seller",
+              "signature": "fixture:seller_signature",
+              "starts_at": "fixture:lock_start",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.external_availability_covenant.v0.1"
+          },
+          "inventory_lock_hash": {
+            "hash": "sha256:c27814e954f45e0d97d95d492b29f828d39c9a39ecf8f4573708e1f9707fda5d",
+            "packet_id": "inventory_lock_hash",
+            "payload": {
+              "packet_id": "inventory_lock_hash",
+              "schema": "marketplace.inventory_lock.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:inventory_lock_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.inventory_lock.stub.v0.1"
+          },
+          "item_fingerprint_hash": {
+            "hash": "sha256:a1353d4e1647cb6e525c0c562b703d3786b69ffe2f57f91a24184ca8cd759ccf",
+            "packet_id": "item_fingerprint_hash",
+            "payload": {
+              "packet_id": "item_fingerprint_hash",
+              "schema": "marketplace.item_fingerprint.stub.v0.1",
+              "status": "fixture_present",
+              "subject": "qwen_full_wall_compliant_offer:item_fingerprint_hash",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.item_fingerprint.stub.v0.1"
+          },
+          "pokemon_acceptance_profile": {
+            "hash": "sha256:26a593db618d284772cc1f7412b17fc4e01debdb6e18bc76a982897c4374a254",
+            "packet_id": "pokemon_acceptance_profile",
+            "payload": {
+              "domain": "tcg",
+              "game": "pokemon",
+              "hard_packets_present": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "item_form": "raw_card",
+              "packet_id": "pokemon_acceptance_profile",
+              "profile_id": "pokemon.raw.500_2000.v0.1",
+              "required_hard_packets": [
+                "arbiter_policy_hash",
+                "bond_scope_packet",
+                "card_reference_packet",
+                "evidence_profile_id",
+                "inventory_lock_hash",
+                "item_fingerprint_hash",
+                "proof_vector_scope_packet",
+                "route_insurance_risk_owner_packet"
+              ],
+              "schema": "marketplace.pokemon_acceptance_profile.v0.1",
+              "seller_evidence_missing": [],
+              "seller_evidence_present": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "seller_evidence_required": [
+                "back_full",
+                "edge_or_border_closeups",
+                "flaw_callouts",
+                "four_corner_closeups",
+                "fresh_nonce_possession",
+                "front_full",
+                "seller_condition_statement",
+                "surface_or_holo_angle"
+              ],
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "trade_template": "pokemon_single_card_alpha",
+              "value_usd": 750,
+              "wall_missing": [],
+              "wall_outcome": "pass"
+            },
+            "schema": "marketplace.pokemon_acceptance_profile.v0.1"
+          },
+          "proof_vector_scope": {
+            "hash": "sha256:017facc60e15ccb1a422a39d9d3fe71d74034f9fc4569c1098ffface2186426e",
+            "packet_id": "proof_vector_scope",
+            "payload": {
+              "freshness": "fixture",
+              "missing_not_claiming": [],
+              "not_claiming": [
+                "authenticity",
+                "current_possession",
+                "raw_card_condition",
+                "shipment_completion"
+              ],
+              "packet_id": "proof_vector_scope",
+              "positive_claims": [
+                "seller_controls_ebay_account",
+                "seller_controls_shop_domain"
+              ],
+              "proof_source": "shop_domain_and_marketplace_account",
+              "proof_vector_id": "fixture:seller_shop_and_marketplace",
+              "revocation_or_expiry": "fixture",
+              "schema": "marketplace.proof_vector_scope.v0.1",
+              "signature_or_reference": "fixture:seller_signature",
+              "subject_binding": "seller_identity",
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.proof_vector_scope.v0.1"
+          },
+          "route_insurance_risk_owner": {
+            "hash": "sha256:d7f2c5a1c78b03ef440df81c5f0898c70abfc0990cfd050993ed37327dacdf5d",
+            "packet_id": "route_insurance_risk_owner",
+            "payload": {
+              "accepted_by_buyer": true,
+              "accepted_by_seller": true,
+              "carrier_or_handoff_method": "carrier",
+              "declared_value": 750,
+              "insurance_amount": 750,
+              "packet_id": "route_insurance_risk_owner",
+              "risk_owner_for_gap": "",
+              "route_type": "insured_ship",
+              "schema": "marketplace.route_insurance_risk_owner.v0.1",
+              "ship_by": "2026-05-22T18:00:00Z",
+              "signature_required": true,
+              "trade_id": "qwen_full_wall_compliant_offer"
+            },
+            "schema": "marketplace.route_insurance_risk_owner.v0.1"
+          },
+          "route_spendability": {
+            "hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+            "packet_id": "route_spendability",
+            "payload": {
+              "decision_authority": "buyer_agent_or_protocol",
+              "gate": {
+                "consumption": "single_use",
+                "gate_id": "qwen_full_wall_compliant_offer:route_commitment",
+                "gate_type": "route_commitment",
+                "leg": "forward"
+              },
+              "not_claiming": [
+                "physical_truth",
+                "authenticity",
+                "condition_truth"
+              ],
+              "packet_id": "route_spendability",
+              "schema": "marketplace.evidence_spendability.v0.1",
+              "spendable_claims": [
+                "route_readiness",
+                "wall_bundle_satisfied"
+              ],
+              "status": "active",
+              "trade_id": "qwen_full_wall_compliant_offer",
+              "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+            },
+            "schema": "marketplace.evidence_spendability.v0.1"
+          }
+        },
+        "placement_integrity": {
+          "complete": true,
+          "missing_packet_refs": [],
+          "required_packet_refs": [
+            "arbiter_policy_hash",
+            "bond_scope",
+            "card_reference",
+            "evidence_profile_id",
+            "external_availability_covenant",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope",
+            "route_insurance_risk_owner",
+            "route_spendability"
+          ]
+        },
+        "route_spendability_hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+        "route_wall_bundle_evm_hash": "0x150a1df40a45dcda660e3dbae3e0b069a456c2abdf91b0dbba04aefabc15e189",
+        "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+      },
+      "packets_required": [],
+      "packets_to_generate": [],
+      "spendability": {
+        "gate": "route_commitment",
+        "missing": [],
+        "present": [
+          "inventory_lock_hash",
+          "item_fingerprint_hash",
+          "route_insurance_risk_owner_packet",
+          "route_spendability_hash",
+          "route_wall_bundle_evm_hash"
+        ],
+        "required": [
+          "inventory_lock_hash",
+          "item_fingerprint_hash",
+          "route_insurance_risk_owner_packet",
+          "route_spendability_hash",
+          "route_wall_bundle_evm_hash"
+        ]
+      },
+      "trade_id": "qwen_full_wall_compliant_offer",
+      "walls": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    }
+  },
+  "evm": {
+    "acceptance": {
+      "action": "buyer-accept",
+      "anvil_pid": 17523,
+      "chain_id": 31337,
+      "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "final_state": "Settled",
+      "generated_at": "2026-06-08T15:41:55.716782+00:00",
+      "interpretation": "Buyer acceptance closed the inspection window, released escrow plus seller bond, and created a reusable final receipt.",
+      "packets": [
+        {
+          "packet_id": "alpha_espeon_final_receipt",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_final_receipt.json",
+          "payload_hash": "0x6761bc8860871f0657f7d313f88230240f6b60f5763e312d497da889a21258cf",
+          "schema": "marketplace.final_receipt.v0.2",
+          "signature": "0x7e192bc5f6911a6aaf76621541e2e5732762f9235212f7213ff7a3f2f128309c3fe36b2fbd7ea6637ade97a447f36adef3cb1b2e08e8801f6ae2a0457d0f0dbc1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "report": "runs/alpha_route_commit_20260608T154153Z/STEP_buyer-accept_20260608T154155Z.md",
+      "rpc_url": "http://127.0.0.1:58675",
+      "run_id": "alpha_route_commit_20260608T154153Z",
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "alpha Espeon buyer accepts",
+          "tx_hash": "0x04efd503f5b6d855a230e2c67549c10ce36ac23035329cafa591a2fdc7074901"
+        }
+      ]
+    },
+    "delivery": {
+      "action": "mark-delivered",
+      "anvil_pid": 17523,
+      "chain_id": 31337,
+      "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "final_state": "InspectionOpen",
+      "generated_at": "2026-06-08T15:41:55.593023+00:00",
+      "interpretation": "Seller-signed delivery evidence plus delivery spendability opened the inspection window. This proves the delivery gate advanced; it does not prove card condition or buyer satisfaction.",
+      "packets": [
+        {
+          "packet_id": "alpha_espeon_delivery",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_delivery.json",
+          "payload_hash": "0xd832df4cebd935eb7868ead185547b6ec2550537d4bb353c06ecadc0dd37ef22",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0xb68c4fc220e9606faa7589b4dd3437e3122d08eeffced2d7b207061d13eed2c96c7d8ed079e370fbfb9a3d197a608a20fcc84b3c8eddec9e875661557772e3c91c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "alpha_espeon_delivery_spendability",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_delivery_spendability.json",
+          "payload_hash": "0xfefc9c5c1e0ebe12f76dc2fe95a837c135ce96271292ff82db5d49a4c9a9e4b1",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0xe5a390757e89b8e3855899f7fb806ae1dee20d1c6c691ff7cbbfd007a389a9db7aa1d1d17187df635b9e307908ebec1b51f5d6152306e15e024c42db38cf0c4f1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "report": "runs/alpha_route_commit_20260608T154153Z/STEP_mark-delivered_20260608T154155Z.md",
+      "rpc_url": "http://127.0.0.1:58675",
+      "run_id": "alpha_route_commit_20260608T154153Z",
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "alpha Espeon mark delivered",
+          "tx_hash": "0xd03566bb81e683662bc4448bbda59b2816ed1d6a4ad0fcd92c0bddb0a398f6b3"
+        }
+      ]
+    },
+    "route_commit": {
+      "anvil_pid": 17523,
+      "chain_id": 31337,
+      "ephemeral_anvil": false,
+      "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "final_state": "RouteLocked",
+      "generated_at": "2026-06-08T15:41:55.374310+00:00",
+      "packets": [
+        {
+          "packet_id": "alpha_espeon_intent",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_intent.json",
+          "payload_hash": "0xfe278941244d8157da4aa8d3a983fbe9a001a3b2fa6936d43ecea8c5bfcd7a36",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x9b8f6a11faddb05f5aca5f3ea83622b55123152bf0c913c011ca0e7a61ac5d9d20bbd08b45f62f30fb2ecf70c0f8fe53c1ab712dfe0b2b74ae44d5497b5e1bf51c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "alpha_espeon_terms",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_terms.json",
+          "payload_hash": "0xdd0d62850efedeb6426053ca7f95e5447cb4be8673972f96746af303ae204e4a",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x278fecbcc7d6318817531824a922d6d704c5a562f6f6936a412aa2bbf2ad6a4727b6706a099b1c4ff47cd03835a5f5f422e7518feb64974623bfa8e484a7f7bc1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "alpha_espeon_item_fingerprint",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_item_fingerprint.json",
+          "payload_hash": "0x2e9f6051173ab2d7303edef8916552ecd7a4a415002992c0234224132a8d7ebc",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x94088e0ed7478b9c134d990e5e3688897700ba9c04a8102d18ec3d594f313da23e8a2ec7a937af836055c17f261812aea50c9686675ed53f41a9e304932a75fe1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "alpha_espeon_inventory_lock",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_inventory_lock.json",
+          "payload_hash": "0xaa57c245c1166dc9c740ff83e97ce9543d5991e559a608653cbc48ea24c274f3",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x030312f22d6b3dd67797cdcc355ed4a12a1ec21da8f4fca82b1ad7e31df372dd71100e047eaff50a8f7196958f41733be9ab14c466570e3d75cbd2ba47a8a1ba1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "alpha_espeon_route",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/alpha_espeon_route.json",
+          "payload_hash": "0x481b455ef9f433c69f9afe637b95484696939b1f51333bb4eefbbd8def5ec687",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0x5938a7e6ed68a22a5c8cb32eb1552092326c59e49687a327cdf9480d1f6ac85034153545f4459cdb06b8212ab67820f15c557a7a5e7fec11bbbd5475ddeb7e9d1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "predicate_verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "registry_packets": [
+        {
+          "packet_id": "actor_buyer",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/actor_buyer.json",
+          "payload_hash": "0xca07896a6190e860dd51af4241ed9a02835b1930c4dd01a13c7b6d9a44a3675a",
+          "schema": "marketplace.actor_record.v0.2",
+          "signature": "0xbdfc6379313952f548a4c44244665ba8124717b7a71846296bb9c5df1d4ab13c3de8067046dbfa9e4171ab22e94466d8b7b50ee18cea4c55f929b48b263c9a341b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "actor_seller",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/actor_seller.json",
+          "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5",
+          "schema": "marketplace.actor_record.v0.2",
+          "signature": "0x3810bf4b6755080ebe153b035cf1ad511c1a26d1cd153d453958d4ee6f4a2a2b04e293c7d3254ef8b6d2981bb505350fefe6dc394802e9b993e046b5df7aeac61c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "actor_arbiter",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/actor_arbiter.json",
+          "payload_hash": "0x0025cd199f11db191de2e1f83919b36022cca03b844c6169e8941f9f976f4442",
+          "schema": "marketplace.actor_record.v0.2",
+          "signature": "0x73be7bf06f3ed7219d00bf6afc7707ad1d03a5f9208764368366b5182f3b73a0253a72ab48f198d549f439caa55af5e36a0f952b8644d18e8f9a1fa1968fe2711c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        },
+        {
+          "packet_id": "actor_verifier",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/actor_verifier.json",
+          "payload_hash": "0xf1dabec00581b587e9298a603d99dee6bd6a37afb765202df9818deccfd636d6",
+          "schema": "marketplace.actor_record.v0.2",
+          "signature": "0x70a0bb2eca8605d6ef44ef0eb3336487643cae2551e22315454156b6a6786e5103fad4807a1a51791f49a8c00b60c0b66b52846c8a0d9ce2771bc147c3e7e14b1c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "actor_replacement_arbiter",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/actor_replacement_arbiter.json",
+          "payload_hash": "0xac96bd505a7604e9de45910564e0bcb27b5410a0bdb3d3b1fc382c2dbb56e76a",
+          "schema": "marketplace.actor_record.v0.2",
+          "signature": "0x0334478da45ce78440f0e953439a94a536ae7855bebd93f5169f2214965f514248944602767c46d82bdf1787c0f5da1e445b5ae8c91825536a413807d0be38841b",
+          "signature_valid": true,
+          "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+        },
+        {
+          "packet_id": "arbiter_authority",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/arbiter_authority.json",
+          "payload_hash": "0xa9248044dfd441d24063324f762a928fef56422ae6281ad465b34b9e5ab1724f",
+          "schema": "marketplace.arbiter_record.v0.2",
+          "signature": "0xce2f405ddc5571c7c4256e735fa56682bee161b2c0a15c456f6c4e1ac21e9cf538bcd0a322a74a50c12ca4780f9383f96944d17bc757789f91d66399bead71461b",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        },
+        {
+          "packet_id": "replacement_arbiter_authority",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/replacement_arbiter_authority.json",
+          "payload_hash": "0xb258ca210e4b4df25b5fc896b5478bad46e53dd183672bb9a68e63e389cb770d",
+          "schema": "marketplace.arbiter_record.v0.2",
+          "signature": "0xf6aeebeb462124839ce7a8c8703efdda286f25e01b7b44ac6158d9be4c37478f3b9aeb1394378cc2af91b37912755d74cfa1372c2fa76b0d6b20f3785342d66b1c",
+          "signature_valid": true,
+          "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+        },
+        {
+          "packet_id": "verifier_authority",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/verifier_authority.json",
+          "payload_hash": "0x9b58f9b34334a5099078df708ba4fd129f1007994ddee0b361570a0c711f6f22",
+          "schema": "marketplace.verifier_record.v0.2",
+          "signature": "0x623970b2534ed3738239a8b31d77e744427e9aaaf30c7b5a0240f208cedba0fd36e041ab7f84a8f46f365ab1fc0b9d65b02b9d6caf3432f355d1717fdef53d631c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "predicate_verifier_contract",
+          "path": "runs/alpha_route_commit_20260608T154153Z/packets/predicate_verifier_contract.json",
+          "payload_hash": "0x69169765958680ef8bad537c754fccbe799dd3d990bdad5b14a71e790cc1983f",
+          "schema": "marketplace.predicate_verifier_record.v0.2",
+          "signature": "0xf6355e8a3b228416c10154a50a87dc0d898a2495a57fb66bf2baa77ef7a282a968f2388c533a080d364d934d2be12403dcb9618e152530cf8a6d8da6bbaa516b1b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        }
+      ],
+      "registry_transactions": [
+        {
+          "label": "register buyer actor",
+          "tx_hash": "0x08b0dd88a27562346bb8f880dba70bac6e0b4b132f494ecbd9c121eec25bffb9"
+        },
+        {
+          "label": "register seller actor",
+          "tx_hash": "0x22b94a5b434a4023c922dae414c99252ae70245cc5cf41230ebda7966824d4f0"
+        },
+        {
+          "label": "register arbiter actor",
+          "tx_hash": "0x1ed45288b477bb1df3ab8188b032bc6e9f3e2e552292f4ef217d1826f47e9647"
+        },
+        {
+          "label": "register verifier actor",
+          "tx_hash": "0x082455b792d80adeb9047aa4367d8e8c2f23017b808bd29ace9610ca5610273c"
+        },
+        {
+          "label": "register replacement_arbiter actor",
+          "tx_hash": "0xb95f179126ae5a5994e7be77dc58982176f87e56bfe5d85708c57ab948b5829c"
+        },
+        {
+          "label": "register arbiter authority",
+          "tx_hash": "0x32a2da1de152721a4075fe47632cc20d611c20e93e7b2bca8b873f34c1acea55"
+        },
+        {
+          "label": "register replacement arbiter authority",
+          "tx_hash": "0x562b6df9c717ee240df663e6e707a15d576e376e0f226ce5a24f03ead5321741"
+        },
+        {
+          "label": "register verifier authority",
+          "tx_hash": "0x10c5fa43355c23c12e62d1bb4758cb5e7bff338c1c010ac15cd22c9b3e0b1e9c"
+        },
+        {
+          "label": "register predicate verifier contract",
+          "tx_hash": "0x7984694071c9152dd361b122803c02262f586a50b7fac7fd42c87ef5116136d5"
+        }
+      ],
+      "report": "runs/alpha_route_commit_20260608T154153Z/REPORT.md",
+      "route_spendability_evm_hash": "0xd3644373e4bb0d2e40ec4e1fbc94604882bf914ffbdd7a6995869c5a881c58b9",
+      "route_spendability_hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+      "route_tx_hash": "0x40598114831e18ed8b4e5a88cff2e88f675e717d527b739a2bb3b5a152b0aeb7",
+      "route_wall_bundle_evm_hash": "0xfbcde8b7ae0b6719e60d4afd1a9cbbdb1b2013cc21579dbf520c17ed6173dc72",
+      "rpc_url": "http://127.0.0.1:58675",
+      "run_id": "alpha_route_commit_20260608T154153Z",
+      "summary": "runs/alpha_route_commit_20260608T154153Z/summary.json",
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "create alpha Espeon trade",
+          "tx_hash": "0xe0295d6cb782a82a354186327a7916c6e3e9cb24d5eecc10ef8da3d3f99d423e"
+        },
+        {
+          "label": "seller posts alpha Espeon bond",
+          "tx_hash": "0xab1f21085552f17e95cd5476641ebe51425b7c561c6df60137d183971420401c"
+        },
+        {
+          "label": "commit alpha Espeon item fingerprint",
+          "tx_hash": "0x922cfdc0870bf6bad1dbcf3233f2f835bdd8377dfeb1e96da8d594456779096a"
+        },
+        {
+          "label": "commit alpha Espeon inventory lock",
+          "tx_hash": "0xb7f8a9745bcfb3746af4c8500bf04fab2a89725a9c0f8efb8f4d1fc336330a87"
+        },
+        {
+          "label": "commit alpha Espeon route with wall bundle spendability",
+          "tx_hash": "0x40598114831e18ed8b4e5a88cff2e88f675e717d527b739a2bb3b5a152b0aeb7"
+        }
+      ],
+      "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+    },
+    "route_stdout_tail": "path\": \"runs/alpha_route_commit_20260608T154153Z/packets/predicate_verifier_contract.json\", \"payload_hash\": \"0x69169765958680ef8bad537c754fccbe799dd3d990bdad5b14a71e790cc1983f\", \"schema\": \"marketplace.predicate_verifier_record.v0.2\", \"signature\": \"0xf6355e8a3b228416c10154a50a87dc0d898a2495a57fb66bf2baa77ef7a282a968f2388c533a080d364d934d2be12403dcb9618e152530cf8a6d8da6bbaa516b1b\", \"signature_valid\": true, \"signer\": \"0x90F79bf6EB2c4f870365E785982E1f101E93b906\"}], \"registry_transactions\": [{\"label\": \"register buyer actor\", \"tx_hash\": \"0x08b0dd88a27562346bb8f880dba70bac6e0b4b132f494ecbd9c121eec25bffb9\"}, {\"label\": \"register seller actor\", \"tx_hash\": \"0x22b94a5b434a4023c922dae414c99252ae70245cc5cf41230ebda7966824d4f0\"}, {\"label\": \"register arbiter actor\", \"tx_hash\": \"0x1ed45288b477bb1df3ab8188b032bc6e9f3e2e552292f4ef217d1826f47e9647\"}, {\"label\": \"register verifier actor\", \"tx_hash\": \"0x082455b792d80adeb9047aa4367d8e8c2f23017b808bd29ace9610ca5610273c\"}, {\"label\": \"register replacement_arbiter actor\", \"tx_hash\": \"0xb95f179126ae5a5994e7be77dc58982176f87e56bfe5d85708c57ab948b5829c\"}, {\"label\": \"register arbiter authority\", \"tx_hash\": \"0x32a2da1de152721a4075fe47632cc20d611c20e93e7b2bca8b873f34c1acea55\"}, {\"label\": \"register replacement arbiter authority\", \"tx_hash\": \"0x562b6df9c717ee240df663e6e707a15d576e376e0f226ce5a24f03ead5321741\"}, {\"label\": \"register verifier authority\", \"tx_hash\": \"0x10c5fa43355c23c12e62d1bb4758cb5e7bff338c1c010ac15cd22c9b3e0b1e9c\"}, {\"label\": \"register predicate verifier contract\", \"tx_hash\": \"0x7984694071c9152dd361b122803c02262f586a50b7fac7fd42c87ef5116136d5\"}], \"report\": \"runs/alpha_route_commit_20260608T154153Z/REPORT.md\", \"route_spendability_evm_hash\": \"0xd3644373e4bb0d2e40ec4e1fbc94604882bf914ffbdd7a6995869c5a881c58b9\", \"route_spendability_hash\": \"sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79\", \"route_tx_hash\": \"0x40598114831e18ed8b4e5a88cff2e88f675e717d527b739a2bb3b5a152b0aeb7\", \"route_wall_bundle_evm_hash\": \"0xfbcde8b7ae0b6719e60d4afd1a9cbbdb1b2013cc21579dbf520c17ed6173dc72\", \"rpc_url\": \"http://127.0.0.1:58675\", \"run_id\": \"alpha_route_commit_20260608T154153Z\", \"summary\": \"runs/alpha_route_commit_20260608T154153Z/summary.json\", \"trade_id\": 1, \"transactions\": [{\"label\": \"create alpha Espeon trade\", \"tx_hash\": \"0xe0295d6cb782a82a354186327a7916c6e3e9cb24d5eecc10ef8da3d3f99d423e\"}, {\"label\": \"seller posts alpha Espeon bond\", \"tx_hash\": \"0xab1f21085552f17e95cd5476641ebe51425b7c561c6df60137d183971420401c\"}, {\"label\": \"commit alpha Espeon item fingerprint\", \"tx_hash\": \"0x922cfdc0870bf6bad1dbcf3233f2f835bdd8377dfeb1e96da8d594456779096a\"}, {\"label\": \"commit alpha Espeon inventory lock\", \"tx_hash\": \"0xb7f8a9745bcfb3746af4c8500bf04fab2a89725a9c0f8efb8f4d1fc336330a87\"}, {\"label\": \"commit alpha Espeon route with wall bundle spendability\", \"tx_hash\": \"0x40598114831e18ed8b4e5a88cff2e88f675e717d527b739a2bb3b5a152b0aeb7\"}], \"wall_bundle_hash\": \"sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d\"}\n"
+  },
+  "generated_at": "2026-06-08T15:42:02.515875+00:00",
+  "model": "/Users/che/models/mlx/Qwen3.6-35B-A3B-4bit",
+  "pass": true,
+  "qwen": {
+    "buyer_agent": {
+      "_raw": "{\n  \"decision\": \"acceptOfferAndFundEscrow\",\n  \"proceed_to_fund\": true,\n  \"human_summary\": \"The offer for the raw Neo Discovery Espeon (card 1) is compliant with all active walls. The bond scope, card reference, and route insurance are valid. The buyer must accept the risk regarding authenticity, condition, and possession as these are explicitly not claimed by the seller. The protocol gate has passed all checks, and the offer is escrow-fundable.\",\n  \"evidence_boundary\": \"The seller provides evidence of possession (fresh nonce), card condition (photos), and account control (eBay/shop). The protocol enforces that this evidence does not prove authenticity, condition truth, or possession truth post-shipment. The buyer accepts the 'raw_card' form with these specific limitations.\",\n  \"not_claiming\": [\n    \"authenticity\",\n    \"condition\",\n    \"possession\",\n    \"price_truth\",\n    \"seller_card_language\",\n    \"seller_inventory_existence\",\n    \"current_possession\",\n    \"shipment_completion\",\n    \"raw_card_condition\"\n  ],\n  \"packets_you_expect_the_protocol_to_enforce\": [\n    \"arbiter_policy_hash\",\n    \"bond_scope_packet\",\n    \"card_reference_packet\",\n    \"evidence_profile_id\",\n    \"inventory_lock_hash\",\n    \"item_fingerprint_hash\",\n    \"proof_vector_scope_packet\",\n    \"route_insurance_risk_owner_packet\",\n    \"route_spendability_hash\",\n    \"external_availability_covenant\"\n  ]\n}",
+      "decision": "acceptOfferAndFundEscrow",
+      "evidence_boundary": "The seller provides evidence of possession (fresh nonce), card condition (photos), and account control (eBay/shop). The protocol enforces that this evidence does not prove authenticity, condition truth, or possession truth post-shipment. The buyer accepts the 'raw_card' form with these specific limitations.",
+      "human_summary": "The offer for the raw Neo Discovery Espeon (card 1) is compliant with all active walls. The bond scope, card reference, and route insurance are valid. The buyer must accept the risk regarding authenticity, condition, and possession as these are explicitly not claimed by the seller. The protocol gate has passed all checks, and the offer is escrow-fundable.",
+      "not_claiming": [
+        "authenticity",
+        "condition",
+        "possession",
+        "price_truth",
+        "seller_card_language",
+        "seller_inventory_existence",
+        "current_possession",
+        "shipment_completion",
+        "raw_card_condition"
+      ],
+      "packets_you_expect_the_protocol_to_enforce": [
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "card_reference_packet",
+        "evidence_profile_id",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "route_spendability_hash",
+        "external_availability_covenant"
+      ],
+      "proceed_to_fund": true
+    },
+    "inspection_agent": {
+      "_raw": "{\n  \"decision\": \"proceed\",\n  \"proceed_to_final_receipt\": true,\n  \"human_summary\": \"The deterministic API confirms the trade state transitioned from 'InspectionOpen' to 'Settled' via a valid buyer acceptance transaction. The delivery evidence was spendable, and the final receipt is cryptographically valid. The buyer's satisfaction is recorded in the protocol state.\",\n  \"receipt_boundary\": \"0x6761bc8860871f0657f7d313f88230240f6b60f5763e312d497da889a21258cf\",\n  \"not_claiming\": [\n    \"The physical condition of the asset matches the description\",\n    \"The asset was physically delivered to the buyer's location\",\n    \"The seller currently possesses the asset\",\n    \"The buyer's subjective happiness is verified by external means\"\n  ],\n  \"reusable_trust_signal\": {\n    \"schema\": \"marketplace.final_receipt.v0.2\",\n    \"payload_hash\": \"0x6761bc8860871f0657f7d313f88230240f6b60f5763e312d497da889a21258cf\",\n    \"signer\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n    \"trade_id\": 1,\n    \"status\": \"Settled\"\n  }\n}",
+      "decision": "proceed",
+      "human_summary": "The deterministic API confirms the trade state transitioned from 'InspectionOpen' to 'Settled' via a valid buyer acceptance transaction. The delivery evidence was spendable, and the final receipt is cryptographically valid. The buyer's satisfaction is recorded in the protocol state.",
+      "not_claiming": [
+        "The physical condition of the asset matches the description",
+        "The asset was physically delivered to the buyer's location",
+        "The seller currently possesses the asset",
+        "The buyer's subjective happiness is verified by external means"
+      ],
+      "proceed_to_final_receipt": true,
+      "receipt_boundary": "0x6761bc8860871f0657f7d313f88230240f6b60f5763e312d497da889a21258cf",
+      "reusable_trust_signal": {
+        "payload_hash": "0x6761bc8860871f0657f7d313f88230240f6b60f5763e312d497da889a21258cf",
+        "schema": "marketplace.final_receipt.v0.2",
+        "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "status": "Settled",
+        "trade_id": 1
+      }
+    },
+    "seller_agent": {
+      "_raw": "{\n  \"decision\": \"proceed\",\n  \"proceed_to_route_lock\": true,\n  \"seller_summary\": \"Seller agent confirms route lock. All required packets (arbiter_policy, bond_scope, card_reference, evidence_profile, external_availability_covenant, inventory_lock, item_fingerprint, proof_vector, route_insurance, route_spendability) are present and validated. Walls POKEMON_ALPHA_SCOPE, CardReferenceCandidate, POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000, BondScope, ProofVectorScope, RouteInsuranceRiskOwner, and ExternalAvailabilityCovenant passed. Judgment walls BuyerRiskAcceptance and ClaimClosureEvidenceMatrix passed. No missing claims or blocked currencies. Inventory is locked, external availability is covenanted, and insurance is accepted.\",\n  \"route_boundary\": {\n    \"trade_id\": \"qwen_full_wall_compliant_offer\",\n    \"ship_by\": \"2026-05-22T18:00:00Z\",\n    \"declared_value\": 750,\n    \"insurance_amount\": 750,\n    \"risk_owner\": \"seller\",\n    \"gate\": \"route_commitment\"\n  },\n  \"not_claiming\": [\n    \"authenticity\",\n    \"condition\",\n    \"possession\",\n    \"price_truth\",\n    \"seller_card_language\",\n    \"seller_inventory_existence\",\n    \"current_possession\",\n    \"raw_card_condition\",\n    \"shipment_completion\",\n    \"physical_truth\",\n    \"condition_truth\"\n  ],\n  \"spendability_hash_seen\": \"sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79\",\n  \"wall_bundle_hash_seen\": \"sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d\"\n}",
+      "decision": "proceed",
+      "not_claiming": [
+        "authenticity",
+        "condition",
+        "possession",
+        "price_truth",
+        "seller_card_language",
+        "seller_inventory_existence",
+        "current_possession",
+        "raw_card_condition",
+        "shipment_completion",
+        "physical_truth",
+        "condition_truth"
+      ],
+      "proceed_to_route_lock": true,
+      "route_boundary": {
+        "declared_value": 750,
+        "gate": "route_commitment",
+        "insurance_amount": 750,
+        "risk_owner": "seller",
+        "ship_by": "2026-05-22T18:00:00Z",
+        "trade_id": "qwen_full_wall_compliant_offer"
+      },
+      "seller_summary": "Seller agent confirms route lock. All required packets (arbiter_policy, bond_scope, card_reference, evidence_profile, external_availability_covenant, inventory_lock, item_fingerprint, proof_vector, route_insurance, route_spendability) are present and validated. Walls POKEMON_ALPHA_SCOPE, CardReferenceCandidate, POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000, BondScope, ProofVectorScope, RouteInsuranceRiskOwner, and ExternalAvailabilityCovenant passed. Judgment walls BuyerRiskAcceptance and ClaimClosureEvidenceMatrix passed. No missing claims or blocked currencies. Inventory is locked, external availability is covenanted, and insurance is accepted.",
+      "spendability_hash_seen": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+      "wall_bundle_hash_seen": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+    }
+  },
+  "route_gate": {
+    "placement_integrity": {
+      "complete": true,
+      "missing_packet_refs": [],
+      "required_packet_refs": [
+        "arbiter_policy_hash",
+        "bond_scope",
+        "card_reference",
+        "evidence_profile_id",
+        "external_availability_covenant",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope",
+        "route_insurance_risk_owner",
+        "route_spendability"
+      ]
+    },
+    "route_spendability_evm_hash": "0xd3644373e4bb0d2e40ec4e1fbc94604882bf914ffbdd7a6995869c5a881c58b9",
+    "route_spendability_hash": "sha256:bca1c4f87477653f35f93a64b51fd85fcc35524c83e755c3d046c46577c1be79",
+    "route_wall_bundle_evm_hash": "0x150a1df40a45dcda660e3dbae3e0b069a456c2abdf91b0dbba04aefabc15e189",
+    "wall_bundle_hash": "sha256:31498a09c90bbf488d05e1f4b73216ea8c734d9715c888cbe077d4895329a52d"
+  },
+  "scenario": {
+    "bond_covered_failures": [
+      "failure_to_cure",
+      "material_condition_mismatch",
+      "nonship",
+      "route_negligence",
+      "underinsurance_without_buyer_acceptance",
+      "wrong_item"
+    ],
+    "buyer_risk_acceptance": null,
+    "card_reference": {
+      "card_number": "1",
+      "match_kind": "language_equivalent",
+      "not_claiming": [
+        "authenticity",
+        "condition",
+        "possession",
+        "price_truth",
+        "seller_card_language",
+        "seller_inventory_existence"
+      ],
+      "printed_name": "Espeon",
+      "selected_by": "buyer_agent",
+      "set_name": "Neo Discovery",
+      "source": "pokemontcg.io",
+      "source_card_id": "neo2-1",
+      "source_coverage": "english_catalog_anchor_for_japanese_claim",
+      "source_language": "en",
+      "source_url": "https://api.pokemontcg.io/v2/cards/neo2-1"
+    },
+    "claim_evidence": {},
+    "description": "Qwen-mediated clean Pokemon alpha trade: buyer wants a mid-value raw Neo Discovery Espeon, seller provides full default evidence, scoped trust, bond scope, external availability covenant, insured route, route wall bundle, and route spendability.",
+    "domain": "tcg",
+    "external_availability_covenant": true,
+    "game": "pokemon",
+    "hard_packets": [
+      "arbiter_policy_hash",
+      "bond_scope_packet",
+      "card_reference_packet",
+      "evidence_profile_id",
+      "inventory_lock_hash",
+      "item_fingerprint_hash",
+      "proof_vector_scope_packet",
+      "route_insurance_risk_owner_packet",
+      "route_spendability_hash"
+    ],
+    "item_form": "raw_card",
+    "phase": "offer_review",
+    "proof_not_claiming": [
+      "authenticity",
+      "current_possession",
+      "raw_card_condition",
+      "shipment_completion"
+    ],
+    "proof_positive_claims": [
+      "seller_controls_ebay_account",
+      "seller_controls_shop_domain"
+    ],
+    "route": {
+      "accepted_by_buyer": true,
+      "accepted_by_seller": true,
+      "carrier_or_handoff_method": "carrier",
+      "declared_value": 750,
+      "insurance_amount": 750,
+      "risk_owner_for_gap": "",
+      "route_type": "insured_ship",
+      "ship_by": "2026-05-22T18:00:00Z",
+      "signature_required": true
+    },
+    "scenario_id": "qwen_full_wall_compliant_offer",
+    "seller_evidence": [
+      "back_full",
+      "edge_or_border_closeups",
+      "flaw_callouts",
+      "four_corner_closeups",
+      "fresh_nonce_possession",
+      "front_full",
+      "seller_condition_statement",
+      "surface_or_holo_angle"
+    ],
+    "trade_template": "pokemon_single_card_alpha",
+    "value_usd": 750
+  }
+}

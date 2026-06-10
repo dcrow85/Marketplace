@@ -1,0 +1,55 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Neo Discovery Espeon holo\",\"condition_claim\":\"LP+\",\"evidence_tier\":\"verifier_grade\",\"media_manifest\":[{\"availability\":\"simulated\",\"type\":\"front_photo\"},{\"availability\":\"simulated\",\"type\":\"back_photo\"},{\"availability\":\"simulated\",\"type\":\"flaw_callout\"}],\"required_evidence\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"high_res_scans\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\",\"verifier_note\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"seller_disclosures\":[\"evidence packet\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e\",\"friction_policy\":\"sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205\",\"intent\":\"sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2\",\"seller_offer\":\"sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b\"},\"source_simulation_trade\":\"SIM-0095\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Neo Discovery Espeon holo",
+    "condition_claim": "LP+",
+    "evidence_tier": "verifier_grade",
+    "media_manifest": [
+      {
+        "availability": "simulated",
+        "type": "front_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "back_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "flaw_callout"
+      }
+    ],
+    "required_evidence": [
+      "back_photo",
+      "carrier_acceptance",
+      "corner_closeups",
+      "escrow_terms",
+      "flaw_callouts",
+      "front_photo",
+      "high_res_scans",
+      "holo_angle_closeups",
+      "insurance_or_gap_owner",
+      "locked_inventory_packet",
+      "received_item_photos",
+      "route_packet",
+      "tracking_history",
+      "verifier_note"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "seller_disclosures": [
+      "evidence packet"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e",
+      "friction_policy": "sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205",
+      "intent": "sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2",
+      "seller_offer": "sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b"
+    },
+    "source_simulation_trade": "SIM-0095"
+  },
+  "payload_hash": "0xef42b9c8a2de47979d2e423949dcfdcf276d9fe14cde42484175bd66f6010aba",
+  "signature": "0x13a4ab3218200a1a906f2c8ee4f805fae0de7157c7d008937d09f610ac25fa0d0c2c53caadda8905dff4e27186b244f66972f21558451e691bf4e74a9ffa6ec51c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

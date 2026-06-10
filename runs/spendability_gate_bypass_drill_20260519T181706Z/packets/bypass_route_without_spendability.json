@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth\":\"0.20\",\"insured\":true,\"policy_gap\":\"Old no-spendability ABI should now revert.\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-BYPASS-0001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth": "0.20",
+    "insured": true,
+    "policy_gap": "Old no-spendability ABI should now revert.",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-BYPASS-0001",
+    "trade_id": 1
+  },
+  "payload_hash": "0xde5fbdb37667d0e84910d7d3278f8e931217100a252f172491d389a91421edda",
+  "signature": "0x6e06b238211a4546b5b36ecf42ad6b6fbadd3dba4c07438760b2ec8c5a17ea7010d95b63e27d579e2f68ca22b9e77bf22f6a4828f9bc2ccbda125df607ceb0581b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

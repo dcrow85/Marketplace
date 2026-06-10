@@ -1,0 +1,70 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-02-01T00:00:00+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"evidence_refs\":[{\"ref\":\"prior-ebay-front-2026-02\",\"type\":\"front_photo\"},{\"ref\":\"prior-ebay-back-2026-02\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Raw card with stale marketplace photo\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"prior_market_refs\":[{\"claim\":\"same photo as old listing\",\"proof_ref\":\"archive://prior-ebay-listing\",\"source\":\"eBay\",\"weight_hint\":\"weak\"}],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":5,\"visual_markers\":[{\"marker_hash\":\"prior-ebay-front-2026-02\",\"match_group\":\"raw-card-stale-1\",\"scope\":\"front\"},{\"marker_hash\":\"prior-ebay-back-2026-02\",\"match_group\":\"raw-card-stale-1\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-02-01T00:00:00+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "prior-ebay-front-2026-02",
+        "type": "front_photo"
+      },
+      {
+        "ref": "prior-ebay-back-2026-02",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Raw card with stale marketplace photo",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "prior_market_refs": [
+      {
+        "claim": "same photo as old listing",
+        "proof_ref": "archive://prior-ebay-listing",
+        "source": "eBay",
+        "weight_hint": "weak"
+      }
+    ],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 5,
+    "visual_markers": [
+      {
+        "marker_hash": "prior-ebay-front-2026-02",
+        "match_group": "raw-card-stale-1",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "prior-ebay-back-2026-02",
+        "match_group": "raw-card-stale-1",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0x9ca5c57bb5b338f895a9e1cfb34e20c90f480ac4f330b66e83dc800b65b4da9d",
+  "signature": "0x4ff66f9149fd86702cdd97b088f81244458863b98d7c7b7d90c3f1013835550d03e3e57de8d8eaa48aef7ba32fc56fff3fe534366721692c9372d0ca2cbe3e4c1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

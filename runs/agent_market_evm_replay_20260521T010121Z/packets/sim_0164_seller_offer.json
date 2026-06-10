@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Neo Discovery Espeon holo\",\"condition_claim\":\"NM\",\"evidence_tier\":\"verifier_grade\",\"route_offered\":\"international_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"low\",\"seller_bond_bps_from_sim\":1000,\"seller_bond_eth_local_probe\":\"0.2781\",\"seller_trust\":\"trusted\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:c72a3283ec497c77e6b6456dc6a01de0dfc77023e263482a5a900e81fe3823cd\",\"friction_policy\":\"sha256:fca60b69c83ec2ae442d4b7fe61c95a8e76797c05faadf91c2f10da5678a0ebb\",\"intent\":\"sha256:5d23642e1b81b4ab70caf186407eb61bc791b7fb3b8e3892a2be26f1db561bf3\",\"seller_offer\":\"sha256:0eb28506130e1519f8cff60c7d39ddacc101b0fa19b0ed987a32be0cf01ddf30\"},\"source_simulation_trade\":\"SIM-0164\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Neo Discovery Espeon holo",
+    "condition_claim": "NM",
+    "evidence_tier": "verifier_grade",
+    "route_offered": "international_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "low",
+    "seller_bond_bps_from_sim": 1000,
+    "seller_bond_eth_local_probe": "0.2781",
+    "seller_trust": "trusted",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:c72a3283ec497c77e6b6456dc6a01de0dfc77023e263482a5a900e81fe3823cd",
+      "friction_policy": "sha256:fca60b69c83ec2ae442d4b7fe61c95a8e76797c05faadf91c2f10da5678a0ebb",
+      "intent": "sha256:5d23642e1b81b4ab70caf186407eb61bc791b7fb3b8e3892a2be26f1db561bf3",
+      "seller_offer": "sha256:0eb28506130e1519f8cff60c7d39ddacc101b0fa19b0ed987a32be0cf01ddf30"
+    },
+    "source_simulation_trade": "SIM-0164"
+  },
+  "payload_hash": "0x0c653dd9354692825968f3c68381dd48fa178610223106ea430a0c722b42df26",
+  "signature": "0x7883b1cfe6f0bf792a30ff764ce579c1327f5bc6f7deb23f6fedd9ba564443f525b02a7e72f0605ad1265d9443eb4c9c5b8f3d34f660485201765e6fdb51dd011b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,84 @@
+{
+  "canonical_payload": "{\"asset_descriptors\":[{\"asset_id\":\"front-photo\",\"byte_length\":36,\"captured_at\":\"2026-05-19T18:06:46.384832+00:00\",\"created_at\":\"2026-05-19T18:06:46.384832+00:00\",\"keccak256\":\"0xcb9ba8a35c1ca9374d2f9c728ae6cfabcd08df8c585e01ee1803ea082f0b7c87\",\"media_type\":\"image/png\",\"role\":\"front_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"f8d038f71e9cea9d1c7ed1671a2ef02e773bc580b6795fae3b6b50bbdfd737e0\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/role_inflation_v0_3/front-photo.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"back-photo\",\"byte_length\":35,\"captured_at\":\"2026-05-19T18:06:46.384832+00:00\",\"created_at\":\"2026-05-19T18:06:46.384832+00:00\",\"keccak256\":\"0xcb5e4b90aba7a35be265636e78ec8cfbe921f576f7ecc70fe82566e8aae48061\",\"media_type\":\"image/png\",\"role\":\"back_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"99544b6e36414bb277038624263f6d7311d72f154e2c79dd404a39f685267627\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/role_inflation_v0_3/back-photo.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false}],\"asset_root_hash\":\"0xd0d3ef8416e3e17e7ca01fe4ff8473d4b4dc517fad042ab4e6a82073af82cde3\",\"canonicalization\":\"canonical-json-payload-v1\",\"evidence_tier\":\"standard\",\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-19T18:06:46.384832+00:00\",\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"known_limits\":[\"Fixture bytes are not real card images.\"],\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_id\":\"role_inflation_v0_3\",\"schema\":\"marketplace.evidence_manifest.v0.3\",\"subject\":{\"anchor_hash\":\"0x3a87e6e982500396e072c6c458849edf11c65d1d95c219103df35130f5d7785d\",\"subject_hash\":\"0x070d2c86ee05a39118829599934e4f814b9074b6a44f838079ffaafaac6158bf\",\"subject_type\":\"item_fingerprint\",\"trade_id\":9301},\"tier_basis\":\"manifest_integrity_only\",\"trade_id\":9301}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "asset_descriptors": [
+      {
+        "asset_id": "front-photo",
+        "byte_length": 36,
+        "captured_at": "2026-05-19T18:06:46.384832+00:00",
+        "created_at": "2026-05-19T18:06:46.384832+00:00",
+        "keccak256": "0xcb9ba8a35c1ca9374d2f9c728ae6cfabcd08df8c585e01ee1803ea082f0b7c87",
+        "media_type": "image/png",
+        "role": "front_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "f8d038f71e9cea9d1c7ed1671a2ef02e773bc580b6795fae3b6b50bbdfd737e0",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/role_inflation_v0_3/front-photo.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "back-photo",
+        "byte_length": 35,
+        "captured_at": "2026-05-19T18:06:46.384832+00:00",
+        "created_at": "2026-05-19T18:06:46.384832+00:00",
+        "keccak256": "0xcb5e4b90aba7a35be265636e78ec8cfbe921f576f7ecc70fe82566e8aae48061",
+        "media_type": "image/png",
+        "role": "back_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "99544b6e36414bb277038624263f6d7311d72f154e2c79dd404a39f685267627",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/role_inflation_v0_3/back-photo.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      }
+    ],
+    "asset_root_hash": "0xd0d3ef8416e3e17e7ca01fe4ff8473d4b4dc517fad042ab4e6a82073af82cde3",
+    "canonicalization": "canonical-json-payload-v1",
+    "evidence_tier": "standard",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-19T18:06:46.384832+00:00",
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "known_limits": [
+      "Fixture bytes are not real card images."
+    ],
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_id": "role_inflation_v0_3",
+    "schema": "marketplace.evidence_manifest.v0.3",
+    "subject": {
+      "anchor_hash": "0x3a87e6e982500396e072c6c458849edf11c65d1d95c219103df35130f5d7785d",
+      "subject_hash": "0x070d2c86ee05a39118829599934e4f814b9074b6a44f838079ffaafaac6158bf",
+      "subject_type": "item_fingerprint",
+      "trade_id": 9301
+    },
+    "tier_basis": "manifest_integrity_only",
+    "trade_id": 9301
+  },
+  "payload_hash": "0x888d00ae91392eff96adca96fdf2432ca53e68cb4e75fd06a4446f39d2b51d11",
+  "signature": "0x80ec0a8d6b55ca03895abff3334667ef24ccd637a7762bcec7285c932ad8d7ad494d069a3f4bb8e2dc3d6d9c494cbcb875f66bc4ab89f7bd791e2277ccb2991b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

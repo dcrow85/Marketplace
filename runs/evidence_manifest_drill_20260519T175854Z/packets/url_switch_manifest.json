@@ -1,0 +1,102 @@
+{
+  "asset_descriptors": [
+    {
+      "asset_id": "front-photo-url",
+      "byte_length": 37,
+      "captured_at": "2026-05-19T17:25:37+00:00",
+      "created_at": "2026-05-19T17:25:37+00:00",
+      "keccak256": "0xcf59718c7fb71d6d291fb2a2f26c47d2965bb67a64836d3164f7b630ef1096be",
+      "media_type": "image/png",
+      "retrieval_snapshot_asset_id": "front-url-retrieval-snapshot",
+      "role": "front_photo",
+      "schema": "marketplace.asset_descriptor.v0.2",
+      "sha256": "b67a1d2fcc59aed48a64d94c02d4e5e3d66c9a1b9ce88867cbad728cb19c2e50",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "mock_url",
+          "mutable": true,
+          "primary": true,
+          "uri": "https://seller.example/evidence/front.png"
+        }
+      ],
+      "visibility": "public",
+      "weak_supplemental": false
+    },
+    {
+      "asset_id": "back-photo-file",
+      "byte_length": 37,
+      "captured_at": "2026-05-19T17:25:37+00:00",
+      "created_at": "2026-05-19T17:25:37+00:00",
+      "keccak256": "0x4af00ef92f4730eac68d4a90182dcc432492330c210a9438dfdb93f2684ab84d",
+      "media_type": "image/png",
+      "role": "back_photo",
+      "schema": "marketplace.asset_descriptor.v0.2",
+      "sha256": "7eee1da976978bd7866a50d8656f5244b6f180aebf23e5d4fc265e9d0a76557e",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": true,
+          "uri": "assets/url_switch/back.png"
+        }
+      ],
+      "visibility": "public",
+      "weak_supplemental": false
+    },
+    {
+      "asset_id": "front-url-retrieval-snapshot",
+      "byte_length": 74,
+      "captured_at": "2026-05-19T17:25:37+00:00",
+      "created_at": "2026-05-19T17:25:37+00:00",
+      "keccak256": "0x0b593865605bcb0a7602508e231a71382277746e5331fee64dbc3907ae41c9d6",
+      "media_type": "text/plain",
+      "role": "retrieval_snapshot",
+      "schema": "marketplace.asset_descriptor.v0.2",
+      "sha256": "272819cc07e4bb8d24bd65a6ba9a30bf8565954a1bb52fa95d9f13039a4ced11",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "agent"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": false,
+          "uri": "assets/url_switch/front-url-snapshot.txt"
+        }
+      ],
+      "visibility": "public",
+      "weak_supplemental": false
+    }
+  ],
+  "asset_root_hash": "df773c18d35ef3e13f9468e457e1c7d2571a7a64cb1a88ec210b7d9af33af1c7",
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "evidence_tier": "standard",
+  "hash_algorithm": "sha256(marketplace-json-c14n-v0.2)",
+  "issued_at": "2026-05-19T17:25:37+00:00",
+  "issuer": "did:market:seller:fixture-1",
+  "issuer_role": "seller",
+  "known_conflicts": [],
+  "known_limits": [
+    "front asset is intentionally served through a mutable mock URL"
+  ],
+  "manifest_hash": "4b51bce7a2e7d7f96c0a9763857fb41a5d6cd3d62165902e9fdf0dffce5fdf20",
+  "manifest_id": "url-switch",
+  "schema": "marketplace.evidence_manifest.v0.2",
+  "signature": "local-drill-signature-v0:24c0e663bd28073e4ee27e981476b75baddfd1c301428a27a0410accfcb3bd34",
+  "subject": {
+    "anchor_hash": "364f62b67de98e5d82338a66656f2891a62a5267205f39748c01e611d7ac1a0c",
+    "subject_hash": "ffdf7b8e53a169109c2a8b230355cb15f8ba9a8bc0ae23dc3aa7fbc7decc8af4",
+    "subject_type": "item_fingerprint",
+    "trade_id": "9002"
+  },
+  "trade_id": "9002"
+}

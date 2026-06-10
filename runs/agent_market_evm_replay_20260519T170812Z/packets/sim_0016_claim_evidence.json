@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0016: minor_condition_delta on a $60 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: automated_ruling. Friction: none.\",\"friction_triggers\":[],\"human_questions\":[],\"outcome\":\"minor_condition_delta\",\"path\":\"automated_ruling\",\"route_failure_surrogate\":false,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:a4d535a5026414bef0841327175bf981bea054e85345daba87550921ed8e05cb\",\"escrow_terms\":\"sha256:7c3911de7476f34f2304c54573c612b42c06cd63601487e2f45124408b93b204\",\"friction_policy\":\"sha256:8499b71036adb4a7cd99d857c04113d7137f78f3d1ba3b8db085744e8b30bfdf\",\"intent\":\"sha256:240a990f8383ffb75d6fe790f5e411e83c8f864eb47f7381e15162078a050adb\",\"seller_offer\":\"sha256:d570a1ae681a58381fe40978f824e2ba366b74323f56f2744160a9d67f98583f\"},\"source_simulation_trade\":\"SIM-0016\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0016: minor_condition_delta on a $60 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: automated_ruling. Friction: none.",
+    "friction_triggers": [],
+    "human_questions": [],
+    "outcome": "minor_condition_delta",
+    "path": "automated_ruling",
+    "route_failure_surrogate": false,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:a4d535a5026414bef0841327175bf981bea054e85345daba87550921ed8e05cb",
+      "escrow_terms": "sha256:7c3911de7476f34f2304c54573c612b42c06cd63601487e2f45124408b93b204",
+      "friction_policy": "sha256:8499b71036adb4a7cd99d857c04113d7137f78f3d1ba3b8db085744e8b30bfdf",
+      "intent": "sha256:240a990f8383ffb75d6fe790f5e411e83c8f864eb47f7381e15162078a050adb",
+      "seller_offer": "sha256:d570a1ae681a58381fe40978f824e2ba366b74323f56f2744160a9d67f98583f"
+    },
+    "source_simulation_trade": "SIM-0016"
+  },
+  "payload_hash": "0x4f5e65aef0eb04a1020d6a7bdff2369cbda5b76b917288e9ad4f5ff684c89fa9",
+  "signature": "0xe50a38be73247705f68cbf96279ae820b8593dab26ccf39b8969483b7894250b2403a798f5df8e7bd84dad6404b2a254dad3824d86aede14e58cf5b825a6ff3b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

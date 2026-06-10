@@ -1,0 +1,68 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"separate_buyer_waiver_required\",\"hooks\":[\"arbiter_review\",\"additional_received_angle\"]},\"claim\":{\"known_conflicts\":[],\"negative\":[\"This does not decide payout.\",\"This does not verify carrier handling or packaging.\"],\"positive\":[\"Received-item photos support a material gap from NM floor to LP condition.\"]},\"display\":{\"label\":\"Received condition reviewed\",\"short_warning\":\"Not a final ruling.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"original_pre_ship_card_in_hand\",\"carrier_damage_review\"],\"inputs_seen\":[{\"hash\":\"received_front_hash\",\"kind\":\"received_front_photo\"},{\"hash\":\"received_back_hash\",\"kind\":\"received_back_photo\"},{\"hash\":\"edge_wear_closeup_hash\",\"kind\":\"edge_wear_closeup\"}],\"issued_at\":\"2026-05-19T17:58:05.511233+00:00\",\"method\":{\"method_id\":\"tcg.raw.photo_packet_review.v0.1\",\"method_id_hash\":\"0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1\",\"summary\":\"Compared received-item photos against the stated condition floor.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"raw_condition_floor\"],\"scope_set_hash\":\"0x6c14599a4ef82e2c78d06f806accf4add517e0163c046b3a90c8c5e3add068cc\",\"subject\":{\"subject_hash\":\"0xbe54e4499349d31f8a037c8f0c3bd71b6cbba470fd8f437de42969bbb9ad0e19\",\"subject_type\":\"evidence_manifest\"},\"trade_id\":2,\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "separate_buyer_waiver_required",
+      "hooks": [
+        "arbiter_review",
+        "additional_received_angle"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [],
+      "negative": [
+        "This does not decide payout.",
+        "This does not verify carrier handling or packaging."
+      ],
+      "positive": [
+        "Received-item photos support a material gap from NM floor to LP condition."
+      ]
+    },
+    "display": {
+      "label": "Received condition reviewed",
+      "short_warning": "Not a final ruling."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "original_pre_ship_card_in_hand",
+      "carrier_damage_review"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "received_front_hash",
+        "kind": "received_front_photo"
+      },
+      {
+        "hash": "received_back_hash",
+        "kind": "received_back_photo"
+      },
+      {
+        "hash": "edge_wear_closeup_hash",
+        "kind": "edge_wear_closeup"
+      }
+    ],
+    "issued_at": "2026-05-19T17:58:05.511233+00:00",
+    "method": {
+      "method_id": "tcg.raw.photo_packet_review.v0.1",
+      "method_id_hash": "0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1",
+      "summary": "Compared received-item photos against the stated condition floor."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "raw_condition_floor"
+    ],
+    "scope_set_hash": "0x6c14599a4ef82e2c78d06f806accf4add517e0163c046b3a90c8c5e3add068cc",
+    "subject": {
+      "subject_hash": "0xbe54e4499349d31f8a037c8f0c3bd71b6cbba470fd8f437de42969bbb9ad0e19",
+      "subject_type": "evidence_manifest"
+    },
+    "trade_id": 2,
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0xa5dff0d118443cc64eb8e5b28d3e026a686df1f04fc7b3fcab97943bd04e2f2d",
+  "signature": "0x627743bb5de733dce7704cde78bac33e34a3b4ecceaa80d56c93b5fb5018b0211cf89a43208cb996f3f711c3c3ae11a7bfe63e25b83e99836f8a0ee20582835d1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

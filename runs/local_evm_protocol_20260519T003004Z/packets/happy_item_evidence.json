@@ -1,0 +1,19 @@
+{
+  "canonical_payload": "{\"agent_read\":\"Condition appears LP or better; no hidden crease visible.\",\"evidence_class\":\"item\",\"objects\":[\"front_scan_hash\",\"back_scan_hash\",\"corner_closeups_hash\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "agent_read": "Condition appears LP or better; no hidden crease visible.",
+    "evidence_class": "item",
+    "objects": [
+      "front_scan_hash",
+      "back_scan_hash",
+      "corner_closeups_hash"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x0e350f22a79e4b49d140ee4c009f3da94c010099c4bb4492f197924066c4061a",
+  "signature": "0x6202b9738fa767c1e5eb32e3c98291460098fc67fff6cfafdb252ada16d947be2703f5c6b6bdc43bc86e09b8cf14f93efc65256ad4e0637589cb9c3224bb96231b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

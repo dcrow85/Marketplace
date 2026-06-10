@@ -1,0 +1,39 @@
+{
+  "canonical_payload": "{\"confidence_scope\":\"medium_for_raw_card_identity\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"front_scan_hash\",\"type\":\"front_scan\"},{\"ref\":\"back_scan_hash\",\"type\":\"back_scan\"},{\"ref\":\"corner_closeups_hash\",\"type\":\"corner_closeups\"}],\"identity_claim\":{\"card\":\"Japanese vintage holo\",\"condition_claim\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"language\":\"Japanese\"},\"privacy_policy\":\"buyer_and_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "confidence_scope": "medium_for_raw_card_identity",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "front_scan_hash",
+        "type": "front_scan"
+      },
+      {
+        "ref": "back_scan_hash",
+        "type": "back_scan"
+      },
+      {
+        "ref": "corner_closeups_hash",
+        "type": "corner_closeups"
+      }
+    ],
+    "identity_claim": {
+      "card": "Japanese vintage holo",
+      "condition_claim": "LP",
+      "domain": "tcg",
+      "game": "pokemon",
+      "language": "Japanese"
+    },
+    "privacy_policy": "buyer_and_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7",
+  "signature": "0xe4d2a09536d6f94e539b0656848732f04efdc3ef796ea55e63b621988ee9fc332f803d0dfa7ad024e00fb2f6f296ec2dfb2597f01da262c38b75ae80dae260b01b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

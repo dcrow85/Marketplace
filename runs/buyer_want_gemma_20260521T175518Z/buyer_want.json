@@ -1,0 +1,177 @@
+{
+  "agent_parse": {
+    "card_name": "Charizard",
+    "caveats": [
+      "Price must include shipping"
+    ],
+    "condition_floor": "LP",
+    "currency": "USD",
+    "elapsed_s": 8.586,
+    "human_contact_style": null,
+    "max_total_price": 1500,
+    "raw_or_slabbed": "either",
+    "route_preferences": [
+      "insured_shipping"
+    ],
+    "row_id": "PMCG1-021",
+    "variant_hint": "no_rarity"
+  },
+  "agent_runtime": {
+    "model": "gemma4:31b",
+    "provider": "ollama"
+  },
+  "packet": {
+    "agent_boundaries": {
+      "hard_walls": [],
+      "spendability_boundaries": [
+        "catalog row is not spendable as seller-card proof",
+        "reference image is not seller possession evidence",
+        "collector texture is not price evidence",
+        "a blank-corner crop is not enough without same-card context",
+        "price remains non-spendable until a timestamped comp packet is attached"
+      ],
+      "what_agent_does_not_know": [
+        "whether the seller possesses the card",
+        "whether the seller's card matches the reference row",
+        "whether the seller's card is authentic",
+        "the condition band",
+        "a reliable current price",
+        "whether external comps accidentally mix regular Japanese Base with No Rarity copies"
+      ],
+      "what_agent_knows": [
+        "PMCG1 catalog row",
+        "active No Rarity target status",
+        "source-labeled No Rarity reference is available",
+        "category: Pokemon",
+        "rarity metadata: Holo Rare",
+        "holo surface makes condition and lighting evidence more important",
+        "type metadata: Fire",
+        "stage metadata: Stage2"
+      ]
+    },
+    "buyer_agent": {
+      "agent_id": "did:market:agent:buyer-gemma-local",
+      "agent_model": "gemma4:31b",
+      "agent_provider": "ollama",
+      "authority": "draft_only_until_human_or_config_signature"
+    },
+    "catalog_ref": {
+      "card": "Charizard",
+      "catalog": "japanese_no_rarity_base_set",
+      "local_id": "021",
+      "match_kind": "exact_catalog_match",
+      "row_id": "PMCG1-021",
+      "variant_claim": "no_rarity"
+    },
+    "condition_floor": "LP",
+    "cost_dimensional_integrity": {
+      "native_dimensions": [
+        "card_price",
+        "shipping",
+        "insurance",
+        "seller_attention",
+        "buyer_attention",
+        "agent_compute",
+        "verifier_cost",
+        "route_risk",
+        "trust_gap",
+        "condition_risk"
+      ],
+      "reversible": true,
+      "scalar_summary": "max_total_price is a spending boundary, not a collapse of native cost dimensions"
+    },
+    "evidence_expectation": {
+      "baseline_profile": "NR-C",
+      "baseline_profile_name": "High-value holo",
+      "card_specific_tells": [
+        "Check the height and weight text against known No Rarity correction prompts, and require sharp text plus symbol-region evidence before upgrading beyond candidate."
+      ],
+      "conditional_overlays": [
+        "NR-D if the offer is slabbed",
+        "NR-E if seller trust is thin, new, or not portable"
+      ],
+      "required_before_recommendation": [
+        "full front and full back images",
+        "sharp lower-right rarity-symbol crop with surrounding border",
+        "front and back high-resolution scans or photos",
+        "four-corner front close-ups",
+        "four-corner back close-ups",
+        "angled holo-surface video",
+        "fresh possession continuity sequence",
+        "seller trust proof or bond recommendation",
+        "verifier review before route lock",
+        "Check the height and weight text against known No Rarity correction prompts, and require sharp text plus symbol-region evidence before upgrading beyond candidate."
+      ]
+    },
+    "expires_at": "2026-06-04T17:55:18Z",
+    "form": "either",
+    "human_contact_policy": {
+      "agent_may_continue_without_human_for": [
+        "catalog lookup",
+        "pricing discovery",
+        "seller-agent evidence request within baseline profile",
+        "rejecting out-of-scope or under-evidenced offers"
+      ],
+      "ask_before": [
+        "price_above_likely_band",
+        "evidence_below_profile",
+        "new_seller_without_bond",
+        "verifier_required_or_expensive",
+        "route_or_insurance_gap",
+        "condition_band_unclear"
+      ],
+      "style": "ask_before_material_risk"
+    },
+    "human_text": "I want a Japanese No Rarity Charizard LP or better under $1500 shipped",
+    "issued_at": "2026-05-21T17:55:18Z",
+    "max_total_price": {
+      "amount": 1500.0,
+      "currency": "USD",
+      "includes": [
+        "card",
+        "shipping",
+        "insurance",
+        "seller_attention_fees"
+      ],
+      "missing": false
+    },
+    "not_claiming": [
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "No Rarity truth without seller evidence",
+      "route safety",
+      "funding or escrow lock"
+    ],
+    "pricing_policy": {
+      "comp_requirements": [
+        "same PMCG1 row",
+        "listing or sale images show the No Rarity claim clearly",
+        "condition band is legible",
+        "slab cert or raw status is separated",
+        "sale venue and timestamp are preserved"
+      ],
+      "do_not_average_uncertain_comps": true,
+      "must_attach_cost_packet_before_acceptance": true,
+      "not_claiming": [
+        "current price",
+        "fair price",
+        "liquidity"
+      ],
+      "status": "agent_discovery_required"
+    },
+    "route_preferences": [
+      "insured_shipping"
+    ],
+    "schema": "marketplace.buyer_want.v0.1",
+    "want_id": "bw_340690819ae25b49"
+  },
+  "packet_hash": "sha256:633918319803bb9a73fb4e659c307b166fa8711cfc32eb86153c3fdaa5fe1fae",
+  "schema": "marketplace.buyer_want_envelope.v0.1",
+  "validation": {
+    "errors": [],
+    "valid": true,
+    "warnings": []
+  }
+}

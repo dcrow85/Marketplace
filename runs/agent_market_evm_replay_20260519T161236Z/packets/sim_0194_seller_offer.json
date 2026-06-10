@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Neo Revelation Houndoom holo\",\"condition_claim\":\"NM-\",\"evidence_tier\":\"standard\",\"route_offered\":\"insured_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"medium\",\"seller_bond_bps_from_sim\":0,\"seller_bond_eth_local_probe\":\"0.005\",\"seller_trust\":\"known\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024\",\"friction_policy\":\"sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184\",\"intent\":\"sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e\",\"seller_offer\":\"sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f\"},\"source_simulation_trade\":\"SIM-0194\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Neo Revelation Houndoom holo",
+    "condition_claim": "NM-",
+    "evidence_tier": "standard",
+    "route_offered": "insured_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "medium",
+    "seller_bond_bps_from_sim": 0,
+    "seller_bond_eth_local_probe": "0.005",
+    "seller_trust": "known",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024",
+      "friction_policy": "sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184",
+      "intent": "sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e",
+      "seller_offer": "sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f"
+    },
+    "source_simulation_trade": "SIM-0194"
+  },
+  "payload_hash": "0x427dd3097e37e0fa9fd6bd8405bc3729494221b1c60f75ba2a26266cbb625928",
+  "signature": "0xb2040542de50ab2c0de65182f41fb007f7cd63e4d80587c235e60920c66e0aa602d514b8d7cca9f22997e64ac94ae0c88ce1d0d25bdaaa2bb8b290205a9347fe1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

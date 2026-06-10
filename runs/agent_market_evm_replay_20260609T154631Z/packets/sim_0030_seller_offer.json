@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"route_offered\":\"underinsured_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"low\",\"seller_bond_bps_from_sim\":1000,\"seller_bond_eth_local_probe\":\"0.1367\",\"seller_trust\":\"trusted\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc\",\"friction_policy\":\"sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede\",\"intent\":\"sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2\",\"seller_offer\":\"sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7\"},\"source_simulation_trade\":\"SIM-0030\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "route_offered": "underinsured_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "low",
+    "seller_bond_bps_from_sim": 1000,
+    "seller_bond_eth_local_probe": "0.1367",
+    "seller_trust": "trusted",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc",
+      "friction_policy": "sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede",
+      "intent": "sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2",
+      "seller_offer": "sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7"
+    },
+    "source_simulation_trade": "SIM-0030"
+  },
+  "payload_hash": "0x5091ac77be52173f14936dce31929e1a85d532bc74bbe4d18f94233fd84ccd2f",
+  "signature": "0x093002a51bb1f9b9be10b671ee377e96c79c60b27cdbe2b0e2eba16b76fc3ae70c67b65b8ee319c06ddfee9f353b7e99b732015b8231a3bfa1108794c8fe74651b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

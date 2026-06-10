@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>No Rarity Binder Page Responsive Check</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ece9df;
+        color: #111;
+        font: 14px/1.35 "Trebuchet MS", system-ui, sans-serif;
+      }
+
+      main {
+        display: grid;
+        gap: 18px;
+        padding: 18px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      header {
+        display: grid;
+        gap: 4px;
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        gap: 18px;
+        align-items: start;
+      }
+
+      .viewport {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .viewport h2 {
+        font-size: 1rem;
+      }
+
+      .frame-shell {
+        position: relative;
+        width: min(100%, calc(var(--w) * var(--scale)));
+        height: calc(var(--h) * var(--scale));
+        overflow: hidden;
+        border: 3px solid #111;
+        background: #f7f6f1;
+        box-shadow: 5px 5px 0 #111;
+      }
+
+      iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: var(--w);
+        height: var(--h);
+        border: 0;
+        transform: scale(var(--scale));
+        transform-origin: top left;
+      }
+
+      .wide {
+        --w: 1280px;
+        --h: 720px;
+        --scale: 0.31;
+      }
+
+      .tablet-landscape {
+        --w: 1024px;
+        --h: 768px;
+        --scale: 0.38;
+      }
+
+      .tablet-portrait {
+        --w: 768px;
+        --h: 1024px;
+        --scale: 0.38;
+      }
+
+      .mobile {
+        --w: 390px;
+        --h: 844px;
+        --scale: 0.48;
+      }
+
+      .short {
+        --w: 1180px;
+        --h: 560px;
+        --scale: 0.33;
+      }
+
+      .phone-landscape {
+        --w: 844px;
+        --h: 390px;
+        --scale: 0.46;
+      }
+
+      .caption {
+        color: #444;
+        font-size: 0.86rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>No Rarity Binder page responsive check</h1>
+        <p>Each frame opens the binder automatically so the tactile page-edge controls can be checked across viewport shapes.</p>
+      </header>
+
+      <section class="matrix" aria-label="Responsive open binder viewport matrix">
+        <article class="viewport wide">
+          <h2>Wide landscape</h2>
+          <p class="caption">1280 x 720</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Wide landscape binder page"></iframe>
+          </div>
+        </article>
+
+        <article class="viewport tablet-landscape">
+          <h2>Tablet landscape</h2>
+          <p class="caption">1024 x 768</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Tablet landscape binder page"></iframe>
+          </div>
+        </article>
+
+        <article class="viewport tablet-portrait">
+          <h2>Tablet portrait</h2>
+          <p class="caption">768 x 1024</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Tablet portrait binder page"></iframe>
+          </div>
+        </article>
+
+        <article class="viewport mobile">
+          <h2>Mobile portrait</h2>
+          <p class="caption">390 x 844</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Mobile binder page"></iframe>
+          </div>
+        </article>
+
+        <article class="viewport short">
+          <h2>Short landscape</h2>
+          <p class="caption">1180 x 560</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Short landscape binder page"></iframe>
+          </div>
+        </article>
+
+        <article class="viewport phone-landscape">
+          <h2>Phone landscape</h2>
+          <p class="caption">844 x 390</p>
+          <div class="frame-shell">
+            <iframe src="binder.html" title="Phone landscape binder page"></iframe>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      document.querySelectorAll("iframe").forEach((frame) => {
+        frame.addEventListener("load", () => {
+          const button = frame.contentDocument?.getElementById("open-binder");
+          button?.click();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.0173\",\"escrow_model\":\"on_chain_native_eth_local_probe\",\"inspection_seconds\":259200,\"price_eth_local_probe\":\"0.865\",\"release_gate\":\"buyer_accepts_or_claim_resolves\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"selected_arbiter\":\"did:market:arbiter:high-end-panel-1\",\"selected_arbiter_controller_for_local_evm\":\"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC\",\"seller_bond_eth_local_probe\":\"0.12975\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321\",\"friction_policy\":\"sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64\",\"intent\":\"sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb\",\"seller_offer\":\"sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4\"},\"source_simulation_trade\":\"SIM-0247\",\"source_value_usd\":865,\"trade_template\":\"tcg_single_card\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.0173",
+    "escrow_model": "on_chain_native_eth_local_probe",
+    "inspection_seconds": 259200,
+    "price_eth_local_probe": "0.865",
+    "release_gate": "buyer_accepts_or_claim_resolves",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "selected_arbiter_controller_for_local_evm": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "seller_bond_eth_local_probe": "0.12975",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321",
+      "friction_policy": "sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64",
+      "intent": "sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb",
+      "seller_offer": "sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4"
+    },
+    "source_simulation_trade": "SIM-0247",
+    "source_value_usd": 865,
+    "trade_template": "tcg_single_card"
+  },
+  "payload_hash": "0xe79fce239c61e80ab0824d7fecd629dd1e30cc5f36fc1257ac160d7c8e1ae516",
+  "signature": "0x75d6a9d335467e754c946f6d77c2a77cdc252b120e2497c9d8e74db9112a496c03794338230d84ecd539cab81b39eca230200780319b88598fb5f606c3c99e141c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

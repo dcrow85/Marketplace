@@ -1,0 +1,1775 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import { MarketplaceActorRegistry } from "../src/MarketplaceActorRegistry.sol";
+import { MarketplaceEscrow } from "../src/MarketplaceEscrow.sol";
+import { MarketplacePredicateVerifierStub } from "../src/MarketplacePredicateVerifierStub.sol";
+
+interface Vm {
+    function addr(uint256 privateKey) external returns (address);
+    function deal(address account, uint256 newBalance) external;
+    function prank(address sender) external;
+    function sign(uint256 privateKey, bytes32 digest)
+        external
+        returns (uint8 v, bytes32 r, bytes32 s);
+    function warp(uint256 newTimestamp) external;
+    function expectRevert(bytes calldata revertData) external;
+    function expectRevert(bytes4 selector) external;
+}
+
+contract MarketplaceEscrowTest {
+    Vm internal constant vm = Vm(address(uint160(uint256(keccak256("hevm cheat code")))));
+
+    MarketplaceActorRegistry internal registry;
+    MarketplaceEscrow internal escrow;
+    MarketplacePredicateVerifierStub internal predicateVerifier;
+
+    uint256 internal buyerKey = 0xB0B;
+    uint256 internal sellerKey = 0x5E11;
+    uint256 internal arbiterKey = 0xA9B;
+    uint256 internal verifierKey = 0x9E7;
+    uint256 internal replacementArbiterKey = 0xA9B2;
+
+    address internal buyer;
+    address internal seller;
+    address internal arbiter;
+    address internal verifier;
+    address internal replacementArbiter;
+    address internal stranger = address(0xBAD);
+    mapping(uint256 tradeId => bytes32 itemFingerprintHash) internal committedItemFingerprints;
+    mapping(uint256 tradeId => bytes32 inventoryLockHash) internal committedInventoryLocks;
+
+    function setUp() public {
+        buyer = vm.addr(buyerKey);
+        seller = vm.addr(sellerKey);
+        arbiter = vm.addr(arbiterKey);
+        verifier = vm.addr(verifierKey);
+        replacementArbiter = vm.addr(replacementArbiterKey);
+
+        registry = new MarketplaceActorRegistry();
+        registry.registerActor(buyer, MarketplaceActorRegistry.Role.Buyer, _h("buyer-actor"));
+        registry.registerActor(seller, MarketplaceActorRegistry.Role.Seller, _h("seller-actor"));
+        registry.registerActor(arbiter, MarketplaceActorRegistry.Role.Arbiter, _h("arbiter-actor"));
+        registry.registerActor(
+            verifier, MarketplaceActorRegistry.Role.Verifier, _h("verifier-actor")
+        );
+        registry.registerActor(
+            replacementArbiter,
+            MarketplaceActorRegistry.Role.Arbiter,
+            _h("replacement-arbiter-actor")
+        );
+        registry.registerArbiter(arbiter, _h("arbiter-authority"), uint96(1 ether));
+        registry.registerArbiter(
+            replacementArbiter, _h("replacement-arbiter-authority"), uint96(1 ether)
+        );
+        registry.registerVerifier(verifier, _h("verifier-authority"), uint96(0.5 ether));
+
+        escrow = new MarketplaceEscrow(address(registry));
+        predicateVerifier = new MarketplacePredicateVerifierStub();
+        registry.registerPredicateVerifier(address(predicateVerifier), _h("predicate-verifier"), 0);
+        vm.deal(buyer, 100 ether);
+        vm.deal(seller, 100 ether);
+        vm.deal(arbiter, 100 ether);
+        vm.deal(verifier, 100 ether);
+        vm.deal(replacementArbiter, 100 ether);
+        vm.deal(stranger, 100 ether);
+    }
+
+    function testCleanCloseReleasesEscrowAndSellerBond() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 evidenceHash = _h("front-back-scan");
+        vm.prank(seller);
+        escrow.attachEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.Item,
+            evidenceHash,
+            _sig(sellerKey, evidenceHash)
+        );
+        bytes32 routeHash = _h("tracking:insured-usps");
+        bytes32 spendabilityHash = _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _assertTrue(
+            escrow.consumedSpendabilityHashes(tradeId, spendabilityHash),
+            "route spendability consumed"
+        );
+        vm.prank(seller);
+        escrow.markRouteInProgress(tradeId);
+        _markDeliveredBySeller(tradeId, "delivery:happy-path");
+
+        uint256 sellerBefore = seller.balance;
+        bytes32 receiptHash = _h("receipt:buyer-happy");
+        vm.prank(buyer);
+        escrow.buyerAccept(tradeId, receiptHash, _sig(buyerKey, receiptHash));
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(seller.balance - sellerBefore, 1.1 ether, "seller receives escrow plus bond");
+        _assertEq(address(escrow).balance, 0, "contract fully drained");
+    }
+
+    function testNewSellerClaimCanUseBondAndDisputeBond() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.2 ether, 0.02 ether);
+
+        bytes32 proofHash = _h("new-seller-shop-website-signed-proof");
+        vm.prank(seller);
+        escrow.attachProof(tradeId, proofHash, _sig(sellerKey, proofHash));
+        bytes32 routeHash = _h("route:tracking-memo-low-confidence");
+        _commitRoute(tradeId, routeHash, false, false, 0);
+        _markDeliveredBySeller(tradeId, "delivery:new-seller-claim");
+
+        uint256 buyerBefore = buyer.balance;
+        uint256 sellerBefore = seller.balance;
+
+        bytes32 claimHash = _h("claim:wrong-condition");
+        vm.prank(buyer);
+        escrow.openClaim{ value: 0.02 ether }(tradeId, claimHash, _sig(buyerKey, claimHash));
+        bytes32 rulingHash = _h("ruling:partial-refund-bond-penalty");
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 6_000, 5_000, true, _sig(arbiterKey, rulingHash));
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(buyer.balance - buyerBefore, 0.7 ether, "buyer gets refund plus bond penalty");
+        _assertEq(
+            seller.balance - sellerBefore, 0.5 ether, "seller keeps remainder plus bond return"
+        );
+        _assertEq(address(escrow).balance, 0, "contract fully drained");
+    }
+
+    function testInspectionWindowCanAutoSettle() public {
+        uint256 tradeId = _createAndBond(2 ether, 0.5 ether, 0.02 ether);
+
+        bytes32 routeHash = _h("route:pickup-at-show");
+        _commitRoute(tradeId, routeHash, true, false, 0);
+        _markDeliveredByArbiter(tradeId, "delivery:show-pickup-arbiter");
+
+        uint256 sellerBefore = seller.balance;
+        vm.warp(block.timestamp + 3 days);
+        escrow.settleAfterInspection(tradeId);
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(seller.balance - sellerBefore, 2.5 ether, "seller receives after window");
+    }
+
+    function testRouteCanRepresentInPersonOrShipping() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routePacketHash = _h("route:local-meetup");
+        _commitRoute(tradeId, routePacketHash, true, false, 0);
+
+        (
+            bytes32 routeHash,
+            bytes32 wallBundleHash,
+            bool inPersonAllowed,
+            bool insured,
+            uint256 declaredInsurance
+        ) = escrow.getRoute(tradeId);
+        _assertEq(uint256(routeHash), uint256(_h("route:local-meetup")), "route hash stored");
+        _assertEq(
+            uint256(wallBundleHash),
+            uint256(_routeWallBundleRoot(tradeId, routePacketHash)),
+            "route wall bundle root stored"
+        );
+        _assertTrue(inPersonAllowed, "in-person allowed");
+        _assertTrue(!insured, "not insured");
+        _assertEq(declaredInsurance, 0, "no insurance declared");
+
+        (
+            bytes32 routeSpendabilityHash,
+            bytes32 assemblyHistoryHash,
+            bytes32 routeAssemblyWitnessHash
+        ) = escrow.getRouteAssembly(tradeId);
+        _assertEq(
+            uint256(routeSpendabilityHash),
+            uint256(_routeSpendability(tradeId, routePacketHash)),
+            "route spendability stored"
+        );
+        _assertEq(
+            uint256(assemblyHistoryHash),
+            uint256(_routeAssemblyHistory(tradeId, routePacketHash)),
+            "assembly history stored"
+        );
+        _assertEq(
+            uint256(routeAssemblyWitnessHash),
+            uint256(
+                _routeAssemblyWitness(
+                    tradeId,
+                    routePacketHash,
+                    routeSpendabilityHash,
+                    wallBundleHash,
+                    assemblyHistoryHash
+                )
+            ),
+            "route assembly witness stored"
+        );
+    }
+
+    function testInsuredRouteRequiresDeclaredCoverage() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.expectRevert(MarketplaceEscrow.BadAmount.selector);
+        bytes32 routeHash = _h("route:bad-insurance");
+        _commitRoute(tradeId, routeHash, false, true, 0);
+    }
+
+    function testRouteCommitRequiresSpendability() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:missing-spendability");
+        vm.expectRevert(MarketplaceEscrow.SpendabilityRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            bytes32(0),
+            _routeWallBundleRoot(tradeId, routeHash),
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testRouteCommitRequiresWallBundle() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:missing-wall-bundle");
+        bytes32 spendabilityHash = _routeSpendability(tradeId, routeHash);
+        vm.expectRevert(MarketplaceEscrow.WallBundleRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            bytes32(0),
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testOldWallBundleRouteCommitAbiRequiresAssemblyHistory() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:old-wall-bundle-abi-no-assembly");
+        bytes32 spendabilityHash = _routeSpendability(tradeId, routeHash);
+        vm.expectRevert(MarketplaceEscrow.AssemblyHistoryRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            _routeWallBundleRoot(tradeId, routeHash),
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testRouteCommitRequiresAssemblyHistory() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:missing-assembly-history");
+        bytes32 spendabilityHash = _routeSpendability(tradeId, routeHash);
+        bytes32 wallBundleHash = _routeWallBundleRoot(tradeId, routeHash);
+        vm.expectRevert(MarketplaceEscrow.AssemblyHistoryRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            wallBundleHash,
+            bytes32(0),
+            _routeAssemblyWitness(tradeId, routeHash, spendabilityHash, wallBundleHash, bytes32(0)),
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testRouteCommitRequiresTypedAssemblyWitness() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:typed-assembly-witness");
+        bytes32 spendabilityHash = _routeSpendability(tradeId, routeHash);
+        bytes32 wallBundleHash = _routeWallBundleRoot(tradeId, routeHash);
+        bytes32 assemblyHistoryHash = _routeAssemblyHistory(tradeId, routeHash);
+        bytes32 wrongAssemblyHistoryHash = _h("assembly:stale");
+        bytes32 wrongWitnessHash = _routeAssemblyWitness(
+            tradeId, routeHash, spendabilityHash, wallBundleHash, wrongAssemblyHistoryHash
+        );
+        bytes memory expected = abi.encodeWithSelector(
+            MarketplaceEscrow.RouteAssemblyWitnessMismatch.selector,
+            _routeAssemblyWitness(
+                tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash
+            ),
+            wrongWitnessHash
+        );
+
+        vm.expectRevert(expected);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            wallBundleHash,
+            assemblyHistoryHash,
+            wrongWitnessHash,
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testOldSpendabilityRouteCommitAbiRequiresWallBundle() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:old-spendability-abi-no-wall-bundle");
+        bytes32 spendabilityHash = _routeSpendability(tradeId, routeHash);
+        vm.expectRevert(MarketplaceEscrow.WallBundleRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testOldRouteCommitAbiRequiresSpendability() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:old-abi-no-spendability");
+        vm.expectRevert(MarketplaceEscrow.SpendabilityRequired.selector);
+        vm.prank(seller);
+        escrow.commitRoute(tradeId, routeHash, false, true, 1 ether, _sig(sellerKey, routeHash));
+    }
+
+    function testSellerCannotMutateRouteAfterCommit() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:first");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadState.selector, MarketplaceEscrow.State.RouteLocked
+            )
+        );
+        bytes32 mutationHash = _h("route:mutation");
+        _commitRoute(tradeId, mutationHash, false, true, 1 ether);
+    }
+
+    function testRouteRequiresInventoryLock() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:route-requires-inventory"));
+
+        vm.expectRevert(MarketplaceEscrow.InventoryLockMissing.selector);
+        bytes32 routeHash = _h("route:without-inventory-lock");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+    }
+
+    function testInventoryLockRequiresItemFingerprint() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 inventoryLockHash = _h("inventory:missing-fingerprint");
+        bytes32 boundItemFingerprintHash = _h("fingerprint:not-committed");
+        bytes32 bindingHash =
+            escrow.inventoryLockBindingHash(tradeId, inventoryLockHash, boundItemFingerprintHash);
+        vm.expectRevert(MarketplaceEscrow.ItemFingerprintMissing.selector);
+        vm.prank(seller);
+        escrow.commitInventoryLock(
+            tradeId, inventoryLockHash, boundItemFingerprintHash, _sig(sellerKey, bindingHash)
+        );
+    }
+
+    function testInventoryLockRequiresCommittedFingerprintBinding() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:binding-required");
+        bytes32 wrongFingerprintHash = _h("fingerprint:wrong-binding");
+        bytes32 inventoryLockHash = _h("inventory:binding-required");
+        _commitItemFingerprint(tradeId, itemFingerprintHash);
+
+        bytes32 bindingHash =
+            escrow.inventoryLockBindingHash(tradeId, inventoryLockHash, wrongFingerprintHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.InventoryLockFingerprintMismatch.selector,
+                itemFingerprintHash,
+                wrongFingerprintHash
+            )
+        );
+        vm.prank(seller);
+        escrow.commitInventoryLock(
+            tradeId, inventoryLockHash, wrongFingerprintHash, _sig(sellerKey, bindingHash)
+        );
+    }
+
+    function testInventoryLockRejectsOldUnboundSignature() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:old-unbound-signature");
+        bytes32 inventoryLockHash = _h("inventory:old-unbound-signature");
+        _commitItemFingerprint(tradeId, itemFingerprintHash);
+
+        bytes32 bindingHash =
+            escrow.inventoryLockBindingHash(tradeId, inventoryLockHash, itemFingerprintHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.BadSignature.selector, seller, bindingHash)
+        );
+        vm.prank(seller);
+        escrow.commitInventoryLock(
+            tradeId, inventoryLockHash, itemFingerprintHash, _sig(sellerKey, inventoryLockHash)
+        );
+    }
+
+    function testVerifierCanCommitItemFingerprint() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:verifier-committed");
+        _approveFingerprintVerifier(tradeId, verifier);
+
+        vm.prank(verifier);
+        escrow.commitItemFingerprint(
+            tradeId, itemFingerprintHash, _sig(verifierKey, itemFingerprintHash)
+        );
+
+        _assertEq(
+            escrow.activeItemFingerprints(itemFingerprintHash),
+            tradeId,
+            "verifier fingerprint is active"
+        );
+    }
+
+    function testGlobalVerifierCannotCommitUnapprovedItemFingerprint() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:verifier-unapproved");
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.UnapprovedFingerprintVerifier.selector, verifier
+            )
+        );
+        vm.prank(verifier);
+        escrow.commitItemFingerprint(
+            tradeId, itemFingerprintHash, _sig(verifierKey, itemFingerprintHash)
+        );
+    }
+
+    function testFraudSellerCannotUseSameItemFingerprintAcrossActiveTrades() public {
+        bytes32 itemFingerprintHash = _h("fingerprint:psa-cert-12345678");
+        uint256 firstTradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(firstTradeId, itemFingerprintHash);
+        _commitInventoryLock(firstTradeId, _h("inventory:first-lock-same-fingerprint"));
+
+        uint256 secondTradeId = _createAndBondWithoutInventoryLock(1.1 ether, 0.2 ether, 0.02 ether);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.ItemFingerprintAlreadyLocked.selector,
+                itemFingerprintHash,
+                firstTradeId
+            )
+        );
+        _commitItemFingerprint(secondTradeId, itemFingerprintHash);
+    }
+
+    function testFraudSellerCannotUseSameInventoryLockAcrossActiveTrades() public {
+        bytes32 inventoryLockHash = _h("inventory:unique:japanese-vending-mewtwo");
+        uint256 firstTradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(firstTradeId, _h("fingerprint:first-trade"));
+        _commitInventoryLock(firstTradeId, inventoryLockHash);
+
+        uint256 secondTradeId = _createAndBondWithoutInventoryLock(1.1 ether, 0.2 ether, 0.02 ether);
+        bytes32 secondItemFingerprintHash = _h("fingerprint:second-trade");
+        _commitItemFingerprint(secondTradeId, secondItemFingerprintHash);
+        bytes32 secondBindingHash = escrow.inventoryLockBindingHash(
+            secondTradeId, inventoryLockHash, secondItemFingerprintHash
+        );
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.InventoryAlreadyLocked.selector, inventoryLockHash, firstTradeId
+            )
+        );
+        vm.prank(seller);
+        escrow.commitInventoryLock(
+            secondTradeId,
+            inventoryLockHash,
+            secondItemFingerprintHash,
+            _sig(sellerKey, secondBindingHash)
+        );
+    }
+
+    function testInventoryLockReleasesAfterClaimResolution() public {
+        bytes32 itemFingerprintHash = _h("fingerprint:released-after-resolution");
+        bytes32 inventoryLockHash = _h("inventory:released-after-resolution");
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(tradeId, itemFingerprintHash);
+        _commitInventoryLock(tradeId, inventoryLockHash);
+
+        bytes32 routeHash = _h("route:inventory-release-claim");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _markDeliveredBySeller(tradeId, "delivery:inventory-release-claim");
+
+        bytes32 claimHash = _h("claim:inventory-release");
+        vm.prank(buyer);
+        escrow.openClaim{ value: 0.02 ether }(tradeId, claimHash, _sig(buyerKey, claimHash));
+
+        bytes32 rulingHash = _h("ruling:inventory-release");
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 10_000, 10_000, true, _sig(arbiterKey, rulingHash));
+
+        _assertEq(escrow.activeInventoryLocks(inventoryLockHash), 0, "inventory lock released");
+        _assertEq(escrow.activeItemFingerprints(itemFingerprintHash), 0, "fingerprint released");
+    }
+
+    function testFingerprintChallengeBlocksRouteUntilBuyerClears() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:challenge-route-gate");
+        _commitItemFingerprint(tradeId, itemFingerprintHash);
+        _commitInventoryLock(tradeId, _h("inventory:challenge-route-gate"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:need-fresh-nonce-photo");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 routeHash = _h("route:blocked-by-fingerprint-challenge");
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.FingerprintChallengeActive.selector, challengeHash
+            )
+        );
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:buyer-waiver-after-nonce");
+        vm.prank(buyer);
+        escrow.clearFingerprintChallenge(tradeId, resolutionHash, _sig(buyerKey, resolutionHash));
+
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        _assertState(tradeId, MarketplaceEscrow.State.RouteLocked);
+    }
+
+    function testFingerprintChallengeRequiresCommittedFingerprint() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+
+        bytes32 challengeHash = _h("fingerprint-challenge:before-fingerprint");
+        vm.expectRevert(MarketplaceEscrow.ItemFingerprintMissing.selector);
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+    }
+
+    function testSellerCannotOpenFingerprintChallenge() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:seller-cannot-challenge"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:seller-grief");
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        vm.prank(seller);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(sellerKey, challengeHash));
+    }
+
+    function testFingerprintChallengeCanClearWithVerifierAttestation() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:verifier-cure"));
+        _commitInventoryLock(tradeId, _h("inventory:verifier-cure"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:fresh-nonce-needed");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 scopeSetHash = _h("scope:fingerprint-challenge-review");
+        bytes32 methodIdHash = _h("method:fingerprint-challenge-review-v0.1");
+        bytes32 attestationHash = _h("attestation:fresh-nonce-satisfied");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+        bytes32 attestationBinding = escrow.verifierAttestationBindingHash(
+            tradeId, attestationHash, challengeHash, scopeSetHash, methodIdHash
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            challengeHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationBinding)
+        );
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:verifier-satisfied");
+        bytes32 resolutionBinding = escrow.fingerprintChallengeResolutionHash(
+            tradeId, resolutionHash, challengeHash, attestationHash
+        );
+        vm.prank(buyer);
+        escrow.clearFingerprintChallengeWithAttestation(
+            tradeId, resolutionHash, attestationHash, _sig(buyerKey, resolutionBinding)
+        );
+
+        bytes32 routeHash = _h("route:after-verifier-cure");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _assertState(tradeId, MarketplaceEscrow.State.RouteLocked);
+    }
+
+    function testFingerprintChallengeAttestationClearRequiresExistingAttestation() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:missing-attestation"));
+        _commitInventoryLock(tradeId, _h("inventory:missing-attestation"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:missing-attestation");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:missing-attestation");
+        bytes32 missingAttestationHash = _h("attestation:not-committed");
+        bytes32 resolutionBinding = escrow.fingerprintChallengeResolutionHash(
+            tradeId, resolutionHash, challengeHash, missingAttestationHash
+        );
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.ChallengeAttestationMissing.selector, missingAttestationHash
+            )
+        );
+        vm.prank(buyer);
+        escrow.clearFingerprintChallengeWithAttestation(
+            tradeId, resolutionHash, missingAttestationHash, _sig(buyerKey, resolutionBinding)
+        );
+    }
+
+    function testFingerprintChallengeAttestationMustTargetActiveChallenge() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        bytes32 itemFingerprintHash = _h("fingerprint:wrong-attestation-subject");
+        _commitItemFingerprint(tradeId, itemFingerprintHash);
+        _commitInventoryLock(tradeId, _h("inventory:wrong-attestation-subject"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:wrong-attestation-subject");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 scopeSetHash = _h("scope:fingerprint-challenge-review");
+        bytes32 methodIdHash = _h("method:fingerprint-challenge-review-v0.1");
+        bytes32 attestationHash = _h("attestation:wrong-subject");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+        bytes32 attestationBinding = escrow.verifierAttestationBindingHash(
+            tradeId, attestationHash, itemFingerprintHash, scopeSetHash, methodIdHash
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            itemFingerprintHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationBinding)
+        );
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:wrong-subject");
+        bytes32 resolutionBinding = escrow.fingerprintChallengeResolutionHash(
+            tradeId, resolutionHash, challengeHash, attestationHash
+        );
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.ChallengeAttestationSubjectMismatch.selector,
+                challengeHash,
+                itemFingerprintHash
+            )
+        );
+        vm.prank(buyer);
+        escrow.clearFingerprintChallengeWithAttestation(
+            tradeId, resolutionHash, attestationHash, _sig(buyerKey, resolutionBinding)
+        );
+    }
+
+    function testFingerprintChallengeAttestationClearRejectsOldUnboundSignature() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.2 ether, 0.02 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:old-clear-signature"));
+        _commitInventoryLock(tradeId, _h("inventory:old-clear-signature"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:old-clear-signature");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 scopeSetHash = _h("scope:fingerprint-challenge-review");
+        bytes32 methodIdHash = _h("method:fingerprint-challenge-review-v0.1");
+        bytes32 attestationHash = _h("attestation:old-clear-signature");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+        bytes32 attestationBinding = escrow.verifierAttestationBindingHash(
+            tradeId, attestationHash, challengeHash, scopeSetHash, methodIdHash
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            challengeHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationBinding)
+        );
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:old-signature");
+        bytes32 resolutionBinding = escrow.fingerprintChallengeResolutionHash(
+            tradeId, resolutionHash, challengeHash, attestationHash
+        );
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadSignature.selector, buyer, resolutionBinding
+            )
+        );
+        vm.prank(buyer);
+        escrow.clearFingerprintChallengeWithAttestation(
+            tradeId, resolutionHash, attestationHash, _sig(buyerKey, resolutionHash)
+        );
+    }
+
+    function testFraudSellerCannotOpenInspectionWithWrongDeliverySignature() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:fraud-false-delivery");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:false-claim");
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, spendabilityHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.BadSignature.selector, seller, deliveryHash)
+        );
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, witnessHash, _sig(buyerKey, deliveryHash)
+        );
+    }
+
+    function testOldDeliveryAbiRequiresSpendability() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 routeHash = _h("route:old-delivery-abi");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:old-abi");
+        vm.expectRevert(MarketplaceEscrow.SpendabilityRequired.selector);
+        vm.prank(seller);
+        escrow.markDelivered(tradeId, deliveryHash, _sig(sellerKey, deliveryHash));
+    }
+
+    function testDeliveryRequiresTypedWitness() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 routeHash = _h("route:delivery-typed-witness");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:missing-witness");
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        vm.expectRevert(MarketplaceEscrow.DeliveryWitnessRequired.selector);
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, _sig(sellerKey, deliveryHash)
+        );
+    }
+
+    function testDeliveryRejectsWrongTypedWitness() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 routeHash = _h("route:delivery-wrong-witness");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:wrong-witness");
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 wrongWitnessHash =
+            _deliveryWitness(tradeId, _h("delivery:other"), spendabilityHash);
+        bytes memory expected = abi.encodeWithSelector(
+            MarketplaceEscrow.DeliveryWitnessMismatch.selector,
+            _deliveryWitness(tradeId, deliveryHash, spendabilityHash),
+            wrongWitnessHash
+        );
+        vm.expectRevert(expected);
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, wrongWitnessHash, _sig(sellerKey, deliveryHash)
+        );
+    }
+
+    function testDeliverySpendabilityConsumed() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 routeHash = _h("route:delivery-spendability-consumed");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:spendability-consumed");
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, spendabilityHash);
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, witnessHash, _sig(sellerKey, deliveryHash)
+        );
+
+        _assertTrue(
+            escrow.consumedSpendabilityHashes(tradeId, spendabilityHash),
+            "delivery spendability consumed"
+        );
+    }
+
+    function testRouteClaimBeforeTimeoutIsRejected() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.2 ether, 0.02 ether);
+
+        bytes32 routeHash = _h("route:nonship-too-early");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        uint256 availableAt = block.timestamp + escrow.ROUTE_CLAIM_TIMEOUT();
+
+        bytes32 claimHash = _h("claim:nonship-too-early");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.RouteClaimTimeoutOpen.selector, availableAt)
+        );
+        vm.prank(buyer);
+        escrow.openRouteClaimAfterTimeout{ value: 0.02 ether }(
+            tradeId, claimHash, _sig(buyerKey, claimHash)
+        );
+    }
+
+    function testBuyerCanOpenRouteClaimAfterSellerNonshipTimeout() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.3 ether, 0.02 ether);
+
+        bytes32 routeHash = _h("route:nonship-timeout");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        vm.prank(seller);
+        escrow.markRouteInProgress(tradeId);
+        vm.warp(block.timestamp + escrow.ROUTE_CLAIM_TIMEOUT() + 1);
+
+        uint256 buyerBefore = buyer.balance;
+        uint256 sellerBefore = seller.balance;
+
+        bytes32 claimHash = _h("claim:nonship-timeout");
+        vm.prank(buyer);
+        escrow.openRouteClaimAfterTimeout{ value: 0.02 ether }(
+            tradeId, claimHash, _sig(buyerKey, claimHash)
+        );
+        _assertState(tradeId, MarketplaceEscrow.State.ClaimOrDisputePending);
+
+        bytes32 rulingHash = _h("ruling:nonship-refund-plus-bond");
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 10_000, 10_000, true, _sig(arbiterKey, rulingHash));
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(buyer.balance - buyerBefore, 1.3 ether, "buyer recovers escrow plus bond");
+        _assertEq(seller.balance - sellerBefore, 0, "fraud seller receives nothing");
+        _assertEq(address(escrow).balance, 0, "contract fully drained");
+    }
+
+    function testUnderfundedSellerBondIsRejected() public {
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(buyer);
+        uint256 tradeId = escrow.createTrade{ value: 1 ether }(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+
+        vm.expectRevert(MarketplaceEscrow.WrongBondAmount.selector);
+        vm.prank(seller);
+        escrow.acceptAndBond{ value: 0.099 ether }(tradeId);
+    }
+
+    function testUnregisteredArbiterCannotBeSelected() public {
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, stranger)
+        );
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(buyer);
+        escrow.createTrade{ value: 1 ether }(
+            seller,
+            stranger,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testUnregisteredBuyerCannotCreateTrade() public {
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, stranger)
+        );
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(stranger);
+        escrow.createTrade{ value: 1 ether }(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testRevokedArbiterCannotBeSelected() public {
+        registry.revokeArbiter(arbiter);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, arbiter)
+        );
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(buyer);
+        escrow.createTrade{ value: 1 ether }(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testUnregisteredSellerCannotBeSelected() public {
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, stranger)
+        );
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(buyer);
+        escrow.createTrade{ value: 1 ether }(
+            stranger,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testRevokedSellerCannotBeSelected() public {
+        registry.revokeActor(seller);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, seller)
+        );
+        bytes32 intentHash = _h("intent");
+        bytes32 termsHash = _h("terms");
+        vm.prank(buyer);
+        escrow.createTrade{ value: 1 ether }(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testOnlyRegistryOwnerCanRegisterActors() public {
+        vm.expectRevert(MarketplaceActorRegistry.Unauthorized.selector);
+        vm.prank(stranger);
+        registry.registerActor(stranger, MarketplaceActorRegistry.Role.Seller, _h("rogue-seller"));
+    }
+
+    function testOnlyRegistryOwnerCanRevokeAuthorities() public {
+        vm.expectRevert(MarketplaceActorRegistry.Unauthorized.selector);
+        vm.prank(stranger);
+        registry.revokeArbiter(arbiter);
+    }
+
+    function testActorRegistryVerifiesPacketSignature() public {
+        uint256 signerKey = 0xA11CE;
+        address signer = vm.addr(signerKey);
+        registry.registerActor(signer, MarketplaceActorRegistry.Role.Buyer, _h("signing-buyer"));
+
+        bytes32 payloadHash = _h("signed-packet");
+        bytes32 digest = registry.toEthSignedMessageHash(payloadHash);
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerKey, digest);
+        bytes memory signature = abi.encodePacked(r, s, v);
+
+        _assertTrue(
+            registry.verifyActorSignature(signer, payloadHash, signature),
+            "signature recovers registered actor"
+        );
+        _assertTrue(
+            !registry.verifyActorSignature(seller, payloadHash, signature),
+            "signature cannot be replayed as another actor"
+        );
+    }
+
+    function testRevokedActorSignatureNoLongerVerifies() public {
+        uint256 signerKey = 0xBEEF;
+        address signer = vm.addr(signerKey);
+        registry.registerActor(signer, MarketplaceActorRegistry.Role.Seller, _h("signing-seller"));
+
+        bytes32 payloadHash = _h("signed-before-revocation");
+        bytes32 digest = registry.toEthSignedMessageHash(payloadHash);
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerKey, digest);
+        bytes memory signature = abi.encodePacked(r, s, v);
+
+        _assertTrue(
+            registry.verifyActorSignature(signer, payloadHash, signature),
+            "signature verifies before revocation"
+        );
+
+        registry.revokeActor(signer);
+
+        _assertTrue(
+            !registry.verifyActorSignature(signer, payloadHash, signature),
+            "signature fails after revocation"
+        );
+    }
+
+    function testTamperedPayloadHashDoesNotVerify() public {
+        uint256 signerKey = 0xCAFE;
+        address signer = vm.addr(signerKey);
+        registry.registerActor(signer, MarketplaceActorRegistry.Role.Buyer, _h("signing-buyer"));
+
+        bytes32 originalPayloadHash = _h("original-packet");
+        bytes32 tamperedPayloadHash = _h("tampered-packet");
+        bytes32 digest = registry.toEthSignedMessageHash(originalPayloadHash);
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerKey, digest);
+        bytes memory signature = abi.encodePacked(r, s, v);
+
+        _assertTrue(
+            !registry.verifyActorSignature(signer, tamperedPayloadHash, signature),
+            "signature cannot be moved to tampered payload"
+        );
+    }
+
+    function testProofsCannotBeAddedAfterSettlement() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:insured");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _markDeliveredBySeller(tradeId, "delivery:settled-proof-closed");
+        bytes32 receiptHash = _h("receipt:done");
+        vm.prank(buyer);
+        escrow.buyerAccept(tradeId, receiptHash, _sig(buyerKey, receiptHash));
+
+        vm.expectRevert(MarketplaceEscrow.ClosedTrade.selector);
+        bytes32 lateProofHash = _h("late-proof");
+        vm.prank(seller);
+        escrow.attachProof(tradeId, lateProofHash, _sig(sellerKey, lateProofHash));
+    }
+
+    function testStrangerCannotAttachEvidence() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        bytes32 fakeProofHash = _h("fake-proof");
+        vm.prank(stranger);
+        escrow.attachEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.Trust,
+            fakeProofHash,
+            _sig(sellerKey, fakeProofHash)
+        );
+    }
+
+    function testVerifierCannotAttachLooseEvidence() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        bytes32 verifierNoteHash = _h("verifier-note");
+        vm.prank(verifier);
+        escrow.attachEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.Item,
+            verifierNoteHash,
+            _sig(verifierKey, verifierNoteHash)
+        );
+    }
+
+    function testApprovedVerifierStillCannotAttachLooseEvidence() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        _approveFingerprintVerifier(tradeId, verifier);
+
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        bytes32 verifierNoteHash = _h("verifier-note");
+        vm.prank(verifier);
+        escrow.attachEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.Item,
+            verifierNoteHash,
+            _sig(verifierKey, verifierNoteHash)
+        );
+    }
+
+    function testVerifierScopeApprovalRejectsOldUnscopedSignature() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 approvalHash = _h("old-unscoped-verifier-approval");
+        bytes32 scopeSetHash = escrow.FINGERPRINT_SCOPE_SET_HASH();
+        bytes32 scopedApprovalHash =
+            escrow.verifierScopeApprovalHash(tradeId, verifier, scopeSetHash, approvalHash);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadSignature.selector, buyer, scopedApprovalHash
+            )
+        );
+        vm.prank(buyer);
+        escrow.approveVerifierScope(
+            tradeId, verifier, scopeSetHash, approvalHash, _sig(buyerKey, approvalHash)
+        );
+    }
+
+    function testVerifierCanCommitScopedAttestation() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 scopeSetHash = _h("scope:cert-custody");
+        bytes32 methodIdHash = _h("method:tcg-slab-cert-custody-photo-v0.1");
+        bytes32 subjectHash = committedItemFingerprints[tradeId];
+        bytes32 attestationHash = _h("attestation:cert-custody");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+
+        bytes32 bindingHash = escrow.verifierAttestationBindingHash(
+            tradeId, attestationHash, subjectHash, scopeSetHash, methodIdHash
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            subjectHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, bindingHash)
+        );
+
+        _assertEq(
+            uint256(escrow.verifierAttestationHashes(tradeId, 0)),
+            uint256(attestationHash),
+            "scoped attestation anchored"
+        );
+    }
+
+    function testVerifierAttestationRequiresApprovedScope() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 scopeSetHash = _h("scope:unapproved");
+        bytes32 methodIdHash = _h("method:tcg-slab-cert-custody-photo-v0.1");
+        bytes32 subjectHash = committedItemFingerprints[tradeId];
+        bytes32 attestationHash = _h("attestation:unapproved-scope");
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.UnapprovedVerifierScope.selector, verifier, scopeSetHash
+            )
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            subjectHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationHash)
+        );
+    }
+
+    function testVerifierAttestationRequiresAnchoredSubject() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 scopeSetHash = _h("scope:cert-custody-missing-subject");
+        bytes32 methodIdHash = _h("method:tcg-slab-cert-custody-photo-v0.1");
+        bytes32 missingSubjectHash = _h("subject:not-anchored");
+        bytes32 attestationHash = _h("attestation:missing-subject");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.AttestationSubjectMissing.selector, missingSubjectHash
+            )
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            missingSubjectHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationHash)
+        );
+    }
+
+    function testDuplicateProofHashIsRejected() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 proofHash = _h("seller-proof-once");
+        vm.prank(seller);
+        escrow.attachProof(tradeId, proofHash, _sig(sellerKey, proofHash));
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.DuplicatePacket.selector, proofHash)
+        );
+        vm.prank(seller);
+        escrow.attachProof(tradeId, proofHash, _sig(sellerKey, proofHash));
+    }
+
+    function testPacketHashCannotBeReusedAcrossProofAndEvidence() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 sharedHash = _h("same-packet-cannot-wear-two-hats");
+        vm.prank(seller);
+        escrow.attachProof(tradeId, sharedHash, _sig(sellerKey, sharedHash));
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.DuplicatePacket.selector, sharedHash)
+        );
+        vm.prank(seller);
+        escrow.attachEvidence(
+            tradeId, MarketplaceEscrow.EvidenceKind.Item, sharedHash, _sig(sellerKey, sharedHash)
+        );
+    }
+
+    function testPredicateEvidenceAnchorsThroughRegisteredVerifierContract() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 predicateHash = _h("seller-private-threshold-predicate");
+        predicateVerifier.setPredicateAccepted(predicateHash, true);
+
+        vm.prank(seller);
+        escrow.attachPredicateEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.PrivatePredicate,
+            predicateHash,
+            _sig(sellerKey, predicateHash),
+            address(predicateVerifier),
+            abi.encode(uint256(25)),
+            hex"01"
+        );
+
+        _assertEq(
+            uint256(escrow.evidenceHashes(tradeId, 0)),
+            uint256(predicateHash),
+            "predicate evidence is anchored"
+        );
+    }
+
+    function testPredicateEvidenceRequiresRegisteredVerifierContract() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        MarketplacePredicateVerifierStub unregisteredVerifier =
+            new MarketplacePredicateVerifierStub();
+
+        bytes32 predicateHash = _h("unregistered-predicate-verifier");
+        unregisteredVerifier.setPredicateAccepted(predicateHash, true);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.UnregisteredPredicateVerifier.selector,
+                address(unregisteredVerifier)
+            )
+        );
+        vm.prank(seller);
+        escrow.attachPredicateEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.PrivatePredicate,
+            predicateHash,
+            _sig(sellerKey, predicateHash),
+            address(unregisteredVerifier),
+            abi.encode(uint256(25)),
+            hex"01"
+        );
+    }
+
+    function testPredicateEvidenceRequiresPassingVerifierContract() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 predicateHash = _h("predicate-not-accepted");
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.PredicateVerificationFailed.selector,
+                address(predicateVerifier),
+                predicateHash
+            )
+        );
+        vm.prank(seller);
+        escrow.attachPredicateEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.PrivatePredicate,
+            predicateHash,
+            _sig(sellerKey, predicateHash),
+            address(predicateVerifier),
+            abi.encode(uint256(25)),
+            hex"01"
+        );
+    }
+
+    function testRevokedVerifierCannotAttachEvidence() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeVerifier(verifier);
+
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        bytes32 staleVerifierHash = _h("stale-verifier");
+        vm.prank(verifier);
+        escrow.attachEvidence(
+            tradeId,
+            MarketplaceEscrow.EvidenceKind.Item,
+            staleVerifierHash,
+            _sig(verifierKey, staleVerifierHash)
+        );
+    }
+
+    function testClaimAfterInspectionWindowIsRejected() public {
+        uint256 tradeId = _deliverTrade(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.warp(block.timestamp + 3 days);
+
+        vm.expectRevert(MarketplaceEscrow.InspectionWindowClosed.selector);
+        bytes32 lateClaimHash = _h("late-claim");
+        vm.prank(buyer);
+        escrow.openClaim{ value: 0.01 ether }(tradeId, lateClaimHash, _sig(buyerKey, lateClaimHash));
+    }
+
+    function testAutoSettlementBlockedWhileClaimPending() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.warp(block.timestamp + 3 days);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadState.selector, MarketplaceEscrow.State.ClaimOrDisputePending
+            )
+        );
+        escrow.settleAfterInspection(tradeId);
+    }
+
+    function testNonArbiterCannotResolveClaim() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        bytes32 sellerRulingHash = _h("seller-ruling");
+        vm.prank(seller);
+        escrow.resolveClaim(
+            tradeId, sellerRulingHash, 0, 0, false, _sig(sellerKey, sellerRulingHash)
+        );
+    }
+
+    function testRevokedArbiterCannotResolveExistingClaim() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, arbiter)
+        );
+        bytes32 rulingHash = _h("revoked-arbiter-ruling");
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 5_000, 5_000, true, _sig(arbiterKey, rulingHash));
+    }
+
+    function testBuyerSellerCanReplaceRevokedArbiterAndResolveClaim() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 proposalHash = _h("arbiter-replacement:agree");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+        vm.prank(seller);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(sellerKey, proposalHash)
+        );
+
+        bytes32 rulingHash = _h("replacement-ruling");
+        vm.prank(replacementArbiter);
+        escrow.resolveClaim(
+            tradeId, rulingHash, 5_000, 2_500, true, _sig(replacementArbiterKey, rulingHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+    }
+
+    function testSinglePartyCannotReplaceArbiter() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 proposalHash = _h("arbiter-replacement:buyer-only");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+
+        bytes32 rulingHash = _h("premature-replacement-ruling");
+        vm.expectRevert(MarketplaceEscrow.Unauthorized.selector);
+        vm.prank(replacementArbiter);
+        escrow.resolveClaim(
+            tradeId, rulingHash, 5_000, 2_500, true, _sig(replacementArbiterKey, rulingHash)
+        );
+    }
+
+    function testEmergencyReplacementAfterTimeoutWhenCurrentArbiterRevoked() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 proposalHash = _h("arbiter-replacement:emergency");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+
+        vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(
+            tradeId, proposalHash, _sig(replacementArbiterKey, proposalHash)
+        );
+
+        bytes32 rulingHash = _h("emergency-replacement-ruling");
+        vm.prank(replacementArbiter);
+        escrow.resolveClaim(
+            tradeId, rulingHash, 5_000, 2_500, true, _sig(replacementArbiterKey, rulingHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+    }
+
+    function testEmergencyReplacementRequiresTimeout() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 proposalHash = _h("arbiter-replacement:too-early");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+
+        uint256 availableAt = block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT();
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.ReplacementTimeoutOpen.selector, availableAt)
+        );
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(
+            tradeId, proposalHash, _sig(replacementArbiterKey, proposalHash)
+        );
+    }
+
+    function testEmergencyReplacementRequiresInactiveCurrentArbiter() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 proposalHash = _h("arbiter-replacement:active-old-arbiter");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+
+        vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.ArbiterStillActive.selector, arbiter)
+        );
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(
+            tradeId, proposalHash, _sig(replacementArbiterKey, proposalHash)
+        );
+    }
+
+    function testEmergencyReplacementRequiresReplacementArbiterSignature() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 proposalHash = _h("arbiter-replacement:bad-acceptance-signature");
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(buyerKey, proposalHash)
+        );
+
+        vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadSignature.selector, replacementArbiter, proposalHash
+            )
+        );
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(tradeId, proposalHash, _sig(buyerKey, proposalHash));
+    }
+
+    function testArbiterReplacementRequiresActiveArbiter() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 proposalHash = _h("arbiter-replacement:bad");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, stranger)
+        );
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, stranger, proposalHash, _sig(buyerKey, proposalHash)
+        );
+    }
+
+    function testArbiterReplacementRequiresApproverSignature() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 proposalHash = _h("arbiter-replacement:wrong-signature");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.BadSignature.selector, buyer, proposalHash)
+        );
+        vm.prank(buyer);
+        escrow.approveArbiterReplacement(
+            tradeId, replacementArbiter, proposalHash, _sig(sellerKey, proposalHash)
+        );
+    }
+
+    function testPacketGateRejectsWrongSigner() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 proofHash = _h("seller-proof-with-buyer-signature");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.BadSignature.selector, seller, proofHash)
+        );
+        vm.prank(seller);
+        escrow.attachProof(tradeId, proofHash, _sig(buyerKey, proofHash));
+    }
+
+    function _createAndBond(uint256 escrowAmount, uint256 sellerBond, uint256 disputeBond)
+        internal
+        returns (uint256 tradeId)
+    {
+        tradeId = _createAndBondWithoutInventoryLock(escrowAmount, sellerBond, disputeBond);
+        _commitItemFingerprint(
+            tradeId, keccak256(abi.encodePacked("fingerprint:vintage-card:", tradeId))
+        );
+        _commitInventoryLock(
+            tradeId, keccak256(abi.encodePacked("inventory:vintage-card:", tradeId))
+        );
+    }
+
+    function _createAndBondWithoutInventoryLock(
+        uint256 escrowAmount,
+        uint256 sellerBond,
+        uint256 disputeBond
+    ) internal returns (uint256 tradeId) {
+        bytes32 intentHash = _h("intent:vintage-card");
+        bytes32 termsHash = _h("terms:v1");
+        vm.prank(buyer);
+        tradeId = escrow.createTrade{ value: escrowAmount }(
+            seller,
+            arbiter,
+            sellerBond,
+            disputeBond,
+            2 days,
+            intentHash,
+            termsHash,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+
+        vm.prank(seller);
+        escrow.acceptAndBond{ value: sellerBond }(tradeId);
+    }
+
+    function _commitItemFingerprint(uint256 tradeId, bytes32 itemFingerprintHash) internal {
+        vm.prank(seller);
+        escrow.commitItemFingerprint(
+            tradeId, itemFingerprintHash, _sig(sellerKey, itemFingerprintHash)
+        );
+        committedItemFingerprints[tradeId] = itemFingerprintHash;
+    }
+
+    function _approveFingerprintVerifier(uint256 tradeId, address verifier_) internal {
+        _approveVerifierScope(tradeId, verifier_, escrow.FINGERPRINT_SCOPE_SET_HASH());
+    }
+
+    function _approveVerifierScope(uint256 tradeId, address verifier_, bytes32 scopeSetHash)
+        internal
+    {
+        bytes32 approvalHash =
+            keccak256(abi.encodePacked("verifier-scope:", tradeId, verifier_, scopeSetHash));
+        bytes32 scopedApprovalHash =
+            escrow.verifierScopeApprovalHash(tradeId, verifier_, scopeSetHash, approvalHash);
+        vm.prank(buyer);
+        escrow.approveVerifierScope(
+            tradeId, verifier_, scopeSetHash, approvalHash, _sig(buyerKey, scopedApprovalHash)
+        );
+    }
+
+    function _commitInventoryLock(uint256 tradeId, bytes32 inventoryLockHash) internal {
+        bytes32 itemFingerprintHash = committedItemFingerprints[tradeId];
+        bytes32 bindingHash =
+            escrow.inventoryLockBindingHash(tradeId, inventoryLockHash, itemFingerprintHash);
+        vm.prank(seller);
+        escrow.commitInventoryLock(
+            tradeId, inventoryLockHash, itemFingerprintHash, _sig(sellerKey, bindingHash)
+        );
+        committedInventoryLocks[tradeId] = inventoryLockHash;
+    }
+
+    function _commitRoute(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bool inPersonAllowed,
+        bool insured,
+        uint256 declaredInsurance
+    ) internal returns (bytes32 spendabilityHash) {
+        spendabilityHash = _routeSpendability(tradeId, routeHash);
+        bytes32 wallBundleHash = _routeWallBundleRoot(tradeId, routeHash);
+        bytes32 assemblyHistoryHash = _routeAssemblyHistory(tradeId, routeHash);
+        bytes32 routeAssemblyWitnessHash =
+            _routeAssemblyWitness(tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash);
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            wallBundleHash,
+            assemblyHistoryHash,
+            routeAssemblyWitnessHash,
+            inPersonAllowed,
+            insured,
+            declaredInsurance,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function _routeSpendability(uint256 tradeId, bytes32 routeHash)
+        internal
+        pure
+        returns (bytes32)
+    {
+        return _routeSpendability(tradeId, routeHash, _routeAssemblyHistory(tradeId, routeHash));
+    }
+
+    function _routeSpendability(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes32 assemblyHistoryHash
+    ) internal pure returns (bytes32) {
+        return keccak256(
+            abi.encodePacked("spendability:route:", tradeId, routeHash, assemblyHistoryHash)
+        );
+    }
+
+    function _routeWallBundleRoot(uint256 tradeId, bytes32 routeHash)
+        internal
+        pure
+        returns (bytes32)
+    {
+        return keccak256(abi.encodePacked("wall-bundle:route:", tradeId, routeHash));
+    }
+
+    function _routeAssemblyHistory(uint256 tradeId, bytes32 routeHash)
+        internal
+        pure
+        returns (bytes32)
+    {
+        return keccak256(
+            abi.encodePacked(
+                "assembly-history:route:", tradeId, routeHash, _routeWallBundleRoot(tradeId, routeHash)
+            )
+        );
+    }
+
+    function _routeAssemblyWitness(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes32 spendabilityHash,
+        bytes32 wallBundleHash,
+        bytes32 assemblyHistoryHash
+    ) internal view returns (bytes32) {
+        return keccak256(
+            abi.encode(
+                keccak256(
+                    "RouteAssemblyWitness(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 routeSpendabilityHash,bytes32 wallBundleHash,bytes32 assemblyHistoryHash,bytes32 itemFingerprintHash,bytes32 inventoryLockHash,bytes32 gateHash)"
+                ),
+                address(escrow),
+                block.chainid,
+                tradeId,
+                routeHash,
+                spendabilityHash,
+                wallBundleHash,
+                assemblyHistoryHash,
+                committedItemFingerprints[tradeId],
+                committedInventoryLocks[tradeId],
+                keccak256("marketplace.gate.route_commitment.v0.1")
+            )
+        );
+    }
+
+    function _deliverTrade(uint256 escrowAmount, uint256 sellerBond, uint256 disputeBond)
+        internal
+        returns (uint256 tradeId)
+    {
+        tradeId = _createAndBond(escrowAmount, sellerBond, disputeBond);
+
+        bytes32 routeHash = _h("route:pressure");
+        _commitRoute(tradeId, routeHash, false, true, escrowAmount);
+        _markDeliveredBySeller(tradeId, "delivery:pressure");
+    }
+
+    function _markDeliveredBySeller(uint256 tradeId, string memory label) internal {
+        bytes32 deliveryHash = _h(label);
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, spendabilityHash);
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, witnessHash, _sig(sellerKey, deliveryHash)
+        );
+    }
+
+    function _markDeliveredByArbiter(uint256 tradeId, string memory label) internal {
+        bytes32 deliveryHash = _h(label);
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, spendabilityHash);
+        vm.prank(arbiter);
+        escrow.markDelivered(
+            tradeId, deliveryHash, spendabilityHash, witnessHash, _sig(arbiterKey, deliveryHash)
+        );
+    }
+
+    function _deliverySpendability(uint256 tradeId, bytes32 deliveryHash)
+        internal
+        pure
+        returns (bytes32)
+    {
+        return keccak256(abi.encodePacked("spendability:delivery:", tradeId, deliveryHash));
+    }
+
+    function _deliveryWitness(
+        uint256 tradeId,
+        bytes32 deliveryHash,
+        bytes32 spendabilityHash
+    ) internal view returns (bytes32) {
+        return escrow.deliveryWitnessHash(tradeId, deliveryHash, spendabilityHash);
+    }
+
+    function _openClaim(uint256 escrowAmount, uint256 sellerBond, uint256 disputeBond)
+        internal
+        returns (uint256 tradeId)
+    {
+        tradeId = _deliverTrade(escrowAmount, sellerBond, disputeBond);
+
+        bytes32 claimHash = _h("claim:pressure");
+        vm.prank(buyer);
+        escrow.openClaim{ value: disputeBond }(tradeId, claimHash, _sig(buyerKey, claimHash));
+    }
+
+    function _assertState(uint256 tradeId, MarketplaceEscrow.State expected) internal view {
+        MarketplaceEscrow.State actual = escrow.getState(tradeId);
+        if (actual != expected) revert("unexpected state");
+    }
+
+    function _assertTrue(bool value, string memory message) internal pure {
+        if (!value) revert(message);
+    }
+
+    function _assertEq(uint256 actual, uint256 expected, string memory message) internal pure {
+        if (actual != expected) revert(message);
+    }
+
+    function _h(string memory value) internal pure returns (bytes32) {
+        return keccak256(bytes(value));
+    }
+
+    function _sig(uint256 privateKey, bytes32 payloadHash) internal returns (bytes memory) {
+        bytes32 digest =
+            keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", payloadHash));
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(privateKey, digest);
+        return abi.encodePacked(r, s, v);
+    }
+}

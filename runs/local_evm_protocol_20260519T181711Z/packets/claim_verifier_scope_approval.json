@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"limits\":[\"received_condition_review_only\",\"not_full_authentication\"],\"schema\":\"marketplace.verifier_scope_approval.v0.1\",\"scope\":[\"raw_condition_floor\"],\"scope_set_hash\":\"0x6c14599a4ef82e2c78d06f806accf4add517e0163c046b3a90c8c5e3add068cc\",\"trade_id\":2,\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "limits": [
+      "received_condition_review_only",
+      "not_full_authentication"
+    ],
+    "schema": "marketplace.verifier_scope_approval.v0.1",
+    "scope": [
+      "raw_condition_floor"
+    ],
+    "scope_set_hash": "0x6c14599a4ef82e2c78d06f806accf4add517e0163c046b3a90c8c5e3add068cc",
+    "trade_id": 2,
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x1f7af25a6c96908eef75b731f6c4abf8c58b7664235e7a7f02fbf12fee6a8176",
+  "signature": "0xa7a09ff97dbcdf3163207bf2616e73fbe387e03ab461df12d653e24f7eaa364157912bc4edd83d4445b6614386ca099efb698edebe5fd9c0c55e01a0074efd3a1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

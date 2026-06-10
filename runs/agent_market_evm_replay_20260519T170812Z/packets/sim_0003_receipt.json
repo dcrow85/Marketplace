@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"buyer_confirmation\":\"card roughly matched intent and evidence packet\",\"result\":\"accepted\",\"schema\":\"marketplace.trade_receipt.v0.2\",\"settlement\":\"release_to_seller\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_confirmation": "card roughly matched intent and evidence packet",
+    "result": "accepted",
+    "schema": "marketplace.trade_receipt.v0.2",
+    "settlement": "release_to_seller",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003"
+  },
+  "payload_hash": "0x7932faf39b5c04876dc428f0e5884344a67eaf09164f1b34c11753496b74a30b",
+  "signature": "0x2ee72257139f855c993cfbb55cacdc23aca0d26356a84139ba48ca905d8f74dd79126286ef51b962083d74584f7d7503d741a2dceca6f2f6b38ac22ac57cf1691c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

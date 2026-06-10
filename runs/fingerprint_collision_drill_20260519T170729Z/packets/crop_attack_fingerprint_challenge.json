@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"challenger\":\"did:market:buyer:anvil-0\",\"deadline\":\"2026-05-20T00:00:00Z\",\"failure_policy\":\"block_route_until_buyer_waiver_or_resolution\",\"grounds\":[\"same_private_match_group:private-match-group:raw-omega-42:trade_9\"],\"requested_evidence\":[\"verifier_or_arbiter_image_match_review\"],\"schema\":\"marketplace.fingerprint_challenge.v0.1\",\"target_fingerprint_hash\":\"0xd4881da4d3b145147ab044839b6cacbca5c8478acf0b86e635d18e66aab35ef0\",\"trade_id\":10}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenger": "did:market:buyer:anvil-0",
+    "deadline": "2026-05-20T00:00:00Z",
+    "failure_policy": "block_route_until_buyer_waiver_or_resolution",
+    "grounds": [
+      "same_private_match_group:private-match-group:raw-omega-42:trade_9"
+    ],
+    "requested_evidence": [
+      "verifier_or_arbiter_image_match_review"
+    ],
+    "schema": "marketplace.fingerprint_challenge.v0.1",
+    "target_fingerprint_hash": "0xd4881da4d3b145147ab044839b6cacbca5c8478acf0b86e635d18e66aab35ef0",
+    "trade_id": 10
+  },
+  "payload_hash": "0x12a872fea0df0f65999d3ec76b21d8907f9bde622ed67e034e43f8ef7b609d4f",
+  "signature": "0x0ed979551a50ac55d40e82ea74af8d7d20615e191e9360e51348f5e3a50a187a7ae0478527dfdd68e81db916e1dcbd4dc1fce7c12219ef75fe528696fa7e08831b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

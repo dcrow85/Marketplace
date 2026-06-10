@@ -1,0 +1,24 @@
+{
+  "canonical_payload": "{\"agent_read\":\"Collision drill item evidence packet.\",\"evidence_class\":\"item\",\"objects\":[{\"ref\":\"shared-front-777\",\"type\":\"front_photo\"},{\"ref\":\"attack-back-888\",\"type\":\"back_photo\"}],\"schema\":\"marketplace.evidence_packet.v0.2\",\"trade_id\":8}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "agent_read": "Collision drill item evidence packet.",
+    "evidence_class": "item",
+    "objects": [
+      {
+        "ref": "shared-front-777",
+        "type": "front_photo"
+      },
+      {
+        "ref": "attack-back-888",
+        "type": "back_photo"
+      }
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "trade_id": 8
+  },
+  "payload_hash": "0xe7f43caa8ba20e774c515fa90c78f5f56a53ca7f576e351669279ef833c90bbf",
+  "signature": "0x08252f0dd2cd993875ca95487d3ce780658e7d6c684fb8d95f19a5b97944223c7dcc1358b2c186365b7400ad7e131dad1e31966a3fa5c5002d9ea21f2cc951821b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.0173\",\"claim_type\":\"buyer_remorse\",\"evidence_hashes\":[\"0x48b61c44ec313e0f8e26eaa8f0c65e62b9c07194b8831d5f6eeb9de808ba4109\",\"0x3d09effc7b1e00e6ae6ce302bf0d543418e1d8fd3209ab266ecbb0bbc422cc63\"],\"requested_remedy\":{\"buyer_refund_bps\":0,\"seller_bond_penalty_bps\":0,\"type\":\"seller_release\"},\"schema\":\"marketplace.claim.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321\",\"friction_policy\":\"sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64\",\"intent\":\"sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb\",\"seller_offer\":\"sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4\"},\"source_simulation_trade\":\"SIM-0247\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.0173",
+    "claim_type": "buyer_remorse",
+    "evidence_hashes": [
+      "0x48b61c44ec313e0f8e26eaa8f0c65e62b9c07194b8831d5f6eeb9de808ba4109",
+      "0x3d09effc7b1e00e6ae6ce302bf0d543418e1d8fd3209ab266ecbb0bbc422cc63"
+    ],
+    "requested_remedy": {
+      "buyer_refund_bps": 0,
+      "seller_bond_penalty_bps": 0,
+      "type": "seller_release"
+    },
+    "schema": "marketplace.claim.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321",
+      "friction_policy": "sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64",
+      "intent": "sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb",
+      "seller_offer": "sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4"
+    },
+    "source_simulation_trade": "SIM-0247"
+  },
+  "payload_hash": "0x72c358b34353e06b6f28e65501e4e0ca8dcb47e36229d062e5adb296b062d559",
+  "signature": "0xe609b059249cc6083739a472164159d97446d4cf6fc73521c7399144a20f9d27571b2b737eef1ade575e40acca0728c23728dc75ce9577f393dae942edc0fa261b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

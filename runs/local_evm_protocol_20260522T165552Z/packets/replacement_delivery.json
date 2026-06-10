@@ -1,0 +1,15 @@
+{
+  "canonical_payload": "{\"delivered\":true,\"delivery_signal\":\"carrier_scan_under_review\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"tracking\":\"SIM-REPLACE-0003\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "delivered": true,
+    "delivery_signal": "carrier_scan_under_review",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "tracking": "SIM-REPLACE-0003",
+    "trade_id": 3
+  },
+  "payload_hash": "0xb4af7959206447b647a1e1992dab06275978d961b741d5167aa5ae41628cd5eb",
+  "signature": "0x7f6de895554f8df594b8f10c2b3d4caee537502e269aad20a2b7bd345da09d8f1d08aba2a1926a9d8f8861f3c0710f1dfd5f1616da1064f023ad6afa9c355dae1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

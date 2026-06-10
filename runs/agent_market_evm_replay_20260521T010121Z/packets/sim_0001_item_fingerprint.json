@@ -1,0 +1,50 @@
+{
+  "canonical_payload": "{\"challenge_hooks\":[\"fresh_timestamped_photo\",\"verifier_review\"],\"confidence_scope\":\"bounded_for_raw_card_identity\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"seller_offer\",\"type\":\"seller_offer\"},{\"ref\":\"sim-0001-front-photo-hash\",\"type\":\"front_photo\"},{\"ref\":\"sim-0001-back-photo-hash\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Japanese Base Gyarados holo\",\"condition_claim\":\"MP\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"value_band\":\"low\"},\"privacy_policy\":\"buyer_arbiter_and_registered_verifier\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c\",\"escrow_terms\":\"sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f\",\"friction_policy\":\"sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67\",\"intent\":\"sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d\",\"seller_offer\":\"sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705\"},\"source_simulation_trade\":\"SIM-0001\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge_hooks": [
+      "fresh_timestamped_photo",
+      "verifier_review"
+    ],
+    "confidence_scope": "bounded_for_raw_card_identity",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "seller_offer",
+        "type": "seller_offer"
+      },
+      {
+        "ref": "sim-0001-front-photo-hash",
+        "type": "front_photo"
+      },
+      {
+        "ref": "sim-0001-back-photo-hash",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Japanese Base Gyarados holo",
+      "condition_claim": "MP",
+      "domain": "tcg",
+      "game": "pokemon",
+      "value_band": "low"
+    },
+    "privacy_policy": "buyer_arbiter_and_registered_verifier",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c",
+      "escrow_terms": "sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f",
+      "friction_policy": "sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67",
+      "intent": "sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d",
+      "seller_offer": "sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705"
+    },
+    "source_simulation_trade": "SIM-0001"
+  },
+  "payload_hash": "0xd29127bfb39dd8c2c757ed2c6fdc31b55a009a652c7a47fc1f4a958c835fe6cd",
+  "signature": "0xd0977d2d6eb5138783c51706ec1b8895db14508e56c115ece0f52b8a6667dbf31ec5d1f3cc52fe1ab502834d6dab248b76b0cdd94c041573bbc777192edb3cd21b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

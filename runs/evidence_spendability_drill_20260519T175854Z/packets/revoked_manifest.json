@@ -1,0 +1,76 @@
+{
+  "asset_descriptors": [
+    {
+      "asset_id": "front-photo",
+      "byte_length": 38,
+      "captured_at": "2026-05-19T17:25:37+00:00",
+      "created_at": "2026-05-19T17:25:37+00:00",
+      "keccak256": "0x5ecfdb252ca3c0231a6841152957946c1fcb8ff7d2cb783dfd115cda6f51b5a6",
+      "media_type": "image/png",
+      "role": "front_photo",
+      "schema": "marketplace.asset_descriptor.v0.2",
+      "sha256": "ee4d828d7a2c258b9e9e8fe9ecb88986d87a736248a7eae0cf73b17419dd2098",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": true,
+          "uri": "assets/revoked_manifest/front.png"
+        }
+      ],
+      "visibility": "public",
+      "weak_supplemental": false
+    },
+    {
+      "asset_id": "back-photo",
+      "byte_length": 37,
+      "captured_at": "2026-05-19T17:25:37+00:00",
+      "created_at": "2026-05-19T17:25:37+00:00",
+      "keccak256": "0x86dc3cdb8e46236a66af702cb0eeb43147f0a65e31d413cce8664bfe5ef2c7d1",
+      "media_type": "image/png",
+      "role": "back_photo",
+      "schema": "marketplace.asset_descriptor.v0.2",
+      "sha256": "f4c951e91b6e7d79f7646f5ee4626aabe922bdd9ac278bb15b6969b06f88ec8f",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": true,
+          "uri": "assets/revoked_manifest/back.png"
+        }
+      ],
+      "visibility": "public",
+      "weak_supplemental": false
+    }
+  ],
+  "asset_root_hash": "dce09faef90744fe8e528ce0135b63b810947d1c7c649644899e580107e808fd",
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "evidence_tier": "standard",
+  "hash_algorithm": "sha256(marketplace-json-c14n-v0.2)",
+  "issued_at": "2026-05-19T17:25:37+00:00",
+  "issuer": "did:market:seller:fixture-1",
+  "issuer_role": "seller",
+  "known_conflicts": [],
+  "known_limits": [
+    "fixture bytes are not real card images"
+  ],
+  "manifest_hash": "14142df9b566fbb5a1cf4773c30d3ed8044c8d40c4156389054871ec3c25402a",
+  "manifest_id": "revoked_manifest",
+  "schema": "marketplace.evidence_manifest.v0.2",
+  "signature": "local-drill-signature-v0:334639f37e16de530bc5907ca787009091e9368969c2f03166b788f506de4720",
+  "subject": {
+    "anchor_hash": "4d4b281da311c5b195b21d94eee2727bdb97255ca8f30746cf2ca5b033b90a38",
+    "subject_hash": "196c9a6faaab0a8221f9ef011a8951bc518dbc6601c4ce55b04606d7283f8209",
+    "subject_type": "item_fingerprint",
+    "trade_id": "9105"
+  },
+  "trade_id": "9105"
+}

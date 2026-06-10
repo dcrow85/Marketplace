@@ -1,0 +1,63 @@
+{
+  "canonical_payload": "{\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:arbiter:anvil-2\",\"actor_role\":\"arbiter\",\"authority_hash\":\"0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"bond_action:2:condition-ruling\",\"gate_type\":\"bond_action\",\"leg\":\"return\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-19T17:50:42.196864+00:00\",\"issued_by\":\"did:market:arbiter:anvil-2\",\"issued_role\":\"arbiter\",\"manifest_hash\":\"0x2462592caa0518b51e9127ff3ae59e376fd6c26d6f26085d289c8803d4a82829\",\"manifest_kind\":\"local_evm_legacy_packet_hash\",\"manifest_subject_hash\":\"0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824\",\"requires\":[\"arbiter_assignment\",\"claim_opened\",\"verifier_attestation\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"claim_bond_action_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"condition_support\",\"not_claiming\":[\"authenticity\",\"carrier_damage\"],\"spend_limit\":\"moves_funds\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":2,\"window\":{\"after_state\":{\"state_hash\":\"0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df\",\"state_name\":\"ClaimOrDisputePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:arbiter:anvil-2",
+      "actor_role": "arbiter",
+      "authority_hash": "0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "bond_action:2:condition-ruling",
+      "gate_type": "bond_action",
+      "leg": "return"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-19T17:50:42.196864+00:00",
+    "issued_by": "did:market:arbiter:anvil-2",
+    "issued_role": "arbiter",
+    "manifest_hash": "0x2462592caa0518b51e9127ff3ae59e376fd6c26d6f26085d289c8803d4a82829",
+    "manifest_kind": "local_evm_legacy_packet_hash",
+    "manifest_subject_hash": "0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824",
+    "requires": [
+      "arbiter_assignment",
+      "claim_opened",
+      "verifier_attestation"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "claim_bond_action_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "condition_support",
+        "not_claiming": [
+          "authenticity",
+          "carrier_damage"
+        ],
+        "spend_limit": "moves_funds",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 2,
+    "window": {
+      "after_state": {
+        "state_hash": "0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df",
+        "state_name": "ClaimOrDisputePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0x945baae070ab9dd4541c4c6072d84d340076aef614e973dfc3075d6476fcdc87",
+  "signature": "0x7dbd370e6247744c621040f043a205bf96f56bfb0774c51b2d04cdc727ffd35e44fd69532d60894b9873d90972eb8ea914cabffd3cfe9dc775a7433838b102661b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+}

@@ -1,0 +1,67 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-05-20T03:09:57.122122+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-exact-a\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"exact-front-a\",\"type\":\"front_photo\"},{\"ref\":\"exact-back-a\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Japanese vintage holo exact-hash source\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":1,\"visual_markers\":[{\"marker_hash\":\"exact-front-a\",\"match_group\":\"exact-card-a\",\"scope\":\"front\"},{\"marker_hash\":\"exact-back-a\",\"match_group\":\"exact-card-a\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-05-20T03:09:57.122122+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-exact-a",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "exact-front-a",
+        "type": "front_photo"
+      },
+      {
+        "ref": "exact-back-a",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Japanese vintage holo exact-hash source",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 1,
+    "visual_markers": [
+      {
+        "marker_hash": "exact-front-a",
+        "match_group": "exact-card-a",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "exact-back-a",
+        "match_group": "exact-card-a",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0x6f21998d5b1661ae127d08c5a16f71c3d6af099ee7c0ed6c43ae9d801d2abcf8",
+  "signature": "0xd9165ddc9db95fef3700a79eb4dcd0c67d5de5dc9b30c848f5abe7eece56eaf77e00dcb5d279c7619b753ef76330a6eef44f6ca6b2741df8097644ea02c664891c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

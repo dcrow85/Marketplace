@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Neo Revelation Houndoom holo\",\"condition_claim\":\"MP\",\"inventory_key\":\"tcg:pokemon:sim-0087\",\"item_fingerprint_hash\":\"0x556474e6af09c18658bdea960a96c016cea50cc356e5ab8e2a70cf247a056940\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:a359981f8d7f8dc18a3158a27dda96623418e16105ee67f152bfb93d779ecb9e\",\"friction_policy\":\"sha256:e132243500df9fc9e4a170f553f13683411d5e811b1459b0088095e8462a6504\",\"intent\":\"sha256:4a45887f0fa0cd3b57f1a830eab9252f6bb6613e5a1e1c5ff4df076314dafbb6\",\"seller_offer\":\"sha256:b9888e2e870f538ece3da3dbc7c6040db70337dbfd4559a9eb8372273b67cd64\"},\"source_simulation_trade\":\"SIM-0087\",\"visible_identifiers\":[\"sim-0087-front-photo-hash\",\"sim-0087-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Neo Revelation Houndoom holo",
+    "condition_claim": "MP",
+    "inventory_key": "tcg:pokemon:sim-0087",
+    "item_fingerprint_hash": "0x556474e6af09c18658bdea960a96c016cea50cc356e5ab8e2a70cf247a056940",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:a359981f8d7f8dc18a3158a27dda96623418e16105ee67f152bfb93d779ecb9e",
+      "friction_policy": "sha256:e132243500df9fc9e4a170f553f13683411d5e811b1459b0088095e8462a6504",
+      "intent": "sha256:4a45887f0fa0cd3b57f1a830eab9252f6bb6613e5a1e1c5ff4df076314dafbb6",
+      "seller_offer": "sha256:b9888e2e870f538ece3da3dbc7c6040db70337dbfd4559a9eb8372273b67cd64"
+    },
+    "source_simulation_trade": "SIM-0087",
+    "visible_identifiers": [
+      "sim-0087-front-photo-hash",
+      "sim-0087-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xa7c2bb64211112db7ee17e6bd63e3be50221a2f3ae97e223220cb3d6753477d7",
+  "signature": "0x56f3d7183da286be59f0f8fe53aed1c50834f5951dd77477e3dfdacdc2dd54e07482d2baf9922380cf75bc6ccc686368e9454830ec47581016ff22d8766e2b9f1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

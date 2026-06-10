@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"approval_rule\":\"one_party_timeout_requires_new_arbiter_acceptance\",\"new_arbiter\":\"did:market:arbiter:anvil-4\",\"old_arbiter\":\"did:market:arbiter:anvil-2\",\"reason\":\"original_arbiter_revoked_before_resolution\",\"schema\":\"marketplace.arbiter_replacement.v0.2\",\"timeout_seconds\":86400,\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "approval_rule": "one_party_timeout_requires_new_arbiter_acceptance",
+    "new_arbiter": "did:market:arbiter:anvil-4",
+    "old_arbiter": "did:market:arbiter:anvil-2",
+    "reason": "original_arbiter_revoked_before_resolution",
+    "schema": "marketplace.arbiter_replacement.v0.2",
+    "timeout_seconds": 86400,
+    "trade_id": 3
+  },
+  "payload_hash": "0xbe6571dfe8364b3c89836d2942df541681017b0961b3aeee06cf6721a7edfde1",
+  "signature": "0x2db7fa476b00036e79519eedce0672b0a05f58714a8d25096d2716fc1ee2591002f2f23d5168e7c1c6692e17f08f665d71939066cb3014788f5fc9db964580dd1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

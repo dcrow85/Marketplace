@@ -1,0 +1,47 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"low\",\"condition_sensitivity\":0.208,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"escrow_terms\",\"front_photo\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"route_packet\",\"tracking_history\"],\"max_total_price_usd\":42,\"risk_tolerance\":0.58,\"route_preferences\":[\"insured_ship\"],\"value_band\":\"low\"},\"object\":{\"card\":\"Japanese Base Gyarados holo\",\"condition_floor\":\"MP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c\",\"escrow_terms\":\"sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f\",\"friction_policy\":\"sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67\",\"intent\":\"sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d\",\"seller_offer\":\"sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705\"},\"source_simulation_trade\":\"SIM-0001\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "low",
+      "condition_sensitivity": 0.208,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "escrow_terms",
+        "front_photo",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "route_packet",
+        "tracking_history"
+      ],
+      "max_total_price_usd": 42,
+      "risk_tolerance": 0.58,
+      "route_preferences": [
+        "insured_ship"
+      ],
+      "value_band": "low"
+    },
+    "object": {
+      "card": "Japanese Base Gyarados holo",
+      "condition_floor": "MP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c",
+      "escrow_terms": "sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f",
+      "friction_policy": "sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67",
+      "intent": "sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d",
+      "seller_offer": "sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705"
+    },
+    "source_simulation_trade": "SIM-0001"
+  },
+  "payload_hash": "0x55885d9ed7657d61dec3ee59bf974469ff2596516712343b412728b5dedcf7af",
+  "signature": "0x0b2201385ddffb93a5403c0a814ef84a5059b9cb370c48104d8c98376105ffee36b45c0a85133a8cc94f4e6389d856941715970481092a29e58f95aeba0b8bc81c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

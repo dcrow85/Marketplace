@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"MP\",\"inventory_key\":\"tcg:pokemon:sim-0003\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\",\"visible_identifiers\":[\"sim-0003-front-photo-hash\",\"sim-0003-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "MP",
+    "inventory_key": "tcg:pokemon:sim-0003",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003",
+    "visible_identifiers": [
+      "sim-0003-front-photo-hash",
+      "sim-0003-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xf20d7b6c17579410e41cdaa454be328ae0c9145798527e582166c3bc4ee36947",
+  "signature": "0x85a2529c2d19bc8f26a9f5bc806fea3a13056808bc3780f259bb50a757dc948d03709ec087653c4ceb005ad2617f0bd545d8078191a1a4d3e8b44e1a742c34f21c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

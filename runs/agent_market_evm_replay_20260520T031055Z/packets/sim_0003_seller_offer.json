@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"MP\",\"evidence_tier\":\"standard\",\"route_offered\":\"international_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"low\",\"seller_bond_bps_from_sim\":0,\"seller_bond_eth_local_probe\":\"0.005\",\"seller_trust\":\"trusted\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "MP",
+    "evidence_tier": "standard",
+    "route_offered": "international_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "low",
+    "seller_bond_bps_from_sim": 0,
+    "seller_bond_eth_local_probe": "0.005",
+    "seller_trust": "trusted",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003"
+  },
+  "payload_hash": "0x6f2d37f679c3cf609937920102a78cd9766a723918b732662b4cf23a6e519de0",
+  "signature": "0xd59a7efda6e886bfdba7372ae561c5bec1607024a4b1fe99f66c6cb9ecc0e0994e641ae1ac30567f388fc843eb481b5b166daeacc2e3390d72a3924c5da984511b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

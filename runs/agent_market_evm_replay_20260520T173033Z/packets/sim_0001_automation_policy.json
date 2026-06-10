@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"authority\":\"low_value_tcg_policy\",\"direct_automation_permitted\":false,\"friction_thresholds\":[\"authenticity_or_identity_risk\",\"seller_trust_gap\",\"route_gap_owner_review\",\"refund_above_auto_cap\",\"bond_penalty_above_auto_cap\"],\"max_direct_bond_penalty_bps\":0,\"max_direct_refund_bps\":2000,\"schema\":\"marketplace.automated_arbiter_policy.v0.2\",\"selected_arbiter\":\"did:market:arbiter:auto-low-tcg-1\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c\",\"escrow_terms\":\"sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f\",\"friction_policy\":\"sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67\",\"intent\":\"sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d\",\"seller_offer\":\"sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705\"},\"source_simulation_trade\":\"SIM-0001\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "authority": "low_value_tcg_policy",
+    "direct_automation_permitted": false,
+    "friction_thresholds": [
+      "authenticity_or_identity_risk",
+      "seller_trust_gap",
+      "route_gap_owner_review",
+      "refund_above_auto_cap",
+      "bond_penalty_above_auto_cap"
+    ],
+    "max_direct_bond_penalty_bps": 0,
+    "max_direct_refund_bps": 2000,
+    "schema": "marketplace.automated_arbiter_policy.v0.2",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c",
+      "escrow_terms": "sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f",
+      "friction_policy": "sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67",
+      "intent": "sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d",
+      "seller_offer": "sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705"
+    },
+    "source_simulation_trade": "SIM-0001"
+  },
+  "payload_hash": "0x92ab886ad9fd2efc08bd822ce90a0b2a4fabebf8581492e1d52e322f266db232",
+  "signature": "0xcaba52958e5d848c5b066cd541c1afc6b948e288c40faebf01024df661287e744bf730b3530bae2e3252029aeb79b766803b0e187118429779bdb1347b389cd11b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

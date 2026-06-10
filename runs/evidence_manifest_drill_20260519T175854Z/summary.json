@@ -1,0 +1,85 @@
+{
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "cases": [
+    {
+      "error_code": "",
+      "error_message": "",
+      "expected": "validator accepts content-hashed front/back assets",
+      "observations": [],
+      "outcome": "valid",
+      "passed": true,
+      "slug": "valid_standard",
+      "title": "Valid standard manifest"
+    },
+    {
+      "error_code": "ASSET_HASH_MISMATCH",
+      "error_message": "sha256 mismatch for front-photo",
+      "expected": "validator rejects mutated image bytes with same manifest",
+      "observations": [
+        "pre-switch valid: True",
+        "mutated file: assets/byte_switch/front.png"
+      ],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "byte_switch",
+      "title": "Byte switch after manifest anchor"
+    },
+    {
+      "error_code": "ASSET_HASH_MISMATCH",
+      "error_message": "byte_length mismatch for front-photo-url",
+      "expected": "validator rejects URL bytes that no longer match descriptor hashes",
+      "observations": [
+        "pre-switch valid: True",
+        "mock URL catalog now returns different bytes"
+      ],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "url_switch",
+      "title": "Mutable URL content switch"
+    },
+    {
+      "error_code": "MANIFEST_HASH",
+      "error_message": "manifest_hash mismatch",
+      "expected": "validator rejects changed manifest body with stale manifest_hash",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "manifest_hash_cosmetic",
+      "title": "Manifest mutation without rehash"
+    },
+    {
+      "error_code": "ROLE_AUTHORITY",
+      "error_message": "did:market:seller:fixture-1 is not authorized as verifier",
+      "expected": "validator rejects issuer_role not backed by actor authority",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "role_inflation",
+      "title": "Seller declares verifier role"
+    },
+    {
+      "error_code": "TIER_REQUIREMENT",
+      "error_message": "verified tier requires attestation refs",
+      "expected": "validator rejects self-declared verified evidence",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "tier_inflation",
+      "title": "Verified tier without verifier attestation"
+    },
+    {
+      "error_code": "MUTABLE_PRIMARY",
+      "error_message": "mutable primary ref needs retrieval_snapshot_asset_id: front-photo-url",
+      "expected": "validator rejects mutable primary evidence with no snapshot descriptor link",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "mutable_primary_no_snapshot",
+      "title": "Mutable primary ref without retrieval snapshot"
+    }
+  ],
+  "generated_at": "2026-05-19T17:58:54.629423+00:00",
+  "passed": true,
+  "run_id": "evidence_manifest_drill_20260519T175854Z",
+  "spec": "marketplace.evidence_manifest.v0.2"
+}

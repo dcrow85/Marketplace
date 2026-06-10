@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Base Gyarados holo\",\"condition_claim\":\"MP\",\"inventory_key\":\"tcg:pokemon:sim-0001\",\"item_fingerprint_hash\":\"0xd29127bfb39dd8c2c757ed2c6fdc31b55a009a652c7a47fc1f4a958c835fe6cd\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c\",\"escrow_terms\":\"sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f\",\"friction_policy\":\"sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67\",\"intent\":\"sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d\",\"seller_offer\":\"sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705\"},\"source_simulation_trade\":\"SIM-0001\",\"visible_identifiers\":[\"sim-0001-front-photo-hash\",\"sim-0001-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Base Gyarados holo",
+    "condition_claim": "MP",
+    "inventory_key": "tcg:pokemon:sim-0001",
+    "item_fingerprint_hash": "0xd29127bfb39dd8c2c757ed2c6fdc31b55a009a652c7a47fc1f4a958c835fe6cd",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c",
+      "escrow_terms": "sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f",
+      "friction_policy": "sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67",
+      "intent": "sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d",
+      "seller_offer": "sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705"
+    },
+    "source_simulation_trade": "SIM-0001",
+    "visible_identifiers": [
+      "sim-0001-front-photo-hash",
+      "sim-0001-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x3192ebc05c499c5cbf22197133dc63ba257a4b6ac337d5c319445e559b97add6",
+  "signature": "0x5f34bc97e0d59da675ead79e69ea2388a5c4e8b7a5dc8e5bd35f5ceb4663e22e6d7bc0657bf37479825a33a5ee7234fedfd12acaeabb22688a7734e7b401667c1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

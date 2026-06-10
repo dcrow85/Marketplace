@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"confidence_scope\":\"verifier_identity_claim_unapproved_for_probe\",\"correlation_method\":[\"visual_match\"],\"evidence_refs\":[{\"ref\":\"verifier_scan_hash\",\"type\":\"verifier_scan\"}],\"identity_claim\":{\"card\":\"Japanese vintage holo\",\"condition_claim\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"issuer\":\"did:market:verifier:anvil-3\",\"privacy_policy\":\"buyer_and_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "confidence_scope": "verifier_identity_claim_unapproved_for_probe",
+    "correlation_method": [
+      "visual_match"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "verifier_scan_hash",
+        "type": "verifier_scan"
+      }
+    ],
+    "identity_claim": {
+      "card": "Japanese vintage holo",
+      "condition_claim": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "issuer": "did:market:verifier:anvil-3",
+    "privacy_policy": "buyer_and_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x9be4b41518a3f02c38ab04a23a5404a5e4c840be118bada4f82bf73acdf4a752",
+  "signature": "0x1c02c65dd80a2b2a0a50fecb40d547493a34be6b19dbfad34acc4b4c829f4fe766e6c931d44adcc89f204950022beb02c544c80e812c3d4a14f324ac0d14ec3b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

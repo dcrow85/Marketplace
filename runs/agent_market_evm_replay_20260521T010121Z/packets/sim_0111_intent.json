@@ -1,0 +1,49 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"medium\",\"condition_sensitivity\":0.185,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\"],\"max_total_price_usd\":98,\"risk_tolerance\":0.276,\"route_preferences\":[\"insured_ship\"],\"value_band\":\"low\"},\"object\":{\"card\":\"Vending Series Mewtwo\",\"condition_floor\":\"MP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:023094ed3c78512ed9910a611d3c978b58d7d9db377406bec89955d6951f883b\",\"escrow_terms\":\"sha256:fa7e827ad80317991bc2b2f035e1ee5da4b273bb5d1b51c77d2a453da4c8217a\",\"friction_policy\":\"sha256:4a37d63ecfa58d4e5d804b4237c1f0431b7e197811a6878afaa6d1c42f38dddc\",\"intent\":\"sha256:aeea3796556a5f139c9f1d033f77f1f7ec90a15d0ed2a08e2b48a580d3506239\",\"seller_offer\":\"sha256:5d3d4c4a506d9e667433e7795d4b26b54c754f8b6b5b23432238ed073829636a\"},\"source_simulation_trade\":\"SIM-0111\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "medium",
+      "condition_sensitivity": 0.185,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "tracking_history"
+      ],
+      "max_total_price_usd": 98,
+      "risk_tolerance": 0.276,
+      "route_preferences": [
+        "insured_ship"
+      ],
+      "value_band": "low"
+    },
+    "object": {
+      "card": "Vending Series Mewtwo",
+      "condition_floor": "MP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:023094ed3c78512ed9910a611d3c978b58d7d9db377406bec89955d6951f883b",
+      "escrow_terms": "sha256:fa7e827ad80317991bc2b2f035e1ee5da4b273bb5d1b51c77d2a453da4c8217a",
+      "friction_policy": "sha256:4a37d63ecfa58d4e5d804b4237c1f0431b7e197811a6878afaa6d1c42f38dddc",
+      "intent": "sha256:aeea3796556a5f139c9f1d033f77f1f7ec90a15d0ed2a08e2b48a580d3506239",
+      "seller_offer": "sha256:5d3d4c4a506d9e667433e7795d4b26b54c754f8b6b5b23432238ed073829636a"
+    },
+    "source_simulation_trade": "SIM-0111"
+  },
+  "payload_hash": "0x79ae44d048ddb9b08000435530c84d076255c2182ce460bd6c68ffd4871830a6",
+  "signature": "0xf4b853d1f3a7e25f8c10ab345f2d6da30d2133a192511ebb04e06bb9612dd8a84a2e8aaeb266fc731ee7c552c754b242642d596a26d6063ccbc1f23339007c9d1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

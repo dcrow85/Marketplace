@@ -1,0 +1,23 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth\":\"0.005\",\"covered_promises\":[\"correct_item\",\"seller_custody\",\"no_active_semantic_collision\"],\"inspection_seconds\":172800,\"price_eth\":\"0.20\",\"release_gate\":\"buyer_accepts_or_inspection_window_expires\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"seller_bond_eth\":\"0.03\",\"trade_id\":7,\"trade_template\":\"tcg_single_card_collision_drill\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth": "0.005",
+    "covered_promises": [
+      "correct_item",
+      "seller_custody",
+      "no_active_semantic_collision"
+    ],
+    "inspection_seconds": 172800,
+    "price_eth": "0.20",
+    "release_gate": "buyer_accepts_or_inspection_window_expires",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "seller_bond_eth": "0.03",
+    "trade_id": 7,
+    "trade_template": "tcg_single_card_collision_drill"
+  },
+  "payload_hash": "0x9f6a01e4ca26a187c10340f9fc732054167523e930539a0dbf22d2504e17acd7",
+  "signature": "0xecf8dff37260715b89d838b69008906dd071d35f7bdc383db48cbe01665ee21b7b572333996f1093fad37b399f382fee3fd9eec7a99b431fdffe8d8e2b30807c1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

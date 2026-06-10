@@ -1,0 +1,23 @@
+{
+  "canonical_payload": "{\"delivered\":true,\"delivery_signal\":\"carrier_delivery_scan\",\"route\":\"insured_ship\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0\",\"friction_policy\":\"sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62\",\"intent\":\"sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44\",\"seller_offer\":\"sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028\"},\"source_simulation_trade\":\"SIM-0088\",\"tracking_or_memo\":\"tracking://simulated-domestic-carrier\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "delivered": true,
+    "delivery_signal": "carrier_delivery_scan",
+    "route": "insured_ship",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0",
+      "friction_policy": "sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62",
+      "intent": "sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44",
+      "seller_offer": "sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028"
+    },
+    "source_simulation_trade": "SIM-0088",
+    "tracking_or_memo": "tracking://simulated-domestic-carrier"
+  },
+  "payload_hash": "0x974032df60405c6e8cba71910353ad5d7d0ea43d74bdabdec058261553481300",
+  "signature": "0xd902ec7515446959f8b6a75a9bbd802ec4b8c4635308b1e61e887ae727490d00495e982d1dfb5e0d7beea7d32324053067b42344d28f92fa8c0f5f1f2541853b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

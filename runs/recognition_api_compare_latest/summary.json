@@ -1,0 +1,168 @@
+{
+  "fixture": "/Users/che/Marketplace/test-fixtures/no-rarity-binder-page-9-holos.png",
+  "expected_rows": [
+    {
+      "slot": "(1,1)",
+      "id": "PMCG1-049",
+      "english": "Alakazam",
+      "japanese": "フーディン",
+      "romaji": "Fuudin",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(1,2)",
+      "id": "PMCG1-032",
+      "english": "Blastoise",
+      "japanese": "カメックス",
+      "romaji": "Kamekkusu",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(1,3)",
+      "id": "PMCG1-068",
+      "english": "Chansey",
+      "japanese": "ラッキー",
+      "romaji": "Rakkii",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(2,1)",
+      "id": "PMCG1-021",
+      "english": "Charizard",
+      "japanese": "リザードン",
+      "romaji": "Rizaadon",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(2,2)",
+      "id": "PMCG1-067",
+      "english": "Clefairy",
+      "japanese": "ピッピ",
+      "romaji": "Pippi",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(2,3)",
+      "id": "PMCG1-034",
+      "english": "Gyarados",
+      "japanese": "ギャラドス",
+      "romaji": "Gyarados",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(3,1)",
+      "id": "PMCG1-058",
+      "english": "Hitmonchan",
+      "japanese": "エビワラー",
+      "romaji": "Ebiwaraa",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(3,2)",
+      "id": "PMCG1-057",
+      "english": "Machamp",
+      "japanese": "カイリキー",
+      "romaji": "Kairikii",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    },
+    {
+      "slot": "(3,3)",
+      "id": "PMCG1-039",
+      "english": "Magneton",
+      "japanese": "レアコイル",
+      "romaji": "Reakoiru",
+      "no_rarity_status": "candidate_not_verified",
+      "condition_status": "unknown"
+    }
+  ],
+  "crops": [
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-049.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-032.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-068.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-021.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-067.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-034.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-058.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-057.png",
+    "/Users/che/Marketplace/runs/recognition_api_compare_latest/crops/PMCG1-039.png"
+  ],
+  "results": [
+    {
+      "name": "gemma4:e4b raw",
+      "status": "ran",
+      "elapsed_s": 28.1,
+      "output": "| フーディン | カメックス | ラッキー |\n| :---: | :---: | :---: |\n| リザードン | ピビ | シャラドス |\n| エビワラー | カイリオ | レアコイル |",
+      "notes": [
+        "missing expected catalog ids: PMCG1-049, PMCG1-032, PMCG1-068, PMCG1-021, PMCG1-067, PMCG1-034, PMCG1-058, PMCG1-057, PMCG1-039",
+        "wall failure: No Rarity uncertainty not preserved on every row",
+        "wall failure: condition unknown not preserved on every row"
+      ]
+    },
+    {
+      "name": "gemma4:e4b catalog-grounded",
+      "status": "ran",
+      "elapsed_s": 73.24,
+      "output": "slot | id | English / Japanese | confidence | no_rarity_status | condition_status\n---|---|---|---|---|---\n1 | PMCG1-049 | Alakazam / フーディン | high | candidate_not_verified | unknown\n2 | PMCG1-032 | Blastoise / カメックス | high | candidate_not_verified | unknown\n3 | PMCG1-068 | Chansey / ラッキー | high | candidate_not_verified | unknown\n4 | PMCG1-021 | Charizard / リザードン | high | candidate_not_verified | unknown\n5 | PMCG1-067 | Clefairy / ピッピ | high | candidate_not_verified | unknown\n6 | PMCG1-034 | Gyarados / ギャラドス | high | candidate_not_verified | unknown\n7 | PMCG1-058 | Hitmonchan / エビワラー | high | candidate_not_verified | unknown\n8 | PMCG1-057 | Machamp / カイリキー | high | candidate_not_verified | unknown\n9 | PMCG1-039 | Magneton / レアコイル | high | candidate_not_verified | unknown\n\nThe image contains a complete set of 9 cards matching the allowed catalog rows.",
+      "notes": [
+        "all expected catalog ids present",
+        "No Rarity uncertainty preserved on every row",
+        "condition unknown preserved on every row"
+      ]
+    },
+    {
+      "name": "gemma4:31b catalog-grounded",
+      "status": "ran",
+      "elapsed_s": 94.86,
+      "output": "1 | PMCG1-049 | Alakazam / フーディン | 1.0 | candidate_not_verified | unknown\n2 | PMCG1-032 | Blastoise / カメックス | 1.0 | candidate_not_verified | unknown\n3 | PMCG1-068 | Chansey / ラッキー | 1.0 | candidate_not_verified | unknown\n4 | PMCG1-021 | Charizard / リザードン | 1.0 | candidate_not_verified | unknown\n5 | PMCG1-067 | Clefairy / ピッピ | 1.0 | candidate_not_verified | unknown\n6 | PMCG1-034 | Gyarados / ギャラドス | 1.0 | candidate_not_verified | unknown\n7 | PMCG1-058 | Hitmonchan / エビワラー | 1.0 | candidate_not_verified | unknown\n8 | PMCG1-057 | Machamp / カイリキー | 1.0 | candidate_not_verified | unknown\n9 | PMCG1-039 | Magneton / レアコイル | 1.0 | candidate_not_verified | unknown\n\nAll 9 cards are correctly identified and mapped to the provided catalog.",
+      "notes": [
+        "all expected catalog ids present",
+        "No Rarity uncertainty preserved on every row",
+        "condition unknown preserved on every row"
+      ]
+    },
+    {
+      "name": "Scrydex Vision",
+      "status": "skipped_missing_credentials",
+      "elapsed_s": null,
+      "output": "POST https://api.scrydex.com/vision/v1/cards/identify\nSupports image_url or multipart file, game scoping, returns matches plus analysis.\nMissing env: SCRYDEX_API_KEY, SCRYDEX_TEAM_ID",
+      "notes": [
+        "Supports image_url or multipart file, game scoping, returns matches plus analysis."
+      ]
+    },
+    {
+      "name": "GIBL predict-card",
+      "status": "skipped_missing_credentials",
+      "elapsed_s": null,
+      "output": "POST https://gibltcg.com/api/v1/predict-card?key=...\nAccepts file or image_url according to docs; returns set/name/variation candidates.\nMissing env: GIBL_API_KEY",
+      "notes": [
+        "Accepts file or image_url according to docs; returns set/name/variation candidates."
+      ]
+    },
+    {
+      "name": "TCGAPIs recognition",
+      "status": "skipped_missing_credentials",
+      "elapsed_s": null,
+      "output": "Card-recognition endpoint behind paid/API access\nAdvertises top-10 product-id matches with confidence scores.\nMissing env: TCGAPIS_API_KEY",
+      "notes": [
+        "Advertises top-10 product-id matches with confidence scores."
+      ]
+    },
+    {
+      "name": "eBay Browse searchByImage",
+      "status": "skipped_missing_credentials",
+      "elapsed_s": null,
+      "output": "POST /buy/browse/v1/item_summary/search_by_image\nUseful for listing discovery, not catalog authority.\nMissing env: EBAY_OAUTH_TOKEN",
+      "notes": [
+        "Useful for listing discovery, not catalog authority."
+      ]
+    }
+  ]
+}

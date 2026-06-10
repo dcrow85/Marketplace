@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:collision-drill\",\"cost_field\":{\"attention_budget\":\"challenge_when_identity_conflicts\",\"evidence_floor\":[\"front_photo\",\"back_photo\",\"custody_nonce_or_waiver\"],\"max_total_price_eth\":\"0.20\"},\"object\":{\"domain\":\"tcg\",\"game\":\"pokemon\",\"title\":\"Raw card with mismatched front and back\",\"value_band\":\"mid\"},\"schema\":\"marketplace.intent.v0.2\",\"trade_id\":6}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:collision-drill",
+    "cost_field": {
+      "attention_budget": "challenge_when_identity_conflicts",
+      "evidence_floor": [
+        "front_photo",
+        "back_photo",
+        "custody_nonce_or_waiver"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "object": {
+      "domain": "tcg",
+      "game": "pokemon",
+      "title": "Raw card with mismatched front and back",
+      "value_band": "mid"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "trade_id": 6
+  },
+  "payload_hash": "0x5764fff6338e248e8d783a38809dcc4d64991f3d5c8caaa22faab10b2529e9b2",
+  "signature": "0x6dba6b03557e810f3b232cb32576d1c81077af1b280ad320dadc440fabd327714f622275dab467769c10c9b5c69d06610ea58601b4a0f4a2a77a740af5f0c11c1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

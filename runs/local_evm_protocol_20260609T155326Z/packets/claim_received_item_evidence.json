@@ -1,0 +1,113 @@
+{
+  "canonical_payload": "{\"asset_descriptors\":[{\"asset_id\":\"received-front\",\"byte_length\":45,\"captured_at\":\"2026-06-09T15:53:27.985178+00:00\",\"created_at\":\"2026-06-09T15:53:27.985178+00:00\",\"keccak256\":\"0x573e1ed5cd7f158f22e8cde131d803cb591087e56f7aad678ce03decbf9f8719\",\"media_type\":\"image/png\",\"role\":\"front_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"056a985984d817a7c3b62309765aca308f6bee8a912019d8374c83c9029c90f5\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"buyer\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/received-front.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"received-back\",\"byte_length\":41,\"captured_at\":\"2026-06-09T15:53:27.985178+00:00\",\"created_at\":\"2026-06-09T15:53:27.985178+00:00\",\"keccak256\":\"0x62b034fb696aef8c3650fdbb4e04966f2334774a2716891fda5f3a1c511fde0c\",\"media_type\":\"image/png\",\"role\":\"back_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"22c5d1ebf2e3e73c9a7103cf3ea0981701515d21e1a5bb77c061fac7354a2af3\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"buyer\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/received-back.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"edge-wear-closeup\",\"byte_length\":52,\"captured_at\":\"2026-06-09T15:53:27.985178+00:00\",\"created_at\":\"2026-06-09T15:53:27.985178+00:00\",\"keccak256\":\"0xa6244e84d7315fe23081c2709b8e0f7e6c740f72db359b1685e30338789a0da0\",\"media_type\":\"image/png\",\"role\":\"edge_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"62b9c1d2e45d18db84dfac21333abc13babd2694cf6c07a695a584effd43e22d\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"buyer\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/edge-wear-closeup.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false}],\"asset_root_hash\":\"0x6466cec867b4055544e7d509fac50c10f173ab91fc52e74784c244e3d8c9b1e2\",\"canonicalization\":\"canonical-json-payload-v1\",\"evidence_tier\":\"claim_grade\",\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-09T15:53:27.985178+00:00\",\"issuer\":\"did:market:buyer:anvil-0\",\"issuer_role\":\"buyer\",\"known_conflicts\":[],\"known_limits\":[\"Remote buyer photos support claim assembly but do not decide payout.\"],\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_id\":\"claim_received_item_evidence\",\"retention_policy\":{\"minimum_retention_days\":180,\"storage_strategy\":\"local_agent_cache\"},\"schema\":\"marketplace.evidence_manifest.v0.3\",\"subject\":{\"anchor_hash\":\"0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824\",\"subject_hash\":\"0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7\",\"subject_type\":\"claim\",\"trade_id\":2},\"tier_basis\":\"manifest_integrity_only\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "asset_descriptors": [
+      {
+        "asset_id": "received-front",
+        "byte_length": 45,
+        "captured_at": "2026-06-09T15:53:27.985178+00:00",
+        "created_at": "2026-06-09T15:53:27.985178+00:00",
+        "keccak256": "0x573e1ed5cd7f158f22e8cde131d803cb591087e56f7aad678ce03decbf9f8719",
+        "media_type": "image/png",
+        "role": "front_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "056a985984d817a7c3b62309765aca308f6bee8a912019d8374c83c9029c90f5",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "buyer"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/received-front.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "received-back",
+        "byte_length": 41,
+        "captured_at": "2026-06-09T15:53:27.985178+00:00",
+        "created_at": "2026-06-09T15:53:27.985178+00:00",
+        "keccak256": "0x62b034fb696aef8c3650fdbb4e04966f2334774a2716891fda5f3a1c511fde0c",
+        "media_type": "image/png",
+        "role": "back_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "22c5d1ebf2e3e73c9a7103cf3ea0981701515d21e1a5bb77c061fac7354a2af3",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "buyer"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/received-back.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "edge-wear-closeup",
+        "byte_length": 52,
+        "captured_at": "2026-06-09T15:53:27.985178+00:00",
+        "created_at": "2026-06-09T15:53:27.985178+00:00",
+        "keccak256": "0xa6244e84d7315fe23081c2709b8e0f7e6c740f72db359b1685e30338789a0da0",
+        "media_type": "image/png",
+        "role": "edge_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "62b9c1d2e45d18db84dfac21333abc13babd2694cf6c07a695a584effd43e22d",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "buyer"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260609T155326Z/assets/claim_received_item_evidence/edge-wear-closeup.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      }
+    ],
+    "asset_root_hash": "0x6466cec867b4055544e7d509fac50c10f173ab91fc52e74784c244e3d8c9b1e2",
+    "canonicalization": "canonical-json-payload-v1",
+    "evidence_tier": "claim_grade",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-09T15:53:27.985178+00:00",
+    "issuer": "did:market:buyer:anvil-0",
+    "issuer_role": "buyer",
+    "known_conflicts": [],
+    "known_limits": [
+      "Remote buyer photos support claim assembly but do not decide payout."
+    ],
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_id": "claim_received_item_evidence",
+    "retention_policy": {
+      "minimum_retention_days": 180,
+      "storage_strategy": "local_agent_cache"
+    },
+    "schema": "marketplace.evidence_manifest.v0.3",
+    "subject": {
+      "anchor_hash": "0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824",
+      "subject_hash": "0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7",
+      "subject_type": "claim",
+      "trade_id": 2
+    },
+    "tier_basis": "manifest_integrity_only",
+    "trade_id": 2
+  },
+  "payload_hash": "0x4145bb9541d1c18db099539f759c7155680142322ebb765eeaca953dfa412c76",
+  "signature": "0x2d273b2b3f1779498fd6ec1df625ea18674979a0e9dcb94f27fbc4d1575387ce2718b18db0ccf1da3ac0cc6b545e91b8cb28ff09bd562aac3c258ecb20e731511b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

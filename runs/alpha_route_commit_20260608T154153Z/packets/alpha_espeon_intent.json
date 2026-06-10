@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:alpha-ui-buyer\",\"cost_field\":{\"buyer_attention_budget\":\"medium\",\"max_total_price_usd\":640,\"route_gate\":\"requires_wall_bundle_and_spendability\"},\"intent_id\":\"alpha-espeon-001\",\"object\":{\"card\":\"Neo Discovery Espeon #1\",\"condition_floor\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:alpha-ui-buyer",
+    "cost_field": {
+      "buyer_attention_budget": "medium",
+      "max_total_price_usd": 640,
+      "route_gate": "requires_wall_bundle_and_spendability"
+    },
+    "intent_id": "alpha-espeon-001",
+    "object": {
+      "card": "Neo Discovery Espeon #1",
+      "condition_floor": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0xfe278941244d8157da4aa8d3a983fbe9a001a3b2fa6936d43ecea8c5bfcd7a36",
+  "signature": "0x9b8f6a11faddb05f5aca5f3ea83622b55123152bf0c913c011ca0e7a61ac5d9d20bbd08b45f62f30fb2ecf70c0f8fe53c1ab712dfe0b2b74ae44d5497b5e1bf51c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

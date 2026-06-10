@@ -1,0 +1,21 @@
+{
+  "canonical_payload": "{\"carrier_or_handoff_method\":\"simulated_carrier_tracking\",\"declared_insurance_eth_local_probe\":\"0.64\",\"declared_value_usd\":640,\"insured\":true,\"route_spendability_evm_hash\":\"0x5555555555555555555555555555555555555555555555555555555555555555\",\"route_spendability_hash\":\"sha256:typed-spend-test\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking_or_memo\":\"tracking://ALPHA-ESPEON-001\",\"trade_id\":1,\"wall_bundle_hash\":\"sha256:typed-wall-test\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier_or_handoff_method": "simulated_carrier_tracking",
+    "declared_insurance_eth_local_probe": "0.64",
+    "declared_value_usd": 640,
+    "insured": true,
+    "route_spendability_evm_hash": "0x5555555555555555555555555555555555555555555555555555555555555555",
+    "route_spendability_hash": "sha256:typed-spend-test",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking_or_memo": "tracking://ALPHA-ESPEON-001",
+    "trade_id": 1,
+    "wall_bundle_hash": "sha256:typed-wall-test"
+  },
+  "payload_hash": "0x829b24577f961805b243e98c97aaf5f7d277e5d1742b9b290b3d8dd93ce52d68",
+  "signature": "0xf02fafdfe8a4931e95ebe79c87be505198663a3dac380ad63c53c03641f256c55d3ed3582d743bdb9d17ed3c56100bed4e91cd46cf4778c822b83488ffe922141c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

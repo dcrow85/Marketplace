@@ -1,0 +1,34 @@
+{
+  "canonical_payload": "{\"backup_arbiters\":[\"did:market:arbiter:raw-condition-1\",\"did:market:arbiter:route-claims-1\",\"did:market:arbiter:foundation-backstop\"],\"buyer_aperture\":{\"route\":\"insured_ship\",\"seller_trust\":\"unknown\",\"value_band\":\"high\"},\"local_evm_controller_mapping\":{\"did:market:arbiter:high-end-panel-1\":\"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC\",\"did:market:arbiter:replacement-local\":\"0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65\"},\"schema\":\"marketplace.arbiter_candidate_set.v0.2\",\"selected\":\"did:market:arbiter:high-end-panel-1\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0\",\"friction_policy\":\"sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62\",\"intent\":\"sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44\",\"seller_offer\":\"sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028\"},\"source_simulation_trade\":\"SIM-0088\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "backup_arbiters": [
+      "did:market:arbiter:raw-condition-1",
+      "did:market:arbiter:route-claims-1",
+      "did:market:arbiter:foundation-backstop"
+    ],
+    "buyer_aperture": {
+      "route": "insured_ship",
+      "seller_trust": "unknown",
+      "value_band": "high"
+    },
+    "local_evm_controller_mapping": {
+      "did:market:arbiter:high-end-panel-1": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "did:market:arbiter:replacement-local": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+    },
+    "schema": "marketplace.arbiter_candidate_set.v0.2",
+    "selected": "did:market:arbiter:high-end-panel-1",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0",
+      "friction_policy": "sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62",
+      "intent": "sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44",
+      "seller_offer": "sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028"
+    },
+    "source_simulation_trade": "SIM-0088"
+  },
+  "payload_hash": "0x2c0e96fed8a4d957d9777ec2e4d7cdf09803637b320ddafce59ccd3dc3949291",
+  "signature": "0x886b930dc443a9a317bd9293dd97e17f236581cb86771e297beebbe75a4d9a7a2c2cd84245bc0bd198830fc4752a78605535ed614fe23d2bd14054d0714ba34e1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

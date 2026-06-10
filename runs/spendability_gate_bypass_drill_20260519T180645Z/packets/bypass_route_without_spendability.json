@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth\":\"0.20\",\"insured\":true,\"policy_gap\":\"No spendability hash is required by current contract ABI.\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-BYPASS-0001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth": "0.20",
+    "insured": true,
+    "policy_gap": "No spendability hash is required by current contract ABI.",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-BYPASS-0001",
+    "trade_id": 1
+  },
+  "payload_hash": "0x612369ddfb2c23ecfc37c6f0ac60cfd5a5b6eefe109404575862691e499aa6d1",
+  "signature": "0xd751207dbc6876a48089bf27097f0299a5cebb2745a1b9e6f3d269261b4a7d970032dcbac72fb977937455cfed4dd3a3e52f9330ddecb09defc694e77bfe07b11b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_payload": "{\"challenge_hooks\":[\"fresh_timestamped_photo\",\"verifier_review\"],\"confidence_scope\":\"bounded_for_raw_card_identity\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"seller_offer\",\"type\":\"seller_offer\"},{\"ref\":\"sim-0247-front-photo-hash\",\"type\":\"front_photo\"},{\"ref\":\"sim-0247-back-photo-hash\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Japanese Neo Revelation Houndoom holo\",\"condition_claim\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"value_band\":\"high\"},\"privacy_policy\":\"buyer_arbiter_and_registered_verifier\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321\",\"friction_policy\":\"sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64\",\"intent\":\"sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb\",\"seller_offer\":\"sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4\"},\"source_simulation_trade\":\"SIM-0247\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge_hooks": [
+      "fresh_timestamped_photo",
+      "verifier_review"
+    ],
+    "confidence_scope": "bounded_for_raw_card_identity",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "seller_offer",
+        "type": "seller_offer"
+      },
+      {
+        "ref": "sim-0247-front-photo-hash",
+        "type": "front_photo"
+      },
+      {
+        "ref": "sim-0247-back-photo-hash",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Japanese Neo Revelation Houndoom holo",
+      "condition_claim": "LP",
+      "domain": "tcg",
+      "game": "pokemon",
+      "value_band": "high"
+    },
+    "privacy_policy": "buyer_arbiter_and_registered_verifier",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321",
+      "friction_policy": "sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64",
+      "intent": "sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb",
+      "seller_offer": "sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4"
+    },
+    "source_simulation_trade": "SIM-0247"
+  },
+  "payload_hash": "0xc074edf776ba2ec6c147f6b4d04fdc5ffc0ce1780ce7c64d7bdc393d71923098",
+  "signature": "0xcb117924d1d83431ab8d650cb47d034e25b2f1998d961bf53a8173caf1f74cad7fa56703fcc2e22d3c16a3ecc0f86c6e16c3804adba85b45a3d59165b81f455c1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

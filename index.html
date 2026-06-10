@@ -1,0 +1,2548 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marketplace: Pokemon Buyer Agent Protocol</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18211f;
+        --muted: #5e6a66;
+        --paper: #faf8f2;
+        --panel: #ffffff;
+        --line: #d9ddd3;
+        --green: #2f6b4f;
+        --blue: #315f84;
+        --red: #9c3f35;
+        --gold: #b8872f;
+        --violet: #705895;
+        --teal: #2e7575;
+        --shadow: 0 18px 50px rgba(26, 34, 31, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 72vh;
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(12, 17, 15, 0.92) 0%, rgba(12, 17, 15, 0.76) 46%, rgba(12, 17, 15, 0.34) 100%),
+          url("https://images.pokemontcg.io/neo2/1_hires.png") right 8% center / auto 82% no-repeat,
+          linear-gradient(135deg, #111814, #403726 72%);
+        color: #fffdf7;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 26%;
+        background: linear-gradient(to bottom, rgba(250, 248, 242, 0), var(--paper));
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 76px 0 88px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 18px;
+        color: rgba(255, 253, 247, 0.86);
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 36px;
+        height: 2px;
+        background: #f0c462;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.08;
+      }
+
+      h1 {
+        max-width: 900px;
+        font-size: 5.5rem;
+        font-weight: 760;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+        margin: 24px 0 0;
+        color: rgba(255, 253, 247, 0.88);
+        font-size: 1.22rem;
+      }
+
+      .hero-signal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .hero-pill {
+        border: 1px solid rgba(255, 253, 247, 0.32);
+        background: rgba(255, 253, 247, 0.11);
+        border-radius: 999px;
+        padding: 10px 14px;
+        color: rgba(255, 253, 247, 0.92);
+        font-size: 0.92rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .shell {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        border-bottom: 1px solid var(--line);
+        background: rgba(250, 248, 242, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-inner {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 780;
+      }
+
+      .brand-mark {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--green);
+        border-radius: 50%;
+        box-shadow: inset 0 -6px 0 rgba(184, 135, 47, 0.42);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .version-switch {
+        position: sticky;
+        top: 51px;
+        z-index: 3;
+        border-bottom: 1px solid var(--line);
+        background: #f4f0e6;
+      }
+
+      .version-switch-inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 0;
+        overflow-x: auto;
+      }
+
+      .version-tab {
+        flex: 0 0 auto;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 14px;
+        background: var(--panel);
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 720;
+      }
+
+      .version-tab.is-active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fffdf7;
+      }
+
+      .version-tab.tcg {
+        border-color: rgba(184, 135, 47, 0.55);
+        color: var(--ink);
+      }
+
+      .section {
+        scroll-margin-top: 120px;
+        padding: 76px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section.tight {
+        padding-top: 48px;
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.72fr) minmax(280px, 1fr);
+        gap: 56px;
+        align-items: start;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
+        margin: 0 0 10px;
+        color: var(--green);
+        font-size: 0.86rem;
+        font-weight: 780;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 2.35rem;
+        font-weight: 760;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 760;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .thesis {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .statement {
+        background: var(--ink);
+        color: #fffdf7;
+        border-radius: 8px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+      }
+
+      .statement p {
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: 1.22;
+        font-weight: 720;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .note {
+        min-height: 154px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .note p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      .protocol-map {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(104px, 1fr));
+        gap: 10px;
+        align-items: stretch;
+        margin-top: 28px;
+      }
+
+      .buyer-flow {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: buyer-step;
+      }
+
+      .buyer-step {
+        position: relative;
+        min-height: 238px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 20px;
+        counter-increment: buyer-step;
+      }
+
+      .buyer-step::before {
+        content: counter(buyer-step);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 16px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fffdf7;
+        font-weight: 760;
+        font-size: 0.88rem;
+      }
+
+      .buyer-step h3 {
+        margin-bottom: 10px;
+      }
+
+      .buyer-step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .map-node {
+        position: relative;
+        min-height: 128px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px 14px;
+      }
+
+      .map-node::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        width: 10px;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .map-node:last-child::after {
+        display: none;
+      }
+
+      .map-node strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.98rem;
+      }
+
+      .map-node span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .map-node:nth-child(1) {
+        border-top: 4px solid var(--green);
+      }
+
+      .map-node:nth-child(2) {
+        border-top: 4px solid var(--blue);
+      }
+
+      .map-node:nth-child(3) {
+        border-top: 4px solid var(--gold);
+      }
+
+      .map-node:nth-child(4) {
+        border-top: 4px solid var(--violet);
+      }
+
+      .map-node:nth-child(5) {
+        border-top: 4px solid var(--teal);
+      }
+
+      .map-node:nth-child(6) {
+        border-top: 4px solid var(--red);
+      }
+
+      .map-node:nth-child(7) {
+        border-top: 4px solid var(--green);
+      }
+
+      .grid-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      table {
+        width: 100%;
+        min-width: 980px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+        text-align: left;
+      }
+
+      th {
+        color: var(--ink);
+        background: #f1efe6;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+      }
+
+      td {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      td:first-child {
+        color: var(--ink);
+        font-weight: 740;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .two-up {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 24px;
+      }
+
+      .panel.accent-green {
+        border-top: 5px solid var(--green);
+      }
+
+      .panel.accent-blue {
+        border-top: 5px solid var(--blue);
+      }
+
+      .panel.accent-gold {
+        border-top: 5px solid var(--gold);
+      }
+
+      .panel.accent-red {
+        border-top: 5px solid var(--red);
+      }
+
+      .panel p {
+        color: var(--muted);
+      }
+
+      .panel p:last-child,
+      .panel ul:last-child,
+      .panel ol:last-child {
+        margin-bottom: 0;
+      }
+
+      .list {
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        position: relative;
+        padding-left: 22px;
+        margin: 10px 0;
+        color: var(--muted);
+      }
+
+      .list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.72em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      .code-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .code-block {
+        margin: 0;
+        border: 1px solid #cfd5cc;
+        border-radius: 8px;
+        background: #17201d;
+        color: #f5f1e6;
+        overflow: hidden;
+      }
+
+      .code-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: rgba(245, 241, 230, 0.74);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+      }
+
+      pre {
+        margin: 0;
+        padding: 18px;
+        overflow-x: auto;
+        white-space: pre;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+
+      .bond-ladder {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: step;
+      }
+
+      .ladder-step {
+        position: relative;
+        min-height: 190px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+        counter-increment: step;
+      }
+
+      .ladder-step::before {
+        content: counter(step);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        margin-bottom: 14px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fffdf7;
+        font-weight: 760;
+        font-size: 0.86rem;
+      }
+
+      .ladder-step p {
+        margin: 9px 0 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      .rules {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .rule {
+        border-left: 4px solid var(--green);
+        background: var(--panel);
+        padding: 20px;
+      }
+
+      .rule:nth-child(2) {
+        border-color: var(--gold);
+      }
+
+      .rule:nth-child(3) {
+        border-color: var(--blue);
+      }
+
+      .rule:nth-child(4) {
+        border-color: var(--red);
+      }
+
+      .rule:nth-child(5) {
+        border-color: var(--violet);
+      }
+
+      .rule:nth-child(6) {
+        border-color: var(--teal);
+      }
+
+      .rule p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      .tcg-forward {
+        background: #f6f3ea;
+      }
+
+      .tcg-forward .section-kicker {
+        color: var(--gold);
+      }
+
+      .tcg-note {
+        display: inline-block;
+        margin-top: 18px;
+        border-left: 4px solid var(--gold);
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .tcg-note strong {
+        color: var(--ink);
+      }
+
+      .human-preview {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.8fr) minmax(300px, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+
+      .message {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .message-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 18px;
+        background: #eee8db;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.88rem;
+        font-weight: 760;
+      }
+
+      .status::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .message-body {
+        padding: 22px;
+      }
+
+      .message-body p {
+        margin-top: 0;
+        color: var(--muted);
+      }
+
+      .decision-bar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .decision {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 13px;
+        background: #fbfaf5;
+      }
+
+      .decision strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.88rem;
+      }
+
+      .decision span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .footer {
+        padding: 44px 0 64px;
+        color: var(--muted);
+      }
+
+      .footer strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 980px) {
+        .section-header,
+        .thesis,
+        .two-up,
+        .code-grid,
+        .human-preview {
+          grid-template-columns: 1fr;
+        }
+
+        .protocol-map,
+        .bond-ladder,
+        .buyer-flow,
+        .rules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .map-node::after {
+          display: none;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero-inner {
+          padding: 72px 0 84px;
+        }
+
+        h1 {
+          font-size: 4.35rem;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .hero {
+          min-height: 76vh;
+        }
+
+        .hero-inner {
+          width: min(100% - 28px, 1160px);
+          padding: 62px 0 70px;
+        }
+
+        h1 {
+          font-size: 2.45rem;
+        }
+
+        .hero-copy {
+          font-size: 1.02rem;
+        }
+
+        .hero-signal {
+          gap: 8px;
+          margin-top: 24px;
+        }
+
+        .hero-pill {
+          padding: 8px 10px;
+          font-size: 0.82rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .shell,
+        .nav-inner {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .notes,
+        .protocol-map,
+        .bond-ladder,
+        .buyer-flow,
+        .rules,
+        .decision-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 58px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero" id="top">
+        <div class="hero-inner">
+          <p class="eyebrow">For buyers who know what they want</p>
+          <h1>You know the card. Tell your agent.</h1>
+          <p class="hero-copy">
+            Come back when there is something worth deciding. The protocol
+            holds the money, locks the terms, and records every claim about the
+            card, so you know exactly what was agreed and what you can hold the
+            seller to.
+          </p>
+          <div class="hero-signal" aria-label="Buyer controls">
+            <span class="hero-pill">Your terms</span>
+            <span class="hero-pill">Funded escrow</span>
+            <span class="hero-pill">Claims on record</span>
+            <span class="hero-pill">You decide</span>
+            <span class="hero-pill">Seller accountable</span>
+          </div>
+        </div>
+      </header>
+
+      <nav class="nav" aria-label="Page navigation">
+        <div class="nav-inner">
+          <a class="brand" href="#top" aria-label="Marketplace Protocol home">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>Marketplace</span>
+          </a>
+          <div class="nav-links">
+            <a href="#principle">Why</a>
+            <a href="#buyer-flow">Buyer Flow</a>
+            <a href="#tcg-forward">Pokemon Alpha</a>
+            <a href="alpha-interface.html">Alpha UI</a>
+            <a href="protocol.html">Protocol Spec</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="version-switch" aria-label="Marketplace versions">
+        <div class="shell version-switch-inner">
+          <a class="version-tab" href="#principle">Buyer First</a>
+          <a class="version-tab" href="#buyer-flow">How It Works</a>
+          <a class="version-tab tcg" href="#tcg-forward">Pokemon Alpha</a>
+          <a class="version-tab" href="alpha-interface.html">Alpha UI</a>
+          <a class="version-tab" href="#trust-sources">Trust Sources</a>
+          <a class="version-tab" href="protocol.html">Protocol Spec</a>
+        </div>
+      </div>
+
+      <section class="section tight" id="principle">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Why trades go wrong</p>
+              <h2>You are not only paying for the card. You are paying for the risk.</h2>
+            </div>
+            <p class="lead">
+              Most platforms bundle condition disputes, payment handling, fraud
+              gaps, trust scaffolding, and shipping into one fee. This protocol
+              separates those costs so the trade can be priced around the
+              actual card, seller, route, and proof in front of you.
+            </p>
+          </div>
+
+          <div class="thesis">
+            <div class="statement">
+              <p>
+                The real question is not "is this platform safe?" It is: who
+                holds the money, what was claimed before the trade closed, and
+                what happens if the card is not what the seller said?
+              </p>
+            </div>
+            <div class="notes">
+              <article class="note">
+                <h3>Fees eat the spread</h3>
+                <p>
+                  You pay a blended platform rate even when your trade needs
+                  only a small amount of hand-holding.
+                </p>
+              </article>
+              <article class="note">
+                <h3>Trust is trapped</h3>
+                <p>
+                  Seller reputation often lives inside one marketplace. Proofs,
+                  bonds, receipts, and prior clean closes should travel with the
+                  seller.
+                </p>
+              </article>
+              <article class="note">
+                <h3>Evidence is scattered</h3>
+                <p>
+                  Photos, DMs, tracking, insurance, and condition claims should
+                  not be reconstructed after something goes wrong.
+                </p>
+              </article>
+              <article class="note">
+                <h3>Disputes are expensive</h3>
+                <p>
+                  If the record is clean before the card ships, the ending is
+                  clearer: receipt, claim, refund, or arbitration.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="protocol-map" aria-label="End to end transaction flow">
+            <div class="map-node">
+              <strong>Want</strong>
+              <span>Buyer states card, budget, condition floor, and patience.</span>
+            </div>
+            <div class="map-node">
+              <strong>Search</strong>
+              <span>Agents look through listed cards, hidden inventory, and seller replies.</span>
+            </div>
+            <div class="map-node">
+              <strong>Candidate</strong>
+              <span>The buyer sees the card, the price, the seller, and the risk.</span>
+            </div>
+            <div class="map-node">
+              <strong>Terms</strong>
+              <span>Evidence, route, bond, inspection, and fee are set before escrow.</span>
+            </div>
+            <div class="map-node">
+              <strong>Escrow</strong>
+              <span>Funds stay locked until the agreed release conditions are met.</span>
+            </div>
+            <div class="map-node">
+              <strong>Resolve</strong>
+              <span>Receipt, claim, refund, or arbitration uses the same evidence trail.</span>
+            </div>
+            <div class="map-node">
+              <strong>Receipt</strong>
+              <span>Clean closes become future proof for buyer, seller, and card.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="buyer-flow">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">How it works for a buyer</p>
+              <h2>You set the rules. The agent runs the search.</h2>
+            </div>
+            <p class="lead">
+              Tell the agent the card, condition floor, price ceiling, route
+              cost you will absorb, and when to come back. It works inside those
+              rules and interrupts only when there is a real decision to make.
+            </p>
+          </div>
+
+          <div class="buyer-flow" aria-label="Buyer transaction flow">
+            <article class="buyer-step">
+              <h3>Describe the hunt</h3>
+              <p>
+                Name the exact card, or describe the era, artist, language,
+                condition, and taste radius you are willing to consider.
+              </p>
+            </article>
+            <article class="buyer-step">
+              <h3>Set risk rules</h3>
+              <p>
+                Decide what condition evidence you need, which seller signals
+                count, when a bond is required, and how much fee you will bear.
+              </p>
+            </article>
+            <article class="buyer-step">
+              <h3>Hold funds</h3>
+              <p>
+                The agent can bring serious seller responses because the buyer's
+                money is committed, but not released until the gates are met.
+              </p>
+            </article>
+            <article class="buyer-step">
+              <h3>Review the card</h3>
+              <p>
+                Every candidate comes back in plain English: what was found,
+                what was claimed, what is missing, and what still needs judgment.
+              </p>
+            </article>
+            <article class="buyer-step">
+              <h3>You decide</h3>
+              <p>
+                Ask for evidence, approve shipping, accept the risk, negotiate,
+                meet locally, or pass. The agent does not blur judgment into
+                protocol proof.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="grid">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Value map</p>
+              <h2>Every agent gets a map of costs it can actually spend.</h2>
+            </div>
+            <p class="lead">
+              The value map says what an agent can spend, ask for, reveal,
+              protect, defer, verify, or risk. Price is only one field. Fees,
+              attention, trust, evidence, route cost, and reversibility all
+              affect whether a trade is worth doing.
+            </p>
+          </div>
+
+          <div class="grid-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Buyer Agent Asks</th>
+                  <th>Seller Agent Offers</th>
+                  <th>Protocol Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Money</td>
+                  <td>All-in max, fee tolerance, shipping cap, stretch band, bundle appetite.</td>
+                  <td>Ask, floor, direct-price discount, bundle price, bond amount.</td>
+                  <td>Economic value, fee savings, escrow route, and deal shape.</td>
+                </tr>
+                <tr>
+                  <td>Buyer attention</td>
+                  <td>Ask before preference drift, price stretch, route risk, or irreversible commitment.</td>
+                  <td>How much buyer confirmation is needed before hold or escrow.</td>
+                  <td>The cost of breaking human flow.</td>
+                </tr>
+                <tr>
+                  <td>Seller attention</td>
+                  <td>Photos, scans, measurements, serials, condition questions, route questions.</td>
+                  <td>Evidence tiers, response window, photo limits, haggling rounds.</td>
+                  <td>The seller's scarce labor and goodwill.</td>
+                </tr>
+                <tr>
+                  <td>Evidence</td>
+                  <td>Proof scaled by value, condition sensitivity, authenticity, and trust gap.</td>
+                  <td>Photos, flaws, serials, provenance, packaging, video, verifier access.</td>
+                  <td>Legibility of the actual object.</td>
+                </tr>
+                <tr>
+                  <td>Trust</td>
+                  <td>Source weights, known-seller threshold, new-seller conditions, verifier requirement.</td>
+                  <td>Platform attestations, shop reputation, sponsor, bond, delayed payout, dispute policy.</td>
+                  <td>Confidence source, not a single score; different buyers value different proofs.</td>
+                </tr>
+                <tr>
+                  <td>Reversibility</td>
+                  <td>Inspection window, return path, cancellation rights, escrow release gate.</td>
+                  <td>Return policy, payout delay, condition-only dispute boundaries.</td>
+                  <td>How cleanly the deal can be unwound.</td>
+                </tr>
+                <tr>
+                  <td>Time</td>
+                  <td>Reserve urgency, expiration tolerance, shipping patience, inspection timing.</td>
+                  <td>Hold duration, response latency, handling time, shipping promise.</td>
+                  <td>How quickly the opportunity can vanish.</td>
+                </tr>
+                <tr>
+                  <td>Route / Location</td>
+                  <td>Local pickup preference, shipping zones, customs tolerance, verifier-forwarding.</td>
+                  <td>Origin region, meet-in-person availability, shop handoff, carrier lanes.</td>
+                  <td>Where the object moves, who touches it, and what risks the route creates.</td>
+                </tr>
+                <tr>
+                  <td>Social heat</td>
+                  <td>Haggle appetite, bundle curiosity, tone, maximum rounds.</td>
+                  <td>No-lowball rules, floor protection, preferred negotiation style.</td>
+                  <td>Human texture and future relationship value.</td>
+                </tr>
+                <tr>
+                  <td>Privacy</td>
+                  <td>Address exposure, identity limits, payment route, delegation scope.</td>
+                  <td>Shop identity, personal identity, provenance disclosure, contact boundaries.</td>
+                  <td>Personal and commercial exposure.</td>
+                </tr>
+                <tr>
+                  <td>Logistics</td>
+                  <td>Insurance threshold, signature rule, packaging standard, quote approval.</td>
+                  <td>Packaging standard, declared value, handling time, carrier receipt.</td>
+                  <td>The cost and care needed for the chosen route.</td>
+                </tr>
+                <tr>
+                  <td>Verification</td>
+                  <td>When a third party must inspect, who is trusted, who pays.</td>
+                  <td>Verifier willingness, shop route, authentication support.</td>
+                  <td>The external truth layer for risky or high-value goods.</td>
+                </tr>
+                <tr>
+                  <td>Discovery</td>
+                  <td>Off-intent taste radius, adjacent items, bundle openness.</td>
+                  <td>Hidden inventory, adjacent offers, unlisted stock, bundles.</td>
+                  <td>The market-discovery field.</td>
+                </tr>
+                <tr>
+                  <td>Liquidity</td>
+                  <td>Resale fallback, market depth, personal-use lock-in.</td>
+                  <td>Comps, demand signal, rarity, listing history, upside.</td>
+                  <td>Downside path if the buyer changes their mind later.</td>
+                </tr>
+                <tr>
+                  <td>Reputation</td>
+                  <td>Fast funding, clean approvals, no bad-faith disputes.</td>
+                  <td>Accurate condition, fast shipping, honored holds, clean disputes.</td>
+                  <td>Future access to better buyers, sellers, and inventory.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="use-cases">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Use-case spectrum</p>
+              <h2>From casual trust to museum-grade proof.</h2>
+            </div>
+            <p class="lead">
+              The protocol should not force every object through the same ritual.
+              Sometimes the right experience is simple: you get the item roughly
+              how you expected. Sometimes the right experience is a sealed
+              evidence trail with verifier, insurance, bond, and careful escrow
+              release.
+            </p>
+          </div>
+
+          <div class="bond-ladder">
+            <article class="ladder-step">
+              <h3>Casual item</h3>
+              <p>
+                Low-value object, trusted seller, rough condition agreement,
+                simple photos, tracked or local handoff, light receipt.
+              </p>
+            </article>
+            <article class="ladder-step">
+              <h3>Condition matters</h3>
+              <p>
+                Mid-value collectible, visible flaws called out, focused
+                closeups, escrow, inspection window, insured route if shipped.
+              </p>
+            </article>
+            <article class="ladder-step">
+              <h3>New seller</h3>
+              <p>
+                Same item, lower trust. Add seller bond, delayed payout, stronger
+                evidence, route promise, and explicit human approval.
+              </p>
+            </article>
+            <article class="ladder-step">
+              <h3>High-end</h3>
+              <p>
+                Expensive condition-sensitive item. Add video, verifier option,
+                insured signature route, packaging evidence, and claim packet.
+              </p>
+            </article>
+            <article class="ladder-step">
+              <h3>Extreme proof</h3>
+              <p>
+                Grail or disputed-risk object. Verifier-forwarding, serial evidence,
+                full route stream, strong bond, arbitration terms, final receipt.
+              </p>
+            </article>
+          </div>
+
+          <div class="grid-table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Mode</th>
+                  <th>Human Feeling</th>
+                  <th>Evidence Level</th>
+                  <th>Settlement Shape</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Roughly as expected</td>
+                  <td>I trust this seller enough; I just want the item to be basically right.</td>
+                  <td>Basic photos, condition band, tracking or meetup memo.</td>
+                  <td>Fast escrow release after receipt, small private receipt.</td>
+                </tr>
+                <tr>
+                  <td>Condition matters</td>
+                  <td>I care about the exact condition, flaws, fit, serial, or authenticity.</td>
+                  <td>Closeups, flaw callouts, authenticity checks, inspection window, route evidence.</td>
+                  <td>Escrow releases after acceptance; evidence stays attached.</td>
+                </tr>
+                <tr>
+                  <td>Trust gap</td>
+                  <td>I want the item, but the seller is new or unknown.</td>
+                  <td>Bond, delayed payout, timestamped photos, route promise.</td>
+                  <td>Bond and payout release only after clean close.</td>
+                </tr>
+                <tr>
+                  <td>Insurance-grade</td>
+                  <td>If something goes wrong, I want the claim packet ready.</td>
+                  <td>Declared value, insurance receipt, packaging proof, tracking stream.</td>
+                  <td>Claim packet or receipt generated from the same evidence.</td>
+                </tr>
+                <tr>
+                  <td>Verifier-grade</td>
+                  <td>I want a neutral expert to anchor condition before money fully moves.</td>
+                  <td>Verifier intake, condition attestation, chain of custody, final receipt.</td>
+                  <td>Verifier-backed release logic and portable provenance.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tcg-forward" id="tcg-forward">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Pokemon Alpha</p>
+              <h2>The same rails, tuned for Pokemon cards that are hard to find and easy to misjudge.</h2>
+            </div>
+            <div>
+              <p class="lead">
+                Pokemon Alpha is the first sharp aperture: funded wantlists meet
+                seller inventory, agents negotiate condition evidence and route
+                risk, and escrow releases only when the card arrives the way the
+                buyer agreed it should.
+              </p>
+              <p class="tcg-note">
+                <strong>Card shows still matter.</strong> They are a route and
+                discovery surface, not the whole protocol.
+              </p>
+            </div>
+          </div>
+
+          <div class="two-up">
+            <article class="panel accent-gold">
+              <h3>Buyer pain</h3>
+              <p>
+                The buyer wants a specific Pokemon card, maybe with taste
+                attached: Japanese vintage, clean holo, no crease, a certain
+                artist, a budget ceiling, and a willingness to move fast when
+                the right binder finally opens.
+              </p>
+              <ul class="list">
+                <li>Search is scattered across shows, shops, listings, and DMs.</li>
+                <li>Condition is subtle, subjective, and expensive to verify.</li>
+                <li>Fees and shipping can turn a fair card into a bad buy.</li>
+                <li>New sellers can have the card but not yet have the trust.</li>
+              </ul>
+            </article>
+
+            <article class="panel accent-green">
+              <h3>Seller pain</h3>
+              <p>
+                The seller may have real inventory, but listing everything with
+                full scans is labor. A seller agent can expose enough Pokemon
+                inventory to funded buyers while protecting attention, margin,
+                and floor.
+              </p>
+              <ul class="list">
+                <li>Only funded intents deserve scarce photo and haggle time.</li>
+                <li>Hidden binder stock can surface without becoming public inventory.</li>
+                <li>Bonds and delayed payout help new sellers reach serious buyers.</li>
+                <li>Lower-fee direct rails let both sides share the saved spread.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="protocol-map" aria-label="Pokemon Alpha transaction flow">
+            <div class="map-node">
+              <strong>Wantlist</strong>
+              <span>Card, set, language, condition, budget, taste, and urgency.</span>
+            </div>
+            <div class="map-node">
+              <strong>Binder Access</strong>
+              <span>Listed and hidden cards open only under seller rules.</span>
+            </div>
+            <div class="map-node">
+              <strong>Condition</strong>
+              <span>Raw or graded, flaws, surface, corners, edges, and centering.</span>
+            </div>
+            <div class="map-node">
+              <strong>Terms</strong>
+              <span>Price, discount, closeups, reserve time, and haggle limits.</span>
+            </div>
+            <div class="map-node">
+              <strong>Escrow</strong>
+              <span>Funds, seller bond, inspection window, and release rules.</span>
+            </div>
+            <div class="map-node">
+              <strong>Route</strong>
+              <span>Show pickup, local meetup, verifier forward, or insured ship.</span>
+            </div>
+            <div class="map-node">
+              <strong>Receipt</strong>
+              <span>Private provenance, seller credit, resale proof, or claim packet.</span>
+            </div>
+          </div>
+
+          <div class="grid-table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pokemon Field</th>
+                  <th>Buyer Agent Wants</th>
+                  <th>Seller Agent Controls</th>
+                  <th>Forward Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Card target</td>
+                  <td>Exact card, adjacent sets, language, artist, rarity, or taste-cloud.</td>
+                  <td>Listed cards, hidden binder search, adjacent offers, bundle paths.</td>
+                  <td>The hunt stays alive without making the buyer manually scan everything.</td>
+                </tr>
+                <tr>
+                  <td>Condition</td>
+                  <td>Raw condition band, no crease, holo surface, centering, back wear.</td>
+                  <td>Flaw callouts, condition floor, no-grade promises, inspection terms.</td>
+                  <td>Agents trade in the actual uncertainty that makes cards hard.</td>
+                </tr>
+                <tr>
+                  <td>Evidence</td>
+                  <td>Front/back, corners, holo angles, timestamp, scans, video, slab cert.</td>
+                  <td>Evidence tier by price, photo-request budget, verifier willingness.</td>
+                  <td>Low-value cards stay light; grails get the proof they deserve.</td>
+                </tr>
+                <tr>
+                  <td>Fees</td>
+                  <td>All-in cap, fee tolerance, shipping cap, direct-discount appetite.</td>
+                  <td>Floor price, saved-fee discount, bundle discount, bond amount.</td>
+                  <td>The protocol competes by making the saved take rate visible.</td>
+                </tr>
+                <tr>
+                  <td>Route</td>
+                  <td>Show pickup, local meetup, insured ship, signature, verifier route.</td>
+                  <td>Origin region, show table, shop handoff, carrier lane, insurance cap.</td>
+                  <td>Location is a value field, not an afterthought.</td>
+                </tr>
+                <tr>
+                  <td>Trust</td>
+                  <td>Known dealer, shop reference, new seller only with protections.</td>
+                  <td>Bond, delayed payout, references, prior receipts, verifier support.</td>
+                  <td>New sellers can push through by buying down the trust gap.</td>
+                </tr>
+                <tr>
+                  <td>Closure</td>
+                  <td>Receipt, provenance, resale packet, insurance packet if needed.</td>
+                  <td>Accurate condition, route follow-through, clean dispute behavior.</td>
+                  <td>Every clean card trade becomes future market access.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="human-preview" style="margin-top: 22px;">
+            <div class="message">
+              <div class="message-head">
+                <strong>Buyer Agent</strong>
+                <span class="status">Pokemon candidate</span>
+              </div>
+              <div class="message-body">
+                <p>
+                  I found a Japanese vintage holo that fits your wantlist. The
+                  seller is new to the protocol, but they accepted escrow,
+                  delayed payout, a seller bond, timestamped front/back photos,
+                  holo-angle closeups, and a 48-hour inspection window.
+                </p>
+                <p>
+                  The card is below your all-in cap if we use local meetup or
+                  insured shipping. I recommend approving after the closeups
+                  confirm surface and corner condition.
+                </p>
+                <div class="decision-bar">
+                  <div class="decision">
+                    <strong>Ask</strong>
+                    <span>Holo and corner closeups.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Protect</strong>
+                    <span>Escrow, bond, inspection.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Route</strong>
+                    <span>Meetup or insured ship.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Pokemon Alpha route</span>
+                <span>CardTrade</span>
+              </figcaption>
+              <pre><code>{
+  "want": "japanese_vintage_holo",
+  "condition_floor": "LP+",
+  "trust_gap": ["new_seller", "raw_condition"],
+  "protections": [
+    "escrow",
+    "seller_bond",
+    "delayed_payout",
+    "48h_inspection"
+  ],
+  "evidence": [
+    "timestamped_front_back",
+    "corner_closeups",
+    "holo_angle_closeups"
+  ],
+  "route_options": [
+    "local_meetup",
+    "insured_signature_ship"
+  ],
+  "recommendation": "approve_after_closeups"
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="trust-sources">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Trust sources</p>
+              <h2>Trust is measured authority, weighted from the buyer's aperture.</h2>
+            </div>
+            <p class="lead">
+              The seller can offer any proof they want. Signed proofs are
+              stronger, but even loose evidence can be useful if an agent knows
+              what it proves, who issued it, how fresh it is, and whether it
+              matters for this exact buyer, object, route, and price.
+            </p>
+          </div>
+
+          <div class="statement">
+            <p>
+              A trust source does not say "trust this seller." It says "this
+              evidence has authority over this narrow claim."
+            </p>
+          </div>
+
+          <div class="rules" style="margin-top: 24px;">
+            <article class="rule">
+              <h3>1. Seller offers proof</h3>
+              <p>Any evidence chain is allowed: marketplace history, shop identity, verifier receipts, photos, references, route records, or economic bond.</p>
+            </article>
+            <article class="rule">
+              <h3>2. Agent probes it</h3>
+              <p>The buyer agent asks who signed it, what it proves, when it was observed, whether it can be challenged, and what risk remains.</p>
+            </article>
+            <article class="rule">
+              <h3>3. Buyer weights it</h3>
+              <p>Each buyer aperture decides relevance. TCGplayer history may matter deeply for Pokemon cards while other categories stay outside alpha.</p>
+            </article>
+            <article class="rule">
+              <h3>4. Outcomes harden it</h3>
+              <p>Clean closes, claims, disputes, bond releases, and failed promises recalibrate which proofs deserve weight next time.</p>
+            </article>
+          </div>
+
+          <div class="grid-table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Proof Vector</th>
+                  <th>Seller Can Offer</th>
+                  <th>What It Can Prove</th>
+                  <th>Buyer Agent Probes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Signed account control</td>
+                  <td>OAuth, authenticated API read, wallet signature, domain nonce, seller-agent key.</td>
+                  <td>This seller controls the claimed account, domain, wallet, or agent identity.</td>
+                  <td>Is it signed, fresh, source-approved, and bound to this seller?</td>
+                </tr>
+                <tr>
+                  <td>Outside reputation</td>
+                  <td>eBay, TCGplayer, Google reviews, Whatnot, Shopify, Instagram, prior marketplace history.</td>
+                  <td>Past public behavior in a specific venue or category.</td>
+                  <td>Does this source predict this kind of trade, or only general reliability?</td>
+                </tr>
+                <tr>
+                  <td>Physical-world identity</td>
+                  <td>Google place plus website nonce, storefront video, mailed code, shop reference, event table proof.</td>
+                  <td>The seller maps to a real place, shop, or community presence.</td>
+                  <td>Does location authority help the route, pickup safety, or only identity?</td>
+                </tr>
+                <tr>
+                  <td>Inventory evidence</td>
+                  <td>Timestamped photos, scans, video, flaw callouts, serials, binder walkthrough, slab certs.</td>
+                  <td>The item likely exists and matches the claimed condition envelope.</td>
+                  <td>Is it about this exact item, and is the evidence enough for the price?</td>
+                </tr>
+                <tr>
+                  <td>Economic accountability</td>
+                  <td>Seller bond, delayed payout, escrow acceptance, return terms, arbitration consent.</td>
+                  <td>The seller is willing to suffer if specific promises fail.</td>
+                  <td>What promises are covered, who adjudicates, and what is excluded?</td>
+                </tr>
+                <tr>
+                  <td>Route evidence</td>
+                  <td>Packaging proof, tracking, insurance, declared value, signature, handoff memo, verifier intake.</td>
+                  <td>The object entered the promised route under the promised protection.</td>
+                  <td>Does the route cover loss, damage, porch theft, underinsurance, or local handoff ambiguity?</td>
+                </tr>
+                <tr>
+                  <td>Protocol-native receipt</td>
+                  <td>Prior clean closes, honored route promises, accurate evidence, clean disputes.</td>
+                  <td>Behavior inside this protocol matched prior promises.</td>
+                  <td>How many outcomes, in which category, at what value, and how recently?</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="human-preview" style="margin-top: 24px;">
+            <div class="message">
+              <div class="message-head">
+                <strong>Buyer Agent</strong>
+                <span class="status">Proofs probed</span>
+              </div>
+              <div class="message-body">
+                <p>
+                  This seller offered four trust vectors: a signed TCGplayer
+                  store attestation, a Google place plus website nonce, a
+                  timestamped binder video, and a seller bond. I trust each one
+                  for a different claim.
+                </p>
+                <p>
+                  For this raw vintage card, I give high weight to TCG-specific
+                  selling history, medium weight to the physical shop proof, low
+                  weight to the unsigned video until closeups arrive, and strong
+                  weight to the bond if escrow terms cover misdescription.
+                </p>
+                <div class="decision-bar">
+                  <div class="decision">
+                    <strong>Accept</strong>
+                    <span>TCGplayer proof and shop control.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Probe</strong>
+                    <span>Closeups and bond coverage.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Hold</strong>
+                    <span>Escrow until inspection.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Proof bundle</span>
+                <span>TrustOffer</span>
+              </figcaption>
+              <pre><code>{
+  "subject": "seller_agent_or_wallet",
+  "proofs_offered": [
+    {
+      "type": "tcgplayer_store_feedback",
+      "signed": true,
+      "authority": "tcg_order_history",
+      "freshness": "14_days"
+    },
+    {
+      "type": "google_place_domain_control",
+      "signed": true,
+      "authority": "physical_shop_existence",
+      "freshness": "30_days"
+    },
+    {
+      "type": "binder_walkthrough_video",
+      "signed": false,
+      "authority": "inventory_presence",
+      "freshness": "today"
+    },
+    {
+      "type": "seller_bond",
+      "signed": true,
+      "authority": "economic_accountability",
+      "freshness": "trade_locked"
+    }
+  ],
+  "buyer_agent_probe": {
+    "accepted": ["tcgplayer_store_feedback", "google_place_domain_control"],
+    "needs_more": ["holo_closeups", "bond_terms"],
+    "discounted": ["unsigned_binder_video"],
+    "human_prompt": "Enough trust to continue, not enough to waive escrow."
+  }
+}</code></pre>
+            </figure>
+          </div>
+
+          <div class="two-up" style="margin-top: 24px;">
+            <article class="panel accent-green">
+              <h3>The hardening loop</h3>
+              <p>
+                The protocol gets stronger when evidence meets outcome. A proof
+                starts as borrowed authority, then earns or loses weight when
+                the seller's actions match the claim.
+              </p>
+              <ul class="list">
+                <li>Proof offered: outside reputation, shop identity, bond, route promise.</li>
+                <li>Action taken: shipped, met locally, accepted verifier, answered probes.</li>
+                <li>Outcome recorded: clean close, claim, dispute, refund, bond release, bond hit.</li>
+                <li>Authority recalibrated: agents learn which proofs predict which outcomes.</li>
+              </ul>
+            </article>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Measured authority</span>
+                <span>AuthorityUpdate</span>
+              </figcaption>
+              <pre><code>{
+  "proof_type": "google_place_domain_control",
+  "initial_authority": {
+    "physical_shop_existence": "high",
+    "local_pickup_safety": "medium",
+    "raw_condition_accuracy": "low"
+  },
+  "observed_outcomes": [
+    "clean_local_pickup",
+    "accurate_condition",
+    "bond_released"
+  ],
+  "updated_authority": {
+    "physical_shop_existence": "high",
+    "local_pickup_safety": "higher",
+    "raw_condition_accuracy": "medium"
+  }
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="buyer-seller">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Both sides</p>
+              <h2>Buyers bring funded intent. Sellers bring reachable inventory.</h2>
+            </div>
+            <p class="lead">
+              The protocol starts before a listing exists. A buyer can expose
+              a funded want, and a seller can expose inventory under rules that
+              protect attention, margin, and trust.
+            </p>
+          </div>
+
+          <div class="two-up">
+            <article class="panel accent-green">
+              <h3>Buyer perspective</h3>
+              <p>
+                The buyer does not need to babysit search tabs. They tell an
+                agent what they want, what risks they will tolerate, how much fee
+                and route cost they will bear, and when to come back for judgment.
+              </p>
+              <ul class="list">
+                <li>Exact wants: buy this object in this condition or better under this all-in price.</li>
+                <li>Taste-cloud wants: adjacent items that match style, condition, era, use, or story.</li>
+                <li>Attention rules: ask for preference drift, price stretch, condition risk, or escrow approval.</li>
+                <li>Trust rules: allow new sellers only with bond, escrow, inspection, or verifier.</li>
+                <li>Discovery rules: show adjacent inventory only when it is worth the attention cost.</li>
+              </ul>
+            </article>
+
+            <article class="panel accent-blue">
+              <h3>Seller perspective</h3>
+              <p>
+                The seller does not need to list every item everywhere. They
+                publish how agents can access inventory, evidence, holds,
+                haggling, and trust substitutes without wasting human time.
+              </p>
+              <ul class="list">
+                <li>Listed inventory can match directly against funded buyer intents.</li>
+                <li>Hidden inventory can surface when a taste or fit envelope is close.</li>
+                <li>Evidence tiers prevent low-value proof requests from eating the day.</li>
+                <li>Reserve policy protects inventory from being held by unfunded buyers.</li>
+                <li>Bond and delayed payout let new sellers reach buyers before reputation matures.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Negotiation</p>
+              <h2>The deal is the whole route, not the sticker price.</h2>
+            </div>
+            <p class="lead">
+              A good trade might be lower-fee, better protected, faster, more
+              reversible, less annoying, or more valuable to both sides. Agents
+              should be able to negotiate across all of those dimensions.
+            </p>
+          </div>
+
+          <div class="two-up">
+            <article class="panel accent-gold">
+              <h3>When trust is weak</h3>
+              <p>
+                A new seller can still reach the buyer by posting a bond,
+                accepting delayed payout, sending useful closeups, routing
+                through a verifier, or pricing below trusted comps.
+              </p>
+            </article>
+            <article class="panel accent-red">
+              <h3>When attention is expensive</h3>
+              <p>
+                The buyer agent bundles questions, skips low-value evidence
+                rituals, and saves seller labor for uncertainty that actually
+                changes the decision.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="bonded-sellers">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Bonded sellers</p>
+              <h2>New sellers can buy their first lane of trust.</h2>
+            </div>
+            <p class="lead">
+              Bonded sellers are the bootstrap unlock. A seller with no protocol
+              history can still reach serious buyers by collateralizing
+              boring, specific promises: ship the item, describe it materially
+              correctly, disclose damage, and accept a defined inspection path.
+            </p>
+          </div>
+
+          <div class="bond-ladder">
+            <article class="ladder-step">
+              <h3>Unbonded new seller</h3>
+              <p>Low visibility, small transactions first, limited agent access.</p>
+            </article>
+            <article class="ladder-step">
+              <h3>Transaction-bonded seller</h3>
+              <p>Posts collateral behind one item and one evidence bundle.</p>
+            </article>
+            <article class="ladder-step">
+              <h3>Standing-bond seller</h3>
+              <p>Maintains rolling collateral for broader buyer-agent access.</p>
+            </article>
+            <article class="ladder-step">
+              <h3>Trusted seller</h3>
+              <p>Clean history reduces bond requirements and evidence friction.</p>
+            </article>
+            <article class="ladder-step">
+              <h3>Verifier-backed seller</h3>
+              <p>High-value condition-sensitive goods can move with third-party confidence.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Human translation</p>
+              <h2>The buyer hears the trade in plain English.</h2>
+            </div>
+            <p class="lead">
+              The human does not need to read weights. The agent explains the
+              item, why it is compelling, what is risky, what was negotiated, and
+              what still needs a human eye.
+            </p>
+          </div>
+
+          <div class="human-preview">
+            <div class="message">
+              <div class="message-head">
+                <strong>Buyer Agent</strong>
+                <span class="status">Ready for approval</span>
+              </div>
+              <div class="message-body">
+                <p>
+                  I found a real candidate. It matches the thing you asked for,
+                  the condition looks close enough to keep pursuing, and the
+                  seller is new here, so I bought down the trust gap before
+                  bringing it to you.
+                </p>
+                <p>
+                  The item is priced at $340 before route cost, about 8% below
+                  trusted comps. The seller is close enough for local handoff, or
+                  we can use insured signature shipping. Protections: escrow,
+                  delayed payout, timestamped photos, focused closeups, 48-hour
+                  condition inspection, and a seller bond.
+                </p>
+                <div class="decision-bar">
+                  <div class="decision">
+                    <strong>Proceed</strong>
+                    <span>If closeups confirm condition.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Choose route</strong>
+                    <span>Meet in person or ship insured.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Do not waive</strong>
+                    <span>Inspection or escrow release.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <article class="panel accent-green">
+              <h3>What the agent did</h3>
+              <ul class="list">
+                <li>Recognized the item matched the buyer's taste and budget envelope.</li>
+                <li>Detected the trust gap: new seller, condition-sensitive purchase.</li>
+                <li>Requested only evidence that could change the decision.</li>
+                <li>Converted trust risk into bond, delayed payout, inspection, and route choice.</li>
+                <li>Returned to the buyer at the exact moment human judgment mattered.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="route-evidence">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Route evidence</p>
+              <h2>Every handoff leaves a claim-ready trail.</h2>
+            </div>
+            <p class="lead">
+              Tracking is one evidence type, not the whole design. The protocol
+              should accept carrier scans, receipt photos, table handoff memos,
+              shop intake notes, verifier attestations, and buyer confirmations
+              as route evidence attached to the trade.
+            </p>
+          </div>
+
+          <div class="two-up">
+            <article class="panel accent-blue">
+              <h3>Standard shipping</h3>
+              <p>
+                For USPS, FedEx, UPS, or another carrier, the route stream can
+                record the promise, label, insurance amount, declared value,
+                acceptance scan, tracking events, delivery scan, signature, and
+                inspection window.
+              </p>
+              <ul class="list">
+                <li>Label and tracking URL are cheap evidence.</li>
+                <li>Insurance and signature are paid route protections.</li>
+                <li>Packaging attestation belongs to the insured route, even when item evidence is light.</li>
+              </ul>
+            </article>
+
+            <article class="panel accent-gold">
+              <h3>Non-standard handoff</h3>
+              <p>
+                An event pickup, local meetup, or shop handoff can be just as
+                protocol-legible. The evidence may be a pickup memo, shop receipt,
+                verifier intake, signed note, or simple buyer confirmation.
+              </p>
+              <ul class="list">
+                <li>Meet in person when locations match and the buyer wants that.</li>
+                <li>Use a shop or verifier when both sides want a neutral handoff.</li>
+                <li>Keep escrow locked until receipt and condition are confirmed.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="human-preview" style="margin-top: 22px;">
+            <div class="message">
+              <div class="message-head">
+                <strong>Buyer Agent</strong>
+                <span class="status">Claim packet ready</span>
+              </div>
+              <div class="message-body">
+                <p>
+                  I can open an insurance claim for this trade. I pulled the
+                  escrow receipt, agreed value, seller route promise, pre-ship
+                  item photos, packaging evidence, tracking history, delivery
+                  exception, and your receipt photos into one packet.
+                </p>
+                <div class="decision-bar">
+                  <div class="decision">
+                    <strong>Value</strong>
+                    <span>Escrow and declared value.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Route</strong>
+                    <span>Carrier events and receipts.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Condition</strong>
+                    <span>Before and after evidence.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Insurance packet</span>
+                <span>EvidencePacket</span>
+              </figcaption>
+              <pre><code>{
+  "purpose": "insurance_claim",
+  "incident": "damaged_in_transit",
+  "trade_id": "trade_8821",
+  "declared_value": 340,
+  "insurance_amount": 340,
+  "contents": [
+    "escrow_receipt",
+    "inventory_claim",
+    "pre_ship_item_photos",
+    "packaging_attestation",
+    "shipping_receipt",
+    "tracking_history",
+    "delivery_exception",
+    "buyer_receipt_photos",
+    "condition_report",
+    "seller_route_promise"
+  ]
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="final-receipt">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Happy closure</p>
+              <h2>When the buyer is happy, the trade becomes a receipt.</h2>
+            </div>
+            <p class="lead">
+              The final receipt is the happy-path mirror of a claim packet. It
+              proves what was bought, what route was used, what condition was
+              accepted, what escrow released, and which promises become
+              reputation.
+            </p>
+          </div>
+
+          <div class="two-up">
+            <article class="panel accent-green">
+              <h3>Buyer acceptance</h3>
+              <p>
+                The buyer or their agent confirms receipt and condition after
+                the inspection window. That acceptance should be explicit enough
+                to release escrow but not so public that it leaks collection
+                habits by default.
+              </p>
+              <ul class="list">
+                <li>Item received and matched the accepted condition band.</li>
+                <li>Escrow release approved after route and condition checks.</li>
+                <li>Receipt saved privately unless the buyer chooses to share it.</li>
+              </ul>
+            </article>
+
+            <article class="panel accent-blue">
+              <h3>Seller closure</h3>
+              <p>
+                The seller gets paid, the bond is released or aged down, and the
+                completed promises become future access. A clean close should
+                make the next deal easier for everyone.
+              </p>
+              <ul class="list">
+                <li>Payout released according to escrow terms.</li>
+                <li>Bond released when no dispute opens inside the window.</li>
+                <li>Reputation events credit accurate condition, route follow-through, and clean communication.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="human-preview" style="margin-top: 22px;">
+            <div class="message">
+              <div class="message-head">
+                <strong>Buyer Agent</strong>
+                <span class="status">Receipt finalized</span>
+              </div>
+              <div class="message-body">
+                <p>
+                  Trade closed cleanly. You accepted the item after
+                  inspection, escrow released to the seller, and the seller bond
+                  was released after the dispute window expired.
+                </p>
+                <p>
+                  I saved a private receipt with the agreed price, route, evidence
+                  bundle, seller promises, release transactions, and reputation
+                  events. You can use it later for insurance, resale, provenance,
+                  or just remembering where this purchase came from.
+                </p>
+                <div class="decision-bar">
+                  <div class="decision">
+                    <strong>Keep private</strong>
+                    <span>Default buyer receipt.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Share proof</strong>
+                    <span>Redacted resale packet.</span>
+                  </div>
+                  <div class="decision">
+                    <strong>Credit seller</strong>
+                    <span>Reputation emitted.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Final receipt</span>
+                <span>TradeReceipt</span>
+              </figcaption>
+              <pre><code>{
+  "trade_id": "trade_8821",
+  "status": "settled",
+  "accepted_at": "2026-05-18T20:42:00Z",
+  "item": {
+    "category": "condition_sensitive_collectible",
+    "description": "vintage collectible",
+    "accepted_condition": "as_described",
+    "evidence_bundle": "evidence_bundle_4491"
+  },
+  "settlement": {
+    "price": 340,
+    "route_cost": 18,
+    "escrow_released": true,
+    "seller_bond_released": true
+  },
+  "route": {
+    "handoff": "insured_signature_ship",
+    "tracking_history": "route_evidence_7742",
+    "received_confirmed": true
+  },
+  "visibility": "private_by_default",
+  "reputation_events": [
+    "condition_matched",
+    "route_promise_honored",
+    "clean_close"
+  ]
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="resolve-claim">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Resolution engine</p>
+              <h2>Resolve or claim is where the protocol proves itself.</h2>
+            </div>
+            <p class="lead">
+              Every ending asks the same three questions: what was promised,
+              what happened, and who knowingly accepted which route risk. The
+              answer determines whether the agent releases escrow, emits a
+              receipt, opens a carrier claim, holds a bond, or starts arbitration.
+            </p>
+          </div>
+
+          <div class="rules">
+            <article class="rule">
+              <h3>1. Promised</h3>
+              <p>Route, insurance, signature, condition band, evidence tier, inspection window, and bond terms.</p>
+            </article>
+            <article class="rule">
+              <h3>2. Happened</h3>
+              <p>Carrier events, handoff notes, buyer confirmation, received condition, verifier notes, or exceptions.</p>
+            </article>
+            <article class="rule">
+              <h3>3. Accepted</h3>
+              <p>Which human or agent approved each exception: uninsured, underinsured, local handoff, delay, or waiver.</p>
+            </article>
+          </div>
+
+          <div class="grid-table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Situation</th>
+                  <th>Packet Assembled</th>
+                  <th>Protocol Move</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Clean close</td>
+                  <td>Final receipt, accepted condition, route evidence, escrow release, reputation events.</td>
+                  <td>Release payout, release or age down bond, save private receipt, credit both sides.</td>
+                </tr>
+                <tr>
+                  <td>Insured shipping, lost</td>
+                  <td>Agreed value, insurance amount, label, tracking URL, acceptance scan, lost-package event.</td>
+                  <td>Keep escrow locked, prepare carrier claim, resolve payout by claim and escrow terms.</td>
+                </tr>
+                <tr>
+                  <td>Insured shipping, damaged</td>
+                  <td>Pre-ship item photos, packaging proof, insurance receipt, tracking, buyer damage photos.</td>
+                  <td>Open carrier claim; hold escrow and possibly bond if packaging or description is disputed.</td>
+                </tr>
+                <tr>
+                  <td>Uninsured shipping, lost</td>
+                  <td>Route approval, seller dropoff proof, tracking if any, escrow terms, seller bond terms.</td>
+                  <td>If buyer approved uninsured route, buyer may bear loss; if not, seller promise failed.</td>
+                </tr>
+                <tr>
+                  <td>Underinsured shipping</td>
+                  <td>Agreed value, insurance amount, who approved the gap, route promise, loss evidence.</td>
+                  <td>Assign the uncovered gap to whoever knowingly accepted or caused underinsurance.</td>
+                </tr>
+                <tr>
+                  <td>Local meetup or event pickup</td>
+                  <td>Meetup memo, event or shop note, buyer and seller confirmations, receipt timestamp.</td>
+                  <td>Release only after buyer confirms receipt and condition; otherwise use handoff evidence.</td>
+                </tr>
+                <tr>
+                  <td>Verifier forwarding</td>
+                  <td>Seller-to-verifier route, verifier intake, condition note, verifier-to-buyer route.</td>
+                  <td>Verifier becomes the condition anchor; route risk moves according to each leg.</td>
+                </tr>
+                <tr>
+                  <td>Wrong item or material misdescription</td>
+                  <td>Inventory claim, seller photos, received-item photos, chat promises, verifier opinion.</td>
+                  <td>Hold escrow; seller bond is exposed if wrong item or misdescription is covered.</td>
+                </tr>
+                <tr>
+                  <td>Delivered but not received</td>
+                  <td>Delivery scan, signature status, address confirmation, route requirements, proof of delivery.</td>
+                  <td>Check whether signature or address controls were promised, waived, or violated.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 22px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Resolution case</span>
+                <span>ResolveOrClaim</span>
+              </figcaption>
+              <pre><code>{
+  "trade_id": "trade_8821",
+  "case_type": "uninsured_shipping_lost",
+  "promised": {
+    "handoff": "insured_signature_ship",
+    "insurance_required": true,
+    "signature_required": true
+  },
+  "happened": {
+    "handoff": "tracked_uninsured_ship",
+    "carrier_acceptance": true,
+    "delivery": "lost_in_transit"
+  },
+  "accepted_risk": {
+    "buyer_approved_uninsured": false,
+    "seller_changed_route": true
+  },
+  "resolution": {
+    "escrow_action": "hold",
+    "bond_action": "hold_for_route_failure",
+    "packet": "seller_route_dispute",
+    "human_prompt": "approve_dispute_open"
+  }
+}</code></pre>
+            </figure>
+
+            <article class="panel accent-red">
+              <h3>Why this matters</h3>
+              <p>
+                Without typed route promises, every dispute becomes vibes. With
+                them, the agent can say exactly what kind of ending this is:
+                clean receipt, insured carrier claim, route-risk dispute,
+                condition dispute, bond exposure, or verifier-backed close.
+              </p>
+              <ul class="list">
+                <li>Insurance is clean when value, route, and evidence are already attached.</li>
+                <li>Uninsured exceptions are only fair when the accepting party is explicit.</li>
+                <li>Local handoff is not informal; it is a different evidence route.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pressure-test">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Pressure tested</p>
+              <h2>Fifty thousand synthetic trades, including the ugly endings.</h2>
+            </div>
+            <p class="lead">
+              The protocol was tested against clean closes, insured losses,
+              damaged shipments, underinsurance gaps, local handoff disputes,
+              verifier mismatches, wrong items, seller non-shipment, buyer
+              remorse, and delivered-but-not-received cases.
+            </p>
+          </div>
+
+          <div class="rules">
+            <article class="rule">
+              <h3>50,000 trades</h3>
+              <p>Randomized Pokemon card trades plus forced edge cases across value, trust, route, and evidence tiers.</p>
+            </article>
+            <article class="rule">
+              <h3>No hard breaks</h3>
+              <p>The final run produced no invariant violations after route evidence was tightened.</p>
+            </article>
+            <article class="rule">
+              <h3>100% packets</h3>
+              <p>Clean receipts, insurance claims, disputes, and verifier cases all had complete evidence packets.</p>
+            </article>
+            <article class="rule">
+              <h3>80.26% receipts</h3>
+              <p>Happy-path trades ended as private final receipts with escrow release and reputation events.</p>
+            </article>
+            <article class="rule">
+              <h3>4.02% ambiguous</h3>
+              <p>These were the cases where the typed value map mattered most: local handoff, porch theft, underinsurance, verifier mismatch.</p>
+            </article>
+            <article class="rule">
+              <h3>New sellers bonded</h3>
+              <p>New sellers were required to bond in serious trades; unknown sellers bonded when risk rose.</p>
+            </article>
+          </div>
+
+          <div class="grid-table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Finding</th>
+                  <th>Protocol Change</th>
+                  <th>Product Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Insured damage needs packaging proof</td>
+                  <td>Packaging attestation is route evidence whenever insurance is used.</td>
+                  <td>Even a modest insured item needs enough packing proof to make a damage claim clean.</td>
+                </tr>
+                <tr>
+                  <td>Underinsurance is not a footnote</td>
+                  <td>The gap owner must be typed before escrow: buyer approved it, or seller owns it.</td>
+                  <td>The agent should ask before accepting cheap shipping that leaves value uncovered.</td>
+                </tr>
+                <tr>
+                  <td>Delivered but not received stays hard</td>
+                  <td>Signature, address confirmation, delivery proof, and waiver status need crisp UI.</td>
+                  <td>This is where buyer convenience and route risk most clearly collide.</td>
+                </tr>
+                <tr>
+                  <td>Local handoff is a real route</td>
+                  <td>Event pickup and meetups use memos, handoff notes, shop notes, and buyer confirmation.</td>
+                  <td>In-person does not mean informal; it means different evidence.</td>
+                </tr>
+                <tr>
+                  <td>Evidence scales correctly</td>
+                  <td>Casual trades stay light; extreme proof adds verifier, route stream, bond, and receipt.</td>
+                  <td>The protocol does not force every casual item through a high-end ritual.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="lead" style="margin-top: 22px;">
+            Full simulation artifact:
+            <a href="runs/protocol_edge_case_20260518T161056Z/REPORT.md">protocol_edge_case_20260518T161056Z report</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="objects">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Protocol objects</p>
+              <h2>Agent chatter finds the deal. Typed events close it.</h2>
+            </div>
+            <p class="lead">
+              Let agents talk like buyers and sellers. Let the protocol record
+              the boring parts precisely: claims, photos, bonds, escrow release,
+              disputes, and reputation.
+            </p>
+          </div>
+
+          <div class="code-grid">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Buyer mandate</span>
+                <span>AgentMandate</span>
+              </figcaption>
+              <pre><code>{
+  "category": "condition_sensitive_physical_good",
+  "want": "vintage collectible in clean display condition",
+  "money": {
+    "autobuy_under": 220,
+    "ask_under": 450,
+    "hard_cap": 600
+  },
+  "condition": {
+    "minimum": "excellent_used",
+    "prefers": ["clean_surface", "complete_parts", "no_hidden_damage"],
+    "taste_bonus": ["rare_variant", "strong_provenance", "excellent_display"]
+  },
+  "evidence": {
+    "under_100": "basic_photos",
+    "over_300": "focused_closeups",
+    "high_value": "video_or_verifier"
+  },
+  "trust": {
+    "new_seller_allowed_if": [
+      "bond",
+      "escrow",
+      "inspection_window"
+    ]
+  },
+  "route": {
+    "preferred": ["local_meetup", "event_pickup", "insured_ship"],
+    "ask_before": ["international", "customs", "uninsured_ship", "underinsured_ship"],
+    "signature_required_over": 200,
+    "insurance_required_over": 300
+  },
+  "attention": {
+    "ask_me_for": [
+      "taste_uncertainty",
+      "price_stretch",
+      "irreversible_commitment"
+    ]
+  }
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Seller access</span>
+                <span>InventoryAccessPolicy</span>
+              </figcaption>
+              <pre><code>{
+  "alpha_mode": "agent_skill_api",
+  "inventory_mode": "listed_and_hidden",
+  "evidence_policy": {
+    "under_75": "basic_photos_only",
+    "75_to_300": "basic_photos_plus_flaws",
+    "over_300": "detail_surface_edges_serials",
+    "condition_sensitive": "detail_video_available"
+  },
+  "attention_budget": {
+    "photo_requests_per_item": 2,
+    "haggle_rounds": 2
+  },
+  "trust_bootstrap": {
+    "bond_available": true,
+    "delayed_payout": true
+  },
+  "reserve_policy": {
+    "funded_intents_only": true,
+    "default_minutes": 20
+  },
+  "route_policy": {
+    "origin_region": "US-MI",
+    "handoff_options": [
+      "event_pickup",
+      "local_shop_handoff",
+      "insured_ship",
+      "verifier_forward"
+    ],
+    "insurance_cap": 1000,
+    "packaging_attestation_required_if_insured": true,
+    "shipping_quote": "actual_cost_before_escrow"
+  },
+  "hidden_inventory": {
+    "allow_agent_prompted_inventory_search": true,
+    "taste_radius": "style_category_condition"
+  }
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Negotiated path</span>
+                <span>TradeRoute</span>
+              </figcaption>
+              <pre><code>{
+  "trust_gap": [
+    "new_seller",
+    "condition_sensitive",
+    "route_risk"
+  ],
+  "seller_concessions": [
+    "8_percent_discount",
+    "timestamped_basic_photos",
+    "detail_closeups",
+    "48h_inspection",
+    "seller_bond",
+    "delayed_payout"
+  ],
+  "buyer_concessions": [
+    "fast_escrow",
+    "no_extra_photos_after_closeups",
+    "verified_identity_for_local_meetup"
+  ],
+  "route": {
+    "seller_region": "US-MI",
+    "buyer_region": "US-MI",
+    "preferred_handoff": "event_pickup",
+    "fallback_handoff": "insured_signature_ship",
+    "route_cost": "quoted_before_escrow",
+    "insurance_required": true,
+    "insurance_amount": "full_value_unless_buyer_approves_gap",
+    "packaging_attestation_required": true
+  },
+  "remaining_blocks": [
+    "human_route_choice_required"
+  ],
+  "recommendation": "approve_with_protections"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Seller bond</span>
+                <span>SlashablePromise</span>
+              </figcaption>
+              <pre><code>{
+  "seller_bond": {
+    "amount": 125,
+    "covers": [
+      "non_shipment",
+      "wrong_item",
+      "material_misdescription",
+      "undisclosed_crease_or_surface_damage"
+    ],
+    "does_not_cover": [
+      "buyer_remorse",
+      "market_price_change",
+      "subjective_quality_upgrade"
+    ],
+    "payout_condition": "delivery_plus_48h_inspection",
+    "arbiter": "approved_verifier_or_protocol_panel"
+  }
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="alpha">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Alpha API</p>
+              <h2>Start as a Pokemon agent skill. Prove one trade shape first.</h2>
+            </div>
+            <p class="lead">
+              The first product does not need to be a giant marketplace. It
+              needs to let agents post funded Pokemon wants, talk to seller
+              agents, reserve one-card inventory, and make trust legible enough
+              to transact.
+            </p>
+          </div>
+
+          <div class="rules">
+            <article class="rule">
+              <h3>1. Post intent</h3>
+              <p>Buyer agent publishes funded Pokemon-card intent with card, condition floor, taste, budget, trust, route, and attention gates.</p>
+            </article>
+            <article class="rule">
+              <h3>2. Open inventory</h3>
+              <p>Seller agent exposes listed and hidden Pokemon card claims with condition, price, evidence tier, and access policy.</p>
+            </article>
+            <article class="rule">
+              <h3>3. Compare maps</h3>
+              <p>The matcher checks price, taste, trust, route, evidence, time, and reversibility without flattening the trade.</p>
+            </article>
+            <article class="rule">
+              <h3>4. Haggle the route</h3>
+              <p>Agents trade bond, closeups, reserve duration, inspection, local handoff, shipping, price, and attention boundaries.</p>
+            </article>
+            <article class="rule">
+              <h3>5. Lock escrow</h3>
+              <p>Funds, seller bond, item evidence, route evidence, and release conditions become typed commitments.</p>
+            </article>
+            <article class="rule">
+              <h3>6. Resolve or claim</h3>
+              <p>Happy acceptance produces a final receipt; shipping damage or loss produces an agent-ready claim packet.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="shell">
+          <p>
+            <strong>Design rule:</strong> a transaction should never say
+            "trust score 0.71, proceed." It should say "this is worth chasing,
+            the seller is new, and bond plus escrow plus the right evidence
+            make it accountable enough to ask you."
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

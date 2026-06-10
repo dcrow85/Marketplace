@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"inventory_key\":\"collision-drill:stale_photo\",\"item_fingerprint_hash\":\"0x9ca5c57bb5b338f895a9e1cfb34e20c90f480ac4f330b66e83dc800b65b4da9d\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"trade_id\":5}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "inventory_key": "collision-drill:stale_photo",
+    "item_fingerprint_hash": "0x9ca5c57bb5b338f895a9e1cfb34e20c90f480ac4f330b66e83dc800b65b4da9d",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "trade_id": 5
+  },
+  "payload_hash": "0x7679b559c5e39f920b103d84fbe49fcf12047c58ea6da3ceb33e8f5569676fdf",
+  "signature": "0xca8f59597b6ea9b6fb0e9acf6c0e9eafaea36dd807c6aeea5cd9518338dd39434d2bb9c246169955989d8ae921171f129b999b817c2e2ca1c40d0f98162560721b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

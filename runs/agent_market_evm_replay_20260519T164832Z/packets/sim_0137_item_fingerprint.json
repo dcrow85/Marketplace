@@ -1,0 +1,50 @@
+{
+  "canonical_payload": "{\"challenge_hooks\":[\"fresh_timestamped_photo\",\"verifier_review\"],\"confidence_scope\":\"bounded_for_raw_card_identity\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"seller_offer\",\"type\":\"seller_offer\"},{\"ref\":\"sim-0137-front-photo-hash\",\"type\":\"front_photo\"},{\"ref\":\"sim-0137-back-photo-hash\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Sabrina's Gengar\",\"condition_claim\":\"NM\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"value_band\":\"low\"},\"privacy_policy\":\"buyer_arbiter_and_registered_verifier\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079\",\"escrow_terms\":\"sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9\",\"friction_policy\":\"sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa\",\"intent\":\"sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a\",\"seller_offer\":\"sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253\"},\"source_simulation_trade\":\"SIM-0137\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge_hooks": [
+      "fresh_timestamped_photo",
+      "verifier_review"
+    ],
+    "confidence_scope": "bounded_for_raw_card_identity",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "seller_offer",
+        "type": "seller_offer"
+      },
+      {
+        "ref": "sim-0137-front-photo-hash",
+        "type": "front_photo"
+      },
+      {
+        "ref": "sim-0137-back-photo-hash",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Sabrina's Gengar",
+      "condition_claim": "NM",
+      "domain": "tcg",
+      "game": "pokemon",
+      "value_band": "low"
+    },
+    "privacy_policy": "buyer_arbiter_and_registered_verifier",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079",
+      "escrow_terms": "sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9",
+      "friction_policy": "sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa",
+      "intent": "sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a",
+      "seller_offer": "sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253"
+    },
+    "source_simulation_trade": "SIM-0137"
+  },
+  "payload_hash": "0x707d5c2d9c6222cf3f765fa21f72dd6a53b3d035d6d35b86cc985e0aa3c000d0",
+  "signature": "0xe2d26c660afcaaa420495caa70a77079bb94846f26dad3179437c07228e2494b6ad264c49e515c71692fee1986e3f90a9d78bf870ab0a993e833300a4f30ec661c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

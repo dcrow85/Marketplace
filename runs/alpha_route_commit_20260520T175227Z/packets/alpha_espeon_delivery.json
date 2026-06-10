@@ -1,0 +1,37 @@
+{
+  "canonical_payload": "{\"carrier_or_handoff_method\":\"simulated_carrier_tracking\",\"delivered_at\":\"2026-05-20T17:52:28.531104+00:00\",\"inspection_window\":\"opens_on_delivery\",\"not_claiming\":[\"card_authenticity\",\"card_condition\",\"buyer_satisfaction\"],\"route_evidence\":[{\"ref\":\"carrier:fixture:delivered\",\"type\":\"tracking_event\"},{\"ref\":\"insurance:fixture:declared-640-usd\",\"type\":\"insurance_record\"},{\"ref\":\"seller:fixture:sealed-mailer\",\"type\":\"package_photo\"}],\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"status\":\"delivered\",\"tracking_or_memo\":\"tracking://ALPHA-ESPEON-001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier_or_handoff_method": "simulated_carrier_tracking",
+    "delivered_at": "2026-05-20T17:52:28.531104+00:00",
+    "inspection_window": "opens_on_delivery",
+    "not_claiming": [
+      "card_authenticity",
+      "card_condition",
+      "buyer_satisfaction"
+    ],
+    "route_evidence": [
+      {
+        "ref": "carrier:fixture:delivered",
+        "type": "tracking_event"
+      },
+      {
+        "ref": "insurance:fixture:declared-640-usd",
+        "type": "insurance_record"
+      },
+      {
+        "ref": "seller:fixture:sealed-mailer",
+        "type": "package_photo"
+      }
+    ],
+    "route_type": "insured_shipping",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "status": "delivered",
+    "tracking_or_memo": "tracking://ALPHA-ESPEON-001",
+    "trade_id": 1
+  },
+  "payload_hash": "0x2c30d51b1a278ffa5885f57e30c3ec8a98e73cb99a76f959979e9f4921bd3184",
+  "signature": "0x415eca916639dd60ea207fb52a6ddf6fd35428fcf124b75c327e6bf93390173c44db990dd3fc857a5c79590336d6aadf925eadb3447d6abdb23ece8fc9326a581b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

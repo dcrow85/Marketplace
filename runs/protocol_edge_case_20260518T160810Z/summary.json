@@ -1,0 +1,323 @@
+{
+  "ambiguous_without_grid_rate": 0.0544,
+  "bond_rate_by_seller_trust": {
+    "known": 0.0,
+    "new": 1.0,
+    "trusted": 0.0,
+    "unknown": 0.538
+  },
+  "diagnosis": [
+    "Hard invariant violations found: {'insured_claim_packet_incomplete': 810, 'insured_outcome_without_insurance_amount': 6, 'casual_raw_evidence_bloat': 51, 'local_handoff_outcome_on_nonlocal_route': 9}",
+    "Evidence packet completeness is high across clean receipts, claims, and disputes.",
+    "Evidence scales in the intended direction: casual raw averages 12.25 items vs extreme proof 21.61.",
+    "New sellers are usually required to bond before accessing serious buyers.",
+    "Route exceptions exist, but they are explicitly approved rather than hidden in shipping cost.",
+    "Delivered-but-not-received remains a naturally hard edge; signature/address controls need crisp UI.",
+    "Underinsurance is a prime example of why gap ownership must be typed before escrow."
+  ],
+  "evidence_items_by_mode": {
+    "casual_raw": {
+      "mean": 12.25,
+      "p90": 21
+    },
+    "collector_raw": {
+      "mean": 13.76,
+      "p90": 21
+    },
+    "extreme_proof": {
+      "mean": 21.61,
+      "p90": 23
+    },
+    "high_end_raw": {
+      "mean": 17.63,
+      "p90": 21
+    },
+    "new_seller_raw": {
+      "mean": 18.2,
+      "p90": 23
+    }
+  },
+  "evidence_tiers": {
+    "insurance_grade": 5574,
+    "light": 10906,
+    "standard": 17187,
+    "strong": 3233,
+    "verifier_grade": 13100
+  },
+  "final_receipt_rate": 0.8019,
+  "human_gates": {
+    "condition_sensitive": 13583,
+    "high_value_or_raw_condition": 15740,
+    "reject_or_reprice_underinsurance": 6569,
+    "route_privacy_and_meetup_choice": 3222,
+    "underinsurance_gap": 7259,
+    "uninsured_route": 829,
+    "verifier_unavailable": 10026
+  },
+  "human_gates_by_mode": {
+    "casual_raw": {
+      "mean": 0.25,
+      "p90": 1
+    },
+    "collector_raw": {
+      "mean": 0.54,
+      "p90": 2
+    },
+    "extreme_proof": {
+      "mean": 3.46,
+      "p90": 5
+    },
+    "high_end_raw": {
+      "mean": 2.53,
+      "p90": 4
+    },
+    "new_seller_raw": {
+      "mean": 1.41,
+      "p90": 3
+    }
+  },
+  "liability_owners": {
+    "ambiguous_delivery_risk": 23,
+    "buyer": 1177,
+    "buyer_accepted_gap": 31,
+    "buyer_accepted_route_risk": 78,
+    "carrier_or_seller_if_signature_missing": 822,
+    "carrier_pending": 2155,
+    "none": 41911,
+    "seller": 724,
+    "seller_if_claim_mismatched": 309,
+    "seller_if_material": 2124,
+    "seller_route_failure": 39,
+    "seller_unapproved_gap": 385,
+    "unresolved_until_handoff_evidence": 222
+  },
+  "modes": {
+    "casual_raw": 16438,
+    "collector_raw": 13327,
+    "extreme_proof": 4133,
+    "high_end_raw": 8049,
+    "new_seller_raw": 8053
+  },
+  "n": 50000,
+  "outcomes": {
+    "buyer_remorse": 1177,
+    "clean_close": 38917,
+    "insured_damaged": 1288,
+    "insured_lost": 867,
+    "local_handoff_dispute": 222,
+    "material_misdescription": 1551,
+    "porch_theft": 845,
+    "route_delay": 2994,
+    "seller_nonship": 724,
+    "underinsured_lost": 416,
+    "uninsured_lost": 117,
+    "verifier_mismatch": 309,
+    "wrong_card": 573
+  },
+  "packet_complete_rate": 0.9825,
+  "packet_types": {
+    "insurance_claim_packet": 2155,
+    "local_handoff_packet": 222,
+    "misdescription_packet": 2124,
+    "nonshipment_packet": 724,
+    "proof_of_delivery_packet": 845,
+    "route_risk_packet": 117,
+    "route_status_packet": 2994,
+    "trade_receipt": 40094,
+    "underinsurance_gap_packet": 416,
+    "verifier_packet": 309
+  },
+  "resolution_types": {
+    "buyer_remorse_not_covered": 1177,
+    "carrier_claim": 2155,
+    "condition_or_identity_dispute": 2124,
+    "delivered_not_received_review": 845,
+    "final_receipt": 38917,
+    "handoff_dispute": 222,
+    "nonshipment_dispute": 724,
+    "route_monitoring": 2994,
+    "route_risk_dispute": 117,
+    "underinsurance_gap": 416,
+    "verifier_condition_dispute": 309
+  },
+  "route_exception_approval_rate": 0.0304,
+  "routes": {
+    "insured_ship": 29503,
+    "international_ship": 6113,
+    "local_meetup": 2160,
+    "show_pickup": 1062,
+    "underinsured_ship": 7259,
+    "uninsured_ship": 829,
+    "verifier_forward": 3074
+  },
+  "run": {
+    "created_utc": "2026-05-18T16:08:11.702434+00:00",
+    "probe": "marketplace_protocol_edge_case_sim",
+    "run_id": "protocol_edge_case_20260518T160810Z",
+    "seed": 20260518
+  },
+  "scenario_packet": {
+    "buyer_remorse": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 1.0,
+      "n": 1177,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "buyer_remorse_not_covered",
+          1177
+        ]
+      ]
+    },
+    "clean_close": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 1.0,
+      "n": 38917,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "final_receipt",
+          38917
+        ]
+      ]
+    },
+    "insured_damaged": {
+      "ambiguous_without_grid_rate": 0.628,
+      "final_receipt_rate": 0.0,
+      "n": 1288,
+      "packet_complete_rate": 0.372,
+      "top_resolution": [
+        [
+          "carrier_claim",
+          1288
+        ]
+      ]
+    },
+    "insured_lost": {
+      "ambiguous_without_grid_rate": 0.001,
+      "final_receipt_rate": 0.0,
+      "n": 867,
+      "packet_complete_rate": 0.999,
+      "top_resolution": [
+        [
+          "carrier_claim",
+          867
+        ]
+      ]
+    },
+    "local_handoff_dispute": {
+      "ambiguous_without_grid_rate": 1.0,
+      "final_receipt_rate": 0.0,
+      "n": 222,
+      "packet_complete_rate": 0.959,
+      "top_resolution": [
+        [
+          "handoff_dispute",
+          222
+        ]
+      ]
+    },
+    "material_misdescription": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 0.0,
+      "n": 1551,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "condition_or_identity_dispute",
+          1551
+        ]
+      ]
+    },
+    "porch_theft": {
+      "ambiguous_without_grid_rate": 1.0,
+      "final_receipt_rate": 0.0,
+      "n": 845,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "delivered_not_received_review",
+          845
+        ]
+      ]
+    },
+    "route_delay": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 0.0,
+      "n": 2994,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "route_monitoring",
+          2994
+        ]
+      ]
+    },
+    "seller_nonship": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 0.0,
+      "n": 724,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "nonshipment_dispute",
+          724
+        ]
+      ]
+    },
+    "underinsured_lost": {
+      "ambiguous_without_grid_rate": 1.0,
+      "final_receipt_rate": 0.0,
+      "n": 416,
+      "packet_complete_rate": 0.952,
+      "top_resolution": [
+        [
+          "underinsurance_gap",
+          416
+        ]
+      ]
+    },
+    "uninsured_lost": {
+      "ambiguous_without_grid_rate": 1.0,
+      "final_receipt_rate": 0.0,
+      "n": 117,
+      "packet_complete_rate": 0.949,
+      "top_resolution": [
+        [
+          "route_risk_dispute",
+          117
+        ]
+      ]
+    },
+    "verifier_mismatch": {
+      "ambiguous_without_grid_rate": 1.0,
+      "final_receipt_rate": 0.0,
+      "n": 309,
+      "packet_complete_rate": 0.903,
+      "top_resolution": [
+        [
+          "verifier_condition_dispute",
+          309
+        ]
+      ]
+    },
+    "wrong_card": {
+      "ambiguous_without_grid_rate": 0.0,
+      "final_receipt_rate": 0.0,
+      "n": 573,
+      "packet_complete_rate": 1.0,
+      "top_resolution": [
+        [
+          "condition_or_identity_dispute",
+          573
+        ]
+      ]
+    }
+  },
+  "violations": {
+    "casual_raw_evidence_bloat": 51,
+    "insured_claim_packet_incomplete": 810,
+    "insured_outcome_without_insurance_amount": 6,
+    "local_handoff_outcome_on_nonlocal_route": 9
+  }
+}

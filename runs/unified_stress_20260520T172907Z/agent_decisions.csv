@@ -1,0 +1,151 @@
+trade_id,attack,variant,decision,rationale,route_ready
+SIM-0001,full_compliant,strict_boundary_buyer,accept_or_continue,all active walls passed,True
+SIM-0001,full_compliant,convenience_first_buyer,accept_or_continue,all active walls passed,True
+SIM-0001,full_compliant,seller_friendly_market_maker,accept_or_continue,all active walls passed,True
+SIM-0001,full_compliant,adversarial_seller,accept_or_continue,all active walls passed,True
+SIM-0001,full_compliant,arbiter_policy_agent,accept_or_continue,all active walls passed,True
+SIM-0002,sparse_evidence_with_waiver,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,True
+SIM-0002,sparse_evidence_with_waiver,convenience_first_buyer,accept_with_waiver,allowed only as unresolved risk,True
+SIM-0002,sparse_evidence_with_waiver,seller_friendly_market_maker,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0002,sparse_evidence_with_waiver,adversarial_seller,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0002,sparse_evidence_with_waiver,arbiter_policy_agent,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0003,sparse_evidence_no_waiver,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0003,sparse_evidence_no_waiver,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0003,sparse_evidence_no_waiver,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0003,sparse_evidence_no_waiver,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0003,sparse_evidence_no_waiver,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0004,scope_laundering,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0004,scope_laundering,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0004,scope_laundering,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0004,scope_laundering,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0004,scope_laundering,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0005,unassigned_insurance_gap,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0005,unassigned_insurance_gap,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0005,unassigned_insurance_gap,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0005,unassigned_insurance_gap,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0005,unassigned_insurance_gap,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0006,missing_inventory_lock,strict_boundary_buyer,accept_or_continue,all active walls passed,True
+SIM-0006,missing_inventory_lock,convenience_first_buyer,accept_or_continue,all active walls passed,True
+SIM-0006,missing_inventory_lock,seller_friendly_market_maker,accept_or_continue,all active walls passed,True
+SIM-0006,missing_inventory_lock,adversarial_seller,accept_or_continue,all active walls passed,True
+SIM-0006,missing_inventory_lock,arbiter_policy_agent,accept_or_continue,all active walls passed,True
+SIM-0007,missing_route_spendability,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0007,missing_route_spendability,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0007,missing_route_spendability,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0007,missing_route_spendability,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0007,missing_route_spendability,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0008,spendability_missing_wall_ref,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0008,spendability_missing_wall_ref,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0008,spendability_missing_wall_ref,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0008,spendability_missing_wall_ref,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0008,spendability_missing_wall_ref,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0009,stale_wall_bundle_ref,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0009,stale_wall_bundle_ref,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0009,stale_wall_bundle_ref,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0009,stale_wall_bundle_ref,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0009,stale_wall_bundle_ref,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0010,missing_external_availability,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0010,missing_external_availability,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0010,missing_external_availability,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0010,missing_external_availability,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0010,missing_external_availability,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0011,claim_missing_buyer_arrival,strict_boundary_buyer,escalate,judgment required under policy,True
+SIM-0011,claim_missing_buyer_arrival,convenience_first_buyer,escalate,judgment required under policy,True
+SIM-0011,claim_missing_buyer_arrival,seller_friendly_market_maker,escalate,judgment required under policy,True
+SIM-0011,claim_missing_buyer_arrival,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,True
+SIM-0011,claim_missing_buyer_arrival,arbiter_policy_agent,escalate_with_matrix_row,arbiter names missing evidence under policy,True
+SIM-0012,outside_scope_magic,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0012,outside_scope_magic,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0012,outside_scope_magic,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0012,outside_scope_magic,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0012,outside_scope_magic,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0013,bond_gap,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0013,bond_gap,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0013,bond_gap,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0013,bond_gap,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0013,bond_gap,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0014,manual_database_gap,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0014,manual_database_gap,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0014,manual_database_gap,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0014,manual_database_gap,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0014,manual_database_gap,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0015,full_compliant,strict_boundary_buyer,accept_or_continue,all active walls passed,True
+SIM-0015,full_compliant,convenience_first_buyer,accept_or_continue,all active walls passed,True
+SIM-0015,full_compliant,seller_friendly_market_maker,accept_or_continue,all active walls passed,True
+SIM-0015,full_compliant,adversarial_seller,accept_or_continue,all active walls passed,True
+SIM-0015,full_compliant,arbiter_policy_agent,accept_or_continue,all active walls passed,True
+SIM-0016,sparse_evidence_with_waiver,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,True
+SIM-0016,sparse_evidence_with_waiver,convenience_first_buyer,accept_with_waiver,allowed only as unresolved risk,True
+SIM-0016,sparse_evidence_with_waiver,seller_friendly_market_maker,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0016,sparse_evidence_with_waiver,adversarial_seller,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0016,sparse_evidence_with_waiver,arbiter_policy_agent,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0017,sparse_evidence_no_waiver,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0017,sparse_evidence_no_waiver,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0017,sparse_evidence_no_waiver,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0017,sparse_evidence_no_waiver,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0017,sparse_evidence_no_waiver,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0018,scope_laundering,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0018,scope_laundering,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0018,scope_laundering,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0018,scope_laundering,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0018,scope_laundering,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0019,unassigned_insurance_gap,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0019,unassigned_insurance_gap,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0019,unassigned_insurance_gap,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0019,unassigned_insurance_gap,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0019,unassigned_insurance_gap,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0020,missing_inventory_lock,strict_boundary_buyer,accept_or_continue,all active walls passed,True
+SIM-0020,missing_inventory_lock,convenience_first_buyer,accept_or_continue,all active walls passed,True
+SIM-0020,missing_inventory_lock,seller_friendly_market_maker,accept_or_continue,all active walls passed,True
+SIM-0020,missing_inventory_lock,adversarial_seller,accept_or_continue,all active walls passed,True
+SIM-0020,missing_inventory_lock,arbiter_policy_agent,accept_or_continue,all active walls passed,True
+SIM-0021,missing_route_spendability,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0021,missing_route_spendability,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0021,missing_route_spendability,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0021,missing_route_spendability,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0021,missing_route_spendability,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0022,spendability_missing_wall_ref,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0022,spendability_missing_wall_ref,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0022,spendability_missing_wall_ref,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0022,spendability_missing_wall_ref,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0022,spendability_missing_wall_ref,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0023,stale_wall_bundle_ref,strict_boundary_buyer,accept_or_continue,all active walls passed,False
+SIM-0023,stale_wall_bundle_ref,convenience_first_buyer,accept_or_continue,all active walls passed,False
+SIM-0023,stale_wall_bundle_ref,seller_friendly_market_maker,accept_or_continue,all active walls passed,False
+SIM-0023,stale_wall_bundle_ref,adversarial_seller,accept_or_continue,all active walls passed,False
+SIM-0023,stale_wall_bundle_ref,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0024,missing_external_availability,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0024,missing_external_availability,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0024,missing_external_availability,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0024,missing_external_availability,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0024,missing_external_availability,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0025,claim_missing_buyer_arrival,strict_boundary_buyer,escalate,judgment required under policy,True
+SIM-0025,claim_missing_buyer_arrival,convenience_first_buyer,escalate,judgment required under policy,True
+SIM-0025,claim_missing_buyer_arrival,seller_friendly_market_maker,escalate,judgment required under policy,True
+SIM-0025,claim_missing_buyer_arrival,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,True
+SIM-0025,claim_missing_buyer_arrival,arbiter_policy_agent,escalate_with_matrix_row,arbiter names missing evidence under policy,True
+SIM-0026,outside_scope_magic,strict_boundary_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0026,outside_scope_magic,convenience_first_buyer,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0026,outside_scope_magic,seller_friendly_market_maker,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0026,outside_scope_magic,adversarial_seller,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0026,outside_scope_magic,arbiter_policy_agent,blocked,hard wall missing; agent cannot narrate around it,False
+SIM-0027,bond_gap,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0027,bond_gap,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0027,bond_gap,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0027,bond_gap,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0027,bond_gap,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0028,manual_database_gap,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,False
+SIM-0028,manual_database_gap,convenience_first_buyer,blocked_until_waiver,convenience requires explicit BuyerRiskAcceptance,False
+SIM-0028,manual_database_gap,seller_friendly_market_maker,revise_offer_or_request_waiver,seller-friendly close path still needs scoped waiver,False
+SIM-0028,manual_database_gap,adversarial_seller,semantic_attack_contained,ambiguity stayed legible instead of becoming trust,False
+SIM-0028,manual_database_gap,arbiter_policy_agent,accept_or_continue,all active walls passed,False
+SIM-0029,full_compliant,strict_boundary_buyer,accept_or_continue,all active walls passed,True
+SIM-0029,full_compliant,convenience_first_buyer,accept_or_continue,all active walls passed,True
+SIM-0029,full_compliant,seller_friendly_market_maker,accept_or_continue,all active walls passed,True
+SIM-0029,full_compliant,adversarial_seller,accept_or_continue,all active walls passed,True
+SIM-0029,full_compliant,arbiter_policy_agent,accept_or_continue,all active walls passed,True
+SIM-0030,sparse_evidence_with_waiver,strict_boundary_buyer,request_more_evidence,strict buyer refuses waiver path by default,True
+SIM-0030,sparse_evidence_with_waiver,convenience_first_buyer,accept_with_waiver,allowed only as unresolved risk,True
+SIM-0030,sparse_evidence_with_waiver,seller_friendly_market_maker,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0030,sparse_evidence_with_waiver,adversarial_seller,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True
+SIM-0030,sparse_evidence_with_waiver,arbiter_policy_agent,continue_with_recorded_waiver,waived ambiguity remains visible in the trade state,True

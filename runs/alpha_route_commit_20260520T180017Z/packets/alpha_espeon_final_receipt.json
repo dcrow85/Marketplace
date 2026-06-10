@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"accepted_at\":\"2026-05-20T18:00:22.885148+00:00\",\"accepted_by\":\"did:market:buyer:anvil-0\",\"not_claiming\":[\"professional_grade\",\"global_seller_score\"],\"receipt_type\":\"buyer_acceptance\",\"result\":\"buyer_happy_release_escrow\",\"reusable_trust\":{\"attention_fee_credited\":true,\"buyer_opened_no_claim\":true,\"seller_completed_route\":true},\"schema\":\"marketplace.final_receipt.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "accepted_at": "2026-05-20T18:00:22.885148+00:00",
+    "accepted_by": "did:market:buyer:anvil-0",
+    "not_claiming": [
+      "professional_grade",
+      "global_seller_score"
+    ],
+    "receipt_type": "buyer_acceptance",
+    "result": "buyer_happy_release_escrow",
+    "reusable_trust": {
+      "attention_fee_credited": true,
+      "buyer_opened_no_claim": true,
+      "seller_completed_route": true
+    },
+    "schema": "marketplace.final_receipt.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0xcd928a62688ba6d6057d15b61512d096859c7e6bc2f9652d07e5529b0e039bf0",
+  "signature": "0x56ad434d6c36d52022dfbf81402fc9dd3d281b4ad7187cf43c6dd9d3fab0fd532772e2fe767501d50ebb5c1982166026e492938f74359af94f72f7ad76c308331c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,24 @@
+{
+  "canonical_payload": "{\"circuit_id\":\"seller_reputation_threshold_v1\",\"predicate_family\":\"threshold_over_private_set\",\"public_input_schema\":[\"subject_commitment\",\"issuer_commitment\",\"threshold\",\"scope_hash\",\"freshness_epoch\"],\"schema\":\"marketplace.circuit_profile.v0.2\",\"status\":\"reserved_for_future_zk_verifier\",\"verifier_contract\":null,\"verifying_key_hash\":\"0xreserved\",\"version\":\"reserved-local-alpha\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "circuit_id": "seller_reputation_threshold_v1",
+    "predicate_family": "threshold_over_private_set",
+    "public_input_schema": [
+      "subject_commitment",
+      "issuer_commitment",
+      "threshold",
+      "scope_hash",
+      "freshness_epoch"
+    ],
+    "schema": "marketplace.circuit_profile.v0.2",
+    "status": "reserved_for_future_zk_verifier",
+    "verifier_contract": null,
+    "verifying_key_hash": "0xreserved",
+    "version": "reserved-local-alpha"
+  },
+  "payload_hash": "0xee5543b528ff31f9ca671b364af58634f7abafb2e7aaf82e573228573ac4dd5d",
+  "signature": "0x291c3d14797c88e080c153eb0e83c2f8fa9a28432e55631b51928fc070ec00ce2ad914d88aa915f4f407e9c543360e7ce2303b497347282ac880f6691f92c47d1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

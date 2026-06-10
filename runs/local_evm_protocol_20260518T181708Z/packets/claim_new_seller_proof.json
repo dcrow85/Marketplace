@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"buyer_agent_decision\":\"accept only with 20 percent seller bond and explicit claim packet\",\"schema\":\"marketplace.trust_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trust_sources\":[{\"claim\":\"outside-platform seller history\",\"source\":\"unsigned_marketplace_profile_screenshot\",\"weight\":\"low_without_challenge_signature\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_decision": "accept only with 20 percent seller bond and explicit claim packet",
+    "schema": "marketplace.trust_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trust_sources": [
+      {
+        "claim": "outside-platform seller history",
+        "source": "unsigned_marketplace_profile_screenshot",
+        "weight": "low_without_challenge_signature"
+      }
+    ]
+  },
+  "payload_hash": "0xa08a4c76121162c499aa94991c71558e4523d3b509f92cb6047e05b4ce9a4432"
+}

@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0164: seller_nonship on a $2781 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: human_arbiter_selected_prelock.\",\"friction_triggers\":[\"human_arbiter_selected_prelock\"],\"human_questions\":[\"approve_severe_remedy_or_escalation\"],\"outcome\":\"seller_nonship\",\"path\":\"human_ruling\",\"route_failure_surrogate\":true,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:c72a3283ec497c77e6b6456dc6a01de0dfc77023e263482a5a900e81fe3823cd\",\"friction_policy\":\"sha256:fca60b69c83ec2ae442d4b7fe61c95a8e76797c05faadf91c2f10da5678a0ebb\",\"intent\":\"sha256:5d23642e1b81b4ab70caf186407eb61bc791b7fb3b8e3892a2be26f1db561bf3\",\"seller_offer\":\"sha256:0eb28506130e1519f8cff60c7d39ddacc101b0fa19b0ed987a32be0cf01ddf30\"},\"source_simulation_trade\":\"SIM-0164\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0164: seller_nonship on a $2781 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: human_arbiter_selected_prelock.",
+    "friction_triggers": [
+      "human_arbiter_selected_prelock"
+    ],
+    "human_questions": [
+      "approve_severe_remedy_or_escalation"
+    ],
+    "outcome": "seller_nonship",
+    "path": "human_ruling",
+    "route_failure_surrogate": true,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:c72a3283ec497c77e6b6456dc6a01de0dfc77023e263482a5a900e81fe3823cd",
+      "friction_policy": "sha256:fca60b69c83ec2ae442d4b7fe61c95a8e76797c05faadf91c2f10da5678a0ebb",
+      "intent": "sha256:5d23642e1b81b4ab70caf186407eb61bc791b7fb3b8e3892a2be26f1db561bf3",
+      "seller_offer": "sha256:0eb28506130e1519f8cff60c7d39ddacc101b0fa19b0ed987a32be0cf01ddf30"
+    },
+    "source_simulation_trade": "SIM-0164"
+  },
+  "payload_hash": "0x03a5b6e61fb4f9462415485fbda0cddd8cfebd52ff0bd7b5060d838d25c7b895",
+  "signature": "0xa63fab6fc5e568f54b45e07cfc9fa85bdd5986150e45b407219be89afbced3d74e74aaed91f4a351bc4318b60dae9db7bd4d3be8c3a59eac811b932fe37810bb1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

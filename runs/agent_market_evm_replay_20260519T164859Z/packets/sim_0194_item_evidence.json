@@ -1,0 +1,51 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Neo Revelation Houndoom holo\",\"condition_claim\":\"NM-\",\"evidence_tier\":\"standard\",\"media_manifest\":[{\"availability\":\"simulated\",\"type\":\"front_photo\"},{\"availability\":\"simulated\",\"type\":\"back_photo\"},{\"availability\":\"simulated\",\"type\":\"flaw_callout\"}],\"required_evidence\":[\"back_photo\",\"carrier_acceptance\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"seller_disclosures\":[\"evidence packet\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024\",\"friction_policy\":\"sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184\",\"intent\":\"sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e\",\"seller_offer\":\"sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f\"},\"source_simulation_trade\":\"SIM-0194\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Neo Revelation Houndoom holo",
+    "condition_claim": "NM-",
+    "evidence_tier": "standard",
+    "media_manifest": [
+      {
+        "availability": "simulated",
+        "type": "front_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "back_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "flaw_callout"
+      }
+    ],
+    "required_evidence": [
+      "back_photo",
+      "carrier_acceptance",
+      "escrow_terms",
+      "flaw_callouts",
+      "front_photo",
+      "insurance_or_gap_owner",
+      "locked_inventory_packet",
+      "received_item_photos",
+      "route_packet",
+      "tracking_history"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "seller_disclosures": [
+      "evidence packet"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024",
+      "friction_policy": "sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184",
+      "intent": "sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e",
+      "seller_offer": "sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f"
+    },
+    "source_simulation_trade": "SIM-0194"
+  },
+  "payload_hash": "0xd25a0d723b6872828112fb37851a42caec857ae58170b224a12eb8f61931e66f",
+  "signature": "0x7017a60441d6baac3141884f59e665d82f9103bbbdcd6241e7aac67669fa856a29b43c6692178bfa1be04b2a9bd18ccc964b9f7e0f3335bf9ccb5b0032ae344e1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

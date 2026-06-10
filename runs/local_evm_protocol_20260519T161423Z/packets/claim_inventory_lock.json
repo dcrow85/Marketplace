@@ -1,0 +1,24 @@
+{
+  "canonical_payload": "{\"inventory_key\":\"tcg:pokemon:hard-to-find-vintage-raw:claim-002\",\"item_fingerprint\":{\"condition_claim\":\"NM\",\"game\":\"pokemon\",\"visible_identifiers\":[\"front_photo_hash\",\"back_photo_hash\"]},\"item_fingerprint_hash\":\"0xf1e170e691a741dfd0e09a495eb62ca4e4d2c417af7309b0fa15eb4d48e7cb30\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "inventory_key": "tcg:pokemon:hard-to-find-vintage-raw:claim-002",
+    "item_fingerprint": {
+      "condition_claim": "NM",
+      "game": "pokemon",
+      "visible_identifiers": [
+        "front_photo_hash",
+        "back_photo_hash"
+      ]
+    },
+    "item_fingerprint_hash": "0xf1e170e691a741dfd0e09a495eb62ca4e4d2c417af7309b0fa15eb4d48e7cb30",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trade_id": 2
+  },
+  "payload_hash": "0xc5d8a46b258027cfee7d7e4a2c8a729ebca8c994096874a5bc48e64eb6cecc86",
+  "signature": "0x44a639f075c86ee50bf85c04bae522c3dcd2752ce34acac21c0e49c0997ac55f20b18415d5dfa49353720d356760830948a14d8907c15c39091c7fdafed9f8de1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

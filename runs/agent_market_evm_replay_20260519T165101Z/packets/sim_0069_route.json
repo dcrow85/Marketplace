@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth_local_probe\":\"0.048\",\"distance\":\"domestic\",\"in_person_allowed\":false,\"insurance_amount_usd\":48,\"insured\":true,\"route\":\"insured_ship\",\"schema\":\"marketplace.route_packet.v0.2\",\"shipping_evidence\":[\"carrier_acceptance\",\"tracking_history\",\"insurance_or_gap_owner\"],\"source_simulation_hashes\":{\"automated_policy\":\"sha256:d6faf53f60d203e34093d8df2dea613d6b325bbd9185c98284e45f664fcad2ef\",\"escrow_terms\":\"sha256:adfa596c5cc4285305cbe9d088b16ee08a879e7e8eac7934107a089c3efc7eda\",\"friction_policy\":\"sha256:6b7bde4afbe195abeadcf120bed9430719a49923b4e6a1a4507508a2af8b2d10\",\"intent\":\"sha256:bca657cc1cca042e4c9bfb18a6bd169336f2cb86bd26a3f037c16c885a108fea\",\"seller_offer\":\"sha256:58bfa1b2c41e2f561337d05defefb54ebd3fb392a0e98d168132cd1b393ea284\"},\"source_simulation_trade\":\"SIM-0069\",\"tracking_or_memo\":\"tracking://simulated-domestic-carrier\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth_local_probe": "0.048",
+    "distance": "domestic",
+    "in_person_allowed": false,
+    "insurance_amount_usd": 48,
+    "insured": true,
+    "route": "insured_ship",
+    "schema": "marketplace.route_packet.v0.2",
+    "shipping_evidence": [
+      "carrier_acceptance",
+      "tracking_history",
+      "insurance_or_gap_owner"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:d6faf53f60d203e34093d8df2dea613d6b325bbd9185c98284e45f664fcad2ef",
+      "escrow_terms": "sha256:adfa596c5cc4285305cbe9d088b16ee08a879e7e8eac7934107a089c3efc7eda",
+      "friction_policy": "sha256:6b7bde4afbe195abeadcf120bed9430719a49923b4e6a1a4507508a2af8b2d10",
+      "intent": "sha256:bca657cc1cca042e4c9bfb18a6bd169336f2cb86bd26a3f037c16c885a108fea",
+      "seller_offer": "sha256:58bfa1b2c41e2f561337d05defefb54ebd3fb392a0e98d168132cd1b393ea284"
+    },
+    "source_simulation_trade": "SIM-0069",
+    "tracking_or_memo": "tracking://simulated-domestic-carrier"
+  },
+  "payload_hash": "0xdcb923d146a16a5119b1f7dd15a4c87e2cee97f09535f59ee5f3c4d83d5eef0f",
+  "signature": "0xcbbfd38a224c811ea045e8ad60e2a4e2813057c89a5e14a1010c402415806ea22c557ab9f365f28e3cf29ca283dd56657e4e0ff295a31f0c575abb2928095bcc1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

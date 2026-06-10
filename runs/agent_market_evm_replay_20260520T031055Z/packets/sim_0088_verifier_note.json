@@ -1,0 +1,77 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"separate_buyer_waiver_required\",\"hooks\":[\"fresh_nonce_photo\",\"arbiter_review\"]},\"claim\":{\"known_conflicts\":[\"authenticity_or_identity_risk\",\"evidence_ambiguity\",\"human_arbiter_selected_prelock\",\"seller_trust_gap\"],\"negative\":[\"This does not authenticate the card.\",\"This does not verify packaging, shipping, or delivery condition.\"],\"positive\":[\"identity risk should not be compressed into seller score\"]},\"display\":{\"label\":\"Item packet checked\",\"short_warning\":\"Not an authenticity guarantee.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"shipping_packaging\",\"post_review_custody\"],\"inputs_seen\":[{\"hash\":\"sim-0088-front-photo-hash\",\"kind\":\"front_photo\"},{\"hash\":\"sim-0088-back-photo-hash\",\"kind\":\"back_photo\"}],\"issued_at\":\"2026-05-20T03:11:01.881398+00:00\",\"method\":{\"method_id\":\"tcg.raw.photo_packet_review.v0.1\",\"method_id_hash\":\"0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1\",\"summary\":\"Compared the submitted item evidence packet against the raw-card identity claim.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"packet_completeness\",\"raw_card_identity\"],\"scope_set_hash\":\"0x0f1058040cdaf9051c4f79c58d082ab4c0786fd73ca6ff9f1854257b6450ca47\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0\",\"friction_policy\":\"sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62\",\"intent\":\"sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44\",\"seller_offer\":\"sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028\"},\"source_simulation_trade\":\"SIM-0088\",\"subject\":{\"subject_hash\":\"0xfad6cdf9d46362f68d829390f7f56dd9208574f5d13c7c4cf2c516076431f6d3\",\"subject_type\":\"evidence_packet\"},\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "separate_buyer_waiver_required",
+      "hooks": [
+        "fresh_nonce_photo",
+        "arbiter_review"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [
+        "authenticity_or_identity_risk",
+        "evidence_ambiguity",
+        "human_arbiter_selected_prelock",
+        "seller_trust_gap"
+      ],
+      "negative": [
+        "This does not authenticate the card.",
+        "This does not verify packaging, shipping, or delivery condition."
+      ],
+      "positive": [
+        "identity risk should not be compressed into seller score"
+      ]
+    },
+    "display": {
+      "label": "Item packet checked",
+      "short_warning": "Not an authenticity guarantee."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "shipping_packaging",
+      "post_review_custody"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "sim-0088-front-photo-hash",
+        "kind": "front_photo"
+      },
+      {
+        "hash": "sim-0088-back-photo-hash",
+        "kind": "back_photo"
+      }
+    ],
+    "issued_at": "2026-05-20T03:11:01.881398+00:00",
+    "method": {
+      "method_id": "tcg.raw.photo_packet_review.v0.1",
+      "method_id_hash": "0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1",
+      "summary": "Compared the submitted item evidence packet against the raw-card identity claim."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "packet_completeness",
+      "raw_card_identity"
+    ],
+    "scope_set_hash": "0x0f1058040cdaf9051c4f79c58d082ab4c0786fd73ca6ff9f1854257b6450ca47",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0",
+      "friction_policy": "sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62",
+      "intent": "sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44",
+      "seller_offer": "sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028"
+    },
+    "source_simulation_trade": "SIM-0088",
+    "subject": {
+      "subject_hash": "0xfad6cdf9d46362f68d829390f7f56dd9208574f5d13c7c4cf2c516076431f6d3",
+      "subject_type": "evidence_packet"
+    },
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x7b520f1a3db51607949cf9e1af7c0cff8433a88c0835b95f622a978a8a8115b0",
+  "signature": "0x169f78c33ac73582ecffa9b79bd33cf1461dc40b450b9ec73bc77f59e32817385290421574e08382f369e9579682d8eccb28e2a252c99bc25cda983278828cb81b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

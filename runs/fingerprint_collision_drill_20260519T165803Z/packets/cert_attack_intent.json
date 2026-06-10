@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:collision-drill\",\"cost_field\":{\"attention_budget\":\"challenge_when_identity_conflicts\",\"evidence_floor\":[\"front_photo\",\"back_photo\",\"custody_nonce_or_waiver\"],\"max_total_price_eth\":\"0.20\"},\"object\":{\"domain\":\"tcg\",\"game\":\"pokemon\",\"title\":\"PSA slab cert attack\",\"value_band\":\"mid\"},\"schema\":\"marketplace.intent.v0.2\",\"trade_id\":4}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:collision-drill",
+    "cost_field": {
+      "attention_budget": "challenge_when_identity_conflicts",
+      "evidence_floor": [
+        "front_photo",
+        "back_photo",
+        "custody_nonce_or_waiver"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "object": {
+      "domain": "tcg",
+      "game": "pokemon",
+      "title": "PSA slab cert attack",
+      "value_band": "mid"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "trade_id": 4
+  },
+  "payload_hash": "0xae9ed70bcf3e2bef380ac8a8d3402f5d0ac207aba3de891cb96fdab84d903c57",
+  "signature": "0x7b465469abd1965f96901d3b6d1e8fa2c211f08e26a6c7af28f10a20ebc501623c2512dae6a02993d95cfcb7d87fc1b8cfbfe0e99995db8621482aa1423f55911c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

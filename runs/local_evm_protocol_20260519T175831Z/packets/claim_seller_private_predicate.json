@@ -1,0 +1,38 @@
+{
+  "canonical_payload": "{\"agent_read\":\"Predicate clears a minimum activity floor but does not erase new-seller risk.\",\"disclosure\":\"predicate_only\",\"issuer\":\"did:market:seller:anvil-1\",\"predicate\":{\"field\":\"completed_tcg_sales\",\"operator\":\">=\",\"scope\":[\"tcg\",\"raw_cards\"],\"threshold\":25},\"proof_id\":\"ppp_claim_seller_001\",\"proof_type\":\"signed_attestation\",\"public_inputs\":{\"freshness_epoch\":\"2026-05\",\"scope_hash\":\"0xscope_tcg_raw\",\"subject_commitment\":\"0xsubject_claim_seller\",\"threshold\":25},\"schema\":\"marketplace.private_predicate_proof.v0.2\",\"source_commitment\":\"0xsourcecommitment_claim_seller\",\"subject\":\"did:market:seller:anvil-1\",\"zk\":{\"circuit_id\":\"seller_reputation_threshold_v1\",\"proof_bytes\":null,\"verifying_key_hash\":\"0xreserved\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "agent_read": "Predicate clears a minimum activity floor but does not erase new-seller risk.",
+    "disclosure": "predicate_only",
+    "issuer": "did:market:seller:anvil-1",
+    "predicate": {
+      "field": "completed_tcg_sales",
+      "operator": ">=",
+      "scope": [
+        "tcg",
+        "raw_cards"
+      ],
+      "threshold": 25
+    },
+    "proof_id": "ppp_claim_seller_001",
+    "proof_type": "signed_attestation",
+    "public_inputs": {
+      "freshness_epoch": "2026-05",
+      "scope_hash": "0xscope_tcg_raw",
+      "subject_commitment": "0xsubject_claim_seller",
+      "threshold": 25
+    },
+    "schema": "marketplace.private_predicate_proof.v0.2",
+    "source_commitment": "0xsourcecommitment_claim_seller",
+    "subject": "did:market:seller:anvil-1",
+    "zk": {
+      "circuit_id": "seller_reputation_threshold_v1",
+      "proof_bytes": null,
+      "verifying_key_hash": "0xreserved"
+    }
+  },
+  "payload_hash": "0xf2592e4c7733714fdb7e9deb5dc9d3b70c783ddfe88f9701c18f8de84147435f",
+  "signature": "0x55149a7ac263b220b7e77479e55303188403226fa590278fa4b070a257754166632cdaf3597823a7dee97d2fd10d84db342a91000c51e4f30abbbfcf08faaea51c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

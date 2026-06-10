@@ -1,0 +1,67 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-05-19T17:07:31.607511+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-front-attack\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"shared-front-777\",\"type\":\"front_photo\"},{\"ref\":\"attack-back-888\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Front reuse attack card\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":8,\"visual_markers\":[{\"marker_hash\":\"shared-front-777\",\"match_group\":\"raw-card-front-777\",\"scope\":\"front\"},{\"marker_hash\":\"attack-back-888\",\"match_group\":\"raw-card-back-888\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-05-19T17:07:31.607511+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-front-attack",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "shared-front-777",
+        "type": "front_photo"
+      },
+      {
+        "ref": "attack-back-888",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Front reuse attack card",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 8,
+    "visual_markers": [
+      {
+        "marker_hash": "shared-front-777",
+        "match_group": "raw-card-front-777",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "attack-back-888",
+        "match_group": "raw-card-back-888",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0xf4b46a86bab529e9bb30e14aacbb6cd6af7550c1a91941dabee7221cc1401742",
+  "signature": "0xc07185cb052b3d99114ed3ecd737113e4b297b862f3498e23f2bd642f084b6d702e5af26c5733df9588201f78d8d8e44cbfd3be3bc4047d2217e197837aa7ff71b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

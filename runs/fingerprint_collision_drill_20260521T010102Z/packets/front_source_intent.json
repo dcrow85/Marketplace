@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:collision-drill\",\"cost_field\":{\"attention_budget\":\"challenge_when_identity_conflicts\",\"evidence_floor\":[\"front_photo\",\"back_photo\",\"custody_nonce_or_waiver\"],\"max_total_price_eth\":\"0.20\"},\"object\":{\"domain\":\"tcg\",\"game\":\"pokemon\",\"title\":\"Front reuse source card\",\"value_band\":\"mid\"},\"schema\":\"marketplace.intent.v0.2\",\"trade_id\":7}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:collision-drill",
+    "cost_field": {
+      "attention_budget": "challenge_when_identity_conflicts",
+      "evidence_floor": [
+        "front_photo",
+        "back_photo",
+        "custody_nonce_or_waiver"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "object": {
+      "domain": "tcg",
+      "game": "pokemon",
+      "title": "Front reuse source card",
+      "value_band": "mid"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "trade_id": 7
+  },
+  "payload_hash": "0xc626ef09225af1bf998917113ad886b29de97b0383e374c8e300cdd559aba9d9",
+  "signature": "0xb0e7613c83a2b5a0adb18480185db9aa125909fe1c4d10757831345dc1585b805ae3b796a9e34ea7660d27e5cd7cd08016d377da71abe9960dd4acb822788b081b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

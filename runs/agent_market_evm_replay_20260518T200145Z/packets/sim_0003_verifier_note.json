@@ -1,0 +1,26 @@
+{
+  "canonical_payload": "{\"evidence_tier\":\"standard\",\"noted_gaps\":[],\"opinion\":\"packet complete enough for buyer acceptance\",\"schema\":\"marketplace.verifier_note.v0.2\",\"scope\":[\"packet_completeness\",\"route_claim_readiness\"],\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_tier": "standard",
+    "noted_gaps": [],
+    "opinion": "packet complete enough for buyer acceptance",
+    "schema": "marketplace.verifier_note.v0.2",
+    "scope": [
+      "packet_completeness",
+      "route_claim_readiness"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003"
+  },
+  "payload_hash": "0x35e90e0fea44c4becd1564ad0d26af5124d89e29179abb850247b2c198a49479",
+  "signature": "0x3cd3a29835c61517e6fc74b5244c02abddf58411f8ae0cd5782caf4c60ed0ebd32d27b811d02b16f9f70709c42096add131b49f9ecf19cec904f1b9d97d2c0e31b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

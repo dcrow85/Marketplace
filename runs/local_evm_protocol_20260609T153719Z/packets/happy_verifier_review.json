@@ -1,0 +1,69 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"separate_buyer_waiver_required\",\"hooks\":[\"fresh_nonce_photo\",\"arbiter_review\"]},\"claim\":{\"known_conflicts\":[],\"negative\":[\"This does not authenticate the card.\",\"This does not verify packaging, shipping, or delivery condition.\"],\"positive\":[\"The scan packet is internally consistent with the raw-card identity claim.\"]},\"display\":{\"label\":\"Scan packet checked\",\"short_warning\":\"Not an authenticity guarantee.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"shipping_packaging\",\"post_review_custody\"],\"inputs_seen\":[{\"hash\":\"front_scan_hash\",\"kind\":\"front_scan\"},{\"hash\":\"back_scan_hash\",\"kind\":\"back_scan\"},{\"hash\":\"corner_closeups_hash\",\"kind\":\"corner_closeups\"}],\"issued_at\":\"2026-06-09T15:37:21.950430+00:00\",\"method\":{\"method_id\":\"tcg.raw.photo_packet_review.v0.1\",\"method_id_hash\":\"0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1\",\"summary\":\"Compared the submitted scan packet against the raw-card identity claim.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"packet_completeness\",\"raw_card_identity\"],\"scope_set_hash\":\"0x0f1058040cdaf9051c4f79c58d082ab4c0786fd73ca6ff9f1854257b6450ca47\",\"subject\":{\"subject_hash\":\"0x421fd829fe02fbb4ed4385b79de9065e2b930de0093dfaa988a9e8b4293d0395\",\"subject_type\":\"evidence_manifest\"},\"trade_id\":1,\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "separate_buyer_waiver_required",
+      "hooks": [
+        "fresh_nonce_photo",
+        "arbiter_review"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [],
+      "negative": [
+        "This does not authenticate the card.",
+        "This does not verify packaging, shipping, or delivery condition."
+      ],
+      "positive": [
+        "The scan packet is internally consistent with the raw-card identity claim."
+      ]
+    },
+    "display": {
+      "label": "Scan packet checked",
+      "short_warning": "Not an authenticity guarantee."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "shipping_packaging",
+      "post_review_custody"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "front_scan_hash",
+        "kind": "front_scan"
+      },
+      {
+        "hash": "back_scan_hash",
+        "kind": "back_scan"
+      },
+      {
+        "hash": "corner_closeups_hash",
+        "kind": "corner_closeups"
+      }
+    ],
+    "issued_at": "2026-06-09T15:37:21.950430+00:00",
+    "method": {
+      "method_id": "tcg.raw.photo_packet_review.v0.1",
+      "method_id_hash": "0xff649d189ce13c692a268af8de89060f8fa5c2929f04d0fdbac32039c3f027d1",
+      "summary": "Compared the submitted scan packet against the raw-card identity claim."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "packet_completeness",
+      "raw_card_identity"
+    ],
+    "scope_set_hash": "0x0f1058040cdaf9051c4f79c58d082ab4c0786fd73ca6ff9f1854257b6450ca47",
+    "subject": {
+      "subject_hash": "0x421fd829fe02fbb4ed4385b79de9065e2b930de0093dfaa988a9e8b4293d0395",
+      "subject_type": "evidence_manifest"
+    },
+    "trade_id": 1,
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x2b17dab932fa20ec076e878b42161f2f5cabf5477820dd6214f5394460e83b9d",
+  "signature": "0x729886933af8579ee445c2ad79f22c9a3bee24d41d3e851afe71756f94c28bc645df64af9f68a6c4a33e31b488dcaf646e1f40f0eed99ae2ad42618391c859151b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

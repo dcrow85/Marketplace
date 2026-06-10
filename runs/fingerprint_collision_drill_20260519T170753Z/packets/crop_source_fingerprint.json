@@ -1,0 +1,68 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-05-19T17:07:55.662614+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-crop-source\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"omega-front-wide\",\"type\":\"front_photo\"},{\"ref\":\"omega-back-wide\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Raw card crop source\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"match_group_commitment\":\"private-match-group:raw-omega-42\",\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":9,\"visual_markers\":[{\"marker_hash\":\"omega-front-wide\",\"match_group\":\"private-match-group:raw-omega-42\",\"scope\":\"front\"},{\"marker_hash\":\"omega-back-wide\",\"match_group\":\"private-match-group:raw-omega-42\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-05-19T17:07:55.662614+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-crop-source",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "omega-front-wide",
+        "type": "front_photo"
+      },
+      {
+        "ref": "omega-back-wide",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Raw card crop source",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "match_group_commitment": "private-match-group:raw-omega-42",
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 9,
+    "visual_markers": [
+      {
+        "marker_hash": "omega-front-wide",
+        "match_group": "private-match-group:raw-omega-42",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "omega-back-wide",
+        "match_group": "private-match-group:raw-omega-42",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0x4880a4f50dbca0a7e38f62e6655a07a049e2055b4db46903093e743eb337ed61",
+  "signature": "0x98b20d2cf28cf55089eed4c4f58dce80217c9ff19052fb8924ea2cabacbad17e3b7716e3b95f07d56759e95142aec8d89605d7fd5f77009e172344430f253e771b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

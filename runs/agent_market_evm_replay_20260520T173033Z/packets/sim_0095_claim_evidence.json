@@ -1,0 +1,33 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0095: authenticity_flag on a $550 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: authenticity_or_identity_risk, evidence_ambiguity, human_arbiter_selected_prelock, seller_trust_gap.\",\"friction_triggers\":[\"authenticity_or_identity_risk\",\"evidence_ambiguity\",\"human_arbiter_selected_prelock\",\"seller_trust_gap\"],\"human_questions\":[\"approve_severe_remedy_or_escalation\",\"ask_human_or_human_arbiter_to_review_evidence\"],\"outcome\":\"authenticity_flag\",\"path\":\"human_ruling\",\"route_failure_surrogate\":false,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e\",\"friction_policy\":\"sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205\",\"intent\":\"sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2\",\"seller_offer\":\"sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b\"},\"source_simulation_trade\":\"SIM-0095\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0095: authenticity_flag on a $550 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: authenticity_or_identity_risk, evidence_ambiguity, human_arbiter_selected_prelock, seller_trust_gap.",
+    "friction_triggers": [
+      "authenticity_or_identity_risk",
+      "evidence_ambiguity",
+      "human_arbiter_selected_prelock",
+      "seller_trust_gap"
+    ],
+    "human_questions": [
+      "approve_severe_remedy_or_escalation",
+      "ask_human_or_human_arbiter_to_review_evidence"
+    ],
+    "outcome": "authenticity_flag",
+    "path": "human_ruling",
+    "route_failure_surrogate": false,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e",
+      "friction_policy": "sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205",
+      "intent": "sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2",
+      "seller_offer": "sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b"
+    },
+    "source_simulation_trade": "SIM-0095"
+  },
+  "payload_hash": "0xa0fc70a236df74bccd9b4b96be1ec53756edcd67a72185eedd0a6fd721577936",
+  "signature": "0xe4d2bbfb996de17c505a9c00efb69985c7b43185f7645718a5e89e2713775e1d78da774ca43b7c92a22a61a2f0a709c2dc4888f453e9f6204f1bea3757b46d991b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

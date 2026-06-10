@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"card\":\"Sabrina's Gengar\",\"condition_claim\":\"LP+\",\"inventory_key\":\"tcg:pokemon:sim-0025\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a\",\"escrow_terms\":\"sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9\",\"friction_policy\":\"sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a\",\"intent\":\"sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9\",\"seller_offer\":\"sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb\"},\"source_simulation_trade\":\"SIM-0025\",\"visible_identifiers\":[\"sim-0025-front-photo-hash\",\"sim-0025-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Sabrina's Gengar",
+    "condition_claim": "LP+",
+    "inventory_key": "tcg:pokemon:sim-0025",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a",
+      "escrow_terms": "sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9",
+      "friction_policy": "sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a",
+      "intent": "sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9",
+      "seller_offer": "sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb"
+    },
+    "source_simulation_trade": "SIM-0025",
+    "visible_identifiers": [
+      "sim-0025-front-photo-hash",
+      "sim-0025-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x72e7199778c01c4600212df7ab07431405f4ab7e13e49697e648057be03bf28f",
+  "signature": "0x2543338b4f39291c59c89d8cafde2c1eaa89a64a127fded5a7b0d37c45e337a1061343ff29cae500a06bc76cb7181e609154329a824523dd7c43a9b9d18449de1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

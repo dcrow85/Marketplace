@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Sabrina's Gengar\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0088\",\"item_fingerprint_hash\":\"0xcf4262f5f17d2c947eeac423c5b267128a5068258d7813f3746aa6d175cbb2df\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0\",\"friction_policy\":\"sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62\",\"intent\":\"sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44\",\"seller_offer\":\"sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028\"},\"source_simulation_trade\":\"SIM-0088\",\"visible_identifiers\":[\"sim-0088-front-photo-hash\",\"sim-0088-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Sabrina's Gengar",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0088",
+    "item_fingerprint_hash": "0xcf4262f5f17d2c947eeac423c5b267128a5068258d7813f3746aa6d175cbb2df",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:a1697b2658501c59348c2c312920a141841ffb92443e48e0e2cb41a6369bdfe0",
+      "friction_policy": "sha256:dc754be7c8e9c0f7d8719d7dc1056f1b99934c36127046853e6291ae138f4b62",
+      "intent": "sha256:9c5cd0445dd71e07ed6992b388ce75c9b73f613bde400875cee08ee5e480cd44",
+      "seller_offer": "sha256:2792aa2ddf3bb66f4b6710781c96159bd30c29ef7bd5548554dc204f7a1eb028"
+    },
+    "source_simulation_trade": "SIM-0088",
+    "visible_identifiers": [
+      "sim-0088-front-photo-hash",
+      "sim-0088-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x441c86a06e79349cb39784fdac6cab831efe7beb02e3b3158af42af92203f444",
+  "signature": "0xa27f69d24992378f51f39c2fb35e4508a8e7ed61cd03adde880781898a0e908519c20351597feae0c302acd49609557e4cec5ac9e16c592ec1b56ac6f7c77f3e1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

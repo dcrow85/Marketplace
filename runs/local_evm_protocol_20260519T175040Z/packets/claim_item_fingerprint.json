@@ -1,0 +1,43 @@
+{
+  "canonical_payload": "{\"challenge_hooks\":[\"fresh_timestamped_photo\",\"edge_closeups\",\"verifier_review\"],\"confidence_scope\":\"weaker_for_new_seller_raw_card\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"front_photo_hash\",\"type\":\"front_photo\"},{\"ref\":\"back_photo_hash\",\"type\":\"back_photo\"},{\"ref\":\"claim_new_seller_proof\",\"type\":\"seller_profile\"}],\"identity_claim\":{\"card\":\"hard-to-find vintage raw card\",\"condition_claim\":\"NM\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"privacy_policy\":\"buyer_and_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge_hooks": [
+      "fresh_timestamped_photo",
+      "edge_closeups",
+      "verifier_review"
+    ],
+    "confidence_scope": "weaker_for_new_seller_raw_card",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "front_photo_hash",
+        "type": "front_photo"
+      },
+      {
+        "ref": "back_photo_hash",
+        "type": "back_photo"
+      },
+      {
+        "ref": "claim_new_seller_proof",
+        "type": "seller_profile"
+      }
+    ],
+    "identity_claim": {
+      "card": "hard-to-find vintage raw card",
+      "condition_claim": "NM",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "privacy_policy": "buyer_and_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 2
+  },
+  "payload_hash": "0xf1e170e691a741dfd0e09a495eb62ca4e4d2c417af7309b0fa15eb4d48e7cb30",
+  "signature": "0x6b07dd12d08d4766a41387330c7e69685465f4730fe13a49bbc7a5270ef012312610039d37c481412db5dc1b549ae8ffcd7c1d1119fcb3e46cc378156827be3b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

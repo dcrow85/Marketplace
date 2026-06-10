@@ -1,0 +1,81 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"route_remains_blocked_until_buyer_clearance\",\"hooks\":[\"buyer_clearance\",\"arbiter_escalation\",\"fresh_nonce_request\"]},\"claim\":{\"known_conflicts\":[\"prior_market_ref_without_current_custody_nonce\",\"stale_capture_window\"],\"negative\":[\"No fresh seller custody nonce was supplied.\"],\"positive\":[\"Stale prior-market photo risk remains unresolved.\"]},\"display\":{\"label\":\"Challenge reviewed\",\"short_warning\":\"Scope-limited review.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"post_review_custody\",\"grading_company_api_response\"],\"inputs_seen\":[{\"hash\":\"0x22339953745a2283e80a2ef0e7d93999cf56c471443a270c98c6a1ab063942da\",\"kind\":\"challenge_packet\"},{\"kind\":\"detector_signals\",\"value\":[\"prior_market_ref_without_current_custody_nonce\",\"stale_capture_window\"]},{\"kind\":\"requested_evidence\",\"value\":[\"fresh_timestamped_photo\",\"seller_custody_nonce_photo\"]},{\"kind\":\"verdict\",\"value\":\"rejected\"}],\"issued_at\":\"2026-06-09T15:53:13.410025+00:00\",\"method\":{\"method_id\":\"tcg.fingerprint.challenge_review.v0.1\",\"method_id_hash\":\"0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69\",\"summary\":\"Reviewed the active fingerprint challenge packet and submitted cure evidence.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"fingerprint_challenge_resolution\"],\"scope_set_hash\":\"0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe\",\"subject\":{\"subject_hash\":\"0x22339953745a2283e80a2ef0e7d93999cf56c471443a270c98c6a1ab063942da\",\"subject_type\":\"fingerprint_challenge\"},\"trade_id\":5,\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "route_remains_blocked_until_buyer_clearance",
+      "hooks": [
+        "buyer_clearance",
+        "arbiter_escalation",
+        "fresh_nonce_request"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [
+        "prior_market_ref_without_current_custody_nonce",
+        "stale_capture_window"
+      ],
+      "negative": [
+        "No fresh seller custody nonce was supplied."
+      ],
+      "positive": [
+        "Stale prior-market photo risk remains unresolved."
+      ]
+    },
+    "display": {
+      "label": "Challenge reviewed",
+      "short_warning": "Scope-limited review."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "post_review_custody",
+      "grading_company_api_response"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "0x22339953745a2283e80a2ef0e7d93999cf56c471443a270c98c6a1ab063942da",
+        "kind": "challenge_packet"
+      },
+      {
+        "kind": "detector_signals",
+        "value": [
+          "prior_market_ref_without_current_custody_nonce",
+          "stale_capture_window"
+        ]
+      },
+      {
+        "kind": "requested_evidence",
+        "value": [
+          "fresh_timestamped_photo",
+          "seller_custody_nonce_photo"
+        ]
+      },
+      {
+        "kind": "verdict",
+        "value": "rejected"
+      }
+    ],
+    "issued_at": "2026-06-09T15:53:13.410025+00:00",
+    "method": {
+      "method_id": "tcg.fingerprint.challenge_review.v0.1",
+      "method_id_hash": "0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69",
+      "summary": "Reviewed the active fingerprint challenge packet and submitted cure evidence."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "fingerprint_challenge_resolution"
+    ],
+    "scope_set_hash": "0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe",
+    "subject": {
+      "subject_hash": "0x22339953745a2283e80a2ef0e7d93999cf56c471443a270c98c6a1ab063942da",
+      "subject_type": "fingerprint_challenge"
+    },
+    "trade_id": 5,
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0xad06780c7215dc8739c611e4b46f75d7a2ec8a0478cd0008ba819f0edf363339",
+  "signature": "0x08568055214bc97e888addb7b951bc4f37926f712968c7010e2b1fba1d39ca45715bf076c667cd3f480eedf45bbcc4b2717b6d672304fb906ba8d667f0c4e4781b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

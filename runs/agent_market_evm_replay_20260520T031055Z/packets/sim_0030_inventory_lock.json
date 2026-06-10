@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0030\",\"item_fingerprint_hash\":\"0x2d74ffc8c9ff197f2864bdae1e20610c9c3fc00e6e2324d8a4b877a9e116604d\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc\",\"friction_policy\":\"sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede\",\"intent\":\"sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2\",\"seller_offer\":\"sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7\"},\"source_simulation_trade\":\"SIM-0030\",\"visible_identifiers\":[\"sim-0030-front-photo-hash\",\"sim-0030-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0030",
+    "item_fingerprint_hash": "0x2d74ffc8c9ff197f2864bdae1e20610c9c3fc00e6e2324d8a4b877a9e116604d",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc",
+      "friction_policy": "sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede",
+      "intent": "sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2",
+      "seller_offer": "sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7"
+    },
+    "source_simulation_trade": "SIM-0030",
+    "visible_identifiers": [
+      "sim-0030-front-photo-hash",
+      "sim-0030-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x2abadd45bd179ec2287e4c345b87481df5fdfd2f11c6136948c53ecf8ebf77bc",
+  "signature": "0xf6a5b9ed721677abc63de7ebfa803c32497042f0ea1ed9f4173dc6c70b06ccb619263b1060d44a9922cc167c7f4e88d6e0edb4d1e969417efe68d52823cf99791c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

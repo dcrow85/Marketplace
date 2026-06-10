@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Sabrina's Gengar\",\"condition_claim\":\"LP+\",\"evidence_tier\":\"light\",\"route_offered\":\"uninsured_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"medium\",\"seller_bond_bps_from_sim\":0,\"seller_bond_eth_local_probe\":\"0.005\",\"seller_trust\":\"known\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a\",\"escrow_terms\":\"sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9\",\"friction_policy\":\"sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a\",\"intent\":\"sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9\",\"seller_offer\":\"sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb\"},\"source_simulation_trade\":\"SIM-0025\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Sabrina's Gengar",
+    "condition_claim": "LP+",
+    "evidence_tier": "light",
+    "route_offered": "uninsured_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "medium",
+    "seller_bond_bps_from_sim": 0,
+    "seller_bond_eth_local_probe": "0.005",
+    "seller_trust": "known",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:3a65ea107975246de1e8b21659b7120b54293a1df5d9ee70d30ba012450fd64a",
+      "escrow_terms": "sha256:9716050e4fa6871795a11e275c21521177db73deb78daf96df5696b08a8538e9",
+      "friction_policy": "sha256:36a177d799b139c5903c1efaea0c74328dc1b8acef9a25014226fa2249ff966a",
+      "intent": "sha256:4bd94b31881919699e3d0b5390d5ec10811853550069dc07172acb2c8e4f3ad9",
+      "seller_offer": "sha256:83ceb2c46df890fb3513a23641cb49d0e1181050b089ee4d366a9a233b4142cb"
+    },
+    "source_simulation_trade": "SIM-0025"
+  },
+  "payload_hash": "0xde3f015324779ea8a4289e627de74597debd38baf1e2b5c8e77d7dfd6f526f39",
+  "signature": "0xf116003825390adfa90d9a4cc6c7116166dc73260dc276b7fea44d336bf7d8262e0a28dcb57cb68a078ffc79bf6f47a1ddd5a14709ca05f0d6053249847eb5a61c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

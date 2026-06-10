@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0247: buyer_remorse; buyer agent closes with final receipt.\",\"friction_triggers\":[],\"human_questions\":[],\"outcome\":\"buyer_remorse\",\"path\":\"buyer_remorse_release\",\"route_failure_surrogate\":false,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321\",\"friction_policy\":\"sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64\",\"intent\":\"sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb\",\"seller_offer\":\"sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4\"},\"source_simulation_trade\":\"SIM-0247\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0247: buyer_remorse; buyer agent closes with final receipt.",
+    "friction_triggers": [],
+    "human_questions": [],
+    "outcome": "buyer_remorse",
+    "path": "buyer_remorse_release",
+    "route_failure_surrogate": false,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:1d3ef8379a9d698e60725e3ba2aae1ee4ea11c4226c4a807963d9f25ba1ce321",
+      "friction_policy": "sha256:8fbfb9e58c4b4154cde5c9d3e7db73b2998128a4851ef8b1ba51e0d208f17a64",
+      "intent": "sha256:05e106481b584091408f836f198337d6d6137969beebfc9e934c6e88849659cb",
+      "seller_offer": "sha256:329d8b4efffd4a0b687a533c4a3d19fe4b9350d201c5fe58eabe5af3304d1ad4"
+    },
+    "source_simulation_trade": "SIM-0247"
+  },
+  "payload_hash": "0xedcd71dd10b862267f2978243d65e0ba2184233c5551fdfdca58d4520ab86f3f",
+  "signature": "0x6085244de728d4f19b74a608eedb242df3f98adf2b97e4faaf0ac7b92cb000a11a09b975b9d65d2c0c1e552d9bc0908e45bfde2d919266731578d4d25400bc8a1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,200 @@
+{
+  "contract": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "generated_at": "2026-05-18T18:16:19.197326+00:00",
+  "rpc_url": "http://127.0.0.1:18545",
+  "run_id": "local_evm_protocol_20260518T181618Z",
+  "scenarios": [
+    {
+      "final_state": "Settled",
+      "name": "happy_path_insured_card",
+      "observations": [
+        "Buyer-funded intent became locked escrow.",
+        "Seller attention stayed bounded: one trust proof, one item packet, one route packet.",
+        "Final receipt closed the trade and released escrow plus bond."
+      ],
+      "packets": [
+        {
+          "packet_id": "actor_buyer",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/actor_buyer.json",
+          "payload_hash": "0xca07896a6190e860dd51af4241ed9a02835b1930c4dd01a13c7b6d9a44a3675a",
+          "schema": "marketplace.actor_record.v0.2"
+        },
+        {
+          "packet_id": "actor_seller",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/actor_seller.json",
+          "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5",
+          "schema": "marketplace.actor_record.v0.2"
+        },
+        {
+          "packet_id": "actor_arbiter",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/actor_arbiter.json",
+          "payload_hash": "0x0025cd199f11db191de2e1f83919b36022cca03b844c6169e8941f9f976f4442",
+          "schema": "marketplace.actor_record.v0.2"
+        },
+        {
+          "packet_id": "happy_intent",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_intent.json",
+          "payload_hash": "0xd08e450e965d052d9201f63e8df5e8e149e61b65950b3739f0cee1d23d293caf",
+          "schema": "marketplace.intent.v0.2"
+        },
+        {
+          "packet_id": "happy_escrow_terms",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_escrow_terms.json",
+          "payload_hash": "0x8af2c1dc98101abcc55159fb64ab52e1765e12d006ff445ec93fd8c9a0e64f7e",
+          "schema": "marketplace.escrow_terms.v0.2"
+        },
+        {
+          "packet_id": "happy_trust_offer",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_trust_offer.json",
+          "payload_hash": "0xb07613fb8aab82663a1dc4aeb2f4ea48cca97e4fadbbcc309dc07a0c3f2f6a54",
+          "schema": "marketplace.trust_offer.v0.2"
+        },
+        {
+          "packet_id": "happy_item_evidence",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_item_evidence.json",
+          "payload_hash": "0x0e350f22a79e4b49d140ee4c009f3da94c010099c4bb4492f197924066c4061a",
+          "schema": "marketplace.evidence_packet.v0.2"
+        },
+        {
+          "packet_id": "happy_route",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_route.json",
+          "payload_hash": "0x0d06a99d4d88711f7046bc0ae133e6989de37e92f924b17daeec77970d3a15e7",
+          "schema": "marketplace.trade_route.v0.2"
+        },
+        {
+          "packet_id": "happy_final_receipt",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/happy_final_receipt.json",
+          "payload_hash": "0x5154efb32d52def53079b00ba5d5f156656ccd33e52838fbfdc4238cb443ddd8",
+          "schema": "marketplace.trade_receipt.v0.2"
+        }
+      ],
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "create insured trade",
+          "tx_hash": "0x3e518ac3c2f978d379488a39346742d2e9700527970de9776faac464ba48ef7b"
+        },
+        {
+          "label": "seller posts bond",
+          "tx_hash": "0xcb11afb9b0c4621183ffa60462d13989109ec243ab3eb190005a6a5d37ee546b"
+        },
+        {
+          "label": "attach trust proof",
+          "tx_hash": "0x1b4f01f0711671a90044ad822c9acaeff166fa7b3fcc61e4178c595a59a28497"
+        },
+        {
+          "label": "attach item evidence",
+          "tx_hash": "0xd7eaf0aa5f77343be139bea3da9e8201bb548a3e11a1d4173e31d9d8fcb0ba67"
+        },
+        {
+          "label": "commit insured route",
+          "tx_hash": "0x3428135eb7c2eee07a6cf27b085ea736af25f4e19a3226c4dbea9acb72147125"
+        },
+        {
+          "label": "mark route in progress",
+          "tx_hash": "0x3c1f56718fae56f707f9fee7025027e031c068f428186733a5c49049676bcefb"
+        },
+        {
+          "label": "mark delivered",
+          "tx_hash": "0xf8310bfd16cc4a21ee83a53c162a6fa42a087a053ea4f33fcead56b07e0c3b48"
+        },
+        {
+          "label": "buyer accepts",
+          "tx_hash": "0x2fdd1932f734d0583df9e1087a8cbce34988b1359f4bdd20c09803b046fb4143"
+        }
+      ]
+    },
+    {
+      "final_state": "Settled",
+      "name": "new_seller_material_claim",
+      "observations": [
+        "A brand-new seller can still clear the trade by posting a larger bond.",
+        "Weak trust proof did not need to become a scalar score; it became an explicit gap.",
+        "The claim packet and ruling hash give the agent a clean evidence trail after settlement."
+      ],
+      "packets": [
+        {
+          "packet_id": "claim_intent",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_intent.json",
+          "payload_hash": "0xa2c6c605f6cb21b462f51aad0998b7055b91fa748060cb5f40a8cf451655afff",
+          "schema": "marketplace.intent.v0.2"
+        },
+        {
+          "packet_id": "claim_escrow_terms",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_escrow_terms.json",
+          "payload_hash": "0x843b56e06b3432dc115305530d5e3c45cca81b6304034e9d1f949527fcd8d2b3",
+          "schema": "marketplace.escrow_terms.v0.2"
+        },
+        {
+          "packet_id": "claim_new_seller_proof",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_new_seller_proof.json",
+          "payload_hash": "0xa08a4c76121162c499aa94991c71558e4523d3b509f92cb6047e05b4ce9a4432",
+          "schema": "marketplace.trust_offer.v0.2"
+        },
+        {
+          "packet_id": "claim_sparse_item_evidence",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_sparse_item_evidence.json",
+          "payload_hash": "0x953b9199569e72b8fca958c21851cbcbe6549e2d007aa5bac4d13ae5606865d3",
+          "schema": "marketplace.evidence_packet.v0.2"
+        },
+        {
+          "packet_id": "claim_route_uninsured",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_route_uninsured.json",
+          "payload_hash": "0x930cbca8b807a09d66c65437b4e84dad39566173b2ab445f69d2ef757509fdfc",
+          "schema": "marketplace.trade_route.v0.2"
+        },
+        {
+          "packet_id": "claim_packet",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_packet.json",
+          "payload_hash": "0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824",
+          "schema": "marketplace.dispute_case.v0.2"
+        },
+        {
+          "packet_id": "claim_ruling",
+          "path": "runs/local_evm_protocol_20260518T181618Z/packets/claim_ruling.json",
+          "payload_hash": "0x30bbb5ace10e30f52951b865de73469de9f747a111e122e46ac1086f3e95bf3c",
+          "schema": "marketplace.resolve_or_claim.v0.2"
+        }
+      ],
+      "trade_id": 2,
+      "transactions": [
+        {
+          "label": "create new-seller trade",
+          "tx_hash": "0xdd3fc7df43cfcc4e5c41d148c8be8c8cc0e953de2f4a11be944dfe3fecd3681d"
+        },
+        {
+          "label": "seller posts larger bond",
+          "tx_hash": "0xb71ac24addc88e5ad62cd6dbb4d5908717e76906e891ba786e7cefc0ed4d423e"
+        },
+        {
+          "label": "attach weak proof",
+          "tx_hash": "0xf42cea4d14f379f3b3d8a2fe1132055965fc08c7372dfdd3a1f4050850d0e22e"
+        },
+        {
+          "label": "attach sparse evidence",
+          "tx_hash": "0xf082f468227b98d957297280628d11bc5797613fcc39180aa2fa3739d4b05f35"
+        },
+        {
+          "label": "commit uninsured route",
+          "tx_hash": "0xbdab0b8b99e3ea2f9e016c9a0826c5444263de1b82d2d0b3facd73bccc689bb7"
+        },
+        {
+          "label": "mark delivered",
+          "tx_hash": "0xd663878a7fff2b5478c6446dd70ff5184a94fa369fa8dd26d0aa8debf1cf9ec5"
+        },
+        {
+          "label": "attach received-item claim evidence",
+          "tx_hash": "0x68fa4d8801b69cbce57083fa05145758465635094ba9523004d0d7c72ea1695a"
+        },
+        {
+          "label": "open claim with buyer dispute bond",
+          "tx_hash": "0x5cb50fbfc6adfb90c963143cb087dea57ee7176ff78bfc38df79dce43c75c35c"
+        },
+        {
+          "label": "arbiter resolves claim",
+          "tx_hash": "0xe6319e7e3182cbd4de133fb81468f76206a577970dbc4abc99d098b0d95b8a34"
+        }
+      ]
+    }
+  ]
+}

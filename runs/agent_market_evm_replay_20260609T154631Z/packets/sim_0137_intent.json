@@ -1,0 +1,51 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"high\",\"condition_sensitivity\":0.61,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\"],\"max_total_price_usd\":96,\"risk_tolerance\":0.101,\"route_preferences\":[\"insured_ship\"],\"value_band\":\"low\"},\"object\":{\"card\":\"Sabrina's Gengar\",\"condition_floor\":\"NM\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079\",\"escrow_terms\":\"sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9\",\"friction_policy\":\"sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa\",\"intent\":\"sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a\",\"seller_offer\":\"sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253\"},\"source_simulation_trade\":\"SIM-0137\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "high",
+      "condition_sensitivity": 0.61,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "corner_closeups",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "holo_angle_closeups",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "tracking_history"
+      ],
+      "max_total_price_usd": 96,
+      "risk_tolerance": 0.101,
+      "route_preferences": [
+        "insured_ship"
+      ],
+      "value_band": "low"
+    },
+    "object": {
+      "card": "Sabrina's Gengar",
+      "condition_floor": "NM",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079",
+      "escrow_terms": "sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9",
+      "friction_policy": "sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa",
+      "intent": "sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a",
+      "seller_offer": "sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253"
+    },
+    "source_simulation_trade": "SIM-0137"
+  },
+  "payload_hash": "0x22635b5bc25ccd5823cbbebcb35b4315c8b88290bb3b1593295a6ae9ac57193f",
+  "signature": "0x44303d4c70c32b6e1fe5f5f30af2a8423e31e74fdff71d24e47e406d305b378638c2c0c1fe03a76728c59ed1ed579487532907f626a563fe6ded5ac3ca6a2b971b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

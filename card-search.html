@@ -1,0 +1,1607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Japanese No Rarity Base Set</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f7f7f4;
+        color: #111;
+        font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px 16px 48px;
+      }
+
+      h1, h2, h3, p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+        max-width: 760px;
+      }
+
+      a {
+        color: #111;
+      }
+
+      .lede {
+        max-width: 760px;
+        font-size: 1.05rem;
+      }
+
+      .note {
+        max-width: 780px;
+        border-left: 4px solid #b32121;
+        padding-left: 12px;
+      }
+
+      .agent-note {
+        max-width: 820px;
+        border-left: 4px solid #111;
+        background: #fbfbf8;
+        padding: 10px 12px;
+      }
+
+      .pricing-sentence {
+        border: 1px solid #b32121;
+        background: #fffafa;
+        padding: 9px;
+      }
+
+      .compact-note {
+        max-width: 760px;
+        margin-bottom: 10px;
+      }
+
+      .guide-panel {
+        display: grid;
+        grid-template-columns: 128px minmax(0, 1fr);
+        gap: 14px;
+        align-items: start;
+        margin: 22px 0;
+        border: 2px solid #111;
+        background: #fff;
+        padding: 14px;
+        box-shadow: 4px 4px 0 #111;
+        font-family: "Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif;
+      }
+
+      .guide-mascot {
+        text-align: center;
+        color: #111;
+      }
+
+      .guide-critter {
+        position: relative;
+        width: 92px;
+        height: 86px;
+        margin: 10px auto 8px;
+        border: 3px solid #111;
+        border-radius: 48% 42% 46% 39%;
+        background:
+          radial-gradient(circle at 28% 38%, #111 0 4px, transparent 5px),
+          radial-gradient(circle at 67% 38%, #111 0 4px, transparent 5px),
+          #fbfbf8;
+        transform: rotate(-1deg);
+        z-index: 0;
+      }
+
+      .guide-critter::before,
+      .guide-critter::after {
+        content: "";
+        position: absolute;
+        top: -15px;
+        width: 25px;
+        height: 31px;
+        border: 3px solid #111;
+        background: #fbfbf8;
+        z-index: 0;
+      }
+
+      .guide-critter::before {
+        left: 14px;
+        border-radius: 64% 33% 52% 44%;
+        transform: rotate(-20deg);
+      }
+
+      .guide-critter::after {
+        right: 14px;
+        border-radius: 33% 64% 44% 52%;
+        transform: rotate(20deg);
+      }
+
+      .guide-mouth,
+      .guide-cheek,
+      .guide-badge,
+      .guide-pencil {
+        position: absolute;
+        display: block;
+      }
+
+      .guide-mouth {
+        left: 39px;
+        top: 48px;
+        width: 13px;
+        height: 7px;
+        border-bottom: 2px solid #111;
+        border-radius: 0 0 50% 50%;
+      }
+
+      .guide-cheek {
+        top: 48px;
+        width: 10px;
+        height: 7px;
+        border: 1px solid #b32121;
+        border-radius: 50%;
+        background: #fff3f3;
+      }
+
+      .guide-cheek.left {
+        left: 19px;
+      }
+
+      .guide-cheek.right {
+        right: 19px;
+      }
+
+      .guide-badge {
+        right: -8px;
+        bottom: 10px;
+        width: 20px;
+        height: 18px;
+        border: 2px solid #111;
+        border-radius: 3px;
+        background: #b32121;
+        transform: rotate(7deg);
+      }
+
+      .guide-pencil {
+        left: -9px;
+        bottom: 12px;
+        width: 33px;
+        height: 7px;
+        border: 2px solid #111;
+        border-radius: 6px;
+        background: #fff;
+        transform: rotate(-24deg);
+      }
+
+      .guide-name {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .guide-copy h2 {
+        margin-bottom: 3px;
+        font-size: 1.25rem;
+      }
+
+      .guide-intro {
+        margin-bottom: 10px;
+        max-width: 720px;
+      }
+
+      .guide-context {
+        display: inline-block;
+        margin-bottom: 10px;
+        border: 1px solid #b32121;
+        background: #fffafa;
+        padding: 4px 7px;
+        color: #8f1919;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .guide-log {
+        display: grid;
+        gap: 7px;
+        max-height: 190px;
+        overflow: auto;
+        border: 1px solid #ccc;
+        background: #fbfbf8;
+        padding: 9px;
+      }
+
+      .guide-log p {
+        margin: 0;
+      }
+
+      .guide-line-user {
+        color: #555;
+      }
+
+      .guide-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .guide-form input {
+        min-height: 40px;
+        border: 1px solid #bbb;
+        background: white;
+        color: #111;
+        padding: 8px 10px;
+        font: inherit;
+      }
+
+      .guide-form button,
+      .guide-action {
+        border: 1px solid #111;
+        background: #fff;
+        color: #111;
+        font: inherit;
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .guide-form button {
+        font-weight: 800;
+      }
+
+      .guide-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .guide-action {
+        padding: 4px 8px;
+        font-size: 0.88rem;
+      }
+
+      .guide-action:hover,
+      .guide-form button:hover {
+        background: #faf4f4;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .set-entry {
+        margin: 22px 0;
+        border: 1px solid #aaa;
+        background: white;
+        padding: 14px;
+      }
+
+      .set-entry h2 {
+        margin-bottom: 3px;
+      }
+
+      .set-entry .subtitle {
+        margin-bottom: 12px;
+        font-size: 1.05rem;
+      }
+
+      .set-facts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .set-fact {
+        border: 1px solid #ddd;
+        background: #fbfbf8;
+        padding: 8px;
+      }
+
+      .set-fact strong {
+        display: block;
+        font-size: 0.82rem;
+        color: #555;
+        font-weight: 600;
+      }
+
+      .set-fact span {
+        display: block;
+        margin-top: 2px;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .set-entry-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .set-entry-block {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+      }
+
+      .set-entry-block h3 {
+        margin-bottom: 6px;
+        font-size: 1rem;
+      }
+
+      .set-entry-block ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .layer-list,
+      .pressure-list,
+      .profile-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .layer-list li,
+      .pressure-list li,
+      .profile-list li {
+        border: 1px solid #ddd;
+        background: #fbfbf8;
+        padding: 9px;
+      }
+
+      .layer-list strong,
+      .pressure-list strong,
+      .profile-list strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .layer-list p,
+      .pressure-list p,
+      .profile-list p {
+        margin: 4px 0 0;
+      }
+
+      .tools {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 10px;
+        align-items: center;
+        margin: 24px 0 12px;
+      }
+
+      input[type="search"], select {
+        min-height: 40px;
+        border: 1px solid #bbb;
+        background: white;
+        color: #111;
+        padding: 8px 10px;
+        font: inherit;
+      }
+
+      label {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        white-space: nowrap;
+      }
+
+      .summary {
+        margin: 0 0 14px;
+        color: #444;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+      }
+
+      th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eee;
+      }
+
+      tr[data-card-id] {
+        cursor: pointer;
+      }
+
+      tr[data-card-id]:hover,
+      tr.selected {
+        background: #faf4f4;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .table-ref-img {
+        width: 72px;
+        height: 101px;
+        object-fit: contain;
+      }
+
+      .small {
+        color: #555;
+        font-size: 0.88rem;
+      }
+
+      .tag {
+        display: inline-block;
+        border: 1px solid #aaa;
+        padding: 2px 6px;
+        margin-top: 4px;
+        font-size: 0.78rem;
+      }
+
+      .target {
+        border-color: #b32121;
+        color: #8f1919;
+      }
+
+      .detail-card {
+        display: grid;
+        grid-template-columns: minmax(190px, 260px) minmax(0, 1fr);
+        gap: 16px;
+        margin: 18px 0;
+        border: 1px solid #aaa;
+        background: white;
+        padding: 14px;
+      }
+
+      .primary-reference {
+        border: 1px solid #ccc;
+        background: #fbfbf8;
+        padding: 10px;
+      }
+
+      .primary-reference img {
+        width: 100%;
+        max-height: 360px;
+        object-fit: contain;
+      }
+
+      .reference-warning {
+        color: #8f1919;
+        font-weight: 700;
+      }
+
+      .detail-card h2 {
+        margin-bottom: 4px;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .detail-block {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+      }
+
+      .detail-block h3 {
+        margin-bottom: 6px;
+        font-size: 1rem;
+      }
+
+      .detail-block ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      details.detail-block {
+        display: block;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid #ddd;
+        margin: 0;
+        padding: 10px 0 0;
+      }
+
+      details.detail-block summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .hero-note {
+        max-width: 720px;
+        border-left: 4px solid #b32121;
+        padding-left: 12px;
+        font-size: 1.05rem;
+      }
+
+      .decision-list {
+        display: grid;
+        gap: 5px;
+        margin: 12px 0;
+        padding-left: 18px;
+      }
+
+      .table-note {
+        max-width: 420px;
+      }
+
+      .image-stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+      }
+
+      .image-card {
+        border: 1px solid #ccc;
+        background: #fbfbf8;
+        padding: 8px;
+      }
+
+      .image-card img {
+        width: 100%;
+        max-height: 260px;
+        object-fit: contain;
+        background: white;
+      }
+
+      .image-card h4 {
+        margin: 8px 0 3px;
+        font-size: 0.92rem;
+      }
+
+      .image-missing {
+        display: grid;
+        min-height: 180px;
+        place-items: center;
+        border: 1px dashed #aaa;
+        background: #f3f3ef;
+        color: #555;
+        font-size: 2rem;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 8px 0 0;
+      }
+
+      .plain-button {
+        border: 1px solid #999;
+        background: #fff;
+        color: #111;
+        font: inherit;
+        padding: 3px 7px;
+      }
+
+      details {
+        margin-top: 20px;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 12px;
+      }
+
+      @media (max-width: 760px) {
+        .tools {
+          grid-template-columns: 1fr;
+        }
+
+        table, thead, tbody, tr, th, td {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+          background: white;
+        }
+
+        td {
+          border: 0;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .detail-card,
+        .detail-grid,
+        .set-entry-grid,
+        .guide-panel,
+        .set-facts {
+          grid-template-columns: 1fr;
+        }
+
+        .guide-mascot {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+          text-align: left;
+        }
+
+        .guide-critter {
+          flex: 0 0 auto;
+          margin: 2px 0;
+          transform: scale(0.86) rotate(-1deg);
+        }
+
+        .guide-form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Japanese No Rarity Base Set.</h1>
+      <p class="lede">
+        A small local research database for the 1996 Japanese Expansion Pack. This page only covers the No Rarity Base Set problem: find the card, name the missing-symbol claim, and keep evidence separate from catalog truth.
+      </p>
+        <p class="note">
+          The database can anchor a card row. It cannot prove possession, authenticity, condition, price, or that a seller's physical card is truly No Rarity.
+        </p>
+        <p class="compact-note small">
+          The card panel now follows its own audit: keep the image, identity, variant boundary, one collector note, illustrator, and decision facts up front; move provenance and machinery behind panels.
+        </p>
+
+      <section class="guide-panel" aria-label="Catalog guide">
+        <div class="guide-mascot" aria-hidden="true">
+          <div class="guide-critter">
+            <span class="guide-mouth"></span>
+            <span class="guide-cheek left"></span>
+            <span class="guide-cheek right"></span>
+            <span class="guide-badge"></span>
+            <span class="guide-pencil"></span>
+          </div>
+          <p class="guide-name">Mote</p>
+        </div>
+        <div class="guide-copy">
+          <h2>A small guide at the desk.</h2>
+          <p class="guide-intro">
+            Not your personal buying agent. Just a site guide that can help you browse, shape a fundable want, or understand what a seller needs before a No Rarity trade can move.
+          </p>
+          <div id="guide-context" class="guide-context">Waiting for the catalog...</div>
+          <div id="guide-log" class="guide-log" aria-live="polite">
+            <p><strong>Mote:</strong> Are you wandering the binder, or trying to get to the point? Tell me the card, condition, budget, or whether you are here to sell.</p>
+          </div>
+          <form id="guide-form" class="guide-form">
+            <label class="sr-only" for="guide-input">Talk with the catalog guide</label>
+            <input id="guide-input" type="text" autocomplete="off" placeholder="Try: I want Charizard LP under $1500, or I have a No Rarity Raichu to list">
+            <button type="submit">ask</button>
+          </form>
+          <div class="guide-actions" aria-label="Guide shortcuts">
+            <button class="guide-action" type="button" data-guide-prompt="I am just browsing and want the collector read.">browse</button>
+            <button class="guide-action" type="button" data-guide-prompt="Help me draft a buyer want for the selected card.">draft a want</button>
+            <button class="guide-action" type="button" data-guide-prompt="I am a seller and want to list this card.">seller path</button>
+            <button class="guide-action" type="button" data-guide-prompt="How does funding a want work here?">funding</button>
+          </div>
+          <p class="small">
+            Prototype guide. It can organize a want; it cannot verify a card, quote live market price, or decide a dispute.
+          </p>
+        </div>
+      </section>
+
+      <section id="set-entry" class="set-entry" aria-live="polite">
+        Loading set entry...
+      </section>
+
+      <section aria-label="Search controls">
+        <div class="tools">
+          <input id="query" type="search" placeholder="Search Charizard, Pikachu, PMCG1-021, holo, trainer...">
+          <select id="category" aria-label="Category">
+            <option value="">All categories</option>
+          </select>
+          <label><input id="targets-only" type="checkbox" checked> active No Rarity targets</label>
+        </div>
+        <p class="summary" id="summary">Loading local database...</p>
+      </section>
+
+      <section id="card-detail" class="detail-card" aria-live="polite">
+        Select a card to see its local record.
+      </section>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ref</th>
+            <th>Card</th>
+            <th>Why it matters</th>
+            <th>No Rarity image</th>
+          </tr>
+        </thead>
+        <tbody id="cards"></tbody>
+      </table>
+
+      <details open>
+        <summary>Research boundary</summary>
+        <p>
+          The active target is cards 001-096. Cards 097-102 are basic Energy caveats because missing rarity symbols are not distinctive for basic Energy in the same way.
+        </p>
+        <p>
+          Every real trade still needs evidence: full front, lower-right rarity-symbol crop, full back, fresh nonce possession, and slab/cert proof if graded.
+        </p>
+      </details>
+
+      <details>
+        <summary>Sources</summary>
+        <ul id="sources"></ul>
+      </details>
+    </main>
+
+    <script>
+      const state = {
+        db: null,
+        cards: []
+      };
+
+      const els = {
+        query: document.getElementById("query"),
+        category: document.getElementById("category"),
+        targetsOnly: document.getElementById("targets-only"),
+        summary: document.getElementById("summary"),
+        detail: document.getElementById("card-detail"),
+        cards: document.getElementById("cards"),
+        sources: document.getElementById("sources"),
+        setEntry: document.getElementById("set-entry"),
+        guideContext: document.getElementById("guide-context"),
+        guideLog: document.getElementById("guide-log"),
+        guideForm: document.getElementById("guide-form"),
+        guideInput: document.getElementById("guide-input")
+      };
+      let selectedCardId = "";
+      const guideState = {
+        tempo: "unknown",
+        turns: 0
+      };
+
+      function normalize(value) {
+        return String(value || "").toLowerCase();
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function cardText(card) {
+        return [
+          card.local_id,
+          card.tcgdex_id,
+          card.name_en,
+          card.name_source_raw,
+          card.category,
+          card.rarity_source,
+          card.no_rarity_profile,
+          card.evidence_focus,
+          card.no_rarity_reference?.source,
+          card.no_rarity_reference?.provider_id,
+          card.no_rarity_reference?.variation,
+          card.no_rarity_reference?.card_number,
+          card.product_scope?.japanese_booster_order,
+          card.product_scope?.japanese_booster_section,
+          card.product_scope?.japanese_name_from_research,
+          card.product_scope?.romaji_from_research,
+          card.illustrator?.name,
+          card.illustrator?.source,
+          card.illustrator?.verification_status,
+          card.collector_texture?.note,
+          card.information_audit?.verdict,
+          card.agent_decision_profile?.agent_summary,
+          card.agent_decision_profile?.baseline_evidence_profile_id,
+          card.agent_decision_profile?.baseline_evidence_profile_name,
+          card.agent_decision_profile?.value_band,
+          card.agent_decision_profile?.pricing_state,
+          ...(card.agent_decision_profile?.what_agent_knows || []),
+          ...(card.agent_decision_profile?.what_agent_does_not_know || []),
+          ...(card.agent_decision_profile?.recommended_evidence || []),
+          ...(card.agent_decision_profile?.card_specific_tells || []),
+          ...(card.agent_decision_profile?.escalation_triggers || []),
+          ...(card.agent_decision_profile?.agent_to_agent_questions || []),
+          ...(card.variant_traps || []).map((trap) => `${trap.name} ${trap.risk} ${trap.agent_rule}`),
+          ...(card.information_audit?.recommended_primary_surface || []),
+          ...(card.information_audit?.earns_keep || []).map((item) => `${item.field} ${item.why}`),
+          ...(card.information_audit?.agent_only || []).map((item) => `${item.field} ${item.why}`),
+          ...(card.information_audit?.disposable_from_primary_ui || []).map((item) => `${item.field} ${item.why} ${item.action}`),
+          ...(card.collector_texture?.signals || []),
+          ...(card.tags || []),
+          ...(card.history_notes || []),
+          ...(card.no_rarity_examples || []).map((example) => `${example.label} ${example.source}`)
+        ].map(normalize).join(" ");
+      }
+
+      function selectedCard() {
+        return state.cards.find((card) => card.tcgdex_id === selectedCardId) || null;
+      }
+
+      function compactEvidenceAsk(card) {
+        const evidence = card?.agent_decision_profile?.recommended_evidence || [];
+        if (!evidence.length) {
+          return "full front, full back, lower-right symbol area, and fresh possession proof";
+        }
+        return evidence.slice(0, 3).join("; ");
+      }
+
+      function selectedCardGuideSummary(card) {
+        if (!card) {
+          return {
+            name: "the set",
+            profile: "not selected",
+            value: "unknown",
+            pricing: "agent discovery required",
+            evidence: "select a row first so I can speak from the catalog",
+            trap: ""
+          };
+        }
+        const profile = card.agent_decision_profile || {};
+        const trap = (card.variant_traps || [])[0];
+        return {
+          name: card.name_en,
+          profile: profile.baseline_evidence_profile_id || "not assigned",
+          value: profile.value_band || "not classified",
+          pricing: profile.pricing_state || "agent discovery required",
+          evidence: compactEvidenceAsk(card),
+          trap: trap ? trap.name : ""
+        };
+      }
+
+      function guideCardMention(message) {
+        const text = normalize(message);
+        if (!text || !state.cards.length) return null;
+        const byName = state.cards.find((card) => {
+          const name = normalize(card.name_en);
+          return name && text.includes(name);
+        });
+        if (byName) return byName;
+        return state.cards.find((card) => {
+          const localId = normalize(card.local_id);
+          const tcgdexId = normalize(card.tcgdex_id);
+          return (localId && text.includes(localId)) || (tcgdexId && text.includes(tcgdexId));
+        }) || null;
+      }
+
+      function updateGuideContext() {
+        if (!els.guideContext) return;
+        const card = selectedCard();
+        const guide = selectedCardGuideSummary(card);
+        els.guideContext.textContent = card
+          ? `Looking at ${guide.name} · ${guide.profile} · ${guide.value}`
+          : "Select a row and I will read from the catalog.";
+      }
+
+      function appendGuideLine(role, text) {
+        const line = document.createElement("p");
+        line.className = role === "You" ? "guide-line-user" : "guide-line-mote";
+        const speaker = document.createElement("strong");
+        speaker.textContent = `${role}:`;
+        line.append(speaker, ` ${text}`);
+        els.guideLog.appendChild(line);
+        els.guideLog.scrollTop = els.guideLog.scrollHeight;
+      }
+
+      function guideTempo(message) {
+        const words = String(message || "").trim().split(/\s+/).filter(Boolean);
+        const direct = /\b(buy|want|fund|sell|list|price|comp|ship|escrow|under|max|budget|lp|nm|mp|psa|bgs|cgc)\b|\$/.test(normalize(message));
+        const chatty = words.length > 16 || /\b(browse|browsing|curious|story|history|tell me|chatty|slow|wander)\b/.test(normalize(message));
+        if (direct && !chatty) return "direct";
+        if (chatty) return "chatty";
+        return guideState.tempo === "unknown" ? "balanced" : guideState.tempo;
+      }
+
+      function guideTemperamentLine(tempo) {
+        if (tempo === "direct") {
+          return "I will keep this tight.";
+        }
+        if (tempo === "chatty") {
+          return "We can take the scenic route and keep the evidence honest.";
+        }
+        return "I can be quick or talk it through.";
+      }
+
+      function guideRespond(message) {
+        const text = normalize(message);
+        const mentionedCard = guideCardMention(message);
+        if (mentionedCard && mentionedCard.tcgdex_id !== selectedCardId) {
+          els.query.value = mentionedCard.name_en;
+          selectedCardId = mentionedCard.tcgdex_id;
+          render();
+        }
+        const card = selectedCard();
+        const guide = selectedCardGuideSummary(card);
+        guideState.turns += 1;
+        guideState.tempo = guideTempo(message);
+
+        const temperament = guideTemperamentLine(guideState.tempo);
+        const selectedLine = card
+          ? `${guide.name} is currently selected. Catalog profile: ${guide.profile}; pricing state: ${guide.pricing}.`
+          : "No card is selected yet.";
+
+        let reply = "";
+        if (/\b(sell|seller|list|listing|have)\b/.test(text)) {
+          const trapLine = guide.trap ? ` This row also has a ${guide.trap}; text evidence must be readable.` : "";
+          reply = `${temperament} Seller path: name the exact row, state your condition claim, add source-labeled photos, then attach a fresh possession proof before any route can lock. For ${guide.name}, I would start with this evidence ask: ${guide.evidence}.${trapLine} If the buyer wants extra handling or photos, that attention cost should stay legible and can be credited back only if both agents agree.`;
+        } else if (/\b(fund|escrow|buy|want|looking|under|max|budget)\b|\$/.test(text)) {
+          reply = `${temperament} Buyer want shape: card row, No Rarity boundary, condition floor, maximum total price, route preference, and how much seller attention you are willing to ask for. Funding makes the want serious; it does not prove a seller's card is real. ${selectedLine}`;
+        } else if (/\b(price|pricing|comp|market|value|cost)\b/.test(text)) {
+          reply = `${temperament} I would leave price as agent discovery until live comps are pulled and timestamped. No Rarity pricing is thin, so an agent should separate raw comps, slab comps, condition uncertainty, route cost, insurance, seller attention, and verifier cost instead of flattening them too early.`;
+        } else if (/\b(evidence|photo|picture|verify|proof|real|rarity|symbol|authentic)\b/.test(text)) {
+          const trapLine = guide.trap ? ` Also: ${guide.trap} means the agent should compare text layout before treating the claim as clean.` : "";
+          reply = `${temperament} Evidence first means: catalog row is only a map, not proof. For ${guide.name}, ask for ${guide.evidence}.${trapLine} The protocol can remember which packets were cited at a gate; the agent still has to judge whether the images and claims actually make sense.`;
+        } else if (/\b(ship|shipping|route|insurance|local|meet|handoff|deliver)\b/.test(text)) {
+          reply = `${temperament} Route is its own cost field: shipping price, insurance, signature, location, local handoff, timing, and what happens if the package is damaged or missing. A route should lock only when the spendability packet and wall bundle agree about what evidence is allowed to move money.`;
+        } else if (/\b(browse|browsing|history|story|collector|curious|wander)\b/.test(text)) {
+          reply = `${temperament} Browse mode is good here. Look at the image first, then the missing-symbol boundary, then the profile. When a card catches you, I can turn that interest into a draft want with condition, budget, evidence, and contact preferences.`;
+        } else {
+          reply = `${temperament} I can help from either side of the table. Tell me a card and budget if you want to buy, or tell me what proof you already have if you want to sell. ${selectedLine}`;
+        }
+
+        appendGuideLine("Mote", reply);
+      }
+
+      function dataUrl() {
+        if (window.location.protocol === "file:") {
+          return "http://127.0.0.1:8765/data/no-rarity-base-set.json";
+        }
+        return "data/no-rarity-base-set.json";
+      }
+
+      function tableReference(card) {
+        const ref = card.no_rarity_reference || {};
+        if (ref.image_small || ref.image_large) {
+          return {
+            url: ref.image_small || ref.image_large,
+            label: "No Rarity ref",
+            line: ref.source || ""
+          };
+        }
+        return {url: "", label: "No substitute image", line: "exact ref missing"};
+      }
+
+      function profileFacts(card) {
+        const profile = card.pokemon_profile || {};
+        const facts = [];
+        if (card.no_rarity_target) {
+          facts.push("Active missing-symbol target");
+        } else {
+          facts.push("Basic Energy caveat");
+        }
+        facts.push(`${card.category || "Unknown"} · ${card.rarity_source || "rarity not supplied"}`);
+        if (card.holo_source) {
+          facts.push("Holo surface matters");
+        }
+        if (profile.types && profile.types.length) {
+          facts.push(`${profile.types.join("/")} · ${profile.stage || "stage not supplied"}`);
+        }
+        if (profile.dex_id && profile.dex_id.length) {
+          facts.push(`National Pokédex ${profile.dex_id.join(", ")}`);
+        }
+        if (card.category === "Energy" && !card.no_rarity_target) {
+          facts.push("Absence of a rarity symbol is not distinctive here");
+        }
+        return facts;
+      }
+
+      function factList(items) {
+        return items.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      }
+
+      function primaryReference(card) {
+        const ref = card.no_rarity_reference || {};
+        if (ref.image_large || ref.image_small) {
+          return {
+            url: ref.image_large || ref.image_small,
+            title: "No Rarity reference image",
+            caption: ref.image_role || "Source-labeled No Rarity reference image for this row.",
+            link: ref.source_page_url || ""
+          };
+        }
+        return {
+          url: "",
+          title: "No source-labeled No Rarity reference image",
+          caption: "No source-labeled no-rarity image found yet. The page will not show a regular Japanese print with a rarity mark.",
+          link: ""
+        };
+      }
+
+      function imageCard({title, url, caption, link, notClaiming, missing}) {
+        const image = missing
+          ? `<div class="image-missing" aria-label="No image available">?</div>`
+          : `<img src="${escapeHtml(url)}" alt="${escapeHtml(title)}">`;
+        const titleHtml = link
+          ? `<a href="${escapeHtml(link)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`
+          : escapeHtml(title);
+        const claims = (notClaiming || []).length
+          ? `<p class="small">Not claiming: ${escapeHtml(notClaiming.join(", "))}</p>`
+          : "";
+        return `
+          <article class="image-card">
+            ${image}
+            <h4>${titleHtml}</h4>
+            <p class="small">${escapeHtml(caption || "")}</p>
+            ${claims}
+          </article>
+        `;
+      }
+
+      function referenceImageCards(card) {
+        const ref = card.no_rarity_reference || {};
+        const cards = [];
+
+        if (ref.image_large || ref.image_small) {
+          cards.push({
+            title: `No Rarity reference${ref.provider_id ? ` ${ref.provider_id}` : ""}`,
+            url: ref.image_large || ref.image_small,
+            caption: ref.image_role,
+            link: ref.source_page_url,
+            notClaiming: ref.not_claiming
+          });
+        } else {
+          cards.push({
+            title: "No source-labeled No Rarity image",
+            caption: "This row has no exact No Rarity image yet. Regular Japanese prints with a rarity mark stay hidden.",
+            notClaiming: ["No Rarity truth"],
+            missing: true
+          });
+        }
+
+        (card.no_rarity_examples || []).forEach((example) => {
+          cards.push({
+            title: example.label,
+            url: example.image_url,
+            caption: example.role,
+            link: example.page_url,
+            notClaiming: example.not_claiming
+          });
+        });
+
+        return cards.map(imageCard).join("");
+      }
+
+      function imageCoverage() {
+        const cards = state.cards || [];
+        return {
+          noRarity: cards.filter((card) => card.no_rarity_reference?.image_small || card.no_rarity_reference?.image_large).length,
+          examples: cards.reduce((sum, card) => sum + (card.no_rarity_examples || []).length, 0)
+        };
+      }
+
+      function renderCategoryOptions(cards) {
+        const categories = [...new Set(cards.map((card) => card.category).filter(Boolean))].sort();
+        categories.forEach((category) => {
+          const option = document.createElement("option");
+          option.value = category;
+          option.textContent = category;
+          els.category.appendChild(option);
+        });
+      }
+
+      function renderSources(db) {
+        els.sources.innerHTML = "";
+        [...db.research_claims, ...db.sources].forEach((source) => {
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = source.url || source.docs;
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.textContent = source.source || source.name;
+          item.appendChild(link);
+          if (source.claim || source.role) {
+            item.append(` — ${source.claim || source.role}`);
+          }
+          els.sources.appendChild(item);
+        });
+      }
+
+      function setEntryList(items) {
+        return (items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      }
+
+      function detailList(items) {
+        return (items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      }
+
+      function identificationLayers(items) {
+        return (items || []).map((item) => `
+          <li>
+            <strong>${escapeHtml(item.name || "Gate")}</strong>
+            <p>${escapeHtml(item.question || "")}</p>
+            <p class="small"><strong>Look for:</strong> ${escapeHtml(item.look_for || "")}</p>
+            <p class="small"><strong>Failure mode:</strong> ${escapeHtml(item.failure_mode || "")}</p>
+            <p class="small"><strong>Protocol state:</strong> ${escapeHtml(item.protocol_state || "")}</p>
+          </li>
+        `).join("");
+      }
+
+      function pressureTests(items) {
+        return (items || []).map((item) => `
+          <li>
+            <strong>${escapeHtml(item.case || "Case")}</strong>
+            <p class="small"><strong>Risk:</strong> ${escapeHtml(item.risk || "")}</p>
+            <p class="small"><strong>Agent response:</strong> ${escapeHtml(item.agent_response || "")}</p>
+          </li>
+        `).join("");
+      }
+
+      function evidenceProfiles(items) {
+        return (items || []).map((item) => {
+          const costs = item.cost_field || {};
+          const costLine = [
+            `seller attention: ${costs.seller_attention || "n/a"}`,
+            `handling risk: ${costs.handling_risk || "n/a"}`,
+            `privacy: ${costs.privacy_exposure || "n/a"}`,
+            `verifier: ${costs.verifier_cost || "n/a"}`
+          ].join(" · ");
+          return `
+            <li>
+              <strong>${escapeHtml(item.id || "")} · ${escapeHtml(item.name || "Evidence profile")}</strong>
+              <p>${escapeHtml(item.applies_to || "")}</p>
+              <p class="small"><strong>Required:</strong> ${escapeHtml((item.required || []).join("; "))}</p>
+              <p class="small"><strong>Costs:</strong> ${escapeHtml(costLine)}</p>
+              <p class="small"><strong>Buys down:</strong> ${escapeHtml(costs.ambiguity_reduction || "")}</p>
+              <p class="small"><strong>Still not proving:</strong> ${escapeHtml((item.not_proving || []).join("; "))}</p>
+            </li>
+          `;
+        }).join("");
+      }
+
+      function pricingUncertainty(pricing) {
+        const data = pricing || {};
+        return `
+          <p class="pricing-sentence">${escapeHtml(data.human_sentence || "")}</p>
+          <p class="small"><strong>Agent rule:</strong> ${escapeHtml(data.agent_rule || "")}</p>
+          <h3>Price states</h3>
+          <ul>${setEntryList(data.price_states)}</ul>
+          <h3>Comp risks</h3>
+          <ul>${setEntryList(data.comp_risks)}</ul>
+          <h3>Human contact triggers</h3>
+          <ul>${setEntryList(data.agent_contact_triggers)}</ul>
+        `;
+      }
+
+      function renderSetEntry(db) {
+        const entry = db.set_entry || {};
+        const set = db.set || {};
+        const facts = [
+          ["Release", set.release_date || "1996-10-20"],
+          ["Booster checklist", set.strict_booster_checklist_cards || "96"],
+          ["Catalog rows", set.broader_family_rows_tracked || set.total_cards || "102"],
+          ["Active targets", set.no_rarity_target_cards || "96"],
+          ["Energy caveats", set.basic_energy_caveat_cards || "6"]
+        ].map(([label, value]) => `
+          <div class="set-fact">
+            <strong>${escapeHtml(label)}</strong>
+            <span>${escapeHtml(value)}</span>
+          </div>
+        `).join("");
+
+        els.setEntry.innerHTML = `
+          <h2>${escapeHtml(entry.title || "No Rarity set entry")}</h2>
+          <p class="subtitle">${escapeHtml(entry.subtitle || "")}</p>
+          <p class="lede">${escapeHtml(entry.short_read || "")}</p>
+          <p class="agent-note">${escapeHtml(entry.platform_context || "")}</p>
+          <div class="set-facts">${facts}</div>
+
+          <div class="set-entry-grid">
+            <section class="set-entry-block">
+              <h3>Historical context</h3>
+              <ul>${setEntryList(entry.historical_context)}</ul>
+            </section>
+            <section class="set-entry-block">
+              <h3>Why collectors care</h3>
+              <ul>${setEntryList(entry.why_collectors_care)}</ul>
+            </section>
+            <section class="set-entry-block">
+              <h3>How to identify it</h3>
+              <ul>${setEntryList(entry.identification_rules)}</ul>
+            </section>
+            <section class="set-entry-block">
+              <h3>Protocol boundary</h3>
+              <ul>${setEntryList(entry.protocol_implications)}</ul>
+            </section>
+          </div>
+
+          <details>
+            <summary>Corrections, products, and open questions</summary>
+            <div class="set-entry-grid">
+              <section class="set-entry-block">
+                <h3>Known corrections and tells</h3>
+                <ul>${setEntryList(entry.known_corrections_and_tells)}</ul>
+              </section>
+              <section class="set-entry-block">
+                <h3>Product context</h3>
+                <ul>${setEntryList(entry.product_context)}</ul>
+              </section>
+              <section class="set-entry-block">
+                <h3>Open questions</h3>
+                <ul>${setEntryList(entry.open_questions)}</ul>
+              </section>
+              <section class="set-entry-block">
+                <h3>Interesting threads</h3>
+                <ul>${setEntryList(entry.interesting_threads)}</ul>
+              </section>
+            </div>
+          </details>
+
+          <details>
+            <summary>Identification pressure test</summary>
+            <div class="set-entry-grid">
+              <section class="set-entry-block">
+                <h3>Claim gates</h3>
+                <ol class="layer-list">${identificationLayers(entry.identification_layers)}</ol>
+              </section>
+              <section class="set-entry-block">
+                <h3>Failure cases</h3>
+                <ol class="pressure-list">${pressureTests(entry.identification_pressure_tests)}</ol>
+              </section>
+            </div>
+          </details>
+
+          <details>
+            <summary>Evidence cost bridge</summary>
+            <div class="set-entry-grid">
+              <section class="set-entry-block">
+                <h3>Cost-field principles</h3>
+                <ul>${setEntryList(entry.cost_field_principles)}</ul>
+              </section>
+              <section class="set-entry-block">
+                <h3>No Rarity evidence profiles</h3>
+                <ol class="profile-list">${evidenceProfiles(entry.evidence_profiles)}</ol>
+              </section>
+            </div>
+          </details>
+
+          <details>
+            <summary>Agent discretion and pricing uncertainty</summary>
+            <div class="set-entry-grid">
+              <section class="set-entry-block">
+                <h3>Agent discretion</h3>
+                <ul>${setEntryList(entry.agent_discretion_principles)}</ul>
+              </section>
+              <section class="set-entry-block">
+                ${pricingUncertainty(entry.pricing_uncertainty)}
+              </section>
+            </div>
+          </details>
+        `;
+      }
+
+      function filteredCards() {
+        const query = normalize(els.query.value.trim());
+        const category = els.category.value;
+        return state.cards.filter((card) => {
+          if (els.targetsOnly.checked && !card.no_rarity_target) return false;
+          if (category && card.category !== category) return false;
+          if (query && !cardText(card).includes(query)) return false;
+          return true;
+        });
+      }
+
+      function render() {
+        const cards = filteredCards();
+        if (!selectedCardId || !cards.some((card) => card.tcgdex_id === selectedCardId)) {
+          selectedCardId = cards[0] ? cards[0].tcgdex_id : "";
+        }
+        const coverage = imageCoverage();
+        els.summary.textContent = `${cards.length} shown. ${state.db.set.no_rarity_target_cards} active targets, ${state.db.set.basic_energy_caveat_cards} basic-Energy caveats. ${coverage.noRarity} source-labeled No Rarity refs. No substitute images.`;
+        els.cards.innerHTML = "";
+        cards.forEach((card) => {
+          const row = document.createElement("tr");
+          row.dataset.cardId = card.tcgdex_id;
+          row.classList.toggle("selected", card.tcgdex_id === selectedCardId);
+          row.tabIndex = 0;
+
+          const ref = document.createElement("td");
+          ref.innerHTML = `
+            <strong>${escapeHtml(card.local_id)}</strong><br>
+            <span class="small">${escapeHtml(card.tcgdex_id)}</span><br>
+            <button class="plain-button" type="button">view</button>
+          `;
+
+          const cardCell = document.createElement("td");
+          const target = card.no_rarity_target
+            ? '<span class="tag target">missing-symbol target</span>'
+            : '<span class="tag">basic Energy caveat</span>';
+          const trap = (card.variant_traps || []).length
+            ? '<span class="tag target">text-check trap</span>'
+            : "";
+          cardCell.innerHTML = `
+            <strong>${escapeHtml(card.name_en)}</strong><br>
+            <span class="small">${escapeHtml(card.illustrator?.display || "Illus. not resolved")}</span><br>
+            <span class="small">${escapeHtml(card.category || "Unknown")} · ${escapeHtml(card.rarity_source || "rarity not supplied")}</span><br>
+            ${target}
+            ${trap}
+          `;
+
+          const evidence = document.createElement("td");
+          const note = card.collector_texture?.note || card.evidence_focus;
+          evidence.innerHTML = `
+            <div class="table-note">${escapeHtml(note)}</div>
+            <span class="small">${escapeHtml(card.evidence_focus)}</span>
+          `;
+
+          const image = document.createElement("td");
+          const refImage = tableReference(card);
+          if (refImage.url) {
+            const img = document.createElement("img");
+            img.src = refImage.url;
+            img.alt = `${refImage.label} for ${card.name_en}`;
+            img.className = "table-ref-img";
+            image.appendChild(img);
+          } else {
+            image.textContent = "No image";
+          }
+          const refLine = document.createElement("div");
+          refLine.className = "small";
+          refLine.textContent = `${refImage.label}${refImage.line ? ` · ${refImage.line}` : ""}`;
+          image.appendChild(refLine);
+
+          row.addEventListener("click", () => {
+            selectedCardId = card.tcgdex_id;
+            render();
+          });
+          row.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              selectedCardId = card.tcgdex_id;
+              render();
+            }
+          });
+
+          row.append(ref, cardCell, evidence, image);
+          els.cards.appendChild(row);
+        });
+        renderDetail(selectedCard());
+        updateGuideContext();
+      }
+
+      function renderDetail(card) {
+        if (!card) {
+          els.detail.textContent = "No matching cards.";
+          return;
+        }
+        const primary = primaryReference(card);
+        const profile = card.pokemon_profile || {};
+        const hasCardData = profile.hp || profile.stage || (profile.types || []).length || (profile.attacks || []).length || (profile.abilities || []).length;
+        const history = (card.history_notes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+        const collector = card.collector_texture || {};
+        const illustrator = card.illustrator || {};
+        const audit = card.information_audit || {};
+        const agentProfile = card.agent_decision_profile || {};
+        const productScope = card.product_scope || {};
+        const variantTraps = card.variant_traps || [];
+        const factTags = profileFacts(card).map((item) => `<span class="tag${item.includes("Active") ? " target" : ""}">${escapeHtml(item)}</span>`).join("");
+        const auditKeep = (audit.earns_keep || []).map((item) => `<li><strong>${escapeHtml(item.field)}:</strong> ${escapeHtml(item.why)} <span class="small">(${escapeHtml(item.surface || "context")})</span></li>`).join("");
+        const auditAgentOnly = (audit.agent_only || []).map((item) => `<li><strong>${escapeHtml(item.field)}:</strong> ${escapeHtml(item.why)}</li>`).join("");
+        const auditDisposable = (audit.disposable_from_primary_ui || []).map((item) => `<li><strong>${escapeHtml(item.field)}:</strong> ${escapeHtml(item.why)} <span class="small">${escapeHtml(item.action || "")}</span></li>`).join("");
+        const requirements = detailList(agentProfile.recommended_evidence || state.db.evidence_requirements || []);
+        const cardTells = detailList(agentProfile.card_specific_tells || []);
+        const agentKnows = detailList(agentProfile.what_agent_knows || []);
+        const agentDoesNotKnow = detailList(agentProfile.what_agent_does_not_know || []);
+        const agentEscalation = detailList(agentProfile.escalation_triggers || []);
+        const agentQuestions = detailList(agentProfile.agent_to_agent_questions || []);
+        const agentBoundaries = detailList(agentProfile.spendability_boundaries || []);
+        const variantTrapList = variantTraps.map((trap) => `
+          <li>
+            <strong>${escapeHtml(trap.name || "Variant trap")}</strong>
+            <p class="small">${escapeHtml(trap.risk || "")}</p>
+            <p class="small"><strong>Agent rule:</strong> ${escapeHtml(trap.agent_rule || "")}</p>
+            <p class="small"><strong>Ask for:</strong> ${escapeHtml((trap.evidence_request || []).join("; "))}</p>
+          </li>
+        `).join("");
+        const attacks = (profile.attacks || []).map((attack) => {
+          const cost = (attack.cost || []).join(", ");
+          const bits = [
+            attack.name || "attack",
+            attack.damage ? `${attack.damage} damage` : "",
+            cost ? `cost: ${cost}` : "",
+            attack.effect || ""
+          ].filter(Boolean);
+          return `<li>${escapeHtml(bits.join(" · "))}</li>`;
+        }).join("");
+        const abilities = (profile.abilities || []).map((ability) => {
+          const bits = [ability.type, ability.name, ability.effect].filter(Boolean);
+          return `<li>${escapeHtml(bits.join(" · "))}</li>`;
+        }).join("");
+        const reference = card.no_rarity_reference || {};
+        const referenceLine = reference.source_page_url
+          ? `<a href="${escapeHtml(reference.source_page_url)}" target="_blank" rel="noreferrer">${escapeHtml(reference.source || "source")}</a>`
+          : "No exact source-labeled image. No substitute image.";
+        const curatedImages = (card.no_rarity_examples || []).map((example) => imageCard({
+          title: example.label,
+          url: example.image_url,
+          caption: example.role,
+          link: example.page_url,
+          notClaiming: example.not_claiming
+        })).join("");
+        const moreImages = (card.no_rarity_examples || []).length
+          ? `
+              <details class="detail-block">
+                <summary>More images</summary>
+                <p class="small reference-warning">Images with a visible lower-right rarity mark are excluded. These are source-labeled No Rarity references or curated examples only.</p>
+                <div class="image-stack">${curatedImages}</div>
+              </details>
+            `
+          : "";
+        const cardData = hasCardData
+          ? `
+              <details class="detail-block">
+                <summary>Card data</summary>
+                <ul>
+                  ${profile.dex_id && profile.dex_id.length ? `<li>Dex id: ${escapeHtml(profile.dex_id.join(", "))}</li>` : ""}
+                  ${profile.hp ? `<li>HP: ${escapeHtml(profile.hp)}</li>` : ""}
+                  ${profile.types && profile.types.length ? `<li>Types: ${escapeHtml(profile.types.join(", "))}</li>` : ""}
+                  ${profile.stage ? `<li>Stage: ${escapeHtml(profile.stage)}</li>` : ""}
+                  ${profile.retreat ? `<li>Retreat: ${escapeHtml(profile.retreat)}</li>` : ""}
+                </ul>
+                ${abilities ? `<p class="small"><strong>Abilities</strong></p><ul>${abilities}</ul>` : ""}
+                ${attacks ? `<p class="small"><strong>Attacks</strong></p><ul>${attacks}</ul>` : ""}
+              </details>
+            `
+          : "";
+
+        els.detail.innerHTML = `
+          <div class="primary-reference">
+            ${primary.url ? `<img src="${escapeHtml(primary.url)}" alt="${escapeHtml(primary.title)} for ${escapeHtml(card.name_en)}">` : `<div class="image-missing" aria-label="No image available">?</div>`}
+            <p class="small"><strong>${escapeHtml(primary.title)}</strong></p>
+            <p class="small">${escapeHtml(primary.caption)}</p>
+          </div>
+          <div>
+            <h2>${escapeHtml(card.name_en)}</h2>
+            <p>
+              <strong>${escapeHtml(card.local_id)}</strong> · ${escapeHtml(card.tcgdex_id)}
+              · ${escapeHtml(card.category || "Unknown")}
+              · ${escapeHtml(card.rarity_source || "rarity not supplied")}
+            </p>
+            <p class="small">${escapeHtml(card.name_source_raw || "source name not supplied")} · ${escapeHtml(illustrator.display || "Illus. not resolved")}</p>
+            <div class="tag-row">${factTags}</div>
+            <p class="hero-note">${escapeHtml(collector.note || "No collector note yet.")}</p>
+            <ul class="decision-list">
+              <li><strong>Agent profile:</strong> ${escapeHtml(agentProfile.baseline_evidence_profile_id || "not assigned")} · ${escapeHtml(agentProfile.value_band || "not classified")}</li>
+              <li><strong>Pricing state:</strong> ${escapeHtml(agentProfile.pricing_state || "unpriced")}</li>
+              <li><strong>Product scope:</strong> ${productScope.strict_booster_member ? `Japanese booster order #${escapeHtml(productScope.japanese_booster_order)}` : escapeHtml(productScope.japanese_booster_section || "broader family caveat")}</li>
+              <li><strong>Evidence focus:</strong> ${escapeHtml(card.evidence_focus)}</li>
+              <li><strong>Reference:</strong> ${referenceLine}</li>
+              <li><strong>Illustrator authority:</strong> ${escapeHtml(illustrator.verification_status || "not resolved")}</li>
+            </ul>
+
+            <div class="detail-grid">
+              <details class="detail-block" open>
+                <summary>Agent decision profile</summary>
+                <p>${escapeHtml(agentProfile.agent_summary || "No agent profile yet.")}</p>
+                <p class="small"><strong>Baseline evidence:</strong> ${escapeHtml(agentProfile.baseline_evidence_profile_id || "n/a")} · ${escapeHtml(agentProfile.baseline_evidence_profile_name || "")}</p>
+                <p class="small"><strong>Conditional overlays:</strong> ${escapeHtml((agentProfile.conditional_overlays || []).join("; "))}</p>
+              </details>
+
+              <details class="detail-block" open>
+                <summary>Evidence ask</summary>
+                <ul>${requirements}</ul>
+              </details>
+
+              <details class="detail-block">
+                <summary>Agent knows / does not know</summary>
+                <p class="small"><strong>Knows</strong></p>
+                <ul>${agentKnows}</ul>
+                <p class="small"><strong>Does not know</strong></p>
+                <ul>${agentDoesNotKnow}</ul>
+              </details>
+
+              <details class="detail-block">
+                <summary>Escalation and agent questions</summary>
+                ${cardTells ? `<p class="small"><strong>Card-specific tells</strong></p><ul>${cardTells}</ul>` : ""}
+                <p class="small"><strong>Escalate when</strong></p>
+                <ul>${agentEscalation}</ul>
+                <p class="small"><strong>Ask seller agent</strong></p>
+                <ul>${agentQuestions}</ul>
+              </details>
+
+              <details class="detail-block">
+                <summary>Spendability boundaries</summary>
+                <ul>${agentBoundaries}</ul>
+              </details>
+
+              <details class="detail-block" ${variantTraps.length ? "open" : ""}>
+                <summary>Product order and variant traps</summary>
+                <p class="small">${escapeHtml(productScope.counting_note || "No product-scope note.")}</p>
+                ${productScope.strict_booster_member ? `<p class="small"><strong>Strict booster order:</strong> #${escapeHtml(productScope.japanese_booster_order)} · ${escapeHtml(productScope.japanese_booster_section || "")} · ${escapeHtml(productScope.japanese_name_from_research || "")} · ${escapeHtml(productScope.romaji_from_research || "")}</p>` : ""}
+                ${variantTrapList ? `<ul>${variantTrapList}</ul>` : `<p class="small">No special variant trap assigned beyond the ordinary No Rarity gates.</p>`}
+              </details>
+
+              <details class="detail-block">
+                <summary>Reference and authority</summary>
+                <ul>
+                  <li>TCGdex row: <a href="${escapeHtml(card.tcgdex.url)}" target="_blank" rel="noreferrer">${escapeHtml(card.tcgdex_id)}</a></li>
+                  <li>Japanese set id: ${escapeHtml(card.tcgdex.set_id)}</li>
+                  <li>No Rarity reference: ${referenceLine}</li>
+                  <li>Holo source: ${card.holo_source ? "yes" : "no"}</li>
+                  <li>${escapeHtml(illustrator.display || "Illus. not resolved")}</li>
+                  <li>Source: ${illustrator.source_url ? `<a href="${escapeHtml(illustrator.source_url)}" target="_blank" rel="noreferrer">${escapeHtml(illustrator.source || "source")}</a>` : escapeHtml(illustrator.source || "not resolved")}</li>
+                  <li>Status: ${escapeHtml(illustrator.verification_status || "not resolved")}</li>
+                  <li>${escapeHtml(illustrator.authority || "Metadata only.")}</li>
+                </ul>
+              </details>
+
+              <details class="detail-block">
+                <summary>Audit</summary>
+                <p>${escapeHtml(audit.verdict || "No audit yet.")}</p>
+                <p class="small">${escapeHtml(audit.audit_scope || "")}</p>
+                ${auditKeep ? `<p class="small"><strong>Earns its keep</strong></p><ul>${auditKeep}</ul>` : ""}
+                ${auditDisposable ? `<p class="small"><strong>Disposable from the primary UI</strong></p><ul>${auditDisposable}</ul>` : ""}
+                ${auditAgentOnly ? `<p class="small"><strong>Agent-only</strong></p><ul>${auditAgentOnly}</ul>` : ""}
+              </details>
+
+              ${cardData}
+              ${moreImages}
+
+              <details class="detail-block">
+                <summary>History and boundaries</summary>
+                <ul>
+                  <li>${card.no_rarity_target ? "Active missing-symbol target." : "Basic Energy caveat."}</li>
+                  <li>Profile: ${escapeHtml(card.no_rarity_profile)}</li>
+                  <li>Evidence focus: ${escapeHtml(card.evidence_focus)}</li>
+                  ${history}
+                  ${card.not_claiming.map((item) => `<li>Not claiming: ${escapeHtml(item)}</li>`).join("")}
+                </ul>
+              </details>
+            </div>
+          </div>
+        `;
+      }
+
+      async function boot() {
+        const response = await fetch(dataUrl());
+        if (!response.ok) {
+          throw new Error(`catalog load failed: ${response.status}`);
+        }
+        state.db = await response.json();
+        state.cards = state.db.cards;
+        renderCategoryOptions(state.cards);
+        renderSources(state.db);
+        renderSetEntry(state.db);
+        render();
+      }
+
+      els.query.addEventListener("input", render);
+      els.category.addEventListener("change", render);
+      els.targetsOnly.addEventListener("change", render);
+      els.guideForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const message = els.guideInput.value.trim();
+        if (!message) return;
+        appendGuideLine("You", message);
+        els.guideInput.value = "";
+        guideRespond(message);
+      });
+      document.querySelectorAll("[data-guide-prompt]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const message = button.dataset.guidePrompt;
+          appendGuideLine("You", button.textContent.trim());
+          guideRespond(message);
+        });
+      });
+      boot().catch(() => {
+        els.summary.textContent = "Could not load the No Rarity database. Use the local server on port 8765, then reload this page.";
+      });
+    </script>
+  </body>
+</html>

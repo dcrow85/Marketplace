@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:arbiter:anvil-4\",\"bond_eth\":\"1.0\",\"conflict_policy\":\"replacement_requires_buyer_and_seller_approval\",\"jurisdiction\":\"local-anvil-probe\",\"schema\":\"marketplace.arbiter_record.v0.2\",\"scope\":[\"claim_takeover\",\"tcg_single_card\",\"condition_claim\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:arbiter:anvil-4",
+    "bond_eth": "1.0",
+    "conflict_policy": "replacement_requires_buyer_and_seller_approval",
+    "jurisdiction": "local-anvil-probe",
+    "schema": "marketplace.arbiter_record.v0.2",
+    "scope": [
+      "claim_takeover",
+      "tcg_single_card",
+      "condition_claim"
+    ]
+  },
+  "payload_hash": "0xb258ca210e4b4df25b5fc896b5478bad46e53dd183672bb9a68e63e389cb770d",
+  "signature": "0xf6aeebeb462124839ce7a8c8703efdda286f25e01b7b44ac6158d9be4c37478f3b9aeb1394378cc2af91b37912755d74cfa1372c2fa76b0d6b20f3785342d66b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+}

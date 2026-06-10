@@ -1,0 +1,55 @@
+{
+  "canonical_payload": "{\"card\":\"Corocoro Mew\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"media_manifest\":[{\"availability\":\"simulated\",\"type\":\"front_photo\"},{\"availability\":\"simulated\",\"type\":\"back_photo\"},{\"availability\":\"simulated\",\"type\":\"flaw_callout\"}],\"required_evidence\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"high_res_scans\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\",\"verifier_note\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"seller_disclosures\":[\"evidence packet\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc\",\"friction_policy\":\"sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede\",\"intent\":\"sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2\",\"seller_offer\":\"sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7\"},\"source_simulation_trade\":\"SIM-0030\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Corocoro Mew",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "media_manifest": [
+      {
+        "availability": "simulated",
+        "type": "front_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "back_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "flaw_callout"
+      }
+    ],
+    "required_evidence": [
+      "back_photo",
+      "carrier_acceptance",
+      "corner_closeups",
+      "escrow_terms",
+      "flaw_callouts",
+      "front_photo",
+      "high_res_scans",
+      "holo_angle_closeups",
+      "insurance_or_gap_owner",
+      "locked_inventory_packet",
+      "received_item_photos",
+      "route_packet",
+      "tracking_history",
+      "verifier_note"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "seller_disclosures": [
+      "evidence packet"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc",
+      "friction_policy": "sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede",
+      "intent": "sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2",
+      "seller_offer": "sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7"
+    },
+    "source_simulation_trade": "SIM-0030"
+  },
+  "payload_hash": "0x20bbaafc88f05011c2f009dd66212d6a145b85ba30ca6c72df53c56a99a0feb8",
+  "signature": "0x5caf55ab0a8154293a5cbf200f585e060bed71ccac4c9874ed019cd1eee82f980347e600a50594733f79d721ce45f2b2e0029c6a35bfd6e7439819c459f904721c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,2791 @@
+{
+  "decision_counts": {
+    "accept_or_continue": 10,
+    "accept_with_waiver": 1,
+    "blocked": 15,
+    "continue_with_recorded_waiver": 3,
+    "escalate": 3,
+    "escalate_with_matrix_row": 1,
+    "request_more_evidence": 1,
+    "semantic_attack_contained": 1
+  },
+  "generated_at": "2026-06-09T15:04:59Z",
+  "pass": true,
+  "rows": [
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "original_offer",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "card_reference_packet"
+          ],
+          "notes": "pokemon alpha needs a catalog candidate or explicit database-gap reference",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "arbiter_policy_hash",
+            "bond_scope_packet",
+            "card_reference_packet",
+            "evidence_profile_id",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope_packet",
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "hard acceptance packet missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "bond_scope_packet"
+          ],
+          "notes": "bond scope packet missing",
+          "outcome": "block",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "proof_vector_scope_packet"
+          ],
+          "notes": "proof vector scope packet missing",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "route risk owner packet missing",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "original_offer",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "card_reference_packet"
+          ],
+          "notes": "pokemon alpha needs a catalog candidate or explicit database-gap reference",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "arbiter_policy_hash",
+            "bond_scope_packet",
+            "card_reference_packet",
+            "evidence_profile_id",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope_packet",
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "hard acceptance packet missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "bond_scope_packet"
+          ],
+          "notes": "bond scope packet missing",
+          "outcome": "block",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "proof_vector_scope_packet"
+          ],
+          "notes": "proof vector scope packet missing",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "route risk owner packet missing",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "original_offer",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "card_reference_packet"
+          ],
+          "notes": "pokemon alpha needs a catalog candidate or explicit database-gap reference",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "arbiter_policy_hash",
+            "bond_scope_packet",
+            "card_reference_packet",
+            "evidence_profile_id",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope_packet",
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "hard acceptance packet missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "bond_scope_packet"
+          ],
+          "notes": "bond scope packet missing",
+          "outcome": "block",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "proof_vector_scope_packet"
+          ],
+          "notes": "proof vector scope packet missing",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "route risk owner packet missing",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "original_offer",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "card_reference_packet"
+          ],
+          "notes": "pokemon alpha needs a catalog candidate or explicit database-gap reference",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "arbiter_policy_hash",
+            "bond_scope_packet",
+            "card_reference_packet",
+            "evidence_profile_id",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope_packet",
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "hard acceptance packet missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "bond_scope_packet"
+          ],
+          "notes": "bond scope packet missing",
+          "outcome": "block",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "proof_vector_scope_packet"
+          ],
+          "notes": "proof vector scope packet missing",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "route risk owner packet missing",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "original_offer",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "card_reference_packet"
+          ],
+          "notes": "pokemon alpha needs a catalog candidate or explicit database-gap reference",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "arbiter_policy_hash",
+            "bond_scope_packet",
+            "card_reference_packet",
+            "evidence_profile_id",
+            "inventory_lock_hash",
+            "item_fingerprint_hash",
+            "proof_vector_scope_packet",
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "hard acceptance packet missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "bond_scope_packet"
+          ],
+          "notes": "bond scope packet missing",
+          "outcome": "block",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "proof_vector_scope_packet"
+          ],
+          "notes": "proof vector scope packet missing",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "route_insurance_risk_owner_packet"
+          ],
+          "notes": "route risk owner packet missing",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "request_more_evidence",
+      "rationale": "strict buyer refuses waiver path by default",
+      "scenario_id": "scoped_offer_with_buyer_waiver",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "edge_or_border_closeups",
+            "external_availability_covenant",
+            "four_corner_closeups",
+            "fresh_nonce_possession",
+            "surface_or_holo_angle"
+          ],
+          "notes": "buyer accepted unresolved risk with consequences",
+          "outcome": "waived",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "waiver is explicit and scoped",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "buyer accepted that inventory lock is protocol-local only",
+          "outcome": "waived",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_with_waiver",
+      "rationale": "allowed only as unresolved risk",
+      "scenario_id": "scoped_offer_with_buyer_waiver",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "edge_or_border_closeups",
+            "external_availability_covenant",
+            "four_corner_closeups",
+            "fresh_nonce_possession",
+            "surface_or_holo_angle"
+          ],
+          "notes": "buyer accepted unresolved risk with consequences",
+          "outcome": "waived",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "waiver is explicit and scoped",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "buyer accepted that inventory lock is protocol-local only",
+          "outcome": "waived",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "continue_with_recorded_waiver",
+      "rationale": "waived ambiguity remains visible in the trade state",
+      "scenario_id": "scoped_offer_with_buyer_waiver",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "edge_or_border_closeups",
+            "external_availability_covenant",
+            "four_corner_closeups",
+            "fresh_nonce_possession",
+            "surface_or_holo_angle"
+          ],
+          "notes": "buyer accepted unresolved risk with consequences",
+          "outcome": "waived",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "waiver is explicit and scoped",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "buyer accepted that inventory lock is protocol-local only",
+          "outcome": "waived",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "continue_with_recorded_waiver",
+      "rationale": "waived ambiguity remains visible in the trade state",
+      "scenario_id": "scoped_offer_with_buyer_waiver",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "edge_or_border_closeups",
+            "external_availability_covenant",
+            "four_corner_closeups",
+            "fresh_nonce_possession",
+            "surface_or_holo_angle"
+          ],
+          "notes": "buyer accepted unresolved risk with consequences",
+          "outcome": "waived",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "waiver is explicit and scoped",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "buyer accepted that inventory lock is protocol-local only",
+          "outcome": "waived",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "continue_with_recorded_waiver",
+      "rationale": "waived ambiguity remains visible in the trade state",
+      "scenario_id": "scoped_offer_with_buyer_waiver",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "edge_or_border_closeups",
+            "external_availability_covenant",
+            "four_corner_closeups",
+            "fresh_nonce_possession",
+            "surface_or_holo_angle"
+          ],
+          "notes": "buyer accepted unresolved risk with consequences",
+          "outcome": "waived",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "waiver is explicit and scoped",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "buyer accepted that inventory lock is protocol-local only",
+          "outcome": "waived",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "full_wall_compliant_offer",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "full_wall_compliant_offer",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "full_wall_compliant_offer",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "full_wall_compliant_offer",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "full_wall_compliant_offer",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "outside_scope_magic_card",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [
+            "game:pokemon",
+            "trade_template:pokemon_single_card_alpha"
+          ],
+          "notes": "blocked_outside_alpha_scope",
+          "outcome": "block",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "outside_scope_magic_card",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [
+            "game:pokemon",
+            "trade_template:pokemon_single_card_alpha"
+          ],
+          "notes": "blocked_outside_alpha_scope",
+          "outcome": "block",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "outside_scope_magic_card",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [
+            "game:pokemon",
+            "trade_template:pokemon_single_card_alpha"
+          ],
+          "notes": "blocked_outside_alpha_scope",
+          "outcome": "block",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "outside_scope_magic_card",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [
+            "game:pokemon",
+            "trade_template:pokemon_single_card_alpha"
+          ],
+          "notes": "blocked_outside_alpha_scope",
+          "outcome": "block",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "outside_scope_magic_card",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [
+            "game:pokemon",
+            "trade_template:pokemon_single_card_alpha"
+          ],
+          "notes": "blocked_outside_alpha_scope",
+          "outcome": "block",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "adversarial_hash_compliant_offer",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "condition",
+            "possession",
+            "seller_card_language"
+          ],
+          "notes": "catalog reference can launder database identity into physical truth",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "flaw_callouts"
+          ],
+          "notes": "non-waivable raw-card evidence missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "failure_to_cure",
+            "material_condition_mismatch",
+            "route_negligence",
+            "underinsurance_without_buyer_acceptance",
+            "wrong_item"
+          ],
+          "notes": "bond does not cover all default alpha failures",
+          "outcome": "waiver_required",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "current_possession",
+            "raw_card_condition"
+          ],
+          "notes": "proof vector can launder seller proof into object proof",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "risk_owner_for_gap"
+          ],
+          "notes": "insurance gap not assigned",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "adversarial_hash_compliant_offer",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "condition",
+            "possession",
+            "seller_card_language"
+          ],
+          "notes": "catalog reference can launder database identity into physical truth",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "flaw_callouts"
+          ],
+          "notes": "non-waivable raw-card evidence missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "failure_to_cure",
+            "material_condition_mismatch",
+            "route_negligence",
+            "underinsurance_without_buyer_acceptance",
+            "wrong_item"
+          ],
+          "notes": "bond does not cover all default alpha failures",
+          "outcome": "waiver_required",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "current_possession",
+            "raw_card_condition"
+          ],
+          "notes": "proof vector can launder seller proof into object proof",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "risk_owner_for_gap"
+          ],
+          "notes": "insurance gap not assigned",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "adversarial_hash_compliant_offer",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "condition",
+            "possession",
+            "seller_card_language"
+          ],
+          "notes": "catalog reference can launder database identity into physical truth",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "flaw_callouts"
+          ],
+          "notes": "non-waivable raw-card evidence missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "failure_to_cure",
+            "material_condition_mismatch",
+            "route_negligence",
+            "underinsurance_without_buyer_acceptance",
+            "wrong_item"
+          ],
+          "notes": "bond does not cover all default alpha failures",
+          "outcome": "waiver_required",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "current_possession",
+            "raw_card_condition"
+          ],
+          "notes": "proof vector can launder seller proof into object proof",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "risk_owner_for_gap"
+          ],
+          "notes": "insurance gap not assigned",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "adversarial_hash_compliant_offer",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "condition",
+            "possession",
+            "seller_card_language"
+          ],
+          "notes": "catalog reference can launder database identity into physical truth",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "flaw_callouts"
+          ],
+          "notes": "non-waivable raw-card evidence missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "failure_to_cure",
+            "material_condition_mismatch",
+            "route_negligence",
+            "underinsurance_without_buyer_acceptance",
+            "wrong_item"
+          ],
+          "notes": "bond does not cover all default alpha failures",
+          "outcome": "waiver_required",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "current_possession",
+            "raw_card_condition"
+          ],
+          "notes": "proof vector can launder seller proof into object proof",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "risk_owner_for_gap"
+          ],
+          "notes": "insurance gap not assigned",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "blocked",
+      "rationale": "hard wall missing; agent cannot narrate around it",
+      "scenario_id": "adversarial_hash_compliant_offer",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "condition",
+            "possession",
+            "seller_card_language"
+          ],
+          "notes": "catalog reference can launder database identity into physical truth",
+          "outcome": "block",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "flaw_callouts"
+          ],
+          "notes": "non-waivable raw-card evidence missing",
+          "outcome": "block",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "failure_to_cure",
+            "material_condition_mismatch",
+            "route_negligence",
+            "underinsurance_without_buyer_acceptance",
+            "wrong_item"
+          ],
+          "notes": "bond does not cover all default alpha failures",
+          "outcome": "waiver_required",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [
+            "authenticity",
+            "current_possession",
+            "raw_card_condition"
+          ],
+          "notes": "proof vector can launder seller proof into object proof",
+          "outcome": "block",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "enforced",
+          "missing": [
+            "risk_owner_for_gap"
+          ],
+          "notes": "insurance gap not assigned",
+          "outcome": "block",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "external_availability_covenant"
+          ],
+          "notes": "external sale risk remains unaccepted",
+          "outcome": "waiver_required",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no claim opened",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "escalate",
+      "rationale": "judgment required under policy",
+      "scenario_id": "claim_closure_missing_buyer_evidence",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "wrong_item:buyer:arrival_photos",
+            "wrong_item:buyer:return_fingerprint",
+            "condition_downgrade:buyer:immediate_arrival_photos",
+            "empty_package:buyer:opening_sequence",
+            "empty_package:buyer:package_exterior"
+          ],
+          "notes": "claim row named missing evidence instead of improvising",
+          "outcome": "escalate",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "escalate",
+      "rationale": "judgment required under policy",
+      "scenario_id": "claim_closure_missing_buyer_evidence",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "wrong_item:buyer:arrival_photos",
+            "wrong_item:buyer:return_fingerprint",
+            "condition_downgrade:buyer:immediate_arrival_photos",
+            "empty_package:buyer:opening_sequence",
+            "empty_package:buyer:package_exterior"
+          ],
+          "notes": "claim row named missing evidence instead of improvising",
+          "outcome": "escalate",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "escalate",
+      "rationale": "judgment required under policy",
+      "scenario_id": "claim_closure_missing_buyer_evidence",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "wrong_item:buyer:arrival_photos",
+            "wrong_item:buyer:return_fingerprint",
+            "condition_downgrade:buyer:immediate_arrival_photos",
+            "empty_package:buyer:opening_sequence",
+            "empty_package:buyer:package_exterior"
+          ],
+          "notes": "claim row named missing evidence instead of improvising",
+          "outcome": "escalate",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "semantic_attack_contained",
+      "rationale": "ambiguity stayed legible instead of becoming trust",
+      "scenario_id": "claim_closure_missing_buyer_evidence",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "wrong_item:buyer:arrival_photos",
+            "wrong_item:buyer:return_fingerprint",
+            "condition_downgrade:buyer:immediate_arrival_photos",
+            "empty_package:buyer:opening_sequence",
+            "empty_package:buyer:package_exterior"
+          ],
+          "notes": "claim row named missing evidence instead of improvising",
+          "outcome": "escalate",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "escalate_with_matrix_row",
+      "rationale": "arbiter names missing evidence under policy",
+      "scenario_id": "claim_closure_missing_buyer_evidence",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [
+            "wrong_item:buyer:arrival_photos",
+            "wrong_item:buyer:return_fingerprint",
+            "condition_downgrade:buyer:immediate_arrival_photos",
+            "empty_package:buyer:opening_sequence",
+            "empty_package:buyer:package_exterior"
+          ],
+          "notes": "claim row named missing evidence instead of improvising",
+          "outcome": "escalate",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "claim_closure_with_required_evidence",
+      "variant": "strict_boundary_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "claim evidence satisfies matrix rows",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "claim_closure_with_required_evidence",
+      "variant": "convenience_first_buyer",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "claim evidence satisfies matrix rows",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "claim_closure_with_required_evidence",
+      "variant": "seller_friendly_market_maker",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "claim evidence satisfies matrix rows",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "claim_closure_with_required_evidence",
+      "variant": "adversarial_seller",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "claim evidence satisfies matrix rows",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    },
+    {
+      "decision": "accept_or_continue",
+      "rationale": "all active walls passed",
+      "scenario_id": "claim_closure_with_required_evidence",
+      "variant": "arbiter_policy_agent",
+      "wall_results": [
+        {
+          "label": "enforced",
+          "missing": [],
+          "notes": "pokemon single-card alpha scope satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ALPHA_SCOPE"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "catalog candidate is scoped and bounded",
+          "outcome": "pass",
+          "wall_id": "CardReferenceCandidate"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "raw-card acceptance profile satisfied",
+          "outcome": "pass",
+          "wall_id": "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "no waiver attempted",
+          "outcome": "pass",
+          "wall_id": "BuyerRiskAcceptance"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "bond coverage scoped",
+          "outcome": "pass",
+          "wall_id": "BondScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "positive claims and not-claiming boundaries present",
+          "outcome": "pass",
+          "wall_id": "ProofVectorScope"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "route amount, declared value, and gap owner are explicit",
+          "outcome": "pass",
+          "wall_id": "RouteInsuranceRiskOwner"
+        },
+        {
+          "label": "legible",
+          "missing": [],
+          "notes": "seller signed external availability promise",
+          "outcome": "pass",
+          "wall_id": "ExternalAvailabilityCovenant"
+        },
+        {
+          "label": "judged",
+          "missing": [],
+          "notes": "claim evidence satisfies matrix rows",
+          "outcome": "pass",
+          "wall_id": "ClaimClosureEvidenceMatrix"
+        }
+      ]
+    }
+  ],
+  "run_count": 35,
+  "scenario_count": 7,
+  "silent_accepts": 0,
+  "uncontained_adversarial_attacks": 0,
+  "variant_count": 5
+}

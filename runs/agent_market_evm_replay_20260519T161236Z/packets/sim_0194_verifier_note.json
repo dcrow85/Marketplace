@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"evidence_tier\":\"standard\",\"noted_gaps\":[\"human_arbiter_selected_prelock\"],\"opinion\":\"condition delta can be packetized for arbiter review\",\"schema\":\"marketplace.verifier_note.v0.2\",\"scope\":[\"packet_completeness\",\"route_claim_readiness\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024\",\"friction_policy\":\"sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184\",\"intent\":\"sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e\",\"seller_offer\":\"sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f\"},\"source_simulation_trade\":\"SIM-0194\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_tier": "standard",
+    "noted_gaps": [
+      "human_arbiter_selected_prelock"
+    ],
+    "opinion": "condition delta can be packetized for arbiter review",
+    "schema": "marketplace.verifier_note.v0.2",
+    "scope": [
+      "packet_completeness",
+      "route_claim_readiness"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:f8761948e3d09e6830ed1e3e2c5e3172bd67e430e54c21e71d852e6a3904a024",
+      "friction_policy": "sha256:fedd67ddb42771adc4e5fd029f790b86a8a84e9cc4897fa76de26aaaa20a3184",
+      "intent": "sha256:758330044b916d7788934858189764e209a28e13e27bbbaa37d262760505766e",
+      "seller_offer": "sha256:7615bc2d758d59bbc4c2eb2aac07d9f8ecd66cc75f50c67bd67894dfcee5ab8f"
+    },
+    "source_simulation_trade": "SIM-0194"
+  },
+  "payload_hash": "0xb9e78293c3e423e24b3b422afa6eefb6c0b1d94f370eb364890c7ea8294370c3",
+  "signature": "0x6b59af9544d9a9faf0ce5adbf6795146521963c85d66597b71f4374b0b4a5f8c6b303488d8447e132534493477aeb9938665910f3a623071ffe63e0c61d618991b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

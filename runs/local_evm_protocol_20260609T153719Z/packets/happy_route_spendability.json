@@ -1,0 +1,65 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":\"0x1d161675a5f0ce935d2ec7fc35929ee5d1656ab7db93e08893bc69eb3ea47d66\",\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:agent:buyer-alpha\",\"actor_role\":\"buyer_agent\",\"authority_hash\":\"0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"route_commitment:1:insured-route\",\"gate_type\":\"route_commitment\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-09T15:37:22.167435+00:00\",\"issued_by\":\"did:market:agent:buyer-alpha\",\"issued_role\":\"buyer_agent\",\"manifest_hash\":\"0x421fd829fe02fbb4ed4385b79de9065e2b930de0093dfaa988a9e8b4293d0395\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0x9018faec1832fa729e4ddb164d105e25fff8fe28ed5a5339d83139a42b4f40eb\",\"requires\":[\"buyer_ack\",\"verifier_attestation\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"happy_route_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"identity_support\",\"not_claiming\":[\"authenticity\",\"condition_floor\"],\"spend_limit\":\"blocks_or_unblocks_gate\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":1,\"wall_bundle_hash\":\"0x4387903814cf6576bc53ab8f29e32df1bb07fba76360d1f8249c469acec7fe0a\",\"window\":{\"after_state\":{\"state_hash\":\"0xa3b6ce48bbcdd7589f1972fc622a1b566422c3546b7065c887e2e94301c87209\",\"state_name\":\"EvidencePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": "0x1d161675a5f0ce935d2ec7fc35929ee5d1656ab7db93e08893bc69eb3ea47d66",
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:agent:buyer-alpha",
+      "actor_role": "buyer_agent",
+      "authority_hash": "0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "route_commitment:1:insured-route",
+      "gate_type": "route_commitment",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-09T15:37:22.167435+00:00",
+    "issued_by": "did:market:agent:buyer-alpha",
+    "issued_role": "buyer_agent",
+    "manifest_hash": "0x421fd829fe02fbb4ed4385b79de9065e2b930de0093dfaa988a9e8b4293d0395",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0x9018faec1832fa729e4ddb164d105e25fff8fe28ed5a5339d83139a42b4f40eb",
+    "requires": [
+      "buyer_ack",
+      "verifier_attestation"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "happy_route_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "identity_support",
+        "not_claiming": [
+          "authenticity",
+          "condition_floor"
+        ],
+        "spend_limit": "blocks_or_unblocks_gate",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 1,
+    "wall_bundle_hash": "0x4387903814cf6576bc53ab8f29e32df1bb07fba76360d1f8249c469acec7fe0a",
+    "window": {
+      "after_state": {
+        "state_hash": "0xa3b6ce48bbcdd7589f1972fc622a1b566422c3546b7065c887e2e94301c87209",
+        "state_name": "EvidencePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0x93ba37f1d96552bdd732b2e2fa5ea50a0d94a9cc18b757e31cc6f75e3584832d",
+  "signature": "0xa07463fb20f200e0ca3867f3a05eb04e90d38f32ca66a70125c76322050347807dfac46b58859993c3517a79e764591dec8204b8844313390f3914754e07610b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.0128\",\"claim_evidence_hash\":\"0x527fa8ade56dca104c6ae446ec1474ee29755359fd7774a14d65e5ed232cee64\",\"claim_type\":\"condition_mismatch\",\"not_claiming\":[\"seller_bad_faith\",\"automatic_refund\",\"authenticity_failure\"],\"opened_by\":\"did:market:buyer:anvil-0\",\"requested_remedy\":\"arbiter_review_partial_refund_or_return_path\",\"schema\":\"marketplace.claim.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.0128",
+    "claim_evidence_hash": "0x527fa8ade56dca104c6ae446ec1474ee29755359fd7774a14d65e5ed232cee64",
+    "claim_type": "condition_mismatch",
+    "not_claiming": [
+      "seller_bad_faith",
+      "automatic_refund",
+      "authenticity_failure"
+    ],
+    "opened_by": "did:market:buyer:anvil-0",
+    "requested_remedy": "arbiter_review_partial_refund_or_return_path",
+    "schema": "marketplace.claim.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x6f1d8a85b5f6830565a1f3def477f2ce3ad5069efc1996b015ecbfa228f0e9b0",
+  "signature": "0xfbd91c514edb25a4b90b285cd8ec0fffe316a53b429d3f948718d4593656a91908e5aceec23d5638cd8a3ae145e01f48c98a1278467652c0515b9eefc0768e421c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

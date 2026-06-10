@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:collision-drill\",\"cost_field\":{\"attention_budget\":\"challenge_when_identity_conflicts\",\"evidence_floor\":[\"front_photo\",\"back_photo\",\"custody_nonce_or_waiver\"],\"max_total_price_eth\":\"0.20\"},\"object\":{\"domain\":\"tcg\",\"game\":\"pokemon\",\"title\":\"Front reuse attack card\",\"value_band\":\"mid\"},\"schema\":\"marketplace.intent.v0.2\",\"trade_id\":8}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:collision-drill",
+    "cost_field": {
+      "attention_budget": "challenge_when_identity_conflicts",
+      "evidence_floor": [
+        "front_photo",
+        "back_photo",
+        "custody_nonce_or_waiver"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "object": {
+      "domain": "tcg",
+      "game": "pokemon",
+      "title": "Front reuse attack card",
+      "value_band": "mid"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "trade_id": 8
+  },
+  "payload_hash": "0x5c61534ef33a25eb574328d454c8df358320aa6c50d6ccc4881b5ef79a6ee0bb",
+  "signature": "0x65831c6df83c05871b4ef174f50b6b1f10cceb7f8c5b7857e6503630d52f00a658e49956e9750b78beed9afa6453e448b0da14fe41b26c47185aa556d460467f1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

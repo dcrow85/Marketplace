@@ -1,0 +1,26 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"cost_field\":{\"max_total_price_eth\":\"0.60\",\"replacement_arbiter_allowed_if\":[\"original_revoked\",\"buyer_seller_cosign\"]},\"intent_id\":\"intent_replacement_001\",\"object\":{\"card\":\"mid-value raw card\",\"condition_floor\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "cost_field": {
+      "max_total_price_eth": "0.60",
+      "replacement_arbiter_allowed_if": [
+        "original_revoked",
+        "buyer_seller_cosign"
+      ]
+    },
+    "intent_id": "intent_replacement_001",
+    "object": {
+      "card": "mid-value raw card",
+      "condition_floor": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0xd16d227a2f5438e801bf3d2865156985f55471c20c471e678ba0642bf2113e47",
+  "signature": "0x04862ddb488da697dd63017bb31ef9b1f5954776edbb4733093978dc9b70e45637b558a70224f8d693c9e2910028e2b2d38513589d662525f0a24674429b120b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

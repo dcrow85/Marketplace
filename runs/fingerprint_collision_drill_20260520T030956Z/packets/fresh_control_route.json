@@ -1,0 +1,18 @@
+{
+  "canonical_payload": "{\"carrier\":\"simulated_usps\",\"declared_insurance_eth\":\"0.20\",\"insured\":true,\"item_fingerprint_hash\":\"0xb9988b8750ff56dd4867d48fd04526576e8f192322dd09c1408db9ca1253cd09\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-CONTROL-0011\",\"trade_id\":11}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier": "simulated_usps",
+    "declared_insurance_eth": "0.20",
+    "insured": true,
+    "item_fingerprint_hash": "0xb9988b8750ff56dd4867d48fd04526576e8f192322dd09c1408db9ca1253cd09",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-CONTROL-0011",
+    "trade_id": 11
+  },
+  "payload_hash": "0xd303878d68d089c03ae0ca04b99dd5f185e5af5d47f622df5373989253e4874e",
+  "signature": "0xb4b2bdee28a4500e0ffa0ec5eaa516f1578fd88d451c7db25b995f1255f9ae742f0804d138ff8283b51a3c7a73876f34904cc56732cd0bb4d7433ae7980dd4821c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

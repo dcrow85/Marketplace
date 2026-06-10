@@ -1,0 +1,49 @@
+# macOS / editor noise
+.DS_Store
+*.swp
+*.swo
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# JavaScript / package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local API/model/data caches
+.cache/
+
+# Foundry / local EVM build artifacts
+chain/cache/
+chain/out/
+chain/broadcast/
+chain/.gas-snapshot
+
+# Bulky generated simulation artifacts.
+# Keep reports, summaries, selected trades, and markdown pressure notes trackable.
+runs/**/*.jsonl
+runs/**/*.png
+runs/**/*.jpg
+runs/**/*.jpeg
+runs/**/*.webp
+runs/**/*.gif
+runs/**/*.mp4
+
+# Browser/UI verification screenshots at the project root.
+*-preview.png
+*-verified.png
+*-final.png
+*-first-touch.png
+
+# Public-repo safety: keep asset manifests/metadata, not raw local or scraped
+# image corpora. These can be restored locally or moved to controlled storage.
+datasets/no-rarity-lab/assets/
+test-fixtures/
+screenshots/

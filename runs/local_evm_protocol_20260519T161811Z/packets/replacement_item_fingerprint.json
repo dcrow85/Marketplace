@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"confidence_scope\":\"medium_for_raw_card_identity\",\"correlation_method\":[\"visual_match\",\"seller_custody_nonce\"],\"evidence_refs\":[{\"ref\":\"seller_scan_hash\",\"type\":\"seller_scan\"}],\"identity_claim\":{\"card\":\"mid-value raw card\",\"condition_claim\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"privacy_policy\":\"buyer_and_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "confidence_scope": "medium_for_raw_card_identity",
+    "correlation_method": [
+      "visual_match",
+      "seller_custody_nonce"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "seller_scan_hash",
+        "type": "seller_scan"
+      }
+    ],
+    "identity_claim": {
+      "card": "mid-value raw card",
+      "condition_claim": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "privacy_policy": "buyer_and_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 3
+  },
+  "payload_hash": "0x8dcd9aff7eb44b0607f46f0cce9c9fe62bbb9697c88aeec63d27b755b6e9e36b",
+  "signature": "0x5a0d33e7fc5ddf778b0346134427acaa270ef23d17988d5d5d558d042050cdf00372e1f504e0ccb72a45444d5f3f07848a63d6c3fdd231a30a225a91a44db7591b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

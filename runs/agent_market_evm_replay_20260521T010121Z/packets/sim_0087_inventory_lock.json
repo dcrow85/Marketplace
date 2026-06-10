@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Carddass prism oddball\",\"condition_claim\":\"LP+\",\"inventory_key\":\"tcg:pokemon:sim-0087\",\"item_fingerprint_hash\":\"0x3bbf4d85bb5c31c9c8e75d7faecbca63bd257d7313c1544f44071366a9852e3c\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:d77b06e621c753e44bf14ae53c7cbbd442e917b5a63c5bb5135db3c5dac2cb2d\",\"escrow_terms\":\"sha256:1cb5b588f0ceb04f4a3eb6842d7cb9deb4bd4c94e43956e71e7d6e31cc0c6ef9\",\"friction_policy\":\"sha256:45e40b38d33a9014bdd069c06df0246a3f27bfe720d9cb6942f1751060672524\",\"intent\":\"sha256:cc49764407141577df4d59a5f3ed77c123ec708b19f557c813738812eea6256d\",\"seller_offer\":\"sha256:777ee1ef6619673f59c47ea0aaf92c27d027fcde1939ec6d5a202dad5d6e5443\"},\"source_simulation_trade\":\"SIM-0087\",\"visible_identifiers\":[\"sim-0087-front-photo-hash\",\"sim-0087-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Carddass prism oddball",
+    "condition_claim": "LP+",
+    "inventory_key": "tcg:pokemon:sim-0087",
+    "item_fingerprint_hash": "0x3bbf4d85bb5c31c9c8e75d7faecbca63bd257d7313c1544f44071366a9852e3c",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:d77b06e621c753e44bf14ae53c7cbbd442e917b5a63c5bb5135db3c5dac2cb2d",
+      "escrow_terms": "sha256:1cb5b588f0ceb04f4a3eb6842d7cb9deb4bd4c94e43956e71e7d6e31cc0c6ef9",
+      "friction_policy": "sha256:45e40b38d33a9014bdd069c06df0246a3f27bfe720d9cb6942f1751060672524",
+      "intent": "sha256:cc49764407141577df4d59a5f3ed77c123ec708b19f557c813738812eea6256d",
+      "seller_offer": "sha256:777ee1ef6619673f59c47ea0aaf92c27d027fcde1939ec6d5a202dad5d6e5443"
+    },
+    "source_simulation_trade": "SIM-0087",
+    "visible_identifiers": [
+      "sim-0087-front-photo-hash",
+      "sim-0087-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xd7a34b3d26a3f0d90f025088cba40c98b17d00d8c405d1afe613b791111d4889",
+  "signature": "0x93a8cf56fde93879cc4cb4ee87ffd9e06829b9e2ee6bd5412328c53cd91feaf475a35dfa1f20e48920425530748e5d282b8dd50a62f355a18c62ea5b1d3c89b41b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

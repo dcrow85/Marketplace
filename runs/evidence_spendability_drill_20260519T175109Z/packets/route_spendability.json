@@ -1,0 +1,52 @@
+{
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "decision_authority": {
+    "actor_id": "did:market:buyer-agent:fixture-5",
+    "actor_role": "buyer_agent",
+    "authority_hash": "8cfab2bb05a0fb453f669e135158a1eea2fb68fe07dd51943a3ce7033606bc45",
+    "authority_source": "delegation"
+  },
+  "gate": {
+    "consumption": "single_use",
+    "gate_id": "route_commitment:9101:attempt-1",
+    "gate_type": "route_commitment",
+    "leg": "forward"
+  },
+  "hash_algorithm": "sha256(marketplace-json-c14n-v0.2)",
+  "issued_at": "2026-05-19T17:42:21+00:00",
+  "issued_by": "did:market:buyer-agent:fixture-5",
+  "issued_role": "buyer_agent",
+  "manifest_hash": "fafb8beb518d9dbcc7d8cd8adc1e21e28a21b6a79518450c53deae7671a11464",
+  "manifest_subject_hash": "195295d4034107371a1d40cb03d224b97bb0c2dec831f8913f77117436d88f67",
+  "requires": [
+    "buyer_ack"
+  ],
+  "schema": "marketplace.evidence_spendability.v0.1",
+  "signature": "local-spendability-signature-v0:54ce51959155f99429f18c062146cc69f8fb36b5eec1c8688110cf55bd7c5ebb",
+  "spendability_hash": "d963ce2e2b15d9ec85ca147a144a955b484bf4eeaa8f03e3fcea9b59c31321dd",
+  "spendability_id": "route_commitment:identity_support:9101",
+  "spendable_claims": [
+    {
+      "basis": [
+        "asset_hash_match",
+        "issuer_role"
+      ],
+      "claim_type": "identity_support",
+      "not_claiming": [
+        "authenticity",
+        "condition_floor"
+      ],
+      "spend_limit": "blocks_or_unblocks_gate",
+      "support_level": "standard"
+    }
+  ],
+  "status": "active",
+  "trade_id": "9101",
+  "window": {
+    "after_state": {
+      "state_hash": "d66e255262313c7e92b880888ce3e52817f3841de842f4b5b6cc3452750b915b",
+      "state_name": "EvidencePending"
+    },
+    "waiver_policy": "none"
+  }
+}

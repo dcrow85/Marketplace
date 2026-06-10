@@ -1,0 +1,18 @@
+{
+  "canonical_payload": "{\"carrier\":\"simulated_usps\",\"declared_insurance_eth\":\"0.20\",\"insured\":true,\"item_fingerprint_hash\":\"0xe23ebf5375db9cda4e8304b792eaf1d1e2a7fb53835877608df90b206251cd4b\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-COLLISION-0004\",\"trade_id\":4}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier": "simulated_usps",
+    "declared_insurance_eth": "0.20",
+    "insured": true,
+    "item_fingerprint_hash": "0xe23ebf5375db9cda4e8304b792eaf1d1e2a7fb53835877608df90b206251cd4b",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-COLLISION-0004",
+    "trade_id": 4
+  },
+  "payload_hash": "0x9c2a8fcf7d2b725ebd4dd43cdc8e4d04a323b91ed0fa02063fad4aae2e9983d4",
+  "signature": "0xc1260e3f0bab3d3499fa48a4c726e40fb11bcf9b91bdd3a30731303e57a201612525c752aace9f129cc84ae23269a1c1b5c52b8915ccb5b5abdb75d5c639a4821c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

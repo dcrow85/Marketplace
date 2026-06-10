@@ -1,0 +1,53 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"medium\",\"condition_sensitivity\":0.202,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"high_res_scans\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\",\"verifier_note\"],\"max_total_price_usd\":550,\"risk_tolerance\":0.779,\"route_preferences\":[\"insured_ship\"],\"value_band\":\"grail\"},\"object\":{\"card\":\"Japanese Neo Discovery Espeon holo\",\"condition_floor\":\"LP+\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e\",\"friction_policy\":\"sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205\",\"intent\":\"sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2\",\"seller_offer\":\"sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b\"},\"source_simulation_trade\":\"SIM-0095\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "medium",
+      "condition_sensitivity": 0.202,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "corner_closeups",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "high_res_scans",
+        "holo_angle_closeups",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "tracking_history",
+        "verifier_note"
+      ],
+      "max_total_price_usd": 550,
+      "risk_tolerance": 0.779,
+      "route_preferences": [
+        "insured_ship"
+      ],
+      "value_band": "grail"
+    },
+    "object": {
+      "card": "Japanese Neo Discovery Espeon holo",
+      "condition_floor": "LP+",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:5b6481b905aa15b1c4317ccb351a5375b29070a1306b7ad9b6498b0e7f2bc52e",
+      "friction_policy": "sha256:996f893a08219ba68a299913bc45dc7072c019b52f4fd2dafecb640b869dc205",
+      "intent": "sha256:abdc26a421fc10cab89f8d9805f9d85ae083a02243edb559fe4f7641982091e2",
+      "seller_offer": "sha256:d5de2a2e368066459ca0dba7a4d6de4b7fabe87855f156b7f51db709644fa98b"
+    },
+    "source_simulation_trade": "SIM-0095"
+  },
+  "payload_hash": "0x6bd40a3ced7c05ebe23662b7a7fdec8bccb091bbaafa0076cc5cd46bba607549",
+  "signature": "0x63b06131304e2a33ca89e6f5771d2f0c0bc15afc2f104e08c9f182fa46cc0fd129446dbe0ab03799260ac3d3f332accde71b12b079451dcd6a6c0e7f9512b1651c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

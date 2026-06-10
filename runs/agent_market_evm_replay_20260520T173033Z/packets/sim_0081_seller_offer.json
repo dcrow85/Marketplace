@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Vending Series Mewtwo\",\"condition_claim\":\"LP\",\"evidence_tier\":\"strong\",\"route_offered\":\"insured_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"low\",\"seller_bond_bps_from_sim\":0,\"seller_bond_eth_local_probe\":\"0.005\",\"seller_trust\":\"known\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7\",\"escrow_terms\":\"sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783\",\"friction_policy\":\"sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899\",\"intent\":\"sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b\",\"seller_offer\":\"sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b\"},\"source_simulation_trade\":\"SIM-0081\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Vending Series Mewtwo",
+    "condition_claim": "LP",
+    "evidence_tier": "strong",
+    "route_offered": "insured_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "low",
+    "seller_bond_bps_from_sim": 0,
+    "seller_bond_eth_local_probe": "0.005",
+    "seller_trust": "known",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7",
+      "escrow_terms": "sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783",
+      "friction_policy": "sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899",
+      "intent": "sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b",
+      "seller_offer": "sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b"
+    },
+    "source_simulation_trade": "SIM-0081"
+  },
+  "payload_hash": "0xf49b5e2b4810f8c47edffb37e9c8dc9f1275fd6726994fe100dbbe7ca7a47385",
+  "signature": "0xaa5da0259d95e0b5aa696e98a5f40e97b90fa4e5410476d43906a4d38de738af49d5d91e2697c3a5f4830a4f716f81b6d88f3d0e8829a81791e5c97b48775f441b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

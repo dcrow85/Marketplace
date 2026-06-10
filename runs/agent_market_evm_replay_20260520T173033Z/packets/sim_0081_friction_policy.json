@@ -1,0 +1,24 @@
+{
+  "canonical_payload": "{\"automation_escalation_required\":false,\"expected_buyer_attention_minutes\":1,\"expected_seller_attention_minutes\":8,\"friction_triggers_observed\":[],\"human_gates_before_lock\":[],\"schema\":\"marketplace.friction_policy.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7\",\"escrow_terms\":\"sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783\",\"friction_policy\":\"sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899\",\"intent\":\"sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b\",\"seller_offer\":\"sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b\"},\"source_simulation_trade\":\"SIM-0081\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "automation_escalation_required": false,
+    "expected_buyer_attention_minutes": 1,
+    "expected_seller_attention_minutes": 8,
+    "friction_triggers_observed": [],
+    "human_gates_before_lock": [],
+    "schema": "marketplace.friction_policy.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7",
+      "escrow_terms": "sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783",
+      "friction_policy": "sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899",
+      "intent": "sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b",
+      "seller_offer": "sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b"
+    },
+    "source_simulation_trade": "SIM-0081"
+  },
+  "payload_hash": "0xfc9f89045b8da20d1e96950cd7958e1b6d6aa8d9084dcf29e462a2fd52a850f2",
+  "signature": "0xc7f32a67f3515f14db6f7a2e082e0d9b68fc9da251b56696a0a3b473a574293a67950a93b478bc1da297f53aff6079887e5df7f803dcb8a2ed6044fd9ee57ca11c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

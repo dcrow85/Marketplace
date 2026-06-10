@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.003\",\"claim_type\":\"material_misdescription\",\"evidence_hashes\":[\"0x50f2364b67f40d0ace2595730a0c6ae50a6dc386d2031154689a89472cd5be1b\",\"0x5d97bc5fe98e9958528f3fc965de78378418e173cda3c72c1c7736f97d2c09e2\"],\"requested_remedy\":{\"buyer_refund_bps\":5500,\"seller_bond_penalty_bps\":4000,\"type\":\"partial_refund_plus_bond\"},\"schema\":\"marketplace.claim.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:d6faf53f60d203e34093d8df2dea613d6b325bbd9185c98284e45f664fcad2ef\",\"escrow_terms\":\"sha256:adfa596c5cc4285305cbe9d088b16ee08a879e7e8eac7934107a089c3efc7eda\",\"friction_policy\":\"sha256:6b7bde4afbe195abeadcf120bed9430719a49923b4e6a1a4507508a2af8b2d10\",\"intent\":\"sha256:bca657cc1cca042e4c9bfb18a6bd169336f2cb86bd26a3f037c16c885a108fea\",\"seller_offer\":\"sha256:58bfa1b2c41e2f561337d05defefb54ebd3fb392a0e98d168132cd1b393ea284\"},\"source_simulation_trade\":\"SIM-0069\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.003",
+    "claim_type": "material_misdescription",
+    "evidence_hashes": [
+      "0x50f2364b67f40d0ace2595730a0c6ae50a6dc386d2031154689a89472cd5be1b",
+      "0x5d97bc5fe98e9958528f3fc965de78378418e173cda3c72c1c7736f97d2c09e2"
+    ],
+    "requested_remedy": {
+      "buyer_refund_bps": 5500,
+      "seller_bond_penalty_bps": 4000,
+      "type": "partial_refund_plus_bond"
+    },
+    "schema": "marketplace.claim.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:d6faf53f60d203e34093d8df2dea613d6b325bbd9185c98284e45f664fcad2ef",
+      "escrow_terms": "sha256:adfa596c5cc4285305cbe9d088b16ee08a879e7e8eac7934107a089c3efc7eda",
+      "friction_policy": "sha256:6b7bde4afbe195abeadcf120bed9430719a49923b4e6a1a4507508a2af8b2d10",
+      "intent": "sha256:bca657cc1cca042e4c9bfb18a6bd169336f2cb86bd26a3f037c16c885a108fea",
+      "seller_offer": "sha256:58bfa1b2c41e2f561337d05defefb54ebd3fb392a0e98d168132cd1b393ea284"
+    },
+    "source_simulation_trade": "SIM-0069"
+  },
+  "payload_hash": "0xd160ee33699f18643ed4e3968ba9dd0d9666418794bf8037c4422ae97e9064fa",
+  "signature": "0x17371eeb6cc5175cd345f9cd0f0afd70f5415e1b68f220aabd89e405aa474095345ba567b45f05f904d5f41f7f5a289670d7d22da3b56539fe5eb4eba7e1a4a51b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

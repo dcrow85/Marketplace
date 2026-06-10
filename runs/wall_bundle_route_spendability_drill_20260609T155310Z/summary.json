@@ -1,0 +1,157 @@
+{
+  "assembly_history_evm_ref": "0xc873aed6dd1fae820ec68fa0b41e5b4a3d625dbc2fbc56d2238419f96aab6727",
+  "assembly_history_hash": "sha256:82f2e6ccac66a9ab2882bd7c709779f67235f7ed761097977c9b895676f9c20b",
+  "cases": [
+    {
+      "expected": "route_locked_with_wall_bundle_spendability",
+      "final_state": "RouteLocked",
+      "observations": [
+        "route spendability accepted for current wall bundle"
+      ],
+      "outcome": "route_locked_with_wall_bundle_spendability",
+      "packets": [
+        {
+          "packet_id": "wall_bundle_intent",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_intent.json",
+          "payload_hash": "0xeee316dd3e80aee286aab0a349098674484db316ed26b9be55e619117f8dfcc8",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x57fff9002cb4a6731abc68b9230bd89cadc82a607771277d0058242c010ed73a18b784931c015d3fdc2547a6675e895f82f0f9ec407e9026996be8f388a83ccf1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "wall_bundle_terms",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_terms.json",
+          "payload_hash": "0x082c10d466e02304ea4aced576527b034517c7758f9f531e0db9e944d13c13c0",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x5cac14ee024a59b52ee7616cb7e10e756c2a8d849e3ecac427b8d8ae232330ca13eeaeac73fa7fbe69f49140781993d258dced07ea4ef1ad6e4e0aeeb10ba5461b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "wall_bundle_item_fingerprint",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_item_fingerprint.json",
+          "payload_hash": "0x70f75f5dcee22546d3c89e6426bf92381d857db65a6504f68ddde31dcf8c7a48",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x4a934d17ea0242f3337363820904022e41aaf98518f1f393c9a4bcab7f07102607c331e069ab71a98f052ed36591895dcc1453c12b596237797a3b06776278661c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "wall_bundle_inventory_lock",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_inventory_lock.json",
+          "payload_hash": "0xce25bfd7d4dc6fff2d6155730040c063920cdf3a193e20a01aa52ce1955b1d95",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xd34d27de09c18d91b2296898fa93311b8622d1f9887e7f8d1c18e7321668107578d7b13185f051128af3eeae7c947d99e8085d930a4efa08d40df5a77aa99bc11b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "wall_bundle_route",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_route.json",
+          "payload_hash": "0x1b593a6c3a48f2143b3a6c8f21a53b175b9c24b97753db8b87fe682f28f631a2",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0x78b0998666345d55ab58d35b3774a72435265907f8750a10f88e46efadf646e60873605d418f60985cfffe56a6385aea20f789de53e68e78e79b956609e5b05c1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "wall_bundle_route_spendability_valid",
+          "path": "runs/wall_bundle_route_spendability_drill_20260609T155310Z/packets/wall_bundle_route_spendability_valid.json",
+          "payload_hash": "0xcc4a78e108da5a9862c9afbe7a6daeec28a587ce9e2de801fd010735c7b6ea97",
+          "schema": "marketplace.evidence_spendability.v0.1",
+          "signature": "0x1ae8fe8ad29c35643b85d435df9ab28788cec9407011f058c4e7a8ba559ae5da5f3aa7e26abfad0a227c048ad06ecdfa451d6308088f736cadafd8a0e6b45d9e1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "passed": true,
+      "slug": "valid_wall_bundle_route_lock",
+      "transactions": [
+        {
+          "label": "create wall bundle drill trade",
+          "tx_hash": "0x29be228c1368caf4450bf89dfc53f72edd50593fad8e32af030775b4c0d49907"
+        },
+        {
+          "label": "seller posts wall bundle drill bond",
+          "tx_hash": "0xcdce6ea71f0bd95aaf0b932b5e0cdaf5dbbb89f62d2934325264a1e2b13c77a3"
+        },
+        {
+          "label": "commit wall bundle item fingerprint",
+          "tx_hash": "0x0555eb834203e746951fb1732addfc0d0acb3cde58bce639c95b3ce0830eeba6"
+        },
+        {
+          "label": "commit wall bundle inventory lock",
+          "tx_hash": "0xbcc6b4b1b0a18458462463e4fb617b769e4f6aad7c65d5596a84fa9ba9d8b0bb"
+        },
+        {
+          "label": "commit route with wall bundle assembly spendability",
+          "tx_hash": "0x6eafc826ace4e2f36e0729ca2db5acbc9558825dff52096ab41b70b83d31dae3"
+        }
+      ],
+      "validator_error": ""
+    },
+    {
+      "expected": "validator_blocked_missing_wall_bundle",
+      "final_state": "",
+      "observations": [
+        "Off-chain validator blocked missing wall_bundle_hash before EVM route call."
+      ],
+      "outcome": "validator_blocked_missing_wall_bundle",
+      "packets": [],
+      "passed": true,
+      "slug": "missing_wall_bundle_hash",
+      "transactions": [],
+      "validator_error": "WALL_BUNDLE_MISSING: route spendability must cite wall bundle"
+    },
+    {
+      "expected": "validator_blocked_stale_wall_bundle",
+      "final_state": "",
+      "observations": [
+        "Off-chain validator blocked stale wall_bundle_hash before EVM route call."
+      ],
+      "outcome": "validator_blocked_stale_wall_bundle",
+      "packets": [],
+      "passed": true,
+      "slug": "stale_wall_bundle_hash",
+      "transactions": [],
+      "validator_error": "WALL_BUNDLE_MISMATCH: route spendability cites stale or wrong wall bundle"
+    },
+    {
+      "expected": "validator_blocked_missing_assembly_history",
+      "final_state": "",
+      "observations": [
+        "Off-chain validator blocked missing assembly_history_hash before EVM route call."
+      ],
+      "outcome": "validator_blocked_missing_assembly_history",
+      "packets": [],
+      "passed": true,
+      "slug": "missing_assembly_history_hash",
+      "transactions": [],
+      "validator_error": "ASSEMBLY_HISTORY_MISSING: route spendability must cite assembly history"
+    },
+    {
+      "expected": "validator_blocked_stale_assembly_history",
+      "final_state": "",
+      "observations": [
+        "Off-chain validator blocked stale assembly_history_hash before EVM route call."
+      ],
+      "outcome": "validator_blocked_stale_assembly_history",
+      "packets": [],
+      "passed": true,
+      "slug": "stale_assembly_history_hash",
+      "transactions": [],
+      "validator_error": "ASSEMBLY_HISTORY_MISMATCH: route spendability cites stale or wrong assembly history"
+    }
+  ],
+  "contract": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "generated_at": "2026-06-09T15:53:11.383419+00:00",
+  "passed": true,
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "route_assembly_witness_hash": "0x1e9a8014000d5ed5b63824f9cccc926d2a9ce97d4b4583af5c1819af50fe6409",
+  "route_spendability_hash": "0xcc4a78e108da5a9862c9afbe7a6daeec28a587ce9e2de801fd010735c7b6ea97",
+  "rpc_url": "http://127.0.0.1:18547",
+  "run_id": "wall_bundle_route_spendability_drill_20260609T155310Z",
+  "wall_bundle_evm_ref": "0x05ce4021bb59b413113713690ae44b78e0960fcbd2528ba84e618ef4b7d1a517",
+  "wall_bundle_hash": "sha256:211032c445d6ea9a2a6a1a4f561086eb750d51965b89aa3d18a9ee6d6b0ea7a6"
+}

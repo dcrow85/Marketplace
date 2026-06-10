@@ -1,0 +1,62 @@
+{
+  "canonical_payload": "{\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:agent:buyer-alpha\",\"actor_role\":\"buyer_agent\",\"authority_hash\":\"0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"route_commitment:1:insured-route\",\"gate_type\":\"route_commitment\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-19T17:50:41.452289+00:00\",\"issued_by\":\"did:market:agent:buyer-alpha\",\"issued_role\":\"buyer_agent\",\"manifest_hash\":\"0x0e350f22a79e4b49d140ee4c009f3da94c010099c4bb4492f197924066c4061a\",\"manifest_kind\":\"local_evm_legacy_packet_hash\",\"manifest_subject_hash\":\"0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7\",\"requires\":[\"buyer_ack\",\"verifier_attestation\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"happy_route_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"identity_support\",\"not_claiming\":[\"authenticity\",\"condition_floor\"],\"spend_limit\":\"blocks_or_unblocks_gate\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":1,\"window\":{\"after_state\":{\"state_hash\":\"0xa3b6ce48bbcdd7589f1972fc622a1b566422c3546b7065c887e2e94301c87209\",\"state_name\":\"EvidencePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:agent:buyer-alpha",
+      "actor_role": "buyer_agent",
+      "authority_hash": "0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "route_commitment:1:insured-route",
+      "gate_type": "route_commitment",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-19T17:50:41.452289+00:00",
+    "issued_by": "did:market:agent:buyer-alpha",
+    "issued_role": "buyer_agent",
+    "manifest_hash": "0x0e350f22a79e4b49d140ee4c009f3da94c010099c4bb4492f197924066c4061a",
+    "manifest_kind": "local_evm_legacy_packet_hash",
+    "manifest_subject_hash": "0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7",
+    "requires": [
+      "buyer_ack",
+      "verifier_attestation"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "happy_route_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "identity_support",
+        "not_claiming": [
+          "authenticity",
+          "condition_floor"
+        ],
+        "spend_limit": "blocks_or_unblocks_gate",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 1,
+    "window": {
+      "after_state": {
+        "state_hash": "0xa3b6ce48bbcdd7589f1972fc622a1b566422c3546b7065c887e2e94301c87209",
+        "state_name": "EvidencePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0x9bb2d213b655317ed127d1f87fcba3c041e31f532e980e3c3d04287fcb393de4",
+  "signature": "0x32ca89520c8cf9624c1b43f1a71220e0a3c1a51c53089acc0eae4a37170759843883a8cf98bdad85386964676d68adb21888cf230a5a1d470015b60410cd7d901b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

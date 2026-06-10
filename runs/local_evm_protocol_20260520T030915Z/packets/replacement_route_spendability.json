@@ -1,0 +1,63 @@
+{
+  "canonical_payload": "{\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:agent:buyer-alpha\",\"actor_role\":\"buyer_agent\",\"authority_hash\":\"0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"route_commitment:3:replacement-path\",\"gate_type\":\"route_commitment\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-20T03:09:18.226321+00:00\",\"issued_by\":\"did:market:agent:buyer-alpha\",\"issued_role\":\"buyer_agent\",\"manifest_hash\":\"0x6b46fcd580742918e34a123e3c7aa6226aa2ebc33d4066aefb82396b09580a2b\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0xa342ba598454207d4b94f39f7fba4dacd756ee2efb14b7df56788bbbcf23b6c4\",\"requires\":[\"buyer_ack\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"replacement_route_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"identity_support\",\"not_claiming\":[\"authenticity\",\"condition_floor\",\"delivery_success\"],\"spend_limit\":\"blocks_or_unblocks_gate\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":3,\"window\":{\"after_state\":{\"state_hash\":\"0xbf08be25337967ba539ecb772c5395c3a8239f04109c49e62f7d4fa804b2ffc2\",\"state_name\":\"EvidencePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:agent:buyer-alpha",
+      "actor_role": "buyer_agent",
+      "authority_hash": "0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "route_commitment:3:replacement-path",
+      "gate_type": "route_commitment",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-20T03:09:18.226321+00:00",
+    "issued_by": "did:market:agent:buyer-alpha",
+    "issued_role": "buyer_agent",
+    "manifest_hash": "0x6b46fcd580742918e34a123e3c7aa6226aa2ebc33d4066aefb82396b09580a2b",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0xa342ba598454207d4b94f39f7fba4dacd756ee2efb14b7df56788bbbcf23b6c4",
+    "requires": [
+      "buyer_ack"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "replacement_route_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "identity_support",
+        "not_claiming": [
+          "authenticity",
+          "condition_floor",
+          "delivery_success"
+        ],
+        "spend_limit": "blocks_or_unblocks_gate",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 3,
+    "window": {
+      "after_state": {
+        "state_hash": "0xbf08be25337967ba539ecb772c5395c3a8239f04109c49e62f7d4fa804b2ffc2",
+        "state_name": "EvidencePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0xa97150f8055014ec76e91024b4335e436a1b792ef085a2e8c724214db515be2f",
+  "signature": "0xa21f7edc0e9b11ad14b629c738f44fae7ec6128cd7ffdd1c3f240900548b092052e6ad64b4312674a7bd0e7c4e5c15ac99e72056117f13ab91265f038d90dfb81b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"buyer_decision\":\"accepted\",\"route_gate\":\"cleared_for_route_commitment\",\"schema\":\"marketplace.fingerprint_challenge_resolution.v0.2\",\"target_challenge_hash\":\"0xd6caf096f861e94866ce3980baf069f92752e0815acebb13810c6cda88b759a0\",\"trade_id\":4,\"verifier_attestation_hash\":\"0x6e10e6bb665ab1cde188c8c7f95e90d971b511e3b9d19c240e2460da5cd7e440\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_decision": "accepted",
+    "route_gate": "cleared_for_route_commitment",
+    "schema": "marketplace.fingerprint_challenge_resolution.v0.2",
+    "target_challenge_hash": "0xd6caf096f861e94866ce3980baf069f92752e0815acebb13810c6cda88b759a0",
+    "trade_id": 4,
+    "verifier_attestation_hash": "0x6e10e6bb665ab1cde188c8c7f95e90d971b511e3b9d19c240e2460da5cd7e440"
+  },
+  "payload_hash": "0x789fca455e0c7afb6e46efb1866ba72398a58563704db25d3a8401ac87b7659e",
+  "signature": "0xa36c89c0e5308c4af134aed9490fc1a13b9a00ba9d20a50966dede3d14a9cf3d7bc5f239c98063090f633dcc8347c3b0d209c54829f2346751fdea46bd5c2e1d1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

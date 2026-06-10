@@ -1,0 +1,67 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":\"0x9b493aeec770e00d29328c866d6ce5ebf6a1fb5c8466c58bd81d543cff1ea180\",\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:agent:buyer-alpha\",\"actor_role\":\"buyer_agent\",\"authority_hash\":\"0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"route_commitment:2:post-challenge\",\"gate_type\":\"route_commitment\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-09T15:53:28.185337+00:00\",\"issued_by\":\"did:market:agent:buyer-alpha\",\"issued_role\":\"buyer_agent\",\"manifest_hash\":\"0x012393d410930e9067fa525b9dbb3e03921f776d1223fb0d7a8820cb4d6cc02e\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0xf08b89eeb0a248767cdd7bc8c1d8ff0c15f5024300a48e14de8d16b4f2f6d22f\",\"requires\":[\"buyer_ack\",\"human_waiver\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"claim_route_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"identity_support\",\"not_claiming\":[\"authenticity\",\"condition_floor\",\"insured_route\"],\"spend_limit\":\"blocks_or_unblocks_gate\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":2,\"wall_bundle_hash\":\"0xee488f9d487e4df5a7610bbdf8dc63d0a9318f25047e44e0e93bd60f3e0fd978\",\"window\":{\"after_event_hash\":\"0x4ec6f20d6d91d80fe72415b61f6bb4fb6143b2c8a28535a07aba17d820b2e3cf\",\"after_state\":{\"state_hash\":\"0x2d57e69864ccadd3e4651eab95519d0b07e71b0dd510396169683f954ef9f7e9\",\"state_name\":\"EvidencePending\"},\"waiver_policy\":\"buyer_signed\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": "0x9b493aeec770e00d29328c866d6ce5ebf6a1fb5c8466c58bd81d543cff1ea180",
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:agent:buyer-alpha",
+      "actor_role": "buyer_agent",
+      "authority_hash": "0x72b0170405b1407495878d8ada978aad214ba40d6bc0f4998820aa8191bfb74a",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "route_commitment:2:post-challenge",
+      "gate_type": "route_commitment",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-09T15:53:28.185337+00:00",
+    "issued_by": "did:market:agent:buyer-alpha",
+    "issued_role": "buyer_agent",
+    "manifest_hash": "0x012393d410930e9067fa525b9dbb3e03921f776d1223fb0d7a8820cb4d6cc02e",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0xf08b89eeb0a248767cdd7bc8c1d8ff0c15f5024300a48e14de8d16b4f2f6d22f",
+    "requires": [
+      "buyer_ack",
+      "human_waiver"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "claim_route_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "identity_support",
+        "not_claiming": [
+          "authenticity",
+          "condition_floor",
+          "insured_route"
+        ],
+        "spend_limit": "blocks_or_unblocks_gate",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 2,
+    "wall_bundle_hash": "0xee488f9d487e4df5a7610bbdf8dc63d0a9318f25047e44e0e93bd60f3e0fd978",
+    "window": {
+      "after_event_hash": "0x4ec6f20d6d91d80fe72415b61f6bb4fb6143b2c8a28535a07aba17d820b2e3cf",
+      "after_state": {
+        "state_hash": "0x2d57e69864ccadd3e4651eab95519d0b07e71b0dd510396169683f954ef9f7e9",
+        "state_name": "EvidencePending"
+      },
+      "waiver_policy": "buyer_signed"
+    }
+  },
+  "payload_hash": "0x6f2ea0ff0519aa2827c0896c4827b2ec8248d848146f55232faff2fb4b9b67f2",
+  "signature": "0xc64b69d759f42dd9f916f26b9ae8be7e07a3a8e52f14af005230714f65d1b89c0dbd461eb9cb971f0a3e37289746fb4f97d994514be40395a6884b6d7ae76e851b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

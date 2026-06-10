@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth_local_probe\":\"0.25\",\"distance\":\"domestic\",\"in_person_allowed\":false,\"insurance_amount_usd\":250,\"insured\":true,\"route\":\"underinsured_ship\",\"schema\":\"marketplace.route_packet.v0.2\",\"shipping_evidence\":[\"carrier_acceptance\",\"tracking_history\",\"insurance_or_gap_owner\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ffc5ac876dfe8644407a100646862139b60d1bd99cb9470bb1a11b823f91d5ce\",\"friction_policy\":\"sha256:12badfd47a58bca409aa0ae0a7cfc01e31af3b9978f0b514c8a6a0519655d671\",\"intent\":\"sha256:6705170de8ad1728c850248b6d596b959879dca5a3832668c25d1f955d2e9f61\",\"seller_offer\":\"sha256:d977897befb1609d63088e12456c2cccdfdefa692c076da86d19e3bac9b5e3d6\"},\"source_simulation_trade\":\"SIM-0015\",\"tracking_or_memo\":\"tracking://simulated-domestic-carrier\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth_local_probe": "0.25",
+    "distance": "domestic",
+    "in_person_allowed": false,
+    "insurance_amount_usd": 250,
+    "insured": true,
+    "route": "underinsured_ship",
+    "schema": "marketplace.route_packet.v0.2",
+    "shipping_evidence": [
+      "carrier_acceptance",
+      "tracking_history",
+      "insurance_or_gap_owner"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ffc5ac876dfe8644407a100646862139b60d1bd99cb9470bb1a11b823f91d5ce",
+      "friction_policy": "sha256:12badfd47a58bca409aa0ae0a7cfc01e31af3b9978f0b514c8a6a0519655d671",
+      "intent": "sha256:6705170de8ad1728c850248b6d596b959879dca5a3832668c25d1f955d2e9f61",
+      "seller_offer": "sha256:d977897befb1609d63088e12456c2cccdfdefa692c076da86d19e3bac9b5e3d6"
+    },
+    "source_simulation_trade": "SIM-0015",
+    "tracking_or_memo": "tracking://simulated-domestic-carrier"
+  },
+  "payload_hash": "0xdd3df83b3bef371ee7d1c488346782c545d628fbebb3f6f4b780d720793496b2",
+  "signature": "0x55172ceac3258aa96f98e64955bfb917628b63c21791a321859f099ac5bee2014ee01c70976fc6eebb9a0c15881911657b2dd8cefe0e48908ef7e755061651821c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,23 @@
+{
+  "canonical_payload": "{\"delivered\":true,\"delivery_signal\":\"handoff_memo\",\"route\":\"local_meetup\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1\",\"friction_policy\":\"sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c\",\"intent\":\"sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a\",\"seller_offer\":\"sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b\"},\"source_simulation_trade\":\"SIM-0018\",\"tracking_or_memo\":\"memo://simulated-handoff-window\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "delivered": true,
+    "delivery_signal": "handoff_memo",
+    "route": "local_meetup",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1",
+      "friction_policy": "sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c",
+      "intent": "sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a",
+      "seller_offer": "sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b"
+    },
+    "source_simulation_trade": "SIM-0018",
+    "tracking_or_memo": "memo://simulated-handoff-window"
+  },
+  "payload_hash": "0x50d013580d16b6a808edc452a42eff2cfb3c5c6a33b1661276141d3f0bc35f2e",
+  "signature": "0x78b2b5f8f04f6f4e33472b27d113a5b5b59ef2075256a78c819f5272d921b1691ecc75b5456ba892771e7248d823c78c81b2b54bff54295e05ba05b764e72b921c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

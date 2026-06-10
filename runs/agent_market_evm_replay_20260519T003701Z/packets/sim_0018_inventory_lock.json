@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"card\":\"Masaki Gengar\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0018\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1\",\"friction_policy\":\"sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c\",\"intent\":\"sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a\",\"seller_offer\":\"sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b\"},\"source_simulation_trade\":\"SIM-0018\",\"visible_identifiers\":[\"sim-0018-front-photo-hash\",\"sim-0018-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Masaki Gengar",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0018",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1",
+      "friction_policy": "sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c",
+      "intent": "sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a",
+      "seller_offer": "sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b"
+    },
+    "source_simulation_trade": "SIM-0018",
+    "visible_identifiers": [
+      "sim-0018-front-photo-hash",
+      "sim-0018-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x4ef712291f9b06a4f95e5f99fe6c775a32f2da9737080d974672c92b7a67f0bf",
+  "signature": "0xf6c41b4e2c68b06d398a93945ab41ab356440cc3467eb1c88e53f143530d8ba96786bbeecff9ccbbdc0f79e4eed6abfbf7d1856073115454e52912344c3d235a1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

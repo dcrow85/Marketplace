@@ -1,0 +1,54 @@
+{
+  "canonical_payload": "{\"card\":\"Masaki Gengar\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"media_manifest\":[{\"availability\":\"simulated\",\"type\":\"front_photo\"},{\"availability\":\"simulated\",\"type\":\"back_photo\"},{\"availability\":\"simulated\",\"type\":\"flaw_callout\"}],\"required_evidence\":[\"back_photo\",\"buyer_confirmation\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"handoff_memo\",\"high_res_scans\",\"holo_angle_closeups\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"verifier_note\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"seller_disclosures\":[\"evidence packet\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1\",\"friction_policy\":\"sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c\",\"intent\":\"sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a\",\"seller_offer\":\"sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b\"},\"source_simulation_trade\":\"SIM-0018\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Masaki Gengar",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "media_manifest": [
+      {
+        "availability": "simulated",
+        "type": "front_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "back_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "flaw_callout"
+      }
+    ],
+    "required_evidence": [
+      "back_photo",
+      "buyer_confirmation",
+      "corner_closeups",
+      "escrow_terms",
+      "flaw_callouts",
+      "front_photo",
+      "handoff_memo",
+      "high_res_scans",
+      "holo_angle_closeups",
+      "locked_inventory_packet",
+      "received_item_photos",
+      "route_packet",
+      "verifier_note"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "seller_disclosures": [
+      "evidence packet"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1",
+      "friction_policy": "sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c",
+      "intent": "sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a",
+      "seller_offer": "sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b"
+    },
+    "source_simulation_trade": "SIM-0018"
+  },
+  "payload_hash": "0x9f4294993284670d7ea903de3234e1d5b3692f59f0d34e9db8fd775e746d5a4c",
+  "signature": "0x715408912fb33f3803e141ccd0e21688e8737ba613b1443267488da49aabfb73416a572be2fd3ae916b2dbd92c94e39b74a8558fa2fe55e9de23c5d40fb939ba1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

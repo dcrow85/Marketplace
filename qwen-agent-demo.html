@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blank Corner Club - House Agent Demo</title>
+    <style>
+      :root {
+        --ink: #f6efe1;
+        --muted: #bbb1a0;
+        --line: rgba(246, 239, 225, 0.22);
+        --paper: #11110f;
+        --panel: #191916;
+        --panel2: #22211d;
+        --black: #090909;
+        --red: #c9332c;
+        --green: #9abd70;
+        --gold: #d5b56a;
+        --blue: #84a7bd;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 14% 12%, rgba(255, 255, 255, 0.07) 0 1px, transparent 2px),
+          radial-gradient(circle at 82% 78%, rgba(201, 51, 44, 0.15) 0 1px, transparent 2px),
+          var(--black);
+        background-size: 38px 38px, 52px 52px, auto;
+        color: var(--ink);
+        font: 15px/1.45 "Trebuchet MS", ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      button,
+      select,
+      input,
+      textarea {
+        border: 1px solid var(--line);
+        background: #111;
+        color: var(--ink);
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.55;
+      }
+
+      .app {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 10px;
+        height: 100vh;
+        max-width: 1720px;
+        margin: 0 auto;
+        padding: 12px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 50px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand strong {
+        font-size: clamp(1.05rem, 2vw, 1.45rem);
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: min(620px, 55vw);
+      }
+
+      .toolbar input {
+        width: 100%;
+        min-width: 120px;
+        height: 38px;
+        padding: 0 12px;
+        border-radius: 4px;
+      }
+
+      .toolbar select {
+        height: 38px;
+        padding: 0 10px;
+        border-radius: 4px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.2fr) minmax(340px, 0.9fr);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .panel {
+        min-height: 0;
+        border: 2px solid #0c0c0b;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 90px),
+          var(--panel);
+        box-shadow: 4px 4px 0 #050505;
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+        padding: 9px 12px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .panel-head h2 {
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      .count {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .binder-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+        gap: 8px;
+        align-content: start;
+        height: calc(100% - 42px);
+        padding: 10px;
+        overflow: auto;
+      }
+
+      .card-button {
+        display: grid;
+        grid-template-rows: minmax(100px, 1fr) auto;
+        gap: 6px;
+        min-height: 164px;
+        padding: 7px;
+        border-radius: 4px;
+        background: #10100f;
+        text-align: left;
+      }
+
+      .card-button.selected {
+        border-color: var(--red);
+        box-shadow: inset 0 0 0 1px var(--red);
+      }
+
+      .thumb {
+        display: grid;
+        place-items: center;
+        min-height: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: #050505;
+        overflow: hidden;
+      }
+
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .thumb span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .card-meta {
+        display: grid;
+        gap: 2px;
+      }
+
+      .card-meta b {
+        font-size: 0.84rem;
+        line-height: 1.15;
+      }
+
+      .card-meta small {
+        color: var(--muted);
+        line-height: 1.2;
+      }
+
+      .detail {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        min-height: 0;
+      }
+
+      .detail-body {
+        display: grid;
+        grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1fr);
+        gap: 14px;
+        min-height: 0;
+        padding: 14px;
+        overflow: auto;
+      }
+
+      .large-card {
+        display: grid;
+        place-items: center;
+        align-self: start;
+        min-height: 310px;
+        border: 1px solid var(--line);
+        background: #050505;
+      }
+
+      .large-card img {
+        max-width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+      }
+
+      .large-card .missing {
+        padding: 18px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .read {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .names {
+        display: grid;
+        gap: 3px;
+      }
+
+      .names .ja {
+        font-size: clamp(1.7rem, 4vw, 3.2rem);
+        line-height: 0.95;
+      }
+
+      .names .en {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px 7px;
+        border-radius: 999px;
+        color: var(--ink);
+        font-size: 0.78rem;
+      }
+
+      .chip.red {
+        border-color: rgba(201, 51, 44, 0.75);
+        color: #ffd9d5;
+      }
+
+      .note {
+        margin: 0;
+        color: #e5ddcf;
+        font-size: 1rem;
+      }
+
+      .boundary {
+        border-left: 3px solid var(--red);
+        padding: 8px 10px;
+        background: rgba(201, 51, 44, 0.08);
+        color: #eadccd;
+      }
+
+      .mini-list {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .mini-list li {
+        color: var(--muted);
+      }
+
+      .agent {
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+      }
+
+      .controls {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .segmented {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+
+      .segmented button {
+        min-height: 38px;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+
+      .segmented button.active {
+        background: var(--ink);
+        color: #111;
+      }
+
+      .control-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .control-row label,
+      .message label {
+        display: grid;
+        gap: 4px;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .control-row select {
+        height: 34px;
+        border-radius: 4px;
+        padding: 0 8px;
+      }
+
+      .message {
+        display: grid;
+        gap: 7px;
+      }
+
+      .message textarea {
+        width: 100%;
+        min-height: 64px;
+        resize: vertical;
+        border-radius: 4px;
+        padding: 8px;
+      }
+
+      .ask-button {
+        min-height: 42px;
+        border-color: var(--red);
+        background: var(--red);
+        color: #fff;
+        border-radius: 4px;
+      }
+
+      .wall-read {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        background: #121210;
+      }
+
+      .wall-read b {
+        color: var(--gold);
+      }
+
+      .agent-output {
+        min-height: 0;
+        padding: 12px;
+        overflow: auto;
+      }
+
+      .agent-card {
+        display: grid;
+        gap: 10px;
+        border: 1px solid var(--line);
+        background: var(--panel2);
+        padding: 12px;
+      }
+
+      .agent-card h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .agent-line {
+        margin: 0;
+        font-size: 1.05rem;
+        color: #fff7e8;
+      }
+
+      .field {
+        display: grid;
+        gap: 4px;
+      }
+
+      .field b {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+      }
+
+      .field p {
+        margin: 0;
+      }
+
+      .footer-note {
+        padding: 10px 12px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 1180px) {
+        body {
+          overflow: auto;
+        }
+
+        .app {
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          min-height: 420px;
+        }
+
+        .agent {
+          min-height: 620px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        header {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .toolbar {
+          min-width: 0;
+        }
+
+        .detail-body {
+          grid-template-columns: 1fr;
+        }
+
+        .segmented {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <div class="brand">
+          <strong>Blank Corner Club</strong>
+          <span>house agent demo</span>
+        </div>
+        <div class="toolbar">
+          <input id="search" type="search" value="Pikachu" aria-label="Search cards">
+          <select id="collector" aria-label="Collector profile"></select>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <aside class="panel">
+          <div class="panel-head">
+            <h2>No Rarity Binder</h2>
+            <span id="count" class="count"></span>
+          </div>
+          <div id="grid" class="binder-grid"></div>
+        </aside>
+
+        <section class="panel detail">
+          <div class="panel-head">
+            <h2 id="selected-id">PMCG1</h2>
+            <span id="selected-profile" class="count"></span>
+          </div>
+          <div class="detail-body">
+            <div id="large-card" class="large-card"></div>
+            <article class="read">
+              <div class="names">
+                <div id="name-ja" class="ja"></div>
+                <div id="name-en" class="en"></div>
+              </div>
+              <div id="chips" class="chips"></div>
+              <p id="collector-note" class="note"></p>
+              <div class="boundary">
+                <b>Boundary</b>
+                <div id="boundary-copy"></div>
+              </div>
+              <div>
+                <h3>Evidence Floor</h3>
+                <ul id="evidence-list" class="mini-list"></ul>
+              </div>
+              <div>
+                <h3>Still Judgment</h3>
+                <ul id="unknown-list" class="mini-list"></ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="panel agent">
+          <div class="panel-head">
+            <h2>House Agent</h2>
+            <span id="qwen-state" class="count">Qwen local</span>
+          </div>
+
+          <div class="controls">
+            <div class="segmented" id="stances">
+              <button data-stance="want" class="active">Want</button>
+              <button data-stance="have">Have</button>
+              <button data-stance="extra">Extra</button>
+              <button data-stance="offer">Offer</button>
+            </div>
+            <div class="control-row">
+              <label>
+                Evidence
+                <select id="evidence" aria-label="Evidence">
+                  <option value="NR-A">NR-A</option>
+                  <option value="NR-B" selected>NR-B</option>
+                  <option value="NR-C">NR-C</option>
+                  <option value="NR-D">NR-D</option>
+                  <option value="NR-0">NR-0</option>
+                </select>
+              </label>
+              <label>
+                Trust
+                <select id="trust" aria-label="Trust">
+                  <option value="known" selected>Known</option>
+                  <option value="shop">Shop</option>
+                  <option value="thin">Thin</option>
+                  <option value="unknown">Unknown</option>
+                </select>
+              </label>
+            </div>
+            <div class="message">
+              <label>
+                Human note
+                <textarea id="human-note">I want this if the evidence burden makes sense.</textarea>
+              </label>
+              <button id="ask" class="ask-button">Ask Qwen</button>
+            </div>
+          </div>
+
+          <div class="wall-read">
+            <div><b id="wall-action">draft_want</b></div>
+            <ul id="wall-list" class="mini-list"></ul>
+          </div>
+
+          <div class="agent-output">
+            <div class="agent-card">
+              <h3>Guide</h3>
+              <p id="agent-line" class="agent-line">Pick a card and ask.</p>
+              <div class="field">
+                <b>Recommendation</b>
+                <p id="agent-recommendation"></p>
+              </div>
+              <div class="field">
+                <b>Next</b>
+                <p id="agent-next"></p>
+              </div>
+              <div class="field">
+                <b>Question</b>
+                <p id="agent-question"></p>
+              </div>
+              <div class="field">
+                <b>Message</b>
+                <p id="agent-message"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-note" id="latency">Qwen should answer in a few seconds once warm.</div>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const state = {
+        cards: [],
+        collectors: [],
+        selected: null,
+        stance: "want",
+      };
+
+      const $ = (id) => document.getElementById(id);
+
+      function asText(value) {
+        if (!value) return "";
+        if (Array.isArray(value)) {
+          return value.map((item) => typeof item === "string" ? item : JSON.stringify(item)).join(" ");
+        }
+        if (typeof value === "object") return JSON.stringify(value);
+        return String(value);
+      }
+
+      function el(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+
+      async function api(path, options = {}) {
+        const response = await fetch(path, options);
+        if (!response.ok) throw new Error(await response.text());
+        return response.json();
+      }
+
+      function renderCollectors() {
+        const select = $("collector");
+        select.innerHTML = "";
+        state.collectors.forEach((collector) => {
+          const option = document.createElement("option");
+          option.value = collector.collector_id;
+          option.textContent = `${collector.name} - ${collector.archetype}`;
+          select.appendChild(option);
+        });
+      }
+
+      function renderGrid() {
+        const grid = $("grid");
+        grid.innerHTML = "";
+        $("count").textContent = `${state.cards.length} rows`;
+        state.cards.forEach((card) => {
+          const button = el("button", `card-button${state.selected && state.selected.id === card.id ? " selected" : ""}`);
+          button.type = "button";
+          button.addEventListener("click", () => selectCard(card.id));
+
+          const thumb = el("div", "thumb");
+          if (card.image) {
+            const img = document.createElement("img");
+            img.src = card.image;
+            img.alt = `${card.name_en} reference`;
+            thumb.appendChild(img);
+          } else {
+            thumb.appendChild(el("span", "", "?"));
+          }
+
+          const meta = el("div", "card-meta");
+          meta.appendChild(el("b", "", card.name_ja || card.name_en));
+          meta.appendChild(el("small", "", `${card.id} ${card.name_en}`));
+          meta.appendChild(el("small", "", `${card.profile} ${card.holo ? "holo" : card.rarity || ""}`));
+
+          button.appendChild(thumb);
+          button.appendChild(meta);
+          grid.appendChild(button);
+        });
+      }
+
+      function renderCard(card) {
+        state.selected = card;
+        $("selected-id").textContent = card.id;
+        $("selected-profile").textContent = `${card.profile} ${card.active_no_rarity_target ? "active target" : "caveat"}`;
+        $("name-ja").textContent = card.name_ja || card.name_en;
+        $("name-en").textContent = `${card.romaji || ""} / ${card.name_en}`;
+        $("collector-note").textContent = card.collector_note || "";
+
+        const large = $("large-card");
+        large.innerHTML = "";
+        if (card.image) {
+          const img = document.createElement("img");
+          img.src = card.image;
+          img.alt = `${card.name_en} source-labeled reference`;
+          large.appendChild(img);
+        } else {
+          large.appendChild(el("div", "missing", "No exact No Rarity reference image in the local row."));
+        }
+
+        const chips = $("chips");
+        chips.innerHTML = "";
+        [
+          card.id,
+          card.rarity,
+          card.holo ? "holo" : "non-holo",
+          card.profile,
+          card.active_no_rarity_target ? "active target" : "caveat row",
+        ].filter(Boolean).forEach((chip) => chips.appendChild(el("span", `chip${chip === "caveat row" ? " red" : ""}`, chip)));
+
+        $("boundary-copy").textContent = card.active_no_rarity_target
+          ? "The catalog anchors the row and evidence profile. It does not prove a seller's physical card."
+          : "This row is tracked for family completeness. Do not treat it as a premium No Rarity target.";
+
+        renderList("evidence-list", card.recommended_evidence || []);
+        renderList("unknown-list", card.what_agent_does_not_know || []);
+        updateWallPreview();
+        renderGrid();
+      }
+
+      function renderList(id, items) {
+        const list = $(id);
+        list.innerHTML = "";
+        (items || []).slice(0, 7).forEach((item) => list.appendChild(el("li", "", item)));
+      }
+
+      function selectCard(id) {
+        const card = state.cards.find((item) => item.id === id);
+        if (card) renderCard(card);
+      }
+
+      function updateWallPreview() {
+        if (!state.selected) return;
+        const profile = state.selected.profile;
+        const evidence = $("evidence").value;
+        const trust = $("trust").value;
+        const walls = [];
+        if (!state.selected.active_no_rarity_target) {
+          walls.push("caveat row");
+        } else if (profile === "NR-C" && evidence !== "NR-C" && evidence !== "NR-D") {
+          walls.push(`${profile} evidence floor`);
+        } else if (profile === "NR-B" && evidence === "NR-A") {
+          walls.push("upgrade to NR-B");
+        } else {
+          walls.push("evidence floor appears aligned");
+        }
+        if (state.stance === "offer" && profile === "NR-C" && (trust === "thin" || trust === "unknown")) {
+          walls.push("thin trust on high-value holo");
+        }
+        if (["PMCG1-071", "PMCG1-072", "PMCG1-073", "PMCG1-076", "PMCG1-093"].includes(state.selected.id)) {
+          walls.push("Quick Starter text-layout check");
+        }
+        $("wall-action").textContent = state.stance;
+        renderList("wall-list", walls);
+      }
+
+      async function loadCards() {
+        const query = $("search").value.trim();
+        const data = await api(`/api/demo/cards?q=${encodeURIComponent(query)}&limit=48`);
+        state.cards = data.cards || [];
+        state.collectors = data.collectors || state.collectors;
+        renderCollectors();
+        if (!state.selected || !state.cards.some((card) => card.id === state.selected.id)) {
+          renderCard(state.cards[0]);
+        } else {
+          renderGrid();
+        }
+      }
+
+      async function askAgent() {
+        if (!state.selected) return;
+        $("ask").disabled = true;
+        $("qwen-state").textContent = "thinking";
+        $("agent-line").textContent = "Reading the card, the collector, and the wall...";
+        $("agent-recommendation").textContent = "";
+        $("agent-next").textContent = "";
+        $("agent-question").textContent = "";
+        $("agent-message").textContent = "";
+        try {
+          const data = await api("/api/demo/agent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              card_id: state.selected.id,
+              collector_id: $("collector").value,
+              stance: state.stance,
+              evidence_level: $("evidence").value,
+              seller_trust: $("trust").value,
+              message: $("human-note").value,
+            }),
+          });
+          renderAgent(data);
+        } catch (error) {
+          $("agent-line").textContent = "Qwen did not answer cleanly.";
+          $("agent-recommendation").textContent = error.message;
+        } finally {
+          $("ask").disabled = false;
+          $("qwen-state").textContent = "Qwen local";
+        }
+      }
+
+      function renderAgent(data) {
+        const read = data.deterministic_read;
+        const agent = data.agent || {};
+        $("wall-action").textContent = read.action;
+        renderList("wall-list", read.walls.concat(read.asks.slice(0, 4)));
+        $("agent-line").textContent = agent.line || "";
+        $("agent-recommendation").textContent = asText(agent.recommendation);
+        $("agent-next").textContent = asText(agent.next_action);
+        $("agent-question").textContent = asText(agent.human_question);
+        $("agent-message").textContent = asText(agent.seller_or_buyer_message);
+        $("latency").textContent = agent._latency_ms ? `Qwen answered in ${agent._latency_ms} ms.` : "Deterministic wall read shown.";
+      }
+
+      function bind() {
+        $("search").addEventListener("input", () => {
+          window.clearTimeout(window.__searchTimer);
+          window.__searchTimer = window.setTimeout(loadCards, 180);
+        });
+        $("collector").addEventListener("change", updateWallPreview);
+        $("evidence").addEventListener("change", updateWallPreview);
+        $("trust").addEventListener("change", updateWallPreview);
+        $("ask").addEventListener("click", askAgent);
+        document.querySelectorAll("[data-stance]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.stance = button.dataset.stance;
+            document.querySelectorAll("[data-stance]").forEach((node) => node.classList.toggle("active", node === button));
+            updateWallPreview();
+          });
+        });
+      }
+
+      bind();
+      loadCards();
+    </script>
+  </body>
+</html>

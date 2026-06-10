@@ -1,0 +1,99 @@
+{
+  "contract": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "expected": "bypass_succeeds_current_gap",
+  "final_state": "RouteLocked",
+  "generated_at": "2026-05-19T18:06:47.001389+00:00",
+  "observations": [
+    "No EvidenceSpendability packet was created.",
+    "No validate_spendability_gate call was made before commitRoute.",
+    "The contract accepted the seller-signed route packet and advanced state to RouteLocked."
+  ],
+  "outcome": "route_committed_without_spendability",
+  "packets": [
+    {
+      "packet_id": "bypass_intent",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_intent.json",
+      "payload_hash": "0x77ebbb2078b26785783473cd00d2e1c0078fb6d88f1fc4ee01701591b8ac24cb",
+      "schema": "marketplace.intent.v0.2",
+      "signature": "0x269f85cb85e75f66248cede5a3d6e2d2e100ca3cdd908b1d68aa635a2e76a1401f48923ce0f4c88a0f69adffd9cd681531e2e5962d7a3271bbcbaa33d79ba04b1b",
+      "signature_valid": true,
+      "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    {
+      "packet_id": "bypass_terms",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_terms.json",
+      "payload_hash": "0xbf4a6581b328065c9e1b61bf84bf15f687a9bbe610c994e02202b37dee1a9502",
+      "schema": "marketplace.escrow_terms.v0.2",
+      "signature": "0x25ebae4737401626640008216009177e675a622dc2a04247eabd6ca182f2fb1476d2475a7d6c552aef1724ba140300657d4aaad9c5f412cc343cc5caf56db3d61b",
+      "signature_valid": true,
+      "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    {
+      "packet_id": "bypass_item_fingerprint",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_item_fingerprint.json",
+      "payload_hash": "0xa025b3d3116e1b7e8df0728a2007707ad78d0a4fce777ea3172048ca5dad3b09",
+      "schema": "marketplace.item_fingerprint.v0.2",
+      "signature": "0xbcf7f4de17dd90ec66adc2fb7d50a9fb829a9ef362505fdfa79ba0af86b63339378ba6d58c6b34bf3658dc705526e587ec730963c2efab5086638002ab0c370c1c",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "bypass_item_manifest",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_item_manifest.json",
+      "payload_hash": "0x800e2370172178bffa67ef4f59d45e5c99e9124a51f092218a3b59d7e258c0fb",
+      "schema": "marketplace.evidence_manifest.v0.3",
+      "signature": "0x8d96497eeeed445eaca717364904804be9cb5bd83fbf0a5ed9db1942c924af4202596493cc56508c967824a37517b5d0c15134c052fc8ebf664214c62b0da4fe1c",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "bypass_inventory_lock",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_inventory_lock.json",
+      "payload_hash": "0x1d04d93dbe2806200b2cb317d6fd11c9c43486c186c5b482409e8ab1c6a8125d",
+      "schema": "marketplace.inventory_lock.v0.2",
+      "signature": "0x4ab0cceac4ecd065a7a56514676799c43e977ecf4a93817b7bea8810d0b271a20723cf888ffbad259537b4c6e751123ef42e5f3dcf5116f870823da060d686811b",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "bypass_route_without_spendability",
+      "path": "runs/spendability_gate_bypass_drill_20260519T180645Z/packets/bypass_route_without_spendability.json",
+      "payload_hash": "0x612369ddfb2c23ecfc37c6f0ac60cfd5a5b6eefe109404575862691e499aa6d1",
+      "schema": "marketplace.trade_route.v0.2",
+      "signature": "0xd751207dbc6876a48089bf27097f0299a5cebb2745a1b9e6f3d269261b4a7d970032dcbac72fb977937455cfed4dd3a3e52f9330ddecb09defc694e77bfe07b11b",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    }
+  ],
+  "passed": true,
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "rpc_url": "http://127.0.0.1:18546",
+  "run_id": "spendability_gate_bypass_drill_20260519T180645Z",
+  "title": "Direct commitRoute bypasses off-chain spendability admission control",
+  "transactions": [
+    {
+      "label": "create bypass drill trade",
+      "tx_hash": "0x3a8a334391c3532c03853a8cf026c8f022b88538dcca477d3ca956143b0f9e18"
+    },
+    {
+      "label": "seller posts bypass drill bond",
+      "tx_hash": "0x1def8515db7f0228e0fd4563906cea1d6b64a1aed114ea6be89c8306df7f5cb9"
+    },
+    {
+      "label": "attach bypass manifest",
+      "tx_hash": "0xf8b90564a71f89411db1057e09dafabe1d0aac7738f919aacf90632571fb1414"
+    },
+    {
+      "label": "commit bypass item fingerprint",
+      "tx_hash": "0xbd6138b1fc4542d5fe2e4f11263bc9e8c6ed4e0aead0a3b7b8a126e3593926e4"
+    },
+    {
+      "label": "commit bypass inventory lock",
+      "tx_hash": "0x6badfb8a219a675c8abb3081b1700be258c592117eae33765209e6e5e87d6e5a"
+    },
+    {
+      "label": "direct commitRoute without spendability",
+      "tx_hash": "0xb6f0b19786f66e47daafc6c42b74579ade649c90dd18eefb3dc9ece875629e19"
+    }
+  ]
+}

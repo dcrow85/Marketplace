@@ -1,0 +1,66 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":null,\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:seller:anvil-1\",\"actor_role\":\"seller\",\"authority_hash\":\"0xe6f98cc0fa971ad2a7529262a2e727d3b113ede5085ec703fa4e99ba44e8bd3c\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"delivery_confirmation:2:seller-notice\",\"gate_type\":\"delivery_confirmation\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-09T15:47:03.705335+00:00\",\"issued_by\":\"did:market:seller:anvil-1\",\"issued_role\":\"seller\",\"manifest_hash\":\"0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0x930cbca8b807a09d66c65437b4e84dad39566173b2ab445f69d2ef757509fdfc\",\"requires\":[\"delivery_event\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"claim_delivery_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"delivery_event\",\"not_claiming\":[\"card_authenticity\",\"card_condition\",\"buyer_satisfaction\"],\"spend_limit\":\"opens_inspection\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":2,\"wall_bundle_hash\":null,\"window\":{\"after_event_hash\":\"0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672\",\"after_state\":{\"state_hash\":\"0xcd24afdac410af516bcb40f31f42e24865c423a1d7e0ea14214c53ed8af5491b\",\"state_name\":\"RouteLocked\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": null,
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:seller:anvil-1",
+      "actor_role": "seller",
+      "authority_hash": "0xe6f98cc0fa971ad2a7529262a2e727d3b113ede5085ec703fa4e99ba44e8bd3c",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "delivery_confirmation:2:seller-notice",
+      "gate_type": "delivery_confirmation",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-09T15:47:03.705335+00:00",
+    "issued_by": "did:market:seller:anvil-1",
+    "issued_role": "seller",
+    "manifest_hash": "0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0x930cbca8b807a09d66c65437b4e84dad39566173b2ab445f69d2ef757509fdfc",
+    "requires": [
+      "delivery_event"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "claim_delivery_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "delivery_event",
+        "not_claiming": [
+          "card_authenticity",
+          "card_condition",
+          "buyer_satisfaction"
+        ],
+        "spend_limit": "opens_inspection",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 2,
+    "wall_bundle_hash": null,
+    "window": {
+      "after_event_hash": "0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672",
+      "after_state": {
+        "state_hash": "0xcd24afdac410af516bcb40f31f42e24865c423a1d7e0ea14214c53ed8af5491b",
+        "state_name": "RouteLocked"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0xeef336f49b8fd99d986f5b79102b90f12713484bf381a431bd0fc76545ecc8c7",
+  "signature": "0x73205883048bd6cbb3a7fff0da7487249fd86bdbde0a8906d8c542138bcafbde03d807586a12c5f1714f7ca061ad30f589651cdea03e792482ab89631bca8dc21b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,26 @@
+{
+  "canonical_payload": "{\"evidence_tier\":\"strong\",\"noted_gaps\":[],\"opinion\":\"route evidence is enough to open a claim but not enough to automate past friction\",\"schema\":\"marketplace.verifier_note.v0.2\",\"scope\":[\"packet_completeness\",\"route_claim_readiness\"],\"source_simulation_hashes\":{\"automated_policy\":\"sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079\",\"escrow_terms\":\"sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9\",\"friction_policy\":\"sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa\",\"intent\":\"sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a\",\"seller_offer\":\"sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253\"},\"source_simulation_trade\":\"SIM-0137\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_tier": "strong",
+    "noted_gaps": [],
+    "opinion": "route evidence is enough to open a claim but not enough to automate past friction",
+    "schema": "marketplace.verifier_note.v0.2",
+    "scope": [
+      "packet_completeness",
+      "route_claim_readiness"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:59d055dda1f46d967a1d168a70fb647e68537500523132ef3e416f75b1ed5079",
+      "escrow_terms": "sha256:e01313f7c82bc007d1bd4a00cb81a0fa9f4c114660de8a684750a888ac18d4a9",
+      "friction_policy": "sha256:79aa7fcd0bbd447d8b5823d2caaa10f3e8bc488e8f74e21d758ef51fbb8b54aa",
+      "intent": "sha256:4f6c1da24925beb43378210483a7df5d4235ea7853277163900fa19fdbb7323a",
+      "seller_offer": "sha256:d5129ce492936c6cd5ea191c0ee031860a45db4d55c95b1532727208257a2253"
+    },
+    "source_simulation_trade": "SIM-0137"
+  },
+  "payload_hash": "0x3b68d178d17f2f48b768fdefbb33e81d0f82f27ee71e05f6f23adcd1fc7b0209",
+  "signature": "0xd8e0883dff0e8da4d07cc6cbf61a0c0b6c8da3872b00d7a7911812f7271ff7df63dff6f764330085cae41a10e57e9a3d5c8e55c7fd64b8f76d27eff94601e1591c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

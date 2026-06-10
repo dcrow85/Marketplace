@@ -1,0 +1,168 @@
+{
+  "agent_parse": {
+    "card_name": "a clean Lass around , is fine",
+    "caveats": [
+      "fallback parser used"
+    ],
+    "condition_floor": null,
+    "currency": "USD",
+    "elapsed_s": 0.0,
+    "human_contact_style": "ask_before_material_risk",
+    "max_total_price": 250.0,
+    "raw_or_slabbed": "raw",
+    "route_preferences": [
+      "insured_shipping"
+    ],
+    "row_id": null,
+    "variant_hint": "no_rarity"
+  },
+  "agent_runtime": {
+    "model": "",
+    "provider": "fallback_parser"
+  },
+  "packet": {
+    "agent_boundaries": {
+      "hard_walls": [],
+      "spendability_boundaries": [
+        "catalog row is not spendable as seller-card proof",
+        "reference image is not seller possession evidence",
+        "collector texture is not price evidence",
+        "a blank-corner crop is not enough without same-card context",
+        "price remains non-spendable until a timestamped comp packet is attached"
+      ],
+      "what_agent_does_not_know": [
+        "whether the seller possesses the card",
+        "whether the seller's card matches the reference row",
+        "whether the seller's card is authentic",
+        "the condition band",
+        "a reliable current price",
+        "whether external comps accidentally mix regular Japanese Base with No Rarity copies"
+      ],
+      "what_agent_knows": [
+        "PMCG1 catalog row",
+        "active No Rarity target status",
+        "source-labeled No Rarity reference is available",
+        "category: Trainer",
+        "rarity metadata: Rare"
+      ]
+    },
+    "buyer_agent": {
+      "agent_id": "did:market:agent:buyer-gemma-local",
+      "agent_model": "gemma4:31b",
+      "agent_provider": "ollama",
+      "authority": "draft_only_until_human_or_config_signature"
+    },
+    "catalog_ref": {
+      "card": "Lass",
+      "catalog": "japanese_no_rarity_base_set",
+      "local_id": "095",
+      "match_kind": "name_in_human_text",
+      "row_id": "PMCG1-095",
+      "variant_claim": "no_rarity"
+    },
+    "condition_floor": "LP",
+    "cost_dimensional_integrity": {
+      "native_dimensions": [
+        "card_price",
+        "shipping",
+        "insurance",
+        "seller_attention",
+        "buyer_attention",
+        "agent_compute",
+        "verifier_cost",
+        "route_risk",
+        "trust_gap",
+        "condition_risk"
+      ],
+      "reversible": true,
+      "scalar_summary": "max_total_price is a spending boundary, not a collapse of native cost dimensions"
+    },
+    "evidence_expectation": {
+      "baseline_profile": "NR-B",
+      "baseline_profile_name": "Mid-value desirable card",
+      "card_specific_tells": [],
+      "conditional_overlays": [
+        "NR-D if the offer is slabbed",
+        "NR-E if seller trust is thin, new, or not portable"
+      ],
+      "required_before_recommendation": [
+        "full front and full back images",
+        "sharp lower-right rarity-symbol crop with surrounding border",
+        "front and back scans or high-resolution photos",
+        "front and back corner close-ups if condition affects price",
+        "fresh nonce possession image",
+        "seller proof reuse if trust is thin"
+      ]
+    },
+    "expires_at": "2026-06-04T17:55:45Z",
+    "form": "raw",
+    "human_contact_policy": {
+      "agent_may_continue_without_human_for": [
+        "catalog lookup",
+        "pricing discovery",
+        "seller-agent evidence request within baseline profile",
+        "rejecting out-of-scope or under-evidenced offers"
+      ],
+      "ask_before": [
+        "price_above_likely_band",
+        "evidence_below_profile",
+        "new_seller_without_bond",
+        "verifier_required_or_expensive",
+        "route_or_insurance_gap",
+        "condition_band_unclear"
+      ],
+      "style": "ask_before_material_risk"
+    },
+    "human_text": "Looking for a clean No Rarity Lass around $250 shipped, raw is fine",
+    "issued_at": "2026-05-21T17:55:45Z",
+    "max_total_price": {
+      "amount": 250.0,
+      "currency": "USD",
+      "includes": [
+        "card",
+        "shipping",
+        "insurance",
+        "seller_attention_fees"
+      ],
+      "missing": false
+    },
+    "not_claiming": [
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "No Rarity truth without seller evidence",
+      "route safety",
+      "funding or escrow lock"
+    ],
+    "pricing_policy": {
+      "comp_requirements": [
+        "same PMCG1 row",
+        "listing or sale images show the No Rarity claim clearly",
+        "condition band is legible",
+        "slab cert or raw status is separated",
+        "sale venue and timestamp are preserved"
+      ],
+      "do_not_average_uncertain_comps": true,
+      "must_attach_cost_packet_before_acceptance": true,
+      "not_claiming": [
+        "current price",
+        "fair price",
+        "liquidity"
+      ],
+      "status": "agent_discovery_required"
+    },
+    "route_preferences": [
+      "insured_shipping"
+    ],
+    "schema": "marketplace.buyer_want.v0.1",
+    "want_id": "bw_4d08c43048955571"
+  },
+  "packet_hash": "sha256:a5992abc7f9e4225b92a55d4bac5787742edccfb5c006c13aa6bc48e4edbb884",
+  "schema": "marketplace.buyer_want_envelope.v0.1",
+  "validation": {
+    "errors": [],
+    "valid": true,
+    "warnings": []
+  }
+}

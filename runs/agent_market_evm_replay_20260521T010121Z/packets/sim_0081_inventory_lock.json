@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Vending Series Mewtwo\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0081\",\"item_fingerprint_hash\":\"0xfd0d45cbdad22e369267323fb9cd764262933d0c63fccbc39b0977d3ee9d833a\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7\",\"escrow_terms\":\"sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783\",\"friction_policy\":\"sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899\",\"intent\":\"sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b\",\"seller_offer\":\"sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b\"},\"source_simulation_trade\":\"SIM-0081\",\"visible_identifiers\":[\"sim-0081-front-photo-hash\",\"sim-0081-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Vending Series Mewtwo",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0081",
+    "item_fingerprint_hash": "0xfd0d45cbdad22e369267323fb9cd764262933d0c63fccbc39b0977d3ee9d833a",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:7690e3572aa29c4094c3ee16d3ab137c4dc7373bcca7d293ec90d75faaf2ded7",
+      "escrow_terms": "sha256:04eb9156a6ebca97f4a87860cd26ae762e86b3ab0c431221f55f9ee509e1a783",
+      "friction_policy": "sha256:25f3919ac28e31c579a0fabf1fa483a6993919b9abb3acbf0af9a730f7711899",
+      "intent": "sha256:2a08b8d8c9b31c30eacb7aa1d6f9ee6c61a915c5acd381402f02f2989e6f4b2b",
+      "seller_offer": "sha256:ac9adb69fb89c909d66eba84bcb05f9c8b6ccffe31bfdc23425fc10d18c0e11b"
+    },
+    "source_simulation_trade": "SIM-0081",
+    "visible_identifiers": [
+      "sim-0081-front-photo-hash",
+      "sim-0081-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x52adfdf9233b05491a269b744ba4e57068f8b738b5f57f12f013107eec413579",
+  "signature": "0xaac6d5a3ca5ad52ebdbbd0235098d04b37fd98a617119e0db29cd3062f4bfe1733afb8a5e69515e0d8d328dfc41074c8d9fc0491e173bd174cfbe0a28adf91e01c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

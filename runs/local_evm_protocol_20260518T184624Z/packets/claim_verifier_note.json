@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"evidence_class\":\"claim\",\"review\":\"Received-item photos support a material gap from NM to LP.\",\"schema\":\"marketplace.evidence_packet.v0.2\",\"scope\":[\"received_front\",\"received_back\",\"edge_wear\"],\"trade_id\":2,\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_class": "claim",
+    "review": "Received-item photos support a material gap from NM to LP.",
+    "schema": "marketplace.evidence_packet.v0.2",
+    "scope": [
+      "received_front",
+      "received_back",
+      "edge_wear"
+    ],
+    "trade_id": 2,
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x6b8df9321c1aa707f3152029391150844eef9d5ee07abce9faeb61a91d461ca6",
+  "signature": "0x57e94c3ceac05b885e486b29d60e935414cdea48392f44fb203afd9edd02ce4343d628b29554fb615476b3b55bc0333abb9f78021fc458a016044cbd5a5cf43a1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

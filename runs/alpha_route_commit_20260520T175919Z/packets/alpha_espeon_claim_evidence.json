@@ -1,0 +1,34 @@
+{
+  "canonical_payload": "{\"agent_observation\":\"buyer reports a surface mark not visible in seller photo\",\"buyer_evidence\":[{\"ref\":\"buyer:fixture:package-opened\",\"type\":\"opening_photo\"},{\"ref\":\"buyer:fixture:surface-scratch\",\"type\":\"front_surface_photo\"},{\"ref\":\"seller_evidence_response:req_surface_01\",\"type\":\"seller_reference_comparison\"}],\"claim_type\":\"condition_mismatch\",\"inspection_timing\":\"inside_window\",\"not_claiming\":[\"fraud_intent\",\"authenticity_failure\",\"arbiter_ruling\"],\"schema\":\"marketplace.claim_evidence.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "agent_observation": "buyer reports a surface mark not visible in seller photo",
+    "buyer_evidence": [
+      {
+        "ref": "buyer:fixture:package-opened",
+        "type": "opening_photo"
+      },
+      {
+        "ref": "buyer:fixture:surface-scratch",
+        "type": "front_surface_photo"
+      },
+      {
+        "ref": "seller_evidence_response:req_surface_01",
+        "type": "seller_reference_comparison"
+      }
+    ],
+    "claim_type": "condition_mismatch",
+    "inspection_timing": "inside_window",
+    "not_claiming": [
+      "fraud_intent",
+      "authenticity_failure",
+      "arbiter_ruling"
+    ],
+    "schema": "marketplace.claim_evidence.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x527fa8ade56dca104c6ae446ec1474ee29755359fd7774a14d65e5ed232cee64",
+  "signature": "0xd2eb1025eadf1afae56c5839b5a0f61e077c6cf34265c48c991f0f299bf435c01979c34bc525c8d2ebf0d0199f4988c35b35c607aa6dcb98c880a784e584ccd81b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"grounds_type\":\"material_misdescription\",\"happened\":{\"issue\":\"edge wear not visible in original photos\",\"received_condition\":\"LP\"},\"promised\":{\"condition_floor\":\"NM\",\"evidence\":\"front/back photos\"},\"requested_remedy\":\"partial_refund_plus_bond_penalty\",\"schema\":\"marketplace.dispute_case.v0.2\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "grounds_type": "material_misdescription",
+    "happened": {
+      "issue": "edge wear not visible in original photos",
+      "received_condition": "LP"
+    },
+    "promised": {
+      "condition_floor": "NM",
+      "evidence": "front/back photos"
+    },
+    "requested_remedy": "partial_refund_plus_bond_penalty",
+    "schema": "marketplace.dispute_case.v0.2",
+    "trade_id": 2
+  },
+  "payload_hash": "0xe59286d32704ff5271adb626bafbc15d160586a0b8bc0438e41501d109692824",
+  "signature": "0x10882079e8cabe572836d8885c15603fc5155f30166a0db3fe3c725b83c2654036fe3a8d5ed5ebc0f3d9f36749bdf51e1c836435e395a498a6d3a8bc3cec07d71b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

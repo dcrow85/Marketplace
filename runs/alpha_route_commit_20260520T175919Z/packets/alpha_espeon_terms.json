@@ -1,0 +1,24 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.0128\",\"inspection_seconds\":172800,\"price_eth_local_probe\":\"0.64\",\"release_gate\":\"buyer_accepts_or_claim_resolves\",\"route_gate\":{\"route_spendability_evm_hash\":\"0xc0114c7becafe23bf9eac6e344b84b4c8a2c6283feb63aa2ea0ec8b6912550f0\",\"route_spendability_hash\":\"sha256:837bc8c313ddeb5088381a67706b22431d222ea3b1a8330d40c942d2e78e24af\",\"route_wall_bundle_evm_hash\":\"0x11c41223b4bb23a8ab5e291922f264e0c12e5ea8f300b9883f290d08dc862b37\",\"wall_bundle_hash\":\"sha256:faae96aad3ea01607de6273931b6c9467875b990ad754f7cd043c8dc1bfe94bd\"},\"schema\":\"marketplace.escrow_terms.v0.2\",\"selected_arbiter\":\"did:market:arbiter:anvil-2\",\"seller_bond_eth_local_probe\":\"0.08\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.0128",
+    "inspection_seconds": 172800,
+    "price_eth_local_probe": "0.64",
+    "release_gate": "buyer_accepts_or_claim_resolves",
+    "route_gate": {
+      "route_spendability_evm_hash": "0xc0114c7becafe23bf9eac6e344b84b4c8a2c6283feb63aa2ea0ec8b6912550f0",
+      "route_spendability_hash": "sha256:837bc8c313ddeb5088381a67706b22431d222ea3b1a8330d40c942d2e78e24af",
+      "route_wall_bundle_evm_hash": "0x11c41223b4bb23a8ab5e291922f264e0c12e5ea8f300b9883f290d08dc862b37",
+      "wall_bundle_hash": "sha256:faae96aad3ea01607de6273931b6c9467875b990ad754f7cd043c8dc1bfe94bd"
+    },
+    "schema": "marketplace.escrow_terms.v0.2",
+    "selected_arbiter": "did:market:arbiter:anvil-2",
+    "seller_bond_eth_local_probe": "0.08",
+    "trade_id": 1
+  },
+  "payload_hash": "0x7a51a7ed0ebce131e11d8e2551556def84dc981e62e4ccb71397088c0ca9e7ec",
+  "signature": "0xcd80a036693568d4af3a5760f1d974d38dde750f307774ed1b4664ba5e4fea97791536e0c856ddfc7535d32a88650e23c070b85bf69b9b80cf76742cfe36545c1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

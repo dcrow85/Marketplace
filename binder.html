@@ -1,0 +1,4818 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blank Corner Club</title>
+    <style>
+      :root {
+        --paper: #f7f6f1;
+        --ink: #111;
+        --soft: #fbfaf5;
+        --line: #cfc9bb;
+        --red: #b32121;
+        --dark-page: #151515;
+        --dark-panel: #20201d;
+        --warm-white: #f5efe3;
+        --dim-white: #cfc7b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.62) 0 1px, transparent 2px),
+          radial-gradient(circle at 84% 88%, rgba(17, 17, 17, 0.08) 0 1px, transparent 2px),
+          var(--paper);
+        background-size: 34px 34px, 42px 42px, auto;
+        color: var(--ink);
+        font: 16px/1.42 "Trebuchet MS", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body.binder-open {
+        overflow: hidden;
+      }
+
+      main {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 8px;
+        height: 100vh;
+        width: min(1560px, 100%);
+        margin: 0 auto;
+        padding: 8px 10px;
+      }
+
+      body.binder-open main {
+        padding: 8px 10px;
+      }
+
+      h1, h2, p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-size: clamp(2.2rem, 7vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      button {
+        border: 2px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+        padding: 8px 12px;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      .binder-cover {
+        position: relative;
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr);
+        min-height: 0;
+        height: 100%;
+        border: 3px solid var(--ink);
+        background:
+          linear-gradient(90deg, #111 0 54px, transparent 54px),
+          #171717;
+        box-shadow: 8px 8px 0 var(--ink);
+        overflow: hidden;
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .binder-cover.opening {
+        opacity: 0;
+        transform: translateX(-10px) scale(0.996);
+      }
+
+      .cover-spine {
+        position: relative;
+        border-right: 2px solid var(--ink);
+        background: #101010;
+      }
+
+      .cover-ring {
+        display: none;
+      }
+
+      .cover-board {
+        position: relative;
+        display: grid;
+        align-content: space-between;
+        gap: 28px;
+        padding: clamp(20px, 5vw, 54px);
+        background:
+          radial-gradient(circle at 82% 14%, rgba(179, 33, 33, 0.18) 0 2px, transparent 3px),
+          linear-gradient(135deg, #2a2a2a 0%, #101010 60%, #242424 100%);
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .cover-board::before {
+        content: "";
+        position: absolute;
+        inset: 22px;
+        border: 2px solid rgba(255, 255, 255, 0.22);
+        pointer-events: none;
+      }
+
+      .cover-kicker {
+        display: inline-block;
+        width: fit-content;
+        margin-bottom: 18px;
+        border: 2px solid var(--red);
+        background: #fff;
+        color: var(--red);
+        padding: 5px 9px;
+        font-weight: 900;
+        transform: rotate(-1deg);
+      }
+
+      .cover-title {
+        position: relative;
+        z-index: 3;
+        max-width: 610px;
+      }
+
+      .cover-title h1 {
+        margin-bottom: 10px;
+      }
+
+      .cover-japanese {
+        display: block;
+        font-size: clamp(2.3rem, 6.3vw, 4.8rem);
+      }
+
+      .cover-english {
+        display: block;
+        font-size: clamp(1.8rem, 4.1vw, 3.3rem);
+      }
+
+      .cover-read {
+        max-width: 660px;
+        margin: 0;
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        color: #f1eee5;
+      }
+
+      .cover-bottom {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: end;
+      }
+
+      .account-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        min-height: 42px;
+      }
+
+      .site-title {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        min-width: 0;
+        color: var(--ink);
+        font-weight: 900;
+      }
+
+      .site-title strong {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+      }
+
+      .site-title span {
+        color: #56524b;
+        font-size: 0.88rem;
+      }
+
+      .cover-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .cover-stickers {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .cover-stickers > * {
+        position: absolute;
+        filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.36));
+      }
+
+      .cover-stickers button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        font: inherit;
+        text-align: inherit;
+      }
+
+      .sticker-button {
+        pointer-events: auto;
+        cursor: help;
+      }
+
+      .sticker-button:focus-visible {
+        outline: 3px solid #f4ead1;
+        outline-offset: 5px;
+      }
+
+      .sticker-button:hover {
+        filter: drop-shadow(5px 6px 0 rgba(0, 0, 0, 0.42));
+      }
+
+      .sticker-dot {
+        right: 18%;
+        top: 20%;
+        width: 24px;
+        height: 24px;
+        border: 2px solid #f4ead1 !important;
+        border-radius: 999px;
+        background: var(--red) !important;
+        box-shadow:
+          0 0 0 4px rgba(244, 234, 209, 0.15),
+          3px 4px 0 rgba(0, 0, 0, 0.4);
+        transform: rotate(-4deg);
+      }
+
+      .sticker-dot::after {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border-radius: inherit;
+        background: #f4ead1;
+      }
+
+      .sticker-dot:hover,
+      .sticker-dot:focus-visible {
+        transform: rotate(-4deg) scale(1.08);
+      }
+
+      .sticker-card-crop {
+        right: 6.2%;
+        top: 16%;
+        width: min(315px, 31vw);
+        aspect-ratio: 1.42;
+        border: 4px solid #f4ead1;
+        border-radius: 18px;
+        background:
+          linear-gradient(90deg, rgba(69, 111, 57, 0.88) 0 12px, transparent 12px),
+          linear-gradient(180deg, #d8b873 0 38%, #e4cf93 38% 100%);
+        box-shadow: inset 0 0 0 2px var(--ink);
+        transform: rotate(2.4deg);
+        opacity: 0.94;
+      }
+
+      .sticker-card-crop::before {
+        content: "";
+        position: absolute;
+        inset: 14px 22px auto 22px;
+        height: 28%;
+        border: 2px solid rgba(17, 17, 17, 0.7);
+        background:
+          linear-gradient(135deg, rgba(70, 126, 82, 0.65), rgba(235, 194, 96, 0.45));
+      }
+
+      .sticker-card-crop::after {
+        content: "No rarity mark!";
+        position: absolute;
+        right: 16px;
+        bottom: -34px;
+        color: var(--red);
+        font-size: clamp(1rem, 2.2vw, 1.6rem);
+        font-weight: 900;
+        transform: rotate(-4deg);
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+
+      .crop-line {
+        position: absolute;
+        left: 26px;
+        right: 28px;
+        height: 2px;
+        background: rgba(17, 17, 17, 0.72);
+      }
+
+      .crop-line.one {
+        top: 48%;
+      }
+
+      .crop-line.two {
+        top: 69%;
+      }
+
+      .crop-cost {
+        position: absolute;
+        right: 28px;
+        font-size: clamp(1.15rem, 2.6vw, 2.1rem);
+        font-weight: 900;
+        color: #141414;
+      }
+
+      .crop-cost.one {
+        top: 39%;
+      }
+
+      .crop-cost.two {
+        top: 60%;
+      }
+
+      .crop-jp {
+        position: absolute;
+        left: 32%;
+        top: 42%;
+        color: #171717;
+        font-weight: 900;
+        font-size: clamp(0.9rem, 1.8vw, 1.28rem);
+      }
+
+      .crop-note {
+        position: absolute;
+        left: 32%;
+        top: 53%;
+        width: 28%;
+        border-top: 1px dashed rgba(17, 17, 17, 0.6);
+        color: rgba(17, 17, 17, 0.64);
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+
+      .rarity-callout {
+        position: absolute;
+        right: -4px;
+        bottom: 34px;
+        width: 110px;
+        height: 96px;
+        border: 4px solid var(--red);
+        border-left-color: transparent;
+        border-top-color: transparent;
+        border-radius: 50%;
+        transform: rotate(-16deg);
+      }
+
+      .rarity-callout::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        bottom: -13px;
+        width: 52px;
+        border-bottom: 4px solid var(--red);
+        transform: rotate(-23deg);
+      }
+
+      .sticker-note {
+        right: 34%;
+        top: 7%;
+        width: min(218px, 20vw);
+        min-height: 118px;
+        padding: 18px 20px;
+        border: 2px solid rgba(17, 17, 17, 0.8);
+        background:
+          linear-gradient(90deg, rgba(17, 17, 17, 0.08) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+          #ded0ad;
+        background-size: 18px 18px;
+        color: #222;
+        font-weight: 900;
+        transform: rotate(-3deg);
+      }
+
+      .sticker-note::before {
+        content: "";
+        position: absolute;
+        left: 36%;
+        top: -17px;
+        width: 76px;
+        height: 28px;
+        background: rgba(198, 172, 119, 0.92);
+        transform: rotate(2deg);
+      }
+
+      .sticker-note .red {
+        display: block;
+        margin-top: 8px;
+        color: var(--red);
+      }
+
+      .sticker-note .jp {
+        display: block;
+        margin-top: 8px;
+        color: #333;
+        font-size: 0.9rem;
+      }
+
+      .sticker-compare {
+        left: 47%;
+        bottom: 7%;
+        width: min(300px, 28vw);
+        min-height: 122px;
+        border: 3px solid #f4ead1;
+        border-radius: 14px;
+        background:
+          linear-gradient(90deg, rgba(17, 17, 17, 0.08) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(17, 17, 17, 0.07) 1px, transparent 1px),
+          #ded0ad;
+        background-size: 18px 18px;
+        color: #222;
+        padding: 14px;
+        transform: rotate(1.4deg);
+      }
+
+      .compare-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .compare-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        color: #222;
+        font-weight: 900;
+      }
+
+      .compare-title span:last-child {
+        color: var(--red);
+      }
+
+      .compare-crop {
+        position: relative;
+        height: 58px;
+        border: 2px solid #222;
+        background:
+          linear-gradient(90deg, transparent 78%, #557143 79% 84%, transparent 85%),
+          linear-gradient(180deg, #d8b873, #ebd49d);
+      }
+
+      .compare-crop::before,
+      .compare-crop::after {
+        content: "";
+        position: absolute;
+        left: 10px;
+        right: 22px;
+        height: 1px;
+        background: #222;
+      }
+
+      .compare-crop::before {
+        top: 23px;
+      }
+
+      .compare-crop::after {
+        top: 42px;
+      }
+
+      .compare-crop.mark::after {
+        right: 36px;
+      }
+
+      .compare-crop.mark .fake-mark {
+        position: absolute;
+        right: 16px;
+        bottom: 10px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid #222;
+        border-radius: 50%;
+        background: #222;
+      }
+
+      .compare-crop.missing {
+        box-shadow: inset -12px -12px 0 rgba(179, 33, 33, 0.08);
+      }
+
+      .compare-footer {
+        margin: 8px 0 0;
+        color: #333;
+        font-size: 0.88rem;
+        font-weight: 900;
+      }
+
+      .helper-bat {
+        right: 26%;
+        bottom: 20%;
+        width: min(145px, 15vw);
+        transform: rotate(-4deg);
+      }
+
+      .helper-reader {
+        right: 4.4%;
+        top: 4.5%;
+        width: min(128px, 13vw);
+        transform: rotate(5deg);
+      }
+
+      .helper-bat .speech {
+        position: absolute;
+        left: 74%;
+        top: 12%;
+        min-width: 104px;
+        padding: 8px 10px;
+        border: 2px solid #f4ead1;
+        border-radius: 50%;
+        background: #f4ead1;
+        color: #222;
+        font-weight: 900;
+        font-size: 0.82rem;
+        transform: rotate(6deg);
+      }
+
+      .helper-reader .tiny-cards {
+        position: absolute;
+        right: 0;
+        bottom: 6%;
+        width: 30px;
+        height: 24px;
+        border: 2px solid #222;
+        background: #d8b873;
+        transform: rotate(16deg);
+      }
+
+      .check-note {
+        left: 7%;
+        bottom: 19%;
+        width: min(210px, 20vw);
+        padding: 13px 14px;
+        border: 2px solid rgba(17, 17, 17, 0.8);
+        background: #d9c69e;
+        color: #222;
+        font-weight: 900;
+        transform: rotate(-2deg);
+      }
+
+      .check-note::before {
+        content: "";
+        position: absolute;
+        right: 18px;
+        top: -16px;
+        width: 70px;
+        height: 26px;
+        background: rgba(198, 172, 119, 0.92);
+        transform: rotate(4deg);
+      }
+
+      .check-note h3 {
+        margin: 0 0 7px;
+        color: #222;
+        font-size: 1rem;
+        text-decoration: underline;
+        text-decoration-color: var(--red);
+      }
+
+      .check-note p {
+        margin: 4px 0 0;
+        font-size: 0.88rem;
+      }
+
+      .cover-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        max-width: 580px;
+      }
+
+      .cover-fact {
+        border: 1px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        padding: 6px 9px;
+        font-weight: 900;
+      }
+
+      .cover-fact.red {
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .open-binder {
+        min-width: 150px;
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+
+      .identity-slip {
+        min-width: 210px;
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-color: var(--ink);
+        background: #fff;
+        color: var(--ink);
+        box-shadow: 4px 4px 0 var(--ink);
+        transform: none;
+      }
+
+      .identity-slip::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: var(--red);
+      }
+
+      .identity-stamp {
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .binder-view {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr);
+        height: 100%;
+        min-height: 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: end;
+        margin-bottom: 6px;
+      }
+
+      .binder-view h1 {
+        margin-bottom: 3px;
+        font-size: clamp(1.45rem, 3vw, 2.45rem);
+      }
+
+      .lede {
+        max-width: 720px;
+        margin-bottom: 0;
+        font-size: 0.92rem;
+      }
+
+      .binder-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        justify-content: flex-end;
+      }
+
+      .stamp {
+        border: 1px solid rgba(245, 239, 227, 0.72);
+        background: rgba(17, 17, 17, 0.68);
+        color: var(--warm-white);
+        padding: 4px 8px;
+        font-size: 0.86rem;
+        font-weight: 800;
+        transform: rotate(-1deg);
+      }
+
+      .stamp:nth-child(2) {
+        transform: rotate(1deg);
+      }
+
+      .stamp.red {
+        border-color: rgba(255, 116, 102, 0.8);
+        color: #ffb2a8;
+      }
+
+      .binder-shell {
+        position: relative;
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: 0;
+        min-height: 0;
+        height: 100%;
+        border: 3px solid var(--ink);
+        background:
+          linear-gradient(90deg, #111 0 54px, transparent 54px),
+          #171717;
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+
+      .binder-spine {
+        position: relative;
+        border-right: 2px solid var(--ink);
+        background: #101010;
+      }
+
+      .binder-hole {
+        position: absolute;
+        left: 50%;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+        background: #ece9df;
+        transform: translateX(-50%);
+      }
+
+      .binder-hole.one {
+        top: 15%;
+      }
+
+      .binder-hole.two {
+        top: 48%;
+      }
+
+      .binder-hole.three {
+        bottom: 15%;
+      }
+
+      .binder-page {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        padding: 14px 42px;
+        color: var(--warm-white);
+        background:
+          radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.06) 0 1px, transparent 2px),
+          radial-gradient(circle at 78% 86%, rgba(179, 33, 33, 0.12) 0 1px, transparent 2px),
+          linear-gradient(135deg, #242420 0%, var(--dark-page) 58%, #10100f 100%);
+        background-size: 30px 30px, 42px 42px, auto;
+      }
+
+      .binder-page::before {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .binder-page::before {
+        inset: 11px;
+        border: 2px solid rgba(245, 239, 227, 0.28);
+        border-radius: 3px;
+        opacity: 1;
+      }
+
+      .page-edge-turn {
+        position: absolute;
+        top: 50%;
+        z-index: 6;
+        display: grid;
+        grid-template-rows: 1fr auto 1fr;
+        place-items: center;
+        width: clamp(28px, 3.4vw, 42px);
+        height: min(34vh, 210px);
+        min-height: 128px;
+        padding: 12px 3px;
+        border: 2px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.86),
+          3px 3px 0 rgba(17, 17, 17, 0.34);
+        transform: translateY(-50%);
+        transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+      }
+
+      .page-edge-prev {
+        left: 0;
+        border-left: 0;
+        border-radius: 0 13px 13px 0;
+      }
+
+      .page-edge-next {
+        right: 0;
+        border-right: 0;
+        border-radius: 13px 0 0 13px;
+      }
+
+      .page-edge-prev:hover:not(:disabled),
+      .page-edge-prev:focus-visible:not(:disabled) {
+        transform: translateY(-50%) translateX(4px);
+      }
+
+      .page-edge-next:hover:not(:disabled),
+      .page-edge-next:focus-visible:not(:disabled) {
+        transform: translateY(-50%) translateX(-4px);
+      }
+
+      .cover-edge-open {
+        z-index: 4;
+      }
+
+      .page-edge-prev.bumping {
+        animation: edge-bump-prev 190ms ease;
+      }
+
+      .page-edge-next.bumping {
+        animation: edge-bump-next 190ms ease;
+      }
+
+      @keyframes edge-bump-prev {
+        0%,
+        100% {
+          transform: translateY(-50%);
+        }
+        48% {
+          transform: translateY(-50%) translateX(7px);
+        }
+      }
+
+      @keyframes edge-bump-next {
+        0%,
+        100% {
+          transform: translateY(-50%);
+        }
+        48% {
+          transform: translateY(-50%) translateX(-7px);
+        }
+      }
+
+      .page-edge-turn:active:not(:disabled) {
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.86),
+          1px 1px 0 rgba(17, 17, 17, 0.48);
+      }
+
+      .page-edge-turn:disabled {
+        cursor: not-allowed;
+        opacity: 0.28;
+      }
+
+      .edge-arrow,
+      .edge-label {
+        position: relative;
+        z-index: 1;
+      }
+
+      .edge-arrow {
+        font-size: clamp(1.35rem, 2.4vw, 2rem);
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .edge-label {
+        color: #333;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+      }
+
+      .page-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+        margin-bottom: 10px;
+        min-height: 26px;
+        padding-right: 76px;
+      }
+
+      .page-title {
+        margin: 0;
+        color: var(--warm-white);
+        font-size: 1.15rem;
+      }
+
+      .page-note {
+        margin: 0;
+        color: var(--dim-white);
+        font-size: 0.92rem;
+        text-align: left;
+      }
+
+      .page-stats {
+        max-width: 430px;
+      }
+
+      .page-stats #booster-count,
+      .page-stats #catalog-count {
+        display: none;
+      }
+
+      .pocket-grid {
+        display: grid;
+        grid-template-columns: repeat(var(--binder-cols, 3), minmax(0, 1fr));
+        grid-template-rows: repeat(var(--binder-rows, 3), minmax(0, 1fr));
+        gap: clamp(8px, 1.2vw, 14px);
+        min-height: 0;
+        align-items: stretch;
+      }
+
+      .pocket {
+        position: relative;
+        display: grid;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        border: 2px solid rgba(245, 239, 227, 0.76);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03) 42%, rgba(0, 0, 0, 0.14) 43%, transparent 68%),
+          rgba(16, 16, 15, 0.7);
+        padding: 9px;
+        box-shadow:
+          inset 0 0 0 1px rgba(245, 239, 227, 0.2),
+          0 2px 14px rgba(0, 0, 0, 0.18);
+      }
+
+      .pocket::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border: 1px dashed rgba(245, 239, 227, 0.24);
+        pointer-events: none;
+      }
+
+      .pocket .pocket-view {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) clamp(50px, 7vh, 60px);
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        gap: 7px;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        text-align: left;
+        font-weight: 400;
+      }
+
+      .pocket-quick {
+        border: 1px solid rgba(255, 178, 168, 0.9);
+        background: rgba(17, 17, 17, 0.86);
+        color: #ffcec7;
+        padding: 4px 7px;
+        font-size: 0.68rem;
+        font-weight: 950;
+        line-height: 1;
+        text-transform: uppercase;
+        box-shadow:
+          2px 2px 0 rgba(17, 17, 17, 0.42),
+          0 0 14px rgba(255, 116, 102, 0.12);
+        opacity: 0.92;
+        transition: transform 100ms ease, background 120ms ease, color 120ms ease, opacity 120ms ease;
+      }
+
+      .pocket-quick-stack {
+        position: absolute;
+        z-index: 4;
+        right: 8px;
+        bottom: 8px;
+        display: flex;
+        gap: 4px;
+      }
+
+      .pocket-quick:hover,
+      .pocket-quick:focus-visible {
+        background: #ffb2a8;
+        color: var(--ink);
+        opacity: 1;
+        transform: translateY(-1px);
+      }
+
+      .pocket-quick[data-pocket-stance="have"] {
+        border-color: rgba(245, 239, 227, 0.74);
+        color: var(--warm-white);
+      }
+
+      .pocket-quick[data-pocket-stance="have"]:hover,
+      .pocket-quick[data-pocket-stance="have"]:focus-visible {
+        background: var(--warm-white);
+        color: var(--ink);
+      }
+
+      .pocket.selected {
+        border-color: #ffb2a8;
+        box-shadow:
+          0 0 0 2px rgba(255, 178, 168, 0.22),
+          0 2px 14px rgba(0, 0, 0, 0.2);
+      }
+
+      .pocket[data-stance="have"] {
+        border-color: rgba(245, 239, 227, 0.96);
+        box-shadow:
+          0 0 0 2px rgba(245, 239, 227, 0.18),
+          0 0 24px rgba(245, 239, 227, 0.08),
+          0 2px 14px rgba(0, 0, 0, 0.22);
+      }
+
+      .pocket[data-stance="want"] {
+        border-color: rgba(255, 178, 168, 0.86);
+      }
+
+      .pocket[data-stance="skip"] {
+        opacity: 0.62;
+      }
+
+      .stance-marker {
+        position: absolute;
+        z-index: 2;
+        top: 9px;
+        right: 9px;
+        border: 1px solid rgba(245, 239, 227, 0.75);
+        background: rgba(17, 17, 17, 0.82);
+        color: var(--warm-white);
+        padding: 2px 7px;
+        font-size: 0.68rem;
+        font-weight: 950;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        box-shadow: 2px 2px 0 rgba(17, 17, 17, 0.34);
+        pointer-events: none;
+      }
+
+      .stance-marker.have {
+        background: var(--warm-white);
+        color: var(--ink);
+      }
+
+      .stance-marker.want {
+        border-color: rgba(255, 116, 102, 0.92);
+        background: #ffb2a8;
+        color: var(--ink);
+      }
+
+      .stance-marker.skip {
+        background: #282825;
+        color: var(--dim-white);
+      }
+
+      .card-image-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        justify-self: center;
+        aspect-ratio: 43 / 60;
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: 1px solid rgba(245, 239, 227, 0.72);
+        background: #10100f;
+        overflow: hidden;
+      }
+
+      .card-image-wrap img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #10100f;
+      }
+
+      .missing-image {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        color: #777;
+        font-size: 3rem;
+      }
+
+      .card-label {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        gap: 1px;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .card-name {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-wrap: anywhere;
+        color: var(--warm-white);
+        font-weight: 900;
+      }
+
+      .card-name-ja {
+        font-size: clamp(0.92rem, 1.8vw, 1.08rem);
+      }
+
+      .card-name-en {
+        color: var(--dim-white);
+      }
+
+      .card-meta {
+        display: block;
+        color: var(--dim-white);
+        font-size: 0.82rem;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .rarity-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-content: start;
+        padding-top: 2px;
+      }
+
+      .rarity-chip {
+        display: inline-block;
+        border: 1px solid rgba(245, 239, 227, 0.72);
+        background: rgba(17, 17, 17, 0.58);
+        color: var(--warm-white);
+        padding: 1px 5px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+
+      .rarity-chip.holo,
+      .dialog-chip.holo {
+        border-color: rgba(255, 116, 102, 0.8);
+        color: #ffb2a8;
+      }
+
+      .empty-pocket {
+        min-height: 100%;
+        border-style: dashed;
+        color: var(--dim-white);
+      }
+
+      .empty-pocket .card-image-wrap {
+        background:
+          linear-gradient(45deg, transparent 47%, rgba(245, 239, 227, 0.22) 48% 52%, transparent 53%),
+          #20201d;
+      }
+
+      .binder-controls {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin: clamp(6px, 1vh, 10px) 0 0;
+      }
+
+      .binder-controls button {
+        min-width: 82px;
+        padding: 6px 10px;
+      }
+
+      .page-count {
+        margin: 0;
+        color: var(--warm-white);
+        font-weight: 900;
+      }
+
+      .card-dialog {
+        width: min(860px, calc(100% - 24px));
+        height: min(760px, calc(100vh - 24px));
+        max-height: calc(100vh - 24px);
+        border: 2px solid rgba(245, 239, 227, 0.78);
+        background:
+          radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.06) 0 1px, transparent 2px),
+          linear-gradient(135deg, #23231f, #121211 72%);
+        background-size: 28px 28px, auto;
+        padding: 14px;
+        color: var(--warm-white);
+        box-shadow: 7px 7px 0 var(--ink);
+        overflow: hidden;
+      }
+
+      .card-dialog[open] {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+      }
+
+      .card-dialog::backdrop {
+        background:
+          linear-gradient(90deg, rgba(245, 239, 227, 0.08) 1px, transparent 1px),
+          rgba(17, 17, 17, 0.72);
+        background-size: 18px 18px;
+      }
+
+      .sticker-dialog {
+        width: min(420px, calc(100% - 28px));
+        border: 2px solid var(--ink);
+        border-radius: 0;
+        background:
+          linear-gradient(90deg, rgba(17, 17, 17, 0.08) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(17, 17, 17, 0.06) 1px, transparent 1px),
+          #efe1ba;
+        background-size: 18px 18px;
+        color: var(--ink);
+        padding: 16px;
+        box-shadow: 7px 7px 0 var(--ink);
+      }
+
+      .identity-dialog {
+        width: min(520px, calc(100% - 28px));
+        border: 2px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        padding: 16px;
+        box-shadow: 7px 7px 0 var(--ink);
+      }
+
+      .sticker-dialog::backdrop,
+      .identity-dialog::backdrop {
+        background:
+          radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px),
+          rgba(17, 17, 17, 0.42);
+        background-size: 26px 26px, auto;
+      }
+
+      .sticker-dialog h2 {
+        margin: 0 0 8px;
+        color: var(--red);
+        font-size: clamp(1.35rem, 5vw, 2.25rem);
+        line-height: 1;
+      }
+
+      .sticker-dialog p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .identity-dialog h2 {
+        margin: 0 0 8px;
+        color: var(--red);
+        font-size: clamp(1.5rem, 5vw, 2.45rem);
+        line-height: 1;
+      }
+
+      .identity-dialog p {
+        margin: 0 0 12px;
+      }
+
+      .identity-ledger,
+      .signed-wants {
+        display: grid;
+        gap: 7px;
+        margin-top: 12px;
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+      }
+
+      .identity-row,
+      .signed-want-row {
+        display: grid;
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        font-size: 0.92rem;
+      }
+
+      .identity-row b,
+      .signed-want-row b {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+      }
+
+      .identity-row span,
+      .signed-want-row span {
+        overflow-wrap: anywhere;
+      }
+
+      .signed-want-row span {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.8rem;
+      }
+
+      .identity-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .identity-actions button {
+        padding: 6px 10px;
+      }
+
+      .sticker-kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        border: 1px solid var(--ink);
+        background: #fff;
+        padding: 3px 7px;
+        font-size: 0.8rem;
+        font-weight: 900;
+      }
+
+      .dialog-close {
+        justify-self: end;
+        margin: 0 0 8px;
+        padding: 5px 9px;
+        font-size: 0.88rem;
+      }
+
+      .dialog-grid {
+        display: grid;
+        grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+        gap: 16px;
+        min-height: 0;
+        overflow: auto;
+        padding-right: 4px;
+        overscroll-behavior: contain;
+      }
+
+      .dialog-grid::-webkit-scrollbar {
+        width: 9px;
+      }
+
+      .dialog-grid::-webkit-scrollbar-track {
+        background: rgba(245, 239, 227, 0.07);
+      }
+
+      .dialog-grid::-webkit-scrollbar-thumb {
+        border: 2px solid rgba(17, 17, 17, 0.9);
+        background: rgba(245, 239, 227, 0.58);
+      }
+
+      .detail-image {
+        border: 1px solid rgba(245, 239, 227, 0.62);
+        background: rgba(16, 16, 15, 0.7);
+        padding: 10px;
+      }
+
+      .detail-image img {
+        display: block;
+        width: 100%;
+        max-height: 360px;
+        object-fit: contain;
+      }
+
+      .card-dialog h2 {
+        margin-bottom: 4px;
+        font-size: clamp(1.7rem, 5vw, 3rem);
+        line-height: 1;
+      }
+
+      .dialog-subtitle {
+        margin: 0 0 12px;
+        color: var(--dim-white);
+        font-size: 1.05rem;
+        font-weight: 900;
+      }
+
+      .dialog-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 12px;
+      }
+
+      .dialog-chip {
+        border: 1px solid rgba(245, 239, 227, 0.72);
+        background: rgba(17, 17, 17, 0.58);
+        color: var(--warm-white);
+        padding: 3px 7px;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .modal-quick-strip {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 10px;
+        border: 1px solid rgba(245, 239, 227, 0.24);
+        background:
+          linear-gradient(180deg, rgba(18, 18, 16, 0.96), rgba(18, 18, 16, 0.86)),
+          var(--dark-panel);
+        padding: 7px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+      }
+
+      .modal-quick-button {
+        border: 1px solid rgba(245, 239, 227, 0.52);
+        background: rgba(17, 17, 17, 0.62);
+        color: var(--warm-white);
+        padding: 6px 8px;
+        font-size: 0.76rem;
+        font-weight: 950;
+        text-transform: uppercase;
+        box-shadow: 0 2px 0 rgba(245, 239, 227, 0.14);
+      }
+
+      .modal-quick-button:hover,
+      .modal-quick-button:focus-visible {
+        border-color: rgba(255, 178, 168, 0.9);
+        background: rgba(255, 178, 168, 0.12);
+      }
+
+      .modal-quick-button.is-selected {
+        background: var(--warm-white);
+        color: var(--ink);
+        box-shadow: inset 0 2px 0 rgba(17, 17, 17, 0.18);
+      }
+
+      .modal-quick-button[data-quick-stance="want"].is-selected,
+      .modal-quick-button[data-quick-stance="want"]:hover,
+      .modal-quick-button[data-quick-stance="want"]:focus-visible {
+        background: #ffb2a8;
+        color: var(--ink);
+      }
+
+      .detail-list {
+        display: grid;
+        gap: 5px;
+        margin: 12px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .detail-list li {
+        border-top: 1px solid rgba(245, 239, 227, 0.22);
+        padding-top: 5px;
+      }
+
+      .trap {
+        border-left: 4px solid #ffb2a8;
+        background: rgba(179, 33, 33, 0.16);
+        padding: 8px 10px;
+      }
+
+      .agent-notes {
+        margin-top: 12px;
+        border-top: 1px solid rgba(245, 239, 227, 0.24);
+        padding-top: 10px;
+      }
+
+      .agent-notes summary {
+        cursor: pointer;
+        font-weight: 900;
+      }
+
+      .name-stack {
+        display: grid;
+        gap: 2px;
+        margin: 0 0 12px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .name-stack li {
+        border-bottom: 1px solid rgba(245, 239, 227, 0.24);
+        padding-bottom: 3px;
+      }
+
+      .name-stack strong {
+        display: inline-block;
+        min-width: 82px;
+      }
+
+      .small {
+        color: var(--dim-white);
+        font-size: 0.88rem;
+      }
+
+      .want-panel {
+        --cost-accent: rgba(245, 239, 227, 0.68);
+        --cost-glow: rgba(245, 239, 227, 0.08);
+        --cost-fill: rgba(16, 16, 15, 0.68);
+        margin-top: 12px;
+        border: 2px solid var(--cost-accent);
+        background:
+          linear-gradient(90deg, rgba(245, 239, 227, 0.06) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(245, 239, 227, 0.05) 1px, transparent 1px),
+          var(--cost-fill);
+        background-size: 18px 18px;
+        display: grid;
+        grid-template-rows: auto auto auto minmax(0, 1fr);
+        max-height: min(62vh, 660px);
+        padding: 10px;
+        box-shadow:
+          inset 0 0 0 1px rgba(245, 239, 227, 0.06),
+          0 0 0 rgba(0, 0, 0, 0);
+        transition: border-color 180ms ease, box-shadow 220ms ease, background 220ms ease, transform 180ms ease;
+        animation: cost-settle 220ms ease both;
+      }
+
+      .want-panel[data-cost-level="1"] {
+        --cost-accent: rgba(245, 239, 227, 0.74);
+        --cost-glow: rgba(245, 239, 227, 0.08);
+      }
+
+      .want-panel[data-cost-level="2"] {
+        --cost-accent: rgba(255, 220, 168, 0.76);
+        --cost-glow: rgba(255, 220, 168, 0.1);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 220, 168, 0.08),
+          0 0 18px var(--cost-glow);
+      }
+
+      .want-panel[data-cost-level="3"] {
+        --cost-accent: rgba(255, 178, 168, 0.8);
+        --cost-glow: rgba(255, 178, 168, 0.15);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 178, 168, 0.11),
+          0 0 24px var(--cost-glow);
+      }
+
+      .want-panel[data-cost-level="4"] {
+        --cost-accent: rgba(255, 116, 102, 0.94);
+        --cost-glow: rgba(255, 116, 102, 0.22);
+        --cost-fill: rgba(33, 18, 17, 0.7);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 178, 168, 0.16),
+          0 0 30px var(--cost-glow);
+      }
+
+      .want-panel h3 {
+        margin: 0 0 5px;
+        font-size: 1rem;
+      }
+
+      .want-panel p {
+        margin-bottom: 8px;
+      }
+
+      .decision-well {
+        min-height: 0;
+        height: clamp(330px, 46vh, 470px);
+        border: 1px solid rgba(245, 239, 227, 0.2);
+        background:
+          linear-gradient(180deg, rgba(245, 239, 227, 0.04), transparent 24%),
+          rgba(5, 5, 5, 0.22);
+        padding: 0;
+        overflow: hidden;
+        box-shadow:
+          inset 0 12px 20px rgba(0, 0, 0, 0.12),
+          inset 0 -10px 18px rgba(0, 0, 0, 0.18);
+        transition: border-color 180ms ease, box-shadow 220ms ease, background 220ms ease;
+      }
+
+      .decision-well[data-cost-level="2"] {
+        border-color: rgba(255, 220, 168, 0.34);
+        background:
+          linear-gradient(180deg, rgba(255, 220, 168, 0.045), transparent 24%),
+          rgba(12, 10, 6, 0.38);
+      }
+
+      .decision-well[data-cost-level="3"] {
+        border-color: rgba(255, 178, 168, 0.42);
+        background:
+          linear-gradient(180deg, rgba(255, 178, 168, 0.06), transparent 25%),
+          rgba(14, 8, 7, 0.44);
+        box-shadow:
+          inset 0 14px 24px rgba(0, 0, 0, 0.2),
+          inset 0 -12px 20px rgba(0, 0, 0, 0.22),
+          0 0 18px rgba(255, 178, 168, 0.08);
+      }
+
+      .decision-well[data-cost-level="4"] {
+        border-color: rgba(255, 116, 102, 0.72);
+        background:
+          linear-gradient(180deg, rgba(255, 116, 102, 0.09), transparent 26%),
+          rgba(24, 8, 7, 0.58);
+        box-shadow:
+          inset 0 16px 28px rgba(0, 0, 0, 0.28),
+          inset 0 -14px 24px rgba(0, 0, 0, 0.26),
+          0 0 24px rgba(255, 116, 102, 0.16);
+      }
+
+      .want-receipt {
+        margin: 8px 0;
+        color: var(--dim-white);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+      }
+
+      .want-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .want-actions button {
+        padding: 6px 9px;
+        font-size: 0.88rem;
+      }
+
+      .stance-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .stance-head h3 {
+        margin: 0;
+      }
+
+      .stance-status {
+        border: 1px solid rgba(245, 239, 227, 0.56);
+        color: var(--dim-white);
+        padding: 2px 7px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .flow-badge {
+        border: 1px solid var(--cost-accent);
+        background: var(--cost-glow);
+        color: var(--warm-white);
+        padding: 2px 7px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .stance-status-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .stance-clear {
+        border: 1px solid rgba(245, 239, 227, 0.3);
+        background: transparent;
+        color: var(--dim-white);
+        padding: 2px 7px;
+        font-size: 0.72rem;
+        box-shadow: none;
+      }
+
+      .stance-clear:hover,
+      .stance-clear:focus-visible {
+        border-color: rgba(255, 178, 168, 0.7);
+        color: #ffb2a8;
+      }
+
+      .stance-quick,
+      .stance-details,
+      .condition-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .stance-quick {
+        margin-bottom: 8px;
+      }
+
+      .stance-button,
+      .stance-detail-button,
+      .stance-count-button,
+      .condition-button {
+        border: 1px solid rgba(245, 239, 227, 0.58);
+        background: rgba(17, 17, 17, 0.48);
+        color: var(--warm-white);
+        padding: 7px 10px;
+        font-size: 0.88rem;
+        box-shadow:
+          0 2px 0 rgba(245, 239, 227, 0.22),
+          0 7px 12px rgba(0, 0, 0, 0.14);
+        transform: translateY(0);
+        transition: transform 100ms ease, box-shadow 120ms ease, background 140ms ease, border-color 140ms ease;
+      }
+
+      .stance-button:hover,
+      .stance-detail-button:hover,
+      .stance-count-button:hover,
+      .condition-button:hover {
+        border-color: var(--cost-accent);
+        box-shadow:
+          0 3px 0 var(--cost-glow),
+          0 9px 16px rgba(0, 0, 0, 0.18);
+      }
+
+      .stance-button:active,
+      .stance-detail-button:active,
+      .stance-count-button:active,
+      .condition-button:active,
+      .photo-picker:active,
+      .public-toggle:active {
+        transform: translateY(2px);
+        box-shadow:
+          0 1px 0 rgba(245, 239, 227, 0.18),
+          0 3px 8px rgba(0, 0, 0, 0.18);
+      }
+
+      .stance-button.is-selected,
+      .stance-detail-button.is-selected,
+      .stance-count-button.is-selected,
+      .condition-button.is-selected {
+        background: var(--warm-white);
+        color: var(--ink);
+        box-shadow:
+          inset 0 3px 0 rgba(17, 17, 17, 0.18),
+          0 1px 0 rgba(245, 239, 227, 0.16);
+      }
+
+      .stance-button[data-stance-mode="want"].is-selected {
+        background: #ffb2a8;
+      }
+
+      .stance-read {
+        color: var(--warm-white);
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+
+      .flow-chamber {
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        height: 100%;
+        min-height: 0;
+      }
+
+      .flow-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        border-bottom: 1px solid rgba(245, 239, 227, 0.18);
+        background: rgba(5, 5, 5, 0.28);
+        padding: 8px 10px;
+      }
+
+      .flow-back {
+        border: 1px solid rgba(245, 239, 227, 0.42);
+        background: rgba(17, 17, 17, 0.58);
+        color: var(--warm-white);
+        padding: 5px 9px;
+        font-size: 0.82rem;
+        font-weight: 900;
+        box-shadow:
+          0 2px 0 rgba(245, 239, 227, 0.16),
+          0 7px 12px rgba(0, 0, 0, 0.14);
+        transform: translateY(0);
+        transition: transform 100ms ease, box-shadow 120ms ease, border-color 140ms ease;
+      }
+
+      .flow-back:hover,
+      .flow-back:focus-visible {
+        border-color: var(--cost-accent);
+      }
+
+      .flow-back:active {
+        transform: translateY(2px);
+        box-shadow:
+          0 1px 0 rgba(245, 239, 227, 0.14),
+          0 3px 8px rgba(0, 0, 0, 0.16);
+      }
+
+      .flow-back-placeholder {
+        color: var(--dim-white);
+        font-size: 0.76rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .flow-context {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 5px;
+        min-width: 0;
+      }
+
+      .flow-context span {
+        border: 1px solid rgba(245, 239, 227, 0.22);
+        background: rgba(245, 239, 227, 0.06);
+        color: var(--dim-white);
+        padding: 2px 6px;
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .flow-progress {
+        display: grid;
+        gap: 5px;
+        border-bottom: 1px solid rgba(245, 239, 227, 0.12);
+        background: rgba(5, 5, 5, 0.18);
+        padding: 7px 10px 8px;
+      }
+
+      .flow-progress-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--dim-white);
+        font-size: 0.68rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .flow-progress-track {
+        position: relative;
+        height: 4px;
+        overflow: hidden;
+        background: rgba(245, 239, 227, 0.12);
+      }
+
+      .flow-progress-fill {
+        display: block;
+        width: var(--flow-progress);
+        height: 100%;
+        background: linear-gradient(90deg, rgba(245, 239, 227, 0.72), var(--cost-accent));
+        box-shadow: 0 0 16px var(--cost-glow);
+        transition: width 180ms ease;
+      }
+
+      .flow-screen {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        min-height: 0;
+        padding: 12px;
+        animation: flow-replace 180ms ease both;
+      }
+
+      .flow-screen.is-heavy {
+        background:
+          linear-gradient(180deg, rgba(255, 116, 102, 0.08), transparent 68%),
+          rgba(24, 8, 7, 0.22);
+      }
+
+      .flow-title {
+        margin: 0 0 4px;
+        font-size: clamp(1.08rem, 2.8vw, 1.38rem);
+        line-height: 1;
+      }
+
+      .flow-copy,
+      .flow-lock {
+        margin: 0 0 8px;
+        color: var(--dim-white);
+        font-size: 0.86rem;
+        line-height: 1.42;
+      }
+
+      .flow-screen-body {
+        min-width: 0;
+        overflow: auto;
+        overscroll-behavior: contain;
+        padding: 2px 2px 10px;
+      }
+
+      .flow-screen-body::-webkit-scrollbar {
+        width: 9px;
+      }
+
+      .flow-screen-body::-webkit-scrollbar-track {
+        background: rgba(245, 239, 227, 0.07);
+      }
+
+      .flow-screen-body::-webkit-scrollbar-thumb {
+        border: 2px solid rgba(17, 17, 17, 0.9);
+        background: var(--cost-accent);
+      }
+
+      .flow-actions,
+      .flow-primary-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 0;
+      }
+
+      .flow-primary-actions {
+        border-top: 1px solid rgba(245, 239, 227, 0.14);
+        padding-top: 9px;
+      }
+
+      .quick-stance-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+        gap: 7px;
+      }
+
+      .flow-choice {
+        border: 1px solid rgba(245, 239, 227, 0.58);
+        background: rgba(17, 17, 17, 0.5);
+        color: var(--warm-white);
+        padding: 8px 11px;
+        font-size: 0.9rem;
+        font-weight: 900;
+        box-shadow:
+          0 3px 0 rgba(245, 239, 227, 0.18),
+          0 9px 16px rgba(0, 0, 0, 0.16);
+        transform: translateY(0);
+        transition: transform 100ms ease, box-shadow 120ms ease, background 140ms ease, border-color 140ms ease;
+      }
+
+      .quick-stance-card {
+        display: grid;
+        justify-items: start;
+        gap: 3px;
+        min-height: 60px;
+        padding: 7px 9px;
+        text-align: left;
+      }
+
+      .quick-stance-card strong {
+        font-size: 0.95rem;
+      }
+
+      .quick-stance-card span {
+        color: var(--dim-white);
+        font-size: 0.7rem;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+
+      .quick-stance-card.is-selected span {
+        color: #3b3429;
+      }
+
+      .flow-choice:hover,
+      .flow-choice:focus-visible {
+        border-color: var(--cost-accent);
+        box-shadow:
+          0 4px 0 var(--cost-glow),
+          0 12px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .flow-choice:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 1px 0 rgba(245, 239, 227, 0.16),
+          0 4px 10px rgba(0, 0, 0, 0.18);
+      }
+
+      .flow-choice.is-heavy {
+        border-color: rgba(255, 116, 102, 0.82);
+        background: rgba(255, 116, 102, 0.1);
+        box-shadow:
+          0 5px 0 rgba(255, 116, 102, 0.34),
+          0 14px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .flow-choice.is-selected {
+        background: var(--warm-white);
+        color: var(--ink);
+        box-shadow:
+          inset 0 3px 0 rgba(17, 17, 17, 0.18),
+          0 1px 0 rgba(245, 239, 227, 0.16);
+      }
+
+      .flow-note {
+        margin: 9px 0 0;
+        color: var(--dim-white);
+        font-size: 0.82rem;
+      }
+
+      .flow-note strong {
+        color: var(--warm-white);
+      }
+
+      .flow-summary {
+        display: grid;
+        gap: 5px;
+        margin: 0 0 10px;
+        color: var(--dim-white);
+        font-size: 0.84rem;
+      }
+
+      .flow-summary span {
+        border-left: 2px solid rgba(245, 239, 227, 0.28);
+        padding-left: 7px;
+      }
+
+      .import-note {
+        border: 1px solid rgba(255, 220, 168, 0.32);
+        background: rgba(255, 220, 168, 0.06);
+        color: var(--dim-white);
+        margin: 9px 0 0;
+        padding: 8px;
+        font-size: 0.82rem;
+        line-height: 1.38;
+      }
+
+      .import-note strong {
+        color: var(--warm-white);
+      }
+
+      .stance-next {
+        border-top: 1px solid rgba(245, 239, 227, 0.24);
+        margin-top: 9px;
+        padding-top: 9px;
+      }
+
+      .stance-details {
+        margin: 9px 0;
+      }
+
+      .stance-next-label,
+      .stance-quantity-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--dim-white);
+        font-size: 0.76rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .stance-quantity {
+        margin-top: 10px;
+      }
+
+      .condition-layer,
+      .evidence-layer,
+      .grading-layer,
+      .public-layer {
+        margin-top: 10px;
+        transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+        animation: layer-arrive 180ms ease both;
+      }
+
+      .condition-layer {
+        border-left: 2px solid rgba(255, 220, 168, 0.45);
+        padding-left: 8px;
+      }
+
+      .condition-copy,
+      .evidence-copy,
+      .grading-copy,
+      .public-copy {
+        margin: 6px 0 8px;
+        color: var(--dim-white);
+        font-size: 0.84rem;
+      }
+
+      .stance-counts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .evidence-layer {
+        border-top: 1px solid rgba(255, 178, 168, 0.24);
+        border-left: 2px solid rgba(255, 178, 168, 0.52);
+        background: rgba(255, 178, 168, 0.035);
+        padding-top: 9px;
+        padding-left: 8px;
+      }
+
+      .evidence-hints {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 7px 0 9px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .evidence-hints li {
+        border: 1px solid rgba(245, 239, 227, 0.34);
+        background: rgba(17, 17, 17, 0.42);
+        color: var(--dim-white);
+        padding: 3px 7px;
+        font-size: 0.76rem;
+        font-weight: 900;
+      }
+
+      .photo-picker {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        border: 1px solid rgba(255, 178, 168, 0.72);
+        background: rgba(255, 178, 168, 0.12);
+        color: var(--warm-white);
+        padding: 7px 10px;
+        font-size: 0.88rem;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow:
+          0 3px 0 rgba(255, 178, 168, 0.34),
+          0 10px 18px rgba(0, 0, 0, 0.16);
+        transform: translateY(0);
+        transition: transform 100ms ease, box-shadow 120ms ease, background 140ms ease;
+      }
+
+      .photo-picker input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+        gap: 7px;
+        margin-top: 9px;
+      }
+
+      .photo-tile {
+        display: grid;
+        gap: 4px;
+        border: 1px solid rgba(245, 239, 227, 0.3);
+        background: rgba(17, 17, 17, 0.58);
+        padding: 5px;
+      }
+
+      .photo-tile img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        background: #090909;
+      }
+
+      .photo-tile button {
+        border: 1px solid rgba(245, 239, 227, 0.28);
+        background: transparent;
+        color: var(--dim-white);
+        padding: 3px 5px;
+        font-size: 0.72rem;
+        box-shadow: none;
+      }
+
+      .photo-hash {
+        color: var(--dim-white);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.66rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .grading-layer,
+      .public-layer {
+        border-top: 1px solid rgba(255, 178, 168, 0.24);
+        border-left: 2px solid rgba(255, 178, 168, 0.62);
+        background: rgba(255, 178, 168, 0.035);
+        padding-top: 9px;
+        padding-left: 8px;
+      }
+
+      .grade-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 8px;
+      }
+
+      .grade-field {
+        display: grid;
+        gap: 4px;
+        color: var(--dim-white);
+        font-size: 0.76rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .grade-field input,
+      .grade-field select {
+        width: 100%;
+        min-width: 0;
+        border: 1px solid rgba(245, 239, 227, 0.46);
+        background: rgba(17, 17, 17, 0.62);
+        color: var(--warm-white);
+        padding: 7px 8px;
+        font: inherit;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-transform: none;
+      }
+
+      .public-layer {
+        border-color: rgba(255, 178, 168, 0.28);
+      }
+
+      .public-layer[data-public="true"] {
+        border-color: rgba(255, 116, 102, 0.72);
+        background: rgba(255, 116, 102, 0.06);
+        box-shadow: 0 0 20px rgba(255, 116, 102, 0.15);
+      }
+
+      .public-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .public-toggle {
+        border: 1px solid rgba(245, 239, 227, 0.58);
+        background: rgba(17, 17, 17, 0.48);
+        color: var(--warm-white);
+        padding: 7px 10px;
+        font-size: 0.88rem;
+        box-shadow:
+          0 2px 0 rgba(245, 239, 227, 0.18),
+          0 8px 14px rgba(0, 0, 0, 0.16);
+        transform: translateY(0);
+        transition: transform 100ms ease, box-shadow 120ms ease, background 140ms ease, border-color 140ms ease;
+      }
+
+      .public-toggle.publish {
+        border-color: rgba(255, 116, 102, 0.78);
+        box-shadow:
+          0 4px 0 rgba(255, 116, 102, 0.34),
+          0 12px 20px rgba(0, 0, 0, 0.22);
+      }
+
+      .public-toggle.is-selected {
+        background: var(--warm-white);
+        color: var(--ink);
+      }
+
+      .public-toggle.publish.is-selected {
+        background: #ffb2a8;
+        box-shadow:
+          inset 0 3px 0 rgba(17, 17, 17, 0.18),
+          0 0 18px rgba(255, 116, 102, 0.22);
+      }
+
+      .public-status {
+        margin: 7px 0 0;
+        color: var(--dim-white);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.72rem;
+        overflow-wrap: anywhere;
+      }
+
+      .protocol-trail {
+        border-top: 1px solid rgba(245, 239, 227, 0.18);
+        margin-top: 10px;
+        padding-top: 8px;
+      }
+
+      .protocol-trail summary {
+        cursor: pointer;
+        font-weight: 900;
+      }
+
+      .trail-note {
+        color: var(--dim-white);
+        font-size: 0.84rem;
+      }
+
+      @keyframes cost-settle {
+        from {
+          transform: translateY(2px);
+          opacity: 0.92;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes layer-arrive {
+        from {
+          transform: translateX(-4px);
+          opacity: 0.78;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes flow-replace {
+        from {
+          transform: translateX(8px) scale(0.992);
+          opacity: 0.72;
+        }
+        to {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .want-panel,
+        .condition-layer,
+        .evidence-layer,
+        .grading-layer,
+        .public-layer,
+        .flow-screen {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 760px) {
+        main {
+          padding: 8px;
+        }
+
+        .binder-cover {
+          grid-template-columns: 36px minmax(0, 1fr);
+          min-height: 0;
+          box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        .cover-ring {
+          width: 16px;
+          height: 16px;
+        }
+
+        .cover-board {
+          padding: 22px 16px;
+        }
+
+        .cover-board::before {
+          inset: 10px;
+        }
+
+        .cover-bottom {
+          grid-template-columns: 1fr;
+        }
+
+        .cover-actions {
+          justify-content: stretch;
+        }
+
+        .cover-title {
+          max-width: min(100%, 520px);
+        }
+
+        .cover-japanese {
+          font-size: clamp(2.15rem, 12vw, 4rem);
+        }
+
+        .cover-english {
+          font-size: clamp(1.55rem, 8vw, 2.6rem);
+        }
+
+        .cover-read {
+          max-width: 38ch;
+          font-size: 0.98rem;
+        }
+
+        .open-binder {
+          width: 100%;
+        }
+
+        .identity-slip {
+          width: 100%;
+        }
+
+        .sticker-note,
+        .sticker-compare,
+        .check-note {
+          display: none;
+        }
+
+        .sticker-card-crop {
+          right: 16px;
+          top: 42%;
+          width: min(280px, 60vw);
+          opacity: 0.82;
+        }
+
+        .sticker-card-crop::after {
+          font-size: 1rem;
+          bottom: -24px;
+        }
+
+        .helper-bat {
+          right: 24%;
+          bottom: 20%;
+          width: min(112px, 26vw);
+        }
+
+        .helper-bat .speech {
+          display: none;
+        }
+
+        .helper-reader {
+          right: 14px;
+          top: 30%;
+          width: min(104px, 25vw);
+        }
+
+        .intro,
+        .dialog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .binder-stats {
+          justify-content: flex-start;
+        }
+
+        .binder-shell {
+          grid-template-columns: 32px minmax(0, 1fr);
+          background:
+            linear-gradient(90deg, #111 0 32px, transparent 32px),
+            #171717;
+          box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .binder-hole {
+          width: 15px;
+          height: 15px;
+        }
+
+        .binder-page {
+          padding: 10px 28px;
+        }
+
+        .page-head {
+          display: block;
+          padding-right: 54px;
+        }
+
+        .page-edge-turn {
+          width: 24px;
+          min-height: 104px;
+          height: min(26vh, 148px);
+          padding: 9px 2px;
+        }
+
+        .edge-label {
+          display: none;
+        }
+
+        .page-note {
+          margin-top: 4px;
+          text-align: left;
+        }
+
+        .pocket-grid {
+          gap: clamp(5px, 1.8vw, 8px);
+        }
+
+        .pocket {
+          padding: clamp(3px, 1.2vw, 5px);
+        }
+
+        .card-name {
+          font-size: 0.82rem;
+        }
+
+        .card-name-ja {
+          font-size: 0.95rem;
+        }
+
+        .card-meta {
+          font-size: 0.72rem;
+        }
+
+        .rarity-chip {
+          font-size: 0.66rem;
+          padding: 1px 4px;
+        }
+      }
+
+      @media (max-aspect-ratio: 4 / 3) and (min-width: 761px) {
+        .cover-title {
+          max-width: min(62vw, 590px);
+        }
+
+        .cover-japanese {
+          font-size: clamp(2.4rem, 5.8vw, 4.3rem);
+        }
+
+        .cover-english {
+          font-size: clamp(1.8rem, 3.9vw, 3rem);
+        }
+
+        .cover-read {
+          max-width: 38ch;
+          font-size: clamp(0.98rem, 1.7vw, 1.18rem);
+        }
+
+        .sticker-card-crop {
+          right: 4.5%;
+          top: 28%;
+          width: min(315px, 35vw);
+        }
+
+        .sticker-note {
+          right: 6%;
+          top: 7%;
+          width: min(220px, 25vw);
+        }
+
+        .sticker-compare {
+          left: auto;
+          right: 6%;
+          bottom: 15%;
+          width: min(310px, 37vw);
+        }
+
+        .check-note {
+          left: 7%;
+          bottom: 20%;
+          width: min(210px, 24vw);
+        }
+
+        .helper-bat {
+          right: 34%;
+          bottom: 24%;
+          width: min(132px, 16vw);
+        }
+
+        .helper-reader {
+          right: 7%;
+          top: 20%;
+          width: min(118px, 15vw);
+        }
+      }
+
+      @media (orientation: portrait) {
+        .sticker-note,
+        .sticker-compare,
+        .check-note {
+          display: none;
+        }
+
+        .sticker-card-crop {
+          left: 50%;
+          right: auto;
+          top: 43%;
+          width: min(420px, 70vw);
+          transform: translateX(-50%) rotate(1.4deg);
+          opacity: 0.88;
+        }
+
+        .helper-reader {
+          right: 10%;
+          top: 30%;
+          width: min(130px, 24vw);
+        }
+
+        .helper-bat {
+          left: 12%;
+          right: auto;
+          bottom: 24%;
+          width: min(136px, 24vw);
+        }
+      }
+
+      @media (max-height: 620px) and (min-width: 761px) {
+        .cover-title {
+          max-width: min(50vw, 560px);
+        }
+
+        .cover-japanese {
+          font-size: clamp(2rem, 5.4vw, 3.8rem);
+        }
+
+        .cover-english {
+          font-size: clamp(1.55rem, 3.7vw, 2.7rem);
+        }
+
+        .cover-read {
+          max-width: 42ch;
+          font-size: 0.96rem;
+        }
+
+        .sticker-note,
+        .check-note {
+          display: none;
+        }
+
+        .sticker-card-crop {
+          right: 6%;
+          top: 13%;
+          width: min(300px, 31vw);
+        }
+
+        .sticker-compare {
+          left: auto;
+          right: 27%;
+          bottom: 8%;
+          width: min(282px, 29vw);
+          min-height: 106px;
+          padding: 10px;
+        }
+
+        .compare-crop {
+          height: 46px;
+        }
+
+        .compare-footer {
+          margin-top: 5px;
+        }
+
+        .helper-bat {
+          right: 22%;
+          bottom: 27%;
+          width: min(116px, 13vw);
+        }
+
+        .helper-bat .speech {
+          display: none;
+        }
+
+        .helper-reader {
+          right: 4%;
+          top: 4%;
+          width: min(106px, 12vw);
+        }
+      }
+
+      @media (max-height: 460px) and (min-width: 761px) {
+        main {
+          padding-top: 6px;
+          padding-bottom: 10px;
+        }
+
+        .binder-cover {
+          grid-template-columns: 42px minmax(0, 1fr);
+          box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .cover-ring {
+          width: 16px;
+          height: 16px;
+        }
+
+        .cover-board {
+          gap: 8px;
+          padding: 18px 20px 14px;
+        }
+
+        .cover-board::before {
+          inset: 12px;
+        }
+
+        .cover-kicker {
+          margin-bottom: 8px;
+          padding: 3px 7px;
+          font-size: 0.78rem;
+        }
+
+        .cover-title {
+          max-width: min(49vw, 400px);
+        }
+
+        .cover-japanese {
+          font-size: clamp(2rem, 6.2vw, 3rem);
+        }
+
+        .cover-english {
+          font-size: clamp(1.35rem, 4.3vw, 2rem);
+        }
+
+        .cover-read {
+          max-width: 43ch;
+          font-size: 0.76rem;
+          line-height: 1.25;
+        }
+
+        .cover-bottom {
+          gap: 10px;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: end;
+        }
+
+        .cover-facts {
+          gap: 5px;
+          max-width: 420px;
+        }
+
+        .cover-fact {
+          padding: 3px 6px;
+          font-size: 0.73rem;
+        }
+
+        .open-binder {
+          min-width: 118px;
+          padding: 5px 8px;
+          font-size: 0.82rem;
+          box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        .sticker-card-crop {
+          right: 4%;
+          top: 8%;
+          width: min(250px, 30vw);
+        }
+
+        .sticker-card-crop::after {
+          bottom: -24px;
+          font-size: 1rem;
+        }
+
+        .sticker-compare {
+          display: none;
+        }
+
+        .helper-bat {
+          right: 31%;
+          bottom: 26%;
+          width: min(90px, 11vw);
+        }
+
+        .helper-reader {
+          right: 3.5%;
+          top: 5%;
+          width: min(88px, 10.5vw);
+        }
+      }
+
+      @media (max-height: 760px) and (min-width: 761px) {
+        main {
+          padding-top: 12px;
+          padding-bottom: 24px;
+        }
+
+        .intro {
+          margin-bottom: 10px;
+        }
+
+        .intro h1 {
+          font-size: clamp(1.35rem, 3vw, 2rem);
+        }
+
+        .lede {
+          font-size: 0.95rem;
+        }
+
+        .binder-page {
+          padding: 12px 36px;
+        }
+
+        .page-head {
+          margin-bottom: 8px;
+        }
+
+        .pocket-grid {
+          gap: 8px;
+        }
+
+        .pocket {
+          padding: 6px;
+        }
+
+        .card-label {
+          gap: 0;
+        }
+
+        .card-name-ja {
+          font-size: 0.92rem;
+        }
+
+        .card-meta {
+          font-size: 0.72rem;
+        }
+      }
+
+      @media (max-height: 460px) and (min-width: 761px) {
+        main {
+          padding-top: 6px;
+          padding-bottom: 10px;
+        }
+
+        .binder-page {
+          padding: 8px 30px;
+        }
+
+        .page-edge-turn {
+          width: 24px;
+          min-height: 92px;
+          height: min(30vh, 118px);
+        }
+
+        .edge-label {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page-edge-prev.bumping,
+        .page-edge-next.bumping {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="account-bar" aria-label="Collector account">
+        <div class="site-title" aria-label="Site title">
+          <strong>Blank Corner Club</strong>
+          <span>No Rarity want binder</span>
+        </div>
+        <button id="identity-open" class="identity-slip" type="button">Collector key: demo</button>
+      </div>
+
+      <section id="binder-cover" class="binder-cover" aria-label="No Rarity binder cover">
+        <div class="cover-spine" aria-hidden="true">
+          <span class="cover-ring one"></span>
+          <span class="cover-ring two"></span>
+          <span class="cover-ring three"></span>
+        </div>
+        <div class="cover-board">
+          <div class="cover-stickers">
+            <button class="sticker-dot sticker-button" type="button" data-sticker="corner" aria-label="Open No Rarity cover note"></button>
+          </div>
+          <div class="cover-title">
+            <span class="cover-kicker">1996 Japanese Expansion Pack</span>
+            <h1>
+              <span class="cover-japanese">拡張パック</span>
+              <span class="cover-english">No Rarity Binder</span>
+            </h1>
+            <p class="cover-read">
+              The earliest Japanese Pokémon TCG print run is remembered by what is missing: the tiny lower-right rarity mark. A blank corner becomes meaningful only when the card, row, print cues, and evidence all agree.
+            </p>
+          </div>
+          <button id="cover-edge-open" class="page-edge-turn page-edge-next cover-edge-open" type="button" aria-label="Open binder from cover">
+            <span class="edge-arrow" aria-hidden="true">&rsaquo;</span>
+            <span class="edge-label" aria-hidden="true">open</span>
+          </button>
+          <div class="cover-bottom">
+            <button id="open-binder" class="open-binder" type="button">Open binder</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="binder-view" class="binder-view" hidden>
+        <section class="binder-shell" aria-label="No Rarity binder">
+          <div class="binder-spine" aria-hidden="true">
+            <span class="binder-hole one"></span>
+            <span class="binder-hole two"></span>
+            <span class="binder-hole three"></span>
+          </div>
+
+          <div class="binder-page">
+            <button id="prev-edge" class="page-edge-turn page-edge-prev" type="button" aria-label="Turn to previous binder page">
+              <span class="edge-arrow" aria-hidden="true">&lsaquo;</span>
+              <span class="edge-label" aria-hidden="true">back</span>
+            </button>
+            <button id="next-edge" class="page-edge-turn page-edge-next" type="button" aria-label="Turn to next binder page">
+              <span class="edge-arrow" aria-hidden="true">&rsaquo;</span>
+              <span class="edge-label" aria-hidden="true">next</span>
+            </button>
+            <div class="page-head">
+              <div>
+                <h2 id="page-title" class="page-title">Loading binder...</h2>
+                <p id="page-note" class="page-note">Tap a card for names, rarity, history, and variant notes.</p>
+              </div>
+              <div class="binder-stats page-stats" aria-label="Catalog facts">
+                <span id="booster-count" class="stamp red">96 booster rows</span>
+                <span id="catalog-count" class="stamp">102 tracked rows</span>
+                <span id="layout-count" class="stamp">responsive pages</span>
+              </div>
+            </div>
+            <div id="pocket-grid" class="pocket-grid" aria-live="polite"></div>
+            <div class="binder-controls">
+              <button id="prev-page" type="button">Prev</button>
+              <p id="page-count" class="page-count">Page 1</p>
+              <button id="next-page" type="button">Next</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <dialog id="card-dialog" class="card-dialog" aria-labelledby="dialog-title">
+        <button id="dialog-close" class="dialog-close" type="button">close</button>
+        <div id="dialog-body" class="dialog-grid"></div>
+      </dialog>
+
+      <dialog id="sticker-dialog" class="sticker-dialog" aria-labelledby="sticker-title">
+        <button id="sticker-close" class="dialog-close" type="button">close</button>
+        <span id="sticker-kicker" class="sticker-kicker"></span>
+        <h2 id="sticker-title"></h2>
+        <p id="sticker-copy"></p>
+      </dialog>
+
+      <dialog id="identity-dialog" class="identity-dialog" aria-labelledby="identity-title">
+        <button id="identity-close" class="dialog-close" type="button">close</button>
+        <span class="sticker-kicker">collector identity</span>
+        <h2 id="identity-title">Key first. Wants later.</h2>
+        <p id="identity-copy">A wallet can sign that you want a card. It does not prove a seller has it, or that the card is real.</p>
+        <div class="identity-ledger" aria-label="Identity boundary">
+          <div class="identity-row"><b>Buyer key</b><span id="identity-key">local demo key</span></div>
+          <div class="identity-row"><b>Agent role</b><span>can remember wants and prepare trades; cannot spend alone</span></div>
+          <div class="identity-row"><b>Boundary</b><span>signed wants are intent receipts, not escrow, authenticity, or condition proof</span></div>
+        </div>
+        <div id="signed-wants" class="signed-wants" aria-label="Signed wants"></div>
+        <div class="identity-actions">
+          <button id="identity-connect" type="button">Use demo key</button>
+        </div>
+      </dialog>
+    </main>
+
+    <script src="data/no-rarity-base-set.js"></script>
+    <script>
+      const state = {
+        data: null,
+        cards: [],
+        page: 0,
+        layout: {
+          cols: 3,
+          rows: 3,
+          pageSize: 9
+        },
+        selectedId: "",
+        resizeFrame: 0,
+        turning: false,
+        currentDetailCard: null,
+        flowCardId: "",
+        flowStep: "mode"
+      };
+
+      const els = {
+        grid: document.getElementById("pocket-grid"),
+        page: document.querySelector(".binder-page"),
+        title: document.getElementById("page-title"),
+        note: document.getElementById("page-note"),
+        prev: document.getElementById("prev-page"),
+        next: document.getElementById("next-page"),
+        prevEdge: document.getElementById("prev-edge"),
+        nextEdge: document.getElementById("next-edge"),
+        count: document.getElementById("page-count"),
+        dialog: document.getElementById("card-dialog"),
+        dialogBody: document.getElementById("dialog-body"),
+        dialogClose: document.getElementById("dialog-close"),
+        cover: document.getElementById("binder-cover"),
+        binderView: document.getElementById("binder-view"),
+        accountBar: document.querySelector(".account-bar"),
+        openBinder: document.getElementById("open-binder"),
+        coverEdge: document.getElementById("cover-edge-open"),
+        stickerDialog: document.getElementById("sticker-dialog"),
+        stickerClose: document.getElementById("sticker-close"),
+        stickerKicker: document.getElementById("sticker-kicker"),
+        stickerTitle: document.getElementById("sticker-title"),
+        stickerCopy: document.getElementById("sticker-copy"),
+        identityOpen: document.getElementById("identity-open"),
+        identityDialog: document.getElementById("identity-dialog"),
+        identityClose: document.getElementById("identity-close"),
+        identityConnect: document.getElementById("identity-connect"),
+        identityStatus: document.getElementById("identity-status"),
+        identityKey: document.getElementById("identity-key"),
+        identityCopy: document.getElementById("identity-copy"),
+        signedWants: document.getElementById("signed-wants"),
+        boosterCount: document.getElementById("booster-count"),
+        catalogCount: document.getElementById("catalog-count"),
+        layoutCount: document.getElementById("layout-count")
+      };
+
+      const identityStorageKey = "no_rarity_binder_identity_v1";
+      const stanceStorageKey = "blank_corner_club_stances_v1";
+      const demoBuyerAddress = "0xB1ND000000000000000000000000000000000011";
+      const binderPageImportId = "chat_binder_page_holos_2026_05_23";
+      const binderPageImportDraft = [
+        { card_id: "PMCG1-049", slot: "top left", name_en: "Alakazam", japanese_name: "フーディン", crop_hint: [0.08, 0.03, 0.28, 0.39] },
+        { card_id: "PMCG1-032", slot: "top middle", name_en: "Blastoise", japanese_name: "カメックス", crop_hint: [0.40, 0.04, 0.27, 0.38] },
+        { card_id: "PMCG1-068", slot: "top right", name_en: "Chansey", japanese_name: "ラッキー", crop_hint: [0.71, 0.04, 0.27, 0.38] },
+        { card_id: "PMCG1-021", slot: "middle left", name_en: "Charizard", japanese_name: "リザードン", crop_hint: [0.08, 0.46, 0.28, 0.38] },
+        { card_id: "PMCG1-067", slot: "middle", name_en: "Clefairy", japanese_name: "ピッピ", crop_hint: [0.40, 0.47, 0.27, 0.37] },
+        { card_id: "PMCG1-034", slot: "middle right", name_en: "Gyarados", japanese_name: "ギャラドス", crop_hint: [0.71, 0.46, 0.27, 0.38] },
+        { card_id: "PMCG1-058", slot: "bottom left", name_en: "Hitmonchan", japanese_name: "エビワラー", crop_hint: [0.08, 0.84, 0.28, 0.16] },
+        { card_id: "PMCG1-057", slot: "bottom middle", name_en: "Machamp", japanese_name: "カイリキー", crop_hint: [0.40, 0.84, 0.27, 0.16] },
+        { card_id: "PMCG1-039", slot: "bottom right", name_en: "Magneton", japanese_name: "レアコイル", crop_hint: [0.71, 0.84, 0.27, 0.16] }
+      ];
+      const identityState = loadIdentityState();
+      const stanceState = loadStanceState();
+
+      const stickerNotes = {
+        corner: {
+          kicker: "collector tell",
+          title: "The quiet corner",
+          copy: "For non-Energy cards, the missing lower-right rarity mark is the headline clue. It is necessary, but not enough by itself: the card still has to match the original Japanese Expansion Pack print, paper, cut, color, and text layout."
+        },
+        launch: {
+          kicker: "October 20, 1996",
+          title: "First-wave feeling",
+          copy: "These cards sit right at the launch of the Japanese Pokemon TCG. The booster checklist has 96 cards; the later 102-card Base Set habit comes from adding the six basic Energy cards from Starter Pack context."
+        },
+        compare: {
+          kicker: "same spot",
+          title: "Absence with coordinates",
+          copy: "The blank space only becomes meaningful because later copies put a rarity symbol in that exact place. No Rarity collecting is a comparison discipline: same card, same corner, different print state."
+        },
+        checklist: {
+          kicker: "raw card ritual",
+          title: "Do not trust one tell",
+          copy: "A serious check moves from the obvious corner to the less romantic stuff: font sharpness, CMYK dot pattern, edge structure, surface, color, and whether the card belongs to the 96-card booster checklist."
+        },
+        "trainer-trap": {
+          kicker: "variant trap",
+          title: "The trainer danger zone",
+          copy: "Several trainers are tricky because Quick Starter Gift Set versions can also lack rarity marks. Potion, Switch, Gust of Wind, Energy Retrieval, and Pokemon Trader deserve line-by-line text comparison."
+        },
+        sealed: {
+          kicker: "sealed mystery",
+          title: "Packs are probability, not proof",
+          copy: "Early Media Factory pack variants are part of the lore, especially the 291-yen short-crimp discussion. But sealed pack style is still a probability signal, not an official guarantee of a No Rarity pull."
+        }
+      };
+
+      const nameReads = {
+        "Bulbasaur": "Fushigidane splits open nicely: fushigi means strange or mysterious, tane means seed, and fushigi da ne sounds like 'isn't it strange?'",
+        "Ivysaur": "Fushigisou keeps the strange-seed family joke and also sounds like 'it seems mysterious.' Sou can point toward grass or vegetation.",
+        "Venusaur": "Fushigibana turns the family wordplay into a strange flower: fushigi plus hana/bana.",
+        "Caterpie": "Kyatapii is a soft caterpillar-style sound, close to Caterpie but made to sit naturally in Japanese.",
+        "Metapod": "Toranseru reads like a coined shell-stage name, suggesting transformation sealed inside a pod.",
+        "Weedle": "Biidoru is bee plus needle energy: tiny bug, sharp point.",
+        "Kakuna": "Kokuun is cocoon almost straight across, a name that does exactly what the Pokémon does.",
+        "Beedrill": "Supiaa is spear, turning the evolution line from bug into weapon.",
+        "Nidoran \u2642": "Nidoran is a coined family name; the male symbol matters because the split evolution line is part of the joke.",
+        "Nidorino": "Nidorino keeps the Nido family sound and pushes it into the sharper middle stage.",
+        "Nidoking": "Nidoking is the family name crowned: the small poisonous line becomes royalty.",
+        "Koffing": "Dogaasu lands like do-gas, a blunt little poison-gas joke.",
+        "Tangela": "Monjara feels tangled and overgrown, a name that sounds like a vine mess.",
+        "Charmander": "Hitokage is fire lizard: hi for fire and tokage for lizard.",
+        "Charmeleon": "Rizaado is lizard made into a monster name, clean and direct.",
+        "Charizard": "Rizaadon is lizard plus a heavier kaiju/dinosaur ending, the line getting bigger in the mouth.",
+        "Vulpix": "Rokon points at six: the six-tailed fox before the nine-tailed myth arrives.",
+        "Ninetales": "Kyuukon points at nine and fox-spirit texture, exactly the old folklore register Ninetales wants.",
+        "Growlithe": "Gaadi sounds like guardy: loyal, watchful, dog-shaped.",
+        "Arcanine": "Windie is a fast, airy name for a noble fire dog, more feeling than literal translation.",
+        "Ponyta": "Poniita is Ponyta carried into Japanese sound, simple and bright.",
+        "Magmar": "Buubaa is a chunky fire-monster sound; the name is more creature-noise than clean translation.",
+        "Squirtle": "Zenigame is a real turtle word, often pond turtle; it gives Squirtle a grounded little-animal feel.",
+        "Wartortle": "Kameeru keeps kame, turtle, and stretches it into the middle evolution.",
+        "Blastoise": "Kamekkusu keeps kame, turtle, but gives it a bigger, harder final-stage sound.",
+        "Poliwag": "Nyoromo starts with nyoro-nyoro, the Japanese feel of something wriggling or slithering.",
+        "Poliwhirl": "Nyorozo stays in the wriggling family and grows the sound into the middle form.",
+        "Poliwrath": "Nyorobon finishes the wriggling line with a heavier, rounder final sound.",
+        "Seel": "Pauwau is sound-forward and seal-like, closer to a bark than a literal species label.",
+        "Dewgong": "Jugon is dugong in Japanese sound.",
+        "Staryu": "Hitodeman is hitode, starfish, with a heroic little -man ending.",
+        "Starmie": "Sutaamii is star-me, a direct star-shaped name in Japanese sound.",
+        "Magikarp": "Koikingu is koi king, which is funny because the card is still Magikarp.",
+        "Gyarados": "Gyarados is a hard coined monster name; the sound does more work than a literal translation.",
+        "Pikachu": "Pika is sparkle or flash, chu is mouse squeak. The whole name is basically electric mouse in sound effects.",
+        "Raichu": "Rai means thunder, chu keeps the mouse squeak. Bigger mouse, bigger weather.",
+        "Magnemite": "Koiru is coil, the little machine part made into a Pokémon.",
+        "Magneton": "Reakoiru reads like rare coil, a bigger stranger magnetic assembly.",
+        "Voltorb": "Biriridama is electric-shock ball: biriri for zap, dama for ball.",
+        "Electrode": "Marumain is round mine, a perfect little warning label.",
+        "Electabuzz": "Erebuu is an electric monster sound more than a sentence; the buzz is in the mouthfeel.",
+        "Zapdos": "Sandaa is thunder straight across.",
+        "Abra": "Keeshii points toward psychic-stage naming, often read as a nod to Edgar Cayce-style mystic texture.",
+        "Kadabra": "Yungeraa is the famous spoon-bending psychic reference, loaded with real-world stage-magic baggage.",
+        "Alakazam": "Fuudin points toward Houdini, completing the magic-name ladder.",
+        "Gastly": "Goosu is ghost compressed into a Japanese card name.",
+        "Haunter": "Goosuto is ghost even more plainly, stretched into the evolved form.",
+        "Drowzee": "Suriipu is sleep, which is about as direct as this line gets.",
+        "Jynx": "Ruujura carries a rouge/glamour feel in sound, more character styling than literal creature name.",
+        "Mewtwo": "Myuutsuu is Mewtwo in Japanese sound: the sequel is the point.",
+        "Sandshrew": "Sando is sand, simple and earthy.",
+        "Diglett": "Diguda keeps the dig sound and turns the whole Pokémon into one little verb.",
+        "Dugtrio": "Dagutorio is Dugtrio carried almost directly into Japanese sound.",
+        "Machop": "Wanrikii means great strength, a little name already flexing.",
+        "Machoke": "Goorikii is strong force, the middle stage getting bulkier.",
+        "Machamp": "Kairikii means monstrous or superhuman strength: the final form is the concept turned up.",
+        "Onix": "Iwark starts with iwa, rock, and snakes into the Onix idea.",
+        "Hitmonchan": "Ebiwaraa nods to boxer Hiroyuki Ebihara, a real-world fighting reference hiding in the card.",
+        "Pidgey": "Poppo is little bird sound, soft and ordinary in exactly the right way.",
+        "Pidgeotto": "Pijon is pigeon in Japanese sound.",
+        "Rattata": "Koratta is little Ratta, small rat energy made cute.",
+        "Raticate": "Ratta is rat, plain and sharp.",
+        "Clefairy": "Pippi is a small bright cute sound; the name behaves like a character voice.",
+        "Farfetch'd": "Kamonegi is duck with leek, and also echoes a phrase about an easy mark arriving with exactly what you need.",
+        "Doduo": "Doodoo is dodo carried into the two-headed joke.",
+        "Chansey": "Rakkii is lucky, the whole card's personality in one word.",
+        "Porygon": "Porygon is polygon, the digital body named by geometry.",
+        "Dratini": "Miniyuu reads like mini dragon: small, cute, and already mythic.",
+        "Dragonair": "Hakuryuu means white dragon, a much more elegant register than the English name.",
+        "Super Potion": "Ii Kizugusuri is good wound medicine; practical, plain, and very early-RPG.",
+        "Energy Retrieval": "Enerugii Kaishuu is energy recovery or collection, exactly the card action.",
+        "Energy Removal": "Enerugii Rimuubu is energy remove, a loanword command.",
+        "Professor Oak": "Ookido Hakase is Professor Ookido; the tree-name flavor comes through the English localization as Oak.",
+        "Potion": "Kizugusuri is wound medicine, one of the cleanest item names in the binder.",
+        "Revive": "Genki no Kakera is a fragment of vitality or wellness, a lovely phrase for bringing something back.",
+        "Devolution Spray": "Taika Supuree is devolution spray, direct and wonderfully strange.",
+        "Item Finder": "Daujingu Mashiin is dowsing machine, more treasure-hunter than office tool.",
+        "Super Energy Removal": "Chou Enerugii Rimuubu is super energy removal: the old disruption card says what it does.",
+        "Defender": "Difendaa is Defender as a loanword.",
+        "Gust of Wind": "Toppuu means sudden gust, a clean little word for yanking something into danger.",
+        "Full Heal": "Nandemo Naoshi means fixes anything, which is better than the English name.",
+        "Impostor Professor Oak": "Nise Ookido Hakase is fake Professor Ookido. No mystery, just fraud in a lab coat.",
+        "Computer Search": "Pasokon Tsuushin is personal-computer communication, wonderfully 1996.",
+        "Clefairy Doll": "Pippi Ningyou is Clefairy doll, direct and toy-like.",
+        "PlusPower": "Purasu Pawaa is PlusPower as a loan phrase.",
+        "Switch": "Pokemon Irekae means Pokémon switch or replacement, exactly the table action.",
+        "Scoop Up": "Pokemon Kaishuu is Pokémon recovery or retrieval, less goofy and more procedural than Scoop Up.",
+        "Pokémon Trader": "Pokemon Koukan Ojisan is Pokémon exchange uncle/man, a tiny character hiding inside a tutor effect.",
+        "Pokédex": "Pokemon Zukan HANDY505 is Pokémon illustrated encyclopedia Handy 505, pure gadget-era texture.",
+        "Pokémon Center": "Pokemon Sentaa is Pokémon Center as a loan phrase.",
+        "Pokémon Breeder": "Pokemon Sodateyasan is Pokémon raiser or caretaker, warmer than Breeder.",
+        "Pokémon Flute": "Pokemon no Fue is Pokémon flute, simple and folkloric.",
+        "Bill": "Masaki is the character's Japanese name; the English Bill is a localization, not a translation.",
+        "Lass": "Minisukaato is miniskirt, naming the trainer by the fashion silhouette.",
+        "Maintenance": "Mentenansu is Maintenance as a loanword.",
+        "Double Colorless Energy": "Mushoku 2-ko Enerugii means two colorless energy, plain but mechanically iconic."
+      };
+
+      function dataUrl() {
+        if (window.location.protocol === "file:") {
+          return "http://127.0.0.1:8765/data/no-rarity-base-set.json";
+        }
+        return "data/no-rarity-base-set.json";
+      }
+
+      async function loadCatalog() {
+        if (window.location.protocol === "file:" && window.NO_RARITY_BASE_SET) {
+          return window.NO_RARITY_BASE_SET;
+        }
+        try {
+          const response = await fetch(dataUrl());
+          if (!response.ok) throw new Error(`catalog load failed: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          if (window.NO_RARITY_BASE_SET) return window.NO_RARITY_BASE_SET;
+          throw error;
+        }
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function loadIdentityState() {
+        const fallback = {
+          connected: false,
+          mode: "demo",
+          address: demoBuyerAddress,
+          wants: []
+        };
+        try {
+          const saved = JSON.parse(window.localStorage.getItem(identityStorageKey) || "{}");
+          return {
+            ...fallback,
+            ...saved,
+            wants: Array.isArray(saved.wants) ? saved.wants : []
+          };
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function persistIdentityState() {
+        try {
+          window.localStorage.setItem(identityStorageKey, JSON.stringify(identityState));
+        } catch (error) {
+          // File previews can block storage; the visible receipt still works in this session.
+        }
+      }
+
+      function loadStanceState() {
+        const fallback = {
+          stances: {},
+          imports: {}
+        };
+        try {
+          const saved = JSON.parse(window.localStorage.getItem(stanceStorageKey) || "{}");
+          const imported = {
+            ...fallback,
+            ...saved,
+            stances: saved.stances && typeof saved.stances === "object" ? saved.stances : {},
+            imports: saved.imports && typeof saved.imports === "object" ? saved.imports : {}
+          };
+          if (!imported.imports[binderPageImportId]) {
+            const importedAt = new Date().toISOString();
+            binderPageImportDraft.forEach((entry) => {
+              if (imported.stances[entry.card_id]) return;
+              imported.stances[entry.card_id] = {
+                mode: "have",
+                detail: "keep",
+                count: "1",
+                condition: "unknown",
+                grade: {},
+                photos: [],
+                public_share: { enabled: false },
+                import_source: {
+                  import_id: binderPageImportId,
+                  label: "binder-page photo import",
+                  slot: entry.slot,
+                  identity_confidence: "high",
+                  no_rarity_status: "candidate, not verified",
+                  condition_status: "unknown",
+                  crop_status: "pending source image file",
+                  crop_hint: entry.crop_hint,
+                  note: "Added privately from the 9-card binder-page photo. The chat image was readable to the agent, but no local image file was available for true crop storage.",
+                  imported_at: importedAt
+                },
+                updated_at: importedAt
+              };
+            });
+            imported.imports[binderPageImportId] = {
+              label: "9-card binder-page holo import",
+              imported_at: importedAt,
+              card_ids: binderPageImportDraft.map((entry) => entry.card_id),
+              crop_status: "pending source image file"
+            };
+            window.localStorage.setItem(stanceStorageKey, JSON.stringify(imported));
+          }
+          return imported;
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function persistStanceState() {
+        try {
+          window.localStorage.setItem(stanceStorageKey, JSON.stringify(stanceState));
+        } catch (error) {
+          // Local stance marks are a convenience layer; storage can be unavailable in previews.
+        }
+      }
+
+      const stanceModes = {
+        want: {
+          label: "Want",
+          marker: "want",
+          defaultDetail: "want_one",
+          summary: "Your agent can treat this as a live target, but nothing has been funded or promised yet.",
+          details: [
+            ["want_one", "Want one"],
+            ["want_upgrade", "Want upgrade"],
+            ["watch", "Watch only"]
+          ]
+        },
+        have: {
+          label: "Have",
+          marker: "mine",
+          defaultDetail: "keep",
+          summary: "This is part of your collection. Photos and notes can become the first fingerprint later.",
+          details: [
+            ["keep", "Keep"],
+            ["extra", "Have extra"],
+            ["want_more", "Want more"],
+            ["sell", "Sell"],
+            ["might_sell", "Might sell"],
+            ["trade", "Trade"],
+            ["verify", "Need verify"]
+          ]
+        },
+        skip: {
+          label: "Skip",
+          marker: "skip",
+          defaultDetail: "hide",
+          summary: "Your agent can quiet this row unless something unusual makes it worth showing again.",
+          details: [
+            ["hide", "Hide"],
+            ["wrong_variant", "Wrong variant"],
+            ["resolved", "Resolved"]
+          ]
+        }
+      };
+
+      const quickStanceOptions = [
+        {
+          id: "want",
+          label: "Want this",
+          note: "I do not have the right copy yet.",
+          mode: "want",
+          detail: "want_one",
+          count: "1",
+          nextStep: "action"
+        },
+        {
+          id: "have",
+          label: "Have it",
+          note: "In my collection. Private by default.",
+          mode: "have",
+          detail: "keep",
+          count: "1",
+          nextStep: "condition"
+        },
+        {
+          id: "extra",
+          label: "Have extra",
+          note: "I have a duplicate copy.",
+          mode: "have",
+          detail: "extra",
+          count: "1",
+          nextStep: "quantity"
+        },
+        {
+          id: "more",
+          label: "Want more",
+          note: "I have one, but the hunt continues.",
+          mode: "have",
+          detail: "want_more",
+          count: "1",
+          nextStep: "quantity"
+        },
+        {
+          id: "check",
+          label: "Need check",
+          note: "I need help confirming what I have.",
+          mode: "have",
+          detail: "verify",
+          count: "1",
+          nextStep: "evidence"
+        },
+        {
+          id: "sell",
+          label: "Sell",
+          note: "I want this copy to find a buyer.",
+          mode: "have",
+          detail: "sell",
+          count: "1",
+          nextStep: "condition"
+        }
+      ];
+
+      const stanceDetailLabels = Object.values(stanceModes).reduce((labels, mode) => {
+        mode.details.forEach(([value, label]) => {
+          labels[value] = label;
+        });
+        return labels;
+      }, {});
+
+      const stanceCountOptions = [
+        ["1", "one"],
+        ["2", "two"],
+        ["3", "three"],
+        ["open", "open"]
+      ];
+
+      const conditionOptions = {
+        have: [
+          ["unknown", "Skip for now"],
+          ["played", "Played"],
+          ["binder", "Binder"],
+          ["clean", "Clean"],
+          ["grade_candidate", "Grade candidate"],
+          ["slabbed", "Slabbed"]
+        ],
+        want: [
+          ["unknown", "Any real copy"],
+          ["played", "Played+"],
+          ["binder", "Binder+"],
+          ["clean", "Clean+"],
+          ["grade_candidate", "Grade candidate"],
+          ["slabbed", "Slabbed only"]
+        ]
+      };
+
+      const graderOptions = [
+        ["unknown", "Unknown"],
+        ["PSA", "PSA"],
+        ["CGC", "CGC"],
+        ["BGS", "BGS"],
+        ["SGC", "SGC"],
+        ["TAG", "TAG"],
+        ["Other", "Other"]
+      ];
+
+      const slabGradeOptions = [
+        ["unknown", "Unknown"],
+        ["Authentic", "Authentic"],
+        ["Altered", "Altered"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"]
+      ];
+
+      const rawGradeRangeOptions = [
+        ["unknown", "Unknown"],
+        ["1-4", "1-4"],
+        ["5-6", "5-6"],
+        ["7", "7-ish"],
+        ["8", "8-ish"],
+        ["9", "9-ish"],
+        ["10_candidate", "10 candidate"]
+      ];
+
+      function stanceForCard(card) {
+        if (!card) return null;
+        return stanceState.stances[card.tcgdex_id] || null;
+      }
+
+      function stanceLabel(stance) {
+        if (!stance) return "unmarked";
+        return stanceDetailLabels[stance.detail] || stanceModes[stance.mode]?.label || "marked";
+      }
+
+      function stanceMarker(stance) {
+        if (!stance) return "";
+        const detailMarkers = {
+          want_one: "want",
+          want_upgrade: "upgrade",
+          watch: "watch",
+          keep: "have",
+          extra: "extra",
+          want_more: "more",
+          sell: "sell",
+          might_sell: "sell",
+          trade: "trade",
+          verify: "check",
+          hide: "pass",
+          wrong_variant: "wrong",
+          resolved: "done"
+        };
+        if (detailMarkers[stance.detail]) return detailMarkers[stance.detail];
+        return stanceModes[stance.mode]?.marker || stanceModes[stance.mode]?.label || "mark";
+      }
+
+      function countWord(count) {
+        if (count === "1") return "one";
+        if (count === "2") return "two";
+        if (count === "3") return "three";
+        return count;
+      }
+
+      function stanceSummary(card, stance) {
+        if (!stance) {
+          return "Mark your relationship to this card. The binder remembers locally; your agent gets a cleaner starting point.";
+        }
+
+        const count = stance.count || "1";
+        if (stance.detail === "want_upgrade") {
+          return "You have standards here. Your agent can look for a cleaner copy, better centering, or a stronger surface.";
+        }
+        if (stance.detail === "want_one" && count !== "1") {
+          return count === "open"
+            ? "You want this row, and the right number can stay open until the hunt gets clearer."
+            : `You want ${countWord(count)} copies of this row. Your agent can keep the quantity legible without making it a funded order yet.`;
+        }
+        if (stance.detail === "watch") {
+          return "Interesting, but not urgent. Your agent can keep an eye on the row without turning it into a funded want.";
+        }
+        if (stance.detail === "want_more") {
+          if (count === "open") {
+            return "You already have one, and you are still open to more. Your agent can hunt without treating your copy as available.";
+          }
+          return `You already have one, and you would like ${countWord(count)} more. Your agent can hunt without treating your copy as available.`;
+        }
+        if (stance.detail === "extra") {
+          if (count === "open") {
+            return "You have extras. Your agent can remember duplicate supply without treating anything as public yet.";
+          }
+          return `You have ${countWord(count)} extra ${count === "1" ? "copy" : "copies"}. This is inventory memory, not a public listing.`;
+        }
+        if (stance.detail === "sell") {
+          return "You want to sell this. The next useful work is condition, proof, and explicit public sharing.";
+        }
+        if (stance.detail === "might_sell") {
+          return "You have it, but you would listen. Later this can become a soft sell signal with your price and attention rules.";
+        }
+        if (stance.detail === "trade") {
+          return "This copy could move in the right trade. The card stays yours until you choose to make that legible.";
+        }
+        if (stance.detail === "verify") {
+          return "You have a copy, but it needs care: photos, condition notes, or No Rarity checks before it becomes useful evidence.";
+        }
+        if (stance.detail === "wrong_variant") {
+          return "This row is not your target. Useful to mark when a rarity-symbol copy or reprint keeps getting in the way.";
+        }
+        if (stance.detail === "resolved") {
+          return "You are done with this row for now. Your agent can keep it quiet unless you reopen it.";
+        }
+
+        return stanceModes[stance.mode]?.summary || "Marked locally.";
+      }
+
+      function stanceDetailOptions(mode) {
+        return stanceModes[mode]?.details || [];
+      }
+
+      function countOptionsForStance(stance) {
+        return stance && ["want_more", "extra"].includes(stance.detail) ? stanceCountOptions : [];
+      }
+
+      function conditionOptionsForStance(stance) {
+        if (!stance || stance.mode === "skip") return [];
+        return conditionOptions[stance.mode] || [];
+      }
+
+      function conditionLabel(stance) {
+        const options = conditionOptionsForStance(stance);
+        const condition = stance?.condition || "unknown";
+        return options.find(([value]) => value === condition)?.[1] || "Unknown";
+      }
+
+      function conditionLayerLabel(stance) {
+        if (stance?.detail === "sell") return "Sale condition";
+        return stance?.mode === "want" ? "Condition floor" : "Condition read";
+      }
+
+      function conditionCopy(stance) {
+        if (!stance) return "";
+        if (stance.mode === "want") {
+          return "This tells sellers how clean the card needs to be before they spend attention.";
+        }
+        if (stance.detail === "sell") {
+          return "A buyer will need a condition claim before they spend attention.";
+        }
+        if ((stance.photos || []).length) {
+          return "Pictures are attached, so the read is starting to harden. It is still not a verifier ruling.";
+        }
+        return "This is your read for now. Pictures can harden it without turning it into a public claim.";
+      }
+
+      function evidenceHintsForCard(card, stance) {
+        if (!stance || stance.mode !== "have") return [];
+        if (stance.condition === "slabbed") {
+          return ["slab front", "slab back", "cert closeup", "lower-right corner", "label and seal"];
+        }
+
+        const hints = ["front", "back", "lower-right corner", "four corners"];
+        if (cardIsHolo(card)) hints.push("holo surface tilt");
+        if ((card.variant_traps || []).length) hints.push("text layout closeup");
+        if (["extra", "sell", "might_sell", "trade", "verify"].includes(stance.detail)) hints.push("notable flaws");
+        return hints;
+      }
+
+      function showGradingLayer(stance) {
+        return stance?.mode === "have" && ["slabbed", "grade_candidate"].includes(stance.condition);
+      }
+
+      function optionMarkup(options, selectedValue) {
+        return options.map(([value, label]) => {
+          const selected = value === selectedValue ? " selected" : "";
+          return `<option value="${escapeHtml(value)}"${selected}>${escapeHtml(label)}</option>`;
+        }).join("");
+      }
+
+      function publicStatus(stance) {
+        if (!stance?.public_share?.enabled) {
+          return "private: not publishable";
+        }
+        return `public-ready: ${stance.public_share.updated_at || "ready"}`;
+      }
+
+      function hasGradeValue(grade = {}) {
+        return Object.values(grade).some((value) => value && value !== "unknown");
+      }
+
+      function costState(stance, want, photos, isPublic) {
+        if (!stance) return { level: 0, label: "idle" };
+
+        let level = 1;
+        let label = "private";
+        if (
+          (stance.count && stance.count !== "1") ||
+          (stance.condition && stance.condition !== "unknown")
+        ) {
+          level = 2;
+          label = "shaped";
+        }
+        if (photos.length || showGradingLayer(stance) || hasGradeValue(stance.grade)) {
+          level = 3;
+          label = "evidence";
+        }
+        if (isPublic || want) {
+          level = 4;
+          label = isPublic ? "public" : "signed";
+        }
+
+        return { level, label };
+      }
+
+      function flowBadgeLabel(stance, want, photos, isPublic) {
+        if (!stance) return "start";
+        if (!stance.detail) return "next: shape";
+        if (stance.mode === "skip") return "marked";
+        if (stance.mode === "want") return want ? "signed want" : "next: sign";
+        if (stance.mode === "have" && isPublic) return "public ready";
+        if (stance.mode === "have" && (photos.length || hasGradeValue(stance.grade))) return "proof added";
+        if (stance.mode === "have") return "next: proof";
+        return "marked";
+      }
+
+      function hasQuantityStep(stance) {
+        return Boolean(countOptionsForStance(stance).length);
+      }
+
+      function nextStepAfterDetail(mode, detail) {
+        if (mode === "skip") return "done";
+        if (["want_more", "extra"].includes(detail)) return "quantity";
+        return mode === "want" || mode === "have" ? "condition" : "detail";
+      }
+
+      function nextStepAfterCondition(stance, condition) {
+        if (!stance) return "mode";
+        if (stance.mode === "want") return "action";
+        if (stance.mode === "have" && ["slabbed", "grade_candidate"].includes(condition)) return "grade";
+        if (stance.mode === "have") return "evidence";
+        return "done";
+      }
+
+      function validFlowSteps(stance) {
+        const steps = ["mode"];
+        if (!stance) return steps;
+        if (hasQuantityStep(stance)) steps.push("quantity");
+        if (stance.mode !== "skip") steps.push("condition");
+        if (stance.mode === "have") {
+          if (showGradingLayer(stance)) steps.push("grade");
+          steps.push("evidence", "public", "done");
+        }
+        if (stance.mode === "want") steps.push("action");
+        if (stance.mode === "skip") steps.push("done");
+        return steps;
+      }
+
+      function initialFlowStep(stance, want, photos, isPublic) {
+        if (!stance) return "mode";
+        if (stance.mode === "skip") return "done";
+        if (hasQuantityStep(stance) && (!stance.condition || stance.condition === "unknown")) return "quantity";
+        if (stance.mode === "want") {
+          if (stance.detail === "want_one" && (!stance.condition || stance.condition === "unknown")) return "action";
+          if (want || (stance.condition && stance.condition !== "unknown")) return "action";
+          return "condition";
+        }
+        if (stance.mode === "have") {
+          if (isPublic) return "public";
+          if (photos.length || hasGradeValue(stance.grade)) return "evidence";
+          if (showGradingLayer(stance)) return "grade";
+          if (stance.condition && stance.condition !== "unknown") return "evidence";
+          return "condition";
+        }
+        return "mode";
+      }
+
+      function currentFlowStep(card, stance, want, photos, isPublic) {
+        if (!card) return "mode";
+        if (state.flowCardId !== card.tcgdex_id) {
+          state.flowCardId = card.tcgdex_id;
+          state.flowStep = initialFlowStep(stance, want, photos, isPublic);
+        }
+        const validSteps = validFlowSteps(stance);
+        if (!validSteps.includes(state.flowStep)) {
+          state.flowStep = initialFlowStep(stance, want, photos, isPublic);
+        }
+        return state.flowStep;
+      }
+
+      function setFlowStep(card, step, rerender = true) {
+        if (!card) return;
+        state.flowCardId = card.tcgdex_id;
+        state.flowStep = step;
+        if (rerender) renderDetail(card);
+      }
+
+      function previousFlowStep(step, stance) {
+        if (step === "quantity") return "mode";
+        if (step === "condition") return hasQuantityStep(stance) ? "quantity" : "mode";
+        if (step === "grade") return "condition";
+        if (step === "evidence") return showGradingLayer(stance) ? "grade" : "condition";
+        if (step === "public") return "evidence";
+        if (step === "action") return hasQuantityStep(stance) ? "quantity" : "condition";
+        if (step === "done") return stance?.mode === "skip" ? "mode" : "evidence";
+        return "";
+      }
+
+      function flowBackLabel(step, stance) {
+        if (step === "quantity") return "stance";
+        if (step === "condition") return hasQuantityStep(stance) ? "quantity" : "stance";
+        if (step === "grade") return "condition";
+        if (step === "evidence") return showGradingLayer(stance) ? "grade" : "condition";
+        if (step === "public") return "proof";
+        if (step === "action") return "terms";
+        if (step === "done") return stance?.mode === "skip" ? "stance" : "proof";
+        return "";
+      }
+
+      function flowContextChips(stance, flowStep, want, photos, isPublic) {
+        const chips = [];
+        chips.push(flowStep === "mode" ? "private" : flowBadgeLabel(stance, want, photos, isPublic));
+        if (stance?.mode) chips.push(stanceModes[stance.mode]?.label || stance.mode);
+        if (stance?.detail) chips.push(stanceLabel(stance));
+        if (stance?.condition && stance.condition !== "unknown") chips.push(conditionLabel(stance));
+        return chips.slice(0, 4);
+      }
+
+      function flowProgressMeta(stance, step) {
+        let steps = ["mode", "condition", "action"];
+        if (stance?.mode === "skip") {
+          steps = ["mode", "done"];
+        } else if (stance?.mode === "want") {
+          steps = ["mode"];
+          if (hasQuantityStep(stance)) steps.push("quantity");
+          steps.push("condition", "action");
+        } else if (stance?.mode === "have") {
+          steps = ["mode", "condition"];
+          if (showGradingLayer(stance)) steps.push("grade");
+          steps.push("evidence", "public", "done");
+        }
+        const index = Math.max(0, steps.indexOf(step));
+        const total = Math.max(1, steps.length);
+        const percent = total === 1 ? 18 : Math.round(((index + 1) / total) * 100);
+        const labels = {
+          mode: "private start",
+          quantity: "scope narrowed",
+          condition: "agent-useful",
+          grade: "claim getting heavier",
+          evidence: "proof can help",
+          public: "public boundary",
+          action: "signed edge",
+          done: stance?.mode === "skip" ? "quieted" : "saved"
+        };
+        return {
+          index: index + 1,
+          total,
+          percent,
+          label: labels[step] || "in progress"
+        };
+      }
+
+      function setQuickStance(card, optionId, options = {}) {
+        const option = quickStanceOptions.find((item) => item.id === optionId);
+        if (!card || !option) return;
+        const current = stanceForCard(card);
+        const sameTrack = current?.mode === option.mode && current?.detail === option.detail;
+        stanceState.stances[card.tcgdex_id] = {
+          ...(sameTrack ? current : {}),
+          mode: option.mode,
+          detail: option.detail,
+          count: sameTrack ? current?.count || option.count : option.count,
+          condition: sameTrack ? current?.condition || "unknown" : "unknown",
+          grade: sameTrack ? current?.grade || {} : {},
+          photos: sameTrack && Array.isArray(current?.photos) ? current.photos : [],
+          public_share: sameTrack ? current?.public_share || { enabled: false } : { enabled: false },
+          updated_at: new Date().toISOString()
+        };
+        state.flowCardId = card.tcgdex_id;
+        state.flowStep = option.nextStep;
+        persistStanceState();
+        render();
+        if (options.renderModal !== false || els.dialog.open) {
+          renderDetail(card);
+        }
+      }
+
+      function setStance(card, mode, detail = "", nextStep = null) {
+        if (!card || !stanceModes[mode]) return;
+        const current = stanceForCard(card);
+        const sameMode = current?.mode === mode;
+        const nextDetail = detail || (sameMode ? current?.detail || "" : "");
+        const validDetails = stanceDetailOptions(mode).map(([value]) => value);
+        const resolvedDetail = validDetails.includes(nextDetail) ? nextDetail : "";
+        const keepCount = sameMode && current?.detail === resolvedDetail && current?.count;
+        stanceState.stances[card.tcgdex_id] = {
+          ...(sameMode ? current : {}),
+          mode,
+          detail: resolvedDetail,
+          count: keepCount || "1",
+          condition: sameMode ? current?.condition || "unknown" : "unknown",
+          grade: sameMode ? current?.grade || {} : {},
+          photos: sameMode && Array.isArray(current?.photos) ? current.photos : [],
+          public_share: sameMode ? current?.public_share || { enabled: false } : { enabled: false },
+          updated_at: new Date().toISOString()
+        };
+        state.flowCardId = card.tcgdex_id;
+        state.flowStep = nextStep || (resolvedDetail ? nextStepAfterDetail(mode, resolvedDetail) : "detail");
+        persistStanceState();
+        render();
+        renderDetail(card);
+      }
+
+      function setStanceCount(card, count, nextStep = "condition") {
+        const current = stanceForCard(card);
+        const validCounts = stanceCountOptions.map(([value]) => value);
+        if (!card || !current || !validCounts.includes(count)) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          count,
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, nextStep, false);
+        persistStanceState();
+        renderDetail(card);
+      }
+
+      function setStanceCondition(card, condition, nextStep = null) {
+        const current = stanceForCard(card);
+        const validConditions = conditionOptionsForStance(current).map(([value]) => value);
+        if (!card || !current || !validConditions.includes(condition)) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          condition,
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, nextStep || nextStepAfterCondition(current, condition), false);
+        persistStanceState();
+        renderDetail(card);
+      }
+
+      function setGradeField(card, field, value, rerender = true) {
+        const current = stanceForCard(card);
+        if (!card || !current) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          grade: {
+            ...(current.grade || {}),
+            [field]: value
+          },
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, "grade", false);
+        persistStanceState();
+        if (rerender) renderDetail(card);
+      }
+
+      function setPublicShare(card, enabled) {
+        const current = stanceForCard(card);
+        if (!card || !current) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          public_share: {
+            enabled,
+            updated_at: new Date().toISOString()
+          },
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, "public", false);
+        persistStanceState();
+        renderDetail(card);
+      }
+
+      async function compressPhotoFile(file) {
+        const dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.addEventListener("load", () => resolve(reader.result));
+          reader.addEventListener("error", reject);
+          reader.readAsDataURL(file);
+        });
+        const image = await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.addEventListener("load", () => resolve(img));
+          img.addEventListener("error", reject);
+          img.src = dataUrl;
+        });
+
+        const maxSide = 900;
+        const scale = Math.min(1, maxSide / Math.max(image.naturalWidth, image.naturalHeight));
+        const width = Math.max(1, Math.round(image.naturalWidth * scale));
+        const height = Math.max(1, Math.round(image.naturalHeight * scale));
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+        const compressed = canvas.toDataURL("image/jpeg", 0.7);
+        return {
+          id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+          name: file.name || "card photo",
+          data_url: compressed,
+          hash: await digestText(compressed),
+          added_at: new Date().toISOString()
+        };
+      }
+
+      async function addPhotos(card, fileList) {
+        const current = stanceForCard(card);
+        if (!card || !current || !fileList?.length) return;
+        const currentPhotos = Array.isArray(current.photos) ? current.photos : [];
+        const files = Array.from(fileList).filter((file) => file.type.startsWith("image/")).slice(0, Math.max(0, 8 - currentPhotos.length));
+        const photos = [];
+        for (const file of files) {
+          try {
+            photos.push(await compressPhotoFile(file));
+          } catch (error) {
+            // Ignore unreadable files; the picker stays available for another attempt.
+          }
+        }
+        if (!photos.length) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          photos: currentPhotos.concat(photos).slice(0, 8),
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, "evidence", false);
+        persistStanceState();
+        renderDetail(card);
+      }
+
+      function removePhoto(card, photoId) {
+        const current = stanceForCard(card);
+        if (!card || !current) return;
+        stanceState.stances[card.tcgdex_id] = {
+          ...current,
+          photos: (current.photos || []).filter((photo) => photo.id !== photoId),
+          updated_at: new Date().toISOString()
+        };
+        setFlowStep(card, "evidence", false);
+        persistStanceState();
+        renderDetail(card);
+      }
+
+      function clearStance(card) {
+        if (!card) return;
+        delete stanceState.stances[card.tcgdex_id];
+        setFlowStep(card, "mode", false);
+        persistStanceState();
+        render();
+        renderDetail(card);
+      }
+
+      function shortHash(value) {
+        if (!value) return "none";
+        return value.length > 28 ? `${value.slice(0, 18)}...${value.slice(-8)}` : value;
+      }
+
+      function shortAddress(value) {
+        if (!value) return "none";
+        return value.length > 18 ? `${value.slice(0, 8)}...${value.slice(-6)}` : value;
+      }
+
+      async function digestText(text) {
+        if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+          const bytes = new TextEncoder().encode(text);
+          const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+          return `0x${Array.from(new Uint8Array(digest))
+            .map((byte) => byte.toString(16).padStart(2, "0"))
+            .join("")}`;
+        }
+
+        let hash = 2166136261;
+        for (let i = 0; i < text.length; i += 1) {
+          hash ^= text.charCodeAt(i);
+          hash = Math.imul(hash, 16777619);
+        }
+        return `0xlocal${(hash >>> 0).toString(16).padStart(8, "0")}`;
+      }
+
+      function wantForCard(card) {
+        if (!card) return null;
+        return identityState.wants.find((want) => want.card_id === card.tcgdex_id);
+      }
+
+      function renderIdentity() {
+        const browserWallet = identityState.connected && identityState.mode === "browser";
+        const demoSigned = identityState.connected && identityState.mode === "demo";
+        const address = identityState.address || demoBuyerAddress;
+        const label = browserWallet ? `key: ${shortAddress(address)}` : demoSigned ? "key: demo signed" : "key: demo";
+        els.identityOpen.textContent = `Collector ${label}`;
+        if (els.identityStatus) els.identityStatus.textContent = label;
+        els.identityKey.textContent = browserWallet ? `${shortAddress(address)} browser wallet` : `${shortAddress(address)} local demo`;
+        els.identityConnect.textContent = browserWallet ? "Wallet connected" : window.ethereum ? "Connect wallet" : "Use demo key";
+        els.identityConnect.disabled = browserWallet;
+        els.identityCopy.textContent = browserWallet
+          ? "Browser wallet connected. Signed wants can become clean starting points for funded trades."
+          : "A wallet can sign that you want a card. It does not prove a seller has it, or that the card is real.";
+
+        els.signedWants.innerHTML = "";
+        if (!identityState.wants.length) {
+          const empty = document.createElement("div");
+          empty.className = "signed-want-row";
+          empty.innerHTML = "<b>Signed wants</b><span>none yet</span>";
+          els.signedWants.appendChild(empty);
+          return;
+        }
+
+        identityState.wants.slice(0, 5).forEach((want) => {
+          const row = document.createElement("div");
+          row.className = "signed-want-row";
+          const labelNode = document.createElement("b");
+          labelNode.textContent = want.name_en || "want";
+          const valueNode = document.createElement("span");
+          valueNode.textContent = shortHash(want.signature_hash);
+          row.append(labelNode, valueNode);
+          els.signedWants.appendChild(row);
+        });
+      }
+
+      async function connectIdentity() {
+        let connected = false;
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            if (accounts && accounts[0]) {
+              identityState.connected = true;
+              identityState.mode = "browser";
+              identityState.address = accounts[0];
+              persistIdentityState();
+              connected = true;
+            }
+          } catch (error) {
+            els.identityCopy.textContent = "Wallet connection was not granted. Nothing changed.";
+          }
+        } else {
+          identityState.connected = true;
+          identityState.mode = "demo";
+          identityState.address = demoBuyerAddress;
+          persistIdentityState();
+          connected = true;
+        }
+        renderIdentity();
+        if (state.currentDetailCard) renderDetail(state.currentDetailCard);
+        return connected;
+      }
+
+      function wantMessage(card) {
+        const japaneseName = cardJapaneseName(card);
+        const reading = cardReading(card);
+        const scope = card.product_scope || {};
+        return [
+          "No Rarity Binder Want",
+          `buyer:${identityState.address || demoBuyerAddress}`,
+          "agent:no-rarity-binder",
+          `card_id:${card.tcgdex_id}`,
+          `japanese:${japaneseName}`,
+          `reading:${reading}`,
+          `english:${card.name_en}`,
+          `booster_order:${scope.japanese_booster_order || ""}`,
+          `local_id:PMCG1-${card.local_id}`,
+          "scope:collector_want_no_money_movement",
+          `created_at:${new Date().toISOString()}`
+        ].join("\n");
+      }
+
+      async function signWant(card) {
+        if (!card) return;
+        if (!identityState.connected) {
+          const connected = await connectIdentity();
+          if (!connected) return;
+        }
+
+        const message = wantMessage(card);
+        let signature = "";
+        let mode = identityState.mode;
+        if (identityState.connected && identityState.mode === "browser" && window.ethereum) {
+          try {
+            signature = await window.ethereum.request({
+              method: "personal_sign",
+              params: [message, identityState.address]
+            });
+          } catch (error) {
+            return;
+          }
+        } else {
+          identityState.connected = true;
+          identityState.mode = "demo";
+          identityState.address = demoBuyerAddress;
+          mode = "demo";
+          signature = `demo-signature:${identityState.address}:${message}`;
+        }
+
+        const receipt = {
+          card_id: card.tcgdex_id,
+          name_en: card.name_en,
+          japanese_name: cardJapaneseName(card),
+          local_id: `PMCG1-${card.local_id}`,
+          mode,
+          actor: identityState.address,
+          packet_hash: await digestText(message),
+          signature_hash: await digestText(signature),
+          signed_at: new Date().toISOString()
+        };
+        identityState.wants = [
+          receipt,
+          ...identityState.wants.filter((want) => want.card_id !== card.tcgdex_id)
+        ].slice(0, 24);
+        persistIdentityState();
+        renderIdentity();
+        setFlowStep(card, "action", false);
+        renderDetail(card);
+      }
+
+      function cardImage(card) {
+        const ref = card.no_rarity_reference || {};
+        return ref.image_small || ref.image_large || "";
+      }
+
+      function nameRead(card) {
+        return nameReads[card.name_en] || "Name note not written yet.";
+      }
+
+      function cardJapaneseName(card) {
+        return card.product_scope?.japanese_name_from_research || card.name_source_raw || card.name_en;
+      }
+
+      function cardReading(card) {
+        return card.product_scope?.romaji_from_research || "";
+      }
+
+      function cardRarity(card) {
+        return card.rarity_source || "rarity unknown";
+      }
+
+      function cardIsHolo(card) {
+        return Boolean(card.holo_source) || /holo/i.test(cardRarity(card));
+      }
+
+      function cardSection(card) {
+        const tag = (card.tags || []).find((item) => item.startsWith("Japanese booster section:"));
+        return tag ? tag.replace("Japanese booster section:", "").trim() : card.category || "";
+      }
+
+      function sortedTargets(cards) {
+        return cards
+          .filter((card) => card.no_rarity_target)
+          .slice()
+          .sort((a, b) => {
+            const ao = a.product_scope?.japanese_booster_order || 999;
+            const bo = b.product_scope?.japanese_booster_order || 999;
+            return ao - bo || a.local_id.localeCompare(b.local_id);
+          });
+      }
+
+      function layoutForViewport() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const spine = width < 760 ? 32 : 54;
+        const accountBar = els.accountBar ? els.accountBar.offsetHeight + 8 : 0;
+        const pagePaddingX = width < 760 ? 56 : height <= 460 ? 60 : height <= 760 ? 72 : 84;
+        const pagePaddingY = width < 760 ? 20 : height <= 460 ? 16 : height <= 760 ? 24 : 28;
+        const outerPaddingX = width < 760 ? 20 : 20;
+        const outerPaddingY = width < 760 ? 52 : 16;
+        const head = width < 760 ? 58 : 38;
+        const controls = 46;
+        const label = Math.min(Math.max(height * 0.07, 50), 60);
+        const pocketPad = width < 760 ? 8 : 18;
+        const gap = Math.min(Math.max(width * 0.012, 8), 14);
+        const availableWidth = width - outerPaddingX - spine - pagePaddingX;
+        const availableHeight = height - outerPaddingY - pagePaddingY - head - controls - accountBar;
+        const candidates = [
+          [1, 1],
+          [1, 2],
+          [2, 1],
+          [2, 2],
+          [3, 1],
+          [3, 2],
+          [4, 2],
+          [3, 3],
+          [4, 3]
+        ];
+        const minimumCardHeight = width < 520 ? 210 : width < 1100 ? 220 : 235;
+
+        const scored = candidates.map(([cols, rows]) => {
+          const cellWidth = (availableWidth - gap * (cols - 1)) / cols;
+          const cellHeight = (availableHeight - gap * (rows - 1)) / rows;
+          const imageWidthLimit = cellWidth - pocketPad;
+          const imageHeightLimit = cellHeight - label - pocketPad;
+          const cardHeight = Math.min(imageHeightLimit, imageWidthLimit * (60 / 43));
+          const horizontalBuffer = Math.max(0, cellWidth - cardHeight * (43 / 60));
+          return {
+            cols,
+            rows,
+            pageSize: cols * rows,
+            cardHeight,
+            horizontalBuffer,
+            score: cols * rows * 1000 + cardHeight - horizontalBuffer * 0.2
+          };
+        }).filter((layout) => {
+          return layout.cols > 0 && layout.rows > 0 && layout.cardHeight > 0;
+        });
+
+        const preferred = scored
+          .filter((layout) => layout.cardHeight >= minimumCardHeight)
+          .sort((a, b) => b.score - a.score)[0];
+        const fallback = scored.sort((a, b) => b.cardHeight - a.cardHeight || b.pageSize - a.pageSize)[0];
+        const chosen = preferred || fallback || { cols: 1, rows: 1, pageSize: 1 };
+
+        return {
+          cols: chosen.cols,
+          rows: chosen.rows,
+          pageSize: chosen.cols * chosen.rows
+        };
+      }
+
+      function selectedIndex() {
+        return state.cards.findIndex((card) => card.tcgdex_id === state.selectedId);
+      }
+
+      function totalPages() {
+        return Math.max(1, Math.ceil(state.cards.length / state.layout.pageSize));
+      }
+
+      function pageCards() {
+        const start = state.page * state.layout.pageSize;
+        return state.cards.slice(start, start + state.layout.pageSize);
+      }
+
+      function syncLayout() {
+        const selected = selectedIndex();
+        const anchorIndex = selected >= 0 ? selected : state.page * state.layout.pageSize;
+        state.layout = layoutForViewport();
+        els.grid.style.setProperty("--binder-cols", state.layout.cols);
+        els.grid.style.setProperty("--binder-rows", state.layout.rows);
+        state.page = Math.min(totalPages() - 1, Math.floor(anchorIndex / state.layout.pageSize));
+        els.layoutCount.textContent = `${state.layout.cols} x ${state.layout.rows} pockets`;
+      }
+
+      function renderPocket(card, index) {
+        if (!card) {
+          const empty = document.createElement("div");
+          empty.className = "pocket empty-pocket";
+          empty.innerHTML = `
+            <div class="card-image-wrap">
+              <div class="missing-image"></div>
+            </div>
+            <div class="card-label">
+              <span class="card-name">empty pocket</span>
+              <span class="card-meta">page space</span>
+            </div>
+          `;
+          return empty;
+        }
+
+        const pocket = document.createElement("article");
+        pocket.className = "pocket";
+        pocket.classList.toggle("selected", card.tcgdex_id === state.selectedId);
+        const image = cardImage(card);
+        const order = card.product_scope?.japanese_booster_order || index + 1;
+        const japaneseName = cardJapaneseName(card);
+        const reading = cardReading(card);
+        const rarity = cardRarity(card);
+        const isHolo = cardIsHolo(card);
+        const stance = stanceForCard(card);
+        if (stance) pocket.dataset.stance = stance.mode;
+        pocket.innerHTML = `
+          <button class="pocket-view" type="button" aria-label="View ${escapeHtml(japaneseName)} / ${escapeHtml(card.name_en)}">
+            ${stance ? `<span class="stance-marker ${escapeHtml(stance.mode)}">${escapeHtml(stanceMarker(stance))}</span>` : ""}
+            <div class="card-image-wrap">
+              ${image ? `<img src="${escapeHtml(image)}" alt="No Rarity reference for ${escapeHtml(card.name_en)}">` : `<div class="missing-image">?</div>`}
+            </div>
+            <div class="card-label">
+              <span class="card-name card-name-ja">${escapeHtml(japaneseName)}</span>
+              <span class="card-meta card-name-en">${escapeHtml(card.name_en)}${reading ? ` · ${escapeHtml(reading)}` : ""}</span>
+              <span class="rarity-row">
+                <span class="rarity-chip${isHolo ? " holo" : ""}">${escapeHtml(rarity)}</span>
+                <span class="rarity-chip">#${escapeHtml(order)}</span>
+              </span>
+            </div>
+          </button>
+          ${stance ? "" : `
+            <span class="pocket-quick-stack" aria-label="Quick marks">
+              <button class="pocket-quick" type="button" data-pocket-stance="want" aria-label="Mark ${escapeHtml(card.name_en)} as want">want</button>
+              <button class="pocket-quick" type="button" data-pocket-stance="have" aria-label="Mark ${escapeHtml(card.name_en)} as have">have</button>
+            </span>
+          `}
+        `;
+        pocket.querySelector(".pocket-view").addEventListener("click", () => {
+          state.selectedId = card.tcgdex_id;
+          document.querySelectorAll(".pocket.selected").forEach((selected) => {
+            selected.classList.remove("selected");
+          });
+          pocket.classList.add("selected");
+          openCard(card);
+        });
+        pocket.querySelectorAll("[data-pocket-stance]").forEach((button) => {
+          button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          state.selectedId = card.tcgdex_id;
+            setQuickStance(card, button.dataset.pocketStance, { renderModal: false });
+          });
+        });
+        return pocket;
+      }
+
+      function renderDetail(card) {
+        if (!card) return;
+        const image = cardImage(card);
+        const profile = card.agent_decision_profile || {};
+        const scope = card.product_scope || {};
+        const trap = (card.variant_traps || [])[0];
+        const note = card.collector_texture?.note || "";
+        const japaneseName = cardJapaneseName(card);
+        const romaji = cardReading(card);
+        const rarity = cardRarity(card);
+        const isHolo = cardIsHolo(card);
+        const section = cardSection(card);
+        const want = wantForCard(card);
+        const stance = stanceForCard(card);
+        const detailOptions = stanceDetailOptions(stance?.mode);
+        const countOptions = countOptionsForStance(stance);
+        const conditionChoices = conditionOptionsForStance(stance);
+        const photos = Array.isArray(stance?.photos) ? stance.photos : [];
+        const evidenceHints = evidenceHintsForCard(card, stance);
+        const grade = stance?.grade || {};
+        const isPublic = Boolean(stance?.public_share?.enabled);
+        const importSource = stance?.import_source || null;
+        const costMeta = costState(stance, want, photos, isPublic);
+        const flowBadge = flowBadgeLabel(stance, want, photos, isPublic);
+        const activeFlowStep = currentFlowStep(card, stance, want, photos, isPublic);
+        const backStep = previousFlowStep(activeFlowStep, stance);
+        const flowProgress = flowProgressMeta(stance, activeFlowStep);
+        const contextChips = flowContextChips(stance, activeFlowStep, want, photos, isPublic)
+          .map((chip) => `<span>${escapeHtml(chip)}</span>`)
+          .join("");
+        const quickStanceButtons = quickStanceOptions.map((option) => {
+          const selected = stance?.mode === option.mode && stance?.detail === option.detail ? " is-selected" : "";
+          return `
+            <button class="flow-choice quick-stance-card${selected}" type="button" data-quick-stance="${escapeHtml(option.id)}">
+              <strong>${escapeHtml(option.label)}</strong>
+              <span>${escapeHtml(option.note)}</span>
+            </button>
+          `;
+        }).join("");
+        const quickStripButtons = quickStanceOptions.map((option) => {
+          const selected = stance?.mode === option.mode && stance?.detail === option.detail ? " is-selected" : "";
+          return `<button class="modal-quick-button${selected}" type="button" data-quick-stance="${escapeHtml(option.id)}">${escapeHtml(option.label)}</button>`;
+        }).join("");
+        const stanceDetailButtons = detailOptions.map(([detail, label]) => {
+          const selected = stance?.detail === detail ? " is-selected" : "";
+          const nextStep = nextStepAfterDetail(stance?.mode, detail);
+          return `<button class="flow-choice stance-detail-button${selected}" type="button" data-stance-detail="${escapeHtml(detail)}" data-next-step="${escapeHtml(nextStep)}">${escapeHtml(label)}</button>`;
+        }).join("");
+        const stanceCountButtons = countOptions.map(([count, label]) => {
+          const selected = (stance?.count || "1") === count ? " is-selected" : "";
+          const countLabel = count === "open"
+            ? "open"
+            : stance?.detail === "want_more"
+              ? `${label} more`
+              : stance?.detail === "extra"
+                ? `${label} ${count === "1" ? "extra" : "extras"}`
+                : `${label} ${count === "1" ? "copy" : "copies"}`;
+          return `<button class="flow-choice stance-count-button${selected}" type="button" data-stance-count="${escapeHtml(count)}">${escapeHtml(countLabel)}</button>`;
+        }).join("");
+        const conditionButtons = conditionChoices.map(([condition, label]) => {
+          const selected = (stance?.condition || "unknown") === condition ? " is-selected" : "";
+          const nextStep = nextStepAfterCondition(stance, condition);
+          return `<button class="flow-choice condition-button${selected}" type="button" data-condition="${escapeHtml(condition)}" data-next-step="${escapeHtml(nextStep)}">${escapeHtml(label)}</button>`;
+        }).join("");
+        const photoTiles = photos.map((photo, index) => `
+          <div class="photo-tile">
+            <img src="${escapeHtml(photo.data_url)}" alt="Local evidence photo ${index + 1} for ${escapeHtml(card.name_en)}">
+            <span class="photo-hash">${escapeHtml(shortHash(photo.hash))}</span>
+            <button type="button" data-remove-photo="${escapeHtml(photo.id)}">remove</button>
+          </div>
+        `).join("");
+        const evidenceHintItems = evidenceHints.map((hint) => `<li>${escapeHtml(hint)}</li>`).join("");
+        const importNote = importSource ? `
+          <div class="import-note">
+            <strong>Import source:</strong> ${escapeHtml(importSource.label || "binder-page import")} · ${escapeHtml(importSource.slot || "slot unknown")} · identity ${escapeHtml(importSource.identity_confidence || "unknown")} · No Rarity ${escapeHtml(importSource.no_rarity_status || "not checked")} · crop ${escapeHtml(importSource.crop_status || "not attached")}.
+          </div>
+        ` : "";
+        const gradingLayer = showGradingLayer(stance) ? `
+          <div class="grading-layer" aria-label="Grading information">
+            <span class="stance-quantity-label">${stance.condition === "slabbed" ? "Graded by" : "Grade candidate"}</span>
+            <p class="grading-copy">${stance.condition === "slabbed"
+              ? "A slab claim should name the grader and the grade. A cert or label photo can harden it."
+              : "This is still a raw-card guess. Use a range until photos or review justify more precision."}</p>
+            <div class="grade-grid">
+              ${stance.condition === "slabbed" ? `
+                <label class="grade-field">
+                  Grader
+                  <select data-grade-field="grader">${optionMarkup(graderOptions, grade.grader || "unknown")}</select>
+                </label>
+                <label class="grade-field">
+                  Grade
+                  <select data-grade-field="grade">${optionMarkup(slabGradeOptions, grade.grade || "unknown")}</select>
+                </label>
+                <label class="grade-field">
+                  Cert #
+                  <input type="text" data-grade-field="cert" value="${escapeHtml(grade.cert || "")}" placeholder="optional">
+                </label>
+                <label class="grade-field">
+                  Cert link
+                  <input type="url" data-grade-field="cert_url" value="${escapeHtml(grade.cert_url || "")}" placeholder="optional">
+                </label>
+              ` : `
+                <label class="grade-field">
+                  Estimated range
+                  <select data-grade-field="raw_range">${optionMarkup(rawGradeRangeOptions, grade.raw_range || "unknown")}</select>
+                </label>
+                <label class="grade-field">
+                  Why?
+                  <input type="text" data-grade-field="raw_note" value="${escapeHtml(grade.raw_note || "")}" placeholder="centering, surface, corners...">
+                </label>
+              `}
+            </div>
+          </div>
+        ` : "";
+        const publicLayer = stance?.mode === "have" ? `
+          <div class="public-layer" data-public="${isPublic ? "true" : "false"}" aria-label="Public sharing permission">
+            <span class="stance-quantity-label">Public sharing</span>
+            <p class="public-copy">Private by default. This is the explicit boundary where your agent may turn this card state, condition, grade, and attached evidence into a public signal.</p>
+            <div class="public-actions">
+              <button class="public-toggle${!isPublic ? " is-selected" : ""}" type="button" data-public-share="false">Keep private</button>
+              <button class="public-toggle publish${isPublic ? " is-selected" : ""}" type="button" data-public-share="true">Yes, send publicly</button>
+            </div>
+            <p class="public-status">${escapeHtml(publicStatus(stance))}</p>
+            <p class="trail-note">Prototype note: this does not transmit yet. It records the permission a future agent/backend must require before publishing.</p>
+          </div>
+        ` : "";
+        let flowTitle = "";
+        let flowCopy = "";
+        let flowBody = "";
+        let flowFooter = "";
+        let flowHeavy = false;
+
+        if (activeFlowStep === "mode") {
+          flowTitle = "What is true?";
+          flowCopy = "One mark is enough. Pick the nearest truth; the heavier work only appears when the path needs it.";
+          flowBody = `<div class="quick-stance-grid" aria-label="Quick collector stance">${quickStanceButtons}</div>`;
+        } else if (activeFlowStep === "detail") {
+          flowTitle = `Shape the ${stanceModes[stance?.mode]?.label || "mark"}.`;
+          flowCopy = "Choose the closest truth. This is enough for your agent to sort the row without asking you again.";
+          flowBody = `<div class="flow-actions" aria-label="Stance details">${stanceDetailButtons}</div>`;
+        } else if (activeFlowStep === "quantity") {
+          flowTitle = stance?.detail === "extra" ? "How many extras?" : stance?.detail === "want_more" ? "How many more?" : "How many?";
+          flowCopy = stance?.detail === "extra"
+            ? "This tells your agent whether it is one duplicate or real supply."
+            : "A number narrows the hunt. It is still not a funded order.";
+          flowBody = `<div class="flow-actions" aria-label="Quantity preference">${stanceCountButtons}</div>`;
+        } else if (activeFlowStep === "condition") {
+          flowTitle = conditionLayerLabel(stance);
+          flowCopy = stance?.mode === "want"
+            ? "Set the floor. Sellers should know when their card is worth your attention."
+            : "Make a first read. Photos can harden it later.";
+          flowBody = `<div class="flow-actions" aria-label="${escapeHtml(conditionLayerLabel(stance))}">${conditionButtons}</div>${importNote}`;
+        } else if (activeFlowStep === "grade") {
+          flowTitle = stance?.condition === "slabbed" ? "Name the slab." : "Name the guess.";
+          flowCopy = "This claim carries more weight. Keep it specific and easy to undo.";
+          flowBody = gradingLayer;
+          flowFooter = `<button class="flow-choice" type="button" data-flow-go="evidence">Add pictures</button>`;
+        } else if (activeFlowStep === "evidence") {
+          flowTitle = stance?.detail === "verify" ? "Show the card." : "Add proof, if useful.";
+          flowCopy = stance?.detail === "verify"
+            ? "A check starts with pictures. Your agent can look for the blank corner, text traps, surface, and obvious mismatch."
+            : "Pictures help the agent see what you mean. They stay local here.";
+          flowBody = `
+            <div class="evidence-layer" aria-label="Picture evidence">
+              <span class="stance-quantity-label">Suggested shots</span>
+              <ul class="evidence-hints">
+                ${evidenceHintItems}
+              </ul>
+              <label class="photo-picker">
+                Add pictures
+                <input type="file" accept="image/*" multiple data-photo-input>
+              </label>
+              ${photoTiles ? `<div class="photo-grid">${photoTiles}</div>` : ""}
+              <p class="trail-note">Prototype photos stay local in this browser as compressed thumbnails. Later, full evidence would be hashed and permissioned before it could support a sale.</p>
+              ${importNote}
+            </div>
+          `;
+          flowFooter = `
+            <button class="flow-choice" type="button" data-flow-go="done">Done for now</button>
+            <button class="flow-choice is-heavy" type="button" data-flow-go="public">Public sharing</button>
+          `;
+        } else if (activeFlowStep === "public") {
+          flowTitle = "Let it speak?";
+          flowCopy = "This crosses from private collection memory into a public signal. Still not binding.";
+          flowBody = publicLayer;
+          flowHeavy = true;
+        } else if (activeFlowStep === "action") {
+          flowTitle = want ? "Want signed." : "Sign the want?";
+          flowCopy = "This makes the want legible to the protocol. Money still waits outside this step.";
+          flowBody = `
+            <div class="flow-summary">
+              <span><strong>Card:</strong> ${escapeHtml(japaneseName)} / ${escapeHtml(card.name_en)}</span>
+              <span><strong>Want:</strong> ${escapeHtml(stanceLabel(stance))}</span>
+              <span><strong>Condition:</strong> ${escapeHtml(conditionLabel(stance))}</span>
+              ${importSource ? `<span><strong>Import:</strong> ${escapeHtml(importSource.slot || "binder page")} · ${escapeHtml(importSource.no_rarity_status || "not verified")}</span>` : ""}
+              <span><strong>Receipt:</strong> ${want ? escapeHtml(shortHash(want.signature_hash)) : "not signed yet"}</span>
+            </div>
+          `;
+          flowFooter = `
+            <button class="flow-choice is-heavy" type="button" data-sign-want>${want ? "Re-sign want" : "Sign want"}</button>
+            <button class="flow-choice" type="button" data-open-identity>Collector key</button>
+          `;
+          flowHeavy = true;
+        } else {
+          flowTitle = stance?.mode === "skip" ? "Row quieted." : "Saved.";
+          flowCopy = stance?.mode === "skip"
+            ? "Done. The agent can leave this card alone unless you reopen it."
+            : "This is enough local memory for now. The agent can use it without pretending it is public proof.";
+          flowBody = `
+            <div class="flow-summary">
+              <span><strong>Card:</strong> ${escapeHtml(japaneseName)} / ${escapeHtml(card.name_en)}</span>
+              <span><strong>Mark:</strong> ${escapeHtml(stanceLabel(stance))}</span>
+              ${stance?.mode !== "skip" ? `<span><strong>Condition:</strong> ${escapeHtml(conditionLabel(stance))}</span>` : ""}
+              ${photos.length ? `<span><strong>Photos:</strong> ${escapeHtml(String(photos.length))} local</span>` : ""}
+            </div>
+          `;
+          flowFooter = `<button class="flow-choice" type="button" data-flow-go="mode">Change mark</button>`;
+        }
+
+        const decisionFlow = `
+          <div class="flow-chamber" data-flow-step="${escapeHtml(activeFlowStep)}">
+            <div class="flow-nav">
+              ${backStep ? `
+                <button class="flow-back" type="button" data-flow-go="${escapeHtml(backStep)}">‹ ${escapeHtml(flowBackLabel(activeFlowStep, stance))}</button>
+              ` : `<span class="flow-back-placeholder">private start</span>`}
+              <span class="flow-context">${contextChips}</span>
+            </div>
+            <div class="flow-progress" aria-label="Decision progress">
+              <div class="flow-progress-head">
+                <span>${escapeHtml(flowProgress.label)}</span>
+                <span>${escapeHtml(flowProgress.index)} / ${escapeHtml(flowProgress.total)}</span>
+              </div>
+              <span class="flow-progress-track" aria-hidden="true">
+                <span class="flow-progress-fill" style="--flow-progress:${escapeHtml(flowProgress.percent)}%;"></span>
+              </span>
+            </div>
+            <section class="flow-screen${flowHeavy ? " is-heavy" : ""}" aria-label="${escapeHtml(flowTitle)}">
+              <header>
+                <h4 class="flow-title">${escapeHtml(flowTitle)}</h4>
+                <p class="flow-copy">${escapeHtml(flowCopy)}</p>
+              </header>
+              <div class="flow-screen-body">
+                ${flowBody}
+              </div>
+              ${flowFooter ? `<div class="flow-primary-actions">${flowFooter}</div>` : ""}
+            </section>
+          </div>
+        `;
+        els.dialogBody.innerHTML = `
+          <div class="detail-image">
+            ${image ? `<img src="${escapeHtml(image)}" alt="No Rarity reference for ${escapeHtml(card.name_en)}">` : `<div class="missing-image">?</div>`}
+            <p class="small">Reference image only. Not seller possession, condition, or authenticity proof.</p>
+          </div>
+          <div>
+            <h2 id="dialog-title">${escapeHtml(japaneseName)}</h2>
+            <p class="dialog-subtitle">${escapeHtml(card.name_en)}${romaji ? ` · ${escapeHtml(romaji)}` : ""}</p>
+            <div class="dialog-chips" aria-label="Card facts">
+              <span class="dialog-chip${isHolo ? " holo" : ""}">${escapeHtml(rarity)}</span>
+              ${isHolo ? `<span class="dialog-chip holo">holo surface</span>` : ""}
+              <span class="dialog-chip">Japanese booster #${escapeHtml(scope.japanese_booster_order || "")}</span>
+              <span class="dialog-chip">PMCG1-${escapeHtml(card.local_id)}</span>
+              ${section ? `<span class="dialog-chip">${escapeHtml(section)}</span>` : ""}
+            </div>
+            <div class="modal-quick-strip" aria-label="Quick collector mark">
+              ${quickStripButtons}
+            </div>
+            <ul class="name-stack">
+              <li><strong>Japanese</strong> ${escapeHtml(japaneseName || "not resolved")}</li>
+              <li><strong>Reading</strong> ${escapeHtml(romaji || "not resolved")}</li>
+              <li><strong>English</strong> ${escapeHtml(card.name_en)}</li>
+              <li><strong>Name read</strong> ${escapeHtml(nameRead(card))}</li>
+            </ul>
+            <p>${escapeHtml(note)}</p>
+            ${trap ? `<p class="trap"><strong>${escapeHtml(trap.name)}.</strong> ${escapeHtml(trap.agent_rule)}</p>` : ""}
+            <section class="want-panel" data-cost-level="${escapeHtml(costMeta.level)}" aria-label="Collector stance">
+              <div class="stance-head">
+                <h3>My stance</h3>
+                <span class="stance-status-wrap">
+                  <span class="flow-badge">${escapeHtml(flowBadge)}</span>
+                  <span class="stance-status">${escapeHtml(stanceLabel(stance))}</span>
+                  ${stance ? `<button class="stance-clear" type="button" data-clear-stance>clear</button>` : ""}
+                </span>
+              </div>
+              <p class="stance-read">${escapeHtml(stanceSummary(card, stance))}</p>
+              <div class="decision-well" data-cost-level="${escapeHtml(costMeta.level)}">
+                ${decisionFlow}
+              </div>
+            </section>
+            <details class="agent-notes">
+              <summary>Agent depth</summary>
+              <ul class="detail-list">
+                <li><strong>Evidence profile:</strong> ${escapeHtml(profile.baseline_evidence_profile_id || "n/a")} · ${escapeHtml(profile.value_band || "unclassified")}</li>
+                <li><strong>Scope:</strong> ${escapeHtml(scope.counting_note || "")}</li>
+                <li><strong>Boundary:</strong> catalog row and reference image help identify the target, but they do not prove a seller's card.</li>
+              </ul>
+            </details>
+          </div>
+        `;
+        const signButton = els.dialogBody.querySelector("[data-sign-want]");
+        const identityButton = els.dialogBody.querySelector("[data-open-identity]");
+        els.dialogBody.querySelectorAll("[data-quick-stance]").forEach((button) => {
+          button.addEventListener("click", () => setQuickStance(card, button.dataset.quickStance));
+        });
+        els.dialogBody.querySelectorAll("[data-stance-mode]").forEach((button) => {
+          button.addEventListener("click", () => setStance(card, button.dataset.stanceMode, "", "detail"));
+        });
+        els.dialogBody.querySelectorAll("[data-stance-detail]").forEach((button) => {
+          button.addEventListener("click", () => setStance(card, stance.mode, button.dataset.stanceDetail, button.dataset.nextStep));
+        });
+        els.dialogBody.querySelectorAll("[data-stance-count]").forEach((button) => {
+          button.addEventListener("click", () => setStanceCount(card, button.dataset.stanceCount, "condition"));
+        });
+        els.dialogBody.querySelectorAll("[data-condition]").forEach((button) => {
+          button.addEventListener("click", () => setStanceCondition(card, button.dataset.condition, button.dataset.nextStep));
+        });
+        els.dialogBody.querySelectorAll("[data-flow-go]").forEach((button) => {
+          button.addEventListener("click", () => setFlowStep(card, button.dataset.flowGo));
+        });
+        els.dialogBody.querySelectorAll("[data-grade-field]").forEach((field) => {
+          field.addEventListener("change", () => setGradeField(card, field.dataset.gradeField, field.value.trim()));
+          if (field.tagName === "INPUT") {
+            field.addEventListener("input", () => setGradeField(card, field.dataset.gradeField, field.value.trim(), false));
+          }
+        });
+        els.dialogBody.querySelectorAll("[data-public-share]").forEach((button) => {
+          button.addEventListener("click", () => setPublicShare(card, button.dataset.publicShare === "true"));
+        });
+        els.dialogBody.querySelector("[data-photo-input]")?.addEventListener("change", (event) => {
+          addPhotos(card, event.target.files);
+          event.target.value = "";
+        });
+        els.dialogBody.querySelectorAll("[data-remove-photo]").forEach((button) => {
+          button.addEventListener("click", () => removePhoto(card, button.dataset.removePhoto));
+        });
+        els.dialogBody.querySelector("[data-clear-stance]")?.addEventListener("click", () => clearStance(card));
+        signButton?.addEventListener("click", () => signWant(card));
+        identityButton?.addEventListener("click", openIdentity);
+      }
+
+      function openCard(card) {
+        state.currentDetailCard = card;
+        renderDetail(card);
+        if (typeof els.dialog.showModal === "function" && !els.dialog.open) {
+          els.dialog.showModal();
+        } else {
+          els.dialog.setAttribute("open", "");
+        }
+      }
+
+      function openIdentity() {
+        renderIdentity();
+        if (typeof els.identityDialog.showModal === "function" && !els.identityDialog.open) {
+          els.identityDialog.showModal();
+        } else {
+          els.identityDialog.setAttribute("open", "");
+        }
+      }
+
+      function openSticker(key) {
+        const note = stickerNotes[key];
+        if (!note) return;
+        els.stickerKicker.textContent = note.kicker;
+        els.stickerTitle.textContent = note.title;
+        els.stickerCopy.textContent = note.copy;
+        if (typeof els.stickerDialog.showModal === "function" && !els.stickerDialog.open) {
+          els.stickerDialog.showModal();
+        } else {
+          els.stickerDialog.setAttribute("open", "");
+        }
+      }
+
+      function bumpEdge(edge) {
+        if (!edge) return;
+        edge.classList.remove("bumping");
+        void edge.offsetWidth;
+        edge.classList.add("bumping");
+      }
+
+      function openBinder(edge = els.coverEdge) {
+        if (state.turning) return;
+        closeDialogIfOpen();
+        state.turning = true;
+        bumpEdge(edge);
+        document.body.classList.add("binder-open");
+        window.setTimeout(() => {
+          els.cover.classList.remove("opening");
+          els.cover.hidden = true;
+          els.binderView.hidden = false;
+          syncLayout();
+          render();
+          els.title.focus?.();
+        }, 110);
+        window.setTimeout(() => {
+          edge?.classList.remove("bumping");
+          state.turning = false;
+        }, 210);
+      }
+
+      function showCover(edge = els.prevEdge) {
+        if (state.turning) return;
+        closeDialogIfOpen();
+        state.turning = true;
+        bumpEdge(edge);
+        window.setTimeout(() => {
+          els.binderView.hidden = true;
+          els.cover.hidden = false;
+          els.cover.classList.remove("opening");
+          document.body.classList.remove("binder-open");
+        }, 110);
+        window.setTimeout(() => {
+          edge?.classList.remove("bumping");
+          state.turning = false;
+        }, 210);
+      }
+
+      function closeDialogIfOpen() {
+        if (els.dialog.open) {
+          els.dialog.close();
+        }
+        if (els.stickerDialog.open) {
+          els.stickerDialog.close();
+        }
+        if (els.identityDialog.open) {
+          els.identityDialog.close();
+        }
+      }
+
+      function render() {
+        const cards = pageCards();
+        const total = totalPages();
+        const first = cards[0]?.product_scope?.japanese_booster_order || "";
+        const last = cards[cards.length - 1]?.product_scope?.japanese_booster_order || "";
+        const fragment = document.createDocumentFragment();
+        els.title.textContent = `Binder page ${state.page + 1}`;
+        els.note.textContent = first && last ? `Rows ${first}-${last} · source-labeled references` : "Source-labeled No Rarity references";
+        els.count.textContent = `Page ${state.page + 1} of ${total} · ${state.cards.length} cards`;
+        els.prev.disabled = false;
+        els.prev.textContent = state.page === 0 ? "Cover" : "Prev";
+        els.next.disabled = state.page >= total - 1;
+        els.prevEdge.disabled = false;
+        els.prevEdge.setAttribute("aria-label", state.page === 0 ? "Turn back to binder cover" : "Turn to previous binder page");
+        els.prevEdge.querySelector(".edge-label").textContent = state.page === 0 ? "cover" : "back";
+        els.nextEdge.disabled = els.next.disabled;
+        for (let index = 0; index < state.layout.pageSize; index += 1) {
+          fragment.appendChild(renderPocket(cards[index], state.page * state.layout.pageSize + index));
+        }
+        els.grid.replaceChildren(fragment);
+      }
+
+      function turnPage(direction) {
+        if (state.turning) return;
+        if (direction < 0 && state.page === 0) {
+          showCover(els.prevEdge);
+          return;
+        }
+        const target = Math.min(totalPages() - 1, Math.max(0, state.page + direction));
+        if (target === state.page) return;
+        closeDialogIfOpen();
+        state.turning = true;
+        const edge = direction > 0 ? els.nextEdge : els.prevEdge;
+        bumpEdge(edge);
+        window.setTimeout(() => {
+          state.page = target;
+          state.selectedId = pageCards()[0]?.tcgdex_id || state.selectedId;
+          render();
+        }, 70);
+        window.setTimeout(() => {
+          edge.classList.remove("bumping");
+          state.turning = false;
+        }, 200);
+      }
+
+      async function boot() {
+        state.data = await loadCatalog();
+        state.cards = sortedTargets(state.data.cards);
+        state.selectedId = state.cards[0]?.tcgdex_id || "";
+        els.boosterCount.textContent = `${state.data.set.strict_booster_checklist_cards} booster rows`;
+        els.catalogCount.textContent = `${state.data.set.broader_family_rows_tracked} tracked rows`;
+        renderIdentity();
+        syncLayout();
+        render();
+      }
+
+      els.prev.addEventListener("click", () => turnPage(-1));
+      els.next.addEventListener("click", () => turnPage(1));
+      els.prevEdge.addEventListener("click", () => turnPage(-1));
+      els.nextEdge.addEventListener("click", () => turnPage(1));
+
+      els.dialogClose.addEventListener("click", () => {
+        els.dialog.close();
+        state.currentDetailCard = null;
+      });
+
+      els.dialog.addEventListener("click", (event) => {
+        if (event.target === els.dialog) {
+          els.dialog.close();
+          state.currentDetailCard = null;
+        }
+      });
+
+      document.querySelectorAll(".sticker-button").forEach((sticker) => {
+        sticker.addEventListener("click", () => openSticker(sticker.dataset.sticker));
+      });
+
+      els.stickerClose.addEventListener("click", () => {
+        els.stickerDialog.close();
+      });
+
+      els.stickerDialog.addEventListener("click", (event) => {
+        if (event.target === els.stickerDialog) {
+          els.stickerDialog.close();
+        }
+      });
+
+      els.identityOpen.addEventListener("click", openIdentity);
+      els.identityConnect.addEventListener("click", connectIdentity);
+      els.identityClose.addEventListener("click", () => {
+        els.identityDialog.close();
+      });
+      els.identityDialog.addEventListener("click", (event) => {
+        if (event.target === els.identityDialog) {
+          els.identityDialog.close();
+        }
+      });
+
+      els.openBinder.addEventListener("click", () => openBinder(els.coverEdge));
+      els.coverEdge.addEventListener("click", () => openBinder(els.coverEdge));
+
+      window.addEventListener("resize", () => {
+        window.cancelAnimationFrame(state.resizeFrame);
+        state.resizeFrame = window.requestAnimationFrame(() => {
+          syncLayout();
+          render();
+        });
+      });
+
+      boot().catch((error) => {
+        els.title.textContent = "Binder could not load.";
+        els.note.textContent = error.message;
+      });
+    </script>
+  </body>
+</html>

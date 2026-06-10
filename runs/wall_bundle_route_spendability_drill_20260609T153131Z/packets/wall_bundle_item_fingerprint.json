@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"evidence_profile\":\"tcg.raw.500_2000.v0.1\",\"identity_claim\":{\"condition_claim\":\"LP\",\"domain\":\"tcg\"},\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_profile": "tcg.raw.500_2000.v0.1",
+    "identity_claim": {
+      "condition_claim": "LP",
+      "domain": "tcg"
+    },
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x70f75f5dcee22546d3c89e6426bf92381d857db65a6504f68ddde31dcf8c7a48",
+  "signature": "0x4a934d17ea0242f3337363820904022e41aaf98518f1f393c9a4bcab7f07102607c331e069ab71a98f052ed36591895dcc1453c12b596237797a3b06776278661c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

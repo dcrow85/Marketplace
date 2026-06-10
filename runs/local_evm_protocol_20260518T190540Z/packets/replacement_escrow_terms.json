@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"arbiter\":\"did:market:arbiter:anvil-2\",\"buyer_dispute_bond_eth\":\"0.02\",\"inspection_seconds\":172800,\"price_eth\":\"0.60\",\"replacement_rule\":\"buyer_and_seller_must_sign_same_proposal_hash\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"seller_bond_eth\":\"0.12\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "arbiter": "did:market:arbiter:anvil-2",
+    "buyer_dispute_bond_eth": "0.02",
+    "inspection_seconds": 172800,
+    "price_eth": "0.60",
+    "replacement_rule": "buyer_and_seller_must_sign_same_proposal_hash",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "seller_bond_eth": "0.12"
+  },
+  "payload_hash": "0x05bdd48d223f5e82df442065d5d3b3cda7033e64a6cd6c2c63e092ed1cd8f2b1",
+  "signature": "0x43a71ccb8925893edf8520cd6ea3a378edd5eda7167a7423cc53e1c235f3ebf62fe3cc6f3cf5f491e2006cb1a74fae8ca91c82f2f3bda36b899848d8c5d129001c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

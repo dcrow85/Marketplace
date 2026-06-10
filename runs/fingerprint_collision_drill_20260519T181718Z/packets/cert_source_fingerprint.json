@@ -1,0 +1,75 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-05-19T18:17:19.659289+00:00\",\"freshness_seconds\":86400},\"cert_refs\":[{\"cert_id_hash\":\"psa-cert-hash-65081234\",\"custody_evidence_ref\":\"cert-source-front\",\"issuer\":\"PSA\",\"lookup_ref\":\"psa://65081234\"}],\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"graded_cert_correlation\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-cert-source\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"cert-source-front\",\"type\":\"front_slab_photo\"},{\"ref\":\"cert-source-back\",\"type\":\"back_slab_photo\"}],\"identity_claim\":{\"card\":\"PSA slab cert source\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":3,\"visual_markers\":[{\"marker_hash\":\"cert-source-front\",\"match_group\":\"psa-slab-65081234\",\"scope\":\"front\"},{\"marker_hash\":\"cert-source-back\",\"match_group\":\"psa-slab-65081234\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-05-19T18:17:19.659289+00:00",
+      "freshness_seconds": 86400
+    },
+    "cert_refs": [
+      {
+        "cert_id_hash": "psa-cert-hash-65081234",
+        "custody_evidence_ref": "cert-source-front",
+        "issuer": "PSA",
+        "lookup_ref": "psa://65081234"
+      }
+    ],
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "graded_cert_correlation",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-cert-source",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "cert-source-front",
+        "type": "front_slab_photo"
+      },
+      {
+        "ref": "cert-source-back",
+        "type": "back_slab_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "PSA slab cert source",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 3,
+    "visual_markers": [
+      {
+        "marker_hash": "cert-source-front",
+        "match_group": "psa-slab-65081234",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "cert-source-back",
+        "match_group": "psa-slab-65081234",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0x58e01272c52b8effe9f576b543733488a9a39b529d5b61fd79ebee145d5ae383",
+  "signature": "0xf5d1d8aee4bf0aaa4dfca3fc0c34a023b0b8ee133e4649d493c9091c02f92b9463993baa73d5a08191058d9643d2897cc133381abfadcba27c9b653580e9fb6f1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

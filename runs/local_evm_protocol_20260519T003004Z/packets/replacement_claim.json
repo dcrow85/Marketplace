@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"grounds_type\":\"route_exception\",\"happened\":{\"exception\":\"carrier scan mismatch needs arbiter\"},\"promised\":{\"route\":\"insured_shipping\"},\"requested_remedy\":\"minor_partial_refund\",\"schema\":\"marketplace.dispute_case.v0.2\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "grounds_type": "route_exception",
+    "happened": {
+      "exception": "carrier scan mismatch needs arbiter"
+    },
+    "promised": {
+      "route": "insured_shipping"
+    },
+    "requested_remedy": "minor_partial_refund",
+    "schema": "marketplace.dispute_case.v0.2",
+    "trade_id": 3
+  },
+  "payload_hash": "0x6719e50f76acbad1421ebab940347add42823dd76a235059b467297950d3c3f5",
+  "signature": "0xd5b09eb4151788f9a5fbbf79d392a25e8fd8170b31165955e8c65134f7ab4e1c29376bed241dd886c8fc320f9747d0bc45d11f373cff87e3143551968d3880541c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

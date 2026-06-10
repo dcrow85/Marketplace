@@ -1,0 +1,23 @@
+{
+  "canonical_payload": "{\"inventory_key\":\"tcg:pokemon:mid-value-raw:replacement-003\",\"item_fingerprint\":{\"condition_claim\":\"LP\",\"game\":\"pokemon\",\"visible_identifiers\":[\"seller_scan_hash\"]},\"item_fingerprint_hash\":\"0x8dcd9aff7eb44b0607f46f0cce9c9fe62bbb9697c88aeec63d27b755b6e9e36b\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "inventory_key": "tcg:pokemon:mid-value-raw:replacement-003",
+    "item_fingerprint": {
+      "condition_claim": "LP",
+      "game": "pokemon",
+      "visible_identifiers": [
+        "seller_scan_hash"
+      ]
+    },
+    "item_fingerprint_hash": "0x8dcd9aff7eb44b0607f46f0cce9c9fe62bbb9697c88aeec63d27b755b6e9e36b",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trade_id": 3
+  },
+  "payload_hash": "0x94aced309e0e65e1ea3ebcd2ed6975da1e489daec55776ae442cfbabb2a5bcc7",
+  "signature": "0x99f519f169d55237ce970fe3d5d38e906be82a7205b7cb978442726ee3b43cca4f4839ede66edc17821a835867f2dc05ece4dd3b34efb81c12e35d1ca61ccabf1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marketplace Witness Review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070707;
+      --ink: #f6f0e6;
+      --muted: #b9aea0;
+      --line: #2a2722;
+      --red: #c94b3f;
+      --green: #86b877;
+      --gold: #d6b35a;
+      font-family: ui-rounded, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #161410, var(--bg) 35rem);
+      color: var(--ink);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem clamp(1rem, 3vw, 2rem);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      letter-spacing: 0;
+    }
+
+    .subhead {
+      color: var(--muted);
+      font-size: .92rem;
+      max-width: 48rem;
+      line-height: 1.35;
+    }
+
+    .stats {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .4rem .65rem;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #11100d;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    article {
+      border: 1px solid var(--line);
+      background: #11100d;
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    figure {
+      margin: 0;
+      padding: .7rem;
+      background: #050505;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 5px;
+      background: #000;
+    }
+
+    .body {
+      padding: .85rem;
+      display: grid;
+      gap: .65rem;
+    }
+
+    .name {
+      display: flex;
+      gap: .5rem;
+      align-items: baseline;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+
+    .pmcg {
+      color: var(--gold);
+      font-size: .86rem;
+      white-space: nowrap;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .45rem;
+    }
+
+    button, a.button {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: .55rem .6rem;
+      font: inherit;
+      color: var(--ink);
+      background: #191712;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    button:hover, a.button:hover { border-color: #6c6254; }
+    button[data-choice="looks_right"].active { border-color: var(--green); color: var(--green); }
+    button[data-choice="wrong_card"].active { border-color: var(--red); color: var(--red); }
+    button[data-choice="useful_witness"].active { border-color: var(--gold); color: var(--gold); }
+    button[data-choice="reject"].active { opacity: .62; }
+
+    .empty {
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Marketplace Witness Review</h1>
+      <div class="subhead">
+        These images are review witnesses, not training data. Mark what looks useful; promotion to training stays explicit.
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main>
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <script>
+    const manifestPath = "/datasets/no-rarity-lab/manifests/assets.jsonl";
+    const reviewKey = "no-rarity-marketplace-review-v1";
+    const state = JSON.parse(localStorage.getItem(reviewKey) || "{}");
+
+    function save() {
+      localStorage.setItem(reviewKey, JSON.stringify(state));
+      renderStats();
+    }
+
+    function parseJsonl(text) {
+      return text.split(/\n+/).filter(Boolean).map(line => JSON.parse(line));
+    }
+
+    function fileUrl(path) {
+      return path.replace("/Users/che/Marketplace", "");
+    }
+
+    function labelFor(asset) {
+      const meta = asset.metadata || {};
+      return [
+        meta.name_ja || "",
+        meta.name_en || "",
+      ].filter(Boolean).join(" / ") || meta.pmcg_id || "unknown";
+    }
+
+    function renderStats() {
+      const values = Object.values(state);
+      const counts = values.reduce((acc, value) => {
+        acc[value] = (acc[value] || 0) + 1;
+        return acc;
+      }, {});
+      document.getElementById("stats").innerHTML = [
+        ["reviewed", values.length],
+        ["looks right", counts.looks_right || 0],
+        ["useful", counts.useful_witness || 0],
+        ["wrong", counts.wrong_card || 0],
+        ["reject", counts.reject || 0],
+      ].map(([label, count]) => `<span class="pill">${label}: ${count}</span>`).join("");
+    }
+
+    function renderCard(asset) {
+      const meta = asset.metadata || {};
+      const active = state[asset.asset_id];
+      const article = document.createElement("article");
+      article.innerHTML = `
+        <figure>
+          <img src="${fileUrl(asset.path)}" alt="${labelFor(asset)}">
+        </figure>
+        <div class="body">
+          <div class="name">
+            <span>${labelFor(asset)}</span>
+            <span class="pmcg">${meta.pmcg_id || ""}</span>
+          </div>
+          <div class="meta">${asset.source || ""} · ${asset.width || "?"}×${asset.height || "?"}</div>
+          <div class="meta">${meta.marketplace_query || ""}</div>
+          <div class="buttons">
+            <button data-choice="looks_right">looks right</button>
+            <button data-choice="useful_witness">useful</button>
+            <button data-choice="wrong_card">wrong card</button>
+            <button data-choice="reject">reject</button>
+          </div>
+          <a class="button" href="${asset.source_page_url || asset.source_url || "#"}" target="_blank" rel="noreferrer">open source</a>
+        </div>
+      `;
+      article.querySelectorAll("button").forEach(button => {
+        const choice = button.dataset.choice;
+        if (choice === active) button.classList.add("active");
+        button.addEventListener("click", () => {
+          state[asset.asset_id] = choice;
+          save();
+          article.querySelectorAll("button").forEach(btn => btn.classList.toggle("active", btn.dataset.choice === choice));
+        });
+      });
+      return article;
+    }
+
+    async function main() {
+      renderStats();
+      const response = await fetch(manifestPath);
+      const assets = parseJsonl(await response.text())
+        .filter(asset => asset.rights_status === "marketplace_review_witness");
+      const grid = document.getElementById("grid");
+      if (!assets.length) {
+        grid.innerHTML = `<div class="empty">No marketplace review witnesses found yet.</div>`;
+        return;
+      }
+      assets.forEach(asset => grid.appendChild(renderCard(asset)));
+      renderStats();
+    }
+
+    main().catch(error => {
+      document.getElementById("grid").innerHTML = `<div class="empty">${error.message}</div>`;
+    });
+  </script>
+</body>
+</html>

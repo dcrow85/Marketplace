@@ -1,0 +1,449 @@
+{
+  "agent_decisions": {
+    "adversarial_seller:accept_or_continue": 11,
+    "adversarial_seller:blocked": 6,
+    "adversarial_seller:continue_with_recorded_waiver": 3,
+    "adversarial_seller:semantic_attack_contained": 10,
+    "arbiter_policy_agent:accept_or_continue": 19,
+    "arbiter_policy_agent:blocked": 6,
+    "arbiter_policy_agent:continue_with_recorded_waiver": 3,
+    "arbiter_policy_agent:escalate_with_matrix_row": 2,
+    "convenience_first_buyer:accept_or_continue": 11,
+    "convenience_first_buyer:accept_with_waiver": 3,
+    "convenience_first_buyer:blocked": 6,
+    "convenience_first_buyer:blocked_until_waiver": 8,
+    "convenience_first_buyer:escalate": 2,
+    "seller_friendly_market_maker:accept_or_continue": 11,
+    "seller_friendly_market_maker:blocked": 6,
+    "seller_friendly_market_maker:continue_with_recorded_waiver": 3,
+    "seller_friendly_market_maker:escalate": 2,
+    "seller_friendly_market_maker:revise_offer_or_request_waiver": 8,
+    "strict_boundary_buyer:accept_or_continue": 11,
+    "strict_boundary_buyer:blocked": 6,
+    "strict_boundary_buyer:escalate": 2,
+    "strict_boundary_buyer:request_more_evidence": 11
+  },
+  "agent_market": {
+    "arbitration_modes": {
+      "automated": 6,
+      "automated_escalated_to_human": 7,
+      "human_arbiter": 7,
+      "human_arbiter_agent_assisted": 10
+    },
+    "automated_policy_selection_rate": 0.4333,
+    "automated_ruling_rate": 0.2,
+    "automation_escalation_rate": 0.5385,
+    "by_outcome": {
+      "authenticity_flag": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter",
+            3
+          ]
+        ],
+        "top_friction": [
+          [
+            "authenticity_or_identity_risk",
+            3
+          ],
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "human_arbiter_selected_prelock",
+            3
+          ],
+          [
+            "seller_trust_gap",
+            2
+          ]
+        ]
+      },
+      "insured_lost": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "automated",
+            3
+          ]
+        ],
+        "top_friction": []
+      },
+      "local_handoff_dispute": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "automated_escalated_to_human",
+            2
+          ],
+          [
+            "human_arbiter",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "in_person_handoff_ambiguity",
+            3
+          ],
+          [
+            "case_scope_outside_automation",
+            2
+          ],
+          [
+            "refund_above_auto_cap",
+            2
+          ]
+        ]
+      },
+      "material_misdescription": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter_agent_assisted",
+            2
+          ],
+          [
+            "human_arbiter",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "human_arbiter_selected_prelock",
+            3
+          ],
+          [
+            "seller_trust_gap",
+            2
+          ]
+        ]
+      },
+      "minor_condition_delta": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "automated",
+            3
+          ]
+        ],
+        "top_friction": []
+      },
+      "porch_theft": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter_agent_assisted",
+            2
+          ],
+          [
+            "automated_escalated_to_human",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "delivery_risk_ambiguous",
+            3
+          ],
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "human_arbiter_selected_prelock",
+            2
+          ]
+        ]
+      },
+      "seller_nonship": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter_agent_assisted",
+            2
+          ],
+          [
+            "automated_escalated_to_human",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "human_arbiter_selected_prelock",
+            2
+          ],
+          [
+            "bond_penalty_above_auto_cap",
+            1
+          ],
+          [
+            "refund_above_auto_cap",
+            1
+          ],
+          [
+            "seller_trust_gap",
+            1
+          ]
+        ]
+      },
+      "underinsured_lost": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter_agent_assisted",
+            2
+          ],
+          [
+            "human_arbiter",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "human_arbiter_selected_prelock",
+            3
+          ],
+          [
+            "route_gap_owner_review",
+            3
+          ],
+          [
+            "seller_trust_gap",
+            1
+          ]
+        ]
+      },
+      "uninsured_lost": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "automated_escalated_to_human",
+            3
+          ]
+        ],
+        "top_friction": [
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "route_gap_owner_review",
+            3
+          ]
+        ]
+      },
+      "wrong_card": {
+        "n": 3,
+        "top_arbitration_mode": [
+          [
+            "human_arbiter_agent_assisted",
+            2
+          ],
+          [
+            "human_arbiter",
+            1
+          ]
+        ],
+        "top_friction": [
+          [
+            "authenticity_or_identity_risk",
+            3
+          ],
+          [
+            "evidence_ambiguity",
+            3
+          ],
+          [
+            "human_arbiter_selected_prelock",
+            3
+          ],
+          [
+            "seller_trust_gap",
+            2
+          ]
+        ]
+      }
+    },
+    "by_value_band": {
+      "grail": {
+        "automated_ruling_rate": 0.0,
+        "clean_close_rate": 0.0,
+        "friction_escalation_rate": 1.0,
+        "mean_value": 1407,
+        "n": 3
+      },
+      "high": {
+        "automated_ruling_rate": 0.0,
+        "clean_close_rate": 0.0,
+        "friction_escalation_rate": 1.0,
+        "mean_value": 793.86,
+        "n": 7
+      },
+      "low": {
+        "automated_ruling_rate": 0.429,
+        "clean_close_rate": 0.0,
+        "friction_escalation_rate": 0.571,
+        "mean_value": 63.57,
+        "n": 14
+      },
+      "mid": {
+        "automated_ruling_rate": 0.0,
+        "clean_close_rate": 0.0,
+        "friction_escalation_rate": 1.0,
+        "mean_value": 227,
+        "n": 6
+      }
+    },
+    "claim_rate": 1.0,
+    "clean_close_rate": 0.0,
+    "friction_trigger_rate": 0.8,
+    "friction_triggers": {
+      "authenticity_or_identity_risk": 6,
+      "bond_penalty_above_auto_cap": 1,
+      "case_scope_outside_automation": 2,
+      "delivery_risk_ambiguous": 3,
+      "evidence_ambiguity": 21,
+      "human_arbiter_selected_prelock": 17,
+      "in_person_handoff_ambiguity": 3,
+      "refund_above_auto_cap": 3,
+      "route_gap_owner_review": 6,
+      "seller_trust_gap": 8
+    },
+    "human_questions": {
+      "approve_severe_remedy_or_escalation": 18,
+      "ask_human_or_human_arbiter_to_review_evidence": 21,
+      "confirm_who_accepted_route_value_gap": 6
+    },
+    "mean_buyer_attention_minutes": 5.3,
+    "mean_packet_count": 7.43,
+    "mean_seller_attention_minutes": 9.93,
+    "n": 30,
+    "outcomes": {
+      "authenticity_flag": 3,
+      "insured_lost": 3,
+      "local_handoff_dispute": 3,
+      "material_misdescription": 3,
+      "minor_condition_delta": 3,
+      "porch_theft": 3,
+      "seller_nonship": 3,
+      "underinsured_lost": 3,
+      "uninsured_lost": 3,
+      "wrong_card": 3
+    },
+    "p90_buyer_attention_minutes": 12,
+    "p90_seller_attention_minutes": 14,
+    "resolution_paths": {
+      "automated_ruling": 6,
+      "friction_threshold_crossed": 7,
+      "human_ruling": 7,
+      "human_ruling_with_agent_packet": 10
+    },
+    "routes": {
+      "insured_ship": 15,
+      "international_ship": 5,
+      "local_meetup": 3,
+      "underinsured_ship": 4,
+      "uninsured_ship": 3
+    },
+    "selected_arbiters": {
+      "did:market:arbiter:auto-low-tcg-1": 13,
+      "did:market:arbiter:high-end-panel-1": 7,
+      "did:market:arbiter:raw-condition-1": 8,
+      "did:market:arbiter:route-claims-1": 2
+    },
+    "seller_trust": {
+      "known": 8,
+      "new": 3,
+      "trusted": 12,
+      "unknown": 7
+    },
+    "value_bands": {
+      "grail": 3,
+      "high": 7,
+      "low": 14,
+      "mid": 6
+    },
+    "violations": {}
+  },
+  "attacks": {
+    "bond_gap": 2,
+    "claim_missing_buyer_arrival": 2,
+    "full_compliant": 3,
+    "manual_database_gap": 2,
+    "missing_external_availability": 2,
+    "missing_inventory_lock": 2,
+    "missing_route_spendability": 2,
+    "outside_scope_magic": 2,
+    "scope_laundering": 2,
+    "sparse_evidence_no_waiver": 2,
+    "sparse_evidence_with_waiver": 3,
+    "spendability_missing_wall_ref": 2,
+    "stale_wall_bundle_ref": 2,
+    "unassigned_insurance_gap": 2
+  },
+  "invariants": {
+    "outside_scope_trade_routed": 0,
+    "route_locked_when_walls_block": 0,
+    "route_locked_with_unaccepted_waiver": 0,
+    "route_locked_with_wrong_wall_bundle": 0,
+    "route_locked_without_complete_placement": 0,
+    "route_locked_without_route_spendability_packet": 0,
+    "route_locked_without_route_wall_bundle": 0,
+    "silent_accepts": 8,
+    "trusted_source_laundered_to_truth": 0,
+    "uncontained_adversarial_attacks": 2
+  },
+  "n": 30,
+  "pass": false,
+  "route_ready_count": 10,
+  "route_ready_rate": 0.3333,
+  "run": {
+    "created_utc": "2026-05-20T17:29:07.326658+00:00",
+    "probe": "unified_pokemon_alpha_wall_stress",
+    "run_id": "unified_stress_20260520T172907Z",
+    "seed": 20260520
+  },
+  "wall_id_outcomes": {
+    "BondScope:pass": 28,
+    "BondScope:waiver_required": 2,
+    "BuyerRiskAcceptance:pass": 30,
+    "CardReferenceCandidate:pass": 28,
+    "CardReferenceCandidate:waiver_required": 2,
+    "ClaimClosureEvidenceMatrix:escalate": 2,
+    "ClaimClosureEvidenceMatrix:pass": 28,
+    "ExternalAvailabilityCovenant:pass": 23,
+    "ExternalAvailabilityCovenant:waived": 3,
+    "ExternalAvailabilityCovenant:waiver_required": 4,
+    "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:pass": 27,
+    "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:waived": 1,
+    "POKEMON_ACCEPTANCE_PROFILE_RAW_500_2000:waiver_required": 2,
+    "POKEMON_ALPHA_SCOPE:block": 2,
+    "POKEMON_ALPHA_SCOPE:pass": 28,
+    "ProofVectorScope:block": 2,
+    "ProofVectorScope:pass": 28,
+    "RouteInsuranceRiskOwner:block": 2,
+    "RouteInsuranceRiskOwner:pass": 28
+  },
+  "wall_outcomes": {
+    "block": 6,
+    "escalate": 2,
+    "pass": 248,
+    "waived": 4,
+    "waiver_required": 10
+  }
+}

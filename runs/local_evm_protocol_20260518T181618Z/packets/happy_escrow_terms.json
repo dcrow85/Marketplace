@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth\":\"0.01\",\"covered_promises\":[\"correct_item\",\"condition_floor\",\"insured_route\"],\"escrow_model\":\"on_chain_native_eth_local_probe\",\"inspection_seconds\":172800,\"price_eth\":\"0.80\",\"release_gate\":\"buyer_accepts_or_inspection_window_expires\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"seller_bond_eth\":\"0.08\",\"trade_template\":\"tcg_single_card\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth": "0.01",
+    "covered_promises": [
+      "correct_item",
+      "condition_floor",
+      "insured_route"
+    ],
+    "escrow_model": "on_chain_native_eth_local_probe",
+    "inspection_seconds": 172800,
+    "price_eth": "0.80",
+    "release_gate": "buyer_accepts_or_inspection_window_expires",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "seller_bond_eth": "0.08",
+    "trade_template": "tcg_single_card"
+  },
+  "payload_hash": "0x8af2c1dc98101abcc55159fb64ab52e1765e12d006ff445ec93fd8c9a0e64f7e"
+}

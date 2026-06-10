@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"external_availability\":\"seller_promises_no_external_sale_while_route_locked\",\"inventory_key\":\"tcg:pokemon:neo-discovery-espeon-alpha-001\",\"item_fingerprint_hash\":\"0x2e9f6051173ab2d7303edef8916552ecd7a4a415002992c0234224132a8d7ebc\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "external_availability": "seller_promises_no_external_sale_while_route_locked",
+    "inventory_key": "tcg:pokemon:neo-discovery-espeon-alpha-001",
+    "item_fingerprint_hash": "0x2e9f6051173ab2d7303edef8916552ecd7a4a415002992c0234224132a8d7ebc",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trade_id": 1
+  },
+  "payload_hash": "0xaa57c245c1166dc9c740ff83e97ce9543d5991e559a608653cbc48ea24c274f3",
+  "signature": "0x030312f22d6b3dd67797cdcc355ed4a12a1ec21da8f4fca82b1ad7e31df372dd71100e047eaff50a8f7196958f41733be9ab14c466570e3d75cbd2ba47a8a1ba1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

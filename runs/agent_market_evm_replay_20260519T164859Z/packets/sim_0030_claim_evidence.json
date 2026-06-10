@@ -1,0 +1,33 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0030: underinsured_lost on a $1367 high trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: evidence_ambiguity, human_arbiter_selected_prelock, route_gap_owner_review.\",\"friction_triggers\":[\"evidence_ambiguity\",\"human_arbiter_selected_prelock\",\"route_gap_owner_review\"],\"human_questions\":[\"approve_severe_remedy_or_escalation\",\"ask_human_or_human_arbiter_to_review_evidence\",\"confirm_who_accepted_route_value_gap\"],\"outcome\":\"underinsured_lost\",\"path\":\"human_ruling\",\"route_failure_surrogate\":true,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc\",\"friction_policy\":\"sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede\",\"intent\":\"sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2\",\"seller_offer\":\"sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7\"},\"source_simulation_trade\":\"SIM-0030\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0030: underinsured_lost on a $1367 high trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: evidence_ambiguity, human_arbiter_selected_prelock, route_gap_owner_review.",
+    "friction_triggers": [
+      "evidence_ambiguity",
+      "human_arbiter_selected_prelock",
+      "route_gap_owner_review"
+    ],
+    "human_questions": [
+      "approve_severe_remedy_or_escalation",
+      "ask_human_or_human_arbiter_to_review_evidence",
+      "confirm_who_accepted_route_value_gap"
+    ],
+    "outcome": "underinsured_lost",
+    "path": "human_ruling",
+    "route_failure_surrogate": true,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:30a7b0c84081029f930995676747cbe2babe1d72b8c249af2458a541e4376cfc",
+      "friction_policy": "sha256:b54b030087e47504f5d3d97db4e2cb6394552d591ae7d81f3defc915fb07eede",
+      "intent": "sha256:fcf5d478282964491ad3f306b86b416a0ec26c6e4e1dce48ed8e2505e256eda2",
+      "seller_offer": "sha256:962f94d0ab6cad829b78df2a6b7ee68808c6eed22f20021d9cec224b3deb50f7"
+    },
+    "source_simulation_trade": "SIM-0030"
+  },
+  "payload_hash": "0x4c39bb1bf25be587edcaaab144ea32c6087e02d93594977836fbb34290e3807d",
+  "signature": "0xb49d4450ee892d80d6c66d29c8a3201935bdf3e1fd7f188f4f2de3d36bdd5f846604f7a37093534b512ff25ad33907b94d6446cca5322bbbe1554f54544338541b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

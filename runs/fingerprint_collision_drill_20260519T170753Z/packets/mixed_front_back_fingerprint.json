@@ -1,0 +1,67 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-05-19T17:07:55.036783+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-mixed\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"mixed-front-card-a\",\"type\":\"front_photo\"},{\"ref\":\"mixed-back-card-b\",\"type\":\"back_photo\"}],\"identity_claim\":{\"card\":\"Raw card with mismatched front and back\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":6,\"visual_markers\":[{\"marker_hash\":\"mixed-front-card-a\",\"match_group\":\"raw-card-alpha\",\"scope\":\"front\"},{\"marker_hash\":\"mixed-back-card-b\",\"match_group\":\"raw-card-beta\",\"scope\":\"back\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-05-19T17:07:55.036783+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-mixed",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "mixed-front-card-a",
+        "type": "front_photo"
+      },
+      {
+        "ref": "mixed-back-card-b",
+        "type": "back_photo"
+      }
+    ],
+    "identity_claim": {
+      "card": "Raw card with mismatched front and back",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 6,
+    "visual_markers": [
+      {
+        "marker_hash": "mixed-front-card-a",
+        "match_group": "raw-card-alpha",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "mixed-back-card-b",
+        "match_group": "raw-card-beta",
+        "scope": "back"
+      }
+    ]
+  },
+  "payload_hash": "0x7a170cdb3a00db8dabd2da0636537b0ba421dd66f30569784a33b4243836398c",
+  "signature": "0xa8fb5306ef1e5e372d290eb9a9445acbd13a39f765ac17a18d117bac9f7e4cd173e21502d7066d3a9ff79b8cf1e37cdcb5099ac7564a457e928d87732324bf2a1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

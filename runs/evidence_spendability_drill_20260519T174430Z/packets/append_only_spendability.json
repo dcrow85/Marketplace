@@ -1,0 +1,53 @@
+{
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "decision_authority": {
+    "actor_id": "did:market:buyer-agent:fixture-5",
+    "actor_role": "buyer_agent",
+    "authority_hash": "8cfab2bb05a0fb453f669e135158a1eea2fb68fe07dd51943a3ce7033606bc45",
+    "authority_source": "delegation"
+  },
+  "gate": {
+    "consumption": "append_only_weight",
+    "gate_id": "claim_support:9107:claim-1",
+    "gate_type": "claim_support",
+    "leg": "return"
+  },
+  "hash_algorithm": "sha256(marketplace-json-c14n-v0.2)",
+  "issued_at": "2026-05-19T17:42:21+00:00",
+  "issued_by": "did:market:buyer-agent:fixture-5",
+  "issued_role": "buyer_agent",
+  "manifest_hash": "84652fcd54bb6f13603b5df7c394ae27a2f4bd0be9b182921ce591a4d82dd0f7",
+  "manifest_subject_hash": "8abc626888918a44e4f0eaa32c519fc78d612cad42a68b597076a6fc44869183",
+  "requires": [
+    "buyer_ack",
+    "claim_opened"
+  ],
+  "schema": "marketplace.evidence_spendability.v0.1",
+  "signature": "local-spendability-signature-v0:62954536a520eafbef25612c9182294cc93b53e13e757c6632955accf682033a",
+  "spendability_hash": "a279cc8292577e92ebaf9ed0f366eaabb7f2168c56603a5f3c7fecb1bbf1a0f4",
+  "spendability_id": "claim_support:contradiction_support:9107",
+  "spendable_claims": [
+    {
+      "basis": [
+        "asset_hash_match",
+        "issuer_role"
+      ],
+      "claim_type": "contradiction_support",
+      "not_claiming": [
+        "authenticity",
+        "condition_floor"
+      ],
+      "spend_limit": "assembles_claim_packet",
+      "support_level": "standard"
+    }
+  ],
+  "status": "active",
+  "trade_id": "9107",
+  "window": {
+    "after_state": {
+      "state_hash": "76f21fb7f4f2b1cb1e6411e62e5f4e75eff7a33930e1e3e7bdb5fae21e3e2ec4",
+      "state_name": "ClaimOrDisputePending"
+    },
+    "waiver_policy": "none"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "canonical_payload": "{\"delivered\":true,\"delivery_signal\":\"seller_delivery_notice\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"tracking\":\"SIM-CLAIM-0002\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "delivered": true,
+    "delivery_signal": "seller_delivery_notice",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "tracking": "SIM-CLAIM-0002",
+    "trade_id": 2
+  },
+  "payload_hash": "0xcd95cb6323d7ffbde126784878dba3e39cc6ceb95f176da9592a73bc6a175672",
+  "signature": "0x1431587c92a2080911bd92e84318cc739b4a6c402c5688b0d0505fc65c9edbfe707f6fb9bfee0543e3f48afb773f9e9a1ab0c7a681c71c997b47a74acc6c59b81c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

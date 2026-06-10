@@ -1,0 +1,18 @@
+{
+  "canonical_payload": "{\"carrier\":\"simulated_usps\",\"declared_insurance_eth\":\"0.80\",\"insured\":true,\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"signature_required\":true,\"tracking\":\"SIM-HAPPY-0001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier": "simulated_usps",
+    "declared_insurance_eth": "0.80",
+    "insured": true,
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "signature_required": true,
+    "tracking": "SIM-HAPPY-0001",
+    "trade_id": 1
+  },
+  "payload_hash": "0x0d06a99d4d88711f7046bc0ae133e6989de37e92f924b17daeec77970d3a15e7",
+  "signature": "0xaef72fbd97bf2499c3418afac45b5f5e1b552c6809bd56e64a17518d580c35971aa415017460f4fd9c29529b92f7ed6db82ec2b0c847a1fca4b25e89f60aa5be1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

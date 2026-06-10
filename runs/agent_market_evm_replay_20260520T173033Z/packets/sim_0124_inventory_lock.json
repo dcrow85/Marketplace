@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Vending Gastly\",\"condition_claim\":\"NM-\",\"inventory_key\":\"tcg:pokemon:sim-0124\",\"item_fingerprint_hash\":\"0x7e7d8d331b5621387a9cdcd19859e8deece0abc0578c99a47cfe6f8b3c9eed2b\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:9f1b87af4186b2655906439d61a26a2f78054230af4fa8fba552baa6c051a041\",\"escrow_terms\":\"sha256:f591aaa961a61a93457e893717d7e768a72b0e44ee6d754845f9b88bcb85a129\",\"friction_policy\":\"sha256:6ceecbbbb0d428e27da3d501445a94ec21bc7c765632393cf1b9485fe39d7644\",\"intent\":\"sha256:295baa59a1c7cbe0adc890a9cbef6c5d529a19bf53eea8db412282563aee6218\",\"seller_offer\":\"sha256:934697101c31fa555370521daeacb9ea5719fef8770c0e82893125059a4dcd04\"},\"source_simulation_trade\":\"SIM-0124\",\"visible_identifiers\":[\"sim-0124-front-photo-hash\",\"sim-0124-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Vending Gastly",
+    "condition_claim": "NM-",
+    "inventory_key": "tcg:pokemon:sim-0124",
+    "item_fingerprint_hash": "0x7e7d8d331b5621387a9cdcd19859e8deece0abc0578c99a47cfe6f8b3c9eed2b",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:9f1b87af4186b2655906439d61a26a2f78054230af4fa8fba552baa6c051a041",
+      "escrow_terms": "sha256:f591aaa961a61a93457e893717d7e768a72b0e44ee6d754845f9b88bcb85a129",
+      "friction_policy": "sha256:6ceecbbbb0d428e27da3d501445a94ec21bc7c765632393cf1b9485fe39d7644",
+      "intent": "sha256:295baa59a1c7cbe0adc890a9cbef6c5d529a19bf53eea8db412282563aee6218",
+      "seller_offer": "sha256:934697101c31fa555370521daeacb9ea5719fef8770c0e82893125059a4dcd04"
+    },
+    "source_simulation_trade": "SIM-0124",
+    "visible_identifiers": [
+      "sim-0124-front-photo-hash",
+      "sim-0124-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xd1da1ccdb2e9e56cb4d2a6a03e444fec3dac2863d8575df976e1a95a77b91104",
+  "signature": "0xe87f17897649bf34ea57fbddf9db3d58756336cf7ae4b87438df830b9d4a7c2a255b2901e7c98dabf3c1daa72aecf0d97017f1539dfe2e3429d8cd996e0ec8871c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

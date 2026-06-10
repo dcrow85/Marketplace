@@ -1,0 +1,26 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"cost_field\":{\"attention_budget\":\"medium\",\"max_total_price_eth\":\"1.20\",\"new_seller_allowed\":true,\"required_concessions\":[\"larger_bond\",\"clear_claim_path\",\"route_disclosure\"]},\"intent_id\":\"intent_claim_001\",\"object\":{\"card\":\"hard-to-find vintage raw card\",\"condition_floor\":\"NM\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "cost_field": {
+      "attention_budget": "medium",
+      "max_total_price_eth": "1.20",
+      "new_seller_allowed": true,
+      "required_concessions": [
+        "larger_bond",
+        "clear_claim_path",
+        "route_disclosure"
+      ]
+    },
+    "intent_id": "intent_claim_001",
+    "object": {
+      "card": "hard-to-find vintage raw card",
+      "condition_floor": "NM",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0xa2c6c605f6cb21b462f51aad0998b7055b91fa748060cb5f40a8cf451655afff"
+}

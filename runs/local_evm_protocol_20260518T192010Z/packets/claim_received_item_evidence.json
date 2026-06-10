@@ -1,0 +1,19 @@
+{
+  "canonical_payload": "{\"agent_read\":\"Received-item photos are the evidence packet; claim packet opens the case.\",\"evidence_class\":\"claim\",\"objects\":[\"received_front_hash\",\"received_back_hash\",\"edge_wear_closeup_hash\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "agent_read": "Received-item photos are the evidence packet; claim packet opens the case.",
+    "evidence_class": "claim",
+    "objects": [
+      "received_front_hash",
+      "received_back_hash",
+      "edge_wear_closeup_hash"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "trade_id": 2
+  },
+  "payload_hash": "0xadb8ce3f7cd03b6e8ade4f3ca0bd14b611bb8a2ba4ba5bef11d976b5df93e81d",
+  "signature": "0xc996c461b50efbf314ca3d8629bada9b12ef899b42674f844d87ff4fcf968ce4328e5be8fafc9b4fdb4c83b51ecf6ca0253d353365edb2063215c573e9b24adc1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

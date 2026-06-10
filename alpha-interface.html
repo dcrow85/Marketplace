@@ -1,0 +1,2277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemon Alpha Trade Interface</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f3ef;
+        --ink: #111312;
+        --soft-ink: #4e5451;
+        --line: #cdcec8;
+        --panel: #ffffff;
+        --wash: #e7e5df;
+        --red: #a62424;
+        --red-soft: #f5e7e5;
+        --green: #284a37;
+        --shadow: 0 18px 45px rgba(17, 19, 18, 0.09);
+        --body-font: "Avenir Next Rounded", "Trebuchet MS", ui-sans-serif, system-ui, sans-serif;
+        --display-font: "American Typewriter", "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+        --hand-font: "Chalkboard SE", "Marker Felt", "Bradley Hand", var(--display-font);
+        --card-front-image: url("https://images.pokemontcg.io/neo2/1_hires.png");
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(17, 19, 18, 0.025) 1px, transparent 1px) 0 0 / 34px 34px,
+          linear-gradient(180deg, rgba(17, 19, 18, 0.018) 1px, transparent 1px) 0 0 / 34px 34px,
+          var(--paper);
+        color: var(--ink);
+        font-family: var(--body-font);
+        line-height: 1.45;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .workspace {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .topbar {
+        border-bottom: 1px solid var(--line);
+        background: rgba(244, 243, 239, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner {
+        width: min(1440px, calc(100% - 32px));
+        min-height: 58px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        font-family: var(--display-font);
+        font-size: 1.04rem;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--ink);
+        display: inline-block;
+        transform: rotate(45deg);
+      }
+
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        right: -7px;
+        top: -7px;
+        border-top: 2px solid var(--ink);
+        border-left: 2px solid var(--ink);
+      }
+
+      .trade-state {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        color: var(--soft-ink);
+        font-size: 0.86rem;
+      }
+
+      .chip {
+        min-height: 28px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: #fbfaf7;
+        padding: 5px 9px;
+        font-family: var(--display-font);
+      }
+
+      .chip.hot {
+        border-color: rgba(166, 36, 36, 0.38);
+        background: var(--red-soft);
+        color: var(--red);
+      }
+
+      .screen {
+        width: min(1440px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 22px 0 28px;
+      }
+
+      .intent {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 18px;
+        padding: 0 0 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intent h1 {
+        margin: 0;
+        max-width: 820px;
+        font-size: 2.8rem;
+        line-height: 1.05;
+        letter-spacing: 0;
+        font-family: var(--display-font);
+        font-weight: 560;
+      }
+
+      figure {
+        margin: 0;
+      }
+
+      .intent p {
+        margin: 10px 0 0;
+        max-width: 780px;
+        color: var(--soft-ink);
+        font-size: 1rem;
+      }
+
+      .price-box {
+        min-width: 190px;
+        border-left: 1px solid var(--line);
+        padding-left: 18px;
+        text-align: right;
+      }
+
+      .price-box span {
+        display: block;
+        color: var(--soft-ink);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-family: var(--display-font);
+      }
+
+      .price-box strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 2rem;
+        line-height: 1;
+        font-family: var(--display-font);
+      }
+
+      .trade-grid {
+        display: grid;
+        grid-template-columns: minmax(560px, 1.18fr) minmax(360px, 0.82fr);
+        gap: 20px;
+        padding-top: 18px;
+      }
+
+      .trade-grid > *,
+      .image-stage > *,
+      .right-rail > * {
+        min-width: 0;
+      }
+
+      .image-stage {
+        display: grid;
+        grid-template-columns: minmax(340px, 0.92fr) minmax(210px, 0.38fr);
+        gap: 14px;
+        align-items: start;
+      }
+
+      .hero-card,
+      .view-tile,
+      .agent-panel,
+      .reference-panel,
+      .decision-panel,
+      .quiet-panel {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        border-radius: 7px 5px 8px 6px;
+      }
+
+      .hero-card {
+        position: relative;
+        padding: 16px;
+        border-color: var(--ink);
+        background: #fffdfa;
+        box-shadow: 6px 7px 0 rgba(17, 19, 18, 0.06), var(--shadow);
+      }
+
+      .hero-card::before,
+      .reference-panel.near-card::before,
+      .decision-panel::after {
+        content: "";
+        position: absolute;
+        width: 68px;
+        height: 19px;
+        background: rgba(217, 207, 184, 0.62);
+        border: 1px solid rgba(17, 19, 18, 0.16);
+        box-shadow: 0 2px 4px rgba(17, 19, 18, 0.05);
+        pointer-events: none;
+      }
+
+      .hero-card::before {
+        top: -10px;
+        left: 30px;
+        transform: rotate(-3deg);
+      }
+
+      .card-shell {
+        aspect-ratio: 2.5 / 3.5;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        background: #f8f7f3;
+        border: 1px solid var(--ink);
+        padding: 10px;
+        overflow: hidden;
+      }
+
+      .seller-card-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+        background: #f8f7f3;
+      }
+
+      .missing-card-view {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        gap: 12px;
+        border: 1px dashed rgba(17, 19, 18, 0.42);
+        background:
+          linear-gradient(135deg, rgba(17, 19, 18, 0.04) 25%, transparent 25%) 0 0 / 18px 18px,
+          #fbfaf7;
+        color: var(--soft-ink);
+        text-align: center;
+      }
+
+      .missing-card-view[hidden] {
+        display: none;
+      }
+
+      .placeholder-mark {
+        width: 74px;
+        height: 74px;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--red);
+        color: var(--red);
+        font-family: var(--hand-font);
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        border-radius: 46% 54% 50% 48%;
+        transform: rotate(-5deg);
+      }
+
+      .missing-card-view.neutral .placeholder-mark {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+
+      .placeholder-copy {
+        max-width: 210px;
+        margin: 0;
+        font-size: 0.92rem;
+      }
+
+      .caption {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 11px;
+        color: var(--soft-ink);
+        font-family: var(--display-font);
+        font-size: 0.9rem;
+      }
+
+      .caption strong {
+        color: var(--ink);
+      }
+
+      .reference-panel.near-card {
+        position: relative;
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        box-shadow: 4px 5px 0 rgba(17, 19, 18, 0.05), var(--shadow);
+      }
+
+      .reference-panel.near-card::before {
+        top: -9px;
+        left: 26px;
+        width: 56px;
+        transform: rotate(4deg);
+      }
+
+      .reference-image {
+        width: 100%;
+        max-width: 190px;
+        justify-self: center;
+        aspect-ratio: 2.5 / 3.5;
+        object-fit: contain;
+        border: 1px solid var(--ink);
+        background: #f8f7f3;
+        padding: 5px;
+      }
+
+      .reference-note {
+        margin: 0;
+        color: var(--soft-ink);
+        font-size: 0.84rem;
+      }
+
+      .reference-note.negative {
+        color: var(--red);
+      }
+
+      .catalog-search {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 6px;
+      }
+
+      .catalog-search input,
+      .catalog-search button {
+        min-height: 32px;
+        border: 1px solid var(--line);
+        background: #fffdfa;
+        color: var(--ink);
+        border-radius: 5px;
+        font: inherit;
+        font-size: 0.78rem;
+      }
+
+      .catalog-search input {
+        min-width: 0;
+        padding: 6px 8px;
+      }
+
+      .catalog-search button {
+        padding: 6px 9px;
+        cursor: pointer;
+        font-family: var(--display-font);
+      }
+
+      .catalog-results {
+        display: grid;
+        gap: 6px;
+      }
+
+      .catalog-result {
+        width: 100%;
+        min-height: 42px;
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 8px;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: #fffdfa;
+        color: var(--ink);
+        padding: 5px;
+        text-align: left;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .catalog-result.is-selected {
+        border-color: var(--ink);
+        box-shadow: inset 0 0 0 1px var(--ink);
+      }
+
+      .catalog-result img {
+        width: 28px;
+        aspect-ratio: 2.5 / 3.5;
+        object-fit: contain;
+        background: #f8f7f3;
+        border: 1px solid rgba(17, 19, 18, 0.28);
+      }
+
+      .catalog-result b,
+      .catalog-result span {
+        display: block;
+        overflow-wrap: anywhere;
+      }
+
+      .catalog-result b {
+        font-family: var(--display-font);
+        font-size: 0.74rem;
+        line-height: 1.1;
+      }
+
+      .catalog-result span {
+        margin-top: 2px;
+        color: var(--soft-ink);
+        font-size: 0.68rem;
+        line-height: 1.18;
+      }
+
+      .catalog-receipt {
+        color: var(--soft-ink);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.68rem;
+        overflow-wrap: anywhere;
+      }
+
+      .view-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
+        gap: 7px;
+        margin-top: 14px;
+      }
+
+      .view-tile {
+        min-height: 68px;
+        padding: 5px;
+        color: var(--ink);
+        text-align: center;
+        box-shadow: none;
+        cursor: pointer;
+        display: grid;
+        grid-template-rows: 34px auto;
+        gap: 4px;
+        background: #fffdfa;
+        transform: rotate(-0.35deg);
+      }
+
+      .view-tile:nth-child(2n) {
+        transform: rotate(0.35deg);
+      }
+
+      .view-tile:hover,
+      .view-tile:focus-visible {
+        border-color: var(--ink);
+      }
+
+      .view-tile.is-selected {
+        border-color: var(--ink);
+        box-shadow: inset 0 0 0 1px var(--ink), 2px 2px 0 rgba(17, 19, 18, 0.08);
+      }
+
+      .view-tile.missing {
+        border-color: rgba(166, 36, 36, 0.48);
+        background: #fffafa;
+      }
+
+      .view-tile.missing .tile-label span {
+        color: var(--red);
+      }
+
+      .view-art {
+        width: 100%;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .evidence-photo {
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(17, 19, 18, 0.46);
+        background-color: #f8f7f3;
+        background-image: var(--card-front-image);
+        background-repeat: no-repeat;
+        box-shadow: inset 0 0 0 1px rgba(255, 253, 250, 0.45);
+      }
+
+      .thumb-front {
+        background-size: 90px auto;
+        background-position: 50% 20%;
+      }
+
+      .thumb-edge {
+        background-size: 430px auto;
+        background-position: 4% 46%;
+      }
+
+      .thumb-corners {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2px;
+      }
+
+      .thumb-corners span {
+        min-width: 0;
+        min-height: 0;
+        border: 1px solid rgba(17, 19, 18, 0.38);
+        background-image: var(--card-front-image);
+        background-repeat: no-repeat;
+        background-size: 270px auto;
+      }
+
+      .thumb-corners.front span:nth-child(1) {
+        background-position: 2% 3%;
+      }
+
+      .thumb-corners.front span:nth-child(2) {
+        background-position: 98% 3%;
+      }
+
+      .thumb-corners.front span:nth-child(3) {
+        background-position: 2% 95%;
+      }
+
+      .thumb-corners.front span:nth-child(4) {
+        background-position: 98% 95%;
+      }
+
+      .thumb-corners.back span {
+        background-image:
+          radial-gradient(circle at 50% 50%, rgba(255, 253, 250, 0.82) 0 18%, transparent 20%),
+          linear-gradient(135deg, rgba(17, 19, 18, 0.24), transparent 34%),
+          linear-gradient(45deg, rgba(166, 36, 36, 0.1), transparent 38%),
+          linear-gradient(90deg, #221b35, #745b96 48%, #1b243f);
+      }
+
+      .paper-thumb {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(17, 19, 18, 0.35);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.7), transparent),
+          #f2ead9;
+        color: var(--ink);
+        font-family: var(--display-font);
+        font-size: 0.62rem;
+        line-height: 1;
+        text-transform: uppercase;
+        box-shadow: inset 0 0 0 1px rgba(255, 253, 250, 0.5);
+      }
+
+      .paper-thumb.missing {
+        border-color: rgba(166, 36, 36, 0.6);
+        background: #fbefec;
+        color: var(--red);
+        font-family: var(--hand-font);
+        font-size: 1.06rem;
+        text-transform: none;
+      }
+
+      .tile-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1px;
+        color: var(--soft-ink);
+        font-family: var(--display-font);
+        font-size: 0.68rem;
+        line-height: 1.2;
+      }
+
+      .tile-label b {
+        color: var(--ink);
+        font-weight: 560;
+        overflow-wrap: anywhere;
+      }
+
+      .tile-label span {
+        font-size: 0.58rem;
+        color: rgba(78, 84, 81, 0.82);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        flex: 0 0 auto;
+        margin-top: 5px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      .status-dot.red {
+        background: var(--red);
+      }
+
+      .right-rail {
+        display: grid;
+        gap: 14px;
+      }
+
+      .agent-panel,
+      .reference-panel,
+      .decision-panel,
+      .quiet-panel {
+        padding: 16px;
+      }
+
+      .panel-label {
+        margin: 0 0 12px;
+        color: var(--soft-ink);
+        font-size: 0.78rem;
+        font-weight: 760;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: var(--display-font);
+      }
+
+      .agent-copy {
+        margin: 0;
+        font-size: 1.02rem;
+        line-height: 1.42;
+      }
+
+      .agent-copy strong {
+        color: var(--red);
+      }
+
+      .fact-list {
+        display: grid;
+        gap: 8px;
+        margin: 14px 0 0;
+      }
+
+      .fact {
+        display: grid;
+        grid-template-columns: 86px minmax(0, 1fr);
+        gap: 10px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.9rem;
+      }
+
+      .fact b {
+        color: var(--ink);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: var(--display-font);
+      }
+
+      .decision-panel {
+        position: relative;
+        border-color: rgba(166, 36, 36, 0.44);
+        background: #fffdfb;
+      }
+
+      .decision-panel::after {
+        right: 24px;
+        bottom: -9px;
+        width: 58px;
+        transform: rotate(-5deg);
+      }
+
+      .decision-title {
+        margin: 0;
+        font-family: var(--display-font);
+        font-size: 1.55rem;
+        font-weight: 560;
+        line-height: 1.12;
+      }
+
+      .decision-note {
+        margin: 9px 0 14px;
+        color: var(--soft-ink);
+        font-size: 0.94rem;
+      }
+
+      .cost-line {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .cost-item {
+        border-top: 1px solid var(--line);
+        padding-top: 8px;
+      }
+
+      .cost-item span {
+        display: block;
+        color: var(--soft-ink);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: var(--display-font);
+      }
+
+      .cost-item strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.94rem;
+        font-family: var(--display-font);
+      }
+
+      .funded-gradient {
+        margin: 0 0 14px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: #fbfaf7;
+        border-radius: 7px 5px 8px 6px;
+      }
+
+      .funded-gradient-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+        margin-bottom: 10px;
+      }
+
+      .funded-gradient-head b {
+        font-family: var(--display-font);
+        font-size: 0.86rem;
+      }
+
+      .funded-gradient-head span {
+        color: var(--soft-ink);
+        font-size: 0.78rem;
+      }
+
+      .gradient-rungs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .gradient-rung {
+        min-height: 92px;
+        padding: 8px;
+        border: 1px solid rgba(205, 206, 200, 0.92);
+        background: #fffdfa;
+        border-radius: 6px;
+      }
+
+      .gradient-rung.is-selected {
+        border-color: rgba(166, 36, 36, 0.58);
+        background: var(--red-soft);
+      }
+
+      .gradient-rung.is-funded {
+        border-color: rgba(40, 74, 55, 0.52);
+      }
+
+      .gradient-rung b,
+      .gradient-rung strong,
+      .gradient-rung span {
+        display: block;
+      }
+
+      .gradient-rung b {
+        font-family: var(--display-font);
+        font-size: 0.72rem;
+        line-height: 1.06;
+      }
+
+      .gradient-rung strong {
+        margin-top: 6px;
+        font-family: var(--display-font);
+        font-size: 0.95rem;
+      }
+
+      .gradient-rung span {
+        margin-top: 4px;
+        color: var(--soft-ink);
+        font-size: 0.7rem;
+        line-height: 1.22;
+      }
+
+      .fee-trace {
+        display: grid;
+        gap: 6px;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.86rem;
+      }
+
+      .fee-trace div {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .fee-trace strong {
+        color: var(--ink);
+      }
+
+      .live-panel {
+        margin-top: 14px;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        color: var(--soft-ink);
+        font-size: 0.84rem;
+      }
+
+      .live-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 7px;
+      }
+
+      .live-row + .live-row {
+        border-top: 1px solid rgba(205, 206, 200, 0.64);
+      }
+
+      .live-row b {
+        color: var(--ink);
+        font-weight: 760;
+      }
+
+      .packet-hash {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.74rem;
+        word-break: break-all;
+        text-align: right;
+      }
+
+      .quiet-panel {
+        margin-top: 14px;
+        box-shadow: none;
+        background: #fbfaf7;
+      }
+
+      .quiet-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--soft-ink);
+        font-size: 0.86rem;
+      }
+
+      .quiet-list b {
+        color: var(--ink);
+        font-weight: 760;
+        font-family: var(--display-font);
+      }
+
+      .identity-panel {
+        margin-top: 0;
+        border-color: rgba(17, 19, 18, 0.28);
+        background: #fffdfa;
+      }
+
+      .identity-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .identity-head h2 {
+        margin: -6px 0 0;
+        font-family: var(--display-font);
+        font-size: 1.18rem;
+        font-weight: 620;
+        line-height: 1.08;
+      }
+
+      .identity-mini-button {
+        min-height: 30px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: #fffdfa;
+        color: var(--ink);
+        padding: 5px 10px;
+        cursor: pointer;
+        font-family: var(--display-font);
+        font-size: 0.74rem;
+        font-weight: 620;
+      }
+
+      .identity-mini-button.is-connected {
+        border-color: rgba(40, 74, 55, 0.64);
+        color: var(--green);
+      }
+
+      .identity-copy {
+        margin: 10px 0 0;
+        color: var(--soft-ink);
+        font-size: 0.88rem;
+        line-height: 1.38;
+      }
+
+      .identity-ledger {
+        display: grid;
+        gap: 7px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.82rem;
+      }
+
+      .identity-row {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .identity-row b,
+      .identity-boundary b,
+      .signature-row b {
+        color: var(--ink);
+        font-family: var(--display-font);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .identity-row span,
+      .signature-row span {
+        overflow-wrap: anywhere;
+      }
+
+      .identity-boundary {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.82rem;
+      }
+
+      .signature-stack {
+        display: grid;
+        gap: 7px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+
+      .signature-row {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 10px;
+        color: var(--soft-ink);
+        font-size: 0.82rem;
+      }
+
+      .signature-row.is-signed span {
+        color: var(--green);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.74rem;
+      }
+
+      .identity-sign-button {
+        margin-top: 12px;
+        min-height: 38px;
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      .route-wall-panel {
+        border-color: rgba(17, 19, 18, 0.24);
+      }
+
+      .route-wall-copy {
+        margin: 0;
+        color: var(--soft-ink);
+        font-size: 0.9rem;
+      }
+
+      .route-wall-status {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.84rem;
+      }
+
+      .route-wall-status strong {
+        color: var(--red);
+        font-family: var(--display-font);
+      }
+
+      .route-wall-status.is-ready strong {
+        color: var(--green);
+      }
+
+      .wall-pair {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .wall-card {
+        min-height: 118px;
+        border: 1px solid var(--line);
+        background: #fffdfa;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      .wall-card strong {
+        display: block;
+        font-family: var(--display-font);
+        font-weight: 620;
+      }
+
+      .wall-card span {
+        display: inline-block;
+        margin-top: 6px;
+        color: var(--red);
+        font-size: 0.72rem;
+        font-weight: 760;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .wall-card.is-ready span {
+        color: var(--green);
+      }
+
+      .wall-card p {
+        margin: 7px 0 0;
+        color: var(--soft-ink);
+        font-size: 0.8rem;
+      }
+
+      .chain-receipt-panel {
+        border-color: rgba(17, 19, 18, 0.2);
+      }
+
+      .chain-receipt-panel.is-active {
+        border-color: rgba(40, 74, 55, 0.5);
+      }
+
+      .chain-receipt-panel.has-error {
+        border-color: rgba(166, 36, 36, 0.5);
+      }
+
+      .chain-receipt-copy {
+        margin: 0;
+        color: var(--soft-ink);
+        font-size: 0.9rem;
+      }
+
+      .receipt-grid {
+        display: grid;
+        gap: 7px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-size: 0.82rem;
+      }
+
+      .receipt-row {
+        display: grid;
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .receipt-row b {
+        color: var(--ink);
+        font-family: var(--display-font);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .receipt-value {
+        overflow-wrap: anywhere;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.76rem;
+      }
+
+      .receipt-link {
+        display: inline-block;
+        margin-top: 12px;
+        color: var(--green);
+        font-family: var(--display-font);
+        font-size: 0.88rem;
+      }
+
+      .receipt-link[hidden] {
+        display: none;
+      }
+
+      .post-route-panel {
+        border-color: rgba(17, 19, 18, 0.2);
+      }
+
+      .post-route-steps {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .post-route-step {
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        padding: 10px;
+        border: 1px solid var(--line);
+        background: #fffdfa;
+        border-radius: 7px 5px 8px 6px;
+      }
+
+      .step-dot {
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        font-family: var(--display-font);
+        font-size: 0.78rem;
+        color: var(--ink);
+        background: #fff;
+      }
+
+      .post-route-step.is-done .step-dot {
+        border-color: var(--green);
+        color: var(--green);
+      }
+
+      .post-route-step.is-claim .step-dot {
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .post-route-step strong {
+        display: block;
+        font-family: var(--display-font);
+        font-size: 0.95rem;
+      }
+
+      .post-route-step span {
+        display: block;
+        margin-top: 3px;
+        color: var(--soft-ink);
+        font-size: 0.82rem;
+        overflow-wrap: anywhere;
+      }
+
+      .decision {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .action-button {
+        min-height: 46px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: #fff;
+        padding: 10px 12px;
+        text-align: left;
+        cursor: pointer;
+        font-family: var(--display-font);
+        font-size: 1rem;
+        font-weight: 560;
+        border-radius: 8px 6px 9px 7px;
+      }
+
+      .action-button:disabled {
+        cursor: default;
+        opacity: 0.58;
+      }
+
+      .action-button.secondary {
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .action-button.warn {
+        border-color: var(--red);
+        background: var(--red-soft);
+        color: var(--red);
+      }
+
+      @media (max-width: 1120px) {
+        .trade-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .reference-image {
+          max-width: 160px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        body {
+          overflow-x: hidden;
+        }
+
+        .screen,
+        .topbar-inner {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .topbar-inner,
+        .intent {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .topbar-inner {
+          padding: 10px 12px;
+        }
+
+        .trade-state {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr;
+          justify-content: flex-start;
+        }
+
+        .chip {
+          max-width: 100%;
+        }
+
+        .intent {
+          grid-template-columns: 1fr;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .intent h1 {
+          font-size: 2.05rem;
+          max-width: 340px;
+          overflow-wrap: anywhere;
+        }
+
+        .intent p {
+          max-width: 340px;
+          overflow-wrap: anywhere;
+        }
+
+        .price-box {
+          border-left: 0;
+          padding-left: 0;
+          text-align: left;
+        }
+
+        .trade-grid {
+          grid-template-columns: 1fr;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .image-stage {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card,
+        .agent-panel,
+        .reference-panel,
+        .decision-panel,
+        .quiet-panel {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .card-shell {
+          width: min(100%, 320px);
+          margin: 0 auto;
+          overflow: hidden;
+        }
+
+        .view-strip {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .wall-pair {
+          grid-template-columns: 1fr;
+        }
+
+        .cost-line {
+          grid-template-columns: 1fr;
+        }
+
+        .gradient-rungs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .view-tile {
+          min-height: 64px;
+          padding: 5px;
+        }
+
+        .tile-label span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>Pokemon Alpha Trade</span>
+          </a>
+          <div class="trade-state" aria-label="Trade state">
+            <span class="chip">Card first</span>
+            <span class="chip" id="identity-chip">Identity: demo</span>
+            <span class="chip hot" id="state-chip">One paid question</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="screen">
+        <section class="intent" aria-labelledby="trade-title">
+          <div>
+            <h1 id="trade-title">Neo Discovery Espeon, raw, lightly played or better.</h1>
+            <p id="trade-summary">
+              Seller has a candidate card at $640 shipped. Your agent likes it; one paid question remains before shipping can be approved.
+            </p>
+          </div>
+          <div class="price-box" aria-label="Offer price">
+            <span>All-in offer</span>
+            <strong>$640</strong>
+          </div>
+        </section>
+
+        <section class="trade-grid" aria-label="Trade review">
+          <div>
+            <div class="image-stage">
+              <figure class="hero-card">
+                <div class="card-shell" aria-label="Large front scan">
+                  <img
+                    class="seller-card-image"
+                    id="main-card-image"
+                    src="https://images.pokemontcg.io/neo2/1_hires.png"
+                    alt="Seller front photo of Neo Discovery Espeon">
+                  <div class="missing-card-view" id="main-card-placeholder" hidden>
+                    <span class="placeholder-mark" id="placeholder-mark">?</span>
+                    <p class="placeholder-copy" id="placeholder-copy">No seller image is available for this view yet.</p>
+                  </div>
+                </div>
+                <figcaption class="caption">
+                  <span><strong id="main-view-title">Seller front photo</strong> <span id="main-view-note">straight-on demo scan</span></span>
+                  <span id="main-view-status">Seller says lightly played</span>
+                </figcaption>
+              </figure>
+
+              <aside class="reference-panel near-card" aria-label="Known card reference">
+                <p class="panel-label">Known card reference</p>
+                <img class="reference-image" id="reference-image" src="https://images.pokemontcg.io/neo2/1.png" alt="Color catalog reference image for Espeon from Neo Discovery">
+                <p class="reference-note" id="reference-line">Catalog candidate: Espeon, Neo Discovery, #1, Rare Holo.</p>
+                <p class="reference-note" id="catalog-source-line">Source: Pokemon TCG API.</p>
+                <form class="catalog-search" id="catalog-search-form">
+                  <input id="catalog-query" type="search" value="Neo Discovery Espeon" aria-label="Search Pokemon card catalog">
+                  <button type="submit">Look up</button>
+                </form>
+                <div class="catalog-results" id="catalog-results" aria-label="Catalog search results"></div>
+                <p class="catalog-receipt" id="catalog-receipt">contact receipt waiting</p>
+                <p class="reference-note negative">Not proof of possession, authenticity, or condition.</p>
+              </aside>
+            </div>
+
+            <div class="view-strip" aria-label="Evidence views">
+              <button class="view-tile is-selected" type="button" data-view="front" aria-pressed="true" aria-label="Show seller front photo">
+                <span class="view-art"><span class="evidence-photo thumb-front" aria-hidden="true"></span></span>
+                <span class="tile-label"><b>Front</b><span>saved</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="back" aria-pressed="false" aria-label="Show seller back photo">
+                <span class="view-art"><span class="paper-thumb" aria-hidden="true">back</span></span>
+                <span class="tile-label"><b>Back</b><span>saved</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="front-corners" aria-pressed="false" aria-label="Show four front corner photos">
+                <span class="view-art">
+                  <span class="thumb-corners front" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+                </span>
+                <span class="tile-label"><b>Front corners</b><span>4 saved</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="back-corners" aria-pressed="false" aria-label="Show four back corner photos">
+                <span class="view-art">
+                  <span class="thumb-corners back" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+                </span>
+                <span class="tile-label"><b>Back corners</b><span>4 saved</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="edges" aria-pressed="false" aria-label="Show edge evidence">
+                <span class="view-art"><span class="evidence-photo thumb-edge" aria-hidden="true"></span></span>
+                <span class="tile-label"><b>Edges</b><span>saved</span></span>
+              </button>
+              <button class="view-tile missing" type="button" data-view="surface" aria-pressed="false" aria-label="Show missing surface-angle request">
+                <span class="view-art"><span class="paper-thumb missing" aria-hidden="true">?</span></span>
+                <span class="tile-label"><b>Surface angle</b><span>needed</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="timestamp" aria-pressed="false" aria-label="Show timestamp evidence">
+                <span class="view-art"><span class="paper-thumb" aria-hidden="true">time</span></span>
+                <span class="tile-label"><b>Timestamp</b><span>saved</span></span>
+              </button>
+              <button class="view-tile" type="button" data-view="package" aria-pressed="false" aria-label="Show packaging plan">
+                <span class="view-art"><span class="paper-thumb" aria-hidden="true">ship</span></span>
+                <span class="tile-label"><b>Package</b><span>planned</span></span>
+              </button>
+            </div>
+
+            <section class="quiet-panel" aria-label="Safety check">
+              <p class="panel-label">Safety check</p>
+              <ul class="quiet-list">
+                <li><b>Checked:</b> <span id="checked-line">the money is held safely, the seller has something at stake, and the photos are saved.</span></li>
+                <li><b>Still judgment:</b> <span id="judgment-line">the card looks right and close to lightly played, but glare hides the shiny surface.</span></li>
+              </ul>
+            </section>
+
+            <section class="quiet-panel route-wall-panel" aria-label="Route lock wall">
+              <p class="panel-label">Route lock wall</p>
+              <p class="route-wall-copy">
+                Shipping does not unlock because evidence exists. It unlocks only when the evidence is spendable at this gate and the assembly lines up.
+              </p>
+              <div class="route-wall-status" id="wall-route-status">
+                <span>EVM route lock</span>
+                <strong id="wall-route-state">blocked</strong>
+              </div>
+              <div class="wall-pair">
+                <div class="wall-card" id="wall-bundle-card">
+                  <strong>Wall bundle</strong>
+                  <span id="wall-bundle-state">waiting</span>
+                  <p>Required commitments are present.</p>
+                </div>
+                <div class="wall-card" id="wall-spendability-card">
+                  <strong>Spendability</strong>
+                  <span id="wall-spendability-state">waiting</span>
+                  <p>This evidence is allowed to buy this gate.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="quiet-panel chain-receipt-panel" id="chain-receipt-panel" aria-label="Chain receipt">
+              <p class="panel-label">Chain receipt</p>
+              <p class="chain-receipt-copy" id="evm-status-copy">No route commit yet.</p>
+              <div class="receipt-grid">
+                <div class="receipt-row"><b>State</b><span class="receipt-value" id="evm-final-state">not committed</span></div>
+                <div class="receipt-row"><b>Trade</b><span class="receipt-value" id="evm-trade-id">none</span></div>
+                <div class="receipt-row"><b>Tx</b><span class="receipt-value" id="evm-route-tx">none</span></div>
+                <div class="receipt-row"><b>Escrow</b><span class="receipt-value" id="evm-escrow">none</span></div>
+                <div class="receipt-row"><b>Witness</b><span class="receipt-value" id="evm-wall-bundle">none</span></div>
+                <div class="receipt-row"><b>Spend</b><span class="receipt-value" id="evm-spendability">none</span></div>
+              </div>
+              <a class="receipt-link" id="evm-report-link" href="#" hidden>Open route report</a>
+            </section>
+
+            <section class="quiet-panel post-route-panel" aria-label="Delivery inspection and claim">
+              <p class="panel-label">Delivery / inspection / claim</p>
+              <div class="post-route-steps">
+                <div class="post-route-step" id="delivery-step">
+                  <div class="step-dot">1</div>
+                  <div>
+                    <strong id="delivery-state">Waiting for route lock</strong>
+                    <span id="delivery-detail">Delivery evidence cannot spend until the route is locked.</span>
+                  </div>
+                </div>
+                <div class="post-route-step" id="inspection-step">
+                  <div class="step-dot">2</div>
+                  <div>
+                    <strong id="inspection-state">Inspection closed</strong>
+                    <span id="inspection-detail">The buyer has nothing to inspect yet.</span>
+                  </div>
+                </div>
+                <div class="post-route-step" id="closure-step">
+                  <div class="step-dot">3</div>
+                  <div>
+                    <strong id="closure-state">No receipt or claim</strong>
+                    <span id="closure-detail">The trade has not reached a final receipt or dispute.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="right-rail" aria-label="Agent output">
+            <section class="quiet-panel identity-panel" aria-label="Wallet and identity">
+              <div class="identity-head">
+                <div>
+                  <p class="panel-label">Wallet / identity</p>
+                  <h2>Key first. Claims later.</h2>
+                </div>
+                <button class="identity-mini-button" id="connect-wallet-button" type="button">Connect</button>
+              </div>
+              <p class="identity-copy" id="identity-copy">
+                No browser wallet is connected. A local demo identity can still produce an audit receipt for this want.
+              </p>
+              <div class="identity-ledger" aria-label="Trade actors">
+                <div class="identity-row"><b>Buyer key</b><span id="buyer-key">local demo key</span></div>
+                <div class="identity-row"><b>Agent delegate</b><span id="agent-delegate">can advise; must ask before spend</span></div>
+                <div class="identity-row"><b>Seller key</b><span id="seller-key">registered controller</span></div>
+                <div class="identity-row"><b>Arbiter</b><span id="arbiter-key">policy-bound controller</span></div>
+              </div>
+              <div class="identity-boundary">
+                <b>Boundary</b>
+                <span>A signature proves who authorized the want. It does not prove the card, condition, shipping, or honesty.</span>
+              </div>
+              <div class="signature-stack" id="signature-stack" aria-label="Signed audit receipts"></div>
+              <button class="action-button secondary identity-sign-button" id="sign-intent-button" type="button">Sign current want</button>
+            </section>
+
+            <section class="agent-panel">
+              <p class="panel-label">Buyer agent</p>
+              <p class="agent-copy" id="agent-copy">
+                This looks like the card you want. I would keep going, but <strong>I would not approve shipping yet.</strong>
+              </p>
+              <div class="fact-list">
+                <div class="fact"><b>Why</b><span id="why-line">The card, price, seller history, and protections are good enough to keep talking.</span></div>
+                <div class="fact"><b>Need</b><span id="need-line">One angled photo of the shiny surface before we treat the condition as safe enough.</span></div>
+              </div>
+            </section>
+
+            <section class="decision-panel">
+              <p class="panel-label">Decision with cost</p>
+              <h2 class="decision-title" id="decision-title">Spend $5 of seller time?</h2>
+              <p class="decision-note" id="decision-note">
+                The seller takes one more photo. If it looks right, your agent can approve shipping. The $5 is credited back if you buy.
+              </p>
+              <div class="cost-line" aria-label="Decision cost">
+                <div class="cost-item">
+                  <span>Seller time</span>
+                  <strong id="cost-seller-time">$5</strong>
+                </div>
+                <div class="cost-item">
+                  <span>Delay</span>
+                  <strong id="cost-delay">~10 min</strong>
+                </div>
+                <div class="cost-item">
+                  <span>Unlocks</span>
+                  <strong id="cost-unlocks">Shipping</strong>
+                </div>
+              </div>
+              <div class="funded-gradient" aria-label="Funded work gradient">
+                <div class="funded-gradient-head">
+                  <b id="funded-gradient-title">Funded work gradient</b>
+                  <span id="funded-gradient-note">Work only grows when a rung is funded.</span>
+                </div>
+                <div class="gradient-rungs" id="gradient-rungs"></div>
+              </div>
+              <div class="decision">
+                <button class="action-button warn" data-action="ask-photo" id="primary-action">Ask for angled shiny-surface photo, $5</button>
+                <button class="action-button secondary" data-action="accept-risk" id="secondary-action">Buy without the extra photo, $0</button>
+                <button class="action-button secondary" data-action="pass" id="pass-action">Pass on this card</button>
+              </div>
+              <div class="fee-trace" aria-label="Dynamic fee trace">
+                <div><span>Safety work</span><strong id="fee-safety">$17</strong></div>
+                <div><span>Shipping and insurance</span><strong id="fee-shipping">$12</strong></div>
+                <div><span>Estimated marketplace fee avoided</span><strong id="fee-avoided">$72</strong></div>
+                <div><span>Estimated savings after fees</span><strong id="fee-savings">$39</strong></div>
+              </div>
+              <div class="live-panel" aria-label="Live protocol state">
+                <div class="live-row"><b>API</b><span id="api-status">Static preview</span></div>
+                <div class="live-row"><b>Phase</b><span id="live-phase">offer_review</span></div>
+                <div class="live-row"><b>Latest packet</b><span class="packet-hash" id="latest-packet">none yet</span></div>
+                <div class="live-row"><b>Last event</b><span id="last-event">none yet</span></div>
+              </div>
+            </section>
+
+          </aside>
+        </section>
+      </div>
+    </main>
+    <script>
+      const apiBase = window.location.protocol === "file:" ? "http://127.0.0.1:8765" : "";
+      const $ = (id) => document.getElementById(id);
+      const actionButtons = ["primary-action", "secondary-action", "pass-action"].map($);
+      const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
+      let activeCatalogCardId = "neo2-1";
+      let latestTradeData = null;
+      const identityStorageKey = "marketplace_alpha_identity_v1";
+      const demoBuyerAddress = "0xB0B0000000000000000000000000000000000A11";
+      const walletState = loadIdentityState();
+      const cardViews = {
+        front: {
+          kind: "image",
+          src: "https://images.pokemontcg.io/neo2/1_hires.png",
+          alt: "Seller front photo of Neo Discovery Espeon",
+          title: "Seller front photo",
+          note: "straight-on demo scan",
+          status: "Seller says lightly played",
+        },
+        back: {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "B",
+          title: "Seller back photo",
+          note: "saved in the evidence packet",
+          status: "Back image slot",
+          copy: "The live alpha will open the seller's back photo here. This demo keeps the card area clean until an upload exists.",
+        },
+        "front-corners": {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "4",
+          title: "Four front corners",
+          note: "top left, top right, bottom left, bottom right",
+          status: "Four saved views",
+          copy: "Front corner views stay separate so an agent can talk about the exact corner without smearing it into general trust.",
+        },
+        "back-corners": {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "4",
+          title: "Four back corners",
+          note: "top left, top right, bottom left, bottom right",
+          status: "Four saved views",
+          copy: "Back corner views stay separate because whitening often lives on the back edge before the front looks scary.",
+        },
+        edges: {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "E",
+          title: "Edge photos",
+          note: "saved in the evidence packet",
+          status: "Edge evidence",
+          copy: "Edges are evidence, not a verdict. The agent can compare them, but the protocol only remembers what was supplied.",
+        },
+        surface: {
+          kind: "placeholder",
+          tone: "warn",
+          mark: "?",
+          title: "Surface angle",
+          note: "still missing",
+          status: "Decision-cost evidence",
+          copy: "This is the one expensive question: an angled shiny-surface photo before shipping approval.",
+        },
+        timestamp: {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "T",
+          title: "Fresh timestamp",
+          note: "seller nonce and time",
+          status: "Saved evidence",
+          copy: "The timestamp ties the seller's current attention to this trade, rather than a loose photo from somewhere else.",
+        },
+        package: {
+          kind: "placeholder",
+          tone: "neutral",
+          mark: "P",
+          title: "Packaging plan",
+          note: "ship, insure, and protect",
+          status: "Route planned",
+          copy: "Packaging becomes part of the route story: sleeve, loader, mailer, tracking, insurance, and signature when required.",
+        },
+      };
+
+      function shortHash(value) {
+        if (!value) return "none yet";
+        return value.length > 28 ? `${value.slice(0, 19)}...${value.slice(-8)}` : value;
+      }
+
+      function shortAddress(value) {
+        if (!value) return "none";
+        return value.length > 18 ? `${value.slice(0, 8)}...${value.slice(-6)}` : value;
+      }
+
+      function loadIdentityState() {
+        const fallback = {
+          connected: false,
+          mode: "demo",
+          address: demoBuyerAddress,
+          signatures: [],
+        };
+        try {
+          const saved = JSON.parse(window.localStorage.getItem(identityStorageKey) || "{}");
+          return {
+            ...fallback,
+            ...saved,
+            signatures: Array.isArray(saved.signatures) ? saved.signatures : [],
+          };
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function persistIdentityState() {
+        try {
+          window.localStorage.setItem(identityStorageKey, JSON.stringify(walletState));
+        } catch (error) {
+          // Local file previews can disable storage; the visible receipt still works for the session.
+        }
+      }
+
+      async function digestText(text) {
+        if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+          const bytes = new TextEncoder().encode(text);
+          const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+          return `0x${Array.from(new Uint8Array(digest))
+            .map((byte) => byte.toString(16).padStart(2, "0"))
+            .join("")}`;
+        }
+
+        let hash = 2166136261;
+        for (let i = 0; i < text.length; i += 1) {
+          hash ^= text.charCodeAt(i);
+          hash = Math.imul(hash, 16777619);
+        }
+        return `0xlocal${(hash >>> 0).toString(16).padStart(8, "0")}`;
+      }
+
+      function latestIdentityReceipt(type) {
+        return walletState.signatures.find((receipt) => receipt.type === type);
+      }
+
+      function renderSignatureRows() {
+        const signedWant = latestIdentityReceipt("buyer_want");
+        const rows = [
+          {
+            label: "Buyer want",
+            value: signedWant ? shortHash(signedWant.signature_hash) : "waiting for human signature",
+            signed: Boolean(signedWant),
+          },
+          {
+            label: "Delegate",
+            value: "agent can suggest; human must approve spend",
+            signed: false,
+          },
+          {
+            label: "Next gates",
+            value: "escrow, route, delivery, claim each need their own authority",
+            signed: false,
+          },
+        ];
+
+        $("signature-stack").innerHTML = "";
+        rows.forEach((row) => {
+          const node = document.createElement("div");
+          node.className = "signature-row";
+          node.classList.toggle("is-signed", row.signed);
+
+          const label = document.createElement("b");
+          label.textContent = row.label;
+          const value = document.createElement("span");
+          value.textContent = row.value;
+          node.append(label, value);
+          $("signature-stack").appendChild(node);
+        });
+      }
+
+      function renderIdentity(data = null, active = false) {
+        const browserWallet = walletState.connected && walletState.mode === "browser";
+        const demoConnected = walletState.connected && walletState.mode === "demo";
+        const address = walletState.address || demoBuyerAddress;
+
+        $("identity-chip").textContent = browserWallet
+          ? `Identity: ${shortAddress(address)}`
+          : demoConnected
+            ? "Identity: demo signed"
+            : "Identity: demo";
+        $("connect-wallet-button").textContent = browserWallet ? "Connected" : window.ethereum ? "Connect" : "Demo";
+        $("connect-wallet-button").classList.toggle("is-connected", browserWallet || demoConnected);
+        $("buyer-key").textContent = browserWallet ? `${shortAddress(address)} browser wallet` : `${shortAddress(address)} local demo`;
+        $("agent-delegate").textContent = "buyer-agent.local; can advise, cannot spend alone";
+        $("seller-key").textContent = active ? "seller controller checked at gates" : "registered seller controller";
+        $("arbiter-key").textContent = data && data.phase === "claim_open"
+          ? "arbiter can rule inside policy"
+          : "policy-bound arbiter, idle";
+
+        const signedWant = latestIdentityReceipt("buyer_want");
+        $("identity-copy").textContent = browserWallet
+          ? "Browser wallet connected. The next useful action is signing the buyer want; no money moves from this panel."
+          : signedWant
+            ? "Demo identity has signed a local audit receipt. It is useful for testing the shape, not for custody."
+            : "No browser wallet is connected. A local demo identity can still produce an audit receipt for this want.";
+        $("sign-intent-button").textContent = signedWant ? "Re-sign current want" : "Sign current want";
+        renderSignatureRows();
+      }
+
+      async function connectWallet() {
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            if (accounts && accounts[0]) {
+              walletState.connected = true;
+              walletState.mode = "browser";
+              walletState.address = accounts[0];
+              persistIdentityState();
+            }
+          } catch (error) {
+            $("identity-copy").textContent = "Wallet connection was not granted. Nothing changed.";
+          }
+        } else {
+          walletState.connected = true;
+          walletState.mode = "demo";
+          walletState.address = demoBuyerAddress;
+          persistIdentityState();
+        }
+        renderIdentity(latestTradeData, Boolean(latestTradeData));
+      }
+
+      function buyerWantMessage() {
+        const tradeTitle = $("trade-title").textContent.trim();
+        const price = document.querySelector(".price-box strong").textContent.trim();
+        const phase = latestTradeData && latestTradeData.phase ? latestTradeData.phase : "preview";
+        return [
+          "Marketplace Alpha Buyer Want",
+          `buyer:${walletState.address || demoBuyerAddress}`,
+          `agent:buyer-agent.local`,
+          `card:${tradeTitle}`,
+          `catalog_card:${activeCatalogCardId}`,
+          `price:${price}`,
+          `phase:${phase}`,
+          `scope:want_only_no_money_movement`,
+          `created_at:${new Date().toISOString()}`,
+        ].join("\n");
+      }
+
+      async function signCurrentWant() {
+        const button = $("sign-intent-button");
+        button.disabled = true;
+        try {
+          if (!walletState.connected && window.ethereum) {
+            await connectWallet();
+          }
+
+          const message = buyerWantMessage();
+          let signature = "";
+          let mode = walletState.mode;
+
+          if (walletState.connected && walletState.mode === "browser" && window.ethereum) {
+            try {
+              signature = await window.ethereum.request({
+                method: "personal_sign",
+                params: [message, walletState.address],
+              });
+            } catch (error) {
+              $("identity-copy").textContent = "Wallet signature was not granted. The want remains unsigned.";
+              return;
+            }
+          } else {
+            walletState.connected = true;
+            walletState.mode = "demo";
+            walletState.address = demoBuyerAddress;
+            mode = "demo";
+            signature = `demo-signature:${walletState.address}:${message}`;
+          }
+
+          const packetHash = await digestText(message);
+          const signatureHash = await digestText(signature);
+          const receipt = {
+            type: "buyer_want",
+            mode,
+            actor: walletState.address,
+            catalog_card: activeCatalogCardId,
+            packet_hash: packetHash,
+            signature_hash: signatureHash,
+            signed_at: new Date().toISOString(),
+          };
+          walletState.signatures = [
+            receipt,
+            ...walletState.signatures.filter((item) => item.type !== "buyer_want"),
+          ].slice(0, 6);
+          persistIdentityState();
+          $("identity-copy").textContent = mode === "browser"
+            ? "Buyer want signed by the connected wallet. Still only a want, not evidence about the card."
+            : "Demo buyer want signed. Good for local audit flow; not a production signature.";
+          renderIdentity(latestTradeData, Boolean(latestTradeData));
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      function catalogImage(card) {
+        if (!card || !card.images) return "";
+        return card.images.large || card.images.small || "";
+      }
+
+      function catalogLine(card) {
+        if (!card) return "Catalog candidate waiting.";
+        const setName = card.set && card.set.name ? card.set.name : "unknown set";
+        const number = card.number ? `#${card.number}` : "number unknown";
+        const rarity = card.rarity || "rarity unknown";
+        return `Catalog candidate: ${card.name}, ${setName}, ${number}, ${rarity}.`;
+      }
+
+      function catalogMeta(card) {
+        if (!card) return "Source row not loaded yet.";
+        const artist = card.artist ? `Artist: ${card.artist}. ` : "";
+        const updated = card.pricing_refs && card.pricing_refs.tcgplayer_updated_at
+          ? `Price ref updated ${card.pricing_refs.tcgplayer_updated_at}.`
+          : "Price ref not used for truth.";
+        return `${artist}${updated}`;
+      }
+
+      function renderReferenceCard(card, receipt, sourceName = "Pokemon TCG API") {
+        if (!card) return;
+        activeCatalogCardId = card.id || activeCatalogCardId;
+        const image = catalogImage(card);
+        if (image) {
+          $("reference-image").src = image;
+          $("reference-image").alt = `Color catalog reference image for ${card.name}`;
+          document.documentElement.style.setProperty("--card-front-image", `url("${image}")`);
+        }
+        $("reference-line").textContent = catalogLine(card);
+        $("catalog-source-line").textContent = `Source: ${sourceName}. ${catalogMeta(card)}`;
+        $("catalog-receipt").textContent = receipt && receipt.hash
+          ? `contact ${shortHash(receipt.hash)}`
+          : "contact receipt waiting";
+        if (!$("catalog-results").children.length) {
+          renderCatalogResults([card], card.id);
+        } else {
+          Array.from($("catalog-results").children).forEach((node) => {
+            node.classList.toggle("is-selected", node.dataset.cardId === card.id);
+          });
+        }
+      }
+
+      function renderCatalogResults(cards, selectedId) {
+        $("catalog-results").innerHTML = "";
+        (cards || []).slice(0, 5).forEach((card) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "catalog-result";
+          button.classList.toggle("is-selected", card.id === selectedId);
+          button.dataset.cardId = card.id;
+
+          const image = document.createElement("img");
+          image.alt = "";
+          image.src = card.images && card.images.small ? card.images.small : catalogImage(card);
+
+          const copy = document.createElement("span");
+          const title = document.createElement("b");
+          title.textContent = `${card.name} ${card.number ? `#${card.number}` : ""}`;
+          const meta = document.createElement("span");
+          const setName = card.set && card.set.name ? card.set.name : "Unknown set";
+          meta.textContent = `${setName} · ${card.rarity || "rarity unknown"}`;
+
+          copy.append(title, meta);
+          button.append(image, copy);
+          button.addEventListener("click", () => selectCatalogCard(card.id));
+          $("catalog-results").appendChild(button);
+        });
+      }
+
+      function lastTx(receipt) {
+        if (!receipt || !receipt.transactions || !receipt.transactions.length) return "";
+        return receipt.transactions[receipt.transactions.length - 1].tx_hash;
+      }
+
+      function setButton(button, spec) {
+        button.textContent = spec.label;
+        button.dataset.action = spec.action;
+        button.disabled = false;
+      }
+
+      function renderWorkGradient(gradient) {
+        if (!gradient) return;
+        $("funded-gradient-title").textContent = gradient.title || "Funded work gradient";
+        $("funded-gradient-note").textContent = gradient.funded_key === "none"
+          ? "Work only grows when a rung is funded."
+          : `Funded: ${gradient.funded_key.replaceAll("_", " ")}.`;
+        $("gradient-rungs").innerHTML = "";
+        (gradient.rungs || []).forEach((rung) => {
+          const node = document.createElement("div");
+          node.className = "gradient-rung";
+          node.classList.toggle("is-selected", rung.key === gradient.selected_key);
+          node.classList.toggle("is-funded", rung.key === gradient.funded_key);
+          node.innerHTML = `
+            <b></b>
+            <strong></strong>
+            <span></span>
+            <span></span>
+          `;
+          const [label, amount, work, time] = node.querySelectorAll("b, strong, span");
+          label.textContent = rung.label;
+          amount.textContent = rung.amount;
+          work.textContent = rung.work;
+          time.textContent = rung.time;
+          $("gradient-rungs").appendChild(node);
+        });
+      }
+
+      function routeGateState(data) {
+        if (data.route_gate) return data.route_gate;
+        const packets = data.packets || [];
+        const wallBundle = packets.find((packet) => packet.schema === "marketplace.route_wall_bundle.v0.1");
+        const spendability = packets.find((packet) => packet.schema === "marketplace.evidence_spendability.v0.1");
+        const spendabilityPayload = spendability ? spendability.payload || {} : {};
+        return {
+          wall_bundle_ready: Boolean(wallBundle),
+          route_spendability_ready: Boolean(spendability),
+          evm_route_locked: false,
+          spendability_cites_bundle: Boolean(
+            wallBundle && spendability && spendabilityPayload.wall_bundle_hash === wallBundle.hash
+          ),
+          ready_for_evm_route_lock: Boolean(
+            wallBundle && spendability && spendabilityPayload.wall_bundle_hash === wallBundle.hash
+          ),
+        };
+      }
+
+      function selectCardView(key) {
+        const view = cardViews[key] || cardViews.front;
+        const image = $("main-card-image");
+        const placeholder = $("main-card-placeholder");
+
+        if (view.kind === "image") {
+          image.hidden = false;
+          image.src = view.src;
+          image.alt = view.alt;
+          placeholder.hidden = true;
+        } else {
+          image.hidden = true;
+          placeholder.hidden = false;
+          placeholder.classList.toggle("neutral", view.tone !== "warn");
+          $("placeholder-mark").textContent = view.mark;
+          $("placeholder-copy").textContent = view.copy;
+        }
+
+        $("main-view-title").textContent = view.title;
+        $("main-view-note").textContent = view.note;
+        $("main-view-status").textContent = view.status;
+
+        viewButtons.forEach((button) => {
+          const selected = button.dataset.view === key;
+          button.classList.toggle("is-selected", selected);
+          button.setAttribute("aria-pressed", selected ? "true" : "false");
+        });
+      }
+
+      function renderTrade(data, active) {
+        latestTradeData = data;
+        const ui = data.ui;
+        if (data.card && data.card.title) {
+          $("trade-title").textContent = data.card.title;
+        }
+        $("state-chip").textContent = ui.state_chip;
+        $("trade-summary").textContent = ui.summary;
+        $("agent-copy").textContent = ui.agent_copy;
+        $("why-line").textContent = ui.why;
+        $("need-line").textContent = ui.need;
+        $("checked-line").textContent = ui.checked;
+        $("judgment-line").textContent = ui.judgment;
+        $("decision-title").textContent = ui.decision_title;
+        $("decision-note").textContent = ui.decision_note;
+
+        $("cost-seller-time").textContent = data.cost_line.seller_time;
+        $("cost-delay").textContent = data.cost_line.delay;
+        $("cost-unlocks").textContent = data.cost_line.unlocks;
+        $("fee-safety").textContent = data.cost_line.safety_work;
+        $("fee-shipping").textContent = data.cost_line.shipping_insurance;
+        $("fee-avoided").textContent = data.cost_line.marketplace_fee_avoided;
+        $("fee-savings").textContent = data.cost_line.estimated_savings_after_fees;
+        renderWorkGradient(data.work_gradient);
+        if (data.catalog) {
+          const sourceName = data.catalog.source && data.catalog.source.name ? data.catalog.source.name : "Pokemon TCG API";
+          renderReferenceCard(data.catalog.reference_card, data.catalog.contact_receipt, sourceName);
+        }
+
+        setButton($("primary-action"), ui.primary);
+        setButton($("secondary-action"), ui.secondary);
+        setButton($("pass-action"), ui.pass);
+
+        $("api-status").textContent = active ? "Live local alpha" : "Static preview";
+        $("live-phase").textContent = data.phase;
+        $("latest-packet").textContent = data.latest_packet
+          ? `${data.latest_packet.packet_id} · ${shortHash(data.latest_packet.hash)}`
+          : "none yet";
+        const lastEvent = data.events && data.events.length ? data.events[data.events.length - 1] : null;
+        $("last-event").textContent = lastEvent ? `${lastEvent.event_type}: ${lastEvent.summary}` : "none yet";
+
+        const gate = routeGateState(data);
+        const bundleReady = Boolean(gate.wall_bundle_ready);
+        const spendabilityReady = Boolean(gate.route_spendability_ready && gate.spendability_cites_bundle);
+        const routeReady = Boolean(gate.ready_for_evm_route_lock);
+        const routeLocked = Boolean(gate.evm_route_locked);
+        $("wall-bundle-state").textContent = bundleReady ? "ready" : "waiting";
+        $("wall-spendability-state").textContent = spendabilityReady ? "ready" : "waiting";
+        $("wall-route-state").textContent = routeLocked ? "locked" : routeReady ? "ready" : "blocked";
+        $("wall-bundle-card").classList.toggle("is-ready", bundleReady);
+        $("wall-spendability-card").classList.toggle("is-ready", spendabilityReady);
+        $("wall-route-status").classList.toggle("is-ready", routeReady || routeLocked);
+
+        const receipt = data.evm_route && data.evm_route.receipt;
+        const routeError = data.evm_route && data.evm_route.error;
+        const lifecycle = data.evm_lifecycle || {};
+        const delivery = lifecycle.delivery;
+        const closure = lifecycle.closure;
+        const lifecycleError = lifecycle.error;
+        $("chain-receipt-panel").classList.toggle("is-active", Boolean(receipt));
+        $("chain-receipt-panel").classList.toggle("has-error", Boolean((routeError || lifecycleError) && !receipt));
+        $("evm-status-copy").textContent = receipt
+          ? "Route locked on a local Anvil escrow. This is a route receipt, not delivery proof."
+          : routeError || lifecycleError
+            ? routeError || lifecycleError
+            : "No route commit yet.";
+        $("evm-final-state").textContent = receipt ? receipt.final_state : "not committed";
+        $("evm-trade-id").textContent = receipt ? `#${receipt.trade_id} on anvil:${receipt.chain_id}` : "none";
+        $("evm-route-tx").textContent = receipt ? shortHash(receipt.route_tx_hash) : "none";
+        $("evm-escrow").textContent = receipt ? shortHash(receipt.escrow) : "none";
+        $("evm-wall-bundle").textContent = receipt
+          ? shortHash(receipt.route_assembly_witness_hash || receipt.route_wall_bundle_evm_hash)
+          : "none";
+        $("evm-spendability").textContent = receipt ? shortHash(receipt.route_spendability_evm_hash) : "none";
+        $("evm-report-link").hidden = !receipt || !receipt.report;
+        if (receipt && receipt.report) {
+          $("evm-report-link").href = receipt.report;
+        }
+
+        $("delivery-step").classList.toggle("is-done", Boolean(delivery));
+        $("delivery-state").textContent = delivery ? "Delivery marked" : routeLocked ? "Ready for delivery evidence" : "Waiting for route lock";
+        $("delivery-detail").textContent = delivery
+          ? `Inspection opened · ${shortHash(lastTx(delivery))}`
+          : routeLocked
+            ? "The seller can submit delivery evidence now."
+            : "Delivery evidence cannot spend until the route is locked.";
+
+        const inspectionOpen = data.phase === "inspection_open";
+        $("inspection-step").classList.toggle("is-done", inspectionOpen || data.phase === "settled" || data.phase === "claim_open");
+        $("inspection-state").textContent = inspectionOpen
+          ? "Inspection open"
+          : data.phase === "settled"
+            ? "Inspection accepted"
+            : data.phase === "claim_open"
+              ? "Inspection challenged"
+              : "Inspection closed";
+        $("inspection-detail").textContent = inspectionOpen
+          ? "The buyer can accept or open a claim."
+          : data.phase === "settled"
+            ? "The buyer accepted the card and released escrow."
+            : data.phase === "claim_open"
+              ? "The buyer opened a claim inside the window."
+              : "The buyer has nothing to inspect yet.";
+
+        $("closure-step").classList.toggle("is-done", Boolean(closure && closure.action === "buyer-accept"));
+        $("closure-step").classList.toggle("is-claim", Boolean(closure && closure.action === "open-claim"));
+        $("closure-state").textContent = closure
+          ? closure.action === "buyer-accept"
+            ? "Final receipt"
+            : "Claim opened"
+          : "No receipt or claim";
+        $("closure-detail").textContent = closure
+          ? `${closure.final_state} · ${shortHash(lastTx(closure))}`
+          : "The trade has not reached a final receipt or dispute.";
+        renderIdentity(data, active);
+      }
+
+      async function api(path, options = {}) {
+        const response = await fetch(`${apiBase}${path}`, {
+          headers: { "content-type": "application/json" },
+          ...options,
+        });
+        if (!response.ok) throw new Error(`API ${response.status}`);
+        return response.json();
+      }
+
+      async function loadTrade() {
+        try {
+          renderTrade(await api("/api/alpha/trade"), true);
+        } catch (error) {
+          $("api-status").textContent = "Start local server to activate";
+        }
+      }
+
+      async function runAction(action) {
+        actionButtons.forEach((button) => {
+          button.disabled = true;
+        });
+        if (action === "commit-route") {
+          $("api-status").textContent = "Committing route on local EVM...";
+        } else if (action === "mark-delivered") {
+          $("api-status").textContent = "Marking delivered on local EVM...";
+        } else if (action === "buyer-accept") {
+          $("api-status").textContent = "Writing final receipt on local EVM...";
+        } else if (action === "open-claim") {
+          $("api-status").textContent = "Opening claim on local EVM...";
+        }
+        try {
+          renderTrade(await api(`/api/alpha/actions/${action}`, { method: "POST" }), true);
+        } catch (error) {
+          $("api-status").textContent = "Local API unavailable";
+        } finally {
+          actionButtons.forEach((button) => {
+            button.disabled = false;
+          });
+        }
+      }
+
+      async function runCatalogSearch(query) {
+        $("catalog-source-line").textContent = "Source: contacting Pokemon TCG API...";
+        $("catalog-results").innerHTML = "";
+        try {
+          const result = await api(`/api/catalog/search?q=${encodeURIComponent(query)}&pageSize=8`);
+          const cards = result.cards || [];
+          $("catalog-receipt").textContent = result.contact_receipt && result.contact_receipt.hash
+            ? `search contact ${shortHash(result.contact_receipt.hash)}`
+            : "search contact failed";
+          if (!cards.length) {
+            $("catalog-source-line").textContent = "Source: no catalog rows returned. That is a gap, not a fraud verdict.";
+            return;
+          }
+          renderCatalogResults(cards, cards[0].id);
+          await selectCatalogCard(cards[0].id);
+        } catch (error) {
+          $("catalog-source-line").textContent = "Source: catalog API unavailable.";
+          $("catalog-receipt").textContent = "contact failed";
+        }
+      }
+
+      async function selectCatalogCard(cardId) {
+        try {
+          const result = await api(`/api/catalog/cards/${encodeURIComponent(cardId)}`);
+          const card = result.selected_card || (result.cards && result.cards[0]);
+          if (!card) return;
+          const sourceName = result.source && result.source.name ? result.source.name : "Pokemon TCG API";
+          renderReferenceCard(card, result.contact_receipt, sourceName);
+        } catch (error) {
+          $("catalog-source-line").textContent = "Source: catalog card lookup failed.";
+        }
+      }
+
+      actionButtons.forEach((button) => {
+        button.addEventListener("click", () => runAction(button.dataset.action));
+      });
+
+      viewButtons.forEach((button) => {
+        button.addEventListener("click", () => selectCardView(button.dataset.view));
+      });
+
+      $("connect-wallet-button").addEventListener("click", connectWallet);
+      $("sign-intent-button").addEventListener("click", signCurrentWant);
+
+      $("catalog-search-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = $("catalog-query").value.trim();
+        if (query) runCatalogSearch(query);
+      });
+
+      renderIdentity(null, false);
+      loadTrade();
+    </script>
+  </body>
+</html>

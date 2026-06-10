@@ -1,0 +1,102 @@
+[
+  {
+    "arbitration_mode": "automated",
+    "outcome": "insured_lost",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0111",
+    "value_band": "low",
+    "value_usd": 98
+  },
+  {
+    "arbitration_mode": "automated_escalated_to_human",
+    "outcome": "insured_lost",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0093",
+    "value_band": "low",
+    "value_usd": 27
+  },
+  {
+    "arbitration_mode": "automated",
+    "outcome": "minor_condition_delta",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "known",
+    "source_trade_id": "SIM-0081",
+    "value_band": "low",
+    "value_usd": 85
+  },
+  {
+    "arbitration_mode": "automated",
+    "outcome": "route_delay",
+    "route": "show_pickup",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "unknown",
+    "source_trade_id": "SIM-0124",
+    "value_band": "low",
+    "value_usd": 44
+  },
+  {
+    "arbitration_mode": "automated_escalated_to_human",
+    "outcome": "uninsured_lost",
+    "route": "uninsured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "known",
+    "source_trade_id": "SIM-0087",
+    "value_band": "low",
+    "value_usd": 70
+  },
+  {
+    "arbitration_mode": "automated_escalated_to_human",
+    "outcome": "wrong_card",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0001",
+    "value_band": "low",
+    "value_usd": 42
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "authenticity_flag",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "unknown",
+    "source_trade_id": "SIM-0095",
+    "value_band": "grail",
+    "value_usd": 550
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "seller_nonship",
+    "route": "international_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0164",
+    "value_band": "grail",
+    "value_usd": 2781
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "underinsured_lost",
+    "route": "underinsured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0015",
+    "value_band": "grail",
+    "value_usd": 1080
+  },
+  {
+    "arbitration_mode": "none",
+    "outcome": "buyer_remorse",
+    "route": "underinsured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "unknown",
+    "source_trade_id": "SIM-0247",
+    "value_band": "high",
+    "value_usd": 865
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0001: wrong_card on a $42 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: friction_threshold_crossed. Friction: authenticity_or_identity_risk, bond_penalty_above_auto_cap, case_scope_outside_automation, evidence_ambiguity, refund_above_auto_cap.\",\"friction_triggers\":[\"authenticity_or_identity_risk\",\"bond_penalty_above_auto_cap\",\"case_scope_outside_automation\",\"evidence_ambiguity\",\"refund_above_auto_cap\"],\"human_questions\":[\"approve_severe_remedy_or_escalation\",\"ask_human_or_human_arbiter_to_review_evidence\"],\"outcome\":\"wrong_card\",\"path\":\"friction_threshold_crossed\",\"route_failure_surrogate\":false,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c\",\"escrow_terms\":\"sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f\",\"friction_policy\":\"sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67\",\"intent\":\"sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d\",\"seller_offer\":\"sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705\"},\"source_simulation_trade\":\"SIM-0001\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0001: wrong_card on a $42 low trade. Selected automated arbiter did:market:arbiter:auto-low-tcg-1. Path: friction_threshold_crossed. Friction: authenticity_or_identity_risk, bond_penalty_above_auto_cap, case_scope_outside_automation, evidence_ambiguity, refund_above_auto_cap.",
+    "friction_triggers": [
+      "authenticity_or_identity_risk",
+      "bond_penalty_above_auto_cap",
+      "case_scope_outside_automation",
+      "evidence_ambiguity",
+      "refund_above_auto_cap"
+    ],
+    "human_questions": [
+      "approve_severe_remedy_or_escalation",
+      "ask_human_or_human_arbiter_to_review_evidence"
+    ],
+    "outcome": "wrong_card",
+    "path": "friction_threshold_crossed",
+    "route_failure_surrogate": false,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:2dec9aba911b54ce3c7c8397a6b737314d462f8024b41341e8d0e61e3946246c",
+      "escrow_terms": "sha256:1cd62bd10eec7f8c3ff6c3e3f2d3dd6e15d57448575e1c7f90d3b78c136bdc0f",
+      "friction_policy": "sha256:344f49caac04226ccd1d85a6f2af87f5a64b1db1c3b7b474eafacd66e1644d67",
+      "intent": "sha256:c39cd245e70b0e3567dc1be4bb5a8b6b4c649facd815aafdb495f9f48bbcfb0d",
+      "seller_offer": "sha256:f5b7d3e11065e6ae61dfe0a75d9fa3be85b8a9b59684d2fa478b9f99ab978705"
+    },
+    "source_simulation_trade": "SIM-0001"
+  },
+  "payload_hash": "0x2011498368d67428443caccd2195c928584fc288487cf448c2dccaadc6b287f9",
+  "signature": "0x59715a4846908487c3b8c75bfa5075f7c645af03d720f9569ee46754b7ec17dc4a0b3602c11520b3c1fb8274b04d6b87a927497645e737d746e891742003f3f81c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

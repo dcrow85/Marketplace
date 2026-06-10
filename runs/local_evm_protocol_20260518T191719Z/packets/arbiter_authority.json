@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:arbiter:anvil-2\",\"bond_eth\":\"1.0\",\"conflict_policy\":\"must_disclose_and_recuse\",\"jurisdiction\":\"local-anvil-probe\",\"schema\":\"marketplace.arbiter_record.v0.2\",\"scope\":[\"tcg_single_card\",\"condition_claim\",\"route_failure\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:arbiter:anvil-2",
+    "bond_eth": "1.0",
+    "conflict_policy": "must_disclose_and_recuse",
+    "jurisdiction": "local-anvil-probe",
+    "schema": "marketplace.arbiter_record.v0.2",
+    "scope": [
+      "tcg_single_card",
+      "condition_claim",
+      "route_failure"
+    ]
+  },
+  "payload_hash": "0xa9248044dfd441d24063324f762a928fef56422ae6281ad465b34b9e5ab1724f",
+  "signature": "0xce2f405ddc5571c7c4256e735fa56682bee161b2c0a15c456f6c4e1ac21e9cf538bcd0a322a74a50c12ca4780f9383f96944d17bc757789f91d66399bead71461b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+}

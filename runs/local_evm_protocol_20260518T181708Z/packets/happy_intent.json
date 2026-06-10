@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-alpha\",\"cost_field\":{\"attention_budget\":\"low\",\"evidence_floor\":[\"front_scan\",\"back_scan\",\"insured_tracking\"],\"max_total_price_eth\":\"0.80\",\"route_preferences\":[\"insured_shipping\",\"local_handoff_if_close\"]},\"intent_id\":\"intent_happy_001\",\"object\":{\"card\":\"Japanese vintage holo\",\"condition_floor\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"language\":\"Japanese\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-alpha",
+    "cost_field": {
+      "attention_budget": "low",
+      "evidence_floor": [
+        "front_scan",
+        "back_scan",
+        "insured_tracking"
+      ],
+      "max_total_price_eth": "0.80",
+      "route_preferences": [
+        "insured_shipping",
+        "local_handoff_if_close"
+      ]
+    },
+    "intent_id": "intent_happy_001",
+    "object": {
+      "card": "Japanese vintage holo",
+      "condition_floor": "LP",
+      "domain": "tcg",
+      "game": "pokemon",
+      "language": "Japanese"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0xd08e450e965d052d9201f63e8df5e8e149e61b65950b3739f0cee1d23d293caf"
+}

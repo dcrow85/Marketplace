@@ -1,0 +1,76 @@
+{
+  "asset_descriptors": [
+    {
+      "asset_id": "front-photo",
+      "byte_length": 36,
+      "captured_at": "2026-05-19T18:06:45.904405+00:00",
+      "created_at": "2026-05-19T18:06:45.904405+00:00",
+      "keccak256": "0xf4c57212dcdf3221337902edb632aaf86a470ac362003f83485aa0e5e5930be0",
+      "media_type": "image/png",
+      "role": "front_photo",
+      "schema": "marketplace.asset_descriptor.v0.3",
+      "sha256": "523aa1c9ff5f567c1ea3c35309e0668ff85a983512fdeb9d7bb3ad8ccd3a9344",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": true,
+          "uri": "runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/valid_standard_v0_3/front-photo.png"
+        }
+      ],
+      "visibility": "buyer_arbiter",
+      "weak_supplemental": false
+    },
+    {
+      "asset_id": "back-photo",
+      "byte_length": 35,
+      "captured_at": "2026-05-19T18:06:45.904405+00:00",
+      "created_at": "2026-05-19T18:06:45.904405+00:00",
+      "keccak256": "0x5a2211f7a3f5499705a5457e9b25f0c69f99a8c78b49a9a127f1a59013dd34ac",
+      "media_type": "image/png",
+      "role": "back_photo",
+      "schema": "marketplace.asset_descriptor.v0.3",
+      "sha256": "5c01c8ed7709e84a83723d5c6ff1c24d22a1d612cdf0566115dec17ca432af48",
+      "source": {
+        "capture_mode": "generated_fixture",
+        "origin": "seller"
+      },
+      "storage_refs": [
+        {
+          "kind": "file",
+          "mutable": false,
+          "primary": true,
+          "uri": "runs/evidence_manifest_v0_3_drill_20260519T180645Z/assets/valid_standard_v0_3/back-photo.png"
+        }
+      ],
+      "visibility": "buyer_arbiter",
+      "weak_supplemental": false
+    }
+  ],
+  "asset_root_hash": "0x30b2bb17552299649cdb6642092b5301bd2d0927995df9d7fc4346fa98c38c27",
+  "canonicalization": "canonical-json-payload-v1",
+  "evidence_tier": "standard",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "issued_at": "2026-05-19T18:06:45.904405+00:00",
+  "issuer": "did:market:seller:anvil-1",
+  "issuer_role": "seller",
+  "known_conflicts": [],
+  "known_limits": [
+    "Fixture bytes are not real card images."
+  ],
+  "manifest_hash_source": "packet_envelope_payload_hash",
+  "manifest_id": "valid_standard_v0_3",
+  "schema": "marketplace.evidence_manifest.v0.3",
+  "subject": {
+    "anchor_hash": "0x50111c71be74daa486f277e99918ad8558b67f7bc42de1d163a8823f77bf58f8",
+    "subject_hash": "0xa588da444858673d600d45edf42422d8dabe983ba4f86c02c3f3269e8d6adebb",
+    "subject_type": "item_fingerprint",
+    "trade_id": 9301
+  },
+  "tier_basis": "manifest_integrity_only",
+  "trade_id": 9301
+}

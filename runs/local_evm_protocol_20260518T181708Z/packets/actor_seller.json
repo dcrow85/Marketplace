@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:seller:anvil-1\",\"address\":\"0x70997970C51812dc3A010C7d01b50e0d17dc79C8\",\"capabilities\":[\"sign_packets\",\"settle_local_evm_probe\"],\"chain\":\"anvil:31337\",\"role\":\"seller\",\"schema\":\"marketplace.actor_record.v0.2\",\"status\":\"active\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:seller:anvil-1",
+    "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "capabilities": [
+      "sign_packets",
+      "settle_local_evm_probe"
+    ],
+    "chain": "anvil:31337",
+    "role": "seller",
+    "schema": "marketplace.actor_record.v0.2",
+    "status": "active"
+  },
+  "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5"
+}

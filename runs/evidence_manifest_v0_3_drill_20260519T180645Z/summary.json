@@ -1,0 +1,85 @@
+{
+  "canonicalization": "canonical-json-payload-v1",
+  "cases": [
+    {
+      "error": "",
+      "expected": "validator accepts content-hashed v0.3 front/back assets",
+      "observations": [],
+      "outcome": "valid",
+      "passed": true,
+      "slug": "valid_standard_v0_3",
+      "title": "Valid v0.3 standard manifest"
+    },
+    {
+      "error": "asset byte_length mismatch for front-photo",
+      "expected": "validator rejects mutated primary bytes with unchanged descriptor hashes",
+      "observations": [
+        "pre-switch valid: True",
+        "mutated asset: assets/byte_switch_v0_3/front-photo.png"
+      ],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "byte_switch_v0_3",
+      "title": "v0.3 byte switch after manifest build"
+    },
+    {
+      "error": "manifest asset_root_hash mismatch",
+      "expected": "validator rejects a stale or forged asset_root_hash",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "asset_root_bad_v0_3",
+      "title": "v0.3 asset root mismatch"
+    },
+    {
+      "error": "manifest subject_hash mismatch",
+      "expected": "validator rejects a manifest whose subject hash no longer binds to the anchor",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "subject_bad_v0_3",
+      "title": "v0.3 subject hash mismatch"
+    },
+    {
+      "error": "manifest issuer did:market:seller:anvil-1 lacks role verifier",
+      "expected": "validator rejects issuer role inflation against actor authority",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "role_inflation_v0_3",
+      "title": "v0.3 seller declares verifier role"
+    },
+    {
+      "error": "verified manifest requires verifier attestation refs",
+      "expected": "validator rejects self-declared verified structure",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "tier_inflation_v0_3",
+      "title": "v0.3 verified tier without attestation refs"
+    },
+    {
+      "error": "claim_grade manifest requires 180 day retention",
+      "expected": "validator rejects claim-grade memory without a 180-day retention policy",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "claim_retention_bad_v0_3",
+      "title": "v0.3 claim grade without retention"
+    },
+    {
+      "error": "unsupported primary storage ref for front-photo",
+      "expected": "validator rejects mutable primary evidence in the local EVM manifest path",
+      "observations": [],
+      "outcome": "rejected",
+      "passed": true,
+      "slug": "mutable_primary_bad_v0_3",
+      "title": "v0.3 mutable primary ref"
+    }
+  ],
+  "generated_at": "2026-05-19T18:06:46.819643+00:00",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "passed": true,
+  "run_id": "evidence_manifest_v0_3_drill_20260519T180645Z",
+  "spec": "marketplace.evidence_manifest.v0.3"
+}

@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth\":\"0.60\",\"insured\":true,\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-REPLACE-0003\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth": "0.60",
+    "insured": true,
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-REPLACE-0003",
+    "trade_id": 3
+  },
+  "payload_hash": "0xacd43897e24072fa669d9ed71da1af9e80b2c086dfbf89c85be310e90f7e3dba",
+  "signature": "0x43dd192bd43abd98ef2282490fc6a7659971a7e348cc8eae207a3314d6b9a6294d2e67eed59836ef6247b5d554dc9615ee8f60bb69add90664b351ffefd4731b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

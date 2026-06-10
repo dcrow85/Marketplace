@@ -1,0 +1,497 @@
+{
+  "case_count": 14,
+  "generated_at": "2026-05-22T16:24:53Z",
+  "no_claim_escalation_without_named_matrix_row": true,
+  "no_evidence_promoted_beyond_not_claiming": true,
+  "no_ordinary_accept_when_unresolved_ambiguity_waived": true,
+  "no_route_lock_from_trajectory_capacity_alone": true,
+  "no_route_lock_without_wall_bundle_spendability_witness": true,
+  "pass": true,
+  "rows": [
+    {
+      "assembly_placement_present": [],
+      "case_id": "trajectory_only_offer",
+      "decision": "blocked",
+      "gate": "offer_evaluation",
+      "hard_missing_access_variables": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet"
+      ],
+      "observed_terminal_floor": "block",
+      "packets_required": [
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "card_reference_packet",
+        "evidence_profile_id",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet"
+      ],
+      "predicted_terminal_floor": "block",
+      "route_witness_agrees": true,
+      "trade_id": "original_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "external_availability_covenant"
+      ],
+      "wall_floor": "block"
+    },
+    {
+      "assembly_placement_present": [
+        "BuyerRiskAcceptance",
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "waived_offer",
+      "decision": "accept_with_waiver",
+      "gate": "offer_evaluation",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "waiver_required",
+      "packets_required": [],
+      "predicted_terminal_floor": "waiver_required",
+      "route_witness_agrees": true,
+      "trade_id": "scoped_offer_with_buyer_waiver",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "edge_or_border_closeups",
+        "external_availability_covenant",
+        "four_corner_closeups",
+        "fresh_nonce_possession",
+        "surface_or_holo_angle"
+      ],
+      "wall_floor": "waiver_required"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "compliant_offer",
+      "decision": "accept_or_continue",
+      "gate": "offer_evaluation",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "pass",
+      "packets_required": [],
+      "predicted_terminal_floor": "pass",
+      "route_witness_agrees": true,
+      "trade_id": "full_wall_compliant_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "adversarial_offer",
+      "decision": "blocked",
+      "gate": "offer_evaluation",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "block",
+      "packets_required": [],
+      "predicted_terminal_floor": "block",
+      "route_witness_agrees": true,
+      "trade_id": "adversarial_hash_compliant_offer",
+      "trajectory_capacity_present": [
+        "authenticity",
+        "raw_card_condition",
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [
+        "authenticity",
+        "raw_card_condition"
+      ],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "external_availability_covenant",
+        "failure_to_cure",
+        "material_condition_mismatch",
+        "route_negligence",
+        "underinsurance_without_buyer_acceptance",
+        "wrong_item"
+      ],
+      "wall_floor": "block"
+    },
+    {
+      "assembly_placement_present": [],
+      "case_id": "trajectory_only_funding",
+      "decision": "funding_blocked",
+      "gate": "funding",
+      "hard_missing_access_variables": [
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "card_reference_packet",
+        "evidence_profile_id",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "observed_terminal_floor": "block",
+      "packets_required": [
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "card_reference_packet",
+        "evidence_profile_id",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet"
+      ],
+      "predicted_terminal_floor": "block",
+      "route_witness_agrees": true,
+      "trade_id": "original_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "external_availability_covenant"
+      ],
+      "wall_floor": "block"
+    },
+    {
+      "assembly_placement_present": [
+        "BuyerRiskAcceptance",
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "waived_funding",
+      "decision": "accept_with_recorded_waiver",
+      "gate": "funding",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "waiver_required",
+      "packets_required": [],
+      "predicted_terminal_floor": "waiver_required",
+      "route_witness_agrees": true,
+      "trade_id": "scoped_offer_with_buyer_waiver",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "edge_or_border_closeups",
+        "external_availability_covenant",
+        "four_corner_closeups",
+        "fresh_nonce_possession",
+        "surface_or_holo_angle"
+      ],
+      "wall_floor": "waiver_required"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "compliant_funding",
+      "decision": "escrow_fundable",
+      "gate": "funding",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "pass",
+      "packets_required": [],
+      "predicted_terminal_floor": "pass",
+      "route_witness_agrees": true,
+      "trade_id": "full_wall_compliant_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    },
+    {
+      "assembly_placement_present": [],
+      "case_id": "trajectory_only_route",
+      "decision": "route_lock_blocked",
+      "gate": "route_commitment",
+      "hard_missing_access_variables": [
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "routeWallBundleHash",
+        "route_insurance_risk_owner_packet",
+        "route_spendability_hash",
+        "wall_bundle_hash"
+      ],
+      "observed_terminal_floor": "block",
+      "packets_required": [
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "route_insurance_risk_owner_packet",
+        "route_spendability_hash"
+      ],
+      "predicted_terminal_floor": "block",
+      "route_witness_agrees": false,
+      "trade_id": "original_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [
+        "external_availability_covenant"
+      ],
+      "wall_floor": "block"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "compliant_route_without_spendability",
+      "decision": "route_lock_blocked",
+      "gate": "route_commitment",
+      "hard_missing_access_variables": [
+        "routeWallBundleHash",
+        "route_spendability_hash"
+      ],
+      "observed_terminal_floor": "block",
+      "packets_required": [
+        "route_spendability_hash"
+      ],
+      "predicted_terminal_floor": "block",
+      "route_witness_agrees": false,
+      "trade_id": "full_wall_compliant_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "routeWallBundleHash",
+        "route_insurance_risk_owner_packet",
+        "route_spendability_hash",
+        "wall_bundle_hash"
+      ],
+      "case_id": "route_ready",
+      "decision": "route_locked",
+      "gate": "route_commitment",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "pass",
+      "packets_required": [],
+      "predicted_terminal_floor": "pass",
+      "route_witness_agrees": true,
+      "trade_id": "access_route_ready_offer",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "claim_missing_buyer_evidence",
+      "decision": "escalate_with_matrix_row",
+      "gate": "claim_opening",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "escalate",
+      "packets_required": [
+        "wrong_item:buyer:arrival_photos",
+        "wrong_item:buyer:return_fingerprint",
+        "condition_downgrade:buyer:immediate_arrival_photos",
+        "empty_package:buyer:opening_sequence",
+        "empty_package:buyer:package_exterior"
+      ],
+      "predicted_terminal_floor": "escalate",
+      "route_witness_agrees": true,
+      "trade_id": "claim_closure_missing_buyer_evidence",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "escalate"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "claim_complete",
+      "decision": "claim_packet_complete",
+      "gate": "claim_opening",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "pass",
+      "packets_required": [],
+      "predicted_terminal_floor": "pass",
+      "route_witness_agrees": true,
+      "trade_id": "claim_closure_with_required_evidence",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "bond_missing_buyer_evidence",
+      "decision": "escalate",
+      "gate": "bond_action",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "escalate",
+      "packets_required": [
+        "wrong_item:buyer:arrival_photos",
+        "wrong_item:buyer:return_fingerprint",
+        "condition_downgrade:buyer:immediate_arrival_photos",
+        "empty_package:buyer:opening_sequence",
+        "empty_package:buyer:package_exterior"
+      ],
+      "predicted_terminal_floor": "escalate",
+      "route_witness_agrees": true,
+      "trade_id": "claim_closure_missing_buyer_evidence",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "escalate"
+    },
+    {
+      "assembly_placement_present": [
+        "CardReferenceCandidate",
+        "arbiter_policy_hash",
+        "bond_scope_packet",
+        "inventory_lock_hash",
+        "item_fingerprint_hash",
+        "proof_vector_scope_packet",
+        "route_insurance_risk_owner_packet",
+        "wall_bundle_hash"
+      ],
+      "case_id": "bond_complete_claim_still_needs_ruling",
+      "decision": "escalate",
+      "gate": "bond_action",
+      "hard_missing_access_variables": [],
+      "observed_terminal_floor": "escalate",
+      "packets_required": [
+        "arbiter_ruling_packet"
+      ],
+      "predicted_terminal_floor": "escalate",
+      "route_witness_agrees": true,
+      "trade_id": "claim_closure_with_required_evidence",
+      "trajectory_capacity_present": [
+        "seller_controls_ebay_account",
+        "seller_controls_shop_domain"
+      ],
+      "trajectory_overclaims": [],
+      "validator_replay_agrees": true,
+      "waiver_bearing_variables": [],
+      "wall_floor": "pass"
+    }
+  ],
+  "terminal_floor_counts": {
+    "block": 5,
+    "escalate": 3,
+    "pass": 4,
+    "waiver_required": 2
+  },
+  "validator_replay_agrees": true
+}

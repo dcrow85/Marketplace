@@ -1,0 +1,64 @@
+{
+  "canonical_payload": "{\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:arbiter:anvil-2\",\"actor_role\":\"arbiter\",\"authority_hash\":\"0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"bond_action:2:condition-ruling\",\"gate_type\":\"bond_action\",\"leg\":\"return\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-05-19T17:58:05.618243+00:00\",\"issued_by\":\"did:market:arbiter:anvil-2\",\"issued_role\":\"arbiter\",\"manifest_hash\":\"0xbe54e4499349d31f8a037c8f0c3bd71b6cbba470fd8f437de42969bbb9ad0e19\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7\",\"requires\":[\"arbiter_assignment\",\"claim_opened\",\"verifier_attestation\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"claim_bond_action_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"condition_support\",\"not_claiming\":[\"authenticity\",\"carrier_damage\"],\"spend_limit\":\"moves_funds\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":2,\"window\":{\"after_state\":{\"state_hash\":\"0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df\",\"state_name\":\"ClaimOrDisputePending\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:arbiter:anvil-2",
+      "actor_role": "arbiter",
+      "authority_hash": "0xa9e4ee4262511749c1a2b26b9e73abcb048964652ce59d3fe0ba4e1d9abca253",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "bond_action:2:condition-ruling",
+      "gate_type": "bond_action",
+      "leg": "return"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-05-19T17:58:05.618243+00:00",
+    "issued_by": "did:market:arbiter:anvil-2",
+    "issued_role": "arbiter",
+    "manifest_hash": "0xbe54e4499349d31f8a037c8f0c3bd71b6cbba470fd8f437de42969bbb9ad0e19",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0x3ab184a7d4df5a144de2b034a9d96bbe663390459840e03b350f1485d3f9fbc7",
+    "requires": [
+      "arbiter_assignment",
+      "claim_opened",
+      "verifier_attestation"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "claim_bond_action_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "condition_support",
+        "not_claiming": [
+          "authenticity",
+          "carrier_damage"
+        ],
+        "spend_limit": "moves_funds",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 2,
+    "window": {
+      "after_state": {
+        "state_hash": "0x45e149f20122968b70f2cec9638624e733930ccc300ccc523d9295cc532714df",
+        "state_name": "ClaimOrDisputePending"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0x2efd9ea1136fe4dbd6b63ba6c3b1c30e58dcd260e8ead071f053ff32f5c2e215",
+  "signature": "0xb66598c6fed3ea344bc221043c84f085b63e53c3732282465878c168bffeb1375c924c99472c096f1e3c695a4215ce5f352bf69e81fe28fb44ad9ac549a461b81b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+}

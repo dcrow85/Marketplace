@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-05-20T14:15:54Z",
+  "interpretation": "PokemonTCG.io anchors the English Neo Discovery Espeon catalog row. TCGdex anchors the English row but does not return the Japanese neo2-1 row in this probe, so the Japanese-language claim stays evidence-dependent instead of becoming database truth.",
+  "pass": true,
+  "reference_packet": {
+    "card_number": "1",
+    "catalog_image_url": "https://images.pokemontcg.io/neo2/1_hires.png",
+    "domain": "tcg",
+    "fetched_at": "2026-05-20T14:15:54Z",
+    "game": "pokemon",
+    "match_kind": "language_equivalent",
+    "not_claiming": [
+      "authenticity",
+      "condition",
+      "possession",
+      "price_truth",
+      "seller_card_language",
+      "seller_inventory_existence"
+    ],
+    "packet_hash": "sha256:1ae46d93367c094c14174c8b9100f94a05b2d5a2f7f0cb04af2136293feb6919",
+    "printed_name": "Espeon",
+    "rarity": "Rare Holo",
+    "schema": "marketplace.pokemon_card_reference.v0.1",
+    "selected_by": "buyer_agent",
+    "set_name": "Neo Discovery",
+    "source": "pokemontcg.io",
+    "source_card_id": "neo2-1",
+    "source_coverage": "english_catalog_anchor_for_japanese_claim",
+    "source_language": "en",
+    "source_url": "https://api.pokemontcg.io/v2/cards/neo2-1",
+    "trade_id": "probe:japanese_neo_espeon",
+    "variant": ""
+  },
+  "source_results": {
+    "pokemontcg_search": {
+      "count": 2,
+      "ids": [
+        "neo2-1",
+        "neo2-20"
+      ],
+      "source_url": "https://api.pokemontcg.io/v2/cards?q=name%3Aespeon+set.name%3A%22Neo+Discovery%22&pageSize=5&select=id%2Cname%2Cset%2Cnumber%2Crarity%2Cimages"
+    },
+    "tcgdex_en_neo2_1": {
+      "name": "Espeon",
+      "source_url": "https://api.tcgdex.net/v2/en/cards/neo2-1",
+      "status": 200,
+      "variants": {
+        "firstEdition": true,
+        "holo": true,
+        "normal": false,
+        "reverse": false,
+        "wPromo": false
+      }
+    },
+    "tcgdex_ja_espeon_name": {
+      "count": 4,
+      "ids": [
+        "SV3-046",
+        "SV8a-062",
+        "SV8a-063",
+        "SV8a-211"
+      ],
+      "source_url": "https://api.tcgdex.net/v2/ja/cards?name=%E3%82%A8%E3%83%BC%E3%83%95%E3%82%A3"
+    },
+    "tcgdex_ja_neo2_1": {
+      "error": "Not Found",
+      "source_url": "https://api.tcgdex.net/v2/ja/cards/neo2-1",
+      "status": 404
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "error_code": "TIER_NOT_PERMISSION",
+      "error_message": "manifest tier is not spendability",
+      "expected": "standard manifest exists but route gate rejects without spendability",
+      "observations": [],
+      "outcome": "not_spendable",
+      "passed": true,
+      "slug": "tier_without_spendability",
+      "title": "Manifest tier cannot buy route"
+    },
+    {
+      "error_code": "",
+      "error_message": "",
+      "expected": "route gate accepts valid spendability packet",
+      "observations": [],
+      "outcome": "spendable",
+      "passed": true,
+      "slug": "route_spendability_accepts",
+      "title": "Route spendability accepts"
+    },
+    {
+      "error_code": "GATE_WINDOW",
+      "error_message": "after_event_hash not present in gate context",
+      "expected": "settlement rejects when challenge-clearance event is skipped and waiver path is not named",
+      "observations": [
+        "human waiver exists, but spendability did not name a waiver path and required challenge event is absent"
+      ],
+      "outcome": "not_spendable",
+      "passed": true,
+      "slug": "settlement_after_skipped_challenge",
+      "title": "Settlement after skipped challenge"
+    },
+    {
+      "error_code": "CLAIM_SCOPE",
+      "error_message": "contradiction_support cannot spend at route_commitment",
+      "expected": "route gate rejects contradiction-only old listing evidence",
+      "observations": [],
+      "outcome": "not_spendable",
+      "passed": true,
+      "slug": "old_photo_route_rejects",
+      "title": "Old photo cannot spend forward"
+    },
+    {
+      "error_code": "",
+      "error_message": "",
+      "expected": "same manifest can support contradiction in a claim packet",
+      "observations": [
+        "same durable memory rejected at forward route gate and accepted at return claim gate"
+      ],
+      "outcome": "spendable",
+      "passed": true,
+      "slug": "old_photo_claim_spends",
+      "title": "Old photo spends on return leg"
+    },
+    {
+      "error_code": "GATE_AUTHORITY",
+      "error_message": "buyer_agent cannot decide bond_action",
+      "expected": "buyer agent cannot authorize arbiter-only bond action",
+      "observations": [],
+      "outcome": "not_spendable",
+      "passed": true,
+      "slug": "wrong_actor_gate",
+      "title": "Wrong actor cannot move bond"
+    },
+    {
+      "error_code": "SPENDABILITY_REVOKED",
+      "error_message": "spendability has active revocation",
+      "expected": "manifest remains valid but tombstoned spendability rejects at gate",
+      "observations": [],
+      "outcome": "not_spendable",
+      "passed": true,
+      "slug": "revoked_spendability",
+      "title": "Revoked spendability cannot spend"
+    },
+    {
+      "error_code": "SPENDABILITY_CONSUMED",
+      "error_message": "single-use spendability already consumed",
+      "expected": "first route spend succeeds; second route spend rejects",
+      "observations": [
+        "first invocation ok: True",
+        "second invocation code: SPENDABILITY_CONSUMED"
+      ],
+      "outcome": "first_spendable_second_not_spendable",
+      "passed": true,
+      "slug": "single_use_consumed",
+      "title": "Single-use spendability cannot double spend"
+    },
+    {
+      "error_code": "",
+      "error_message": "",
+      "expected": "claim-support spendability can assemble multiple packets without funds-moving double spend",
+      "observations": [
+        "first invocation ok: True",
+        "second invocation ok: True"
+      ],
+      "outcome": "both_spendable",
+      "passed": true,
+      "slug": "append_only_weight_reusable",
+      "title": "Append-only claim weight can be reused"
+    }
+  ],
+  "generated_at": "2026-05-19T17:51:10.122225+00:00",
+  "passed": true,
+  "run_id": "evidence_spendability_drill_20260519T175109Z",
+  "spec": "marketplace.evidence_spendability.v0.1"
+}

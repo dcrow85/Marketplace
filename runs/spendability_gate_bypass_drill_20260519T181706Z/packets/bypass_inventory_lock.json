@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"inventory_key\":\"tcg:pokemon:bypass-drill:001\",\"item_fingerprint_hash\":\"0xa025b3d3116e1b7e8df0728a2007707ad78d0a4fce777ea3172048ca5dad3b09\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "inventory_key": "tcg:pokemon:bypass-drill:001",
+    "item_fingerprint_hash": "0xa025b3d3116e1b7e8df0728a2007707ad78d0a4fce777ea3172048ca5dad3b09",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trade_id": 1
+  },
+  "payload_hash": "0x1d04d93dbe2806200b2cb317d6fd11c9c43486c186c5b482409e8ab1c6a8125d",
+  "signature": "0x4ab0cceac4ecd065a7a56514676799c43e977ecf4a93817b7bea8810d0b271a20723cf888ffbad259537b4c6e751123ef42e5f3dcf5116f870823da060d686811b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

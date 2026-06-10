@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"arbiter\":\"did:market:arbiter:anvil-4\",\"buyer_refund_bps\":1000,\"dispute_bond_returned_to_buyer\":true,\"finding\":\"minor_route_exception\",\"schema\":\"marketplace.resolve_or_claim.v0.2\",\"seller_bond_penalty_bps\":0,\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "arbiter": "did:market:arbiter:anvil-4",
+    "buyer_refund_bps": 1000,
+    "dispute_bond_returned_to_buyer": true,
+    "finding": "minor_route_exception",
+    "schema": "marketplace.resolve_or_claim.v0.2",
+    "seller_bond_penalty_bps": 0,
+    "trade_id": 3
+  },
+  "payload_hash": "0x5ce46e0f09cdf01ba5d16046ddf48bcd097b3115e58e127e218a296eee6813ea",
+  "signature": "0x2a64f2b419a4b2872769a3cbea3d2da90238f1d5f7e13dbb42f0108bd88ea80b22c0cc581625d0c52aade232d0d75b48cf2adc442087226491eab53aedbc790b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+}

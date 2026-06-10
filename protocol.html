@@ -1,0 +1,2922 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marketplace Protocol Core Spec</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18211f;
+        --muted: #5e6a66;
+        --paper: #faf8f2;
+        --panel: #ffffff;
+        --line: #d9ddd3;
+        --green: #2f6b4f;
+        --blue: #315f84;
+        --gold: #b8872f;
+        --red: #9c3f35;
+        --violet: #705895;
+        --teal: #2e7575;
+        --shadow: 0 18px 50px rgba(26, 34, 31, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        border-bottom: 1px solid var(--line);
+        background: rgba(250, 248, 242, 0.94);
+        backdrop-filter: blur(16px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--green);
+        border-radius: 50%;
+        box-shadow: inset 0 -6px 0 rgba(184, 135, 47, 0.42);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .nav a {
+        text-decoration: none;
+      }
+
+      .hero {
+        padding: 72px 0 48px;
+        border-bottom: 1px solid var(--line);
+        background: #f3efe4;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.08;
+      }
+
+      h1 {
+        max-width: 900px;
+        font-size: 4.6rem;
+        font-weight: 800;
+      }
+
+      .subtitle {
+        max-width: 820px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.18rem;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 13px;
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 720;
+      }
+
+      .section {
+        scroll-margin-top: 78px;
+        padding: 64px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.7fr) minmax(320px, 1fr);
+        gap: 48px;
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+      }
+
+      h3 {
+        font-size: 1.05rem;
+        font-weight: 800;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .two-up {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .panel p {
+        color: var(--muted);
+      }
+
+      .panel.accent-green {
+        border-top: 5px solid var(--green);
+      }
+
+      .panel.accent-blue {
+        border-top: 5px solid var(--blue);
+      }
+
+      .panel.accent-gold {
+        border-top: 5px solid var(--gold);
+      }
+
+      .panel.accent-red {
+        border-top: 5px solid var(--red);
+      }
+
+      .list {
+        margin: 16px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .list li {
+        margin: 8px 0;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      table {
+        width: 100%;
+        min-width: 920px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f1efe6;
+        color: var(--ink);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      td {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      td:first-child {
+        color: var(--ink);
+        font-weight: 760;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .code-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .code-block {
+        margin: 0;
+        border: 1px solid #cfd5cc;
+        border-radius: 8px;
+        background: #17201d;
+        color: #f5f1e6;
+        overflow: hidden;
+      }
+
+      .code-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: rgba(245, 241, 230, 0.76);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      pre {
+        margin: 0;
+        padding: 18px;
+        overflow-x: auto;
+        white-space: pre;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.84rem;
+        line-height: 1.55;
+      }
+
+      .state-chain {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(126px, 1fr));
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .state {
+        min-height: 104px;
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--green);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 14px;
+      }
+
+      .state:nth-child(2n) {
+        border-top-color: var(--blue);
+      }
+
+      .state:nth-child(3n) {
+        border-top-color: var(--gold);
+      }
+
+      .state strong {
+        display: block;
+      }
+
+      .state span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .footer {
+        padding: 42px 0 64px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 980px) {
+        .section-header,
+        .two-up,
+        .code-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .grid,
+        .state-chain {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        h1 {
+          font-size: 3.4rem;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .shell {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero {
+          padding: 54px 0 38px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 1.85rem;
+        }
+
+        .grid,
+        .state-chain {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="index.html#principle" aria-label="Back to Marketplace">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Marketplace</span>
+        </a>
+        <nav class="nav" aria-label="Protocol spec navigation">
+          <a href="#overview">Overview</a>
+          <a href="#identity">Identity</a>
+          <a href="#lifecycle">Lifecycle</a>
+          <a href="#matching">Matching</a>
+          <a href="#actors">Actors</a>
+          <a href="#registries">Registries</a>
+          <a href="#objects">Objects</a>
+          <a href="#card-reference">Card Reference</a>
+          <a href="#trust">Trust</a>
+          <a href="#escrow">Escrow</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#verifier-scope">Verifier Scope</a>
+          <a href="#arbitration">Arbitration</a>
+          <a href="#resolve">Resolve</a>
+          <a href="#api">API</a>
+          <a href="#local-evm">Local EVM</a>
+          <a href="#invariants">Invariants</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="shell">
+          <p class="eyebrow">Technical protocol spec</p>
+          <h1>Marketplace Protocol Core</h1>
+          <p class="subtitle">
+            A draft v0.2 state machine, object registry, and event surface for
+            agent-mediated Pokemon card transactions where intent, trust,
+            evidence, route risk, escrow, settlement, and reputation stay typed.
+          </p>
+          <div class="meta-row">
+            <span class="pill">Draft v0.2</span>
+            <span class="pill">Agent-neutral</span>
+            <span class="pill">Pokemon alpha</span>
+            <span class="pill">Escrowed intent</span>
+            <span class="pill">Measured trust</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Scope</p>
+              <h2>What the protocol must do.</h2>
+            </div>
+            <p class="lead">
+              The alpha coordinates buyer agents, seller agents, verifiers,
+              arbiters, escrow contracts, carriers, and external trust sources
+              for Pokemon single-card trades. It does not require one
+              marketplace, one database, one agent, one chain, or one trust
+              score.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="panel accent-green">
+              <h3>Represent intent</h3>
+              <p>Capture what the buyer wants, what they will pay, what risks they accept, and when the agent must ask.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Expose inventory</h3>
+              <p>Let sellers reveal listed and hidden Pokemon cards under access, attention, pricing, and evidence policies.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>Measure trust</h3>
+              <p>Accept arbitrary proof chains, preserve source and scope, and let buyer agents weight them.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Lock commitments</h3>
+              <p>Bind funds, seller bond, route terms, evidence duties, inspection windows, and release gates.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>Resolve outcomes</h3>
+              <p>Turn clean closes into receipts and failures into claim packets, disputes, refunds, or bond actions.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Harden over time</h3>
+              <p>Record outcomes so agents learn which proofs predict clean trades in which apertures.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="card-reference">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Card reference</p>
+              <h2>The database names the print. It does not testify for the card.</h2>
+            </div>
+            <p class="lead">
+              Pokemon alpha needs database access for search, autocomplete,
+              card images, set metadata, and variant narrowing. The reference
+              row is a catalog candidate only: useful for identity language,
+              never enough for possession, condition, authenticity, price
+              truth, or route lock.
+            </p>
+          </div>
+
+          <div class="grid three">
+            <article class="panel accent-green">
+              <h3>Use it for</h3>
+              <p>Known print, set, number, rarity, language, variant, catalog image, and source coverage.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Not proof of</h3>
+              <p>Seller possession, physical authenticity, card condition, seller inventory, price truth, or language claim.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Gap path</h3>
+              <p>If Japanese vintage coverage is incomplete, agents create a manual database-gap packet instead of pretending the source disproves the card.</p>
+            </article>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Catalog candidate</span>
+                <span>CardReferenceCandidate</span>
+              </figcaption>
+              <pre>{
+  "schema": "marketplace.pokemon_card_reference.v0.1",
+  "source": "pokemontcg.io",
+  "source_card_id": "neo2-1",
+  "printed_name": "Espeon",
+  "set_name": "Neo Discovery",
+  "card_number": "1",
+  "match_kind": "language_equivalent",
+  "source_coverage": "english_catalog_anchor_for_japanese_claim",
+  "not_claiming": [
+    "possession",
+    "condition",
+    "authenticity",
+    "seller_inventory_existence",
+    "seller_card_language",
+    "price_truth"
+  ]
+}</pre>
+            </figure>
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Agent actions</span>
+                <span>Reference API</span>
+              </figcaption>
+              <pre>lookupCardReference()
+selectCardReferenceCandidate()
+createManualCardReferenceGap()
+compareSellerEvidenceToReference()</pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="identity">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Identity and signatures</p>
+              <h2>Every authority claim needs a key.</h2>
+            </div>
+            <p class="lead">
+              Agent-neutral does not mean identity-neutral. A protocol object is
+              only signed if the actor identifier resolves to a public key and
+              the payload has a canonical signing form.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Primitive</th>
+                  <th>Rule</th>
+                  <th>Why It Matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Actor ID</td>
+                  <td>Use stable IDs such as <code>did:market:buyer:...</code>, <code>did:market:seller:...</code>, <code>did:market:verifier:...</code>, or chain-native addresses.</td>
+                  <td>Every agent, seller, verifier, arbiter, and attester must resolve to a signing authority.</td>
+                </tr>
+                <tr>
+                  <td>Public key</td>
+                  <td>Actor registry records active keys, revoked keys, role, service URL, and controller.</td>
+                  <td>Signatures must be verifiable after a dispute opens.</td>
+                </tr>
+                <tr>
+                  <td>Signature form</td>
+                  <td>Objects are signed over canonical JSON with sorted keys, explicit schema version, object id, and trade id when applicable.</td>
+                  <td>Prevents replay, ambiguous payloads, and "I signed something else" disputes.</td>
+                </tr>
+                <tr>
+                  <td>Delegation</td>
+                  <td>Humans can delegate bounded authority to agents with limits, expiry, revocation, and human-interrupt conditions.</td>
+                  <td>Agent actions need proof they stayed inside mandate.</td>
+                </tr>
+                <tr>
+                  <td>Revocation</td>
+                  <td>Registries expose key revocation, agent deauthorization, verifier suspension, and arbiter suspension events.</td>
+                  <td>Trust sources and signatures cannot be permanent when control changes.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Actor identity</span>
+                <span>ActorRecord</span>
+              </figcaption>
+              <pre><code>{
+  "actor_id": "did:market:seller:9f3",
+  "role": "seller",
+  "public_keys": [
+    {
+      "kid": "did:market:seller:9f3#key-1",
+      "alg": "ed25519",
+      "public_key": "base64url..."
+    }
+  ],
+  "service_url": "https://seller-agent.example/api",
+  "status": "active",
+  "updated_at": "2026-05-18T18:00:00Z"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Delegation</span>
+                <span>AgentDelegation</span>
+              </figcaption>
+              <pre><code>{
+  "human_id": "did:market:buyer:2ab",
+  "agent_id": "did:market:agent:77c",
+  "scope": ["match", "negotiate", "request_evidence"],
+  "must_ask_for": [
+    "price_stretch",
+    "underinsured_route",
+    "inspection_waiver",
+    "escrow_release"
+  ],
+  "expires_at": "2026-06-18T00:00:00Z",
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="lifecycle">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">State machine</p>
+              <h2>The transaction has explicit gates.</h2>
+            </div>
+            <p class="lead">
+              Every trade moves through typed states. Agents may negotiate
+              inside a state, but funds, route changes, inspection waivers, and
+              final release require explicit state transitions.
+            </p>
+          </div>
+
+          <div class="state-chain" aria-label="Transaction state chain">
+            <div class="state"><strong>Intent</strong><span>Buyer mandate is published or held private.</span></div>
+            <div class="state"><strong>Match</strong><span>Inventory and value maps produce candidate trades.</span></div>
+            <div class="state"><strong>Reserve</strong><span>Seller grants time-bound access or hold.</span></div>
+            <div class="state"><strong>Escrow</strong><span>Funds, bond, duties, and release gates lock.</span></div>
+            <div class="state"><strong>Evidence</strong><span>Item, trust, and route evidence are attached.</span></div>
+            <div class="state"><strong>Human Gate</strong><span>Buyer or seller answers a bounded question.</span></div>
+            <div class="state"><strong>Route</strong><span>Shipping, pickup, verifier path, or handoff starts.</span></div>
+            <div class="state"><strong>Inspect</strong><span>Buyer or verifier checks received condition.</span></div>
+            <div class="state"><strong>Settle</strong><span>Receipt, claim, dispute, refund, or bond action.</span></div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>State</th>
+                  <th>Entry Event</th>
+                  <th>Required Data</th>
+                  <th>Exit Event -> Target State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PublishedIntent</td>
+                  <td>IntentPublished</td>
+                  <td>Buyer mandate, budget, trust gates, attention policy.</td>
+                  <td>CandidateProposed -> CandidateMatched; IntentExpired -> ClosedExpired; IntentCancelled -> ClosedCancelled.</td>
+                </tr>
+                <tr>
+                  <td>CandidateMatched</td>
+                  <td>CandidateProposed</td>
+                  <td>Inventory claim, price, route options, trust offer.</td>
+                  <td>ReserveRequested -> Reserved; CandidateRejected -> PublishedIntent; HumanQuestionRaised -> WaitingForHuman.</td>
+                </tr>
+                <tr>
+                  <td>WaitingForHuman</td>
+                  <td>HumanQuestionRaised</td>
+                  <td>Question, actor required, deadline, default action, risk if ignored.</td>
+                  <td>HumanResponseReceived -> PriorState; HumanTimeout -> DefaultActionState; HumanRejected -> PriorSafeState.</td>
+                </tr>
+                <tr>
+                  <td>Reserved</td>
+                  <td>ReserveAccepted</td>
+                  <td>Hold duration, buyer funding proof, seller access policy.</td>
+                  <td>EscrowFunded -> EscrowFunded; ReserveExpired -> PublishedIntent; TermsChanged -> TermsRevising.</td>
+                </tr>
+                <tr>
+                  <td>TermsRevising</td>
+                  <td>TermsChanged</td>
+                  <td>Changed field, proposing actor, old value, new value, required counterparty approval.</td>
+                  <td>TermsAccepted -> Reserved; TermsRejected -> CandidateMatched; HumanQuestionRaised -> WaitingForHuman.</td>
+                </tr>
+                <tr>
+                  <td>EscrowFunded</td>
+                  <td>EscrowLocked</td>
+                  <td>Funds, bond, release gates, covered promises, exclusions.</td>
+                  <td>EvidenceRequested -> EvidencePending; TradeCancelled -> CancelledWithDisposition; DisputeOpened -> ClaimOrDisputePending.</td>
+                </tr>
+                <tr>
+                  <td>EvidencePending</td>
+                  <td>EvidenceRequested</td>
+                  <td>Required item, trust, route, and packaging evidence.</td>
+                  <td>EvidenceAccepted -> RouteLocked; EvidenceRejected -> EvidencePending; HumanQuestionRaised -> WaitingForHuman.</td>
+                </tr>
+                <tr>
+                  <td>RouteLocked</td>
+                  <td>RouteCommitted</td>
+                  <td>Route method, insurance, signature, handoff, verifier path.</td>
+                  <td>Shipped -> RouteInProgress; HandoffScheduled -> RouteInProgress; RouteChangeRequested -> WaitingForHuman; RouteException -> ClaimOrDisputePending.</td>
+                </tr>
+                <tr>
+                  <td>RouteInProgress</td>
+                  <td>Shipped or HandoffScheduled</td>
+                  <td>Tracking, handoff memo, verifier intake, route timestamps, exception feed.</td>
+                  <td>ReceiptConfirmed -> InspectionOpen; RouteException -> ClaimOrDisputePending; NonDeliveryClaimed -> ClaimOrDisputePending.</td>
+                </tr>
+                <tr>
+                  <td>InspectionOpen</td>
+                  <td>ReceiptConfirmed</td>
+                  <td>Received evidence, inspection window, condition report.</td>
+                  <td>BuyerAccepted -> Settled; ClaimOpened -> ClaimOrDisputePending; DisputeOpened -> ClaimOrDisputePending; WindowExpired -> Settled only if no open exception.</td>
+                </tr>
+                <tr>
+                  <td>ClaimOrDisputePending</td>
+                  <td>ClaimOpened, DisputeOpened, RouteException, or NonDeliveryClaimed</td>
+                  <td>Grounds, packet hash, requested remedy, disputing party bond if required.</td>
+                  <td>ClaimResolved -> Settled; ArbiterRulingPosted -> Settled; ClaimRejected -> InspectionOpen or Settled.</td>
+                </tr>
+                <tr>
+                  <td>Settled</td>
+                  <td>TradeSettled</td>
+                  <td>Final receipt, payout, bond outcome, reputation events.</td>
+                  <td>Terminal.</td>
+                </tr>
+                <tr>
+                  <td>CancelledWithDisposition</td>
+                  <td>TradeCancelled</td>
+                  <td>Cancel reason, actor, refund path, bond disposition, counterparty notice.</td>
+                  <td>Terminal after fund and bond disposition.</td>
+                </tr>
+                <tr>
+                  <td>ClosedExpired / ClosedCancelled</td>
+                  <td>IntentExpired or IntentCancelled</td>
+                  <td>Intent id, actor, expiry/cancel reason, visibility policy.</td>
+                  <td>Terminal for the intent; no funds locked.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" id="matching">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Matching surface</p>
+              <h2>Discovery is explicit: registry, query, or brokered proposal.</h2>
+            </div>
+            <p class="lead">
+              A match is not magic produced by a value map. v0.2 supports three
+              disclosure modes so buyers and sellers can choose how public their
+              intent or inventory should be.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Mode</th>
+                  <th>How It Works</th>
+                  <th>Required Candidate Fields</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Intent registry</td>
+                  <td>Buyer agent publishes funded intent; seller agents submit candidate inventory against the intent.</td>
+                  <td>intent_id, proposer, inventory_claim, price, trust_offer, route_options, expiry.</td>
+                </tr>
+                <tr>
+                  <td>Inventory query</td>
+                  <td>Buyer agent queries a seller access policy or seller agent directly.</td>
+                  <td>query_id, seller, access_policy, disclosed_fields, attention_cost, candidate_claims.</td>
+                </tr>
+                <tr>
+                  <td>Brokered proposal</td>
+                  <td>A marketplace, verifier, shop, or agent broker proposes a candidate and signs provenance.</td>
+                  <td>broker_id, provenance, fees, conflicts, candidate_claim, buyer_visible_terms.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="actors">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Actors</p>
+              <h2>Roles are explicit and composable.</h2>
+            </div>
+            <p class="lead">
+              One party may play multiple roles, but the protocol should record
+              which role made each claim, accepted each risk, or signed each
+              outcome.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Actor</th>
+                  <th>Responsibilities</th>
+                  <th>Authority Limits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Buyer</td>
+                  <td>Sets mandate, budget, risk tolerance, attention policy, and final acceptance authority.</td>
+                  <td>Can delegate bounded actions but must approve irreversible exceptions.</td>
+                </tr>
+                <tr>
+                  <td>Buyer Agent</td>
+                  <td>Matches intent, weighs proofs, asks questions, negotiates terms, recommends action.</td>
+                  <td>Cannot waive human gates outside mandate.</td>
+                </tr>
+                <tr>
+                  <td>Seller</td>
+                  <td>Provides inventory, price, evidence, route promise, bond, and truth claims.</td>
+                  <td>Cannot change locked route or evidence duties without buyer-side acceptance.</td>
+                </tr>
+                <tr>
+                  <td>Seller Agent</td>
+                  <td>Surfaces inventory, protects seller attention, answers buyer probes, negotiates trust offer.</td>
+                  <td>Must respect reserve, floor, privacy, and evidence policies.</td>
+                </tr>
+                <tr>
+                  <td>Verifier</td>
+                  <td>Signs condition, authenticity, custody, shop, account, or evidence attestations.</td>
+                  <td>Authority is limited to the claim and method signed; verifier must disclose conflicts and cannot share beneficial ownership with seller for the same trade.</td>
+                </tr>
+                <tr>
+                  <td>Escrow Contract</td>
+                  <td>Locks funds, bonds, release gates, timeouts, and payout/refund actions.</td>
+                  <td>Executes typed terms; does not decide ambiguous facts alone.</td>
+                </tr>
+                <tr>
+                  <td>Arbiter</td>
+                  <td>Resolves disputes from packets of promised, happened, and accepted facts.</td>
+                  <td>Must be registry-listed before escrow lock; bound by arbitration terms, fee schedule, and covered promise scope.</td>
+                </tr>
+                <tr>
+                  <td>Arbiter Agent</td>
+                  <td>Ingests case packets, checks conflicts, requests missing evidence, drafts findings, and prepares ruling packets.</td>
+                  <td>Can act only inside signed ArbiterAgentDelegation; high-value, fraud, authenticity, or contradictory evidence escalates.</td>
+                </tr>
+                <tr>
+                  <td>Automated Arbiter</td>
+                  <td>Applies pre-agreed evidence checks and remedy schedules for low-value, low-ambiguity disputes.</td>
+                  <td>Must be selected before escrow lock and must stop at signed friction thresholds.</td>
+                </tr>
+                <tr>
+                  <td>Attester</td>
+                  <td>Signs observations from external sources such as marketplaces, shops, or domains.</td>
+                  <td>Does not endorse the seller; only signs observed claims.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" id="registries">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Registries</p>
+              <h2>External authority is discoverable and revocable.</h2>
+            </div>
+            <p class="lead">
+              The alpha does not need a large governance system, but it does
+              need registries for actors whose signatures can move money or
+              settle disputes. Registry entries are protocol data, not vibes.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Registry</th>
+                  <th>Required Fields</th>
+                  <th>Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ActorRegistry</td>
+                  <td>actor_id, role, public_keys, service_url, status, controller, revocation_events.</td>
+                  <td>Resolves signatures for buyers, sellers, agents, attesters, verifiers, arbiters, and escrow services.</td>
+                </tr>
+                <tr>
+                  <td>VerifierRegistry</td>
+                  <td>verifier_id, categories, methods, fee_schedule, independence_policy, dispute_history, status.</td>
+                  <td>Lets agents decide whether a verifier has authority for this claim and trade category.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterRegistry</td>
+                  <td>arbiter_id, covered_case_types, value_bands, fee_schedule, response_window, appeal_policy, profile_hash, public_key, status.</td>
+                  <td>Lets agents discover active arbiters, verify signed profiles, and avoid an undefined approved panel.</td>
+                </tr>
+                <tr>
+                  <td>AttesterRegistry</td>
+                  <td>attester_id, source_adapters, methods, rate_limits, revocation_path, audit_log.</td>
+                  <td>Defines who can sign marketplace, shop, domain, route, or account-control observations.</td>
+                </tr>
+                <tr>
+                  <td>EscrowRegistry</td>
+                  <td>escrow_id, custody_model, supported_assets, release_api, dispute_hold_policy, legal_entity, status.</td>
+                  <td>Makes the money layer explicit before funds or bonds lock.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Verifier listing</span>
+                <span>VerifierRecord</span>
+              </figcaption>
+              <pre><code>{
+  "verifier_id": "did:market:verifier:shop-check-1",
+  "categories": ["pokemon_single_card_alpha"],
+  "methods": ["in_person_inspection", "photo_review", "custody_intake"],
+  "independence_policy": "no_shared_beneficial_ownership",
+  "fee_schedule_url": "https://verifier.example/fees.json",
+  "status": "active",
+  "public_key": "did:market:verifier:shop-check-1#key-1"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Arbiter listing</span>
+                <span>ArbiterRecord</span>
+              </figcaption>
+              <pre><code>{
+  "arbiter_id": "did:market:arbiter:panel-3",
+  "covered_case_types": [
+    "wrong_item",
+    "material_misdescription",
+    "route_failure",
+    "partial_delivery"
+  ],
+  "response_window_hours": 72,
+  "value_bands": ["low", "mid"],
+  "evidence_floor": ["front_back_scan", "received_item_photos"],
+  "agent_delegation": {
+    "allowed": true,
+    "max_value": 100,
+    "must_escalate": ["authenticity", "fraud", "conflicting_verifier_notes"]
+  },
+  "fee_schedule": "flat_plus_value_band",
+  "appeal_policy": "single_review_if_new_evidence",
+  "status": "active"
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="objects">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Object registry</p>
+              <h2>Protocol objects are typed and signed where possible.</h2>
+            </div>
+            <p class="lead">
+              The state API can start as JSON over HTTP. Money movement, key
+              custody, and escrow enforcement remain explicitly disclosed
+              layers. Later versions can map the same objects to on-chain
+              commitments, decentralized storage, signed credentials, or
+              agent-to-agent messages.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Object</th>
+                  <th>Purpose</th>
+                  <th>Required Fields</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ActorRecord</td>
+                  <td>Registered actor identity, role, public keys, service endpoint, and revocation status.</td>
+                  <td>actor_id, role, public_keys, service_url, status, updated_at.</td>
+                </tr>
+                <tr>
+                  <td>AgentDelegation</td>
+                  <td>Human-to-agent authority grant with limits and required human interrupts.</td>
+                  <td>human_id, agent_id, scope, must_ask_for, expires_at, signature.</td>
+                </tr>
+                <tr>
+                  <td>AgentMandate</td>
+                  <td>Buyer-side intent, budget, taste, attention, trust, route, and risk policy.</td>
+                  <td>subject, want, money, condition, trust, route, attention, expiry.</td>
+                </tr>
+                <tr>
+                  <td>HumanAvailabilityWindow</td>
+                  <td>Signed or agent-known window that says whether the human can answer before a gate deadline.</td>
+                  <td>human_id, agent_id, expected_response_window, channels, interrupt_budget, allowed_interrupts, default_action, expires_at.</td>
+                </tr>
+                <tr>
+                  <td>CostDimensionalTrace</td>
+                  <td>Native cost dimensions behind any human-visible scalar summary.</td>
+                  <td>native_dimensions, scalar_summary, conversion_rationale, risk_reduced, not_reduced, reversible_refs.</td>
+                </tr>
+                <tr>
+                  <td>WorkFundingGradient</td>
+                  <td>Rungs of work an agent may request, from included agent review to human-heavy proof.</td>
+                  <td>gradient_id, rungs, selected_rung, funded_rung, worker, amount, deadline, credit_policy, not_claiming.</td>
+                </tr>
+                <tr>
+                  <td>ContactReceipt</td>
+                  <td>Signed, scoped record that an actor, agent, verifier, API, carrier, shop, buyer, seller, or arbiter touched a source, object, gate, or trade state.</td>
+                  <td>receipt_id, trade_id, subject, contact.kind, source, request_hash, response_hash, issuer, role, allowed_gates, claiming, not_claiming, signature.</td>
+                </tr>
+                <tr>
+                  <td>AssemblyProvenance</td>
+                  <td>Gate-bound provenance graph showing how contact receipts, packet refs, subject anchors, and wall results inherit authority for one action.</td>
+                  <td>trade_id, gate, foundation.subject_hash, predecessor_packet_refs, contact_receipt_refs, wall_bundle_hash, causal_edges, allowed_gates, not_claiming, signature.</td>
+                </tr>
+                <tr>
+                  <td>InventoryAccessPolicy</td>
+                  <td>Seller-side rules for visible and hidden inventory, evidence, holds, and haggling.</td>
+                  <td>seller, inventory_mode, evidence_policy, attention_budget, reserve_policy, route_policy.</td>
+                </tr>
+                <tr>
+                  <td>TrustOffer</td>
+                  <td>Bundle of proofs a seller offers to reduce buyer uncertainty.</td>
+                  <td>subject, proofs_offered, bond_options, expires_at.</td>
+                </tr>
+                <tr>
+                  <td>Proof</td>
+                  <td>Evidence chain with authority, freshness, issuer, subject, and challenge path.</td>
+                  <td>proof_id, trade_id or challenge_nonce, source, issuer, subject, claim, method, scope, freshness, signature.</td>
+                </tr>
+                <tr>
+                  <td>VerifierScopeApproval</td>
+                  <td>Buyer-signed allowance for one verifier to speak inside one explicit scope set on one trade.</td>
+                  <td>trade_id, buyer, verifier, scope, scope_set_hash, limits, expires_at, signature.</td>
+                </tr>
+                <tr>
+                  <td>VerifierScopeAttestation</td>
+                  <td>Signed verifier claim bound to an anchored subject hash, scope-set hash, method-id hash, exclusions, challenge hooks, and display limits.</td>
+                  <td>trade_id, verifier, subject_hash, scope, scope_set_hash, method, method_id_hash, inputs_seen, inputs_not_seen, claim, challenge, display, signature.</td>
+                </tr>
+                <tr>
+                  <td>FingerprintChallenge</td>
+                  <td>Buyer-signed route pause when the item fingerprint is weak, stale, duplicated, mismatched, or semantically suspicious.</td>
+                  <td>trade_id, challenger, target_fingerprint_hash, grounds, requested_evidence, deadline, failure_policy, signature.</td>
+                </tr>
+                <tr>
+                  <td>FingerprintChallengeResolution</td>
+                  <td>Buyer clearance, waiver, or verifier-cured resolution bound to the active challenge and optional verifier attestation.</td>
+                  <td>trade_id, target_challenge_hash, verifier_attestation_hash, buyer_decision, route_gate, signature.</td>
+                </tr>
+                <tr>
+                  <td>PrivatePredicateProof</td>
+                  <td>Selective-disclosure proof that a private fact satisfies a typed predicate without exposing the full source dataset.</td>
+                  <td>subject, issuer, predicate, disclosure, proof_type, source_commitment, public_inputs, proof_hash, verifier_contract, signature.</td>
+                </tr>
+                <tr>
+                  <td>CircuitProfile</td>
+                  <td>ZK-ready verifier profile for circuit-backed predicate proofs.</td>
+                  <td>circuit_id, version, predicate_family, verifying_key_hash, public_input_schema, verifier_contract.</td>
+                </tr>
+                <tr>
+                  <td>PredicateVerifier</td>
+                  <td>Registry-approved verifier contract that can accept or reject predicate proof bytes before escrow anchors them.</td>
+                  <td>verifier_contract, metadata_hash, active, scope, bond, revocation_status.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterProfile</td>
+                  <td>Signed public description of an arbiter's scope, cost, evidence rules, response window, conflicts, delegation, and value bands.</td>
+                  <td>arbiter_id, scopes, value_bands, evidence_floor, fee_schedule, sla, conflict_policy, agent_delegation, reputation_pointer, signature.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterAvailability</td>
+                  <td>Short-lived quote that says the arbiter is available for a specific trade shape.</td>
+                  <td>arbiter_id, trade_scope, max_value, fee_quote, sla, evidence_floor, available_until, conflict_disclosures, signature.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterCandidateSet</td>
+                  <td>Pre-lock overlap set of selected and fallback arbiters accepted by the parties or their agents.</td>
+                  <td>trade_id, selected_arbiter, acceptable_backups, ranking_inputs, replacement_policy, buyer_signature, seller_signature.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterAgentDelegation</td>
+                  <td>Bounded authority for an arbiter-run agent to triage, request evidence, draft rulings, or resolve narrow low-risk cases.</td>
+                  <td>arbiter_id, agent_id, allowed_scopes, max_value, allowed_remedies, must_escalate_if, expires_at, signature.</td>
+                </tr>
+                <tr>
+                  <td>AutomatedArbiterPolicy</td>
+                  <td>Opt-in rule set for purely agentic arbitration where the case is cheap, scoped, and mechanically resolvable.</td>
+                  <td>engine_id, version, allowed_scopes, max_trade_value, evidence_required, remedy_schedule, friction_thresholds, appeal_path, signatures.</td>
+                </tr>
+                <tr>
+                  <td>FrictionThresholdPolicy</td>
+                  <td>Cost-field boundary that says when automation must pause, ask a human, or escalate to a human arbiter.</td>
+                  <td>money_at_risk, remedy_severity, ambiguity_score, trust_gap, privacy_exposure, conflict_risk, attention_cost, default_action.</td>
+                </tr>
+                <tr>
+                  <td>TradeRoute</td>
+                  <td>Chosen route and fallback path for shipping, local handoff, shop handoff, or verifier-forwarding.</td>
+                  <td>method, origin, destination, insurance, signature, packaging, handoff, exceptions.</td>
+                </tr>
+                <tr>
+                  <td>EscrowTerms</td>
+                  <td>Funds, release gates, inspection windows, refund paths, and bond conditions.</td>
+                  <td>escrow_model, custodian, price, fees, route_cost, release_gates, timeouts, bond, exclusions, arbiter.</td>
+                </tr>
+                <tr>
+                  <td>HumanQuestion</td>
+                  <td>Bounded interrupt when an agent reaches a mandate boundary.</td>
+                  <td>question_id, trade_id, prior_state, actor_required, reason, options, deadline, default_action_state, risk.</td>
+                </tr>
+                <tr>
+                  <td>EvidencePacket</td>
+                  <td>Packet for receipt, insurance claim, condition dispute, route dispute, or arbitration.</td>
+                  <td>purpose, trade_id, contents, hashes, signatures, missing_items.</td>
+                </tr>
+                <tr>
+                  <td>EvidenceRequestFeeTerms</td>
+                  <td>Signed terms for paid seller work such as extra photos, video, packaging proof, inventory hold, or item preparation.</td>
+                  <td>request_id, trade_id, work_required, amount, payer, recipient, trigger, credit_policy, refund_policy, expiry, dispute_path, signatures.</td>
+                </tr>
+                <tr>
+                  <td>DisputeCase</td>
+                  <td>Open dispute with grounds, packet, requested remedy, cost bond, and assigned arbiter.</td>
+                  <td>case_id, trade_id, grounds_type, evidence_packet_hash, requested_remedy, filer_bond, arbiter.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterReplacement</td>
+                  <td>Replacement path when the assigned arbiter is revoked, conflicted, or unavailable.</td>
+                  <td>trade_id, old_arbiter, new_arbiter, reason, proposal_hash, proposed_at, buyer_signature, seller_signature, arbiter_acceptance_signature.</td>
+                </tr>
+                <tr>
+                  <td>ArbiterRuling</td>
+                  <td>Signed decision packet that maps promised, happened, and accepted facts into payout, bond, and reputation effects.</td>
+                  <td>case_id, trade_id, arbiter_id, findings, remedy, bond_action, evidence_basis, exclusions, signature.</td>
+                </tr>
+                <tr>
+                  <td>TradeReceipt</td>
+                  <td>Final settlement record and portable provenance/reputation event.</td>
+                  <td>trade_id, accepted_condition, settlement, route, visibility, reputation_events.</td>
+                </tr>
+                <tr>
+                  <td>ReputationEvent</td>
+                  <td>Outcome record used to update measured authority without collapsing trust into one score.</td>
+                  <td>event_id, trade_id, actor_id, role, category, value_band, outcome, scope, emitted_by, signature.</td>
+                </tr>
+                <tr>
+                  <td>ResolveOrClaim</td>
+                  <td>Resolution case comparing promised, happened, and accepted facts.</td>
+                  <td>case_type, grounds_type, promised, happened, accepted_risk, packet, requested_action.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <article class="panel accent-gold" style="margin-top: 24px;">
+            <h3>Contact legibility</h3>
+            <p>
+              The protocol does not claim jurisdiction over physical truth. It
+              records accountable contact: who or what touched a source, object,
+              route, gate, claim, or ruling; under which role and limits; what
+              that contact may be used for; and what it does not prove.
+              API calls, carrier lookups, catalog references, shop proofs,
+              photos, inspections, and rulings become contact receipts before
+              they can inform agents or spend at gates.
+            </p>
+          </article>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Mandate</span>
+                <span>AgentMandate</span>
+              </figcaption>
+              <pre><code>{
+  "id": "mandate_123",
+  "schema": "marketplace.agent_mandate.v0.2",
+  "buyer_agent": "did:market:agent:buyer-7k2",
+  "want": {
+    "category": "condition_sensitive_physical_good",
+    "description": "vintage collectible",
+    "minimum_condition": "excellent_used"
+  },
+  "money": {
+    "autobuy_under": 220,
+    "ask_under": 450,
+    "hard_cap": 600,
+    "fee_tolerance": "low"
+  },
+  "trust": {
+    "new_seller_allowed_if": ["bond", "escrow", "inspection_window"],
+    "source_weights": {
+      "category_marketplace": "high",
+      "physical_shop": "medium",
+      "unsigned_media": "low"
+    }
+  },
+  "route": {
+    "preferred": ["local_meetup", "insured_ship"],
+    "ask_before": ["uninsured_ship", "underinsured_ship"]
+  },
+  "attention": {
+    "ask_me_for": ["price_stretch", "trust_ambiguity", "irreversible_release"]
+  },
+  "human_availability": {
+    "expected_response_window": "15m",
+    "interrupt_budget_remaining": 2,
+    "default_action_if_unavailable": "do_not_ship"
+  }
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Cost trace</span>
+                <span>CostDimensionalTrace</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.cost_dimensional_trace.v0.1",
+  "trade_id": "trade_8821",
+  "scalar_summary": "$5 seller time",
+  "native_dimensions": {
+    "funded_gradient_rung": "quick_photo",
+    "seller_time_minutes": 10,
+    "seller_fee_usd": 5,
+    "credit_if_purchase_usd": 2.50,
+    "risk_reduced": "surface condition ambiguity",
+    "not_reduced": ["authenticity", "professional_grade"]
+  },
+  "conversion_rationale": "seller quoted one extra photo",
+  "reversible_refs": ["evidence_request_fee_terms:req_surface_01"]
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>External contact</span>
+                <span>ContactReceipt</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.contact_receipt.v0.1",
+  "receipt_id": "contact:trade_8821:pokemon_tcg_api:neo2_1",
+  "trade_id": "trade_8821",
+  "subject": {
+    "type": "catalog_card",
+    "id": "pokemon:neo2/1"
+  },
+  "contact": {
+    "kind": "external_api",
+    "source": "pokemon_tcg_api",
+    "method": "GET",
+    "endpoint_hash": "0x...",
+    "request_hash": "0x...",
+    "response_hash": "0x...",
+    "observed_at": "2026-05-21T01:10:00Z"
+  },
+  "issuer": {
+    "actor": "did:market:agent:buyer",
+    "role": "buyer_agent"
+  },
+  "use": {
+    "allowed_gates": ["item_reference", "route_wall_context"],
+    "spendability_required": true,
+    "expires_at": "2026-05-28T01:10:00Z"
+  },
+  "claiming": [
+    "catalog response was observed",
+    "catalog image was used as reference"
+  ],
+  "not_claiming": [
+    "seller possesses the card",
+    "offered card is authentic",
+    "offered card meets condition"
+  ],
+  "signature": "0x..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Assembly</span>
+                <span>AssemblyProvenance</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.assembly_provenance.v0.1",
+  "trade_id": "trade_8821",
+  "gate": {
+    "gate_type": "route_commitment",
+    "gate_id": "trade_8821:route_commitment",
+    "leg": "forward"
+  },
+  "foundation": {
+    "subject_hash": "sha256:item_fingerprint",
+    "inventory_lock_hash": "sha256:inventory_lock",
+    "route_terms_hash": "sha256:route_terms",
+    "wall_bundle_hash": "sha256:wall_bundle"
+  },
+  "predecessor_packet_refs": {
+    "card_reference": "sha256:...",
+    "item_fingerprint_hash": "sha256:...",
+    "bond_scope": "sha256:..."
+  },
+  "contact_receipt_refs": {
+    "catalog_contact_receipt": "sha256:...",
+    "seller_evidence_contact_receipt": "sha256:..."
+  },
+  "causal_edges": [
+    "catalog names candidate; it does not prove physical truth",
+    "locked item carries route terms",
+    "bond names failures; it is not general trust"
+  ],
+  "allowed_gates": ["route_commitment"],
+  "not_claiming": [
+    "physical truth",
+    "authenticity",
+    "condition truth",
+    "delivery success"
+  ],
+  "signature": "0x..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Terms</span>
+                <span>EscrowTerms</span>
+              </figcaption>
+              <pre><code>{
+  "trade_id": "trade_8821",
+  "schema": "marketplace.escrow_terms.v0.2",
+  "escrow_model": "custodial",
+  "custodian": "did:market:escrow:alpha-1",
+  "price": 340,
+  "route_cost": 18,
+  "release_gates": [
+    "route_committed",
+    "delivery_confirmed",
+    "inspection_accepted_or_expired"
+  ],
+  "inspection_window_hours": 48,
+  "seller_bond": {
+    "amount": 125,
+    "coverage_fraction": 0.37,
+    "covers": ["non_shipment", "wrong_item", "material_misdescription"],
+    "excludes": ["buyer_remorse", "market_price_change"]
+  },
+  "arbiter": "did:market:arbiter:panel-3",
+  "arbiter_candidate_set": "sha256:candidate-set-..."
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="trust">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Trust system</p>
+              <h2>Proofs carry scoped authority, not universal trust.</h2>
+            </div>
+            <p class="lead">
+              Sellers can attach any proof. Buyer agents probe each proof and
+              weight it from the buyer's aperture. Weighting may vary by agent,
+              but v0.2 requires the agent to disclose which proofs it accepted,
+              discounted, rejected, and why.
+            </p>
+          </div>
+
+          <div class="two-up" style="margin-bottom: 24px;">
+            <article class="panel accent-gold">
+              <h3>Weighting is disclosed, not universal</h3>
+              <p>
+                The protocol does not impose one reputation algorithm. It
+                requires a buyer-agent decision trace so two agents can disagree
+                without hiding the reason.
+              </p>
+              <ul class="list">
+                <li>accepted_proofs: trusted for this trade.</li>
+                <li>discounted_proofs: useful but stale, weak, or out of scope.</li>
+                <li>rejected_proofs: unsigned, unbound, revoked, challenged, or irrelevant.</li>
+                <li>remaining_risks: what still needs escrow, bond, evidence, or a human answer.</li>
+              </ul>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Proofs bind to this trade</h3>
+              <p>
+                A proof used to move money must include the current trade id or
+                a challenge nonce generated for this trade. Unbound proofs may
+                inform discovery, but they cannot satisfy a release gate.
+              </p>
+            </article>
+          </div>
+
+          <div class="two-up" style="margin-bottom: 24px;">
+            <article class="panel accent-green">
+              <h3>Private predicates</h3>
+              <p>
+                Some facts should be proven as predicates rather than published
+                as raw data or collapsed into a scalar. A seller can prove that
+                an outside-marketplace account satisfies a buyer's threshold
+                without exposing the whole account history. A buyer can prove
+                funding capacity without revealing their hard cap.
+              </p>
+            </article>
+            <article class="panel accent-red">
+              <h3>ZK-ready, not ZK-required</h3>
+              <p>
+                The alpha path accepts signed predicate attestations from
+                registered attesters or verifiers, but escrow can now require
+                the predicate hash to pass a registry-approved verifier contract
+                before anchoring it. The local harness uses a stub; the packet
+                shape already reserves circuit identifiers, verifying-key hashes,
+                public inputs, and proof bytes for a production ZK verifier.
+              </p>
+            </article>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Proof Field</th>
+                  <th>Meaning</th>
+                  <th>Required Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>trade_id or challenge_nonce</td>
+                  <td>Binding between proof and this transaction or this verification challenge.</td>
+                  <td>Required for any proof satisfying escrow, route, condition, or trust gates.</td>
+                </tr>
+                <tr>
+                  <td>source</td>
+                  <td>Where the evidence comes from: marketplace, shop, verifier, wallet, route, protocol receipt.</td>
+                  <td>Must be preserved and visible to buyer agents.</td>
+                </tr>
+                <tr>
+                  <td>issuer</td>
+                  <td>Who signed or observed the proof.</td>
+                  <td>Must be challengeable or reputation-bearing.</td>
+                </tr>
+                <tr>
+                  <td>subject</td>
+                  <td>Seller, shop, account, item, route, or prior trade the proof is about.</td>
+                  <td>Must match the current seller, item, route, or declared scope.</td>
+                </tr>
+                <tr>
+                  <td>claim</td>
+                  <td>The narrow thing asserted: account control, shop existence, condition, route acceptance.</td>
+                  <td>Must not be broadened by downstream agents.</td>
+                </tr>
+                <tr>
+                  <td>method</td>
+                  <td>OAuth, domain nonce, API read, verifier inspection, signed handoff, photo hash.</td>
+                  <td>Determines strength and failure modes.</td>
+                </tr>
+                <tr>
+                  <td>freshness</td>
+                  <td>When the proof was observed and when it expires.</td>
+                  <td>Stale proofs must be refreshed, discounted in the trace, or rejected.</td>
+                </tr>
+                <tr>
+                  <td>scope</td>
+                  <td>Category, object, route, location, value band, or account context.</td>
+                  <td>Agents weight proofs only inside their scope.</td>
+                </tr>
+                <tr>
+                  <td>outcomes</td>
+                  <td>Clean closes, disputes, claims, bond hits, verifier mismatches.</td>
+                  <td>Update future authority without flattening to one score.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Selective disclosure</span>
+                <span>PrivatePredicateProof</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.private_predicate_proof.v0.2",
+  "proof_id": "ppp_501",
+  "subject": "did:market:seller:9f3",
+  "issuer": "did:market:verifier:rep-bridge",
+  "predicate": {
+    "field": "completed_tcg_sales",
+    "operator": ">=",
+    "threshold": 500,
+    "scope": ["tcg", "raw_cards"]
+  },
+  "disclosure": "predicate_only",
+  "proof_type": "signed_attestation",
+  "source_commitment": "0x...",
+  "public_inputs": {
+    "subject_commitment": "0x...",
+    "threshold": 500,
+    "scope_hash": "0x..."
+  },
+  "zk": {
+    "circuit_id": null,
+    "verifying_key_hash": null,
+    "verifier_contract": "eip155:31337:0x...",
+    "proof_bytes": null
+  },
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>ZK hook</span>
+                <span>CircuitProfile</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.circuit_profile.v0.2",
+  "circuit_id": "seller_reputation_threshold_v1",
+  "predicate_family": "threshold_over_private_set",
+  "public_input_schema": [
+    "subject_commitment",
+    "issuer_commitment",
+    "threshold",
+    "scope_hash",
+    "freshness_epoch"
+  ],
+  "verifying_key_hash": "0x...",
+  "verifier_contract": "eip155:1:0x..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Weight trace</span>
+                <span>TrustDecisionTrace</span>
+              </figcaption>
+              <pre><code>{
+  "trade_id": "trade_8821",
+  "buyer_agent": "did:market:agent:buyer-7k2",
+  "accepted_proofs": ["proof_tcg_store", "proof_shop_domain"],
+  "discounted_proofs": [
+    {
+      "proof_id": "proof_binder_video",
+      "reason": "unsigned_media"
+    }
+  ],
+  "rejected_proofs": [
+    {
+      "proof_id": "proof_old_marketplace",
+      "reason": "expired"
+    }
+  ],
+  "remaining_risks": ["raw_condition", "route_damage"],
+  "recommendation": "continue_with_bond_and_closeups"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Outcome</span>
+                <span>ReputationEvent</span>
+              </figcaption>
+              <pre><code>{
+  "event_id": "rep_744",
+  "trade_id": "trade_8821",
+  "actor_id": "did:market:seller:9f3",
+  "role": "seller",
+  "category": "condition_sensitive_collectible",
+  "value_band": "300_to_500",
+  "outcome": "condition_matched_and_route_honored",
+  "scope": ["raw_condition", "insured_shipping"],
+  "emitted_by": "did:market:escrow:alpha-1",
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="escrow">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Escrow and bond</p>
+              <h2>Money locks behind typed promises.</h2>
+            </div>
+            <p class="lead">
+              Escrow is the settlement rail. Bond is the seller's economic
+              accountability. Both need exact gates, exclusions, timeouts, and
+              dispute paths before the buyer commits. Every trade must disclose
+              whether escrow is custodial, on-chain, hybrid, or simulated.
+            </p>
+          </div>
+          <div class="two-up">
+            <article class="panel accent-green">
+              <h3>Escrow model disclosure</h3>
+              <ul class="list">
+                <li>Custodial: legal entity holds funds and exposes release API.</li>
+                <li>On-chain: contract locks assets and evaluates signed gate events.</li>
+                <li>Hybrid: off-chain facts with on-chain settlement or bond custody.</li>
+                <li>Simulated: no real money movement; only valid for tests.</li>
+              </ul>
+            </article>
+            <article class="panel accent-red">
+              <h3>Bond adequacy</h3>
+              <ul class="list">
+                <li>Bond amount is shown as currency and fraction of item value.</li>
+                <li>Uncovered value gap is displayed before escrow lock.</li>
+                <li>Covered promises and exclusions are signed in EscrowTerms.</li>
+                <li>Partial failure can map to partial bond action or refund.</li>
+                <li>Frivolous dispute cost can be posted by the disputing party.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Release Gate</th>
+                  <th>Signal Authority</th>
+                  <th>Object / Event</th>
+                  <th>Conflict Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>escrow_funded</td>
+                  <td>Escrow service or contract.</td>
+                  <td>EscrowLocked.</td>
+                  <td>If funding confirmation fails, trade cannot enter EvidencePending.</td>
+                </tr>
+                <tr>
+                  <td>seller_bond_locked</td>
+                  <td>Escrow service, bond contract, or approved custodian.</td>
+                  <td>BondLocked.</td>
+                  <td>If required bond is missing or under-disclosed, buyer must approve gap.</td>
+                </tr>
+                <tr>
+                  <td>evidence_accepted</td>
+                  <td>Buyer agent, verifier, or human depending on mandate.</td>
+                  <td>EvidenceAccepted or HumanResponseReceived.</td>
+                  <td>Rejected evidence returns to EvidencePending or opens a human gate.</td>
+                </tr>
+                <tr>
+                  <td>route_committed</td>
+                  <td>Seller agent plus carrier/verifier/shop evidence where applicable.</td>
+                  <td>RouteCommitted.</td>
+                  <td>Route mutation requires RouteChangeRequested and buyer-side acceptance.</td>
+                </tr>
+                <tr>
+                  <td>delivery_confirmed</td>
+                  <td>Carrier, verifier, shop, local handoff memo, or buyer confirmation.</td>
+                  <td>ReceiptConfirmed.</td>
+                  <td>Conflicting delivery signals keep funds locked and open ClaimOrDisputePending.</td>
+                </tr>
+                <tr>
+                  <td>inspection_closed</td>
+                  <td>Buyer, buyer agent inside mandate, verifier, or timeout rule.</td>
+                  <td>BuyerAccepted, ClaimOpened, DisputeOpened, or WindowExpired.</td>
+                  <td>WindowExpired settles only if no open exception or unresolved human gate exists.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="evidence">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Evidence</p>
+              <h2>Evidence scales by value, trust gap, route, and condition risk.</h2>
+            </div>
+            <p class="lead">
+              The protocol should avoid ritual proof for low-risk trades while
+              producing complete claim packets for high-risk endings.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Evidence Class</th>
+                  <th>Examples</th>
+                  <th>Used For</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Item evidence</td>
+                  <td>Photos, scans, video, flaws, serials, provenance, verifier notes.</td>
+                  <td>Condition acceptance, misdescription disputes, resale packet.</td>
+                </tr>
+                <tr>
+                  <td>Trust evidence</td>
+                  <td>Marketplace attestation, shop proof, domain nonce, bond, prior receipts.</td>
+                  <td>Seller access, buyer confidence, agent recommendation.</td>
+                </tr>
+                <tr>
+                  <td>Route evidence</td>
+                  <td>Label, tracking, insurance, packaging proof, signature, handoff memo.</td>
+                  <td>Insurance claims, lost package, local handoff disputes.</td>
+                </tr>
+                <tr>
+                  <td>Settlement evidence</td>
+                  <td>Escrow receipt, release event, refund event, bond action, final receipt.</td>
+                  <td>Accounting, reputation, arbitration, provenance.</td>
+                </tr>
+                <tr>
+                  <td>Attention evidence</td>
+                  <td>Paid evidence request, seller response hash, deadline, credit-back terms, satisfaction trigger.</td>
+                  <td>Extra photos, holds, prep work, seller payout, buyer credit, no-show accounting.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid" style="margin-top: 24px;">
+            <article class="panel accent-green">
+              <h3>Buyer clarity</h3>
+              <p>Extra seller work is priced before the buyer asks for it: full credit, partial credit, no credit, waived fee, or deposit.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Seller respect</h3>
+              <p>The seller agent can protect its human's time, price preparation work, and avoid unpaid inventory holds.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Protocol boundary</h3>
+              <p>The protocol can enforce fee terms and hashes. It cannot judge whether a photo is good enough unless a quality rule or signed reviewer says so.</p>
+            </article>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Paid request</span>
+                <span>EvidenceRequestFeeTerms</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.evidence_request_fee_terms.v0.1",
+  "trade_id": "trade_8821",
+  "request_id": "req_surface_01",
+  "work_required": "angled shiny-surface photo",
+  "funded_gradient_rung": "quick_photo",
+  "amount": 5,
+  "currency": "USD",
+  "payer": "buyer",
+  "recipient": "seller",
+  "trigger_for_payment": "seller_submits_response_hash_before_expiry",
+  "credit_policy": {
+    "credited_if_purchase": true,
+    "credit_amount": 2.50,
+    "seller_keeps_amount": 2.50
+  },
+  "refund_policy": "refund_if_seller_misses_deadline",
+  "quality_floor": "human_or_agent_judged",
+  "expires_at": "2026-05-20T15:00:00-04:00"
+}</code></pre>
+            </figure>
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Funded gradient</span>
+                <span>WorkFundingGradient</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.work_funding_gradient.v0.1",
+  "gradient_id": "seller_attention_gradient:req_surface_01",
+  "funding_principle": "work_requires_a_funded_gradient",
+  "selected_rung": "quick_photo",
+  "rungs": [
+    {
+      "key": "included",
+      "amount": 0,
+      "worker": "buyer_agent",
+      "work": "read existing evidence"
+    },
+    {
+      "key": "quick_photo",
+      "amount": 5,
+      "worker": "seller",
+      "work": "one angled surface photo",
+      "deadline": "10m",
+      "credit_if_purchase": 5
+    },
+    {
+      "key": "proof_set",
+      "amount": 15,
+      "worker": "seller",
+      "work": "back, corners, packaging"
+    },
+    {
+      "key": "human_heavy",
+      "amount": "35+",
+      "worker": "seller_or_shop_human",
+      "work": "video, shop check, local handoff"
+    }
+  ]
+}</code></pre>
+            </figure>
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Human display</span>
+                <span>Agent copy</span>
+              </figcaption>
+              <pre><code>The seller can take one more photo for $5.
+$2.50 is credited back if you buy.
+If the seller misses the deadline, you get the $5 back.
+If the photo is still unclear, your agent will ask before shipping.</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="verifier-scope">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Verifier scope</p>
+              <h2>"Verified" is not a protocol state.</h2>
+            </div>
+            <p class="lead">
+              A verifier stamp must carry the exact claim it supports. The
+              protocol should never let packet completeness, cert correlation,
+              seller custody, route readiness, or claim readiness blur into a
+              generic "verified item" label.
+            </p>
+          </div>
+
+          <div class="grid" style="margin-bottom: 24px;">
+            <article class="panel accent-red">
+              <h3>No scope laundering</h3>
+              <p>A verifier can be active, buyer-approved, and still only authoritative over one narrow claim.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Scope travels with display</h3>
+              <p>Agents may summarize, but the summary must retain checked scopes, excluded scopes, freshness, and challenge options.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>Value map decides sufficiency</h3>
+              <p>The same attestation may be enough for one buyer, weak for another, and irrelevant to a different route or claim.</p>
+            </article>
+          </div>
+
+          <p class="lead" style="margin-bottom: 22px;">
+            The local EVM harness now makes this a hard gate. A registered
+            verifier cannot attach loose evidence to a trade. The buyer first
+            signs a <code>VerifierScopeApproval</code>, then the verifier commits
+            a <code>VerifierScopeAttestation</code> bound to an already anchored
+            subject hash, the approved scope-set hash, and a method-id hash.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Scope</th>
+                  <th>What It Can Say</th>
+                  <th>What It Must Not Imply</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>packet_completeness</td>
+                  <td>Required fields and evidence refs are present.</td>
+                  <td>The evidence content is true.</td>
+                </tr>
+                <tr>
+                  <td>seller_custody</td>
+                  <td>The seller likely controlled the item at capture time.</td>
+                  <td>The seller still controls it later.</td>
+                </tr>
+                <tr>
+                  <td>raw_card_identity</td>
+                  <td>Photos plausibly identify the raw card described.</td>
+                  <td>The card is authentic or exact-grade.</td>
+                </tr>
+                <tr>
+                  <td>graded_cert_correlation</td>
+                  <td>Visible slab or cert evidence correlates with a grading-company record.</td>
+                  <td>The slab cannot be fake, swapped, or stale.</td>
+                </tr>
+                <tr>
+                  <td>route_readiness</td>
+                  <td>Carrier, local handoff, verifier-forwarding, or insurance duties are ready.</td>
+                  <td>The item itself is as described.</td>
+                </tr>
+                <tr>
+                  <td>insurance_claim_readiness</td>
+                  <td>Packet is sufficient to begin a carrier or insurer claim.</td>
+                  <td>The claim will be approved.</td>
+                </tr>
+                <tr>
+                  <td>private_predicate_threshold</td>
+                  <td>A private fact passed a registered predicate.</td>
+                  <td>The hidden evidence should be treated as public proof.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Scoped claim</span>
+                <span>VerifierScopeAttestation</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.verifier_scope_attestation.v0.1",
+  "trade_id": "trade_8821",
+  "verifier": "did:market:verifier:shop-check-1",
+  "subject": {
+    "subject_type": "item_fingerprint",
+    "subject_hash": "0x..."
+  },
+  "scope": ["seller_custody", "graded_cert_correlation"],
+  "scope_set_hash": "0x...",
+  "method": {
+    "method_id": "tcg.slab.cert_custody_photo.v0.1",
+    "method_id_hash": "0x...",
+    "summary": "Compared cert lookup to fresh slab photos with buyer nonce."
+  },
+  "inputs_seen": ["front_slab_photo", "back_slab_photo", "cert_lookup"],
+  "inputs_not_seen": ["in_person_inspection", "post_verification_custody"],
+  "claim": {
+    "positive": ["seller likely controlled the slab at verification time"],
+    "negative": ["not an authenticity guarantee", "not shipping evidence"]
+  },
+  "challenge": {
+    "hooks": ["fresh_nonce_photo", "shop_intake_scan", "arbiter_review"],
+    "failure_policy": "block_route_or_ask_buyer"
+  },
+  "display": {
+    "label": "Cert and custody checked",
+    "short_warning": "Not an authenticity guarantee."
+  },
+  "signature": "0x..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Agent display</span>
+                <span>Human sentence</span>
+              </figcaption>
+              <pre><code>Allowed:
+"A verifier matched the slab cert and fresh custody photos.
+They did not inspect the card in person or verify shipping."
+
+Forbidden:
+"Verified card."
+"Safe trade."
+"Authentic."
+"No risk."</code></pre>
+            </figure>
+          </div>
+
+          <p class="lead" style="margin-top: 22px;">
+            Deep target report:
+            <a href="runs/verifier_scope_semantics_20260519T162044Z.md">verifier_scope_semantics_20260519T162044Z</a>.
+            VEX pressure:
+            <a href="runs/iris_vex_verifier_scope_pressure_20260519T163103Z.md">iris_vex_verifier_scope_pressure_20260519T163103Z</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="arbitration">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Arbitration</p>
+              <h2>Arbiter selection is part of the deal, not a last-minute admin choice.</h2>
+            </div>
+            <p class="lead">
+              Agents should know which arbiters exist before funds lock, then
+              choose by scope, value band, evidence burden, speed, fee, conflicts,
+              and past outcomes. The arbiter is accountable; their agent can be
+              the clerk, packet reader, evidence requester, and draft writer.
+              For low-cost mechanical cases, the selected arbiter can be a
+              registered automated policy that stops at signed friction thresholds.
+            </p>
+          </div>
+
+          <div class="grid">
+            <article class="panel accent-blue">
+              <h3>Discovery</h3>
+              <p>Registry proves active authority. Signed profiles describe scope, fees, evidence rules, conflicts, and delegation.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>Availability</h3>
+              <p>For a real trade, agents request short-lived quotes: fee, SLA, value ceiling, evidence floor, and conflict disclosures.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>Selection</h3>
+              <p>Buyer and seller agents converge on a selected arbiter plus acceptable backups before escrow locks.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Delegation</h3>
+              <p>An arbiter-run agent may triage, request evidence, and draft rulings, but bounded authority and escalation rules are signed.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>Automation</h3>
+              <p>Low-cost, low-ambiguity cases can use an automated arbiter until money, ambiguity, trust risk, or attention crosses a threshold.</p>
+            </article>
+          </div>
+
+          <div class="two-up" style="margin-top: 24px;">
+            <article class="panel accent-green">
+              <h3>Friction threshold rule</h3>
+              <p>
+                The protocol may automate matching, evidence review, route checks,
+                low-value remedies, and bounded arbitration until a typed threshold
+                is crossed. Thresholds include money at risk, remedy severity,
+                evidence ambiguity, trust gap, privacy exposure, conflict risk,
+                and human attention cost.
+              </p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>Automate the obvious</h3>
+              <p>
+                Automated arbiters are for cases where the terms, evidence packet,
+                and remedy schedule are already clear. They must emit replayable
+                ruling packets and escalate when the next decision has meaningful
+                cost, ambiguity, or trust risk.
+              </p>
+            </article>
+          </div>
+
+          <div class="table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Selection Input</th>
+                  <th>Why It Matters</th>
+                  <th>Agent Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Case scope</td>
+                  <td>Raw-card condition, sealed authenticity, route failure, and fraud are different expertise domains.</td>
+                  <td>Reject arbiters outside signed scope unless both humans explicitly waive.</td>
+                </tr>
+                <tr>
+                  <td>Value band</td>
+                  <td>A $60 raw card should not require the same process as a $4,000 trophy card.</td>
+                  <td>Match fee, response burden, and evidence floor to value at risk.</td>
+                </tr>
+                <tr>
+                  <td>Evidence floor</td>
+                  <td>The arbiter's minimum packet determines seller attention and buyer claim quality.</td>
+                  <td>Prefer the lowest evidence floor that still protects the covered promises.</td>
+                </tr>
+                <tr>
+                  <td>Fee and SLA</td>
+                  <td>Resolution cost and time are real cost-field components.</td>
+                  <td>Rank by expected dispute cost, not headline fee alone.</td>
+                </tr>
+                <tr>
+                  <td>Conflicts</td>
+                  <td>Shops, dealers, graders, communities, and marketplaces have overlapping relationships.</td>
+                  <td>Require signed conflict disclosure and human interrupt for material conflicts.</td>
+                </tr>
+                <tr>
+                  <td>Outcome history</td>
+                  <td>Authority hardens only when rulings later match evidence and settlement outcomes.</td>
+                  <td>Weight history by category, value band, route, and ruling type, not one global score.</td>
+                </tr>
+                <tr>
+                  <td>Agent delegation</td>
+                  <td>Arbiter agents make small cases scalable but can hide accountability if unbounded.</td>
+                  <td>Accept delegated rulings only within signed scope, value, remedy, and escalation limits.</td>
+                </tr>
+                <tr>
+                  <td>Automation band</td>
+                  <td>Cheap transactions need resolution without human fees swallowing the trade.</td>
+                  <td>Allow automated rulings only when selected pre-lock, under value cap, and inside deterministic remedy scope.</td>
+                </tr>
+                <tr>
+                  <td>Friction thresholds</td>
+                  <td>The moment uncertainty becomes meaningful, automation becomes a risk rather than a savings.</td>
+                  <td>Pause or escalate on high value, unclear evidence, fraud/authenticity, material conflicts, privacy exposure, or severe remedy.</td>
+                </tr>
+                <tr>
+                  <td>Replacement set</td>
+                  <td>Disputes should not strand funds if the chosen arbiter disappears.</td>
+                  <td>Pre-commit backups where possible; emergency handoff requires timeout and replacement acceptance.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Public profile</span>
+                <span>ArbiterProfile</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.arbiter_profile.v0.2",
+  "arbiter_id": "did:market:arbiter:raw-tcg-7",
+  "scopes": ["pokemon_raw_card", "condition_dispute", "route_failure"],
+  "value_bands": ["low", "mid"],
+  "fee_schedule": {
+    "availability_fee": 5,
+    "dispute_fee": 35,
+    "high_attention_fee": 75
+  },
+  "sla_hours": 48,
+  "evidence_floor": ["front_back_scan", "received_item_photos"],
+  "conflict_policy": "must_disclose_prior_relationships",
+  "agent_delegation": {
+    "agent_id": "did:market:agent:arbiter-7-clerk",
+    "can_draft": true,
+    "can_rule_under": 100,
+    "must_escalate_if": ["authenticity", "fraud", "contradictory_verifier"]
+  },
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Trade quote</span>
+                <span>ArbiterAvailability</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.arbiter_availability.v0.2",
+  "arbiter": "did:market:arbiter:raw-tcg-7",
+  "trade_scope": ["pokemon", "raw_card", "condition_dispute"],
+  "max_value": 650,
+  "fee_quote": 35,
+  "sla_hours": 48,
+  "evidence_floor": ["front_back_scan", "received_item_photos"],
+  "available_until": "2026-05-19T00:00:00Z",
+  "conflict_disclosures": [],
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Pre-lock set</span>
+                <span>ArbiterCandidateSet</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.arbiter_candidate_set.v0.2",
+  "trade_id": "trade_8821",
+  "selected_arbiter": "did:market:arbiter:raw-tcg-7",
+  "acceptable_backups": [
+    "did:market:arbiter:raw-tcg-2",
+    "did:market:arbiter:route-claims-1"
+  ],
+  "ranking_inputs": {
+    "scope_fit": "high",
+    "fee_fit": "medium",
+    "evidence_burden": "low",
+    "conflict_risk": "none_disclosed"
+  },
+  "replacement_policy": "backup_then_timeout_handoff",
+  "buyer_signature": "base64url...",
+  "seller_signature": "base64url..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Low-friction path</span>
+                <span>AutomatedArbiterPolicy</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.automated_arbiter_policy.v0.2",
+  "engine_id": "did:market:arbiter:auto-low-tcg-1",
+  "version": "2026-05-alpha",
+  "allowed_scopes": ["raw_tcg_condition", "non_shipment", "route_failure"],
+  "max_trade_value": 100,
+  "evidence_required": [
+    "locked_inventory_packet",
+    "received_item_photos",
+    "route_event_packet"
+  ],
+  "allowed_remedies": {
+    "release": true,
+    "buyer_refund_bps_max": 2500,
+    "seller_bond_penalty_bps_max": 2500
+  },
+  "must_escalate_if": [
+    "authenticity",
+    "fraud",
+    "altered_card",
+    "contradictory_verifier_notes",
+    "missing_required_evidence",
+    "confidence_below_threshold"
+  ],
+  "appeal_path": "human_arbiter_from_candidate_set",
+  "buyer_signature": "base64url...",
+  "seller_signature": "base64url..."
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Escalation line</span>
+                <span>FrictionThresholdPolicy</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.friction_threshold_policy.v0.2",
+  "trade_id": "trade_8821",
+  "automation_allowed_until": {
+    "money_at_risk": 100,
+    "buyer_refund_bps": 2500,
+    "seller_bond_penalty_bps": 2500,
+    "evidence_ambiguity": "low",
+    "trust_gap": "bounded",
+    "privacy_exposure": "none"
+  },
+  "pause_for": [
+    "human_attention_cost_exceeded",
+    "material_conflict_disclosure",
+    "authenticity_or_fraud_claim",
+    "non_mechanical_remedy"
+  ],
+  "default_action": "escalate_to_selected_human_arbiter"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Ruling</span>
+                <span>ArbiterRuling</span>
+              </figcaption>
+              <pre><code>{
+  "schema": "marketplace.arbiter_ruling.v0.2",
+  "case_id": "case_19",
+  "trade_id": "trade_8821",
+  "arbiter": "did:market:arbiter:raw-tcg-7",
+  "agent_assisted": true,
+  "findings": {
+    "promised": "NM raw card",
+    "happened": "LP received condition",
+    "accepted_risk": "sparse seller photos"
+  },
+  "remedy": {
+    "buyer_refund_bps": 6000,
+    "seller_bond_penalty_bps": 5000
+  },
+  "evidence_basis": ["inventory_packet", "received_item_packet", "verifier_note"],
+  "signature": "base64url..."
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="resolve">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Resolution</p>
+              <h2>Every ending is promised, happened, accepted.</h2>
+            </div>
+            <p class="lead">
+              Resolution should compare what was promised, what actually
+              happened, and who accepted which exception. This avoids vibes and
+              gives agents a crisp packet for claims or arbitration.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="panel accent-blue">
+              <h3>Promised</h3>
+              <p>Condition band, item claim, evidence tier, route, insurance, signature, inspection, bond scope.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>Happened</h3>
+              <p>Carrier events, handoff memo, verifier note, received evidence, buyer confirmation, exceptions.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Accepted</h3>
+              <p>Explicit waivers, underinsurance approval, route changes, inspection acceptance, human prompts.</p>
+            </article>
+          </div>
+
+          <div class="table-wrap" style="margin-top: 24px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Case Type</th>
+                  <th>Required Grounds</th>
+                  <th>Possible Remedy</th>
+                  <th>Abuse Control</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>wrong_item</td>
+                  <td>Received evidence conflicts with inventory claim.</td>
+                  <td>Refund, return route, seller bond action, reputation event.</td>
+                  <td>Requires received-item packet and inventory packet.</td>
+                </tr>
+                <tr>
+                  <td>material_misdescription</td>
+                  <td>Condition, authenticity, completeness, or serial claim materially differs.</td>
+                  <td>Partial refund, return, verifier review, proportional bond action.</td>
+                  <td>Requires specific promise and specific contrary evidence.</td>
+                </tr>
+                <tr>
+                  <td>partial_delivery</td>
+                  <td>Some but not all items or components arrived.</td>
+                  <td>Proportional refund, replacement shipment, partial bond action.</td>
+                  <td>Requires manifest, package evidence, and received-count evidence.</td>
+                </tr>
+                <tr>
+                  <td>route_failure</td>
+                  <td>Seller changed route, underinsured, failed signature, failed packaging, or missed handoff.</td>
+                  <td>Claim packet, seller-owned gap, bond action, refund path.</td>
+                  <td>Requires route promise and route event evidence.</td>
+                </tr>
+                <tr>
+                  <td>non_shipment</td>
+                  <td>No valid acceptance scan, handoff memo, verifier intake, or proof of route start.</td>
+                  <td>Refund, seller bond action, reputation event.</td>
+                  <td>Seller can cure before timeout by attaching route evidence.</td>
+                </tr>
+                <tr>
+                  <td>buyer_remorse</td>
+                  <td>Buyer wants out without covered failure.</td>
+                  <td>Only remedies explicitly allowed by return terms.</td>
+                  <td>Excluded from seller bond unless terms say otherwise.</td>
+                </tr>
+                <tr>
+                  <td>frivolous_dispute</td>
+                  <td>Dispute lacks grounds, packet, or material contradiction.</td>
+                  <td>Dispute bond forfeited, seller payout released, buyer reputation event.</td>
+                  <td>Disputing party posts cost bond above configured value/risk thresholds.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Dispute</span>
+                <span>DisputeCase</span>
+              </figcaption>
+              <pre><code>{
+  "case_id": "case_19",
+  "trade_id": "trade_8821",
+  "grounds_type": "material_misdescription",
+  "opened_by": "did:market:buyer:2ab",
+  "evidence_packet_hash": "sha256:...",
+  "requested_remedy": {
+    "type": "partial_refund",
+    "amount": 85
+  },
+  "filer_bond": {
+    "amount": 25,
+    "forfeited_if": "frivolous_dispute"
+  },
+  "arbiter": "did:market:arbiter:panel-3"
+}</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Partial remedy</span>
+                <span>RemedySchedule</span>
+              </figcaption>
+              <pre><code>{
+  "case_type": "partial_delivery",
+  "promised_count": 10,
+  "received_count": 8,
+  "missing_scope": "two_items_from_manifest",
+  "remedy": {
+    "refund_fraction": 0.2,
+    "bond_action": "partial",
+    "replacement_allowed_until": "2026-05-21T00:00:00Z"
+  }
+}</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="api">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">API surface</p>
+              <h2>The first API can be small.</h2>
+            </div>
+            <p class="lead">
+              Keep the alpha API focused on posting intents, inventory, proofs,
+              candidates, evidence, route events, and resolution packets.
+            </p>
+          </div>
+          <div class="code-grid">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Endpoints</span>
+                <span>HTTP alpha</span>
+              </figcaption>
+              <pre><code>POST /intents
+GET  /intents/{id}/candidates
+POST /inventory
+POST /proofs
+POST /proofs/challenge
+GET  /proofs/{issuer}/outcomes
+POST /candidates
+POST /trades
+GET  /trades/{id}
+GET  /trades/{id}/state
+POST /trades/{id}/reserve
+DELETE /trades/{id}/reserve
+POST /trades/{id}/terms-change
+POST /trades/{id}/cancel
+POST /trades/{id}/escrow
+POST /trades/{id}/evidence
+POST /trades/{id}/evidence-request
+POST /trades/{id}/evidence-request/{request_id}/quote
+POST /trades/{id}/evidence-request/{request_id}/accept-fee
+POST /trades/{id}/cost-trace
+POST /trades/{id}/route-events
+POST /trades/{id}/route-change-accept
+POST /trades/{id}/human-availability
+POST /trades/{id}/human-response
+POST /trades/{id}/inspection-result
+POST /trades/{id}/receipt
+POST /trades/{id}/resolve
+GET  /trades/{id}/packet/{purpose}
+POST /disputes
+GET  /disputes/{id}
+POST /disputes/{id}/ruling
+POST /actors
+GET  /actors/{id}
+GET  /actors/{id}/reputation
+GET  /arbiters
+GET  /arbiters/{id}/profile
+POST /arbiters/{id}/availability
+POST /trades/{id}/arbiter-candidates
+POST /trades/{id}/arbiter-replacement
+POST /trades/{id}/automated-arbiter-policy
+POST /trades/{id}/friction-thresholds
+GET  /verifiers</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Events</span>
+                <span>Event stream</span>
+              </figcaption>
+              <pre><code>IntentPublished
+CandidateProposed
+ReserveRequested
+ReserveAccepted
+ReserveExpired
+TermsChanged
+EscrowLocked
+BondLocked
+ProofAttached
+EvidenceRequested
+EvidenceRequestFeeQuoted
+EvidenceRequestFeeAccepted
+EvidenceRequestFeeCredited
+CostDimensionalTraceAttached
+EvidenceAccepted
+EvidenceRejected
+HumanQuestionRaised
+HumanAvailabilityUpdated
+HumanResponseReceived
+RouteCommitted
+RouteChangeRequested
+RouteChangeAccepted
+RouteException
+ReceiptConfirmed
+BuyerAccepted
+WindowExpired
+ClaimOpened
+DisputeOpened
+ArbiterCandidateSetAccepted
+ArbiterAvailabilityQuoted
+ArbiterAgentDelegated
+AutomatedArbiterSelected
+FrictionThresholdCrossed
+AutomatedRulingPosted
+ArbiterReplacementProposed
+EmergencyArbiterReplaced
+ArbiterRulingPosted
+BondActioned
+TradeSettled
+ReputationEventEmitted</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="local-evm">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Local EVM harness</p>
+              <h2>Anvil tests the money rail without dragging the whole protocol on-chain.</h2>
+            </div>
+            <p class="lead">
+              The first runnable contract lives in <code>/Users/che/Marketplace/chain</code>.
+              It now deploys an actor registry, a predicate-verifier stub, and
+              escrow. The registry proves buyer, seller, verifier, arbiter, and
+              verifier-contract authority; escrow anchors the money, bond,
+              packet hashes, route, inspection, claim, and settlement gates. The
+              cost field, item fingerprints, photos, scans, claim packets, and
+              agent traces stay off-chain as signed objects.
+            </p>
+          </div>
+          <div class="two-up">
+            <article class="panel accent-blue">
+              <h3>On-chain now</h3>
+              <ul class="list">
+                <li>Native ETH escrow and seller bond.</li>
+                <li>Optional buyer dispute bond for abuse control.</li>
+                <li>Registered buyer, seller, verifier, and arbiter controller addresses.</li>
+                <li>Verifier, arbiter, and predicate-verifier authority records.</li>
+                <li>Intent, terms, proof, evidence, route, claim, ruling, and receipt hashes.</li>
+                <li>Seller- or verifier-signed item fingerprints before inventory reservation.</li>
+                <li>Buyer-scoped verifier approval before verifier-committed fingerprints.</li>
+                <li>Buyer-scoped verifier approvals before verifier attestations can be anchored.</li>
+                <li>Verifier attestation commits bound to subject hash, scope-set hash, and method-id hash.</li>
+                <li>Seller-signed inventory locks bound to the committed item fingerprint.</li>
+                <li>Buyer-opened fingerprint challenges that block route commitment until cleared.</li>
+                <li>Attestation-bound fingerprint challenge clearance for verifier-cured evidence.</li>
+                <li>Route commitment consumes a cited spendability packet hash and validates a typed route assembly witness before the route can lock.</li>
+                <li>Active item-fingerprint collision checks across open trades.</li>
+                <li>Active inventory-lock collision checks across open trades.</li>
+                <li>Replay rejection for duplicate packet hashes inside a trade.</li>
+                <li>State transitions for delivery, inspection, claim, resolution, and settlement.</li>
+              </ul>
+            </article>
+            <article class="panel accent-green">
+              <h3>Off-chain by design</h3>
+              <ul class="list">
+                <li>Human-readable cost-field objects and agent mandates.</li>
+                <li>Photos, scans, videos, shipping pages, handoff memos, and insurance packets.</li>
+                <li>Marketplace reputation proofs and trust-decision traces.</li>
+                <li>Verifier scope attestations, arbiter candidate sets, and arbitration narratives.</li>
+                <li>Arbiter-agent delegation policies and ruling drafts.</li>
+                <li>Delegated agent policy, key rotation, and long-lived reputation weighting.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="two-up" style="margin-top: 20px;">
+            <article class="panel accent-gold">
+              <h3>Signature layer</h3>
+              <p>
+                Every packet in the local probe is canonical JSON, hashed with
+                keccak, and signed by the registered actor controller using
+                Ethereum personal-sign semantics. Escrow now requires those
+                signatures before accepting packet hashes that move trade state:
+                intent, terms, proof, evidence, route, claim, ruling, receipt,
+                cancellation, and arbiter replacement. Once a packet hash is
+                anchored for a trade, replaying it as another proof or evidence
+                packet is rejected.
+              </p>
+            </article>
+            <article class="panel accent-red">
+              <h3>Authority gates</h3>
+              <p>
+                Escrow refuses trades with unknown buyers, unknown sellers, or
+                inactive arbiters. Registered verifiers cannot attach loose
+                evidence; they can only commit a scoped attestation after buyer
+                approval, and that attestation must bind to an anchored subject,
+                scope set, and method. Private predicates must pass a
+                registry-approved verifier contract. If an arbiter is revoked
+                mid-claim, buyer and seller can still co-sign a replacement; if
+                one side stalls, a one-party proposal opens only after timeout
+                and replacement-arbiter acceptance.
+              </p>
+            </article>
+          </div>
+          <article class="panel accent-green" style="margin-top: 20px;">
+            <h3>ItemFingerprint before InventoryLock</h3>
+            <p>
+              The newest primitive separates object identity from inventory
+              reservation. An <code>ItemFingerprint</code> can be a raw-card
+              photo set, a slab cert correlation, a shop-verifier note, a
+              marketplace proof chain, or a later privacy-preserving predicate.
+              The contract enforces the signed hash, active-collision rule,
+              buyer-scoped verifier approval, scoped verifier attestation,
+              typed inventory-lock binding, buyer challenge gate, and
+              attestation-bound challenge clearance; agents, verifiers, and arbiters still judge
+              whether the evidence is strong enough for the buyer aperture.
+            </p>
+          </article>
+          <article class="panel accent-gold" style="margin-top: 20px;">
+            <h3>Spendability is a real gate</h3>
+            <p>
+              Evidence can now be durable memory without automatically becoming
+              action. A seller route must cite a nonzero
+	              <code>EvidenceSpendability</code> packet hash and the contract-derived
+	              <code>RouteAssemblyWitness</code> for that escrow, chain, trade,
+	              route, spendability hash, wall bundle, assembly history, item
+	              fingerprint, inventory lock, and gate. Escrow consumes
+	              the spendability hash and stores the typed assembly witness before route
+              lock. The full packet semantics are still checked off-chain, but a
+              spendability packet that does not inherit the current assembly
+              provenance blocks in the harness before route lock.
+            </p>
+          </article>
+          <div class="code-grid" style="margin-top: 24px;">
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Run tests</span>
+                <span>Foundry</span>
+              </figcaption>
+              <pre><code>source ~/.zshenv
+cd /Users/che/Marketplace/chain
+forge test -vv</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Run protocol probe</span>
+                <span>Packets + Anvil</span>
+              </figcaption>
+              <pre><code>source ~/.zshenv
+cd /Users/che/Marketplace/chain
+python3 script/protocol_e2e.py</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Run agent simulation</span>
+                <span>250 trades</span>
+              </figcaption>
+              <pre><code>cd /Users/che/Marketplace
+python3 simulations/protocol_agent_market_sim.py --trades 250</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Replay 10 trades</span>
+                <span>Agent sim + Anvil</span>
+              </figcaption>
+              <pre><code>source ~/.zshenv
+cd /Users/che/Marketplace/chain
+python3 script/replay_agent_sim_trades.py \
+	  --source-run /Users/che/Marketplace/runs/agent_market_20260518T194505Z</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Run collision drill</span>
+                <span>Fingerprints + Anvil</span>
+              </figcaption>
+              <pre><code>source ~/.zshenv
+	cd /Users/che/Marketplace/chain
+	python3 script/fingerprint_collision_drill.py</code></pre>
+            </figure>
+
+            <figure class="code-block">
+              <figcaption class="code-label">
+                <span>Run a local chain</span>
+                <span>Anvil</span>
+              </figcaption>
+              <pre><code>source ~/.zshenv
+anvil --chain-id 31337
+
+cast chain-id --rpc-url http://127.0.0.1:8545</code></pre>
+            </figure>
+          </div>
+          <p class="lead" style="margin-top: 22px;">
+            Latest agentic simulation artifact:
+            <a href="runs/agent_market_20260518T194505Z/REPORT.md">agent_market_20260518T194505Z report</a>.
+            Latest protocol probe:
+            <a href="runs/local_evm_protocol_20260519T181711Z/REPORT.md">local_evm_protocol_20260519T181711Z report</a>.
+            Latest EVM replay:
+            <a href="runs/agent_market_evm_replay_20260519T170812Z/REPORT.md">agent_market_evm_replay_20260519T170812Z report</a>.
+            Fraud drill:
+            <a href="runs/fraudulent_seller_drill_20260519T003004Z.md">fraudulent_seller_drill_20260519T003004Z</a>.
+            Inventory drill:
+            <a href="runs/inventory_double_sell_drill_20260519T003701Z.md">inventory_double_sell_drill_20260519T003701Z</a>.
+            Item fingerprint drill:
+            <a href="runs/item_fingerprint_drill_20260519T155300Z.md">item_fingerprint_drill_20260519T155300Z</a>.
+            Fingerprint hardening spec:
+            <a href="runs/item_fingerprint_hardening_spec_20260519T155705Z.md">item_fingerprint_hardening_spec_20260519T155705Z</a>.
+            VEX pressure:
+            <a href="runs/iris_vex_item_fingerprint_pressure_20260519T160530Z.md">iris_vex_item_fingerprint_pressure_20260519T160530Z</a>.
+            Enforcement gates:
+            <a href="runs/enforcement_gates_20260519T161315Z.md">enforcement_gates_20260519T161315Z</a>.
+            Verifier scope semantics:
+            <a href="runs/verifier_scope_semantics_20260519T162044Z.md">verifier_scope_semantics_20260519T162044Z</a>.
+            Fingerprint collision drill:
+            <a href="runs/fingerprint_collision_drill_20260519T181718Z/REPORT.md">fingerprint_collision_drill_20260519T181718Z report</a>.
+            Spendability gate drill:
+            <a href="runs/spendability_gate_bypass_drill_20260519T181706Z/REPORT.md">spendability_gate_bypass_drill_20260519T181706Z report</a>.
+            Wall bundle route drill:
+            <a href="runs/wall_bundle_route_spendability_drill_20260520T030358Z/REPORT.md">wall_bundle_route_spendability_drill_20260520T030358Z report</a>.
+          </p>
+          <article class="panel accent-blue" style="margin-top: 18px;">
+            <strong>Ten-trade replay result.</strong>
+            The replay settled a clean close, two automated rulings, two
+            automated-escalated claims, one delegated arbiter-agent ruling, and
+            four human-arbiter claims. All ten reached <code>Settled</code> on
+            local Anvil with signed packets verified through the registry.
+            Nonship and route-loss cases now use a native route-timeout claim
+            gate instead of an arbiter-opened inspection surrogate. Every replay
+            now commits a signed item fingerprint, then a signed inventory lock
+            bound to that fingerprint, before route commitment. Verifier review
+            notes are no longer loose evidence; they enter as scoped attestation
+            commits after buyer approval.
+          </article>
+          <article class="panel accent-green" style="margin-top: 18px;">
+            <strong>Fingerprint collision result.</strong>
+            The drill separates hash enforcement from semantic judgment. The
+            exact same active fingerprint hash is blocked by escrow. Same-cert
+            reuse, stale prior-market photos, mixed front/back evidence,
+            same-front/different-back swaps, and same-card crop aliases become
+            buyer-signed <code>FingerprintChallenge</code> packets. Fresh nonce
+            cure evidence can clear only with a verifier attestation bound to
+            the active challenge and a buyer signature over that attested
+            resolution. Stale evidence stays blocked, mixed evidence escalates,
+            and a fresh nonce control still routes.
+          </article>
+          <article class="panel accent-red" style="margin-top: 18px;">
+            <strong>Fraudulent seller drill.</strong>
+            The current rail catches underfunded seller bonds, wrong actor
+            signatures, duplicate packet replay, route mutation after lock, and
+            route claims opened before timeout. The hardening added here makes
+            delivery a signed evidence packet and lets the buyer open a
+            pre-delivery route-timeout claim when a seller commits a route and
+            then stalls. The object hardening now requires a seller- or
+            verifier-signed item fingerprint before inventory reservation, then
+            a seller-signed inventory lock bound to that fingerprint before
+            route commitment. Verifier-committed fingerprints require buyer
+            approval for that trade, and verifier review packets require a
+            buyer-approved scope before they can be anchored as attestations.
+            Buyer-opened fingerprint challenges now block route until cleared.
+            The rail rejects the same active fingerprint or lock across two open
+            trades. Semantic fingerprint conflicts can now be packetized and
+            route-blocked; verifier-cured challenges can resume only through an
+            attestation-bound clearance. Real image matching, cert APIs, and the
+            full seller cure workflow are still future work. The remaining sharp
+            edges are false seller-signed delivery evidence and fake content
+            inside signed evidence packets.
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="invariants">
+        <div class="shell">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Invariants</p>
+              <h2>Rules that should not break.</h2>
+            </div>
+            <p class="lead">
+              These are the checks a simulation, implementation, or verifier
+              should enforce before trusting a trade path.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="panel accent-red">
+              <h3>No unverifiable signature</h3>
+              <p>Every signed object must resolve to an active ActorRecord key and canonical payload.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No scalar trust collapse</h3>
+              <p>Trust sources must retain source, scope, freshness, issuer, and claim.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No release without a gate</h3>
+              <p>Escrow cannot release unless the specified release gate is satisfied or explicitly waived.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No route without spendability</h3>
+              <p>Route commitment must cite assembly provenance, consume a spendability packet hash, and pass the contract-derived route assembly witness; evidence alone cannot spend.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No access by resemblance</h3>
+              <p>A source can look right, a coordinate can be visible, and a seller can seem trustworthy; none of that can act unless the assembly history names the provenance path for this gate.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No untyped object</h3>
+              <p>Inventory cannot be reserved until a signed item fingerprint defines the physical thing at stake.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>No challenged route</h3>
+              <p>A seller cannot commit route while the buyer has an active fingerprint challenge on the trade.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No silent semantic collision</h3>
+              <p>Same cert, stale photo, mixed-front/back, or same-card alias signals must become a challenge, waiver, or verifier cure packet before route.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No stray verifier</h3>
+              <p>A verifier cannot attach loose evidence or commit item identity or review unless the buyer scopes that verifier to the trade.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No scope laundering</h3>
+              <p>A verifier attestation cannot be displayed or used without its anchored subject, method, checked scopes, exclusions, freshness, and challenge path.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>No unbound proof</h3>
+              <p>A proof cannot satisfy a release gate unless bound to the trade id or challenge nonce.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No hidden underinsurance</h3>
+              <p>The owner of any value gap must be typed before route commitment.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No hidden bond gap</h3>
+              <p>Bond coverage must be disclosed as amount and fraction of item value before escrow lock.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>No route mutation</h3>
+              <p>Seller-side route changes after escrow require buyer-side acceptance.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No vague bond</h3>
+              <p>Bond scope must define covered promises, exclusions, adjudicator, and payout path.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No undefined arbiter</h3>
+              <p>Arbiters must be registry-listed, profile-signed, conflict-disclosed, and accepted in terms before they move money.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No unbounded arbiter agent</h3>
+              <p>Arbiter agents need signed delegation with scope, value, remedy, escalation, and expiry limits.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No frictionless ambiguity</h3>
+              <p>Automated arbitration must stop when value, remedy severity, evidence ambiguity, trust gap, privacy exposure, conflict risk, or attention cost crosses threshold.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No invisible AI ruling</h3>
+              <p>Automated rulings must be replayable from signed terms, evidence packets, remedy schedules, and engine version.</p>
+            </article>
+            <article class="panel accent-gold">
+              <h3>No random replacement</h3>
+              <p>Replacement arbiters must come from the accepted set or satisfy timeout, inactive-arbiter, and acceptance gates.</p>
+            </article>
+            <article class="panel accent-red">
+              <h3>No free dispute griefing</h3>
+              <p>Disputes require grounds, packet hash, requested remedy, and cost controls when risk warrants.</p>
+            </article>
+            <article class="panel accent-green">
+              <h3>No all-or-nothing failure</h3>
+              <p>Partial delivery and partial misdescription must support proportional remedies.</p>
+            </article>
+            <article class="panel accent-blue">
+              <h3>No missing packet</h3>
+              <p>Clean close, claim, dispute, verifier mismatch, and refund must all produce a packet.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <p>
+          This spec is intentionally narrower than the public narrative. The
+          public page explains why the protocol matters; this page defines what
+          builders and agents need to implement first.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

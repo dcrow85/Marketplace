@@ -1,0 +1,38 @@
+{
+  "canonical_payload": "{\"correlation_method\":[\"catalog_reference\",\"seller_photo_packet\",\"buyer_agent_judgment\"],\"evidence_refs\":[{\"ref\":\"pokemon-tcg-api:neo2/1_hires\",\"type\":\"front_photo\"},{\"ref\":\"seller_evidence_response:req_surface_01\",\"type\":\"surface_angle_request\"}],\"identity_claim\":{\"card\":\"Neo Discovery Espeon #1\",\"condition_claim\":\"LP or better\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"not_claiming\":[\"authenticity\",\"professional_grade\",\"delivery_success\"],\"schema\":\"marketplace.item_fingerprint.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "correlation_method": [
+      "catalog_reference",
+      "seller_photo_packet",
+      "buyer_agent_judgment"
+    ],
+    "evidence_refs": [
+      {
+        "ref": "pokemon-tcg-api:neo2/1_hires",
+        "type": "front_photo"
+      },
+      {
+        "ref": "seller_evidence_response:req_surface_01",
+        "type": "surface_angle_request"
+      }
+    ],
+    "identity_claim": {
+      "card": "Neo Discovery Espeon #1",
+      "condition_claim": "LP or better",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "not_claiming": [
+      "authenticity",
+      "professional_grade",
+      "delivery_success"
+    ],
+    "schema": "marketplace.item_fingerprint.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x2e9f6051173ab2d7303edef8916552ecd7a4a415002992c0234224132a8d7ebc",
+  "signature": "0x94088e0ed7478b9c134d990e5e3688897700ba9c04a8102d18ec3d594f313da23e8a2ec7a937af836055c17f261812aea50c9686675ed53f41a9e304932a75fe1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

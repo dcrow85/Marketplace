@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth\":\"0.005\",\"inspection_seconds\":172800,\"policy_note\":\"Route spendability must cite current wall bundle.\",\"price_eth\":\"0.20\",\"schema\":\"marketplace.escrow_terms.v0.2\",\"seller_bond_eth\":\"0.03\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth": "0.005",
+    "inspection_seconds": 172800,
+    "policy_note": "Route spendability must cite current wall bundle.",
+    "price_eth": "0.20",
+    "schema": "marketplace.escrow_terms.v0.2",
+    "seller_bond_eth": "0.03"
+  },
+  "payload_hash": "0x082c10d466e02304ea4aced576527b034517c7758f9f531e0db9e944d13c13c0",
+  "signature": "0x5cac14ee024a59b52ee7616cb7e10e756c2a8d849e3ecac427b8d8ae232330ca13eeaeac73fa7fbe69f49140781993d258dced07ea4ef1ad6e4e0aeeb10ba5461b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

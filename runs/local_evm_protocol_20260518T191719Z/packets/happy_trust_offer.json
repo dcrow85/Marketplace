@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"schema\":\"marketplace.trust_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trust_sources\":[{\"challenge_nonce\":\"happy-shop-domain-001\",\"claim\":\"same operator as public card shop site\",\"freshness\":\"2026-05-18\",\"source\":\"signed_shop_domain\"},{\"claim\":\"tcg singles shipped without dispute\",\"scope\":[\"tcg\",\"raw_condition\",\"insured_shipping\"],\"source\":\"prior_marketplace_receipts\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "schema": "marketplace.trust_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trust_sources": [
+      {
+        "challenge_nonce": "happy-shop-domain-001",
+        "claim": "same operator as public card shop site",
+        "freshness": "2026-05-18",
+        "source": "signed_shop_domain"
+      },
+      {
+        "claim": "tcg singles shipped without dispute",
+        "scope": [
+          "tcg",
+          "raw_condition",
+          "insured_shipping"
+        ],
+        "source": "prior_marketplace_receipts"
+      }
+    ]
+  },
+  "payload_hash": "0xb07613fb8aab82663a1dc4aeb2f4ea48cca97e4fadbbcc309dc07a0c3f2f6a54",
+  "signature": "0x5aa2994e69eba0512c1f586e61bca79aa84cf313dc88175652d65fc0bfa4357035c17191285c9fd7fc112768443de3dd703cb5f0bb3290a796f1f759f3cd5a721c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

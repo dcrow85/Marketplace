@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"evidence_class\":\"item\",\"review\":\"Scan packet is internally consistent with LP-or-better claim.\",\"schema\":\"marketplace.evidence_packet.v0.2\",\"scope\":[\"front_scan\",\"back_scan\",\"corner_closeups\"],\"trade_id\":1,\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "evidence_class": "item",
+    "review": "Scan packet is internally consistent with LP-or-better claim.",
+    "schema": "marketplace.evidence_packet.v0.2",
+    "scope": [
+      "front_scan",
+      "back_scan",
+      "corner_closeups"
+    ],
+    "trade_id": 1,
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x4784b6392d76a8060c26dfdd0d5af912518ae4793570d522c48e4008974235d9",
+  "signature": "0xfba60c292ba25cb37ac38cc2096331b4f21ae5971e561a8dafcd2fb106ebacfb1e5a82ded91829cdcd4fc162305c33c0b50b381721491bffe0670c2a48e068ac1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

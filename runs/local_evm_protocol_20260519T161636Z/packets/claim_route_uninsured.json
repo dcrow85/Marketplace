@@ -1,0 +1,17 @@
+{
+  "canonical_payload": "{\"buyer_accepted_gap\":true,\"declared_insurance_eth\":\"0\",\"insured\":false,\"route_type\":\"standard_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-CLAIM-0002\",\"trade_id\":2}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_accepted_gap": true,
+    "declared_insurance_eth": "0",
+    "insured": false,
+    "route_type": "standard_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-CLAIM-0002",
+    "trade_id": 2
+  },
+  "payload_hash": "0x930cbca8b807a09d66c65437b4e84dad39566173b2ab445f69d2ef757509fdfc",
+  "signature": "0xa1836c2208bd5024e4e36226a966e32d41c3866a1f479837734d2def0a36c9947c71210574e56e96e0f582bcdf1b61e4c15f89ba341f0e3a4676f491eba330151b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

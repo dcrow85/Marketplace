@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"approval_rule\":\"buyer_and_seller_same_hash\",\"new_arbiter\":\"did:market:arbiter:anvil-4\",\"old_arbiter\":\"did:market:arbiter:anvil-2\",\"reason\":\"original_arbiter_revoked_before_resolution\",\"schema\":\"marketplace.arbiter_replacement.v0.2\",\"trade_id\":3}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "approval_rule": "buyer_and_seller_same_hash",
+    "new_arbiter": "did:market:arbiter:anvil-4",
+    "old_arbiter": "did:market:arbiter:anvil-2",
+    "reason": "original_arbiter_revoked_before_resolution",
+    "schema": "marketplace.arbiter_replacement.v0.2",
+    "trade_id": 3
+  },
+  "payload_hash": "0xdbc13d8f6e4134dfc203ae9fc6383f73c16768cd7842f51472e227af310d7bc1",
+  "signature": "0x98a023190fe71ee2e2beab64ed047449318f414f892e11e2f2bf53aae3a99d1330fe7b3f22f47ae4a0b9cc85f0960859fad5341e8091f4884484474d3a48c4831c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

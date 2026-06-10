@@ -1,0 +1,49 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"high\",\"condition_sensitivity\":0.336,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\"],\"max_total_price_usd\":100,\"risk_tolerance\":0.85,\"route_preferences\":[\"international_ship\"],\"value_band\":\"low\"},\"object\":{\"card\":\"Corocoro Mew\",\"condition_floor\":\"MP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":\"sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1\",\"escrow_terms\":\"sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025\",\"friction_policy\":\"sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c\",\"intent\":\"sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12\",\"seller_offer\":\"sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9\"},\"source_simulation_trade\":\"SIM-0003\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "high",
+      "condition_sensitivity": 0.336,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "tracking_history"
+      ],
+      "max_total_price_usd": 100,
+      "risk_tolerance": 0.85,
+      "route_preferences": [
+        "international_ship"
+      ],
+      "value_band": "low"
+    },
+    "object": {
+      "card": "Corocoro Mew",
+      "condition_floor": "MP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:92286ff83b5acfa0d2989c4939d7137b9c7ac583e37e5cc1ce6ad269c268ddf1",
+      "escrow_terms": "sha256:6abcb670ed1f4671c6a9c3270754aa69a1f8daebc0d3176bcb49e68405c7d025",
+      "friction_policy": "sha256:b669e5ca68833c933270a1589cf19e84cc20db3e2d3754ee6ffb15f275190d7c",
+      "intent": "sha256:41470de335946421eb5dea0c6b81a5a04447395aef678f0c4cf7f332cc227d12",
+      "seller_offer": "sha256:309878cb94e9903afd8fff37d39663095ffc4bef8d00f806ed8fe4200a3d44d9"
+    },
+    "source_simulation_trade": "SIM-0003"
+  },
+  "payload_hash": "0xa11fda5d4d928e514227bc9488f2bee08fde5042ad8f71ce901a4b784108638a",
+  "signature": "0x22dcba4149e87abf9c528672401343284fc9187171abb16cb9c5836ae646f2a8605b88a7d8a5765ceeabf6a043914127b484ae819fd9a3b56a50b1b630b90ebb1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

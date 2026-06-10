@@ -1,0 +1,38 @@
+{
+  "canonical_payload": "{\"disclosure\":\"predicate_only\",\"issuer\":\"did:market:seller:anvil-1\",\"predicate\":{\"field\":\"completed_tcg_sales\",\"operator\":\">=\",\"scope\":[\"tcg\",\"raw_cards\",\"insured_shipping\"],\"threshold\":500},\"proof_id\":\"ppp_happy_seller_001\",\"proof_type\":\"signed_attestation\",\"public_inputs\":{\"freshness_epoch\":\"2026-05\",\"scope_hash\":\"0xscope_tcg_raw_insured\",\"subject_commitment\":\"0xsubject_happy_seller\",\"threshold\":500},\"schema\":\"marketplace.private_predicate_proof.v0.2\",\"source_commitment\":\"0xsourcecommitment_happy_seller\",\"subject\":\"did:market:seller:anvil-1\",\"zk\":{\"circuit_id\":\"seller_reputation_threshold_v1\",\"proof_bytes\":null,\"verifying_key_hash\":\"0xreserved\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "disclosure": "predicate_only",
+    "issuer": "did:market:seller:anvil-1",
+    "predicate": {
+      "field": "completed_tcg_sales",
+      "operator": ">=",
+      "scope": [
+        "tcg",
+        "raw_cards",
+        "insured_shipping"
+      ],
+      "threshold": 500
+    },
+    "proof_id": "ppp_happy_seller_001",
+    "proof_type": "signed_attestation",
+    "public_inputs": {
+      "freshness_epoch": "2026-05",
+      "scope_hash": "0xscope_tcg_raw_insured",
+      "subject_commitment": "0xsubject_happy_seller",
+      "threshold": 500
+    },
+    "schema": "marketplace.private_predicate_proof.v0.2",
+    "source_commitment": "0xsourcecommitment_happy_seller",
+    "subject": "did:market:seller:anvil-1",
+    "zk": {
+      "circuit_id": "seller_reputation_threshold_v1",
+      "proof_bytes": null,
+      "verifying_key_hash": "0xreserved"
+    }
+  },
+  "payload_hash": "0xb39ae7bb0f70910dcc7cbd998f364ec329345f47f142dd25e05011238f26f7a9",
+  "signature": "0xe008e937c3bb56a4850c3d427407e541ce42eeb8b3c6ff7beef0684bb3298e3e4b5b118c41f11f7f3b163a8443b32ee2ea5ebacf451b0e7be38dd72ee970f85b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

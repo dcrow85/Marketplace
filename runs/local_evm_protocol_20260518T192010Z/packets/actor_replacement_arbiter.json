@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:arbiter:anvil-4\",\"address\":\"0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65\",\"capabilities\":[\"sign_packets\",\"settle_local_evm_probe\"],\"chain\":\"anvil:31337\",\"role\":\"arbiter\",\"schema\":\"marketplace.actor_record.v0.2\",\"status\":\"active\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:arbiter:anvil-4",
+    "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "capabilities": [
+      "sign_packets",
+      "settle_local_evm_probe"
+    ],
+    "chain": "anvil:31337",
+    "role": "arbiter",
+    "schema": "marketplace.actor_record.v0.2",
+    "status": "active"
+  },
+  "payload_hash": "0xac96bd505a7604e9de45910564e0bcb27b5410a0bdb3d3b1fc382c2dbb56e76a",
+  "signature": "0x0334478da45ce78440f0e953439a94a536ae7855bebd93f5169f2214965f514248944602767c46d82bdf1787c0f5da1e445b5ae8c91825536a413807d0be38841b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+}

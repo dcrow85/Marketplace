@@ -1,0 +1,52 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"low\",\"condition_sensitivity\":0.292,\"evidence_floor\":[\"back_photo\",\"buyer_confirmation\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"handoff_memo\",\"high_res_scans\",\"holo_angle_closeups\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"verifier_note\"],\"max_total_price_usd\":32,\"risk_tolerance\":0.061,\"route_preferences\":[\"local_meetup\"],\"value_band\":\"low\"},\"object\":{\"card\":\"Masaki Gengar\",\"condition_floor\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1\",\"friction_policy\":\"sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c\",\"intent\":\"sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a\",\"seller_offer\":\"sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b\"},\"source_simulation_trade\":\"SIM-0018\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "low",
+      "condition_sensitivity": 0.292,
+      "evidence_floor": [
+        "back_photo",
+        "buyer_confirmation",
+        "corner_closeups",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "handoff_memo",
+        "high_res_scans",
+        "holo_angle_closeups",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "verifier_note"
+      ],
+      "max_total_price_usd": 32,
+      "risk_tolerance": 0.061,
+      "route_preferences": [
+        "local_meetup"
+      ],
+      "value_band": "low"
+    },
+    "object": {
+      "card": "Masaki Gengar",
+      "condition_floor": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ea95399e8daf9a2fe31981b1355d2625d57b28df1e2652961f6122aa991cc9b1",
+      "friction_policy": "sha256:77d449d00b1a626295c132cadd50db18d7008b749d0c2acaeaefe0944efa4b9c",
+      "intent": "sha256:d55c2b56dfb0ad245a0b262d24a6b17dc43724d395dbca63383f996507f1a98a",
+      "seller_offer": "sha256:9ae91c5ab11f78a45c777da8fb98f444df8072226899064e5455db466188fb6b"
+    },
+    "source_simulation_trade": "SIM-0018"
+  },
+  "payload_hash": "0x9feec7c69851ceb380db51c4d71e42f2b5035b7422ecc1314767b9dbbf5cd831",
+  "signature": "0xbc4c44e44d13b621893a06b76eb68c5959b3eed9a083955ce84231a930e1a7734c9834d8c282c1d9c0b31ffefbf60d0b3b5fce89adfb7d630f896d60792227d11b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

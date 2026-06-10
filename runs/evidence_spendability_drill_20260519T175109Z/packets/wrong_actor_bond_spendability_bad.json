@@ -1,0 +1,53 @@
+{
+  "canonicalization": "marketplace-json-c14n-v0.2",
+  "decision_authority": {
+    "actor_id": "did:market:buyer-agent:fixture-5",
+    "actor_role": "buyer_agent",
+    "authority_hash": "8cfab2bb05a0fb453f669e135158a1eea2fb68fe07dd51943a3ce7033606bc45",
+    "authority_source": "delegation"
+  },
+  "gate": {
+    "consumption": "single_use",
+    "gate_id": "bond_action:9104:claim-1",
+    "gate_type": "bond_action",
+    "leg": "return"
+  },
+  "hash_algorithm": "sha256(marketplace-json-c14n-v0.2)",
+  "issued_at": "2026-05-19T17:42:21+00:00",
+  "issued_by": "did:market:buyer-agent:fixture-5",
+  "issued_role": "buyer_agent",
+  "manifest_hash": "ef1d972ad659f75796b56cf28fb83c7e6a4fc1152fad83f88ba1af405228d727",
+  "manifest_subject_hash": "4d04fd689aca771b46b5d22e5d4a0597fec41446d5a9c6aba8666fefb00728ee",
+  "requires": [
+    "buyer_ack",
+    "claim_opened"
+  ],
+  "schema": "marketplace.evidence_spendability.v0.1",
+  "signature": "local-spendability-signature-v0:6c07a80f9db6dfb71b111ff59a1a028ecc40e64ba0556f9d54304ca0ebf78fff",
+  "spendability_hash": "fb85b4686358bc471eae388fb683593c2bdc48f7506d248ebd2ec5d85fe7abb0",
+  "spendability_id": "bond_action:route_support:9104",
+  "spendable_claims": [
+    {
+      "basis": [
+        "asset_hash_match",
+        "issuer_role"
+      ],
+      "claim_type": "route_support",
+      "not_claiming": [
+        "authenticity",
+        "condition_floor"
+      ],
+      "spend_limit": "moves_funds",
+      "support_level": "standard"
+    }
+  ],
+  "status": "active",
+  "trade_id": "9104",
+  "window": {
+    "after_state": {
+      "state_hash": "901c725445a62b4d88154fbcedf94e9ac6a5d58feb3bff130d860987dab9ecf2",
+      "state_name": "ClaimOrDisputePending"
+    },
+    "waiver_policy": "none"
+  }
+}

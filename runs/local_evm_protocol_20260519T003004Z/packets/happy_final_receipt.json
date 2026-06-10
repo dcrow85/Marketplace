@@ -1,0 +1,21 @@
+{
+  "canonical_payload": "{\"buyer_acceptance\":\"accepted\",\"final_packet\":[\"intent\",\"terms\",\"proof\",\"evidence\",\"route\"],\"received_item\":\"matches intent and evidence\",\"schema\":\"marketplace.trade_receipt.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_acceptance": "accepted",
+    "final_packet": [
+      "intent",
+      "terms",
+      "proof",
+      "evidence",
+      "route"
+    ],
+    "received_item": "matches intent and evidence",
+    "schema": "marketplace.trade_receipt.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0x5154efb32d52def53079b00ba5d5f156656ccd33e52838fbfdc4238cb443ddd8",
+  "signature": "0x45fec6f37cca1e6d7009a09c32e74ad8dbf388eb227837a0572c8297390ce90d13a8618b915201b3b9ae946c88a4752d2c068bdfe78c693ce23392f5213223241b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

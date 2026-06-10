@@ -1,0 +1,285 @@
+{
+  "anvil_pid": 17184,
+  "chain_id": 31337,
+  "continuation_steps": [
+    {
+      "action": "mark-delivered",
+      "anvil_pid": 17184,
+      "chain_id": 31337,
+      "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "final_state": "InspectionOpen",
+      "generated_at": "2026-05-20T17:50:36.150561+00:00",
+      "interpretation": "Seller-signed delivery evidence opened the inspection window. This proves the route gate advanced; it does not prove the card condition or buyer satisfaction.",
+      "packets": [
+        {
+          "packet_id": "alpha_espeon_delivery",
+          "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_delivery.json",
+          "payload_hash": "0xe5e4236ffdef251deb7a0981bc42fccb9782b8d0320baf2d54e2cfcc40d2b4dc",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0x00e6ecd0f2e9b4aa2468131e4c1779062a837a1bf427861e401b0db3c4118d10304d71d5d0988f45757a1d1b3202698ab726dbe1fc31b17f34033387de5b0f2b1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "report": "runs/alpha_route_commit_20260520T175027Z/STEP_mark-delivered_20260520T175036Z.md",
+      "rpc_url": "http://127.0.0.1:18653",
+      "run_id": "alpha_route_commit_20260520T175027Z",
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "alpha Espeon mark delivered",
+          "tx_hash": "0xee8b464ea242a4df4f6338442f8068a5ce0fd25470c2f577ccf15adffa2da9d9"
+        }
+      ]
+    },
+    {
+      "action": "open-claim",
+      "anvil_pid": 17184,
+      "chain_id": 31337,
+      "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "final_state": "ClaimOrDisputePending",
+      "generated_at": "2026-05-20T17:50:36.310766+00:00",
+      "interpretation": "Buyer claim evidence and the dispute bond moved the escrow into ClaimOrDisputePending. The protocol has preserved the dispute surface; it has not decided who is right.",
+      "packets": [
+        {
+          "packet_id": "alpha_espeon_claim_evidence",
+          "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_claim_evidence.json",
+          "payload_hash": "0x527fa8ade56dca104c6ae446ec1474ee29755359fd7774a14d65e5ed232cee64",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0xd2eb1025eadf1afae56c5839b5a0f61e077c6cf34265c48c991f0f299bf435c01979c34bc525c8d2ebf0d0199f4988c35b35c607aa6dcb98c880a784e584ccd81b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "alpha_espeon_claim",
+          "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_claim.json",
+          "payload_hash": "0x6f1d8a85b5f6830565a1f3def477f2ce3ad5069efc1996b015ecbfa228f0e9b0",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0xfbd91c514edb25a4b90b285cd8ec0fffe316a53b429d3f948718d4593656a91908e5aceec23d5638cd8a3ae145e01f48c98a1278467652c0515b9eefc0768e421c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "report": "runs/alpha_route_commit_20260520T175027Z/STEP_open-claim_20260520T175036Z.md",
+      "rpc_url": "http://127.0.0.1:18653",
+      "run_id": "alpha_route_commit_20260520T175027Z",
+      "trade_id": 1,
+      "transactions": [
+        {
+          "label": "alpha Espeon attach claim evidence",
+          "tx_hash": "0xa192d5e706fef40385ea156e3a4d3b4dc41705810c52e153682fd49036d38ced"
+        },
+        {
+          "label": "alpha Espeon open condition claim",
+          "tx_hash": "0xb5a98550649741ec1fd34d1c933a182eda17ca42525a804a811139554f3a5ca1"
+        }
+      ]
+    }
+  ],
+  "ephemeral_anvil": false,
+  "escrow": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "final_state": "ClaimOrDisputePending",
+  "generated_at": "2026-05-20T17:50:28.610731+00:00",
+  "packets": [
+    {
+      "packet_id": "alpha_espeon_intent",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_intent.json",
+      "payload_hash": "0xfe278941244d8157da4aa8d3a983fbe9a001a3b2fa6936d43ecea8c5bfcd7a36",
+      "schema": "marketplace.intent.v0.2",
+      "signature": "0x9b8f6a11faddb05f5aca5f3ea83622b55123152bf0c913c011ca0e7a61ac5d9d20bbd08b45f62f30fb2ecf70c0f8fe53c1ab712dfe0b2b74ae44d5497b5e1bf51c",
+      "signature_valid": true,
+      "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    {
+      "packet_id": "alpha_espeon_terms",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_terms.json",
+      "payload_hash": "0x642ffbcd9a81c06bbf8af495bcef83442da48090d9d57891ddad376788838a22",
+      "schema": "marketplace.escrow_terms.v0.2",
+      "signature": "0x520f84401c47900ec005dc9c2365b9aea7216b68ca1667de3662b9e6436e2a403a2520a520340b8a3ecf61fb0be54d38929304d953da2de983d3f30954b6d2791c",
+      "signature_valid": true,
+      "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    {
+      "packet_id": "alpha_espeon_item_fingerprint",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_item_fingerprint.json",
+      "payload_hash": "0x2e9f6051173ab2d7303edef8916552ecd7a4a415002992c0234224132a8d7ebc",
+      "schema": "marketplace.item_fingerprint.v0.2",
+      "signature": "0x94088e0ed7478b9c134d990e5e3688897700ba9c04a8102d18ec3d594f313da23e8a2ec7a937af836055c17f261812aea50c9686675ed53f41a9e304932a75fe1b",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "alpha_espeon_inventory_lock",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_inventory_lock.json",
+      "payload_hash": "0xaa57c245c1166dc9c740ff83e97ce9543d5991e559a608653cbc48ea24c274f3",
+      "schema": "marketplace.inventory_lock.v0.2",
+      "signature": "0x030312f22d6b3dd67797cdcc355ed4a12a1ec21da8f4fca82b1ad7e31df372dd71100e047eaff50a8f7196958f41733be9ab14c466570e3d75cbd2ba47a8a1ba1b",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "alpha_espeon_route",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/alpha_espeon_route.json",
+      "payload_hash": "0xf4cf6a1daa1d346e941a1c4b777567a3fd2ab6a79235b13c399ba3ffdc632a6f",
+      "schema": "marketplace.trade_route.v0.2",
+      "signature": "0xed4c5065e405444512674f9c0bd71a8df3ee824a3d2541b2ef9dbd1d756b53d066b6c0266f9869e9d16c3491c70fcef79f35583fa57488068e59b0ef7e59dca91b",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    }
+  ],
+  "predicate_verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "registry_packets": [
+    {
+      "packet_id": "actor_buyer",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/actor_buyer.json",
+      "payload_hash": "0xca07896a6190e860dd51af4241ed9a02835b1930c4dd01a13c7b6d9a44a3675a",
+      "schema": "marketplace.actor_record.v0.2",
+      "signature": "0xbdfc6379313952f548a4c44244665ba8124717b7a71846296bb9c5df1d4ab13c3de8067046dbfa9e4171ab22e94466d8b7b50ee18cea4c55f929b48b263c9a341b",
+      "signature_valid": true,
+      "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    {
+      "packet_id": "actor_seller",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/actor_seller.json",
+      "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5",
+      "schema": "marketplace.actor_record.v0.2",
+      "signature": "0x3810bf4b6755080ebe153b035cf1ad511c1a26d1cd153d453958d4ee6f4a2a2b04e293c7d3254ef8b6d2981bb505350fefe6dc394802e9b993e046b5df7aeac61c",
+      "signature_valid": true,
+      "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+    },
+    {
+      "packet_id": "actor_arbiter",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/actor_arbiter.json",
+      "payload_hash": "0x0025cd199f11db191de2e1f83919b36022cca03b844c6169e8941f9f976f4442",
+      "schema": "marketplace.actor_record.v0.2",
+      "signature": "0x73be7bf06f3ed7219d00bf6afc7707ad1d03a5f9208764368366b5182f3b73a0253a72ab48f198d549f439caa55af5e36a0f952b8644d18e8f9a1fa1968fe2711c",
+      "signature_valid": true,
+      "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    },
+    {
+      "packet_id": "actor_verifier",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/actor_verifier.json",
+      "payload_hash": "0xf1dabec00581b587e9298a603d99dee6bd6a37afb765202df9818deccfd636d6",
+      "schema": "marketplace.actor_record.v0.2",
+      "signature": "0x70a0bb2eca8605d6ef44ef0eb3336487643cae2551e22315454156b6a6786e5103fad4807a1a51791f49a8c00b60c0b66b52846c8a0d9ce2771bc147c3e7e14b1c",
+      "signature_valid": true,
+      "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+    },
+    {
+      "packet_id": "actor_replacement_arbiter",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/actor_replacement_arbiter.json",
+      "payload_hash": "0xac96bd505a7604e9de45910564e0bcb27b5410a0bdb3d3b1fc382c2dbb56e76a",
+      "schema": "marketplace.actor_record.v0.2",
+      "signature": "0x0334478da45ce78440f0e953439a94a536ae7855bebd93f5169f2214965f514248944602767c46d82bdf1787c0f5da1e445b5ae8c91825536a413807d0be38841b",
+      "signature_valid": true,
+      "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+    },
+    {
+      "packet_id": "arbiter_authority",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/arbiter_authority.json",
+      "payload_hash": "0xa9248044dfd441d24063324f762a928fef56422ae6281ad465b34b9e5ab1724f",
+      "schema": "marketplace.arbiter_record.v0.2",
+      "signature": "0xce2f405ddc5571c7c4256e735fa56682bee161b2c0a15c456f6c4e1ac21e9cf538bcd0a322a74a50c12ca4780f9383f96944d17bc757789f91d66399bead71461b",
+      "signature_valid": true,
+      "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+    },
+    {
+      "packet_id": "replacement_arbiter_authority",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/replacement_arbiter_authority.json",
+      "payload_hash": "0xb258ca210e4b4df25b5fc896b5478bad46e53dd183672bb9a68e63e389cb770d",
+      "schema": "marketplace.arbiter_record.v0.2",
+      "signature": "0xf6aeebeb462124839ce7a8c8703efdda286f25e01b7b44ac6158d9be4c37478f3b9aeb1394378cc2af91b37912755d74cfa1372c2fa76b0d6b20f3785342d66b1c",
+      "signature_valid": true,
+      "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+    },
+    {
+      "packet_id": "verifier_authority",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/verifier_authority.json",
+      "payload_hash": "0x9b58f9b34334a5099078df708ba4fd129f1007994ddee0b361570a0c711f6f22",
+      "schema": "marketplace.verifier_record.v0.2",
+      "signature": "0x623970b2534ed3738239a8b31d77e744427e9aaaf30c7b5a0240f208cedba0fd36e041ab7f84a8f46f365ab1fc0b9d65b02b9d6caf3432f355d1717fdef53d631c",
+      "signature_valid": true,
+      "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+    },
+    {
+      "packet_id": "predicate_verifier_contract",
+      "path": "runs/alpha_route_commit_20260520T175027Z/packets/predicate_verifier_contract.json",
+      "payload_hash": "0x69169765958680ef8bad537c754fccbe799dd3d990bdad5b14a71e790cc1983f",
+      "schema": "marketplace.predicate_verifier_record.v0.2",
+      "signature": "0xf6355e8a3b228416c10154a50a87dc0d898a2495a57fb66bf2baa77ef7a282a968f2388c533a080d364d934d2be12403dcb9618e152530cf8a6d8da6bbaa516b1b",
+      "signature_valid": true,
+      "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+    }
+  ],
+  "registry_transactions": [
+    {
+      "label": "register buyer actor",
+      "tx_hash": "0x08b0dd88a27562346bb8f880dba70bac6e0b4b132f494ecbd9c121eec25bffb9"
+    },
+    {
+      "label": "register seller actor",
+      "tx_hash": "0x22b94a5b434a4023c922dae414c99252ae70245cc5cf41230ebda7966824d4f0"
+    },
+    {
+      "label": "register arbiter actor",
+      "tx_hash": "0x1ed45288b477bb1df3ab8188b032bc6e9f3e2e552292f4ef217d1826f47e9647"
+    },
+    {
+      "label": "register verifier actor",
+      "tx_hash": "0x082455b792d80adeb9047aa4367d8e8c2f23017b808bd29ace9610ca5610273c"
+    },
+    {
+      "label": "register replacement_arbiter actor",
+      "tx_hash": "0xb95f179126ae5a5994e7be77dc58982176f87e56bfe5d85708c57ab948b5829c"
+    },
+    {
+      "label": "register arbiter authority",
+      "tx_hash": "0x32a2da1de152721a4075fe47632cc20d611c20e93e7b2bca8b873f34c1acea55"
+    },
+    {
+      "label": "register replacement arbiter authority",
+      "tx_hash": "0x562b6df9c717ee240df663e6e707a15d576e376e0f226ce5a24f03ead5321741"
+    },
+    {
+      "label": "register verifier authority",
+      "tx_hash": "0x10c5fa43355c23c12e62d1bb4758cb5e7bff338c1c010ac15cd22c9b3e0b1e9c"
+    },
+    {
+      "label": "register predicate verifier contract",
+      "tx_hash": "0x7984694071c9152dd361b122803c02262f586a50b7fac7fd42c87ef5116136d5"
+    }
+  ],
+  "report": "runs/alpha_route_commit_20260520T175027Z/REPORT.md",
+  "route_spendability_evm_hash": "0x4444444444444444444444444444444444444444444444444444444444444444",
+  "route_spendability_hash": "sha256:test-spend-claim",
+  "route_tx_hash": "0x5862ff0a0fb7f0ea00ed357d75aa4e583ab8b089e1522bbd2cc12f87b6520151",
+  "route_wall_bundle_evm_hash": "0x3333333333333333333333333333333333333333333333333333333333333333",
+  "rpc_url": "http://127.0.0.1:18653",
+  "run_id": "alpha_route_commit_20260520T175027Z",
+  "summary": "runs/alpha_route_commit_20260520T175027Z/summary.json",
+  "trade_id": 1,
+  "transactions": [
+    {
+      "label": "create alpha Espeon trade",
+      "tx_hash": "0x266a1ff0e848befdf9724fef08fdb1dada1afdc1f41a6f241b4cda52d3139c5d"
+    },
+    {
+      "label": "seller posts alpha Espeon bond",
+      "tx_hash": "0xd0cb221d7947aa29720be2ac4c5ada23dea5991598010acef92d0a550b275d16"
+    },
+    {
+      "label": "commit alpha Espeon item fingerprint",
+      "tx_hash": "0x1b467f00a9d6981eb917e1b144a8206ee2133ff75fa0659c974240da8c4f5c91"
+    },
+    {
+      "label": "commit alpha Espeon inventory lock",
+      "tx_hash": "0x8970bd12b0f9aa92d16bae5fb2c9bfbfa0cdc5043830aa3427b881b9545b1a2f"
+    },
+    {
+      "label": "commit alpha Espeon route with wall bundle spendability",
+      "tx_hash": "0x5862ff0a0fb7f0ea00ed357d75aa4e583ab8b089e1522bbd2cc12f87b6520151"
+    }
+  ],
+  "wall_bundle_hash": "sha256:test-wall-claim"
+}
