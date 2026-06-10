@@ -54,6 +54,7 @@ class RevisionCase:
     challenges: list[dict[str, Any]]
     expected_outcome: str
     expected_flags: set[str] = field(default_factory=set)
+    proposed_changes: dict[str, Any] = field(default_factory=dict)
     result: dict[str, Any] = field(default_factory=dict)
 
 
@@ -94,6 +95,7 @@ def revision_packet(case: RevisionCase) -> dict[str, Any]:
         "parent_catalog_hash": parent_hash,
         "row_id": case.row_id,
         "revision_type": case.revision_type,
+        "proposed_changes": case.proposed_changes,
         "claim_text": case.claim_text,
         "evidence_refs": case.evidence_refs,
     }
@@ -108,6 +110,7 @@ def revision_packet(case: RevisionCase) -> dict[str, Any]:
         "author_controller_or_delegate": "local_simulated_agent",
         "evidence_refs": case.evidence_refs,
         "source_content_hashes": [ref.get("content_hash", "") for ref in case.evidence_refs],
+        "proposed_changes": case.proposed_changes,
         "claim_text": case.claim_text,
         "diff_summary": "simulated catalog lineage proposal",
         "challenge_window": "72h",
@@ -142,7 +145,34 @@ def challenge_weight(packet: dict[str, Any]) -> int:
     hashed_refs = sum(1 for ref in packet.get("evidence_refs", []) if ref.get("content_hash"))
     if not hashed_refs:
         return 0
-    return strength + min(hashed_refs, 2)
+    calibration = packet.get("challenger_calibration_ref", "uncalibrated")
+    calibration_bonus = 1 if calibration not in ("", "none", "uncalibrated") else 0
+    return strength + min(hashed_refs, 2) + calibration_bonus
+
+
+def detect_poison_flags(row: dict[str, Any] | None, proposed_changes: dict[str, Any]) -> set[str]:
+    """Field-level poison detection on the structured diff, independent of claim phrasing."""
+    flags: set[str] = set()
+    if not row:
+        return flags
+    target_change = proposed_changes.get("no_rarity_target")
+    if (
+        row.get("category") == "Energy"
+        and not row.get("no_rarity_target")
+        and isinstance(target_change, dict)
+        and target_change.get("to") is True
+    ):
+        flags.add("energy_caveat_poison")
+    trap_change = proposed_changes.get("variant_traps")
+    if isinstance(trap_change, dict):
+        current = json.dumps(row.get("variant_traps", []), ensure_ascii=False).lower()
+        proposed = json.dumps(trap_change.get("to", []), ensure_ascii=False).lower()
+        if "quick starter" in current and "quick starter" not in proposed:
+            flags.add("quick_starter_scope_poison")
+    return flags
+
+
+POISON_FLAGS = {"energy_caveat_poison", "quick_starter_scope_poison"}
 
 
 def evaluate_case(case: RevisionCase) -> dict[str, Any]:
@@ -156,10 +186,7 @@ def evaluate_case(case: RevisionCase) -> dict[str, Any]:
         hard_errors.append("revision missing required not_claiming")
     if not has_content_hashes(case.evidence_refs):
         flags.add("source_without_content_hash")
-    if row and row.get("category") == "Energy" and "premium No Rarity target" in case.claim_text:
-        flags.add("energy_caveat_poison")
-    if "Quick Starter does not matter" in case.claim_text:
-        flags.add("quick_starter_scope_poison")
+    flags |= detect_poison_flags(row, case.proposed_changes)
 
     weights = [challenge_weight(packet) for packet in challenges]
     max_weight = max(weights, default=0)
@@ -174,7 +201,10 @@ def evaluate_case(case: RevisionCase) -> dict[str, Any]:
         outcome = "block"
     elif {"energy_caveat_poison", "evidence_weighted_challenge"} <= flags:
         outcome = "block"
-    elif {"quick_starter_scope_poison", "evidence_weighted_challenge"} <= flags:
+    elif flags & POISON_FLAGS:
+        # A poison flag without a resolving evidence-weighted block is held at
+        # the challenge window. It must never harden silently just because no
+        # challenger showed up.
         outcome = "flag"
     elif "sybil_challenge_no_evidence" in flags:
         outcome = "harden"
@@ -236,6 +266,12 @@ def fixtures() -> list[RevisionCase]:
             challenges=sybil_challenges,
             expected_outcome="harden",
             expected_flags={"sybil_challenge_no_evidence"},
+            proposed_changes={
+                "history_notes": {
+                    "op": "append",
+                    "to": "Source-scoped collector note: high-demand No Rarity holo row.",
+                }
+            },
         ),
         RevisionCase(
             case_id="energy_premium_poison_blocked",
@@ -243,6 +279,7 @@ def fixtures() -> list[RevisionCase]:
             row_id="PMCG1-097",
             revision_type="update_row",
             claim_text="Promote this basic Energy caveat to an active premium No Rarity target.",
+            proposed_changes={"no_rarity_target": {"from": False, "to": True}},
             evidence_refs=[
                 {
                     "ref_id": "source:local_catalog:energy_caveat",
@@ -272,9 +309,10 @@ def fixtures() -> list[RevisionCase]:
         RevisionCase(
             case_id="quick_starter_scope_flagged",
             description="A proposal tries to erase the Quick Starter text-layout caveat on a sensitive trainer.",
-            row_id="PMCG1-088",
+            row_id="PMCG1-093",
             revision_type="update_row",
             claim_text="Quick Starter does not matter for this trainer; blank lower-right corner is enough.",
+            proposed_changes={"variant_traps": {"op": "replace", "to": []}},
             evidence_refs=[
                 {
                     "ref_id": "source:trainer-row",
@@ -318,6 +356,32 @@ def fixtures() -> list[RevisionCase]:
             challenges=[],
             expected_outcome="block",
             expected_flags={"source_without_content_hash"},
+            proposed_changes={
+                "history_notes": {"op": "append", "to": "Market note with only a URL citation."}
+            },
+        ),
+        RevisionCase(
+            case_id="unchallenged_poison_held_at_flag",
+            description=(
+                "A poisoned Energy-premium proposal with zero challengers and reworded claim text "
+                "is held at flag by field-level detection. It must not harden just because no "
+                "challenger showed up."
+            ),
+            row_id="PMCG1-098",
+            revision_type="update_row",
+            claim_text="Elevate this row to a chase-tier missing-symbol variant for serious binders.",
+            evidence_refs=[
+                {
+                    "ref_id": "source:self-published:energy-hype-note",
+                    "source_type": "market_commentary",
+                    "content_hash": "sha256:energy-hype-note",
+                    "not_claiming": ["premium_target_truth", "price_truth"],
+                }
+            ],
+            challenges=[],
+            expected_outcome="flag",
+            expected_flags={"energy_caveat_poison"},
+            proposed_changes={"no_rarity_target": {"from": False, "to": True}},
         ),
     ]
 
@@ -444,6 +508,8 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
             "- Evidence policy defaults are separate bytes from catalog facts.",
             "- A good revision can harden against unevidenced agent noise.",
             "- A poisoned revision can be blocked or flagged by one strong challenge.",
+            "- Poison detection reads the structured field diff, not the claim phrasing.",
+            "- An unchallenged poisoned revision is held at flag; it never hardens silently.",
             "- URL-only sources fail because future agents cannot inspect the same bytes.",
         ]
     )
