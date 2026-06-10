@@ -53,6 +53,12 @@ pins the No Rarity catalog as content-addressed bytes: card references cite
 and agent-authored catalog revisions harden or fail through evidence-weighted
 challenge rather than agent-count voting.
 
+The newest catalog-expansion artifact is
+`Japanese_Pre_English_Release_Map_v0.1.md`. It maps Japanese Pokemon TCG
+expansions, decks, vending sheets, promo families, and card-adjacent non-TCG
+objects before English Base Set so the catalog can grow without blurring
+official TCG rows, promo provenance, and boundary-only collector context.
+
 ## Read First
 
 - `CLAUDE.md` - broad local project guidance and prior handoff context.
@@ -65,6 +71,7 @@ challenge rather than agent-count voting.
 - `Protocol_Bootstrap_v0.1.md` - seller-first bootstrap, settlement rails, and bond/history exchange.
 - `Protocol_Trust_Import_v0.1.md` - external reputation import, acquisition-cost cap, and value-tier scope.
 - `Protocol_Catalog_Lineage_v0.1.md` - content-addressed catalog citations, revision packets, and row challenges.
+- `Japanese_Pre_English_Release_Map_v0.1.md` - release-family map for Japanese pre-English TCG sets, promos, vending sheets, decks, and boundary-only card-adjacent products.
 - `Protocol_Walls_Agent_Testbed.md` - agent pressure-test framing.
 
 ## On-Chain Implementation
@@ -112,6 +119,7 @@ wall bundle, assembly history, and a contract-derived route assembly witness.
 - `data/no-rarity-catalog-policy.json` - evidence policy defaults split out of the fact catalog.
 - `No_Rarity_Set_Research.md` - historical and collector research.
 - `Pokemon_Card_Reference_Layer_v0.1.md` - reference-image/catalog layer design.
+- `Japanese_Pre_English_Release_Map_v0.1.md` - next-catalog expansion map; use it before adding Japanese Jungle/Fossil/Rocket/Gym/Vending/promo rows.
 - `datasets/no-rarity-lab/README.md` - training/data lab notes.
 - `scripts/build_no_rarity_database.py` - database build script.
 - `scripts/collect_no_rarity_data_foundry.py` - data collection/founding script.
