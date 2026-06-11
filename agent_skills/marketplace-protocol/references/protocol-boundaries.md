@@ -49,7 +49,7 @@ Current route lock requires:
 - item fingerprint exists
 - inventory lock exists and is bound to the item fingerprint
 - no active fingerprint challenge
-- route spendability hash is nonzero and single-use
+- route spendability hash is nonzero and single-use inside the trade
 - wall-bundle hash is present
 - assembly-history hash is present
 - route assembly witness matches the contract's typed digest
@@ -69,6 +69,17 @@ The route assembly witness binds:
 
 This proves the route gate received the right commitment shape. It does not
 prove shipping success, authenticity, condition, or fairness.
+
+Replay boundary:
+
+- Same-trade spendability replay is enforced by contract storage.
+- Cross-trade spendability replay resistance currently depends on the typed
+  spendability digest being bound off-chain to trade ID, contract, chain ID,
+  gate, leg, subject, wall bundle, assembly history, issuer, schema version,
+  and expiry.
+- Do not tell a human the contract globally prevents opaque spendability-hash
+  reuse across all trades unless a future on-chain typed-digest/nullifier wall
+  is added.
 
 ## Deterministic Tool Boundary
 

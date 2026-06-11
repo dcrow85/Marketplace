@@ -896,6 +896,8 @@ The key frame:
 
 The current local EVM contract consumes a route spendability hash, stores the route wall-bundle reference, requires an `assemblyHistoryHash`, and validates a contract-derived `RouteAssemblyWitness` before route can lock. The witness is bound to escrow contract, chain ID, trade ID, route hash, spendability hash, wall-bundle hash, assembly-history hash, committed item fingerprint, committed inventory lock, and the route gate. The off-chain harness still validates the richer `EvidenceSpendability`, wall-bundle, and assembly graph semantics, so the EVM enforces alignment at the money-moving boundary without pretending it can judge physical-world truth.
 
+Audit clarification: local EVM spendability consumption is scoped by trade. The same spendability hash cannot be reused inside one trade, including across route and delivery gates, but contract storage alone does not globally reject the same opaque hash in another trade. Cross-trade replay resistance currently depends on typed spendability digest construction and off-chain validation binding the digest to trade ID, contract, chain ID, gate, leg, subject, wall bundle, assembly history, issuer, schema version, and expiry. This is an explicit boundary until typed digest validation moves further contract-side.
+
 ### 10. Route
 
 `TradeRoute` defines how the item moves.
@@ -1097,7 +1099,7 @@ Gate types currently modeled:
 - `claim_support`
 - `bond_action`
 
-The current on-chain implementation enforces route spendability as a hash citation and consumption event, stores the route wall-bundle reference, stores the assembly-history reference, and validates the contract-derived route assembly witness. The Python harness requires route spendability to cite the current `wall_bundle_hash` and `assembly_history_hash`, so a valid-looking spendability packet without inherited assembly provenance blocks before route lock. Full spendability, wall-bundle, and assembly graph semantics remain off-chain.
+The current on-chain implementation enforces route spendability as a hash citation and per-trade consumption event, stores the route wall-bundle reference, stores the assembly-history reference, and validates the contract-derived route assembly witness. The Python harness requires route spendability to cite the current `wall_bundle_hash` and `assembly_history_hash`, so a valid-looking spendability packet without inherited assembly provenance blocks before route lock. Full spendability, wall-bundle, and assembly graph semantics remain off-chain. Cross-trade spendability replay resistance is therefore a typed-packet/preimage requirement in the current build, not something the contract's per-trade consumed-hash mapping proves by itself.
 
 ## Trust System
 
@@ -1223,6 +1225,7 @@ Implemented in `/Users/che/Marketplace/chain`.
 - EIP-191 packet-signature verification for registered controller addresses.
 - Signed packet gates for state-moving hashes.
 - Per-trade packet hash replay protection.
+- Per-trade spendability consumption. Same-trade replay is blocked; cross-trade replay resistance depends on typed spendability digest validation until further on-chain hardening.
 - Native ETH escrow.
 - Seller bond.
 - Optional buyer dispute bond.

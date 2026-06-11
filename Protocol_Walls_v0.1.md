@@ -927,6 +927,13 @@ stale wall_bundle_hash or assembly_history_hash -> blocked before EVM route lock
 
 The contract consumes `route_spendability_hash`, stores route wall-bundle and assembly-history references, and validates a typed `routeAssemblyWitnessHash` derived from escrow contract, chain ID, trade ID, route hash, spendability hash, wall-bundle hash, assembly-history hash, item fingerprint, inventory lock, and route gate. Full wall and assembly graph semantics remain off-chain, but arbitrary witness substitution now fails closed.
 
+Audit boundary: consumed spendability storage is currently scoped by trade. The
+same hash cannot be replayed inside one trade, including across route and
+delivery gates, but the contract does not globally reject the same opaque
+spendability hash in a different trade. Cross-trade replay resistance remains a
+typed spendability digest and off-chain validation requirement until the
+contract derives or validates more of the spendability preimage.
+
 The next gate follows the same pattern. Inspection cannot open from the old
 seller-only delivery ABI. The contract consumes `delivery_spendability_hash`
 and stores a typed `deliveryWitnessHash` derived from escrow contract, chain
