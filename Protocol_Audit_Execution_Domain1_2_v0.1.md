@@ -225,6 +225,22 @@ enforced: same-trade cross-gate replay fails closed
 | Same-trade spendability replay | enforced | `consumedSpendabilityHashes[tradeId][hash]` rejects reuse within a trade, including cross-gate reuse. |
 | Cross-trade spendability replay | off-chain typed-digest dependency | Storage is per-trade. The same opaque hash can be consumed in two trades unless the digest preimage itself makes that impossible or meaningless. |
 
+## Dispositions
+
+Assigned against the canonical disposition vocabulary in `Protocol_Audit_v0.1.md`.
+A finding with no disposition is still open.
+
+| Finding | Type | Disposition | Note |
+|---|---|---|---|
+| AUD-D1D2-001 | suspected_weakness | documented_residual_risk + deferred_with_owner_and_trigger | The cross-trade overclaim was removed from the docs, but the underlying contract limitation is real, not mere doc drift. Deferred follow-up: add a typed spendability digest (the route/delivery witness pattern, applied to the spendability hash) so the preimage is trade-bound on-chain. Trigger: before any non-concierge cohort, or before a doc claims contract-level cross-trade replay resistance. A global nullifier alone does not close this — an attacker mints a fresh opaque hash per trade unless the preimage is constrained. |
+| AUD-D1D2-002 | suspected_weakness | converted_to_test | Deprecated delivery ABI fails closed; `testOldDeliverySpendabilityAbiRequiresWitness` is now a permanent regression guard. |
+| AUD-D1D2-003 | suspected_weakness | converted_to_test | Cross-trade route witness substitution reverts; `testAuditRouteRejectsCrossTradeAssemblyWitness` guards it. |
+| AUD-D1D2-004 | suspected_weakness | converted_to_test | Same-trade cross-gate spendability replay reverts; `testAuditSameTradeSpendabilityCannotMoveAcrossGates` guards it. |
+
+Note: AUD-D1D2-001 is deliberately *not* dispositioned `fixed_in_docs_for_doc_drift`.
+That label would read as "done" and let the contract-hardening follow-up fall off
+the books. It is a documented residual risk with a live deferred fix.
+
 ## Next Audit Targets
 
 1. Patch the docs so they do not overclaim contract-level cross-trade
