@@ -349,8 +349,9 @@ Better:
 
 ```text
 The route can lock: the witness binds spendability, wall bundle, assembly
-history, item fingerprint, and inventory lock for this trade, and tuple
-substitution fails closed. The contract does not prove the wall bundle,
-assembly history, or spendability were minted from a coherent chain; that is
-validated off-chain. Delivery risk still remains physical.
+history, item fingerprint, and inventory lock for this trade, the spendability
+hash matches the contract-derived typed digest, and tuple substitution fails
+closed. The contract does not prove the wall-bundle or assembly-history graph
+was minted from a coherent chain; that is validated off-chain. Delivery risk
+still remains physical.
 ```

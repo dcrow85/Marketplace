@@ -38,6 +38,9 @@ contract MarketplaceEscrowTest {
     address internal stranger = address(0xBAD);
     mapping(uint256 tradeId => bytes32 itemFingerprintHash) internal committedItemFingerprints;
     mapping(uint256 tradeId => bytes32 inventoryLockHash) internal committedInventoryLocks;
+    mapping(uint256 tradeId => bytes32 routeHash) internal committedRouteHashes;
+    mapping(uint256 tradeId => bytes32 routeAssemblyWitnessHash) internal
+        committedRouteAssemblyWitnesses;
 
     function setUp() public {
         buyer = vm.addr(buyerKey);
@@ -316,6 +319,74 @@ contract MarketplaceEscrowTest {
             wallBundleHash,
             assemblyHistoryHash,
             wrongWitnessHash,
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+    }
+
+    function testRouteCommitAcceptsTypedSpendabilityDigest() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:typed-spendability-positive");
+        bytes32 wallBundleHash = _routeWallBundleRoot(tradeId, routeHash);
+        bytes32 assemblyHistoryHash = _routeAssemblyHistory(tradeId, routeHash);
+        bytes32 spendabilityHash =
+            _routeSpendability(tradeId, routeHash, wallBundleHash, assemblyHistoryHash, seller);
+        bytes32 witnessHash = _routeAssemblyWitness(
+            tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash
+        );
+
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            spendabilityHash,
+            wallBundleHash,
+            assemblyHistoryHash,
+            witnessHash,
+            false,
+            true,
+            1 ether,
+            _sig(sellerKey, routeHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.RouteLocked);
+        _assertTrue(
+            escrow.consumedSpendabilityHashes(tradeId, spendabilityHash),
+            "typed route spendability consumed"
+        );
+    }
+
+    function testAuditStitchedWitnessOpaqueRouteSpendabilityNowReverts() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:audit-stitched-opaque-spendability");
+        bytes32 wallBundleHash = _h("wall-bundle:unrelated-context");
+        bytes32 assemblyHistoryHash = _h("assembly-history:different-context");
+        bytes32 opaqueSpendabilityHash = _h("opaque-spendability:not-minted-by-contract");
+        bytes32 expectedSpendabilityHash =
+            _routeSpendability(tradeId, routeHash, wallBundleHash, assemblyHistoryHash, seller);
+        bytes32 witnessHash = _routeAssemblyWitness(
+            tradeId, routeHash, opaqueSpendabilityHash, wallBundleHash, assemblyHistoryHash
+        );
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.SpendabilityDigestMismatch.selector,
+                expectedSpendabilityHash,
+                opaqueSpendabilityHash
+            )
+        );
+        vm.prank(seller);
+        escrow.commitRoute(
+            tradeId,
+            routeHash,
+            opaqueSpendabilityHash,
+            wallBundleHash,
+            assemblyHistoryHash,
+            witnessHash,
             false,
             true,
             1 ether,
@@ -807,6 +878,32 @@ contract MarketplaceEscrowTest {
         );
     }
 
+    function testAuditDeliveryRejectsOpaqueSpendabilityDigest() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+        bytes32 routeHash = _h("route:audit-delivery-opaque-spendability");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+
+        bytes32 deliveryHash = _h("delivery:audit-opaque-spendability");
+        bytes32 opaqueSpendabilityHash = _h("opaque-delivery-spendability");
+        bytes32 expectedSpendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, opaqueSpendabilityHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.SpendabilityDigestMismatch.selector,
+                expectedSpendabilityHash,
+                opaqueSpendabilityHash
+            )
+        );
+        vm.prank(seller);
+        escrow.markDelivered(
+            tradeId,
+            deliveryHash,
+            opaqueSpendabilityHash,
+            witnessHash,
+            _sig(sellerKey, deliveryHash)
+        );
+    }
+
     function testAuditRouteRejectsCrossTradeAssemblyWitness() public {
         bytes32 sharedRouteHash = _h("route:audit-cross-trade-witness");
         uint256 firstTradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
@@ -862,9 +959,12 @@ contract MarketplaceEscrowTest {
 
         bytes32 deliveryHash = _h("delivery:audit-replay-route-spendability");
         bytes32 deliveryWitnessHash = _deliveryWitness(tradeId, deliveryHash, routeSpendabilityHash);
+        bytes32 expectedDeliverySpendabilityHash = _deliverySpendability(tradeId, deliveryHash);
         vm.expectRevert(
             abi.encodeWithSelector(
-                MarketplaceEscrow.SpendabilityAlreadyConsumed.selector, routeSpendabilityHash
+                MarketplaceEscrow.SpendabilityDigestMismatch.selector,
+                expectedDeliverySpendabilityHash,
+                routeSpendabilityHash
             )
         );
         vm.prank(seller);
@@ -878,50 +978,36 @@ contract MarketplaceEscrowTest {
     }
 
     function testAuditCrossTradeSpendabilityDependsOnTradeBoundDigest() public {
-        bytes32 sharedSpendabilityHash = _h("audit:shared-spendability-not-trade-bound");
         bytes32 firstRouteHash = _h("route:audit-cross-trade-spendability:first");
         uint256 firstTradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
-        bytes32 firstWallBundleHash = _routeWallBundleRoot(firstTradeId, firstRouteHash);
-        bytes32 firstAssemblyHistoryHash = _routeAssemblyHistory(firstTradeId, firstRouteHash);
-        bytes32 firstWitnessHash = _routeAssemblyWitness(
-            firstTradeId,
-            firstRouteHash,
-            sharedSpendabilityHash,
-            firstWallBundleHash,
-            firstAssemblyHistoryHash
-        );
-
-        vm.prank(seller);
-        escrow.commitRoute(
-            firstTradeId,
-            firstRouteHash,
-            sharedSpendabilityHash,
-            firstWallBundleHash,
-            firstAssemblyHistoryHash,
-            firstWitnessHash,
-            false,
-            true,
-            1 ether,
-            _sig(sellerKey, firstRouteHash)
-        );
+        bytes32 firstSpendabilityHash = _routeSpendability(firstTradeId, firstRouteHash);
 
         bytes32 secondRouteHash = _h("route:audit-cross-trade-spendability:second");
         uint256 secondTradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
         bytes32 secondWallBundleHash = _routeWallBundleRoot(secondTradeId, secondRouteHash);
         bytes32 secondAssemblyHistoryHash = _routeAssemblyHistory(secondTradeId, secondRouteHash);
+        bytes32 expectedSecondSpendabilityHash =
+            _routeSpendability(secondTradeId, secondRouteHash);
         bytes32 secondWitnessHash = _routeAssemblyWitness(
             secondTradeId,
             secondRouteHash,
-            sharedSpendabilityHash,
+            firstSpendabilityHash,
             secondWallBundleHash,
             secondAssemblyHistoryHash
         );
 
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.SpendabilityDigestMismatch.selector,
+                expectedSecondSpendabilityHash,
+                firstSpendabilityHash
+            )
+        );
         vm.prank(seller);
         escrow.commitRoute(
             secondTradeId,
             secondRouteHash,
-            sharedSpendabilityHash,
+            firstSpendabilityHash,
             secondWallBundleHash,
             secondAssemblyHistoryHash,
             secondWitnessHash,
@@ -929,15 +1015,6 @@ contract MarketplaceEscrowTest {
             true,
             1 ether,
             _sig(sellerKey, secondRouteHash)
-        );
-
-        _assertTrue(
-            escrow.consumedSpendabilityHashes(firstTradeId, sharedSpendabilityHash),
-            "first trade consumed shared spendability"
-        );
-        _assertTrue(
-            escrow.consumedSpendabilityHashes(secondTradeId, sharedSpendabilityHash),
-            "second trade consumed same hash because storage is trade-scoped"
         );
     }
 
@@ -1763,23 +1840,56 @@ contract MarketplaceEscrowTest {
             declaredInsurance,
             _sig(sellerKey, routeHash)
         );
+        committedRouteHashes[tradeId] = routeHash;
+        committedRouteAssemblyWitnesses[tradeId] = routeAssemblyWitnessHash;
     }
 
     function _routeSpendability(uint256 tradeId, bytes32 routeHash)
         internal
-        pure
+        view
         returns (bytes32)
     {
-        return _routeSpendability(tradeId, routeHash, _routeAssemblyHistory(tradeId, routeHash));
+        return _routeSpendability(
+            tradeId,
+            routeHash,
+            _routeWallBundleRoot(tradeId, routeHash),
+            _routeAssemblyHistory(tradeId, routeHash),
+            seller
+        );
     }
 
     function _routeSpendability(uint256 tradeId, bytes32 routeHash, bytes32 assemblyHistoryHash)
         internal
-        pure
+        view
         returns (bytes32)
     {
-        return keccak256(
-            abi.encodePacked("spendability:route:", tradeId, routeHash, assemblyHistoryHash)
+        return _routeSpendability(
+            tradeId, routeHash, _routeWallBundleRoot(tradeId, routeHash), assemblyHistoryHash, seller
+        );
+    }
+
+    function _routeSpendability(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes32 wallBundleHash,
+        bytes32 assemblyHistoryHash,
+        address issuer
+    ) internal view returns (bytes32) {
+        bytes32 boundArtifactsHash = keccak256(
+            abi.encode(
+                routeHash,
+                wallBundleHash,
+                assemblyHistoryHash,
+                committedItemFingerprints[tradeId],
+                committedInventoryLocks[tradeId]
+            )
+        );
+        return _spendabilityDigest(
+            tradeId,
+            keccak256("marketplace.gate.route_commitment.v0.1"),
+            keccak256("marketplace.leg.route_commitment.v0.1"),
+            boundArtifactsHash,
+            issuer
         );
     }
 
@@ -1855,7 +1965,7 @@ contract MarketplaceEscrowTest {
 
     function _markDeliveredByArbiter(uint256 tradeId, string memory label) internal {
         bytes32 deliveryHash = _h(label);
-        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash);
+        bytes32 spendabilityHash = _deliverySpendability(tradeId, deliveryHash, arbiter);
         bytes32 witnessHash = _deliveryWitness(tradeId, deliveryHash, spendabilityHash);
         vm.prank(arbiter);
         escrow.markDelivered(
@@ -1865,10 +1975,54 @@ contract MarketplaceEscrowTest {
 
     function _deliverySpendability(uint256 tradeId, bytes32 deliveryHash)
         internal
-        pure
+        view
         returns (bytes32)
     {
-        return keccak256(abi.encodePacked("spendability:delivery:", tradeId, deliveryHash));
+        return _deliverySpendability(tradeId, deliveryHash, seller);
+    }
+
+    function _deliverySpendability(uint256 tradeId, bytes32 deliveryHash, address issuer)
+        internal
+        view
+        returns (bytes32)
+    {
+        bytes32 boundArtifactsHash = keccak256(
+            abi.encode(
+                committedRouteHashes[tradeId],
+                deliveryHash,
+                committedRouteAssemblyWitnesses[tradeId]
+            )
+        );
+        return _spendabilityDigest(
+            tradeId,
+            keccak256("marketplace.gate.delivery_confirmation.v0.1"),
+            keccak256("marketplace.leg.delivery_confirmation.v0.1"),
+            boundArtifactsHash,
+            issuer
+        );
+    }
+
+    function _spendabilityDigest(
+        uint256 tradeId,
+        bytes32 gateHash,
+        bytes32 legHash,
+        bytes32 boundArtifactsHash,
+        address issuer
+    ) internal view returns (bytes32) {
+        return keccak256(
+            abi.encode(
+                keccak256(
+                    "SpendabilityDigest(address escrow,uint256 chainId,uint256 tradeId,bytes32 gateHash,bytes32 legHash,bytes32 boundArtifactsHash,address issuer)"
+                ),
+                address(escrow),
+                block.chainid,
+                tradeId,
+                gateHash,
+                legHash,
+                boundArtifactsHash,
+                issuer
+            )
+        );
     }
 
     function _deliveryWitness(uint256 tradeId, bytes32 deliveryHash, bytes32 spendabilityHash)

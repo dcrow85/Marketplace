@@ -717,7 +717,7 @@ Route cannot lock on seller trajectory capacity. Shop trust, eBay proof, and cur
 
 Packet commitment rule:
 
-Route lock requires a `route_spendability_hash`, a `wall_bundle_hash`, an `assembly_history_hash`, and a matching `route_assembly_witness_hash` supplied to escrow. Off-chain, the spendability packet is constructed to cite the wall bundle and assembly history; on-chain, the contract takes all three as separate values and verifies only that they are present and bound into the witness for this trade (audit AUD-D2-SW-001). It does not verify the citation or that the artifacts form a coherent chain — that is an off-chain validator's job. The route spendability packet is permission to use the assembled route provenance at `route_commitment`, not proof that the card is authentic or correctly graded.
+Route lock requires a `route_spendability_hash`, a `wall_bundle_hash`, an `assembly_history_hash`, and a matching `route_assembly_witness_hash` supplied to escrow. On-chain, `route_spendability_hash` must equal the contract-derived typed digest for this trade, gate, leg, artifact hashes, and issuer. The wall bundle and assembly history are still separate caller-supplied hashes: the contract verifies that they are present, digest-bound, and bound into the route witness for this trade (audit AUD-D2-SW-001), but it does not inspect their internal graph or prove they form a coherent chain. That graph coherence is an off-chain validator's job. The route spendability packet is permission to use the assembled route provenance at `route_commitment`, not proof that the card is authentic or correctly graded.
 
 Terminal floor rule:
 

@@ -377,15 +377,16 @@ Spendability is inherited through assembly, not inferred from appearance.
 
 Enforcement scope (audit AUD-D2-SW-001/002, 2026-06-11): this principle is a
 protocol property, split across two layers. The contract enforces the
-item-identity spine — the route and delivery witnesses bind to the committed
-item fingerprint and inventory lock, and any tuple substitution after the
-witness is generated fails closed. The contract does **not** verify that the
-wall bundle, assembly history, or spendability hash were minted from a coherent
-provenance chain; it accepts them as caller-supplied opaque values witnessed
-together. Assembly-graph coherence is validated off-chain and is `legible`, not
-`enforced`. A planned hardening (typed, trade-bound spendability digest) moves
-the spendability artifact into the enforced layer; until then, an on-chain route
-lock proves witnessed shape, not assembly coherence.
+item-identity spine and typed spendability digest: route and delivery witnesses
+bind to the committed item fingerprint / inventory lock or route state, the
+spendability digest is recomputed from the trade, gate, leg, artifact hashes,
+and issuer, and tuple substitution after the witness is generated fails closed.
+The contract does **not** verify that the wall bundle or assembly history graph
+contents were minted from a coherent provenance chain; it accepts their hashes
+as caller-supplied values, binds them into the spendability digest and witness,
+and stores the resulting commitments. Assembly-graph coherence is validated
+off-chain and is `legible`, not `enforced`. An on-chain route lock proves typed
+digest and witnessed shape, not full assembly coherence.
 
 Important fields:
 

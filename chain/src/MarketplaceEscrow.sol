@@ -137,6 +137,9 @@ contract MarketplaceEscrow {
     );
     error SpendabilityRequired();
     error SpendabilityAlreadyConsumed(bytes32 spendabilityHash);
+    error SpendabilityDigestMismatch(
+        bytes32 expectedSpendabilityHash, bytes32 providedSpendabilityHash
+    );
     error WallBundleRequired();
     error AssemblyHistoryRequired();
     error RouteAssemblyWitnessRequired();
@@ -153,8 +156,15 @@ contract MarketplaceEscrow {
         keccak256("marketplace.gate.route_commitment.v0.1");
     bytes32 public constant DELIVERY_CONFIRMATION_GATE =
         keccak256("marketplace.gate.delivery_confirmation.v0.1");
+    bytes32 public constant ROUTE_COMMITMENT_LEG =
+        keccak256("marketplace.leg.route_commitment.v0.1");
+    bytes32 public constant DELIVERY_CONFIRMATION_LEG =
+        keccak256("marketplace.leg.delivery_confirmation.v0.1");
     bytes32 public constant FINGERPRINT_SCOPE_SET_HASH =
         keccak256("marketplace.scope_set.item_fingerprint.v0.1");
+    bytes32 public constant SPENDABILITY_DIGEST_TYPEHASH = keccak256(
+        "SpendabilityDigest(address escrow,uint256 chainId,uint256 tradeId,bytes32 gateHash,bytes32 legHash,bytes32 boundArtifactsHash,address issuer)"
+    );
     bytes32 public constant INVENTORY_LOCK_BINDING_TYPEHASH = keccak256(
         "InventoryLockBinding(address escrow,uint256 chainId,uint256 tradeId,bytes32 inventoryLockHash,bytes32 itemFingerprintHash)"
     );
@@ -828,6 +838,12 @@ contract MarketplaceEscrow {
         if (trade.fingerprintChallengeHash != bytes32(0)) {
             revert FingerprintChallengeActive(trade.fingerprintChallengeHash);
         }
+        bytes32 expectedSpendabilityHash = routeSpendabilityHash(
+            tradeId, routeHash, wallBundleHash, assemblyHistoryHash, msg.sender
+        );
+        if (spendabilityHash != expectedSpendabilityHash) {
+            revert SpendabilityDigestMismatch(expectedSpendabilityHash, spendabilityHash);
+        }
         bytes32 expectedRouteAssemblyWitnessHash =
             routeAssemblyWitnessHash(
                 tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash
@@ -896,6 +912,11 @@ contract MarketplaceEscrow {
         }
         if (deliveryHash == bytes32(0)) revert BadHash();
         if (deliveryWitnessHash_ == bytes32(0)) revert DeliveryWitnessRequired();
+        bytes32 expectedSpendabilityHash =
+            deliverySpendabilityHash(tradeId, deliveryHash, msg.sender);
+        if (spendabilityHash != expectedSpendabilityHash) {
+            revert SpendabilityDigestMismatch(expectedSpendabilityHash, spendabilityHash);
+        }
         bytes32 expectedDeliveryWitnessHash =
             deliveryWitnessHash(tradeId, deliveryHash, spendabilityHash);
         if (deliveryWitnessHash_ != expectedDeliveryWitnessHash) {
@@ -1142,7 +1163,7 @@ contract MarketplaceEscrow {
         external
         view
         returns (
-            bytes32 routeSpendabilityHash,
+            bytes32 routeSpendabilityHash_,
             bytes32 assemblyHistoryHash,
             bytes32 routeAssemblyWitnessHash_
         )
@@ -1180,6 +1201,32 @@ contract MarketplaceEscrow {
         );
     }
 
+    function routeSpendabilityHash(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes32 wallBundleHash,
+        bytes32 assemblyHistoryHash,
+        address issuer
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        bytes32 boundArtifactsHash = keccak256(
+            abi.encode(
+                routeHash,
+                wallBundleHash,
+                assemblyHistoryHash,
+                trade.itemFingerprintHash,
+                trade.inventoryLockHash
+            )
+        );
+        return _spendabilityDigest(
+            tradeId,
+            ROUTE_COMMITMENT_GATE,
+            ROUTE_COMMITMENT_LEG,
+            boundArtifactsHash,
+            issuer
+        );
+    }
+
     function inventoryLockBindingHash(
         uint256 tradeId,
         bytes32 inventoryLockHash,
@@ -1214,6 +1261,23 @@ contract MarketplaceEscrow {
                 spendabilityHash,
                 DELIVERY_CONFIRMATION_GATE
             )
+        );
+    }
+
+    function deliverySpendabilityHash(uint256 tradeId, bytes32 deliveryHash, address issuer)
+        public
+        view
+        returns (bytes32)
+    {
+        Trade storage trade = trades[tradeId];
+        bytes32 boundArtifactsHash =
+            keccak256(abi.encode(trade.routeHash, deliveryHash, trade.routeAssemblyWitnessHash));
+        return _spendabilityDigest(
+            tradeId,
+            DELIVERY_CONFIRMATION_GATE,
+            DELIVERY_CONFIRMATION_LEG,
+            boundArtifactsHash,
+            issuer
         );
     }
 
@@ -1296,6 +1360,27 @@ contract MarketplaceEscrow {
         ) {
             revert ClosedTrade();
         }
+    }
+
+    function _spendabilityDigest(
+        uint256 tradeId,
+        bytes32 gateHash,
+        bytes32 legHash,
+        bytes32 boundArtifactsHash,
+        address issuer
+    ) internal view returns (bytes32) {
+        return keccak256(
+            abi.encode(
+                SPENDABILITY_DIGEST_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                gateHash,
+                legHash,
+                boundArtifactsHash,
+                issuer
+            )
+        );
     }
 
     function _anchorPacketHash(uint256 tradeId, bytes32 packetHash) internal {

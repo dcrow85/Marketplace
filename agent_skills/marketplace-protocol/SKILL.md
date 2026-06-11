@@ -46,13 +46,16 @@ Spendability is inherited through assembly, not inferred from appearance.
 ```
 
 Scope of on-chain enforcement (audit AUD-D2-SW-001/002): the contract enforces
-this for the item-identity spine only — the route witness binds the route to the
-committed item fingerprint and inventory lock, and tuple substitution after the
-witness is generated fails closed. The wall bundle, assembly history, and
-spendability hashes are caller-supplied; the contract checks they are present
-and witnessed together, not that they were minted from a coherent provenance
-chain. That coherence is validated off-chain and is `legible`, not `enforced`.
-Do not tell a human that an on-chain route lock proves the assembly is coherent.
+this for the item-identity spine and typed spendability digest. The route
+witness binds the route to the committed item fingerprint and inventory lock,
+the spendability digest is recomputed from the trade/gate/leg/artifact hashes
+and issuer, and tuple substitution after the witness is generated fails closed.
+The wall bundle and assembly history graph contents are still caller-supplied
+hashes; the contract checks they are present, digest-bound, and witnessed
+together, not that their internal graph was minted from a coherent provenance
+chain. That graph coherence is validated off-chain and is `legible`, not
+`enforced`. Do not tell a human that an on-chain route lock proves the assembly
+graph is coherent.
 
 Use this companion rule for tools:
 
