@@ -1,0 +1,51 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-replay\",\"cost_field\":{\"buyer_attention_budget\":\"low\",\"condition_sensitivity\":0.752,\"evidence_floor\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\"],\"max_total_price_usd\":1226,\"risk_tolerance\":0.538,\"route_preferences\":[\"underinsured_ship\"],\"value_band\":\"grail\"},\"object\":{\"card\":\"Japanese Neo Revelation Houndoom holo\",\"condition_floor\":\"NM-\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:25834f875bc9bad53cbd02ae2bb4c243643e79f7cee8d0732b30d1596cd10be8\",\"friction_policy\":\"sha256:4b80b62b6c3d5127bcfba898f81013399de8cbb49c3bb957d104205bc6f3c3cb\",\"intent\":\"sha256:8a80220888d92c8f9840a081b81f6660958e92ac24f14ee472a5fb575ee8265f\",\"seller_offer\":\"sha256:774b0f09dbc9c6f8366c7959894555a0894c9dce118c7c262933e9adab475d4e\"},\"source_simulation_trade\":\"SIM-0043\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-replay",
+    "cost_field": {
+      "buyer_attention_budget": "low",
+      "condition_sensitivity": 0.752,
+      "evidence_floor": [
+        "back_photo",
+        "carrier_acceptance",
+        "corner_closeups",
+        "escrow_terms",
+        "flaw_callouts",
+        "front_photo",
+        "holo_angle_closeups",
+        "insurance_or_gap_owner",
+        "locked_inventory_packet",
+        "received_item_photos",
+        "route_packet",
+        "tracking_history"
+      ],
+      "max_total_price_usd": 1226,
+      "risk_tolerance": 0.538,
+      "route_preferences": [
+        "underinsured_ship"
+      ],
+      "value_band": "grail"
+    },
+    "object": {
+      "card": "Japanese Neo Revelation Houndoom holo",
+      "condition_floor": "NM-",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:25834f875bc9bad53cbd02ae2bb4c243643e79f7cee8d0732b30d1596cd10be8",
+      "friction_policy": "sha256:4b80b62b6c3d5127bcfba898f81013399de8cbb49c3bb957d104205bc6f3c3cb",
+      "intent": "sha256:8a80220888d92c8f9840a081b81f6660958e92ac24f14ee472a5fb575ee8265f",
+      "seller_offer": "sha256:774b0f09dbc9c6f8366c7959894555a0894c9dce118c7c262933e9adab475d4e"
+    },
+    "source_simulation_trade": "SIM-0043"
+  },
+  "payload_hash": "0xc01e662dd9d4325ed3738560f654308c44846b0c8a6f3a671bbe9138f942d8c4",
+  "signature": "0xa5dc2c3130edcbd189fcbd135e44e562c847c4c20b3647e1a09041ed28a2adfc5617df612ffe737db1233c414cbe924edcbcc46c80a081e21920a4f7e22080e91b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

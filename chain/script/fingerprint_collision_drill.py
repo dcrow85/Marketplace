@@ -698,13 +698,31 @@ def route_commit_args(
 ) -> list[str]:
     wall_bundle_hash = route_wall_bundle_root(trade, route)
     assembly_history_hash = route_assembly_history_hash(trade, route)
+    evm_route_spendability = e2e.route_spendability_hash(
+        rpc_url,
+        contract,
+        trade.trade_id,
+        route.payload_hash,
+        wall_bundle_hash,
+        assembly_history_hash,
+        e2e.SELLER,
+    )
+    evm_route_witness = e2e.route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        trade.trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        wall_bundle_hash,
+        assembly_history_hash,
+    )
     return [
         str(trade.trade_id),
         route.payload_hash,
-        route_spendability_hash(trade, route),
+        evm_route_spendability,
         wall_bundle_hash,
         assembly_history_hash,
-        route_assembly_witness_hash(rpc_url, contract, trade, route),
+        evm_route_witness,
         str(in_person_allowed).lower(),
         str(insured).lower(),
         e2e.eth(declared_insurance_eth),

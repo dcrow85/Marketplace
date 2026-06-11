@@ -1,0 +1,31 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth_local_probe\":\"0.066\",\"distance\":\"same_region\",\"in_person_allowed\":false,\"insurance_amount_usd\":66,\"insured\":true,\"route\":\"insured_ship\",\"schema\":\"marketplace.route_packet.v0.2\",\"shipping_evidence\":[\"carrier_acceptance\",\"tracking_history\",\"insurance_or_gap_owner\"],\"source_simulation_hashes\":{\"automated_policy\":\"sha256:791102cf87a6b4913f1efed1db15d3ff1296611f1db65e1f9d28bffd8f236712\",\"escrow_terms\":\"sha256:7b4bd3a9190a1c4391db10449a36fd66175d9a0337abc6e061fbe007cc78f55f\",\"friction_policy\":\"sha256:d068935385f57a7e9167690aca625fb3aa513bcb1c435eb1a4d61c057bbab3b9\",\"intent\":\"sha256:ed6a7227580053779e7b40b3b619b302f74a41b13b64614bb192aea733c438c8\",\"seller_offer\":\"sha256:e5a67330ed52f7973a690e23eabc1bfb84666013d4abe935ffb836822f3ff1c9\"},\"source_simulation_trade\":\"SIM-0030\",\"tracking_or_memo\":\"tracking://simulated-domestic-carrier\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth_local_probe": "0.066",
+    "distance": "same_region",
+    "in_person_allowed": false,
+    "insurance_amount_usd": 66,
+    "insured": true,
+    "route": "insured_ship",
+    "schema": "marketplace.route_packet.v0.2",
+    "shipping_evidence": [
+      "carrier_acceptance",
+      "tracking_history",
+      "insurance_or_gap_owner"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": "sha256:791102cf87a6b4913f1efed1db15d3ff1296611f1db65e1f9d28bffd8f236712",
+      "escrow_terms": "sha256:7b4bd3a9190a1c4391db10449a36fd66175d9a0337abc6e061fbe007cc78f55f",
+      "friction_policy": "sha256:d068935385f57a7e9167690aca625fb3aa513bcb1c435eb1a4d61c057bbab3b9",
+      "intent": "sha256:ed6a7227580053779e7b40b3b619b302f74a41b13b64614bb192aea733c438c8",
+      "seller_offer": "sha256:e5a67330ed52f7973a690e23eabc1bfb84666013d4abe935ffb836822f3ff1c9"
+    },
+    "source_simulation_trade": "SIM-0030",
+    "tracking_or_memo": "tracking://simulated-domestic-carrier"
+  },
+  "payload_hash": "0x50b070626e1fe4ac8c0facdfe7a8970d07e0c5c8a7ecfcec2cdf70e29fb13905",
+  "signature": "0x7d8811ca6c7f9d5e62ab9616e724b48d8215dd09446110f085dd69e6be8013ad61d14f0213aca39d1e146c08ab481e2e6e0386bc8be74442784bd960ab55a69d1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

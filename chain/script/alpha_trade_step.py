@@ -209,6 +209,16 @@ def run_step(action: str, summary_path: Path) -> dict[str, Any]:
         )
         packets.extend([delivery, delivery_spendability.packet])
         e2e.verify_packets(rpc_url, summary["registry"], packets)
+        evm_delivery_spendability = e2e.delivery_spendability_hash(
+            rpc_url, contract, trade_id, delivery.payload_hash, e2e.SELLER
+        )
+        evm_delivery_witness = e2e.delivery_witness_hash(
+            rpc_url,
+            contract,
+            trade_id,
+            delivery.payload_hash,
+            evm_delivery_spendability,
+        )
         transactions.append(
             e2e.send_tx(
                 rpc_url,
@@ -219,20 +229,14 @@ def run_step(action: str, summary_path: Path) -> dict[str, Any]:
                 [
                     str(trade_id),
                     delivery.payload_hash,
-                    delivery_spendability.packet.payload_hash,
-                    e2e.delivery_witness_hash(
-                        rpc_url,
-                        contract,
-                        trade_id,
-                        delivery.payload_hash,
-                        delivery_spendability.packet.payload_hash,
-                    ),
+                    evm_delivery_spendability,
+                    evm_delivery_witness,
                     delivery.signature,
                 ],
             )
         )
         interpretation = (
-            "Seller-signed delivery evidence plus delivery spendability opened the inspection window. "
+            "Seller-signed delivery evidence plus the contract-derived typed delivery spendability opened the inspection window. "
             "This proves the delivery gate advanced; it does not prove card condition or buyer satisfaction."
         )
     elif action == "buyer-accept":

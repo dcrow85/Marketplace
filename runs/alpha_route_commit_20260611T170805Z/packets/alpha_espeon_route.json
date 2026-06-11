@@ -1,0 +1,22 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":\"sha256:82f2e6ccac66a9ab2882bd7c709779f67235f7ed761097977c9b895676f9c20b\",\"carrier_or_handoff_method\":\"simulated_carrier_tracking\",\"declared_insurance_eth_local_probe\":\"0.64\",\"declared_value_usd\":640,\"insured\":true,\"route_spendability_evm_hash\":\"0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e\",\"route_spendability_hash\":\"0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e\",\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking_or_memo\":\"tracking://ALPHA-ESPEON-001\",\"trade_id\":1,\"wall_bundle_hash\":\"sha256:211032c445d6ea9a2a6a1a4f561086eb750d51965b89aa3d18a9ee6d6b0ea7a6\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": "sha256:82f2e6ccac66a9ab2882bd7c709779f67235f7ed761097977c9b895676f9c20b",
+    "carrier_or_handoff_method": "simulated_carrier_tracking",
+    "declared_insurance_eth_local_probe": "0.64",
+    "declared_value_usd": 640,
+    "insured": true,
+    "route_spendability_evm_hash": "0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e",
+    "route_spendability_hash": "0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e",
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking_or_memo": "tracking://ALPHA-ESPEON-001",
+    "trade_id": 1,
+    "wall_bundle_hash": "sha256:211032c445d6ea9a2a6a1a4f561086eb750d51965b89aa3d18a9ee6d6b0ea7a6"
+  },
+  "payload_hash": "0xcb4d6f9f4dd0d68b8f16993f873b5c09b9bc27beebb82d201f70fe5af7e04981",
+  "signature": "0x968a42332af4519b2b66d5dec473ce20ab210c635e63b9e9bbfce8587f3f47e720fc563c50f72fb01eaa6783f86e6d2b29ec65eb360850abb25e88cdb863bd181c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

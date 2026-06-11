@@ -1,0 +1,28 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Fossil Dragonite holo\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"route_offered\":\"insured_ship\",\"schema\":\"marketplace.seller_offer.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attention_budget\":\"medium\",\"seller_bond_bps_from_sim\":1500,\"seller_bond_eth_local_probe\":\"0.54825\",\"seller_trust\":\"unknown\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:5a0ab2cd28b436f2ff790878a845e3d3fb7242ab999eae740cbb7791bfc2f16f\",\"friction_policy\":\"sha256:affa0dab0d921450e872d47b19f79f26f8ffbe3a7d1afc2bdc873a789ceb4cb5\",\"intent\":\"sha256:c7116392572ce280e4a15378907f8a390e73ad520fdbfb53919a7c287cd45285\",\"seller_offer\":\"sha256:09289adf49f9f9565f8fd67093b64e04fa476b4766b0b22dc8fadd97c3a98115\"},\"source_simulation_trade\":\"SIM-0011\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Fossil Dragonite holo",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "route_offered": "insured_ship",
+    "schema": "marketplace.seller_offer.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attention_budget": "medium",
+    "seller_bond_bps_from_sim": 1500,
+    "seller_bond_eth_local_probe": "0.54825",
+    "seller_trust": "unknown",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:5a0ab2cd28b436f2ff790878a845e3d3fb7242ab999eae740cbb7791bfc2f16f",
+      "friction_policy": "sha256:affa0dab0d921450e872d47b19f79f26f8ffbe3a7d1afc2bdc873a789ceb4cb5",
+      "intent": "sha256:c7116392572ce280e4a15378907f8a390e73ad520fdbfb53919a7c287cd45285",
+      "seller_offer": "sha256:09289adf49f9f9565f8fd67093b64e04fa476b4766b0b22dc8fadd97c3a98115"
+    },
+    "source_simulation_trade": "SIM-0011"
+  },
+  "payload_hash": "0xb6d447916ff46fc130e709b64f6dd17f681e068cf36bfbc39be1d843b09e7331",
+  "signature": "0xb7ee03e5c004a7d21477f2b48130bfe10245880f7f35617e64637cb81379439143d3251374b61f071ce851662305e011035f6dd9792df9f837bcd35744de354e1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

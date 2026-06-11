@@ -178,17 +178,8 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                 "value": args.assembly_history_hash,
             }
         )
-        route_assembly_witness_hash = e2e.route_assembly_witness_hash(
-            rpc_url,
-            contract,
-            trade_id,
-            packets["route"].payload_hash,
-            args.route_spendability_evm_hash,
-            wall_bundle_evm_ref,
-            assembly_history_evm_ref,
-        )
-
-        transactions = [
+        transactions = []
+        transactions.append(
             e2e.send_tx(
                 rpc_url,
                 e2e.BUYER_KEY,
@@ -207,7 +198,9 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                     packets["terms"].signature,
                 ],
                 value_wei=e2e.eth("0.64"),
-            ),
+            )
+        )
+        transactions.append(
             e2e.send_tx(
                 rpc_url,
                 e2e.SELLER_KEY,
@@ -216,7 +209,9 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                 "acceptAndBond(uint256)",
                 [str(trade_id)],
                 value_wei=e2e.eth("0.08"),
-            ),
+            )
+        )
+        transactions.append(
             e2e.send_tx(
                 rpc_url,
                 e2e.SELLER_KEY,
@@ -224,7 +219,9 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                 "commit alpha Espeon item fingerprint",
                 "commitItemFingerprint(uint256,bytes32,bytes)",
                 [str(trade_id), packets["item_fingerprint"].payload_hash, packets["item_fingerprint"].signature],
-            ),
+            )
+        )
+        transactions.append(
             e2e.send_tx(
                 rpc_url,
                 e2e.SELLER_KEY,
@@ -244,7 +241,27 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                         e2e.SELLER_KEY,
                     ),
                 ],
-            ),
+            )
+        )
+        evm_route_spendability = e2e.route_spendability_hash(
+            rpc_url,
+            contract,
+            trade_id,
+            packets["route"].payload_hash,
+            wall_bundle_evm_ref,
+            assembly_history_evm_ref,
+            e2e.SELLER,
+        )
+        route_assembly_witness_hash = e2e.route_assembly_witness_hash(
+            rpc_url,
+            contract,
+            trade_id,
+            packets["route"].payload_hash,
+            evm_route_spendability,
+            wall_bundle_evm_ref,
+            assembly_history_evm_ref,
+        )
+        transactions.append(
             e2e.send_tx(
                 rpc_url,
                 e2e.SELLER_KEY,
@@ -254,7 +271,7 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                 [
                     str(trade_id),
                     packets["route"].payload_hash,
-                    args.route_spendability_evm_hash,
+                    evm_route_spendability,
                     wall_bundle_evm_ref,
                     assembly_history_evm_ref,
                     route_assembly_witness_hash,
@@ -263,8 +280,8 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                     e2e.eth("0.64"),
                     packets["route"].signature,
                 ],
-            ),
-        ]
+            )
+        )
         final_state = e2e.call_state(rpc_url, contract, trade_id)
         receipt = {
             "run_id": run_dir.name,
@@ -285,7 +302,8 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
             "assembly_history_evm_ref": assembly_history_evm_ref,
             "route_assembly_witness_hash": route_assembly_witness_hash,
             "route_spendability_hash": args.route_spendability_hash,
-            "route_spendability_evm_hash": args.route_spendability_evm_hash,
+            "route_spendability_evm_hash": evm_route_spendability,
+            "ui_route_spendability_evm_hint": args.route_spendability_evm_hash,
             "packets": [asdict(record) for record in packet_records],
             "registry_packets": [asdict(record) for record in registry_setup.packets],
             "transactions": [asdict(record) for record in transactions],
@@ -343,7 +361,7 @@ def write_report(run_dir: Path, receipt: dict[str, Any]) -> None:
             "",
             "## Interpretation",
             "",
-            "The UI-approved wall bundle, assembly history, and route spendability were carried into `commitRoute`. The escrow reached `RouteLocked`; this does not prove authenticity, card condition, or delivery success.",
+            "The UI-approved wall bundle and assembly history were carried into `commitRoute`, while the spendability value was the contract-derived typed digest for this route gate. The escrow reached `RouteLocked`; this does not prove authenticity, card condition, or delivery success.",
             "",
         ]
     )

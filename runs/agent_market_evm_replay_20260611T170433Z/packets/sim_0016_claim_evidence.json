@@ -1,0 +1,32 @@
+{
+  "canonical_payload": "{\"buyer_agent_summary\":\"SIM-0016: wrong_card on a $3265 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: authenticity_or_identity_risk, evidence_ambiguity, human_arbiter_selected_prelock.\",\"friction_triggers\":[\"authenticity_or_identity_risk\",\"evidence_ambiguity\",\"human_arbiter_selected_prelock\"],\"human_questions\":[\"approve_severe_remedy_or_escalation\",\"ask_human_or_human_arbiter_to_review_evidence\"],\"outcome\":\"wrong_card\",\"path\":\"human_ruling\",\"route_failure_surrogate\":false,\"schema\":\"marketplace.claim_evidence.v0.2\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ac7cb0a96a9cb56ebf15768e605cbcf51e17fd55abb4272677d97151e4baf5ac\",\"friction_policy\":\"sha256:7d6ef6ea489e3faa15d1f0511834824ded7d4d45175bd75ed3362544f28bf403\",\"intent\":\"sha256:4c43d0d0760b7ef1dad879327c5e82b820273ce8dd73df6075fa9a45ee9f2492\",\"seller_offer\":\"sha256:bbb614c94f361784eecb085b5e15c197d6d2c0246cc718a8fc545fdc5889c025\"},\"source_simulation_trade\":\"SIM-0016\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_agent_summary": "SIM-0016: wrong_card on a $3265 grail trade. Selected human arbiter did:market:arbiter:high-end-panel-1. Path: human_ruling. Friction: authenticity_or_identity_risk, evidence_ambiguity, human_arbiter_selected_prelock.",
+    "friction_triggers": [
+      "authenticity_or_identity_risk",
+      "evidence_ambiguity",
+      "human_arbiter_selected_prelock"
+    ],
+    "human_questions": [
+      "approve_severe_remedy_or_escalation",
+      "ask_human_or_human_arbiter_to_review_evidence"
+    ],
+    "outcome": "wrong_card",
+    "path": "human_ruling",
+    "route_failure_surrogate": false,
+    "schema": "marketplace.claim_evidence.v0.2",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ac7cb0a96a9cb56ebf15768e605cbcf51e17fd55abb4272677d97151e4baf5ac",
+      "friction_policy": "sha256:7d6ef6ea489e3faa15d1f0511834824ded7d4d45175bd75ed3362544f28bf403",
+      "intent": "sha256:4c43d0d0760b7ef1dad879327c5e82b820273ce8dd73df6075fa9a45ee9f2492",
+      "seller_offer": "sha256:bbb614c94f361784eecb085b5e15c197d6d2c0246cc718a8fc545fdc5889c025"
+    },
+    "source_simulation_trade": "SIM-0016"
+  },
+  "payload_hash": "0x218ffa0244a982e237e054ed8ba6bb691256d0b9105f7e049f609907789451cd",
+  "signature": "0xacd95a4a0715d4d9e9a8e5d6e8a656306153661506b2d15301728f1a2b54e51b1d5a3d244807a8f55aeede51bfe394931f3fc1fb278ff94425afdc73b9f368a61c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

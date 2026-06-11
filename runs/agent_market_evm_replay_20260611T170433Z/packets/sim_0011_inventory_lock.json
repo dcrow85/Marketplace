@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Fossil Dragonite holo\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0011\",\"item_fingerprint_hash\":\"0xc3e52a36edae4be9dc927cb6b797da204911480ed8f9c5e09b3a4845efc7d989\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:5a0ab2cd28b436f2ff790878a845e3d3fb7242ab999eae740cbb7791bfc2f16f\",\"friction_policy\":\"sha256:affa0dab0d921450e872d47b19f79f26f8ffbe3a7d1afc2bdc873a789ceb4cb5\",\"intent\":\"sha256:c7116392572ce280e4a15378907f8a390e73ad520fdbfb53919a7c287cd45285\",\"seller_offer\":\"sha256:09289adf49f9f9565f8fd67093b64e04fa476b4766b0b22dc8fadd97c3a98115\"},\"source_simulation_trade\":\"SIM-0011\",\"visible_identifiers\":[\"sim-0011-front-photo-hash\",\"sim-0011-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Fossil Dragonite holo",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0011",
+    "item_fingerprint_hash": "0xc3e52a36edae4be9dc927cb6b797da204911480ed8f9c5e09b3a4845efc7d989",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:5a0ab2cd28b436f2ff790878a845e3d3fb7242ab999eae740cbb7791bfc2f16f",
+      "friction_policy": "sha256:affa0dab0d921450e872d47b19f79f26f8ffbe3a7d1afc2bdc873a789ceb4cb5",
+      "intent": "sha256:c7116392572ce280e4a15378907f8a390e73ad520fdbfb53919a7c287cd45285",
+      "seller_offer": "sha256:09289adf49f9f9565f8fd67093b64e04fa476b4766b0b22dc8fadd97c3a98115"
+    },
+    "source_simulation_trade": "SIM-0011",
+    "visible_identifiers": [
+      "sim-0011-front-photo-hash",
+      "sim-0011-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0xd12a55b24650cbecb94b59c10ea8c19dce54ea773536757f237a5a6f26003595",
+  "signature": "0x2c068695ae019316d99f2a77cc06dc0842dd1e1fdc889660004cc35cc23a1368588d50211bf63ee40cc914a3e35ed85e92373211e0d84c31263709718ff124fc1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

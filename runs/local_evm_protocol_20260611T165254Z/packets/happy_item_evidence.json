@@ -1,0 +1,109 @@
+{
+  "canonical_payload": "{\"asset_descriptors\":[{\"asset_id\":\"front-scan\",\"byte_length\":42,\"captured_at\":\"2026-06-11T16:52:54.980066+00:00\",\"created_at\":\"2026-06-11T16:52:54.980066+00:00\",\"keccak256\":\"0x2ebba057989fe6b632743c4a802d232e25224c0bfbf306fd3204fdf02e53c334\",\"media_type\":\"image/png\",\"role\":\"front_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"39613bbfff7e466024597a5a1f9f78f5246d24cd4286803d7449b13677626e82\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/front-scan.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"back-scan\",\"byte_length\":41,\"captured_at\":\"2026-06-11T16:52:54.980066+00:00\",\"created_at\":\"2026-06-11T16:52:54.980066+00:00\",\"keccak256\":\"0xff78cac05dac437f5b61445346d6d7bb2a2657840ede278b9e3dcc85c0da2ce1\",\"media_type\":\"image/png\",\"role\":\"back_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"fe8b16870a8f756135e8898a7b393790dd972eaf6a57e70160095be0f090de34\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/back-scan.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false},{\"asset_id\":\"corner-closeups\",\"byte_length\":44,\"captured_at\":\"2026-06-11T16:52:54.980066+00:00\",\"created_at\":\"2026-06-11T16:52:54.980066+00:00\",\"keccak256\":\"0x737d0913850fa71b9907f4f7826c22b939ca408660af00f4130f3fff06f26ca7\",\"media_type\":\"image/png\",\"role\":\"corner_photo\",\"schema\":\"marketplace.asset_descriptor.v0.3\",\"sha256\":\"cb7e07bc4d2ca70d5ce6378da8bab8a8a69c552dee9421274a24692890b1ddb3\",\"source\":{\"capture_mode\":\"generated_fixture\",\"origin\":\"seller\"},\"storage_refs\":[{\"kind\":\"file\",\"mutable\":false,\"primary\":true,\"uri\":\"runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/corner-closeups.png\"}],\"visibility\":\"buyer_arbiter\",\"weak_supplemental\":false}],\"asset_root_hash\":\"0x681cb8b535f6eb59222c8e09dd887fb8233fecf84c80e40efdd9e0ad5bd1c3bb\",\"canonicalization\":\"canonical-json-payload-v1\",\"evidence_tier\":\"standard\",\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-11T16:52:54.980066+00:00\",\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"known_limits\":[\"Manifest integrity only; not authenticity or shipping verification.\"],\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_id\":\"happy_item_evidence\",\"schema\":\"marketplace.evidence_manifest.v0.3\",\"subject\":{\"anchor_hash\":\"0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7\",\"subject_hash\":\"0x9018faec1832fa729e4ddb164d105e25fff8fe28ed5a5339d83139a42b4f40eb\",\"subject_type\":\"item_fingerprint\",\"trade_id\":1},\"tier_basis\":\"manifest_integrity_only\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "asset_descriptors": [
+      {
+        "asset_id": "front-scan",
+        "byte_length": 42,
+        "captured_at": "2026-06-11T16:52:54.980066+00:00",
+        "created_at": "2026-06-11T16:52:54.980066+00:00",
+        "keccak256": "0x2ebba057989fe6b632743c4a802d232e25224c0bfbf306fd3204fdf02e53c334",
+        "media_type": "image/png",
+        "role": "front_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "39613bbfff7e466024597a5a1f9f78f5246d24cd4286803d7449b13677626e82",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/front-scan.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "back-scan",
+        "byte_length": 41,
+        "captured_at": "2026-06-11T16:52:54.980066+00:00",
+        "created_at": "2026-06-11T16:52:54.980066+00:00",
+        "keccak256": "0xff78cac05dac437f5b61445346d6d7bb2a2657840ede278b9e3dcc85c0da2ce1",
+        "media_type": "image/png",
+        "role": "back_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "fe8b16870a8f756135e8898a7b393790dd972eaf6a57e70160095be0f090de34",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/back-scan.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      },
+      {
+        "asset_id": "corner-closeups",
+        "byte_length": 44,
+        "captured_at": "2026-06-11T16:52:54.980066+00:00",
+        "created_at": "2026-06-11T16:52:54.980066+00:00",
+        "keccak256": "0x737d0913850fa71b9907f4f7826c22b939ca408660af00f4130f3fff06f26ca7",
+        "media_type": "image/png",
+        "role": "corner_photo",
+        "schema": "marketplace.asset_descriptor.v0.3",
+        "sha256": "cb7e07bc4d2ca70d5ce6378da8bab8a8a69c552dee9421274a24692890b1ddb3",
+        "source": {
+          "capture_mode": "generated_fixture",
+          "origin": "seller"
+        },
+        "storage_refs": [
+          {
+            "kind": "file",
+            "mutable": false,
+            "primary": true,
+            "uri": "runs/local_evm_protocol_20260611T165254Z/assets/happy_item_evidence/corner-closeups.png"
+          }
+        ],
+        "visibility": "buyer_arbiter",
+        "weak_supplemental": false
+      }
+    ],
+    "asset_root_hash": "0x681cb8b535f6eb59222c8e09dd887fb8233fecf84c80e40efdd9e0ad5bd1c3bb",
+    "canonicalization": "canonical-json-payload-v1",
+    "evidence_tier": "standard",
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-11T16:52:54.980066+00:00",
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "known_limits": [
+      "Manifest integrity only; not authenticity or shipping verification."
+    ],
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_id": "happy_item_evidence",
+    "schema": "marketplace.evidence_manifest.v0.3",
+    "subject": {
+      "anchor_hash": "0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7",
+      "subject_hash": "0x9018faec1832fa729e4ddb164d105e25fff8fe28ed5a5339d83139a42b4f40eb",
+      "subject_type": "item_fingerprint",
+      "trade_id": 1
+    },
+    "tier_basis": "manifest_integrity_only",
+    "trade_id": 1
+  },
+  "payload_hash": "0x20a5efa5b271e48ca55c72b7723c8b6a87c61c6bd0429488b831ba4dc76028b3",
+  "signature": "0xd6808217d72423d943f4b9a0d889aa2c65475899419feebe283cf5c78d57670c499a8ac3b0ccac6311271fe99c037115586cc7fddc86e34b6d691390ee4808ec1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

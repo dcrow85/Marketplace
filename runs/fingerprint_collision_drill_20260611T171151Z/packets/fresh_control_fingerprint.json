@@ -1,0 +1,76 @@
+{
+  "canonical_payload": "{\"capture_window\":{\"captured_at\":\"2026-06-11T17:11:54.630551+00:00\",\"freshness_seconds\":86400},\"challenge_hooks\":[\"fresh_nonce_photo\",\"front_back_video\",\"verifier_review\"],\"confidence_scope\":[\"raw_card_identity\",\"seller_custody\"],\"correlation_method\":[\"visual_marker_match\",\"seller_custody_context\"],\"custody_challenge\":{\"expires_at\":\"2026-05-20T00:00:00Z\",\"nonce\":\"buyer-nonce-fresh-control\",\"requested_pose\":\"front/back with handwritten buyer nonce\"},\"evidence_refs\":[{\"ref\":\"fresh-control-front\",\"type\":\"front_photo\"},{\"ref\":\"fresh-control-back\",\"type\":\"back_photo\"},{\"ref\":\"fresh-control-edges\",\"type\":\"edge_closeups\"}],\"identity_claim\":{\"card\":\"Fresh nonce raw card control\",\"domain\":\"tcg\",\"game\":\"pokemon\",\"grade_or_condition_claim\":\"collector-grade or LP+ as applicable\",\"object_type\":\"raw_or_graded_single\"},\"issuer\":\"did:market:seller:anvil-1\",\"issuer_role\":\"seller\",\"known_conflicts\":[],\"privacy_policy\":\"buyer_arbiter\",\"schema\":\"marketplace.item_fingerprint.v0.3\",\"trade_id\":11,\"visual_markers\":[{\"marker_hash\":\"fresh-control-front\",\"match_group\":\"fresh-control-card\",\"scope\":\"front\"},{\"marker_hash\":\"fresh-control-back\",\"match_group\":\"fresh-control-card\",\"scope\":\"back\"},{\"marker_hash\":\"fresh-control-edges\",\"match_group\":\"fresh-control-card\",\"scope\":\"edge\"}]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "capture_window": {
+      "captured_at": "2026-06-11T17:11:54.630551+00:00",
+      "freshness_seconds": 86400
+    },
+    "challenge_hooks": [
+      "fresh_nonce_photo",
+      "front_back_video",
+      "verifier_review"
+    ],
+    "confidence_scope": [
+      "raw_card_identity",
+      "seller_custody"
+    ],
+    "correlation_method": [
+      "visual_marker_match",
+      "seller_custody_context"
+    ],
+    "custody_challenge": {
+      "expires_at": "2026-05-20T00:00:00Z",
+      "nonce": "buyer-nonce-fresh-control",
+      "requested_pose": "front/back with handwritten buyer nonce"
+    },
+    "evidence_refs": [
+      {
+        "ref": "fresh-control-front",
+        "type": "front_photo"
+      },
+      {
+        "ref": "fresh-control-back",
+        "type": "back_photo"
+      },
+      {
+        "ref": "fresh-control-edges",
+        "type": "edge_closeups"
+      }
+    ],
+    "identity_claim": {
+      "card": "Fresh nonce raw card control",
+      "domain": "tcg",
+      "game": "pokemon",
+      "grade_or_condition_claim": "collector-grade or LP+ as applicable",
+      "object_type": "raw_or_graded_single"
+    },
+    "issuer": "did:market:seller:anvil-1",
+    "issuer_role": "seller",
+    "known_conflicts": [],
+    "privacy_policy": "buyer_arbiter",
+    "schema": "marketplace.item_fingerprint.v0.3",
+    "trade_id": 11,
+    "visual_markers": [
+      {
+        "marker_hash": "fresh-control-front",
+        "match_group": "fresh-control-card",
+        "scope": "front"
+      },
+      {
+        "marker_hash": "fresh-control-back",
+        "match_group": "fresh-control-card",
+        "scope": "back"
+      },
+      {
+        "marker_hash": "fresh-control-edges",
+        "match_group": "fresh-control-card",
+        "scope": "edge"
+      }
+    ]
+  },
+  "payload_hash": "0x73835ff955fb4189c00ffd8b4e266ebd3f13444678d34472727d6caae3a97f8c",
+  "signature": "0x7f4e6c1ac211efd8aa6e2815ca0815b453a197e6423347211de675b139718bd52d496dc7195efa053441d405609ce119b4586264698f7c3e4d08d14047b16c021b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

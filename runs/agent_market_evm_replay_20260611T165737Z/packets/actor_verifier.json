@@ -1,0 +1,20 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:verifier:anvil-3\",\"address\":\"0x90F79bf6EB2c4f870365E785982E1f101E93b906\",\"capabilities\":[\"sign_packets\",\"settle_local_evm_probe\"],\"chain\":\"anvil:31337\",\"role\":\"verifier\",\"schema\":\"marketplace.actor_record.v0.2\",\"status\":\"active\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:verifier:anvil-3",
+    "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "capabilities": [
+      "sign_packets",
+      "settle_local_evm_probe"
+    ],
+    "chain": "anvil:31337",
+    "role": "verifier",
+    "schema": "marketplace.actor_record.v0.2",
+    "status": "active"
+  },
+  "payload_hash": "0xf1dabec00581b587e9298a603d99dee6bd6a37afb765202df9818deccfd636d6",
+  "signature": "0x70a0bb2eca8605d6ef44ef0eb3336487643cae2551e22315454156b6a6786e5103fad4807a1a51791f49a8c00b60c0b66b52846c8a0d9ce2771bc147c3e7e14b1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

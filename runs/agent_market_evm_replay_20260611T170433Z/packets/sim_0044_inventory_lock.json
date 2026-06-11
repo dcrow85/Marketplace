@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Base Gyarados holo\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0044\",\"item_fingerprint_hash\":\"0xc9af37e890bb64006bcfea2bd66d69da37a249fd414a42cc9d9bdafc9ea85b78\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:c352027b224f0cdecb888b52a6a178c06bfc0108d735a0b44b07f062d41e3cdc\",\"friction_policy\":\"sha256:88f1785dd6cf6b15412668da6cfc9182ebd5af458b161f1315511088e89cffdb\",\"intent\":\"sha256:5121be6106198623c95f55913631a971df1a838db3aa75b467bebdbdd2760efc\",\"seller_offer\":\"sha256:0616d732acc153e02ca60fa34d00ab648193fe03167aea86f74dddd711a5e88d\"},\"source_simulation_trade\":\"SIM-0044\",\"visible_identifiers\":[\"sim-0044-front-photo-hash\",\"sim-0044-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Base Gyarados holo",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0044",
+    "item_fingerprint_hash": "0xc9af37e890bb64006bcfea2bd66d69da37a249fd414a42cc9d9bdafc9ea85b78",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:c352027b224f0cdecb888b52a6a178c06bfc0108d735a0b44b07f062d41e3cdc",
+      "friction_policy": "sha256:88f1785dd6cf6b15412668da6cfc9182ebd5af458b161f1315511088e89cffdb",
+      "intent": "sha256:5121be6106198623c95f55913631a971df1a838db3aa75b467bebdbdd2760efc",
+      "seller_offer": "sha256:0616d732acc153e02ca60fa34d00ab648193fe03167aea86f74dddd711a5e88d"
+    },
+    "source_simulation_trade": "SIM-0044",
+    "visible_identifiers": [
+      "sim-0044-front-photo-hash",
+      "sim-0044-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x714c9f44a8aacfda5e2269e02d5b2c4286709afd96509b9dfef21aa3589a26a3",
+  "signature": "0xd0e6abaa5ba368158b2cf38f1b01c602638fad1c5b218ec03925edcaeaf560bd1500c293a5c44ed483ba12543713274482b7903535a22e97c925eca07b5d2c511b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

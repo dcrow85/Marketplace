@@ -1,0 +1,55 @@
+{
+  "canonical_payload": "{\"card\":\"Japanese Base Gyarados holo\",\"condition_claim\":\"LP\",\"evidence_tier\":\"verifier_grade\",\"media_manifest\":[{\"availability\":\"simulated\",\"type\":\"front_photo\"},{\"availability\":\"simulated\",\"type\":\"back_photo\"},{\"availability\":\"simulated\",\"type\":\"flaw_callout\"}],\"required_evidence\":[\"back_photo\",\"carrier_acceptance\",\"corner_closeups\",\"escrow_terms\",\"flaw_callouts\",\"front_photo\",\"high_res_scans\",\"holo_angle_closeups\",\"insurance_or_gap_owner\",\"locked_inventory_packet\",\"received_item_photos\",\"route_packet\",\"tracking_history\",\"verifier_note\"],\"schema\":\"marketplace.evidence_packet.v0.2\",\"seller_disclosures\":[\"evidence packet\"],\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:c352027b224f0cdecb888b52a6a178c06bfc0108d735a0b44b07f062d41e3cdc\",\"friction_policy\":\"sha256:88f1785dd6cf6b15412668da6cfc9182ebd5af458b161f1315511088e89cffdb\",\"intent\":\"sha256:5121be6106198623c95f55913631a971df1a838db3aa75b467bebdbdd2760efc\",\"seller_offer\":\"sha256:0616d732acc153e02ca60fa34d00ab648193fe03167aea86f74dddd711a5e88d\"},\"source_simulation_trade\":\"SIM-0044\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Japanese Base Gyarados holo",
+    "condition_claim": "LP",
+    "evidence_tier": "verifier_grade",
+    "media_manifest": [
+      {
+        "availability": "simulated",
+        "type": "front_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "back_photo"
+      },
+      {
+        "availability": "simulated",
+        "type": "flaw_callout"
+      }
+    ],
+    "required_evidence": [
+      "back_photo",
+      "carrier_acceptance",
+      "corner_closeups",
+      "escrow_terms",
+      "flaw_callouts",
+      "front_photo",
+      "high_res_scans",
+      "holo_angle_closeups",
+      "insurance_or_gap_owner",
+      "locked_inventory_packet",
+      "received_item_photos",
+      "route_packet",
+      "tracking_history",
+      "verifier_note"
+    ],
+    "schema": "marketplace.evidence_packet.v0.2",
+    "seller_disclosures": [
+      "evidence packet"
+    ],
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:c352027b224f0cdecb888b52a6a178c06bfc0108d735a0b44b07f062d41e3cdc",
+      "friction_policy": "sha256:88f1785dd6cf6b15412668da6cfc9182ebd5af458b161f1315511088e89cffdb",
+      "intent": "sha256:5121be6106198623c95f55913631a971df1a838db3aa75b467bebdbdd2760efc",
+      "seller_offer": "sha256:0616d732acc153e02ca60fa34d00ab648193fe03167aea86f74dddd711a5e88d"
+    },
+    "source_simulation_trade": "SIM-0044"
+  },
+  "payload_hash": "0xe3b89702505c9eca6d5f71784c89422bda236072f77233e74d5a8c5c72600b30",
+  "signature": "0x7b1643717a2e501696213a3dc94b1e73031b0612b9ecca156c0d118a1e73854719b45a1773e281dd0bc7b50d4728e2ae1ecd179345136b4488efdb87fba17b681c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

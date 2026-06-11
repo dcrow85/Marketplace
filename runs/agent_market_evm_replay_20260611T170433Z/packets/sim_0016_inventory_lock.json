@@ -1,0 +1,30 @@
+{
+  "canonical_payload": "{\"card\":\"Vending Gastly\",\"condition_claim\":\"LP\",\"inventory_key\":\"tcg:pokemon:sim-0016\",\"item_fingerprint_hash\":\"0xb8271029a861922d28011ff33753aa55763310212fcbc0827fd51d8f3e5d39d9\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"seller_attestation\":\"this unique card is reserved for this escrow while active\",\"source_simulation_hashes\":{\"automated_policy\":null,\"escrow_terms\":\"sha256:ac7cb0a96a9cb56ebf15768e605cbcf51e17fd55abb4272677d97151e4baf5ac\",\"friction_policy\":\"sha256:7d6ef6ea489e3faa15d1f0511834824ded7d4d45175bd75ed3362544f28bf403\",\"intent\":\"sha256:4c43d0d0760b7ef1dad879327c5e82b820273ce8dd73df6075fa9a45ee9f2492\",\"seller_offer\":\"sha256:bbb614c94f361784eecb085b5e15c197d6d2c0246cc718a8fc545fdc5889c025\"},\"source_simulation_trade\":\"SIM-0016\",\"visible_identifiers\":[\"sim-0016-front-photo-hash\",\"sim-0016-back-photo-hash\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "card": "Vending Gastly",
+    "condition_claim": "LP",
+    "inventory_key": "tcg:pokemon:sim-0016",
+    "item_fingerprint_hash": "0xb8271029a861922d28011ff33753aa55763310212fcbc0827fd51d8f3e5d39d9",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "seller_attestation": "this unique card is reserved for this escrow while active",
+    "source_simulation_hashes": {
+      "automated_policy": null,
+      "escrow_terms": "sha256:ac7cb0a96a9cb56ebf15768e605cbcf51e17fd55abb4272677d97151e4baf5ac",
+      "friction_policy": "sha256:7d6ef6ea489e3faa15d1f0511834824ded7d4d45175bd75ed3362544f28bf403",
+      "intent": "sha256:4c43d0d0760b7ef1dad879327c5e82b820273ce8dd73df6075fa9a45ee9f2492",
+      "seller_offer": "sha256:bbb614c94f361784eecb085b5e15c197d6d2c0246cc718a8fc545fdc5889c025"
+    },
+    "source_simulation_trade": "SIM-0016",
+    "visible_identifiers": [
+      "sim-0016-front-photo-hash",
+      "sim-0016-back-photo-hash"
+    ]
+  },
+  "payload_hash": "0x4b879fb5ad6f88cf0526e4a7934310e5a027d79db1c93f3298c709fb472cfcbf",
+  "signature": "0x37a0b508954306ff5ee5479c91486b9167545a56257737fe6dcde099e3147ef537403ffd184f0edde637f63283110fc828d29045b796f66c4da1b77a1836c5d31c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

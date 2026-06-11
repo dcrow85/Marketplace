@@ -1,0 +1,1309 @@
+{
+  "contract": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "generated_at": "2026-06-11T17:04:38.373121+00:00",
+  "predicate_verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "registry_setup": {
+    "observations": [
+      "Every actor has a controller address and a signed ActorRecord packet.",
+      "Verifier and arbiter authority are separate records, not just role labels.",
+      "Predicate verifier contracts are registry-gated before private predicate packets can use them.",
+      "The escrow can now reject trades that select an inactive or unknown arbiter."
+    ],
+    "packets": [
+      {
+        "packet_id": "actor_buyer",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/actor_buyer.json",
+        "payload_hash": "0xca07896a6190e860dd51af4241ed9a02835b1930c4dd01a13c7b6d9a44a3675a",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0xbdfc6379313952f548a4c44244665ba8124717b7a71846296bb9c5df1d4ab13c3de8067046dbfa9e4171ab22e94466d8b7b50ee18cea4c55f929b48b263c9a341b",
+        "signature_valid": true,
+        "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      },
+      {
+        "packet_id": "actor_seller",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/actor_seller.json",
+        "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x3810bf4b6755080ebe153b035cf1ad511c1a26d1cd153d453958d4ee6f4a2a2b04e293c7d3254ef8b6d2981bb505350fefe6dc394802e9b993e046b5df7aeac61c",
+        "signature_valid": true,
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+      },
+      {
+        "packet_id": "actor_arbiter",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/actor_arbiter.json",
+        "payload_hash": "0x0025cd199f11db191de2e1f83919b36022cca03b844c6169e8941f9f976f4442",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x73be7bf06f3ed7219d00bf6afc7707ad1d03a5f9208764368366b5182f3b73a0253a72ab48f198d549f439caa55af5e36a0f952b8644d18e8f9a1fa1968fe2711c",
+        "signature_valid": true,
+        "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+      },
+      {
+        "packet_id": "actor_verifier",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/actor_verifier.json",
+        "payload_hash": "0xf1dabec00581b587e9298a603d99dee6bd6a37afb765202df9818deccfd636d6",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x70a0bb2eca8605d6ef44ef0eb3336487643cae2551e22315454156b6a6786e5103fad4807a1a51791f49a8c00b60c0b66b52846c8a0d9ce2771bc147c3e7e14b1c",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      },
+      {
+        "packet_id": "actor_replacement_arbiter",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/actor_replacement_arbiter.json",
+        "payload_hash": "0xac96bd505a7604e9de45910564e0bcb27b5410a0bdb3d3b1fc382c2dbb56e76a",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x0334478da45ce78440f0e953439a94a536ae7855bebd93f5169f2214965f514248944602767c46d82bdf1787c0f5da1e445b5ae8c91825536a413807d0be38841b",
+        "signature_valid": true,
+        "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+      },
+      {
+        "packet_id": "arbiter_authority",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/arbiter_authority.json",
+        "payload_hash": "0xa9248044dfd441d24063324f762a928fef56422ae6281ad465b34b9e5ab1724f",
+        "schema": "marketplace.arbiter_record.v0.2",
+        "signature": "0xce2f405ddc5571c7c4256e735fa56682bee161b2c0a15c456f6c4e1ac21e9cf538bcd0a322a74a50c12ca4780f9383f96944d17bc757789f91d66399bead71461b",
+        "signature_valid": true,
+        "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+      },
+      {
+        "packet_id": "replacement_arbiter_authority",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/replacement_arbiter_authority.json",
+        "payload_hash": "0xb258ca210e4b4df25b5fc896b5478bad46e53dd183672bb9a68e63e389cb770d",
+        "schema": "marketplace.arbiter_record.v0.2",
+        "signature": "0xf6aeebeb462124839ce7a8c8703efdda286f25e01b7b44ac6158d9be4c37478f3b9aeb1394378cc2af91b37912755d74cfa1372c2fa76b0d6b20f3785342d66b1c",
+        "signature_valid": true,
+        "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+      },
+      {
+        "packet_id": "verifier_authority",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/verifier_authority.json",
+        "payload_hash": "0x9b58f9b34334a5099078df708ba4fd129f1007994ddee0b361570a0c711f6f22",
+        "schema": "marketplace.verifier_record.v0.2",
+        "signature": "0x623970b2534ed3738239a8b31d77e744427e9aaaf30c7b5a0240f208cedba0fd36e041ab7f84a8f46f365ab1fc0b9d65b02b9d6caf3432f355d1717fdef53d631c",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      },
+      {
+        "packet_id": "predicate_verifier_contract",
+        "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/predicate_verifier_contract.json",
+        "payload_hash": "0x69169765958680ef8bad537c754fccbe799dd3d990bdad5b14a71e790cc1983f",
+        "schema": "marketplace.predicate_verifier_record.v0.2",
+        "signature": "0xf6355e8a3b228416c10154a50a87dc0d898a2495a57fb66bf2baa77ef7a282a968f2388c533a080d364d934d2be12403dcb9618e152530cf8a6d8da6bbaa516b1b",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      }
+    ],
+    "transactions": [
+      {
+        "label": "register buyer actor",
+        "tx_hash": "0x08b0dd88a27562346bb8f880dba70bac6e0b4b132f494ecbd9c121eec25bffb9"
+      },
+      {
+        "label": "register seller actor",
+        "tx_hash": "0x22b94a5b434a4023c922dae414c99252ae70245cc5cf41230ebda7966824d4f0"
+      },
+      {
+        "label": "register arbiter actor",
+        "tx_hash": "0x1ed45288b477bb1df3ab8188b032bc6e9f3e2e552292f4ef217d1826f47e9647"
+      },
+      {
+        "label": "register verifier actor",
+        "tx_hash": "0x082455b792d80adeb9047aa4367d8e8c2f23017b808bd29ace9610ca5610273c"
+      },
+      {
+        "label": "register replacement_arbiter actor",
+        "tx_hash": "0xb95f179126ae5a5994e7be77dc58982176f87e56bfe5d85708c57ab948b5829c"
+      },
+      {
+        "label": "register arbiter authority",
+        "tx_hash": "0x32a2da1de152721a4075fe47632cc20d611c20e93e7b2bca8b873f34c1acea55"
+      },
+      {
+        "label": "register replacement arbiter authority",
+        "tx_hash": "0x562b6df9c717ee240df663e6e707a15d576e376e0f226ce5a24f03ead5321741"
+      },
+      {
+        "label": "register verifier authority",
+        "tx_hash": "0x10c5fa43355c23c12e62d1bb4758cb5e7bff338c1c010ac15cd22c9b3e0b1e9c"
+      },
+      {
+        "label": "register predicate verifier contract",
+        "tx_hash": "0x7984694071c9152dd361b122803c02262f586a50b7fac7fd42c87ef5116136d5"
+      }
+    ]
+  },
+  "rpc_url": "http://127.0.0.1:18548",
+  "run_id": "agent_market_evm_replay_20260611T170433Z",
+  "source_run": "runs/unified_stress_20260611T170433Z",
+  "trades": [
+    {
+      "amount_model": {
+        "buyer_dispute_bond_eth": "0.003",
+        "declared_insurance_eth": "0.066",
+        "price_eth": "0.066",
+        "seller_bond_eth": "0.005"
+      },
+      "arbitration_mode": "automated_escalated_to_human",
+      "evm_trade_id": 1,
+      "final_state": "Settled",
+      "friction_triggers": [
+        "bond_penalty_above_auto_cap",
+        "evidence_ambiguity",
+        "refund_above_auto_cap"
+      ],
+      "insured": true,
+      "observations": [
+        "Automated policy was selected, but signed friction triggers forced human resolution before value moved."
+      ],
+      "outcome": "material_misdescription",
+      "packets": [
+        {
+          "packet_id": "sim_0030_intent",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_intent.json",
+          "payload_hash": "0x210023d22ca1b6813fb0c3088e92197146ed2afc60696cda28fcd90f4f7053f4",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x6886c50dee5b3c39cf761261a51e0739589e3c32fc491719e75b0eb66a7bd81c518c9264da485e4bd31b7f22b35b7a4fcba52d3d751c8f32b7c43aaec524b4e41b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_escrow_terms",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_escrow_terms.json",
+          "payload_hash": "0x8b5b2d8969c9d928ab5749124e7a51fcc62495a3af6cba40885fb81f53af3507",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x700b06630ff950bfaf6a019e1adc413ae57323962c78d385287cc76534308ab3251c0e9d87188c1c006fdf33bcaff9e025b42243b30f0617c9ad769c31353dbf1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_seller_offer",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_seller_offer.json",
+          "payload_hash": "0xa125ca1df59c2500a63f884eef035ef6cb80fd67cb5aa83b19fe8b035c6d885e",
+          "schema": "marketplace.seller_offer.v0.2",
+          "signature": "0x0676e3d163fe1bff1601940228165a917b30e1e7b1627fad5b116d141dfd07d73f6ee17c6f1eaef6a1395513456b558201124fb51a87de2a5b01c958d10a9d411c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_item_fingerprint",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_item_fingerprint.json",
+          "payload_hash": "0x4ca36babb17127efa7c56641ecf0e1dbb376251679458947127477fc8fdb39bb",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x0ca84e68c9370ed1ff876a252641dd85571f958a1fe7bfb610a7fcf8bae03dae5394b2353425dda0db62786e6a3faa8d86bb36ed8d1c2584c7048deee0d881f71b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_inventory_lock",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_inventory_lock.json",
+          "payload_hash": "0xfe53599cbc181172fdbaf61cf56144f8fd471ea818e61956a36d1951c1872117",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xfb567c82dedba0d9cc5f7f9e44bb32f83ea4b3f8b1b69a961458ebc21b19c81f5f2587929ac7b7859797617e94745b2104c41f33dd7f0ac5d1d43c063e5e0d971b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_arbiter_candidates",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_arbiter_candidates.json",
+          "payload_hash": "0x859375b16a03fd1965c44fc2574f7c8af89176b9eca23322b3e7802adb3cba30",
+          "schema": "marketplace.arbiter_candidate_set.v0.2",
+          "signature": "0xf1577a20092eb7a3d52088be254e45f3fdb33f050f03ed2664f9c132a2858f730b96f05cc912968cfc785d136c925a17d1702c1992ebc9b44fd5de5b30c4b2211c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_friction_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_friction_policy.json",
+          "payload_hash": "0x9660b6309132efadb6b4f18378377ff7d7e8ea28c92a20540c0e80a90d363d78",
+          "schema": "marketplace.friction_policy.v0.2",
+          "signature": "0x1cd8406e98c612aba30e60986869c70cb3a634c2e3815cfa5eed4ff584dd67f10fe87646956b15ee7d3cb1eb76062fcd7461345d562c90e60c9cca896b630e031b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_automation_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_automation_policy.json",
+          "payload_hash": "0x4f6d83aa212a0a6db3d91d271b0584dbc177b5ee588bf88d97633392feaaa789",
+          "schema": "marketplace.automated_arbiter_policy.v0.2",
+          "signature": "0xad26343493cfb0bfa4415478210b78ff6c9ce8f6cc918ea321ee1e1871c2412b65a7c723fcd6f55f4a973ee2c664b6f881bf70d4a84d7a5a8c6624d558f5e6221c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_item_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_item_evidence.json",
+          "payload_hash": "0xd6d97ba95734c9135496ae02bf1ea2f465b87c79c685bbdca60436ddd27400d5",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x44163332fff02abfe0fc80f0b248c29cedf2cf3959971ac684e05d584cdae4a108a218c464133c0777e3fc101ff68f7266502e4b61b59120ddc54bb3e85158521c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_verifier_scope_approval",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_verifier_scope_approval.json",
+          "payload_hash": "0xbec5f3e099022c7d312c4a60b1ad11ce2ace1e2ca2e66a885167b0b1dadc63c5",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x118945e80307d643adcf806f9b38d75f5627248d54c0eb63daa3e3acb86499da455e91f630cfe66750167567a5e95409703e2f53842aaa759b4d4dbe81a258391b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_verifier_note",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_verifier_note.json",
+          "payload_hash": "0x67d2b4a26c0692df26a12e7a917f20dde449fe04880edcfaeb368730910a711f",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xa49ae80e6786941bef536c74fa60f5b57aebe8781d5b7ab03e282d11289ca76e4adf4e582ce8c51e462318436af98f124357866c552a850fe14e8807870a2b4b1b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "sim_0030_route",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_route.json",
+          "payload_hash": "0x50b070626e1fe4ac8c0facdfe7a8970d07e0c5c8a7ecfcec2cdf70e29fb13905",
+          "schema": "marketplace.route_packet.v0.2",
+          "signature": "0x7d8811ca6c7f9d5e62ab9616e724b48d8215dd09446110f085dd69e6be8013ad61d14f0213aca39d1e146c08ab481e2e6e0386bc8be74442784bd960ab55a69d1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_delivery",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_delivery.json",
+          "payload_hash": "0x25a7d1766c4c1209507accc13ff807c95b65785d367f42b6aa551ebb0f22dd66",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0xd8d5fb83c109392dc0ad27435576b64872b53cd3162f5f2c1d653fdc15136fd073e14a40364adfc24c29cd389068e2356e401057882897ec2e29140c50808a8d1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0030_claim_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_claim_evidence.json",
+          "payload_hash": "0x0834381c6446c52eca99e3d2fbaf2859af916b5e575414f8ccf69dc39e7b3db1",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0x09e5c80bb9030e8f195b005c407e9dc8cb030909751d96870150104ddb0cc96f73fa41ae4160d80d0bda638cece17d2c281259e5d5a6f2f3fe57600252dc84e41c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_claim",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_claim.json",
+          "payload_hash": "0x8ffacca89c5c4aa70e2889451922d7e7bb7a4c5d7071f70ee5e349a1a9a476e9",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0x16e7a73425a73f8bbc060f87ced25b9797bcdadd599f5f79e534f085ae7350f22f362864aef15ed4379a492e3c793c0982c1ff24b15670e5dbc1f01cfd017b921c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0030_ruling",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0030_ruling.json",
+          "payload_hash": "0x4ba700957564ec0b579e0ac85691e34e671c3b14829edd4ebc9bd2447c561c15",
+          "schema": "marketplace.arbiter_ruling.v0.2",
+          "signature": "0xf6fc7c98c5ca433f5d7bb6cd30c2c3b2c4b3c7d5c5d4944d47f6d7fcddb722fb70670a88853a68103b12c2609dd1da1fd380257673196f26100328abd21da8791b",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "remedy": {
+        "buyer_refund_bps": 5500,
+        "seller_bond_penalty_bps": 4000,
+        "type": "partial_refund_plus_bond"
+      },
+      "route": "insured_ship",
+      "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+      "seller_trust": "known",
+      "source_trade_id": "SIM-0030",
+      "transactions": [
+        {
+          "label": "SIM-0030 create trade",
+          "tx_hash": "0xb2edacf96ddcb15cc2485b88ede59be316e71d29574f3fdbaa529d2dff09649d"
+        },
+        {
+          "label": "SIM-0030 seller posts bond",
+          "tx_hash": "0xae069841e4971daebab497854d804241f05b0b40d4508d30da03b363e689ede8"
+        },
+        {
+          "label": "SIM-0030 attach seller offer",
+          "tx_hash": "0x521e1297252a7f1f824200a6e45156cf627eaa3144c6cef3ac2873157ea8c092"
+        },
+        {
+          "label": "SIM-0030 attach arbiter_candidates",
+          "tx_hash": "0x8f999d77853be17a2b01868b513b0ed05b4d3cccb6148890dcbfabe268fbe9f4"
+        },
+        {
+          "label": "SIM-0030 attach friction_policy",
+          "tx_hash": "0x821f51a574822fac6290666ed8cee2be9500cb3d0ee4a5339be7792f143aa283"
+        },
+        {
+          "label": "SIM-0030 attach automation_policy",
+          "tx_hash": "0x102b5501b49bea322a6a3bbb0fc27f8b0f8ba6e810c7dc9ce6ae9f561b665c7f"
+        },
+        {
+          "label": "SIM-0030 attach item evidence",
+          "tx_hash": "0x29f4e30e92eeba6f024b6ea57e18b401a5599360e8270d15a87154c95f869c29"
+        },
+        {
+          "label": "SIM-0030 commit item fingerprint",
+          "tx_hash": "0x73dbdd3f1e2a29b7bff26f63427220aec5c03ea6eefbb29ee7db8cd18de6eb97"
+        },
+        {
+          "label": "SIM-0030 commit inventory lock",
+          "tx_hash": "0x7271ee99a98a7c82f4dd913792abe7e94953418d1ce764eed5dc35b44ae1f5a1"
+        },
+        {
+          "label": "SIM-0030 approve verifier review scope",
+          "tx_hash": "0x302bb731e17966609d703ccf88246a8661e100041676a62eca26dbc14a0804b3"
+        },
+        {
+          "label": "SIM-0030 commit scoped verifier review",
+          "tx_hash": "0x1a767e3df8ffe0ea565d1530ea5c5ae6bd33896307c3b4bf97e56459a07572aa"
+        },
+        {
+          "label": "SIM-0030 commit route",
+          "tx_hash": "0xfd956e39c33de74b446b48fccd69e05e0bcbf304c3b05a11b37ac5efe5c7b5b3"
+        },
+        {
+          "label": "SIM-0030 mark route in progress",
+          "tx_hash": "0xb662d4f43861ada6b9729b1da2b2adda38fbd82ebac38439ac9fc6c4749875ef"
+        },
+        {
+          "label": "SIM-0030 mark delivered",
+          "tx_hash": "0xa7c4ce3962afa36c99096c41dc31cadc5ff9ef3ab5790971fbd5cfb6de5e65f0"
+        },
+        {
+          "label": "SIM-0030 attach claim evidence",
+          "tx_hash": "0x7a01eadfc8d6d5cfa3084ff9238072775271953eedc3456d42cfc95bb83b4ba4"
+        },
+        {
+          "label": "SIM-0030 open claim",
+          "tx_hash": "0x5fb4a75cfdc34020ef8a780b87f5dff75b2c4e579f4800322a1cf138b065f2f1"
+        },
+        {
+          "label": "SIM-0030 resolve claim",
+          "tx_hash": "0x0dedceaab0a7a2a9d189b4fae11145a7454c15613bb0b1aec6cb9de9732905bd"
+        }
+      ],
+      "value_band": "low",
+      "value_usd": 66
+    },
+    {
+      "amount_model": {
+        "buyer_dispute_bond_eth": "0.0391",
+        "declared_insurance_eth": "1.955",
+        "price_eth": "1.955",
+        "seller_bond_eth": "0.1955"
+      },
+      "arbitration_mode": "human_arbiter",
+      "evm_trade_id": 2,
+      "final_state": "Settled",
+      "friction_triggers": [
+        "authenticity_or_identity_risk",
+        "evidence_ambiguity",
+        "human_arbiter_selected_prelock"
+      ],
+      "insured": true,
+      "observations": [],
+      "outcome": "authenticity_flag",
+      "packets": [
+        {
+          "packet_id": "sim_0044_intent",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_intent.json",
+          "payload_hash": "0xb19719d1934d918eea9cf0941d2d128fd97beb54cb38746672dc65d34afea6ef",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xb5c82f4e910bc61a938826eb59b4229da4c90322ab1dae11252b5b84561cfa864b9912bf9b07e3dee98e6ccc17d70b909b3a1bc71da88b8e5d190e85151dd6281c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_escrow_terms",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_escrow_terms.json",
+          "payload_hash": "0xadd10112624b609ca4a8244c14095f293ff58f2251f4ca5b4e91e9b6baac205b",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x46eb8ca3c2f7fea607917fb3cee64fde7551b14d94eb3424f59ce9511ed48b9018953dfc9693f3c15c058713705de1026437ac45d78e0668e2a96e107fac56e91c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_seller_offer",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_seller_offer.json",
+          "payload_hash": "0x56cb5645e97e2f8ab36a72e24f4c0896f12c4ce7c255976e3ebd9f087cfa5a3e",
+          "schema": "marketplace.seller_offer.v0.2",
+          "signature": "0x0348f6e748d4a9ddd992a081dc4172a15c80704e7e8be4a0319a67be45cf2feb1055a4d50d8f45c8c8e1ce13e51f67e41e943c1b4c9a8d2d558b75b5a34485df1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_item_fingerprint",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_item_fingerprint.json",
+          "payload_hash": "0xc9af37e890bb64006bcfea2bd66d69da37a249fd414a42cc9d9bdafc9ea85b78",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0x3a155cfda91c7ceb914d50cdb541acccc12a881966309665f324fd5f5f2231f179348804d55512cba5f8847b336f3775a87d900c9a71c0e901672fe76364c8631b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_inventory_lock",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_inventory_lock.json",
+          "payload_hash": "0x714c9f44a8aacfda5e2269e02d5b2c4286709afd96509b9dfef21aa3589a26a3",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xd0e6abaa5ba368158b2cf38f1b01c602638fad1c5b218ec03925edcaeaf560bd1500c293a5c44ed483ba12543713274482b7903535a22e97c925eca07b5d2c511b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_arbiter_candidates",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_arbiter_candidates.json",
+          "payload_hash": "0xc4c1d493f0521394b95f1e6fc6ba5d897e6dc0701a35b94756aa411bf1ad07c9",
+          "schema": "marketplace.arbiter_candidate_set.v0.2",
+          "signature": "0x3272add6cc7d327e06d4538171ab69261521a659f60b1cf0fb200e3eefbc8aab0fc35df6bf2c22e7b149142c70a685f3774d5ec1ccb2481bd89063e4b1bff1e21b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_friction_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_friction_policy.json",
+          "payload_hash": "0xa326ddf432e11cb3f763fa3ded296dab851339718aad33a9110e50e246291b01",
+          "schema": "marketplace.friction_policy.v0.2",
+          "signature": "0x8226dea7611c4c5d42896bc1b0e5ae012da12ebb49aa06095923a412d8389ecf39d043dd27994ac2db767cd47652b8d8fa15783787b96d739d67acc199c09c931c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_item_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_item_evidence.json",
+          "payload_hash": "0xe3b89702505c9eca6d5f71784c89422bda236072f77233e74d5a8c5c72600b30",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x7b1643717a2e501696213a3dc94b1e73031b0612b9ecca156c0d118a1e73854719b45a1773e281dd0bc7b50d4728e2ae1ecd179345136b4488efdb87fba17b681c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_verifier_scope_approval",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_verifier_scope_approval.json",
+          "payload_hash": "0x797b5a9d330a14c757c054c0e06c540e1b96df561a610618bed8e8c4adc652fb",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x23284638afb60ebc7971617b23de8692c84cfa5b073577084804d33af923e0c667e2406dc344d7c1be2fd4abee5fb8fda61771c34363be63c22dc5f088a26bdb1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_verifier_note",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_verifier_note.json",
+          "payload_hash": "0xb5776b26a2c5be8f3c3f9e3fb805574fc77b13d9db6e9850326c1f31d8402cc3",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xffb8277e508696a73c677661c5d239861bca524046c3695a3c6b4d6f5d3862f822a52c643dfea73a603b03e0051cd5869af1540e6a07c428d75901ccdf653a071b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "sim_0044_route",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_route.json",
+          "payload_hash": "0xb2361b48e1cb9c9b4f00d6218db8991dc75abb67a1bedf26433019547901cdb4",
+          "schema": "marketplace.route_packet.v0.2",
+          "signature": "0x274d50e508c23726baac9792bd5e58c61b602f01d02866959ecec62f92a314b02edfafacfe63b80f4c0d4368375951ca30ebb3bf6c5d1a6d68114e06f2221dde1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_delivery",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_delivery.json",
+          "payload_hash": "0x3798866719ee8b5f7a3d8e112054f43527ea9db1606e1f6b70bc296261c6c343",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0x9807afd6cf765b77eaa6ec179be1d5a2daea84c6ec8e256d60fa5021aa820fc565dabade57451962789d4f7dbcc47108b33b028066331ba91f25e5638ebc25631c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0044_claim_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_claim_evidence.json",
+          "payload_hash": "0xe9ea2c01f43fce535dae1e5703af702ca827ca45e19029e0bfb8cac608cab9cc",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0xd65526fffc0845441dd21a78ab1df110c82efbf0193576e2c5740e33a76dd1db09c6c888dffeaeb18a64e9e3923cd3c91a432bedf03f6ef1cad79f26ccb089ab1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_claim",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_claim.json",
+          "payload_hash": "0x814f24c1b4ce45352003e9be1ea1633e766478ef597c36292290938876ee9276",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0x00f1fb527f76451c5ef5838c3b7746d254879755f5cd3397b225c4412efd3efa424c34bd589947e6cfe1f0417ffc73f37ab4c694209445a72aa21d79f4853ef41b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0044_ruling",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0044_ruling.json",
+          "payload_hash": "0x371fcbd571ed0d33ea2a74383f404beeae7b2032193e54ef4afaca3a2e11db32",
+          "schema": "marketplace.arbiter_ruling.v0.2",
+          "signature": "0x3dba230537a2293d467394d72fe324fcaf0e9b50581753125cbfcde606441b5d04349080f60eae7372508406ff4aad71f5e272b8244b50b9eedc1fd84decb8641b",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "remedy": {
+        "buyer_refund_bps": 10000,
+        "seller_bond_penalty_bps": 10000,
+        "type": "escalate_authenticity"
+      },
+      "route": "insured_ship",
+      "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+      "seller_trust": "known",
+      "source_trade_id": "SIM-0044",
+      "transactions": [
+        {
+          "label": "SIM-0044 create trade",
+          "tx_hash": "0x197db35ef01f8970b770ffb0de6f21a27e05ab24c3112675ec0e4ba588a0c5e4"
+        },
+        {
+          "label": "SIM-0044 seller posts bond",
+          "tx_hash": "0x8a6c7694be00a585069d8ad359fdca08d81fa9c63bf3f0b77afda29b49a9335c"
+        },
+        {
+          "label": "SIM-0044 attach seller offer",
+          "tx_hash": "0x6c30c22053fe5f2e68748aa5be2c50934d32eb313a9d350b9aa5e1e5f755d797"
+        },
+        {
+          "label": "SIM-0044 attach arbiter_candidates",
+          "tx_hash": "0x9d174e9ad51050f8fc248c226d870335be3ed008cb24d78c8943bf67f8a18721"
+        },
+        {
+          "label": "SIM-0044 attach friction_policy",
+          "tx_hash": "0xfaa26b71be3b15868a2378fc09356d653e4cb860ca01cf7d712bc6b29d5ed8d3"
+        },
+        {
+          "label": "SIM-0044 attach item evidence",
+          "tx_hash": "0x8c71abb050cd39278abe4011830a8fc5f1e10746e7f41e15413b2bbd712bf3ae"
+        },
+        {
+          "label": "SIM-0044 commit item fingerprint",
+          "tx_hash": "0xcff7e3507e60ce4eff2cc9ad0f9ad975630b40518d3e1151c805926878af6503"
+        },
+        {
+          "label": "SIM-0044 commit inventory lock",
+          "tx_hash": "0xfb25049f3d005efccce7a7d01ead0cd286a0f788d653175784836945222eafbe"
+        },
+        {
+          "label": "SIM-0044 approve verifier review scope",
+          "tx_hash": "0x9b9dfb84f62064e2c415d6a0a5f6cbb737f139341d80735efbd54525a3125758"
+        },
+        {
+          "label": "SIM-0044 commit scoped verifier review",
+          "tx_hash": "0x2eeb4f87994065702251800875c4afbb05037b13b4ec5fcb6943f2e702e37a2e"
+        },
+        {
+          "label": "SIM-0044 commit route",
+          "tx_hash": "0xdf7f422d7ce2e465b4320fea2c439576263cb011e877d4eb34cf54516971be18"
+        },
+        {
+          "label": "SIM-0044 mark route in progress",
+          "tx_hash": "0x5d6743b703e25242a6a5fc5eb49b0fc596b64a353da6f4d619b608b677a45771"
+        },
+        {
+          "label": "SIM-0044 mark delivered",
+          "tx_hash": "0x42677e7266f1dd7dba8cc4e4e4149a2e63fb167d338b335905f65601b7b3e0c5"
+        },
+        {
+          "label": "SIM-0044 attach claim evidence",
+          "tx_hash": "0x2c93984072e53c0b6f6da8661a3f35ef4da4af10d92a77a548302f6b8aabfc2a"
+        },
+        {
+          "label": "SIM-0044 open claim",
+          "tx_hash": "0x149a14a6ae50364e5df600cea850da159b015642f29edd57d5a3bbf3dc0fd7db"
+        },
+        {
+          "label": "SIM-0044 resolve claim",
+          "tx_hash": "0x4ec0df22e6de3e4b93f60c5c2c07c5f0f7b81ef9f62524eeb421d785de01bb53"
+        }
+      ],
+      "value_band": "grail",
+      "value_usd": 1955
+    },
+    {
+      "amount_model": {
+        "buyer_dispute_bond_eth": "0.05",
+        "declared_insurance_eth": "3.655",
+        "price_eth": "3.655",
+        "seller_bond_eth": "0.54825"
+      },
+      "arbitration_mode": "human_arbiter",
+      "evm_trade_id": 3,
+      "final_state": "Settled",
+      "friction_triggers": [
+        "evidence_ambiguity",
+        "human_arbiter_selected_prelock",
+        "seller_trust_gap"
+      ],
+      "insured": true,
+      "observations": [],
+      "outcome": "material_misdescription",
+      "packets": [
+        {
+          "packet_id": "sim_0011_intent",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_intent.json",
+          "payload_hash": "0xee7292c6842822273b693771794df9fbd61d0609cd4bab22f30d1f6f399ac63a",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x2e272209f935c7ea8ac22ad45c9eb2a3ecf7a3b768bbc8890a13219746c459776bd8cdcca90e44e1da32f59f971485ad296782280addd576b48801ee39ae4ce51b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_escrow_terms",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_escrow_terms.json",
+          "payload_hash": "0x38ec00b00e54308531737b7818e981c9b2121ec9e261eb126c740369af511d23",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xc62b6ee5fc203e520cf32240534e35b7e77d829eeacd6430fed31387988a9cab31778905c638fed4b8a6c4f7ab88453b23d296e2544e0f0b364ee24361bfa6c91c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_seller_offer",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_seller_offer.json",
+          "payload_hash": "0xb6d447916ff46fc130e709b64f6dd17f681e068cf36bfbc39be1d843b09e7331",
+          "schema": "marketplace.seller_offer.v0.2",
+          "signature": "0xb7ee03e5c004a7d21477f2b48130bfe10245880f7f35617e64637cb81379439143d3251374b61f071ce851662305e011035f6dd9792df9f837bcd35744de354e1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_item_fingerprint",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_item_fingerprint.json",
+          "payload_hash": "0xc3e52a36edae4be9dc927cb6b797da204911480ed8f9c5e09b3a4845efc7d989",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0xe488f4a2e871f00f336773d3311cfa4857a8a5b4145d896ab5ce0b555fa1c3e614997dbbf421fbd161320f5c633c660e9fa2e51e7ceda8b9da35e6c0c9710ede1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_inventory_lock",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_inventory_lock.json",
+          "payload_hash": "0xd12a55b24650cbecb94b59c10ea8c19dce54ea773536757f237a5a6f26003595",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x2c068695ae019316d99f2a77cc06dc0842dd1e1fdc889660004cc35cc23a1368588d50211bf63ee40cc914a3e35ed85e92373211e0d84c31263709718ff124fc1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_arbiter_candidates",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_arbiter_candidates.json",
+          "payload_hash": "0x4f37b9882cf767c422f64ab3dfd7bcde694f0f0a79abedf02cb0f17609869731",
+          "schema": "marketplace.arbiter_candidate_set.v0.2",
+          "signature": "0x8a05da6f7b82a587ab8d6e48cdcfd0d59bfa1d30587ee6d30322d828e710abdd42ed375a7edb506766b4a5668af8e5798f5cd52d6779248e7c02730e719151a51b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_friction_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_friction_policy.json",
+          "payload_hash": "0xfac051104e875765d16fea5825f1cb7be4dd924e5af4497b79a8a9e4afdaceb4",
+          "schema": "marketplace.friction_policy.v0.2",
+          "signature": "0x30ef109469bb4e3e0741c311e8b8fee5e9a806cb169c0faa25d457d71fd9bc007c1929f7afb9848d32e69353ea987abc92e62aa5b7f47a8936f2dcd7a21871611c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_item_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_item_evidence.json",
+          "payload_hash": "0xa295525ebc82e0a1a2fb3a8bc8b149f13eda39d24ea3d81fa4862f274bf0bb6b",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0xe244e759ab17795b1bcaaca3ab6a5c8d7729f8838982247b5a06c6e5e0e0dd7a5ed36230697260cbd598982e1a21b53a5df7251450a29f792278335ca75f0a751b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_verifier_scope_approval",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_verifier_scope_approval.json",
+          "payload_hash": "0xb667c8d0982aae91349ae92dac7e4c75798bf6648167589046796155fa001e64",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x1e97d557c420f3b8e36cce84300e508986e8bef839adb6a1b66ff9c51ae8c74f286a5480f03808e02a294e5f3b30d4b72a85639499907f2187b2a3bcc5dbe9291b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_verifier_note",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_verifier_note.json",
+          "payload_hash": "0x46f01f2bbc07e77442b055fb9997f78e80902e539e97431958fa116afc6ad358",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xf58c38e409fe7390b84b68ab03290c31a57b45d6df924b10c425e11ff103b9f5461d36871149a00ff254e6d208c71f135802fd0b90e0ba3ad8f42925685a1bc31b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "sim_0011_route",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_route.json",
+          "payload_hash": "0xf51a990b76889fd94ab0236bd2920080ec2abc3d147171fe31c469909d6f6f40",
+          "schema": "marketplace.route_packet.v0.2",
+          "signature": "0xbd6b398f98b2da7951ae04214b1e61517c884f84160070fde3994880f97349b16ad6f8c4189f41e389b7579b004a13b78945ebe0a851d2cd9ddf3816f5ef2bd11c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_delivery",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_delivery.json",
+          "payload_hash": "0xecf54970805683222dcf3a44dc95e02f55b9bc3310836582bb7bd580c20bc0dc",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0x18ef02e813cd71df00eeea0ce93159f3edc7769718ef1c51ec18c6fe8a2cc1f0563db98e36b3c0b830029651bb2170ba898fc8be1199652183745f9b8ead797e1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0011_claim_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_claim_evidence.json",
+          "payload_hash": "0x2e9b50b1234fa72e7cbab9aad28cc38af1a536384467c5520be03cdaef0098e9",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0x7b89669a101b7ae4eb8c79d5f988670a7262731b76c3c01e9eb919d489dd80ea178c9152b980d2dff1afbe4cfe16b9458fe73e20bbe2a04ff0798d1782d08f001b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_claim",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_claim.json",
+          "payload_hash": "0xb93cc356b6209f27ff3151f9fdd7bd8ac71ae5c7772d1f5b9063900d6211db86",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0xad0a79b05bf45996224d61e9ac96080e5518665a7630c0185701080910e3d45d3607152250edcc9344bc998ac7374a0ab8273a4580dbd902944bc4a930f634c31c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0011_ruling",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0011_ruling.json",
+          "payload_hash": "0x029f88e58ced6b3f54442928213a54420604fdb6f48ca058fdc8a9bd32af09a7",
+          "schema": "marketplace.arbiter_ruling.v0.2",
+          "signature": "0xd46b3be7e394c8c00458b10165b758094e9527047183e05645bfec7122ceebab2cd32c6b6d18140a7744fb15ffb8a25cf870c220f2f337f760b110bf669d581e1c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "remedy": {
+        "buyer_refund_bps": 5500,
+        "seller_bond_penalty_bps": 4000,
+        "type": "partial_refund_plus_bond"
+      },
+      "route": "insured_ship",
+      "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+      "seller_trust": "unknown",
+      "source_trade_id": "SIM-0011",
+      "transactions": [
+        {
+          "label": "SIM-0011 create trade",
+          "tx_hash": "0x85c949b54454d60cf468ce1b788fcf57458214f6972643d05b3f2d1087db2356"
+        },
+        {
+          "label": "SIM-0011 seller posts bond",
+          "tx_hash": "0x162826db0d1ce32e5c077f520acc7e706fbf94235c40f2010ca1628eb11892cd"
+        },
+        {
+          "label": "SIM-0011 attach seller offer",
+          "tx_hash": "0x90b51ae36bb34edf6377266603d5c0dac8645f4f402cf9eb7e765dc12c82257f"
+        },
+        {
+          "label": "SIM-0011 attach arbiter_candidates",
+          "tx_hash": "0xdb5273b1a1cd2326dbe2604590dcf64d40846084046a1eb634cfd251271167f1"
+        },
+        {
+          "label": "SIM-0011 attach friction_policy",
+          "tx_hash": "0xf5a463ec9697d411964e3a9aabe1a47cd4b91081f0ba5e69aa54a59134c1a7dc"
+        },
+        {
+          "label": "SIM-0011 attach item evidence",
+          "tx_hash": "0xc98c37c541e5d8b7ccbed02e86196bbd26701a36d80772bdf22cd12a224820f3"
+        },
+        {
+          "label": "SIM-0011 commit item fingerprint",
+          "tx_hash": "0x01cb014055b3b411d6e0de808ac2c90eab224afbe18fb5e25240f8bf13e65e60"
+        },
+        {
+          "label": "SIM-0011 commit inventory lock",
+          "tx_hash": "0xea5f119f478d9d34fb02b3fefc380039df234e6fb6dbc4bf4fbf97b09a97cf58"
+        },
+        {
+          "label": "SIM-0011 approve verifier review scope",
+          "tx_hash": "0xb50ffc5f454ae0eff5e446b608e2ff27fe8edb3201228db6c91e85f6b1cbf325"
+        },
+        {
+          "label": "SIM-0011 commit scoped verifier review",
+          "tx_hash": "0x9bbac1356edd8a40a47f75f2eac7a9d97ffee0fc20e42ea79b513cfb29342b54"
+        },
+        {
+          "label": "SIM-0011 commit route",
+          "tx_hash": "0xd4bf9038beadb27d0b39dcb08eecc43e2d71f5d43dee957b2687b6c53ea3191e"
+        },
+        {
+          "label": "SIM-0011 mark route in progress",
+          "tx_hash": "0x86ecbb66ae92679d3d72a9e03ae86a54ac0941222b1308a9c8c62e5c682d2ff1"
+        },
+        {
+          "label": "SIM-0011 mark delivered",
+          "tx_hash": "0xd4abdd0f00966465428a9d2ffbc56ac479dd0743241118dd9eaf77985167ba60"
+        },
+        {
+          "label": "SIM-0011 attach claim evidence",
+          "tx_hash": "0x5c1b5993482dbc476a78b8f8143cde41145cd63970a15716ab9954882805aa82"
+        },
+        {
+          "label": "SIM-0011 open claim",
+          "tx_hash": "0x209ee14ad196a94d83a7fd948a727f9e0b7e674a03b87dea3af8400734e266f2"
+        },
+        {
+          "label": "SIM-0011 resolve claim",
+          "tx_hash": "0x382fa81c64dd5b53a151d8ac60d5bb6e9fb089b4f49ddc31daf561117a39b3f9"
+        }
+      ],
+      "value_band": "grail",
+      "value_usd": 3655
+    },
+    {
+      "amount_model": {
+        "buyer_dispute_bond_eth": "0.02452",
+        "declared_insurance_eth": "0.25",
+        "price_eth": "1.226",
+        "seller_bond_eth": "0.005"
+      },
+      "arbitration_mode": "human_arbiter",
+      "evm_trade_id": 4,
+      "final_state": "Settled",
+      "friction_triggers": [
+        "evidence_ambiguity",
+        "human_arbiter_selected_prelock",
+        "route_gap_owner_review"
+      ],
+      "insured": true,
+      "observations": [
+        "Route failure/nonship now uses the native route-timeout claim gate instead of an inspection surrogate."
+      ],
+      "outcome": "underinsured_lost",
+      "packets": [
+        {
+          "packet_id": "sim_0043_intent",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_intent.json",
+          "payload_hash": "0xc01e662dd9d4325ed3738560f654308c44846b0c8a6f3a671bbe9138f942d8c4",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xa5dc2c3130edcbd189fcbd135e44e562c847c4c20b3647e1a09041ed28a2adfc5617df612ffe737db1233c414cbe924edcbcc46c80a081e21920a4f7e22080e91b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_escrow_terms",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_escrow_terms.json",
+          "payload_hash": "0x2e4bb90994097118910831add1b808ca51acd1f3363fc3855d087f8897429df8",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x3ed851eb176057d4c544f76fcda790171b8048c693bf734091c711bfd6d438c417625b22dacfa51b251036b2501dcabb1d7beddbf372ce292d4074eab07b0fe11b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_seller_offer",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_seller_offer.json",
+          "payload_hash": "0xdc920f093f7b6f2792b70ac2662e0783c042ba9bfbdabcd5c389e3355936226d",
+          "schema": "marketplace.seller_offer.v0.2",
+          "signature": "0x125bd9dc020aa2f9f7a129a1f5c8ba799d8650b789c916639aad77ed3de752283c31a58c1dab24ee5ccee8ae1129c60067094cebc1778fed35b0876fdd48adb41c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0043_item_fingerprint",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_item_fingerprint.json",
+          "payload_hash": "0xe331947483e040f5eeded22b72ab528fade0cb52b1f72a9be0f66444f48e6f09",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0xad6b10ceeed5b8333f240b2ddb7f154a161976c2f4a24d4a174a8dd55e5297a86cf6a303d5cb39c7dd71226b087c4d87dc42a79e97d84314e21337a1f32fbb3c1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0043_inventory_lock",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_inventory_lock.json",
+          "payload_hash": "0xf5944025883f9a3ffb138796d6f3724921f6f2216a3c383490cbfb65eb10f359",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x59a4a67a7346193eb3718df78d182623304e7a605fe58e6ded61ac35f081a15e49c0c927822ca2d56a51d091bedc508257dcc5375ec7c758aec4ea558150d1e11c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0043_arbiter_candidates",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_arbiter_candidates.json",
+          "payload_hash": "0xd86c03da384e6af8d5b053fcf56a925701961a4285e2861222907799d70684fd",
+          "schema": "marketplace.arbiter_candidate_set.v0.2",
+          "signature": "0x3579f46bf609dba31fd023c8b62be82188c448f05c53481e82246cc00194c7682365f37bdd60d18ef070723e3238f7f3e72b99ba3cd98a9cce0462e47bb470ea1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_friction_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_friction_policy.json",
+          "payload_hash": "0x0a1297c02f4fd853d1e1e5530e1736c667086a5a57861b04854423eb767852b6",
+          "schema": "marketplace.friction_policy.v0.2",
+          "signature": "0xfa648c9007cc172f39b3834821b647628ee3a50023a8d02c7050ef07ce4e23f21e909ce81cf5dceb29a40b0792fff84d5fa144c560f52028bbf5413dca99c53b1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_item_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_item_evidence.json",
+          "payload_hash": "0xbfd9c96dfd259da6085defaaa9b2413d9799bdea14cc3603ed32bcbb6ba022bd",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x3babf80314aede1eab89e1fa4ccecaf9b0020f07d9ac326b4b9cba37c2c3ea9a64b846b8b8362ae169d4c190094ba6ba2bdd6697f57482a47327a94e8572187e1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0043_verifier_scope_approval",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_verifier_scope_approval.json",
+          "payload_hash": "0x77327e4029f8d8412e0325ddcbd71f34f5dc029381a466d13fec72997d825c6d",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x470be3983c7959526f6c37118ad3932b903be2b8e2cd160760a5fb18a962ab115c6714ba7016fa0bb0e5edf0d4fc4f5e82bb35c4cc80fbb84b175f09d3f17bfe1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_verifier_note",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_verifier_note.json",
+          "payload_hash": "0xe864a3208c32632fc1f9c20726fd2ede3825d0ab568134fe593ebc7deb6a0dd8",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xf5a393f6b38aa3b1c88205e36bb2d9033c01a3b78c2779ebeffc0a7efe5e8e462ce39869048e9c92fc6a4722056c37271d2c740f0b447b5834c9913bc872462e1c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "sim_0043_route",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_route.json",
+          "payload_hash": "0x4d4cafd3534979f1ee49f85a22a8a0ca077d9aa48fa104fcc35176ab619bd3eb",
+          "schema": "marketplace.route_packet.v0.2",
+          "signature": "0xeb9c25669414f0527574a904353a0ad169d6992ffaddf42405bc0b1a1126e9f542a21199d2407e73d9fb4bacabb7a34d767cec10bf112c352560cda83f0d4ba81b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0043_claim_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_claim_evidence.json",
+          "payload_hash": "0x59a3d1790061723d1f7ba4f89d491470fd13ee35b98048109ade821c6dfcbd4b",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0x3ed698775287916dd44e59b08765fc252e45ad1283610265d6da42f6944b7fc474219a847646d3449560b322071dc3febae3a226ca4e7f18c5002c2657bde2b71c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_claim",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_claim.json",
+          "payload_hash": "0x6eace48969d38147981c94507bb2385eb07c38e0d6972d53e468b27e5dac8947",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0x04f2e07a5931ab6fee1d7a5ffb96cd9192a75dd609581c12a85e60bc95411cb97ed31003726187eb5af6ed456a75bdc0d97bb1dd0c3ed86ecab786125ecea8901b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0043_ruling",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0043_ruling.json",
+          "payload_hash": "0x1d9d4fdb5139708f3f6c01d784ee4dd32c79dc8ace187461e42e7584db9a50a4",
+          "schema": "marketplace.arbiter_ruling.v0.2",
+          "signature": "0x1f84b6662d32b267201ec8f953db84e3e71f312551e1cf3bcdb033d0addf15521982773f65c4dfaf828f21047dbb4f91e3c86c1ccd32f380964ced5236d4f99f1c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "remedy": {
+        "buyer_refund_bps": 6500,
+        "seller_bond_penalty_bps": 3500,
+        "type": "underinsurance_gap_review"
+      },
+      "route": "underinsured_ship",
+      "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+      "seller_trust": "known",
+      "source_trade_id": "SIM-0043",
+      "transactions": [
+        {
+          "label": "SIM-0043 create trade",
+          "tx_hash": "0x52340493dc024a538a43522399d1c29697eb3caabc90705256df090df7a44ec1"
+        },
+        {
+          "label": "SIM-0043 seller posts bond",
+          "tx_hash": "0xc098330848d19c357b18fd88027d352e2f58266b7ce0026dff184ea8ce34f435"
+        },
+        {
+          "label": "SIM-0043 attach seller offer",
+          "tx_hash": "0x9b24c8d1940343b828a37a7987e2c0723c5c4b65e482ae02e29843e066b66c81"
+        },
+        {
+          "label": "SIM-0043 attach arbiter_candidates",
+          "tx_hash": "0x4ed7216baca95638979d08cb69cb7ae75ca74c678755bdbb03db9db4082e9656"
+        },
+        {
+          "label": "SIM-0043 attach friction_policy",
+          "tx_hash": "0xe9d2f14e3acd1eede9ec6532db43988688754a45aac9c969b4e42f33b1564924"
+        },
+        {
+          "label": "SIM-0043 attach item evidence",
+          "tx_hash": "0x7f47178d34ee7210e2cb6f7d4ad36b9e2393fa44a345dd2653e6951ac358fa66"
+        },
+        {
+          "label": "SIM-0043 commit item fingerprint",
+          "tx_hash": "0xa62759ec18d9714068353d7c9bdee26233ece7843d8d499f77abd877bde95f1b"
+        },
+        {
+          "label": "SIM-0043 commit inventory lock",
+          "tx_hash": "0x19928d4dcd6c5636decc2f0ff6bfa33a4af5d3d5cc841615a3b5488f640c4202"
+        },
+        {
+          "label": "SIM-0043 approve verifier review scope",
+          "tx_hash": "0x804b2891df2bd3024491d616370918a3f6a3dddb8806377fb9951cbf9ed5ce9b"
+        },
+        {
+          "label": "SIM-0043 commit scoped verifier review",
+          "tx_hash": "0x408d7c4c0b202d81a2b85a4031c0551e8aa04179db4fff9cb2a24d692e177c1d"
+        },
+        {
+          "label": "SIM-0043 commit route",
+          "tx_hash": "0x27e52eb10fb5c14b768d96153e387c2e4264c9528ec57a3a2aedd1c3676e37c8"
+        },
+        {
+          "label": "SIM-0043 mark route in progress",
+          "tx_hash": "0xe53fb394bfb928cdf1133248f311da9451fa76e45540af8c620eaac05a89a406"
+        },
+        {
+          "label": "SIM-0043 attach route-failure claim evidence",
+          "tx_hash": "0x4c400268ef89cb4306943fb54146401ac5ec023c47033266b34e952a80b4b437"
+        },
+        {
+          "label": "SIM-0043 open route-timeout claim",
+          "tx_hash": "0x426f03a97f4166a7aa47cbf23db69a10c3923a4b51c2fc82edc5722b0885b811"
+        },
+        {
+          "label": "SIM-0043 resolve route-timeout claim",
+          "tx_hash": "0x670deb23fa7be430fb66a673f529a3dcf59452698af66a29e8ae1509d694efba"
+        }
+      ],
+      "value_band": "grail",
+      "value_usd": 1226
+    },
+    {
+      "amount_model": {
+        "buyer_dispute_bond_eth": "0.05",
+        "declared_insurance_eth": "3.265",
+        "price_eth": "3.265",
+        "seller_bond_eth": "0.3265"
+      },
+      "arbitration_mode": "human_arbiter",
+      "evm_trade_id": 5,
+      "final_state": "Settled",
+      "friction_triggers": [
+        "authenticity_or_identity_risk",
+        "evidence_ambiguity",
+        "human_arbiter_selected_prelock"
+      ],
+      "insured": true,
+      "observations": [],
+      "outcome": "wrong_card",
+      "packets": [
+        {
+          "packet_id": "sim_0016_intent",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_intent.json",
+          "payload_hash": "0xd58a268ecc54074ea34b684cee7a3f1d5afdf281925669f3f52aedf98e536fad",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x01c7759b5c6fede5f7771ea72f0920729d68720297544908140d78921bc268aa6913f63c573e4c811d6b7fd95ae4fb4091ed95fd982ec9160e7b79aeba9b0d7e1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_escrow_terms",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_escrow_terms.json",
+          "payload_hash": "0xd5e069483cf1bab3297599e8b81244122166da77697fdedc644048c91e0cfffb",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xf46cc0e2ed5009c006843bf82088f05cae86cf14099c09dba14dbcf5700339b94ac6c154763e17c7ca440d1e005ddf773e1a96333832f14c264e059f29071b931c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_seller_offer",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_seller_offer.json",
+          "payload_hash": "0x73b0dc1fa82bc15f6a804c3b39c6e275e81aab1a5e476057c943cba41b51b481",
+          "schema": "marketplace.seller_offer.v0.2",
+          "signature": "0x7897c76de413dcba45d1c3ab726691512ecbe1a9d775b0ec5cf77fbb00bbaf004303f042235b256bdf77b89f8f4edfe361c92e02563475036e7462b1152d85b61c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_item_fingerprint",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_item_fingerprint.json",
+          "payload_hash": "0xb8271029a861922d28011ff33753aa55763310212fcbc0827fd51d8f3e5d39d9",
+          "schema": "marketplace.item_fingerprint.v0.2",
+          "signature": "0xbde4a5e0ae72a044f25bad091c22af2408b8ba428a5fbf85f81e375a03cb080459f95340d307dfbce9c4da64a95b860e5e307cc3891097601d6c7ac5c34c6b4f1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_inventory_lock",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_inventory_lock.json",
+          "payload_hash": "0x4b879fb5ad6f88cf0526e4a7934310e5a027d79db1c93f3298c709fb472cfcbf",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x37a0b508954306ff5ee5479c91486b9167545a56257737fe6dcde099e3147ef537403ffd184f0edde637f63283110fc828d29045b796f66c4da1b77a1836c5d31c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_arbiter_candidates",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_arbiter_candidates.json",
+          "payload_hash": "0x57cd74fb77eeda1664405cd35d021637c175c203f1dee2b2223c2a7b1fe940a3",
+          "schema": "marketplace.arbiter_candidate_set.v0.2",
+          "signature": "0xe58298321850bd81be0f6af77c04035b5e2d9c0c927fc853057305ec92513ffd3a83572d2bf2dc87c3941e4188cb1535d2d4a2a933a2cfae404cf92ef0f440ff1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_friction_policy",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_friction_policy.json",
+          "payload_hash": "0xba4b8dd7c1621c54e95f1d14b0a4005b1ee6aee7d7ce7bf482bbf61ae4e3b19d",
+          "schema": "marketplace.friction_policy.v0.2",
+          "signature": "0x23ce7228778f59c1d89fab057c3193f6cb0eb1499976a8f41555a2c87b16923b28903e0b808696589ae81abc078a14ee654893392b241267b490977f21c259601b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_item_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_item_evidence.json",
+          "payload_hash": "0xc86e8a57cfe4b5db119d517b9015bf6a68dba07285c66d6955dc76f1287cf6cb",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x72913cee6c3f3cf36b3d6e0dd7de991f97df7103af33fd66d7d8671c120746ec697a8c7e229005d0c2256f0edeab9e88f45243051aaba3700a7b5fc7f89ce7671b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_verifier_scope_approval",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_verifier_scope_approval.json",
+          "payload_hash": "0x5f65b8b92baa9b4bac22502880d1a3d9b9e8c18cd680e31be2e01f06c9e91572",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0xb3731abf59353d0c8ffaddec06c007e1901280dc1bf021c0a4533dd3a693354170d97afc8bba8fc2e203d2c5d730ba921a69282c52ff8f58da2243be2dde5efd1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_verifier_note",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_verifier_note.json",
+          "payload_hash": "0x7cfea3d7473b71622dc53ac090cd25b49510c42cf10481e36de59c9f48c20f7c",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0x9ba034692ab964ae85c0d1f476a93e3f4f48d0514e476ffe4f0d8a2e9b09f2dd26dea3670a01f76a56d5a278599a3d23ce3d91def18847cd49b3d68600747f981b",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "sim_0016_route",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_route.json",
+          "payload_hash": "0x9a4747d165732f1574e24ff6cb6e4cd4be2394cfc8da18110071111cf567810d",
+          "schema": "marketplace.route_packet.v0.2",
+          "signature": "0x11e8d30b709d6075b3b9116a413aa8171d0454a0b62a6e1de2e0217a0242618b5c180cc7c06a5ecb50de69f274a1525586c1835df1b6f2bdd753d41e13e90efa1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_delivery",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_delivery.json",
+          "payload_hash": "0x795dd12f7723d3744f7486a053cd326fc7bda105f55febf7613abc297b5f104f",
+          "schema": "marketplace.delivery_evidence.v0.2",
+          "signature": "0xac270ad37109ea39f7049aae17d645cffd88ea22a372af6c7340af6763c4d1291b250ed46892c51422cd8b0600120f38b307e46aa86fa3fa39b1fd53c4960b5c1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "sim_0016_claim_evidence",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_claim_evidence.json",
+          "payload_hash": "0x218ffa0244a982e237e054ed8ba6bb691256d0b9105f7e049f609907789451cd",
+          "schema": "marketplace.claim_evidence.v0.2",
+          "signature": "0xacd95a4a0715d4d9e9a8e5d6e8a656306153661506b2d15301728f1a2b54e51b1d5a3d244807a8f55aeede51bfe394931f3fc1fb278ff94425afdc73b9f368a61c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_claim",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_claim.json",
+          "payload_hash": "0xa4d84c3ff581123ea377e38aa95577baa772d25b9ee255e97eebccfa35310ecb",
+          "schema": "marketplace.claim.v0.2",
+          "signature": "0xad383b3926f7be4d6cff00bfe5b0e64ca8393b87fcace0af614d292aa426fa383d6faf9ab4a5c96723d5b8cb7b893cf78c75a49f1905c3556959e62f0385bfd71b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "sim_0016_ruling",
+          "path": "runs/agent_market_evm_replay_20260611T170433Z/packets/sim_0016_ruling.json",
+          "payload_hash": "0x89f839de06753abb2d50015fd5b9c1e2c6fbf6324d653d48e03fa35d19725467",
+          "schema": "marketplace.arbiter_ruling.v0.2",
+          "signature": "0x9dbc2f04c51f4e84e2c25709419a1eae9fa98719c08bf85cff916d427e6057451287f58b58c30899c599c83cac8723c0d53a06a5429bbaa879862dbb4622873b1c",
+          "signature_valid": true,
+          "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+        }
+      ],
+      "remedy": {
+        "buyer_refund_bps": 10000,
+        "seller_bond_penalty_bps": 5000,
+        "type": "refund_or_return"
+      },
+      "route": "international_ship",
+      "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+      "seller_trust": "trusted",
+      "source_trade_id": "SIM-0016",
+      "transactions": [
+        {
+          "label": "SIM-0016 create trade",
+          "tx_hash": "0x4ddae6d914e0d9b2e9fd57214996d2771c7f878125c3b2127d739701753bda5d"
+        },
+        {
+          "label": "SIM-0016 seller posts bond",
+          "tx_hash": "0x247ffbcfc624bdfc26d28ec23bd2d5f0705339b69b999fa8b1e22ccadfce4380"
+        },
+        {
+          "label": "SIM-0016 attach seller offer",
+          "tx_hash": "0xa3008a0fe87775b18252ff371376ff862ac3590978f14326493a2a11a82fe5e6"
+        },
+        {
+          "label": "SIM-0016 attach arbiter_candidates",
+          "tx_hash": "0x2c27acfb5dfd32ffb52ff3aa2d76a2d2db49ad1f64355b11cd8d8e51d63859fc"
+        },
+        {
+          "label": "SIM-0016 attach friction_policy",
+          "tx_hash": "0xd2475626b6609d147fd418a8d9785ac8c3b033cd997bea75d1a3d9a31a78f0b2"
+        },
+        {
+          "label": "SIM-0016 attach item evidence",
+          "tx_hash": "0x5c24746a8a6e3db2b79ca80dbf8f62d4c47fd17db12272678225c5b4854915fc"
+        },
+        {
+          "label": "SIM-0016 commit item fingerprint",
+          "tx_hash": "0x6db77d6c5452eceef119d5e567fe283f74a146b79eeacb935374f0458aa8dce0"
+        },
+        {
+          "label": "SIM-0016 commit inventory lock",
+          "tx_hash": "0xbac9b7c85d1a0605f1c93aa32f1e6b050b271631e86054da9a4d43eaa0875721"
+        },
+        {
+          "label": "SIM-0016 approve verifier review scope",
+          "tx_hash": "0xb65220b11a3d82255065b53079ff6a985c3583d57f1bd9357f738d60be84a34b"
+        },
+        {
+          "label": "SIM-0016 commit scoped verifier review",
+          "tx_hash": "0xa8fc68be86d4ce9a81bff394ae9408b5980c4363d91e975bfdd521414a469653"
+        },
+        {
+          "label": "SIM-0016 commit route",
+          "tx_hash": "0x06b711f0d95354e5cd71f21044511149c660414ca7095d21c3dc8b12c9141d58"
+        },
+        {
+          "label": "SIM-0016 mark route in progress",
+          "tx_hash": "0x3dc040b87669cad0030d4e3d6b274983ad00707dd7ab5f4eea613c8b7c9c5591"
+        },
+        {
+          "label": "SIM-0016 mark delivered",
+          "tx_hash": "0xdea372995f8665bb8da845da764de6f1547daebdbbdbc03b4df27beea4f5eeb5"
+        },
+        {
+          "label": "SIM-0016 attach claim evidence",
+          "tx_hash": "0x1459b7ea04b3f438ee1f912283107241da0e508153679a0c0df52df2536c72e3"
+        },
+        {
+          "label": "SIM-0016 open claim",
+          "tx_hash": "0x1724413ea5fef730eb8153462ab0d22204bd2a3751ff5e77a55f6105bf063ecb"
+        },
+        {
+          "label": "SIM-0016 resolve claim",
+          "tx_hash": "0x48a14c267fe2b155cbf152ff7f8c805b2d824e2268bded7f4a5006771788cd67"
+        }
+      ],
+      "value_band": "grail",
+      "value_usd": 3265
+    }
+  ]
+}

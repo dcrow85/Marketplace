@@ -683,6 +683,54 @@ def route_assembly_witness_hash(
     ).stdout.strip()
 
 
+def route_spendability_hash(
+    rpc_url: str,
+    contract: str,
+    trade_id: int,
+    route_hash: str,
+    wall_bundle_hash: str,
+    assembly_history_hash: str,
+    issuer: str,
+) -> str:
+    return run(
+        [
+            "cast",
+            "call",
+            contract,
+            "routeSpendabilityHash(uint256,bytes32,bytes32,bytes32,address)(bytes32)",
+            str(trade_id),
+            route_hash,
+            wall_bundle_hash,
+            assembly_history_hash,
+            issuer,
+            "--rpc-url",
+            rpc_url,
+        ]
+    ).stdout.strip()
+
+
+def delivery_spendability_hash(
+    rpc_url: str,
+    contract: str,
+    trade_id: int,
+    delivery_hash: str,
+    issuer: str,
+) -> str:
+    return run(
+        [
+            "cast",
+            "call",
+            contract,
+            "deliverySpendabilityHash(uint256,bytes32,address)(bytes32)",
+            str(trade_id),
+            delivery_hash,
+            issuer,
+            "--rpc-url",
+            rpc_url,
+        ]
+    ).stdout.strip()
+
+
 def delivery_witness_hash(
     rpc_url: str,
     contract: str,
@@ -2160,6 +2208,24 @@ def run_happy_path(
             ],
         )
     )
+    evm_route_spendability = route_spendability_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        route_wall_bundle,
+        route_assembly_history,
+        SELLER,
+    )
+    evm_route_witness = route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        route_wall_bundle,
+        route_assembly_history,
+    )
     result.transactions.append(
         send_tx(
             rpc_url,
@@ -2170,18 +2236,10 @@ def run_happy_path(
             [
                 str(trade_id),
                 route.payload_hash,
-                route_spendability.packet.payload_hash,
+                evm_route_spendability,
                 route_wall_bundle,
                 route_assembly_history,
-                route_assembly_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    route.payload_hash,
-                    route_spendability.packet.payload_hash,
-                    route_wall_bundle,
-                    route_assembly_history,
-                ),
+                evm_route_witness,
                 "false",
                 "true",
                 eth("0.80"),
@@ -2191,6 +2249,12 @@ def run_happy_path(
     )
     result.transactions.append(
         send_tx(rpc_url, SELLER_KEY, contract, "mark route in progress", "markRouteInProgress(uint256)", [str(trade_id)])
+    )
+    evm_delivery_spendability = delivery_spendability_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, SELLER
+    )
+    evm_delivery_witness = delivery_witness_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, evm_delivery_spendability
     )
     result.transactions.append(
         send_tx(
@@ -2202,14 +2266,8 @@ def run_happy_path(
             [
                 str(trade_id),
                 delivery.payload_hash,
-                delivery_spendability.packet.payload_hash,
-                delivery_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    delivery.payload_hash,
-                    delivery_spendability.packet.payload_hash,
-                ),
+                evm_delivery_spendability,
+                evm_delivery_witness,
                 delivery.signature,
             ],
         )
@@ -2905,6 +2963,24 @@ def run_claim_path(
             [str(trade_id), fingerprint_challenge.payload_hash, fingerprint_challenge.signature],
         )
     )
+    evm_route_spendability = route_spendability_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        route_wall_bundle,
+        route_assembly_history,
+        SELLER,
+    )
+    evm_route_witness = route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        route_wall_bundle,
+        route_assembly_history,
+    )
     result.observations.append(
         expect_tx_revert(
             rpc_url,
@@ -2915,18 +2991,10 @@ def run_claim_path(
             [
                 str(trade_id),
                 route.payload_hash,
-                route_spendability.packet.payload_hash,
+                evm_route_spendability,
                 route_wall_bundle,
                 route_assembly_history,
-                route_assembly_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    route.payload_hash,
-                    route_spendability.packet.payload_hash,
-                    route_wall_bundle,
-                    route_assembly_history,
-                ),
+                evm_route_witness,
                 "false",
                 "false",
                 "0",
@@ -2982,6 +3050,24 @@ def run_claim_path(
             consumed=set(),
         )
     )
+    evm_route_spendability = route_spendability_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        route_wall_bundle,
+        route_assembly_history,
+        SELLER,
+    )
+    evm_route_witness = route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        route_wall_bundle,
+        route_assembly_history,
+    )
     result.transactions.append(
         send_tx(
             rpc_url,
@@ -2992,24 +3078,22 @@ def run_claim_path(
             [
                 str(trade_id),
                 route.payload_hash,
-                route_spendability.packet.payload_hash,
+                evm_route_spendability,
                 route_wall_bundle,
                 route_assembly_history,
-                route_assembly_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    route.payload_hash,
-                    route_spendability.packet.payload_hash,
-                    route_wall_bundle,
-                    route_assembly_history,
-                ),
+                evm_route_witness,
                 "false",
                 "false",
                 "0",
                 route.signature,
             ],
         )
+    )
+    evm_delivery_spendability = delivery_spendability_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, SELLER
+    )
+    evm_delivery_witness = delivery_witness_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, evm_delivery_spendability
     )
     result.transactions.append(
         send_tx(
@@ -3021,14 +3105,8 @@ def run_claim_path(
             [
                 str(trade_id),
                 delivery.payload_hash,
-                delivery_spendability.packet.payload_hash,
-                delivery_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    delivery.payload_hash,
-                    delivery_spendability.packet.payload_hash,
-                ),
+                evm_delivery_spendability,
+                evm_delivery_witness,
                 delivery.signature,
             ],
         )
@@ -3474,6 +3552,24 @@ def run_arbiter_replacement_path(
             consumed=set(),
         )
     )
+    evm_route_spendability = route_spendability_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        route_wall_bundle,
+        route_assembly_history,
+        SELLER,
+    )
+    evm_route_witness = route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        route_wall_bundle,
+        route_assembly_history,
+    )
     result.transactions.append(
         send_tx(
             rpc_url,
@@ -3484,24 +3580,22 @@ def run_arbiter_replacement_path(
             [
                 str(trade_id),
                 route.payload_hash,
-                route_spendability.packet.payload_hash,
+                evm_route_spendability,
                 route_wall_bundle,
                 route_assembly_history,
-                route_assembly_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    route.payload_hash,
-                    route_spendability.packet.payload_hash,
-                    route_wall_bundle,
-                    route_assembly_history,
-                ),
+                evm_route_witness,
                 "false",
                 "true",
                 eth("0.60"),
                 route.signature,
             ],
         )
+    )
+    evm_delivery_spendability = delivery_spendability_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, SELLER
+    )
+    evm_delivery_witness = delivery_witness_hash(
+        rpc_url, contract, trade_id, delivery.payload_hash, evm_delivery_spendability
     )
     result.transactions.append(
         send_tx(
@@ -3513,14 +3607,8 @@ def run_arbiter_replacement_path(
             [
                 str(trade_id),
                 delivery.payload_hash,
-                delivery_spendability.packet.payload_hash,
-                delivery_witness_hash(
-                    rpc_url,
-                    contract,
-                    trade_id,
-                    delivery.payload_hash,
-                    delivery_spendability.packet.payload_hash,
-                ),
+                evm_delivery_spendability,
+                evm_delivery_witness,
                 delivery.signature,
             ],
         )

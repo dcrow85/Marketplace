@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"buyer_dispute_bond_eth_local_probe\":\"0.0128\",\"inspection_seconds\":172800,\"price_eth_local_probe\":\"0.64\",\"release_gate\":\"buyer_accepts_or_claim_resolves\",\"route_gate\":{\"assembly_history_hash\":\"sha256:82f2e6ccac66a9ab2882bd7c709779f67235f7ed761097977c9b895676f9c20b\",\"route_assembly_witness_hash\":\"computed_by_contract_at_route_commit\",\"route_spendability_evm_hash\":\"0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e\",\"route_spendability_hash\":\"0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e\",\"wall_bundle_hash\":\"sha256:211032c445d6ea9a2a6a1a4f561086eb750d51965b89aa3d18a9ee6d6b0ea7a6\"},\"schema\":\"marketplace.escrow_terms.v0.2\",\"selected_arbiter\":\"did:market:arbiter:anvil-2\",\"seller_bond_eth_local_probe\":\"0.08\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer_dispute_bond_eth_local_probe": "0.0128",
+    "inspection_seconds": 172800,
+    "price_eth_local_probe": "0.64",
+    "release_gate": "buyer_accepts_or_claim_resolves",
+    "route_gate": {
+      "assembly_history_hash": "sha256:82f2e6ccac66a9ab2882bd7c709779f67235f7ed761097977c9b895676f9c20b",
+      "route_assembly_witness_hash": "computed_by_contract_at_route_commit",
+      "route_spendability_evm_hash": "0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e",
+      "route_spendability_hash": "0x42db4cc336eb2e495dc3d59b4b1fd7ed6148ec716f08a860ee878e4e787f136e",
+      "wall_bundle_hash": "sha256:211032c445d6ea9a2a6a1a4f561086eb750d51965b89aa3d18a9ee6d6b0ea7a6"
+    },
+    "schema": "marketplace.escrow_terms.v0.2",
+    "selected_arbiter": "did:market:arbiter:anvil-2",
+    "seller_bond_eth_local_probe": "0.08",
+    "trade_id": 1
+  },
+  "payload_hash": "0xfed63826a2c1a4fe9fbc537b2b978d090d4fbd4b641960b1e99b876919521a31",
+  "signature": "0x6ec5969da8f627db8671e7d95204c1b719cc9f4da3f765d74bdf19bcde4cf5d2664e463ab89d1fac3610dd4fcdde821cac0ebe22b2cbb5a626c925f26bee54c51b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,66 @@
+{
+  "canonical_payload": "{\"assembly_history_hash\":null,\"canonicalization\":\"canonical-json-payload-v1\",\"decision_authority\":{\"actor_id\":\"did:market:seller:anvil-1\",\"actor_role\":\"seller\",\"authority_hash\":\"0xe6f98cc0fa971ad2a7529262a2e727d3b113ede5085ec703fa4e99ba44e8bd3c\",\"authority_source\":\"actor_registry_or_delegation\"},\"gate\":{\"consumption\":\"single_use\",\"gate_id\":\"delivery_confirmation:1:carrier-delivery\",\"gate_type\":\"delivery_confirmation\",\"leg\":\"forward\"},\"hash_algorithm\":\"keccak256(utf8(canonical-json-payload-v1))\",\"issued_at\":\"2026-06-11T17:09:04.326086+00:00\",\"issued_by\":\"did:market:seller:anvil-1\",\"issued_role\":\"seller\",\"manifest_hash\":\"0xf9075e2639d08d665b23730e9ebcf19a29eca94f5af9d716b533e3b0639b56cd\",\"manifest_hash_source\":\"packet_envelope_payload_hash\",\"manifest_kind\":\"marketplace.evidence_manifest.v0.3\",\"manifest_subject_hash\":\"0xcb4d6f9f4dd0d68b8f16993f873b5c09b9bc27beebb82d201f70fe5af7e04981\",\"requires\":[\"delivery_event\"],\"schema\":\"marketplace.evidence_spendability.v0.1\",\"spendability_hash_source\":\"packet_envelope_payload_hash\",\"spendability_id\":\"alpha_espeon_delivery_spendability\",\"spendable_claims\":[{\"basis\":[\"actor_signature\",\"packet_hash\",\"local_evm_gate_policy\"],\"claim_type\":\"delivery_event\",\"not_claiming\":[\"card_authenticity\",\"card_condition\",\"buyer_satisfaction\"],\"spend_limit\":\"opens_inspection\",\"support_level\":\"standard\"}],\"status\":\"active\",\"trade_id\":1,\"wall_bundle_hash\":null,\"window\":{\"after_event_hash\":\"0xf9075e2639d08d665b23730e9ebcf19a29eca94f5af9d716b533e3b0639b56cd\",\"after_state\":{\"state_hash\":\"0xfb9ba2e0702858b92d331bc67657014858e8e7ea37432f2e328aeeab0d765628\",\"state_name\":\"RouteLocked\"},\"waiver_policy\":\"none\"}}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "assembly_history_hash": null,
+    "canonicalization": "canonical-json-payload-v1",
+    "decision_authority": {
+      "actor_id": "did:market:seller:anvil-1",
+      "actor_role": "seller",
+      "authority_hash": "0xe6f98cc0fa971ad2a7529262a2e727d3b113ede5085ec703fa4e99ba44e8bd3c",
+      "authority_source": "actor_registry_or_delegation"
+    },
+    "gate": {
+      "consumption": "single_use",
+      "gate_id": "delivery_confirmation:1:carrier-delivery",
+      "gate_type": "delivery_confirmation",
+      "leg": "forward"
+    },
+    "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+    "issued_at": "2026-06-11T17:09:04.326086+00:00",
+    "issued_by": "did:market:seller:anvil-1",
+    "issued_role": "seller",
+    "manifest_hash": "0xf9075e2639d08d665b23730e9ebcf19a29eca94f5af9d716b533e3b0639b56cd",
+    "manifest_hash_source": "packet_envelope_payload_hash",
+    "manifest_kind": "marketplace.evidence_manifest.v0.3",
+    "manifest_subject_hash": "0xcb4d6f9f4dd0d68b8f16993f873b5c09b9bc27beebb82d201f70fe5af7e04981",
+    "requires": [
+      "delivery_event"
+    ],
+    "schema": "marketplace.evidence_spendability.v0.1",
+    "spendability_hash_source": "packet_envelope_payload_hash",
+    "spendability_id": "alpha_espeon_delivery_spendability",
+    "spendable_claims": [
+      {
+        "basis": [
+          "actor_signature",
+          "packet_hash",
+          "local_evm_gate_policy"
+        ],
+        "claim_type": "delivery_event",
+        "not_claiming": [
+          "card_authenticity",
+          "card_condition",
+          "buyer_satisfaction"
+        ],
+        "spend_limit": "opens_inspection",
+        "support_level": "standard"
+      }
+    ],
+    "status": "active",
+    "trade_id": 1,
+    "wall_bundle_hash": null,
+    "window": {
+      "after_event_hash": "0xf9075e2639d08d665b23730e9ebcf19a29eca94f5af9d716b533e3b0639b56cd",
+      "after_state": {
+        "state_hash": "0xfb9ba2e0702858b92d331bc67657014858e8e7ea37432f2e328aeeab0d765628",
+        "state_name": "RouteLocked"
+      },
+      "waiver_policy": "none"
+    }
+  },
+  "payload_hash": "0xc74a301207b249da2a3015c69054a68b3c3be7e89ab16c136406cfda59003466",
+  "signature": "0xae7753e0e556a52392afafb60d3d18a43094f4c3e678b17bb559b206d200f07919f4181aa7ebfeb96e5904e62ffaa79cd2b9b49396291e1ba76969637f57f4e91c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

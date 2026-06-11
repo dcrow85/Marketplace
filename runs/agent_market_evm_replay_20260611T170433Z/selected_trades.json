@@ -1,0 +1,52 @@
+[
+  {
+    "arbitration_mode": "automated_escalated_to_human",
+    "outcome": "material_misdescription",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:auto-low-tcg-1",
+    "seller_trust": "known",
+    "source_trade_id": "SIM-0030",
+    "value_band": "low",
+    "value_usd": 66
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "authenticity_flag",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "known",
+    "source_trade_id": "SIM-0044",
+    "value_band": "grail",
+    "value_usd": 1955
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "material_misdescription",
+    "route": "insured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "unknown",
+    "source_trade_id": "SIM-0011",
+    "value_band": "grail",
+    "value_usd": 3655
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "underinsured_lost",
+    "route": "underinsured_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "known",
+    "source_trade_id": "SIM-0043",
+    "value_band": "grail",
+    "value_usd": 1226
+  },
+  {
+    "arbitration_mode": "human_arbiter",
+    "outcome": "wrong_card",
+    "route": "international_ship",
+    "selected_arbiter": "did:market:arbiter:high-end-panel-1",
+    "seller_trust": "trusted",
+    "source_trade_id": "SIM-0016",
+    "value_band": "grail",
+    "value_usd": 3265
+  }
+]

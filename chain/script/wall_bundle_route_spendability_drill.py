@@ -410,12 +410,21 @@ def run_drill(rpc_url: str, registry: str, contract: str, packet_dir: Path) -> D
     )
     valid.packets.append(valid_spendability)
     e2e.verify_packets(rpc_url, registry, [valid_spendability])
+    evm_route_spendability = e2e.route_spendability_hash(
+        rpc_url,
+        contract,
+        trade_id,
+        route.payload_hash,
+        wall_bundle_evm_ref,
+        assembly_history_evm_ref,
+        e2e.SELLER,
+    )
     route_assembly_witness_hash = evm_route_assembly_witness_hash(
         rpc_url,
         contract,
         trade_id,
         route.payload_hash,
-        valid_spendability.payload_hash,
+        evm_route_spendability,
         wall_bundle_evm_ref,
         assembly_history_evm_ref,
     )
@@ -429,7 +438,7 @@ def run_drill(rpc_url: str, registry: str, contract: str, packet_dir: Path) -> D
             [
                 str(trade_id),
                 route.payload_hash,
-                valid_spendability.payload_hash,
+                evm_route_spendability,
                 wall_bundle_evm_ref,
                 assembly_history_evm_ref,
                 route_assembly_witness_hash,
@@ -576,7 +585,7 @@ def run_drill(rpc_url: str, registry: str, contract: str, packet_dir: Path) -> D
         wall_bundle_evm_ref=wall_bundle_evm_ref,
         assembly_history_evm_ref=assembly_history_evm_ref,
         route_assembly_witness_hash=route_assembly_witness_hash,
-        route_spendability_hash=valid_spendability.payload_hash,
+        route_spendability_hash=evm_route_spendability,
         passed=all(case.passed for case in cases),
         cases=cases,
     )

@@ -1,0 +1,21 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"cost_field\":{\"max_total_price_eth\":\"0.20\"},\"intent_id\":\"intent_wall_bundle_001\",\"object\":{\"card\":\"wall drill raw card\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "cost_field": {
+      "max_total_price_eth": "0.20"
+    },
+    "intent_id": "intent_wall_bundle_001",
+    "object": {
+      "card": "wall drill raw card",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0xeee316dd3e80aee286aab0a349098674484db316ed26b9be55e619117f8dfcc8",
+  "signature": "0x57fff9002cb4a6731abc68b9230bd89cadc82a607771277d0058242c010ed73a18b784931c015d3fdc2547a6675e895f82f0f9ec407e9026996be8f388a83ccf1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

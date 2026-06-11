@@ -215,6 +215,7 @@ def claim_evidence_for(outcome: str, attack: str) -> dict[str, dict[str, set[str
 
 def hard_packets_for(attack: str) -> set[str]:
     hard_packets = set(HARD_ACCEPTANCE_PACKETS)
+    hard_packets.add("assembly_history_hash")
     hard_packets.add("route_spendability_hash")
     if attack == "missing_inventory_lock":
         hard_packets.discard("inventory_lock_hash")
@@ -322,6 +323,7 @@ def route_gate_for(
         {
             "item_fingerprint_hash",
             "inventory_lock_hash",
+            "assembly_history_hash",
             "route_insurance_risk_owner_packet",
             "route_spendability_hash",
         }
@@ -609,6 +611,7 @@ def write_records(outdir: Path, records: list[dict[str, Any]], summary: dict[str
         writer = csv.DictWriter(
             handle,
             fieldnames=["trade_id", "attack", "variant", "decision", "rationale", "route_ready"],
+            lineterminator="\n",
         )
         writer.writeheader()
         for record in records:
@@ -773,7 +776,6 @@ def write_report(
             "- `wall_cases.jsonl`: compact wall-only records.",
             "- `agent_decisions.csv`: every prompt variant decision for each trade.",
             "- `evm_replay_output.txt`: stdout from the optional Anvil replay.",
-            "",
         ]
     )
     (outdir / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

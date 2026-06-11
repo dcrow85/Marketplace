@@ -1,0 +1,78 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"route_remains_blocked_until_buyer_clearance\",\"hooks\":[\"buyer_clearance\",\"arbiter_escalation\",\"fresh_nonce_request\"]},\"claim\":{\"known_conflicts\":[\"same_cert_active_elsewhere:psa-cert-hash-65081234:trade_3\"],\"negative\":[\"This review does not cover later custody or shipping.\"],\"positive\":[\"Fresh slab nonce evidence satisfies this fingerprint challenge.\"]},\"display\":{\"label\":\"Challenge reviewed\",\"short_warning\":\"Scope-limited review.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"post_review_custody\",\"grading_company_api_response\"],\"inputs_seen\":[{\"hash\":\"0xdb6c35a36a01da6dc7b95aa31cb3d3f3c613c4a59ac1a889a407f559fb7c1a0c\",\"kind\":\"challenge_packet\"},{\"kind\":\"detector_signals\",\"value\":[\"same_cert_active_elsewhere:psa-cert-hash-65081234:trade_3\"]},{\"kind\":\"requested_evidence\",\"value\":[\"fresh_slab_nonce_photo\"]},{\"kind\":\"verdict\",\"value\":\"accepted\"}],\"issued_at\":\"2026-06-11T17:11:52.782108+00:00\",\"method\":{\"method_id\":\"tcg.fingerprint.challenge_review.v0.1\",\"method_id_hash\":\"0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69\",\"summary\":\"Reviewed the active fingerprint challenge packet and submitted cure evidence.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"fingerprint_challenge_resolution\"],\"scope_set_hash\":\"0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe\",\"subject\":{\"subject_hash\":\"0xdb6c35a36a01da6dc7b95aa31cb3d3f3c613c4a59ac1a889a407f559fb7c1a0c\",\"subject_type\":\"fingerprint_challenge\"},\"trade_id\":4,\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "route_remains_blocked_until_buyer_clearance",
+      "hooks": [
+        "buyer_clearance",
+        "arbiter_escalation",
+        "fresh_nonce_request"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [
+        "same_cert_active_elsewhere:psa-cert-hash-65081234:trade_3"
+      ],
+      "negative": [
+        "This review does not cover later custody or shipping."
+      ],
+      "positive": [
+        "Fresh slab nonce evidence satisfies this fingerprint challenge."
+      ]
+    },
+    "display": {
+      "label": "Challenge reviewed",
+      "short_warning": "Scope-limited review."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "post_review_custody",
+      "grading_company_api_response"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "0xdb6c35a36a01da6dc7b95aa31cb3d3f3c613c4a59ac1a889a407f559fb7c1a0c",
+        "kind": "challenge_packet"
+      },
+      {
+        "kind": "detector_signals",
+        "value": [
+          "same_cert_active_elsewhere:psa-cert-hash-65081234:trade_3"
+        ]
+      },
+      {
+        "kind": "requested_evidence",
+        "value": [
+          "fresh_slab_nonce_photo"
+        ]
+      },
+      {
+        "kind": "verdict",
+        "value": "accepted"
+      }
+    ],
+    "issued_at": "2026-06-11T17:11:52.782108+00:00",
+    "method": {
+      "method_id": "tcg.fingerprint.challenge_review.v0.1",
+      "method_id_hash": "0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69",
+      "summary": "Reviewed the active fingerprint challenge packet and submitted cure evidence."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "fingerprint_challenge_resolution"
+    ],
+    "scope_set_hash": "0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe",
+    "subject": {
+      "subject_hash": "0xdb6c35a36a01da6dc7b95aa31cb3d3f3c613c4a59ac1a889a407f559fb7c1a0c",
+      "subject_type": "fingerprint_challenge"
+    },
+    "trade_id": 4,
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x8c8f818e78511bc6ef68e593dea8d7d5cbaabe06cf4ed264a7d76f10ed08a77e",
+  "signature": "0x5003befdc1c41347a9eaf59f6284f2d5f344d18531fb22dc86d4762284c0ebb817c40a8f09e3f2fb5fd835a0915665dd4a83288d14fe566628cdc32a004725e21c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

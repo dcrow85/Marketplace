@@ -32,3 +32,9 @@ The typed digest makes spendability a real on-chain capability. It does not make
 the wall-bundle or assembly-history graph itself a contract-verified object.
 Agents may describe those graph contents as legible/off-chain-validated, not as
 enforced by the escrow contract.
+
+The spendability digest's issuer is the committing party (`msg.sender`), so the
+digest is binding and non-replayable but self-minted: it is not proof that an
+independent party authorized the spend. The typehash already carries `issuer`,
+leaving room to later require an issuer signature for an independently granted
+capability.

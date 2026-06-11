@@ -162,13 +162,31 @@ def route_commit_args(
 ) -> list[str]:
     wall_bundle_hash = route_wall_bundle_root(evm_trade_id, route)
     assembly_history_hash = route_assembly_history_hash(evm_trade_id, route)
+    evm_route_spendability = e2e.route_spendability_hash(
+        rpc_url,
+        contract,
+        evm_trade_id,
+        route.payload_hash,
+        wall_bundle_hash,
+        assembly_history_hash,
+        e2e.SELLER,
+    )
+    evm_route_witness = e2e.route_assembly_witness_hash(
+        rpc_url,
+        contract,
+        evm_trade_id,
+        route.payload_hash,
+        evm_route_spendability,
+        wall_bundle_hash,
+        assembly_history_hash,
+    )
     return [
         str(evm_trade_id),
         route.payload_hash,
-        route_spendability_hash(source_trade_id, evm_trade_id, route, row),
+        evm_route_spendability,
         wall_bundle_hash,
         assembly_history_hash,
-        route_assembly_witness_hash(rpc_url, contract, source_trade_id, evm_trade_id, route, row),
+        evm_route_witness,
         str(in_person_allowed).lower(),
         str(insured).lower(),
         decimal_to_wei(declared_insurance_eth),
@@ -1041,9 +1059,17 @@ def replay_trade(
             "Route failure/nonship now uses the native route-timeout claim gate instead of an inspection surrogate."
         )
     else:
+        evm_delivery_spendability = e2e.delivery_spendability_hash(
+            rpc_url, contract, evm_trade_id, packets["delivery"].payload_hash, e2e.SELLER
+        )
+        evm_delivery_witness = e2e.delivery_witness_hash(
+            rpc_url,
+            contract,
+            evm_trade_id,
+            packets["delivery"].payload_hash,
+            evm_delivery_spendability,
+        )
         result.transactions.append(
-            # The local replay uses a deterministic synthetic delivery spendability hash.
-            # Rich delivery packet semantics stay in the off-chain replay artifacts.
             e2e.send_tx(
                 rpc_url,
                 e2e.SELLER_KEY,
@@ -1053,14 +1079,8 @@ def replay_trade(
                 [
                     str(evm_trade_id),
                     packets["delivery"].payload_hash,
-                    delivery_spendability_hash(trade["trade_id"], evm_trade_id, packets["delivery"]),
-                    e2e.delivery_witness_hash(
-                        rpc_url,
-                        contract,
-                        evm_trade_id,
-                        packets["delivery"].payload_hash,
-                        delivery_spendability_hash(trade["trade_id"], evm_trade_id, packets["delivery"]),
-                    ),
+                    evm_delivery_spendability,
+                    evm_delivery_witness,
                     packets["delivery"].signature,
                 ],
             )

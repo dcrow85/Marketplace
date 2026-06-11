@@ -1,0 +1,25 @@
+{
+  "canonical_payload": "{\"inventory_key\":\"tcg:pokemon:japanese-vintage-holo:happy-001\",\"item_fingerprint\":{\"condition_claim\":\"LP\",\"game\":\"pokemon\",\"language\":\"Japanese\",\"visible_identifiers\":[\"front_scan_hash\",\"back_scan_hash\"]},\"item_fingerprint_hash\":\"0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7\",\"lock_scope\":\"single_unique_card\",\"schema\":\"marketplace.inventory_lock.v0.2\",\"seller\":\"did:market:seller:anvil-1\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "inventory_key": "tcg:pokemon:japanese-vintage-holo:happy-001",
+    "item_fingerprint": {
+      "condition_claim": "LP",
+      "game": "pokemon",
+      "language": "Japanese",
+      "visible_identifiers": [
+        "front_scan_hash",
+        "back_scan_hash"
+      ]
+    },
+    "item_fingerprint_hash": "0x2493f6b2909ab860afe316eed5ba13da11910bf36716bdbd64b704a2b6f7e4a7",
+    "lock_scope": "single_unique_card",
+    "schema": "marketplace.inventory_lock.v0.2",
+    "seller": "did:market:seller:anvil-1",
+    "trade_id": 1
+  },
+  "payload_hash": "0xab872b3a04b07160c206d83f4f618a9e9ed5f60c23f07e58e1b246cbc7762b5b",
+  "signature": "0xbb4c6ca25da2bd4e3273fa82f59282e449e3eef577e9cafe8f696e950b4c9e6144a4db2a4b93300abe6e891a9f2d99eb7fc80d333a709b959d04eb300e1363431c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}
