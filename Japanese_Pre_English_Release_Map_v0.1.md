@@ -83,6 +83,55 @@ lab.
 | 1998-12-18 | `jp_tcg_gameboy_card_gb_19981218` | ポケモンカードGB / Pokemon Trading Card Game for Game Boy Color | Video game with physical promo | 1 promo | Promo target | Includes Dragonite promo; retail game is not a TCG set, but the inserted card is official TCG. |
 | 1999-01-01 | `jp_tcg_pokemon_song_best_collection_19990101` | Pokemon Song Best Collection | CD with promo cards | 11 cards | Promo target | Cutoff-safe even though it is 1999; includes 10 Japanese cards/reprints plus one English Pikachu. |
 
+## Initial Symbol-Status Matrix
+
+This is the first pass at the `prints_without_rarity_symbol` column. It is a
+manifest-building aid, not row-level evidence. A release family marked `yes` or
+`mixed` must still be split into exact rows before it can power a
+`variant_traps` field.
+
+| Release family id | prints_without_rarity_symbol | Confidence | No Rarity trap consequence |
+|---|---|---|---|
+| `jp_tcg_expansion_pack_19961020` | mixed | high | This is the primary No Rarity Base lane. Bulbapedia states Japanese Expansion Pack cards exist both with and without rarity symbols; the missing-symbol print is believed earlier. |
+| `jp_tcg_starter_pack_19961020` | mixed | medium-high | Early Starter Pack cards are a major candidate confusion source because the deck contains 30 random Expansion Pack cards. Collector reconstruction argues No Rarity cards came from both early decks and packs, but sealed deck externals do not guarantee contents. |
+| `jp_tcg_gift_pack_19961212` | unverified | medium | Contains two Starter Decks, so it may inherit Starter Pack risk, but this pass did not find direct product-level proof. Treat as `unverified_mixed_risk`, not clean `yes`. |
+| `jp_tcg_jungle_19970305` | no | high | Japanese Jungle is documented as all-with-rarity-symbols. It is a post-Base comparison source, not a No Rarity source. |
+| `jp_tcg_mystery_of_the_fossils_19970621` | no | high | Japanese Mystery of the Fossils is documented as all-with-rarity-symbols. |
+| `jp_tcg_rocket_gang_19971121` | no | high | Japanese Rocket Gang is documented as all-with-rarity-symbols. |
+| `jp_tcg_team_rocket_gift_pack_19971219` | unverified | medium | This unique deck product remains unresolved for symbol status. Do not infer from Rocket Gang booster status. |
+| `jp_tcg_expansion_sheet_1_blue_19980323` | no | high | Vending/Expansion Sheet Series 1 cards are glossy and documented as having rarity symbols. Confusion usually comes from Quick Starter non-glossy reprints, not original vending cards. |
+| `jp_tcg_expansion_sheet_2_red_19980617` | no | high | Same as Series 1. |
+| `jp_tcg_expansion_sheet_3_green_19981124` | no | high | Same as Series 1/2; Bulbapedia gives November 24, 1998 as the Series 3 date. |
+| `jp_tcg_nivi_city_gym_brock_19980426` | yes | medium-high | Gym deck cards are a real missing-symbol lane. This is not Base No Rarity; it is a deck-print identity. |
+| `jp_tcg_hanada_city_gym_misty_19980426` | yes | medium-high | Same Gym deck lane. Per-card mapping still needed. |
+| `jp_tcg_kuchiba_city_gym_lt_surge_19980725` | yes | medium-high | Same Gym deck lane. Per-card mapping still needed. |
+| `jp_tcg_tamamushi_city_gym_erika_19980725` | yes | medium-high | Same Gym deck lane. Per-card mapping still needed. |
+| `jp_tcg_leaders_stadium_19981024` | no | high | Leaders' Stadium booster cards are documented as all-with-rarity-symbols; cards without symbols belong to gym theme deck lanes, not the booster set. |
+| `jp_tcg_quick_starter_gift_set_19981204` | yes | high | Hard trap lane. Bulbapedia states Quick Starter cards are non-glossy Vending reprints without rarity symbols; Elite Fourum documents five Base Trainer lookalikes that grading companies and sellers can mislabel as No Rarity Base. |
+| `jp_tcg_gameboy_card_gb_19981218` | yes | medium | The Dragonite is an unnumbered promo-style card. Treat missing rarity as promo structure, not a Base-style No Rarity variant. Row source still needed. |
+| `jp_tcg_pokemon_song_best_collection_19990101` | yes | medium | Promo/reprint CD cards should be treated as promo-family missing-symbol candidates until each row is source-imaged. The English Pikachu needs its own language caveat. |
+
+### Promo Symbol Rule
+
+Most unnumbered Japanese promos do not participate in the normal expansion
+rarity-symbol system. For this map, promo families should initially resolve as:
+
+```text
+prints_without_rarity_symbol: yes
+symbol_status_reason: promo_or_unnumbered_distribution
+```
+
+That is not a No Rarity Base claim. It only means the agent should not be
+surprised by a blank lower-right rarity position on a promo. The row still needs
+distribution-specific proof, and the agent should preserve the distinction
+between:
+
+- missing symbol because the card is a Base Set first-wave print,
+- missing symbol because the card is a fixed-deck print,
+- missing symbol because the card is an unnumbered promo,
+- missing symbol because the card is a Quick Starter reprint,
+- missing symbol because the object is not in the TCG lane at all.
+
 ## Promo And Special Distribution Families
 
 These are official TCG targets, but should be built as promo rows with explicit
@@ -98,6 +147,7 @@ silently upgrade them to official counts.
 | 1997-06-14 to 1997-06-15 | `jp_promo_first_official_tournament_199706` | First Official Pokemon Card Game Tournament | Tournament prizes | No.1 Trainer, No.2 Trainer, No.3 Trainer | Promo target | Exact copy counts need careful source treatment. |
 | 1997-08-09 to 1997-08-17 | `jp_promo_jr_east_stamp_rally_199708` | JR East Pokemon Stamp Rally | Stamp rally redemption | Surfing Pikachu, Mew | Promo target | Non-glossy versions. |
 | 1997-10 to 1997-12 | `jp_promo_toyota_auto_199710_199712` | Toyota Auto Campaign | Dealership campaign/pamphlet | Arcanine, Pikachu | Promo target | Month-range date precision. |
+| 1997-11-08 to 1998-04-26 | `jp_promo_lizardon_mega_battle_199711_199804` | Lizardon / Charizard Mega Battle | Regional qualifiers and national championship event | No.1 Trainer, No.2 Trainer, No.3 Trainer regional trophy variants | Promo target | Pokumon documents qualifiers from November 8, 1997 through February 15, 1998, with the national championship on April 26, 1998. Regional trophy cards differ from the first official tournament versions. |
 | 1997-11-18 | `jp_promo_fan_club_vol3_19971118` | Pokemon Card Fan Club Vol. 3 | Magazine/book insert | Dark Persian | Promo target | High confidence release family. |
 | 1997-12 to 1998-02 | `jp_promo_whf_special_limited_expansion_sheet_199712` | WHF Special Limited Expansion Sheet / Series 00 | World Hobby Fair preview sheet | Pikachu, Mew, Mewtwo | Promo target | Often grouped with Vending; keep as event preview unless source proves retail vending release. |
 | 1997-12-10 to 1998-01-31 | `jp_promo_n64_double_get_199712` | Nintendo 64 Double Get Campaign | N64 purchase campaign | Cool Porygon, Hungry Snorlax | Promo target | Campaign crosses calendar year but starts before cutoff. |
@@ -269,21 +319,30 @@ This is a Japanese TCG card because it is old and card-shaped.
 Review flags from the Fable pass. These are questions, not corrections; none
 should be resolved from memory.
 
-- `jp_tcg_starter_pack_19961020`: confirm whether Starter Pack cards lack
-  rarity symbols. If yes, this family is the single largest No Rarity
-  confusion source (30 random Expansion Pack cards per deck) and outranks
-  Quick Starter in trap priority.
-- `jp_tcg_expansion_sheet_*`: vending sheet cards are commonly described as
-  printed without rarity symbols; confirm and record per series. Confirm
-  Series 3 Green's exact date against multiple sources; if any source places
-  it in 1999, it needs `date_precision: range` and a cutoff caveat.
-- Gym standard decks: confirm the "60-card deck plus 4 additional" structure
-  and whether deck cards carry rarity symbols.
-- Tournament families: confirm whether a 1997 Lizardon Mega Battle (or
-  equivalent pre-Kamex event) distributed promos before the cutoff; it is
-  absent from this map and its absence should be deliberate, not an oversight.
-- `jp_promo_jr_east_stamp_rally_199708`: confirm the 1997 year against more
-  than one source; hobby writeups also describe later JR rallies.
+- `jp_tcg_starter_pack_19961020`: initial status is now `mixed`, but the next
+  pass needs a source-hashed external-cue map for early Starter Deck variants
+  rather than a broad product-family answer.
+- `jp_tcg_gift_pack_19961212`: still unresolved. It contains Starter Decks, but
+  this pass did not prove whether any Gift Pack configuration actually carried
+  missing-symbol cards. Keep `prints_without_rarity_symbol: unverified`.
+- `jp_tcg_team_rocket_gift_pack_19971219`: still unresolved. The Rocket Gang
+  booster set is all-with-rarity-symbols, but the unique fixed deck needs direct
+  symbol-status evidence.
+- `jp_tcg_expansion_sheet_*`: initial status is now `no` for Series 1/2/3.
+  Series 3 Green is confirmed in the current source set as 1998-11-24. Future
+  work should still source-hash the card images because Quick Starter reprints
+  invert the common collector shorthand around "vending no rarity."
+- Gym standard decks: initial status is now `yes` for the four pre-cutoff Gym
+  decks in this map. Next pass must map exactly which deck cards overlap later
+  booster cards and which are deck-only identities.
+- Tournament families: Lizardon Mega Battle has now been added as
+  `jp_promo_lizardon_mega_battle_199711_199804`. Next pass should source-hash
+  the commemorative-book scans and split first-official-tournament trophies from
+  regional Lizardon trophy variants at row level.
+- `jp_promo_jr_east_stamp_rally_199708`: second-source check supports 1997 and
+  the August 9-17, 1997 event window. Next pass should source-hash the event
+  booklet images and distinguish the matte JR cards from earlier glossy
+  CoroCoro versions.
 - The map's own sources are URL-only. Under the catalog evolution drill rules,
   URL-only sources block at row build. This map is a v0.1 seed and may cite
   URLs, but every release manifest built from it must snapshot and
@@ -298,13 +357,23 @@ Primary source anchors used for this v0.1 map:
 - Bulbapedia, Japanese expansions list: https://bulbapedia.bulbagarden.net/wiki/List_of_Japanese_Pok%C3%A9mon_Trading_Card_Game_expansions
 - Bulbapedia, Original TCG Era merchandise: https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise
 - Bulbapedia, Vending Machine cards: https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)
+- Bulbapedia, Jungle: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Jungle_(TCG)
+- Bulbapedia, Mystery of the Fossils: https://bulbapedia.bulbagarden.net/wiki/Mystery_of_the_Fossils_(TCG)
+- Bulbapedia, Rocket Gang / Team Rocket: https://bulbapedia.bulbagarden.net/wiki/Rocket_Gang_(TCG)
+- Bulbapedia, Gym Heroes / Leaders' Stadium: https://bulbapedia.bulbagarden.net/wiki/Gym_Heroes_(TCG)
+- Bulbapedia, Quick Starter Gift Set: https://bulbapedia.bulbagarden.net/wiki/Quick_Starter_Gift_Set_(TCG)
 - Bulbapedia, Unnumbered Promotional cards 1996-2005: https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005
 - Bulbapedia, Pokemon Trading Card Game video game: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Trading_Card_Game_(video_game)
 - Bulbapedia, Bandai Pokemon Carddass Cards: https://bulbapedia.bulbagarden.net/wiki/Bandai_Pok%C3%A9mon_Carddass_Cards
 - Bulbapedia, Pokemon Meiji Get Cards: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Meiji_Get_Cards
 - Bulbapedia, Pokemon Meiji Movie: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Meiji_Movie
 - Pokumon timeline and event pages: https://pokumon.com/timeline/
+- Pokumon, JR East Stamp Rally 1997: https://pokumon.com/japan-rail-east-stamp-rally-1997/
+- Pokumon, Lizardon Mega Battle: https://pokumon.com/lizardon-charizard-mega-battle-tournaments/
+- Elite Fourum, Lizardon Mega Battle discussion: https://www.elitefourum.com/t/1998-lizardon-mega-battle-comprehensive-history/33603
 - Elite Fourum ANA promo guide: https://www.elitefourum.com/t/promo-showcase-pokemon-card-ana-all-nippon-airways-promo-campaign/38305
+- Elite Fourum, No Rarity from packs and decks: https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617
+- Elite Fourum, Quick Starter / mislabeled No Rarity trainers: https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531
 - CGC Carddass / Sealdass / Topsun reference articles: https://www.cgccards.com/news/
 - Pokemon Stickerpedia early Japanese sticker references: https://www.pokemonstickerpedia.com/
 
