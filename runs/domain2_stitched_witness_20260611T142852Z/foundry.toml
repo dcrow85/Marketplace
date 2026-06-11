@@ -1,0 +1,17 @@
+[profile.default]
+src = "../../chain/src"
+test = "."
+out = "out"
+cache_path = "cache"
+allow_paths = ["../../chain/src"]
+remappings = ["chain-src/=../../chain/src/"]
+solc_version = "0.8.24"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+verbosity = 2
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = true
