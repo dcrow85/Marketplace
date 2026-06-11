@@ -75,6 +75,12 @@ Three structural defenses against a soft audit:
    mis-fixtured drill. The canary manifest hash should be committed before the
    audit starts and revealed after. If the audit misses a canary, the audit run
    fails regardless of other findings.
+   Canary blinding is mandatory. A canary planted in the same visible working
+   tree, branch, diff, or prompt context as the validating auditor is theater:
+   the auditor can discover the canary by inspection rather than by audit
+   method. Use a separate branch, sealed bundle, withheld patch, or human-planted
+   defect so the validator can see the test surface but not the canary manifest
+   or insertion diff before the round.
 2. Mutation testing for drills.
    Every drill claiming to enforce a rule should eventually be run against a
    deliberately broken target: a validator clause deleted, a contract check
