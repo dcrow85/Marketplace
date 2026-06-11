@@ -375,6 +375,18 @@ Access is not granted by resemblance. It is granted by provenance.
 Spendability is inherited through assembly, not inferred from appearance.
 ```
 
+Enforcement scope (audit AUD-D2-SW-001/002, 2026-06-11): this principle is a
+protocol property, split across two layers. The contract enforces the
+item-identity spine — the route and delivery witnesses bind to the committed
+item fingerprint and inventory lock, and any tuple substitution after the
+witness is generated fails closed. The contract does **not** verify that the
+wall bundle, assembly history, or spendability hash were minted from a coherent
+provenance chain; it accepts them as caller-supplied opaque values witnessed
+together. Assembly-graph coherence is validated off-chain and is `legible`, not
+`enforced`. A planned hardening (typed, trade-bound spendability digest) moves
+the spendability artifact into the enforced layer; until then, an on-chain route
+lock proves witnessed shape, not assembly coherence.
+
 Important fields:
 
 - `schema`: `marketplace.assembly_provenance.v0.1`

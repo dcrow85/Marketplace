@@ -348,6 +348,9 @@ The route is safe.
 Better:
 
 ```text
-The route can lock: spendability, wall bundle, assembly history, item
-fingerprint, and inventory lock line up. Delivery risk still remains physical.
+The route can lock: the witness binds spendability, wall bundle, assembly
+history, item fingerprint, and inventory lock for this trade, and tuple
+substitution fails closed. The contract does not prove the wall bundle,
+assembly history, or spendability were minted from a coherent chain; that is
+validated off-chain. Delivery risk still remains physical.
 ```

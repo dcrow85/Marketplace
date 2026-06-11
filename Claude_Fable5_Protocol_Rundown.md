@@ -15,6 +15,13 @@ The strongest current wall is:
 
 > Spendability is inherited through assembly, not inferred from appearance.
 
+Audit-scoped (AUD-D2-SW-001/002): on-chain, this holds for the item-identity
+spine (route/delivery witnesses bind the committed fingerprint and inventory
+lock; tuple substitution fails closed). Wall-bundle, assembly-history, and
+spendability coherence are validated off-chain — `legible`, not contract-proven.
+A typed trade-bound spendability digest is the queued hardening that promotes the
+spendability artifact into the enforced layer.
+
 Practically: a catalog row, reference image, slab label, tracking page, or API
 receipt can make a claim legible, but it is not spendable unless the right
 assembly history authorizes it at the right gate.
