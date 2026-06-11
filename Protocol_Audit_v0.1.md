@@ -52,6 +52,52 @@ fixtures. Three independence rules:
 If a class of attack cannot be expressed as a runnable case, the audit records
 it as `unfalsifiable_claim` and treats that as a finding, not a pass.
 
+## Canonical Audit Spec
+
+This file is the canonical audit specification. Any harder audit operating
+rules should be merged here rather than living as a parallel spec. Parallel
+audit specs are themselves a Domain 9 drift risk: two documents can produce two
+different ideas of what counts as a finding, a pass, or a closure.
+
+## Hard-Mode Controls
+
+The audit succeeds by producing failures. If an execution round produces no
+material findings, the audit operator must record a `weak_audit_suspected`
+finding or escalate the method. A clean bill is not an achievement unless the
+audit can also show its own canaries, mutations, and blind rounds were capable
+of being caught.
+
+Three structural defenses against a soft audit:
+
+1. Canary seeding.
+   Before a formal execution round, the audit operator may plant a small set of
+   known defects, such as doc contradictions, weakened validator clauses, or a
+   mis-fixtured drill. The canary manifest hash should be committed before the
+   audit starts and revealed after. If the audit misses a canary, the audit run
+   fails regardless of other findings.
+2. Mutation testing for drills.
+   Every drill claiming to enforce a rule should eventually be run against a
+   deliberately broken target: a validator clause deleted, a contract check
+   removed in a scratch branch, or a poisoned fixture. A drill that still passes
+   against its broken target is a finding: a guard that cannot fail guards
+   nothing.
+3. Blind cross-agent rounds.
+   Attack fixtures can be authored by one agent and sealed before another
+   agent's validators see them. Neither side may tailor. Self-graded fixtures
+   are a known weakness of the current project history; blind rounds are the
+   escape.
+
+Additional operating rules:
+
+- Findings are packets, not loose prose.
+- Every finding gets exactly one disposition.
+- "We should look at that" is not a disposition.
+- No finding may be closed by editing only documentation unless the finding is
+  doc drift, overclaim, stale guidance, or a deliberately documented residual
+  risk.
+- Severity is assigned by what the attacker gains, not by how clever the attack
+  is.
+
 ## Severity Model
 
 ```text
@@ -409,6 +455,8 @@ pass: every drill has a demonstrated failure mode and an honest proof statement.
    demonstrated failure mode.
 6. A severity-ranked remediation list separating must-fix-before-network from
    known-and-documented-gap.
+7. A hard-mode controls report when used: canary manifest hash, mutation cases,
+   blind-round setup, and which controls were not used in the slice.
 ```
 
 ## Audit Honesty Clause
@@ -420,12 +468,29 @@ proven_bypass: a runnable case that breaks a wall.
 suspected_weakness: a reasoned argument with no runnable case yet.
 unfalsifiable_claim: a protocol claim that cannot currently be tested.
 out_of_scope: real but outside this audit's domains.
+weak_audit_suspected: no material findings plus insufficient canary, mutation,
+                      or blind-round evidence.
 ```
 
 A finding stated as `proven_bypass` must ship with the case that proves it. A
 finding stated as `suspected_weakness` must not be inflated to `proven_bypass`
 to look more rigorous. The audit that overclaims its own findings fails the
 same standard it is auditing.
+
+Permitted dispositions:
+
+```text
+fixed_in_code
+fixed_in_docs_for_doc_drift
+documented_residual_risk
+accepted_alpha_limit_with_cap
+converted_to_test
+split_to_external_security_review
+deferred_with_owner_and_trigger
+closed_as_false_positive_with_case
+```
+
+If a finding has no disposition, it is still open.
 
 ## What This Audit Is Not
 
