@@ -68,6 +68,12 @@ ones that touch Solidity. From the architecture decision: two true binds and one
 anchor. Each carries an embedded design choice flagged for human confirmation —
 do NOT pick unilaterally; surface as a finding if unsure.
 
+Update: the D6-001 and D6-002 design is now specified in
+`Protocol_Arbitration_v0.1.md`. The JSC (1C) is the agreed arbitration ladder,
+anchored on-chain. The D6-002 default (1A) is **escalate to the agreed floor
+arbiter, which produces a ruling** — a unilateral refund is only the last resort
+if even the floor cannot rule. Implement 1A/1C per that spec; 1B is unchanged.
+
 **1A. AUD-D6-002 — bind a liveness fallback for a stuck claim.**
 ```text
 problem: a claim open with a revoked arbiter and no replacement proposal
