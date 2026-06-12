@@ -73,13 +73,15 @@ prove shipping success, authenticity, condition, or fairness.
 Replay boundary:
 
 - Same-trade spendability replay is enforced by contract storage.
-- Cross-trade spendability replay resistance currently depends on the typed
-  spendability digest being bound off-chain to trade ID, contract, chain ID,
-  gate, leg, subject, wall bundle, assembly history, issuer, schema version,
-  and expiry.
-- Do not tell a human the contract globally prevents opaque spendability-hash
-  reuse across all trades unless a future on-chain typed-digest/nullifier wall
-  is added.
+- Cross-trade and cross-gate spendability replay are enforced on-chain: the
+  contract recomputes a typed digest (escrow, chain, trade, gate, leg, bound
+  artifact hashes, issuer) and requires the supplied hash to equal it, so a
+  digest valid for one trade or gate cannot validate for another.
+- The digest is self-minted by the committing party (issuer = `msg.sender`):
+  binding and non-replayable, not proof an independent party authorized the spend.
+- You may tell a human the contract prevents opaque spendability-hash reuse
+  across trades and gates. Do not tell them it proves the wall-bundle or
+  assembly-history graph is coherent — that remains off-chain validation.
 
 ## Deterministic Tool Boundary
 

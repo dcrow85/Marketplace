@@ -909,7 +909,7 @@ The key frame:
 
 The current local EVM contract consumes a route spendability hash, stores the route wall-bundle reference, requires an `assemblyHistoryHash`, and validates a contract-derived `RouteAssemblyWitness` before route can lock. The witness is bound to escrow contract, chain ID, trade ID, route hash, spendability hash, wall-bundle hash, assembly-history hash, committed item fingerprint, committed inventory lock, and the route gate. The off-chain harness still validates the richer `EvidenceSpendability`, wall-bundle, and assembly graph semantics, so the EVM enforces alignment at the money-moving boundary without pretending it can judge physical-world truth.
 
-Audit clarification: local EVM spendability consumption is scoped by trade. The same spendability hash cannot be reused inside one trade, including across route and delivery gates, but contract storage alone does not globally reject the same opaque hash in another trade. Cross-trade replay resistance currently depends on typed spendability digest construction and off-chain validation binding the digest to trade ID, contract, chain ID, gate, leg, subject, wall bundle, assembly history, issuer, schema version, and expiry. This is an explicit boundary until typed digest validation moves further contract-side.
+Audit clarification (AUD-D1D2-001, AUD-D2-SW-001): route and delivery spendability are now contract-derived typed digests. The contract recomputes each digest from escrow contract, chain ID, trade ID, gate, leg, bound artifact hashes, and issuer, and requires the supplied spendability hash to equal it before the gate advances. Cross-trade and cross-gate replay are therefore blocked on-chain by construction: a digest valid for one trade or gate cannot validate for another. The digest is self-minted by the committing party (issuer = `msg.sender`) — binding and non-replayable, not proof that an independent party authorized the spend. What remains off-chain is the wall-bundle and assembly-history graph coherence: the contract binds those hashes into the digest and witness but does not inspect their internal graph.
 
 ### 10. Route
 
@@ -1112,7 +1112,7 @@ Gate types currently modeled:
 - `claim_support`
 - `bond_action`
 
-The current on-chain implementation enforces route spendability as a hash citation and per-trade consumption event, stores the route wall-bundle reference, stores the assembly-history reference, and validates the contract-derived route assembly witness. The Python harness requires route spendability to cite the current `wall_bundle_hash` and `assembly_history_hash`, so a valid-looking spendability packet without inherited assembly provenance blocks before route lock. Full spendability, wall-bundle, and assembly graph semantics remain off-chain. Cross-trade spendability replay resistance is therefore a typed-packet/preimage requirement in the current build, not something the contract's per-trade consumed-hash mapping proves by itself.
+The current on-chain implementation derives route and delivery spendability as typed digests — bound to escrow contract, chain ID, trade ID, gate, leg, bound artifact hashes, and issuer — and requires the supplied hash to equal the contract-derived value before route lock or before inspection opens, alongside the per-trade consumption event and the contract-derived route assembly witness. Cross-trade and cross-gate spendability replay are blocked on-chain by construction. The wall-bundle and assembly-history graph semantics remain off-chain: the contract binds those hashes but does not inspect their internal graph or prove they form a coherent chain. The Python harness still constructs the richer EvidenceSpendability and assembly graph, so a spendability packet without inherited assembly provenance blocks before route lock.
 
 ## Trust System
 
@@ -1238,7 +1238,7 @@ Implemented in `/Users/che/Marketplace/chain`.
 - EIP-191 packet-signature verification for registered controller addresses.
 - Signed packet gates for state-moving hashes.
 - Per-trade packet hash replay protection.
-- Per-trade spendability consumption. Same-trade replay is blocked; cross-trade replay resistance depends on typed spendability digest validation until further on-chain hardening.
+- Per-trade spendability consumption plus a contract-derived typed digest (escrow, chain, trade, gate, leg, bound artifact hashes, issuer); same-trade, cross-gate, and cross-trade replay are blocked on-chain. The digest is self-minted (issuer = `msg.sender`): binding, not an independent authorization.
 - Native ETH escrow.
 - Seller bond.
 - Optional buyer dispute bond.
@@ -1995,7 +1995,7 @@ Underneath, these actions generate packets, signatures, manifests, spendability 
 Ask the reviewer to pressure test:
 
 1. Is the spendability model coherent, or does it duplicate existing capability systems?
-2. Should route spendability be validated on-chain as typed data, or is hash citation plus off-chain validation enough for alpha?
+2. Resolved (2026-06-11, AUD-D1D2-001): route and delivery spendability are now validated on-chain as typed digests; cross-trade and cross-gate replay are blocked by construction. Wall-bundle and assembly-history graph coherence remain off-chain.
 3. What is the minimal viable agent API for buyer intent and seller response?
 4. What trust proofs should be prioritized for TCG sellers: marketplace account control, shop domain proof, prior receipts, bonds, or verifier attestations?
 5. How should arbiter discovery and availability work without centralizing the protocol?
