@@ -143,7 +143,6 @@ contract MarketplaceEscrow {
     error WallBundleRequired();
     error AssemblyHistoryRequired();
     error RouteAssemblyWitnessRequired();
-    error RouteWallBundleMismatch(bytes32 expectedWallBundleHash, bytes32 providedWallBundleHash);
     error RouteAssemblyWitnessMismatch(
         bytes32 expectedWitnessHash, bytes32 providedWitnessHash
     );
