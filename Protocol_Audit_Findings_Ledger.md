@@ -25,6 +25,7 @@ this file is the current-state pointer.
 | AUD-D7-005 | `Protocol_Audit_Execution_Domain7_v0.1.md` | `fixed_in_code` | Cross-set named want ("Team Rocket Pikachu") bound to the Base Pikachu row; now returns `no_in_set_match`. Guarded in the catalog probe. Reviewer-verified. |
 | AUD-D7-006 | `Protocol_Audit_Execution_Domain7_v0.1.md` | `fixed_in_code` | Blank `variant_traps` now emits `variant_trap_status: unexamined_or_no_cataloged_trap` rather than an ambiguous empty list. Guarded in the probe. |
 | AUD-D7-007 | `Protocol_Audit_Execution_Domain7_v0.1.md` | `closed_as_false_positive_with_case` | Off-set named want ("Japanese Umbreon") already returns `no_in_set_match`; no row binding. Probe case. |
+| AUD-D5-001 | `Protocol_Audit_Execution_Domain5_v0.1.md` | `deferred_with_owner_and_trigger` | The exit-scam EV model (`value − bond − acquisition_cost`) omits `cost_to_fake`, the dominant deterrent. It fires `positive_exit_scam_ev` on nearly every value trade and cannot discriminate cheap-to-fake from expensive-to-fake; it misattributes deterrence to the bond. Wire `cost_to_fake` (from the legibility vector) into the EV before the model sets per-tier defaults or is shown to the network. Import-relief cap and positive-EV surfacing verified working. |
 
 ## Standing Guards Added With Typed Spendability
 
