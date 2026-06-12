@@ -202,6 +202,11 @@ def card_brief(card: dict[str, Any]) -> dict[str, Any]:
             "signals": card.get("collector_texture", {}).get("signals", []),
         },
         "variant_traps": card.get("variant_traps", []),
+        "variant_trap_status": (
+            "cataloged_traps_present"
+            if card.get("variant_traps")
+            else "unexamined_or_no_cataloged_trap"
+        ),
         "not_claiming": card.get("not_claiming", []),
         "tags": card.get("tags", []),
     }
@@ -426,6 +431,19 @@ MARKET_INTENT_TERMS = {
     "holo", "holographic", "cheap", "filler",
 }
 
+CROSS_SET_QUALIFIER_TERMS = {
+    "carddass",
+    "fossil",
+    "gym",
+    "jungle",
+    "meiji",
+    "neo",
+    "rocket",
+    "southern",
+    "topsun",
+    "vending",
+}
+
 INTERPRET_STOP_TERMS = {
     "a", "add", "an", "and", "any", "anyone", "are", "ask", "asking", "asks", "at",
     "basic", "be", "bgs", "big", "binder", "but", "buy", "buying", "can", "card",
@@ -468,10 +486,35 @@ def _unmatched_card_terms(text: str) -> list[str]:
     )
 
 
+def _cross_set_qualifier_terms(text: str) -> list[str]:
+    return sorted(set(_terms(text)) & CROSS_SET_QUALIFIER_TERMS)
+
+
 def interpret_human_text(text: str, *, limit: int = 8) -> dict[str, Any]:
     stance = infer_stance(text)
     named_matches = named_card_matches(text, limit=limit)
     boundary = "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
+    cross_set_qualifiers = _cross_set_qualifier_terms(text)
+    if named_matches and cross_set_qualifiers:
+        return {
+            "input": text,
+            "inferred_stance": stance,
+            "candidate_source": "no_in_set_match",
+            "candidates": [],
+            "unmatched_terms": cross_set_qualifiers,
+            "set_scope": load_catalog().get("set", {}),
+            "catalog_release": catalog_release(),
+            "human_summary": (
+                "The text names a card that exists in this catalog but also includes "
+                "set-family terms outside the Japanese Expansion Pack scope."
+            ),
+            "agent_next": [
+                "tell the human which set-family terms are outside this catalog",
+                "confirm the intended set before attaching a row",
+                "do not bind cross-set intent to the Base Set catalog row",
+            ],
+            "boundary": boundary,
+        }
     if named_matches:
         candidates = named_matches
         source = "named_card_match"

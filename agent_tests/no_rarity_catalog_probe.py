@@ -25,6 +25,13 @@ def run_direct_probe() -> dict[str, Any]:
     search = dispatch("search_catalog", {"query": "raichu holo", "limit": 5})
     assert_true(search["cards"], "Raichu search returned no cards")
     assert_true(search["cards"][0]["name"]["en"] == "Raichu", "Raichu should be top search result")
+    release_hash = search["catalog_release"]["catalog_hash"]
+    top_citation = search["cards"][0]["catalog_citation"]
+    assert_true(top_citation["catalog_hash"] == release_hash, "generated citation should use current catalog hash")
+    assert_true(top_citation["row_id"] == search["cards"][0]["card_ref"], "generated citation should bind cited row id")
+
+    release = dispatch("catalog_release", {})["catalog_release"]
+    assert_true(release["catalog_hash"] == release_hash, "catalog_release should match search release hash")
 
     energy = dispatch("evaluate_gate", {"card_ref": "PMCG1-102", "stance": "want"})
     assert_true(energy["decision"] == "reject_premium_no_rarity", "basic Energy caveat should reject premium claim")
@@ -46,6 +53,14 @@ def run_direct_probe() -> dict[str, Any]:
     human = dispatch("interpret_human_text", {"text": "I might sell my no rarity blastoise if someone serious asks"})
     assert_true(human["inferred_stance"] == "sell_if_price_right", "sell posture inference failed")
 
+    off_set = dispatch("interpret_human_text", {"text": "I want a Japanese Umbreon no rarity"})
+    assert_true(off_set["candidate_source"] == "no_in_set_match", "off-set named want should not bind to a row")
+    assert_true(not off_set["candidates"], "off-set named want should return no candidates")
+
+    cross_set = dispatch("interpret_human_text", {"text": "I want a Team Rocket Pikachu"})
+    assert_true(cross_set["candidate_source"] == "no_in_set_match", "cross-set qualifier should not bind Base Pikachu")
+    assert_true("rocket" in cross_set["unmatched_terms"], "cross-set qualifier should be reported")
+
     seller_question = dispatch(
         "interpret_human_text",
         {"text": "I want cheap No Rarity commons unless a seller asks for money", "limit": 4},
@@ -60,6 +75,13 @@ def run_direct_probe() -> dict[str, Any]:
     assert_true(slab["decision"] == "request_evidence", "unchecked slab/cert story should request slab packet")
     assert_true(any("cert lookup" in item for item in slab["missing"]), "slab packet should include cert lookup")
 
+    bulbasaur = dispatch("get_card", {"card_ref": "PMCG1-001"})["card"]
+    assert_true(bulbasaur["variant_traps"] == [], "Bulbasaur should exercise a blank variant_traps row")
+    assert_true(
+        bulbasaur["variant_trap_status"] == "unexamined_or_no_cataloged_trap",
+        "blank variant_traps should not surface as checked clean",
+    )
+
     return {
         "search_top": search["cards"][0]["card_ref"],
         "energy_decision": energy["decision"],
@@ -67,7 +89,10 @@ def run_direct_probe() -> dict[str, Any]:
         "common_search_rarities": sorted(rarities),
         "charizard_decision": charizard["decision"],
         "human_stance": human["inferred_stance"],
+        "off_set_candidate_source": off_set["candidate_source"],
+        "cross_set_candidate_source": cross_set["candidate_source"],
         "slab_decision": slab["decision"],
+        "variant_trap_status": bulbasaur["variant_trap_status"],
     }
 
 

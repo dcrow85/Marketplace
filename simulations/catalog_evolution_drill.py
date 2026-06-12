@@ -150,19 +150,52 @@ def challenge_weight(packet: dict[str, Any]) -> int:
     return strength + min(hashed_refs, 2) + calibration_bonus
 
 
+def has_challenger_independence(packet: dict[str, Any]) -> bool:
+    independence = str(packet.get("independence_vector_ref", "")).strip().lower()
+    if independence in {"", "none", "unmeasured", "unknown"}:
+        return False
+    return not independence.startswith("monoculture:")
+
+
+def policy_field_paths(value: Any, prefix: str = "") -> list[str]:
+    policy_keys = {
+        "agent_decision_profile",
+        "baseline_evidence_profile_id",
+        "baseline_evidence_profile_name",
+        "conditional_overlays",
+        "escalation_triggers",
+        "evidence_profile",
+        "evidence_requirements",
+        "policy_boundary",
+        "policy_hash",
+        "price_comp_requirements",
+        "recommended_evidence",
+        "spendability_boundaries",
+    }
+    paths: list[str] = []
+    if isinstance(value, dict):
+        for key, child in value.items():
+            path = f"{prefix}.{key}" if prefix else str(key)
+            if key in policy_keys:
+                paths.append(path)
+            paths.extend(policy_field_paths(child, path))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            paths.extend(policy_field_paths(child, f"{prefix}[{index}]"))
+    return paths
+
+
 def detect_poison_flags(row: dict[str, Any] | None, proposed_changes: dict[str, Any]) -> set[str]:
     """Field-level poison detection on the structured diff, independent of claim phrasing."""
     flags: set[str] = set()
     if not row:
         return flags
     target_change = proposed_changes.get("no_rarity_target")
-    if (
-        row.get("category") == "Energy"
-        and not row.get("no_rarity_target")
-        and isinstance(target_change, dict)
-        and target_change.get("to") is True
-    ):
-        flags.add("energy_caveat_poison")
+    if row.get("category") == "Energy" and not row.get("no_rarity_target"):
+        if isinstance(target_change, dict) and target_change.get("to") is True:
+            flags.add("energy_caveat_poison")
+        elif target_change is True:
+            flags.add("energy_caveat_poison")
     trap_change = proposed_changes.get("variant_traps")
     if isinstance(trap_change, dict):
         current = json.dumps(row.get("variant_traps", []), ensure_ascii=False).lower()
@@ -187,17 +220,32 @@ def evaluate_case(case: RevisionCase) -> dict[str, Any]:
     if not has_content_hashes(case.evidence_refs):
         flags.add("source_without_content_hash")
     flags |= detect_poison_flags(row, case.proposed_changes)
+    if policy_field_paths(case.proposed_changes):
+        flags.add("policy_as_fact_smuggle")
 
     weights = [challenge_weight(packet) for packet in challenges]
     max_weight = max(weights, default=0)
     sybil_count = sum(1 for packet in challenges if packet["challenge_strength"] == "weak")
-    decisive_challenges = [packet for packet in challenges if challenge_weight(packet) >= 5]
+    missing_independence = [
+        packet
+        for packet in challenges
+        if packet.get("evidence_refs") and not has_challenger_independence(packet)
+    ]
+    decisive_challenges = [
+        packet
+        for packet in challenges
+        if challenge_weight(packet) >= 5 and has_challenger_independence(packet)
+    ]
     if sybil_count >= 10 and max_weight == 0:
         flags.add("sybil_challenge_no_evidence")
+    if missing_independence:
+        flags.add("missing_challenger_independence")
     if decisive_challenges:
         flags.add("evidence_weighted_challenge")
 
     if "source_without_content_hash" in flags:
+        outcome = "block"
+    elif "policy_as_fact_smuggle" in flags:
         outcome = "block"
     elif {"energy_caveat_poison", "evidence_weighted_challenge"} <= flags:
         outcome = "block"
@@ -292,6 +340,7 @@ def fixtures() -> list[RevisionCase]:
                 {
                     "challenger_agent": "agent:caveat-checker",
                     "challenge_strength": "decisive",
+                    "independence_vector_ref": "independent:catalog-policy-caveat",
                     "evidence_refs": [
                         {
                             "ref_id": "manifest:no_rarity_policy",
@@ -325,6 +374,7 @@ def fixtures() -> list[RevisionCase]:
                 {
                     "challenger_agent": "agent:variant-checker",
                     "challenge_strength": "decisive",
+                    "independence_vector_ref": "independent:quick-starter-map",
                     "evidence_refs": [
                         {
                             "ref_id": "source:quick-starter-layout-warning",
@@ -381,6 +431,97 @@ def fixtures() -> list[RevisionCase]:
             challenges=[],
             expected_outcome="flag",
             expected_flags={"energy_caveat_poison"},
+            proposed_changes={"no_rarity_target": {"from": False, "to": True}},
+        ),
+        RevisionCase(
+            case_id="scalar_energy_poison_held_at_flag",
+            description=(
+                "A poisoned Energy-premium proposal uses a scalar field rewrite "
+                "instead of a from/to diff. Field detection still catches the row "
+                "class and holds the revision at flag."
+            ),
+            row_id="PMCG1-099",
+            revision_type="update_row",
+            claim_text="Mark this as the missing-symbol chase copy collectors keep overlooking.",
+            evidence_refs=[
+                {
+                    "ref_id": "source:self-published:scalar-energy-hype-note",
+                    "source_type": "market_commentary",
+                    "content_hash": "sha256:scalar-energy-hype-note",
+                    "not_claiming": ["premium_target_truth", "price_truth"],
+                }
+            ],
+            challenges=[],
+            expected_outcome="flag",
+            expected_flags={"energy_caveat_poison"},
+            proposed_changes={"no_rarity_target": True},
+        ),
+        RevisionCase(
+            case_id="policy_profile_change_blocked_as_policy_fact",
+            description=(
+                "A row revision tries to change evidence-profile policy inside "
+                "the fact-catalog diff. Policy-shaped fields are blocked instead "
+                "of being hardened as catalog facts."
+            ),
+            row_id="PMCG1-035",
+            revision_type="update_row",
+            claim_text="Lower the evidence burden for this popular row so agents can move faster.",
+            evidence_refs=[
+                {
+                    "ref_id": "source:agent-preference-note",
+                    "source_type": "policy_commentary",
+                    "content_hash": "sha256:agent-preference-note",
+                    "not_claiming": ["catalog_fact"],
+                }
+            ],
+            challenges=[],
+            expected_outcome="block",
+            expected_flags={"policy_as_fact_smuggle"},
+            proposed_changes={
+                "agent_decision_profile": {
+                    "baseline_evidence_profile_id": {"from": "NR-B", "to": "NR-A"},
+                    "recommended_evidence": {"op": "replace", "to": ["lower-right crop only"]},
+                }
+            },
+        ),
+        RevisionCase(
+            case_id="monoculture_challengers_do_not_carry_block",
+            description=(
+                "Many evidence-citing challengers with the same monoculture "
+                "independence vector cannot turn a poison flag into a block. "
+                "The row remains held until an independent contradiction arrives."
+            ),
+            row_id="PMCG1-100",
+            revision_type="update_row",
+            claim_text="Promote this energy row because all reviewers in my model pool agree.",
+            evidence_refs=[
+                {
+                    "ref_id": "source:self-published:monoculture-energy-hype-note",
+                    "source_type": "market_commentary",
+                    "content_hash": "sha256:monoculture-energy-hype-note",
+                    "not_claiming": ["premium_target_truth", "price_truth"],
+                }
+            ],
+            challenges=[
+                {
+                    "challenger_agent": f"agent:monoculture:{index}",
+                    "challenge_strength": "decisive",
+                    "independence_vector_ref": "monoculture:model-family-a",
+                    "challenger_calibration_ref": "calibrated:no-rarity-caveats",
+                    "evidence_refs": [
+                        {
+                            "ref_id": "source:shared-model-note",
+                            "content_hash": "sha256:shared-model-note",
+                            "claim": "The shared model pool agrees this should block.",
+                        }
+                    ],
+                    "contradicted_claims": ["active premium No Rarity target"],
+                    "requested_outcome": "block",
+                }
+                for index in range(12)
+            ],
+            expected_outcome="flag",
+            expected_flags={"energy_caveat_poison", "missing_challenger_independence"},
             proposed_changes={"no_rarity_target": {"from": False, "to": True}},
         ),
     ]
@@ -509,8 +650,11 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
             "- A good revision can harden against unevidenced agent noise.",
             "- A poisoned revision can be blocked or flagged by one strong challenge.",
             "- Poison detection reads the structured field diff, not the claim phrasing.",
+            "- Poison detection handles semantically equivalent scalar and from/to field rewrites.",
             "- An unchallenged poisoned revision is held at flag; it never hardens silently.",
             "- URL-only sources fail because future agents cannot inspect the same bytes.",
+            "- Policy-shaped row changes are blocked from hardening as fact-catalog revisions.",
+            "- Monoculture challenge vectors are not treated as independent evidence-weighted contradictions.",
         ]
     )
     (run_dir / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
