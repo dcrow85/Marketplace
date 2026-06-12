@@ -515,6 +515,16 @@ Purpose: prevent catalog tools, image tools, pricing tools, and agent validators
 
 Applies whenever a deterministic or model-assisted tool output is used in an intent packet, offer evaluation, evidence plan, route preparation, claim, reputation summary, or human-facing recommendation.
 
+Implementation note (audit AUD-D4-001): the `tool_output_boundary` packet below
+is the single-output form. The current No Rarity catalog tools satisfy this
+boundary in an equivalent per-claim form instead — `evaluate_gate` returns an
+`enforced` list (empty), plus `legible`, `judgment_needed`, and `missing`
+partitions and an explicit `protocol_boundary` string ("cannot authorize
+spendability or prove the physical card"). Either form is acceptable; what the
+wall requires is that every tool claim is authority-labeled and that the output
+names no enforced authority it does not have. Tools that emit a single fused
+output should use the packet; tools that partition per claim need not wrap it.
+
 Required fields:
 
 ```text
