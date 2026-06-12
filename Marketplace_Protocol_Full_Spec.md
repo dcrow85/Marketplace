@@ -1728,13 +1728,13 @@ Rules that should not break:
 - No challenged route: active fingerprint challenge blocks route commitment.
 - No silent semantic collision: suspicious item identity collisions become challenge, waiver, or verifier cure.
 - No stray verifier: verifier cannot attach loose evidence or review without buyer-scoped approval.
-- No scope laundering: verifier attestation travels with checked scopes and exclusions.
+- No scope laundering at the agent/API layer: verifier attestation travels with checked scopes and exclusions. The escrow currently binds subject hash, scope-set hash, and method-id hash, but does not parse semantic exclusions.
 - No unbound proof: proof cannot satisfy gate unless bound to trade ID, subject hash, or challenge nonce.
 - No hidden underinsurance: owner of value gap must be typed before route commitment.
 - No hidden bond gap: bond coverage must disclose amount and fraction of value.
 - No route mutation: seller route changes after lock require buyer acceptance.
 - No vague bond: bond scope defines promises, exclusions, adjudicator, and payout path.
-- No undefined arbiter: arbiter must be registry-listed, conflict-disclosed, and accepted in terms.
+- No undefined arbiter at the agent/API layer: arbiter must be registry-listed, conflict-disclosed, and accepted in terms. The escrow currently enforces registry activity, not conflict-disclosure fields.
 - No unbounded arbiter agent: arbiter agent needs signed delegation and escalation rules.
 - No frictionless ambiguity: automation runs until friction threshold, then escalates.
 - No invisible AI ruling: automated decisions cite policy, evidence, confidence, and appeal path.

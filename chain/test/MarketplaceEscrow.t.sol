@@ -1730,6 +1730,206 @@ contract MarketplaceEscrowTest {
         );
     }
 
+    function testAuditD6SettlementCanCompleteWithRegistryOnlyArbiter() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:audit-d6-registry-only-settlement");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _markDeliveredBySeller(tradeId, "delivery:audit-d6-registry-only-settlement");
+
+        uint256 sellerBefore = seller.balance;
+        bytes32 receiptHash = _h("receipt:audit-d6-no-judgment-supply-commitment");
+        vm.prank(buyer);
+        escrow.buyerAccept(tradeId, receiptHash, _sig(buyerKey, receiptHash));
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(seller.balance - sellerBefore, 1.1 ether, "settled without JSC packet");
+    }
+
+    function testAuditD6ClaimCanResolveWithRegistryOnlyArbiterAndRulingHash() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        uint256 buyerBefore = buyer.balance;
+        bytes32 rulingHash = _h("ruling:audit-d6-no-policy-or-remedy-cap");
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 7_500, 3_000, true, _sig(arbiterKey, rulingHash));
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(buyer.balance - buyerBefore, 0.79 ether, "ruling moved funds");
+    }
+
+    function testAuditD6RulingPayoutBoundsRejectOverCap() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 overRefundRulingHash = _h("ruling:audit-d6-over-refund-cap");
+        vm.expectRevert(MarketplaceEscrow.BadAmount.selector);
+        vm.prank(arbiter);
+        escrow.resolveClaim(
+            tradeId,
+            overRefundRulingHash,
+            10_001,
+            0,
+            true,
+            _sig(arbiterKey, overRefundRulingHash)
+        );
+
+        bytes32 overPenaltyRulingHash = _h("ruling:audit-d6-over-penalty-cap");
+        vm.expectRevert(MarketplaceEscrow.BadAmount.selector);
+        vm.prank(arbiter);
+        escrow.resolveClaim(
+            tradeId,
+            overPenaltyRulingHash,
+            0,
+            10_001,
+            true,
+            _sig(arbiterKey, overPenaltyRulingHash)
+        );
+    }
+
+    function testAuditD6RevokedArbiterMidClaimHasNoEmergencyPathWithoutProposal() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 rulingHash = _h("ruling:audit-d6-revoked-arbiter-mid-claim");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, arbiter)
+        );
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 5_000, 5_000, true, _sig(arbiterKey, rulingHash));
+
+        bytes32 missingProposalHash = _h("arbiter-replacement:audit-d6-never-proposed");
+        vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.ReplacementProposalMissing.selector, missingProposalHash
+            )
+        );
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(
+            tradeId, missingProposalHash, _sig(replacementArbiterKey, missingProposalHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.ClaimOrDisputePending);
+    }
+
+    function testAuditD6RevokedArbiterMidRouteClaimHasNoAutomaticFallback() public {
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:audit-d6-revoked-arbiter-mid-route");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        registry.revokeArbiter(arbiter);
+
+        vm.warp(block.timestamp + escrow.ROUTE_CLAIM_TIMEOUT() + 1);
+        bytes32 claimHash = _h("claim:audit-d6-route-timeout-revoked-arbiter");
+        vm.prank(buyer);
+        escrow.openRouteClaimAfterTimeout{ value: 0.01 ether }(
+            tradeId, claimHash, _sig(buyerKey, claimHash)
+        );
+
+        bytes32 rulingHash = _h("ruling:audit-d6-route-timeout-revoked-arbiter");
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, arbiter)
+        );
+        vm.prank(arbiter);
+        escrow.resolveClaim(tradeId, rulingHash, 10_000, 10_000, true, _sig(arbiterKey, rulingHash));
+
+        bytes32 missingProposalHash = _h("arbiter-replacement:audit-d6-route-no-proposal");
+        vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.ReplacementProposalMissing.selector, missingProposalHash
+            )
+        );
+        vm.prank(replacementArbiter);
+        escrow.emergencyReplaceArbiter(
+            tradeId, missingProposalHash, _sig(replacementArbiterKey, missingProposalHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.ClaimOrDisputePending);
+    }
+
+    function testAuditD6NarrowVerifierScopeCanClearChallengeBySubjectOnly() public {
+        uint256 tradeId = _createAndBondWithoutInventoryLock(1 ether, 0.1 ether, 0.01 ether);
+        _commitItemFingerprint(tradeId, _h("fingerprint:audit-d6-narrow-scope"));
+        _commitInventoryLock(tradeId, _h("inventory:audit-d6-narrow-scope"));
+
+        bytes32 challengeHash = _h("fingerprint-challenge:audit-d6-authenticity-question");
+        vm.prank(buyer);
+        escrow.openFingerprintChallenge(tradeId, challengeHash, _sig(buyerKey, challengeHash));
+
+        bytes32 scopeSetHash = _h("scope:checked-symbol-field-only-not-authenticity");
+        bytes32 methodIdHash = _h("method:photo-symbol-field-only");
+        bytes32 attestationHash = _h("attestation:audit-d6-narrow-scope");
+        _approveVerifierScope(tradeId, verifier, scopeSetHash);
+
+        bytes32 attestationBinding = escrow.verifierAttestationBindingHash(
+            tradeId, attestationHash, challengeHash, scopeSetHash, methodIdHash
+        );
+        vm.prank(verifier);
+        escrow.commitVerifierAttestation(
+            tradeId,
+            attestationHash,
+            challengeHash,
+            scopeSetHash,
+            methodIdHash,
+            _sig(verifierKey, attestationBinding)
+        );
+
+        bytes32 resolutionHash = _h("fingerprint-challenge-clear:audit-d6-narrow-scope");
+        bytes32 resolutionBinding = escrow.fingerprintChallengeResolutionHash(
+            tradeId, resolutionHash, challengeHash, attestationHash
+        );
+        vm.prank(buyer);
+        escrow.clearFingerprintChallengeWithAttestation(
+            tradeId, resolutionHash, attestationHash, _sig(buyerKey, resolutionBinding)
+        );
+
+        bytes32 routeHash = _h("route:audit-d6-after-narrow-scope-clear");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _assertState(tradeId, MarketplaceEscrow.State.RouteLocked);
+    }
+
+    function testAuditD6ConflictedArbiterMetadataIsNotParsedBeforeRuling() public {
+        uint256 conflictedArbiterKey = 0xC0F11C7;
+        address conflictedArbiter = vm.addr(conflictedArbiterKey);
+        registry.registerActor(
+            conflictedArbiter,
+            MarketplaceActorRegistry.Role.Arbiter,
+            _h("arbiter-actor:audit-d6-conflicted")
+        );
+        registry.registerArbiter(
+            conflictedArbiter,
+            _h("arbiter-authority:audit-d6-undisclosed-seller-stake"),
+            uint96(1 ether)
+        );
+
+        uint256 tradeId = _createAndBondWithArbiter(
+            conflictedArbiter, 1 ether, 0.1 ether, 0.01 ether
+        );
+        _commitItemFingerprint(tradeId, _h("fingerprint:audit-d6-conflicted-arbiter"));
+        _commitInventoryLock(tradeId, _h("inventory:audit-d6-conflicted-arbiter"));
+        bytes32 routeHash = _h("route:audit-d6-conflicted-arbiter");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
+        _markDeliveredBySeller(tradeId, "delivery:audit-d6-conflicted-arbiter");
+
+        bytes32 claimHash = _h("claim:audit-d6-conflicted-arbiter");
+        vm.prank(buyer);
+        escrow.openClaim{ value: 0.01 ether }(tradeId, claimHash, _sig(buyerKey, claimHash));
+
+        bytes32 rulingHash = _h("ruling:audit-d6-conflicted-arbiter");
+        vm.prank(conflictedArbiter);
+        escrow.resolveClaim(
+            tradeId,
+            rulingHash,
+            5_000,
+            5_000,
+            true,
+            _sig(conflictedArbiterKey, rulingHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+    }
+
     function testPacketGateRejectsWrongSigner() public {
         uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
 
@@ -1759,12 +1959,21 @@ contract MarketplaceEscrowTest {
         uint256 sellerBond,
         uint256 disputeBond
     ) internal returns (uint256 tradeId) {
+        tradeId = _createAndBondWithArbiter(arbiter, escrowAmount, sellerBond, disputeBond);
+    }
+
+    function _createAndBondWithArbiter(
+        address arbiter_,
+        uint256 escrowAmount,
+        uint256 sellerBond,
+        uint256 disputeBond
+    ) internal returns (uint256 tradeId) {
         bytes32 intentHash = _h("intent:vintage-card");
         bytes32 termsHash = _h("terms:v1");
         vm.prank(buyer);
         tradeId = escrow.createTrade{ value: escrowAmount }(
             seller,
-            arbiter,
+            arbiter_,
             sellerBond,
             disputeBond,
             2 days,

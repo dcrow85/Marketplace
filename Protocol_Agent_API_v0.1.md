@@ -787,6 +787,13 @@ Output rule:
 
 Arbiter judgment can move funds or bond only inside the scoped policy and bond coverage.
 
+Contract boundary:
+
+`MarketplaceEscrow.resolveClaim()` currently enforces active arbiter status,
+arbiter signature, claim state, and 0..10,000 bps payout bounds. The API must
+check claim type, arbiter policy hash, evidence matrix row, remedy cap, and bond
+scope before calling; those fields are not parsed by the escrow contract.
+
 ## Minimal Method Set
 
 ```text
