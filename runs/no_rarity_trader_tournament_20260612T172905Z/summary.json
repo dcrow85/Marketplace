@@ -1,0 +1,737 @@
+{
+  "generated_at": "2026-06-12T17:29:05.898118+00:00",
+  "pass": true,
+  "mutation": null,
+  "attempts": 18,
+  "passed": 18,
+  "failures": [],
+  "traders": [
+    {
+      "trader_id": "binder_completionist",
+      "name": "Binder Completionist Buyer",
+      "aperture": "Wants many low/mid cards with low ceremony.",
+      "pressure": "Can the catalog keep asks light while still naming missing evidence?",
+      "attempts": [
+        {
+          "name": "Natural low-friction Caterpie want",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Caterpie",
+            "stance": "want",
+            "evidence_level": "NR-A",
+            "seller_trust": "known"
+          },
+          "expected": "low_friction_pass",
+          "outcome": "low_friction_pass",
+          "pass": true,
+          "result": {
+            "decision": "continue",
+            "human_summary": "The catalog row is legible. It is not physical-card proof.",
+            "card_ref": "PMCG1-002",
+            "card": {
+              "ja": "キャタピー",
+              "romaji": "Kyatapii",
+              "en": "Caterpie"
+            },
+            "missing": [],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Vintage Japanese Pikachu search",
+          "tool": "search_catalog",
+          "args": {
+            "query": "vintage japanese pikachu",
+            "limit": 5
+          },
+          "expected": "search_exact:Pikachu",
+          "outcome": "search_exact:Pikachu",
+          "pass": true,
+          "result": {
+            "count": 1,
+            "top_cards": [
+              {
+                "card_ref": "PMCG1-035",
+                "name": {
+                  "ja": "ピカチュウ",
+                  "romaji": "Pikachuu",
+                  "en": "Pikachu"
+                },
+                "profile": "NR-B",
+                "active_target": true
+              }
+            ],
+            "boundary": "Catalog search returns row candidates, not seller possession, authenticity, condition, or price truth."
+          }
+        },
+        {
+          "name": "Collection memory from binder talk",
+          "tool": "interpret_human_text",
+          "args": {
+            "text": "Add my Japanese no rarity Caterpie and Weedle binder page to my collection",
+            "limit": 4
+          },
+          "expected": "stance:have",
+          "outcome": "stance:have",
+          "pass": true,
+          "result": {
+            "inferred_stance": "have",
+            "top_candidates": [
+              {
+                "card_ref": "PMCG1-002",
+                "name": {
+                  "ja": "キャタピー",
+                  "romaji": "Kyatapii",
+                  "en": "Caterpie"
+                }
+              },
+              {
+                "card_ref": "PMCG1-004",
+                "name": {
+                  "ja": "ビードル",
+                  "romaji": "Biidoru",
+                  "en": "Weedle"
+                }
+              }
+            ],
+            "agent_next": [
+              "save private collection memory",
+              "offer optional photo hardening",
+              "do not make public sell claim by default"
+            ],
+            "boundary": "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
+          }
+        },
+        {
+          "name": "Off-set Umbreon want must not bind to a row",
+          "tool": "interpret_human_text",
+          "args": {
+            "text": "Looking for a no rarity Umbreon to finish my set",
+            "limit": 4
+          },
+          "expected": "no_in_set_match",
+          "outcome": "no_in_set_match",
+          "pass": true,
+          "result": {
+            "inferred_stance": "want",
+            "top_candidates": [],
+            "agent_next": [
+              "tell the human which terms had no in-set match",
+              "confirm whether they meant a different set or era",
+              "do not attach this intent to a different catalog row without explicit confirmation"
+            ],
+            "boundary": "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
+          }
+        }
+      ]
+    },
+    {
+      "trader_id": "holo_grail_buyer",
+      "name": "Low-Risk Holo Grail Buyer",
+      "aperture": "Will pay, but hates ambiguity and thin trust.",
+      "pressure": "Does high value force evidence and review instead of catalog-image confidence?",
+      "attempts": [
+        {
+          "name": "Charizard with low evidence from thin seller",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Charizard",
+            "stance": "want",
+            "evidence_level": "NR-A",
+            "seller_trust": "thin"
+          },
+          "expected": "request_evidence",
+          "outcome": "request_evidence",
+          "pass": true,
+          "result": {
+            "decision": "request_evidence",
+            "human_summary": "This is a plausible want, but the evidence floor is not met.",
+            "card_ref": "PMCG1-021",
+            "card": {
+              "ja": "リザードン",
+              "romaji": "Rizaadon",
+              "en": "Charizard"
+            },
+            "missing": [
+              "full front and full back images",
+              "sharp lower-right rarity-symbol crop with surrounding border",
+              "front and back high-resolution scans or photos",
+              "four-corner front close-ups",
+              "four-corner back close-ups"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Raichu with evidence but unknown seller",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Raichu",
+            "stance": "want",
+            "evidence_level": "NR-C",
+            "seller_trust": "unknown"
+          },
+          "expected": "human_or_verifier_review",
+          "outcome": "human_or_verifier_review",
+          "pass": true,
+          "result": {
+            "decision": "human_or_verifier_review",
+            "human_summary": "High-value or slabbed No Rarity claims from thin trust need review before funding.",
+            "card_ref": "PMCG1-038",
+            "card": {
+              "ja": "ライチュウ",
+              "romaji": "Raichuu",
+              "en": "Raichu"
+            },
+            "missing": [
+              "seller proof chain",
+              "fresh possession continuity",
+              "verifier or bond recommendation"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Holo search precision",
+          "tool": "search_catalog",
+          "args": {
+            "query": "raichu holo",
+            "limit": 5
+          },
+          "expected": "search_exact:Raichu",
+          "outcome": "search_exact:Raichu",
+          "pass": true,
+          "result": {
+            "count": 1,
+            "top_cards": [
+              {
+                "card_ref": "PMCG1-038",
+                "name": {
+                  "ja": "ライチュウ",
+                  "romaji": "Raichuu",
+                  "en": "Raichu"
+                },
+                "profile": "NR-C",
+                "active_target": true
+              }
+            ],
+            "boundary": "Catalog search returns row candidates, not seller possession, authenticity, condition, or price truth."
+          }
+        }
+      ]
+    },
+    {
+      "trader_id": "slab_investor",
+      "name": "Slab-First Investor",
+      "aperture": "Likes certs and labels, but should not mistake labels for truth.",
+      "pressure": "Can slab evidence remain scoped and not become blanket verification?",
+      "attempts": [
+        {
+          "name": "Slabbed Blastoise from unknown seller",
+          "tool": "evidence_plan",
+          "args": {
+            "card_ref": "Blastoise",
+            "posture": "want",
+            "seller_trust": "unknown"
+          },
+          "expected": "evidence_plan_named",
+          "outcome": "evidence_plan_named",
+          "pass": true,
+          "result": {
+            "card_ref": "PMCG1-032",
+            "card": {
+              "ja": "カメックス",
+              "romaji": "Kamekkusu",
+              "en": "Blastoise"
+            },
+            "evidence": [
+              "full front and full back images",
+              "sharp lower-right rarity-symbol crop with surrounding border",
+              "front and back high-resolution scans or photos",
+              "four-corner front close-ups",
+              "four-corner back close-ups",
+              "angled holo-surface video",
+              "fresh possession continuity sequence",
+              "seller trust proof or bond recommendation"
+            ],
+            "overlays": [
+              "NR-D if the offer is slabbed",
+              "NR-E if seller trust is thin, new, or not portable",
+              "NR-E because seller trust is thin or not portable"
+            ],
+            "attention_cost_note": "High-value evidence asks can justify seller attention, verifier review, and human interruption.",
+            "not_claiming": [
+              "seller possession",
+              "authenticity",
+              "condition",
+              "no-rarity truth without evidence",
+              "price truth"
+            ]
+          }
+        },
+        {
+          "name": "Mewtwo with declared slab-level evidence",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Mewtwo",
+            "stance": "want",
+            "evidence_level": "NR-D",
+            "seller_trust": "thin"
+          },
+          "expected": "human_or_verifier_review",
+          "outcome": "human_or_verifier_review",
+          "pass": true,
+          "result": {
+            "decision": "human_or_verifier_review",
+            "human_summary": "A high-value slab/cert claim from thin trust needs review before funding.",
+            "card_ref": "PMCG1-050",
+            "card": {
+              "ja": "ミュウツー",
+              "romaji": "Myuutsuu",
+              "en": "Mewtwo"
+            },
+            "missing": [
+              "slab front image",
+              "slab back image",
+              "label close-up",
+              "cert lookup screenshot or signed lookup receipt",
+              "card front/back visible through slab"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth",
+              "slab/cert label correctness",
+              "cert lookup consistency",
+              "slab/card continuity"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Off-set slabbed Espeon claim must not bind to a row",
+          "tool": "interpret_human_text",
+          "args": {
+            "text": "I want a PSA No Rarity Espeon slab with cert trail",
+            "limit": 4
+          },
+          "expected": "no_in_set_match",
+          "outcome": "no_in_set_match",
+          "pass": true,
+          "result": {
+            "inferred_stance": "want",
+            "top_candidates": [],
+            "agent_next": [
+              "tell the human which terms had no in-set match",
+              "confirm whether they meant a different set or era",
+              "do not attach this intent to a different catalog row without explicit confirmation"
+            ],
+            "boundary": "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
+          }
+        }
+      ]
+    },
+    {
+      "trader_id": "shop_dealer_seller",
+      "name": "Local Shop Dealer Seller",
+      "aperture": "Can reuse shop proof and may offer local handoff.",
+      "pressure": "Does seller posture require explicit public sharing and bounded proof?",
+      "attempts": [
+        {
+          "name": "Public sell posture not yet authorized",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Blastoise",
+            "stance": "sell_if_price_right",
+            "evidence_level": "NR-B",
+            "seller_trust": "known",
+            "public": false
+          },
+          "expected": "hold_private",
+          "outcome": "hold_private",
+          "pass": true,
+          "result": {
+            "decision": "hold_private",
+            "human_summary": "This can become a sell posture, but public sharing needs an explicit yes.",
+            "card_ref": "PMCG1-032",
+            "card": {
+              "ja": "カメックス",
+              "romaji": "Kamekkusu",
+              "en": "Blastoise"
+            },
+            "missing": [
+              "public sharing permission"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Authorized sell posture for mid-value Double Colorless",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Double Colorless Energy",
+            "stance": "sell_if_price_right",
+            "evidence_level": "NR-B",
+            "seller_trust": "known",
+            "public": true
+          },
+          "expected": "low_friction_pass",
+          "outcome": "low_friction_pass",
+          "pass": true,
+          "result": {
+            "decision": "continue",
+            "human_summary": "The catalog row is legible. It is not physical-card proof.",
+            "card_ref": "PMCG1-096",
+            "card": {
+              "ja": "無色2個エネルギー",
+              "romaji": "Mushoku 2-ko Enerugii",
+              "en": "Double Colorless Energy"
+            },
+            "missing": [],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        }
+      ]
+    },
+    {
+      "trader_id": "low_friction_collector_seller",
+      "name": "Duplicate Collector-Seller",
+      "aperture": "Will document once, but attention must be worth it.",
+      "pressure": "Can the agent start with private memory and delay heavy evidence until demand is real?",
+      "attempts": [
+        {
+          "name": "Might sell Blastoise from natural language",
+          "tool": "interpret_human_text",
+          "args": {
+            "text": "I might sell my no rarity Blastoise if someone serious asks",
+            "limit": 4
+          },
+          "expected": "stance:sell_if_price_right",
+          "outcome": "stance:sell_if_price_right",
+          "pass": true,
+          "result": {
+            "inferred_stance": "sell_if_price_right",
+            "top_candidates": [
+              {
+                "card_ref": "PMCG1-032",
+                "name": {
+                  "ja": "カメックス",
+                  "romaji": "Kamekkusu",
+                  "en": "Blastoise"
+                }
+              }
+            ],
+            "agent_next": [
+              "confirm public/private posture",
+              "request only value-appropriate evidence",
+              "price seller attention if needed"
+            ],
+            "boundary": "Interpretation is a proposal. The human or agent must confirm before public sharing, funding, or spendability."
+          }
+        },
+        {
+          "name": "Have extra Magikarp private memory",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Magikarp",
+            "stance": "have_extra",
+            "evidence_level": "none",
+            "seller_trust": "known",
+            "public": false
+          },
+          "expected": "hold_private",
+          "outcome": "hold_private",
+          "pass": true,
+          "result": {
+            "decision": "hold_private",
+            "human_summary": "This can become a sell posture, but public sharing needs an explicit yes.",
+            "card_ref": "PMCG1-031",
+            "card": {
+              "ja": "コイキング",
+              "romaji": "Koikingu",
+              "en": "Magikarp"
+            },
+            "missing": [
+              "public sharing permission"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Seller attention plan",
+          "tool": "evidence_plan",
+          "args": {
+            "card_ref": "Magikarp",
+            "posture": "sell_if_price_right",
+            "seller_trust": "known"
+          },
+          "expected": "public_permission_named",
+          "outcome": "public_permission_named",
+          "pass": true,
+          "result": {
+            "card_ref": "PMCG1-031",
+            "card": {
+              "ja": "コイキング",
+              "romaji": "Koikingu",
+              "en": "Magikarp"
+            },
+            "evidence": [
+              "full front image",
+              "full back image",
+              "sharp lower-right rarity-symbol crop with surrounding border",
+              "fresh nonce possession image",
+              "source-family or provenance note for unresolved missing-symbol overlap",
+              "explicit public-sharing permission for any photos and condition notes"
+            ],
+            "overlays": [
+              "NR-D if the offer is slabbed",
+              "NR-E if seller trust is thin, new, or not portable"
+            ],
+            "attention_cost_note": "Seller attention should be priced or reserved for funded/serious buyers; credit-back can be negotiated.",
+            "not_claiming": [
+              "seller possession",
+              "authenticity",
+              "condition",
+              "no-rarity truth without evidence",
+              "price truth"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "trader_id": "adversarial_seller",
+      "name": "Adversarial Seller",
+      "aperture": "Tries plausible No Rarity fraud and scope laundering.",
+      "pressure": "Do the tools refuse shortcut claims before protocol spendability?",
+      "attempts": [
+        {
+          "name": "Basic Energy premium No Rarity claim",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Fighting Energy",
+            "stance": "want",
+            "evidence_level": "NR-C",
+            "seller_trust": "known"
+          },
+          "expected": "reject_premium_no_rarity",
+          "outcome": "reject_premium_no_rarity",
+          "pass": true,
+          "result": {
+            "decision": "reject_premium_no_rarity",
+            "human_summary": "This row is tracked for completeness, but it should not carry a premium No Rarity claim by itself.",
+            "card_ref": "PMCG1-102",
+            "card": {
+              "ja": "エネルギーとの戦い",
+              "romaji": "",
+              "en": "Fighting Energy"
+            },
+            "missing": [
+              "separate provenance story if seller claims a premium"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        },
+        {
+          "name": "Quick Starter-sensitive Potion laundering",
+          "tool": "evidence_plan",
+          "args": {
+            "card_ref": "Potion",
+            "posture": "sell_if_price_right",
+            "seller_trust": "thin"
+          },
+          "expected": "quick_starter_wall_named",
+          "outcome": "quick_starter_wall_named",
+          "pass": true,
+          "result": {
+            "card_ref": "PMCG1-071",
+            "card": {
+              "ja": "きずぐすり",
+              "romaji": "Kizugusuri",
+              "en": "Potion"
+            },
+            "evidence": [
+              "full front and full back images",
+              "sharp lower-right rarity-symbol crop with surrounding border",
+              "front and back scans or high-resolution photos",
+              "front and back corner close-ups if condition affects price",
+              "fresh nonce possession image",
+              "seller proof reuse if trust is thin",
+              "Quick Starter text-check: compare the Japanese text layout line-by-line against a known Expansion Pack exemplar before treating the missing-symbol claim as clean.",
+              "readable Japanese text-layout close-up for Quick Starter comparison"
+            ],
+            "overlays": [
+              "NR-D if the offer is slabbed",
+              "NR-E if seller trust is thin, new, or not portable",
+              "NR-E because seller trust is thin or not portable"
+            ],
+            "attention_cost_note": "Seller attention should be priced or reserved for funded/serious buyers; credit-back can be negotiated.",
+            "not_claiming": [
+              "seller possession",
+              "authenticity",
+              "condition",
+              "no-rarity truth without evidence",
+              "price truth"
+            ]
+          }
+        },
+        {
+          "name": "Catalog-match-as-possession attack on Charizard",
+          "tool": "evaluate_gate",
+          "args": {
+            "card_ref": "Charizard",
+            "stance": "want",
+            "evidence_level": "none",
+            "seller_trust": "known"
+          },
+          "expected": "request_evidence",
+          "outcome": "request_evidence",
+          "pass": true,
+          "result": {
+            "decision": "request_evidence",
+            "human_summary": "This is a plausible want, but the evidence floor is not met.",
+            "card_ref": "PMCG1-021",
+            "card": {
+              "ja": "リザードン",
+              "romaji": "Rizaadon",
+              "en": "Charizard"
+            },
+            "missing": [
+              "full front and full back images",
+              "sharp lower-right rarity-symbol crop with surrounding border",
+              "front and back high-resolution scans or photos",
+              "four-corner front close-ups",
+              "four-corner back close-ups"
+            ],
+            "legible": [
+              "catalog row",
+              "No Rarity target/caveat status",
+              "recommended evidence profile"
+            ],
+            "judgment_needed": [
+              "seller possession",
+              "physical-card authenticity",
+              "physical-card No Rarity truth",
+              "condition band",
+              "price truth"
+            ],
+            "protocol_boundary": "This evaluation can prepare actions. It cannot authorize spendability or prove the physical card."
+          }
+        }
+      ]
+    }
+  ],
+  "mutation_proofs": [
+    {
+      "mutation": "weaken_request_evidence_to_low_friction",
+      "target": "classify_outcome: treat request_evidence decisions as low_friction_pass",
+      "expected_detection": "at least one evidence-wall case fails its expected label",
+      "detected": true,
+      "failing_cases": [
+        {
+          "trader_id": "holo_grail_buyer",
+          "attempt": "Charizard with low evidence from thin seller",
+          "expected": "request_evidence",
+          "observed": "low_friction_pass"
+        },
+        {
+          "trader_id": "adversarial_seller",
+          "attempt": "Catalog-match-as-possession attack on Charizard",
+          "expected": "request_evidence",
+          "observed": "low_friction_pass"
+        }
+      ]
+    }
+  ]
+}

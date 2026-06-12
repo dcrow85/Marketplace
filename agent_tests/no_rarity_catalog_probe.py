@@ -78,8 +78,12 @@ def run_direct_probe() -> dict[str, Any]:
     bulbasaur = dispatch("get_card", {"card_ref": "PMCG1-001"})["card"]
     assert_true(bulbasaur["variant_traps"] == [], "Bulbasaur should exercise a blank variant_traps row")
     assert_true(
-        bulbasaur["variant_trap_status"] == "unexamined_or_no_cataloged_trap",
-        "blank variant_traps should not surface as checked clean",
+        bulbasaur["variant_trap_status"] == "uncleared_symbol_overlap",
+        "blank variant_traps should surface unresolved symbol-overlap status, not clean",
+    )
+    assert_true(
+        bulbasaur["symbol_overlap_unresolved"],
+        "Bulbasaur should name unresolved source-family overlap from the matrix",
     )
 
     return {
@@ -93,6 +97,7 @@ def run_direct_probe() -> dict[str, Any]:
         "cross_set_candidate_source": cross_set["candidate_source"],
         "slab_decision": slab["decision"],
         "variant_trap_status": bulbasaur["variant_trap_status"],
+        "symbol_overlap_unresolved": len(bulbasaur["symbol_overlap_unresolved"]),
     }
 
 

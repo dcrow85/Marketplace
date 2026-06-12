@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"carrier\":\"simulated_usps\",\"delivered\":true,\"delivery_signal\":\"carrier_delivery_scan\",\"schema\":\"marketplace.delivery_evidence.v0.2\",\"tracking\":\"SIM-HAPPY-0001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "carrier": "simulated_usps",
+    "delivered": true,
+    "delivery_signal": "carrier_delivery_scan",
+    "schema": "marketplace.delivery_evidence.v0.2",
+    "tracking": "SIM-HAPPY-0001",
+    "trade_id": 1
+  },
+  "payload_hash": "0x61d65d4a617114f5a2bf5003000124c34d5ec625c58d817f9c4cd5b766b9e9d1",
+  "signature": "0xeaff21e502ed98e5fd9b6f2cda8189b634a29db663ab6db1534a81d44ab16a980a32d8498b9f79ed74815a5366f2b34a63c788736320bf97fd0ffa73aaf6b00a1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

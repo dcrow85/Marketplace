@@ -43,6 +43,7 @@ class TrustImportCase:
     trade_value_usd: int
     requested_bond_relief_usd: int
     acquisition_cost_estimate_usd: int
+    cost_to_fake_band: str
     surfaces: list[dict[str, Any]]
     observed_sales: list[dict[str, Any]]
     account_age_years: float
@@ -109,6 +110,20 @@ def base_bond_usd(case: TrustImportCase) -> int:
 
 def minimum_bond_floor_usd(case: TrustImportCase) -> int:
     return int(math.ceil(case.trade_value_usd * 0.10))
+
+
+COST_TO_FAKE_FLOORS_USD = {
+    "cheap": 50,
+    "moderate": 350,
+    "high": 1200,
+    "very_high": 2500,
+}
+
+
+def cost_to_fake_floor_usd(case: TrustImportCase) -> int:
+    if case.cost_to_fake_band not in COST_TO_FAKE_FLOORS_USD:
+        raise ValueError(f"unknown cost_to_fake band: {case.cost_to_fake_band}")
+    return COST_TO_FAKE_FLOORS_USD[case.cost_to_fake_band]
 
 
 def scope_relief_cap_usd(case: TrustImportCase, scope: dict[str, Any]) -> int:
@@ -238,10 +253,11 @@ def legibility_vector(case: TrustImportCase, scope: dict[str, Any]) -> dict[str,
                 "not_claiming": scope["not_claiming"],
             },
             "cost_to_fake": {
-                "estimate_band": f"${case.acquisition_cost_estimate_usd}",
-                "rationale": "estimated acquisition or fabrication cost of the imported reputation bundle",
-                "unpriced_attack_paths": ["private_account_sale", "undetected_operator_change"],
-                "not_claiming": ["objective_market_price", "fraud_impossible"],
+                "estimate_band": case.cost_to_fake_band,
+                "floor_usd": cost_to_fake_floor_usd(case),
+                "rationale": "conservative floor for fabricating or substituting a convincing card/evidence package at this trade's evidence profile",
+                "unpriced_attack_paths": ["private_account_sale", "undetected_operator_change", "unknown_counterfeit_supply"],
+                "not_claiming": ["objective_market_price", "fraud_impossible", "exact_counterfeit_cost"],
             },
             "source_calibration": {
                 "cohort_ref": f"external_import_shape:{scope['status']}",
@@ -314,7 +330,8 @@ def evaluate_case(case: TrustImportCase) -> dict[str, Any]:
     cap = max(0, min(case.requested_bond_relief_usd, acquisition_cap, scope_cap, base_bond - floor))
     applied_relief = cap
     remaining_bond = base_bond - applied_relief
-    exit_scam_ev = case.trade_value_usd - remaining_bond - case.acquisition_cost_estimate_usd
+    fake_floor = cost_to_fake_floor_usd(case)
+    exit_scam_ev = case.trade_value_usd - fake_floor - remaining_bond - case.acquisition_cost_estimate_usd
     packet = import_packet(case, observed_at, expires_at, scope, cap, applied_relief)
     vector = legibility_vector(case, scope)
 
@@ -364,6 +381,8 @@ def evaluate_case(case: TrustImportCase) -> dict[str, Any]:
         "minimum_bond_floor_usd": floor,
         "requested_bond_relief_usd": case.requested_bond_relief_usd,
         "acquisition_cost_estimate_usd": case.acquisition_cost_estimate_usd,
+        "cost_to_fake_band": case.cost_to_fake_band,
+        "cost_to_fake_floor_usd": fake_floor,
         "scope_relief_cap_usd": scope_cap,
         "final_bond_relief_cap_usd": cap,
         "applied_bond_relief_usd": applied_relief,
@@ -431,6 +450,7 @@ def fixtures() -> list[TrustImportCase]:
             trade_value_usd=400,
             requested_bond_relief_usd=120,
             acquisition_cost_estimate_usd=1200,
+            cost_to_fake_band="moderate",
             surfaces=[
                 {
                     "source_type": "ebay_profile",
@@ -465,6 +485,7 @@ def fixtures() -> list[TrustImportCase]:
             trade_value_usd=640,
             requested_bond_relief_usd=600,
             acquisition_cost_estimate_usd=500,
+            cost_to_fake_band="cheap",
             surfaces=[
                 {
                     "source_type": "ebay_profile",
@@ -490,6 +511,7 @@ def fixtures() -> list[TrustImportCase]:
             trade_value_usd=1500,
             requested_bond_relief_usd=500,
             acquisition_cost_estimate_usd=2500,
+            cost_to_fake_band="high",
             surfaces=[
                 {
                     "source_type": "tcgplayer_profile",
@@ -515,6 +537,7 @@ def fixtures() -> list[TrustImportCase]:
             trade_value_usd=350,
             requested_bond_relief_usd=80,
             acquisition_cost_estimate_usd=900,
+            cost_to_fake_band="moderate",
             surfaces=[
                 {
                     "source_type": "shop_domain",
@@ -558,6 +581,7 @@ def fixtures() -> list[TrustImportCase]:
             trade_value_usd=1800,
             requested_bond_relief_usd=600,
             acquisition_cost_estimate_usd=600,
+            cost_to_fake_band="cheap",
             surfaces=[
                 {
                     "source_type": "ebay_profile",
@@ -584,6 +608,41 @@ def fixtures() -> list[TrustImportCase]:
             feedback_percent=99.1,
             ownership_history_attested=False,
             expected_flags={"continuity_seam", "positive_exit_scam_ev", "source_fragility"},
+        ),
+        TrustImportCase(
+            case_id="expensive_to_fake_high_value_deterred",
+            description="A high-value trade with an expensive-to-fake evidence floor no longer fires the exit-scam flag by default.",
+            seller_ref="seller:forensic-floor",
+            trade_value_usd=1800,
+            requested_bond_relief_usd=600,
+            acquisition_cost_estimate_usd=600,
+            cost_to_fake_band="high",
+            surfaces=[
+                {
+                    "source_type": "ebay_profile",
+                    "url_or_handle": "https://example.invalid/ebay/forensic-floor",
+                    "nonce_location": "about_me",
+                    "controlling_party": "marketplace_platform_and_seller",
+                    "has_feedback": True,
+                    "has_age": True,
+                    "identity_match": "seller_nonce_present",
+                },
+                {
+                    "source_type": "shop_domain",
+                    "url_or_handle": "https://forensic-floor.example.invalid",
+                    "nonce_location": "well_known",
+                    "controlling_party": "seller_shop",
+                    "has_feedback": False,
+                    "has_age": True,
+                    "identity_match": "domain_nonce_present",
+                },
+            ],
+            observed_sales=[{"tier": "high", "count": 5}, {"tier": "mid", "count": 48}],
+            account_age_years=4.0,
+            feedback_count=900,
+            feedback_percent=99.4,
+            ownership_history_attested=False,
+            expected_flags={"continuity_seam", "source_fragility"},
         ),
     ]
 
@@ -651,6 +710,7 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
                 f"- Base bond: `${result['base_bond_usd']}`",
                 f"- Requested imported relief: `${result['requested_bond_relief_usd']}`",
                 f"- Acquisition-cost estimate: `${result['acquisition_cost_estimate_usd']}`",
+                f"- Cost-to-fake band/floor: `{result['cost_to_fake_band']}` / `${result['cost_to_fake_floor_usd']}`",
                 f"- Scope relief cap: `${result['scope_relief_cap_usd']}`",
                 f"- Final relief cap: `${result['final_bond_relief_cap_usd']}`",
                 f"- Applied relief: `${result['applied_bond_relief_usd']}`",

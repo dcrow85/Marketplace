@@ -1,0 +1,19 @@
+{
+  "canonical_payload": "{\"actor_id\":\"did:market:verifier:anvil-3\",\"bond_eth\":\"0.5\",\"independence\":\"not_seller_controlled\",\"schema\":\"marketplace.verifier_record.v0.2\",\"scope\":[\"tcg_image_review\",\"shipping_packet_review\",\"claim_packet_assembly\"]}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "actor_id": "did:market:verifier:anvil-3",
+    "bond_eth": "0.5",
+    "independence": "not_seller_controlled",
+    "schema": "marketplace.verifier_record.v0.2",
+    "scope": [
+      "tcg_image_review",
+      "shipping_packet_review",
+      "claim_packet_assembly"
+    ]
+  },
+  "payload_hash": "0x9b58f9b34334a5099078df708ba4fd129f1007994ddee0b361570a0c711f6f22",
+  "signature": "0x623970b2534ed3738239a8b31d77e744427e9aaaf30c7b5a0240f208cedba0fd36e041ab7f84a8f46f365ab1fc0b9d65b02b9d6caf3432f355d1717fdef53d631c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

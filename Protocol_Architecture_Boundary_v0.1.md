@@ -52,13 +52,13 @@ only by funds/liveness + mechanizability.
 | AUD-D6-001 | JudgmentSupplyCommitment was not bound | **fixed in code** | `createTrade` now requires a nonzero per-trade `jscHash` and registered floor executor; the contract anchors the hash while SLA/fee/remedy/conflict content remains off-chain. |
 | AUD-D6-004 | conflict / SLA / fee / remedy metadata not parsed | **documented off-chain** | inherently legible judgment; disclose, and measure conflict/SLA quality via the legibility vector + calibration. |
 | AUD-D2-SW-001/002 | wall-bundle / assembly-history graph coherence | **documented off-chain (keep)** | already anchors the hashes; coherence is graph validation, not a mechanical check. On-chain would overclaim. Disclosure already corrected (AUD-D9-001). |
-| AUD-D5-001 | exit-scam EV omits `cost_to_fake` | **off-chain model fix** | the EV is an off-chain agent model; wire `cost_to_fake` from the legibility vector so the deterrence signal discriminates. |
-| AUD-D8-001 | missing-symbol overlap matrix not wired | **off-chain tool fix** | derive `variant_traps` from `prints_without_rarity_symbol` so a blank trap list means "checked and ruled out." Catalog-tool layer. |
-| AUD-D7-002 | row policy still inside the fact-catalog hash | **off-chain catalog fix** | finish the fact/policy unbundling; structural, not on-chain. |
+| AUD-D5-001 | exit-scam EV omits `cost_to_fake` | **fixed in off-chain model** | the EV now subtracts conservative `cost_to_fake` floors from the legibility vector band, so cheap-to-fake and expensive-to-fake trades separate instead of firing one blanket warning. |
+| AUD-D8-001 | missing-symbol overlap matrix not wired | **fixed in catalog tool** | `prints_without_rarity_symbol` is now a machine-readable, manifest-pinned matrix; `variant_trap_status` is derived from overlap clearance, so blank traps no longer mean unexamined clean. |
+| AUD-D7-002 | row policy still inside the fact-catalog hash | **fixed in catalog split** | row `agent_decision_profile` and support policy now live in the policy artifact; fact catalog bytes contain no policy-shaped paths. |
 | AUD-D7-003 | challenger independence is self-declared | **documented off-chain frontier** | genuine independence cannot be mechanically proven; measure it through the calibration loop, never claim it. |
 | AUD-D4-002 | no intent->spendability promotion path yet | **gate + re-audit** | build the path WITH the legible/spendable boundary (a tool decision must require a separate named spendability authority), then re-run Domain 4. |
-| AUD-D3-001 | gaps G4 (Identity), G7 (Time) lack a negative case | **audit hygiene** | add the two negative scenarios before the gap taxonomy is presented as complete. |
-| AUD-D10-001 | two drills carry self-grading risk | **audit hygiene** | mutation-test the trader tournament and seller-bootstrap drill before citing as network evidence. |
+| AUD-D3-001 | gaps G4 (Identity), G7 (Time) lack a negative case | **fixed in audit hygiene** | the gap negative drill now covers G1-G7, including key-is-not-person and snapshot-not-process cases. |
+| AUD-D10-001 | two drills carry self-grading risk | **fixed in audit hygiene** | trader tournament and seller-bootstrap now emit mutation proofs that detect deliberately weakened guards. |
 
 Net: the launch-gating Domain 6 spine has landed: **two true on-chain binds**
 (D6-002 liveness, D6-003 scope-match), **one on-chain anchor** (D6-001 JSC
@@ -97,14 +97,15 @@ Before value-bearing alpha:
 - DISCLOSE: every off-chain obligation in the table is named in the spec/API/
   agent layer as a caller/validator responsibility, not an escrow guarantee.
 - MEASURE: cost_to_fake is wired into the EV (D5-001) and the legibility +
-  calibration loop covers the off-chain judgments.
+  calibration loop covers the off-chain judgments. (Landed.)
 - FALSIFY: the audit hygiene items (D3-001 gap cases, D10-001 drill mutations)
-  are closed, so the falsification is complete.
+  are closed, so the falsification is complete. (Landed.)
 ```
 
-The BIND and ANCHOR items have landed; value-bearing trades must still surface
-the remaining off-chain JSC content boundary (conflict, SLA, fee, remedy policy,
-calibration) as caller/validator responsibility rather than escrow enforcement.
+The BIND, ANCHOR, MEASURE, and FALSIFY launch-gate items have landed. Value-
+bearing trades must still surface the remaining off-chain JSC content boundary
+(conflict, SLA, fee, remedy policy, calibration) as caller/validator
+responsibility rather than escrow enforcement.
 
 ## Open questions
 

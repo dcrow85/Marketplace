@@ -45,10 +45,10 @@ def utc_stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def run_attempt(attempt: Attempt) -> Attempt:
+def run_attempt(attempt: Attempt, *, mutation: str | None = None) -> Attempt:
     result = dispatch(attempt.tool, attempt.args)
     attempt.result = compact_result(result)
-    attempt.outcome = classify_outcome(attempt, result)
+    attempt.outcome = classify_outcome(attempt, result, mutation=mutation)
     attempt.pass_ = attempt.outcome == attempt.expected
     return attempt
 
@@ -107,9 +107,11 @@ def compact_result(result: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
-def classify_outcome(attempt: Attempt, result: dict[str, Any]) -> str:
+def classify_outcome(attempt: Attempt, result: dict[str, Any], *, mutation: str | None = None) -> str:
     if result.get("action") == "evaluate_gate":
         decision = result["decision"]
+        if mutation == "weaken_request_evidence_to_low_friction" and decision == "request_evidence":
+            return "low_friction_pass"
         if decision in {
             "request_evidence",
             "human_or_verifier_review",
@@ -301,10 +303,10 @@ def tournament() -> list[Trader]:
     ]
 
 
-def run_tournament() -> dict[str, Any]:
+def run_tournament(*, mutation: str | None = None) -> dict[str, Any]:
     traders = tournament()
     for trader in traders:
-        trader.attempts = [run_attempt(attempt) for attempt in trader.attempts]
+        trader.attempts = [run_attempt(attempt, mutation=mutation) for attempt in trader.attempts]
     total = sum(len(trader.attempts) for trader in traders)
     passed = sum(1 for trader in traders for attempt in trader.attempts if attempt.pass_)
     failures = [
@@ -322,6 +324,7 @@ def run_tournament() -> dict[str, Any]:
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "pass": not failures,
+        "mutation": mutation,
         "attempts": total,
         "passed": passed,
         "failures": failures,
@@ -349,6 +352,36 @@ def run_tournament() -> dict[str, Any]:
     }
 
 
+def mutation_proofs() -> list[dict[str, Any]]:
+    proofs = []
+    mutations = [
+        {
+            "mutation": "weaken_request_evidence_to_low_friction",
+            "target": "classify_outcome: treat request_evidence decisions as low_friction_pass",
+            "expected_detection": "at least one evidence-wall case fails its expected label",
+        }
+    ]
+    for mutation in mutations:
+        summary = run_tournament(mutation=mutation["mutation"])
+        detected = not summary["pass"] and bool(summary["failures"])
+        proofs.append(
+            {
+                **mutation,
+                "detected": detected,
+                "failing_cases": [
+                    {
+                        "trader_id": failure["trader_id"],
+                        "attempt": failure["attempt"],
+                        "expected": failure["expected"],
+                        "observed": failure["observed"],
+                    }
+                    for failure in summary["failures"]
+                ],
+            }
+        )
+    return proofs
+
+
 def report_lines(summary: dict[str, Any]) -> list[str]:
     lines = [
         f"# No Rarity Trader Tournament: {summary['generated_at']}",
@@ -357,6 +390,7 @@ def report_lines(summary: dict[str, Any]) -> list[str]:
         "",
         f"- Pass: `{summary['pass']}`",
         f"- Attempts: `{summary['passed']}/{summary['attempts']}`",
+        f"- Mutation proofs passed: `{all(proof['detected'] for proof in summary.get('mutation_proofs', []))}`",
         "",
         "## Trader Results",
         "",
@@ -402,19 +436,47 @@ def report_lines(summary: dict[str, Any]) -> list[str]:
             lines.append(
                 f"- {failure['trader_id']} / {failure['attempt']}: expected `{failure['expected']}`, observed `{failure['observed']}`"
             )
+    if summary.get("mutation_proofs"):
+        lines.extend(["", "## Mutation Proofs", ""])
+        for proof in summary["mutation_proofs"]:
+            lines.extend(
+                [
+                    f"### {proof['mutation']}",
+                    "",
+                    f"- Target: {proof['target']}",
+                    f"- Expected detection: {proof['expected_detection']}",
+                    f"- Detected: `{proof['detected']}`",
+                    "- Failing cases:",
+                ]
+            )
+            for case in proof["failing_cases"]:
+                lines.append(
+                    f"  - `{case['trader_id']}` / {case['attempt']}: expected `{case['expected']}`, observed `{case['observed']}`"
+                )
     return lines
 
 
 def main() -> int:
     summary = run_tournament()
+    summary["mutation_proofs"] = mutation_proofs()
+    summary["pass"] = summary["pass"] and all(proof["detected"] for proof in summary["mutation_proofs"])
     run_dir = RUNS / f"no_rarity_trader_tournament_{utc_stamp()}"
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     (run_dir / "REPORT.md").write_text("\n".join(report_lines(summary)) + "\n", encoding="utf-8")
-    print(json.dumps({"run_dir": str(run_dir), "pass": summary["pass"], "attempts": summary["attempts"]}, indent=2))
+    print(
+        json.dumps(
+            {
+                "run_dir": str(run_dir),
+                "pass": summary["pass"],
+                "attempts": summary["attempts"],
+                "mutation_proofs": summary["mutation_proofs"],
+            },
+            indent=2,
+        )
+    )
     return 0 if summary["pass"] else 1
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

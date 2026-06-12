@@ -1,0 +1,167 @@
+{
+  "schema": "marketplace.pre_english_symbol_status_matrix.v0.1",
+  "generated_from": "Japanese_Pre_English_Release_Map_v0.1.md",
+  "generated_at": "2026-06-12T00:00:00Z",
+  "boundary": "Release-family symbol status is a matrix for agent caution. It is not row-level proof, seller possession proof, or authentication.",
+  "overlap_rule": "A missing-symbol No Rarity claim is uncleared when a yes, mixed, or unverified family has mapped contents overlapping the row and no row-specific ruling excludes it. The primary Expansion Pack lane is not itself a trap.",
+  "not_claiming": [
+    "row_level_source_truth",
+    "seller_possession",
+    "authenticity",
+    "condition_truth",
+    "complete_pre_english_catalog"
+  ],
+  "release_families": [
+    {
+      "release_family_id": "jp_tcg_expansion_pack_19961020",
+      "release_family": "Expansion Pack",
+      "prints_without_rarity_symbol": "mixed",
+      "confidence": "high",
+      "trap_consequence": "Primary No Rarity Base lane; do not count this family as a collision source for its own PMCG1 rows.",
+      "overlap_scope": "primary_lane"
+    },
+    {
+      "release_family_id": "jp_tcg_starter_pack_19961020",
+      "release_family": "Starter Pack",
+      "prints_without_rarity_symbol": "mixed",
+      "confidence": "medium-high",
+      "trap_consequence": "Source-family ambiguity for active non-Energy PMCG1 rows because early starter decks can contain random Expansion Pack cards.",
+      "overlap_scope": "all_active_base_rows"
+    },
+    {
+      "release_family_id": "jp_tcg_gift_pack_19961212",
+      "release_family": "Gift Pack",
+      "prints_without_rarity_symbol": "unverified",
+      "confidence": "medium",
+      "trap_consequence": "May inherit Starter Pack risk through included Starter Decks; unresolved until product contents are row-mapped.",
+      "overlap_scope": "all_active_base_rows"
+    },
+    {
+      "release_family_id": "jp_tcg_jungle_19970305",
+      "release_family": "Jungle",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Post-Base comparison source, not a No Rarity source.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+      "release_family": "Mystery of the Fossils",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Post-Base comparison source, not a No Rarity source.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_rocket_gang_19971121",
+      "release_family": "Rocket Gang",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Post-Base comparison source, not a No Rarity source.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+      "release_family": "Team Rocket Gift Pack",
+      "prints_without_rarity_symbol": "unverified",
+      "confidence": "medium",
+      "trap_consequence": "Unresolved deck-product symbol status; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+      "release_family": "Expansion Sheet Series 1 Blue",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Vending cards are glossy and not the Base No Rarity lane.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_expansion_sheet_2_red_19980617",
+      "release_family": "Expansion Sheet Series 2 Red",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Vending cards are glossy and not the Base No Rarity lane.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+      "release_family": "Expansion Sheet Series 3 Green",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Vending cards are glossy and not the Base No Rarity lane.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+      "release_family": "Nivi City Gym / Brock",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium-high",
+      "trap_consequence": "Gym deck missing-symbol lane; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+      "release_family": "Hanada City Gym / Misty",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium-high",
+      "trap_consequence": "Gym deck missing-symbol lane; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+      "release_family": "Kuchiba City Gym / Lt. Surge",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium-high",
+      "trap_consequence": "Gym deck missing-symbol lane; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+      "release_family": "Tamamushi City Gym / Erika",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium-high",
+      "trap_consequence": "Gym deck missing-symbol lane; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_leaders_stadium_19981024",
+      "release_family": "Leaders' Stadium",
+      "prints_without_rarity_symbol": "no",
+      "confidence": "high",
+      "trap_consequence": "Booster cards have rarity symbols; missing-symbol gym cards belong to deck lanes.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+      "release_family": "Quick Starter Gift Set",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "high",
+      "trap_consequence": "Hard trap lane for five Base Trainer lookalikes.",
+      "overlap_scope": "explicit_row_ids",
+      "overlap_row_ids": [
+        "PMCG1-071",
+        "PMCG1-072",
+        "PMCG1-073",
+        "PMCG1-076",
+        "PMCG1-093"
+      ]
+    },
+    {
+      "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+      "release_family": "Pokemon Trading Card Game for Game Boy Color",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium",
+      "trap_consequence": "Promo structure, not a Base-style No Rarity variant; no PMCG1 row overlap is mapped.",
+      "overlap_scope": "none"
+    },
+    {
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "release_family": "Pokemon Song Best Collection",
+      "prints_without_rarity_symbol": "yes",
+      "confidence": "medium",
+      "trap_consequence": "Promo/reprint CD cards; no PMCG1 row overlap is mapped in this release matrix.",
+      "overlap_scope": "none"
+    }
+  ]
+}

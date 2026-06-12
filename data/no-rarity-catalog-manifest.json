@@ -4,20 +4,21 @@
     "on_chain_anchor_status": "not_anchored_yet"
   },
   "bundle": {
-    "bundle_hash": "52730fd4d6cbf4c46790f76ceeb98ea76fc3e733f336aff5cacc6591dda7016e",
+    "bundle_hash": "d4c36101fb1d092b030d738985ac91e9a62e6611f436e860b3a75970b6135914",
     "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
     "hash_algorithm": "sha256",
     "preimage": {
-      "catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
-      "policy_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+      "catalog_hash": "9d17b8bf8f249e98ed0796411f9fbf1c3004f0f936b1d9db1ad55db56f2d61d8",
+      "policy_hash": "73897dcd4bf574230494ee6cf2f1775f058b3f4a78b9b08f8077899db23705df",
       "release_family": "no_rarity_base_set",
-      "schema": "marketplace.catalog_release_bundle.v0.1"
+      "schema": "marketplace.catalog_release_bundle.v0.1",
+      "symbol_status_hash": "5281124a98fa7f9c2489eab65858a8cee4a422e6f481efb823a9f41b7ccd1e60"
     }
   },
   "catalog": {
     "active_no_rarity_rows": 96,
     "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-    "catalog_hash": "02b979ccfd4ff215511f11b879b1251b81d6f8edecf7e876b26eabcdc14650c7",
+    "catalog_hash": "9d17b8bf8f249e98ed0796411f9fbf1c3004f0f936b1d9db1ad55db56f2d61d8",
     "caveat_rows": 6,
     "hash_algorithm": "sha256",
     "not_claiming": [
@@ -36,7 +37,7 @@
     "row_id_field": "tcgdex_id",
     "schema": "marketplace.no_rarity_base_set.v0.6"
   },
-  "generated_at": "2026-06-10T17:49:21Z",
+  "generated_at": "2026-06-12T17:24:00Z",
   "policy": {
     "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
     "hash_algorithm": "sha256",
@@ -49,9 +50,23 @@
       "spendability"
     ],
     "path": "data/no-rarity-catalog-policy.json",
-    "policy_hash": "7dd79f0d833084f956f2dc4800ebf37a0d4eb03bbad7fbd628c40034fd03faeb",
+    "policy_hash": "73897dcd4bf574230494ee6cf2f1775f058b3f4a78b9b08f8077899db23705df",
     "schema": "marketplace.no_rarity_catalog_policy.v0.1"
   },
-  "release_id": "no_rarity_base_set:02b979ccfd4ff215",
-  "schema": "marketplace.catalog_release_manifest.v0.1"
+  "release_id": "no_rarity_base_set:9d17b8bf8f249e98",
+  "schema": "marketplace.catalog_release_manifest.v0.1",
+  "symbol_status_matrix": {
+    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+    "hash_algorithm": "sha256",
+    "not_claiming": [
+      "row_level_source_truth",
+      "seller_possession",
+      "authenticity",
+      "condition_truth",
+      "complete_pre_english_catalog"
+    ],
+    "path": "data/pre-english-symbol-status.json",
+    "schema": "marketplace.pre_english_symbol_status_matrix.v0.1",
+    "symbol_status_hash": "5281124a98fa7f9c2489eab65858a8cee4a422e6f481efb823a9f41b7ccd1e60"
+  }
 }

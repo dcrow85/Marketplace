@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
 POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
 MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
+SYMBOL_STATUS_PATH = ROOT / "data" / "pre-english-symbol-status.json"
 
 PROFILE_RANK = {
     "NR-0": 0,
@@ -76,6 +77,11 @@ def load_manifest() -> dict[str, Any]:
     return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
+@lru_cache(maxsize=1)
+def load_symbol_status() -> dict[str, Any]:
+    return json.loads(SYMBOL_STATUS_PATH.read_text(encoding="utf-8"))
+
+
 def _canonical_hash(value: Any) -> str:
     payload = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
@@ -86,11 +92,13 @@ def catalog_release() -> dict[str, Any]:
     catalog = manifest.get("catalog", {})
     policy = manifest.get("policy", {})
     bundle = manifest.get("bundle", {})
+    symbol_matrix = manifest.get("symbol_status_matrix", {})
     return {
         "release_id": manifest.get("release_id"),
         "catalog_hash": catalog.get("catalog_hash"),
         "policy_hash": policy.get("policy_hash"),
         "bundle_hash": bundle.get("bundle_hash"),
+        "symbol_status_hash": symbol_matrix.get("symbol_status_hash"),
         "canonicalization": catalog.get("canonicalization"),
         "hash_algorithm": catalog.get("hash_algorithm"),
         "row_id_field": catalog.get("row_id_field"),
@@ -135,6 +143,11 @@ def _romaji(card: dict[str, Any]) -> str:
 
 
 def _profile(card: dict[str, Any]) -> dict[str, Any]:
+    row_id = _card_id(card)
+    policy = load_policy()
+    row_profiles = policy.get("row_agent_decision_profiles", {})
+    if row_id in row_profiles:
+        return row_profiles[row_id].get("agent_decision_profile", {})
     return card.get("agent_decision_profile", {})
 
 
@@ -146,11 +159,70 @@ def _pokemon_profile(card: dict[str, Any]) -> dict[str, Any]:
     return card.get("pokemon_profile", {})
 
 
+def _matrix_family_overlaps(card: dict[str, Any], family: dict[str, Any]) -> bool:
+    scope = family.get("overlap_scope")
+    if scope == "primary_lane" or scope == "none":
+        return False
+    if scope == "all_active_base_rows":
+        return bool(card.get("no_rarity_target")) and card.get("category") != "Energy"
+    if scope == "explicit_row_ids":
+        return _card_id(card) in set(family.get("overlap_row_ids", []))
+    return False
+
+
+def variant_trap_context(card: dict[str, Any]) -> dict[str, Any]:
+    explicit_traps = card.get("variant_traps", [])
+    if not card.get("no_rarity_target"):
+        return {
+            "variant_traps": explicit_traps,
+            "variant_trap_status": "not_active_no_rarity_target",
+            "symbol_overlap_unresolved": [],
+            "symbol_matrix_boundary": "This row is a caveat row, not an active premium No Rarity target.",
+        }
+
+    unresolved: list[dict[str, Any]] = []
+    matrix = load_symbol_status()
+    for family in matrix.get("release_families", []):
+        symbol_status = family.get("prints_without_rarity_symbol")
+        if symbol_status not in {"yes", "mixed", "unverified"}:
+            continue
+        if not _matrix_family_overlaps(card, family):
+            continue
+        unresolved.append(
+            {
+                "release_family_id": family.get("release_family_id"),
+                "release_family": family.get("release_family"),
+                "prints_without_rarity_symbol": symbol_status,
+                "confidence": family.get("confidence"),
+                "trap_consequence": family.get("trap_consequence"),
+                "not_claiming": [
+                    "not proof this seller card came from that family",
+                    "not proof this row is misidentified",
+                    "not a resolved variant ruling",
+                ],
+            }
+        )
+
+    if explicit_traps:
+        status = "cataloged_traps_present"
+    elif unresolved:
+        status = "uncleared_symbol_overlap"
+    else:
+        status = "matrix_cleared_no_known_overlap"
+    return {
+        "variant_traps": explicit_traps,
+        "variant_trap_status": status,
+        "symbol_overlap_unresolved": unresolved,
+        "symbol_matrix_boundary": matrix.get("boundary"),
+    }
+
+
 def card_brief(card: dict[str, Any]) -> dict[str, Any]:
     profile = _profile(card)
     reference = _reference(card)
     product = card.get("product_scope", {})
     pokemon = _pokemon_profile(card)
+    trap_context = variant_trap_context(card)
     return {
         "card_ref": _card_id(card),
         "catalog_citation": row_citation(card),
@@ -201,12 +273,10 @@ def card_brief(card: dict[str, Any]) -> dict[str, Any]:
             "authority": card.get("collector_texture", {}).get("authority"),
             "signals": card.get("collector_texture", {}).get("signals", []),
         },
-        "variant_traps": card.get("variant_traps", []),
-        "variant_trap_status": (
-            "cataloged_traps_present"
-            if card.get("variant_traps")
-            else "unexamined_or_no_cataloged_trap"
-        ),
+        "variant_traps": trap_context["variant_traps"],
+        "variant_trap_status": trap_context["variant_trap_status"],
+        "symbol_overlap_unresolved": trap_context["symbol_overlap_unresolved"],
+        "symbol_matrix_boundary": trap_context["symbol_matrix_boundary"],
         "not_claiming": card.get("not_claiming", []),
         "tags": card.get("tags", []),
     }
@@ -353,7 +423,7 @@ def get_card(card_ref: str) -> dict[str, Any]:
             "not_claiming": load_policy().get("not_claiming", []),
         },
         "set_boundary": load_catalog().get("set", {}),
-        "agent_catalog_contract": load_catalog().get("agent_catalog_contract", {}),
+        "agent_catalog_contract": load_policy().get("catalog_support_policy", {}).get("agent_catalog_contract", {}),
         "boundary": "This is a catalog row. It is not proof of a physical seller card.",
     }
 
@@ -604,6 +674,8 @@ def evidence_plan(
         required.extend(SLAB_EVIDENCE_REQUIREMENTS)
     if card.get("tcgdex_id") in QS_TEXT_CHECK_IDS:
         required.append("readable Japanese text-layout close-up for Quick Starter comparison")
+    if brief.get("variant_trap_status") == "uncleared_symbol_overlap":
+        required.append("source-family or provenance note for unresolved missing-symbol overlap")
     if seller_trust in {"thin", "unknown", "new"}:
         overlays.append("NR-E because seller trust is thin or not portable")
         required.append("seller proof chain or explicit lack-of-proof disclosure")
@@ -791,7 +863,12 @@ def dispatch(tool: str, args: dict[str, Any]) -> dict[str, Any]:
                 "evidence_requirements": load_policy().get("evidence_requirements", []),
                 "not_claiming": load_policy().get("not_claiming", []),
             },
-            "boundary": "Catalog bytes are content-addressed. Policy bytes are separate. Neither proves a physical seller card.",
+            "symbol_status_matrix": {
+                "path": str(SYMBOL_STATUS_PATH),
+                "symbol_status_hash": catalog_release().get("symbol_status_hash"),
+                "boundary": load_symbol_status().get("boundary", ""),
+            },
+            "boundary": "Catalog bytes are content-addressed. Policy and symbol-status bytes are separate. None proves a physical seller card.",
         }
     raise KeyError(f"unknown tool: {tool}")
 

@@ -1,0 +1,745 @@
+{
+  "generated_at": "2026-06-12T17:29:09.114434+00:00",
+  "mutation_proofs": [
+    {
+      "detected": true,
+      "expected_detection": "adversarial_underpriced_zero_history_bond loses its expected hard error",
+      "failing_cases": [
+        {
+          "case_id": "adversarial_underpriced_zero_history_bond",
+          "expected_errors": [
+            "zero-history seller got low bond without underwriter"
+          ],
+          "expected_errors_missing": [
+            "zero-history seller got low bond without underwriter"
+          ],
+          "observed_errors": []
+        }
+      ],
+      "mutation": "remove_zero_history_low_bond_guard",
+      "target": "evaluate_case: skip zero-history low-bond guard"
+    }
+  ],
+  "overclaim_attempts": [
+    {
+      "attempt": "fiat_payment_marked_settled",
+      "blocked_by": "fiat payment != settlement",
+      "claim": "A card-network payment is settled once authorized.",
+      "passed": true
+    },
+    {
+      "attempt": "stablecoin_no_third_party_risk",
+      "blocked_by": "stablecoin escrow != no third-party risk",
+      "claim": "Stablecoin escrow means no third party can intervene.",
+      "passed": true
+    },
+    {
+      "attempt": "bonded_seller_safe",
+      "blocked_by": "bonded seller != safe seller",
+      "claim": "The seller posted a bond, so the seller is safe.",
+      "passed": true
+    },
+    {
+      "attempt": "attention_is_free_until_purchase",
+      "blocked_by": "EvidenceRequestFeeTerms",
+      "claim": "The seller should provide extra scans for free because the buyer might buy.",
+      "passed": true
+    }
+  ],
+  "pass_definition": "Seller-first bootstrap preserves settlement caveats, prices seller attention, and lets bond requirements fall only through legible history/imported proof/underwriting.",
+  "passed": true,
+  "results": [
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "unfunded_interest",
+        "case_id": "baseline_fiat_platform",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "platform_hosted_only",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 192.0,
+        "required_bond_fraction_bps": 3000,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "outside_protocol",
+        "seller_ref": "seller:baseline_fiat_platform",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "baseline_fiat_platform",
+      "description": "Traditional off-chain payment baseline: buyer may look serious, but seller still carries reversal tail.",
+      "expected_errors": [],
+      "expected_errors_missing": [],
+      "expected_to_fail": false,
+      "hard_errors": [],
+      "passed": true,
+      "rail": {
+        "asset": "card_network_or_paypal_style_payment",
+        "chargeback_surface": "high",
+        "escrow_funded": false,
+        "finality_model": "reversible_promise",
+        "freeze_or_blacklist_surface": [
+          "account_hold",
+          "chargeback",
+          "processor_review"
+        ],
+        "issuer_or_admin_controls": [
+          "bank",
+          "processor",
+          "platform"
+        ],
+        "not_claiming": [
+          "final_settlement",
+          "no_chargeback_tail",
+          "contract_enforced_funds"
+        ],
+        "rail_type": "offchain_fiat_reference",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "new_seller_capital_heavy",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "weak_unsigned",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 288.0,
+        "required_bond_fraction_bps": 4500,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "zero_protocol_history",
+        "seller_ref": "seller:new_seller_capital_heavy",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "new_seller_capital_heavy",
+      "description": "New protocol seller can reach a funded buyer by posting scoped capital.",
+      "expected_errors": [],
+      "expected_errors_missing": [],
+      "expected_to_fail": false,
+      "hard_errors": [],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "imported_shop_reputation",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "strong_signed_shop_or_marketplace",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 224.0,
+        "required_bond_fraction_bps": 3500,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "zero_protocol_history",
+        "seller_ref": "seller:imported_shop_reputation",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "imported_shop_reputation",
+      "description": "Shop or marketplace proof reduces but does not erase bond requirement.",
+      "expected_errors": [],
+      "expected_errors_missing": [],
+      "expected_to_fail": false,
+      "hard_errors": [],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "mature_receipt_history",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 32,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "strong_signed_shop_or_marketplace",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 32.0,
+        "required_bond_fraction_bps": 500,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "protocol_history",
+        "seller_ref": "seller:mature_receipt_history",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "mature_receipt_history",
+      "description": "Clean protocol receipts buy down the bond requirement.",
+      "expected_errors": [],
+      "expected_errors_missing": [],
+      "expected_to_fail": false,
+      "hard_errors": [],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "underwritten_new_seller",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "weak_unsigned",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 211.2,
+        "required_bond_fraction_bps": 3300,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "zero_protocol_history",
+        "seller_ref": "seller:underwritten_new_seller",
+        "trade_value_usd": 640,
+        "underwriter_used": true,
+        "upheld_claim_count": 0
+      },
+      "case_id": "underwritten_new_seller",
+      "description": "Third-party bond underwriter substitutes capital with a priced, accountable actor.",
+      "expected_errors": [],
+      "expected_errors_missing": [],
+      "expected_to_fail": false,
+      "hard_errors": [],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "adversarial_underpriced_zero_history_bond",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "weak_unsigned",
+        "not_claiming": [
+          "seller_is_honest",
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 48.0,
+        "required_bond_fraction_bps": 750,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "zero_protocol_history",
+        "seller_ref": "seller:adversarial_underpriced_zero_history_bond",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "adversarial_underpriced_zero_history_bond",
+      "description": "A zero-history seller tries to route through with a token bond and no underwriter.",
+      "expected_errors": [
+        "zero-history seller got low bond without underwriter"
+      ],
+      "expected_errors_missing": [],
+      "expected_to_fail": true,
+      "hard_errors": [
+        "zero-history seller got low bond without underwriter"
+      ],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    },
+    {
+      "bilateral_accountability": {
+        "buyer_claim_conditions": [
+          "signed_claim_packet",
+          "claim_matrix_row",
+          "buyer_evidence"
+        ],
+        "buyer_funding_ref": "prefunded_escrow",
+        "case_id": "adversarial_bond_as_honesty_overclaim",
+        "claim_matrix_ref": "tcg_claim_matrix_v0.1",
+        "evidence_request_fee_terms_present": true,
+        "item_fingerprint_required": true,
+        "not_claiming": [
+          "buyer_cannot_lie",
+          "seller_cannot_lie",
+          "physical_truth_proven"
+        ],
+        "return_leg_requirements": [
+          "return_fingerprint_for_high_value",
+          "arrival_photos",
+          "timely_claim"
+        ],
+        "schema": "marketplace.bilateral_accountability.v0.1",
+        "seller_bond_ref": "marketplace.bond_history_exchange.v0.1",
+        "seller_payout_conditions": [
+          "buyer_acceptance",
+          "inspection_timeout",
+          "arbiter_ruling"
+        ],
+        "settlement_finality_terms_ref": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "bond_profile": {
+        "clean_receipt_count": 0,
+        "covered_failures": [
+          "nonship",
+          "wrong_item",
+          "material_misdescription",
+          "return_leg_bad_faith_if_proven"
+        ],
+        "excluded_failures": [
+          "market_price_change",
+          "buyer_remorse",
+          "authenticity_beyond_scope"
+        ],
+        "imported_reputation_strength": "weak_unsigned",
+        "not_claiming": [
+          "card_is_authentic",
+          "fraud_impossible"
+        ],
+        "release_conditions": [
+          "clean_acceptance",
+          "claim_resolved",
+          "inspection_window_expires_without_claim"
+        ],
+        "required_bond_amount_usd": 288.0,
+        "required_bond_fraction_bps": 4500,
+        "schema": "marketplace.bond_history_exchange.v0.1",
+        "seller_history_profile": "zero_protocol_history",
+        "seller_ref": "seller:adversarial_bond_as_honesty_overclaim",
+        "trade_value_usd": 640,
+        "underwriter_used": false,
+        "upheld_claim_count": 0
+      },
+      "case_id": "adversarial_bond_as_honesty_overclaim",
+      "description": "A bond packet is shaped as if capital proves honesty, which must be rejected.",
+      "expected_errors": [
+        "bond profile overclaims honesty"
+      ],
+      "expected_errors_missing": [],
+      "expected_to_fail": true,
+      "hard_errors": [
+        "bond profile overclaims honesty"
+      ],
+      "passed": true,
+      "rail": {
+        "asset": "USDC-local-alpha",
+        "chain_id": "anvil-or-alpha-chain",
+        "chargeback_surface": "none_at_card_network_layer",
+        "custody_or_money_transmission_notes": [
+          "regulatory_surface_requires_review"
+        ],
+        "escrow_contract": "marketplace_escrow",
+        "escrow_funded": true,
+        "finality_model": "contract_release_after_acceptance_or_ruling",
+        "freeze_or_blacklist_surface": [
+          "issuer_freeze_or_blacklist"
+        ],
+        "issuer_or_admin_controls": [
+          "stablecoin_issuer_controls"
+        ],
+        "not_claiming": [
+          "physical_card_truth",
+          "no_issuer_or_legal_intervention_risk",
+          "no_regulatory_surface",
+          "guaranteed_offramp_liquidity"
+        ],
+        "rail_type": "erc20_stablecoin",
+        "schema": "marketplace.settlement_rail_terms.v0.1"
+      },
+      "unexpected_errors": []
+    }
+  ],
+  "run_id": "seller_bootstrap_drill_20260612T172909Z"
+}

@@ -25,6 +25,7 @@ RUNS = ROOT / "runs"
 CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
 POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
 MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
+SYMBOL_STATUS_PATH = ROOT / "data" / "pre-english-symbol-status.json"
 
 REQUIRED_REVISION_NOT_CLAIMING = {
     "seller_possession",
@@ -560,11 +561,15 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
     manifest = current_manifest()
     policy = read_json(POLICY_PATH)
     fact_catalog = read_json(CATALOG_PATH)
+    symbol_status = read_json(SYMBOL_STATUS_PATH)
     catalog_has_policy = "evidence_requirements" in fact_catalog
+    fact_policy_paths = policy_field_paths(fact_catalog)
     manifest_matches = (
         manifest["catalog"]["catalog_hash"] == canonical_hash(fact_catalog)
         and manifest["policy"]["policy_hash"] == canonical_hash(policy)
+        and manifest.get("symbol_status_matrix", {}).get("symbol_status_hash") == canonical_hash(symbol_status)
         and not catalog_has_policy
+        and not fact_policy_paths
     )
     passed = all(result["passed"] for result in results) and all(attempt["passed"] for attempt in attempts) and manifest_matches
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -574,8 +579,10 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
         "passed": passed,
         "manifest_matches": manifest_matches,
         "catalog_has_policy": catalog_has_policy,
+        "fact_policy_field_paths": fact_policy_paths,
         "catalog_hash": manifest["catalog"]["catalog_hash"],
         "policy_hash": manifest["policy"]["policy_hash"],
+        "symbol_status_hash": manifest.get("symbol_status_matrix", {}).get("symbol_status_hash"),
         "bundle_hash": manifest["bundle"]["bundle_hash"],
         "results": results,
         "overclaim_attempts": attempts,
@@ -603,8 +610,10 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
         f"- Passed: `{passed}`",
         f"- Manifest matches current bytes: `{manifest_matches}`",
         f"- Catalog contains bundled evidence policy: `{catalog_has_policy}`",
+        f"- Policy-shaped fields inside fact catalog: `{len(fact_policy_paths)}`",
         f"- Catalog hash: `{manifest['catalog']['catalog_hash']}`",
         f"- Policy hash: `{manifest['policy']['policy_hash']}`",
+        f"- Symbol-status hash: `{manifest.get('symbol_status_matrix', {}).get('symbol_status_hash')}`",
         f"- Bundle hash: `{manifest['bundle']['bundle_hash']}`",
         "",
         "## Overclaim Attempts",

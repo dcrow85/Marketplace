@@ -36,6 +36,9 @@ class SellerCase:
     rail_type: str = "erc20_stablecoin"
     buyer_prefunded: bool = True
     attention_fee_terms: bool = True
+    manual_bond_fraction_bps: int | None = None
+    bond_not_claiming_override: list[str] | None = None
+    expected_errors: set[str] = field(default_factory=set)
     result: dict[str, Any] = field(default_factory=dict)
 
 
@@ -95,8 +98,9 @@ def required_bond_fraction_bps(case: SellerCase) -> int:
 
 
 def bond_profile(case: SellerCase) -> dict[str, Any]:
-    fraction = required_bond_fraction_bps(case)
+    fraction = case.manual_bond_fraction_bps if case.manual_bond_fraction_bps is not None else required_bond_fraction_bps(case)
     amount = round(case.trade_value_usd * fraction / 10000, 2)
+    not_claiming = case.bond_not_claiming_override or ["seller_is_honest", "card_is_authentic", "fraud_impossible"]
     return {
         "schema": "marketplace.bond_history_exchange.v0.1",
         "seller_ref": f"seller:{case.case_id}",
@@ -111,7 +115,7 @@ def bond_profile(case: SellerCase) -> dict[str, Any]:
         "covered_failures": ["nonship", "wrong_item", "material_misdescription", "return_leg_bad_faith_if_proven"],
         "excluded_failures": ["market_price_change", "buyer_remorse", "authenticity_beyond_scope"],
         "release_conditions": ["clean_acceptance", "claim_resolved", "inspection_window_expires_without_claim"],
-        "not_claiming": ["seller_is_honest", "card_is_authentic", "fraud_impossible"],
+        "not_claiming": not_claiming,
     }
 
 
@@ -132,7 +136,7 @@ def bilateral_accountability(case: SellerCase, rail: dict[str, Any], bond: dict[
     }
 
 
-def evaluate_case(case: SellerCase) -> dict[str, Any]:
+def evaluate_case(case: SellerCase, *, mutation: str | None = None) -> dict[str, Any]:
     rail = settlement_rail(case)
     bond = bond_profile(case)
     accountability = bilateral_accountability(case, rail, bond)
@@ -147,8 +151,18 @@ def evaluate_case(case: SellerCase) -> dict[str, Any]:
         hard_errors.append("seller attention unpriced")
     if "seller_is_honest" not in bond["not_claiming"]:
         hard_errors.append("bond profile overclaims honesty")
-    if case.seller_history_profile == "zero_protocol_history" and bond["required_bond_fraction_bps"] < 2000 and not case.underwriter:
+    if (
+        mutation != "remove_zero_history_low_bond_guard"
+        and case.seller_history_profile == "zero_protocol_history"
+        and bond["required_bond_fraction_bps"] < 2000
+        and not case.underwriter
+    ):
         hard_errors.append("zero-history seller got low bond without underwriter")
+    expected_missing = sorted(case.expected_errors - set(hard_errors))
+    unexpected_errors = sorted(set(hard_errors) - case.expected_errors)
+    passed = not expected_missing and not unexpected_errors
+    if not case.expected_errors:
+        passed = not hard_errors
     result = {
         "case_id": case.case_id,
         "description": case.description,
@@ -156,7 +170,11 @@ def evaluate_case(case: SellerCase) -> dict[str, Any]:
         "bond_profile": bond,
         "bilateral_accountability": accountability,
         "hard_errors": hard_errors,
-        "passed": not hard_errors,
+        "expected_errors": sorted(case.expected_errors),
+        "expected_errors_missing": expected_missing,
+        "unexpected_errors": unexpected_errors,
+        "expected_to_fail": bool(case.expected_errors),
+        "passed": passed,
     }
     case.result = result
     return result
@@ -242,11 +260,62 @@ def fixtures() -> list[SellerCase]:
             "weak_unsigned",
             underwriter=True,
         ),
+        SellerCase(
+            "adversarial_underpriced_zero_history_bond",
+            "A zero-history seller tries to route through with a token bond and no underwriter.",
+            640,
+            "zero_protocol_history",
+            0,
+            0,
+            "weak_unsigned",
+            manual_bond_fraction_bps=750,
+            expected_errors={"zero-history seller got low bond without underwriter"},
+        ),
+        SellerCase(
+            "adversarial_bond_as_honesty_overclaim",
+            "A bond packet is shaped as if capital proves honesty, which must be rejected.",
+            640,
+            "zero_protocol_history",
+            0,
+            0,
+            "weak_unsigned",
+            bond_not_claiming_override=["card_is_authentic", "fraud_impossible"],
+            expected_errors={"bond profile overclaims honesty"},
+        ),
+    ]
+
+
+def mutation_proofs() -> list[dict[str, Any]]:
+    mutation = "remove_zero_history_low_bond_guard"
+    mutated_results = [evaluate_case(case, mutation=mutation) for case in fixtures()]
+    failing_cases = [
+        {
+            "case_id": result["case_id"],
+            "expected_errors": result["expected_errors"],
+            "observed_errors": result["hard_errors"],
+            "expected_errors_missing": result["expected_errors_missing"],
+        }
+        for result in mutated_results
+        if result["expected_errors_missing"]
+    ]
+    return [
+        {
+            "mutation": mutation,
+            "target": "evaluate_case: skip zero-history low-bond guard",
+            "expected_detection": "adversarial_underpriced_zero_history_bond loses its expected hard error",
+            "detected": bool(failing_cases),
+            "failing_cases": failing_cases,
+        }
     ]
 
 
 def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[dict[str, Any]]) -> bool:
-    passed = all(result["passed"] for result in results) and all(attempt["passed"] for attempt in attempts)
+    mutation_results = mutation_proofs()
+    passed = (
+        all(result["passed"] for result in results)
+        and all(attempt["passed"] for attempt in attempts)
+        and all(proof["detected"] for proof in mutation_results)
+    )
     run_dir.mkdir(parents=True, exist_ok=True)
     summary = {
         "run_id": run_dir.name,
@@ -255,6 +324,7 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
         "pass_definition": "Seller-first bootstrap preserves settlement caveats, prices seller attention, and lets bond requirements fall only through legible history/imported proof/underwriting.",
         "results": results,
         "overclaim_attempts": attempts,
+        "mutation_proofs": mutation_results,
     }
     (run_dir / "summary.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n",
@@ -265,6 +335,7 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
         "",
         f"- Passed: `{passed}`",
         "- Pass definition: seller-first bootstrap preserves settlement caveats, prices attention, and treats bonds as scoped capital rather than trust.",
+        f"- Mutation proofs passed: `{all(proof['detected'] for proof in mutation_results)}`",
         "",
         "## Overclaim Attempts",
         "",
@@ -295,6 +366,7 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
                 f"- Required seller bond: `${bond['required_bond_amount_usd']}` (`{bond['required_bond_fraction_bps']} bps`)",
                 f"- Covered failures: `{', '.join(bond['covered_failures'])}`",
                 f"- Not claiming: `{', '.join(sorted(set(rail['not_claiming'] + bond['not_claiming'])))}`",
+                f"- Expected to fail: `{result['expected_to_fail']}`",
                 f"- Passed: `{result['passed']}`",
                 "",
             ]
@@ -304,6 +376,23 @@ def write_report(run_dir: Path, results: list[dict[str, Any]], attempts: list[di
             for error in result["hard_errors"]:
                 lines.append(f"  - {error}")
             lines.append("")
+    lines.extend(["## Mutation Proofs", ""])
+    for proof in mutation_results:
+        lines.extend(
+            [
+                f"### {proof['mutation']}",
+                "",
+                f"- Target: {proof['target']}",
+                f"- Expected detection: {proof['expected_detection']}",
+                f"- Detected: `{proof['detected']}`",
+                "- Failing cases:",
+            ]
+        )
+        for case in proof["failing_cases"]:
+            lines.append(
+                f"  - `{case['case_id']}` missing `{', '.join(case['expected_errors_missing'])}` after mutation"
+            )
+        lines.append("")
     lines.extend(
         [
             "## What This Proves",

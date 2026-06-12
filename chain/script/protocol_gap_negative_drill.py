@@ -66,9 +66,11 @@ def tx_labels(scenario: e2e.ScenarioResult) -> list[str]:
     return [tx.label for tx in scenario.transactions]
 
 
-def build_physical_oracles(scenarios: list[e2e.ScenarioResult]) -> dict[str, dict[str, Any]]:
-    return {
-        scenarios[0].name: {
+def build_gap_cases(scenarios: list[e2e.ScenarioResult]) -> list[dict[str, Any]]:
+    return [
+        {
+            "case_id": "G1_G2_G3_G6_counterfeit_after_acceptance",
+            "anchor_scenario": scenarios[0].name,
             "oracle_status": "counterfeit_not_detected_during_inspection",
             "physical_truth": "The shipped card is a convincing counterfeit. Seller-supplied scans and nonce evidence were internally consistent, but they did not prove physical authenticity.",
             "gap_path": ["G1.BindingGap", "G2.SensorGap", "G3.ContinuityGap", "G6.EgressRemedyGap"],
@@ -83,7 +85,9 @@ def build_physical_oracles(scenarios: list[e2e.ScenarioResult]) -> dict[str, dic
                 "all on-chain state transitions",
             ],
         },
-        scenarios[1].name: {
+        {
+            "case_id": "G1_G2_G5_G6_counterfeit_claim_judgment",
+            "anchor_scenario": scenarios[1].name,
             "oracle_status": "counterfeit_discovered_during_inspection",
             "physical_truth": "The card is fake or materially misrepresented, but the chain only sees the buyer claim packet, verifier-scoped note, arbiter ruling, and remedy math.",
             "gap_path": ["G1.BindingGap", "G2.SensorGap", "G5.JudgmentGap", "G6.EgressRemedyGap"],
@@ -98,7 +102,36 @@ def build_physical_oracles(scenarios: list[e2e.ScenarioResult]) -> dict[str, dic
                 "settlement event",
             ],
         },
-    }
+        {
+            "case_id": "G4_key_is_not_person",
+            "anchor_scenario": scenarios[0].name,
+            "oracle_status": "seller_key_controlled_by_unnamed_operator",
+            "physical_truth": "The seller signing key was controlled by a different human or delegated operator than the name presented off-chain. The protocol attributes action to the key and actor registry entry, not to the real-world person.",
+            "gap_path": ["G4.IdentityGap"],
+            "where_loss_lands": "Escrow settlement remains valid at the key/registry layer. Any person-level misrepresentation is later residue and judgment, not an on-chain identity proof.",
+            "residue_to_use_later": [
+                "seller actor registry entry",
+                "seller signatures over fingerprint, inventory, route, and receipt packets",
+                "seller-controlled nonce proofs",
+                "any off-chain named-identity proof chain",
+            ],
+        },
+        {
+            "case_id": "G7_snapshot_not_process",
+            "anchor_scenario": scenarios[1].name,
+            "oracle_status": "object_changed_after_valid_snapshot",
+            "physical_truth": "The fingerprint evidence was fresh and true when captured, but the card was damaged, swapped, or otherwise changed before delivery. The snapshot named a moment; it did not bind the object's whole future process.",
+            "gap_path": ["G7.TimeGap", "G3.ContinuityGap", "G5.JudgmentGap"],
+            "where_loss_lands": "The claim path can price and resolve the later state, but it cannot make the earlier evidence remain physically current.",
+            "residue_to_use_later": [
+                "fingerprint timestamp and nonce",
+                "route handoff evidence",
+                "delivery packet",
+                "buyer received-item evidence",
+                "arbiter ruling over the time gap",
+            ],
+        },
+    ]
 
 
 def write_report(
@@ -107,9 +140,10 @@ def write_report(
     contract: str,
     rpc_url: str,
     scenarios: list[e2e.ScenarioResult],
-    physical_oracles: dict[str, dict[str, Any]],
+    gap_cases: list[dict[str, Any]],
     overclaim_hits: list[str],
 ) -> None:
+    scenario_by_name = {scenario.name: scenario for scenario in scenarios}
     scenario_summaries = []
     for scenario in scenarios:
         scenario_summaries.append(
@@ -120,13 +154,21 @@ def write_report(
                 "transactions": [tx.__dict__ for tx in scenario.transactions],
                 "packets": [packet.__dict__ for packet in scenario.packets],
                 "observations": scenario.observations,
-                "physical_oracle": physical_oracles[scenario.name],
             }
         )
+    covered_gap_ids = sorted(
+        {
+            gap.split(".", 1)[0]
+            for case in gap_cases
+            for gap in case["gap_path"]
+        }
+    )
+    expected_gap_ids = [f"G{index}" for index in range(1, 8)]
 
     passed = (
         all(scenario.final_state == "Settled" for scenario in scenarios)
-        and all(oracle["oracle_status"] for oracle in physical_oracles.values())
+        and all(case["oracle_status"] for case in gap_cases)
+        and covered_gap_ids == expected_gap_ids
         and not overclaim_hits
     )
 
@@ -140,6 +182,8 @@ def write_report(
         "predicate_verifier": registry_setup.predicate_verifier,
         "contract": contract,
         "overclaim_hits": overclaim_hits,
+        "covered_gap_ids": covered_gap_ids,
+        "gap_cases": gap_cases,
         "scenarios": scenario_summaries,
     }
     (run_dir / "summary.json").write_text(
@@ -156,6 +200,7 @@ def write_report(
         f"- Registry: `{registry_setup.registry}`",
         f"- Predicate verifier: `{registry_setup.predicate_verifier}`",
         f"- Escrow: `{contract}`",
+        f"- Covered gaps: `{', '.join(covered_gap_ids)}`",
         "",
         "## Why This Drill Exists",
         "",
@@ -173,26 +218,27 @@ def write_report(
     else:
         lines.append("- No banned authenticity overclaims found in generated packet payloads.")
 
-    lines.extend(["", "## Scenarios", ""])
-    for scenario in scenarios:
-        oracle = physical_oracles[scenario.name]
+    lines.extend(["", "## Gap Cases", ""])
+    for case in gap_cases:
+        scenario = scenario_by_name[case["anchor_scenario"]]
         lines.extend(
             [
-                f"### {scenario.name}",
+                f"### {case['case_id']}",
                 "",
+                f"- Anchor scenario: `{scenario.name}`",
                 f"- Trade ID: `{scenario.trade_id}`",
                 f"- Final state: `{scenario.final_state}`",
-                f"- Hidden physical oracle: `{oracle['oracle_status']}`",
-                f"- Physical truth: {oracle['physical_truth']}",
-                f"- Where loss lands: {oracle['where_loss_lands']}",
-                f"- Gap path: `{', '.join(oracle['gap_path'])}`",
+                f"- Hidden physical oracle: `{case['oracle_status']}`",
+                f"- Physical truth: {case['physical_truth']}",
+                f"- Where loss lands: {case['where_loss_lands']}",
+                f"- Gap path: `{', '.join(case['gap_path'])}`",
                 "- Transactions:",
             ]
         )
         for label in tx_labels(scenario):
             lines.append(f"  - {label}")
         lines.append("- Signed residue:")
-        for residue in oracle["residue_to_use_later"]:
+        for residue in case["residue_to_use_later"]:
             lines.append(f"  - {residue}")
         lines.append("- Anchored packet ids:")
         for packet_id in packet_ids(scenario):
@@ -206,6 +252,8 @@ def write_report(
             "- A fully valid packet path can still be physically false.",
             "- The protocol makes that false path attributable rather than impossible.",
             "- Ingress remains open: seller photos, scans, nonce evidence, and verifier notes are not atoms.",
+            "- Identity remains open: a key and registry entry are not the real-world person.",
+            "- Time remains open: evidence is a snapshot, while the object keeps changing.",
             "- Egress remains open: settlement can move money and bonds, but cannot recover or authenticate the card.",
             "- This is the intended boundary, not a bug in the EVM runner.",
             "",
@@ -249,7 +297,7 @@ def main() -> int:
             e2e.run_happy_path(rpc_url, registry, contract, predicate_verifier, packet_dir, trade_id=1),
             e2e.run_claim_path(rpc_url, registry, contract, predicate_verifier, packet_dir, trade_id=2),
         ]
-        physical_oracles = build_physical_oracles(scenarios)
+        gap_cases = build_gap_cases(scenarios)
         overclaim_hits = find_overclaims(packet_payloads(packet_dir))
         write_report(
             run_dir,
@@ -257,7 +305,7 @@ def main() -> int:
             contract,
             rpc_url,
             scenarios,
-            physical_oracles,
+            gap_cases,
             overclaim_hits,
         )
         print(f"Wrote {run_dir / 'REPORT.md'}")

@@ -23,6 +23,19 @@ CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
 CATALOG_JS_PATH = ROOT / "data" / "no-rarity-base-set.js"
 POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
 MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
+SYMBOL_STATUS_PATH = ROOT / "data" / "pre-english-symbol-status.json"
+
+ROW_POLICY_KEYS = {
+    "agent_decision_profile",
+}
+
+CATALOG_SUPPORT_POLICY_KEYS = {
+    "agent_catalog_contract",
+    "collector_texture_policy",
+    "illustrator_policy",
+    "information_audit_policy",
+    "set_entry",
+}
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -41,7 +54,44 @@ def write_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def default_policy(catalog: dict[str, Any], evidence_requirements: list[str]) -> dict[str, Any]:
+def existing_policy() -> dict[str, Any]:
+    if POLICY_PATH.exists():
+        return read_json(POLICY_PATH)
+    return {}
+
+
+def extract_row_policies(catalog: dict[str, Any], previous_policy: dict[str, Any]) -> dict[str, Any]:
+    previous_profiles = previous_policy.get("row_agent_decision_profiles", {})
+    row_profiles: dict[str, Any] = {}
+    for card in catalog.get("cards", []):
+        row_id = str(card.get("tcgdex_id") or card.get("local_id") or "")
+        if not row_id:
+            continue
+        row_policy: dict[str, Any] = {}
+        for key in sorted(ROW_POLICY_KEYS):
+            if key in card:
+                row_policy[key] = card.pop(key)
+            elif row_id in previous_profiles and key in previous_profiles[row_id]:
+                row_policy[key] = previous_profiles[row_id][key]
+        if row_policy:
+            row_profiles[row_id] = row_policy
+    return row_profiles
+
+
+def extract_support_policy(catalog: dict[str, Any], previous_policy: dict[str, Any]) -> dict[str, Any]:
+    support = dict(previous_policy.get("catalog_support_policy", {}))
+    for key in sorted(CATALOG_SUPPORT_POLICY_KEYS):
+        if key in catalog:
+            support[key] = catalog.pop(key)
+    return support
+
+
+def default_policy(
+    catalog: dict[str, Any],
+    evidence_requirements: list[str],
+    row_profiles: dict[str, Any],
+    support_policy: dict[str, Any],
+) -> dict[str, Any]:
     return {
         "schema": "marketplace.no_rarity_catalog_policy.v0.1",
         "policy_id": "no_rarity_evidence_requirements.v0.1",
@@ -50,6 +100,8 @@ def default_policy(catalog: dict[str, Any], evidence_requirements: list[str]) ->
         "fact_catalog_schema": catalog.get("schema", ""),
         "applies_to_catalog_family": "marketplace.no_rarity_base_set",
         "evidence_requirements": evidence_requirements,
+        "row_agent_decision_profiles": row_profiles,
+        "catalog_support_policy": support_policy,
         "policy_boundary": (
             "This policy recommends evidence defaults for agent planning. "
             "It is not part of the fact catalog hash and does not prove possession, authenticity, condition, or price."
@@ -67,19 +119,25 @@ def default_policy(catalog: dict[str, Any], evidence_requirements: list[str]) ->
 
 def main() -> int:
     catalog = read_json(CATALOG_PATH)
+    previous_policy = existing_policy()
     if "evidence_requirements" in catalog:
         evidence_requirements = list(catalog.pop("evidence_requirements"))
-    elif POLICY_PATH.exists():
-        evidence_requirements = list(read_json(POLICY_PATH).get("evidence_requirements", []))
+    elif previous_policy:
+        evidence_requirements = list(previous_policy.get("evidence_requirements", []))
     else:
         raise SystemExit("no evidence_requirements in catalog and no policy file exists")
 
-    policy = default_policy(catalog, evidence_requirements)
+    row_profiles = extract_row_policies(catalog, previous_policy)
+    support_policy = extract_support_policy(catalog, previous_policy)
+    policy = default_policy(catalog, evidence_requirements, row_profiles, support_policy)
     catalog_hash = sha256_hex(catalog)
     policy_hash = sha256_hex(policy)
+    symbol_status = read_json(SYMBOL_STATUS_PATH)
+    symbol_status_hash = sha256_hex(symbol_status)
     bundle_preimage = {
         "catalog_hash": catalog_hash,
         "policy_hash": policy_hash,
+        "symbol_status_hash": symbol_status_hash,
         "release_family": "no_rarity_base_set",
         "schema": "marketplace.catalog_release_bundle.v0.1",
     }
@@ -116,6 +174,14 @@ def main() -> int:
             "policy_hash": policy_hash,
             "not_claiming": policy["not_claiming"],
         },
+        "symbol_status_matrix": {
+            "path": "data/pre-english-symbol-status.json",
+            "schema": symbol_status.get("schema", ""),
+            "hash_algorithm": "sha256",
+            "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+            "symbol_status_hash": symbol_status_hash,
+            "not_claiming": symbol_status.get("not_claiming", []),
+        },
         "bundle": {
             "hash_algorithm": "sha256",
             "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
@@ -140,6 +206,7 @@ def main() -> int:
     )
     print(f"catalog_hash={catalog_hash}")
     print(f"policy_hash={policy_hash}")
+    print(f"symbol_status_hash={symbol_status_hash}")
     print(f"bundle_hash={bundle_hash}")
     print(f"wrote {MANIFEST_PATH}")
     return 0
