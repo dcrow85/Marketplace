@@ -27,6 +27,7 @@ contract MarketplaceEscrow {
     uint8 private constant ROLE_BUYER = 1;
     uint8 private constant ROLE_SELLER = 2;
     uint256 public constant ARBITER_REPLACEMENT_TIMEOUT = 1 days;
+    uint256 public constant FLOOR_RESOLUTION_TIMEOUT = 1 days;
     uint256 public constant ROUTE_CLAIM_TIMEOUT = 3 days;
 
     enum State {
@@ -62,12 +63,16 @@ contract MarketplaceEscrow {
         uint256 inspectionSeconds;
         uint256 routeCommittedAt;
         uint256 deliveredAt;
+        uint256 claimOpenedAt;
         State state;
         bytes32 intentHash;
         bytes32 termsHash;
+        bytes32 jscHash;
+        address floorExecutor;
         bytes32 itemFingerprintHash;
         bytes32 inventoryLockHash;
         bytes32 fingerprintChallengeHash;
+        bytes32 allowedChallengeResolutionScopeHash;
         bytes32 routeHash;
         bytes32 routeWallBundleHash;
         bytes32 routeSpendabilityHash;
@@ -135,6 +140,12 @@ contract MarketplaceEscrow {
     error ChallengeAttestationSubjectMismatch(
         bytes32 expectedSubjectHash, bytes32 providedSubjectHash
     );
+    error ChallengeResolutionScopeRequired();
+    error ChallengeAttestationScopeMismatch(
+        bytes32 expectedScopeSetHash, bytes32 providedScopeSetHash
+    );
+    error JudgmentSupplyRequired();
+    error FloorResolutionTimeoutOpen(uint256 availableAt);
     error SpendabilityRequired();
     error SpendabilityAlreadyConsumed(bytes32 spendabilityHash);
     error SpendabilityDigestMismatch(
@@ -176,6 +187,9 @@ contract MarketplaceEscrow {
     bytes32 public constant FINGERPRINT_CHALLENGE_RESOLUTION_TYPEHASH = keccak256(
         "FingerprintChallengeResolution(address escrow,uint256 chainId,uint256 tradeId,bytes32 resolutionHash,bytes32 challengeHash,bytes32 attestationHash)"
     );
+    bytes32 public constant FLOOR_RULING_TYPEHASH = keccak256(
+        "FloorRuling(address escrow,uint256 chainId,uint256 tradeId,bytes32 rulingHash,bytes32 jscHash,address floorExecutor,uint16 buyerRefundBps,uint16 sellerBondPenaltyBps,bool returnDisputeBondToBuyer)"
+    );
     bytes32 public constant ROUTE_ASSEMBLY_WITNESS_TYPEHASH = keccak256(
         "RouteAssemblyWitness(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 routeSpendabilityHash,bytes32 wallBundleHash,bytes32 assemblyHistoryHash,bytes32 itemFingerprintHash,bytes32 inventoryLockHash,bytes32 gateHash)"
     );
@@ -215,7 +229,9 @@ contract MarketplaceEscrow {
         uint256 sellerBondRequired,
         uint256 disputeBondRequired,
         bytes32 intentHash,
-        bytes32 termsHash
+        bytes32 termsHash,
+        bytes32 jscHash,
+        address floorExecutor
     );
     event TradeCancelled(uint256 indexed tradeId, bytes32 reasonHash);
     event SellerBonded(uint256 indexed tradeId, uint256 sellerBondLocked);
@@ -268,7 +284,10 @@ contract MarketplaceEscrow {
     );
     event InventoryLockReleased(uint256 indexed tradeId, bytes32 inventoryLockHash);
     event FingerprintChallengeOpened(
-        uint256 indexed tradeId, address indexed challenger, bytes32 challengeHash
+        uint256 indexed tradeId,
+        address indexed challenger,
+        bytes32 challengeHash,
+        bytes32 allowedResolutionScopeHash
     );
     event FingerprintChallengeCleared(
         uint256 indexed tradeId, address indexed issuer, bytes32 resolutionHash
@@ -317,6 +336,23 @@ contract MarketplaceEscrow {
     event RouteClaimOpened(uint256 indexed tradeId, bytes32 claimHash, uint256 disputeBondLocked);
     event BuyerAccepted(uint256 indexed tradeId, bytes32 receiptHash);
     event ClaimOpened(uint256 indexed tradeId, bytes32 claimHash, uint256 disputeBondLocked);
+    event FloorClaimResolved(
+        uint256 indexed tradeId,
+        address indexed floorExecutor,
+        bytes32 rulingHash,
+        uint256 buyerRefund,
+        uint256 sellerEscrowPayout,
+        uint256 sellerBondPenalty,
+        bool disputeBondReturnedToBuyer
+    );
+    event DefaultClaimResolved(
+        uint256 indexed tradeId,
+        bytes32 rulingHash,
+        uint256 buyerRefund,
+        uint256 sellerEscrowPayout,
+        uint256 sellerBondPenalty,
+        bool disputeBondReturnedToBuyer
+    );
     event ClaimResolved(
         uint256 indexed tradeId,
         bytes32 rulingHash,
@@ -380,10 +416,15 @@ contract MarketplaceEscrow {
         uint256 inspectionSeconds,
         bytes32 intentHash,
         bytes32 termsHash,
+        bytes32 jscHash,
+        address floorExecutor,
         bytes calldata intentSignature,
         bytes calldata termsSignature
     ) external payable returns (uint256 tradeId) {
-        if (seller == address(0) || arbiter == address(0) || seller == msg.sender) {
+        if (
+            seller == address(0) || arbiter == address(0) || floorExecutor == address(0)
+                || seller == msg.sender
+        ) {
             revert BadAddress();
         }
         if (!actorRegistry.isActorActive(msg.sender, ROLE_BUYER)) {
@@ -395,10 +436,14 @@ contract MarketplaceEscrow {
         if (!actorRegistry.isArbiterActive(arbiter)) {
             revert UnregisteredArbiter(arbiter);
         }
+        if (!actorRegistry.isArbiterActive(floorExecutor)) {
+            revert UnregisteredArbiter(floorExecutor);
+        }
         if (msg.value == 0 || sellerBondRequired == 0 || inspectionSeconds == 0) {
             revert BadAmount();
         }
         if (intentHash == bytes32(0) || termsHash == bytes32(0)) revert BadHash();
+        if (jscHash == bytes32(0)) revert JudgmentSupplyRequired();
         _requireSignature(msg.sender, intentHash, intentSignature);
         _requireSignature(msg.sender, termsHash, termsSignature);
 
@@ -415,12 +460,16 @@ contract MarketplaceEscrow {
             inspectionSeconds: inspectionSeconds,
             routeCommittedAt: 0,
             deliveredAt: 0,
+            claimOpenedAt: 0,
             state: State.EscrowFunded,
             intentHash: intentHash,
             termsHash: termsHash,
+            jscHash: jscHash,
+            floorExecutor: floorExecutor,
             itemFingerprintHash: bytes32(0),
             inventoryLockHash: bytes32(0),
             fingerprintChallengeHash: bytes32(0),
+            allowedChallengeResolutionScopeHash: bytes32(0),
             routeHash: bytes32(0),
             routeWallBundleHash: bytes32(0),
             routeSpendabilityHash: bytes32(0),
@@ -438,6 +487,7 @@ contract MarketplaceEscrow {
         });
         _anchorPacketHash(tradeId, intentHash);
         _anchorPacketHash(tradeId, termsHash);
+        _anchorPacketHash(tradeId, jscHash);
 
         emit TradeCreated(
             tradeId,
@@ -448,7 +498,9 @@ contract MarketplaceEscrow {
             sellerBondRequired,
             disputeBondRequired,
             intentHash,
-            termsHash
+            termsHash,
+            jscHash,
+            floorExecutor
         );
     }
 
@@ -715,14 +767,22 @@ contract MarketplaceEscrow {
         emit InventoryLocked(tradeId, inventoryLockHash, boundItemFingerprintHash);
     }
 
+    function openFingerprintChallenge(uint256, bytes32, bytes calldata) external pure {
+        revert ChallengeResolutionScopeRequired();
+    }
+
     function openFingerprintChallenge(
         uint256 tradeId,
         bytes32 challengeHash,
+        bytes32 allowedResolutionScopeHash,
         bytes calldata challengeSignature
     ) external onlyBuyer(tradeId) inState(tradeId, State.EvidencePending) {
         Trade storage trade = trades[tradeId];
         if (trade.itemFingerprintHash == bytes32(0)) revert ItemFingerprintMissing();
         if (challengeHash == bytes32(0)) revert BadHash();
+        if (allowedResolutionScopeHash == bytes32(0)) {
+            revert ChallengeResolutionScopeRequired();
+        }
         if (trade.fingerprintChallengeHash != bytes32(0)) {
             revert FingerprintChallengeActive(trade.fingerprintChallengeHash);
         }
@@ -730,8 +790,11 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, challengeHash);
 
         trade.fingerprintChallengeHash = challengeHash;
+        trade.allowedChallengeResolutionScopeHash = allowedResolutionScopeHash;
 
-        emit FingerprintChallengeOpened(tradeId, msg.sender, challengeHash);
+        emit FingerprintChallengeOpened(
+            tradeId, msg.sender, challengeHash, allowedResolutionScopeHash
+        );
     }
 
     function clearFingerprintChallenge(
@@ -746,6 +809,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, resolutionHash);
 
         trade.fingerprintChallengeHash = bytes32(0);
+        trade.allowedChallengeResolutionScopeHash = bytes32(0);
 
         emit FingerprintChallengeCleared(tradeId, msg.sender, resolutionHash);
     }
@@ -768,6 +832,15 @@ contract MarketplaceEscrow {
         if (attestation.subjectHash != challengeHash) {
             revert ChallengeAttestationSubjectMismatch(challengeHash, attestation.subjectHash);
         }
+        bytes32 allowedResolutionScopeHash = trade.allowedChallengeResolutionScopeHash;
+        if (allowedResolutionScopeHash == bytes32(0)) {
+            revert ChallengeResolutionScopeRequired();
+        }
+        if (attestation.scopeSetHash != allowedResolutionScopeHash) {
+            revert ChallengeAttestationScopeMismatch(
+                allowedResolutionScopeHash, attestation.scopeSetHash
+            );
+        }
 
         _requireSignature(
             msg.sender,
@@ -779,6 +852,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, resolutionHash);
 
         trade.fingerprintChallengeHash = bytes32(0);
+        trade.allowedChallengeResolutionScopeHash = bytes32(0);
 
         emit FingerprintChallengeCleared(tradeId, msg.sender, resolutionHash);
         emit FingerprintChallengeClearedWithAttestation(
@@ -833,6 +907,7 @@ contract MarketplaceEscrow {
         if (!insured && declaredInsurance != 0) revert BadAmount();
 
         Trade storage trade = trades[tradeId];
+        if (trade.jscHash == bytes32(0)) revert JudgmentSupplyRequired();
         if (trade.inventoryLockHash == bytes32(0)) revert InventoryLockMissing();
         if (trade.fingerprintChallengeHash != bytes32(0)) {
             revert FingerprintChallengeActive(trade.fingerprintChallengeHash);
@@ -987,6 +1062,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, claimHash);
 
         trade.disputeBondLocked = msg.value;
+        trade.claimOpenedAt = block.timestamp;
         trade.state = State.ClaimOrDisputePending;
 
         emit ClaimOpened(tradeId, claimHash, msg.value);
@@ -1010,6 +1086,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, claimHash);
 
         trade.disputeBondLocked = msg.value;
+        trade.claimOpenedAt = block.timestamp;
         trade.state = State.ClaimOrDisputePending;
 
         emit RouteClaimOpened(tradeId, claimHash, msg.value);
@@ -1028,35 +1105,63 @@ contract MarketplaceEscrow {
         _requireSignature(msg.sender, rulingHash, rulingSignature);
         if (buyerRefundBps > 10_000 || sellerBondPenaltyBps > 10_000) revert BadAmount();
 
-        Trade storage trade = trades[tradeId];
-        _anchorPacketHash(tradeId, rulingHash);
-        uint256 buyerRefund = (trade.escrowAmount * buyerRefundBps) / 10_000;
-        uint256 sellerEscrowPayout = trade.escrowAmount - buyerRefund;
-        uint256 sellerBondPenalty = (trade.sellerBondLocked * sellerBondPenaltyBps) / 10_000;
-        uint256 sellerBondReturn = trade.sellerBondLocked - sellerBondPenalty;
-        uint256 disputeBond = trade.disputeBondLocked;
-
-        trade.state = State.Settled;
-        _releaseTradeObjectLocks(tradeId);
-
-        emit ClaimResolved(
+        _resolveClaim(
             tradeId,
             rulingHash,
-            buyerRefund,
-            sellerEscrowPayout,
-            sellerBondPenalty,
-            returnDisputeBondToBuyer
+            buyerRefundBps,
+            sellerBondPenaltyBps,
+            returnDisputeBondToBuyer,
+            0
         );
-        emit TradeSettled(tradeId);
+    }
 
-        _send(payable(trade.buyer), buyerRefund + sellerBondPenalty);
-        _send(payable(trade.seller), sellerEscrowPayout + sellerBondReturn);
+    function resolveClaimViaFloor(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer,
+        bytes calldata floorSignature
+    ) external inState(tradeId, State.ClaimOrDisputePending) {
+        Trade storage trade = trades[tradeId];
+        if (rulingHash == bytes32(0)) revert BadHash();
+        if (buyerRefundBps > 10_000 || sellerBondPenaltyBps > 10_000) revert BadAmount();
+        uint256 availableAt = trade.claimOpenedAt + ARBITER_REPLACEMENT_TIMEOUT;
+        if (block.timestamp <= availableAt) revert ReplacementTimeoutOpen(availableAt);
 
-        if (returnDisputeBondToBuyer) {
-            _send(payable(trade.buyer), disputeBond);
-        } else {
-            _send(payable(trade.seller), disputeBond);
-        }
+        _requireSignature(
+            trade.floorExecutor,
+            floorRulingHash(
+                tradeId,
+                rulingHash,
+                buyerRefundBps,
+                sellerBondPenaltyBps,
+                returnDisputeBondToBuyer
+            ),
+            floorSignature
+        );
+
+        _resolveClaim(
+            tradeId,
+            rulingHash,
+            buyerRefundBps,
+            sellerBondPenaltyBps,
+            returnDisputeBondToBuyer,
+            1
+        );
+    }
+
+    function resolveUnresolvableClaimByDefault(uint256 tradeId, bytes32 rulingHash)
+        external
+        inState(tradeId, State.ClaimOrDisputePending)
+    {
+        Trade storage trade = trades[tradeId];
+        if (rulingHash == bytes32(0)) revert BadHash();
+        uint256 availableAt =
+            trade.claimOpenedAt + ARBITER_REPLACEMENT_TIMEOUT + FLOOR_RESOLUTION_TIMEOUT;
+        if (block.timestamp <= availableAt) revert FloorResolutionTimeoutOpen(availableAt);
+
+        _resolveClaim(tradeId, rulingHash, 10_000, 0, true, 2);
     }
 
     function approveArbiterReplacement(
@@ -1339,6 +1444,30 @@ contract MarketplaceEscrow {
         );
     }
 
+    function floorRulingHash(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                FLOOR_RULING_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                rulingHash,
+                trade.jscHash,
+                trade.floorExecutor,
+                buyerRefundBps,
+                sellerBondPenaltyBps,
+                returnDisputeBondToBuyer
+            )
+        );
+    }
+
     function _onlyParticipant(Trade storage trade) internal view {
         if (msg.sender != trade.buyer && msg.sender != trade.seller && msg.sender != trade.arbiter)
         {
@@ -1400,6 +1529,66 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, spendabilityHash);
 
         emit SpendabilityConsumed(tradeId, spendabilityHash, gateHash);
+    }
+
+    function _resolveClaim(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer,
+        uint8 resolutionMode
+    ) internal {
+        Trade storage trade = trades[tradeId];
+        _anchorPacketHash(tradeId, rulingHash);
+        uint256 buyerRefund = (trade.escrowAmount * buyerRefundBps) / 10_000;
+        uint256 sellerEscrowPayout = trade.escrowAmount - buyerRefund;
+        uint256 sellerBondPenalty = (trade.sellerBondLocked * sellerBondPenaltyBps) / 10_000;
+        uint256 sellerBondReturn = trade.sellerBondLocked - sellerBondPenalty;
+        uint256 disputeBond = trade.disputeBondLocked;
+
+        trade.state = State.Settled;
+        _releaseTradeObjectLocks(tradeId);
+
+        if (resolutionMode == 1) {
+            emit FloorClaimResolved(
+                tradeId,
+                trade.floorExecutor,
+                rulingHash,
+                buyerRefund,
+                sellerEscrowPayout,
+                sellerBondPenalty,
+                returnDisputeBondToBuyer
+            );
+        } else if (resolutionMode == 2) {
+            emit DefaultClaimResolved(
+                tradeId,
+                rulingHash,
+                buyerRefund,
+                sellerEscrowPayout,
+                sellerBondPenalty,
+                returnDisputeBondToBuyer
+            );
+        } else {
+            emit ClaimResolved(
+                tradeId,
+                rulingHash,
+                buyerRefund,
+                sellerEscrowPayout,
+                sellerBondPenalty,
+                returnDisputeBondToBuyer
+            );
+        }
+        emit TradeSettled(tradeId);
+
+        _send(payable(trade.buyer), buyerRefund + sellerBondPenalty);
+        _send(payable(trade.seller), sellerEscrowPayout + sellerBondReturn);
+
+        if (returnDisputeBondToBuyer) {
+            _send(payable(trade.buyer), disputeBond);
+        } else {
+            _send(payable(trade.seller), disputeBond);
+        }
     }
 
     function _releaseTradeObjectLocks(uint256 tradeId) internal {

@@ -1,0 +1,16 @@
+{
+  "canonical_payload": "{\"declared_insurance_eth\":\"0.20\",\"insured\":true,\"route_type\":\"insured_shipping\",\"schema\":\"marketplace.trade_route.v0.2\",\"tracking\":\"SIM-WALL-0001\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "declared_insurance_eth": "0.20",
+    "insured": true,
+    "route_type": "insured_shipping",
+    "schema": "marketplace.trade_route.v0.2",
+    "tracking": "SIM-WALL-0001",
+    "trade_id": 1
+  },
+  "payload_hash": "0x1b593a6c3a48f2143b3a6c8f21a53b175b9c24b97753db8b87fe682f28f631a2",
+  "signature": "0x78b0998666345d55ab58d35b3774a72435265907f8750a10f88e46efadf646e60873605d418f60985cfffe56a6385aea20f789de53e68e78e79b956609e5b05c1c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+}

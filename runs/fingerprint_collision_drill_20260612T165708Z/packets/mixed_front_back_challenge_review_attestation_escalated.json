@@ -1,0 +1,78 @@
+{
+  "canonical_payload": "{\"challenge\":{\"failure_policy\":\"route_remains_blocked_until_buyer_clearance\",\"hooks\":[\"buyer_clearance\",\"arbiter_escalation\",\"fresh_nonce_request\"]},\"claim\":{\"known_conflicts\":[\"front_back_match_group_mismatch\"],\"negative\":[\"The verifier cannot cure this mismatch from the submitted packet.\"],\"positive\":[\"Front/back mismatch requires human arbiter review.\"]},\"display\":{\"label\":\"Challenge reviewed\",\"short_warning\":\"Scope-limited review.\"},\"inputs_not_seen\":[\"in_person_card_inspection\",\"post_review_custody\",\"grading_company_api_response\"],\"inputs_seen\":[{\"hash\":\"0xb1480e588a51578cc725fc8906377dda7aeee5f556772fb363d9093951f54bea\",\"kind\":\"challenge_packet\"},{\"kind\":\"detector_signals\",\"value\":[\"front_back_match_group_mismatch\"]},{\"kind\":\"requested_evidence\",\"value\":[\"fresh_front_back_video_with_single_take\"]},{\"kind\":\"verdict\",\"value\":\"escalated\"}],\"issued_at\":\"2026-06-12T16:57:11.218225+00:00\",\"method\":{\"method_id\":\"tcg.fingerprint.challenge_review.v0.1\",\"method_id_hash\":\"0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69\",\"summary\":\"Reviewed the active fingerprint challenge packet and submitted cure evidence.\"},\"schema\":\"marketplace.verifier_scope_attestation.v0.1\",\"scope\":[\"fingerprint_challenge_resolution\"],\"scope_set_hash\":\"0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe\",\"subject\":{\"subject_hash\":\"0xb1480e588a51578cc725fc8906377dda7aeee5f556772fb363d9093951f54bea\",\"subject_type\":\"fingerprint_challenge\"},\"trade_id\":6,\"verification_model\":\"remote_self_reported\",\"verifier\":\"did:market:verifier:anvil-3\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "challenge": {
+      "failure_policy": "route_remains_blocked_until_buyer_clearance",
+      "hooks": [
+        "buyer_clearance",
+        "arbiter_escalation",
+        "fresh_nonce_request"
+      ]
+    },
+    "claim": {
+      "known_conflicts": [
+        "front_back_match_group_mismatch"
+      ],
+      "negative": [
+        "The verifier cannot cure this mismatch from the submitted packet."
+      ],
+      "positive": [
+        "Front/back mismatch requires human arbiter review."
+      ]
+    },
+    "display": {
+      "label": "Challenge reviewed",
+      "short_warning": "Scope-limited review."
+    },
+    "inputs_not_seen": [
+      "in_person_card_inspection",
+      "post_review_custody",
+      "grading_company_api_response"
+    ],
+    "inputs_seen": [
+      {
+        "hash": "0xb1480e588a51578cc725fc8906377dda7aeee5f556772fb363d9093951f54bea",
+        "kind": "challenge_packet"
+      },
+      {
+        "kind": "detector_signals",
+        "value": [
+          "front_back_match_group_mismatch"
+        ]
+      },
+      {
+        "kind": "requested_evidence",
+        "value": [
+          "fresh_front_back_video_with_single_take"
+        ]
+      },
+      {
+        "kind": "verdict",
+        "value": "escalated"
+      }
+    ],
+    "issued_at": "2026-06-12T16:57:11.218225+00:00",
+    "method": {
+      "method_id": "tcg.fingerprint.challenge_review.v0.1",
+      "method_id_hash": "0x30bfdb71263958080712faa00c4597f4ad94d6b96d499ea5aba035ecde8cae69",
+      "summary": "Reviewed the active fingerprint challenge packet and submitted cure evidence."
+    },
+    "schema": "marketplace.verifier_scope_attestation.v0.1",
+    "scope": [
+      "fingerprint_challenge_resolution"
+    ],
+    "scope_set_hash": "0x95c566119c77e214279477cf93fcf5da9c1b7071c331dd416d202e3eb957cfbe",
+    "subject": {
+      "subject_hash": "0xb1480e588a51578cc725fc8906377dda7aeee5f556772fb363d9093951f54bea",
+      "subject_type": "fingerprint_challenge"
+    },
+    "trade_id": 6,
+    "verification_model": "remote_self_reported",
+    "verifier": "did:market:verifier:anvil-3"
+  },
+  "payload_hash": "0x1e5f087a0bdfe2f18012ac4e05deb9008291b2ce9a5d658b6fd09ec24e746815",
+  "signature": "0xf773507397090b946f3300b144ff674868a8cb692500927bb4bfc82ae15ed44903896c7fb845ef9ba7b9870079dc038020b22bf5d9e81c705a049988868cf4b61c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+}

@@ -244,6 +244,25 @@ def scope_set_hash(scopes: list[str]) -> str:
     )
 
 
+def judgment_supply_commitment_hash(trade_id: int, label: str) -> str:
+    return keccak_payload(
+        {
+            "schema": "marketplace.judgment_supply_commitment.v0.1",
+            "trade_id": trade_id,
+            "label": label,
+            "floor_executor": SIGNERS["replacement_arbiter"]["actor_id"],
+            "floor_executor_address": REPLACEMENT_ARBITER,
+            "floor_scope": [
+                "record_coherence",
+                "record_completeness",
+                "custody_chain_consistency",
+                "fingerprint_comparison",
+            ],
+            "not_claiming": ["physical_authenticity", "card_condition_truth"],
+        }
+    )
+
+
 def method_id_hash(method_id: str) -> str:
     return keccak_payload(
         {
@@ -1942,7 +1961,7 @@ def run_happy_path(
             BUYER_KEY,
             contract,
             "create insured trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 SELLER,
                 ARBITER,
@@ -1951,6 +1970,8 @@ def run_happy_path(
                 "172800",
                 intent.payload_hash,
                 terms.payload_hash,
+                judgment_supply_commitment_hash(trade_id, "insured-trade-floor"),
+                REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],
@@ -2803,7 +2824,7 @@ def run_claim_path(
             BUYER_KEY,
             contract,
             "create new-seller trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 SELLER,
                 ARBITER,
@@ -2812,6 +2833,8 @@ def run_claim_path(
                 "172800",
                 intent.payload_hash,
                 terms.payload_hash,
+                judgment_supply_commitment_hash(trade_id, "new-seller-claim-floor"),
+                REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],
@@ -2959,8 +2982,13 @@ def run_claim_path(
             BUYER_KEY,
             contract,
             "open fingerprint challenge",
-            "openFingerprintChallenge(uint256,bytes32,bytes)",
-            [str(trade_id), fingerprint_challenge.payload_hash, fingerprint_challenge.signature],
+            "openFingerprintChallenge(uint256,bytes32,bytes32,bytes)",
+            [
+                str(trade_id),
+                fingerprint_challenge.payload_hash,
+                claim_verifier_scope_hash,
+                fingerprint_challenge.signature,
+            ],
         )
     )
     evm_route_spendability = route_spendability_hash(
@@ -3463,7 +3491,7 @@ def run_arbiter_replacement_path(
             BUYER_KEY,
             contract,
             "create replacement-path trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 SELLER,
                 ARBITER,
@@ -3472,6 +3500,8 @@ def run_arbiter_replacement_path(
                 "172800",
                 intent.payload_hash,
                 terms.payload_hash,
+                judgment_supply_commitment_hash(trade_id, "replacement-path-floor"),
+                REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],

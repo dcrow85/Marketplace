@@ -185,7 +185,7 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                 e2e.BUYER_KEY,
                 contract,
                 "create alpha Espeon trade",
-                "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+                "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
                 [
                     e2e.SELLER,
                     e2e.ARBITER,
@@ -194,6 +194,8 @@ def run_commit(args: argparse.Namespace, run_dir: Path, packet_dir: Path) -> dic
                     "172800",
                     packets["intent"].payload_hash,
                     packets["terms"].payload_hash,
+                    e2e.judgment_supply_commitment_hash(trade_id, "alpha-espeon-floor"),
+                    e2e.REPLACEMENT_ARBITER,
                     packets["intent"].signature,
                     packets["terms"].signature,
                 ],

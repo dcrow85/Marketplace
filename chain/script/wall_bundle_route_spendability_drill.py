@@ -306,7 +306,7 @@ def setup_trade(
             e2e.BUYER_KEY,
             contract,
             "create wall bundle drill trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 e2e.SELLER,
                 e2e.ARBITER,
@@ -315,6 +315,8 @@ def setup_trade(
                 "172800",
                 intent.payload_hash,
                 terms.payload_hash,
+                e2e.judgment_supply_commitment_hash(trade_id, "wall-bundle-floor"),
+                e2e.REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],

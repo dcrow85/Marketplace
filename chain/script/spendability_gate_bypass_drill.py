@@ -233,7 +233,7 @@ def run_drill(rpc_url: str, registry: str, contract: str, packet_dir: Path) -> D
             e2e.BUYER_KEY,
             contract,
             "create bypass drill trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 e2e.SELLER,
                 e2e.ARBITER,
@@ -242,6 +242,8 @@ def run_drill(rpc_url: str, registry: str, contract: str, packet_dir: Path) -> D
                 "172800",
                 intent.payload_hash,
                 terms.payload_hash,
+                e2e.judgment_supply_commitment_hash(trade_id, "spendability-bypass-floor"),
+                e2e.REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],

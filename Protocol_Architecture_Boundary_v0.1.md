@@ -47,9 +47,9 @@ only by funds/liveness + mechanizability.
 
 | finding | what is deferred | recommendation | why |
 |---|---|---|---|
-| AUD-D6-002 | revoked arbiter + no proposal deadlocks a claim | **bind on-chain** | liveness: a stuck claim locks buyer escrow. Add an on-chain default remedy / timeout fallback when no arbiter can act. Not optional. |
-| AUD-D6-003 | challenge clearance checks subject, not scope | **bind on-chain** | a cheap hash-match (attestation scope must equal an allowed challenge-resolution scope) closes a funds-adjacent laundering path. Mechanical -> bind. |
-| AUD-D6-001 | JudgmentSupplyCommitment not bound | **anchor the hash on-chain** | bind a `judgment_supply_commitment` hash into the trade so "is a judge committed?" is gateable; validate SLA/fee/remedy/conflict content off-chain. Hash mechanical -> anchor; content semantic -> off-chain. |
+| AUD-D6-002 | revoked arbiter + no proposal deadlocked a claim | **fixed in code** | liveness now has a staged timeout path: after the human-arbiter window, a JSC-bound floor executor can resolve; after the floor window, a default unresolvable remedy can close the claim. |
+| AUD-D6-003 | challenge clearance checked subject, not scope | **fixed in code** | challenges now bind an `allowedResolutionScopeHash`; attestation clearance requires a mechanical scope hash match. |
+| AUD-D6-001 | JudgmentSupplyCommitment was not bound | **fixed in code** | `createTrade` now requires a nonzero per-trade `jscHash` and registered floor executor; the contract anchors the hash while SLA/fee/remedy/conflict content remains off-chain. |
 | AUD-D6-004 | conflict / SLA / fee / remedy metadata not parsed | **documented off-chain** | inherently legible judgment; disclose, and measure conflict/SLA quality via the legibility vector + calibration. |
 | AUD-D2-SW-001/002 | wall-bundle / assembly-history graph coherence | **documented off-chain (keep)** | already anchors the hashes; coherence is graph validation, not a mechanical check. On-chain would overclaim. Disclosure already corrected (AUD-D9-001). |
 | AUD-D5-001 | exit-scam EV omits `cost_to_fake` | **off-chain model fix** | the EV is an off-chain agent model; wire `cost_to_fake` from the legibility vector so the deterrence signal discriminates. |
@@ -60,10 +60,12 @@ only by funds/liveness + mechanizability.
 | AUD-D3-001 | gaps G4 (Identity), G7 (Time) lack a negative case | **audit hygiene** | add the two negative scenarios before the gap taxonomy is presented as complete. |
 | AUD-D10-001 | two drills carry self-grading risk | **audit hygiene** | mutation-test the trader tournament and seller-bootstrap drill before citing as network evidence. |
 
-Net: **two true on-chain binds** (D6-002 liveness, D6-003 scope-match), **one
-on-chain anchor** (D6-001 JSC hash), and everything else stays off-chain —
-fixed, disclosed, and measured. The contract grows by a timeout-fallback, a
-scope-hash match, and one commitment-hash field; it does not learn to judge.
+Net: the launch-gating Domain 6 spine has landed: **two true on-chain binds**
+(D6-002 liveness, D6-003 scope-match), **one on-chain anchor** (D6-001 JSC
+hash), and everything else stays off-chain — fixed, disclosed, and measured.
+The contract grew by a timeout/floor-resolution path, a scope-hash match, a
+per-trade JSC hash, and a floor-executor address; it still does not learn to
+judge.
 
 ## The honesty requirement
 
@@ -89,8 +91,9 @@ Before value-bearing alpha:
 
 ```text
 - BIND: D6-002 liveness fallback and D6-003 scope-match are in the contract and
-  guarded by tests.
-- ANCHOR: D6-001 JSC commitment hash is bound into the trade gates.
+  guarded by tests. (Landed.)
+- ANCHOR: D6-001 JSC commitment hash is bound into trade formation and route
+  gates. (Landed.)
 - DISCLOSE: every off-chain obligation in the table is named in the spec/API/
   agent layer as a caller/validator responsibility, not an escrow guarantee.
 - MEASURE: cost_to_fake is wired into the EV (D5-001) and the legibility +
@@ -99,16 +102,13 @@ Before value-bearing alpha:
   are closed, so the falsification is complete.
 ```
 
-Until the BIND and ANCHOR items land, value-bearing trades must surface the
-unbound judgment-supply and liveness risk as a named residual at acceptance.
+The BIND and ANCHOR items have landed; value-bearing trades must still surface
+the remaining off-chain JSC content boundary (conflict, SLA, fee, remedy policy,
+calibration) as caller/validator responsibility rather than escrow enforcement.
 
 ## Open questions
 
 ```text
-- Default remedy on arbiter-disappearance: refund-to-buyer, split, or a pre-bound
-  fallback arbiter? (D6-002 design choice with real fairness trade-offs.)
-- JSC anchor granularity: per-trade, or a reusable provider commitment the trade
-  references? (Reuse lowers friction but ages.)
 - How much of the off-chain validator stack ships as the protocol vs as the
   reference agent — i.e., where the trusted-base/agent boundary itself sits.
 ```

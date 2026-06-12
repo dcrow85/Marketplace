@@ -823,7 +823,7 @@ def replay_trade(
             e2e.BUYER_KEY,
             contract,
             f"{trade['trade_id']} create trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 e2e.SELLER,
                 e2e.ARBITER,
@@ -832,6 +832,8 @@ def replay_trade(
                 str(inspection_seconds(trade["value_band"])),
                 packets["intent"].payload_hash,
                 packets["terms"].payload_hash,
+                e2e.judgment_supply_commitment_hash(evm_trade_id, f"{trade['trade_id']}-floor"),
+                e2e.REPLACEMENT_ARBITER,
                 packets["intent"].signature,
                 packets["terms"].signature,
             ],

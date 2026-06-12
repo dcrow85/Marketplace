@@ -1,0 +1,1185 @@
+{
+  "contract": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+  "drills": [
+    {
+      "detector_signals": [
+        "same_hash_active_elsewhere"
+      ],
+      "observations": [
+        "exact_attack commit same active fingerprint reverted as expected."
+      ],
+      "outcome": "blocked_on_chain_by_activeItemFingerprints",
+      "packets": [
+        {
+          "packet_id": "exact_source_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_source_intent.json",
+          "payload_hash": "0xacc1e159cc36e0ab6f57081b014a1b9b3c78013caf458a430716a3defe572627",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xb95011c2cedffc77d67fd4fba80e066886a3b672b960d4fea59023723022878c1540a632ea8a3836e21c6581e871e207c691b57af2a14b2ea1106980524fc2031c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "exact_source_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_source_terms.json",
+          "payload_hash": "0x8c53b902376df15e74d76fd4d3748f8e95642191fdcd15c57b587091304347f1",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x01f247bd8cf331d3821b7bc30b0b7448e4cc2f225d671407f2d4716367830df606962737db99e1e3e96e2740348da92dd10d20f9544f66a6fab1e9507ca7f6fd1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "exact_source_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_source_evidence.json",
+          "payload_hash": "0xb39579bb62e05b680a8b467c27ddc1eeb57baa2310ddc71959df695955f92787",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x8a5cc547eece729df4d6666a44631477993d1da6b76e6d2645208da2bc5043cb24986d1b82b5f5dbea4a3004b65d375bec81e84d64e0822e42b461bdead8cd9d1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "exact_source_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_source_fingerprint.json",
+          "payload_hash": "0x0b87e52d2ec3360770a98f7c626675761d0f51b3503e3dc41d505fe86fe250b7",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0xca79ce25e5fe8be25910a75b3d2594f4cc0ac5a5cdca39394069829d4780598232d00fabf72d702f0529f4cb0801e8025fd74d11ac6e8bc502e7a710c504ce841b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "exact_source_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_source_inventory_lock.json",
+          "payload_hash": "0x2c583e73b4942c2ef6015bef2e35d43918f1c2f6d939b27dbe4b5eb973d8f4f8",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x96b5b04b5cd971d59d2f339c81abd6815f5e8bf32e3b7abe11406bda97b5dbb641842f7b280868558394265d6ff2846ecf9381495438901a31fde576129c32b71b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "exact_attack_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_attack_intent.json",
+          "payload_hash": "0x2873438c9a25da8d7c78c0bc770dca5da50835cbea7a785840d10ab4b3b96458",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x1dc2ba432a866b28ddaaff82f5ea0ddec9a36a061d7245406f3e5523777deb5b68badd89909e7cafff6de6f0b20f3094e3064d4f0a62725f3379b59e974819541b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "exact_attack_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/exact_attack_terms.json",
+          "payload_hash": "0x80560e44c576e3492cb4cb6338ab1a9387164f9c3f2ea4e3b5cc85792d801421",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x7ccfb3ccac3721ff8e911c4d0571fa6437e08888e7523c3e870d15407f1e6691688ee3be3e49565ffe4670e2e46d993b943576165a9073934d82338c1bb5b9e41c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "requested_evidence": [],
+      "slug": "exact_hash_collision",
+      "title": "Exact same fingerprint hash across active trades",
+      "trade_ids": [
+        1,
+        2
+      ],
+      "transactions": [
+        {
+          "label": "exact_source create trade",
+          "tx_hash": "0x34bf44b74e1aa2edb26a9e74ad23dada6c85c97b445d0646c40ee1a4b46164bb"
+        },
+        {
+          "label": "exact_source seller posts bond",
+          "tx_hash": "0xcf309a1ede6bae41037691693aa10baf683ea7a78e23d7dcbcdc45b8d0e9188b"
+        },
+        {
+          "label": "exact_source attach item evidence",
+          "tx_hash": "0xb66c25e2f4326f804b66e4d3ee3088b74426b4c0200c6458ef244a5adc60c320"
+        },
+        {
+          "label": "exact_source commit item fingerprint",
+          "tx_hash": "0xa2192b0db54c1ac9cb217325c483efd5f948af786aab548c7f76dde0e3427245"
+        },
+        {
+          "label": "exact_source commit inventory lock",
+          "tx_hash": "0x54a1eb2de34f36764c8f13015a63ca982ff07ff7926a3e98c2e63664002f9bb7"
+        },
+        {
+          "label": "exact_attack create trade",
+          "tx_hash": "0x3db52ecced1c05137a3de78a9ec570f2fccda8c34f12b06ceeb5328a660dffe8"
+        },
+        {
+          "label": "exact_attack seller posts bond",
+          "tx_hash": "0xffb6c4170aef24b714a6bea2e4b4292cc52b2e4d7d4042b9204fe4e3264be3c2"
+        }
+      ]
+    },
+    {
+      "detector_signals": [
+        "same_cert_active_elsewhere:psa-cert-hash-65081234:trade_3"
+      ],
+      "observations": [
+        "cert_attack route blocked by active fingerprint challenge reverted as expected.",
+        "Verifier accepted fresh nonce cure; buyer cleared the challenge with the attestation and route committed."
+      ],
+      "outcome": "verifier_cure_accepted_route_allowed",
+      "packets": [
+        {
+          "packet_id": "cert_source_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_source_intent.json",
+          "payload_hash": "0x1b53274438184cc7857b508f3c61a315286491704de3ca53c6d9e3cba8f3a501",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xdb049f2626d5b04dbdab518cd65604b5f644b674cba18434ad28dec20305e0fa0d6b816f0673c9141ea6ae95591b598d181c52c83b389c28b989c83074f775021c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_source_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_source_terms.json",
+          "payload_hash": "0x5ddc243172d8ac91f389832a2818d97d6c8a3c26643e8c98942774f0f0c71420",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xb9ad04c6eecb5bc05f1c67c09e02f02af167f477b8d385a0ad152792d5d8e4d0597d858a013c8814d72706f9f70c3132f2787252139b82ceb23769a6bf8edcbb1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_source_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_source_evidence.json",
+          "payload_hash": "0x58ad483da01ed1405e840485e47a3d36e2f47e058d4ed698e899afe2d6c4b963",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x412befa3b5c7ff3d348fec28a03184d9a0ce19b07e248964b1667fe6b53c2a2d7a3f196cc5c1d278e698f798a6c1705482d760ff576960fc7a3aae195533ef601b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_source_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_source_fingerprint.json",
+          "payload_hash": "0x95d851e21bdac1c15c1e49437651c2a7958286dd311097ad1ef7c7c421391bf5",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x7db00999053c9023d31b41e5a5d6c868bb0ae97fd5fe76225cb5828d83223fcc093a3febc341f6db3ecb5536bc952320ae707441c701d9a1444286ed15de4b421b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_source_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_source_inventory_lock.json",
+          "payload_hash": "0x32ce0e4475234968323f4b2e08636566e6aa9f9ef299acf8072d507b5e5f0588",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xc551a9a45d2e9c4ec994bc5ed836eebcd9b1102835f41ad5f46d17a178ad6a4123d6e870061b38502e4b5cbd41cb8fd2d450197701f007a1d1e2942b1e6700c41b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_attack_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_intent.json",
+          "payload_hash": "0xae9ed70bcf3e2bef380ac8a8d3402f5d0ac207aba3de891cb96fdab84d903c57",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x7b465469abd1965f96901d3b6d1e8fa2c211f08e26a6c7af28f10a20ebc501623c2512dae6a02993d95cfcb7d87fc1b8cfbfe0e99995db8621482aa1423f55911c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_attack_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_terms.json",
+          "payload_hash": "0x7b7b4db0c854087115cacfc1f910575ecfed2cec34d94cf108e455b404848245",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xf77bb5eda70f694314a90f7c5cbe179586b6c1a2e6f1cf837a37f0d955ab6dd77b3109f6b10db8495928cd4830c82f29e65906babe013f15128ae2f06e3478ef1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_attack_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_evidence.json",
+          "payload_hash": "0x8cb9dd90bbd40fc13b4f004ec04a2e8324f67846e824cb8ec14a05c80e9962e1",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0xf727fb98045390df518a874f61934254a2e06fe12fb000b462816207a1f4e46d6492692d53249817f51ea342d9e1c6f7edd790689ffc69abf1cf73e60a53c04e1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_attack_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_fingerprint.json",
+          "payload_hash": "0x2a7e7ed6b91419f4460e1917d7e56a3f236720ce75f0c374f0a11cf266d79e5b",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x52cbe1928bdf4b9be0c5c447eca4b27955e20af8f67dd525a9e0e07b6fe7eaba665b0f30eab29c8226c3f2eda39ed03974d9045889db9e8e081f9a7a9641d9da1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_attack_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_inventory_lock.json",
+          "payload_hash": "0x4a9151cd7fe7d9201ba9ef14f6c2e018a0479441a49cee9b83ee87d0676d5eb3",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xa76a6155b7ec6263b5aade50315e0dd54fa4be2512ab92bcb5e50538d8e3c0943211cf4ef29afd93104245d1033e56704858cf95b166f3fc8ee661405097eae61c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_attack_fingerprint_challenge",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_fingerprint_challenge.json",
+          "payload_hash": "0xd224c70403f35fcdb6f45b139bdfaa84f5f9553b836cc2b0ac000c30bc755266",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0xd6770031f37f88fe8dc327691b538cfc2d766f98197e73c29594d43968f95aef4b03052b88f0cf70cffc9df0b7179dabf43568e77fae27ddb009da9dc26f58911b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_attack_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_route.json",
+          "payload_hash": "0x4c28867da66fb4a6f0f36b1c797aa083269683330a75c3ab6b172b43076652b9",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0x78b51b3155a258babb759249aebabfcef938dba19f717037f4664fa54a4a4e253580f6e1b9ed00c9f2dfa55a8d03f06fb1711210476a05351a9917201e6c91c71c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "cert_attack_challenge_review_scope_approval",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_challenge_review_scope_approval.json",
+          "payload_hash": "0xafc8e8b32c421c2109fdca953ff41d3d94fa3422f5ef41f50fb8da8b45d757d7",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0xbac9c775294714d5d507a341274cc6f73d1a73df02afd836eeab029654696acc25d5845a2cf2cecc7db371fbc217504ab42b5416ecc97bf82e770e6788fccdf11c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "cert_attack_challenge_review_attestation_accepted",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_challenge_review_attestation_accepted.json",
+          "payload_hash": "0x4c3402d2a33d1607fd29350804d668f553908a01dc0b2b281dc2a13c1702bd80",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0x4a372712f87c958782a9f476bf95d0c2f4bbff7dc875e33da86a4aeebf09bc86190ae45f5204f3a4a9e9b845c9281de9250c63ef4714153f80df3d41108879e41c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        },
+        {
+          "packet_id": "cert_attack_fingerprint_challenge_clear_accepted",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/cert_attack_fingerprint_challenge_clear_accepted.json",
+          "payload_hash": "0xf79ee7d290882741556090ecf7676dd4f86c7eb9f92650d14c0f1dd0bd5a3f1d",
+          "schema": "marketplace.fingerprint_challenge_resolution.v0.2",
+          "signature": "0x02385c0486940e8d7fab0a0d0ed9b63a6756006bdaa5adccb2d89f4dea65172825b0a014233bd0ef122ba53efcc4c92c464c3004ca225f0601ad5420176e1dcc1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        }
+      ],
+      "requested_evidence": [
+        "fresh_slab_nonce_photo"
+      ],
+      "slug": "same_cert_reuse",
+      "title": "Same PSA cert reused with different photos",
+      "trade_ids": [
+        3,
+        4
+      ],
+      "transactions": [
+        {
+          "label": "cert_source create trade",
+          "tx_hash": "0xd0b02df595f9ff1be2272699a90fb60b61b9f0206121bca0e2cc64b04e6d5506"
+        },
+        {
+          "label": "cert_source seller posts bond",
+          "tx_hash": "0xb43f821f830a173647b8f6f2bd2b4bff0f7cec08c4235d91d09cd88a2b5af4cd"
+        },
+        {
+          "label": "cert_source attach item evidence",
+          "tx_hash": "0x6dde3dfb4425005a70b8e5dcb41d38f7067d9d6b3d5a875bdc509ed77c763853"
+        },
+        {
+          "label": "cert_source commit item fingerprint",
+          "tx_hash": "0x32543c57171bc39e712d83f1398404098ab1cec9e126331f0b3055825053d3bd"
+        },
+        {
+          "label": "cert_source commit inventory lock",
+          "tx_hash": "0xc4ffff4d7da226bceee87177a8ba2ce472333c2ff46b7730784ae301a11f90f3"
+        },
+        {
+          "label": "cert_attack create trade",
+          "tx_hash": "0xfbb81b7e5b5a3b6b2aa36cb4a062038dfba169d28dc7fd38ff66bbf31255ec60"
+        },
+        {
+          "label": "cert_attack seller posts bond",
+          "tx_hash": "0xf58ba0befacc7c0da731411a1295999e9f218be5edb82b44d55902259c16a6c4"
+        },
+        {
+          "label": "cert_attack attach item evidence",
+          "tx_hash": "0x5bb43af0ae87fba3d665362665fdf8d319aad440d3bbc33f8e7af622c5071212"
+        },
+        {
+          "label": "cert_attack commit item fingerprint",
+          "tx_hash": "0x0d05103b279f4d71b5bedeb4fee4bbfba97b5dd9d158020bc9d35a22a3d6dcbb"
+        },
+        {
+          "label": "cert_attack commit inventory lock",
+          "tx_hash": "0xc8bdc25e3b73e541ebb6068108c22548382b26d2ea170daabb84d9994f369c07"
+        },
+        {
+          "label": "cert_attack open fingerprint challenge",
+          "tx_hash": "0xa06d4af1d117bbb17be0e442c7d94934b88f81cbd54403e6370c99080958875c"
+        },
+        {
+          "label": "cert_attack approve challenge review scope",
+          "tx_hash": "0x3fd4e918a66fa716307d1e309762257b5641e1b56568a7c98299e0c7d9871545"
+        },
+        {
+          "label": "cert_attack commit challenge review attestation accepted",
+          "tx_hash": "0xc1acfc4d1da33207d4a229c97891c3e0caa2f914f63ff23dc15a5dd4ca459cd1"
+        },
+        {
+          "label": "cert_attack clear challenge with verifier attestation",
+          "tx_hash": "0x07f81cf593e8992a3d6d525742aa084da806d683d25a5e07604d3a70a59bc974"
+        },
+        {
+          "label": "cert_attack commit route after verifier cure",
+          "tx_hash": "0x7caca389c7e9651bccdf686d101b756995f023d0011c2ef1e0237ab43ab210db"
+        }
+      ]
+    },
+    {
+      "detector_signals": [
+        "prior_market_ref_without_current_custody_nonce",
+        "stale_capture_window"
+      ],
+      "observations": [
+        "stale_photo route blocked by active fingerprint challenge reverted as expected.",
+        "stale_photo route remains blocked after verifier rejection reverted as expected."
+      ],
+      "outcome": "verifier_rejects_route_stays_blocked",
+      "packets": [
+        {
+          "packet_id": "stale_photo_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_intent.json",
+          "payload_hash": "0x3f830cdac436e72db3dbe7424b0f14e6e95fcd86cf6629689fe5a3ad754a4d0d",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x21052a1e78a8b7e4f3b010068cea575a62a6fde0a95c83e6a05e4236ec4871b508f8b25ba6d2aece5b6169335088054a83e4dbdad9fcb98ddb0d53c211840a921b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "stale_photo_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_terms.json",
+          "payload_hash": "0xe153e398dc8d59647befa5b15982049e6d1de2e0d168c967c2004bb28994c826",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x653448a3ae04dd97a4978583cb7f5d960a7a5f51b150b99d5b419d87bdea8cff2552d6aaaa0d3f2ed584f3eaf4531f58a5e0970e9f9142545cf026a7c0bd49041c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "stale_photo_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_evidence.json",
+          "payload_hash": "0xdbc5095e7c52419c08eda29dea15e1f53abc627f9bbfd40544b226c45ccb17c9",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x5cc598cf52d87481c71168c1a8007a7ab36b42be39f0c13b375fea7a866b0d43592ee238dd348479d2568b76ec3c5731df96b09054394e87fdc5ea1678c21bc01b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "stale_photo_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_fingerprint.json",
+          "payload_hash": "0x9ca5c57bb5b338f895a9e1cfb34e20c90f480ac4f330b66e83dc800b65b4da9d",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x4ff66f9149fd86702cdd97b088f81244458863b98d7c7b7d90c3f1013835550d03e3e57de8d8eaa48aef7ba32fc56fff3fe534366721692c9372d0ca2cbe3e4c1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "stale_photo_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_inventory_lock.json",
+          "payload_hash": "0x7679b559c5e39f920b103d84fbe49fcf12047c58ea6da3ceb33e8f5569676fdf",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xca8f59597b6ea9b6fb0e9acf6c0e9eafaea36dd807c6aeea5cd9518338dd39434d2bb9c246169955989d8ae921171f129b999b817c2e2ca1c40d0f98162560721b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "stale_photo_fingerprint_challenge",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_fingerprint_challenge.json",
+          "payload_hash": "0x22339953745a2283e80a2ef0e7d93999cf56c471443a270c98c6a1ab063942da",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0x735bd4a4fedb1432e653fde53eea6290c17f568a85b3e717734876227f553e691e95f9a9a83b7b62d1c2a31e322c8f9f4d3dead208d5032b0d947fff393a8c201c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "stale_photo_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_route.json",
+          "payload_hash": "0x219fccad333e202953acca0d307e7a56394d97b17bf43472d175bb3d7a8a7d33",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xcb35357ec3c37fcb8e0d9ec493dfb7ef5f6ef777ed96cf32fbf904d4c612b7ae031304e32698fcf77519d97da52900b3ea33e62551f59b7092c1fb7d3083d5da1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "stale_photo_challenge_review_scope_approval",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_challenge_review_scope_approval.json",
+          "payload_hash": "0x8e298fe7015312bc3feba7eeb2ec43f8da3542e8a20d2ab7ea7ebc0b93840ecb",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x652a72a59119a71324ee9c785ad98e13da2ca849fd0e679bb79dfd6cf6981aca2a6fe204d1eb39e8e2751f8c08b9dc132d38d41a989c8f4a742addaeb778ba611b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "stale_photo_challenge_review_attestation_rejected",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/stale_photo_challenge_review_attestation_rejected.json",
+          "payload_hash": "0x1b00cad0edcbef0ead6d40e7177a4dc62dbb9239ab93b9be9cc39ded1af1b8c0",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xbc3ff49083ed0dd27004580bc19fc7922f3ac310347ac1166bc70e3b636504bb7f5ba9f4d1e99bb8444e56d378bd30825417b1723a3867c34fe5b62e5aea5ce41c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        }
+      ],
+      "requested_evidence": [
+        "fresh_timestamped_photo",
+        "seller_custody_nonce_photo"
+      ],
+      "slug": "stale_prior_market_photo",
+      "title": "Prior marketplace image reused without custody nonce",
+      "trade_ids": [
+        5
+      ],
+      "transactions": [
+        {
+          "label": "stale_photo create trade",
+          "tx_hash": "0xf3eff5755d1382c124de4c2d0d184672f000936f4bab93d95b9ba7bd7ad6884a"
+        },
+        {
+          "label": "stale_photo seller posts bond",
+          "tx_hash": "0x9b86d05cf625e72116b762455e25a582321291312e336b6b6d43297b3ad5a5ed"
+        },
+        {
+          "label": "stale_photo attach item evidence",
+          "tx_hash": "0x4770c36718e3a04ce21cf297333772c4029cba53f568427115de0f00ec9bad84"
+        },
+        {
+          "label": "stale_photo commit item fingerprint",
+          "tx_hash": "0x33ad80f62e9d5249431ae1feb61aa05412516ea67dc35ad0eb507935b3cb67e3"
+        },
+        {
+          "label": "stale_photo commit inventory lock",
+          "tx_hash": "0x60a6642f283ed7b482dbb6054de5b9a98c09dc0742ffd7b35c127f6e215f6357"
+        },
+        {
+          "label": "stale_photo open fingerprint challenge",
+          "tx_hash": "0x42b6b4751072c813f95d1e2283ffac31ae999f9faced7f223502c6d3bf8f59b5"
+        },
+        {
+          "label": "stale_photo approve challenge review scope",
+          "tx_hash": "0x345d8b77cce8481a7f7833064dce8244dbfd3571a096909fc9a48335ce6d09fc"
+        },
+        {
+          "label": "stale_photo commit challenge review attestation rejected",
+          "tx_hash": "0x25312e1a76c0cbc6349aef83124d01176f6ebb6960663aa278acef68c922fc82"
+        }
+      ]
+    },
+    {
+      "detector_signals": [
+        "front_back_match_group_mismatch"
+      ],
+      "observations": [
+        "mixed_front_back route blocked by active fingerprint challenge reverted as expected.",
+        "mixed_front_back route remains blocked after verifier escalation reverted as expected."
+      ],
+      "outcome": "verifier_escalates_route_stays_blocked",
+      "packets": [
+        {
+          "packet_id": "mixed_front_back_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_intent.json",
+          "payload_hash": "0x5764fff6338e248e8d783a38809dcc4d64991f3d5c8caaa22faab10b2529e9b2",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x6dba6b03557e810f3b232cb32576d1c81077af1b280ad320dadc440fabd327714f622275dab467769c10c9b5c69d06610ea58601b4a0f4a2a77a740af5f0c11c1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "mixed_front_back_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_terms.json",
+          "payload_hash": "0x677ca1b965507a53c9068ce93e2d46670c9cdddcc021f647836cb6d4aa817167",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xac8f90c399828b9470304b3357cae2cb6437743abaf91f8a425331c63bccdeb568f87fa158691461a7abd8591a3888fe1932275ec418da7034d195def9cbf7b81b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "mixed_front_back_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_evidence.json",
+          "payload_hash": "0xcac8b60aa724c2a654d69cdf80bfe780e0bcedf2c5e4b8d5e2475fb498538f9b",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x9668ad76e4cf715140a31de4ad2c55df9eadaf494871388b7c5983938d893bf3006f561977a5c4bc102f5fe8abf7d522230c81c2fa89f2aa025a91391bb00bd81c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "mixed_front_back_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_fingerprint.json",
+          "payload_hash": "0x1b6fbd95d0eba4ea92bc848305924689e521b54ebeb682497bc9e8fd10d8e31d",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0xa444fdcb169ede65b71270a28ec50624b2b2165f38d115771769621bf66616d62535e780d88dc5459a576dce0da2148c0d82fb8a6ccaa1390004552030a70c361b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "mixed_front_back_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_inventory_lock.json",
+          "payload_hash": "0x9d94b9dee579e38cdb43c3e993ca89a3a868ea618edef9efda6f9f11ba87eb22",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x6aab992b2b8cac785f4abb48e0845c4319c33039375b4199b71da7b374b1dfa62a30ca600246d71cb77d01b1e4930e39a124a3e8815bfd7fb10b010188ba4fd01b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "mixed_front_back_fingerprint_challenge",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_fingerprint_challenge.json",
+          "payload_hash": "0xb1480e588a51578cc725fc8906377dda7aeee5f556772fb363d9093951f54bea",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0xa6640b4a326f0f9897840a19b1c71c9ef7da0ff6568ed11cdf2974eb15cedd023c7c249c14ab6c4fdd8e7c783ef7a479a7eedf043fd14645e34cc515717570aa1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "mixed_front_back_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_route.json",
+          "payload_hash": "0x405bdef3625f8c9dc6df7ccca93add639cb708cf95b9b07d9a2dde3445de55fd",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xad78509329493794a79410825369d90bf70e61a4c627a940c1ae79c10f2b095e35c512558d86abc1baa488c612263198ba6317eb4d931ef88079503294c3d84f1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "mixed_front_back_challenge_review_scope_approval",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_challenge_review_scope_approval.json",
+          "payload_hash": "0x676431714ebc913801cde88af74463a144a5020df64106ee8ca23a0a65c94b2f",
+          "schema": "marketplace.verifier_scope_approval.v0.1",
+          "signature": "0x9fd51b624e331b4f32489bbe011ea463ddd336bcd6f98e285ab25a98d5c21a0e0f52789dd4308abfba645b0cdf23ec118752a8d93a0718ac858253ee475843dc1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "mixed_front_back_challenge_review_attestation_escalated",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/mixed_front_back_challenge_review_attestation_escalated.json",
+          "payload_hash": "0x1e5f087a0bdfe2f18012ac4e05deb9008291b2ce9a5d658b6fd09ec24e746815",
+          "schema": "marketplace.verifier_scope_attestation.v0.1",
+          "signature": "0xf773507397090b946f3300b144ff674868a8cb692500927bb4bfc82ae15ed44903896c7fb845ef9ba7b9870079dc038020b22bf5d9e81c705a049988868cf4b61c",
+          "signature_valid": true,
+          "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+        }
+      ],
+      "requested_evidence": [
+        "fresh_front_back_video_with_single_take"
+      ],
+      "slug": "mixed_front_back",
+      "title": "Front and back markers appear to be different cards",
+      "trade_ids": [
+        6
+      ],
+      "transactions": [
+        {
+          "label": "mixed_front_back create trade",
+          "tx_hash": "0x8ba7b0f88c17664eaa3f15853db7166d55737231a7ba47c00093fe832bd6fafb"
+        },
+        {
+          "label": "mixed_front_back seller posts bond",
+          "tx_hash": "0x1b7550b383adbc90b4954d5e40ebe526c37ee1a733d52a537d3dafd9d4097d6b"
+        },
+        {
+          "label": "mixed_front_back attach item evidence",
+          "tx_hash": "0xbabc734ada72794ccfbda5c7bfd435ad8f1f09d69f5c46fcd1302f1fbbf950cb"
+        },
+        {
+          "label": "mixed_front_back commit item fingerprint",
+          "tx_hash": "0x5262a0f3f1540f44895c3885a99b2bd426b69faf28ba468b79a5dc8eb259aebc"
+        },
+        {
+          "label": "mixed_front_back commit inventory lock",
+          "tx_hash": "0x5d614c087e85c53a9c28840510efc75e30bec7efc0be20c68d7bcf991bdcbf98"
+        },
+        {
+          "label": "mixed_front_back open fingerprint challenge",
+          "tx_hash": "0xa6ffa16874884f6f40742e51df46c86a2afeb461b3f6478b0709a1ba767eedbf"
+        },
+        {
+          "label": "mixed_front_back approve challenge review scope",
+          "tx_hash": "0xd7db723426307928c10cb9909e5b79f14954e98e7e18c0d9cc0f9709b6c854a4"
+        },
+        {
+          "label": "mixed_front_back commit challenge review attestation escalated",
+          "tx_hash": "0xa91f184c025df9eeade163a6bed4af05a5bad5d41f63b4d74ee321920754a621"
+        }
+      ]
+    },
+    {
+      "detector_signals": [
+        "front_back_match_group_mismatch",
+        "same_front_different_back:trade_7"
+      ],
+      "observations": [
+        "front_attack route blocked by active fingerprint challenge reverted as expected."
+      ],
+      "outcome": "buyer_challenge_blocks_route",
+      "packets": [
+        {
+          "packet_id": "front_source_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_source_intent.json",
+          "payload_hash": "0xc626ef09225af1bf998917113ad886b29de97b0383e374c8e300cdd559aba9d9",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xb0e7613c83a2b5a0adb18480185db9aa125909fe1c4d10757831345dc1585b805ae3b796a9e34ea7660d27e5cd7cd08016d377da71abe9960dd4acb822788b081b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "front_source_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_source_terms.json",
+          "payload_hash": "0x9f6a01e4ca26a187c10340f9fc732054167523e930539a0dbf22d2504e17acd7",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0xecf8dff37260715b89d838b69008906dd071d35f7bdc383db48cbe01665ee21b7b572333996f1093fad37b399f382fee3fd9eec7a99b431fdffe8d8e2b30807c1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "front_source_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_source_evidence.json",
+          "payload_hash": "0x2c2cba0c24d8be4cb168676a203df04d69549eebffa2649409a4d6da7a216da8",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0xd0eaddd1ab123fd26d0287eb413d03dc0836458e6dc3c15d6a0eae99e88da0d02c72aea7236f0751b07c6eead19c197edcb7dfd7c183bedd868c63b6979493151b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_source_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_source_fingerprint.json",
+          "payload_hash": "0x3090ef1274588754df451d2ad20509e556345f27ce53a9fdd16204c91e3953b4",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0xd3072a9e9f7be0d125e85a4cc0abec32b7d4be4b6e8a8565adee5c8f47f0f33607fef92d6a5a76d796588a7af363d33e9a333524b1efaad805919bd238bf4c261b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_source_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_source_inventory_lock.json",
+          "payload_hash": "0xdf32a05eec029dad0babc13cb80a31a2a5e5d7af969b1835a755a3c4efff633f",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xb9733127b5af15b59a5a0d536c25fd06fb3a01a851e7ce026faa1a5b5004a52200065effb7b0312c6a6d1504dcb8fdeaafd793103a93268d4629fafc6f5f268c1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_attack_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_intent.json",
+          "payload_hash": "0x5c61534ef33a25eb574328d454c8df358320aa6c50d6ccc4881b5ef79a6ee0bb",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x65831c6df83c05871b4ef174f50b6b1f10cceb7f8c5b7857e6503630d52f00a658e49956e9750b78beed9afa6453e448b0da14fe41b26c47185aa556d460467f1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "front_attack_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_terms.json",
+          "payload_hash": "0x3a7ea6eeeb600c29d43cd1fae217dc350a9b85586eebb02da28d850933ea6443",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x320cbdfb5864cfd54a3a99183dc6df5cab2439002a16e25eaceaa26e1dcf64da63137e584516aa395ada247373ac7cbb9990a7ccef1567014c2fee2e8c1ad6231b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "front_attack_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_evidence.json",
+          "payload_hash": "0xe7f43caa8ba20e774c515fa90c78f5f56a53ca7f576e351669279ef833c90bbf",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x08252f0dd2cd993875ca95487d3ce780658e7d6c684fb8d95f19a5b97944223c7dcc1358b2c186365b7400ad7e131dad1e31966a3fa5c5002d9ea21f2cc951821b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_attack_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_fingerprint.json",
+          "payload_hash": "0x9421808cfc5a862ff18b461de7164682d45aa3ef5b5b423e5ea0ce9e7ab1f727",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x1e366dab52f62b8a10330e07e642bb296d7504ae7ec4185ef9cd94ecf9cbe2e03dc36ddcc68a4fe3d87901d647dc2073ff0c8deeb4eaa25eb147cef6353d30401c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_attack_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_inventory_lock.json",
+          "payload_hash": "0x26d2843c899a4ec394c710c0a5ef3d118c27f6eb194aeb06e795c8fa94baf335",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x35d52dae7e1bd4f4d385ea60057641143ffb940f26a4e0a38c8783659fcc5f174ec3a728b091029cb5b2246cb790456fba3d993124acf70098dad343219f81151c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "front_attack_fingerprint_challenge",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_fingerprint_challenge.json",
+          "payload_hash": "0xeb77a68b72c836b800bf619a02c1aaaf2c26b9adcd38203df9ceca44306b9b37",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0x13c943abd407d1f595ab03df5880cb8819df845463c457b84e597807a507ae2d4b207f334350c262564a93ae9250da224a792f2e1160f0c11eeb0986217075e81c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "front_attack_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/front_attack_route.json",
+          "payload_hash": "0xe2e56330fffa6d704f258d1dfbb9715c97a90be5a9410549810cf3e9b2e07f28",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xa2a288708c10102482f66cc972e6c8378c0f57d3743a77d700c2466300331a946430500c857dd1c71e84c8e517acb3faefb999c8d28ddfa89026537f244f09f21c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "requested_evidence": [
+        "fresh_front_back_video_with_single_take",
+        "front_back_video_with_buyer_nonce"
+      ],
+      "slug": "same_front_different_back",
+      "title": "Same front photo paired with a different back",
+      "trade_ids": [
+        7,
+        8
+      ],
+      "transactions": [
+        {
+          "label": "front_source create trade",
+          "tx_hash": "0x9a3c9d63ef5ed2e22112441a179e95eff59cf026b4b28cd340d0e8305617a91c"
+        },
+        {
+          "label": "front_source seller posts bond",
+          "tx_hash": "0x6dc112b6e242d1d201de66112641ac03437ed7d1d66785f1273e8c1719d0844a"
+        },
+        {
+          "label": "front_source attach item evidence",
+          "tx_hash": "0xfcd75d5ed6551593bebe87a4f6bd5b3ba20f3e3b08ed9494201799e9b580923e"
+        },
+        {
+          "label": "front_source commit item fingerprint",
+          "tx_hash": "0x1998f60203d14681bf570052a56a8820aaf8346136000186ff20b8e0f90cbd06"
+        },
+        {
+          "label": "front_source commit inventory lock",
+          "tx_hash": "0x69b46e47b392e276eeba8c22397d6068fc036e13e3727ded2671897788a38642"
+        },
+        {
+          "label": "front_attack create trade",
+          "tx_hash": "0xea953304d8946179153dd77d8c3eed985b732dab5fc3de6f88875b739d0e1359"
+        },
+        {
+          "label": "front_attack seller posts bond",
+          "tx_hash": "0x82a6fa080120a91e4f8badd50cc488634a247d138df0065fa8c38d62e61c9b40"
+        },
+        {
+          "label": "front_attack attach item evidence",
+          "tx_hash": "0xa985adf543527aaf95afdb0da63498909148479448f12a4f2bae1671fffd4bcc"
+        },
+        {
+          "label": "front_attack commit item fingerprint",
+          "tx_hash": "0xec8bc520cb75c57722c3d2485cab4a9361d379043501a8138b6b372a8d69a52c"
+        },
+        {
+          "label": "front_attack commit inventory lock",
+          "tx_hash": "0xc4edeae48609caf58a3a86a03348d74548c81aece2c7a80413cbaec153274737"
+        },
+        {
+          "label": "front_attack open fingerprint challenge",
+          "tx_hash": "0x5728f7e50375cc4f102992d18e62464bdcfb5c115a6a5efa05296da43aa6271d"
+        }
+      ]
+    },
+    {
+      "detector_signals": [
+        "same_private_match_group:private-match-group:raw-omega-42:trade_9"
+      ],
+      "observations": [
+        "crop_attack route blocked by active fingerprint challenge reverted as expected."
+      ],
+      "outcome": "buyer_challenge_blocks_route",
+      "packets": [
+        {
+          "packet_id": "crop_source_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_source_intent.json",
+          "payload_hash": "0x60247333840df1c8673b70ec02eda68a721edf61c9bb2ff3554b3e962b3f2fdc",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x4ee73ea1e77c2132ba4dd5df826861274676502722e2ea9457c8c5e415b5679b6e56152f7e37a25e187f2251221d56a2de9022793689f7bd2b3b8bcce074e5031c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "crop_source_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_source_terms.json",
+          "payload_hash": "0x2c0ad3c68e10d88cf2c880ada55b5ed25034210b6e1133b0b758e0bbd58c89a2",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x9a1b979b676311565731d90eace02d9db4be9cd6284201c3030dbeae336d1bed09a67a2955106d6f229b9949e2c7d1ab8dd870bec2bef7df0fa84b8f0557b6861b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "crop_source_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_source_evidence.json",
+          "payload_hash": "0xf56b82d0f1d26641050a8f9803c16175be7b67c7ff0812e15c8f9c3da6f12ad7",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0x935de952f6b9402eac13810684108db03c75642aa350ab2f8c7658f8a46302792f8b0822417e8c79650653db5a485e00c8d48ec9ec8301f4fd8a00866e49b1351b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_source_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_source_fingerprint.json",
+          "payload_hash": "0x24075ec40d15b34cf0f204a8d236b3f88d34e83d62581c36fb1e5d2f3d16dff3",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x7b9a11560dfdd1943c1d29d7320835e088a0035d180c6161c8d3969dde5962d94d8a7882064b95607cb1a9fea36351be3b725ecdc159b411b08234cec46496181c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_source_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_source_inventory_lock.json",
+          "payload_hash": "0x5bf2072d587b63cd42e07b9b68243cb1daf5c22ec957dd9a18448807e4b2a413",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x5dc0b6a30751f33d762a9c6d48ddf569f2d55bf2e4b5b5d33fd13a669e6f35555aee8213e633d1285f8a209bff928f472a3bd009de772160889d16b242c19df81c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_attack_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_intent.json",
+          "payload_hash": "0x2dc727f352b7b02c3ffe18e13f0b8c6b7208e47016f98e4f67cb92c7ccbc94d0",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0xc32fec0f0932351e11b6d928d4be847e9909136fe728d9e5189c5d1b1695797827925c0aadfc74f728f2a8c2e5c270830efb982f280d09151834e7a1d330b76e1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "crop_attack_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_terms.json",
+          "payload_hash": "0x1cf84a5077f194d46f748d10a94757e465f11fdc16dec88ffd1a429811cabd34",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x7fbd5b6c3c13f3115799007d6e9cb7416377e0ecf5e17d24130d774516f35c8e4e80eec435cf80320056e8a8abd8b87f82df3571f7f3ac50a2d1aef61075e9f31c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "crop_attack_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_evidence.json",
+          "payload_hash": "0x3a084aee136c4057488f6efd2a02873929b3c2b39a8418fc25c4658f334576c5",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0xbcc6e12585c442e6afa3009000c4f9975c957efba00054b94f81efbda6a9d2c63d37ddf9f99dcc53ee262ce517bb78b5d0f00e5d24a12687ede0c5a92a03c0351c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_attack_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_fingerprint.json",
+          "payload_hash": "0x61be279c794e218ebfea3dde53911989b7ab7cea4f7ea4bd70f76aa71fdc747e",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x245c0cbb86c676cb16b70e40ad9657d543becb1f0002668d166a3949287a10a7684332591058ae7272dee99483d6041637ab98ea5ac0dc4ba1d234cb16a1ee011c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_attack_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_inventory_lock.json",
+          "payload_hash": "0x7f8ae546f91b50f6ee41f6de5d2c9eb0b8fae7fa71c3ca5354132e7fa6781e7b",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0xc5e1aeff8942f134f9fcbb8c3b55a35f4cb161a88bd5ab6ecddbf69da57ace9446dee1615ff4611c83f4f032676e961045040f017203b7c3a159877cc24327671b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "crop_attack_fingerprint_challenge",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_fingerprint_challenge.json",
+          "payload_hash": "0xf2eac9e720698117d1988e980cac6700f2516ed643d1a2ac40f7a99d0cfbb82a",
+          "schema": "marketplace.fingerprint_challenge.v0.1",
+          "signature": "0x0a89c96075d60363ff5b741a5e767a4c4608b2c5ffdcca34cb372759fe5d96de1a29c2db061418cb31c0f45422dfe96b77310eb77e2aee2aaf1c7fe734fa54301b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "crop_attack_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/crop_attack_route.json",
+          "payload_hash": "0x1e509e171696815cef7c8b6c5c7379bedcd7dd2ea8dec13ef76893377c59a203",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xdc8b0b0ae9be3d47e438bc57ddf876d56e444f60dc1dec60cda8b4db1e135a514ae188427fdeab4551bad3571ea42a4268fc8fcf933ae80e11e09a58bc9667a81c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "requested_evidence": [
+        "verifier_or_arbiter_image_match_review"
+      ],
+      "slug": "same_card_crop_alias",
+      "title": "Same raw card cropped into different fingerprint hashes",
+      "trade_ids": [
+        9,
+        10
+      ],
+      "transactions": [
+        {
+          "label": "crop_source create trade",
+          "tx_hash": "0x484328921651fac48b1a84d6b8f468a6581bd7ab66602f4d3545bd7b207da305"
+        },
+        {
+          "label": "crop_source seller posts bond",
+          "tx_hash": "0xc2e64cfc82cd4e3149c36165b55a119e83ea8659d15656f0155deb66ef67028c"
+        },
+        {
+          "label": "crop_source attach item evidence",
+          "tx_hash": "0xd03ad2c9c3df4d2f528722cdd62b58a7c59388d30936ba2fb155cf84c5a3d888"
+        },
+        {
+          "label": "crop_source commit item fingerprint",
+          "tx_hash": "0xd60f688a415066c5de54e3eadd30874434c014dc835f67e67d5c4e487dd113bc"
+        },
+        {
+          "label": "crop_source commit inventory lock",
+          "tx_hash": "0xa84b6f232bfdf1e49da1ffcbb418f1d6692c1d6550bce2352f850283f95843d6"
+        },
+        {
+          "label": "crop_attack create trade",
+          "tx_hash": "0x3b06f9b623fdb0349f5247dd6a7f16016bc13df81bddf6448eb132a970eac95d"
+        },
+        {
+          "label": "crop_attack seller posts bond",
+          "tx_hash": "0x0f2d55572c9e664f9c6bcd26dcc380855187700bd9f96817d588d84f6eba6b2c"
+        },
+        {
+          "label": "crop_attack attach item evidence",
+          "tx_hash": "0x694b3766c1ec6065e657fd61f3d9312f4028f9f47620a8391508a2faac428dbf"
+        },
+        {
+          "label": "crop_attack commit item fingerprint",
+          "tx_hash": "0xd6feca86b437b0af740961c64f63c6214a92eca7b02005007f5d32f9b8dfa5c5"
+        },
+        {
+          "label": "crop_attack commit inventory lock",
+          "tx_hash": "0x7e9aeafccf2db0f1a5aeb5e4c0b93884f754025dfc4930c341aae46b0d332cfe"
+        },
+        {
+          "label": "crop_attack open fingerprint challenge",
+          "tx_hash": "0xd8b2c91b24e46493e22c5ab6eb865fb89a02e3b34f155610060ecd3e804fe396"
+        }
+      ]
+    },
+    {
+      "detector_signals": [],
+      "observations": [
+        "Fresh nonce control committed route without a collision challenge."
+      ],
+      "outcome": "route_allowed_no_collision_signal",
+      "packets": [
+        {
+          "packet_id": "fresh_control_intent",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_intent.json",
+          "payload_hash": "0x128f28930bab79032a88009dba566281acbb18671ed39432812242c4f2d66dc3",
+          "schema": "marketplace.intent.v0.2",
+          "signature": "0x7cb13a2ccc8ecbe946771cffe4396d53aa85f7604aa52d844681d73f4fc668b95a2e6b321298b312117706a4927f51b419375b527f27c39a4e9438cfd7e57f5b1c",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "fresh_control_terms",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_terms.json",
+          "payload_hash": "0x32880947b7fbb0d6ea538e7d78598a48fb0fc1d900e9cf65910508c9453ba5de",
+          "schema": "marketplace.escrow_terms.v0.2",
+          "signature": "0x06e128a100c48aead0856aaa0a846346e0f28445767a4dcead91628c96ef972f6c97dfff6fc6b19844a0e9646e2960e2ee363cca33e13f6d63c09da8130db32e1b",
+          "signature_valid": true,
+          "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+        },
+        {
+          "packet_id": "fresh_control_evidence",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_evidence.json",
+          "payload_hash": "0x9635e4c71b7e445d158d974a6715d77d98c35b642fd1383f859766f69cdb483b",
+          "schema": "marketplace.evidence_packet.v0.2",
+          "signature": "0xfdeeb68121039db43039f35ad7cc3927a6a7f62f8bf5ce142bd6935cb32577ab7d049b7122c6e0f5a775e69009b0ccb662877f7d898ef01df262cdb6a6f3f3941c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "fresh_control_fingerprint",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_fingerprint.json",
+          "payload_hash": "0xa82528542f2e881b5ad59357e033af6b3bf8dc8f1639247aef5641d64ade1d23",
+          "schema": "marketplace.item_fingerprint.v0.3",
+          "signature": "0x166caa34e2a94355cd9ba441f99ebefc145797e10f1c426141db167083fd87f022ef7090d32409228f3329ca648e2d9c18f73b8c5f6c3da966cb54e74923efdd1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "fresh_control_inventory_lock",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_inventory_lock.json",
+          "payload_hash": "0x5d6f6c7f2ec27b92b3a89f6593419bfd4e84d23965c511297b490caeca228f80",
+          "schema": "marketplace.inventory_lock.v0.2",
+          "signature": "0x2457397a0122b3e635bddbb82c32fac1e5ada9f05425915c6bc4252d45623b8d74e68d7f4a7c1cabf164e054753c6c37dcbac7336d69ac40b01118dd450d785c1c",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        {
+          "packet_id": "fresh_control_route",
+          "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/fresh_control_route.json",
+          "payload_hash": "0x696ce4782ff9479011d81b22b3bf0f285add4d3c391b42a6826e0ed241adc3aa",
+          "schema": "marketplace.trade_route.v0.2",
+          "signature": "0xafcac7568f846e7f27d577daf8594f294b46a24e5a90b9a9554bc29cf672d6d649f4ae5f7409201fec5cdbb1b3b80bc651135b2935d22abf15fdaf08fb85c93b1b",
+          "signature_valid": true,
+          "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        }
+      ],
+      "requested_evidence": [],
+      "slug": "fresh_nonce_control",
+      "title": "Fresh nonce evidence with no collision signal",
+      "trade_ids": [
+        11
+      ],
+      "transactions": [
+        {
+          "label": "fresh_control create trade",
+          "tx_hash": "0xca8a34eb58e52c4300c298e9e58584c27da539d5c3aeee49b6f20cd8a03332d8"
+        },
+        {
+          "label": "fresh_control seller posts bond",
+          "tx_hash": "0x9aa7df5c15bf0ffa1699cb02981bfc7fb26622a3799b9ceddee9c205269cb74b"
+        },
+        {
+          "label": "fresh_control attach item evidence",
+          "tx_hash": "0x1fb6934f63fe13dc35e3209208fdb918bc2f06ea1e9c28278f2c1fec9d775b50"
+        },
+        {
+          "label": "fresh_control commit item fingerprint",
+          "tx_hash": "0xff9f67a0d7146abc18d586cb2420e95977da3f569a0c4e6bf5d5d946edf9262d"
+        },
+        {
+          "label": "fresh_control commit inventory lock",
+          "tx_hash": "0x7417087641abf3701886d68a0377c84a9e72ed0550513e18b9d6567416feb1cd"
+        },
+        {
+          "label": "fresh_control commit route",
+          "tx_hash": "0xa869c15957d558da18134afee93d5586c97bf9acf196dced7b139f999dedc8dd"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-06-12T16:57:13.425266+00:00",
+  "predicate_verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "registry_setup": {
+    "observations": [
+      "Every actor has a controller address and a signed ActorRecord packet.",
+      "Verifier and arbiter authority are separate records, not just role labels.",
+      "Predicate verifier contracts are registry-gated before private predicate packets can use them.",
+      "The escrow can now reject trades that select an inactive or unknown arbiter."
+    ],
+    "packets": [
+      {
+        "packet_id": "actor_buyer",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/actor_buyer.json",
+        "payload_hash": "0xca07896a6190e860dd51af4241ed9a02835b1930c4dd01a13c7b6d9a44a3675a",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0xbdfc6379313952f548a4c44244665ba8124717b7a71846296bb9c5df1d4ab13c3de8067046dbfa9e4171ab22e94466d8b7b50ee18cea4c55f929b48b263c9a341b",
+        "signature_valid": true,
+        "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      },
+      {
+        "packet_id": "actor_seller",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/actor_seller.json",
+        "payload_hash": "0x58731f2034f9f2f374d451384fde315bbb8a7a907e23c84a1d4e8b47d7c81ed5",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x3810bf4b6755080ebe153b035cf1ad511c1a26d1cd153d453958d4ee6f4a2a2b04e293c7d3254ef8b6d2981bb505350fefe6dc394802e9b993e046b5df7aeac61c",
+        "signature_valid": true,
+        "signer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+      },
+      {
+        "packet_id": "actor_arbiter",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/actor_arbiter.json",
+        "payload_hash": "0x0025cd199f11db191de2e1f83919b36022cca03b844c6169e8941f9f976f4442",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x73be7bf06f3ed7219d00bf6afc7707ad1d03a5f9208764368366b5182f3b73a0253a72ab48f198d549f439caa55af5e36a0f952b8644d18e8f9a1fa1968fe2711c",
+        "signature_valid": true,
+        "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+      },
+      {
+        "packet_id": "actor_verifier",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/actor_verifier.json",
+        "payload_hash": "0xf1dabec00581b587e9298a603d99dee6bd6a37afb765202df9818deccfd636d6",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x70a0bb2eca8605d6ef44ef0eb3336487643cae2551e22315454156b6a6786e5103fad4807a1a51791f49a8c00b60c0b66b52846c8a0d9ce2771bc147c3e7e14b1c",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      },
+      {
+        "packet_id": "actor_replacement_arbiter",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/actor_replacement_arbiter.json",
+        "payload_hash": "0xac96bd505a7604e9de45910564e0bcb27b5410a0bdb3d3b1fc382c2dbb56e76a",
+        "schema": "marketplace.actor_record.v0.2",
+        "signature": "0x0334478da45ce78440f0e953439a94a536ae7855bebd93f5169f2214965f514248944602767c46d82bdf1787c0f5da1e445b5ae8c91825536a413807d0be38841b",
+        "signature_valid": true,
+        "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+      },
+      {
+        "packet_id": "arbiter_authority",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/arbiter_authority.json",
+        "payload_hash": "0xa9248044dfd441d24063324f762a928fef56422ae6281ad465b34b9e5ab1724f",
+        "schema": "marketplace.arbiter_record.v0.2",
+        "signature": "0xce2f405ddc5571c7c4256e735fa56682bee161b2c0a15c456f6c4e1ac21e9cf538bcd0a322a74a50c12ca4780f9383f96944d17bc757789f91d66399bead71461b",
+        "signature_valid": true,
+        "signer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC"
+      },
+      {
+        "packet_id": "replacement_arbiter_authority",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/replacement_arbiter_authority.json",
+        "payload_hash": "0xb258ca210e4b4df25b5fc896b5478bad46e53dd183672bb9a68e63e389cb770d",
+        "schema": "marketplace.arbiter_record.v0.2",
+        "signature": "0xf6aeebeb462124839ce7a8c8703efdda286f25e01b7b44ac6158d9be4c37478f3b9aeb1394378cc2af91b37912755d74cfa1372c2fa76b0d6b20f3785342d66b1c",
+        "signature_valid": true,
+        "signer": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"
+      },
+      {
+        "packet_id": "verifier_authority",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/verifier_authority.json",
+        "payload_hash": "0x9b58f9b34334a5099078df708ba4fd129f1007994ddee0b361570a0c711f6f22",
+        "schema": "marketplace.verifier_record.v0.2",
+        "signature": "0x623970b2534ed3738239a8b31d77e744427e9aaaf30c7b5a0240f208cedba0fd36e041ab7f84a8f46f365ab1fc0b9d65b02b9d6caf3432f355d1717fdef53d631c",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      },
+      {
+        "packet_id": "predicate_verifier_contract",
+        "path": "runs/fingerprint_collision_drill_20260612T165708Z/packets/predicate_verifier_contract.json",
+        "payload_hash": "0x69169765958680ef8bad537c754fccbe799dd3d990bdad5b14a71e790cc1983f",
+        "schema": "marketplace.predicate_verifier_record.v0.2",
+        "signature": "0xf6355e8a3b228416c10154a50a87dc0d898a2495a57fb66bf2baa77ef7a282a968f2388c533a080d364d934d2be12403dcb9618e152530cf8a6d8da6bbaa516b1b",
+        "signature_valid": true,
+        "signer": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+      }
+    ],
+    "transactions": [
+      {
+        "label": "register buyer actor",
+        "tx_hash": "0x08b0dd88a27562346bb8f880dba70bac6e0b4b132f494ecbd9c121eec25bffb9"
+      },
+      {
+        "label": "register seller actor",
+        "tx_hash": "0x22b94a5b434a4023c922dae414c99252ae70245cc5cf41230ebda7966824d4f0"
+      },
+      {
+        "label": "register arbiter actor",
+        "tx_hash": "0x1ed45288b477bb1df3ab8188b032bc6e9f3e2e552292f4ef217d1826f47e9647"
+      },
+      {
+        "label": "register verifier actor",
+        "tx_hash": "0x082455b792d80adeb9047aa4367d8e8c2f23017b808bd29ace9610ca5610273c"
+      },
+      {
+        "label": "register replacement_arbiter actor",
+        "tx_hash": "0xb95f179126ae5a5994e7be77dc58982176f87e56bfe5d85708c57ab948b5829c"
+      },
+      {
+        "label": "register arbiter authority",
+        "tx_hash": "0x32a2da1de152721a4075fe47632cc20d611c20e93e7b2bca8b873f34c1acea55"
+      },
+      {
+        "label": "register replacement arbiter authority",
+        "tx_hash": "0x562b6df9c717ee240df663e6e707a15d576e376e0f226ce5a24f03ead5321741"
+      },
+      {
+        "label": "register verifier authority",
+        "tx_hash": "0x10c5fa43355c23c12e62d1bb4758cb5e7bff338c1c010ac15cd22c9b3e0b1e9c"
+      },
+      {
+        "label": "register predicate verifier contract",
+        "tx_hash": "0x7984694071c9152dd361b122803c02262f586a50b7fac7fd42c87ef5116136d5"
+      }
+    ]
+  },
+  "rpc_url": "http://127.0.0.1:18547",
+  "run_id": "fingerprint_collision_drill_20260612T165708Z"
+}

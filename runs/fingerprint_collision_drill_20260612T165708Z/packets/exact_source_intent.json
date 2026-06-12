@@ -1,0 +1,29 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:collision-drill\",\"cost_field\":{\"attention_budget\":\"challenge_when_identity_conflicts\",\"evidence_floor\":[\"front_photo\",\"back_photo\",\"custody_nonce_or_waiver\"],\"max_total_price_eth\":\"0.20\"},\"object\":{\"domain\":\"tcg\",\"game\":\"pokemon\",\"title\":\"Japanese vintage holo exact-hash source\",\"value_band\":\"mid\"},\"schema\":\"marketplace.intent.v0.2\",\"trade_id\":1}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:collision-drill",
+    "cost_field": {
+      "attention_budget": "challenge_when_identity_conflicts",
+      "evidence_floor": [
+        "front_photo",
+        "back_photo",
+        "custody_nonce_or_waiver"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "object": {
+      "domain": "tcg",
+      "game": "pokemon",
+      "title": "Japanese vintage holo exact-hash source",
+      "value_band": "mid"
+    },
+    "schema": "marketplace.intent.v0.2",
+    "trade_id": 1
+  },
+  "payload_hash": "0xacc1e159cc36e0ab6f57081b014a1b9b3c78013caf458a430716a3defe572627",
+  "signature": "0xb95011c2cedffc77d67fd4fba80e066886a3b672b960d4fea59023723022878c1540a632ea8a3836e21c6581e871e207c691b57af2a14b2ea1106980524fc2031c",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

@@ -1,0 +1,27 @@
+{
+  "canonical_payload": "{\"buyer\":\"did:market:buyer:anvil-0\",\"buyer_agent\":\"did:market:agent:buyer-alpha\",\"cost_field\":{\"evidence_floor\":[\"manifest\",\"spendability_required_by_policy\"],\"max_total_price_eth\":\"0.20\"},\"intent_id\":\"intent_bypass_001\",\"object\":{\"card\":\"bypass drill raw card\",\"condition_floor\":\"LP\",\"domain\":\"tcg\",\"game\":\"pokemon\"},\"schema\":\"marketplace.intent.v0.2\"}",
+  "hash_algorithm": "keccak256(utf8(canonical-json-payload-v1))",
+  "payload": {
+    "buyer": "did:market:buyer:anvil-0",
+    "buyer_agent": "did:market:agent:buyer-alpha",
+    "cost_field": {
+      "evidence_floor": [
+        "manifest",
+        "spendability_required_by_policy"
+      ],
+      "max_total_price_eth": "0.20"
+    },
+    "intent_id": "intent_bypass_001",
+    "object": {
+      "card": "bypass drill raw card",
+      "condition_floor": "LP",
+      "domain": "tcg",
+      "game": "pokemon"
+    },
+    "schema": "marketplace.intent.v0.2"
+  },
+  "payload_hash": "0x77ebbb2078b26785783473cd00d2e1c0078fb6d88f1fc4ee01701591b8ac24cb",
+  "signature": "0x269f85cb85e75f66248cede5a3d6e2d2e100ca3cdd908b1d68aa635a2e76a1401f48923ce0f4c88a0f69adffd9cd681531e2e5962d7a3271bbcbaa33d79ba04b1b",
+  "signature_scheme": "eip191-personal-sign(payload_hash)",
+  "signer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+}

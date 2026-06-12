@@ -126,7 +126,7 @@ def create_trade(
             e2e.BUYER_KEY,
             contract,
             f"{slug} create trade",
-            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes,bytes)",
+            "createTrade(address,address,uint256,uint256,uint256,bytes32,bytes32,bytes32,address,bytes,bytes)",
             [
                 e2e.SELLER,
                 e2e.ARBITER,
@@ -135,6 +135,8 @@ def create_trade(
                 INSPECTION_SECONDS,
                 intent.payload_hash,
                 terms.payload_hash,
+                e2e.judgment_supply_commitment_hash(trade_id, f"{slug}-floor"),
+                e2e.REPLACEMENT_ARBITER,
                 intent.signature,
                 terms.signature,
             ],
@@ -433,8 +435,13 @@ def challenge_and_block_route(
             e2e.BUYER_KEY,
             contract,
             f"{trade.slug} open fingerprint challenge",
-            "openFingerprintChallenge(uint256,bytes32,bytes)",
-            [str(trade.trade_id), challenge.payload_hash, challenge.signature],
+            "openFingerprintChallenge(uint256,bytes32,bytes32,bytes)",
+            [
+                str(trade.trade_id),
+                challenge.payload_hash,
+                e2e.scope_set_hash(["fingerprint_challenge_resolution"]),
+                challenge.signature,
+            ],
         )
     ]
     observations = [
