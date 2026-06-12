@@ -83,10 +83,10 @@ problem: a claim open with a revoked arbiter and no replacement proposal
   Proposal and ...MidRouteClaimHasNoAutomaticFallback, which assert the deadlock.)
 do: add an on-chain timeout path that resolves a stuck claim when no arbiter can
   act for a defined window and no replacement is proposed.
-DESIGN CHOICE (flag for human): the default remedy. Recommended conservative
-  default = refund-to-buyer (buyer funds are held; the seller failed to supply a
-  reachable judge), but split / pre-bound-fallback-arbiter are alternatives with
-  fairness trade-offs. Do not ship a default without confirmation.
+DESIGN SETTLED by Protocol_Arbitration_v0.1.md: escalate to the agreed floor
+  arbiter, which produces a ruling on the legible record. A unilateral default
+  remedy is only the last resort if even the floor cannot rule. Implement the
+  timeout/liveness path as a floor-ruling path, not as refund-by-inaction.
 ```
 
 **1B. AUD-D6-003 — bind a verifier-scope match at challenge clearance.**
@@ -113,9 +113,10 @@ do: bind a nonzero judgment_supply_commitment hash into the trade and require it
   present before route lock and/or claim resolution. Anchor the hash only — the
   contract does NOT parse SLA/fee/remedy/conflict (those stay off-chain,
   validated by callers, measured by the legibility layer).
-DESIGN CHOICE (flag): anchor granularity — per-trade JSC, or a reusable provider
-  commitment the trade references; and which gate requires it (route lock vs
-  claim open vs both).
+DESIGN SETTLED by Protocol_Arbitration_v0.1.md: the JSC is the per-trade agreed
+  arbitration ladder, signed by buyer and seller at trade formation and anchored
+  on-chain by hash. Require a nonzero JSC hash at trade creation so it is
+  necessarily present before route lock, claim opening, and claim resolution.
 ```
 
 Acceptance criteria for Lane 1:
