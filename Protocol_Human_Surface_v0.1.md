@@ -1,5 +1,10 @@
 # Protocol Human Surface v0.1
 
+> Superseded by `Protocol_Human_Surface_v0.2.md` (2026-06-15), which folds in the
+> first design review: ambient cross-trade glance, altitude->visual-register
+> mapping, the agent-audit surface, the honest bad-news surface, and aperture
+> contradiction/calibration. Kept as historical; read v0.2 for current state.
+
 Generated 2026-06-15.
 
 Lane 3: the product surface that makes the audited protocol usable by a person.
