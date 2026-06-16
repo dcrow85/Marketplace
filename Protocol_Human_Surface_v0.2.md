@@ -1,6 +1,6 @@
 # Protocol Human Surface v0.2
 
-Generated 2026-06-15.
+Generated 2026-06-15. Glance-build decisions folded in 2026-06-16.
 
 Lane 3: the product surface that makes the audited protocol usable by a person.
 Lane 1 bound the hard spine. Lane 2 measured and falsified the off-chain layer.
@@ -53,12 +53,36 @@ This version adds the product moves that make the surface felt:
 
 ```text
 1. Ambient glance: one quiet cross-trade line above the cards.
-2. Visual registers: Glance is warm, Decide is focused, Audit is forensic.
+2. Visual registers: Glance is open, Decide is focused, Audit is forensic.
 3. Agent audit: "show me what you did without asking, and why."
 4. Honest bad news: when the protocol cannot save the user, say so cleanly.
 5. Aperture repair: contradiction-surfacing and preference calibration are
    explicit decide moments.
 6. Vocabulary map: evidence states are mapped to enforced / legible / judged.
+```
+
+## Glance-build fold (2026-06-16)
+
+Building the resting glance to this spec surfaced decisions the spine had not yet
+named. What this fold adds or revises, captured in the sections below:
+
+```text
+1. The "should I want this?" cluster is fuller: who (the seller) and where (ship
+   origin) join what / price / condition / market. (-> The resting buyer surface)
+2. Condition is always shown as the agent's judgment, never a bare grade for a
+   raw card. (-> The resting buyer surface, No-overclaim rules)
+3. Price carries a market-position read, so "is it fair?" is answerable at a
+   Glance. (-> The resting buyer surface)
+4. The decision set on one offer is the real one: buy now, make an offer (agent
+   suggests a number; the human can go lower), ask for evidence, pass / save and
+   watch. The agent recommends one; the others stay visible. (-> Decisions on a
+   single offer)
+5. Risk flags are a named, exception-only, risk-only signal (amber -> red, never
+   green) — not an always-on trust meter. (-> Risk flags)
+6. Visual registers separate by value and type, not hue; color is a reserved
+   signal channel. (-> Visual registers, supersedes the warm/cool language)
+7. Brand: the wordmark is c(ai)rn; the only earned colors are the card and one
+   risk hue. (-> Brand and color)
 ```
 
 ## Altitudes
@@ -68,7 +92,7 @@ or down, but it must say why.
 
 | altitude | human question | surface shape | examples |
 |---|---|---|---|
-| Glance | "Do I want this?" / "Where am I?" | card image, short agent read, price/fee/stance, one primary action | mark want, mark have, accept offer, continue hunt |
+| Glance | "Do I want this?" / "Where am I?" | card image, short agent read, price/fee/stance, compact decision set | mark want, mark have, buy now, make offer, ask evidence, pass/save |
 | Decide | "This has a real cost. Do I authorize it?" | focused choice with named tradeoff | fund want, pay seller attention fee, request more evidence, accept risk, open claim, escalate arbitration |
 | Audit | "Show me why." | expandable record, custody ledger, packets, hashes, boundaries | evidence manifest, trust proof chain, spendability/custody ledger, arbitration ruling packet |
 
@@ -81,35 +105,64 @@ No costly decision is allowed to hide inside Glance.
 
 ## Visual registers
 
-The altitudes are not only information levels. They are visual languages.
+The altitudes are visual languages — but they separate by **value, type, and
+restraint, not by hue**. Color is a reserved signal channel (see Risk flags and
+Brand and color), so the registers cannot lean on warm-vs-cool to tell themselves
+apart. This supersedes the earlier warm/cool register language: warmth is carried
+by the agent's voice and the space, not by color temperature.
 
 ```text
-Glance   -> warm collector surface
-Decide   -> focused cost surface
-Audit    -> forensic record surface
+Glance  -> light specimen card: paper ground, ink, instrument type, card in color
+Decide  -> the same surface under load: stronger contrast, explicit cost, one choice
+Audit   -> dark bench: black ground, bone ink, mono record, the forensic register
 ```
 
-Glance should feel like a collector's table or binder: card image first, warm
-spacing, plain language, a little charm, minimal chrome. The card carries the
-emotion; the agent read carries the judgment. No hashes, no packet labels, no
-certificate posture.
+Glance reads like a scientific accession card, not a soft web card or a blog: a
+ruled paper specimen sheet with registration marks, the card image first and
+never covered, IBM Plex Sans for what is read and IBM Plex Mono for labels and
+codes. The card carries the color and the emotion; the chrome stays ink on paper.
+No hashes, no packet labels, no certificate posture.
 
-Decide should feel like a clean control surface: fewer decorative touches,
-stronger contrast, explicit cost, one primary choice, one back path, one "show
-why" path. The user should feel that a real action has weight without confusing
-that weight for card risk.
+Decide is the same paper surface under load: the primary action is the darkest
+thing on the screen by value alone, cost is explicit, one back path, one "show
+why." Weight comes from contrast and friction, never from a card-risk color.
 
-Audit is the Cairn / forensic-record register: black bench, bone ink, restrained
-oxblood, serif for reverence moments, mono for record data, custody ledger,
-hashes, signatures, seams, and authority marks. This register should not leak
-upward into ordinary browsing; it appears when the person asks for proof or when
-a dispute requires the record.
+Audit is the dark forensic register: black bench, bone ink, mono record data,
+custody ledger, hashes, seams, authority marks, the "does not claim" boundary.
+Opening the record literally drops the human from the light glance into the dark
+bench — the value shift *is* the altitude shift. It does not leak upward into
+ordinary browsing; it appears when the person asks for proof or a dispute needs
+the record.
 
 Design rule:
 
 ```text
-Warmth at Glance. Weight at Decide. Forensics at Audit.
+Altitude is carried by value and type. Color is carried by risk.
+Warmth is type and space, not hue.
 ```
+
+## Brand and color
+
+The protocol's name is **Cairn**; the wordmark is **c(ai)rn** — the brackets
+surface the "ai" inside the word, because the agent is what stacks the evidence
+cairn. The mark is monochrome, set in the surface's own instrument type; the "ai"
+stands out by weight, not color.
+
+Color discipline (a hard rule, not a style preference):
+
+```text
+Only two things on a surface may carry color:
+  1. the card image — color there is information (holo, condition, print)
+  2. one risk hue (oxblood) — reserved for flags, the one missing thing, the boundary
+
+Everything else is ink on paper or bone on bench. Hierarchy comes from weight,
+value, and space — never from decorative color. Spending the risk hue anywhere
+that is not a risk devalues it everywhere.
+```
+
+This is the visual expression of the project's ethic: attention is the scarce
+resource, and color is attention. It is spent only when it changes a decision —
+the same rule the protocol applies to interrupting the human at all.
 
 ## Ambient glance
 
@@ -160,21 +213,38 @@ Contradiction:
 
 ## The resting buyer surface
 
-The resting buyer surface is a card-first object, not a dashboard. It shows:
+The resting buyer surface is a card-first object, not a dashboard. It answers one
+question — "should I want this?" — in about five seconds, then offers the
+decision. The glance cluster:
 
 ```text
-- the best available card image, never covered
-- Japanese name first, then romaji and English name when useful
-- collector row / set context
-- current human stance: want, have, have extra, want more, sell, check
-- agent read: one or two lines in human language
-- price band or "pricing needs comps"
-- fee line, only if meaningful
-- current gate: hunting, offer, evidence, funded, route, inspection, claim, settled
-- one primary action
+- the best available card image, never covered; one gesture to inspect it at the
+  resolution it was sent (a low-res photo is itself a signal worth seeing)
+- name: Japanese first, then romaji / English when useful; set / row context
+- who: the seller as a reputation handle — name plus the trust actually earned or
+  imported (shop-domain control, receipts) — never a claimed legal identity
+- where: ship origin and rough time / import exposure (self-declared)
+- price, with a market-position read ("fair for the grade — raw sold $X-$Y")
+- condition, always as the agent's judgment ("my read: clean, LP+ — not graded"),
+  or a third-party grade when one exists
+- the one risk worth noting now — a flag, only if there is one
+- agent read: one or two lines — the recommendation, plainly
+- current human stance and gate
+- the decision set (see Decisions on a single offer)
 ```
 
-Everything else is behind "show why" or appears only at a decision point.
+Everything else is behind "open the record" or appears only at a decision point.
+The cluster has a fixed legibility order: what · who · where · price + market ·
+condition · the one risk · the verdict · the decisions.
+
+Two honesty notes carried by this cluster:
+
+```text
+- who is reputation, not identity. The contract proves key control and imported
+  evidence (a domain, receipts); it never proves a legal person (the identity gap).
+- where is self-declared ship origin. "Japan" is the seller's claim, surfaced as
+  a claim, with import / customs reality visible — not a verified fact.
+```
 
 Bad resting copy:
 
@@ -191,6 +261,36 @@ This looks like the right row. I would ask for one fresh photo before money move
 
 The first sentence is protocol-internal. The second tells a collector what the
 agent recommends and what costs attention.
+
+## Decisions on a single offer
+
+"One primary action" was too thin for a real offer. A collector has several real
+forks, and hiding them is its own failure. Surface them all; let the agent
+recommend one.
+
+```text
+buy now           fund at ask — the commit, always unmissable
+make an offer     counter the price; the agent suggests a number and names its
+                  floor, and the human can go lower ("below my read — they may
+                  walk, but it costs nothing to ask")
+ask for evidence  the agent's de-risk step (e.g. a fresh surface photo)
+pass / save       defer; save-and-watch may carry a target ("ping me under $X")
+```
+
+The agent recommends one path and gives it visual weight (the darkest action);
+the others stay visible. The recommendation is a concise verdict, not buried in
+prose:
+
+```text
+Fair price, clean-looking copy — confirm the surface, then it's a buy.
+```
+
+Negotiation rule:
+
+```text
+The agent advises the offer; the human holds the trigger. The agent may suggest
+a number and name a floor, but it never blocks the human from going lower.
+```
 
 ## The stance system
 
@@ -585,6 +685,40 @@ The shop domain matches the seller. That supports current control of the shop
 site; it does not prove this card is in hand.
 ```
 
+## Risk flags
+
+A flag is how the surface says "stop and look" when something strong is worth the
+human's attention. The tempting design is an always-on red/yellow/green meter.
+That is forbidden: an always-on meter is a trust score (see Trust surface), and a
+calm or green reading silently becomes "this is safe," which the protocol can
+never assert.
+
+The flag is therefore an **exception, not a fixture**:
+
+```text
+- Most offers carry no flag. The glance is calm; the agent read carries ordinary
+  nuance.
+- amber  -> worth noting. A soft, named caveat ("surface unconfirmed").
+- red    -> stop and look. A loud, named concern ("new seller, $6k at stake —
+            bond required before funds move").
+```
+
+Four rules keep it from becoming a score:
+
+```text
+1. Risk only. Opportunity ("underpriced, act fast") lives in the recommendation,
+   not the flag, so the flag color means exactly one thing: caution.
+2. No green, ever. Absence of a flag means "nothing exceptional — usual residual
+   risk applies," never "verified safe."
+3. Always named. A flag is the one dimension that crossed a line, in words —
+   never an opaque dot. The full vector still lives in the record.
+4. The flag is the conviction signal. When the agent feels strongly, that is the
+   red; so the recommendation text can stay plain and short.
+```
+
+This is "trust is a vector, not a score" applied to attention: the surface may
+raise one named flag, but it may not collapse judgment into a gauge.
+
 ## Route and location surface
 
 Location is a cost field, not a fixed requirement.
@@ -842,6 +976,8 @@ the protocol proved the card
 the route proves delivery truth
 the shop proof proves possession
 the floor arbiter proved authenticity
+this raw card is LP / NM (as a bare fact)
+this seller is <legal identity> (key control is not identity)
 ```
 
 Allowed replacements:
@@ -853,6 +989,8 @@ the contract enforced the funding/bond/state transition
 the seller provided current-control proof
 the route evidence supports an insurance claim
 the floor can rule on the packet, not the card's physical truth
+my read: looks LP+, not graded — judged from the photos
+the seller controls kantocards.jp and has 40 receipts (a handle, not an identity)
 ```
 
 ## MVP scope
@@ -862,7 +1000,8 @@ Build first:
 ```text
 1. Ambient cross-trade glance line.
 2. Binder/card row stance marking with one bounded sequence.
-3. Buyer funded-want card-first offer view.
+3. Buyer funded-want card-first offer view: who/where, condition-as-judgment,
+   price + market read, the decision set, and the risk flag.
 4. Seller response view with payout, evidence ask, bond, attention cost.
 5. Arrival inspection decide surface.
 6. Claim intake with typed claim choices.
@@ -894,7 +1033,9 @@ The Human Surface works when:
 - every costly action has a clear reason
 - every protocol claim can be expanded into the audit record
 - the human can audit agent compression, not only protocol packets
+- a collector can tell who and where they are buying from, honestly framed
 - bad news preserves trust by naming the boundary cleanly
+- a risk flag fires only when it can be named; its absence never reads as safe
 - no screen implies the contract proved more than it did
 ```
 
