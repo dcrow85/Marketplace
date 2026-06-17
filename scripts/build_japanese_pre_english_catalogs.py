@@ -100,6 +100,11 @@ COROCORO_JAN1998_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_corocoro_jan1998_selected_lines.json"
 )
+TRADE_PLEASE_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_pokumon_trade_please_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -405,6 +410,41 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "participation context. This child slice therefore models Meowth only and "
             "records the glossy CoroCoro/Song Best Collection Computer Error as an "
             "explicit source gap rather than reusing the Kamex row."
+        ),
+    },
+    "jp_promo_trade_please_199802": {
+        "source_snapshot": "trade_please_1998",
+        "expected_source_card_count": 4,
+        "expected_cards": [
+            "Venusaur (Trade Please campaign 1998)",
+            "Charizard (Trade Please campaign 1998)",
+            "Blastoise (Trade Please campaign 1998)",
+            "Trade Please! (Trade Please campaign 1998)",
+        ],
+        "modeled_source_sorts": [33, 34, 35, 36],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "ran from February 10 to July 31, 1998",
+            "any two Pokemon trading cards and a return envelope",
+            "The \"A Course\" included a",
+            "Charizard",
+            "The \"B Course\" included a",
+            "Blastoise",
+            "The \"C Course\" included a",
+            "Venusaur",
+            "MediaFactory would then send the two cards from the chosen course",
+            "Venusaur (Trade Please campaign 1998) (Unnumbered)",
+            "Charizard (Trade Please campaign 1998) (Unnumbered)",
+            "Blastoise (Trade Please campaign 1998) (Unnumbered)",
+            "Trade Please! (Trade Please campaign 1998) (Unnumbered)",
+        ],
+        "source_gap_reason": (
+            "Bulbapedia documents the Trade Please campaign window, mail-in trade "
+            "mechanic, and A/B/C course structure, while Pokumon source pages document "
+            "the four campaign card identities. The current PokéCardex UPC aggregate "
+            "source-pins all four rows to this family. This source slice models those "
+            "card identities only; it does not model every flyer, envelope, participant "
+            "mailing, fulfillment object, or copy-count claim."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1061,6 +1101,40 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_trade_please_199802",
+        name_en="Trade Please Campaign source slice",
+        name_ja="とりかえっこプリーズキャンペーン プロモ",
+        release_date="1998-02-10/1998-07-31",
+        expected_row_count=4,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia documents the Trade Please mail-in campaign as running from "
+            "February 10 to July 31, 1998: participants mailed the campaign flyer, any "
+            "two Pokemon trading cards, and a return envelope to MediaFactory, selected "
+            "one of three courses, and received the chosen course pair. Pokumon source "
+            "pages document the four campaign card identities. This child slice models "
+            "the four currently source-pinned PokéCardex UPC rows; it does not claim "
+            "copy counts, complete flyer/envelope variants, participant fulfillment, or "
+            "that one participant received all four cards in one mailing. It is not a "
+            "complete family checklist beyond the four source-pinned card identities, "
+            "and it is not a complete campaign-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the "
+            "Trade Please campaign. Use it to preserve the Venusaur/Charizard/Blastoise/"
+            "Trade Please! mail-in campaign lane while keeping course, fulfillment, "
+            "flyer, envelope, and copy-count claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1499,6 +1573,26 @@ def corocoro_jan1998_source_snapshot() -> dict[str, Any]:
     }
 
 
+def trade_please_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(TRADE_PLEASE_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Bulbapedia + Pokumon"),
+        "snapshot_path": str(TRADE_PLEASE_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1535,6 +1629,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return whf_special_sheet_source_snapshot()
     if snapshot_id == "corocoro_jan1998":
         return corocoro_jan1998_source_snapshot()
+    if snapshot_id == "trade_please_1998":
+        return trade_please_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3544,7 +3640,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "authority": "Promo-family child source slice plus Japanese pre-English release map.",
             "catalog_treatment": config.catalog_treatment,
             "counting_note": (
-                "This is a source-pinned child slice for one modeled UPC aggregate row. "
+                "This row is one member of a source-pinned child slice over UPC aggregate rows. "
                 f"The {promo_snapshot.get('source', 'context')} context snapshot expects "
                 f"{spec.get('expected_source_card_count', 0)} cards for this family, while this "
                 f"slice currently models {len(source_rows)} source-pinned row(s) and records "
@@ -3553,7 +3649,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             ),
             "date_precision": config.date_precision,
             "japanese_set_name": config.name_ja,
-            "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+            "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
             "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
             "product_card_count": config.product_card_count,
             "product_count_basis": config.product_count_basis,
@@ -5395,6 +5491,12 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         family_context = primary_source.get("family_context_source", {})
         try:
             promo_snapshot = promo_family_context_snapshot(str(family_spec.get("source_snapshot", "")))
+            complete_source_boundaries = {
+                "complete UPC source",
+                "complete event source",
+                "complete magazine source",
+                "complete campaign source",
+            }
             if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
                 failures.append("promo_family_child_context_snapshot_hash_mismatch")
             if family_context.get("snapshot_path") != promo_snapshot["snapshot_path"]:
@@ -5427,6 +5529,16 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     for contact in context_contacts
                 ):
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_source_url_mismatch")
+                if any(
+                    "raw HTML snapshot" not in contact.get("not_claiming", [])
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_raw_snapshot_boundary_missing")
+                if any(
+                    not complete_source_boundaries.intersection(set(contact.get("not_claiming", [])))
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_complete_source_boundary_missing")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
@@ -5435,12 +5547,6 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"promo_family_child_snapshot_text_missing {expected_text}")
             if "raw HTML snapshot" not in family_context.get("not_claiming", []):
                 failures.append("promo_family_child_context_raw_snapshot_boundary_missing")
-            complete_source_boundaries = {
-                "complete UPC source",
-                "complete event source",
-                "complete magazine source",
-                "complete campaign source",
-            }
             if not complete_source_boundaries.intersection(set(family_context.get("not_claiming", []))):
                 failures.append("promo_family_child_context_complete_source_boundary_missing")
         except FileNotFoundError:

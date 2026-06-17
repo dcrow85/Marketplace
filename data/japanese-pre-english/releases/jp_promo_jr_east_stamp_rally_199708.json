@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "promo_family_source_sort": 14,
@@ -144,11 +144,11 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
         "expected_source_card_count": 2,
         "japanese_set_name": "JR東日本ポケモンスタンプラリー プロモ",
-        "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
         "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the one currently source-pinned PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a source gap and is not a complete family checklist.",
@@ -197,7 +197,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
         "source_gap_count": 1,
         "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
         "source_local_id": "014",
@@ -212,7 +212,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
         "source_gap_count": 1,
         "source_local_id": "014",
         "source_provider_row": {
@@ -252,7 +252,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "014",
           "not_claiming": [
@@ -314,7 +314,7 @@
         },
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "b2b8d3ac17740c4996532fd3ea89b10e7767f5a2ebf80b518ccd1e791ed516f5",
+          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -325,7 +325,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
@@ -405,7 +405,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 1,
-      "catalog_hash": "33f493bfded198cf6b73312e0433aacff860e67c664f7d37d72952dab4cf631b",
+      "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
       "expected_cards": [
         "Surfing Pikachu (JR Train Rally 1997)",
         "Mew (JR Train Rally 1997)"
@@ -477,7 +477,7 @@
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
-      "release_map_sha256": "a8d97949f4bf7d34be26035ce4f2a3cf76f74c2e62e29d572df946e767798771",
+      "release_map_sha256": "e7aeb1742f64b260722e4aa760755c57dbb9818e15d8b3b862b573205332d1a9",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 1,
       "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
