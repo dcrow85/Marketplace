@@ -335,10 +335,11 @@ should be resolved from memory.
 - Gym standard decks: initial status is now `yes` for the four pre-cutoff Gym
   decks in this map. Next pass must map exactly which deck cards overlap later
   booster cards and which are deck-only identities.
-- Tournament families: Lizardon Mega Battle has now been added as
-  `jp_promo_lizardon_mega_battle_199711_199804`. Next pass should source-hash
-  the commemorative-book scans and split first-official-tournament trophies from
-  regional Lizardon trophy variants at row level.
+- Tournament families: First Official Tournament and Lizardon Mega Battle now
+  have separate source-slice rows, preserving the original No.1/No.2/No.3
+  Trainer identities apart from later regional Lizardon trophy variants. Future
+  passes should continue splitting Kamex and other trophy families with the same
+  no-overclaim boundary.
 - `jp_promo_jr_east_stamp_rally_199708`: selected Pokumon snapshot lines now
   support the 1997 context, August 9-17, 1997 event window, two-card booklet,
   and matte Surfing Pikachu/Mew lane while leaving the unmodeled Mew row visible
@@ -368,6 +369,7 @@ Primary source anchors used for this v0.1 map:
 - Bulbapedia, Pokemon Meiji Get Cards: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Meiji_Get_Cards
 - Bulbapedia, Pokemon Meiji Movie: https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Meiji_Movie
 - Pokumon timeline and event pages: https://pokumon.com/timeline/
+- Pokumon, 1st Official Pokemon Card Game Tournament: https://pokumon.com/1st-official-pokemon-card-game-tournament/
 - Pokumon, JR East Stamp Rally 1997: https://pokumon.com/japan-rail-east-stamp-rally-1997/
 - Pokumon, Lizardon Mega Battle: https://pokumon.com/lizardon-charizard-mega-battle-tournaments/
 - Elite Fourum, Lizardon Mega Battle discussion: https://www.elitefourum.com/t/1998-lizardon-mega-battle-comprehensive-history/33603

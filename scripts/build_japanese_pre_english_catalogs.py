@@ -75,6 +75,11 @@ JR_EAST_STAMP_RALLY_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_jr_east_stamp_rally_1997_selected_lines.json"
 )
+FIRST_OFFICIAL_TOURNAMENT_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_first_official_tournament_1997_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -209,6 +214,33 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega "
             "Battle trophy rows. The source slice models card identities only; it does not "
             "model plaque variants, award copies, or every physical award context."
+        ),
+    },
+    "jp_promo_first_official_tournament_199706": {
+        "source_snapshot": "first_official_tournament_1997",
+        "expected_source_card_count": 3,
+        "expected_cards": [
+            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
+            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
+            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)",
+        ],
+        "modeled_source_sorts": [11, 12, 13],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "1st Official Pokemon Card Game Tournament",
+            "June 14 – 15, 1997",
+            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
+            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
+            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)",
+            "Winners of each of the 4 tournament sessions each received a No.1-3 Trainer trophy card",
+            "1st official tournament No.1-3 trainer cards and trophies are often confused",
+            "Charizard Mega Battle",
+        ],
+        "source_gap_reason": (
+            "Current PokéCardex UPC aggregate source-pins the three First Official "
+            "Tournament No.1/No.2/No.3 Trainer rows. This source slice models card "
+            "identities only; it does not model every session-level award object, trophy "
+            "case, plaque, winner, or copy-count claim."
         ),
     },
     "jp_promo_jr_east_stamp_rally_199708": {
@@ -660,6 +692,36 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_first_official_tournament_199706",
+        name_en="First Official Pokemon Card Game Tournament trophy source slice",
+        name_ja="第1回公式ポケモンカードゲーム大会 トロフィープロモ",
+        release_date="1997-06-14/1997-06-15",
+        expected_row_count=3,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents the June 14-15, 1997 First Official Pokemon Card Game "
+            "Tournament and its No.1/No.2/No.3 Trainer trophy card identities. This child "
+            "slice models the three currently source-pinned PokéCardex UPC trophy rows; "
+            "it does not claim official copy counts, trophy-case variants, session-level "
+            "award-object completeness, and it is not a complete family checklist beyond "
+            "the source-pinned trophy row trio."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate First Official Tournament trophy "
+            "rows. Use it to distinguish these original 1997 trophy cards from later "
+            "Lizardon/Charizard Mega Battle trophy rows while keeping copy counts and "
+            "award-object details outside the row claim."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_lizardon_mega_battle_199711_199804",
         name_en="Lizardon / Charizard Mega Battle regional trophy source slice",
         name_ja="リザードンメガバトル プロモ",
@@ -1014,6 +1076,25 @@ def jr_east_stamp_rally_source_snapshot() -> dict[str, Any]:
     }
 
 
+def first_official_tournament_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(FIRST_OFFICIAL_TOURNAMENT_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon"),
+        "snapshot_path": str(FIRST_OFFICIAL_TOURNAMENT_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
     if snapshot_id == "early_1996_promos":
         return early_1996_promo_source_snapshot()
@@ -1021,6 +1102,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return lizardon_mega_battle_source_snapshot()
     if snapshot_id == "jr_east_stamp_rally_1997":
         return jr_east_stamp_rally_source_snapshot()
+    if snapshot_id == "first_official_tournament_1997":
+        return first_official_tournament_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
 
 
