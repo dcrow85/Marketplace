@@ -48,6 +48,18 @@ GIFT_PACK_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokemonwiki_gift_pack_19961212_selected_lines.json"
 )
+TEAM_ROCKET_GIFT_PACK_PRODUCT_SOURCE_URL = (
+    "https://wiki.pokemonwiki.com/wiki/"
+    "%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3"
+    "%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%89"
+    "%E3%82%B2%E3%83%BC%E3%83%A0_%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88"
+    "%E5%9B%A3%E3%82%AE%E3%83%95%E3%83%88%E3%83%91%E3%83%83%E3%82%AF"
+)
+TEAM_ROCKET_GIFT_PACK_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokemonwiki_team_rocket_gift_pack_19971219_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -267,6 +279,35 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         pokellector_path="/Rocket-Gang-Expansion/",
         tcgdex_set_id="PMCG4",
         note="Japanese Team Rocket-equivalent booster rows.",
+    ),
+    ReleaseConfig(
+        release_family_id="jp_tcg_team_rocket_gift_pack_19971219",
+        name_en="Team Rocket Gift Pack deck-component context",
+        name_ja="ロケット団ギフトパック",
+        release_date="1997-12-19",
+        expected_row_count=130,
+        release_type="team_rocket_gift_pack_deck_component_possible_rows",
+        prints_without_rarity_symbol="unverified",
+        symbol_status_confidence="medium",
+        pokellector_path="",
+        tcgdex_set_id="PMCG4",
+        source_adapter="team_rocket_gift_pack_product_rollup",
+        product_card_count=120,
+        product_count_basis=(
+            "Source-format context: the Team Rocket Gift Pack product is documented as "
+            "120 cards across two fixed 60-card decks made from Rocket Gang expansion "
+            "cards. This catalog models unresolved deck-component candidate rows as "
+            "2 x 65 Rocket Gang source rows because the fixed per-deck card list is not "
+            "source-pinned here; it is not a guarantee of sealed-unit contents, "
+            "per-deck counts, collation, distribution, or fixed deck composition."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Product-component context",
+        note=(
+            "Component rollup over two unresolved Team Rocket Gift Pack deck lanes. "
+            "Use this for product-family reasoning until the actual fixed deck lists "
+            "are source-pinned."
+        ),
     ),
     ReleaseConfig(
         release_family_id="jp_tcg_expansion_sheet_1_blue_19980323",
@@ -660,6 +701,7 @@ def gift_pack_product_source_id() -> str:
 
 def gift_pack_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(GIFT_PACK_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
     return {
         "snapshot_path": str(GIFT_PACK_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
         "snapshot_hash": sha256_hex(snapshot),
@@ -671,11 +713,38 @@ def gift_pack_source_snapshot() -> dict[str, Any]:
         "oldid_url": snapshot.get("oldid_url", ""),
         "retrieved_at": snapshot.get("retrieved_at", ""),
         "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
+def team_rocket_gift_pack_product_source_id() -> str:
+    return "local-rollup:data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json"
+
+
+def team_rocket_gift_pack_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(TEAM_ROCKET_GIFT_PACK_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "snapshot_path": str(TEAM_ROCKET_GIFT_PACK_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", TEAM_ROCKET_GIFT_PACK_PRODUCT_SOURCE_URL),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
     }
 
 
 def gift_pack_component_lanes() -> tuple[str, ...]:
     return ("starter_a", "starter_b")
+
+
+def team_rocket_gift_pack_component_lanes() -> tuple[str, ...]:
+    return ("rocket_deck_a", "rocket_deck_b")
 
 
 def source_url_for_config(config: ReleaseConfig) -> str:
@@ -685,6 +754,8 @@ def source_url_for_config(config: ReleaseConfig) -> str:
         return starter_pack_possible_source_id()
     if config.source_adapter == "gift_pack_product_rollup":
         return gift_pack_product_source_id()
+    if config.source_adapter == "team_rocket_gift_pack_product_rollup":
+        return team_rocket_gift_pack_product_source_id()
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
     if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
@@ -1398,6 +1469,8 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
         return build_starter_pack_possible_rollup(config)
     if config.source_adapter == "gift_pack_product_rollup":
         return build_gift_pack_product_rollup(config)
+    if config.source_adapter == "team_rocket_gift_pack_product_rollup":
+        return build_team_rocket_gift_pack_product_rollup(config)
     if config.source_adapter == "quick_starter_parent_rollup":
         return build_quick_starter_parent_rollup(config)
     if config.source_adapter == "pokellector":
@@ -2259,6 +2332,353 @@ def build_gift_pack_product_rollup(config: ReleaseConfig) -> dict[str, Any]:
     }
 
 
+def build_team_rocket_gift_pack_product_rollup(config: ReleaseConfig) -> dict[str, Any]:
+    source_path = RELEASE_DIR / "jp_tcg_rocket_gang_19971121.json"
+    source_release = json.loads(source_path.read_text(encoding="utf-8"))
+    source_hash = sha256_hex(source_release)
+    source_docs = source_document_contacts()
+    product_snapshot = team_rocket_gift_pack_source_snapshot()
+    product_claims = product_snapshot["extracted_claims"]
+    cards: list[dict[str, Any]] = []
+    for lane in team_rocket_gift_pack_component_lanes():
+        for source_card in source_release.get("cards", []):
+            source_local_id = source_card.get("local_id", "")
+            local_id = f"{lane}-{source_local_id}"
+            row_id = f"{config.release_family_id}:{local_id}"
+            component_card = copy.deepcopy(source_card)
+            component_card["row_id"] = row_id
+            component_card["release_family_id"] = config.release_family_id
+            component_card["local_id"] = local_id
+            component_card["team_rocket_gift_pack_scope"] = {
+                "authority": (
+                    "Deterministic Team Rocket Gift Pack product-component rollup over "
+                    "two unresolved Rocket Gang deck lanes."
+                ),
+                "component_lane": lane,
+                "component_type": "rocket_gang_deck_component_candidate",
+                "fixed_product_context": True,
+                "fixed_deck_card_member": False,
+                "possible_content_pool": True,
+                "product_rule": (
+                    "Source-format context: Team Rocket Gift Pack is documented as a fixed "
+                    "120-card product with two 60-card decks made from Rocket Gang expansion "
+                    "cards. This row models an unresolved candidate source row only; it is not "
+                    "a guarantee of sealed-unit contents, per-deck counts, collation, distribution, "
+                    "or fixed deck composition."
+                ),
+                "source_catalog_hash": source_hash,
+                "source_local_id": source_local_id,
+                "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                "source_row_id": source_card.get("row_id", ""),
+                "unresolved_fixed_deck_lists": True,
+                "not_claiming": [
+                    "fixed Team Rocket Gift Pack deck list",
+                    "sealed Team Rocket Gift Pack contents",
+                    "per-deck card count for this row",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                ],
+            }
+            source_product_scope = source_card.get("product_scope", {})
+            component_card["product_scope"] = {
+                "authority": "Team Rocket Gift Pack product-component rollup plus Japanese pre-English release map.",
+                "catalog_treatment": config.catalog_treatment,
+                "component_lane": lane,
+                "counting_note": (
+                    "Unresolved component candidate row for one of two fixed Team Rocket Gift Pack decks. "
+                    "The 130 catalog rows are 2 x 65 Rocket Gang source candidates, not 130 physical cards "
+                    "and not a guarantee of sealed-unit contents, per-deck counts, collation, distribution, "
+                    "or fixed deck inclusion."
+                ),
+                "date_precision": config.date_precision,
+                "japanese_booster_order": source_product_scope.get("japanese_booster_order"),
+                "japanese_booster_section": source_product_scope.get("japanese_booster_section", ""),
+                "japanese_set_name": config.name_ja,
+                "membership_note": "Possible Team Rocket Gift Pack deck component candidate row; not a fixed deck inclusion.",
+                "parent_release_family_id": "jp_tcg_rocket_gang_19971121",
+                "product_card_count": config.product_card_count,
+                "product_count_basis": config.product_count_basis,
+                "release_date": config.release_date,
+                "release_type": config.release_type,
+                "source_rocket_gang_row": True,
+                "source_strict_booster_member": bool(source_product_scope.get("strict_booster_member", True)),
+                "strict_booster_member": False,
+                "strict_release_member": False,
+                "unique_catalog_row_count": config.expected_row_count,
+                "unique_underlying_rocket_gang_rows": 65,
+                "unresolved_fixed_deck_lists": True,
+            }
+            component_card["symbol_status"] = {
+                "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+                "confidence": config.symbol_status_confidence,
+                "scope": "release_context_not_row_fact",
+                "source_mode": "direct_release_family",
+                "source_release_family_id": config.release_family_id,
+                "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
+            }
+            component_card["provider_row"] = {
+                "adapter": "team_rocket_gift_pack_product_rollup",
+                "component_lane": lane,
+                "source_catalog_hash": source_hash,
+                "source_provider_row": source_card.get("provider_row", {}),
+                "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                "source_row_id": source_card.get("row_id", ""),
+                "source_local_id": source_local_id,
+                "unresolved_fixed_deck_lists": True,
+            }
+            image = component_card.get("image_provenance", {})
+            component_source_image_status = image.get("status", "")
+            image["release_family_id"] = config.release_family_id
+            image["row_id"] = row_id
+            image["component_source_catalog_hash"] = source_hash
+            image["component_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+            image["component_source_row_id"] = source_card.get("row_id", "")
+            if component_source_image_status:
+                image["component_source_image_lineage_status"] = component_source_image_status.replace(
+                    "exact_source_image",
+                    "source-row exact reference image",
+                )
+                image["component_source_image_lineage_authority"] = (
+                    "lineage only; top-level status is the current Team Rocket Gift Pack image authority"
+                )
+                image["source_image_lineage_status"] = component_source_image_status.replace(
+                    "exact_source_image",
+                    "source-row exact reference image",
+                )
+                image["source_image_lineage_authority"] = (
+                    "lineage only; top-level status is the current Team Rocket Gift Pack image authority"
+                )
+            if image.get("image_large"):
+                image["status"] = "component_inherited_reference_image"
+                image["image_role"] = (
+                    "Component-inherited Rocket Gang reference image for lineage comparison; "
+                    "not a direct Team Rocket Gift Pack image witness."
+                )
+                image["verification_status"] = (
+                    "inherited through Team Rocket Gift Pack component rollup from Rocket Gang source row; "
+                    "not direct Team Rocket Gift Pack image evidence"
+                )
+            image["exactness_basis"] = list(dict.fromkeys([
+                *image.get("exactness_basis", []),
+                "inherited Team Rocket Gift Pack component reference from Rocket Gang source row",
+            ]))
+            image["not_claiming"] = list(dict.fromkeys([
+                *image.get("not_claiming", []),
+                "sealed Team Rocket Gift Pack contents",
+                "fixed Team Rocket Gift Pack deck inclusion",
+                "per-deck count for this row",
+            ]))
+            component_card["image_provenance"] = image
+            collector_texture = component_card.get("collector_texture", {})
+            collector_texture["note"] = (
+                f"{source_card.get('name_en', '')} is cataloged here as a Team Rocket Gift Pack "
+                f"{lane} component candidate inherited from the Rocket Gang source rows. The useful "
+                "claim is product-context possibility; the physical card still needs seller evidence."
+            )
+            collector_texture["signals"] = list(dict.fromkeys([
+                config.name_en,
+                lane,
+                "unresolved Team Rocket Gift Pack deck component",
+                *collector_texture.get("signals", []),
+            ]))
+            component_card["collector_texture"] = collector_texture
+            information_audit = copy.deepcopy(component_card.get("information_audit", {}))
+            information_audit["audit_scope"] = (
+                "Team Rocket Gift Pack component information architecture only. Component-inherited "
+                "images and source lineage help agents compare catalogs, but they do not authenticate "
+                "a Gift Pack card, sealed contents, possession, condition, or price."
+            )
+            information_audit["team_rocket_gift_pack_component_override"] = {
+                "authority": "Use the top-level image_provenance.status as the image authority.",
+                "current_status": image.get("status", ""),
+                "primary_surface_rule": (
+                    "Do not present component-inherited images as direct Team Rocket Gift Pack images; "
+                    "show them only behind lineage/reference comparison controls."
+                ),
+            }
+            for item in information_audit.get("earns_keep", []):
+                if item.get("field") in {"exact external reference image", "No Rarity reference image"}:
+                    item["field"] = "component-inherited Rocket Gang reference image"
+                    item["surface"] = "agent"
+                    item["why"] = (
+                        "Useful as upstream lineage for comparison, but not a direct Team Rocket "
+                        "Gift Pack reference image and not primary human-surface evidence."
+                    )
+            component_card["information_audit"] = information_audit
+            source_contacts = [
+                {
+                    "catalog_hash": source_hash,
+                    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+                    "catalog_path": str(source_path.relative_to(ROOT)),
+                    "component_lane": lane,
+                    "local_row_id": source_local_id,
+                    "not_claiming": [
+                        "fixed Team Rocket Gift Pack deck list",
+                        "sealed Team Rocket Gift Pack contents",
+                        "per-deck card count for this row",
+                        "seller possession",
+                        "authenticity",
+                        "condition",
+                        "price truth",
+                    ],
+                    "source": "Team Rocket Gift Pack product-component rollup",
+                    "source_page_url": team_rocket_gift_pack_product_source_id(),
+                    "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                    "source_row_id": source_card.get("row_id", ""),
+                },
+            ]
+            for contact in component_card.get("source_contacts", []):
+                retargeted_contact = copy.deepcopy(contact)
+                retargeted_contact["component_lane"] = lane
+                retargeted_contact["inherited_from_component_release"] = True
+                retargeted_contact["component_source_catalog_hash"] = source_hash
+                retargeted_contact["component_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+                retargeted_contact["component_source_row_id"] = source_card.get("row_id", "")
+                retargeted_contact["not_claiming"] = list(dict.fromkeys([
+                    *retargeted_contact.get("not_claiming", []),
+                    "fixed Team Rocket Gift Pack deck list",
+                    "sealed Team Rocket Gift Pack contents",
+                    "per-deck card count for this row",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                ]))
+                if retargeted_contact.get("image_large"):
+                    retargeted_contact["not_allowed_by_default"] = list(dict.fromkeys([
+                        *retargeted_contact.get("not_allowed_by_default", []),
+                        "training",
+                        "seller evidence",
+                        "authentication proof",
+                    ]))
+                    retargeted_contact["rights_status"] = retargeted_contact.get("rights_status", "external_reference_witness")
+                    retargeted_contact["display_allowed"] = False
+                source_contacts.append(retargeted_contact)
+            component_card["source_contacts"] = source_contacts
+            component_card["not_claiming"] = list(dict.fromkeys([
+                *component_card.get("not_claiming", []),
+                "fixed Team Rocket Gift Pack deck list",
+                "sealed Team Rocket Gift Pack contents",
+                "per-deck card count for this row",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            ]))
+            component_card["tags"] = list(dict.fromkeys([
+                config.release_family_id,
+                config.name_en,
+                lane,
+                "unresolved Team Rocket Gift Pack deck component",
+                *component_card.get("tags", []),
+            ]))
+            cards.append(component_card)
+    source = {
+        "source": "Marketplace Rocket Gang source catalog plus product context",
+        "source_page_url": team_rocket_gift_pack_product_source_id(),
+        "catalog_hash": source_hash,
+        "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+        "path": str(source_path.relative_to(ROOT)),
+        **source_docs,
+        "component_lanes": list(team_rocket_gift_pack_component_lanes()),
+        "component_rows_per_lane": len(source_release.get("cards", [])),
+        "modeled_component_rows": len(cards),
+        "modeled_candidate_rows": len(cards),
+        "physical_product_card_count": config.product_card_count,
+        "product_card_count": config.product_card_count,
+        "fixed_deck_product_documented": True,
+        "fixed_deck_lists_row_modeled": False,
+        "product_context_source": {
+            "source": "PokemonWiki",
+            "source_page_url": product_snapshot["source_page_url"],
+            "oldid_url": product_snapshot["oldid_url"],
+            "snapshot_path": product_snapshot["snapshot_path"],
+            "snapshot_hash": product_snapshot["snapshot_hash"],
+            "snapshot_schema": product_snapshot["snapshot_schema"],
+            "snapshot_retrieval_method": product_snapshot["snapshot_retrieval_method"],
+            "snapshot_content_scope": product_snapshot["snapshot_content_scope"],
+            "snapshot_not_claiming": product_snapshot["snapshot_not_claiming"],
+            "retrieved_at": product_snapshot["retrieved_at"],
+            "observed_release_date": product_claims.get("release_date", config.release_date),
+            "observed_total_card_count": product_claims.get("product_card_count", 120),
+            "observed_deck_count": product_claims.get("deck_count", 2),
+            "observed_cards_per_deck": product_claims.get("cards_per_deck", 60),
+            "observed_fixed_flag": product_claims.get("fixed_flag", ""),
+            "observed_components": [
+                "two 60-card Team Rocket decks",
+                "play/guide materials",
+            ],
+            "not_claiming": [
+                "raw HTML snapshot",
+                "fixed per-deck card list",
+                "sealed-unit contents",
+                "seller possession",
+                "authenticity",
+                "condition",
+            ],
+        },
+        "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+        "source_release_type": source_release.get("release", {}).get("release_type", ""),
+        "cards_found": len(cards),
+        "possible_content_rows": len(cards),
+        "not_claiming": [
+            "fixed Team Rocket Gift Pack deck list",
+            "sealed Team Rocket Gift Pack contents",
+            "per-deck card counts for modeled rows",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+        ],
+    }
+    return {
+        "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+        "release": {
+            "release_family_id": config.release_family_id,
+            "name_en": config.name_en,
+            "name_ja": config.name_ja,
+            "release_date": config.release_date,
+            "date_precision": config.date_precision,
+            "release_type": config.release_type,
+            "expected_row_count": config.expected_row_count,
+            "count_confidence": "product_component_rollup_unresolved_fixed_deck_lists",
+            "parent_release_family_id": "jp_tcg_rocket_gang_19971121",
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
+            "unique_catalog_row_count": config.expected_row_count,
+            "catalog_treatment": config.catalog_treatment,
+            "component_lanes": list(team_rocket_gift_pack_component_lanes()),
+            "unique_underlying_rocket_gang_rows": 65,
+            "unresolved_fixed_deck_lists": True,
+            "note": config.note,
+        },
+        "symbol_status": {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_release_family",
+            "source_release_family_id": config.release_family_id,
+            "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity proof without seller evidence"],
+        },
+        "sources": [source],
+        "cards": cards,
+        "not_claiming": [
+            "complete pre-English catalog",
+            "fixed Team Rocket Gift Pack deck list",
+            "sealed Team Rocket Gift Pack contents",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+        ],
+    }
+
+
 def build_quick_starter_parent_rollup(config: ReleaseConfig) -> dict[str, Any]:
     child_releases: list[dict[str, Any]] = []
     parent_rows: list[dict[str, Any]] = []
@@ -2424,6 +2844,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     tcgdex_rows = [card for card in cards if card.get("tcgdex", {}).get("id")]
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
     promo_context_rows = [card for card in cards if card.get("promo_context", {}).get("promo_family_id")]
+    product_context_source = primary_source.get("product_context_source", {})
     failures: list[str] = []
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}
@@ -2449,6 +2870,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             }
         except FileNotFoundError:
             failures.append("gift_pack_component_source_file_missing")
+    team_rocket_gift_pack_source_release: dict[str, Any] = {}
+    team_rocket_gift_pack_source_rows: dict[str, dict[str, Any]] = {}
+    if release_type == "team_rocket_gift_pack_deck_component_possible_rows":
+        source_path = RELEASE_DIR / "jp_tcg_rocket_gang_19971121.json"
+        try:
+            team_rocket_gift_pack_source_release = json.loads(source_path.read_text(encoding="utf-8"))
+            team_rocket_gift_pack_source_rows = {
+                source_card.get("local_id", ""): source_card
+                for source_card in team_rocket_gift_pack_source_release.get("cards", [])
+            }
+        except FileNotFoundError:
+            failures.append("team_rocket_gift_pack_component_source_file_missing")
     quick_starter_children: dict[str, dict[str, Any]] = {}
     quick_starter_child_rows: dict[tuple[str, str], dict[str, Any]] = {}
     if release_type == "deck_kit_parent_rollup_rows":
@@ -2478,6 +2911,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("starter_pack_possible_release_must_not_claim_strict_membership")
     if release_type == "gift_pack_starter_component_possible_rows" and release_meta.get("strict_release_member") is not False:
         failures.append("gift_pack_component_release_must_not_claim_strict_membership")
+    if release_type == "team_rocket_gift_pack_deck_component_possible_rows" and release_meta.get("strict_release_member") is not False:
+        failures.append("team_rocket_gift_pack_component_release_must_not_claim_strict_membership")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
@@ -2893,6 +3328,170 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"{card.get('row_id')}: gift_pack_component_image_status_not_component_inherited")
             else:
                 failures.append(f"{card.get('row_id')}: gift_pack_component_missing_source_row")
+        if release_type == "team_rocket_gift_pack_deck_component_possible_rows":
+            rocket_scope = card.get("team_rocket_gift_pack_scope", {})
+            lane = rocket_scope.get("component_lane")
+            source_local_id = rocket_scope.get("source_local_id", "")
+            expected_local_id = f"{lane}-{source_local_id}" if lane and source_local_id else ""
+            expected_row_id = f"{release_meta.get('release_family_id')}:{expected_local_id}" if expected_local_id else ""
+            source_card = team_rocket_gift_pack_source_rows.get(source_local_id)
+            source_hash = sha256_hex(team_rocket_gift_pack_source_release) if team_rocket_gift_pack_source_release else ""
+            if lane not in set(team_rocket_gift_pack_component_lanes()):
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_invalid_lane")
+            if card.get("local_id") != expected_local_id:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_local_id_mismatch")
+            if card.get("row_id") != expected_row_id:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_row_id_mismatch")
+            if rocket_scope.get("possible_content_pool") is not True:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_pool_flag_missing")
+            if rocket_scope.get("fixed_product_context") is not True:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_fixed_product_context_missing")
+            if rocket_scope.get("fixed_deck_card_member") is not False:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_fixed_member_overclaim")
+            if rocket_scope.get("source_release_family_id") != "jp_tcg_rocket_gang_19971121":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_release_mismatch")
+            if rocket_scope.get("source_row_id") != f"jp_tcg_rocket_gang_19971121:{source_local_id}":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_row_mismatch")
+            if rocket_scope.get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_hash_mismatch")
+            if rocket_scope.get("unresolved_fixed_deck_lists") is not True:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_unresolved_deck_flag_missing")
+            product_rule = rocket_scope.get("product_rule", "").lower()
+            if "not a guarantee" not in product_rule or "fixed deck" not in product_rule or "120-card" not in product_rule:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_product_rule_missing_boundary")
+            product_scope = card.get("product_scope", {})
+            if product_scope.get("release_type") != "team_rocket_gift_pack_deck_component_possible_rows":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_product_scope_type_mismatch")
+            if product_scope.get("catalog_treatment") == "Catalog target":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_catalog_treatment_overclaims_target")
+            if product_scope.get("component_lane") != lane:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_product_lane_mismatch")
+            if product_scope.get("strict_release_member") is not False:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_row_strict_member_overclaim")
+            if product_scope.get("strict_booster_member") is not False:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_current_booster_member_overclaim")
+            if product_scope.get("product_card_count") != 120:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_product_count_mismatch")
+            counting_note = product_scope.get("counting_note", "").lower()
+            if "not 130 physical cards" not in counting_note or "not a guarantee" not in counting_note:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_counting_note_missing_boundary")
+            if card.get("symbol_status", {}).get("prints_without_rarity_symbol") != "unverified":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_symbol_not_unverified")
+            if card.get("provider_row", {}).get("adapter") != "team_rocket_gift_pack_product_rollup":
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_provider_adapter_mismatch")
+            if card.get("provider_row", {}).get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_provider_source_hash_mismatch")
+            if image.get("release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_release_family_mismatch")
+            if image.get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_row_id_mismatch")
+            if "sealed Team Rocket Gift Pack contents" not in image.get("not_claiming", []):
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_boundary_missing")
+            if image.get("status") == "component_inherited_reference_image":
+                if image.get("component_source_release_family_id") != "jp_tcg_rocket_gang_19971121":
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_source_release_missing")
+                if image.get("component_source_row_id") != f"jp_tcg_rocket_gang_19971121:{source_local_id}":
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_source_row_mismatch")
+                if image.get("component_source_catalog_hash") != source_hash:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_source_hash_mismatch")
+                if "component_source_image_status" in image:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_image_status_not_path_safe")
+                if "source_image_status" in image:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_legacy_source_image_status_not_path_safe")
+                if "exact_source_image" in image.get("component_source_image_lineage_status", ""):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_component_lineage_status_overclaims_exact_source")
+                if "exact_source_image" in image.get("source_image_lineage_status", ""):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_lineage_status_overclaims_exact_source")
+                if "Exact external reference witness" in image.get("image_role", ""):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_role_direct_exact_overclaim")
+                information_audit = card.get("information_audit", {})
+                override = information_audit.get("team_rocket_gift_pack_component_override", {})
+                if override.get("current_status") != image.get("status"):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_information_audit_status_mismatch")
+                for item in information_audit.get("earns_keep", []):
+                    if item.get("field") == "exact external reference image" and item.get("surface") == "primary":
+                        failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_information_audit_primary_image_overclaim")
+                        break
+            if not any(
+                contact.get("source") == "Team Rocket Gift Pack product-component rollup"
+                and contact.get("catalog_hash") == source_hash
+                and contact.get("component_lane") == lane
+                and contact.get("source_row_id") == f"jp_tcg_rocket_gang_19971121:{source_local_id}"
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_missing_rollup_contact")
+            component_contacts = [
+                contact for contact in card.get("source_contacts", [])
+                if contact.get("source") != "Team Rocket Gift Pack product-component rollup"
+            ]
+            required_contact_boundaries = {
+                "fixed Team Rocket Gift Pack deck list",
+                "sealed Team Rocket Gift Pack contents",
+                "per-deck card count for this row",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            }
+            for contact in component_contacts:
+                if contact.get("inherited_from_component_release") is not True:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_inherited_contact_unmarked")
+                    break
+                if contact.get("component_source_catalog_hash") != source_hash:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_inherited_contact_hash_mismatch")
+                    break
+                if not required_contact_boundaries.issubset(set(contact.get("not_claiming", []))):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_inherited_contact_boundary_missing")
+                    break
+                if contact.get("image_large") and (
+                    contact.get("display_allowed") is not False
+                    or contact.get("rights_status") != "external_reference_witness"
+                    or not {"training", "seller evidence", "authentication proof"}.issubset(set(contact.get("not_allowed_by_default", [])))
+                ):
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_inherited_image_contact_use_boundary_missing")
+                    break
+            if source_card:
+                copied_fields = [
+                    "name_en",
+                    "name_ja",
+                    "name_ja_status",
+                    "romaji",
+                    "name_source_note",
+                    "category",
+                    "rarity_source",
+                    "holo_source",
+                    "pokemon_profile",
+                    "illustrator",
+                    "tcgdex",
+                    "variant_traps",
+                ]
+                for field in copied_fields:
+                    if card.get(field) != source_card.get(field):
+                        failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_field_drift {field}")
+                        break
+                source_image = source_card.get("image_provenance", {})
+                for field in [
+                    "image_large",
+                    "image_small",
+                    "provider_id",
+                    "provider_title",
+                    "source",
+                    "source_page_url",
+                    "rights_status",
+                ]:
+                    if image.get(field) != source_image.get(field):
+                        failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_image_drift {field}")
+                        break
+                expected_lineage_status = source_image.get("status", "").replace(
+                    "exact_source_image",
+                    "source-row exact reference image",
+                )
+                if image.get("component_source_image_lineage_status") != expected_lineage_status:
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_source_image_status_drift")
+                if source_image.get("status") == "exact_source_image" and image.get("status") != "component_inherited_reference_image":
+                    failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_status_not_component_inherited")
+            else:
+                failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_missing_source_row")
         if release_type == "deck_kit_parent_rollup_rows":
             parent_rollup = card.get("parent_rollup", {})
             lane = parent_rollup.get("lane")
@@ -3291,6 +3890,15 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append("gift_pack_component_product_context_starter_count_mismatch")
             if product_context.get("observed_special_card_slots") != gift_claims.get("special_card_slots"):
                 failures.append("gift_pack_component_product_context_special_slot_mismatch")
+            selected_text = gift_snapshot.get("selected_text", "")
+            for expected_text, failure_name in {
+                "1996年12月12日": "gift_pack_component_snapshot_date_line_missing",
+                "カード枚数 122枚": "gift_pack_component_snapshot_card_count_line_missing",
+                "第1弾スターターパック 2個": "gift_pack_component_snapshot_starter_component_line_missing",
+                "スペシャルカード2枚": "gift_pack_component_snapshot_special_card_line_missing",
+            }.items():
+                if expected_text not in selected_text:
+                    failures.append(failure_name)
             if "raw HTML snapshot" not in product_context.get("not_claiming", []):
                 failures.append("gift_pack_component_product_context_snapshot_boundary_missing")
             if "special-card identities" not in product_context.get("not_claiming", []):
@@ -3315,6 +3923,104 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("gift_pack_component_direct_exact_image_overclaim")
         if not all(card.get("gift_pack_scope", {}).get("possible_content_pool") is True for card in cards):
             failures.append("gift_pack_component_pool_flags_incomplete")
+    if release_type == "team_rocket_gift_pack_deck_component_possible_rows":
+        lanes = [card.get("team_rocket_gift_pack_scope", {}).get("component_lane") for card in cards]
+        component_images = [
+            card for card in cards
+            if card.get("image_provenance", {}).get("status") == "component_inherited_reference_image"
+            and card.get("image_provenance", {}).get("image_large")
+        ]
+        fixed_overclaims = [
+            card for card in cards
+            if card.get("team_rocket_gift_pack_scope", {}).get("fixed_deck_card_member") is not False
+            or card.get("product_scope", {}).get("strict_release_member") is not False
+            or card.get("product_scope", {}).get("strict_booster_member") is not False
+        ]
+        source_rocket_rows = [
+            card for card in cards
+            if card.get("product_scope", {}).get("source_rocket_gang_row") is True
+        ]
+        for lane in team_rocket_gift_pack_component_lanes():
+            if lanes.count(lane) != 65:
+                failures.append(f"team_rocket_gift_pack_component_lane_count {lane}={lanes.count(lane)}")
+        if release_meta.get("product_card_count") != 120:
+            failures.append("team_rocket_gift_pack_component_product_count_should_be_120")
+        if release_meta.get("unique_catalog_row_count") != 130:
+            failures.append("team_rocket_gift_pack_component_unique_pool_count_should_be_130")
+        if release_meta.get("unresolved_fixed_deck_lists") is not True:
+            failures.append("team_rocket_gift_pack_component_unresolved_deck_lists_missing")
+        if release_meta.get("catalog_treatment") == "Catalog target":
+            failures.append("team_rocket_gift_pack_component_catalog_treatment_overclaims_target")
+        if "not a guarantee" not in release_meta.get("product_count_basis", "").lower():
+            failures.append("team_rocket_gift_pack_component_product_count_basis_missing_boundary")
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "unverified":
+            failures.append("team_rocket_gift_pack_component_release_symbol_status_should_be_unverified")
+        if primary_source.get("source_page_url") != team_rocket_gift_pack_product_source_id():
+            failures.append("team_rocket_gift_pack_component_source_page_url_mismatch")
+        try:
+            source_docs = source_document_contacts()
+            for key, value in source_docs.items():
+                if primary_source.get(key) != value:
+                    failures.append(f"team_rocket_gift_pack_component_source_doc_pin_mismatch {key}")
+        except FileNotFoundError:
+            failures.append("team_rocket_gift_pack_component_source_doc_pin_missing")
+        if primary_source.get("source_release_family_id") != "jp_tcg_rocket_gang_19971121":
+            failures.append("team_rocket_gift_pack_component_source_release_mismatch")
+        if primary_source.get("cards_found") != len(cards) or primary_source.get("possible_content_rows") != len(cards):
+            failures.append("team_rocket_gift_pack_component_source_rows_found_mismatch")
+        if len(team_rocket_gift_pack_source_rows) != 65:
+            failures.append(f"team_rocket_gift_pack_component_source_row_count actual={len(team_rocket_gift_pack_source_rows)}")
+        if primary_source.get("catalog_hash") != (sha256_hex(team_rocket_gift_pack_source_release) if team_rocket_gift_pack_source_release else ""):
+            failures.append("team_rocket_gift_pack_component_source_hash_mismatch")
+        product_context = primary_source.get("product_context_source", {})
+        try:
+            product_snapshot = team_rocket_gift_pack_source_snapshot()
+            product_claims = product_snapshot["extracted_claims"]
+            if product_context.get("snapshot_hash") != product_snapshot["snapshot_hash"]:
+                failures.append("team_rocket_gift_pack_component_product_context_snapshot_hash_mismatch")
+            if product_context.get("snapshot_path") != product_snapshot["snapshot_path"]:
+                failures.append("team_rocket_gift_pack_component_product_context_snapshot_path_mismatch")
+            if product_context.get("oldid_url") != product_snapshot["oldid_url"]:
+                failures.append("team_rocket_gift_pack_component_product_context_oldid_mismatch")
+            if product_context.get("source_page_url") != product_snapshot["source_page_url"]:
+                failures.append("team_rocket_gift_pack_component_product_context_source_url_mismatch")
+            if product_context.get("observed_release_date") != product_claims.get("release_date"):
+                failures.append("team_rocket_gift_pack_component_product_context_release_date_mismatch")
+            if product_context.get("observed_total_card_count") != product_claims.get("product_card_count"):
+                failures.append("team_rocket_gift_pack_component_product_context_count_mismatch")
+            if product_context.get("observed_deck_count") != product_claims.get("deck_count"):
+                failures.append("team_rocket_gift_pack_component_product_context_deck_count_mismatch")
+            if product_context.get("observed_cards_per_deck") != product_claims.get("cards_per_deck"):
+                failures.append("team_rocket_gift_pack_component_product_context_cards_per_deck_mismatch")
+            if product_context.get("observed_fixed_flag") != product_claims.get("fixed_flag"):
+                failures.append("team_rocket_gift_pack_component_product_context_fixed_flag_mismatch")
+            selected_text = product_snapshot.get("selected_text", "")
+            for expected_text, failure_name in {
+                "1997年12月19日": "team_rocket_gift_pack_component_snapshot_date_line_missing",
+                "カード枚数 120枚": "team_rocket_gift_pack_component_snapshot_card_count_line_missing",
+                "形態 固定": "team_rocket_gift_pack_component_snapshot_fixed_line_missing",
+                "2デッキ（各60枚）": "team_rocket_gift_pack_component_snapshot_deck_count_line_missing",
+            }.items():
+                if expected_text not in selected_text:
+                    failures.append(failure_name)
+            if "raw HTML snapshot" not in product_context.get("not_claiming", []):
+                failures.append("team_rocket_gift_pack_component_product_context_snapshot_boundary_missing")
+            if "fixed per-deck card list" not in product_context.get("not_claiming", []):
+                failures.append("team_rocket_gift_pack_component_product_context_fixed_deck_boundary_missing")
+        except FileNotFoundError:
+            failures.append("team_rocket_gift_pack_component_product_source_snapshot_missing")
+        if primary_source.get("fixed_deck_product_documented") is not True or primary_source.get("fixed_deck_lists_row_modeled") is not False:
+            failures.append("team_rocket_gift_pack_component_fixed_deck_model_boundary_missing")
+        if len(component_images) != 130:
+            failures.append(f"team_rocket_gift_pack_component_image_count actual={len(component_images)}")
+        if fixed_overclaims:
+            failures.append(f"team_rocket_gift_pack_component_fixed_overclaim_count actual={len(fixed_overclaims)}")
+        if len(source_rocket_rows) != len(cards):
+            failures.append(f"team_rocket_gift_pack_component_source_rocket_row_count actual={len(source_rocket_rows)}")
+        if any(card.get("image_provenance", {}).get("status") == "exact_source_image" for card in cards):
+            failures.append("team_rocket_gift_pack_component_direct_exact_image_overclaim")
+        if not all(card.get("team_rocket_gift_pack_scope", {}).get("possible_content_pool") is True for card in cards):
+            failures.append("team_rocket_gift_pack_component_pool_flags_incomplete")
     if release_type == "deck_kit_parent_rollup_rows":
         lanes = [card.get("parent_rollup", {}).get("lane") for card in cards]
         if lanes.count("red") != 32 or lanes.count("green") != 32:
@@ -3372,11 +4078,26 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "catalog_treatment": release_meta.get("catalog_treatment", ""),
         "component_lanes": release_meta.get("component_lanes", []),
         "unmodeled_special_card_slots": release_meta.get("unmodeled_special_card_slots", 0),
+        "unresolved_fixed_deck_lists": release_meta.get("unresolved_fixed_deck_lists", False),
+        "unique_underlying_rocket_gang_rows": release_meta.get("unique_underlying_rocket_gang_rows", 0),
+        "modeled_candidate_rows": (
+            len(cards)
+            if release_type in {
+                "gift_pack_starter_component_possible_rows",
+                "team_rocket_gift_pack_deck_component_possible_rows",
+            }
+            else 0
+        ),
+        "physical_product_card_count": release_meta.get("product_card_count", 0),
+        "product_context_snapshot_path": product_context_source.get("snapshot_path", ""),
+        "product_context_snapshot_hash": product_context_source.get("snapshot_hash", ""),
+        "product_context_oldid_url": product_context_source.get("oldid_url", ""),
+        "product_context_source_url": product_context_source.get("source_page_url", ""),
         "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
         "strict_booster_rows": sum(1 for card in cards if card.get("product_scope", {}).get("strict_booster_member") is True),
-        "exact_image_witness_rows": len(image_rows),
+        "reference_image_witness_rows": len(image_rows),
         "exact_source_image_rows": len(exact_source_image_rows),
         "provider_path_reference_image_rows": len(provider_path_reference_image_rows),
         "inherited_source_reference_image_rows": len(inherited_source_reference_image_rows),
@@ -3407,6 +4128,7 @@ def main() -> int:
         audit = audit_release(release)
         audit_rows.append(audit)
         source_url = source_url_for_config(config)
+        product_context_source = (release.get("sources", [{}]) or [{}])[0].get("product_context_source", {})
         manifests.append(
             {
                 "release_family_id": config.release_family_id,
@@ -3424,11 +4146,26 @@ def main() -> int:
                 "catalog_treatment": release.get("release", {}).get("catalog_treatment", ""),
                 "component_lanes": release.get("release", {}).get("component_lanes", []),
                 "unmodeled_special_card_slots": release.get("release", {}).get("unmodeled_special_card_slots", 0),
+                "unresolved_fixed_deck_lists": release.get("release", {}).get("unresolved_fixed_deck_lists", False),
+                "unique_underlying_rocket_gang_rows": release.get("release", {}).get("unique_underlying_rocket_gang_rows", 0),
+                "modeled_candidate_rows": (
+                    len(release["cards"])
+                    if config.release_type in {
+                        "gift_pack_starter_component_possible_rows",
+                        "team_rocket_gift_pack_deck_component_possible_rows",
+                    }
+                    else 0
+                ),
+                "physical_product_card_count": release.get("release", {}).get("product_card_count", 0),
+                "product_context_snapshot_path": product_context_source.get("snapshot_path", ""),
+                "product_context_snapshot_hash": product_context_source.get("snapshot_hash", ""),
+                "product_context_oldid_url": product_context_source.get("oldid_url", ""),
+                "product_context_source_url": product_context_source.get("source_page_url", ""),
                 "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
                 "strict_booster_rows": audit["strict_booster_rows"],
-                "exact_image_witness_rows": audit["exact_image_witness_rows"],
+                "reference_image_witness_rows": audit["reference_image_witness_rows"],
                 "exact_source_image_rows": audit["exact_source_image_rows"],
                 "provider_path_reference_image_rows": audit["provider_path_reference_image_rows"],
                 "inherited_source_reference_image_rows": audit["inherited_source_reference_image_rows"],
@@ -3450,7 +4187,7 @@ def main() -> int:
         "active_no_rarity_rows": sum(item["active_no_rarity_rows"] for item in manifests),
         "basic_energy_caveat_rows": sum(item["basic_energy_caveat_rows"] for item in manifests),
         "strict_booster_rows": sum(item["strict_booster_rows"] for item in manifests),
-        "exact_image_witness_rows": sum(item["exact_image_witness_rows"] for item in manifests),
+        "reference_image_witness_rows": sum(item["reference_image_witness_rows"] for item in manifests),
         "exact_source_image_rows": sum(item["exact_source_image_rows"] for item in manifests),
         "provider_path_reference_image_rows": sum(item["provider_path_reference_image_rows"] for item in manifests),
         "inherited_source_reference_image_rows": sum(item["inherited_source_reference_image_rows"] for item in manifests),
@@ -3477,7 +4214,7 @@ def main() -> int:
         "active_no_rarity_rows": sum(row["active_no_rarity_rows"] for row in audit_rows),
         "basic_energy_caveat_rows": sum(row["basic_energy_caveat_rows"] for row in audit_rows),
         "strict_booster_rows": sum(row["strict_booster_rows"] for row in audit_rows),
-        "exact_image_witness_rows": sum(row["exact_image_witness_rows"] for row in audit_rows),
+        "reference_image_witness_rows": sum(row["reference_image_witness_rows"] for row in audit_rows),
         "exact_source_image_rows": sum(row["exact_source_image_rows"] for row in audit_rows),
         "provider_path_reference_image_rows": sum(row["provider_path_reference_image_rows"] for row in audit_rows),
         "inherited_source_reference_image_rows": sum(row["inherited_source_reference_image_rows"] for row in audit_rows),
@@ -3499,7 +4236,7 @@ def main() -> int:
     for row in audit_rows:
         print(
             f"{row['release_family_id']}: rows={row['row_count']}/{row['expected_row_count']} "
-            f"images={row['exact_image_witness_rows']} tcgdex={row['tcgdex_enriched_rows']} passed={row['passed']}"
+            f"reference_images={row['reference_image_witness_rows']} tcgdex={row['tcgdex_enriched_rows']} passed={row['passed']}"
         )
     return 0 if audit["passed"] else 1
 
