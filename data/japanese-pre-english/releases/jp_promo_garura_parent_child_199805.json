@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "category": "Pokemon",
+      "category": "",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -9,14 +9,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Cool Porygon is cataloged as the currently source-pinned row for Nintendo 64 W Double Get Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Touch Change! is cataloged as the currently source-pinned row for Garura Parent/Child Tournament source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Nintendo 64 W Double Get Campaign source slice",
-          "1997-12-10/1998-01-31",
+          "Garura Parent/Child Tournament source slice",
+          "1998-05",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "028",
+          "042",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -24,8 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Hiromichi Sugiyama",
-        "name": "Hiromichi Sugiyama",
+        "display": "Illus. Nobuyuki Habu",
+        "name": "Nobuyuki Habu",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -46,11 +46,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/28.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/42.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/28.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/42.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -66,13 +66,13 @@
         ],
         "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
-        "promo_family_source_sort": 28,
-        "provider_id": "pokecardex:14226",
-        "provider_title": "Cool Porygon - Unnumbered Promotional #28",
-        "release_family_id": "jp_promo_n64_double_get_199712",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+        "promo_family_source_sort": 42,
+        "provider_id": "pokecardex:14241",
+        "provider_title": "Touch Change! - Unnumbered Promotional #42",
+        "release_family_id": "jp_promo_garura_parent_child_199805",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_n64_double_get_199712:028",
+        "row_id": "jp_promo_garura_parent_child_199805:042",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -113,11 +113,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "028",
-      "name_en": "Cool Porygon",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "042",
+      "name_en": "Touch Change!",
+      "name_ja": "タッチ交代！",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Garura Parent/Child Touch Change! page selected lines 145-151.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -132,9 +132,7 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [
-          137
-        ],
+        "dex_id": [],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -144,16 +142,16 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range_crosses_year",
-        "expected_complete_source_boundary": "",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 2,
-        "japanese_set_name": "NINTENDO64 Wゲットキャンペーン プロモ",
+        "japanese_set_name": "ガルーラ親子大会 プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents the Nintendo 64 W Double Get campaign as running from December 10, 1997 to January 31, 1998 with two promo cards, Hungry Snorlax and Cool Porygon. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim copy counts, participating store coverage, sealed CD/booklet variants, Food counter token completeness, or a complete campaign-object ledger, and it is not a complete family checklist beyond the source-pinned card pair.",
-        "release_date": "1997-12-10/1998-01-31",
+        "product_count_basis": "Bulbapedia documents the Garura Parent/Child Tournament as a May 1998 event where Touch Change! was given to participants for Garura Rules play and Kangaskhan was awarded to parent/child teams that reached a certain number of wins. Pokumon documents the two card identities and notes that Touch Change! was also reprinted in Pokemon Card Fan Club Vol. 5 in June 1998. This child slice models the two currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, a complete rules packet, participant/winner ledger, or complete Touch Change! distribution census. It is not a complete family checklist beyond the two source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-05",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -163,30 +161,30 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-12-10 to 1998-01-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Nintendo 64 Double Get Campaign (December 10, 1997-January 31, 1998)",
+        "date_label": "1998-05",
+        "date_source": "release_map",
+        "distribution_comment": "Garura Parent/Child Tournament participation prize",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_n64_double_get_199712",
-        "source_sort": 28
+        "promo_family_id": "jp_promo_garura_parent_child_199805",
+        "source_sort": 42
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-          "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+          "Touch Change! (Garura Parent/Child Tournament 1998)",
+          "Kangaskhan (Garura Parent/Child Tournament 1998)"
         ],
-        "expected_complete_source_boundary": "",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
-          28,
-          29
+          42,
+          43
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -197,14 +195,14 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_n64_double_get_199712",
+        "promo_family_id": "jp_promo_garura_parent_child_199805",
         "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
-        "source_gap_reason": "Pokumon documents the Nintendo 64 W Double Get campaign and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Cool Porygon and Hungry Snorlax rows to this exact family. This source slice models those card identities only; it does not model sealed CD/booklet variants, Food counter tokens, store participation, purchase volume, or copy-count claims.",
-        "source_local_id": "028",
-        "source_provider_sort": 28,
+        "source_gap_reason": "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, while Pokumon documents the two card identities and the Touch Change! Fan Club Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both tournament rows to this family. This source slice models those tournament card identities only; it does not model the full tournament rules packet, complete participant/winner ledger, official copy count, or complete Touch Change! distribution census.",
+        "source_local_id": "042",
+        "source_provider_sort": 42,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -213,25 +211,25 @@
         "expected_source_card_count": 2,
         "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
-        "source_local_id": "028",
+        "source_local_id": "042",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Cool-Porygon-UNP",
-          "comment": "Nintendo 64 Double Get Campaign (December 10, 1997-January 31, 1998)",
-          "id_card": 14226,
-          "id_tcgplayer": 617415,
-          "illustrator": "Hiromichi Sugiyama",
-          "provider_id": "pokecardex:14226",
-          "provider_title": "Cool Porygon - Unnumbered Promotional #28",
+          "cardmarket_url": "Unnumbered-Promos/Touch-Change",
+          "comment": "Garura Parent/Child Tournament participation prize",
+          "id_card": 14241,
+          "id_tcgplayer": 0,
+          "illustrator": "Nobuyuki Habu",
+          "provider_id": "pokecardex:14241",
+          "provider_title": "Touch Change! - Unnumbered Promotional #42",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 28,
+          "sort": 42,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14226,
+              "id_card": 14241,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -240,20 +238,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
-        "source_sort": 28
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+        "source_sort": 42
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_n64_double_get_199712",
-      "romaji": "",
-      "row_id": "jp_promo_n64_double_get_199712:028",
+      "release_family_id": "jp_promo_garura_parent_child_199805",
+      "romaji": "Touch Change!",
+      "row_id": "jp_promo_garura_parent_child_199805:042",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "028",
+          "local_row_id": "042",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -263,26 +261,29 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_n64_double_get_199712",
+          "promo_family_id": "jp_promo_garura_parent_child_199805",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
-          "source_sort": 28
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+          "source_sort": 42
         },
         {
           "expected_cards": [
-            "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-            "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+            "Touch Change! (Garura Parent/Child Tournament 1998)",
+            "Kangaskhan (Garura Parent/Child Tournament 1998)"
           ],
-          "expected_complete_source_boundary": "",
+          "expected_complete_source_boundary": "complete tournament source",
           "not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
+            "complete tournament source",
+            "complete rules packet",
+            "complete Pokemon Card Fan Club source",
+            "complete Touch Change distribution census",
             "official copy count",
-            "complete participating-store ledger",
-            "complete sealed CD or booklet variant catalog",
-            "complete Food counter token verification",
+            "complete prize-threshold documentation",
+            "complete participant/winner ledger",
+            "proof that the two cards were distributed as one physical packet",
             "seller possession",
             "authenticity",
             "condition",
@@ -290,32 +291,40 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T20:48:02Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1997-1998 Nintendo 64 W Double Get Campaign, its purchase-campaign context, two-card Hungry Snorlax/Cool Porygon claim, later Song Best Collection reuse distinction, and CD/booklet/Food-counter physical-object context. This snapshot is not a full campaign archive, not a participating-store ledger, not a sealed CD/booklet variant catalog, and not a copy-count authority beyond the selected lines.",
-          "snapshot_hash": "e5bbb27b57f2feb8b3c8613b8f8aa5c90b739899b9a1323be4bb9c6e19a4afe8",
+          "retrieved_at": "2026-06-17T23:05:42Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Garura Parent/Child Tournament source slice, including May 1998 timing, participation/winner roles, the two source-pinned tournament card identities, and the Touch Change! Fan Club Vol. 5 reprint caveat. This snapshot is not a full tournament archive, not a complete rules packet, not a complete Touch Change! distribution census, not an official copy-count authority, and not a raw HTML snapshot.",
+          "snapshot_hash": "2e3c46bb96ec49fa9590064cc2b5d9c610ffaac189b35bed6e66aec251b31126",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
+            "complete tournament source",
+            "complete rules packet",
+            "complete Pokemon Card Fan Club source",
+            "complete Touch Change distribution census",
             "official copy count",
-            "complete participating-store ledger",
-            "complete sealed CD or booklet variant catalog",
-            "complete Food counter token verification",
+            "complete prize-threshold documentation",
+            "complete participant/winner ledger",
+            "proof that the two cards were distributed as one physical packet",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
-          "supporting_page_urls": [],
+          "source": "Bulbapedia + Pokumon",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Touch_Change%21_%28Garura_Parent/Child_promo%29",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_%28Garura_Parent/Child_promo%29",
+            "https://pokumon.com/card/kangaskhan-garura-parent-child-tournament-1998-unnumbered/",
+            "https://pokumon.com/card/touch-change-garura-parent-child-tournament-pokemon-card-fan-club-magazine-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "c40cd5cfd4419a7f2271a47ac78eaf030aec71391154031b851394394d9055e4",
+          "card_data_hash": "506ec06c792a318a30fa175be75c8f5434369a439d65129cd7571f303359db76",
           "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -329,7 +338,7 @@
           ],
           "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -347,11 +356,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_n64_double_get_199712"
+        "source_release_family_id": "jp_promo_garura_parent_child_199805"
       },
       "tags": [
-        "jp_promo_n64_double_get_199712",
-        "Nintendo 64 W Double Get Campaign source slice",
+        "jp_promo_garura_parent_child_199805",
+        "Garura Parent/Child Tournament source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -377,14 +386,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Hungry Snorlax is cataloged as the currently source-pinned row for Nintendo 64 W Double Get Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Kangaskhan is cataloged as the currently source-pinned row for Garura Parent/Child Tournament source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Nintendo 64 W Double Get Campaign source slice",
-          "1997-12-10/1998-01-31",
+          "Garura Parent/Child Tournament source slice",
+          "1998-05",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "029",
+          "043",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -392,8 +401,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Sumiyoshi Kizuki",
-        "name": "Sumiyoshi Kizuki",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -414,11 +423,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/29.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/43.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/29.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/43.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -434,13 +443,13 @@
         ],
         "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
-        "promo_family_source_sort": 29,
-        "provider_id": "pokecardex:14227",
-        "provider_title": "Hungry Snorlax - Unnumbered Promotional #29",
-        "release_family_id": "jp_promo_n64_double_get_199712",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+        "promo_family_source_sort": 43,
+        "provider_id": "pokecardex:14242",
+        "provider_title": "Kangaskhan - Unnumbered Promotional #43",
+        "release_family_id": "jp_promo_garura_parent_child_199805",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_n64_double_get_199712:029",
+        "row_id": "jp_promo_garura_parent_child_199805:043",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -481,11 +490,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "029",
-      "name_en": "Hungry Snorlax",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "043",
+      "name_en": "Kangaskhan",
+      "name_ja": "ガルーラ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Garura Parent/Child Kangaskhan page selected lines 144-167.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -501,7 +510,7 @@
         "abilities": [],
         "attacks": [],
         "dex_id": [
-          143
+          115
         ],
         "hp": null,
         "level": null,
@@ -512,16 +521,16 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range_crosses_year",
-        "expected_complete_source_boundary": "",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 2,
-        "japanese_set_name": "NINTENDO64 Wゲットキャンペーン プロモ",
+        "japanese_set_name": "ガルーラ親子大会 プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents the Nintendo 64 W Double Get campaign as running from December 10, 1997 to January 31, 1998 with two promo cards, Hungry Snorlax and Cool Porygon. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim copy counts, participating store coverage, sealed CD/booklet variants, Food counter token completeness, or a complete campaign-object ledger, and it is not a complete family checklist beyond the source-pinned card pair.",
-        "release_date": "1997-12-10/1998-01-31",
+        "product_count_basis": "Bulbapedia documents the Garura Parent/Child Tournament as a May 1998 event where Touch Change! was given to participants for Garura Rules play and Kangaskhan was awarded to parent/child teams that reached a certain number of wins. Pokumon documents the two card identities and notes that Touch Change! was also reprinted in Pokemon Card Fan Club Vol. 5 in June 1998. This child slice models the two currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, a complete rules packet, participant/winner ledger, or complete Touch Change! distribution census. It is not a complete family checklist beyond the two source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-05",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -531,30 +540,30 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-12-10 to 1998-01-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Nintendo 64 Double Get Campaign (December 10, 1997-January 31, 1998)",
+        "date_label": "1998-05",
+        "date_source": "release_map",
+        "distribution_comment": "Garura Parent/Child Tournament winner's prize",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_n64_double_get_199712",
-        "source_sort": 29
+        "promo_family_id": "jp_promo_garura_parent_child_199805",
+        "source_sort": 43
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-          "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+          "Touch Change! (Garura Parent/Child Tournament 1998)",
+          "Kangaskhan (Garura Parent/Child Tournament 1998)"
         ],
-        "expected_complete_source_boundary": "",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
-          28,
-          29
+          42,
+          43
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -565,14 +574,14 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_n64_double_get_199712",
+        "promo_family_id": "jp_promo_garura_parent_child_199805",
         "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
-        "source_gap_reason": "Pokumon documents the Nintendo 64 W Double Get campaign and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Cool Porygon and Hungry Snorlax rows to this exact family. This source slice models those card identities only; it does not model sealed CD/booklet variants, Food counter tokens, store participation, purchase volume, or copy-count claims.",
-        "source_local_id": "029",
-        "source_provider_sort": 29,
+        "source_gap_reason": "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, while Pokumon documents the two card identities and the Touch Change! Fan Club Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both tournament rows to this family. This source slice models those tournament card identities only; it does not model the full tournament rules packet, complete participant/winner ledger, official copy count, or complete Touch Change! distribution census.",
+        "source_local_id": "043",
+        "source_provider_sort": 43,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -581,25 +590,25 @@
         "expected_source_card_count": 2,
         "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
-        "source_local_id": "029",
+        "source_local_id": "043",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Hungry-Snorlax",
-          "comment": "Nintendo 64 Double Get Campaign (December 10, 1997-January 31, 1998)",
-          "id_card": 14227,
-          "id_tcgplayer": 617421,
-          "illustrator": "Sumiyoshi Kizuki",
-          "provider_id": "pokecardex:14227",
-          "provider_title": "Hungry Snorlax - Unnumbered Promotional #29",
+          "cardmarket_url": "Unnumbered-Promos/Kangaskhan",
+          "comment": "Garura Parent/Child Tournament winner's prize",
+          "id_card": 14242,
+          "id_tcgplayer": 617423,
+          "illustrator": "Ken Sugimori",
+          "provider_id": "pokecardex:14242",
+          "provider_title": "Kangaskhan - Unnumbered Promotional #43",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 29,
+          "sort": 43,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14227,
+              "id_card": 14242,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -608,20 +617,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
-        "source_sort": 29
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+        "source_sort": 43
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_n64_double_get_199712",
-      "romaji": "",
-      "row_id": "jp_promo_n64_double_get_199712:029",
+      "release_family_id": "jp_promo_garura_parent_child_199805",
+      "romaji": "Garura",
+      "row_id": "jp_promo_garura_parent_child_199805:043",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "029",
+          "local_row_id": "043",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -631,26 +640,29 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_n64_double_get_199712",
+          "promo_family_id": "jp_promo_garura_parent_child_199805",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
-          "source_sort": 29
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+          "source_sort": 43
         },
         {
           "expected_cards": [
-            "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-            "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+            "Touch Change! (Garura Parent/Child Tournament 1998)",
+            "Kangaskhan (Garura Parent/Child Tournament 1998)"
           ],
-          "expected_complete_source_boundary": "",
+          "expected_complete_source_boundary": "complete tournament source",
           "not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
+            "complete tournament source",
+            "complete rules packet",
+            "complete Pokemon Card Fan Club source",
+            "complete Touch Change distribution census",
             "official copy count",
-            "complete participating-store ledger",
-            "complete sealed CD or booklet variant catalog",
-            "complete Food counter token verification",
+            "complete prize-threshold documentation",
+            "complete participant/winner ledger",
+            "proof that the two cards were distributed as one physical packet",
             "seller possession",
             "authenticity",
             "condition",
@@ -658,32 +670,40 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T20:48:02Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1997-1998 Nintendo 64 W Double Get Campaign, its purchase-campaign context, two-card Hungry Snorlax/Cool Porygon claim, later Song Best Collection reuse distinction, and CD/booklet/Food-counter physical-object context. This snapshot is not a full campaign archive, not a participating-store ledger, not a sealed CD/booklet variant catalog, and not a copy-count authority beyond the selected lines.",
-          "snapshot_hash": "e5bbb27b57f2feb8b3c8613b8f8aa5c90b739899b9a1323be4bb9c6e19a4afe8",
+          "retrieved_at": "2026-06-17T23:05:42Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Garura Parent/Child Tournament source slice, including May 1998 timing, participation/winner roles, the two source-pinned tournament card identities, and the Touch Change! Fan Club Vol. 5 reprint caveat. This snapshot is not a full tournament archive, not a complete rules packet, not a complete Touch Change! distribution census, not an official copy-count authority, and not a raw HTML snapshot.",
+          "snapshot_hash": "2e3c46bb96ec49fa9590064cc2b5d9c610ffaac189b35bed6e66aec251b31126",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
+            "complete tournament source",
+            "complete rules packet",
+            "complete Pokemon Card Fan Club source",
+            "complete Touch Change distribution census",
             "official copy count",
-            "complete participating-store ledger",
-            "complete sealed CD or booklet variant catalog",
-            "complete Food counter token verification",
+            "complete prize-threshold documentation",
+            "complete participant/winner ledger",
+            "proof that the two cards were distributed as one physical packet",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
-          "supporting_page_urls": [],
+          "source": "Bulbapedia + Pokumon",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Touch_Change%21_%28Garura_Parent/Child_promo%29",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_%28Garura_Parent/Child_promo%29",
+            "https://pokumon.com/card/kangaskhan-garura-parent-child-tournament-1998-unnumbered/",
+            "https://pokumon.com/card/touch-change-garura-parent-child-tournament-pokemon-card-fan-club-magazine-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "aa1667abe9a0a895c5680ae2d83bab60f013c74afd5879c132772da50f376c52",
+          "card_data_hash": "0faef479f021c94fe100ec7fece9775312460f5c429319ad827a3f1ca677078e",
           "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -697,7 +717,7 @@
           ],
           "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -715,11 +735,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_n64_double_get_199712"
+        "source_release_family_id": "jp_promo_garura_parent_child_199805"
       },
       "tags": [
-        "jp_promo_n64_double_get_199712",
-        "Nintendo 64 W Double Get Campaign source slice",
+        "jp_promo_garura_parent_child_199805",
+        "Garura Parent/Child Tournament source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -751,17 +771,17 @@
   "release": {
     "catalog_treatment": "Promo target source-slice",
     "count_confidence": "promo_family_child_source_slice_closed",
-    "date_precision": "source_range_crosses_year",
+    "date_precision": "source_month",
     "expected_row_count": 2,
     "expected_source_card_count": 2,
-    "name_en": "Nintendo 64 W Double Get Campaign source slice",
-    "name_ja": "NINTENDO64 Wゲットキャンペーン プロモ",
-    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the Nintendo 64 W Double Get Campaign. Use it to preserve the Cool Porygon/Hungry Snorlax campaign lane while keeping CD/booklet, token, store, and copy-count claims outside row authority.",
+    "name_en": "Garura Parent/Child Tournament source slice",
+    "name_ja": "ガルーラ親子大会 プロモ",
+    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the Garura Parent/Child Tournament. Use it to preserve the Touch Change! participation lane and Kangaskhan winner lane while keeping copy-count, rules-packet, prize-threshold, and reprint-census claims outside row authority.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Pokumon documents the Nintendo 64 W Double Get campaign as running from December 10, 1997 to January 31, 1998 with two promo cards, Hungry Snorlax and Cool Porygon. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim copy counts, participating store coverage, sealed CD/booklet variants, Food counter token completeness, or a complete campaign-object ledger, and it is not a complete family checklist beyond the source-pinned card pair.",
-    "release_date": "1997-12-10/1998-01-31",
-    "release_family_id": "jp_promo_n64_double_get_199712",
+    "product_count_basis": "Bulbapedia documents the Garura Parent/Child Tournament as a May 1998 event where Touch Change! was given to participants for Garura Rules play and Kangaskhan was awarded to parent/child teams that reached a certain number of wins. Pokumon documents the two card identities and notes that Touch Change! was also reprinted in Pokemon Card Fan Club Vol. 5 in June 1998. This child slice models the two currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, a complete rules packet, participant/winner ledger, or complete Touch Change! distribution census. It is not a complete family checklist beyond the two source-pinned card identities, and it is not a complete tournament-object ledger.",
+    "release_date": "1998-05",
+    "release_family_id": "jp_promo_garura_parent_child_199805",
     "release_type": "promo_family_child_rollup_rows",
     "source_gap_count": 0,
     "strict_release_member": false,
@@ -775,38 +795,37 @@
       "cards_found": 2,
       "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
       "expected_cards": [
-        "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-        "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+        "Touch Change! (Garura Parent/Child Tournament 1998)",
+        "Kangaskhan (Garura Parent/Child Tournament 1998)"
       ],
-      "expected_complete_source_boundary": "",
+      "expected_complete_source_boundary": "complete tournament source",
       "expected_source_card_count": 2,
       "family_context_source": {
-        "expected_complete_source_boundary": "",
+        "expected_complete_source_boundary": "complete tournament source",
         "extracted_claims": {
-          "distribution_context": "Nintendo 64 W Double Get purchase campaign",
-          "physical_object_context": [
-            "Singing Pokemon Encyclopedia music CD",
-            "sealed CD + booklet",
-            "2 Food counters stored behind Hungry Snorlax"
-          ],
+          "distribution_context": "Garura Parent/Child Tournament",
           "promo_card_count": 2,
           "promo_cards": [
-            "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
-            "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
+            "Touch Change! (Garura Parent/Child Tournament 1998)",
+            "Kangaskhan (Garura Parent/Child Tournament 1998)"
           ],
-          "release_window": "1997-12-10/1998-01-31",
-          "version_distinction": [
-            "Hungry Snorlax and Cool Porygon were later reprinted in Pokemon Song Best Collection CD",
-            "Pokumon states those reprints were identical to the Nintendo 64 campaign versions"
+          "release_window": "1998-05",
+          "reprint_caveat": "Touch Change! was reprinted in Pokemon Card Fan Club Vol. 5 in June 1998",
+          "role_structure": [
+            "Touch Change!: tournament participation / Garura Rules use",
+            "Kangaskhan: winner or reached-win-threshold prize"
           ]
         },
         "not_claiming": [
           "raw HTML snapshot",
-          "complete campaign source",
+          "complete tournament source",
+          "complete rules packet",
+          "complete Pokemon Card Fan Club source",
+          "complete Touch Change distribution census",
           "official copy count",
-          "complete participating-store ledger",
-          "complete sealed CD or booklet variant catalog",
-          "complete Food counter token verification",
+          "complete prize-threshold documentation",
+          "complete participant/winner ledger",
+          "proof that the two cards were distributed as one physical packet",
           "seller possession",
           "authenticity",
           "condition",
@@ -814,34 +833,42 @@
           "complete marketplace pricing"
         ],
         "oldid_url": "",
-        "retrieved_at": "2026-06-17T20:48:02Z",
-        "selected_text": "Nintendo 64 W Double Get Campaign\nBetween December 10, 1997 and January 31, 1998, customers at participating stores who purchased a Nintendo 64 were given 2 new promo cards: Hungry Snorlax and Cool Porygon. They were also given a copy of “Singing Pokémon Encyclopedia” (うたうポケモン図鑑), a Music CD that featured 4 music tracks.\nHungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)\nCool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)\nBoth Hungry Snorlax and Cool Porygon would later be reprinted in the Pokemon Song Best Collection CD. These reprints were identical to the ones distributed with the Nintendo 64 campaign.\nThe cards were contained in a booklet that came sealed with the Music CD. Additionally, the booklet included 2 “Food” counters that were to be used with Hungry Snorlax’s attacks. These tokens were stored in a pocket behind the Hungry Snorlax card.\nThe Music CD had previously been given away at Nintendo’s Space World 1997, a video game trade show hosted by Nintendo from 1989 to 2001. It featured Cool Porygon’s and Hungry Snorlax’s design on its front and back.\nSealed CD + booklet\nCool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)\nHungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)\nDecember 10, 1997 - January 31, 1998\nNintendo 64 W Double Get Campaign launches\nNintendo 64 W Double Get Campaign\nBetween December 10, 1997 and January 31, 1998, customers at participating stores who purchased a Nintendo 64 were given 2 new promo cards: Hungry Snorlax and Cool Porygon. They were",
-        "snapshot_content_scope": "Selected rendered lines for the 1997-1998 Nintendo 64 W Double Get Campaign, its purchase-campaign context, two-card Hungry Snorlax/Cool Porygon claim, later Song Best Collection reuse distinction, and CD/booklet/Food-counter physical-object context. This snapshot is not a full campaign archive, not a participating-store ledger, not a sealed CD/booklet variant catalog, and not a copy-count authority beyond the selected lines.",
-        "snapshot_hash": "e5bbb27b57f2feb8b3c8613b8f8aa5c90b739899b9a1323be4bb9c6e19a4afe8",
+        "retrieved_at": "2026-06-17T23:05:42Z",
+        "selected_text": "Touch Change!\nタッチ交代！ Touch Change!\nIllus. Nobuyuki Habu\nTouch Change! (Japanese: タッチ交代！ Touch Change!) is a Trainer card. It is one of the Unnumbered Promotional cards.\nThis card was given to participants of the Garura Parent/Child Tournament in May 1998, as it was necessary for the Garura Rules version of the TCG utilized in the tournament. While not included as part of a 60-card deck, the card was still part of it, and had no effect when not playing by Garura Rules.\nThe Garura Parent/Child Tournament involved teams of parents and their children battling similar teams. Teams that won a certain number of battles over the course of the event were awarded with the now sought after Kangaskhan promotional card.\nKangaskhan LV.38\nガルーラ Garura\nKangaskhan (Japanese: ガルーラ Garura) is a Colorless-type Basic Pokémon card. It is one of the Unnumbered Promotional cards.\nIn Japan, this card was released through the Parent/Child Mega Battle tournament held in May 1998. The prize was awarded to those parent and children teams who had reached a certain number of wins. This card is one of few promotional cards to feature the original Pocket Monsters Card Game logo.\nKangaskhan (Garura Parent/Child Tournament 1998) (Unnumbered)\nGarura Parent/Child Tournament winner’s prize\nTournament Winner\nGarura Parent/Child Tournament\nTouch Change! (Garura Parent/Child Tournament, Pokemon Card Fan Club Magazine 1998) (Unnumbered)\nGarura Parent/Child Tournament participation prize, reprinted in Pokémon Card Fan Club Vol. 5 (June 1998)\nMagazine Promo, Tournament Participation\nGarura Parent/Child Tournament, Pokémon Card Fan Club Magazine\nTouch Change!\nGarura Parent/Child Tournament participation prize\nKangaskhan\nGarura Parent/Child Tournament winner's prize\nTouch Change!\nPokémon Card Fan Club Vol. 5 insert (June 10, 1998)",
+        "snapshot_content_scope": "Selected rendered lines for the 1998 Garura Parent/Child Tournament source slice, including May 1998 timing, participation/winner roles, the two source-pinned tournament card identities, and the Touch Change! Fan Club Vol. 5 reprint caveat. This snapshot is not a full tournament archive, not a complete rules packet, not a complete Touch Change! distribution census, not an official copy-count authority, and not a raw HTML snapshot.",
+        "snapshot_hash": "2e3c46bb96ec49fa9590064cc2b5d9c610ffaac189b35bed6e66aec251b31126",
         "snapshot_not_claiming": [
           "raw HTML snapshot",
-          "complete campaign source",
+          "complete tournament source",
+          "complete rules packet",
+          "complete Pokemon Card Fan Club source",
+          "complete Touch Change distribution census",
           "official copy count",
-          "complete participating-store ledger",
-          "complete sealed CD or booklet variant catalog",
-          "complete Food counter token verification",
+          "complete prize-threshold documentation",
+          "complete participant/winner ledger",
+          "proof that the two cards were distributed as one physical packet",
           "seller possession",
           "authenticity",
           "condition",
           "image rights",
           "complete marketplace pricing"
         ],
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
-        "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+        "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-        "source": "Pokumon",
-        "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
-        "supporting_page_urls": []
+        "source": "Bulbapedia + Pokumon",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Touch_Change%21_%28Garura_Parent/Child_promo%29",
+        "supporting_page_urls": [
+          "https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_%28Garura_Parent/Child_promo%29",
+          "https://pokumon.com/card/kangaskhan-garura-parent-child-tournament-1998-unnumbered/",
+          "https://pokumon.com/card/touch-change-garura-parent-child-tournament-pokemon-card-fan-club-magazine-1998-unnumbered/",
+          "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+        ]
       },
       "modeled_source_rows": 2,
       "modeled_source_sorts": [
-        28,
-        29
+        42,
+        43
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -853,12 +880,12 @@
         "price truth"
       ],
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-      "promo_family_id": "jp_promo_n64_double_get_199712",
+      "promo_family_id": "jp_promo_garura_parent_child_199805",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "0f634af6e8384cad9153bdfc23b5cb067707fd3705becf8045cfa44af6580173",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
-      "source_gap_reason": "Pokumon documents the Nintendo 64 W Double Get campaign and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Cool Porygon and Hungry Snorlax rows to this exact family. This source slice models those card identities only; it does not model sealed CD/booklet variants, Food counter tokens, store participation, purchase volume, or copy-count claims.",
+      "source_gap_reason": "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, while Pokumon documents the two card identities and the Touch Change! Fan Club Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both tournament rows to this family. This source slice models those tournament card identities only; it does not model the full tournament rules packet, complete participant/winner ledger, official copy count, or complete Touch Change! distribution census.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
@@ -878,6 +905,6 @@
     "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
-    "source_release_family_id": "jp_promo_n64_double_get_199712"
+    "source_release_family_id": "jp_promo_garura_parent_child_199805"
   }
 }

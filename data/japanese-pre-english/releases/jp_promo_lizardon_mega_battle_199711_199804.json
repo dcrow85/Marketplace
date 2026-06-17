@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
         "promo_family_source_sort": 21,
@@ -144,6 +144,7 @@
         "catalog_treatment": "Promo target source-slice",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range_with_final_event",
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "japanese_set_name": "リザードンメガバトル プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -180,6 +181,7 @@
           "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
           "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
         ],
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
           21,
@@ -196,7 +198,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
         "source_local_id": "021",
@@ -209,7 +211,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_local_id": "021",
         "source_provider_row": {
@@ -249,7 +251,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "021",
           "not_claiming": [
@@ -274,6 +276,7 @@
             "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
             "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
           ],
+          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
@@ -310,7 +313,7 @@
         },
         {
           "card_data_hash": "7afe2c6fc34b807fc2d101c1e347cf05691f31c265f29378e3b0b87fed9ac89e",
-          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
+          "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -321,7 +324,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
           "series_code": "UPC",
@@ -426,7 +429,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
         "promo_family_source_sort": 22,
@@ -506,6 +509,7 @@
         "catalog_treatment": "Promo target source-slice",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range_with_final_event",
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "japanese_set_name": "リザードンメガバトル プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -542,6 +546,7 @@
           "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
           "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
         ],
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
           21,
@@ -558,7 +563,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
         "source_local_id": "022",
@@ -571,7 +576,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_local_id": "022",
         "source_provider_row": {
@@ -611,7 +616,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "022",
           "not_claiming": [
@@ -636,6 +641,7 @@
             "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
             "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
           ],
+          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
@@ -672,7 +678,7 @@
         },
         {
           "card_data_hash": "b7cf45dbd6b86d4388c4a114cfecdc56a08a907ab595d7d27507485be45147f6",
-          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
+          "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -683,7 +689,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
           "series_code": "UPC",
@@ -788,7 +794,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
         "promo_family_source_sort": 23,
@@ -868,6 +874,7 @@
         "catalog_treatment": "Promo target source-slice",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range_with_final_event",
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "japanese_set_name": "リザードンメガバトル プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -904,6 +911,7 @@
           "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
           "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
         ],
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
           21,
@@ -920,7 +928,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
         "source_local_id": "023",
@@ -933,7 +941,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_local_id": "023",
         "source_provider_row": {
@@ -973,7 +981,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "023",
           "not_claiming": [
@@ -998,6 +1006,7 @@
             "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
             "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
           ],
+          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
@@ -1034,7 +1043,7 @@
         },
         {
           "card_data_hash": "b70a16fe3ea736cc5f1d714a223d93280eba970b1aff0951d08dbb795eabd962",
-          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
+          "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -1045,7 +1054,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
           "series_code": "UPC",
@@ -1123,14 +1132,16 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 3,
-      "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+      "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
       "expected_cards": [
         "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
         "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
         "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
       ],
+      "expected_complete_source_boundary": "",
       "expected_source_card_count": 3,
       "family_context_source": {
+        "expected_complete_source_boundary": "",
         "extracted_claims": {
           "event_date": "1998-04-26",
           "regional_qualifier_window": "1997-11-08/1998-02-15",
@@ -1193,7 +1204,7 @@
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
-      "release_map_sha256": "e7aeb1742f64b260722e4aa760755c57dbb9818e15d8b3b862b573205332d1a9",
+      "release_map_sha256": "0f634af6e8384cad9153bdfc23b5cb067707fd3705becf8045cfa44af6580173",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
       "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",

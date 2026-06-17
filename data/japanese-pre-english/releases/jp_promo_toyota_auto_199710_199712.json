@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:018",
         "promo_family_source_sort": 18,
@@ -146,6 +146,7 @@
         "catalog_treatment": "Promo target source-slice",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "japanese_set_name": "トヨタオートキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -181,6 +182,7 @@
           "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
           "Pikachu (Toyota campaign 1997)"
         ],
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
           18,
@@ -196,7 +198,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_toyota_auto_199710_199712",
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon documents the Toyota Auto Campaign pamphlet and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Arcanine and Pikachu rows to this exact family. This source slice models those card identities only; it does not model dealership participation, pamphlet-object variants, redemption volume, or copy-count claims.",
         "source_local_id": "018",
@@ -209,7 +211,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_local_id": "018",
         "source_provider_row": {
@@ -249,7 +251,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "018",
           "not_claiming": [
@@ -273,6 +275,7 @@
             "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
             "Pikachu (Toyota campaign 1997)"
           ],
+          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -311,7 +314,7 @@
         },
         {
           "card_data_hash": "920468fca244117a8b7dac6718929a946e81cdc1ee4998a396ea4c38a85b173a",
-          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
+          "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -322,7 +325,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:018",
           "series_code": "UPC",
@@ -427,7 +430,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:019",
         "promo_family_source_sort": 19,
@@ -509,6 +512,7 @@
         "catalog_treatment": "Promo target source-slice",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "japanese_set_name": "トヨタオートキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -544,6 +548,7 @@
           "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
           "Pikachu (Toyota campaign 1997)"
         ],
+        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
           18,
@@ -559,7 +564,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_toyota_auto_199710_199712",
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon documents the Toyota Auto Campaign pamphlet and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Arcanine and Pikachu rows to this exact family. This source slice models those card identities only; it does not model dealership participation, pamphlet-object variants, redemption volume, or copy-count claims.",
         "source_local_id": "019",
@@ -572,7 +577,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+        "source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
         "source_gap_count": 0,
         "source_local_id": "019",
         "source_provider_row": {
@@ -612,7 +617,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "019",
           "not_claiming": [
@@ -636,6 +641,7 @@
             "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
             "Pikachu (Toyota campaign 1997)"
           ],
+          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -674,7 +680,7 @@
         },
         {
           "card_data_hash": "fa1aaa09359098a5e22d6076d64b217eb1f3c4a1a24ab8187bdd415f66105939",
-          "encrypted_page_sha256": "f4e2f4fd7d0849344d216c038b96e5962c4bb47d367bc83e4da13bd5c29d9de6",
+          "encrypted_page_sha256": "145c4e41216917b99ab8cb14ca272c31068da91738c2a4c94cf72b5213f43815",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -685,7 +691,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+          "promo_family_source_catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:019",
           "series_code": "UPC",
@@ -763,13 +769,15 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 2,
-      "catalog_hash": "47d662f2498a7200d6db9eb3f4be5c5ca6492d7389442608abc393591b6f79ce",
+      "catalog_hash": "a509bf0ec7a668fc9bf3ab0fd4edae54e0d038cf07af55b64cb2c146e34c5b1f",
       "expected_cards": [
         "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
         "Pikachu (Toyota campaign 1997)"
       ],
+      "expected_complete_source_boundary": "",
       "expected_source_card_count": 2,
       "family_context_source": {
+        "expected_complete_source_boundary": "",
         "extracted_claims": {
           "distribution_context": "Toyota Auto dealership pamphlet",
           "promo_card_count": 2,
@@ -836,7 +844,7 @@
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "promo_family_id": "jp_promo_toyota_auto_199710_199712",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
-      "release_map_sha256": "e7aeb1742f64b260722e4aa760755c57dbb9818e15d8b3b862b573205332d1a9",
+      "release_map_sha256": "0f634af6e8384cad9153bdfc23b5cb067707fd3705becf8045cfa44af6580173",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
       "source_gap_reason": "Pokumon documents the Toyota Auto Campaign pamphlet and its two promo card identities, and the current PokéCardex UPC aggregate source-pins Arcanine and Pikachu rows to this exact family. This source slice models those card identities only; it does not model dealership participation, pamphlet-object variants, redemption volume, or copy-count claims.",

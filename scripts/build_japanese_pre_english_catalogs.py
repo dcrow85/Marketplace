@@ -105,6 +105,11 @@ TRADE_PLEASE_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_pokumon_trade_please_1998_selected_lines.json"
 )
+GARURA_PARENT_CHILD_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -415,6 +420,7 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_trade_please_199802": {
         "source_snapshot": "trade_please_1998",
         "expected_source_card_count": 4,
+        "expected_complete_source_boundary": "complete campaign source",
         "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
@@ -445,6 +451,50 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "source-pins all four rows to this family. This source slice models those "
             "card identities only; it does not model every flyer, envelope, participant "
             "mailing, fulfillment object, or copy-count claim."
+        ),
+    },
+    "jp_promo_garura_parent_child_199805": {
+        "source_snapshot": "garura_parent_child_1998",
+        "expected_source_card_count": 2,
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_cards": [
+            "Touch Change! (Garura Parent/Child Tournament 1998)",
+            "Kangaskhan (Garura Parent/Child Tournament 1998)",
+        ],
+        "modeled_source_sorts": [42, 43],
+        "unmodeled_expected_cards": [],
+        "source_labeled_japanese_names": {
+            42: {
+                "name_ja": "タッチ交代！",
+                "romaji": "Touch Change!",
+                "source_note": "Bulbapedia Garura Parent/Child Touch Change! page selected lines 145-151.",
+            },
+            43: {
+                "name_ja": "ガルーラ",
+                "romaji": "Garura",
+                "source_note": "Bulbapedia Garura Parent/Child Kangaskhan page selected lines 144-167.",
+            },
+        },
+        "expected_snapshot_texts": [
+            "This card was given to participants of the Garura Parent/Child Tournament in May 1998",
+            "Teams that won a certain number of battles",
+            "Kangaskhan promotional card",
+            "this card was released through the Parent/Child Mega Battle tournament held in May 1998",
+            "Kangaskhan (Garura Parent/Child Tournament 1998) (Unnumbered)",
+            "Garura Parent/Child Tournament winner’s prize",
+            "Touch Change! (Garura Parent/Child Tournament, Pokemon Card Fan Club Magazine 1998) (Unnumbered)",
+            "Garura Parent/Child Tournament participation prize, reprinted in Pokémon Card Fan Club Vol. 5 (June 1998)",
+            "Pokémon Card Fan Club Vol. 5 insert (June 10, 1998)",
+        ],
+        "source_gap_reason": (
+            "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for "
+            "Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, "
+            "while Pokumon documents the two card identities and the Touch Change! Fan Club "
+            "Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both "
+            "tournament rows to this family. This source slice models those tournament card "
+            "identities only; it does not model the full tournament rules packet, complete "
+            "participant/winner ledger, official copy count, or complete Touch Change! "
+            "distribution census."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1135,6 +1185,40 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_garura_parent_child_199805",
+        name_en="Garura Parent/Child Tournament source slice",
+        name_ja="ガルーラ親子大会 プロモ",
+        release_date="1998-05",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_month",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia documents the Garura Parent/Child Tournament as a May 1998 "
+            "event where Touch Change! was given to participants for Garura Rules play "
+            "and Kangaskhan was awarded to parent/child teams that reached a certain "
+            "number of wins. Pokumon documents the two card identities and notes that "
+            "Touch Change! was also reprinted in Pokemon Card Fan Club Vol. 5 in June "
+            "1998. This child slice models the two currently source-pinned PokéCardex "
+            "UPC tournament rows; it does not claim official copy counts, a complete "
+            "rules packet, participant/winner ledger, or complete Touch Change! "
+            "distribution census. It is not a complete family checklist beyond the two "
+            "source-pinned card identities, and it is not a complete tournament-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the "
+            "Garura Parent/Child Tournament. Use it to preserve the Touch Change! "
+            "participation lane and Kangaskhan winner lane while keeping copy-count, "
+            "rules-packet, prize-threshold, and reprint-census claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1593,6 +1677,26 @@ def trade_please_source_snapshot() -> dict[str, Any]:
     }
 
 
+def garura_parent_child_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(GARURA_PARENT_CHILD_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Bulbapedia + Pokumon"),
+        "snapshot_path": str(GARURA_PARENT_CHILD_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1631,6 +1735,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return corocoro_jan1998_source_snapshot()
     if snapshot_id == "trade_please_1998":
         return trade_please_source_snapshot()
+    if snapshot_id == "garura_parent_child_1998":
+        return garura_parent_child_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3607,6 +3713,13 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         child_card["row_id"] = row_id
         child_card["release_family_id"] = config.release_family_id
         child_card["local_id"] = source_local_id
+        source_labeled_japanese_names = spec.get("source_labeled_japanese_names", {})
+        japanese_name_override = source_labeled_japanese_names.get(source_sort) or source_labeled_japanese_names.get(str(source_sort))
+        if japanese_name_override:
+            child_card["name_ja"] = japanese_name_override.get("name_ja", "")
+            child_card["romaji"] = japanese_name_override.get("romaji", "")
+            child_card["name_ja_status"] = "source_labeled"
+            child_card["name_source_note"] = japanese_name_override.get("source_note", "")
         child_card["promo_family_scope"] = {
             "authority": (
                 "Promo-family child source slice over the source-pinned UPC aggregate row plus "
@@ -3619,6 +3732,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "expected_cards": list(spec.get("expected_cards", [])),
             "modeled_source_sorts": list(spec.get("modeled_source_sorts", [])),
             "unmodeled_expected_cards": unmodeled_expected_cards,
+            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
             "source_gap_count": len(unmodeled_expected_cards),
             "source_gap_reason": spec.get("source_gap_reason", ""),
             "source_catalog_hash": source_hash,
@@ -3659,6 +3773,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "strict_release_member": False,
             "unique_catalog_row_count": config.expected_row_count,
             "expected_source_card_count": spec.get("expected_source_card_count", 0),
+            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
             "source_gap_count": len(unmodeled_expected_cards),
             "unmodeled_expected_cards": unmodeled_expected_cards,
         }
@@ -3766,6 +3881,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
                 "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
                 "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
+                "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
                 "retrieved_at": promo_snapshot["retrieved_at"],
                 "expected_cards": list(spec.get("expected_cards", [])),
                 "unmodeled_expected_cards": unmodeled_expected_cards,
@@ -3819,6 +3935,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "modeled_source_rows": len(cards),
         "expected_source_card_count": spec.get("expected_source_card_count", 0),
         "expected_cards": list(spec.get("expected_cards", [])),
+        "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
         "source_gap_count": len(unmodeled_expected_cards),
         "source_gap_reason": spec.get("source_gap_reason", ""),
         "unmodeled_expected_cards": unmodeled_expected_cards,
@@ -3836,6 +3953,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
             "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
             "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
+            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
             "retrieved_at": promo_snapshot["retrieved_at"],
             "extracted_claims": promo_claims,
             "selected_text": promo_snapshot["selected_text"],
@@ -4851,6 +4969,13 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_boundary_missing")
                     break
             if source_card:
+                source_sort = int(card.get("promo_family_scope", {}).get("source_provider_sort", 0))
+                source_labeled_japanese_names = family_spec.get("source_labeled_japanese_names", {})
+                japanese_name_override = (
+                    source_labeled_japanese_names.get(source_sort)
+                    or source_labeled_japanese_names.get(str(source_sort))
+                    or {}
+                )
                 copied_fields = [
                     "name_en",
                     "name_ja",
@@ -4866,7 +4991,17 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     "promo_context",
                 ]
                 for field in copied_fields:
-                    if card.get(field) != source_card.get(field):
+                    expected_value = source_card.get(field)
+                    if japanese_name_override:
+                        if field == "name_ja":
+                            expected_value = japanese_name_override.get("name_ja", "")
+                        elif field == "name_ja_status":
+                            expected_value = "source_labeled"
+                        elif field == "romaji":
+                            expected_value = japanese_name_override.get("romaji", "")
+                        elif field == "name_source_note":
+                            expected_value = japanese_name_override.get("source_note", "")
+                    if card.get(field) != expected_value:
                         failures.append(f"{card.get('row_id')}: promo_family_child_source_field_drift {field}")
                         break
                 source_image = source_card.get("image_provenance", {})
@@ -5496,7 +5631,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 "complete event source",
                 "complete magazine source",
                 "complete campaign source",
+                "complete tournament source",
             }
+            expected_complete_source_boundary = str(family_spec.get("expected_complete_source_boundary", ""))
             if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
                 failures.append("promo_family_child_context_snapshot_hash_mismatch")
             if family_context.get("snapshot_path") != promo_snapshot["snapshot_path"]:
@@ -5539,6 +5676,11 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     for contact in context_contacts
                 ):
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_complete_source_boundary_missing")
+                if expected_complete_source_boundary and any(
+                    expected_complete_source_boundary not in contact.get("not_claiming", [])
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_expected_complete_source_boundary_missing")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
@@ -5549,6 +5691,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append("promo_family_child_context_raw_snapshot_boundary_missing")
             if not complete_source_boundaries.intersection(set(family_context.get("not_claiming", []))):
                 failures.append("promo_family_child_context_complete_source_boundary_missing")
+            if expected_complete_source_boundary and expected_complete_source_boundary not in family_context.get("not_claiming", []):
+                failures.append("promo_family_child_context_expected_complete_source_boundary_missing")
         except FileNotFoundError:
             failures.append("promo_family_child_source_snapshot_missing")
     if release_type == "deck_kit_parent_rollup_rows":
@@ -5631,6 +5775,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "family_context_snapshot_hash": family_context_source.get("snapshot_hash", ""),
         "family_context_source_url": family_context_source.get("source_page_url", ""),
         "family_context_supporting_page_urls": family_context_source.get("supporting_page_urls", []),
+        "family_context_expected_complete_source_boundary": family_context_source.get("expected_complete_source_boundary", ""),
         "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
@@ -5707,6 +5852,7 @@ def main() -> int:
                 "family_context_snapshot_hash": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_hash", ""),
                 "family_context_source_url": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("source_page_url", ""),
                 "family_context_supporting_page_urls": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("supporting_page_urls", []),
+                "family_context_expected_complete_source_boundary": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("expected_complete_source_boundary", ""),
                 "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
