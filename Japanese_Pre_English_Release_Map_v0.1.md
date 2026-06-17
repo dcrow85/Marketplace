@@ -372,6 +372,7 @@ Primary source anchors used for this v0.1 map:
 - Pokumon, 1st Official Pokemon Card Game Tournament: https://pokumon.com/1st-official-pokemon-card-game-tournament/
 - Pokumon, JR East Stamp Rally 1997: https://pokumon.com/japan-rail-east-stamp-rally-1997/
 - Pokumon, Lizardon Mega Battle: https://pokumon.com/lizardon-charizard-mega-battle-tournaments/
+- Pokumon, Pokemon Card Fan Club Magazine: https://pokumon.com/pokemon-card-fan-club-magazine/
 - Elite Fourum, Lizardon Mega Battle discussion: https://www.elitefourum.com/t/1998-lizardon-mega-battle-comprehensive-history/33603
 - Elite Fourum ANA promo guide: https://www.elitefourum.com/t/promo-showcase-pokemon-card-ana-all-nippon-airways-promo-campaign/38305
 - Elite Fourum, No Rarity from packs and decks: https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617
