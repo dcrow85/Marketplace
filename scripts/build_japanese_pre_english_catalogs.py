@@ -95,6 +95,11 @@ WHF_SPECIAL_SHEET_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json"
 )
+COROCORO_JAN1998_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_corocoro_jan1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -369,6 +374,37 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "and Hungry Snorlax rows to this exact family. This source slice models those "
             "card identities only; it does not model sealed CD/booklet variants, Food counter "
             "tokens, store participation, purchase volume, or copy-count claims."
+        ),
+    },
+    "jp_promo_corocoro_19971215": {
+        "source_snapshot": "corocoro_jan1998",
+        "expected_source_card_count": 2,
+        "expected_cards": [
+            "Meowth (CoroCoro 1997)",
+            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
+        ],
+        "modeled_source_sorts": [30],
+        "unmodeled_expected_cards": [
+            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
+        ],
+        "expected_snapshot_texts": [
+            "December 15, 1997",
+            "'s January 1998 issue is published with 2 promo cards",
+            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "Meowth (CoroCoro 1997) (Unnumbered)",
+            "January 1998 issue insert (December 15, 1997)",
+            "Kamex Mega Battle regional tournaments",
+            "have an 'R' symbol with a red drop shadow and are printed on glossy card stock",
+            "whereas the 'R' on the Kamex Mega Battle participation print has a white drop shadow",
+        ],
+        "source_gap_reason": (
+            "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a "
+            "two-card promo insert with Meowth and a glossy Computer Error. The current "
+            "PokéCardex UPC aggregate source-pins Meowth to this exact family, while the "
+            "currently modeled Computer Error UPC row is the later Kamex Mega Battle "
+            "participation context. This child slice therefore models Meowth only and "
+            "records the glossy CoroCoro/Song Best Collection Computer Error as an "
+            "explicit source gap rather than reusing the Kamex row."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -996,6 +1032,35 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_corocoro_19971215",
+        name_en="CoroCoro Comic January 1998 promos source slice",
+        name_ja="月刊コロコロコミック1998年1月号プロモ",
+        release_date="1997-12-15",
+        expected_row_count=1,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_exact",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, "
+            "published December 15, 1997, with two promo cards: Meowth and a glossy "
+            "Computer Error. This child slice models the one currently source-pinned "
+            "PokéCardex UPC row, Meowth; it records glossy Computer Error as a source "
+            "gap because the currently modeled Computer Error UPC row belongs to the "
+            "later Kamex Mega Battle participation context. It is not a complete family checklist."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate row currently pinned to CoroCoro "
+            "Comic January 1998. Use it to preserve the Meowth issue-insert lane while "
+            "keeping the unmodeled glossy Computer Error row visible as a source gap."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1111,15 +1176,29 @@ def write_json(path: Path, value: Any) -> None:
 
 
 def fetch_text(url: str) -> str:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read().decode("utf-8", "ignore")
+    result = subprocess.run(
+        [
+            "curl",
+            "--fail",
+            "--silent",
+            "--show-error",
+            "--location",
+            "--connect-timeout",
+            "8",
+            "--max-time",
+            "30",
+            "--user-agent",
+            USER_AGENT,
+            url,
+        ],
+        check=True,
+        capture_output=True,
+    )
+    return result.stdout.decode("utf-8", "ignore")
 
 
 def fetch_json(url: str) -> Any:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.loads(response.read().decode("utf-8"))
+    return json.loads(fetch_text(url))
 
 
 def decrypt_pokecardex_payload(raw_html: str) -> dict[str, Any]:
@@ -1400,6 +1479,26 @@ def whf_special_sheet_source_snapshot() -> dict[str, Any]:
     }
 
 
+def corocoro_jan1998_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(COROCORO_JAN1998_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(COROCORO_JAN1998_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1434,6 +1533,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return toyota_auto_campaign_source_snapshot()
     if snapshot_id == "whf_special_sheet_1997":
         return whf_special_sheet_source_snapshot()
+    if snapshot_id == "corocoro_jan1998":
+        return corocoro_jan1998_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -4630,7 +4731,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_rollup_contact")
             if not any(
                 contact.get("source") == family_context_source.get("source")
-                and contact.get("snapshot_hash")
+                and contact.get("snapshot_hash") == family_context_source.get("snapshot_hash")
+                and contact.get("snapshot_path") == family_context_source.get("snapshot_path")
                 and contact.get("unmodeled_expected_cards") == family_spec.get("unmodeled_expected_cards")
                 for contact in card.get("source_contacts", [])
             ):
@@ -5315,6 +5417,16 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     for contact in context_contacts
                 ):
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_supporting_urls_mismatch")
+                if any(
+                    contact.get("snapshot_hash") != promo_snapshot["snapshot_hash"]
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_snapshot_hash_mismatch")
+                if any(
+                    contact.get("source_page_url") != promo_snapshot["source_page_url"]
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_source_url_mismatch")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
