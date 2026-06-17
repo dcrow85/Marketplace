@@ -31,6 +31,9 @@ OUT_DIR = ROOT / "data" / "japanese-pre-english"
 RELEASE_DIR = OUT_DIR / "releases"
 MANIFEST_PATH = OUT_DIR / "manifest.json"
 AUDIT_PATH = OUT_DIR / "audit.json"
+NO_RARITY_CATALOG_PATH = ROOT / "data" / "no-rarity-base-set.json"
+NO_RARITY_POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
+NO_RARITY_MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -129,6 +132,32 @@ class ReleaseConfig:
 
 
 RELEASES: tuple[ReleaseConfig, ...] = (
+    ReleaseConfig(
+        release_family_id="jp_tcg_expansion_pack_19961020",
+        name_en="Expansion Pack / No Rarity Lab",
+        name_ja="第1弾 拡張パック",
+        release_date="1996-10-20",
+        expected_row_count=102,
+        release_type="launch_family_no_rarity_lab_rows",
+        prints_without_rarity_symbol="mixed",
+        symbol_status_confidence="high",
+        pokellector_path="",
+        tcgdex_set_id="PMCG1",
+        source_adapter="no_rarity_lab_catalog",
+        product_card_count=96,
+        product_count_basis=(
+            "Strict Japanese First Expansion Pack booster checklist is 96 cards. "
+            "This bridge preserves the existing 102-row No Rarity lab by carrying "
+            "six Starter Pack basic Energy caveats as broader launch-family rows."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Catalog target",
+        note=(
+            "Bridge from the local No Rarity lab catalog into the Japanese pre-English "
+            "release catalog format. PMCG1 ids remain protocol anchors; Japanese booster "
+            "order and Basic Energy caveats remain row-level scope fields."
+        ),
+    ),
     ReleaseConfig(
         release_family_id="jp_tcg_jungle_19970305",
         name_en="Pokemon Jungle",
@@ -535,7 +564,13 @@ def quick_starter_rollup_source_id() -> str:
     return "local-rollup:" + "+".join(child_paths)
 
 
+def no_rarity_lab_source_id() -> str:
+    return f"local-catalog:{NO_RARITY_CATALOG_PATH.relative_to(ROOT)}"
+
+
 def source_url_for_config(config: ReleaseConfig) -> str:
+    if config.source_adapter == "no_rarity_lab_catalog":
+        return no_rarity_lab_source_id()
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
     if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
@@ -1243,6 +1278,8 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
 
 
 def build_release(config: ReleaseConfig) -> dict[str, Any]:
+    if config.source_adapter == "no_rarity_lab_catalog":
+        return build_no_rarity_lab_release(config)
     if config.source_adapter == "quick_starter_parent_rollup":
         return build_quick_starter_parent_rollup(config)
     if config.source_adapter == "pokellector":
@@ -1302,6 +1339,237 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
         ],
     }
     return release
+
+
+def build_no_rarity_lab_release(config: ReleaseConfig) -> dict[str, Any]:
+    lab = json.loads(NO_RARITY_CATALOG_PATH.read_text(encoding="utf-8"))
+    policy = json.loads(NO_RARITY_POLICY_PATH.read_text(encoding="utf-8"))
+    manifest = json.loads(NO_RARITY_MANIFEST_PATH.read_text(encoding="utf-8"))
+    catalog_hash = sha256_hex(lab)
+    policy_hash = sha256_hex(policy)
+    manifest_hash = sha256_hex(manifest)
+    cards: list[dict[str, Any]] = []
+    for lab_card in lab.get("cards", []):
+        local_id = lab_card.get("local_id", "")
+        row_id = f"{config.release_family_id}:{local_id}"
+        target = bool(lab_card.get("no_rarity_target"))
+        strict_booster_member = bool(lab_card.get("product_scope", {}).get("strict_booster_member"))
+        ref = lab_card.get("no_rarity_reference", {})
+        image_large = ref.get("image_large", "")
+        image_status = "exact_source_image" if image_large else "missing_reference_image"
+        image_provenance = {
+            "allowed_use": ["manual_review", "catalog_reference_link"] if image_large else [],
+            "display_allowed": False,
+            "exactness_basis": (
+                [
+                    "same local No Rarity lab row",
+                    "source-labeled No Rarity reference image",
+                    "same PMCG1 catalog anchor",
+                ]
+                if image_large
+                else [
+                    "local No Rarity lab intentionally withholds substitute images",
+                    "Basic Energy caveat rows need separate treatment",
+                ]
+            ),
+            "image_large": image_large,
+            "image_role": ref.get("image_role", "No source-labeled No Rarity reference image found yet."),
+            "image_small": ref.get("image_small", ""),
+            "not_allowed_by_default": ["training", "seller evidence", "authentication proof"],
+            "not_claiming": list(dict.fromkeys([
+                *ref.get("not_claiming", []),
+                "seller possession",
+                "seller card match",
+                "condition",
+                "authenticity",
+            ])),
+            "provider_id": ref.get("provider_id", ""),
+            "provider_title": ref.get("provider_title", ""),
+            "provider_display_title": f"{lab_card.get('name_en', '')} No Rarity reference" if image_large else "",
+            "release_family_id": config.release_family_id,
+            "rights_status": "external_reference_witness" if image_large else "no_reference_image",
+            "row_id": row_id,
+            "source": ref.get("source", "No Rarity local catalog"),
+            "source_page_url": ref.get("source_page_url", ""),
+            "status": image_status,
+            "verification_status": ref.get("verification_status", "missing"),
+        }
+        japanese_name = (
+            lab_card.get("product_scope", {}).get("japanese_name_from_research")
+            or lab_card.get("name_source_raw", "")
+        )
+        romaji = lab_card.get("product_scope", {}).get("romaji_from_research") or ""
+        source_contacts = [
+            {
+                "catalog_hash": catalog_hash,
+                "catalog_manifest_hash": manifest_hash,
+                "catalog_path": str(NO_RARITY_CATALOG_PATH.relative_to(ROOT)),
+                "local_row_id": lab_card.get("tcgdex_id", ""),
+                "not_claiming": ["seller possession", "authenticity", "condition", "price truth"],
+                "policy_hash": policy_hash,
+                "source": "No Rarity local catalog",
+                "source_page_url": no_rarity_lab_source_id(),
+            }
+        ]
+        if ref.get("source_page_url") or image_large:
+            source_contacts.append(
+                {
+                    "image_large": image_large,
+                    "not_claiming": ref.get("not_claiming", ["seller possession", "seller card match", "condition", "authenticity"]),
+                    "provider_id": ref.get("provider_id", ""),
+                    "provider_title": ref.get("provider_title", ""),
+                    "source": ref.get("source", ""),
+                    "source_page_url": ref.get("source_page_url", ""),
+                    "verification_status": ref.get("verification_status", ""),
+                }
+            )
+        tcgdex = dict(lab_card.get("tcgdex", {}))
+        tcgdex["id"] = lab_card.get("tcgdex_id", "")
+        if tcgdex.get("url"):
+            source_contacts.append(
+                {
+                    "card_api_url": tcgdex.get("url", ""),
+                    "not_claiming": ["image availability", "seller possession", "authenticity"],
+                    "source": "TCGdex",
+                }
+            )
+        tags = [
+            config.release_family_id,
+            "Expansion Pack",
+            lab_card.get("tcgdex_id", ""),
+            "No Rarity target" if target else "Basic Energy caveat",
+            lab_card.get("category", ""),
+            lab_card.get("rarity_source", ""),
+        ]
+        booster_order = lab_card.get("product_scope", {}).get("japanese_booster_order")
+        if booster_order:
+            tags.append(f"Japanese booster order {booster_order:03d}")
+        return_card = {
+            "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+            "row_id": row_id,
+            "release_family_id": config.release_family_id,
+            "local_id": local_id,
+            "name_en": lab_card.get("name_en", ""),
+            "name_ja": japanese_name,
+            "name_ja_status": "source_labeled" if japanese_name else "missing_from_exact_source",
+            "romaji": romaji,
+            "name_source_note": (
+                "Japanese name/romaji imported from the local No Rarity lab research packet; "
+                "treat as curated catalog data, not seller-card proof."
+            ),
+            "category": lab_card.get("category", ""),
+            "rarity_source": lab_card.get("rarity_source", ""),
+            "holo_source": bool(lab_card.get("holo_source")),
+            "pokemon_profile": lab_card.get("pokemon_profile", {}),
+            "illustrator": lab_card.get("illustrator", {}),
+            "tcgdex": tcgdex,
+            "product_scope": {
+                "authority": "Local No Rarity lab plus Japanese pre-English release map.",
+                "catalog_treatment": config.catalog_treatment,
+                "counting_note": lab_card.get("product_scope", {}).get("counting_note", ""),
+                "date_precision": config.date_precision,
+                "japanese_booster_order": booster_order,
+                "japanese_booster_section": lab_card.get("product_scope", {}).get("japanese_booster_section", ""),
+                "japanese_set_name": config.name_ja,
+                "membership_note": (
+                    "Strict 96-card booster member."
+                    if strict_booster_member
+                    else "Broader launch-family Basic Energy caveat; not part of the strict booster checklist."
+                ),
+                "parent_release_family_id": config.parent_release_family_id,
+                "product_card_count": config.product_card_count,
+                "product_count_basis": config.product_count_basis,
+                "release_date": config.release_date,
+                "release_type": config.release_type,
+                "strict_booster_member": strict_booster_member,
+                "strict_release_member": strict_booster_member,
+                "unique_catalog_row_count": config.expected_row_count,
+            },
+            "symbol_status": {
+                "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+                "confidence": config.symbol_status_confidence,
+                "scope": "release_context_not_row_fact",
+                "source_mode": "direct_release_family",
+                "source_release_family_id": config.release_family_id,
+                "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
+            },
+            "no_rarity_scope": {
+                "active_target": target,
+                "basic_energy_caveat": not target,
+                "evidence_focus": lab_card.get("evidence_focus", ""),
+                "no_rarity_profile": lab_card.get("no_rarity_profile", ""),
+                "not_claiming": ["No Rarity truth without seller evidence", "seller possession", "authenticity", "condition"],
+                "variant_traps": lab_card.get("variant_traps", []),
+            },
+            "image_provenance": image_provenance,
+            "collector_texture": lab_card.get("collector_texture", {}),
+            "information_audit": lab_card.get("information_audit", {}),
+            "source_contacts": source_contacts,
+            "provider_row": {
+                "adapter": "no_rarity_lab_catalog",
+                "local_catalog_row": lab_card.get("tcgdex_id", ""),
+                "no_rarity_profile": lab_card.get("no_rarity_profile", ""),
+                "reference_provider_id": ref.get("provider_id", ""),
+                "reference_source": ref.get("source", ""),
+            },
+            "variant_traps": lab_card.get("variant_traps", []),
+            "not_claiming": lab_card.get("not_claiming", ["seller possession", "authenticity", "condition truth", "price truth", "spendability"]),
+            "tags": [tag for tag in tags if tag],
+        }
+        cards.append(return_card)
+    source = {
+        "source": "No Rarity local catalog",
+        "source_page_url": no_rarity_lab_source_id(),
+        "catalog_hash": catalog_hash,
+        "catalog_manifest_hash": manifest_hash,
+        "catalog_path": str(NO_RARITY_CATALOG_PATH.relative_to(ROOT)),
+        "policy_hash": policy_hash,
+        "policy_path": str(NO_RARITY_POLICY_PATH.relative_to(ROOT)),
+        "rows_found": len(cards),
+        "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target")),
+        "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat")),
+        "not_claiming": ["seller possession", "authenticity", "condition", "price truth", "spendability"],
+    }
+    return {
+        "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+        "release": {
+            "release_family_id": config.release_family_id,
+            "name_en": config.name_en,
+            "name_ja": config.name_ja,
+            "release_date": config.release_date,
+            "date_precision": config.date_precision,
+            "release_type": config.release_type,
+            "expected_row_count": config.expected_row_count,
+            "count_confidence": "local_no_rarity_lab_bridge",
+            "parent_release_family_id": config.parent_release_family_id,
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
+            "unique_catalog_row_count": config.expected_row_count,
+            "catalog_treatment": config.catalog_treatment,
+            "note": config.note,
+        },
+        "symbol_status": {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "source": "data/no-rarity-base-set.json and data/pre-english-symbol-status.json",
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_release_family",
+            "source_release_family_id": config.release_family_id,
+            "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity proof without seller evidence"],
+        },
+        "sources": [source],
+        "cards": cards,
+        "not_claiming": [
+            "complete pre-English catalog",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "No Rarity truth without seller evidence",
+        ],
+    }
 
 
 def build_quick_starter_parent_rollup(config: ReleaseConfig) -> dict[str, Any]:
@@ -1487,11 +1755,16 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
-        if image.get("status") not in image_witness_statuses:
+        allowed_missing_no_rarity_caveat = (
+            release_type == "launch_family_no_rarity_lab_rows"
+            and image.get("status") == "missing_reference_image"
+            and card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True
+        )
+        if image.get("status") not in image_witness_statuses and not allowed_missing_no_rarity_caveat:
             failures.append(f"{card.get('row_id')}: image_not_reference_witness")
         if "seller possession" not in card.get("not_claiming", []):
             failures.append(f"{card.get('row_id')}: missing_seller_possession_boundary")
-        if image.get("rights_status") != "external_reference_witness":
+        if image.get("rights_status") != "external_reference_witness" and not allowed_missing_no_rarity_caveat:
             failures.append(f"{card.get('row_id')}: image_rights_status_not_external_witness")
         if image.get("display_allowed") is not False:
             failures.append(f"{card.get('row_id')}: image_display_not_fail_closed")
@@ -1582,6 +1855,39 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 for contact in card.get("source_contacts", [])
             ):
                 failures.append(f"{card.get('row_id')}: gameboy_missing_bulbapedia_source_hash")
+        if release_type == "launch_family_no_rarity_lab_rows":
+            no_rarity_scope = card.get("no_rarity_scope", {})
+            strict_booster_member = card.get("product_scope", {}).get("strict_booster_member")
+            target = no_rarity_scope.get("active_target")
+            caveat = no_rarity_scope.get("basic_energy_caveat")
+            expected_row_id = f"{release_meta.get('release_family_id')}:{card.get('local_id')}"
+            if card.get("row_id") != expected_row_id:
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_row_id_mismatch")
+            if card.get("tcgdex", {}).get("set_id") != "PMCG1":
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_wrong_tcgdex_set")
+            if card.get("provider_row", {}).get("local_catalog_row") != f"PMCG1-{card.get('local_id')}":
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_local_anchor_mismatch")
+            if strict_booster_member is not target:
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_target_booster_scope_mismatch")
+            if caveat is target:
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_target_caveat_not_complementary")
+            if target and image.get("status") != "exact_source_image":
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_target_missing_exact_image")
+            if target and not image.get("image_large"):
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_target_missing_image_url")
+            if caveat and image.get("status") != "missing_reference_image":
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_caveat_should_not_have_reference_image")
+            if caveat and image.get("image_large"):
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_caveat_has_substitute_image")
+            if card.get("symbol_status", {}).get("prints_without_rarity_symbol") != "mixed":
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_symbol_status_not_mixed")
+            if not any(
+                contact.get("source") == "No Rarity local catalog"
+                and contact.get("catalog_hash")
+                and contact.get("policy_hash")
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: no_rarity_lab_missing_local_catalog_contact")
         if release_type == "deck_kit_parent_rollup_rows":
             parent_rollup = card.get("parent_rollup", {})
             lane = parent_rollup.get("lane")
@@ -1736,6 +2042,109 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append(f"song_best_expected_one_language_caveat actual={len(language_caveats)}")
         if len(language_symbol_no) != 1:
             failures.append("song_best_language_caveat_symbol_override_missing")
+    if release_type == "launch_family_no_rarity_lab_rows":
+        targets = [card for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True]
+        caveats = [card for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True]
+        exact_target_images = [
+            card for card in targets
+            if card.get("image_provenance", {}).get("status") == "exact_source_image"
+            and card.get("image_provenance", {}).get("image_large")
+        ]
+        caveat_missing_images = [
+            card for card in caveats
+            if card.get("image_provenance", {}).get("status") == "missing_reference_image"
+            and not card.get("image_provenance", {}).get("image_large")
+        ]
+        trap_rows = [card for card in cards if card.get("variant_traps")]
+        expected_caveat_ids = {f"{release_meta.get('release_family_id')}:{local_id}" for local_id in {"097", "098", "099", "100", "101", "102"}}
+        if release_meta.get("strict_release_member") is not False:
+            failures.append("no_rarity_lab_release_should_not_be_strict_all_rows")
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "mixed":
+            failures.append("no_rarity_lab_release_symbol_status_should_be_mixed")
+        if len(targets) != 96:
+            failures.append(f"no_rarity_lab_target_count actual={len(targets)}")
+        if len(caveats) != 6:
+            failures.append(f"no_rarity_lab_caveat_count actual={len(caveats)}")
+        if len(exact_target_images) != 96:
+            failures.append(f"no_rarity_lab_exact_target_image_count actual={len(exact_target_images)}")
+        if len(caveat_missing_images) != 6:
+            failures.append(f"no_rarity_lab_caveat_missing_image_count actual={len(caveat_missing_images)}")
+        if {card.get("row_id") for card in caveats} != expected_caveat_ids:
+            failures.append("no_rarity_lab_caveat_ids_mismatch")
+        if len(trap_rows) != 5:
+            failures.append(f"no_rarity_lab_quick_starter_trap_count actual={len(trap_rows)}")
+        try:
+            lab = json.loads(NO_RARITY_CATALOG_PATH.read_text(encoding="utf-8"))
+            policy = json.loads(NO_RARITY_POLICY_PATH.read_text(encoding="utf-8"))
+            no_rarity_manifest = json.loads(NO_RARITY_MANIFEST_PATH.read_text(encoding="utf-8"))
+            symbol_status = json.loads((ROOT / no_rarity_manifest["symbol_status_matrix"]["path"]).read_text(encoding="utf-8"))
+            expected_catalog_hash = sha256_hex(lab)
+            expected_policy_hash = sha256_hex(policy)
+            expected_manifest_hash = sha256_hex(no_rarity_manifest)
+            expected_symbol_hash = sha256_hex(symbol_status)
+            if primary_source.get("catalog_hash") != expected_catalog_hash:
+                failures.append("no_rarity_lab_source_hash_mismatch")
+            if primary_source.get("policy_hash") != expected_policy_hash:
+                failures.append("no_rarity_lab_policy_hash_mismatch")
+            if primary_source.get("catalog_manifest_hash") != expected_manifest_hash:
+                failures.append("no_rarity_lab_manifest_hash_mismatch")
+            if primary_source.get("source_page_url") != no_rarity_lab_source_id():
+                failures.append("no_rarity_lab_source_page_url_mismatch")
+            if primary_source.get("rows_found") != len(cards):
+                failures.append("no_rarity_lab_source_rows_found_mismatch")
+            if primary_source.get("active_no_rarity_rows") != 96:
+                failures.append("no_rarity_lab_source_active_count_mismatch")
+            if primary_source.get("basic_energy_caveat_rows") != 6:
+                failures.append("no_rarity_lab_source_caveat_count_mismatch")
+            if no_rarity_manifest.get("catalog", {}).get("catalog_hash") != expected_catalog_hash:
+                failures.append("no_rarity_lab_manifest_catalog_hash_stale")
+            if no_rarity_manifest.get("policy", {}).get("policy_hash") != expected_policy_hash:
+                failures.append("no_rarity_lab_manifest_policy_hash_stale")
+            if no_rarity_manifest.get("symbol_status_matrix", {}).get("symbol_status_hash") != expected_symbol_hash:
+                failures.append("no_rarity_lab_manifest_symbol_status_hash_stale")
+            preimage = no_rarity_manifest.get("bundle", {}).get("preimage", {})
+            expected_preimage = {
+                "catalog_hash": expected_catalog_hash,
+                "policy_hash": expected_policy_hash,
+                "symbol_status_hash": expected_symbol_hash,
+                "release_family": "no_rarity_base_set",
+                "schema": "marketplace.catalog_release_bundle.v0.1",
+            }
+            if preimage != expected_preimage:
+                failures.append("no_rarity_lab_manifest_bundle_preimage_stale")
+            if no_rarity_manifest.get("bundle", {}).get("bundle_hash") != sha256_hex(expected_preimage):
+                failures.append("no_rarity_lab_manifest_bundle_hash_stale")
+            for card in cards:
+                expected_local_row = f"PMCG1-{card.get('local_id')}"
+                local_contacts = [
+                    contact for contact in card.get("source_contacts", [])
+                    if contact.get("source") == "No Rarity local catalog"
+                ]
+                if len(local_contacts) != 1:
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_local_contact_count")
+                    continue
+                contact = local_contacts[0]
+                if contact.get("catalog_hash") != expected_catalog_hash:
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_catalog_hash_mismatch")
+                if contact.get("policy_hash") != expected_policy_hash:
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_policy_hash_mismatch")
+                if contact.get("catalog_manifest_hash") != expected_manifest_hash:
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_manifest_hash_mismatch")
+                if contact.get("source_page_url") != no_rarity_lab_source_id():
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_source_page_url_mismatch")
+                if contact.get("local_row_id") != expected_local_row or card.get("provider_row", {}).get("local_catalog_row") != expected_local_row:
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_local_row_id_mismatch")
+                not_claiming = set(contact.get("not_claiming", []))
+                required = {"seller possession", "authenticity", "condition", "price truth"}
+                if not required.issubset(not_claiming):
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_row_contact_boundary_missing")
+                image_boundary = set(card.get("image_provenance", {}).get("not_claiming", []))
+                image_required = {"seller possession", "seller card match", "condition", "authenticity"}
+                if not image_required.issubset(image_boundary):
+                    failures.append(f"{card.get('row_id')}: no_rarity_lab_image_boundary_missing")
+                    break
+        except FileNotFoundError:
+            failures.append("no_rarity_lab_source_file_missing")
     if release_type == "deck_kit_parent_rollup_rows":
         lanes = [card.get("parent_rollup", {}).get("lane") for card in cards]
         if lanes.count("red") != 32 or lanes.count("green") != 32:
@@ -1786,6 +2195,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "release_family_id": release_meta.get("release_family_id"),
         "row_count": len(cards),
         "expected_row_count": expected,
+        "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
+        "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
+        "strict_booster_rows": sum(1 for card in cards if card.get("product_scope", {}).get("strict_booster_member") is True),
         "exact_image_witness_rows": len(image_rows),
         "exact_source_image_rows": len(exact_source_image_rows),
         "provider_path_reference_image_rows": len(provider_path_reference_image_rows),
@@ -1825,6 +2237,9 @@ def main() -> int:
                 "catalog_hash": release_hash,
                 "row_count": len(release["cards"]),
                 "expected_row_count": config.expected_row_count,
+                "active_no_rarity_rows": audit["active_no_rarity_rows"],
+                "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
+                "strict_booster_rows": audit["strict_booster_rows"],
                 "exact_image_witness_rows": audit["exact_image_witness_rows"],
                 "exact_source_image_rows": audit["exact_source_image_rows"],
                 "provider_path_reference_image_rows": audit["provider_path_reference_image_rows"],

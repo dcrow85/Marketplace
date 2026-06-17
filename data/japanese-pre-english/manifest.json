@@ -1,8 +1,10 @@
 {
+  "active_no_rarity_rows": 96,
+  "basic_energy_caveat_rows": 6,
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "exact_image_witness_rows": 679,
-  "exact_source_image_rows": 393,
-  "generated_at": "2026-06-17T16:37:20Z",
+  "exact_image_witness_rows": 775,
+  "exact_source_image_rows": 489,
+  "generated_at": "2026-06-17T16:59:06Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete pre-English catalog",
@@ -13,9 +15,33 @@
     "price truth"
   ],
   "provider_path_reference_image_rows": 286,
-  "release_count": 17,
+  "release_count": 18,
   "releases": [
     {
+      "active_no_rarity_rows": 96,
+      "basic_energy_caveat_rows": 6,
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "c7c42555177ef22509975dc2cd3fb06b298b7eb317ca8897bc4bbdebb4c0321e",
+      "exact_image_witness_rows": 96,
+      "exact_source_image_rows": 96,
+      "expected_row_count": 102,
+      "hash_algorithm": "sha256",
+      "missing_japanese_name_rows": 0,
+      "path": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json",
+      "promo_context_rows": 0,
+      "provider_path_reference_image_rows": 0,
+      "release_family_id": "jp_tcg_expansion_pack_19961020",
+      "row_count": 102,
+      "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+      "source_adapter": "no_rarity_lab_catalog",
+      "source_labeled_japanese_name_rows": 102,
+      "source_url": "local-catalog:data/no-rarity-base-set.json",
+      "strict_booster_rows": 96,
+      "tcgdex_set_id": "PMCG1"
+    },
+    {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "1a17f726022c8f64790afd2ff6245587db6b205913f8ff5edd95823ad223ebac",
       "exact_image_witness_rows": 48,
@@ -32,9 +58,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": "PMCG2"
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "1f3b0a1f5a5d327aad33442928051b99f391b113ffd44dd4f63913c4424c6f26",
       "exact_image_witness_rows": 48,
@@ -51,9 +80,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 30,
       "source_url": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": "PMCG3"
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "62fe247aaf62eca247c02ef3ad6c5baff0a7902e69bf102aabc2472534738840",
       "exact_image_witness_rows": 65,
@@ -70,9 +102,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 23,
       "source_url": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": "PMCG4"
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "6777a166250586de09b8053f75d95f35ea7d189e8a67c0c01ef247b0524cbb2a",
       "exact_image_witness_rows": 36,
@@ -89,9 +124,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 31,
       "source_url": "https://jp.pokellector.com/Vending-Series-Blue-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "98b6b074e6db8cd788a4db5a2021911630fc7f5442338c6a4a2d1bb4d0239a93",
       "exact_image_witness_rows": 36,
@@ -108,9 +146,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 33,
       "source_url": "https://jp.pokellector.com/Vending-Series-2-Red-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "0766ce41da6d0f6f5628f2bd27086ddbb611876369d6319833b6cd356ec90262",
       "exact_image_witness_rows": 53,
@@ -127,9 +168,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 39,
       "source_url": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "c7b571544a9f7aa02cc9471dc07f0cc4c0ff2593e08ec4f16ee7d28c9acea784",
       "exact_image_witness_rows": 96,
@@ -146,9 +190,12 @@
       "source_adapter": "pokellector",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://jp.pokellector.com/Leaders-Stadium-Expansion/",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": "PMCG5"
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "6a09225ee551c6af19e8005ee916fc81a86ee5bf24db4bf82ef1ee659117c0af",
       "exact_image_witness_rows": 25,
@@ -165,9 +212,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "507019e561ca20b62674a17a44ecbe1719bace12f0f14b9b2e14660ce4c3b038",
       "exact_image_witness_rows": 24,
@@ -184,9 +234,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "fc4efb8a89da3f7a50bf112ca4b43b24d8631653f638718772553dcb037524a7",
       "exact_image_witness_rows": 25,
@@ -203,9 +256,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/KCGYM",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "efdeae4029782b42ce8475ebaee2c321ae8ece7f47a665a455eb3cea01df3f47",
       "exact_image_witness_rows": 28,
@@ -222,9 +278,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/TCGYM",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "3edc920fb6bb88e7b2788df9e7f3c149f63f4a82370eea60c82adc896c466c02",
       "exact_image_witness_rows": 32,
@@ -241,9 +300,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/QSGSR",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "7dfe6d98277e5187c36d44f6676d82005edaf6ea03598eb58a369a91c2d7e20b",
       "exact_image_witness_rows": 32,
@@ -260,9 +322,12 @@
       "source_adapter": "pokecardex",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "df532013e37c18cd0bfed18ab1dddae3950bcf2f967e3ac8f2c5eaaf78b4c790",
       "exact_image_witness_rows": 64,
@@ -279,9 +344,12 @@
       "source_adapter": "quick_starter_parent_rollup",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "local-rollup:data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_red_deck_19981204.json+data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
       "exact_image_witness_rows": 55,
@@ -298,9 +366,12 @@
       "source_adapter": "pokecardex_upc_pre_english",
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/UPC",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "b0c563ff57f36918fd0787d31ea13012afbf65d20dc6d397b8112dd99151689c",
       "exact_image_witness_rows": 1,
@@ -317,9 +388,12 @@
       "source_adapter": "pokecardex_upc_single",
       "source_labeled_japanese_name_rows": 1,
       "source_url": "https://www.pokecardex.com/en/series/jp/UPC",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     },
     {
+      "active_no_rarity_rows": 0,
+      "basic_energy_caveat_rows": 0,
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "catalog_hash": "aec04cbf9594ded35be16b81ee195df23e13d234c4c90dea6b4e56f24584bbd2",
       "exact_image_witness_rows": 11,
@@ -336,10 +410,12 @@
       "source_adapter": "bulbapedia_song_best",
       "source_labeled_japanese_name_rows": 11,
       "source_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+      "strict_booster_rows": 0,
       "tcgdex_set_id": ""
     }
   ],
   "schema": "marketplace.japanese_pre_english_manifest.v0.1",
   "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images from provider-path-derived reference images.",
-  "total_rows": 679
+  "strict_booster_rows": 96,
+  "total_rows": 781
 }
