@@ -1,8 +1,8 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "exact_image_witness_rows": 614,
+  "exact_image_witness_rows": 615,
   "exact_source_image_rows": 393,
-  "generated_at": "2026-06-17T15:56:22Z",
+  "generated_at": "2026-06-17T16:14:29Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete pre-English catalog",
@@ -12,8 +12,8 @@
     "condition truth",
     "price truth"
   ],
-  "provider_path_reference_image_rows": 221,
-  "release_count": 15,
+  "provider_path_reference_image_rows": 222,
+  "release_count": 16,
   "releases": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
@@ -150,7 +150,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "8c5543ec988766b0f9ddc7bdb9dee1fd5276d6522daa45c439123d01011fa655",
+      "catalog_hash": "1ac75dac34d2c89b97d7c07f0746a97a2312aa0fb009f40a70008159ebff528b",
       "exact_image_witness_rows": 25,
       "exact_source_image_rows": 0,
       "expected_row_count": 25,
@@ -169,7 +169,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "4049c082763b51e21286c53b2b8b9a8418c558dae1986f9cac4adc0aa1ac1bc8",
+      "catalog_hash": "af92c237a18e9f32de77d27a0f6519f081a868f3d8ecaeb293cf8d2ef4a1b07d",
       "exact_image_witness_rows": 24,
       "exact_source_image_rows": 0,
       "expected_row_count": 24,
@@ -188,7 +188,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "08b2970986b4e45f68b2d6f52165a66200a504a41532e96af27794e2ed61e546",
+      "catalog_hash": "acc054bbf80f1d4e802beeeb3d2b4f75c447869effb2e370fa8152acdf0213f5",
       "exact_image_witness_rows": 25,
       "exact_source_image_rows": 0,
       "expected_row_count": 25,
@@ -207,7 +207,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "6dcc106ef51d09f97d5a4b274abc36bef01e684820b50f1551f96f23237aea14",
+      "catalog_hash": "3c69fa8ad0fb311081065687d63cb7ea74c2cd234d16e6695ad3469a38ce6fb7",
       "exact_image_witness_rows": 28,
       "exact_source_image_rows": 0,
       "expected_row_count": 28,
@@ -226,7 +226,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "17c63b32f78ba45f5cc8825d8749d5cd56b6792d9993094193ad4fa700a18baa",
+      "catalog_hash": "25f2b186e8def17266dd669938150b4fa233b79250d9cbef1ea6d8c57dd45dd3",
       "exact_image_witness_rows": 32,
       "exact_source_image_rows": 0,
       "expected_row_count": 32,
@@ -245,7 +245,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "20b7b1c304e01ab557f0fe90d1cf7cc989351c067c30666a4cf82f242277e68f",
+      "catalog_hash": "27c8cefa2838eef415989dc14a16fbdf1fad4b9617dc52bc96d93f19eb1481fd",
       "exact_image_witness_rows": 32,
       "exact_source_image_rows": 0,
       "expected_row_count": 32,
@@ -264,7 +264,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "8f78d234eeac547a7c22877e16db074860f83b46caa1a140bbdb79ec53dc20bf",
+      "catalog_hash": "3f6168dc7b255b42a33c512c65e9dbf57124b9e68c0436d2129c95a9bdc51678",
       "exact_image_witness_rows": 55,
       "exact_source_image_rows": 0,
       "expected_row_count": 55,
@@ -278,6 +278,25 @@
       "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
       "source_adapter": "pokecardex_upc_pre_english",
       "source_labeled_japanese_name_rows": 0,
+      "source_url": "https://www.pokecardex.com/en/series/jp/UPC",
+      "tcgdex_set_id": ""
+    },
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "b0c563ff57f36918fd0787d31ea13012afbf65d20dc6d397b8112dd99151689c",
+      "exact_image_witness_rows": 1,
+      "exact_source_image_rows": 0,
+      "expected_row_count": 1,
+      "hash_algorithm": "sha256",
+      "missing_japanese_name_rows": 0,
+      "path": "data/japanese-pre-english/releases/jp_tcg_gameboy_card_gb_19981218.json",
+      "promo_context_rows": 1,
+      "provider_path_reference_image_rows": 1,
+      "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+      "row_count": 1,
+      "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+      "source_adapter": "pokecardex_upc_single",
+      "source_labeled_japanese_name_rows": 1,
       "source_url": "https://www.pokecardex.com/en/series/jp/UPC",
       "tcgdex_set_id": ""
     },
@@ -303,5 +322,5 @@
   ],
   "schema": "marketplace.japanese_pre_english_manifest.v0.1",
   "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images from provider-path-derived reference images.",
-  "total_rows": 614
+  "total_rows": 615
 }

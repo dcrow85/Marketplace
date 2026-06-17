@@ -97,6 +97,10 @@ UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
     60: {"promo_family_id": "jp_promo_card_gb_dragonite_19981218", "date_label": "1998-12-18", "date_source": "release_map"},
 }
 
+UPC_BULBAPEDIA_CARD_PAGES: dict[int, str] = {
+    60: f"{BULBAPEDIA_BASE}/wiki/Dragonite_%28Pok%C3%A9mon_Card_GB_promo%29",
+}
+
 
 @dataclass(frozen=True)
 class ReleaseConfig:
@@ -120,6 +124,7 @@ class ReleaseConfig:
     symbol_status_source_release_family_id: str = ""
     catalog_treatment: str = "Catalog target"
     note: str = ""
+    pokecardex_sort_filter: tuple[int, ...] = ()
 
 
 RELEASES: tuple[ReleaseConfig, ...] = (
@@ -330,6 +335,31 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         note="Aggregate source slice for pre-English unnumbered promos. It preserves UPC source sort and promo-family context; later work may split these into smaller per-distribution release catalogs.",
     ),
     ReleaseConfig(
+        release_family_id="jp_tcg_gameboy_card_gb_19981218",
+        name_en="Pokemon Trading Card Game for Game Boy Color",
+        name_ja="ポケモンカードGB",
+        release_date="1998-12-18",
+        expected_row_count=1,
+        release_type="video_game_insert_promo_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium",
+        pokellector_path="",
+        source_adapter="pokecardex_upc_single",
+        pokecardex_code="UPC",
+        product_card_count=1,
+        product_count_basis=(
+            "Standalone product-family view of the Dragonite insert. The same source row is also "
+            "present in the UPC aggregate slice at source sort 60."
+        ),
+        strict_release_member=True,
+        catalog_treatment="Promo target",
+        note=(
+            "Retail Game Boy Color game with one official TCG Dragonite insert. Catalog the card "
+            "as the product-family row; do not treat the video game itself as a TCG set."
+        ),
+        pokecardex_sort_filter=(60,),
+    ),
+    ReleaseConfig(
         release_family_id="jp_tcg_pokemon_song_best_collection_19990101",
         name_en="Pokemon Song Best Collection",
         name_ja="ポケモンソング・ベストコレクション",
@@ -468,7 +498,7 @@ def adapter_source_name(adapter: str) -> str:
 def source_url_for_config(config: ReleaseConfig) -> str:
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
-    if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english"}:
+    if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
         return f"{POKECARDEX_BASE}/en/series/jp/{config.pokecardex_code}"
     if config.source_adapter == "bulbapedia_song_best":
         return f"{BULBAPEDIA_BASE}/wiki/Pok%C3%A9mon_Song_Best_Collection"
@@ -509,6 +539,30 @@ def follow_bulbapedia_raw_redirect(raw_text: str) -> tuple[str, str]:
     target = redirect.group(1)
     target_url = f"{BULBAPEDIA_BASE}/wiki/{urllib.parse.quote(target.replace(' ', '_'))}?action=raw"
     return fetch_text(target_url), target_url
+
+
+def bulbapedia_card_profile(card_page_url: str) -> dict[str, Any]:
+    card_raw_url = f"{card_page_url}?action=raw"
+    raw_initial = fetch_text(card_raw_url)
+    raw_card, redirect_raw_url = follow_bulbapedia_raw_redirect(raw_initial)
+    caption = clean_wiki_text(wiki_raw_field(raw_card, "caption"))
+    illustrator = ""
+    illustrator_match = re.search(r"Illus\.\s+([^|]+)$", caption)
+    if illustrator_match:
+        illustrator = illustrator_match.group(1).strip()
+    card_type = clean_wiki_text(wiki_raw_field(raw_card, "type"))
+    return {
+        "card_page_sha256": sha256_text(raw_card),
+        "card_page_url": card_page_url,
+        "card_raw_url": redirect_raw_url or card_raw_url,
+        "hp": clean_wiki_text(wiki_raw_field(raw_card, "hp")),
+        "illustrator": illustrator,
+        "jname": clean_wiki_text(wiki_raw_field(raw_card, "jname")),
+        "jtrans": clean_wiki_text(wiki_raw_field(raw_card, "jtrans")),
+        "level": clean_wiki_text(wiki_raw_field(raw_card, "level")),
+        "type": card_type,
+        "types": [card_type] if card_type else [],
+    }
 
 
 def parse_pokellector_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -610,28 +664,50 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
     cards: list[dict[str, Any]] = []
     for card in sorted(payload.get("cartes", []), key=lambda item: int(item.get("sort", 0))):
         sort_value = int(card.get("sort", 0))
-        promo_context = UPC_PRE_ENGLISH_PROMO_CONTEXT.get(sort_value) if config.source_adapter == "pokecardex_upc_pre_english" else None
+        promo_context = (
+            UPC_PRE_ENGLISH_PROMO_CONTEXT.get(sort_value)
+            if config.source_adapter in {"pokecardex_upc_pre_english", "pokecardex_upc_single"}
+            else None
+        )
         if config.source_adapter == "pokecardex_upc_pre_english" and not promo_context:
             continue
+        if config.source_adapter == "pokecardex_upc_single":
+            if sort_value not in config.pokecardex_sort_filter:
+                continue
+            if not promo_context:
+                raise ValueError(f"{config.release_family_id} missing UPC promo context for sort {sort_value}")
+        bulbapedia_profile = (
+            bulbapedia_card_profile(UPC_BULBAPEDIA_CARD_PAGES[sort_value])
+            if config.source_adapter == "pokecardex_upc_single" and sort_value in UPC_BULBAPEDIA_CARD_PAGES
+            else {}
+        )
         local_id = f"{sort_value:03d}"
         image_url = f"{POKECARDEX_BASE}/assets/images/sets_jp/{config.pokecardex_code}/{sort_value}.jpg"
         provider_id = f"pokecardex:{card.get('id_card')}"
         title = f"{card.get('name_card_en', '')} - {series.get('fullName', config.name_en)} #{sort_value}"
         source_contact = {
             "card_data_hash": sha256_hex(card),
-            "encrypted_page_sha256": page_hash,
             "series_code": config.pokecardex_code,
             "source": "PokéCardex",
             "source_page_url": set_url,
             "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
         }
+        if config.source_adapter == "pokecardex_upc_single":
+            source_contact["payload_hash"] = sha256_hex(payload)
+        else:
+            source_contact["encrypted_page_sha256"] = page_hash
         cards.append(
             {
                 "source": source_contact,
                 "local_id": local_id,
                 "name_en": card.get("name_card_en", ""),
-                "name_ja": "",
-                "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+                "name_ja": bulbapedia_profile.get("jname", ""),
+                "romaji_source": bulbapedia_profile.get("jtrans", ""),
+                "name_source_note": (
+                    "PokéCardex payload provides the English name; Bulbapedia card-page infobox provides Japanese name and transliteration."
+                    if bulbapedia_profile
+                    else "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source."
+                ),
                 "provider_row": {
                     "adapter": "pokecardex",
                     "cardmarket_url": card.get("cardmarket_url"),
@@ -674,18 +750,36 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                 "pokecardex_profile": {
                     "comment": card.get("comment", ""),
                     "dex_id": card.get("id_pokedex_list") or ([card.get("id_pokedex")] if card.get("id_pokedex") else []),
-                    "illustrator": card.get("nom_illustrateur", ""),
+                    "hp": bulbapedia_profile.get("hp") or None,
+                    "illustrator": bulbapedia_profile.get("illustrator") or card.get("nom_illustrateur", ""),
+                    "jtrans": bulbapedia_profile.get("jtrans", ""),
+                    "level": bulbapedia_profile.get("level") or None,
                     "name_card_de": card.get("name_card_de", ""),
                     "name_card_fr": card.get("name_card_fr", ""),
+                    "types": bulbapedia_profile.get("types", []),
                     "versions": card.get("versions", []),
                 },
+                **(
+                    {
+                        "additional_source_contacts": [
+                            {
+                                "source": "Bulbapedia",
+                                "card_page_sha256": bulbapedia_profile["card_page_sha256"],
+                                "card_page_url": bulbapedia_profile["card_page_url"],
+                                "card_raw_url": bulbapedia_profile["card_raw_url"],
+                                "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
+                            }
+                        ]
+                    }
+                    if bulbapedia_profile
+                    else {}
+                ),
                 **({"promo_context": promo_context} if promo_context else {}),
             }
         )
     source = {
         "source": "PokéCardex",
         "source_page_url": set_url,
-        "encrypted_page_sha256": page_hash,
         "payload_hash": sha256_hex(payload),
         "cards_found": len(cards),
         "series": {
@@ -697,6 +791,8 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
         },
         "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
     }
+    if config.source_adapter != "pokecardex_upc_single":
+        source["encrypted_page_sha256"] = page_hash
     return cards, source
 
 
@@ -986,6 +1082,16 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
     symbol_source_release_id = config.symbol_status_source_release_family_id or config.release_family_id
     symbol_source_mode = "inherited_from_parent_release_family" if symbol_source_release_id != config.release_family_id else "direct_release_family"
     promo_context = source_row.get("promo_context", {})
+    source_basis = f"{source_name} exact row page"
+    if adapter == "pokecardex":
+        source_basis = "PokéCardex decrypted series payload row and provider-path image convention"
+    elif adapter == "bulbapedia_song_best":
+        source_basis = "Bulbapedia membership/card page plus bounded image witness"
+    image_audit_label = (
+        "provider-path external reference image"
+        if image.get("status") == "provider_path_reference_image"
+        else "exact external reference image"
+    )
     return {
         "schema": "marketplace.japanese_pre_english_card_row.v0.1",
         "row_id": row_id,
@@ -1056,14 +1162,14 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         "image_provenance": image,
         "collector_texture": {
             "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
-            "basis": [f"{source_name} exact row page", "TCGdex row metadata when present", "Japanese pre-English release map"],
+            "basis": [source_basis, "TCGdex row metadata when present", "Japanese pre-English release map"],
             "note": f"{source_row['name_en']} is cataloged here as row {int(local_id)} of {config.name_en}. Treat the image as a reference witness, then ask for seller evidence before any trade.",
             "signals": [config.name_en, local_id, rarity, config.release_date],
         },
         "information_audit": {
             "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
             "earns_keep": [
-                {"field": "exact external reference image", "surface": "primary", "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."},
+                {"field": image_audit_label, "surface": "primary", "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."},
                 {"field": "release family and row id", "surface": "primary", "why": "These prevent cross-set image or name laundering."},
                 {"field": "symbol status", "surface": "agent", "why": "Missing-symbol claims must be judged in their release-family context."},
             ],
@@ -1074,6 +1180,7 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         },
         "source_contacts": [
             source_row["source"],
+            *source_row.get("additional_source_contacts", []),
             *(
                 [
                     {
@@ -1096,7 +1203,7 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
 def build_release(config: ReleaseConfig) -> dict[str, Any]:
     if config.source_adapter == "pokellector":
         source_rows, primary_source = parse_pokellector_set(config)
-    elif config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english"}:
+    elif config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
         source_rows, primary_source = parse_pokecardex_set(config)
     elif config.source_adapter == "bulbapedia_song_best":
         source_rows, primary_source = parse_bulbapedia_song_best(config)
@@ -1179,6 +1286,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("promo_aggregate_strict_release_member_overclaim")
     if release_type == "promo_cd_source_rows" and release_meta.get("strict_release_member") is not True:
         failures.append("promo_cd_rows_must_be_strict_release_members")
+    if release_type == "video_game_insert_promo_rows" and release_meta.get("strict_release_member") is not True:
+        failures.append("video_game_insert_rows_must_be_strict_release_members")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
@@ -1207,7 +1316,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 if contact.get("source") == "PokéCardex"
             ]
             if not any(
-                contact.get("card_data_hash") and contact.get("encrypted_page_sha256")
+                contact.get("card_data_hash")
+                and (contact.get("encrypted_page_sha256") or contact.get("payload_hash"))
                 for contact in pokecardex_contacts
             ):
                 failures.append(f"{card.get('row_id')}: missing_pokecardex_source_hash")
@@ -1237,6 +1347,45 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: local_id_not_source_sort")
             if card.get("product_scope", {}).get("strict_release_member") is not False:
                 failures.append(f"{card.get('row_id')}: promo_row_strict_release_member_overclaim")
+        if release_type == "video_game_insert_promo_rows":
+            promo_context = card.get("promo_context", {})
+            if provider_row.get("adapter") != "pokecardex":
+                failures.append(f"{card.get('row_id')}: gameboy_wrong_adapter")
+            if provider_row.get("series_code") != "UPC" or provider_row.get("sort") != 60:
+                failures.append(f"{card.get('row_id')}: gameboy_not_upc_sort_60")
+            if card.get("local_id") != "060":
+                failures.append(f"{card.get('row_id')}: gameboy_local_id_not_source_sort")
+            if promo_context.get("promo_family_id") != "jp_promo_card_gb_dragonite_19981218":
+                failures.append(f"{card.get('row_id')}: gameboy_promo_context_mismatch")
+            if promo_context.get("date_label") != "1998-12-18":
+                failures.append(f"{card.get('row_id')}: gameboy_date_mismatch")
+            if card.get("product_scope", {}).get("strict_release_member") is not True:
+                failures.append(f"{card.get('row_id')}: gameboy_row_not_strict_release_member")
+            if card.get("name_ja_status") != "source_labeled" or not card.get("romaji"):
+                failures.append(f"{card.get('row_id')}: gameboy_missing_bulbapedia_name_source")
+            if card.get("image_provenance", {}).get("release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: gameboy_image_release_family_mismatch")
+            if card.get("image_provenance", {}).get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: gameboy_image_row_id_mismatch")
+            expected_url = f"{POKECARDEX_BASE}/assets/images/sets_jp/UPC/60.jpg"
+            if image.get("image_large") != expected_url or image.get("image_small") != expected_url:
+                failures.append(f"{card.get('row_id')}: gameboy_image_url_not_provider_path")
+            if image.get("status") != "provider_path_reference_image":
+                failures.append(f"{card.get('row_id')}: gameboy_image_status_overclaims_exact_source")
+            if not any(
+                contact.get("source") == "PokéCardex"
+                and contact.get("card_data_hash")
+                and contact.get("payload_hash")
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: gameboy_missing_pokecardex_source_hash")
+            if not any(
+                contact.get("source") == "Bulbapedia"
+                and contact.get("card_page_sha256")
+                and "Dragonite" in contact.get("card_page_url", "")
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: gameboy_missing_bulbapedia_source_hash")
         if release_type == "promo_cd_source_rows":
             promo_context = card.get("promo_context", {})
             source_sort = provider_row.get("sort")

@@ -1,7 +1,7 @@
 {
-  "exact_image_witness_rows": 614,
+  "exact_image_witness_rows": 615,
   "exact_source_image_rows": 393,
-  "generated_at": "2026-06-17T15:56:22Z",
+  "generated_at": "2026-06-17T16:14:29Z",
   "not_claiming": [
     "multi-agent audit complete",
     "complete pre-English release coverage",
@@ -9,7 +9,7 @@
     "image rights approval"
   ],
   "passed": true,
-  "provider_path_reference_image_rows": 221,
+  "provider_path_reference_image_rows": 222,
   "release_audits": [
     {
       "exact_image_witness_rows": 48,
@@ -208,6 +208,20 @@
       "tcgdex_enriched_rows": 0
     },
     {
+      "exact_image_witness_rows": 1,
+      "exact_source_image_rows": 0,
+      "expected_row_count": 1,
+      "failures": [],
+      "missing_japanese_name_rows": 0,
+      "passed": true,
+      "promo_context_rows": 1,
+      "provider_path_reference_image_rows": 1,
+      "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+      "row_count": 1,
+      "source_labeled_japanese_name_rows": 1,
+      "tcgdex_enriched_rows": 0
+    },
+    {
       "exact_image_witness_rows": 11,
       "exact_source_image_rows": 11,
       "expected_row_count": 11,
@@ -222,8 +236,8 @@
       "tcgdex_enriched_rows": 0
     }
   ],
-  "release_count": 15,
+  "release_count": 16,
   "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1",
   "tcgdex_enriched_rows": 257,
-  "total_rows": 614
+  "total_rows": 615
 }

@@ -80,7 +80,7 @@ lab.
 | 1998-10-24 | `jp_tcg_leaders_stadium_19981024` | リーダーズスタジアム / Leaders' Stadium | Main booster expansion | 96 | Catalog target | First Gym-era booster; English Gym Heroes later combines Japanese deck and booster material. |
 | 1998-11-24 | `jp_tcg_expansion_sheet_3_green_19981124` | 拡張シート 第3弾 緑版 / Expansion Sheet Series 3 Green | Vending sheet release | 53 | Catalog target | Often described as 36 standard cards plus 17 non-standard/special cards. Keep count caveat. |
 | 1998-12-04 | `jp_tcg_quick_starter_gift_set_19981204` | クイックスターターギフト / Quick Starter Gift Set | Deck kit | 2 x 60-card decks + extras | Catalog target | Crucial for No Rarity authentication: some trainer reprints lack rarity symbols and can be mislabeled as Expansion Pack No Rarity cards. |
-| 1998-12-18 | `jp_tcg_gameboy_card_gb_19981218` | ポケモンカードGB / Pokemon Trading Card Game for Game Boy Color | Video game with physical promo | 1 promo | Promo target | Includes Dragonite promo; retail game is not a TCG set, but the inserted card is official TCG. |
+| 1998-12-18 | `jp_tcg_gameboy_card_gb_19981218` | ポケモンカードGB / Pokemon Trading Card Game for Game Boy Color | Video game with physical promo | 1 promo | Promo target | Includes Dragonite promo; retail game is not a TCG set, but the inserted card is official TCG. Standalone row catalog now points to the product family. |
 | 1999-01-01 | `jp_tcg_pokemon_song_best_collection_19990101` | Pokemon Song Best Collection | CD with promo cards | 11 cards | Promo target | Cutoff-safe even though it is 1999; includes 10 Japanese cards/reprints plus one English Pikachu. |
 
 ## Initial Symbol-Status Matrix
