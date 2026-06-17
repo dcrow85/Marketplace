@@ -65,6 +65,11 @@ EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_early_1996_promos_selected_lines.json"
 )
+LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_lizardon_mega_battle_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -143,6 +148,14 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
         "expected_cards": ["Pikachu [Glossy, Ken Sugimori]", "Jigglypuff [Glossy]"],
         "modeled_source_sorts": [1],
         "unmodeled_expected_cards": ["Jigglypuff [Glossy]"],
+        "expected_snapshot_texts": [
+            "Pikachu [Glossy]",
+            "Jigglypuff [Glossy]",
+            "October 15, 1996",
+            "Pikachu [Non-glossy]",
+            "Jigglypuff [Non-glossy]",
+            "November 30, 1996",
+        ],
         "source_gap_reason": (
             "Bulbapedia lists glossy Pikachu and glossy Jigglypuff for CoroCoro Comic "
             "November 1996, but the current PokéCardex UPC aggregate source-pins only "
@@ -155,10 +168,42 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
         "expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]", "Jigglypuff [Non-glossy]"],
         "modeled_source_sorts": [4],
         "unmodeled_expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]"],
+        "expected_snapshot_texts": [
+            "Pikachu [Glossy]",
+            "Jigglypuff [Glossy]",
+            "October 15, 1996",
+            "Pikachu [Non-glossy]",
+            "Jigglypuff [Non-glossy]",
+            "November 30, 1996",
+        ],
         "source_gap_reason": (
             "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily "
             "Understand How to Play Pokemon Cards, but the current PokéCardex UPC "
             "aggregate source-pins only Jigglypuff to this exact family."
+        ),
+    },
+    "jp_promo_lizardon_mega_battle_199711_199804": {
+        "source_snapshot": "lizardon_mega_battle",
+        "expected_source_card_count": 3,
+        "expected_cards": [
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)",
+        ],
+        "modeled_source_sorts": [21, 22, 23],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Lizardon (Charizard) Mega Battle Tournaments",
+            "April 26, 1998",
+            "November 8, 1997 to February 15, 1998",
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)",
+        ],
+        "source_gap_reason": (
+            "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega "
+            "Battle trophy rows. The source slice models card identities only; it does not "
+            "model plaque variants, award copies, or every physical award context."
         ),
     },
 }
@@ -585,6 +630,34 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_lizardon_mega_battle_199711_199804",
+        name_en="Lizardon / Charizard Mega Battle regional trophy source slice",
+        name_ja="リザードンメガバトル プロモ",
+        release_date="1997-11-08/1998-04-26",
+        expected_row_count=3,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range_with_final_event",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon event context documents the Lizardon Mega Battle tournament arc and "
+            "its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the "
+            "three currently source-pinned PokéCardex UPC regional trophy rows; it does not "
+            "claim official copy counts, plaque variants, complete award-object context, "
+            "and it is not a complete family checklist beyond the source-pinned regional trophy row trio."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate regional Lizardon Mega Battle trophy "
+            "rows. Use it to distinguish these rows from First Official Tournament trophy "
+            "cards while keeping copy counts and plaque variants outside the row claim."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_tcg_gameboy_card_gb_19981218",
         name_en="Pokemon Trading Card Game for Game Boy Color",
         name_ja="ポケモンカードGB",
@@ -831,6 +904,7 @@ def early_1996_promo_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
     return {
+        "source": snapshot.get("source", "Bulbapedia"),
         "snapshot_path": str(EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
         "snapshot_hash": sha256_hex(snapshot),
         "snapshot_schema": snapshot.get("schema", ""),
@@ -843,6 +917,33 @@ def early_1996_promo_source_snapshot() -> dict[str, Any]:
         "extracted_claims": snapshot.get("extracted_claims", {}),
         "selected_text": selected_text,
     }
+
+
+def lizardon_mega_battle_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon"),
+        "snapshot_path": str(LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
+def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
+    if snapshot_id == "early_1996_promos":
+        return early_1996_promo_source_snapshot()
+    if snapshot_id == "lizardon_mega_battle":
+        return lizardon_mega_battle_source_snapshot()
+    raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
 
 
 def gift_pack_component_lanes() -> tuple[str, ...]:
@@ -2797,7 +2898,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
     source_release = json.loads(source_path.read_text(encoding="utf-8"))
     source_hash = sha256_hex(source_release)
     source_docs = source_document_contacts()
-    promo_snapshot = early_1996_promo_source_snapshot()
+    promo_snapshot = promo_family_context_snapshot(str(spec.get("source_snapshot", "")))
     promo_claims = promo_snapshot["extracted_claims"]
     modeled_sorts = set(int(value) for value in spec.get("modeled_source_sorts", []))
     unmodeled_expected_cards = list(spec.get("unmodeled_expected_cards", []))
@@ -2819,7 +2920,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         child_card["promo_family_scope"] = {
             "authority": (
                 "Promo-family child source slice over the source-pinned UPC aggregate row plus "
-                "a selected-line Bulbapedia context snapshot."
+                f"a selected-line {promo_snapshot.get('source', 'context')} context snapshot."
             ),
             "promo_family_id": config.release_family_id,
             "strict_family_member_for_modeled_row": True,
@@ -2850,9 +2951,11 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "catalog_treatment": config.catalog_treatment,
             "counting_note": (
                 "This is a source-pinned child slice for one modeled UPC aggregate row. "
-                "The Bulbapedia context snapshot expects two cards for this family, so the "
-                "catalog row count is intentionally incomplete and must not be read as a "
-                "full promo-family checklist."
+                f"The {promo_snapshot.get('source', 'context')} context snapshot expects "
+                f"{spec.get('expected_source_card_count', 0)} cards for this family, while this "
+                f"slice currently models {len(source_rows)} source-pinned row(s) and records "
+                f"{len(unmodeled_expected_cards)} source gap(s). It must not be read as a full "
+                "promo-family checklist beyond the source-pinned and explicitly caveated scope."
             ),
             "date_precision": config.date_precision,
             "japanese_set_name": config.name_ja,
@@ -2903,7 +3006,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         image["exactness_basis"] = list(dict.fromkeys([
             *image.get("exactness_basis", []),
             "source-pinned UPC aggregate row for this promo family child slice",
-            "family-level completeness checked against selected Bulbapedia lines with an explicit source gap",
+            f"family-level completeness checked against selected {promo_snapshot.get('source', 'context')} lines with explicit source-gap accounting",
         ]))
         image["not_claiming"] = list(dict.fromkeys([
             *image.get("not_claiming", []),
@@ -2914,14 +3017,14 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         collector_texture = child_card.get("collector_texture", {})
         collector_texture["note"] = (
             f"{source_card.get('name_en', '')} is cataloged as the currently source-pinned "
-            f"row for {config.name_en}. The useful claim is precise family context plus a visible "
-            "source gap; the physical card still needs seller evidence."
+            f"row for {config.name_en}. The useful claim is precise family context plus explicit "
+            "source accounting; the physical card still needs seller evidence."
         )
         collector_texture["signals"] = list(dict.fromkeys([
             config.name_en,
             config.release_date,
             "promo family source slice",
-            "source gap recorded",
+            "source accounting recorded",
             *collector_texture.get("signals", []),
         ]))
         child_card["collector_texture"] = collector_texture
@@ -2935,8 +3038,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
             "current_status": image.get("status", ""),
             "primary_surface_rule": (
-                "Show the modeled row as a reference witness and keep the missing expected counterpart "
-                "visible in agent-facing audit/detail views."
+                "Show the modeled row as a reference witness and keep expected source count, modeled rows, "
+                "and any source gaps visible in agent-facing audit/detail views."
             ),
         }
         child_card["information_audit"] = information_audit
@@ -2963,7 +3066,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "source_sort": source_sort,
             },
             {
-                "source": "Bulbapedia",
+                "source": promo_snapshot.get("source", ""),
                 "source_page_url": promo_snapshot["source_page_url"],
                 "oldid_url": promo_snapshot["oldid_url"],
                 "snapshot_path": promo_snapshot["snapshot_path"],
@@ -2975,15 +3078,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "retrieved_at": promo_snapshot["retrieved_at"],
                 "expected_cards": list(spec.get("expected_cards", [])),
                 "unmodeled_expected_cards": unmodeled_expected_cards,
-                "not_claiming": [
-                    "raw HTML snapshot",
-                    "complete UPC source",
-                    "image rights",
-                    "seller possession",
-                    "authenticity",
-                    "condition",
-                    "official copy count",
-                ],
+                "not_claiming": promo_snapshot["snapshot_not_claiming"],
             },
         ]
         for contact in child_card.get("source_contacts", []):
@@ -3017,7 +3112,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             config.release_family_id,
             config.name_en,
             "promo family source slice",
-            "source gap recorded",
+            "source accounting recorded",
             *child_card.get("tags", []),
         ]))
         cards.append(child_card)
@@ -3040,7 +3135,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "source_release_type": source_release.get("release", {}).get("release_type", ""),
         "cards_found": len(cards),
         "family_context_source": {
-            "source": "Bulbapedia",
+            "source": promo_snapshot.get("source", ""),
             "source_page_url": promo_snapshot["source_page_url"],
             "oldid_url": promo_snapshot["oldid_url"],
             "snapshot_path": promo_snapshot["snapshot_path"],
@@ -3052,15 +3147,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "retrieved_at": promo_snapshot["retrieved_at"],
             "extracted_claims": promo_claims,
             "selected_text": promo_snapshot["selected_text"],
-            "not_claiming": [
-                "raw HTML snapshot",
-                "complete UPC source",
-                "image rights",
-                "seller possession",
-                "authenticity",
-                "condition",
-                "official copy count",
-            ],
+            "not_claiming": promo_snapshot["snapshot_not_claiming"],
         },
         "not_claiming": [
             "complete promo family checklist",
@@ -3097,7 +3184,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "symbol_status": {
             "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
             "confidence": config.symbol_status_confidence,
-            "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected Bulbapedia lines",
+            "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
             "scope": "release_context_not_row_fact",
             "source_mode": "direct_promo_family_context",
             "source_release_family_id": config.release_family_id,
@@ -4023,15 +4110,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             ):
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_rollup_contact")
             if not any(
-                contact.get("source") == "Bulbapedia"
+                contact.get("source") == family_context_source.get("source")
                 and contact.get("snapshot_hash")
                 and contact.get("unmodeled_expected_cards") == family_spec.get("unmodeled_expected_cards")
                 for contact in card.get("source_contacts", [])
             ):
-                failures.append(f"{card.get('row_id')}: promo_family_child_missing_bulbapedia_gap_contact")
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_context_gap_contact")
             inherited_contacts = [
                 contact for contact in card.get("source_contacts", [])
-                if contact.get("source") not in {"Promo-family child source-slice rollup", "Bulbapedia"}
+                if contact.get("source") not in {
+                    "Promo-family child source-slice rollup",
+                    family_context_source.get("source"),
+                }
             ]
             for contact in inherited_contacts:
                 if contact.get("inherited_from_promo_family_source") is not True:
@@ -4676,7 +4766,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_source_doc_pin_missing")
         family_context = primary_source.get("family_context_source", {})
         try:
-            promo_snapshot = early_1996_promo_source_snapshot()
+            promo_snapshot = promo_family_context_snapshot(str(family_spec.get("source_snapshot", "")))
             if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
                 failures.append("promo_family_child_context_snapshot_hash_mismatch")
             if family_context.get("snapshot_path") != promo_snapshot["snapshot_path"]:
@@ -4684,19 +4774,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             if family_context.get("source_page_url") != promo_snapshot["source_page_url"]:
                 failures.append("promo_family_child_context_source_url_mismatch")
             selected_text = family_context.get("selected_text", "")
-            for expected_text, failure_name in {
-                "Pikachu [Glossy]": "promo_family_child_snapshot_glossy_pikachu_missing",
-                "Jigglypuff [Glossy]": "promo_family_child_snapshot_glossy_jigglypuff_missing",
-                "Pikachu [Non-glossy]": "promo_family_child_snapshot_nonglossy_pikachu_missing",
-                "Jigglypuff [Non-glossy]": "promo_family_child_snapshot_nonglossy_jigglypuff_missing",
-                "October 15, 1996": "promo_family_child_snapshot_october_date_missing",
-                "November 30, 1996": "promo_family_child_snapshot_november_date_missing",
-            }.items():
+            if selected_text != promo_snapshot["selected_text"]:
+                failures.append("promo_family_child_context_selected_text_mismatch")
+            for expected_text in family_spec.get("expected_snapshot_texts", []):
                 if expected_text not in selected_text:
-                    failures.append(failure_name)
+                    failures.append(f"promo_family_child_snapshot_text_missing {expected_text}")
             if "raw HTML snapshot" not in family_context.get("not_claiming", []):
                 failures.append("promo_family_child_context_raw_snapshot_boundary_missing")
-            if "complete UPC source" not in family_context.get("not_claiming", []):
+            if "complete UPC source" not in family_context.get("not_claiming", []) and "complete event source" not in family_context.get("not_claiming", []):
                 failures.append("promo_family_child_context_complete_source_boundary_missing")
         except FileNotFoundError:
             failures.append("promo_family_child_source_snapshot_missing")

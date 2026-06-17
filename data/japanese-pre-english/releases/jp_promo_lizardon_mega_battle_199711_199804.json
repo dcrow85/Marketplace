@@ -1,0 +1,1217 @@
+{
+  "cards": [
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "No.1 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "1997-11-08/1998-04-26",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "021",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/21.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/21.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+        "promo_family_source_sort": 21,
+        "provider_id": "pokecardex:14219",
+        "provider_title": "No.1 Trainer - Unnumbered Promotional #21",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "021",
+      "name_en": "No.1 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_with_final_event",
+        "expected_source_card_count": 3,
+        "japanese_set_name": "リザードンメガバトル プロモ",
+        "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
+        "release_date": "1997-11-08/1998-04-26",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "strict_release_member": false,
+        "unique_catalog_row_count": 3,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-11-08 to 1998-04-26",
+        "date_source": "release_map",
+        "distribution_comment": "Lizardon Mega Battle regional first place prize",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_sort": 21
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "complete_family_modeled": false,
+        "expected_cards": [
+          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+        ],
+        "expected_source_card_count": 3,
+        "modeled_source_sorts": [
+          21,
+          22,
+          23
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
+        "source_local_id": "021",
+        "source_provider_sort": 21,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 3,
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_local_id": "021",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": null,
+          "comment": "Lizardon Mega Battle regional first place prize",
+          "id_card": 14219,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14219",
+          "provider_title": "No.1 Trainer - Unnumbered Promotional #21",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 21,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14219,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+        "source_sort": 21
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+      "romaji": "",
+      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "021",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+          "source_sort": 21
+        },
+        {
+          "expected_cards": [
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T19:06:00Z",
+          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon",
+          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "7afe2c6fc34b807fc2d101c1e347cf05691f31c265f29378e3b0b87fed9ac89e",
+          "encrypted_page_sha256": "b946e05f85bc41364d3b273a380120582e09997b98788c0fcfbf5ba02f9b4539",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+      },
+      "tags": [
+        "jp_promo_lizardon_mega_battle_199711_199804",
+        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "No.2 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "1997-11-08/1998-04-26",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "022",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/22.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/22.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+        "promo_family_source_sort": 22,
+        "provider_id": "pokecardex:14220",
+        "provider_title": "No.2 Trainer - Unnumbered Promotional #22",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "022",
+      "name_en": "No.2 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_with_final_event",
+        "expected_source_card_count": 3,
+        "japanese_set_name": "リザードンメガバトル プロモ",
+        "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
+        "release_date": "1997-11-08/1998-04-26",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "strict_release_member": false,
+        "unique_catalog_row_count": 3,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-11-08 to 1998-04-26",
+        "date_source": "release_map",
+        "distribution_comment": "Lizardon Mega Battle regional second place prize",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_sort": 22
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "complete_family_modeled": false,
+        "expected_cards": [
+          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+        ],
+        "expected_source_card_count": 3,
+        "modeled_source_sorts": [
+          21,
+          22,
+          23
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
+        "source_local_id": "022",
+        "source_provider_sort": 22,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 3,
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_local_id": "022",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": null,
+          "comment": "Lizardon Mega Battle regional second place prize",
+          "id_card": 14220,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14220",
+          "provider_title": "No.2 Trainer - Unnumbered Promotional #22",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 22,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14220,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+        "source_sort": 22
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+      "romaji": "",
+      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "022",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+          "source_sort": 22
+        },
+        {
+          "expected_cards": [
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T19:06:00Z",
+          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon",
+          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "b7cf45dbd6b86d4388c4a114cfecdc56a08a907ab595d7d27507485be45147f6",
+          "encrypted_page_sha256": "b946e05f85bc41364d3b273a380120582e09997b98788c0fcfbf5ba02f9b4539",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+      },
+      "tags": [
+        "jp_promo_lizardon_mega_battle_199711_199804",
+        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "No.3 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "1997-11-08/1998-04-26",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "023",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/23.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/23.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+        "promo_family_source_sort": 23,
+        "provider_id": "pokecardex:14221",
+        "provider_title": "No.3 Trainer - Unnumbered Promotional #23",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "023",
+      "name_en": "No.3 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_with_final_event",
+        "expected_source_card_count": 3,
+        "japanese_set_name": "リザードンメガバトル プロモ",
+        "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
+        "release_date": "1997-11-08/1998-04-26",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "strict_release_member": false,
+        "unique_catalog_row_count": 3,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-11-08 to 1998-04-26",
+        "date_source": "release_map",
+        "distribution_comment": "Lizardon Mega Battle regional third place prize",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_sort": 23
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "complete_family_modeled": false,
+        "expected_cards": [
+          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+        ],
+        "expected_source_card_count": 3,
+        "modeled_source_sorts": [
+          21,
+          22,
+          23
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
+        "source_local_id": "023",
+        "source_provider_sort": 23,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 3,
+        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_gap_count": 0,
+        "source_local_id": "023",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": null,
+          "comment": "Lizardon Mega Battle regional third place prize",
+          "id_card": 14221,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14221",
+          "provider_title": "No.3 Trainer - Unnumbered Promotional #23",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 23,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14221,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+        "source_sort": 23
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+      "romaji": "",
+      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "023",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+          "source_sort": 23
+        },
+        {
+          "expected_cards": [
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T19:06:00Z",
+          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon",
+          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "b70a16fe3ea736cc5f1d714a223d93280eba970b1aff0951d08dbb795eabd962",
+          "encrypted_page_sha256": "b946e05f85bc41364d3b273a380120582e09997b98788c0fcfbf5ba02f9b4539",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+      },
+      "tags": [
+        "jp_promo_lizardon_mega_battle_199711_199804",
+        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete pre-English catalog",
+    "complete promo family checklist",
+    "unmodeled expected card row",
+    "official copy count",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Promo target source-slice",
+    "count_confidence": "promo_family_child_source_slice_with_source_gap",
+    "date_precision": "source_range_with_final_event",
+    "expected_row_count": 3,
+    "expected_source_card_count": 3,
+    "name_en": "Lizardon / Charizard Mega Battle regional trophy source slice",
+    "name_ja": "リザードンメガバトル プロモ",
+    "note": "Narrow source-slice over the UPC aggregate regional Lizardon Mega Battle trophy rows. Use it to distinguish these rows from First Official Tournament trophy cards while keeping copy counts and plaque variants outside the row claim.",
+    "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+    "product_card_count": 0,
+    "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
+    "release_date": "1997-11-08/1998-04-26",
+    "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+    "release_type": "promo_family_child_rollup_rows",
+    "source_gap_count": 0,
+    "strict_release_member": false,
+    "unique_catalog_row_count": 3,
+    "unmodeled_expected_cards": []
+  },
+  "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+  "sources": [
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "cards_found": 3,
+      "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+      "expected_cards": [
+        "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+        "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+        "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+      ],
+      "expected_source_card_count": 3,
+      "family_context_source": {
+        "extracted_claims": {
+          "event_date": "1998-04-26",
+          "regional_qualifier_window": "1997-11-08/1998-02-15",
+          "regional_trophy_card_count": 3,
+          "regional_trophy_cards": [
+            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
+            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          ]
+        },
+        "not_claiming": [
+          "raw HTML snapshot",
+          "complete event source",
+          "official copy counts",
+          "plaque variant catalog",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "oldid_url": "",
+        "retrieved_at": "2026-06-17T19:06:00Z",
+        "selected_text": "Lizardon (Charizard) Mega Battle Tournaments\nThe Lizardon Mega Battle (also known as the Charizard Mega Battle, as Charizard's Japanese name is Lizardon), was the second official Pokemon TCG tournament.\nThe Lizardon Mega Battle was held on April 26, 1998.\nA series of qualifying tournaments were held across 6 locations in Japan from November 8, 1997 to February 15, 1998.\nThe top 3 players at each cup from each age division received No.1 - 3 Trainer cards.\nNo.1 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nNo.2 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nNo.3 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nThe cards were presented in acrylic plaque which designated the cup that they were awarded at.",
+        "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+        "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+        "snapshot_not_claiming": [
+          "raw HTML snapshot",
+          "complete event source",
+          "official copy counts",
+          "plaque variant catalog",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+        "snapshot_retrieval_method": "Codex web.open rendered text lines",
+        "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/"
+      },
+      "modeled_source_rows": 3,
+      "modeled_source_sorts": [
+        21,
+        22,
+        23
+      ],
+      "not_claiming": [
+        "complete promo family checklist",
+        "unmodeled expected card row",
+        "official copy count",
+        "seller possession",
+        "authenticity",
+        "condition",
+        "price truth"
+      ],
+      "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+      "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
+      "release_map_sha256": "9789f49c9a2622d82af7bb545b57999aa3d0ad031092a5330b24d8cfc263c90c",
+      "source": "Marketplace UPC aggregate promo-family child source-slice",
+      "source_gap_count": 0,
+      "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
+      "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+      "source_release_type": "promo_aggregate_filtered_rows",
+      "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
+      "symbol_status_path": "data/pre-english-symbol-status.json",
+      "unmodeled_expected_cards": []
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium-high",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
+    "source_mode": "direct_promo_family_context",
+    "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+  }
+}

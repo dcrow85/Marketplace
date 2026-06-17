@@ -9,12 +9,12 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Pikachu is cataloged as the currently source-pinned row for First CoroCoro glossy promos source slice. The useful claim is precise family context plus a visible source gap; the physical card still needs seller evidence.",
+        "note": "Pikachu is cataloged as the currently source-pinned row for First CoroCoro glossy promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
           "First CoroCoro glossy promos source slice",
           "1996-10-15",
           "promo family source slice",
-          "source gap recorded",
+          "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
           "001",
           "Sans rareté",
@@ -46,7 +46,7 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia lines with an explicit source gap"
+          "family-level completeness checked against selected Bulbapedia lines with explicit source-gap accounting"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/1.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
@@ -110,7 +110,7 @@
         "promo_family_child_override": {
           "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
           "current_status": "provider_path_reference_image",
-          "primary_surface_rule": "Show the modeled row as a reference witness and keep the missing expected counterpart visible in agent-facing audit/detail views."
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
       "local_id": "001",
@@ -144,7 +144,7 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Bulbapedia context snapshot expects two cards for this family, so the catalog row count is intentionally incomplete and must not be read as a full promo-family checklist.",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "exact",
         "expected_source_card_count": 2,
         "japanese_set_name": "月刊コロコロコミック1996年11月号プロモ",
@@ -301,7 +301,8 @@
             "seller possession",
             "authenticity",
             "condition",
-            "official copy count"
+            "official copy counts",
+            "complete marketplace pricing"
           ],
           "oldid_url": "",
           "retrieved_at": "2026-06-17T18:45:00Z",
@@ -365,7 +366,7 @@
         "jp_promo_corocoro_first_19961015",
         "First CoroCoro glossy promos source slice",
         "promo family source slice",
-        "source gap recorded",
+        "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "Unnumbered Promotional Pre-English Source Slice",
         "1996-10-15/1999-01-31",
@@ -439,7 +440,8 @@
           "seller possession",
           "authenticity",
           "condition",
-          "official copy count"
+          "official copy counts",
+          "complete marketplace pricing"
         ],
         "oldid_url": "",
         "retrieved_at": "2026-06-17T18:45:00Z",
@@ -501,7 +503,7 @@
     ],
     "prints_without_rarity_symbol": "yes",
     "scope": "release_context_not_row_fact",
-    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected Bulbapedia lines",
+    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
     "source_release_family_id": "jp_promo_corocoro_first_19961015"
   }
