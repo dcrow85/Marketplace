@@ -85,6 +85,11 @@ FAN_CLUB_VOL3_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_fan_club_vol3_dark_persian_1997_selected_lines.json"
 )
+TOYOTA_AUTO_CAMPAIGN_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_toyota_auto_campaign_1997_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -271,6 +276,32 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu "
             "and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing "
             "Pikachu to this exact family. The Mew booklet card remains an explicit source gap."
+        ),
+    },
+    "jp_promo_toyota_auto_199710_199712": {
+        "source_snapshot": "toyota_auto_campaign_1997",
+        "expected_source_card_count": 2,
+        "expected_cards": [
+            "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997)",
+            "Pikachu (Toyota campaign 1997)",
+        ],
+        "modeled_source_sorts": [18, 19],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Toyota Auto Campaign",
+            "From October through December 1997",
+            "Toyota Auto dealerships around Japan could receive a pamphlet with two promo cards",
+            "Pikachu (Toyota campaign 1997) (Unnumbered)",
+            "Arcanine (Toyota campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "This version is identical to the one given away in the Toyota pamphlet",
+            "Toyota Auto Campaign begins",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents the Toyota Auto Campaign pamphlet and its two promo card "
+            "identities, and the current PokéCardex UPC aggregate source-pins Arcanine "
+            "and Pikachu rows to this exact family. This source slice models those card "
+            "identities only; it does not model dealership participation, pamphlet-object "
+            "variants, redemption volume, or copy-count claims."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -805,6 +836,35 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_toyota_auto_199710_199712",
+        name_en="Toyota Auto Campaign source slice",
+        name_ja="トヨタオートキャンペーン プロモ",
+        release_date="1997-10/1997-12",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_month_range",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents an October-December 1997 Toyota Auto dealership pamphlet "
+            "with two promo cards, Arcanine and Pikachu. This child slice models the two "
+            "currently source-pinned PokéCardex UPC rows; it does not claim copy counts, "
+            "participating dealership coverage, pamphlet-object variants, or a complete "
+            "campaign-object ledger, and it is not a complete family checklist beyond the "
+            "source-pinned card pair."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the Toyota "
+            "Auto Campaign. Use it to preserve the Arcanine/Pikachu pamphlet lane while "
+            "keeping dealership, pamphlet-object, and copy-count claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1170,6 +1230,25 @@ def fan_club_vol3_source_snapshot() -> dict[str, Any]:
     }
 
 
+def toyota_auto_campaign_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(TOYOTA_AUTO_CAMPAIGN_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon"),
+        "snapshot_path": str(TOYOTA_AUTO_CAMPAIGN_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
     if snapshot_id == "early_1996_promos":
         return early_1996_promo_source_snapshot()
@@ -1181,6 +1260,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return first_official_tournament_source_snapshot()
     if snapshot_id == "fan_club_vol3_dark_persian_1997":
         return fan_club_vol3_source_snapshot()
+    if snapshot_id == "toyota_auto_campaign_1997":
+        return toyota_auto_campaign_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
 
 
@@ -5042,6 +5123,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 "complete UPC source",
                 "complete event source",
                 "complete magazine source",
+                "complete campaign source",
             }
             if not complete_source_boundaries.intersection(set(family_context.get("not_claiming", []))):
                 failures.append("promo_family_child_context_complete_source_boundary_missing")
