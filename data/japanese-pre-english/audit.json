@@ -1,0 +1,97 @@
+{
+  "auditor": "deterministic_builder",
+  "checks": [
+    "row_count_matches_expected",
+    "row_ids_unique",
+    "image_witness_exact_source_status",
+    "image_rights_fail_closed",
+    "seller_possession_boundary_present"
+  ],
+  "generated_at": "2026-06-17T14:20:36Z",
+  "not_claiming": [
+    "multi-agent audit complete",
+    "image rights approval",
+    "physical authentication"
+  ],
+  "passed": true,
+  "release_results": [
+    {
+      "exact_image_witness_rows": 48,
+      "expected_row_count": 48,
+      "failures": [],
+      "missing_japanese_name_rows": 48,
+      "passed": true,
+      "release_family_id": "jp_tcg_jungle_19970305",
+      "row_count": 48,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 48
+    },
+    {
+      "exact_image_witness_rows": 48,
+      "expected_row_count": 48,
+      "failures": [],
+      "missing_japanese_name_rows": 18,
+      "passed": true,
+      "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+      "row_count": 48,
+      "source_labeled_japanese_name_rows": 30,
+      "tcgdex_enriched_rows": 48
+    },
+    {
+      "exact_image_witness_rows": 65,
+      "expected_row_count": 65,
+      "failures": [],
+      "missing_japanese_name_rows": 42,
+      "passed": true,
+      "release_family_id": "jp_tcg_rocket_gang_19971121",
+      "row_count": 65,
+      "source_labeled_japanese_name_rows": 23,
+      "tcgdex_enriched_rows": 65
+    },
+    {
+      "exact_image_witness_rows": 36,
+      "expected_row_count": 36,
+      "failures": [],
+      "missing_japanese_name_rows": 5,
+      "passed": true,
+      "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+      "row_count": 36,
+      "source_labeled_japanese_name_rows": 31,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 36,
+      "expected_row_count": 36,
+      "failures": [],
+      "missing_japanese_name_rows": 3,
+      "passed": true,
+      "release_family_id": "jp_tcg_expansion_sheet_2_red_19980617",
+      "row_count": 36,
+      "source_labeled_japanese_name_rows": 33,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 53,
+      "expected_row_count": 53,
+      "failures": [],
+      "missing_japanese_name_rows": 14,
+      "passed": true,
+      "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+      "row_count": 53,
+      "source_labeled_japanese_name_rows": 39,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 96,
+      "expected_row_count": 96,
+      "failures": [],
+      "missing_japanese_name_rows": 96,
+      "passed": true,
+      "release_family_id": "jp_tcg_leaders_stadium_19981024",
+      "row_count": 96,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 96
+    }
+  ],
+  "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1"
+}
