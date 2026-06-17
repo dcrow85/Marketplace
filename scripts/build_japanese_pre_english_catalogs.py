@@ -36,6 +36,64 @@ POKECARDEX_BASE = "https://www.pokecardex.com"
 POKECARDEX_DATA_KEY = b"oe61R0RgVTJm9omokoKuRem2N2GUbUZ8"
 USER_AGENT = "MarketplaceCatalogBuilder/0.1 (+https://github.com/dcrow85/Marketplace)"
 
+UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
+    1: {"promo_family_id": "jp_promo_corocoro_first_19961015", "date_label": "1996-10-15", "date_source": "source_comment"},
+    4: {"promo_family_id": "jp_promo_how_to_play_book_19961130", "date_label": "1996-11-30", "date_source": "source_comment"},
+    5: {"promo_family_id": "jp_promo_corocoro_early_1997", "date_label": "1997-01-15", "date_source": "source_comment"},
+    6: {"promo_family_id": "jp_promo_accessory_book_199705_199706", "date_label": "1997-05-02", "date_source": "source_comment"},
+    7: {"promo_family_id": "jp_promo_corocoro_early_1997", "date_label": "1997-05-15", "date_source": "source_comment"},
+    8: {"promo_family_id": "jp_promo_accessory_book_199705_199706", "date_label": "1997-05-20", "date_source": "source_comment"},
+    9: {"promo_family_id": "jp_promo_accessory_book_199705_199706", "date_label": "1997-05-20", "date_source": "source_comment"},
+    10: {"promo_family_id": "jp_promo_accessory_book_199705_199706", "date_label": "1997-06-13", "date_source": "source_comment"},
+    11: {"promo_family_id": "jp_promo_first_official_tournament_199706", "date_label": "1997-06-14 to 1997-06-15", "date_source": "release_map"},
+    12: {"promo_family_id": "jp_promo_first_official_tournament_199706", "date_label": "1997-06-14 to 1997-06-15", "date_source": "release_map"},
+    13: {"promo_family_id": "jp_promo_first_official_tournament_199706", "date_label": "1997-06-14 to 1997-06-15", "date_source": "release_map"},
+    14: {"promo_family_id": "jp_promo_jr_east_stamp_rally_199708", "date_label": "1997-08-09 to 1997-08-17", "date_source": "source_comment"},
+    16: {"promo_family_id": "jp_promo_corocoro_early_1997", "date_label": "1997-08-15", "date_source": "source_comment"},
+    17: {"promo_family_id": "jp_promo_corocoro_early_1997", "date_label": "1997-08-15", "date_source": "source_comment"},
+    18: {"promo_family_id": "jp_promo_toyota_auto_199710_199712", "date_label": "1997-10 to 1997-12", "date_source": "source_comment"},
+    19: {"promo_family_id": "jp_promo_toyota_auto_199710_199712", "date_label": "1997-10 to 1997-12", "date_source": "source_comment"},
+    20: {"promo_family_id": "jp_promo_corocoro_early_1997", "date_label": "1997-10-15", "date_source": "source_comment"},
+    21: {"promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804", "date_label": "1997-11-08 to 1998-04-26", "date_source": "release_map"},
+    22: {"promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804", "date_label": "1997-11-08 to 1998-04-26", "date_source": "release_map"},
+    23: {"promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804", "date_label": "1997-11-08 to 1998-04-26", "date_source": "release_map"},
+    24: {"promo_family_id": "jp_promo_fan_club_vol3_19971118", "date_label": "1997-11-18", "date_source": "source_comment"},
+    25: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
+    26: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
+    27: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
+    28: {"promo_family_id": "jp_promo_n64_double_get_199712", "date_label": "1997-12-10 to 1998-01-31", "date_source": "source_comment"},
+    29: {"promo_family_id": "jp_promo_n64_double_get_199712", "date_label": "1997-12-10 to 1998-01-31", "date_source": "source_comment"},
+    30: {"promo_family_id": "jp_promo_corocoro_19971215", "date_label": "1997-12-15", "date_source": "source_comment"},
+    32: {"promo_family_id": "jp_promo_pokemon_illustrator_contests_1997_1998", "date_label": "1997-12 / 1998", "date_source": "release_map"},
+    33: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
+    34: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
+    35: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
+    36: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
+    37: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-02-15", "date_source": "source_comment"},
+    38: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-02-15", "date_source": "source_comment"},
+    39: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
+    40: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
+    41: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
+    42: {"promo_family_id": "jp_promo_garura_parent_child_199805", "date_label": "1998-05", "date_source": "release_map"},
+    43: {"promo_family_id": "jp_promo_garura_parent_child_199805", "date_label": "1998-05", "date_source": "release_map"},
+    45: {"promo_family_id": "jp_promo_kamex_mega_battle_199807", "date_label": "1998-07 to 1998-08", "date_source": "release_map"},
+    46: {"promo_family_id": "jp_promo_kamex_mega_battle_199807", "date_label": "1998-07 to 1998-08", "date_source": "release_map"},
+    47: {"promo_family_id": "jp_promo_kamex_mega_battle_199807", "date_label": "1998-07 to 1998-08", "date_source": "release_map"},
+    48: {"promo_family_id": "jp_promo_kamex_mega_battle_199807", "date_label": "1998-07 to 1998-08", "date_source": "release_map"},
+    49: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-07-15", "date_source": "source_comment"},
+    50: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-07-15", "date_source": "source_comment"},
+    51: {"promo_family_id": "jp_promo_ana_get_in_a_jet_199811", "date_label": "1998-11-01 to 1999-01-31", "date_source": "release_map"},
+    52: {"promo_family_id": "jp_promo_ana_get_in_a_jet_199811", "date_label": "1998-11-01 to 1999-01-31", "date_source": "release_map"},
+    53: {"promo_family_id": "jp_promo_all_card_calendar_19981105", "date_label": "1998-11-05", "date_source": "source_comment"},
+    54: {"promo_family_id": "jp_promo_latest_how_to_play_book_19981113", "date_label": "1998-11-13", "date_source": "source_comment"},
+    55: {"promo_family_id": "jp_promo_latest_how_to_play_book_19981113", "date_label": "1998-11-13", "date_source": "source_comment"},
+    56: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-11-15", "date_source": "source_comment"},
+    57: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-11-15", "date_source": "source_comment"},
+    58: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-11-15", "date_source": "source_comment"},
+    59: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-11-15", "date_source": "source_comment"},
+    60: {"promo_family_id": "jp_promo_card_gb_dragonite_19981218", "date_label": "1998-12-18", "date_source": "release_map"},
+}
+
 
 @dataclass(frozen=True)
 class ReleaseConfig:
@@ -48,12 +106,14 @@ class ReleaseConfig:
     prints_without_rarity_symbol: str
     symbol_status_confidence: str
     pokellector_path: str
+    date_precision: str = "exact"
     tcgdex_set_id: str | None = None
     source_adapter: str = "pokellector"
     pokecardex_code: str | None = None
     parent_release_family_id: str = ""
     product_card_count: int = 0
     product_count_basis: str = ""
+    strict_release_member: bool = True
     symbol_status_source_release_family_id: str = ""
     catalog_treatment: str = "Catalog target"
     note: str = ""
@@ -247,6 +307,24 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_count_basis="Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
         symbol_status_source_release_family_id="jp_tcg_quick_starter_gift_set_19981204",
         note="Child catalog for the green deck inside Quick Starter Gift Set. Parent product is two 60-card decks plus extras; this source exposes 32 unique rows.",
+    ),
+    ReleaseConfig(
+        release_family_id="jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        name_en="Unnumbered Promotional Pre-English Source Slice",
+        name_ja="プロモーションカード（英語版以前・出典抽出）",
+        release_date="1996-10-15/1999-01-31",
+        expected_row_count=len(UPC_PRE_ENGLISH_PROMO_CONTEXT),
+        release_type="promo_aggregate_filtered_rows",
+        prints_without_rarity_symbol="mixed",
+        symbol_status_confidence="medium",
+        pokellector_path="",
+        date_precision="source_slice_mixed_range_crosses_cutoff",
+        source_adapter="pokecardex_upc_pre_english",
+        pokecardex_code="UPC",
+        product_count_basis="Filtered aggregate from PokéCardex Unnumbered Promotional rows. Rows are included only when the source comment or release map places the distribution before English Base Set.",
+        strict_release_member=False,
+        catalog_treatment="Promo target",
+        note="Aggregate source slice for pre-English unnumbered promos. It preserves UPC source sort and promo-family context; later work may split these into smaller per-distribution release catalogs.",
     ),
 )
 
@@ -451,6 +529,9 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
     cards: list[dict[str, Any]] = []
     for card in sorted(payload.get("cartes", []), key=lambda item: int(item.get("sort", 0))):
         sort_value = int(card.get("sort", 0))
+        promo_context = UPC_PRE_ENGLISH_PROMO_CONTEXT.get(sort_value) if config.source_adapter == "pokecardex_upc_pre_english" else None
+        if config.source_adapter == "pokecardex_upc_pre_english" and not promo_context:
+            continue
         local_id = f"{sort_value:03d}"
         image_url = f"{POKECARDEX_BASE}/assets/images/sets_jp/{config.pokecardex_code}/{sort_value}.jpg"
         provider_id = f"pokecardex:{card.get('id_card')}"
@@ -473,6 +554,7 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                 "provider_row": {
                     "adapter": "pokecardex",
                     "cardmarket_url": card.get("cardmarket_url"),
+                    "comment": card.get("comment", ""),
                     "id_card": card.get("id_card"),
                     "id_tcgplayer": card.get("id_tcgplayer"),
                     "illustrator": card.get("nom_illustrateur", ""),
@@ -490,10 +572,11 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                     "exactness_basis": [
                         "same PokéCardex Japanese series page",
                         "same decrypted source row order",
-                        "same provider image path derived by the site bundle",
+                        "same provider image path convention derived from the public site bundle",
+                        "not a per-row image field inside the decrypted source payload",
                     ],
                     "image_large": image_url,
-                    "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+                    "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
                     "image_small": image_url,
                     "not_allowed_by_default": ["training", "seller evidence", "authentication proof"],
                     "not_claiming": ["seller possession", "seller card match", "condition", "authenticity"],
@@ -504,16 +587,18 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                     "row_id": f"{config.release_family_id}:{local_id}",
                     "source": "PokéCardex",
                     "source_page_url": set_url,
-                    "status": "exact_source_image",
-                    "verification_status": "source_payload_exact_row_external_witness",
+                    "status": "provider_path_reference_image",
+                    "verification_status": "provider_path_derived_external_reference_witness",
                 },
                 "pokecardex_profile": {
+                    "comment": card.get("comment", ""),
                     "dex_id": card.get("id_pokedex_list") or ([card.get("id_pokedex")] if card.get("id_pokedex") else []),
                     "illustrator": card.get("nom_illustrateur", ""),
                     "name_card_de": card.get("name_card_de", ""),
                     "name_card_fr": card.get("name_card_fr", ""),
                     "versions": card.get("versions", []),
                 },
+                **({"promo_context": promo_context} if promo_context else {}),
             }
         )
     source = {
@@ -598,6 +683,7 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
     illustrator_display = f"Illus. {illustrator_name}" if illustrator_name else ""
     symbol_source_release_id = config.symbol_status_source_release_family_id or config.release_family_id
     symbol_source_mode = "inherited_from_parent_release_family" if symbol_source_release_id != config.release_family_id else "direct_release_family"
+    promo_context = source_row.get("promo_context", {})
     return {
         "schema": "marketplace.japanese_pre_english_card_row.v0.1",
         "row_id": row_id,
@@ -609,6 +695,15 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         "romaji": "",
         "name_source_note": source_row["name_source_note"],
         "category": category or ("Pokemon" if source_profile.get("dex_id") else ""),
+        "promo_context": {
+            "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+            "date_label": promo_context.get("date_label", ""),
+            "date_source": promo_context.get("date_source", ""),
+            "distribution_comment": provider_row.get("comment", ""),
+            "promo_family_id": promo_context.get("promo_family_id", ""),
+            "source_sort": provider_row.get("sort", ""),
+            "not_claiming": ["official copy count", "seller possession", "authenticity", "condition"],
+        } if promo_context else {},
         "rarity_source": rarity,
         "holo_source": bool(variants.get("holo")),
         "pokemon_profile": profile,
@@ -635,13 +730,20 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
             "product_card_count": config.product_card_count,
             "product_count_basis": config.product_count_basis,
             "release_date": config.release_date,
+            "date_precision": config.date_precision,
             "release_type": config.release_type,
-            "strict_release_member": True,
+            "strict_release_member": config.strict_release_member,
+            "membership_note": (
+                "Synthetic source slice member; use promo_context for the narrower distribution family."
+                if not config.strict_release_member
+                else "Strict release-family catalog row."
+            ),
             "unique_catalog_row_count": config.expected_row_count,
         },
         "symbol_status": {
             "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
             "confidence": config.symbol_status_confidence,
+            "scope": "release_context_not_row_fact",
             "source_mode": symbol_source_mode,
             "source_release_family_id": symbol_source_release_id,
             "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
@@ -689,7 +791,7 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
 def build_release(config: ReleaseConfig) -> dict[str, Any]:
     if config.source_adapter == "pokellector":
         source_rows, primary_source = parse_pokellector_set(config)
-    elif config.source_adapter == "pokecardex":
+    elif config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english"}:
         source_rows, primary_source = parse_pokecardex_set(config)
     else:
         raise ValueError(f"unknown source_adapter={config.source_adapter}")
@@ -709,13 +811,14 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
             "name_en": config.name_en,
             "name_ja": config.name_ja,
             "release_date": config.release_date,
-            "date_precision": "exact",
+            "date_precision": config.date_precision,
             "release_type": config.release_type,
             "expected_row_count": config.expected_row_count,
             "count_confidence": count_confidence,
             "parent_release_family_id": config.parent_release_family_id,
             "product_card_count": config.product_card_count,
             "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
             "unique_catalog_row_count": config.expected_row_count,
             "catalog_treatment": config.catalog_treatment,
             "note": config.note,
@@ -724,6 +827,7 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
             "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
             "confidence": config.symbol_status_confidence,
             "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+            "scope": "release_context_not_row_fact",
             "source_mode": symbol_source_mode,
             "source_release_family_id": symbol_source_release_id,
             "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity claim"],
@@ -744,31 +848,92 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
 
 def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     cards = release.get("cards", [])
-    expected = release.get("release", {}).get("expected_row_count")
+    release_meta = release.get("release", {})
+    expected = release_meta.get("expected_row_count")
+    release_type = release_meta.get("release_type", "")
     row_ids = [card.get("row_id") for card in cards]
-    image_rows = [card for card in cards if card.get("image_provenance", {}).get("status") == "exact_source_image"]
+    image_witness_statuses = {"exact_source_image", "provider_path_reference_image"}
+    image_rows = [card for card in cards if card.get("image_provenance", {}).get("status") in image_witness_statuses]
+    exact_source_image_rows = [card for card in cards if card.get("image_provenance", {}).get("status") == "exact_source_image"]
+    provider_path_reference_image_rows = [
+        card for card in cards if card.get("image_provenance", {}).get("status") == "provider_path_reference_image"
+    ]
     tcgdex_rows = [card for card in cards if card.get("tcgdex", {}).get("id")]
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
+    promo_context_rows = [card for card in cards if card.get("promo_context", {}).get("promo_family_id")]
     failures: list[str] = []
     if len(cards) != expected:
         failures.append(f"row_count_mismatch expected={expected} actual={len(cards)}")
     if len(set(row_ids)) != len(row_ids):
         failures.append("duplicate_row_ids")
+    if release_type == "promo_aggregate_filtered_rows" and release_meta.get("strict_release_member") is not False:
+        failures.append("promo_aggregate_strict_release_member_overclaim")
     for card in cards:
         image = card.get("image_provenance", {})
-        if image.get("status") != "exact_source_image":
-            failures.append(f"{card.get('row_id')}: image_not_exact_source")
+        provider_row = card.get("provider_row", {})
+        if image.get("status") not in image_witness_statuses:
+            failures.append(f"{card.get('row_id')}: image_not_reference_witness")
         if "seller possession" not in card.get("not_claiming", []):
             failures.append(f"{card.get('row_id')}: missing_seller_possession_boundary")
         if image.get("rights_status") != "external_reference_witness":
             failures.append(f"{card.get('row_id')}: image_rights_status_not_external_witness")
         if image.get("display_allowed") is not False:
             failures.append(f"{card.get('row_id')}: image_display_not_fail_closed")
+        if provider_row.get("adapter") == "pokecardex":
+            expected_url = (
+                f"{POKECARDEX_BASE}/assets/images/sets_jp/"
+                f"{provider_row.get('series_code')}/{provider_row.get('sort')}.jpg"
+            )
+            if image.get("image_large") != expected_url or image.get("image_small") != expected_url:
+                failures.append(f"{card.get('row_id')}: pokecardex_image_url_not_provider_path")
+            if image.get("status") != "provider_path_reference_image":
+                failures.append(f"{card.get('row_id')}: pokecardex_image_status_overclaims_exact_source")
+            if image.get("verification_status") != "provider_path_derived_external_reference_witness":
+                failures.append(f"{card.get('row_id')}: pokecardex_image_verification_status_overclaims")
+            pokecardex_contacts = [
+                contact
+                for contact in card.get("source_contacts", [])
+                if contact.get("source") == "PokéCardex"
+            ]
+            if not any(
+                contact.get("card_data_hash") and contact.get("encrypted_page_sha256")
+                for contact in pokecardex_contacts
+            ):
+                failures.append(f"{card.get('row_id')}: missing_pokecardex_source_hash")
+        if card.get("symbol_status", {}).get("scope") != "release_context_not_row_fact":
+            failures.append(f"{card.get('row_id')}: missing_symbol_status_scope")
+        if release_type == "promo_aggregate_filtered_rows":
+            promo_context = card.get("promo_context", {})
+            source_sort = provider_row.get("sort")
+            expected_context = UPC_PRE_ENGLISH_PROMO_CONTEXT.get(int(source_sort)) if source_sort is not None else None
+            if not expected_context:
+                failures.append(f"{card.get('row_id')}: promo_context_sort_not_in_selection_table")
+            elif {
+                "promo_family_id": promo_context.get("promo_family_id"),
+                "date_label": promo_context.get("date_label"),
+                "date_source": promo_context.get("date_source"),
+            } != {
+                "promo_family_id": expected_context.get("promo_family_id"),
+                "date_label": expected_context.get("date_label"),
+                "date_source": expected_context.get("date_source"),
+            }:
+                failures.append(f"{card.get('row_id')}: promo_context_mismatch")
+            if promo_context.get("source_sort") != source_sort:
+                failures.append(f"{card.get('row_id')}: promo_source_sort_mismatch")
+            if source_sort is None:
+                failures.append(f"{card.get('row_id')}: missing_source_sort")
+            elif card.get("local_id") != f"{int(source_sort):03d}":
+                failures.append(f"{card.get('row_id')}: local_id_not_source_sort")
+            if card.get("product_scope", {}).get("strict_release_member") is not False:
+                failures.append(f"{card.get('row_id')}: promo_row_strict_release_member_overclaim")
     return {
-        "release_family_id": release.get("release", {}).get("release_family_id"),
+        "release_family_id": release_meta.get("release_family_id"),
         "row_count": len(cards),
         "expected_row_count": expected,
         "exact_image_witness_rows": len(image_rows),
+        "exact_source_image_rows": len(exact_source_image_rows),
+        "provider_path_reference_image_rows": len(provider_path_reference_image_rows),
+        "promo_context_rows": len(promo_context_rows),
         "source_labeled_japanese_name_rows": len(name_ja_rows),
         "missing_japanese_name_rows": len(cards) - len(name_ja_rows),
         "tcgdex_enriched_rows": len(tcgdex_rows),
@@ -809,6 +974,11 @@ def main() -> int:
                 "row_count": len(release["cards"]),
                 "expected_row_count": config.expected_row_count,
                 "exact_image_witness_rows": audit["exact_image_witness_rows"],
+                "exact_source_image_rows": audit["exact_source_image_rows"],
+                "provider_path_reference_image_rows": audit["provider_path_reference_image_rows"],
+                "source_labeled_japanese_name_rows": audit["source_labeled_japanese_name_rows"],
+                "missing_japanese_name_rows": audit["missing_japanese_name_rows"],
+                "promo_context_rows": audit["promo_context_rows"],
                 "tcgdex_set_id": config.tcgdex_set_id or "",
                 "source_adapter": config.source_adapter,
                 "source_url": source_url,
@@ -821,9 +991,11 @@ def main() -> int:
         "release_count": len(manifests),
         "total_rows": sum(item["row_count"] for item in manifests),
         "exact_image_witness_rows": sum(item["exact_image_witness_rows"] for item in manifests),
+        "exact_source_image_rows": sum(item["exact_source_image_rows"] for item in manifests),
+        "provider_path_reference_image_rows": sum(item["provider_path_reference_image_rows"] for item in manifests),
         "hash_algorithm": "sha256",
         "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-        "source_contact_policy": "Images are exact external reference witnesses only and are not approved display/training/seller evidence by default.",
+        "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images from provider-path-derived reference images.",
         "releases": manifests,
         "not_claiming": [
             "complete pre-English catalog",
@@ -841,6 +1013,8 @@ def main() -> int:
         "release_count": len(audit_rows),
         "total_rows": sum(row["row_count"] for row in audit_rows),
         "exact_image_witness_rows": sum(row["exact_image_witness_rows"] for row in audit_rows),
+        "exact_source_image_rows": sum(row["exact_source_image_rows"] for row in audit_rows),
+        "provider_path_reference_image_rows": sum(row["provider_path_reference_image_rows"] for row in audit_rows),
         "tcgdex_enriched_rows": sum(row["tcgdex_enriched_rows"] for row in audit_rows),
         "release_audits": audit_rows,
         "not_claiming": [

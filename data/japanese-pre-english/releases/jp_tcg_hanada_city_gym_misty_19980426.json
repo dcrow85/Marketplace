@@ -39,10 +39,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/1.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/1.jpg",
         "not_allowed_by_default": [
           "training",
@@ -62,8 +63,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:001",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -122,7 +123,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -131,6 +134,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Psyduck-CGH",
@@ -183,6 +187,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -240,10 +245,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/2.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/2.jpg",
         "not_allowed_by_default": [
           "training",
@@ -263,8 +269,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:002",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -323,7 +329,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -332,6 +340,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Poliwag-CGH",
@@ -384,6 +393,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -441,10 +451,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/3.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/3.jpg",
         "not_allowed_by_default": [
           "training",
@@ -464,8 +475,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:003",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -524,7 +535,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -533,6 +546,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Tentacool-CGH",
@@ -585,6 +599,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -642,10 +657,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/4.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/4.jpg",
         "not_allowed_by_default": [
           "training",
@@ -665,8 +681,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:004",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -725,7 +741,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -734,6 +752,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -786,6 +805,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -843,10 +863,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/5.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/5.jpg",
         "not_allowed_by_default": [
           "training",
@@ -866,8 +887,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:005",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -926,7 +947,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -935,6 +958,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Seel-CGH",
@@ -987,6 +1011,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -1044,10 +1069,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/6.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/6.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1067,8 +1093,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:006",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1127,7 +1153,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1136,6 +1164,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Shellder-CGH",
@@ -1188,6 +1217,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -1245,10 +1275,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/7.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/7.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1268,8 +1299,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:007",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1328,7 +1359,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1337,6 +1370,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Cloyster-CGH",
@@ -1389,6 +1423,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -1446,10 +1481,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/8.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/8.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1469,8 +1505,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:008",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1529,7 +1565,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1538,6 +1576,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1590,6 +1629,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -1647,10 +1687,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/9.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/9.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1670,8 +1711,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:009",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1730,7 +1771,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1739,6 +1782,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Goldeen-CGH",
@@ -1791,6 +1835,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -1848,10 +1893,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/10.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/10.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1871,8 +1917,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:010",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1931,7 +1977,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1940,6 +1988,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1992,6 +2041,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -2049,10 +2099,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/11.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/11.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2072,8 +2123,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:011",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2132,7 +2183,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2141,6 +2194,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Seaking-CGH",
@@ -2202,6 +2256,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -2259,10 +2314,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/12.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/12.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2282,8 +2338,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:012",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2342,7 +2398,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2351,6 +2409,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Staryu-CGH",
@@ -2403,6 +2462,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -2460,10 +2520,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/13.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/13.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2483,8 +2544,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:013",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2543,7 +2604,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2552,6 +2615,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2604,6 +2668,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -2661,10 +2726,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/14.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/14.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2684,8 +2750,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:014",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2744,7 +2810,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2753,6 +2821,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Mistys-Starmie-CGH",
@@ -2805,6 +2874,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -2862,10 +2932,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/15.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/15.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2885,8 +2956,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:015",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2943,7 +3014,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2952,6 +3025,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Hanada-City-Gym/Misty-CGH",
@@ -3004,6 +3078,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -3061,10 +3136,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/16.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/16.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3084,8 +3160,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:016",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3142,7 +3218,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3151,6 +3229,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3203,6 +3282,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -3260,10 +3340,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/17.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/17.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3283,8 +3364,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:017",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3341,7 +3422,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3350,6 +3433,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3402,6 +3486,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -3459,10 +3544,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/18.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/18.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3482,8 +3568,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:018",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3540,7 +3626,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3549,6 +3637,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3601,6 +3690,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -3658,10 +3748,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/19.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/19.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3681,8 +3772,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:019",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3739,7 +3830,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3748,6 +3841,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3800,6 +3894,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -3857,10 +3952,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/20.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/20.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3880,8 +3976,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:020",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3938,7 +4034,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3947,6 +4045,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3999,6 +4098,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -4056,10 +4156,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/21.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/21.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4079,8 +4180,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:021",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4137,7 +4238,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4146,6 +4249,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4198,6 +4302,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -4255,10 +4360,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/22.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/22.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4278,8 +4384,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:022",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4336,7 +4442,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4345,6 +4453,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4397,6 +4506,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -4454,10 +4564,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/23.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/23.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4477,8 +4588,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:023",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4535,7 +4646,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4544,6 +4657,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4596,6 +4710,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -4653,10 +4768,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/24.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/HCGYM/24.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4676,8 +4792,8 @@
         "row_id": "jp_tcg_hanada_city_gym_misty_19980426:024",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/HCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4734,7 +4850,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Hanada City Gym / Misty; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ハナダシティジム カスミ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4743,6 +4861,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 24
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4795,6 +4914,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"
       },
@@ -4836,6 +4956,7 @@
     "release_date": "1998-04-26",
     "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
     "release_type": "gym_standard_deck_unique_rows",
+    "strict_release_member": true,
     "unique_catalog_row_count": 24
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
@@ -4869,6 +4990,7 @@
       "Base No Rarity claim"
     ],
     "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
     "source_mode": "direct_release_family",
     "source_release_family_id": "jp_tcg_hanada_city_gym_misty_19980426"

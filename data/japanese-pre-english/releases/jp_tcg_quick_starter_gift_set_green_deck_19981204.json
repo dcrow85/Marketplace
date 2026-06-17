@@ -39,10 +39,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/1.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/1.jpg",
         "not_allowed_by_default": [
           "training",
@@ -62,8 +63,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:001",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -122,7 +123,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -131,6 +134,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -183,6 +187,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -240,10 +245,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/2.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/2.jpg",
         "not_allowed_by_default": [
           "training",
@@ -263,8 +269,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:002",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -323,7 +329,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -332,6 +340,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -384,6 +393,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -441,10 +451,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/3.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/3.jpg",
         "not_allowed_by_default": [
           "training",
@@ -464,8 +475,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:003",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -524,7 +535,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -533,6 +546,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -585,6 +599,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -642,10 +657,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/4.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/4.jpg",
         "not_allowed_by_default": [
           "training",
@@ -665,8 +681,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:004",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -725,7 +741,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -734,6 +752,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -786,6 +805,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -843,10 +863,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/5.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/5.jpg",
         "not_allowed_by_default": [
           "training",
@@ -866,8 +887,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:005",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -926,7 +947,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -935,6 +958,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -987,6 +1011,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -1044,10 +1069,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/6.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/6.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1067,8 +1093,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:006",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1127,7 +1153,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -1136,6 +1164,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1188,6 +1217,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -1245,10 +1275,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/7.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/7.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1268,8 +1299,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:007",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1328,7 +1359,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -1337,6 +1370,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1389,6 +1423,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -1446,10 +1481,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/8.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/8.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1469,8 +1505,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:008",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1529,7 +1565,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -1538,6 +1576,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1590,6 +1629,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -1647,10 +1687,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/9.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/9.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1670,8 +1711,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:009",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1730,7 +1771,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -1739,6 +1782,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1791,6 +1835,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -1848,10 +1893,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/10.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/10.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1871,8 +1917,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:010",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1931,7 +1977,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -1940,6 +1988,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1992,6 +2041,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -2049,10 +2099,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/11.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/11.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2072,8 +2123,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:011",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2132,7 +2183,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -2141,6 +2194,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2193,6 +2247,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -2250,10 +2305,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/12.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/12.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2273,8 +2329,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:012",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2333,7 +2389,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -2342,6 +2400,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2394,6 +2453,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -2451,10 +2511,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/13.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/13.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2474,8 +2535,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:013",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2534,7 +2595,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -2543,6 +2606,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2595,6 +2659,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -2652,10 +2717,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/14.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/14.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2675,8 +2741,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:014",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2735,7 +2801,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -2744,6 +2812,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2796,6 +2865,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -2853,10 +2923,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/15.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/15.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2876,8 +2947,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:015",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2936,7 +3007,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -2945,6 +3018,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2997,6 +3071,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -3054,10 +3129,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/16.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/16.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3077,8 +3153,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:016",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3137,7 +3213,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -3146,6 +3224,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3198,6 +3277,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -3255,10 +3335,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/17.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/17.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3278,8 +3359,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:017",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3338,7 +3419,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -3347,6 +3430,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3399,6 +3483,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -3456,10 +3541,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/18.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/18.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3479,8 +3565,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:018",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3539,7 +3625,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -3548,6 +3636,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3600,6 +3689,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -3657,10 +3747,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/19.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/19.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3680,8 +3771,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:019",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3740,7 +3831,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -3749,6 +3842,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3801,6 +3895,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -3858,10 +3953,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/20.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/20.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3881,8 +3977,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:020",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3941,7 +4037,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -3950,6 +4048,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4002,6 +4101,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -4059,10 +4159,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/21.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/21.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4082,8 +4183,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:021",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4142,7 +4243,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -4151,6 +4254,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4203,6 +4307,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -4260,10 +4365,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/22.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/22.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4283,8 +4389,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:022",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4343,7 +4449,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -4352,6 +4460,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4404,6 +4513,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -4461,10 +4571,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/23.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/23.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4484,8 +4595,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:023",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4544,7 +4655,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -4553,6 +4666,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4605,6 +4719,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -4662,10 +4777,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/24.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/24.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4685,8 +4801,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:024",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4745,7 +4861,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -4754,6 +4872,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4806,6 +4925,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -4863,10 +4983,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/25.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/25.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4886,8 +5007,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:025",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4946,7 +5067,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -4955,6 +5078,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -5007,6 +5131,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -5064,10 +5189,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/26.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/26.jpg",
         "not_allowed_by_default": [
           "training",
@@ -5087,8 +5213,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:026",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -5145,7 +5271,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -5154,6 +5282,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -5206,6 +5335,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -5263,10 +5393,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/27.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/27.jpg",
         "not_allowed_by_default": [
           "training",
@@ -5286,8 +5417,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:027",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -5344,7 +5475,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -5353,6 +5486,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -5405,6 +5539,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -5462,10 +5597,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/28.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/28.jpg",
         "not_allowed_by_default": [
           "training",
@@ -5485,8 +5621,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:028",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -5543,7 +5679,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -5552,6 +5690,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -5604,6 +5743,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -5661,10 +5801,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/29.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/29.jpg",
         "not_allowed_by_default": [
           "training",
@@ -5684,8 +5825,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:029",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -5742,7 +5883,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -5751,6 +5894,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -5803,6 +5947,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -5860,10 +6005,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/30.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/30.jpg",
         "not_allowed_by_default": [
           "training",
@@ -5883,8 +6029,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:030",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -5941,7 +6087,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -5950,6 +6098,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -6002,6 +6151,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -6059,10 +6209,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/31.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/31.jpg",
         "not_allowed_by_default": [
           "training",
@@ -6082,8 +6233,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:031",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -6140,7 +6291,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -6149,6 +6302,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -6201,6 +6355,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -6258,10 +6413,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/32.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/QSGSG/32.jpg",
         "not_allowed_by_default": [
           "training",
@@ -6281,8 +6437,8 @@
         "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:032",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/QSGSG",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -6339,7 +6495,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Quick Starter Gift Set Green Deck; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "クイックスターターギフト 緑デッキ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
         "product_card_count": 60,
         "product_count_basis": "Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
@@ -6348,6 +6506,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 32
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -6400,6 +6559,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "inherited_from_parent_release_family",
         "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"
       },
@@ -6441,6 +6601,7 @@
     "release_date": "1998-12-04",
     "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
     "release_type": "deck_kit_unique_rows",
+    "strict_release_member": true,
     "unique_catalog_row_count": 32
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
@@ -6474,6 +6635,7 @@
       "Base No Rarity claim"
     ],
     "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
     "source_mode": "inherited_from_parent_release_family",
     "source_release_family_id": "jp_tcg_quick_starter_gift_set_19981204"

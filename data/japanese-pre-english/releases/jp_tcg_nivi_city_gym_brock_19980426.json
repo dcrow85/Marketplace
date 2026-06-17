@@ -39,10 +39,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/1.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/1.jpg",
         "not_allowed_by_default": [
           "training",
@@ -62,8 +63,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:001",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -122,7 +123,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -131,6 +134,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Zubat-CGN",
@@ -192,6 +196,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -249,10 +254,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/2.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/2.jpg",
         "not_allowed_by_default": [
           "training",
@@ -272,8 +278,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:002",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -332,7 +338,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -341,6 +349,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -393,6 +402,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -450,10 +460,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/3.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/3.jpg",
         "not_allowed_by_default": [
           "training",
@@ -473,8 +484,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:003",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -533,7 +544,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -542,6 +555,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Sandshrew-CGN",
@@ -594,6 +608,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -651,10 +666,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/4.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/4.jpg",
         "not_allowed_by_default": [
           "training",
@@ -674,8 +690,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:004",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -734,7 +750,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -743,6 +761,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Sandslash-CGN",
@@ -795,6 +814,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -852,10 +872,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/5.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/5.jpg",
         "not_allowed_by_default": [
           "training",
@@ -875,8 +896,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:005",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -935,7 +956,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -944,6 +967,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Mankey-CGN",
@@ -996,6 +1020,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -1053,10 +1078,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/6.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/6.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1076,8 +1102,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:006",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1136,7 +1162,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1145,6 +1173,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Geodude-CGN",
@@ -1197,6 +1226,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -1254,10 +1284,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/7.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/7.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1277,8 +1308,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:007",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1337,7 +1368,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1346,6 +1379,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1398,6 +1432,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -1455,10 +1490,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/8.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/8.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1478,8 +1514,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:008",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1538,7 +1574,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1547,6 +1585,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Graveler-CGN",
@@ -1599,6 +1638,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -1656,10 +1696,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/9.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/9.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1679,8 +1720,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:009",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1739,7 +1780,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1748,6 +1791,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -1800,6 +1844,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -1857,10 +1902,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/10.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/10.jpg",
         "not_allowed_by_default": [
           "training",
@@ -1880,8 +1926,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:010",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -1940,7 +1986,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -1949,6 +1997,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Onix-CGN",
@@ -2001,6 +2050,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -2058,10 +2108,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/11.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/11.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2081,8 +2132,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:011",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2141,7 +2192,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2150,6 +2203,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2202,6 +2256,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -2259,10 +2314,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/12.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/12.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2282,8 +2338,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:012",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2342,7 +2398,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2351,6 +2409,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brocks-Rhyhorn-CGN",
@@ -2403,6 +2462,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -2460,10 +2520,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/13.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/13.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2483,8 +2544,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:013",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2543,7 +2604,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2552,6 +2615,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2604,6 +2668,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -2661,10 +2726,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/14.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/14.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2684,8 +2750,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:014",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2742,7 +2808,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2751,6 +2819,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -2803,6 +2872,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -2860,10 +2930,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/15.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/15.jpg",
         "not_allowed_by_default": [
           "training",
@@ -2883,8 +2954,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:015",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -2941,7 +3012,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -2950,6 +3023,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3002,6 +3076,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -3059,10 +3134,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/16.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/16.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3082,8 +3158,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:016",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3140,7 +3216,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3149,6 +3227,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3201,6 +3280,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -3258,10 +3338,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/17.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/17.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3281,8 +3362,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:017",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3339,7 +3420,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3348,6 +3431,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3400,6 +3484,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -3457,10 +3542,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/18.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/18.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3480,8 +3566,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:018",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3538,7 +3624,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3547,6 +3635,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": "Nivi-City-Gym/Brock-CGN",
@@ -3599,6 +3688,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -3656,10 +3746,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/19.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/19.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3679,8 +3770,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:019",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3737,7 +3828,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3746,6 +3839,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3798,6 +3892,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -3855,10 +3950,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/20.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/20.jpg",
         "not_allowed_by_default": [
           "training",
@@ -3878,8 +3974,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:020",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -3936,7 +4032,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -3945,6 +4043,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -3997,6 +4096,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -4054,10 +4154,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/21.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/21.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4077,8 +4178,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:021",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4135,7 +4236,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4144,6 +4247,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4196,6 +4300,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -4253,10 +4358,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/22.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/22.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4276,8 +4382,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:022",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4334,7 +4440,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4343,6 +4451,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4395,6 +4504,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -4452,10 +4562,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/23.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/23.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4475,8 +4586,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:023",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4533,7 +4644,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4542,6 +4655,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4594,6 +4708,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -4651,10 +4766,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/24.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/24.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4674,8 +4790,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:024",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4732,7 +4848,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4741,6 +4859,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4793,6 +4912,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -4850,10 +4970,11 @@
         "exactness_basis": [
           "same PokéCardex Japanese series page",
           "same decrypted source row order",
-          "same provider image path derived by the site bundle"
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
         ],
         "image_large": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/25.jpg",
-        "image_role": "Exact external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
         "image_small": "https://www.pokecardex.com/assets/images/sets_jp/NCGYM/25.jpg",
         "not_allowed_by_default": [
           "training",
@@ -4873,8 +4994,8 @@
         "row_id": "jp_tcg_nivi_city_gym_brock_19980426:025",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/NCGYM",
-        "status": "exact_source_image",
-        "verification_status": "source_payload_exact_row_external_witness"
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
       },
       "information_audit": {
         "agent_only": [
@@ -4931,7 +5052,9 @@
         "authority": "Release-family catalog row derived from source-attributed PokéCardex Japanese set page and TCGdex metadata where available.",
         "catalog_treatment": "Catalog target",
         "counting_note": "This row belongs to Nivi City Gym / Brock; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
         "japanese_set_name": "ニビシティジム タケシ",
+        "membership_note": "Strict release-family catalog row.",
         "parent_release_family_id": "",
         "product_card_count": 64,
         "product_count_basis": "60-card deck plus 4 additional cards; source catalog exposes unique rows only.",
@@ -4940,6 +5063,7 @@
         "strict_release_member": true,
         "unique_catalog_row_count": 25
       },
+      "promo_context": {},
       "provider_row": {
         "adapter": "pokecardex",
         "cardmarket_url": null,
@@ -4992,6 +5116,7 @@
           "seller possession"
         ],
         "prints_without_rarity_symbol": "yes",
+        "scope": "release_context_not_row_fact",
         "source_mode": "direct_release_family",
         "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
       },
@@ -5033,6 +5158,7 @@
     "release_date": "1998-04-26",
     "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
     "release_type": "gym_standard_deck_unique_rows",
+    "strict_release_member": true,
     "unique_catalog_row_count": 25
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
@@ -5066,6 +5192,7 @@
       "Base No Rarity claim"
     ],
     "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
     "source_mode": "direct_release_family",
     "source_release_family_id": "jp_tcg_nivi_city_gym_brock_19980426"
