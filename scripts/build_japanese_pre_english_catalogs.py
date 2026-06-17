@@ -90,6 +90,11 @@ TOYOTA_AUTO_CAMPAIGN_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_toyota_auto_campaign_1997_selected_lines.json"
 )
+N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_n64_double_get_campaign_1997_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -302,6 +307,33 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "and Pikachu rows to this exact family. This source slice models those card "
             "identities only; it does not model dealership participation, pamphlet-object "
             "variants, redemption volume, or copy-count claims."
+        ),
+    },
+    "jp_promo_n64_double_get_199712": {
+        "source_snapshot": "n64_double_get_campaign_1997",
+        "expected_source_card_count": 2,
+        "expected_cards": [
+            "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
+            "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
+        ],
+        "modeled_source_sorts": [28, 29],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Nintendo 64 W Double Get Campaign",
+            "Between December 10, 1997 and January 31, 1998",
+            "purchased a Nintendo 64 were given 2 new promo cards: Hungry Snorlax and Cool Porygon",
+            "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "These reprints were identical to the ones distributed with the Nintendo 64 campaign",
+            "Sealed CD + booklet",
+            "Nintendo 64 W Double Get Campaign launches",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents the Nintendo 64 W Double Get campaign and its two promo card "
+            "identities, and the current PokéCardex UPC aggregate source-pins Cool Porygon "
+            "and Hungry Snorlax rows to this exact family. This source slice models those "
+            "card identities only; it does not model sealed CD/booklet variants, Food counter "
+            "tokens, store participation, purchase volume, or copy-count claims."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -865,6 +897,37 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_n64_double_get_199712",
+        name_en="Nintendo 64 W Double Get Campaign source slice",
+        name_ja="NINTENDO64 Wゲットキャンペーン プロモ",
+        release_date="1997-12-10/1998-01-31",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range_crosses_year",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents the Nintendo 64 W Double Get campaign as running from "
+            "December 10, 1997 to January 31, 1998 with two promo cards, Hungry Snorlax "
+            "and Cool Porygon. This child slice models the two currently source-pinned "
+            "PokéCardex UPC rows; it does not claim copy counts, participating store "
+            "coverage, sealed CD/booklet variants, Food counter token completeness, or a "
+            "complete campaign-object ledger, and it is not a complete family checklist "
+            "beyond the source-pinned card pair."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the Nintendo "
+            "64 W Double Get Campaign. Use it to preserve the Cool Porygon/Hungry Snorlax "
+            "campaign lane while keeping CD/booklet, token, store, and copy-count claims "
+            "outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1249,6 +1312,25 @@ def toyota_auto_campaign_source_snapshot() -> dict[str, Any]:
     }
 
 
+def n64_double_get_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon"),
+        "snapshot_path": str(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
     if snapshot_id == "early_1996_promos":
         return early_1996_promo_source_snapshot()
@@ -1262,6 +1344,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return fan_club_vol3_source_snapshot()
     if snapshot_id == "toyota_auto_campaign_1997":
         return toyota_auto_campaign_source_snapshot()
+    if snapshot_id == "n64_double_get_campaign_1997":
+        return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
 
 
