@@ -60,6 +60,11 @@ TEAM_ROCKET_GIFT_PACK_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokemonwiki_team_rocket_gift_pack_19971219_selected_lines.json"
 )
+EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_early_1996_promos_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -129,6 +134,33 @@ UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
 
 UPC_BULBAPEDIA_CARD_PAGES: dict[int, str] = {
     60: f"{BULBAPEDIA_BASE}/wiki/Dragonite_%28Pok%C3%A9mon_Card_GB_promo%29",
+}
+
+PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
+    "jp_promo_corocoro_first_19961015": {
+        "source_snapshot": "early_1996_promos",
+        "expected_source_card_count": 2,
+        "expected_cards": ["Pikachu [Glossy, Ken Sugimori]", "Jigglypuff [Glossy]"],
+        "modeled_source_sorts": [1],
+        "unmodeled_expected_cards": ["Jigglypuff [Glossy]"],
+        "source_gap_reason": (
+            "Bulbapedia lists glossy Pikachu and glossy Jigglypuff for CoroCoro Comic "
+            "November 1996, but the current PokéCardex UPC aggregate source-pins only "
+            "Pikachu to this exact family."
+        ),
+    },
+    "jp_promo_how_to_play_book_19961130": {
+        "source_snapshot": "early_1996_promos",
+        "expected_source_card_count": 2,
+        "expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]", "Jigglypuff [Non-glossy]"],
+        "modeled_source_sorts": [4],
+        "unmodeled_expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]"],
+        "source_gap_reason": (
+            "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily "
+            "Understand How to Play Pokemon Cards, but the current PokéCardex UPC "
+            "aggregate source-pins only Jigglypuff to this exact family."
+        ),
+    },
 }
 
 
@@ -501,6 +533,58 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         note="Aggregate source slice for pre-English unnumbered promos. It preserves UPC source sort and promo-family context; later work may split these into smaller per-distribution release catalogs.",
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_corocoro_first_19961015",
+        name_en="First CoroCoro glossy promos source slice",
+        name_ja="月刊コロコロコミック1996年11月号プロモ",
+        release_date="1996-10-15",
+        expected_row_count=1,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia source snapshot lists two glossy CoroCoro Comic November 1996 "
+            "promo entries. This child slice models only the current source-pinned "
+            "PokéCardex UPC row for this exact family and records the missing counterpart "
+            "as a source gap; it is not a complete family checklist."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate row currently pinned to the first "
+            "CoroCoro promo family. Use it to preserve the exact modeled reference image "
+            "while keeping the unmodeled Jigglypuff gap visible."
+        ),
+    ),
+    ReleaseConfig(
+        release_family_id="jp_promo_how_to_play_book_19961130",
+        name_en="Easily Understand How to Play Pokemon Cards promos source slice",
+        name_ja="「ポケモンカードの遊びかたがよくわかる本」プロモ",
+        release_date="1996-11-30",
+        expected_row_count=1,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play "
+            "Pokemon Cards promo entries. This child slice models only the current "
+            "source-pinned PokéCardex UPC row for this exact family and records the missing "
+            "counterpart as a source gap; it is not a complete family checklist."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate row currently pinned to the how-to-play "
+            "book promo family. Use it to preserve the exact modeled reference image while "
+            "keeping the unmodeled non-glossy Pikachu gap visible."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_tcg_gameboy_card_gb_19981218",
         name_en="Pokemon Trading Card Game for Game Boy Color",
         name_ja="ポケモンカードGB",
@@ -739,6 +823,28 @@ def team_rocket_gift_pack_source_snapshot() -> dict[str, Any]:
     }
 
 
+def promo_family_child_source_id() -> str:
+    return "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json"
+
+
+def early_1996_promo_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "snapshot_path": str(EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def gift_pack_component_lanes() -> tuple[str, ...]:
     return ("starter_a", "starter_b")
 
@@ -756,6 +862,8 @@ def source_url_for_config(config: ReleaseConfig) -> str:
         return gift_pack_product_source_id()
     if config.source_adapter == "team_rocket_gift_pack_product_rollup":
         return team_rocket_gift_pack_product_source_id()
+    if config.source_adapter == "promo_family_child_rollup":
+        return promo_family_child_source_id()
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
     if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
@@ -1471,6 +1579,8 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
         return build_gift_pack_product_rollup(config)
     if config.source_adapter == "team_rocket_gift_pack_product_rollup":
         return build_team_rocket_gift_pack_product_rollup(config)
+    if config.source_adapter == "promo_family_child_rollup":
+        return build_promo_family_child_rollup(config)
     if config.source_adapter == "quick_starter_parent_rollup":
         return build_quick_starter_parent_rollup(config)
     if config.source_adapter == "pokellector":
@@ -2679,6 +2789,336 @@ def build_team_rocket_gift_pack_product_rollup(config: ReleaseConfig) -> dict[st
     }
 
 
+def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
+    spec = PROMO_FAMILY_CHILD_SPECS.get(config.release_family_id)
+    if not spec:
+        raise ValueError(f"missing promo family child spec for {config.release_family_id}")
+    source_path = RELEASE_DIR / "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json"
+    source_release = json.loads(source_path.read_text(encoding="utf-8"))
+    source_hash = sha256_hex(source_release)
+    source_docs = source_document_contacts()
+    promo_snapshot = early_1996_promo_source_snapshot()
+    promo_claims = promo_snapshot["extracted_claims"]
+    modeled_sorts = set(int(value) for value in spec.get("modeled_source_sorts", []))
+    unmodeled_expected_cards = list(spec.get("unmodeled_expected_cards", []))
+    cards: list[dict[str, Any]] = []
+    source_rows = [
+        source_card
+        for source_card in source_release.get("cards", [])
+        if source_card.get("promo_context", {}).get("promo_family_id") == config.release_family_id
+        and int(source_card.get("provider_row", {}).get("sort", 0)) in modeled_sorts
+    ]
+    for source_card in sorted(source_rows, key=lambda card: int(card.get("provider_row", {}).get("sort", 0))):
+        source_local_id = source_card.get("local_id", "")
+        source_sort = int(source_card.get("provider_row", {}).get("sort", 0))
+        row_id = f"{config.release_family_id}:{source_local_id}"
+        child_card = copy.deepcopy(source_card)
+        child_card["row_id"] = row_id
+        child_card["release_family_id"] = config.release_family_id
+        child_card["local_id"] = source_local_id
+        child_card["promo_family_scope"] = {
+            "authority": (
+                "Promo-family child source slice over the source-pinned UPC aggregate row plus "
+                "a selected-line Bulbapedia context snapshot."
+            ),
+            "promo_family_id": config.release_family_id,
+            "strict_family_member_for_modeled_row": True,
+            "complete_family_modeled": False,
+            "expected_source_card_count": spec.get("expected_source_card_count", 0),
+            "expected_cards": list(spec.get("expected_cards", [])),
+            "modeled_source_sorts": list(spec.get("modeled_source_sorts", [])),
+            "unmodeled_expected_cards": unmodeled_expected_cards,
+            "source_gap_count": len(unmodeled_expected_cards),
+            "source_gap_reason": spec.get("source_gap_reason", ""),
+            "source_catalog_hash": source_hash,
+            "source_local_id": source_local_id,
+            "source_provider_sort": source_sort,
+            "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+            "source_row_id": source_card.get("row_id", ""),
+            "not_claiming": [
+                "complete promo family checklist",
+                "unmodeled expected card row",
+                "official copy count",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            ],
+        }
+        child_card["product_scope"] = {
+            "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+            "catalog_treatment": config.catalog_treatment,
+            "counting_note": (
+                "This is a source-pinned child slice for one modeled UPC aggregate row. "
+                "The Bulbapedia context snapshot expects two cards for this family, so the "
+                "catalog row count is intentionally incomplete and must not be read as a "
+                "full promo-family checklist."
+            ),
+            "date_precision": config.date_precision,
+            "japanese_set_name": config.name_ja,
+            "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
+            "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "release_date": config.release_date,
+            "release_type": config.release_type,
+            "source_aggregate_row": True,
+            "strict_release_member": False,
+            "unique_catalog_row_count": config.expected_row_count,
+            "expected_source_card_count": spec.get("expected_source_card_count", 0),
+            "source_gap_count": len(unmodeled_expected_cards),
+            "unmodeled_expected_cards": unmodeled_expected_cards,
+        }
+        child_card["symbol_status"] = {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_promo_family_context",
+            "source_release_family_id": config.release_family_id,
+            "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+            "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession", "Base No Rarity proof"],
+        }
+        child_card["provider_row"] = {
+            "adapter": "promo_family_child_rollup",
+            "source_catalog_hash": source_hash,
+            "source_provider_row": source_card.get("provider_row", {}),
+            "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+            "source_row_id": source_card.get("row_id", ""),
+            "source_local_id": source_local_id,
+            "source_sort": source_sort,
+            "expected_source_card_count": spec.get("expected_source_card_count", 0),
+            "source_gap_count": len(unmodeled_expected_cards),
+        }
+        image = child_card.get("image_provenance", {})
+        image["release_family_id"] = config.release_family_id
+        image["row_id"] = row_id
+        image["promo_family_source_catalog_hash"] = source_hash
+        image["promo_family_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+        image["promo_family_source_row_id"] = source_card.get("row_id", "")
+        image["promo_family_source_sort"] = source_sort
+        image["image_role"] = (
+            "Provider-path-derived reference image for the source-pinned UPC row in this promo family; "
+            "not a complete-family image witness and not seller evidence."
+        )
+        image["exactness_basis"] = list(dict.fromkeys([
+            *image.get("exactness_basis", []),
+            "source-pinned UPC aggregate row for this promo family child slice",
+            "family-level completeness checked against selected Bulbapedia lines with an explicit source gap",
+        ]))
+        image["not_claiming"] = list(dict.fromkeys([
+            *image.get("not_claiming", []),
+            "complete promo family",
+            "unmodeled expected card row",
+        ]))
+        child_card["image_provenance"] = image
+        collector_texture = child_card.get("collector_texture", {})
+        collector_texture["note"] = (
+            f"{source_card.get('name_en', '')} is cataloged as the currently source-pinned "
+            f"row for {config.name_en}. The useful claim is precise family context plus a visible "
+            "source gap; the physical card still needs seller evidence."
+        )
+        collector_texture["signals"] = list(dict.fromkeys([
+            config.name_en,
+            config.release_date,
+            "promo family source slice",
+            "source gap recorded",
+            *collector_texture.get("signals", []),
+        ]))
+        child_card["collector_texture"] = collector_texture
+        information_audit = copy.deepcopy(child_card.get("information_audit", {}))
+        information_audit["audit_scope"] = (
+            "Promo-family child information architecture only. The row image and source lineage "
+            "help agents compare the modeled UPC row, but they do not complete the promo family, "
+            "authenticate a card, prove possession, condition, or price."
+        )
+        information_audit["promo_family_child_override"] = {
+            "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+            "current_status": image.get("status", ""),
+            "primary_surface_rule": (
+                "Show the modeled row as a reference witness and keep the missing expected counterpart "
+                "visible in agent-facing audit/detail views."
+            ),
+        }
+        child_card["information_audit"] = information_audit
+        source_contacts = [
+            {
+                "catalog_hash": source_hash,
+                "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+                "catalog_path": str(source_path.relative_to(ROOT)),
+                "local_row_id": source_local_id,
+                "not_claiming": [
+                    "complete promo family checklist",
+                    "unmodeled expected card row",
+                    "official copy count",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                ],
+                "promo_family_id": config.release_family_id,
+                "source": "Promo-family child source-slice rollup",
+                "source_page_url": promo_family_child_source_id(),
+                "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                "source_row_id": source_card.get("row_id", ""),
+                "source_sort": source_sort,
+            },
+            {
+                "source": "Bulbapedia",
+                "source_page_url": promo_snapshot["source_page_url"],
+                "oldid_url": promo_snapshot["oldid_url"],
+                "snapshot_path": promo_snapshot["snapshot_path"],
+                "snapshot_hash": promo_snapshot["snapshot_hash"],
+                "snapshot_schema": promo_snapshot["snapshot_schema"],
+                "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
+                "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
+                "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
+                "retrieved_at": promo_snapshot["retrieved_at"],
+                "expected_cards": list(spec.get("expected_cards", [])),
+                "unmodeled_expected_cards": unmodeled_expected_cards,
+                "not_claiming": [
+                    "raw HTML snapshot",
+                    "complete UPC source",
+                    "image rights",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "official copy count",
+                ],
+            },
+        ]
+        for contact in child_card.get("source_contacts", []):
+            retargeted_contact = copy.deepcopy(contact)
+            retargeted_contact["inherited_from_promo_family_source"] = True
+            retargeted_contact["promo_family_source_catalog_hash"] = source_hash
+            retargeted_contact["promo_family_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+            retargeted_contact["promo_family_source_row_id"] = source_card.get("row_id", "")
+            retargeted_contact["not_claiming"] = list(dict.fromkeys([
+                *retargeted_contact.get("not_claiming", []),
+                "complete promo family checklist",
+                "unmodeled expected card row",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            ]))
+            source_contacts.append(retargeted_contact)
+        child_card["source_contacts"] = source_contacts
+        child_card["not_claiming"] = list(dict.fromkeys([
+            *child_card.get("not_claiming", []),
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+        ]))
+        child_card["tags"] = list(dict.fromkeys([
+            config.release_family_id,
+            config.name_en,
+            "promo family source slice",
+            "source gap recorded",
+            *child_card.get("tags", []),
+        ]))
+        cards.append(child_card)
+    source = {
+        "source": "Marketplace UPC aggregate promo-family child source-slice",
+        "source_page_url": promo_family_child_source_id(),
+        "catalog_hash": source_hash,
+        "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+        "path": str(source_path.relative_to(ROOT)),
+        **source_docs,
+        "promo_family_id": config.release_family_id,
+        "modeled_source_sorts": list(spec.get("modeled_source_sorts", [])),
+        "modeled_source_rows": len(cards),
+        "expected_source_card_count": spec.get("expected_source_card_count", 0),
+        "expected_cards": list(spec.get("expected_cards", [])),
+        "source_gap_count": len(unmodeled_expected_cards),
+        "source_gap_reason": spec.get("source_gap_reason", ""),
+        "unmodeled_expected_cards": unmodeled_expected_cards,
+        "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+        "source_release_type": source_release.get("release", {}).get("release_type", ""),
+        "cards_found": len(cards),
+        "family_context_source": {
+            "source": "Bulbapedia",
+            "source_page_url": promo_snapshot["source_page_url"],
+            "oldid_url": promo_snapshot["oldid_url"],
+            "snapshot_path": promo_snapshot["snapshot_path"],
+            "snapshot_hash": promo_snapshot["snapshot_hash"],
+            "snapshot_schema": promo_snapshot["snapshot_schema"],
+            "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
+            "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
+            "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
+            "retrieved_at": promo_snapshot["retrieved_at"],
+            "extracted_claims": promo_claims,
+            "selected_text": promo_snapshot["selected_text"],
+            "not_claiming": [
+                "raw HTML snapshot",
+                "complete UPC source",
+                "image rights",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "official copy count",
+            ],
+        },
+        "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+        ],
+    }
+    return {
+        "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+        "release": {
+            "release_family_id": config.release_family_id,
+            "name_en": config.name_en,
+            "name_ja": config.name_ja,
+            "release_date": config.release_date,
+            "date_precision": config.date_precision,
+            "release_type": config.release_type,
+            "expected_row_count": config.expected_row_count,
+            "count_confidence": "promo_family_child_source_slice_with_source_gap",
+            "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
+            "unique_catalog_row_count": config.expected_row_count,
+            "catalog_treatment": config.catalog_treatment,
+            "expected_source_card_count": spec.get("expected_source_card_count", 0),
+            "source_gap_count": len(unmodeled_expected_cards),
+            "unmodeled_expected_cards": unmodeled_expected_cards,
+            "note": config.note,
+        },
+        "symbol_status": {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected Bulbapedia lines",
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_promo_family_context",
+            "source_release_family_id": config.release_family_id,
+            "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity proof without seller evidence"],
+        },
+        "sources": [source],
+        "cards": cards,
+        "not_claiming": [
+            "complete pre-English catalog",
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+        ],
+    }
+
+
 def build_quick_starter_parent_rollup(config: ReleaseConfig) -> dict[str, Any]:
     child_releases: list[dict[str, Any]] = []
     parent_rows: list[dict[str, Any]] = []
@@ -2845,6 +3285,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
     promo_context_rows = [card for card in cards if card.get("promo_context", {}).get("promo_family_id")]
     product_context_source = primary_source.get("product_context_source", {})
+    family_context_source = primary_source.get("family_context_source", {})
     failures: list[str] = []
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}
@@ -2882,6 +3323,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             }
         except FileNotFoundError:
             failures.append("team_rocket_gift_pack_component_source_file_missing")
+    promo_family_source_release: dict[str, Any] = {}
+    promo_family_source_rows: dict[str, dict[str, Any]] = {}
+    if release_type == "promo_family_child_rollup_rows":
+        source_path = RELEASE_DIR / "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json"
+        try:
+            promo_family_source_release = json.loads(source_path.read_text(encoding="utf-8"))
+            promo_family_source_rows = {
+                source_card.get("local_id", ""): source_card
+                for source_card in promo_family_source_release.get("cards", [])
+            }
+        except FileNotFoundError:
+            failures.append("promo_family_child_source_file_missing")
     quick_starter_children: dict[str, dict[str, Any]] = {}
     quick_starter_child_rows: dict[tuple[str, str], dict[str, Any]] = {}
     if release_type == "deck_kit_parent_rollup_rows":
@@ -2913,6 +3366,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("gift_pack_component_release_must_not_claim_strict_membership")
     if release_type == "team_rocket_gift_pack_deck_component_possible_rows" and release_meta.get("strict_release_member") is not False:
         failures.append("team_rocket_gift_pack_component_release_must_not_claim_strict_membership")
+    if release_type == "promo_family_child_rollup_rows" and release_meta.get("strict_release_member") is not False:
+        failures.append("promo_family_child_release_must_not_claim_strict_membership")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
@@ -3492,6 +3947,137 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_image_status_not_component_inherited")
             else:
                 failures.append(f"{card.get('row_id')}: team_rocket_gift_pack_component_missing_source_row")
+        if release_type == "promo_family_child_rollup_rows":
+            family_spec = PROMO_FAMILY_CHILD_SPECS.get(release_meta.get("release_family_id", ""), {})
+            family_scope = card.get("promo_family_scope", {})
+            source_local_id = family_scope.get("source_local_id", "")
+            source_card = promo_family_source_rows.get(source_local_id)
+            source_hash = sha256_hex(promo_family_source_release) if promo_family_source_release else ""
+            expected_row_id = f"{release_meta.get('release_family_id')}:{source_local_id}" if source_local_id else ""
+            expected_sorts = set(int(value) for value in family_spec.get("modeled_source_sorts", []))
+            source_sort = family_scope.get("source_provider_sort")
+            if not family_spec:
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_spec")
+            if card.get("row_id") != expected_row_id:
+                failures.append(f"{card.get('row_id')}: promo_family_child_row_id_mismatch")
+            if family_scope.get("promo_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_scope_family_mismatch")
+            if family_scope.get("strict_family_member_for_modeled_row") is not True:
+                failures.append(f"{card.get('row_id')}: promo_family_child_modeled_row_not_strict")
+            if family_scope.get("complete_family_modeled") is not False:
+                failures.append(f"{card.get('row_id')}: promo_family_child_complete_family_overclaim")
+            if family_scope.get("expected_source_card_count") != family_spec.get("expected_source_card_count"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_expected_count_mismatch")
+            if family_scope.get("modeled_source_sorts") != family_spec.get("modeled_source_sorts"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_modeled_sorts_mismatch")
+            if family_scope.get("unmodeled_expected_cards") != family_spec.get("unmodeled_expected_cards"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_unmodeled_cards_mismatch")
+            if family_scope.get("source_gap_count") != len(family_spec.get("unmodeled_expected_cards", [])):
+                failures.append(f"{card.get('row_id')}: promo_family_child_gap_count_mismatch")
+            if not family_scope.get("source_gap_reason"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_gap_reason_missing")
+            if family_scope.get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: promo_family_child_source_hash_mismatch")
+            if family_scope.get("source_release_family_id") != "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131":
+                failures.append(f"{card.get('row_id')}: promo_family_child_source_release_mismatch")
+            if family_scope.get("source_row_id") != f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}":
+                failures.append(f"{card.get('row_id')}: promo_family_child_source_row_mismatch")
+            if source_sort not in expected_sorts:
+                failures.append(f"{card.get('row_id')}: promo_family_child_source_sort_not_modeled")
+            if card.get("product_scope", {}).get("release_type") != "promo_family_child_rollup_rows":
+                failures.append(f"{card.get('row_id')}: promo_family_child_product_scope_type_mismatch")
+            if card.get("product_scope", {}).get("strict_release_member") is not False:
+                failures.append(f"{card.get('row_id')}: promo_family_child_row_strict_member_overclaim")
+            if card.get("product_scope", {}).get("expected_source_card_count") != family_spec.get("expected_source_card_count"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_product_expected_count_mismatch")
+            if card.get("product_scope", {}).get("source_gap_count") != len(family_spec.get("unmodeled_expected_cards", [])):
+                failures.append(f"{card.get('row_id')}: promo_family_child_product_gap_count_mismatch")
+            counting_note = card.get("product_scope", {}).get("counting_note", "").lower()
+            if "not be read as a full promo-family checklist" not in counting_note:
+                failures.append(f"{card.get('row_id')}: promo_family_child_counting_note_missing_boundary")
+            if card.get("symbol_status", {}).get("prints_without_rarity_symbol") != "yes":
+                failures.append(f"{card.get('row_id')}: promo_family_child_symbol_not_yes")
+            if card.get("symbol_status", {}).get("source_mode") != "direct_promo_family_context":
+                failures.append(f"{card.get('row_id')}: promo_family_child_symbol_source_mode_mismatch")
+            if card.get("provider_row", {}).get("adapter") != "promo_family_child_rollup":
+                failures.append(f"{card.get('row_id')}: promo_family_child_provider_adapter_mismatch")
+            if card.get("provider_row", {}).get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: promo_family_child_provider_source_hash_mismatch")
+            if image.get("release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_release_family_mismatch")
+            if image.get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_row_id_mismatch")
+            if image.get("status") != "provider_path_reference_image":
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_status_mismatch")
+            if image.get("promo_family_source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_source_hash_mismatch")
+            if image.get("promo_family_source_row_id") != f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}":
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_source_row_mismatch")
+            if "complete promo family" not in image.get("not_claiming", []):
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_family_boundary_missing")
+            if not any(
+                contact.get("source") == "Promo-family child source-slice rollup"
+                and contact.get("catalog_hash") == source_hash
+                and contact.get("source_row_id") == f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}"
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_rollup_contact")
+            if not any(
+                contact.get("source") == "Bulbapedia"
+                and contact.get("snapshot_hash")
+                and contact.get("unmodeled_expected_cards") == family_spec.get("unmodeled_expected_cards")
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_bulbapedia_gap_contact")
+            inherited_contacts = [
+                contact for contact in card.get("source_contacts", [])
+                if contact.get("source") not in {"Promo-family child source-slice rollup", "Bulbapedia"}
+            ]
+            for contact in inherited_contacts:
+                if contact.get("inherited_from_promo_family_source") is not True:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_unmarked")
+                    break
+                if contact.get("promo_family_source_catalog_hash") != source_hash:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_hash_mismatch")
+                    break
+                if "unmodeled expected card row" not in contact.get("not_claiming", []):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_boundary_missing")
+                    break
+            if source_card:
+                copied_fields = [
+                    "name_en",
+                    "name_ja",
+                    "name_ja_status",
+                    "romaji",
+                    "name_source_note",
+                    "category",
+                    "rarity_source",
+                    "holo_source",
+                    "pokemon_profile",
+                    "illustrator",
+                    "tcgdex",
+                    "promo_context",
+                ]
+                for field in copied_fields:
+                    if card.get(field) != source_card.get(field):
+                        failures.append(f"{card.get('row_id')}: promo_family_child_source_field_drift {field}")
+                        break
+                source_image = source_card.get("image_provenance", {})
+                for field in [
+                    "image_large",
+                    "image_small",
+                    "provider_id",
+                    "provider_title",
+                    "source",
+                    "source_page_url",
+                    "rights_status",
+                    "verification_status",
+                ]:
+                    if image.get(field) != source_image.get(field):
+                        failures.append(f"{card.get('row_id')}: promo_family_child_source_image_drift {field}")
+                        break
+            else:
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_source_row")
         if release_type == "deck_kit_parent_rollup_rows":
             parent_rollup = card.get("parent_rollup", {})
             lane = parent_rollup.get("lane")
@@ -4021,6 +4607,99 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("team_rocket_gift_pack_component_direct_exact_image_overclaim")
         if not all(card.get("team_rocket_gift_pack_scope", {}).get("possible_content_pool") is True for card in cards):
             failures.append("team_rocket_gift_pack_component_pool_flags_incomplete")
+    if release_type == "promo_family_child_rollup_rows":
+        family_id = release_meta.get("release_family_id", "")
+        family_spec = PROMO_FAMILY_CHILD_SPECS.get(family_id, {})
+        expected_gap_count = len(family_spec.get("unmodeled_expected_cards", []))
+        family_scopes = [card.get("promo_family_scope", {}) for card in cards]
+        modeled_sorts = [
+            int(scope.get("source_provider_sort", 0))
+            for scope in family_scopes
+            if scope.get("source_provider_sort")
+        ]
+        if not family_spec:
+            failures.append("promo_family_child_missing_release_spec")
+        if release_meta.get("expected_source_card_count") != family_spec.get("expected_source_card_count"):
+            failures.append("promo_family_child_release_expected_source_count_mismatch")
+        if release_meta.get("source_gap_count") != expected_gap_count:
+            failures.append("promo_family_child_release_gap_count_mismatch")
+        if release_meta.get("expected_source_card_count", 0) != len(cards) + release_meta.get("source_gap_count", 0):
+            failures.append("promo_family_child_release_count_closure_mismatch")
+        if release_meta.get("unmodeled_expected_cards") != family_spec.get("unmodeled_expected_cards"):
+            failures.append("promo_family_child_release_unmodeled_cards_mismatch")
+        if release_meta.get("catalog_treatment") != "Promo target source-slice":
+            failures.append("promo_family_child_catalog_treatment_mismatch")
+        if release_meta.get("strict_release_member") is not False:
+            failures.append("promo_family_child_release_strict_member_overclaim")
+        if "not a complete family checklist" not in release_meta.get("product_count_basis", "").lower():
+            failures.append("promo_family_child_product_count_basis_missing_boundary")
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "yes":
+            failures.append("promo_family_child_release_symbol_status_should_be_yes")
+        if primary_source.get("source_page_url") != promo_family_child_source_id():
+            failures.append("promo_family_child_source_page_url_mismatch")
+        if primary_source.get("catalog_hash") != (sha256_hex(promo_family_source_release) if promo_family_source_release else ""):
+            failures.append("promo_family_child_source_hash_mismatch")
+        if primary_source.get("source_release_family_id") != "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131":
+            failures.append("promo_family_child_source_release_mismatch")
+        if primary_source.get("cards_found") != len(cards) or primary_source.get("modeled_source_rows") != len(cards):
+            failures.append("promo_family_child_source_rows_found_mismatch")
+        if primary_source.get("expected_source_card_count") != family_spec.get("expected_source_card_count"):
+            failures.append("promo_family_child_source_expected_count_mismatch")
+        if primary_source.get("source_gap_count") != expected_gap_count:
+            failures.append("promo_family_child_source_gap_count_mismatch")
+        if primary_source.get("expected_source_card_count", 0) != primary_source.get("modeled_source_rows", 0) + primary_source.get("source_gap_count", 0):
+            failures.append("promo_family_child_source_count_closure_mismatch")
+        if primary_source.get("unmodeled_expected_cards") != family_spec.get("unmodeled_expected_cards"):
+            failures.append("promo_family_child_source_unmodeled_cards_mismatch")
+        if primary_source.get("modeled_source_sorts") != family_spec.get("modeled_source_sorts"):
+            failures.append("promo_family_child_source_modeled_sorts_mismatch")
+        if sorted(modeled_sorts) != sorted(family_spec.get("modeled_source_sorts", [])):
+            failures.append(f"promo_family_child_modeled_sort_count actual={modeled_sorts}")
+        if not all(scope.get("complete_family_modeled") is False for scope in family_scopes):
+            failures.append("promo_family_child_complete_family_overclaim")
+        if not all(scope.get("strict_family_member_for_modeled_row") is True for scope in family_scopes):
+            failures.append("promo_family_child_modeled_membership_missing")
+        if any(card.get("product_scope", {}).get("strict_release_member") is not False for card in cards):
+            failures.append("promo_family_child_row_strict_member_overclaim_count")
+        if len(provider_path_reference_image_rows) != len(cards):
+            failures.append(f"promo_family_child_provider_path_image_count actual={len(provider_path_reference_image_rows)}")
+        if exact_source_image_rows:
+            failures.append("promo_family_child_direct_exact_image_overclaim")
+        if not all("complete promo family checklist" in card.get("not_claiming", []) for card in cards):
+            failures.append("promo_family_child_missing_complete_family_boundary")
+        try:
+            source_docs = source_document_contacts()
+            for key, value in source_docs.items():
+                if primary_source.get(key) != value:
+                    failures.append(f"promo_family_child_source_doc_pin_mismatch {key}")
+        except FileNotFoundError:
+            failures.append("promo_family_child_source_doc_pin_missing")
+        family_context = primary_source.get("family_context_source", {})
+        try:
+            promo_snapshot = early_1996_promo_source_snapshot()
+            if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
+                failures.append("promo_family_child_context_snapshot_hash_mismatch")
+            if family_context.get("snapshot_path") != promo_snapshot["snapshot_path"]:
+                failures.append("promo_family_child_context_snapshot_path_mismatch")
+            if family_context.get("source_page_url") != promo_snapshot["source_page_url"]:
+                failures.append("promo_family_child_context_source_url_mismatch")
+            selected_text = family_context.get("selected_text", "")
+            for expected_text, failure_name in {
+                "Pikachu [Glossy]": "promo_family_child_snapshot_glossy_pikachu_missing",
+                "Jigglypuff [Glossy]": "promo_family_child_snapshot_glossy_jigglypuff_missing",
+                "Pikachu [Non-glossy]": "promo_family_child_snapshot_nonglossy_pikachu_missing",
+                "Jigglypuff [Non-glossy]": "promo_family_child_snapshot_nonglossy_jigglypuff_missing",
+                "October 15, 1996": "promo_family_child_snapshot_october_date_missing",
+                "November 30, 1996": "promo_family_child_snapshot_november_date_missing",
+            }.items():
+                if expected_text not in selected_text:
+                    failures.append(failure_name)
+            if "raw HTML snapshot" not in family_context.get("not_claiming", []):
+                failures.append("promo_family_child_context_raw_snapshot_boundary_missing")
+            if "complete UPC source" not in family_context.get("not_claiming", []):
+                failures.append("promo_family_child_context_complete_source_boundary_missing")
+        except FileNotFoundError:
+            failures.append("promo_family_child_source_snapshot_missing")
     if release_type == "deck_kit_parent_rollup_rows":
         lanes = [card.get("parent_rollup", {}).get("lane") for card in cards]
         if lanes.count("red") != 32 or lanes.count("green") != 32:
@@ -4080,11 +4759,15 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "unmodeled_special_card_slots": release_meta.get("unmodeled_special_card_slots", 0),
         "unresolved_fixed_deck_lists": release_meta.get("unresolved_fixed_deck_lists", False),
         "unique_underlying_rocket_gang_rows": release_meta.get("unique_underlying_rocket_gang_rows", 0),
+        "expected_source_card_count": release_meta.get("expected_source_card_count", 0),
+        "source_gap_count": release_meta.get("source_gap_count", 0),
+        "unmodeled_expected_cards": release_meta.get("unmodeled_expected_cards", []),
         "modeled_candidate_rows": (
             len(cards)
             if release_type in {
                 "gift_pack_starter_component_possible_rows",
                 "team_rocket_gift_pack_deck_component_possible_rows",
+                "promo_family_child_rollup_rows",
             }
             else 0
         ),
@@ -4093,6 +4776,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "product_context_snapshot_hash": product_context_source.get("snapshot_hash", ""),
         "product_context_oldid_url": product_context_source.get("oldid_url", ""),
         "product_context_source_url": product_context_source.get("source_page_url", ""),
+        "family_context_snapshot_path": family_context_source.get("snapshot_path", ""),
+        "family_context_snapshot_hash": family_context_source.get("snapshot_hash", ""),
+        "family_context_source_url": family_context_source.get("source_page_url", ""),
         "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
@@ -4148,11 +4834,15 @@ def main() -> int:
                 "unmodeled_special_card_slots": release.get("release", {}).get("unmodeled_special_card_slots", 0),
                 "unresolved_fixed_deck_lists": release.get("release", {}).get("unresolved_fixed_deck_lists", False),
                 "unique_underlying_rocket_gang_rows": release.get("release", {}).get("unique_underlying_rocket_gang_rows", 0),
+                "expected_source_card_count": release.get("release", {}).get("expected_source_card_count", 0),
+                "source_gap_count": release.get("release", {}).get("source_gap_count", 0),
+                "unmodeled_expected_cards": release.get("release", {}).get("unmodeled_expected_cards", []),
                 "modeled_candidate_rows": (
                     len(release["cards"])
                     if config.release_type in {
                         "gift_pack_starter_component_possible_rows",
                         "team_rocket_gift_pack_deck_component_possible_rows",
+                        "promo_family_child_rollup_rows",
                     }
                     else 0
                 ),
@@ -4161,6 +4851,9 @@ def main() -> int:
                 "product_context_snapshot_hash": product_context_source.get("snapshot_hash", ""),
                 "product_context_oldid_url": product_context_source.get("oldid_url", ""),
                 "product_context_source_url": product_context_source.get("source_page_url", ""),
+                "family_context_snapshot_path": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_path", ""),
+                "family_context_snapshot_hash": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_hash", ""),
+                "family_context_source_url": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("source_page_url", ""),
                 "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
@@ -4187,6 +4880,7 @@ def main() -> int:
         "active_no_rarity_rows": sum(item["active_no_rarity_rows"] for item in manifests),
         "basic_energy_caveat_rows": sum(item["basic_energy_caveat_rows"] for item in manifests),
         "strict_booster_rows": sum(item["strict_booster_rows"] for item in manifests),
+        "source_gap_count": sum(item.get("source_gap_count", 0) for item in manifests),
         "reference_image_witness_rows": sum(item["reference_image_witness_rows"] for item in manifests),
         "exact_source_image_rows": sum(item["exact_source_image_rows"] for item in manifests),
         "provider_path_reference_image_rows": sum(item["provider_path_reference_image_rows"] for item in manifests),
@@ -4198,6 +4892,8 @@ def main() -> int:
         "releases": manifests,
         "not_claiming": [
             "complete pre-English catalog",
+            "complete promo family checklist",
+            "unmodeled expected card row",
             "approved image rights",
             "seller possession",
             "authenticity",
@@ -4214,6 +4910,7 @@ def main() -> int:
         "active_no_rarity_rows": sum(row["active_no_rarity_rows"] for row in audit_rows),
         "basic_energy_caveat_rows": sum(row["basic_energy_caveat_rows"] for row in audit_rows),
         "strict_booster_rows": sum(row["strict_booster_rows"] for row in audit_rows),
+        "source_gap_count": sum(row.get("source_gap_count", 0) for row in audit_rows),
         "reference_image_witness_rows": sum(row["reference_image_witness_rows"] for row in audit_rows),
         "exact_source_image_rows": sum(row["exact_source_image_rows"] for row in audit_rows),
         "provider_path_reference_image_rows": sum(row["provider_path_reference_image_rows"] for row in audit_rows),
@@ -4224,6 +4921,8 @@ def main() -> int:
         "not_claiming": [
             "multi-agent audit complete",
             "complete pre-English release coverage",
+            "complete promo family checklist",
+            "unmodeled expected card row",
             "row-level physical authentication",
             "image rights approval",
         ],
