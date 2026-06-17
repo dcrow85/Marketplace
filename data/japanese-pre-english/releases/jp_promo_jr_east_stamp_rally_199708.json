@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "promo_family_source_sort": 14,
@@ -197,7 +197,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 1,
         "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
         "source_local_id": "014",
@@ -212,7 +212,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+        "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 1,
         "source_local_id": "014",
         "source_provider_row": {
@@ -252,7 +252,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "014",
           "not_claiming": [
@@ -307,13 +307,14 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Pokumon",
           "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
+          "supporting_page_urls": [],
           "unmodeled_expected_cards": [
             "Mew (JR Train Rally 1997)"
           ]
         },
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "b946e05f85bc41364d3b273a380120582e09997b98788c0fcfbf5ba02f9b4539",
+          "encrypted_page_sha256": "9ea8e7481693f590ed20cabf40723c5e4359ef543970ce61ca0b671e3bd2242e",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "official source",
@@ -324,7 +325,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+          "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
@@ -404,7 +405,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 1,
-      "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
+      "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
       "expected_cards": [
         "Surfing Pikachu (JR Train Rally 1997)",
         "Mew (JR Train Rally 1997)"
@@ -457,7 +458,8 @@
         "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
         "source": "Pokumon",
-        "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/"
+        "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
+        "supporting_page_urls": []
       },
       "modeled_source_rows": 1,
       "modeled_source_sorts": [
@@ -475,7 +477,7 @@
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
-      "release_map_sha256": "3aede46721f371759ab51f41d2414a3b9c299f6b57df06b35fba0b115bc95e07",
+      "release_map_sha256": "a3ffb8f10375e96ee957021c1d04e404e260e086dc0eeee4387acb34dc134941",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 1,
       "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",

@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -9,14 +9,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.1 Trainer is cataloged as the currently source-pinned row for First Official Pokemon Card Game Tournament trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Pikachu is cataloged as the currently source-pinned row for WHF Special Limited Expansion Sheet source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "First Official Pokemon Card Game Tournament trophy source slice",
-          "1997-06-14/1997-06-15",
+          "WHF Special Limited Expansion Sheet source slice",
+          "1997-12-07/1998-02-01",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "011",
+          "025",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -24,8 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -46,11 +46,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/11.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/25.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/11.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/25.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -66,13 +66,13 @@
         ],
         "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
-        "promo_family_source_sort": 11,
-        "provider_id": "pokecardex:14207",
-        "provider_title": "No.1 Trainer - Unnumbered Promotional #11",
-        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+        "promo_family_source_sort": 25,
+        "provider_id": "pokecardex:14223",
+        "provider_title": "Pikachu - Unnumbered Promotional #25",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_first_official_tournament_199706:011",
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -113,8 +113,8 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "011",
-      "name_en": "No.1 Trainer",
+      "local_id": "025",
+      "name_en": "Pikachu",
       "name_ja": "",
       "name_ja_status": "missing_from_exact_source",
       "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
@@ -132,7 +132,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          25
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -142,15 +144,15 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon + Bulbapedia context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_crosses_year",
         "expected_source_card_count": 3,
-        "japanese_set_name": "第1回公式ポケモンカードゲーム大会 トロフィープロモ",
+        "japanese_set_name": "次世代ワールドホビーフェア 特別限定拡張シート プロモ",
         "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents the June 14-15, 1997 First Official Pokemon Card Game Tournament and its No.1/No.2/No.3 Trainer trophy card identities. This child slice models the three currently source-pinned PokéCardex UPC trophy rows; it does not claim official copy counts, trophy-case variants, session-level award-object completeness, and it is not a complete family checklist beyond the source-pinned trophy row trio.",
-        "release_date": "1997-06-14/1997-06-15",
+        "product_count_basis": "Pokumon timeline documents the 7th Next Generation World Hobby Fair as running from December 7, 1997 to February 1, 1998 with a special limited Expansion Sheet on sale with three promo cards: Pikachu, Mew, and Mewtwo. Bulbapedia adds that a special preview expansion sheet was available at the fair and is often treated as Series 00. This child slice models the three currently source-pinned PokéCardex UPC rows; it does not claim copy counts, a complete venue schedule, sheet-object variants, later CD reprint census, or a complete event-object ledger, and it is not a complete family checklist beyond the source-pinned card trio.",
+        "release_date": "1997-12-07/1998-02-01",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -160,31 +162,31 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-06-14 to 1997-06-15",
-        "date_source": "release_map",
-        "distribution_comment": "Pokémon Card Game Official Tournament final qualification prize",
+        "date_label": "1997-12-07 to 1998-02-01",
+        "date_source": "source_comment",
+        "distribution_comment": "World Hobby Fair Special Limited Expansion Sheet",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
-        "source_sort": 11
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "source_sort": 25
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+          "Pikachu (World Hobby Fair Special Sheet 1997)",
+          "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+          "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          11,
-          12,
-          13
+          25,
+          26,
+          27
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -195,14 +197,14 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three First Official Tournament No.1/No.2/No.3 Trainer rows. This source slice models card identities only; it does not model every session-level award object, trophy case, plaque, winner, or copy-count claim.",
-        "source_local_id": "011",
-        "source_provider_sort": 11,
+        "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
+        "source_local_id": "025",
+        "source_provider_sort": 25,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -211,25 +213,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_local_id": "011",
+        "source_local_id": "025",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Pokémon Card Game Official Tournament final qualification prize",
-          "id_card": 14207,
-          "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14207",
-          "provider_title": "No.1 Trainer - Unnumbered Promotional #11",
+          "cardmarket_url": "Unnumbered-Promos/Pikachu-V1-UNP",
+          "comment": "World Hobby Fair Special Limited Expansion Sheet",
+          "id_card": 14223,
+          "id_tcgplayer": 617301,
+          "illustrator": "Ken Sugimori",
+          "provider_id": "pokecardex:14223",
+          "provider_title": "Pikachu - Unnumbered Promotional #25",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 11,
+          "sort": 25,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14207,
+              "id_card": 14223,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -238,20 +240,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
-        "source_sort": 11
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+        "source_sort": 25
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_first_official_tournament_199706",
+      "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
       "romaji": "",
-      "row_id": "jp_promo_first_official_tournament_199706:011",
+      "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "011",
+          "local_row_id": "025",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -261,25 +263,27 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_first_official_tournament_199706",
+          "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
-          "source_sort": 11
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+          "source_sort": 25
         },
         {
           "expected_cards": [
-            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+            "Pikachu (World Hobby Fair Special Sheet 1997)",
+            "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+            "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
           ],
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
@@ -287,31 +291,35 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:56:00Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1997 First Official Pokemon Card Game Tournament context, No.1/No.2/No.3 Trainer trophy card identities, session prize context, and confusion boundary against later Charizard/Lizardon trophy cards. This snapshot is not a full event archive, not a session-level award ledger, and not an official surviving-copy authority beyond the selected lines.",
-          "snapshot_hash": "72d65b4a3dfd25c3458ddbbaf403d9752bfd6cdc284f61ad383b1d574b0e3758",
+          "retrieved_at": "2026-06-17T21:06:06Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1997-1998 7th Next Generation World Hobby Fair Special Limited Expansion Sheet / Series 00 context, its three-card Pikachu/Mew/Mewtwo identity claim, and the Unnumbered Promotional / Vending-adjacent caveat. This snapshot is not a full event archive, not a venue schedule, not a sheet-object variant catalog, not a later CD reprint census, and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "21873c7136f1d7c3963216164806b1158c8116175b025c3a6542e10c2936a652",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/1st-official-pokemon-card-game-tournament/",
-          "supporting_page_urls": [],
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/timeline/",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "8145871c4954ba4ce528232800dcf60bbdd2b5b814308f33bd47f723549d89d9",
+          "card_data_hash": "9ec6d1a61f64934952302417976a939015bf43f1eee4a7c439e23359202204db",
           "encrypted_page_sha256": "9ea8e7481693f590ed20cabf40723c5e4359ef543970ce61ca0b671e3bd2242e",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -325,7 +333,7 @@
           ],
           "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -343,11 +351,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_first_official_tournament_199706"
+        "source_release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712"
       },
       "tags": [
-        "jp_promo_first_official_tournament_199706",
-        "First Official Pokemon Card Game Tournament trophy source slice",
+        "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "WHF Special Limited Expansion Sheet source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -365,7 +373,7 @@
       }
     },
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -373,14 +381,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.2 Trainer is cataloged as the currently source-pinned row for First Official Pokemon Card Game Tournament trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Mew is cataloged as the currently source-pinned row for WHF Special Limited Expansion Sheet source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "First Official Pokemon Card Game Tournament trophy source slice",
-          "1997-06-14/1997-06-15",
+          "WHF Special Limited Expansion Sheet source slice",
+          "1997-12-07/1998-02-01",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "012",
+          "026",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -388,8 +396,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -410,11 +418,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/12.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/26.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/12.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/26.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -430,13 +438,13 @@
         ],
         "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
-        "promo_family_source_sort": 12,
-        "provider_id": "pokecardex:14208",
-        "provider_title": "No.2 Trainer - Unnumbered Promotional #12",
-        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+        "promo_family_source_sort": 26,
+        "provider_id": "pokecardex:14224",
+        "provider_title": "Mew - Unnumbered Promotional #26",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_first_official_tournament_199706:012",
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -477,8 +485,8 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "012",
-      "name_en": "No.2 Trainer",
+      "local_id": "026",
+      "name_en": "Mew",
       "name_ja": "",
       "name_ja_status": "missing_from_exact_source",
       "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
@@ -496,7 +504,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          151
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -506,15 +516,15 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon + Bulbapedia context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_crosses_year",
         "expected_source_card_count": 3,
-        "japanese_set_name": "第1回公式ポケモンカードゲーム大会 トロフィープロモ",
+        "japanese_set_name": "次世代ワールドホビーフェア 特別限定拡張シート プロモ",
         "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents the June 14-15, 1997 First Official Pokemon Card Game Tournament and its No.1/No.2/No.3 Trainer trophy card identities. This child slice models the three currently source-pinned PokéCardex UPC trophy rows; it does not claim official copy counts, trophy-case variants, session-level award-object completeness, and it is not a complete family checklist beyond the source-pinned trophy row trio.",
-        "release_date": "1997-06-14/1997-06-15",
+        "product_count_basis": "Pokumon timeline documents the 7th Next Generation World Hobby Fair as running from December 7, 1997 to February 1, 1998 with a special limited Expansion Sheet on sale with three promo cards: Pikachu, Mew, and Mewtwo. Bulbapedia adds that a special preview expansion sheet was available at the fair and is often treated as Series 00. This child slice models the three currently source-pinned PokéCardex UPC rows; it does not claim copy counts, a complete venue schedule, sheet-object variants, later CD reprint census, or a complete event-object ledger, and it is not a complete family checklist beyond the source-pinned card trio.",
+        "release_date": "1997-12-07/1998-02-01",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -524,31 +534,31 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-06-14 to 1997-06-15",
-        "date_source": "release_map",
-        "distribution_comment": "Pokémon Card Game Official Tournament final qualification prize",
+        "date_label": "1997-12-07 to 1998-02-01",
+        "date_source": "source_comment",
+        "distribution_comment": "World Hobby Fair Special Limited Expansion Sheet",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
-        "source_sort": 12
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "source_sort": 26
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+          "Pikachu (World Hobby Fair Special Sheet 1997)",
+          "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+          "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          11,
-          12,
-          13
+          25,
+          26,
+          27
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -559,14 +569,14 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three First Official Tournament No.1/No.2/No.3 Trainer rows. This source slice models card identities only; it does not model every session-level award object, trophy case, plaque, winner, or copy-count claim.",
-        "source_local_id": "012",
-        "source_provider_sort": 12,
+        "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
+        "source_local_id": "026",
+        "source_provider_sort": 26,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -575,25 +585,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_local_id": "012",
+        "source_local_id": "026",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Pokémon Card Game Official Tournament final qualification prize",
-          "id_card": 14208,
+          "cardmarket_url": "Unnumbered-Promos/Mew-V2",
+          "comment": "World Hobby Fair Special Limited Expansion Sheet",
+          "id_card": 14224,
           "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14208",
-          "provider_title": "No.2 Trainer - Unnumbered Promotional #12",
+          "illustrator": "Ken Sugimori",
+          "provider_id": "pokecardex:14224",
+          "provider_title": "Mew - Unnumbered Promotional #26",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 12,
+          "sort": 26,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14208,
+              "id_card": 14224,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -602,20 +612,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
-        "source_sort": 12
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+        "source_sort": 26
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_first_official_tournament_199706",
+      "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
       "romaji": "",
-      "row_id": "jp_promo_first_official_tournament_199706:012",
+      "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "012",
+          "local_row_id": "026",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -625,25 +635,27 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_first_official_tournament_199706",
+          "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
-          "source_sort": 12
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+          "source_sort": 26
         },
         {
           "expected_cards": [
-            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+            "Pikachu (World Hobby Fair Special Sheet 1997)",
+            "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+            "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
           ],
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
@@ -651,31 +663,35 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:56:00Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1997 First Official Pokemon Card Game Tournament context, No.1/No.2/No.3 Trainer trophy card identities, session prize context, and confusion boundary against later Charizard/Lizardon trophy cards. This snapshot is not a full event archive, not a session-level award ledger, and not an official surviving-copy authority beyond the selected lines.",
-          "snapshot_hash": "72d65b4a3dfd25c3458ddbbaf403d9752bfd6cdc284f61ad383b1d574b0e3758",
+          "retrieved_at": "2026-06-17T21:06:06Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1997-1998 7th Next Generation World Hobby Fair Special Limited Expansion Sheet / Series 00 context, its three-card Pikachu/Mew/Mewtwo identity claim, and the Unnumbered Promotional / Vending-adjacent caveat. This snapshot is not a full event archive, not a venue schedule, not a sheet-object variant catalog, not a later CD reprint census, and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "21873c7136f1d7c3963216164806b1158c8116175b025c3a6542e10c2936a652",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/1st-official-pokemon-card-game-tournament/",
-          "supporting_page_urls": [],
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/timeline/",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "fd65fdd116db6c7a492b1ea90411774f072061477e50137727dc41c6d4550c8d",
+          "card_data_hash": "9b24d9459efdb9fc45af8724447d3f8f15b30a63b18783b2029ad4d1f8a7a8de",
           "encrypted_page_sha256": "9ea8e7481693f590ed20cabf40723c5e4359ef543970ce61ca0b671e3bd2242e",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -689,7 +705,7 @@
           ],
           "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -707,11 +723,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_first_official_tournament_199706"
+        "source_release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712"
       },
       "tags": [
-        "jp_promo_first_official_tournament_199706",
-        "First Official Pokemon Card Game Tournament trophy source slice",
+        "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "WHF Special Limited Expansion Sheet source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -729,7 +745,7 @@
       }
     },
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -737,14 +753,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.3 Trainer is cataloged as the currently source-pinned row for First Official Pokemon Card Game Tournament trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Mewtwo is cataloged as the currently source-pinned row for WHF Special Limited Expansion Sheet source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "First Official Pokemon Card Game Tournament trophy source slice",
-          "1997-06-14/1997-06-15",
+          "WHF Special Limited Expansion Sheet source slice",
+          "1997-12-07/1998-02-01",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "013",
+          "027",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -752,8 +768,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -774,11 +790,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/13.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/27.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/13.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/27.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -794,13 +810,13 @@
         ],
         "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
-        "promo_family_source_sort": 13,
-        "provider_id": "pokecardex:14209",
-        "provider_title": "No.3 Trainer - Unnumbered Promotional #13",
-        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+        "promo_family_source_sort": 27,
+        "provider_id": "pokecardex:14225",
+        "provider_title": "Mewtwo - Unnumbered Promotional #27",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_first_official_tournament_199706:013",
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -841,8 +857,8 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "013",
-      "name_en": "No.3 Trainer",
+      "local_id": "027",
+      "name_en": "Mewtwo",
       "name_ja": "",
       "name_ja_status": "missing_from_exact_source",
       "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
@@ -860,7 +876,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          150
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -870,15 +888,15 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon + Bulbapedia context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range_crosses_year",
         "expected_source_card_count": 3,
-        "japanese_set_name": "第1回公式ポケモンカードゲーム大会 トロフィープロモ",
+        "japanese_set_name": "次世代ワールドホビーフェア 特別限定拡張シート プロモ",
         "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents the June 14-15, 1997 First Official Pokemon Card Game Tournament and its No.1/No.2/No.3 Trainer trophy card identities. This child slice models the three currently source-pinned PokéCardex UPC trophy rows; it does not claim official copy counts, trophy-case variants, session-level award-object completeness, and it is not a complete family checklist beyond the source-pinned trophy row trio.",
-        "release_date": "1997-06-14/1997-06-15",
+        "product_count_basis": "Pokumon timeline documents the 7th Next Generation World Hobby Fair as running from December 7, 1997 to February 1, 1998 with a special limited Expansion Sheet on sale with three promo cards: Pikachu, Mew, and Mewtwo. Bulbapedia adds that a special preview expansion sheet was available at the fair and is often treated as Series 00. This child slice models the three currently source-pinned PokéCardex UPC rows; it does not claim copy counts, a complete venue schedule, sheet-object variants, later CD reprint census, or a complete event-object ledger, and it is not a complete family checklist beyond the source-pinned card trio.",
+        "release_date": "1997-12-07/1998-02-01",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -888,31 +906,31 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-06-14 to 1997-06-15",
-        "date_source": "release_map",
-        "distribution_comment": "Pokémon Card Game Official Tournament final qualification prize",
+        "date_label": "1997-12-07 to 1998-02-01",
+        "date_source": "source_comment",
+        "distribution_comment": "World Hobby Fair Special Limited Expansion Sheet",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
-        "source_sort": 13
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "source_sort": 27
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-          "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+          "Pikachu (World Hobby Fair Special Sheet 1997)",
+          "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+          "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          11,
-          12,
-          13
+          25,
+          26,
+          27
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -923,14 +941,14 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_first_official_tournament_199706",
+        "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three First Official Tournament No.1/No.2/No.3 Trainer rows. This source slice models card identities only; it does not model every session-level award object, trophy case, plaque, winner, or copy-count claim.",
-        "source_local_id": "013",
-        "source_provider_sort": 13,
+        "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
+        "source_local_id": "027",
+        "source_provider_sort": 27,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -939,25 +957,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
         "source_gap_count": 0,
-        "source_local_id": "013",
+        "source_local_id": "027",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Pokémon Card Game Official Tournament final qualification prize",
-          "id_card": 14209,
+          "cardmarket_url": "Unnumbered-Promos/Mewtwo-V1",
+          "comment": "World Hobby Fair Special Limited Expansion Sheet",
+          "id_card": 14225,
           "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14209",
-          "provider_title": "No.3 Trainer - Unnumbered Promotional #13",
+          "illustrator": "Ken Sugimori",
+          "provider_id": "pokecardex:14225",
+          "provider_title": "Mewtwo - Unnumbered Promotional #27",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 13,
+          "sort": 27,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14209,
+              "id_card": 14225,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -966,20 +984,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
-        "source_sort": 13
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+        "source_sort": 27
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_first_official_tournament_199706",
+      "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
       "romaji": "",
-      "row_id": "jp_promo_first_official_tournament_199706:013",
+      "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "013",
+          "local_row_id": "027",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -989,25 +1007,27 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_first_official_tournament_199706",
+          "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
-          "source_sort": 13
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+          "source_sort": 27
         },
         {
           "expected_cards": [
-            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+            "Pikachu (World Hobby Fair Special Sheet 1997)",
+            "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+            "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
           ],
           "not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
@@ -1015,31 +1035,35 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:56:00Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1997 First Official Pokemon Card Game Tournament context, No.1/No.2/No.3 Trainer trophy card identities, session prize context, and confusion boundary against later Charizard/Lizardon trophy cards. This snapshot is not a full event archive, not a session-level award ledger, and not an official surviving-copy authority beyond the selected lines.",
-          "snapshot_hash": "72d65b4a3dfd25c3458ddbbaf403d9752bfd6cdc284f61ad383b1d574b0e3758",
+          "retrieved_at": "2026-06-17T21:06:06Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1997-1998 7th Next Generation World Hobby Fair Special Limited Expansion Sheet / Series 00 context, its three-card Pikachu/Mew/Mewtwo identity claim, and the Unnumbered Promotional / Vending-adjacent caveat. This snapshot is not a full event archive, not a venue schedule, not a sheet-object variant catalog, not a later CD reprint census, and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "21873c7136f1d7c3963216164806b1158c8116175b025c3a6542e10c2936a652",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
             "complete event source",
-            "official surviving copy counts",
-            "complete session-level award ledger",
-            "complete trophy-case or plaque variant catalog",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/1st-official-pokemon-card-game-tournament/",
-          "supporting_page_urls": [],
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/timeline/",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "870dd42c7264b86c747c2f29d9803c36b2a8992948093a116b65d34811ab5fb7",
+          "card_data_hash": "45d038dbb95af6a846171d77c4fe4a6434aa84ecccf3355ae376f5ad3e4e26fa",
           "encrypted_page_sha256": "9ea8e7481693f590ed20cabf40723c5e4359ef543970ce61ca0b671e3bd2242e",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -1053,7 +1077,7 @@
           ],
           "promo_family_source_catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -1071,11 +1095,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_first_official_tournament_199706"
+        "source_release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712"
       },
       "tags": [
-        "jp_promo_first_official_tournament_199706",
-        "First Official Pokemon Card Game Tournament trophy source slice",
+        "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "WHF Special Limited Expansion Sheet source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -1107,17 +1131,17 @@
   "release": {
     "catalog_treatment": "Promo target source-slice",
     "count_confidence": "promo_family_child_source_slice_closed",
-    "date_precision": "source_range",
+    "date_precision": "source_range_crosses_year",
     "expected_row_count": 3,
     "expected_source_card_count": 3,
-    "name_en": "First Official Pokemon Card Game Tournament trophy source slice",
-    "name_ja": "第1回公式ポケモンカードゲーム大会 トロフィープロモ",
-    "note": "Narrow source-slice over the UPC aggregate First Official Tournament trophy rows. Use it to distinguish these original 1997 trophy cards from later Lizardon/Charizard Mega Battle trophy rows while keeping copy counts and award-object details outside the row claim.",
+    "name_en": "WHF Special Limited Expansion Sheet source slice",
+    "name_ja": "次世代ワールドホビーフェア 特別限定拡張シート プロモ",
+    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the World Hobby Fair Special Sheet. Use it to preserve the Pikachu/Mew/Mewtwo event lane while keeping sheet-object, venue, copy-count, and later-reprint claims outside row authority.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Pokumon documents the June 14-15, 1997 First Official Pokemon Card Game Tournament and its No.1/No.2/No.3 Trainer trophy card identities. This child slice models the three currently source-pinned PokéCardex UPC trophy rows; it does not claim official copy counts, trophy-case variants, session-level award-object completeness, and it is not a complete family checklist beyond the source-pinned trophy row trio.",
-    "release_date": "1997-06-14/1997-06-15",
-    "release_family_id": "jp_promo_first_official_tournament_199706",
+    "product_count_basis": "Pokumon timeline documents the 7th Next Generation World Hobby Fair as running from December 7, 1997 to February 1, 1998 with a special limited Expansion Sheet on sale with three promo cards: Pikachu, Mew, and Mewtwo. Bulbapedia adds that a special preview expansion sheet was available at the fair and is often treated as Series 00. This child slice models the three currently source-pinned PokéCardex UPC rows; it does not claim copy counts, a complete venue schedule, sheet-object variants, later CD reprint census, or a complete event-object ledger, and it is not a complete family checklist beyond the source-pinned card trio.",
+    "release_date": "1997-12-07/1998-02-01",
+    "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
     "release_type": "promo_family_child_rollup_rows",
     "source_gap_count": 0,
     "strict_release_member": false,
@@ -1131,30 +1155,38 @@
       "cards_found": 3,
       "catalog_hash": "a3c5fb00f4ce3a17a86a20db25150b4074a856a2ede85e85dc205ae223932dff",
       "expected_cards": [
-        "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-        "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-        "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+        "Pikachu (World Hobby Fair Special Sheet 1997)",
+        "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+        "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
       ],
       "expected_source_card_count": 3,
       "family_context_source": {
         "extracted_claims": {
-          "confusion_boundary": "Do not collapse first official tournament No.1-3 Trainer cards into Charizard/Lizardon Mega Battle No.1-3 Trainer cards.",
-          "event_window": "1997-06-14/1997-06-15",
-          "reported_copy_count_each": 4,
-          "reported_tournament_sessions": 4,
-          "trophy_card_count": 3,
-          "trophy_cards": [
-            "No.1 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.2 Trainer (Pokemon Card Game Official Tournament 1997)",
-            "No.3 Trainer (Pokemon Card Game Official Tournament 1997)"
+          "classification_context": [
+            "Officially Unnumbered Promotional cards",
+            "Often regarded as additions to Vending Machine and dubbed Series 00"
+          ],
+          "distribution_context": "7th Next Generation World Hobby Fair special limited Expansion Sheet",
+          "promo_card_count": 3,
+          "promo_cards": [
+            "Pikachu (World Hobby Fair Special Sheet 1997)",
+            "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+            "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)"
+          ],
+          "release_window": "1997-12-07/1998-02-01",
+          "version_distinction": [
+            "Mew and Mewtwo are also associated by Pokumon with Pokemon Song Best Collection CD 1997",
+            "Pikachu is identified by Pokumon as World Hobby Fair Special Sheet 1997 without the Song Best Collection CD parenthetical"
           ]
         },
         "not_claiming": [
           "raw HTML snapshot",
           "complete event source",
-          "official surviving copy counts",
-          "complete session-level award ledger",
-          "complete trophy-case or plaque variant catalog",
+          "official copy count",
+          "complete venue schedule",
+          "complete sheet-object variant catalog",
+          "complete later CD reprint census",
+          "retail vending release proof",
           "seller possession",
           "authenticity",
           "condition",
@@ -1162,34 +1194,38 @@
           "complete marketplace pricing"
         ],
         "oldid_url": "",
-        "retrieved_at": "2026-06-17T19:56:00Z",
-        "selected_text": "1st Official Pokemon Card Game Tournament\nThe 1st Official Pokemon Card Game Tournament is often considered the first official tournament for the Pokemon TCG.\nThe tournament was held from June 14 – 15, 1997.\nThe No.1 Trainer (Pokemon Card Game Official Tournament 1997) card was awarded to 1st place winners across each of the 4 tournament sessions. Only 4 copies of the card were given out.\nNo.1 Trainer (Pokemon Card Game Official Tournament 1997) (Unnumbered)\nThe No.2 Trainer (Pokemon Card Game Official Tournament 1997) card was awarded to 2nd place winners across each of the 4 tournament sessions. Only 4 copies of the card were given out.\nNo.2 Trainer (Pokemon Card Game Official Tournament 1997) (Unnumbered)\nThe No.3 Trainer (Pokemon Card Game Official Tournament 1997) card was awarded to 3rd place winners across each of the 4 tournament sessions. Only 4 copies of the card were given out.\nNo.3 Trainer (Pokemon Card Game Official Tournament 1997) (Unnumbered)\nWinners of each of the 4 tournament sessions each received a No.1-3 Trainer trophy card.\nThe 1st official tournament No.1-3 trainer cards and trophies are often confused with Charizard Mega Battle No. 1-3 Trainer cards.",
-        "snapshot_content_scope": "Selected rendered lines for the 1997 First Official Pokemon Card Game Tournament context, No.1/No.2/No.3 Trainer trophy card identities, session prize context, and confusion boundary against later Charizard/Lizardon trophy cards. This snapshot is not a full event archive, not a session-level award ledger, and not an official surviving-copy authority beyond the selected lines.",
-        "snapshot_hash": "72d65b4a3dfd25c3458ddbbaf403d9752bfd6cdc284f61ad383b1d574b0e3758",
+        "retrieved_at": "2026-06-17T21:06:06Z",
+        "selected_text": "December 7, 1997 - February 1, 1998\n7th Next Generation World Hobby Fair takes place, with a special limited Expansion Sheet on sale with 3 promo cards.\nPikachu  (World Hobby Fair Special Sheet 1997) (Unnumbered)\nMew  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)\nMewtwo  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)\nA special preview expansion sheet was available at the 7th Next Generation World Hobby Fair held in December 1997, featuring\nPikachu\nMewtwo\nMew\nUnnumbered Promotional cards\n, they are often regarded as additions to the Vending Machine collection and dubbed \"Series 00\".",
+        "snapshot_content_scope": "Selected rendered lines for the 1997-1998 7th Next Generation World Hobby Fair Special Limited Expansion Sheet / Series 00 context, its three-card Pikachu/Mew/Mewtwo identity claim, and the Unnumbered Promotional / Vending-adjacent caveat. This snapshot is not a full event archive, not a venue schedule, not a sheet-object variant catalog, not a later CD reprint census, and not a copy-count authority beyond the selected lines.",
+        "snapshot_hash": "21873c7136f1d7c3963216164806b1158c8116175b025c3a6542e10c2936a652",
         "snapshot_not_claiming": [
           "raw HTML snapshot",
           "complete event source",
-          "official surviving copy counts",
-          "complete session-level award ledger",
-          "complete trophy-case or plaque variant catalog",
+          "official copy count",
+          "complete venue schedule",
+          "complete sheet-object variant catalog",
+          "complete later CD reprint census",
+          "retail vending release proof",
           "seller possession",
           "authenticity",
           "condition",
           "image rights",
           "complete marketplace pricing"
         ],
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
-        "snapshot_retrieval_method": "Codex web.open rendered text lines",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+        "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-        "source": "Pokumon",
-        "source_page_url": "https://pokumon.com/1st-official-pokemon-card-game-tournament/",
-        "supporting_page_urls": []
+        "source": "Pokumon + Bulbapedia",
+        "source_page_url": "https://pokumon.com/timeline/",
+        "supporting_page_urls": [
+          "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
+        ]
       },
       "modeled_source_rows": 3,
       "modeled_source_sorts": [
-        11,
-        12,
-        13
+        25,
+        26,
+        27
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -1201,12 +1237,12 @@
         "price truth"
       ],
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-      "promo_family_id": "jp_promo_first_official_tournament_199706",
+      "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "a3ffb8f10375e96ee957021c1d04e404e260e086dc0eeee4387acb34dc134941",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
-      "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three First Official Tournament No.1/No.2/No.3 Trainer rows. This source slice models card identities only; it does not model every session-level award object, trophy case, plaque, winner, or copy-count claim.",
+      "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
@@ -1226,6 +1262,6 @@
     "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
-    "source_release_family_id": "jp_promo_first_official_tournament_199706"
+    "source_release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712"
   }
 }

@@ -90,6 +90,11 @@ TOYOTA_AUTO_CAMPAIGN_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_toyota_auto_campaign_1997_selected_lines.json"
 )
+WHF_SPECIAL_SHEET_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -126,9 +131,9 @@ UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
     22: {"promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804", "date_label": "1997-11-08 to 1998-04-26", "date_source": "release_map"},
     23: {"promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804", "date_label": "1997-11-08 to 1998-04-26", "date_source": "release_map"},
     24: {"promo_family_id": "jp_promo_fan_club_vol3_19971118", "date_label": "1997-11-18", "date_source": "source_comment"},
-    25: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
-    26: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
-    27: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12 to 1998-02", "date_source": "release_map"},
+    25: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12-07 to 1998-02-01", "date_source": "source_comment"},
+    26: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12-07 to 1998-02-01", "date_source": "source_comment"},
+    27: {"promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712", "date_label": "1997-12-07 to 1998-02-01", "date_source": "source_comment"},
     28: {"promo_family_id": "jp_promo_n64_double_get_199712", "date_label": "1997-12-10 to 1998-01-31", "date_source": "source_comment"},
     29: {"promo_family_id": "jp_promo_n64_double_get_199712", "date_label": "1997-12-10 to 1998-01-31", "date_source": "source_comment"},
     30: {"promo_family_id": "jp_promo_corocoro_19971215", "date_label": "1997-12-15", "date_source": "source_comment"},
@@ -307,6 +312,36 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "and Pikachu rows to this exact family. This source slice models those card "
             "identities only; it does not model dealership participation, pamphlet-object "
             "variants, redemption volume, or copy-count claims."
+        ),
+    },
+    "jp_promo_whf_special_limited_expansion_sheet_199712": {
+        "source_snapshot": "whf_special_sheet_1997",
+        "expected_source_card_count": 3,
+        "expected_cards": [
+            "Pikachu (World Hobby Fair Special Sheet 1997)",
+            "Mew (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+            "Mewtwo (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997)",
+        ],
+        "modeled_source_sorts": [25, 26, 27],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "December 7, 1997 - February 1, 1998",
+            "7th Next Generation World Hobby Fair takes place, with a special limited Expansion Sheet on sale with 3 promo cards.",
+            "Pikachu  (World Hobby Fair Special Sheet 1997) (Unnumbered)",
+            "Mew  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "Mewtwo  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+            "A special preview expansion sheet was available at the 7th Next Generation World Hobby Fair held in December 1997, featuring",
+            "Unnumbered Promotional cards",
+            "Series 00",
+        ],
+        "source_gap_reason": (
+            "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window "
+            "and three World Hobby Fair Special Sheet promo identities, while Bulbapedia "
+            "documents the special preview expansion sheet/Series 00 context. The current "
+            "PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this "
+            "exact family. This source slice models those card identities only; it does not "
+            "model a complete event schedule, venue-by-venue sale ledger, sheet-object "
+            "variant catalog, later CD reprint census, or copy-count claims."
         ),
     },
     "jp_promo_n64_double_get_199712": {
@@ -928,6 +963,39 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_whf_special_limited_expansion_sheet_199712",
+        name_en="WHF Special Limited Expansion Sheet source slice",
+        name_ja="次世代ワールドホビーフェア 特別限定拡張シート プロモ",
+        release_date="1997-12-07/1998-02-01",
+        expected_row_count=3,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range_crosses_year",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon timeline documents the 7th Next Generation World Hobby Fair as running "
+            "from December 7, 1997 to February 1, 1998 with a special limited Expansion "
+            "Sheet on sale with three promo cards: Pikachu, Mew, and Mewtwo. Bulbapedia "
+            "adds that a special preview expansion sheet was available at the fair and is "
+            "often treated as Series 00. This child slice models the three currently "
+            "source-pinned PokéCardex UPC rows; it does not claim copy counts, a complete "
+            "venue schedule, sheet-object variants, later CD reprint census, or a complete "
+            "event-object ledger, and it is not a complete family checklist beyond the "
+            "source-pinned card trio."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the World "
+            "Hobby Fair Special Sheet. Use it to preserve the Pikachu/Mew/Mewtwo event "
+            "lane while keeping sheet-object, venue, copy-count, and later-reprint claims "
+            "outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1312,6 +1380,26 @@ def toyota_auto_campaign_source_snapshot() -> dict[str, Any]:
     }
 
 
+def whf_special_sheet_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(WHF_SPECIAL_SHEET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(WHF_SPECIAL_SHEET_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1344,6 +1432,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return fan_club_vol3_source_snapshot()
     if snapshot_id == "toyota_auto_campaign_1997":
         return toyota_auto_campaign_source_snapshot()
+    if snapshot_id == "whf_special_sheet_1997":
+        return whf_special_sheet_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3471,6 +3561,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             {
                 "source": promo_snapshot.get("source", ""),
                 "source_page_url": promo_snapshot["source_page_url"],
+                "supporting_page_urls": promo_snapshot.get("supporting_page_urls", []),
                 "oldid_url": promo_snapshot["oldid_url"],
                 "snapshot_path": promo_snapshot["snapshot_path"],
                 "snapshot_hash": promo_snapshot["snapshot_hash"],
@@ -3540,6 +3631,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "family_context_source": {
             "source": promo_snapshot.get("source", ""),
             "source_page_url": promo_snapshot["source_page_url"],
+            "supporting_page_urls": promo_snapshot.get("supporting_page_urls", []),
             "oldid_url": promo_snapshot["oldid_url"],
             "snapshot_path": promo_snapshot["snapshot_path"],
             "snapshot_hash": promo_snapshot["snapshot_hash"],
@@ -3562,6 +3654,11 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "price truth",
         ],
     }
+    count_confidence = (
+        "promo_family_child_source_slice_closed"
+        if not unmodeled_expected_cards
+        else "promo_family_child_source_slice_with_source_gap"
+    )
     return {
         "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
         "release": {
@@ -3572,7 +3669,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "date_precision": config.date_precision,
             "release_type": config.release_type,
             "expected_row_count": config.expected_row_count,
-            "count_confidence": "promo_family_child_source_slice_with_source_gap",
+            "count_confidence": count_confidence,
             "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
             "product_card_count": config.product_card_count,
             "product_count_basis": config.product_count_basis,
@@ -5137,6 +5234,13 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_release_gap_count_mismatch")
         if release_meta.get("expected_source_card_count", 0) != len(cards) + release_meta.get("source_gap_count", 0):
             failures.append("promo_family_child_release_count_closure_mismatch")
+        expected_count_confidence = (
+            "promo_family_child_source_slice_closed"
+            if expected_gap_count == 0
+            else "promo_family_child_source_slice_with_source_gap"
+        )
+        if release_meta.get("count_confidence") != expected_count_confidence:
+            failures.append("promo_family_child_count_confidence_mismatch")
         if release_meta.get("unmodeled_expected_cards") != family_spec.get("unmodeled_expected_cards"):
             failures.append("promo_family_child_release_unmodeled_cards_mismatch")
         if release_meta.get("catalog_treatment") != "Promo target source-slice":
@@ -5195,6 +5299,22 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append("promo_family_child_context_snapshot_path_mismatch")
             if family_context.get("source_page_url") != promo_snapshot["source_page_url"]:
                 failures.append("promo_family_child_context_source_url_mismatch")
+            if family_context.get("supporting_page_urls", []) != promo_snapshot.get("supporting_page_urls", []):
+                failures.append("promo_family_child_context_supporting_urls_mismatch")
+            for card in cards:
+                context_contacts = [
+                    contact
+                    for contact in card.get("source_contacts", [])
+                    if contact.get("snapshot_path") == promo_snapshot["snapshot_path"]
+                ]
+                if not context_contacts:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_missing")
+                    continue
+                if any(
+                    contact.get("supporting_page_urls", []) != promo_snapshot.get("supporting_page_urls", [])
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_supporting_urls_mismatch")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
@@ -5292,6 +5412,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "family_context_snapshot_path": family_context_source.get("snapshot_path", ""),
         "family_context_snapshot_hash": family_context_source.get("snapshot_hash", ""),
         "family_context_source_url": family_context_source.get("source_page_url", ""),
+        "family_context_supporting_page_urls": family_context_source.get("supporting_page_urls", []),
         "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
@@ -5367,6 +5488,7 @@ def main() -> int:
                 "family_context_snapshot_path": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_path", ""),
                 "family_context_snapshot_hash": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_hash", ""),
                 "family_context_source_url": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("source_page_url", ""),
+                "family_context_supporting_page_urls": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("supporting_page_urls", []),
                 "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
