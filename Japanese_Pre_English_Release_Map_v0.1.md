@@ -109,7 +109,7 @@ manifest-building aid, not row-level evidence. A release family marked `yes` or
 | `jp_tcg_leaders_stadium_19981024` | no | high | Leaders' Stadium booster cards are documented as all-with-rarity-symbols; cards without symbols belong to gym theme deck lanes, not the booster set. |
 | `jp_tcg_quick_starter_gift_set_19981204` | yes | high | Hard trap lane. Bulbapedia states Quick Starter cards are non-glossy Vending reprints without rarity symbols; Elite Fourum documents five Base Trainer lookalikes that grading companies and sellers can mislabel as No Rarity Base. |
 | `jp_tcg_gameboy_card_gb_19981218` | yes | medium | The Dragonite is an unnumbered promo-style card. Treat missing rarity as promo structure, not a Base-style No Rarity variant. Row source still needed. |
-| `jp_tcg_pokemon_song_best_collection_19990101` | yes | medium | Promo/reprint CD cards should be treated as promo-family missing-symbol candidates until each row is source-imaged. The English Pikachu needs its own language caveat. |
+| `jp_tcg_pokemon_song_best_collection_19990101` | mixed | medium | Promo/reprint CD cards should be treated as promo-family missing-symbol candidates until each row is source-imaged. The English Pikachu is an English Base Set inclusion and needs a row-level language/symbol caveat. |
 
 ### Promo Symbol Rule
 

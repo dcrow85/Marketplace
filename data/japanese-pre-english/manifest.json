@@ -1,8 +1,8 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "exact_image_witness_rows": 603,
-  "exact_source_image_rows": 382,
-  "generated_at": "2026-06-17T15:26:42Z",
+  "exact_image_witness_rows": 614,
+  "exact_source_image_rows": 393,
+  "generated_at": "2026-06-17T15:56:22Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete pre-English catalog",
@@ -13,7 +13,7 @@
     "price truth"
   ],
   "provider_path_reference_image_rows": 221,
-  "release_count": 14,
+  "release_count": 15,
   "releases": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
@@ -280,9 +280,28 @@
       "source_labeled_japanese_name_rows": 0,
       "source_url": "https://www.pokecardex.com/en/series/jp/UPC",
       "tcgdex_set_id": ""
+    },
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "aec04cbf9594ded35be16b81ee195df23e13d234c4c90dea6b4e56f24584bbd2",
+      "exact_image_witness_rows": 11,
+      "exact_source_image_rows": 11,
+      "expected_row_count": 11,
+      "hash_algorithm": "sha256",
+      "missing_japanese_name_rows": 0,
+      "path": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json",
+      "promo_context_rows": 11,
+      "provider_path_reference_image_rows": 0,
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "row_count": 11,
+      "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+      "source_adapter": "bulbapedia_song_best",
+      "source_labeled_japanese_name_rows": 11,
+      "source_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+      "tcgdex_set_id": ""
     }
   ],
   "schema": "marketplace.japanese_pre_english_manifest.v0.1",
   "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images from provider-path-derived reference images.",
-  "total_rows": 603
+  "total_rows": 614
 }

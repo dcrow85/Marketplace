@@ -1,0 +1,2546 @@
+{
+  "cards": [
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Venusaur is cataloged here as row 1 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "001",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Bulbapedia Song Best Collection membership list",
+          "same Bulbapedia card page",
+          "same card-page image or reprint field selected for the CD/included print"
+        ],
+        "image_large": "https://archives.bulbagarden.net/media/upload/4/40/VenusaurBestCDPromo.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://archives.bulbagarden.net/media/upload/4/40/VenusaurBestCDPromo.jpg",
+        "image_status_note": "Bulbapedia card page image/reprint field",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Venusaur (Base Set 15)",
+        "provider_title": "Venusaur - Pokemon Song Best Collection CD #1",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:001",
+        "source": "Bulbagarden Archives via Bulbapedia",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "001",
+      "name_en": "Venusaur",
+      "name_ja": "フシギバナ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "100",
+        "level": "67",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Grass"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 1
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)?action=raw",
+        "bulbapedia_title": "Venusaur (Base Set 15)",
+        "language_note": "",
+        "pokumon_card_page_url": "",
+        "pokumon_event_tile_sha256": "",
+        "pokumon_title": "",
+        "provider_id": "bulbapedia:Venusaur (Base Set 15)",
+        "provider_title": "Venusaur - Pokemon Song Best Collection CD #1",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 1,
+        "source_index": 1
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Fushigibana",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:001",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "a2170013c5f288110c8ef02e845bada11ec9f073b2f5295d1a8bd00d3e0c569d",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Charizard is cataloged here as row 2 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "002",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Bulbapedia Song Best Collection membership list",
+          "same Bulbapedia card page",
+          "same card-page image or reprint field selected for the CD/included print"
+        ],
+        "image_large": "https://archives.bulbagarden.net/media/upload/e/ef/CharizardBestCDPromo.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://archives.bulbagarden.net/media/upload/e/ef/CharizardBestCDPromo.jpg",
+        "image_status_note": "Bulbapedia card page image/reprint field",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Charizard (Base Set 4)",
+        "provider_title": "Charizard - Pokemon Song Best Collection CD #2",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:002",
+        "source": "Bulbagarden Archives via Bulbapedia",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "002",
+      "name_en": "Charizard",
+      "name_ja": "リザードン",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "120",
+        "level": "76",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Fire"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 2
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)?action=raw",
+        "bulbapedia_title": "Charizard (Base Set 4)",
+        "language_note": "",
+        "pokumon_card_page_url": "",
+        "pokumon_event_tile_sha256": "",
+        "pokumon_title": "",
+        "provider_id": "bulbapedia:Charizard (Base Set 4)",
+        "provider_title": "Charizard - Pokemon Song Best Collection CD #2",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 2,
+        "source_index": 2
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Lizardon",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:002",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "c9eb99317b0d66460170e05186fd2fcfa71f281087a3d2b55fb8c9cf1214c001",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Blastoise is cataloged here as row 3 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "003",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Bulbapedia Song Best Collection membership list",
+          "same Bulbapedia card page",
+          "same card-page image or reprint field selected for the CD/included print"
+        ],
+        "image_large": "https://archives.bulbagarden.net/media/upload/d/df/BlastoiseBestCDPromo.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://archives.bulbagarden.net/media/upload/d/df/BlastoiseBestCDPromo.jpg",
+        "image_status_note": "Bulbapedia card page image/reprint field",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Blastoise (Base Set 2)",
+        "provider_title": "Blastoise - Pokemon Song Best Collection CD #3",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:003",
+        "source": "Bulbagarden Archives via Bulbapedia",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "003",
+      "name_en": "Blastoise",
+      "name_ja": "カメックス",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "100",
+        "level": "52",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Water"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 3
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)?action=raw",
+        "bulbapedia_title": "Blastoise (Base Set 2)",
+        "language_note": "",
+        "pokumon_card_page_url": "",
+        "pokumon_event_tile_sha256": "",
+        "pokumon_title": "",
+        "provider_id": "bulbapedia:Blastoise (Base Set 2)",
+        "provider_title": "Blastoise - Pokemon Song Best Collection CD #3",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 3,
+        "source_index": 3
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Kamex",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:003",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "047ad9ca91cb455fdee43312841924fe37ca6ce4f5ec11fe42c678c6faa16e4d",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Arcanine is cataloged here as row 4 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "004",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U020Unnumbered-213x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U020Unnumbered-213x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Arcanine (Wizards Promo 6)",
+        "provider_title": "Arcanine - Pokemon Song Best Collection CD #4",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:004",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "004",
+      "name_en": "Arcanine",
+      "name_ja": "ウィンディ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "70",
+        "level": "34",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Fire"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 4
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Wizards_Promo_6)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Wizards_Promo_6)?action=raw",
+        "bulbapedia_title": "Arcanine (Wizards Promo 6)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/arcanine-toyota-campaign-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Arcanine  (Toyota campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Arcanine (Wizards Promo 6)",
+        "provider_title": "Arcanine - Pokemon Song Best Collection CD #4",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 4,
+        "source_index": 4
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Windie",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:004",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "5e5e063587ba1fb58361f8d9f12e5122bcaf90c929e83990547f572697da65af",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Wizards_Promo_6)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Wizards_Promo_6)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Mewtwo is cataloged here as row 5 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "005",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Christopher Rush",
+        "name": "Christopher Rush",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U031Unnumbered-216x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U031Unnumbered-216x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Mewtwo (Wizards Promo 12)",
+        "provider_title": "Mewtwo - Pokemon Song Best Collection CD #5",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:005",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "005",
+      "name_en": "Mewtwo",
+      "name_ja": "ミュウツー",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "60",
+        "level": "30",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Psychic"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)?action=raw",
+        "bulbapedia_title": "Mewtwo (Wizards Promo 12)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/mewtwo-world-hobby-fair-special-sheet-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Mewtwo  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Mewtwo (Wizards Promo 12)",
+        "provider_title": "Mewtwo - Pokemon Song Best Collection CD #5",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 5,
+        "source_index": 5
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Mewtwo",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:005",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "e3e09a01f591907f57fe67546b1f9bd4d307c43f02b9cddc88b896805e5ea12f",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Mew is cataloged here as row 6 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "006",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U030Unnumbered-217x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U030Unnumbered-217x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Mew (WHF Special Sheet promo)",
+        "provider_title": "Mew - Pokemon Song Best Collection CD #6",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:006",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "006",
+      "name_en": "Mew",
+      "name_ja": "ミュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "50",
+        "level": "25",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Psychic"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 6
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_(WHF_Special_Sheet_promo)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_(WHF_Special_Sheet_promo)?action=raw",
+        "bulbapedia_title": "Mew (WHF Special Sheet promo)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/mew-world-hobby-fair-special-sheet-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Mew  (World Hobby Fair Special Sheet, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Mew (WHF Special Sheet promo)",
+        "provider_title": "Mew - Pokemon Song Best Collection CD #6",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 6,
+        "source_index": 6
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Mew",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:006",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "153f66a5f3daae31c8ee2684a802f3d608de2e1867533cdff51123d40fc38063",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_(WHF_Special_Sheet_promo)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_(WHF_Special_Sheet_promo)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Cool Porygon is cataloged here as row 7 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "007",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Hiromichi Sugiyama",
+        "name": "Hiromichi Sugiyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U027Unnumbered-215x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U027Unnumbered-215x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Cool Porygon (Wizards Promo 15)",
+        "provider_title": "Cool Porygon - Pokemon Song Best Collection CD #7",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:007",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "007",
+      "name_en": "Cool Porygon",
+      "name_ja": "かっこいいポリゴン",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "50",
+        "level": "15",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Colorless"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 7
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)?action=raw",
+        "bulbapedia_title": "Cool Porygon (Wizards Promo 15)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/cool-porygon-nintendo-64-campaign-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Cool Porygon  (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Cool Porygon (Wizards Promo 15)",
+        "provider_title": "Cool Porygon - Pokemon Song Best Collection CD #7",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 7,
+        "source_index": 7
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Cool Porygon",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:007",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "e3406301b9f991626a34566773578c9517d2048c317f7916ed9911d54c8423f6",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Hungry Snorlax is cataloged here as row 8 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "008",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Sumiyoshi Kizuki",
+        "name": "Sumiyoshi Kizuki",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U028Unnumbered-216x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U028Unnumbered-216x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Hungry Snorlax (Nintendo 64 promo)",
+        "provider_title": "Hungry Snorlax - Pokemon Song Best Collection CD #8",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:008",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "008",
+      "name_en": "Hungry Snorlax",
+      "name_ja": "くいしんぼカビゴン",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "100",
+        "level": "50",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Colorless"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)?action=raw",
+        "bulbapedia_title": "Hungry Snorlax (Nintendo 64 promo)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/hungry-snorlax-nintendo-64-campaign-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Hungry Snorlax  (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Hungry Snorlax (Nintendo 64 promo)",
+        "provider_title": "Hungry Snorlax - Pokemon Song Best Collection CD #8",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 8,
+        "source_index": 8
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Gluttonous Kabigon",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:008",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "89ca8584705ef66a94c02586b3c4e89918f511fafa67c531b15a61536a8b4dce",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Computer Error is cataloged here as row 9 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "009",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Sumiyoshi Kizuki",
+        "name": "Sumiyoshi Kizuki",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U033Unnumbered-213x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U033Unnumbered-213x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Computer Error (Wizards Promo 16)",
+        "provider_title": "Computer Error - Pokemon Song Best Collection CD #9",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:009",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "009",
+      "name_en": "Computer Error",
+      "name_ja": "パソコン大暴走！",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Trainer"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 9
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)?action=raw",
+        "bulbapedia_title": "Computer Error (Wizards Promo 16)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/computer-error-corocoro-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Computer Error  (CoroCoro, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Computer Error (Wizards Promo 16)",
+        "provider_title": "Computer Error - Pokemon Song Best Collection CD #9",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 9,
+        "source_index": 9
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "The Computer's Out of Control!",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:009",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "430ff15f8dc2b3f313721934d38592d342063c0a0f0d2ddb653b29e1617ced44",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Super Energy Retrieval is cataloged here as row 10 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "010",
+          "Unnumbered Promotional / CD included reprint",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Keiji Kinebuchi",
+        "name": "Keiji Kinebuchi",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Pokumon Song Best Collection CD event page",
+          "same event-page card tile",
+          "same event-page image path",
+          "cross-listed by Bulbapedia Song Best membership list"
+        ],
+        "image_large": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U007Unnumbered-216x300.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://cdn6966.templcdn.com/wp-content/uploads/2021/03/JP_U007Unnumbered-216x300.jpg",
+        "image_status_note": "Pokumon Song Best release-event tile",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Super Energy Retrieval (Fan Book promo)",
+        "provider_title": "Super Energy Retrieval - Pokemon Song Best Collection CD #10",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:010",
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "010",
+      "name_en": "Super Energy Retrieval",
+      "name_ja": "超エネルギー回収",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Trainer"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 10
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Super_Energy_Retrieval_(Fan_Book_promo)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Super_Energy_Retrieval_%28Neo_Genesis_89%29?action=raw",
+        "bulbapedia_title": "Super Energy Retrieval (Fan Book promo)",
+        "language_note": "",
+        "pokumon_card_page_url": "https://pokumon.com/card/super-energy-retrieval-pocket-monsters-fan-book-pokemon-song-best-collection-cd-1997-unnumbered/",
+        "pokumon_event_tile_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+        "pokumon_title": "Super Energy Retrieval  (Pocket Monsters Fan Book, Pokemon Song Best Collection CD 1997) (Unnumbered)",
+        "provider_id": "bulbapedia:Super Energy Retrieval (Fan Book promo)",
+        "provider_title": "Super Energy Retrieval - Pokemon Song Best Collection CD #10",
+        "rarity": "Unnumbered Promotional / CD included reprint",
+        "sort": 10,
+        "source_index": 10
+      },
+      "rarity_source": "Unnumbered Promotional / CD included reprint",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Super Energy Recovery",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:010",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "0d41b68ab90a13a6aadda2b4ee08fd9eee35a3db4311b2291c47e7a5ef94c96d",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Super_Energy_Retrieval_(Fan_Book_promo)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Super_Energy_Retrieval_%28Neo_Genesis_89%29?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "mixed",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "Unnumbered Promotional / CD included reprint",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia/Pokumon exact row page",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Pikachu is cataloged here as row 11 of Pokemon Song Best Collection. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Pokemon Song Best Collection",
+          "011",
+          "English Base Set card included in Japanese CD product; apply language caveat",
+          "1999-01-01"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "bulbapedia_song_best"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same Bulbapedia Song Best Collection membership list",
+          "same Bulbapedia card page",
+          "English inclusion caveat present on the Song Best membership row",
+          "default English Base Set image selected because the CD row is explicitly the English card"
+        ],
+        "image_large": "https://archives.bulbagarden.net/media/upload/7/76/PikachuBaseSet58.jpg",
+        "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://archives.bulbagarden.net/media/upload/7/76/PikachuBaseSet58.jpg",
+        "image_status_note": "Bulbapedia card page default image for the English Base Set print included in the CD",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "bulbapedia:Pikachu (Base Set 58)",
+        "provider_title": "Pikachu - Pokemon Song Best Collection CD #11",
+        "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_pokemon_song_best_collection_19990101:011",
+        "source": "Bulbagarden Archives via Bulbapedia",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Base_Set_58)",
+        "status": "exact_source_image",
+        "verification_status": "source_labeled_exact_row_external_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "exact external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "011",
+      "name_en": "Pikachu",
+      "name_ja": "ピカチュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "40",
+        "level": "12",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Lightning"
+        ]
+      },
+      "print_context": {
+        "authority": "Bulbapedia Song Best membership and card-page print context.",
+        "included_in_cd": true,
+        "language_caveat": "English card included in Japanese CD product.",
+        "not_claiming": [
+          "first distribution",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "prior_print_note": "Previously released through another promotion; the CD inclusion row is a product-context row."
+      },
+      "product_scope": {
+        "authority": "Release-family catalog row derived from source-attributed Bulbapedia/Pokumon Japanese set page and TCGdex metadata where available.",
+        "catalog_treatment": "Promo target",
+        "counting_note": "This row belongs to Pokemon Song Best Collection; it is not a No Rarity Base claim.",
+        "date_precision": "exact_source_claim",
+        "japanese_set_name": "ポケモンソング・ベストコレクション",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 11,
+        "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+        "release_date": "1999-01-01",
+        "release_type": "promo_cd_source_rows",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 11
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1999-01-01",
+        "date_source": "Bulbapedia Song Best Collection page",
+        "distribution_comment": "Bulbapedia states all cards included in the CD were previously released through other Japanese promotions; this row records CD inclusion, not first distribution.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_song_best_collection_19990101",
+        "source_sort": 11
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_song_best",
+        "bulbapedia_card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Base_Set_58)",
+        "bulbapedia_card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Base_Set_58)?action=raw",
+        "bulbapedia_title": "Pikachu (Base Set 58)",
+        "language_note": "English card included in Japanese CD product.",
+        "pokumon_card_page_url": "",
+        "pokumon_event_tile_sha256": "",
+        "pokumon_title": "",
+        "provider_id": "bulbapedia:Pikachu (Base Set 58)",
+        "provider_title": "Pikachu - Pokemon Song Best Collection CD #11",
+        "rarity": "English Base Set card included in Japanese CD product; apply language caveat",
+        "sort": 11,
+        "source_index": 11
+      },
+      "rarity_source": "English Base Set card included in Japanese CD product; apply language caveat",
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "romaji": "Pikachu",
+      "row_id": "jp_tcg_pokemon_song_best_collection_19990101:011",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_page_sha256": "2c366cee36bdb6f389b970d8a45dfe8e8fb5633864ed3049b7ad41119e87955b",
+          "card_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Base_Set_58)",
+          "card_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Base_Set_58)?action=raw",
+          "membership_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+          "membership_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+          "membership_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "source": "Bulbapedia"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "no",
+        "row_caveat": "English card included in Japanese CD product.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "row_language_caveat_override",
+        "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+      },
+      "tags": [
+        "jp_tcg_pokemon_song_best_collection_19990101",
+        "Pokemon Song Best Collection",
+        "1999-01-01",
+        "English Base Set card included in Japanese CD product; apply language caveat",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete pre-English catalog",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Promo target",
+    "count_confidence": "bulbapedia_song_best_source",
+    "date_precision": "exact_source_claim",
+    "expected_row_count": 11,
+    "name_en": "Pokemon Song Best Collection",
+    "name_ja": "ポケモンソング・ベストコレクション",
+    "note": "CD insert/reprint promo slice. Treat as official TCG promo/reprint context, not as a Base No Rarity claim; English Pikachu carries a row-level language caveat.",
+    "parent_release_family_id": "",
+    "product_card_count": 11,
+    "product_count_basis": "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven matching Song Best event rows; the remaining four image witnesses are selected from Bulbapedia card-page image/reprint fields.",
+    "release_date": "1999-01-01",
+    "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+    "release_type": "promo_cd_source_rows",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 11
+  },
+  "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+  "sources": [
+    {
+      "cards_found": 11,
+      "cross_check_source": "Pokumon",
+      "cross_check_source_page_url": "https://pokumon.com/release_event/pokemon-song-best-collection-cd/",
+      "cross_check_source_selected_tiles_sha256": "233385a9a7a2f7ccbdd341097ea3e2b2e9e4131b970d5239a1dc4b79f8d5ff56",
+      "not_claiming": [
+        "official source",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "source": "Bulbapedia",
+      "source_page_selected_section_sha256": "84baed7c7935d3ca5f5afcf01c0691a1666e3f4d597f3378ff437b9bdaf323a2",
+      "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection",
+      "source_raw_sha256": "1cab19cc1504640d7c777c4e2210eb9a7b08a211cd0bab1462fe24a1de65476b",
+      "source_raw_url": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Song_Best_Collection?action=raw"
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity claim"
+    ],
+    "prints_without_rarity_symbol": "mixed",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+    "source_mode": "direct_release_family",
+    "source_release_family_id": "jp_tcg_pokemon_song_best_collection_19990101"
+  }
+}

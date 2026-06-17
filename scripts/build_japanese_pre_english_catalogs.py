@@ -33,6 +33,9 @@ AUDIT_PATH = OUT_DIR / "audit.json"
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
+BULBAPEDIA_BASE = "https://bulbapedia.bulbagarden.net"
+BULBAGARDEN_ARCHIVES_BASE = "https://archives.bulbagarden.net"
+POKUMON_BASE = "https://pokumon.com"
 POKECARDEX_DATA_KEY = b"oe61R0RgVTJm9omokoKuRem2N2GUbUZ8"
 USER_AGENT = "MarketplaceCatalogBuilder/0.1 (+https://github.com/dcrow85/Marketplace)"
 
@@ -326,6 +329,30 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         catalog_treatment="Promo target",
         note="Aggregate source slice for pre-English unnumbered promos. It preserves UPC source sort and promo-family context; later work may split these into smaller per-distribution release catalogs.",
     ),
+    ReleaseConfig(
+        release_family_id="jp_tcg_pokemon_song_best_collection_19990101",
+        name_en="Pokemon Song Best Collection",
+        name_ja="ポケモンソング・ベストコレクション",
+        release_date="1999-01-01",
+        expected_row_count=11,
+        release_type="promo_cd_source_rows",
+        prints_without_rarity_symbol="mixed",
+        symbol_status_confidence="medium",
+        pokellector_path="",
+        date_precision="exact_source_claim",
+        source_adapter="bulbapedia_song_best",
+        product_card_count=11,
+        product_count_basis=(
+            "Bulbapedia membership page lists eleven included cards. Pokumon exposes seven "
+            "matching Song Best event rows; the remaining four image witnesses are selected "
+            "from Bulbapedia card-page image/reprint fields."
+        ),
+        catalog_treatment="Promo target",
+        note=(
+            "CD insert/reprint promo slice. Treat as official TCG promo/reprint context, not as "
+            "a Base No Rarity claim; English Pikachu carries a row-level language caveat."
+        ),
+    ),
 )
 
 
@@ -428,6 +455,60 @@ def meta_content(raw_html: str, name: str) -> str:
 
 def full_image_from_thumb(thumb_url: str) -> str:
     return thumb_url.replace(".thumb.png", ".png")
+
+
+def adapter_source_name(adapter: str) -> str:
+    if adapter == "pokecardex":
+        return "PokéCardex"
+    if adapter == "bulbapedia_song_best":
+        return "Bulbapedia/Pokumon"
+    return "Pokellector"
+
+
+def source_url_for_config(config: ReleaseConfig) -> str:
+    if config.source_adapter == "pokellector":
+        return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
+    if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english"}:
+        return f"{POKECARDEX_BASE}/en/series/jp/{config.pokecardex_code}"
+    if config.source_adapter == "bulbapedia_song_best":
+        return f"{BULBAPEDIA_BASE}/wiki/Pok%C3%A9mon_Song_Best_Collection"
+    raise ValueError(f"unknown source_adapter={config.source_adapter}")
+
+
+def wiki_raw_field(raw_text: str, key: str) -> str:
+    match = re.search(rf"\|\s*{re.escape(key)}\s*=\s*([^\n]+)", raw_text)
+    if not match:
+        return ""
+    return match.group(1).strip().rstrip("|").strip()
+
+
+def clean_wiki_text(value: str) -> str:
+    value = re.sub(r"\{\{TCG\|([^|}]+)\|([^}]+)\}\}", r"\2", value)
+    value = re.sub(r"\{\{TCG\|([^}]+)\}\}", r"\1", value)
+    value = re.sub(r"\{\{wp\|([^|}]+)\|([^}]+)\}\}", r"\2", value)
+    value = re.sub(r"\{\{wp\|([^}]+)\}\}", r"\1", value)
+    value = re.sub(r"\[\[([^]|]+)\|([^]]+)\]\]", r"\2", value)
+    value = re.sub(r"\[\[([^]]+)\]\]", r"\1", value)
+    value = re.sub(r"<br\s*/?>", " ", value, flags=re.I)
+    return re.sub(r"\s+", " ", html.unescape(value)).strip()
+
+
+def archive_redirect_url(filename: str) -> str:
+    request = urllib.request.Request(
+        f"{BULBAGARDEN_ARCHIVES_BASE}/wiki/Special:Redirect/file/{urllib.parse.quote(filename)}",
+        headers={"User-Agent": USER_AGENT},
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return response.url
+
+
+def follow_bulbapedia_raw_redirect(raw_text: str) -> tuple[str, str]:
+    redirect = re.match(r"#REDIRECT\s*\[\[([^]]+)\]\]", raw_text, flags=re.I)
+    if not redirect:
+        return raw_text, ""
+    target = redirect.group(1)
+    target_url = f"{BULBAPEDIA_BASE}/wiki/{urllib.parse.quote(target.replace(' ', '_'))}?action=raw"
+    return fetch_text(target_url), target_url
 
 
 def parse_pokellector_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -619,6 +700,224 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
     return cards, source
 
 
+def parse_pokumon_event_tiles(event_url: str) -> tuple[dict[str, dict[str, str]], str]:
+    raw_html = fetch_text(event_url)
+    tiles: dict[str, dict[str, str]] = {}
+    pattern = re.compile(
+        r'<a class="cl-element-featured_media__anchor" href="(?P<href>[^"]+)" title="(?P<title>[^"]+)">'
+        r'.*?data-src="(?P<image>[^"]+)"',
+        re.S,
+    )
+    for match in pattern.finditer(raw_html):
+        title = html.unescape(match.group("title"))
+        name = re.split(r"\s{2,}\(", title, maxsplit=1)[0].strip()
+        tiles[name.lower()] = {
+            "card_page_url": html.unescape(match.group("href")),
+            "event_page_url": event_url,
+            "image_url": html.unescape(match.group("image")),
+            "title": title,
+        }
+    return tiles, sha256_hex(tiles)
+
+
+def parse_bulbapedia_song_best(config: ReleaseConfig) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    event_url = source_url_for_config(config)
+    event_raw_url = f"{event_url}?action=raw"
+    raw_event_html = fetch_text(event_url)
+    raw_event_wiki = fetch_text(event_raw_url)
+    event_wiki_hash = sha256_text(raw_event_wiki)
+    section_start = raw_event_html.find("All of the cards included")
+    section_end = raw_event_html.find("Related_articles")
+    if section_start == -1 or section_end == -1:
+        raise ValueError("missing Bulbapedia Song Best card-list section")
+    card_section = raw_event_html[section_start:section_end]
+    event_section_hash = sha256_text(card_section)
+    list_pattern = re.compile(
+        r'<li><a href="(?P<href>[^"]+)"[^>]*title="(?P<title>[^"]+)">(?P<name>[^<]+)</a>(?P<tail>[^<]*)</li>'
+    )
+    pokumon_event_url = f"{POKUMON_BASE}/release_event/pokemon-song-best-collection-cd/"
+    pokumon_tiles, pokumon_hash = parse_pokumon_event_tiles(pokumon_event_url)
+    cards: list[dict[str, Any]] = []
+    for index, match in enumerate(list_pattern.finditer(card_section), start=1):
+        name_en = html.unescape(match.group("name")).strip()
+        card_page_url = urllib.parse.urljoin(BULBAPEDIA_BASE, html.unescape(match.group("href")))
+        card_raw_url = f"{card_page_url}?action=raw"
+        raw_card_wiki_initial = fetch_text(card_raw_url)
+        raw_card_wiki, redirect_raw_url = follow_bulbapedia_raw_redirect(raw_card_wiki_initial)
+        card_wiki_hash = sha256_text(raw_card_wiki)
+        title = html.unescape(match.group("title"))
+        language_note = "English card included in Japanese CD product." if "English" in match.group("tail") else ""
+        provider_id = f"bulbapedia:{title}"
+        cardname = clean_wiki_text(wiki_raw_field(raw_card_wiki, "cardname")) or name_en
+        jname = clean_wiki_text(wiki_raw_field(raw_card_wiki, "jname"))
+        jtrans = clean_wiki_text(wiki_raw_field(raw_card_wiki, "jtrans"))
+        card_type = clean_wiki_text(wiki_raw_field(raw_card_wiki, "type"))
+        hp = clean_wiki_text(wiki_raw_field(raw_card_wiki, "hp"))
+        level = clean_wiki_text(wiki_raw_field(raw_card_wiki, "level"))
+        illustrator = ""
+        caption = clean_wiki_text(wiki_raw_field(raw_card_wiki, "caption"))
+        illustrator_match = re.search(r"Illus\.\s+([^|]+)$", caption)
+        if illustrator_match:
+            illustrator = illustrator_match.group(1).strip()
+
+        image_source = "Bulbagarden Archives via Bulbapedia"
+        image_status_note = "Bulbapedia card page image/reprint field"
+        exactness_basis = [
+            "same Bulbapedia Song Best Collection membership list",
+            "same Bulbapedia card page",
+            "same card-page image or reprint field selected for the CD/included print",
+        ]
+        pokumon_tile = pokumon_tiles.get(name_en.lower())
+        if pokumon_tile:
+            image_url = pokumon_tile["image_url"]
+            image_source = "Pokumon"
+            image_status_note = "Pokumon Song Best release-event tile"
+            exactness_basis = [
+                "same Pokumon Song Best Collection CD event page",
+                "same event-page card tile",
+                "same event-page image path",
+                "cross-listed by Bulbapedia Song Best membership list",
+            ]
+            source_page_url = pokumon_tile["event_page_url"]
+        else:
+            image_filename = ""
+            if name_en in {"Venusaur", "Charizard", "Blastoise"}:
+                for field_name in ("reprint1", "reprint2", "reprint3", "reprint4"):
+                    candidate = wiki_raw_field(raw_card_wiki, field_name)
+                    if "BestCDPromo" in candidate:
+                        image_filename = candidate
+                        break
+            elif language_note:
+                image_filename = wiki_raw_field(raw_card_wiki, "image")
+                image_status_note = "Bulbapedia card page default image for the English Base Set print included in the CD"
+                exactness_basis = [
+                    "same Bulbapedia Song Best Collection membership list",
+                    "same Bulbapedia card page",
+                    "English inclusion caveat present on the Song Best membership row",
+                    "default English Base Set image selected because the CD row is explicitly the English card",
+                ]
+            if not image_filename:
+                raise ValueError(f"missing exact image source for {name_en}")
+            image_url = archive_redirect_url(image_filename)
+            source_page_url = card_page_url
+
+        local_id = f"{index:03d}"
+        title_with_context = f"{name_en} - Pokemon Song Best Collection CD #{index}"
+        rarity_context = (
+            "English Base Set card included in Japanese CD product; apply language caveat"
+            if language_note
+            else "Unnumbered Promotional / CD included reprint"
+        )
+        source_contact = {
+            "card_page_sha256": card_wiki_hash,
+            "card_page_url": card_page_url,
+            "card_raw_url": redirect_raw_url or card_raw_url,
+            "membership_section_sha256": event_section_hash,
+            "membership_raw_sha256": event_wiki_hash,
+            "membership_page_url": event_url,
+            "source": "Bulbapedia",
+            "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
+        }
+        cards.append(
+            {
+                "source": source_contact,
+                "local_id": local_id,
+                "name_en": cardname,
+                "name_ja": jname,
+                "romaji_source": jtrans,
+                "name_source_note": "Bulbapedia card-page infobox fields for English, Japanese, and transliteration.",
+                "provider_row": {
+                    "adapter": "bulbapedia_song_best",
+                    "bulbapedia_card_page_url": card_page_url,
+                    "bulbapedia_card_raw_url": redirect_raw_url or card_raw_url,
+                    "bulbapedia_title": title,
+                    "provider_id": provider_id,
+                    "provider_title": title_with_context,
+                    "source_index": index,
+                    "language_note": language_note,
+                    "pokumon_card_page_url": pokumon_tile.get("card_page_url", "") if pokumon_tile else "",
+                    "pokumon_event_tile_sha256": pokumon_hash if pokumon_tile else "",
+                    "pokumon_title": pokumon_tile.get("title", "") if pokumon_tile else "",
+                    "rarity": rarity_context,
+                    "sort": index,
+                },
+                "image_provenance": {
+                    "allowed_use": ["manual_review", "catalog_reference_link"],
+                    "display_allowed": False,
+                    "exactness_basis": exactness_basis,
+                    "image_large": image_url,
+                    "image_role": "Exact external reference witness for this Song Best catalog row; rights not promoted to approved in-app display.",
+                    "image_small": image_url,
+                    "image_status_note": image_status_note,
+                    "not_allowed_by_default": ["training", "seller evidence", "authentication proof"],
+                    "not_claiming": ["seller possession", "seller card match", "condition", "authenticity"],
+                    "provider_id": provider_id,
+                    "provider_title": title_with_context,
+                    "release_family_id": config.release_family_id,
+                    "rights_status": "external_reference_witness",
+                    "row_id": f"{config.release_family_id}:{local_id}",
+                    "source": image_source,
+                    "source_page_url": source_page_url,
+                    "status": "exact_source_image",
+                    "verification_status": "source_labeled_exact_row_external_witness",
+                },
+                "card_profile": {
+                    "hp": hp or None,
+                    "illustrator": illustrator,
+                    "jtrans": jtrans,
+                    "level": level or None,
+                    "types": [card_type] if card_type else [],
+                },
+                "promo_context": {
+                    "date_label": config.release_date,
+                    "date_source": "Bulbapedia Song Best Collection page",
+                    "distribution_comment": (
+                        "Bulbapedia states all cards included in the CD were previously released "
+                        "through other Japanese promotions; this row records CD inclusion, not first distribution."
+                    ),
+                    "promo_family_id": "jp_promo_song_best_collection_19990101",
+                    "source_sort": index,
+                    "not_claiming": ["official copy count", "seller possession", "authenticity", "condition"],
+                },
+                "print_context": {
+                    "authority": "Bulbapedia Song Best membership and card-page print context.",
+                    "included_in_cd": True,
+                    "language_caveat": language_note,
+                    "prior_print_note": (
+                        "Previously released through another promotion; the CD inclusion row is a product-context row."
+                    ),
+                    "not_claiming": ["first distribution", "seller possession", "authenticity", "condition"],
+                },
+                **(
+                    {
+                        "symbol_status_override": {
+                            "confidence": "medium",
+                            "prints_without_rarity_symbol": "no",
+                            "row_caveat": language_note,
+                            "source_mode": "row_language_caveat_override",
+                        }
+                    }
+                    if language_note
+                    else {}
+                ),
+            }
+        )
+        time.sleep(0.05)
+    source = {
+        "source": "Bulbapedia",
+        "source_page_url": event_url,
+        "source_page_selected_section_sha256": event_section_hash,
+        "source_raw_url": event_raw_url,
+        "source_raw_sha256": event_wiki_hash,
+        "cross_check_source": "Pokumon",
+        "cross_check_source_page_url": pokumon_event_url,
+        "cross_check_source_selected_tiles_sha256": pokumon_hash,
+        "cards_found": len(cards),
+        "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
+    }
+    return cards, source
+
+
 def tcgdex_cards(set_id: str | None) -> tuple[dict[str, dict[str, Any]], dict[str, Any] | None]:
     if not set_id:
         return {}, None
@@ -669,16 +968,19 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
     tcgdex_id = tcgdex_row.get("id", "") if tcgdex_row else ""
     provider_row = source_row.get("provider_row", source_row.get("pokellector", {}))
     adapter = provider_row.get("adapter", "")
-    source_name = "PokéCardex" if adapter == "pokecardex" else "Pokellector"
+    source_name = adapter_source_name(adapter)
     rarity = provider_row.get("rarity") or (tcgdex_row or {}).get("rarity", "")
-    category = (tcgdex_row or {}).get("category", "")
+    category = source_row.get("category") or (tcgdex_row or {}).get("category", "")
     variants = (tcgdex_row or {}).get("variants", {})
     image = dict(source_row["image_provenance"])
     image["row_id"] = row_id
-    source_profile = source_row.get("pokecardex_profile", {})
+    source_profile = source_row.get("pokecardex_profile") or source_row.get("card_profile", {})
     profile = pokemon_profile_from_tcgdex(tcgdex_row)
     if not tcgdex_row and source_profile:
         profile["dex_id"] = source_profile.get("dex_id", [])
+        profile["hp"] = source_profile.get("hp")
+        profile["level"] = source_profile.get("level")
+        profile["types"] = source_profile.get("types", [])
     illustrator_name = source_profile.get("illustrator") or provider_row.get("illustrator") or ""
     illustrator_display = f"Illus. {illustrator_name}" if illustrator_name else ""
     symbol_source_release_id = config.symbol_status_source_release_family_id or config.release_family_id
@@ -692,14 +994,14 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         "name_en": source_row["name_en"],
         "name_ja": source_row["name_ja"],
         "name_ja_status": "source_labeled" if source_row["name_ja"] else "missing_from_exact_source",
-        "romaji": "",
+        "romaji": source_row.get("romaji_source", ""),
         "name_source_note": source_row["name_source_note"],
-        "category": category or ("Pokemon" if source_profile.get("dex_id") else ""),
+        "category": category or ("Pokemon" if source_profile.get("dex_id") or source_profile.get("types") else ""),
         "promo_context": {
             "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
             "date_label": promo_context.get("date_label", ""),
             "date_source": promo_context.get("date_source", ""),
-            "distribution_comment": provider_row.get("comment", ""),
+            "distribution_comment": promo_context.get("distribution_comment") or provider_row.get("comment", ""),
             "promo_family_id": promo_context.get("promo_family_id", ""),
             "source_sort": provider_row.get("sort", ""),
             "not_claiming": ["official copy count", "seller possession", "authenticity", "condition"],
@@ -746,8 +1048,11 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
             "scope": "release_context_not_row_fact",
             "source_mode": symbol_source_mode,
             "source_release_family_id": symbol_source_release_id,
+            **source_row.get("symbol_status_override", {}),
+            **({"row_caveat": source_row.get("print_context", {}).get("language_caveat")} if source_row.get("print_context", {}).get("language_caveat") else {}),
             "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
         },
+        **({"print_context": source_row["print_context"]} if source_row.get("print_context") else {}),
         "image_provenance": image,
         "collector_texture": {
             "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
@@ -793,6 +1098,8 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
         source_rows, primary_source = parse_pokellector_set(config)
     elif config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english"}:
         source_rows, primary_source = parse_pokecardex_set(config)
+    elif config.source_adapter == "bulbapedia_song_best":
+        source_rows, primary_source = parse_bulbapedia_song_best(config)
     else:
         raise ValueError(f"unknown source_adapter={config.source_adapter}")
     tcgdex_by_local_id, tcgdex_source = tcgdex_cards(config.tcgdex_set_id)
@@ -849,6 +1156,8 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
 def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     cards = release.get("cards", [])
     release_meta = release.get("release", {})
+    release_sources = release.get("sources", [])
+    primary_source = release_sources[0] if release_sources else {}
     expected = release_meta.get("expected_row_count")
     release_type = release_meta.get("release_type", "")
     row_ids = [card.get("row_id") for card in cards]
@@ -868,6 +1177,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("duplicate_row_ids")
     if release_type == "promo_aggregate_filtered_rows" and release_meta.get("strict_release_member") is not False:
         failures.append("promo_aggregate_strict_release_member_overclaim")
+    if release_type == "promo_cd_source_rows" and release_meta.get("strict_release_member") is not True:
+        failures.append("promo_cd_rows_must_be_strict_release_members")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
@@ -926,6 +1237,89 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: local_id_not_source_sort")
             if card.get("product_scope", {}).get("strict_release_member") is not False:
                 failures.append(f"{card.get('row_id')}: promo_row_strict_release_member_overclaim")
+        if release_type == "promo_cd_source_rows":
+            promo_context = card.get("promo_context", {})
+            source_sort = provider_row.get("sort")
+            source_contacts = card.get("source_contacts", [])
+            bulbapedia_contacts = [
+                contact
+                for contact in source_contacts
+                if contact.get("source") == "Bulbapedia"
+            ]
+            if provider_row.get("adapter") != "bulbapedia_song_best":
+                failures.append(f"{card.get('row_id')}: song_best_wrong_adapter")
+            if not promo_context.get("promo_family_id"):
+                failures.append(f"{card.get('row_id')}: song_best_missing_promo_context")
+            if promo_context.get("source_sort") != source_sort:
+                failures.append(f"{card.get('row_id')}: song_best_source_sort_mismatch")
+            try:
+                expected_local_id = f"{int(source_sort):03d}"
+            except (TypeError, ValueError):
+                expected_local_id = ""
+            if card.get("local_id") != expected_local_id:
+                failures.append(f"{card.get('row_id')}: song_best_local_id_sort_mismatch")
+            if card.get("romaji") == "":
+                failures.append(f"{card.get('row_id')}: song_best_missing_romaji")
+            if not card.get("print_context", {}).get("included_in_cd"):
+                failures.append(f"{card.get('row_id')}: song_best_missing_print_context")
+            if image.get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: song_best_image_row_id_mismatch")
+            if image.get("release_family_id") != card.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: song_best_image_release_family_mismatch")
+            if image.get("provider_id") != provider_row.get("provider_id"):
+                failures.append(f"{card.get('row_id')}: song_best_image_provider_id_mismatch")
+            if image.get("provider_title") != provider_row.get("provider_title"):
+                failures.append(f"{card.get('row_id')}: song_best_image_provider_title_mismatch")
+            if not image.get("image_large") or image.get("image_large") != image.get("image_small"):
+                failures.append(f"{card.get('row_id')}: song_best_image_url_missing_or_split")
+            if not image.get("source_page_url"):
+                failures.append(f"{card.get('row_id')}: song_best_image_missing_source_page_url")
+            if card.get("image_provenance", {}).get("status") != "exact_source_image":
+                failures.append(f"{card.get('row_id')}: song_best_image_not_exact_source")
+            if card.get("image_provenance", {}).get("source") not in {"Pokumon", "Bulbagarden Archives via Bulbapedia"}:
+                failures.append(f"{card.get('row_id')}: song_best_unexpected_image_source")
+            if image.get("source") == "Pokumon":
+                if image.get("source_page_url") != primary_source.get("cross_check_source_page_url"):
+                    failures.append(f"{card.get('row_id')}: song_best_pokumon_source_page_mismatch")
+                if not provider_row.get("pokumon_card_page_url"):
+                    failures.append(f"{card.get('row_id')}: song_best_missing_pokumon_card_page")
+                if provider_row.get("pokumon_event_tile_sha256") != primary_source.get("cross_check_source_selected_tiles_sha256"):
+                    failures.append(f"{card.get('row_id')}: song_best_pokumon_tile_hash_mismatch")
+            if image.get("source") == "Bulbagarden Archives via Bulbapedia":
+                if image.get("source_page_url") != provider_row.get("bulbapedia_card_page_url"):
+                    failures.append(f"{card.get('row_id')}: song_best_bulbapedia_image_source_page_mismatch")
+                if not image.get("image_large", "").startswith(f"{BULBAGARDEN_ARCHIVES_BASE}/media/upload/"):
+                    failures.append(f"{card.get('row_id')}: song_best_bulbagarden_image_url_unexpected")
+            if not any(
+                contact.get("card_page_url") == provider_row.get("bulbapedia_card_page_url")
+                and contact.get("membership_section_sha256") == primary_source.get("source_page_selected_section_sha256")
+                and contact.get("membership_raw_sha256") == primary_source.get("source_raw_sha256")
+                and contact.get("card_page_sha256")
+                for contact in bulbapedia_contacts
+            ):
+                failures.append(f"{card.get('row_id')}: song_best_missing_bulbapedia_source_contact")
+            if card.get("product_scope", {}).get("strict_release_member") is not True:
+                failures.append(f"{card.get('row_id')}: song_best_row_not_strict_release_member")
+    if release_type == "promo_cd_source_rows":
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "mixed":
+            failures.append("song_best_release_symbol_status_should_be_mixed")
+        language_caveats = [
+            card
+            for card in cards
+            if card.get("print_context", {}).get("language_caveat")
+        ]
+        language_symbol_no = [
+            card
+            for card in language_caveats
+            if card.get("symbol_status", {}).get("prints_without_rarity_symbol") == "no"
+            and card.get("symbol_status", {}).get("source_mode") == "row_language_caveat_override"
+        ]
+        if len(promo_context_rows) != len(cards):
+            failures.append("song_best_promo_context_not_complete")
+        if len(language_caveats) != 1:
+            failures.append(f"song_best_expected_one_language_caveat actual={len(language_caveats)}")
+        if len(language_symbol_no) != 1:
+            failures.append("song_best_language_caveat_symbol_override_missing")
     return {
         "release_family_id": release_meta.get("release_family_id"),
         "row_count": len(cards),
@@ -958,11 +1352,7 @@ def main() -> int:
         write_json(path, release)
         audit = audit_release(release)
         audit_rows.append(audit)
-        source_url = (
-            urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
-            if config.source_adapter == "pokellector"
-            else f"{POKECARDEX_BASE}/en/series/jp/{config.pokecardex_code}"
-        )
+        source_url = source_url_for_config(config)
         manifests.append(
             {
                 "release_family_id": config.release_family_id,

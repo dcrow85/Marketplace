@@ -1,7 +1,7 @@
 {
-  "exact_image_witness_rows": 603,
-  "exact_source_image_rows": 382,
-  "generated_at": "2026-06-17T15:26:42Z",
+  "exact_image_witness_rows": 614,
+  "exact_source_image_rows": 393,
+  "generated_at": "2026-06-17T15:56:22Z",
   "not_claiming": [
     "multi-agent audit complete",
     "complete pre-English release coverage",
@@ -206,10 +206,24 @@
       "row_count": 55,
       "source_labeled_japanese_name_rows": 0,
       "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 11,
+      "exact_source_image_rows": 11,
+      "expected_row_count": 11,
+      "failures": [],
+      "missing_japanese_name_rows": 0,
+      "passed": true,
+      "promo_context_rows": 11,
+      "provider_path_reference_image_rows": 0,
+      "release_family_id": "jp_tcg_pokemon_song_best_collection_19990101",
+      "row_count": 11,
+      "source_labeled_japanese_name_rows": 11,
+      "tcgdex_enriched_rows": 0
     }
   ],
-  "release_count": 14,
+  "release_count": 15,
   "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1",
   "tcgdex_enriched_rows": 257,
-  "total_rows": 603
+  "total_rows": 614
 }
