@@ -339,10 +339,10 @@ should be resolved from memory.
   `jp_promo_lizardon_mega_battle_199711_199804`. Next pass should source-hash
   the commemorative-book scans and split first-official-tournament trophies from
   regional Lizardon trophy variants at row level.
-- `jp_promo_jr_east_stamp_rally_199708`: second-source check supports 1997 and
-  the August 9-17, 1997 event window. Next pass should source-hash the event
-  booklet images and distinguish the matte JR cards from earlier glossy
-  CoroCoro versions.
+- `jp_promo_jr_east_stamp_rally_199708`: selected Pokumon snapshot lines now
+  support the 1997 context, August 9-17, 1997 event window, two-card booklet,
+  and matte Surfing Pikachu/Mew lane while leaving the unmodeled Mew row visible
+  as a source gap.
 - The map's own sources are URL-only. Under the catalog evolution drill rules,
   URL-only sources block at row build. This map is a v0.1 seed and may cite
   URLs, but every release manifest built from it must snapshot and

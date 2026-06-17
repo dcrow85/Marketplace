@@ -70,6 +70,11 @@ LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_lizardon_mega_battle_selected_lines.json"
 )
+JR_EAST_STAMP_RALLY_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_jr_east_stamp_rally_1997_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -204,6 +209,31 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega "
             "Battle trophy rows. The source slice models card identities only; it does not "
             "model plaque variants, award copies, or every physical award context."
+        ),
+    },
+    "jp_promo_jr_east_stamp_rally_199708": {
+        "source_snapshot": "jr_east_stamp_rally_1997",
+        "expected_source_card_count": 2,
+        "expected_cards": [
+            "Surfing Pikachu (JR Train Rally 1997)",
+            "Mew (JR Train Rally 1997)",
+        ],
+        "modeled_source_sorts": [14],
+        "unmodeled_expected_cards": ["Mew (JR Train Rally 1997)"],
+        "expected_snapshot_texts": [
+            "Japan Rail East Stamp Rally 1997",
+            "issued 2 of the earliest Pokemon promo cards",
+            "Surfing Pikachu (JR Train Rally 1997)",
+            "Mew (JR Train Rally 1997)",
+            "August 9 – 17, 1997",
+            "booklet containing 2 promo cards",
+            "matte texture instead of glossy",
+            "Mt. Fuji and a Japan Rail train",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu "
+            "and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing "
+            "Pikachu to this exact family. The Mew booklet card remains an explicit source gap."
         ),
     },
 }
@@ -658,6 +688,33 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_jr_east_stamp_rally_199708",
+        name_en="JR East Pokemon Stamp Rally source slice",
+        name_ja="JR東日本ポケモンスタンプラリー プロモ",
+        release_date="1997-08-09/1997-08-17",
+        expected_row_count=1,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_range",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing "
+            "Pikachu and Mew. This child slice models the one currently source-pinned "
+            "PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a "
+            "source gap and is not a complete family checklist."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate row currently pinned to the JR East "
+            "Stamp Rally family. Use it to preserve the matte JR-train Surfing Pikachu lane "
+            "while keeping the unmodeled Mew booklet card visible as a source gap."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_tcg_gameboy_card_gb_19981218",
         name_en="Pokemon Trading Card Game for Game Boy Color",
         name_ja="ポケモンカードGB",
@@ -938,11 +995,32 @@ def lizardon_mega_battle_source_snapshot() -> dict[str, Any]:
     }
 
 
+def jr_east_stamp_rally_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(JR_EAST_STAMP_RALLY_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon"),
+        "snapshot_path": str(JR_EAST_STAMP_RALLY_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
     if snapshot_id == "early_1996_promos":
         return early_1996_promo_source_snapshot()
     if snapshot_id == "lizardon_mega_battle":
         return lizardon_mega_battle_source_snapshot()
+    if snapshot_id == "jr_east_stamp_rally_1997":
+        return jr_east_stamp_rally_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
 
 
@@ -4096,12 +4174,31 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_row_id_mismatch")
             if image.get("status") != "provider_path_reference_image":
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_status_mismatch")
+            if image.get("rights_status") != "external_reference_witness":
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_rights_status_mismatch")
+            if image.get("display_allowed") is not False:
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_display_allowed_overclaim")
+            if set(image.get("allowed_use", [])) != {"manual_review", "catalog_reference_link"}:
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_allowed_use_mismatch")
+            required_not_allowed = {"training", "seller evidence", "authentication proof"}
+            if not required_not_allowed.issubset(set(image.get("not_allowed_by_default", []))):
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_not_allowed_boundary_missing")
             if image.get("promo_family_source_catalog_hash") != source_hash:
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_source_hash_mismatch")
             if image.get("promo_family_source_row_id") != f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}":
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_source_row_mismatch")
             if "complete promo family" not in image.get("not_claiming", []):
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_family_boundary_missing")
+            required_image_not_claiming = {
+                "seller possession",
+                "seller card match",
+                "condition",
+                "authenticity",
+                "complete promo family",
+                "unmodeled expected card row",
+            }
+            if not required_image_not_claiming.issubset(set(image.get("not_claiming", []))):
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_not_claiming_boundary_missing")
             if not any(
                 contact.get("source") == "Promo-family child source-slice rollup"
                 and contact.get("catalog_hash") == source_hash

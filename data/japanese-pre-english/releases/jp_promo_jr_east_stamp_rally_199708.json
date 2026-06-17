@@ -9,14 +9,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Jigglypuff is cataloged as the currently source-pinned row for Easily Understand How to Play Pokemon Cards promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Surfing Pikachu is cataloged as the currently source-pinned row for JR East Pokemon Stamp Rally source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Easily Understand How to Play Pokemon Cards promos source slice",
-          "1996-11-30",
+          "JR East Pokemon Stamp Rally source slice",
+          "1997-08-09/1997-08-17",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "004",
+          "014",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -24,8 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Keiji Kinebuchi",
-        "name": "Keiji Kinebuchi",
+        "display": "Illus. Toshinao Aoki",
+        "name": "Toshinao Aoki",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -46,11 +46,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/4.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/14.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/4.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/14.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -66,13 +66,13 @@
         ],
         "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
-        "promo_family_source_sort": 4,
-        "provider_id": "pokecardex:14200",
-        "provider_title": "Jigglypuff - Unnumbered Promotional #4",
-        "release_family_id": "jp_promo_how_to_play_book_19961130",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "promo_family_source_sort": 14,
+        "provider_id": "pokecardex:14211",
+        "provider_title": "Surfing Pikachu - Unnumbered Promotional #14",
+        "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_how_to_play_book_19961130:004",
+        "row_id": "jp_promo_jr_east_stamp_rally_199708:014",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -113,8 +113,8 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "004",
-      "name_en": "Jigglypuff",
+      "local_id": "014",
+      "name_en": "Surfing Pikachu",
       "name_ja": "",
       "name_ja_status": "missing_from_exact_source",
       "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
@@ -133,7 +133,7 @@
         "abilities": [],
         "attacks": [],
         "dex_id": [
-          39
+          25
         ],
         "hp": null,
         "level": null,
@@ -144,48 +144,48 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "exact",
+        "counting_note": "This is a source-pinned child slice for one modeled UPC aggregate row. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range",
         "expected_source_card_count": 2,
-        "japanese_set_name": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
+        "japanese_set_name": "JR東日本ポケモンスタンプラリー プロモ",
         "membership_note": "Modeled source row is pinned to this promo family; the family checklist remains incomplete.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models only the current source-pinned PokéCardex UPC row for this exact family and records the missing counterpart as a source gap; it is not a complete family checklist.",
-        "release_date": "1996-11-30",
+        "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the one currently source-pinned PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a source gap and is not a complete family checklist.",
+        "release_date": "1997-08-09/1997-08-17",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 1,
         "strict_release_member": false,
         "unique_catalog_row_count": 1,
         "unmodeled_expected_cards": [
-          "Pikachu [Non-glossy, Keiji Kinebuchi]"
+          "Mew (JR Train Rally 1997)"
         ]
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1996-11-30",
+        "date_label": "1997-08-09 to 1997-08-17",
         "date_source": "source_comment",
-        "distribution_comment": "Easily Understand How to Play Pokémon Cards (November 30, 1996)",
+        "distribution_comment": "JR East Pokémon Stamp Rally (August 9-17, 1997)",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_how_to_play_book_19961130",
-        "source_sort": 4
+        "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "source_sort": 14
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "Pikachu [Non-glossy, Keiji Kinebuchi]",
-          "Jigglypuff [Non-glossy]"
+          "Surfing Pikachu (JR Train Rally 1997)",
+          "Mew (JR Train Rally 1997)"
         ],
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
-          4
+          14
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -196,17 +196,17 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_how_to_play_book_19961130",
+        "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
         "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
         "source_gap_count": 1,
-        "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards, but the current PokéCardex UPC aggregate source-pins only Jigglypuff to this exact family.",
-        "source_local_id": "004",
-        "source_provider_sort": 4,
+        "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
+        "source_local_id": "014",
+        "source_provider_sort": 14,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": [
-          "Pikachu [Non-glossy, Keiji Kinebuchi]"
+          "Mew (JR Train Rally 1997)"
         ]
       },
       "provider_row": {
@@ -214,56 +214,47 @@
         "expected_source_card_count": 2,
         "source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
         "source_gap_count": 1,
-        "source_local_id": "004",
+        "source_local_id": "014",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Jigglypuff-UNP",
-          "comment": "Easily Understand How to Play Pokémon Cards (November 30, 1996)",
-          "id_card": 14200,
-          "id_tcgplayer": 617376,
-          "illustrator": "Keiji Kinebuchi",
-          "provider_id": "pokecardex:14200",
-          "provider_title": "Jigglypuff - Unnumbered Promotional #4",
+          "cardmarket_url": "Unnumbered-Promos/Surfing-Pikachu-V1-UNP",
+          "comment": "JR East Pokémon Stamp Rally (August 9-17, 1997)",
+          "id_card": 14211,
+          "id_tcgplayer": 617395,
+          "illustrator": "Toshinao Aoki",
+          "provider_id": "pokecardex:14211",
+          "provider_title": "Surfing Pikachu - Unnumbered Promotional #14",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 4,
+          "sort": 14,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14200,
+              "id_card": 14211,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
-              "only_english": false
-            },
-            {
-              "comment": "",
-              "comment_us": "",
-              "id_card": 14200,
-              "id_version": 27,
-              "nom_version": "Apparence (Glossy)",
-              "nom_version_us": "Appearance (Glossy)",
               "only_english": false
             }
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
-        "source_sort": 4
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "source_sort": 14
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_how_to_play_book_19961130",
+      "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
       "romaji": "",
-      "row_id": "jp_promo_how_to_play_book_19961130:004",
+      "row_id": "jp_promo_jr_east_stamp_rally_199708:014",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "004",
+          "local_row_id": "014",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -273,53 +264,55 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_how_to_play_book_19961130",
+          "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
-          "source_sort": 4
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+          "source_sort": 14
         },
         {
           "expected_cards": [
-            "Pikachu [Non-glossy, Keiji Kinebuchi]",
-            "Jigglypuff [Non-glossy]"
+            "Surfing Pikachu (JR Train Rally 1997)",
+            "Mew (JR Train Rally 1997)"
           ],
           "not_claiming": [
             "raw HTML snapshot",
-            "complete UPC source",
-            "image rights",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
             "seller possession",
             "authenticity",
             "condition",
-            "official copy counts",
+            "image rights",
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T18:45:00Z",
-          "snapshot_content_scope": "Selected rendered lines for the first 1996 Unnumbered Promotional print entries only. This snapshot is used to record early promo-family membership expectations and source gaps; it is not a raw HTML archive and not a full UPC source mirror.",
-          "snapshot_hash": "fe060860ad15c9b59f1bf1bc914d33d613da844eb7b4ca003768f009435780ec",
+          "retrieved_at": "2026-06-17T19:31:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1997 JR East Stamp Rally event context, prize booklet, two-card claim, and matte/JR-train Surfing Pikachu distinction. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "2c8237c8b5014a9cb45844c22ef87868945c03b9f46eb171f2b3c83dcc1187a8",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete UPC source",
-            "image rights",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
             "seller possession",
             "authenticity",
             "condition",
-            "official copy counts",
+            "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Bulbapedia",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "source": "Pokumon",
+          "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
           "unmodeled_expected_cards": [
-            "Pikachu [Non-glossy, Keiji Kinebuchi]"
+            "Mew (JR Train Rally 1997)"
           ]
         },
         {
-          "card_data_hash": "665162a14f1b47b8a54806ec32cabb8db20555cf1064b039835a07757c25a818",
+          "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
           "encrypted_page_sha256": "b946e05f85bc41364d3b273a380120582e09997b98788c0fcfbf5ba02f9b4539",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
@@ -333,7 +326,7 @@
           ],
           "promo_family_source_catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -351,11 +344,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_how_to_play_book_19961130"
+        "source_release_family_id": "jp_promo_jr_east_stamp_rally_199708"
       },
       "tags": [
-        "jp_promo_how_to_play_book_19961130",
-        "Easily Understand How to Play Pokemon Cards promos source slice",
+        "jp_promo_jr_east_stamp_rally_199708",
+        "JR East Pokemon Stamp Rally source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -387,23 +380,23 @@
   "release": {
     "catalog_treatment": "Promo target source-slice",
     "count_confidence": "promo_family_child_source_slice_with_source_gap",
-    "date_precision": "exact",
+    "date_precision": "source_range",
     "expected_row_count": 1,
     "expected_source_card_count": 2,
-    "name_en": "Easily Understand How to Play Pokemon Cards promos source slice",
-    "name_ja": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
-    "note": "Narrow source-slice over the UPC aggregate row currently pinned to the how-to-play book promo family. Use it to preserve the exact modeled reference image while keeping the unmodeled non-glossy Pikachu gap visible.",
+    "name_en": "JR East Pokemon Stamp Rally source slice",
+    "name_ja": "JR東日本ポケモンスタンプラリー プロモ",
+    "note": "Narrow source-slice over the UPC aggregate row currently pinned to the JR East Stamp Rally family. Use it to preserve the matte JR-train Surfing Pikachu lane while keeping the unmodeled Mew booklet card visible as a source gap.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models only the current source-pinned PokéCardex UPC row for this exact family and records the missing counterpart as a source gap; it is not a complete family checklist.",
-    "release_date": "1996-11-30",
-    "release_family_id": "jp_promo_how_to_play_book_19961130",
+    "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the one currently source-pinned PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a source gap and is not a complete family checklist.",
+    "release_date": "1997-08-09/1997-08-17",
+    "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
     "release_type": "promo_family_child_rollup_rows",
     "source_gap_count": 1,
     "strict_release_member": false,
     "unique_catalog_row_count": 1,
     "unmodeled_expected_cards": [
-      "Pikachu [Non-glossy, Keiji Kinebuchi]"
+      "Mew (JR Train Rally 1997)"
     ]
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
@@ -413,51 +406,62 @@
       "cards_found": 1,
       "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
       "expected_cards": [
-        "Pikachu [Non-glossy, Keiji Kinebuchi]",
-        "Jigglypuff [Non-glossy]"
+        "Surfing Pikachu (JR Train Rally 1997)",
+        "Mew (JR Train Rally 1997)"
       ],
       "expected_source_card_count": 2,
       "family_context_source": {
         "extracted_claims": {
-          "corocoro_first_expected_card_count": 2,
-          "corocoro_first_release_date": "1996-10-15",
-          "how_to_play_expected_card_count": 2,
-          "how_to_play_release_date": "1996-11-30"
+          "booklet_card_count": 2,
+          "booklet_cards": [
+            "Surfing Pikachu (JR Train Rally 1997)",
+            "Mew (JR Train Rally 1997)"
+          ],
+          "event_window": "1997-08-09/1997-08-17",
+          "preorder_ticket_count": 100000,
+          "preorder_ticket_window": "1997-07-27/1997-08-08",
+          "station_count": 30,
+          "version_distinction": [
+            "matte texture instead of glossy",
+            "Surfing Pikachu artwork includes Mt. Fuji and a Japan Rail train"
+          ]
         },
         "not_claiming": [
           "raw HTML snapshot",
-          "complete UPC source",
-          "image rights",
+          "complete event source",
+          "official surviving copy counts",
+          "complete booklet-object variant catalog",
           "seller possession",
           "authenticity",
           "condition",
-          "official copy counts",
+          "image rights",
           "complete marketplace pricing"
         ],
         "oldid_url": "",
-        "retrieved_at": "2026-06-17T18:45:00Z",
-        "selected_text": "Pikachu [Glossy]\nKen Sugimori\nCoroCoro Comic November 1996 issue insert (October 15, 1996)\nJigglypuff [Glossy]\nCoroCoro Comic November 1996 issue insert (October 15, 1996)\nPikachu [Non-glossy]\nKeiji Kinebuchi\nEasily Understand How to Play Pokemon Cards (November 30, 1996)\nJigglypuff [Non-glossy]\nEasily Understand How to Play Pokemon Cards (November 30, 1996)",
-        "snapshot_content_scope": "Selected rendered lines for the first 1996 Unnumbered Promotional print entries only. This snapshot is used to record early promo-family membership expectations and source gaps; it is not a raw HTML archive and not a full UPC source mirror.",
-        "snapshot_hash": "fe060860ad15c9b59f1bf1bc914d33d613da844eb7b4ca003768f009435780ec",
+        "retrieved_at": "2026-06-17T19:31:00Z",
+        "selected_text": "Japan Rail East Stamp Rally 1997\nIn the summer of 1997, the Japan Railways Group (known simply as JR) launched its first of many partner events with the Pokemon TCG, the JR East Stamp Rally. This event issued 2 of the earliest Pokemon promo cards.\nSurfing Pikachu (JR Train Rally 1997) (Unnumbered)\nMew (JR Train Rally 1997) (Unnumbered)\nBased around 30 stations on Tokyo’s Yamanote line, participants were invited to collect stamps at each station. Tickets were sold in advance in 2-day blocks from July 27 to August 8, 1997. All 100,000 preorder tickets were sold out for the actual event, which ran from August 9 – 17, 1997.\nParticipants who managed to visit all 30 stations and complete their stamp books were given another booklet containing 2 promo cards: a Surfing Pikachu and a Mew.\nInside of the booklet with the 2 promo cards\nThe two cards were both reprints of previous promos that were issued in\nmagazine. However, the ones distributed in this booklet were both matte texture instead of glossy. In addition, the Surfing Pikachu promo also featured Mt. Fuji and a Japan Rail train in the artwork.\nSurfing Pikachu (JR Train Rally 1997) (Unnumbered)\nMew (JR Train Rally 1997) (Unnumbered)",
+        "snapshot_content_scope": "Selected rendered lines for the 1997 JR East Stamp Rally event context, prize booklet, two-card claim, and matte/JR-train Surfing Pikachu distinction. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+        "snapshot_hash": "2c8237c8b5014a9cb45844c22ef87868945c03b9f46eb171f2b3c83dcc1187a8",
         "snapshot_not_claiming": [
           "raw HTML snapshot",
-          "complete UPC source",
-          "image rights",
+          "complete event source",
+          "official surviving copy counts",
+          "complete booklet-object variant catalog",
           "seller possession",
           "authenticity",
           "condition",
-          "official copy counts",
+          "image rights",
           "complete marketplace pricing"
         ],
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-        "snapshot_retrieval_method": "Codex web.open rendered text lines",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+        "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-        "source": "Bulbapedia",
-        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+        "source": "Pokumon",
+        "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/"
       },
       "modeled_source_rows": 1,
       "modeled_source_sorts": [
-        4
+        14
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -469,19 +473,19 @@
         "price truth"
       ],
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-      "promo_family_id": "jp_promo_how_to_play_book_19961130",
+      "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "f5d3e820f0c5cfa5d8606252f1a45b8a96ee8cedbbb9ff4ec90596c11ee08756",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 1,
-      "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards, but the current PokéCardex UPC aggregate source-pins only Jigglypuff to this exact family.",
+      "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
       "unmodeled_expected_cards": [
-        "Pikachu [Non-glossy, Keiji Kinebuchi]"
+        "Mew (JR Train Rally 1997)"
       ]
     }
   ],
@@ -496,6 +500,6 @@
     "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
-    "source_release_family_id": "jp_promo_how_to_play_book_19961130"
+    "source_release_family_id": "jp_promo_jr_east_stamp_rally_199708"
   }
 }
