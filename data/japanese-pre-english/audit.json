@@ -1,20 +1,14 @@
 {
-  "auditor": "deterministic_builder",
-  "checks": [
-    "row_count_matches_expected",
-    "row_ids_unique",
-    "image_witness_exact_source_status",
-    "image_rights_fail_closed",
-    "seller_possession_boundary_present"
-  ],
-  "generated_at": "2026-06-17T14:20:36Z",
+  "exact_image_witness_rows": 548,
+  "generated_at": "2026-06-17T15:02:03Z",
   "not_claiming": [
     "multi-agent audit complete",
-    "image rights approval",
-    "physical authentication"
+    "complete pre-English release coverage",
+    "row-level physical authentication",
+    "image rights approval"
   ],
   "passed": true,
-  "release_results": [
+  "release_audits": [
     {
       "exact_image_witness_rows": 48,
       "expected_row_count": 48,
@@ -91,7 +85,76 @@
       "row_count": 96,
       "source_labeled_japanese_name_rows": 0,
       "tcgdex_enriched_rows": 96
+    },
+    {
+      "exact_image_witness_rows": 25,
+      "expected_row_count": 25,
+      "failures": [],
+      "missing_japanese_name_rows": 25,
+      "passed": true,
+      "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+      "row_count": 25,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 24,
+      "expected_row_count": 24,
+      "failures": [],
+      "missing_japanese_name_rows": 24,
+      "passed": true,
+      "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+      "row_count": 24,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 25,
+      "expected_row_count": 25,
+      "failures": [],
+      "missing_japanese_name_rows": 25,
+      "passed": true,
+      "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+      "row_count": 25,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 28,
+      "expected_row_count": 28,
+      "failures": [],
+      "missing_japanese_name_rows": 28,
+      "passed": true,
+      "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+      "row_count": 28,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 32,
+      "expected_row_count": 32,
+      "failures": [],
+      "missing_japanese_name_rows": 32,
+      "passed": true,
+      "release_family_id": "jp_tcg_quick_starter_gift_set_red_deck_19981204",
+      "row_count": 32,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
+      "exact_image_witness_rows": 32,
+      "expected_row_count": 32,
+      "failures": [],
+      "missing_japanese_name_rows": 32,
+      "passed": true,
+      "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+      "row_count": 32,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
     }
   ],
-  "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1"
+  "release_count": 13,
+  "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1",
+  "tcgdex_enriched_rows": 257,
+  "total_rows": 548
 }
