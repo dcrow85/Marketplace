@@ -1,8 +1,8 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "exact_image_witness_rows": 615,
+  "exact_image_witness_rows": 679,
   "exact_source_image_rows": 393,
-  "generated_at": "2026-06-17T16:14:29Z",
+  "generated_at": "2026-06-17T16:37:20Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete pre-English catalog",
@@ -12,8 +12,8 @@
     "condition truth",
     "price truth"
   ],
-  "provider_path_reference_image_rows": 222,
-  "release_count": 16,
+  "provider_path_reference_image_rows": 286,
+  "release_count": 17,
   "releases": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
@@ -150,7 +150,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "1ac75dac34d2c89b97d7c07f0746a97a2312aa0fb009f40a70008159ebff528b",
+      "catalog_hash": "6a09225ee551c6af19e8005ee916fc81a86ee5bf24db4bf82ef1ee659117c0af",
       "exact_image_witness_rows": 25,
       "exact_source_image_rows": 0,
       "expected_row_count": 25,
@@ -169,7 +169,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "af92c237a18e9f32de77d27a0f6519f081a868f3d8ecaeb293cf8d2ef4a1b07d",
+      "catalog_hash": "507019e561ca20b62674a17a44ecbe1719bace12f0f14b9b2e14660ce4c3b038",
       "exact_image_witness_rows": 24,
       "exact_source_image_rows": 0,
       "expected_row_count": 24,
@@ -188,7 +188,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "acc054bbf80f1d4e802beeeb3d2b4f75c447869effb2e370fa8152acdf0213f5",
+      "catalog_hash": "fc4efb8a89da3f7a50bf112ca4b43b24d8631653f638718772553dcb037524a7",
       "exact_image_witness_rows": 25,
       "exact_source_image_rows": 0,
       "expected_row_count": 25,
@@ -207,7 +207,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "3c69fa8ad0fb311081065687d63cb7ea74c2cd234d16e6695ad3469a38ce6fb7",
+      "catalog_hash": "efdeae4029782b42ce8475ebaee2c321ae8ece7f47a665a455eb3cea01df3f47",
       "exact_image_witness_rows": 28,
       "exact_source_image_rows": 0,
       "expected_row_count": 28,
@@ -226,7 +226,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "25f2b186e8def17266dd669938150b4fa233b79250d9cbef1ea6d8c57dd45dd3",
+      "catalog_hash": "3edc920fb6bb88e7b2788df9e7f3c149f63f4a82370eea60c82adc896c466c02",
       "exact_image_witness_rows": 32,
       "exact_source_image_rows": 0,
       "expected_row_count": 32,
@@ -245,7 +245,7 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "27c8cefa2838eef415989dc14a16fbdf1fad4b9617dc52bc96d93f19eb1481fd",
+      "catalog_hash": "7dfe6d98277e5187c36d44f6676d82005edaf6ea03598eb58a369a91c2d7e20b",
       "exact_image_witness_rows": 32,
       "exact_source_image_rows": 0,
       "expected_row_count": 32,
@@ -264,7 +264,26 @@
     },
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "catalog_hash": "3f6168dc7b255b42a33c512c65e9dbf57124b9e68c0436d2129c95a9bdc51678",
+      "catalog_hash": "df532013e37c18cd0bfed18ab1dddae3950bcf2f967e3ac8f2c5eaaf78b4c790",
+      "exact_image_witness_rows": 64,
+      "exact_source_image_rows": 0,
+      "expected_row_count": 64,
+      "hash_algorithm": "sha256",
+      "missing_japanese_name_rows": 64,
+      "path": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json",
+      "promo_context_rows": 0,
+      "provider_path_reference_image_rows": 64,
+      "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+      "row_count": 64,
+      "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+      "source_adapter": "quick_starter_parent_rollup",
+      "source_labeled_japanese_name_rows": 0,
+      "source_url": "local-rollup:data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_red_deck_19981204.json+data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json",
+      "tcgdex_set_id": ""
+    },
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "c2783e796dc85cd73a96c3f73d20af348a3a069ab4155a249c9b4668d13f9e4a",
       "exact_image_witness_rows": 55,
       "exact_source_image_rows": 0,
       "expected_row_count": 55,
@@ -322,5 +341,5 @@
   ],
   "schema": "marketplace.japanese_pre_english_manifest.v0.1",
   "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images from provider-path-derived reference images.",
-  "total_rows": 615
+  "total_rows": 679
 }

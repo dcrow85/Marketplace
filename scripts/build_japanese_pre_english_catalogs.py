@@ -11,6 +11,7 @@ data.
 from __future__ import annotations
 
 import base64
+import copy
 import hashlib
 import html
 import json
@@ -296,7 +297,7 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_card_count=60,
         product_count_basis="Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
         symbol_status_source_release_family_id="jp_tcg_quick_starter_gift_set_19981204",
-        note="Child catalog for the red deck inside Quick Starter Gift Set. Parent product is two 60-card decks plus extras; this source exposes 32 unique rows.",
+        note="Child catalog for the red deck inside Quick Starter Gift Set. Parent package contains two 60-card decks; this source exposes 32 unique rows for one deck.",
     ),
     ReleaseConfig(
         release_family_id="jp_tcg_quick_starter_gift_set_green_deck_19981204",
@@ -314,7 +315,31 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_card_count=60,
         product_count_basis="Child catalog for one 60-card deck inside the two-deck Quick Starter Gift Set parent product.",
         symbol_status_source_release_family_id="jp_tcg_quick_starter_gift_set_19981204",
-        note="Child catalog for the green deck inside Quick Starter Gift Set. Parent product is two 60-card decks plus extras; this source exposes 32 unique rows.",
+        note="Child catalog for the green deck inside Quick Starter Gift Set. Parent package contains two 60-card decks; this source exposes 32 unique rows for one deck.",
+    ),
+    ReleaseConfig(
+        release_family_id="jp_tcg_quick_starter_gift_set_19981204",
+        name_en="Quick Starter Gift Set",
+        name_ja="クイックスターターギフト",
+        release_date="1998-12-04",
+        expected_row_count=64,
+        release_type="deck_kit_parent_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="high",
+        pokellector_path="",
+        source_adapter="quick_starter_parent_rollup",
+        product_card_count=120,
+        product_count_basis=(
+            "Parent product view over the two 60-card decks. Source catalogs expose 32 unique "
+            "rows for the red deck and 32 unique rows for the green deck; this rollup preserves "
+            "both child lanes rather than deduplicating by card name."
+        ),
+        strict_release_member=True,
+        catalog_treatment="Catalog target",
+        note=(
+            "Parent Quick Starter Gift Set catalog derived from the source-backed red and green "
+            "deck child catalogs. It is a product rollup, not a separate source page."
+        ),
     ),
     ReleaseConfig(
         release_family_id="jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -495,6 +520,21 @@ def adapter_source_name(adapter: str) -> str:
     return "Pokellector"
 
 
+def quick_starter_child_specs() -> tuple[tuple[str, str], ...]:
+    return (
+        ("red", "jp_tcg_quick_starter_gift_set_red_deck_19981204"),
+        ("green", "jp_tcg_quick_starter_gift_set_green_deck_19981204"),
+    )
+
+
+def quick_starter_rollup_source_id() -> str:
+    child_paths = [
+        f"data/japanese-pre-english/releases/{child_id}.json"
+        for _, child_id in quick_starter_child_specs()
+    ]
+    return "local-rollup:" + "+".join(child_paths)
+
+
 def source_url_for_config(config: ReleaseConfig) -> str:
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
@@ -502,6 +542,8 @@ def source_url_for_config(config: ReleaseConfig) -> str:
         return f"{POKECARDEX_BASE}/en/series/jp/{config.pokecardex_code}"
     if config.source_adapter == "bulbapedia_song_best":
         return f"{BULBAPEDIA_BASE}/wiki/Pok%C3%A9mon_Song_Best_Collection"
+    if config.source_adapter == "quick_starter_parent_rollup":
+        return quick_starter_rollup_source_id()
     raise ValueError(f"unknown source_adapter={config.source_adapter}")
 
 
@@ -1201,6 +1243,8 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
 
 
 def build_release(config: ReleaseConfig) -> dict[str, Any]:
+    if config.source_adapter == "quick_starter_parent_rollup":
+        return build_quick_starter_parent_rollup(config)
     if config.source_adapter == "pokellector":
         source_rows, primary_source = parse_pokellector_set(config)
     elif config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
@@ -1260,6 +1304,143 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
     return release
 
 
+def build_quick_starter_parent_rollup(config: ReleaseConfig) -> dict[str, Any]:
+    child_releases: list[dict[str, Any]] = []
+    parent_rows: list[dict[str, Any]] = []
+    for lane, child_id in quick_starter_child_specs():
+        child_path = RELEASE_DIR / f"{child_id}.json"
+        child_release = json.loads(child_path.read_text(encoding="utf-8"))
+        child_releases.append(child_release)
+        child_hash = sha256_hex(child_release)
+        for child_card in child_release.get("cards", []):
+            parent_card = copy.deepcopy(child_card)
+            child_local_id = child_card.get("local_id", "")
+            parent_local_id = f"{lane}-{child_local_id}"
+            parent_row_id = f"{config.release_family_id}:{parent_local_id}"
+            parent_card["row_id"] = parent_row_id
+            parent_card["release_family_id"] = config.release_family_id
+            parent_card["local_id"] = parent_local_id
+            parent_card["parent_rollup"] = {
+                "authority": "Deterministic parent-product rollup over source-backed child deck rows.",
+                "child_catalog_hash": child_hash,
+                "child_local_id": child_local_id,
+                "child_release_family_id": child_id,
+                "child_row_id": child_card.get("row_id", ""),
+                "lane": lane,
+                "not_claiming": ["new source page", "deduplicated product count", "seller possession", "authenticity"],
+            }
+            parent_card["product_scope"] = {
+                "authority": "Parent product rollup derived from source-backed Quick Starter red and green deck child catalogs.",
+                "catalog_treatment": config.catalog_treatment,
+                "counting_note": (
+                    f"This row belongs to the {lane} deck lane inside Quick Starter Gift Set; "
+                    "it is not a No Rarity Base claim."
+                ),
+                "date_precision": config.date_precision,
+                "japanese_set_name": config.name_ja,
+                "membership_note": "Strict parent product rollup row; child lane is preserved.",
+                "parent_release_family_id": "",
+                "product_card_count": config.product_card_count,
+                "product_count_basis": config.product_count_basis,
+                "release_date": config.release_date,
+                "release_type": config.release_type,
+                "strict_release_member": config.strict_release_member,
+                "unique_catalog_row_count": config.expected_row_count,
+            }
+            parent_card["symbol_status"] = {
+                "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+                "confidence": config.symbol_status_confidence,
+                "scope": "release_context_not_row_fact",
+                "source_mode": "direct_release_family",
+                "source_release_family_id": config.release_family_id,
+                "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
+            }
+            parent_card["image_provenance"]["release_family_id"] = config.release_family_id
+            parent_card["image_provenance"]["row_id"] = parent_row_id
+            parent_card["collector_texture"]["note"] = (
+                f"{child_card.get('name_en', '')} is cataloged here as {parent_local_id} "
+                f"of Quick Starter Gift Set, inherited from the {lane} child deck source row. "
+                "Treat the image as a reference witness, then ask for seller evidence before any trade."
+            )
+            parent_card["collector_texture"]["signals"] = [
+                config.name_en,
+                parent_local_id,
+                child_card.get("rarity_source", ""),
+                config.release_date,
+                f"{lane} deck",
+            ]
+            parent_tags = [
+                config.release_family_id,
+                config.name_en,
+                config.release_date,
+                f"{lane} deck",
+            ]
+            for tag in (child_card.get("rarity_source"), child_card.get("category")):
+                if tag and tag not in parent_tags:
+                    parent_tags.append(tag)
+            parent_card["tags"] = parent_tags
+            parent_rows.append(parent_card)
+    source = {
+        "source": "Marketplace child catalog rollup",
+        "source_page_url": quick_starter_rollup_source_id(),
+        "child_catalogs": [
+            {
+                "release_family_id": child.get("release", {}).get("release_family_id", ""),
+                "catalog_hash": sha256_hex(child),
+                "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+                "path": str((RELEASE_DIR / f"{child.get('release', {}).get('release_family_id', '')}.json").relative_to(ROOT)),
+                "row_count": len(child.get("cards", [])),
+                "source_adapter": child.get("sources", [{}])[0].get("source", ""),
+                "source_page_url": child.get("sources", [{}])[0].get("source_page_url", ""),
+                "not_claiming": ["official source", "new source page", "seller possession", "authenticity", "condition"],
+            }
+            for child in child_releases
+        ],
+        "cards_found": len(parent_rows),
+        "not_claiming": ["official source", "new source page", "seller possession", "authenticity", "condition"],
+    }
+    return {
+        "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+        "release": {
+            "release_family_id": config.release_family_id,
+            "name_en": config.name_en,
+            "name_ja": config.name_ja,
+            "release_date": config.release_date,
+            "date_precision": config.date_precision,
+            "release_type": config.release_type,
+            "expected_row_count": config.expected_row_count,
+            "count_confidence": "child_catalog_rollup",
+            "parent_release_family_id": config.parent_release_family_id,
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
+            "unique_catalog_row_count": config.expected_row_count,
+            "catalog_treatment": config.catalog_treatment,
+            "note": config.note,
+        },
+        "symbol_status": {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_release_family",
+            "source_release_family_id": config.release_family_id,
+            "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity claim"],
+        },
+        "sources": [source],
+        "cards": parent_rows,
+        "not_claiming": [
+            "complete pre-English catalog",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "new source page",
+        ],
+    }
+
+
 def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     cards = release.get("cards", [])
     release_meta = release.get("release", {})
@@ -1278,6 +1459,19 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
     promo_context_rows = [card for card in cards if card.get("promo_context", {}).get("promo_family_id")]
     failures: list[str] = []
+    quick_starter_children: dict[str, dict[str, Any]] = {}
+    quick_starter_child_rows: dict[tuple[str, str], dict[str, Any]] = {}
+    if release_type == "deck_kit_parent_rollup_rows":
+        for _, child_id in quick_starter_child_specs():
+            child_path = RELEASE_DIR / f"{child_id}.json"
+            try:
+                child_release = json.loads(child_path.read_text(encoding="utf-8"))
+            except FileNotFoundError:
+                failures.append(f"quick_starter_parent_missing_child_file {child_id}")
+                continue
+            quick_starter_children[child_id] = child_release
+            for child_card in child_release.get("cards", []):
+                quick_starter_child_rows[(child_id, child_card.get("local_id", ""))] = child_card
     if len(cards) != expected:
         failures.append(f"row_count_mismatch expected={expected} actual={len(cards)}")
     if len(set(row_ids)) != len(row_ids):
@@ -1288,6 +1482,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("promo_cd_rows_must_be_strict_release_members")
     if release_type == "video_game_insert_promo_rows" and release_meta.get("strict_release_member") is not True:
         failures.append("video_game_insert_rows_must_be_strict_release_members")
+    if release_type == "deck_kit_parent_rollup_rows" and release_meta.get("strict_release_member") is not True:
+        failures.append("deck_kit_parent_rollup_rows_must_be_strict_release_members")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
@@ -1386,7 +1582,78 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 for contact in card.get("source_contacts", [])
             ):
                 failures.append(f"{card.get('row_id')}: gameboy_missing_bulbapedia_source_hash")
-        if release_type == "promo_cd_source_rows":
+        if release_type == "deck_kit_parent_rollup_rows":
+            parent_rollup = card.get("parent_rollup", {})
+            lane = parent_rollup.get("lane")
+            child_id = parent_rollup.get("child_release_family_id")
+            child_local_id = parent_rollup.get("child_local_id")
+            if lane not in {"red", "green"}:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_invalid_lane")
+            if child_id not in {
+                "jp_tcg_quick_starter_gift_set_red_deck_19981204",
+                "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+            }:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_invalid_child_release")
+            if not child_local_id:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_missing_child_local_id")
+            expected_local_id = f"{lane}-{child_local_id}" if lane and child_local_id else ""
+            if card.get("local_id") != expected_local_id:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_local_id_mismatch")
+            expected_child_row_id = f"{child_id}:{child_local_id}" if child_id and child_local_id else ""
+            if parent_rollup.get("child_row_id") != expected_child_row_id:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_child_row_id_mismatch")
+            expected_row_id = f"{release_meta.get('release_family_id')}:{card.get('local_id')}"
+            if card.get("row_id") != expected_row_id:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_row_id_mismatch")
+            if image.get("release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_image_release_family_mismatch")
+            if image.get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_image_row_id_mismatch")
+            if card.get("product_scope", {}).get("release_type") != "deck_kit_parent_rollup_rows":
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_product_scope_not_parent")
+            if card.get("product_scope", {}).get("strict_release_member") is not True:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_row_not_strict_member")
+            if card.get("symbol_status", {}).get("source_release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_symbol_not_direct")
+            child_card = quick_starter_child_rows.get((child_id, child_local_id))
+            if not child_card:
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_missing_child_row")
+            else:
+                copied_fields = [
+                    "name_en",
+                    "name_ja",
+                    "name_ja_status",
+                    "romaji",
+                    "name_source_note",
+                    "category",
+                    "rarity_source",
+                    "holo_source",
+                    "pokemon_profile",
+                    "illustrator",
+                    "provider_row",
+                    "tcgdex",
+                    "source_contacts",
+                ]
+                for field in copied_fields:
+                    if card.get(field) != child_card.get(field):
+                        failures.append(f"{card.get('row_id')}: quick_starter_parent_child_field_drift {field}")
+                        break
+                child_image = child_card.get("image_provenance", {})
+                for field in [
+                    "image_large",
+                    "image_small",
+                    "provider_id",
+                    "provider_title",
+                    "source",
+                    "source_page_url",
+                    "status",
+                    "rights_status",
+                    "verification_status",
+                ]:
+                    if image.get(field) != child_image.get(field):
+                        failures.append(f"{card.get('row_id')}: quick_starter_parent_child_image_drift {field}")
+                        break
+    if release_type == "promo_cd_source_rows":
             promo_context = card.get("promo_context", {})
             source_sort = provider_row.get("sort")
             source_contacts = card.get("source_contacts", [])
@@ -1469,6 +1736,52 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append(f"song_best_expected_one_language_caveat actual={len(language_caveats)}")
         if len(language_symbol_no) != 1:
             failures.append("song_best_language_caveat_symbol_override_missing")
+    if release_type == "deck_kit_parent_rollup_rows":
+        lanes = [card.get("parent_rollup", {}).get("lane") for card in cards]
+        if lanes.count("red") != 32 or lanes.count("green") != 32:
+            failures.append(f"quick_starter_parent_lane_counts red={lanes.count('red')} green={lanes.count('green')}")
+        source_children = primary_source.get("child_catalogs", [])
+        source_children_by_id = {
+            child.get("release_family_id"): child
+            for child in source_children
+        }
+        if primary_source.get("source_page_url") != quick_starter_rollup_source_id():
+            failures.append("quick_starter_parent_source_page_url_not_rollup_id")
+        if primary_source.get("cards_found") != len(cards):
+            failures.append("quick_starter_parent_source_cards_found_mismatch")
+        if set(source_children_by_id) != {
+            "jp_tcg_quick_starter_gift_set_red_deck_19981204",
+            "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        }:
+            failures.append("quick_starter_parent_missing_child_catalog_sources")
+        actual_child_hashes = {
+            child_id: sha256_hex(child)
+            for child_id, child in quick_starter_children.items()
+        }
+        for child_id, child in quick_starter_children.items():
+            source_child = source_children_by_id.get(child_id)
+            if not source_child:
+                continue
+            expected_path = str((RELEASE_DIR / f"{child_id}.json").relative_to(ROOT))
+            expected_source_url = child.get("sources", [{}])[0].get("source_page_url", "")
+            if source_child.get("catalog_hash") != actual_child_hashes.get(child_id):
+                failures.append(f"quick_starter_parent_child_source_hash_mismatch {child_id}")
+            if source_child.get("row_count") != len(child.get("cards", [])):
+                failures.append(f"quick_starter_parent_child_source_row_count_mismatch {child_id}")
+            if source_child.get("path") != expected_path:
+                failures.append(f"quick_starter_parent_child_source_path_mismatch {child_id}")
+            if source_child.get("canonicalization") != "json_sorted_keys_no_whitespace_v0.1":
+                failures.append(f"quick_starter_parent_child_source_canonicalization_mismatch {child_id}")
+            if source_child.get("source_page_url") != expected_source_url:
+                failures.append(f"quick_starter_parent_child_source_url_mismatch {child_id}")
+        for card in cards:
+            parent_rollup = card.get("parent_rollup", {})
+            child_id = parent_rollup.get("child_release_family_id")
+            if child_id and parent_rollup.get("child_catalog_hash") != actual_child_hashes.get(child_id):
+                failures.append(f"{card.get('row_id')}: quick_starter_parent_child_hash_mismatch")
+                break
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "yes":
+            failures.append("quick_starter_parent_symbol_status_should_be_yes")
     return {
         "release_family_id": release_meta.get("release_family_id"),
         "row_count": len(cards),

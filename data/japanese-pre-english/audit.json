@@ -1,15 +1,17 @@
 {
-  "exact_image_witness_rows": 615,
+  "exact_image_witness_rows": 679,
   "exact_source_image_rows": 393,
-  "generated_at": "2026-06-17T16:14:29Z",
+  "generated_at": "2026-06-17T16:37:20Z",
   "not_claiming": [
-    "multi-agent audit complete",
-    "complete pre-English release coverage",
-    "row-level physical authentication",
-    "image rights approval"
+    "complete pre-English catalog",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
   ],
   "passed": true,
-  "provider_path_reference_image_rows": 222,
+  "provider_path_reference_image_rows": 286,
   "release_audits": [
     {
       "exact_image_witness_rows": 48,
@@ -194,6 +196,20 @@
       "tcgdex_enriched_rows": 0
     },
     {
+      "exact_image_witness_rows": 64,
+      "exact_source_image_rows": 0,
+      "expected_row_count": 64,
+      "failures": [],
+      "missing_japanese_name_rows": 64,
+      "passed": true,
+      "promo_context_rows": 0,
+      "provider_path_reference_image_rows": 64,
+      "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+      "row_count": 64,
+      "source_labeled_japanese_name_rows": 0,
+      "tcgdex_enriched_rows": 0
+    },
+    {
       "exact_image_witness_rows": 55,
       "exact_source_image_rows": 0,
       "expected_row_count": 55,
@@ -236,8 +252,8 @@
       "tcgdex_enriched_rows": 0
     }
   ],
-  "release_count": 16,
+  "release_count": 17,
   "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1",
   "tcgdex_enriched_rows": 257,
-  "total_rows": 615
+  "total_rows": 679
 }
