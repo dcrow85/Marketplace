@@ -36,6 +36,18 @@ NO_RARITY_POLICY_PATH = ROOT / "data" / "no-rarity-catalog-policy.json"
 NO_RARITY_MANIFEST_PATH = ROOT / "data" / "no-rarity-catalog-manifest.json"
 RELEASE_MAP_PATH = ROOT / "Japanese_Pre_English_Release_Map_v0.1.md"
 PRE_ENGLISH_SYMBOL_STATUS_PATH = ROOT / "data" / "pre-english-symbol-status.json"
+GIFT_PACK_PRODUCT_SOURCE_URL = (
+    "https://wiki.pokemonwiki.com/wiki/"
+    "%E3%83%9D%E3%82%B1%E3%83%83%E3%83%88%E3%83%A2%E3%83%B3"
+    "%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%89"
+    "%E3%82%B2%E3%83%BC%E3%83%A0_%E3%82%AE%E3%83%95%E3%83%88"
+    "%E3%83%91%E3%83%83%E3%82%AF"
+)
+GIFT_PACK_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokemonwiki_gift_pack_19961212_selected_lines.json"
+)
 TCGDEX_API_BASE = "https://api.tcgdex.net/v2/ja"
 POKELLECTOR_BASE = "https://jp.pokellector.com"
 POKECARDEX_BASE = "https://www.pokecardex.com"
@@ -186,6 +198,35 @@ RELEASES: tuple[ReleaseConfig, ...] = (
             "Deterministic possible-content rollup over the launch Expansion Pack / "
             "No Rarity lab rows. Use this to reason about Starter Pack source-family "
             "ambiguity, not to assert the contents of a sealed deck."
+        ),
+    ),
+    ReleaseConfig(
+        release_family_id="jp_tcg_gift_pack_19961212",
+        name_en="Gift Pack product-component context",
+        name_ja="ギフトパック",
+        release_date="1996-12-12",
+        expected_row_count=204,
+        release_type="gift_pack_starter_component_possible_rows",
+        prints_without_rarity_symbol="unverified",
+        symbol_status_confidence="medium",
+        pokellector_path="",
+        tcgdex_set_id="PMCG1",
+        source_adapter="gift_pack_product_rollup",
+        product_card_count=122,
+        product_count_basis=(
+            "Source-format context: the Gift Pack product is documented as 122 cards "
+            "with two Series 1 Starter Pack products plus two special-card slots. This "
+            "catalog models only the two Starter Pack possible-content components as "
+            "2 x 102 possible rows and leaves the two special-card slots unresolved "
+            "until their promo identities are source-pinned; it is not a guarantee of "
+            "sealed-unit contents, collation, distribution, or fixed deck composition."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Product-component context",
+        note=(
+            "Component rollup over two Series 1 Starter Pack possible-content lanes. "
+            "This is useful for Gift Pack source-family reasoning, not a fixed Gift Pack "
+            "deck list and not a complete row model for the two special-card slots."
         ),
     ),
     ReleaseConfig(
@@ -613,11 +654,37 @@ def starter_pack_possible_source_id() -> str:
     return "local-rollup:data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json"
 
 
+def gift_pack_product_source_id() -> str:
+    return "local-rollup:data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json"
+
+
+def gift_pack_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(GIFT_PACK_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    return {
+        "snapshot_path": str(GIFT_PACK_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", GIFT_PACK_PRODUCT_SOURCE_URL),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+    }
+
+
+def gift_pack_component_lanes() -> tuple[str, ...]:
+    return ("starter_a", "starter_b")
+
+
 def source_url_for_config(config: ReleaseConfig) -> str:
     if config.source_adapter == "no_rarity_lab_catalog":
         return no_rarity_lab_source_id()
     if config.source_adapter == "starter_pack_possible_rollup":
         return starter_pack_possible_source_id()
+    if config.source_adapter == "gift_pack_product_rollup":
+        return gift_pack_product_source_id()
     if config.source_adapter == "pokellector":
         return urllib.parse.urljoin(POKELLECTOR_BASE, config.pokellector_path)
     if config.source_adapter in {"pokecardex", "pokecardex_upc_pre_english", "pokecardex_upc_single"}:
@@ -1329,6 +1396,8 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
         return build_no_rarity_lab_release(config)
     if config.source_adapter == "starter_pack_possible_rollup":
         return build_starter_pack_possible_rollup(config)
+    if config.source_adapter == "gift_pack_product_rollup":
+        return build_gift_pack_product_rollup(config)
     if config.source_adapter == "quick_starter_parent_rollup":
         return build_quick_starter_parent_rollup(config)
     if config.source_adapter == "pokellector":
@@ -1626,6 +1695,8 @@ def build_starter_pack_possible_rollup(config: ReleaseConfig) -> dict[str, Any]:
     source_release = json.loads(source_path.read_text(encoding="utf-8"))
     source_hash = sha256_hex(source_release)
     source_docs = source_document_contacts()
+    gift_snapshot = gift_pack_source_snapshot()
+    gift_claims = gift_snapshot["extracted_claims"]
     cards: list[dict[str, Any]] = []
     for source_card in source_release.get("cards", []):
         local_id = source_card.get("local_id", "")
@@ -1847,6 +1918,347 @@ def build_starter_pack_possible_rollup(config: ReleaseConfig) -> dict[str, Any]:
     }
 
 
+def build_gift_pack_product_rollup(config: ReleaseConfig) -> dict[str, Any]:
+    source_path = RELEASE_DIR / "jp_tcg_starter_pack_19961020.json"
+    source_release = json.loads(source_path.read_text(encoding="utf-8"))
+    source_hash = sha256_hex(source_release)
+    source_docs = source_document_contacts()
+    gift_snapshot = gift_pack_source_snapshot()
+    gift_claims = gift_snapshot["extracted_claims"]
+    cards: list[dict[str, Any]] = []
+    for lane in gift_pack_component_lanes():
+        for source_card in source_release.get("cards", []):
+            source_local_id = source_card.get("local_id", "")
+            local_id = f"{lane}-{source_local_id}"
+            row_id = f"{config.release_family_id}:{local_id}"
+            component_card = copy.deepcopy(source_card)
+            component_card["row_id"] = row_id
+            component_card["release_family_id"] = config.release_family_id
+            component_card["local_id"] = local_id
+            component_card["gift_pack_scope"] = {
+                "authority": "Deterministic Gift Pack product-component rollup over two Starter Pack possible-content lanes.",
+                "component_lane": lane,
+                "component_type": "starter_pack_possible_content_component",
+                "fixed_gift_pack_card_member": False,
+                "possible_content_pool": True,
+                "product_rule": (
+                    "Source-format context: Gift Pack is documented as a 122-card product with two "
+                    "Series 1 Starter Pack products plus two special-card slots. This row models a "
+                    "possible Starter Pack component slot only; it is not a guarantee of sealed-unit "
+                    "contents, collation, distribution, special-card identity, or fixed deck composition."
+                ),
+                "source_catalog_hash": source_hash,
+                "source_local_id": source_local_id,
+                "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                "source_row_id": source_card.get("row_id", ""),
+                "unmodeled_special_card_slots": 2,
+                "not_claiming": [
+                    "fixed Gift Pack deck list",
+                    "sealed Gift Pack contents",
+                    "special-card identity",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                ],
+            }
+            source_product_scope = source_card.get("product_scope", {})
+            component_card["product_scope"] = {
+                "authority": "Gift Pack product-component rollup plus Japanese pre-English release map.",
+                "catalog_treatment": config.catalog_treatment,
+                "component_lane": lane,
+                "counting_note": (
+                    "Possible component row for one of two Starter Pack products inside Gift Pack. "
+                    "The 204 catalog rows are 2 x 102 possible-content rows, not 204 physical cards "
+                    "and not a guarantee of sealed-unit contents, collation, distribution, or fixed deck inclusion."
+                ),
+                "date_precision": config.date_precision,
+                "japanese_booster_order": source_product_scope.get("japanese_booster_order"),
+                "japanese_booster_section": source_product_scope.get("japanese_booster_section", ""),
+                "japanese_set_name": config.name_ja,
+                "membership_note": "Possible Gift Pack Starter Pack component row; not a fixed deck inclusion.",
+                "parent_release_family_id": "jp_tcg_starter_pack_19961020",
+                "product_card_count": config.product_card_count,
+                "product_count_basis": config.product_count_basis,
+                "release_date": config.release_date,
+                "release_type": config.release_type,
+                "source_strict_booster_member": bool(source_product_scope.get("source_strict_booster_member")),
+                "source_starter_pack_possible_row": True,
+                "strict_booster_member": False,
+                "strict_release_member": False,
+                "unique_catalog_row_count": config.expected_row_count,
+                "unique_underlying_starter_rows": 102,
+                "unmodeled_special_card_slots": 2,
+            }
+            component_card["symbol_status"] = {
+                "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+                "confidence": config.symbol_status_confidence,
+                "scope": "release_context_not_row_fact",
+                "source_mode": "direct_release_family",
+                "source_release_family_id": config.release_family_id,
+                "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession"],
+            }
+            component_card["provider_row"] = {
+                "adapter": "gift_pack_product_rollup",
+                "component_lane": lane,
+                "local_catalog_row": source_card.get("provider_row", {}).get("local_catalog_row", ""),
+                "source_catalog_hash": source_hash,
+                "source_provider_row": source_card.get("provider_row", {}),
+                "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                "source_row_id": source_card.get("row_id", ""),
+                "unmodeled_special_card_slots": 2,
+            }
+            image = component_card.get("image_provenance", {})
+            component_source_image_status = image.get("status", "")
+            image["release_family_id"] = config.release_family_id
+            image["row_id"] = row_id
+            image["component_source_catalog_hash"] = source_hash
+            image["component_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+            image["component_source_row_id"] = source_card.get("row_id", "")
+            image["component_source_image_status"] = component_source_image_status
+            source_image_lineage_status = image.pop("source_image_status", "")
+            if source_image_lineage_status:
+                image["source_image_lineage_status"] = source_image_lineage_status.replace(
+                    "exact_source_image",
+                    "source-row exact reference image",
+                )
+                image["source_image_lineage_authority"] = (
+                    "lineage only; top-level status is the current Gift Pack image authority"
+                )
+            if image.get("status") == "inherited_source_reference_image":
+                image["status"] = "component_inherited_reference_image"
+                image["verification_status"] = (
+                    "inherited through Gift Pack component rollup from Starter Pack possible-content row; "
+                    "not direct Gift Pack image evidence"
+                )
+            image["exactness_basis"] = list(dict.fromkeys([
+                *image.get("exactness_basis", []),
+                "inherited Gift Pack component reference from Starter Pack possible-content row",
+            ]))
+            image["not_claiming"] = list(dict.fromkeys([
+                *image.get("not_claiming", []),
+                "sealed Gift Pack contents",
+                "fixed Gift Pack deck inclusion",
+                "special-card identity",
+            ]))
+            component_card["image_provenance"] = image
+            collector_texture = component_card.get("collector_texture", {})
+            collector_texture["note"] = (
+                f"{source_card.get('name_en', '')} is cataloged here as a possible Gift Pack "
+                f"{lane} component row inherited from the Series 1 Starter Pack possible-content pool. "
+                "The useful claim is product-context ambiguity; the physical card still needs seller evidence."
+            )
+            collector_texture["signals"] = list(dict.fromkeys([
+                config.name_en,
+                lane,
+                "possible Gift Pack Starter Pack component",
+                *collector_texture.get("signals", []),
+            ]))
+            component_card["collector_texture"] = collector_texture
+            information_audit = copy.deepcopy(component_card.get("information_audit", {}))
+            information_audit["audit_scope"] = (
+                "Gift Pack component information architecture only. Component-inherited images "
+                "and source lineage help agents compare catalogs, but they do not authenticate "
+                "a Gift Pack card, sealed contents, possession, condition, or price."
+            )
+            information_audit["gift_pack_component_override"] = {
+                "authority": "Use the top-level image_provenance.status as the image authority.",
+                "current_status": image.get("status", ""),
+                "primary_surface_rule": (
+                    "Do not present component-inherited images as direct Gift Pack images; "
+                    "show them only behind lineage/reference comparison controls."
+                ),
+            }
+            for item in information_audit.get("earns_keep", []):
+                if item.get("field") == "No Rarity reference image":
+                    item["field"] = "component-inherited No Rarity reference image"
+                    item["surface"] = "agent"
+                    item["why"] = (
+                        "Useful as upstream lineage for comparison, but not a direct Gift Pack "
+                        "reference image and not primary human-surface evidence."
+                    )
+            if "recommended_primary_surface" in information_audit:
+                information_audit["recommended_primary_surface"] = [
+                    "name and PMCG1 id",
+                    "Gift Pack component lane and possible-content boundary",
+                    "No Rarity target/caveat",
+                    "collector texture note",
+                    "category, rarity, and holo flag",
+                ]
+            component_card["information_audit"] = information_audit
+            source_contacts = [
+                {
+                    "catalog_hash": source_hash,
+                    "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+                    "catalog_path": str(source_path.relative_to(ROOT)),
+                    "component_lane": lane,
+                    "local_row_id": source_local_id,
+                    "not_claiming": [
+                        "fixed Gift Pack deck list",
+                        "sealed Gift Pack contents",
+                        "special-card identity",
+                        "seller possession",
+                        "authenticity",
+                        "condition",
+                        "price truth",
+                    ],
+                    "source": "Gift Pack product-component rollup",
+                    "source_page_url": gift_pack_product_source_id(),
+                    "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+                    "source_row_id": source_card.get("row_id", ""),
+                },
+            ]
+            for contact in component_card.get("source_contacts", []):
+                retargeted_contact = copy.deepcopy(contact)
+                retargeted_contact["component_lane"] = lane
+                retargeted_contact["inherited_from_component_release"] = True
+                retargeted_contact["component_source_catalog_hash"] = source_hash
+                retargeted_contact["component_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
+                retargeted_contact["component_source_row_id"] = source_card.get("row_id", "")
+                retargeted_contact["not_claiming"] = list(dict.fromkeys([
+                    *retargeted_contact.get("not_claiming", []),
+                    "fixed Gift Pack deck list",
+                    "sealed Gift Pack contents",
+                    "special-card identity",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                ]))
+                if retargeted_contact.get("image_large"):
+                    retargeted_contact["not_allowed_by_default"] = list(dict.fromkeys([
+                        *retargeted_contact.get("not_allowed_by_default", []),
+                        "training",
+                        "seller evidence",
+                        "authentication proof",
+                    ]))
+                    retargeted_contact["rights_status"] = retargeted_contact.get("rights_status", "external_reference_witness")
+                    retargeted_contact["display_allowed"] = False
+                source_contacts.append(retargeted_contact)
+            component_card["source_contacts"] = source_contacts
+            component_card["not_claiming"] = list(dict.fromkeys([
+                *component_card.get("not_claiming", []),
+                "fixed Gift Pack deck list",
+                "sealed Gift Pack contents",
+                "special-card identity",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            ]))
+            component_card["tags"] = list(dict.fromkeys([
+                config.release_family_id,
+                config.name_en,
+                lane,
+                "possible Gift Pack Starter Pack component",
+                *component_card.get("tags", []),
+            ]))
+            cards.append(component_card)
+    source = {
+        "source": "Marketplace Starter Pack possible-content rollup plus product context",
+        "source_page_url": gift_pack_product_source_id(),
+        "catalog_hash": source_hash,
+        "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+        "path": str(source_path.relative_to(ROOT)),
+        **source_docs,
+        "component_lanes": list(gift_pack_component_lanes()),
+        "component_rows_per_lane": len(source_release.get("cards", [])),
+        "modeled_component_rows": len(cards),
+        "product_card_count": config.product_card_count,
+        "special_card_slots_documented": 2,
+        "special_card_slots_row_modeled": False,
+        "product_context_source": {
+            "source": "PokemonWiki",
+            "source_page_url": gift_snapshot["source_page_url"],
+            "oldid_url": gift_snapshot["oldid_url"],
+            "snapshot_path": gift_snapshot["snapshot_path"],
+            "snapshot_hash": gift_snapshot["snapshot_hash"],
+            "snapshot_schema": gift_snapshot["snapshot_schema"],
+            "snapshot_retrieval_method": gift_snapshot["snapshot_retrieval_method"],
+            "snapshot_content_scope": gift_snapshot["snapshot_content_scope"],
+            "snapshot_not_claiming": gift_snapshot["snapshot_not_claiming"],
+            "retrieved_at": gift_snapshot["retrieved_at"],
+            "observed_release_date": gift_claims.get("release_date", config.release_date),
+            "observed_total_card_count": gift_claims.get("product_card_count", 122),
+            "observed_starter_pack_component_count": gift_claims.get("starter_pack_component_count", 2),
+            "observed_special_card_slots": gift_claims.get("special_card_slots", 2),
+            "observed_components": [
+                "two Series 1 Starter Pack products",
+                "two special-card slots",
+                "play/guide materials",
+            ],
+            "not_claiming": [
+                "raw HTML snapshot",
+                "special-card identities",
+                "sealed-unit contents",
+                "seller possession",
+                "authenticity",
+                "condition",
+            ],
+        },
+        "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
+        "source_release_type": source_release.get("release", {}).get("release_type", ""),
+        "cards_found": len(cards),
+        "possible_content_rows": len(cards),
+        "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target")),
+        "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat")),
+        "not_claiming": [
+            "fixed Gift Pack deck list",
+            "complete card-row model for special-card slots",
+            "sealed Gift Pack contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+        ],
+    }
+    return {
+        "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+        "release": {
+            "release_family_id": config.release_family_id,
+            "name_en": config.name_en,
+            "name_ja": config.name_ja,
+            "release_date": config.release_date,
+            "date_precision": config.date_precision,
+            "release_type": config.release_type,
+            "expected_row_count": config.expected_row_count,
+            "count_confidence": "product_component_rollup",
+            "parent_release_family_id": "jp_tcg_starter_pack_19961020",
+            "product_card_count": config.product_card_count,
+            "product_count_basis": config.product_count_basis,
+            "strict_release_member": config.strict_release_member,
+            "unique_catalog_row_count": config.expected_row_count,
+            "catalog_treatment": config.catalog_treatment,
+            "component_lanes": list(gift_pack_component_lanes()),
+            "unique_underlying_starter_rows": 102,
+            "unmodeled_special_card_slots": 2,
+            "note": config.note,
+        },
+        "symbol_status": {
+            "prints_without_rarity_symbol": config.prints_without_rarity_symbol,
+            "confidence": config.symbol_status_confidence,
+            "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+            "scope": "release_context_not_row_fact",
+            "source_mode": "direct_release_family",
+            "source_release_family_id": config.release_family_id,
+            "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity proof without seller evidence"],
+        },
+        "sources": [source],
+        "cards": cards,
+        "not_claiming": [
+            "complete pre-English catalog",
+            "complete Gift Pack special-card row model",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+        ],
+    }
+
+
 def build_quick_starter_parent_rollup(config: ReleaseConfig) -> dict[str, Any]:
     child_releases: list[dict[str, Any]] = []
     parent_rows: list[dict[str, Any]] = []
@@ -1992,7 +2404,12 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     expected = release_meta.get("expected_row_count")
     release_type = release_meta.get("release_type", "")
     row_ids = [card.get("row_id") for card in cards]
-    image_witness_statuses = {"exact_source_image", "provider_path_reference_image", "inherited_source_reference_image"}
+    image_witness_statuses = {
+        "exact_source_image",
+        "provider_path_reference_image",
+        "inherited_source_reference_image",
+        "component_inherited_reference_image",
+    }
     image_rows = [card for card in cards if card.get("image_provenance", {}).get("status") in image_witness_statuses]
     exact_source_image_rows = [card for card in cards if card.get("image_provenance", {}).get("status") == "exact_source_image"]
     provider_path_reference_image_rows = [
@@ -2000,6 +2417,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     ]
     inherited_source_reference_image_rows = [
         card for card in cards if card.get("image_provenance", {}).get("status") == "inherited_source_reference_image"
+    ]
+    component_inherited_reference_image_rows = [
+        card for card in cards if card.get("image_provenance", {}).get("status") == "component_inherited_reference_image"
     ]
     tcgdex_rows = [card for card in cards if card.get("tcgdex", {}).get("id")]
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
@@ -2017,6 +2437,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             }
         except FileNotFoundError:
             failures.append("starter_pack_possible_source_file_missing")
+    gift_pack_source_release: dict[str, Any] = {}
+    gift_pack_source_rows: dict[str, dict[str, Any]] = {}
+    if release_type == "gift_pack_starter_component_possible_rows":
+        source_path = RELEASE_DIR / "jp_tcg_starter_pack_19961020.json"
+        try:
+            gift_pack_source_release = json.loads(source_path.read_text(encoding="utf-8"))
+            gift_pack_source_rows = {
+                source_card.get("local_id", ""): source_card
+                for source_card in gift_pack_source_release.get("cards", [])
+            }
+        except FileNotFoundError:
+            failures.append("gift_pack_component_source_file_missing")
     quick_starter_children: dict[str, dict[str, Any]] = {}
     quick_starter_child_rows: dict[tuple[str, str], dict[str, Any]] = {}
     if release_type == "deck_kit_parent_rollup_rows":
@@ -2044,11 +2476,17 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("deck_kit_parent_rollup_rows_must_be_strict_release_members")
     if release_type == "launch_starter_pack_possible_rows" and release_meta.get("strict_release_member") is not False:
         failures.append("starter_pack_possible_release_must_not_claim_strict_membership")
+    if release_type == "gift_pack_starter_component_possible_rows" and release_meta.get("strict_release_member") is not False:
+        failures.append("gift_pack_component_release_must_not_claim_strict_membership")
     for card in cards:
         image = card.get("image_provenance", {})
         provider_row = card.get("provider_row", {})
         allowed_missing_no_rarity_caveat = (
-            release_type in {"launch_family_no_rarity_lab_rows", "launch_starter_pack_possible_rows"}
+            release_type in {
+                "launch_family_no_rarity_lab_rows",
+                "launch_starter_pack_possible_rows",
+                "gift_pack_starter_component_possible_rows",
+            }
             and image.get("status") == "missing_reference_image"
             and card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True
         )
@@ -2303,6 +2741,158 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"{card.get('row_id')}: starter_pack_possible_image_status_not_inherited")
             else:
                 failures.append(f"{card.get('row_id')}: starter_pack_possible_missing_source_row")
+        if release_type == "gift_pack_starter_component_possible_rows":
+            gift_scope = card.get("gift_pack_scope", {})
+            lane = gift_scope.get("component_lane")
+            source_local_id = gift_scope.get("source_local_id", "")
+            expected_local_id = f"{lane}-{source_local_id}" if lane and source_local_id else ""
+            expected_row_id = f"{release_meta.get('release_family_id')}:{expected_local_id}" if expected_local_id else ""
+            source_card = gift_pack_source_rows.get(source_local_id)
+            source_hash = sha256_hex(gift_pack_source_release) if gift_pack_source_release else ""
+            if lane not in set(gift_pack_component_lanes()):
+                failures.append(f"{card.get('row_id')}: gift_pack_component_invalid_lane")
+            if card.get("local_id") != expected_local_id:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_local_id_mismatch")
+            if card.get("row_id") != expected_row_id:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_row_id_mismatch")
+            if gift_scope.get("possible_content_pool") is not True:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_pool_flag_missing")
+            if gift_scope.get("fixed_gift_pack_card_member") is not False:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_fixed_member_overclaim")
+            if gift_scope.get("source_release_family_id") != "jp_tcg_starter_pack_19961020":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_source_release_mismatch")
+            if gift_scope.get("source_row_id") != f"jp_tcg_starter_pack_19961020:{source_local_id}":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_source_row_mismatch")
+            if gift_scope.get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_source_hash_mismatch")
+            if gift_scope.get("unmodeled_special_card_slots") != 2:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_special_slot_count_missing")
+            product_rule = gift_scope.get("product_rule", "").lower()
+            if "not a guarantee" not in product_rule or "special-card" not in product_rule or "fixed deck" not in product_rule:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_product_rule_missing_boundary")
+            product_scope = card.get("product_scope", {})
+            if product_scope.get("release_type") != "gift_pack_starter_component_possible_rows":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_product_scope_type_mismatch")
+            if product_scope.get("catalog_treatment") == "Catalog target":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_catalog_treatment_overclaims_target")
+            if product_scope.get("component_lane") != lane:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_product_lane_mismatch")
+            if product_scope.get("strict_release_member") is not False:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_row_strict_member_overclaim")
+            if product_scope.get("strict_booster_member") is not False:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_current_booster_member_overclaim")
+            if product_scope.get("product_card_count") != 122:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_product_count_mismatch")
+            counting_note = product_scope.get("counting_note", "").lower()
+            if "not 204 physical cards" not in counting_note or "not a guarantee" not in counting_note:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_counting_note_missing_boundary")
+            if card.get("symbol_status", {}).get("prints_without_rarity_symbol") != "unverified":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_symbol_not_unverified")
+            if card.get("provider_row", {}).get("adapter") != "gift_pack_product_rollup":
+                failures.append(f"{card.get('row_id')}: gift_pack_component_provider_adapter_mismatch")
+            if card.get("provider_row", {}).get("source_catalog_hash") != source_hash:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_provider_source_hash_mismatch")
+            if image.get("release_family_id") != release_meta.get("release_family_id"):
+                failures.append(f"{card.get('row_id')}: gift_pack_component_image_release_family_mismatch")
+            if image.get("row_id") != card.get("row_id"):
+                failures.append(f"{card.get('row_id')}: gift_pack_component_image_row_id_mismatch")
+            if "sealed Gift Pack contents" not in image.get("not_claiming", []):
+                failures.append(f"{card.get('row_id')}: gift_pack_component_image_boundary_missing")
+            if image.get("status") == "component_inherited_reference_image":
+                if image.get("component_source_release_family_id") != "jp_tcg_starter_pack_19961020":
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_image_source_release_missing")
+                if image.get("component_source_row_id") != f"jp_tcg_starter_pack_19961020:{source_local_id}":
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_image_source_row_mismatch")
+                if image.get("component_source_catalog_hash") != source_hash:
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_image_source_hash_mismatch")
+                if "source_image_status" in image:
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_legacy_source_image_status_not_path_safe")
+                if "exact_source_image" in image.get("source_image_lineage_status", ""):
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_lineage_status_overclaims_exact_source")
+                information_audit = card.get("information_audit", {})
+                if information_audit.get("gift_pack_component_override", {}).get("current_status") != image.get("status"):
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_information_audit_status_mismatch")
+                for item in information_audit.get("earns_keep", []):
+                    if item.get("field") == "No Rarity reference image" and item.get("surface") == "primary":
+                        failures.append(f"{card.get('row_id')}: gift_pack_component_information_audit_primary_image_overclaim")
+                        break
+            if not any(
+                contact.get("source") == "Gift Pack product-component rollup"
+                and contact.get("catalog_hash") == source_hash
+                and contact.get("component_lane") == lane
+                and contact.get("source_row_id") == f"jp_tcg_starter_pack_19961020:{source_local_id}"
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: gift_pack_component_missing_rollup_contact")
+            component_contacts = [
+                contact for contact in card.get("source_contacts", [])
+                if contact.get("source") != "Gift Pack product-component rollup"
+            ]
+            required_contact_boundaries = {
+                "fixed Gift Pack deck list",
+                "sealed Gift Pack contents",
+                "special-card identity",
+                "seller possession",
+                "authenticity",
+                "condition",
+                "price truth",
+            }
+            for contact in component_contacts:
+                if contact.get("inherited_from_component_release") is not True:
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_inherited_contact_unmarked")
+                    break
+                if contact.get("component_source_catalog_hash") != source_hash:
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_inherited_contact_hash_mismatch")
+                    break
+                if not required_contact_boundaries.issubset(set(contact.get("not_claiming", []))):
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_inherited_contact_boundary_missing")
+                    break
+                if contact.get("image_large") and (
+                    contact.get("display_allowed") is not False
+                    or contact.get("rights_status") != "external_reference_witness"
+                    or not {"training", "seller evidence", "authentication proof"}.issubset(set(contact.get("not_allowed_by_default", [])))
+                ):
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_inherited_image_contact_use_boundary_missing")
+                    break
+            if source_card:
+                copied_fields = [
+                    "name_en",
+                    "name_ja",
+                    "name_ja_status",
+                    "romaji",
+                    "name_source_note",
+                    "category",
+                    "rarity_source",
+                    "holo_source",
+                    "pokemon_profile",
+                    "illustrator",
+                    "tcgdex",
+                    "no_rarity_scope",
+                    "variant_traps",
+                ]
+                for field in copied_fields:
+                    if card.get(field) != source_card.get(field):
+                        failures.append(f"{card.get('row_id')}: gift_pack_component_source_field_drift {field}")
+                        break
+                source_image = source_card.get("image_provenance", {})
+                for field in [
+                    "image_large",
+                    "image_small",
+                    "provider_id",
+                    "provider_title",
+                    "source",
+                    "source_page_url",
+                    "rights_status",
+                ]:
+                    if image.get(field) != source_image.get(field):
+                        failures.append(f"{card.get('row_id')}: gift_pack_component_source_image_drift {field}")
+                        break
+                if image.get("component_source_image_status") != source_image.get("status"):
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_source_image_status_drift")
+                if source_image.get("status") == "inherited_source_reference_image" and image.get("status") != "component_inherited_reference_image":
+                    failures.append(f"{card.get('row_id')}: gift_pack_component_image_status_not_component_inherited")
+            else:
+                failures.append(f"{card.get('row_id')}: gift_pack_component_missing_source_row")
         if release_type == "deck_kit_parent_rollup_rows":
             parent_rollup = card.get("parent_rollup", {})
             lane = parent_rollup.get("lane")
@@ -2625,6 +3215,106 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("starter_pack_possible_current_booster_membership_overclaim")
         if not all(card.get("starter_pack_scope", {}).get("possible_content_pool") is True for card in cards):
             failures.append("starter_pack_possible_pool_flags_incomplete")
+    if release_type == "gift_pack_starter_component_possible_rows":
+        lanes = [card.get("gift_pack_scope", {}).get("component_lane") for card in cards]
+        targets = [card for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True]
+        caveats = [card for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True]
+        component_target_images = [
+            card for card in targets
+            if card.get("image_provenance", {}).get("status") == "component_inherited_reference_image"
+            and card.get("image_provenance", {}).get("image_large")
+        ]
+        caveat_missing_images = [
+            card for card in caveats
+            if card.get("image_provenance", {}).get("status") == "missing_reference_image"
+            and not card.get("image_provenance", {}).get("image_large")
+        ]
+        fixed_overclaims = [
+            card for card in cards
+            if card.get("gift_pack_scope", {}).get("fixed_gift_pack_card_member") is not False
+            or card.get("product_scope", {}).get("strict_release_member") is not False
+            or card.get("product_scope", {}).get("strict_booster_member") is not False
+        ]
+        source_starter_rows = [
+            card for card in cards
+            if card.get("product_scope", {}).get("source_starter_pack_possible_row") is True
+        ]
+        for lane in gift_pack_component_lanes():
+            if lanes.count(lane) != 102:
+                failures.append(f"gift_pack_component_lane_count {lane}={lanes.count(lane)}")
+        if release_meta.get("product_card_count") != 122:
+            failures.append("gift_pack_component_product_count_should_be_122")
+        if release_meta.get("unique_catalog_row_count") != 204:
+            failures.append("gift_pack_component_unique_pool_count_should_be_204")
+        if release_meta.get("unmodeled_special_card_slots") != 2:
+            failures.append("gift_pack_component_unmodeled_special_slots_missing")
+        if release_meta.get("catalog_treatment") == "Catalog target":
+            failures.append("gift_pack_component_catalog_treatment_overclaims_target")
+        if "not a guarantee" not in release_meta.get("product_count_basis", "").lower():
+            failures.append("gift_pack_component_product_count_basis_missing_boundary")
+        if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "unverified":
+            failures.append("gift_pack_component_release_symbol_status_should_be_unverified")
+        if primary_source.get("source_page_url") != gift_pack_product_source_id():
+            failures.append("gift_pack_component_source_page_url_mismatch")
+        try:
+            source_docs = source_document_contacts()
+            for key, value in source_docs.items():
+                if primary_source.get(key) != value:
+                    failures.append(f"gift_pack_component_source_doc_pin_mismatch {key}")
+        except FileNotFoundError:
+            failures.append("gift_pack_component_source_doc_pin_missing")
+        if primary_source.get("source_release_family_id") != "jp_tcg_starter_pack_19961020":
+            failures.append("gift_pack_component_source_release_mismatch")
+        if primary_source.get("cards_found") != len(cards) or primary_source.get("possible_content_rows") != len(cards):
+            failures.append("gift_pack_component_source_rows_found_mismatch")
+        if len(gift_pack_source_rows) != 102:
+            failures.append(f"gift_pack_component_source_row_count actual={len(gift_pack_source_rows)}")
+        if primary_source.get("catalog_hash") != (sha256_hex(gift_pack_source_release) if gift_pack_source_release else ""):
+            failures.append("gift_pack_component_source_hash_mismatch")
+        product_context = primary_source.get("product_context_source", {})
+        try:
+            gift_snapshot = gift_pack_source_snapshot()
+            gift_claims = gift_snapshot["extracted_claims"]
+            if product_context.get("snapshot_hash") != gift_snapshot["snapshot_hash"]:
+                failures.append("gift_pack_component_product_context_snapshot_hash_mismatch")
+            if product_context.get("snapshot_path") != gift_snapshot["snapshot_path"]:
+                failures.append("gift_pack_component_product_context_snapshot_path_mismatch")
+            if product_context.get("oldid_url") != gift_snapshot["oldid_url"]:
+                failures.append("gift_pack_component_product_context_oldid_mismatch")
+            if product_context.get("source_page_url") != gift_snapshot["source_page_url"]:
+                failures.append("gift_pack_component_product_context_source_url_mismatch")
+            if product_context.get("observed_release_date") != gift_claims.get("release_date"):
+                failures.append("gift_pack_component_product_context_release_date_mismatch")
+            if product_context.get("observed_total_card_count") != gift_claims.get("product_card_count"):
+                failures.append("gift_pack_component_product_context_count_mismatch")
+            if product_context.get("observed_starter_pack_component_count") != gift_claims.get("starter_pack_component_count"):
+                failures.append("gift_pack_component_product_context_starter_count_mismatch")
+            if product_context.get("observed_special_card_slots") != gift_claims.get("special_card_slots"):
+                failures.append("gift_pack_component_product_context_special_slot_mismatch")
+            if "raw HTML snapshot" not in product_context.get("not_claiming", []):
+                failures.append("gift_pack_component_product_context_snapshot_boundary_missing")
+            if "special-card identities" not in product_context.get("not_claiming", []):
+                failures.append("gift_pack_component_product_context_special_identity_boundary_missing")
+        except FileNotFoundError:
+            failures.append("gift_pack_component_product_source_snapshot_missing")
+        if primary_source.get("special_card_slots_documented") != 2 or primary_source.get("special_card_slots_row_modeled") is not False:
+            failures.append("gift_pack_component_special_slots_not_documented_as_unmodeled")
+        if len(targets) != 192:
+            failures.append(f"gift_pack_component_target_count actual={len(targets)}")
+        if len(caveats) != 12:
+            failures.append(f"gift_pack_component_caveat_count actual={len(caveats)}")
+        if len(component_target_images) != 192:
+            failures.append(f"gift_pack_component_target_image_count actual={len(component_target_images)}")
+        if len(caveat_missing_images) != 12:
+            failures.append(f"gift_pack_component_caveat_missing_image_count actual={len(caveat_missing_images)}")
+        if fixed_overclaims:
+            failures.append(f"gift_pack_component_fixed_overclaim_count actual={len(fixed_overclaims)}")
+        if len(source_starter_rows) != len(cards):
+            failures.append(f"gift_pack_component_source_starter_row_count actual={len(source_starter_rows)}")
+        if any(card.get("image_provenance", {}).get("status") == "exact_source_image" for card in cards):
+            failures.append("gift_pack_component_direct_exact_image_overclaim")
+        if not all(card.get("gift_pack_scope", {}).get("possible_content_pool") is True for card in cards):
+            failures.append("gift_pack_component_pool_flags_incomplete")
     if release_type == "deck_kit_parent_rollup_rows":
         lanes = [card.get("parent_rollup", {}).get("lane") for card in cards]
         if lanes.count("red") != 32 or lanes.count("green") != 32:
@@ -2675,6 +3365,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "release_family_id": release_meta.get("release_family_id"),
         "row_count": len(cards),
         "expected_row_count": expected,
+        "release_type": release_type,
+        "product_card_count": release_meta.get("product_card_count", 0),
+        "product_count_basis": release_meta.get("product_count_basis", ""),
+        "strict_release_member": release_meta.get("strict_release_member"),
+        "catalog_treatment": release_meta.get("catalog_treatment", ""),
+        "component_lanes": release_meta.get("component_lanes", []),
+        "unmodeled_special_card_slots": release_meta.get("unmodeled_special_card_slots", 0),
+        "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
         "strict_booster_rows": sum(1 for card in cards if card.get("product_scope", {}).get("strict_booster_member") is True),
@@ -2682,6 +3380,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "exact_source_image_rows": len(exact_source_image_rows),
         "provider_path_reference_image_rows": len(provider_path_reference_image_rows),
         "inherited_source_reference_image_rows": len(inherited_source_reference_image_rows),
+        "component_inherited_reference_image_rows": len(component_inherited_reference_image_rows),
         "promo_context_rows": len(promo_context_rows),
         "source_labeled_japanese_name_rows": len(name_ja_rows),
         "missing_japanese_name_rows": len(cards) - len(name_ja_rows),
@@ -2718,6 +3417,14 @@ def main() -> int:
                 "catalog_hash": release_hash,
                 "row_count": len(release["cards"]),
                 "expected_row_count": config.expected_row_count,
+                "release_type": config.release_type,
+                "product_card_count": release.get("release", {}).get("product_card_count", 0),
+                "product_count_basis": release.get("release", {}).get("product_count_basis", ""),
+                "strict_release_member": release.get("release", {}).get("strict_release_member"),
+                "catalog_treatment": release.get("release", {}).get("catalog_treatment", ""),
+                "component_lanes": release.get("release", {}).get("component_lanes", []),
+                "unmodeled_special_card_slots": release.get("release", {}).get("unmodeled_special_card_slots", 0),
+                "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],
                 "strict_booster_rows": audit["strict_booster_rows"],
@@ -2725,6 +3432,7 @@ def main() -> int:
                 "exact_source_image_rows": audit["exact_source_image_rows"],
                 "provider_path_reference_image_rows": audit["provider_path_reference_image_rows"],
                 "inherited_source_reference_image_rows": audit["inherited_source_reference_image_rows"],
+                "component_inherited_reference_image_rows": audit["component_inherited_reference_image_rows"],
                 "source_labeled_japanese_name_rows": audit["source_labeled_japanese_name_rows"],
                 "missing_japanese_name_rows": audit["missing_japanese_name_rows"],
                 "promo_context_rows": audit["promo_context_rows"],
@@ -2746,9 +3454,10 @@ def main() -> int:
         "exact_source_image_rows": sum(item["exact_source_image_rows"] for item in manifests),
         "provider_path_reference_image_rows": sum(item["provider_path_reference_image_rows"] for item in manifests),
         "inherited_source_reference_image_rows": sum(item["inherited_source_reference_image_rows"] for item in manifests),
+        "component_inherited_reference_image_rows": sum(item["component_inherited_reference_image_rows"] for item in manifests),
         "hash_algorithm": "sha256",
         "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-        "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images, provider-path-derived reference images, and inherited possible-content reference images.",
+        "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images, provider-path-derived reference images, inherited possible-content reference images, and product-component inherited reference images.",
         "releases": manifests,
         "not_claiming": [
             "complete pre-English catalog",
@@ -2772,6 +3481,7 @@ def main() -> int:
         "exact_source_image_rows": sum(row["exact_source_image_rows"] for row in audit_rows),
         "provider_path_reference_image_rows": sum(row["provider_path_reference_image_rows"] for row in audit_rows),
         "inherited_source_reference_image_rows": sum(row["inherited_source_reference_image_rows"] for row in audit_rows),
+        "component_inherited_reference_image_rows": sum(row["component_inherited_reference_image_rows"] for row in audit_rows),
         "tcgdex_enriched_rows": sum(row["tcgdex_enriched_rows"] for row in audit_rows),
         "release_audits": audit_rows,
         "not_claiming": [
