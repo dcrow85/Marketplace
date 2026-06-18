@@ -149,9 +149,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range_crosses_year",
-        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "japanese_set_name": "NINTENDO64 Wゲットキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -162,6 +162,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 2,
         "unmodeled_expected_cards": []
@@ -183,11 +184,11 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "",
         "expected_cards": [
           "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
           "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
         ],
-        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
           28,
@@ -210,6 +211,7 @@
         "source_provider_sort": 28,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:028",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -284,11 +286,11 @@
           "source_sort": 28
         },
         {
+          "complete_source_boundary_denial": "",
           "expected_cards": [
             "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
             "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
           ],
-          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -324,6 +326,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Pokumon",
           "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [],
           "unmodeled_expected_cards": []
         },
@@ -537,9 +540,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range_crosses_year",
-        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "japanese_set_name": "NINTENDO64 Wゲットキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -550,6 +553,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 2,
         "unmodeled_expected_cards": []
@@ -571,11 +575,11 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "",
         "expected_cards": [
           "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
           "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
         ],
-        "expected_complete_source_boundary": "",
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
           28,
@@ -598,6 +602,7 @@
         "source_provider_sort": 29,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:029",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -672,11 +677,11 @@
           "source_sort": 29
         },
         {
+          "complete_source_boundary_denial": "",
           "expected_cards": [
             "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
             "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
           ],
-          "expected_complete_source_boundary": "",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -712,6 +717,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Pokumon",
           "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [],
           "unmodeled_expected_cards": []
         },
@@ -819,14 +825,14 @@
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 2,
       "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+      "complete_source_boundary_denial": "",
       "expected_cards": [
         "Cool Porygon (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)",
         "Hungry Snorlax (Nintendo 64 campaign, Pokemon Song Best Collection CD 1997)"
       ],
-      "expected_complete_source_boundary": "",
       "expected_source_card_count": 2,
       "family_context_source": {
-        "expected_complete_source_boundary": "",
+        "complete_source_boundary_denial": "",
         "extracted_claims": {
           "distribution_context": "Nintendo 64 W Double Get purchase campaign",
           "physical_object_context": [
@@ -881,6 +887,7 @@
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
         "source": "Pokumon",
         "source_page_url": "https://pokumon.com/nintendo-64-w-double-get-campaign/",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "supporting_page_urls": []
       },
       "modeled_source_rows": 2,
@@ -912,6 +919,7 @@
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
+      "source_slice_authority_label": "source-pinned promo family card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
       "unmodeled_expected_cards": []

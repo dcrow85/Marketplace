@@ -115,6 +115,11 @@ KAMEX_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json"
 )
+ANA_GET_IN_A_JET_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_ana_get_in_a_jet_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -425,7 +430,7 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_trade_please_199802": {
         "source_snapshot": "trade_please_1998",
         "expected_source_card_count": 4,
-        "expected_complete_source_boundary": "complete campaign source",
+        "complete_source_boundary_denial": "complete campaign source",
         "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
@@ -461,7 +466,7 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_garura_parent_child_199805": {
         "source_snapshot": "garura_parent_child_1998",
         "expected_source_card_count": 2,
-        "expected_complete_source_boundary": "complete tournament source",
+        "complete_source_boundary_denial": "complete tournament source",
         "expected_cards": [
             "Touch Change! (Garura Parent/Child Tournament 1998)",
             "Kangaskhan (Garura Parent/Child Tournament 1998)",
@@ -505,7 +510,7 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_kamex_mega_battle_199807": {
         "source_snapshot": "kamex_mega_battle_1998",
         "expected_source_card_count": 4,
-        "expected_complete_source_boundary": "complete tournament source",
+        "complete_source_boundary_denial": "complete tournament source",
         "expected_cards": [
             "Computer Error (Regional Kamex Mega Battle 1998)",
             "No.1 Trainer (Regional Kamex Mega Battle 1998)",
@@ -561,6 +566,37 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "models those card identities only; it does not model side-event phone cards, "
             "trophy plaques, national-final objects, official copy counts, complete venue "
             "schedule, participant/winner ledger, or a complete Computer Error variant census."
+        ),
+    },
+    "jp_promo_ana_get_in_a_jet_199811": {
+        "source_snapshot": "ana_get_in_a_jet_1998",
+        "expected_source_card_count": 2,
+        "complete_source_boundary_denial": "complete campaign source",
+        "source_slice_authority_label": "source-pinned campaign card identity slice",
+        "expected_cards": [
+            "Flying Pikachu (Get in a Jet! Double Chance Campaign 1998)",
+            "Dragonite (Get in a Jet! Double Chance Campaign 1998)",
+        ],
+        "modeled_source_sorts": [51, 52],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Flying Pikachu (“Get in a Jet! Double Chance Campaign” 1998) (Unnumbered)",
+            "Dragonite (“Get in a Jet! Double Chance Campaign” 1998) (Unnumbered)",
+            "All Nippon Airlines “Get in a Jet! Double Chance Campaign”",
+            "All Nippon Airways",
+            "\"Get in a Jet! Double Chance Campaign\"",
+            "November 1, 1998 - January 31, 1999",
+            "All Nippon Airways “Get in a Jet! Double Chance Campaign” begins",
+            "All Nippon Airlines \"Get in a Jet! Double Chance Campaign\" (November 1-31, 1998)",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents the two source-pinned Get in a Jet! Double Chance Campaign "
+            "card identities and a November 1, 1998-January 31, 1999 campaign window, while "
+            "Bulbapedia cross-checks Flying Pikachu and Dragonite in its unnumbered promo "
+            "table with a November 1998 wording caveat. The current PokéCardex UPC aggregate "
+            "source-pins both rows to this family. This source slice models those card "
+            "identities only; it does not model the full airline campaign, redemption forms, "
+            "flight/passenger/customer ledger, official copy count, or a complete ANA promo census."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1322,6 +1358,40 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_ana_get_in_a_jet_199811",
+        name_en="ANA Get in a Jet! Double Chance Campaign source slice",
+        name_ja="ANA とべとべキャンペーン プロモ",
+        release_date="1998-11-01/1999-01-31",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_date_range_crosses_cutoff",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents Flying Pikachu and Dragonite as All Nippon Airways/All "
+            "Nippon Airlines Get in a Jet! Double Chance Campaign unnumbered promos and "
+            "gives the campaign window as November 1, 1998-January 31, 1999. Bulbapedia "
+            "cross-checks the two names in its unnumbered promo table but preserves a "
+            "November 1-31, 1998 wording that this catalog treats as a source wording "
+            "caveat, not as the campaign end date. This child slice models the two "
+            "currently source-pinned PokéCardex UPC rows; it does not claim official copy "
+            "counts, campaign redemption rules, flight/passenger/customer records, or a "
+            "complete ANA promo census. It is not a complete family checklist beyond the "
+            "two source-pinned card identities, and it is not a complete campaign-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the ANA "
+            "Get in a Jet! Double Chance Campaign. Use it to preserve the Flying Pikachu/"
+            "Dragonite campaign lane while keeping redemption mechanics, passenger/flight "
+            "records, copy counts, and the broader ANA promo census outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1820,6 +1890,26 @@ def kamex_mega_battle_source_snapshot() -> dict[str, Any]:
     }
 
 
+def ana_get_in_a_jet_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(ANA_GET_IN_A_JET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(ANA_GET_IN_A_JET_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1862,6 +1952,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return garura_parent_child_source_snapshot()
     if snapshot_id == "kamex_mega_battle_1998":
         return kamex_mega_battle_source_snapshot()
+    if snapshot_id == "ana_get_in_a_jet_1998":
+        return ana_get_in_a_jet_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3823,6 +3915,10 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
     promo_claims = promo_snapshot["extracted_claims"]
     modeled_sorts = set(int(value) for value in spec.get("modeled_source_sorts", []))
     unmodeled_expected_cards = list(spec.get("unmodeled_expected_cards", []))
+    complete_source_boundary_denial = str(spec.get("complete_source_boundary_denial", ""))
+    source_slice_authority_label = str(
+        spec.get("source_slice_authority_label", "source-pinned promo family card identity slice")
+    )
     cards: list[dict[str, Any]] = []
     source_rows = [
         source_card
@@ -3857,7 +3953,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "expected_cards": list(spec.get("expected_cards", [])),
             "modeled_source_sorts": list(spec.get("modeled_source_sorts", [])),
             "unmodeled_expected_cards": unmodeled_expected_cards,
-            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
+            "source_slice_authority_label": source_slice_authority_label,
+            "complete_source_boundary_denial": complete_source_boundary_denial,
             "source_gap_count": len(unmodeled_expected_cards),
             "source_gap_reason": spec.get("source_gap_reason", ""),
             "source_catalog_hash": source_hash,
@@ -3875,7 +3972,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "price truth",
             ],
         }
-        source_slice_boundary_claims = [
+        source_slice_boundary_denials = [
             "complete promo family checklist",
             "complete source object",
             "complete tournament source",
@@ -3883,11 +3980,10 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "complete magazine source",
             "complete event source",
         ]
-        expected_complete_source_boundary = str(spec.get("expected_complete_source_boundary", ""))
-        if expected_complete_source_boundary:
-            child_card["promo_family_scope"]["source_slice_boundary_claim"] = expected_complete_source_boundary
-            source_slice_boundary_claims.append(expected_complete_source_boundary)
-        source_slice_boundary_claims = list(dict.fromkeys(source_slice_boundary_claims))
+        if complete_source_boundary_denial:
+            child_card["promo_family_scope"]["source_slice_boundary_denial"] = complete_source_boundary_denial
+            source_slice_boundary_denials.append(complete_source_boundary_denial)
+        source_slice_boundary_denials = list(dict.fromkeys(source_slice_boundary_denials))
         version_filters = spec.get("source_provider_row_version_filters", {})
         version_filter = version_filters.get(source_sort) or version_filters.get(str(source_sort)) or {}
         if version_filter:
@@ -3915,7 +4011,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "strict_release_member": False,
             "unique_catalog_row_count": config.expected_row_count,
             "expected_source_card_count": spec.get("expected_source_card_count", 0),
-            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
+            "source_slice_authority_label": source_slice_authority_label,
+            "complete_source_boundary_denial": complete_source_boundary_denial,
             "source_gap_count": len(unmodeled_expected_cards),
             "unmodeled_expected_cards": unmodeled_expected_cards,
         }
@@ -4060,7 +4157,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
                 "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
                 "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
-                "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
+                "source_slice_authority_label": source_slice_authority_label,
+                "complete_source_boundary_denial": complete_source_boundary_denial,
                 "retrieved_at": promo_snapshot["retrieved_at"],
                 "expected_cards": list(spec.get("expected_cards", [])),
                 "unmodeled_expected_cards": unmodeled_expected_cards,
@@ -4075,7 +4173,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             retargeted_contact["promo_family_source_row_id"] = source_card.get("row_id", "")
             retargeted_contact["not_claiming"] = list(dict.fromkeys([
                 *retargeted_contact.get("not_claiming", []),
-                *source_slice_boundary_claims,
+                *source_slice_boundary_denials,
                 "unmodeled expected card row",
                 "seller possession",
                 "authenticity",
@@ -4098,7 +4196,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         child_card["source_contacts"] = source_contacts
         child_card["not_claiming"] = list(dict.fromkeys([
             *child_card.get("not_claiming", []),
-            *source_slice_boundary_claims,
+            *source_slice_boundary_denials,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -4126,7 +4224,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "modeled_source_rows": len(cards),
         "expected_source_card_count": spec.get("expected_source_card_count", 0),
         "expected_cards": list(spec.get("expected_cards", [])),
-        "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
+        "source_slice_authority_label": source_slice_authority_label,
+        "complete_source_boundary_denial": complete_source_boundary_denial,
         "source_gap_count": len(unmodeled_expected_cards),
         "source_gap_reason": spec.get("source_gap_reason", ""),
         "unmodeled_expected_cards": unmodeled_expected_cards,
@@ -4144,14 +4243,15 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "snapshot_retrieval_method": promo_snapshot["snapshot_retrieval_method"],
             "snapshot_content_scope": promo_snapshot["snapshot_content_scope"],
             "snapshot_not_claiming": promo_snapshot["snapshot_not_claiming"],
-            "expected_complete_source_boundary": spec.get("expected_complete_source_boundary", ""),
+            "source_slice_authority_label": source_slice_authority_label,
+            "complete_source_boundary_denial": complete_source_boundary_denial,
             "retrieved_at": promo_snapshot["retrieved_at"],
             "extracted_claims": promo_claims,
             "selected_text": promo_snapshot["selected_text"],
             "not_claiming": promo_snapshot["snapshot_not_claiming"],
         },
         "not_claiming": [
-            *source_slice_boundary_claims,
+            *source_slice_boundary_denials,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -4200,7 +4300,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "cards": cards,
         "not_claiming": [
             "complete pre-English catalog",
-            *source_slice_boundary_claims,
+            *source_slice_boundary_denials,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -5799,9 +5899,12 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_catalog_treatment_mismatch")
         if release_meta.get("strict_release_member") is not False:
             failures.append("promo_family_child_release_strict_member_overclaim")
-        expected_complete_source_boundary = str(family_spec.get("expected_complete_source_boundary", ""))
-        if expected_complete_source_boundary and expected_complete_source_boundary not in release.get("not_claiming", []):
-            failures.append("promo_family_child_release_complete_source_boundary_missing")
+        complete_source_boundary_denial = str(family_spec.get("complete_source_boundary_denial", ""))
+        source_slice_authority_label = str(
+            family_spec.get("source_slice_authority_label", "source-pinned promo family card identity slice")
+        )
+        if complete_source_boundary_denial and complete_source_boundary_denial not in release.get("not_claiming", []):
+            failures.append("promo_family_child_release_complete_source_boundary_denial_missing")
         if "not a complete family checklist" not in release_meta.get("product_count_basis", "").lower():
             failures.append("promo_family_child_product_count_basis_missing_boundary")
         if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "yes":
@@ -5816,6 +5919,12 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_source_rows_found_mismatch")
         if primary_source.get("expected_source_card_count") != family_spec.get("expected_source_card_count"):
             failures.append("promo_family_child_source_expected_count_mismatch")
+        if primary_source.get("source_slice_authority_label") != source_slice_authority_label:
+            failures.append("promo_family_child_source_authority_label_mismatch")
+        if primary_source.get("complete_source_boundary_denial") != complete_source_boundary_denial:
+            failures.append("promo_family_child_source_boundary_denial_mismatch")
+        if "expected_complete_source_boundary" in primary_source:
+            failures.append("promo_family_child_source_legacy_expected_boundary_key_present")
         if primary_source.get("source_gap_count") != expected_gap_count:
             failures.append("promo_family_child_source_gap_count_mismatch")
         if primary_source.get("expected_source_card_count", 0) != primary_source.get("modeled_source_rows", 0) + primary_source.get("source_gap_count", 0):
@@ -5830,6 +5939,20 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_complete_family_overclaim")
         if not all(scope.get("strict_family_member_for_modeled_row") is True for scope in family_scopes):
             failures.append("promo_family_child_modeled_membership_missing")
+        if any(scope.get("source_slice_authority_label") != source_slice_authority_label for scope in family_scopes):
+            failures.append("promo_family_child_authority_label_mismatch")
+        if any(scope.get("complete_source_boundary_denial") != complete_source_boundary_denial for scope in family_scopes):
+            failures.append("promo_family_child_boundary_denial_mismatch")
+        if any("expected_complete_source_boundary" in scope for scope in family_scopes):
+            failures.append("promo_family_child_legacy_expected_boundary_key_present")
+        if any("source_slice_boundary_claim" in scope for scope in family_scopes):
+            failures.append("promo_family_child_legacy_boundary_claim_key_present")
+        if any(card.get("product_scope", {}).get("source_slice_authority_label") != source_slice_authority_label for card in cards):
+            failures.append("promo_family_child_product_authority_label_mismatch")
+        if any(card.get("product_scope", {}).get("complete_source_boundary_denial") != complete_source_boundary_denial for card in cards):
+            failures.append("promo_family_child_product_boundary_denial_mismatch")
+        if any("expected_complete_source_boundary" in card.get("product_scope", {}) for card in cards):
+            failures.append("promo_family_child_product_legacy_expected_boundary_key_present")
         if any(card.get("product_scope", {}).get("strict_release_member") is not False for card in cards):
             failures.append("promo_family_child_row_strict_member_overclaim_count")
         if len(provider_path_reference_image_rows) != len(cards):
@@ -5855,7 +5978,6 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 "complete campaign source",
                 "complete tournament source",
             }
-            expected_complete_source_boundary = str(family_spec.get("expected_complete_source_boundary", ""))
             if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
                 failures.append("promo_family_child_context_snapshot_hash_mismatch")
             if family_context.get("snapshot_path") != promo_snapshot["snapshot_path"]:
@@ -5898,11 +6020,23 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     for contact in context_contacts
                 ):
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_complete_source_boundary_missing")
-                if expected_complete_source_boundary and any(
-                    expected_complete_source_boundary not in contact.get("not_claiming", [])
+                if complete_source_boundary_denial and any(
+                    complete_source_boundary_denial not in contact.get("not_claiming", [])
                     for contact in context_contacts
                 ):
-                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_expected_complete_source_boundary_missing")
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_boundary_denial_missing")
+                if any(
+                    contact.get("source_slice_authority_label") != source_slice_authority_label
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_authority_label_mismatch")
+                if any(
+                    contact.get("complete_source_boundary_denial") != complete_source_boundary_denial
+                    for contact in context_contacts
+                ):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_boundary_denial_mismatch")
+                if any("expected_complete_source_boundary" in contact for contact in context_contacts):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_legacy_expected_boundary_key_present")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
@@ -5913,8 +6047,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append("promo_family_child_context_raw_snapshot_boundary_missing")
             if not complete_source_boundaries.intersection(set(family_context.get("not_claiming", []))):
                 failures.append("promo_family_child_context_complete_source_boundary_missing")
-            if expected_complete_source_boundary and expected_complete_source_boundary not in family_context.get("not_claiming", []):
-                failures.append("promo_family_child_context_expected_complete_source_boundary_missing")
+            if complete_source_boundary_denial and complete_source_boundary_denial not in family_context.get("not_claiming", []):
+                failures.append("promo_family_child_context_boundary_denial_missing")
+            if family_context.get("source_slice_authority_label") != source_slice_authority_label:
+                failures.append("promo_family_child_context_authority_label_mismatch")
+            if family_context.get("complete_source_boundary_denial") != complete_source_boundary_denial:
+                failures.append("promo_family_child_context_boundary_denial_mismatch")
+            if "expected_complete_source_boundary" in family_context:
+                failures.append("promo_family_child_context_legacy_expected_boundary_key_present")
         except FileNotFoundError:
             failures.append("promo_family_child_source_snapshot_missing")
     if release_type == "deck_kit_parent_rollup_rows":
@@ -5997,7 +6137,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "family_context_snapshot_hash": family_context_source.get("snapshot_hash", ""),
         "family_context_source_url": family_context_source.get("source_page_url", ""),
         "family_context_supporting_page_urls": family_context_source.get("supporting_page_urls", []),
-        "family_context_expected_complete_source_boundary": family_context_source.get("expected_complete_source_boundary", ""),
+        "family_context_source_slice_authority_label": family_context_source.get("source_slice_authority_label", ""),
+        "family_context_complete_source_boundary_denial": family_context_source.get("complete_source_boundary_denial", ""),
         "release_not_claiming": release.get("not_claiming", []),
         "active_no_rarity_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("active_target") is True),
         "basic_energy_caveat_rows": sum(1 for card in cards if card.get("no_rarity_scope", {}).get("basic_energy_caveat") is True),
@@ -6074,7 +6215,8 @@ def main() -> int:
                 "family_context_snapshot_hash": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("snapshot_hash", ""),
                 "family_context_source_url": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("source_page_url", ""),
                 "family_context_supporting_page_urls": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("supporting_page_urls", []),
-                "family_context_expected_complete_source_boundary": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("expected_complete_source_boundary", ""),
+                "family_context_source_slice_authority_label": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("source_slice_authority_label", ""),
+                "family_context_complete_source_boundary_denial": (release.get("sources", [{}]) or [{}])[0].get("family_context_source", {}).get("complete_source_boundary_denial", ""),
                 "release_not_claiming": release.get("not_claiming", []),
                 "active_no_rarity_rows": audit["active_no_rarity_rows"],
                 "basic_energy_caveat_rows": audit["basic_energy_caveat_rows"],

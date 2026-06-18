@@ -149,9 +149,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete campaign source",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -162,6 +162,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 4,
         "unmodeled_expected_cards": []
@@ -183,13 +184,13 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete campaign source",
         "expected_cards": [
           "Venusaur (Trade Please campaign 1998)",
           "Charizard (Trade Please campaign 1998)",
           "Blastoise (Trade Please campaign 1998)",
           "Trade Please! (Trade Please campaign 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
           33,
@@ -214,7 +215,8 @@
         "source_provider_sort": 33,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_boundary_denial": "complete campaign source",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -289,13 +291,13 @@
           "source_sort": 33
         },
         {
+          "complete_source_boundary_denial": "complete campaign source",
           "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
             "Blastoise (Trade Please campaign 1998)",
             "Trade Please! (Trade Please campaign 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -333,6 +335,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Bulbapedia + Pokumon",
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [
             "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
             "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
@@ -551,9 +554,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete campaign source",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -564,6 +567,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 4,
         "unmodeled_expected_cards": []
@@ -585,13 +589,13 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete campaign source",
         "expected_cards": [
           "Venusaur (Trade Please campaign 1998)",
           "Charizard (Trade Please campaign 1998)",
           "Blastoise (Trade Please campaign 1998)",
           "Trade Please! (Trade Please campaign 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
           33,
@@ -616,7 +620,8 @@
         "source_provider_sort": 34,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_boundary_denial": "complete campaign source",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -691,13 +696,13 @@
           "source_sort": 34
         },
         {
+          "complete_source_boundary_denial": "complete campaign source",
           "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
             "Blastoise (Trade Please campaign 1998)",
             "Trade Please! (Trade Please campaign 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -735,6 +740,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Bulbapedia + Pokumon",
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [
             "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
             "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
@@ -953,9 +959,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete campaign source",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -966,6 +972,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 4,
         "unmodeled_expected_cards": []
@@ -987,13 +994,13 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete campaign source",
         "expected_cards": [
           "Venusaur (Trade Please campaign 1998)",
           "Charizard (Trade Please campaign 1998)",
           "Blastoise (Trade Please campaign 1998)",
           "Trade Please! (Trade Please campaign 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
           33,
@@ -1018,7 +1025,8 @@
         "source_provider_sort": 35,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_boundary_denial": "complete campaign source",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -1093,13 +1101,13 @@
           "source_sort": 35
         },
         {
+          "complete_source_boundary_denial": "complete campaign source",
           "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
             "Blastoise (Trade Please campaign 1998)",
             "Trade Please! (Trade Please campaign 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -1137,6 +1145,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Bulbapedia + Pokumon",
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [
             "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
             "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
@@ -1353,9 +1362,9 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete campaign source",
         "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
@@ -1366,6 +1375,7 @@
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 4,
         "unmodeled_expected_cards": []
@@ -1387,13 +1397,13 @@
       "promo_family_scope": {
         "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
         "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete campaign source",
         "expected_cards": [
           "Venusaur (Trade Please campaign 1998)",
           "Charizard (Trade Please campaign 1998)",
           "Blastoise (Trade Please campaign 1998)",
           "Trade Please! (Trade Please campaign 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
           33,
@@ -1418,7 +1428,8 @@
         "source_provider_sort": 36,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_boundary_denial": "complete campaign source",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -1493,13 +1504,13 @@
           "source_sort": 36
         },
         {
+          "complete_source_boundary_denial": "complete campaign source",
           "expected_cards": [
             "Venusaur (Trade Please campaign 1998)",
             "Charizard (Trade Please campaign 1998)",
             "Blastoise (Trade Please campaign 1998)",
             "Trade Please! (Trade Please campaign 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
           "not_claiming": [
             "raw HTML snapshot",
             "complete campaign source",
@@ -1537,6 +1548,7 @@
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
           "source": "Bulbapedia + Pokumon",
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [
             "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
             "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
@@ -1649,16 +1661,16 @@
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 4,
       "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+      "complete_source_boundary_denial": "complete campaign source",
       "expected_cards": [
         "Venusaur (Trade Please campaign 1998)",
         "Charizard (Trade Please campaign 1998)",
         "Blastoise (Trade Please campaign 1998)",
         "Trade Please! (Trade Please campaign 1998)"
       ],
-      "expected_complete_source_boundary": "complete campaign source",
       "expected_source_card_count": 4,
       "family_context_source": {
-        "expected_complete_source_boundary": "complete campaign source",
+        "complete_source_boundary_denial": "complete campaign source",
         "extracted_claims": {
           "course_structure": [
             "A Course: Charizard plus Trade Please!",
@@ -1718,6 +1730,7 @@
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
         "source": "Bulbapedia + Pokumon",
         "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
         "supporting_page_urls": [
           "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
           "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
@@ -1756,6 +1769,7 @@
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
+      "source_slice_authority_label": "source-pinned promo family card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
       "unmodeled_expected_cards": []
