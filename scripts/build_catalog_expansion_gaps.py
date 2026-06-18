@@ -53,18 +53,6 @@ class ResolvedGapTarget:
 GAP_TARGETS: tuple[GapTarget, ...] = (
     GapTarget(
         "en",
-        "wp",
-        "TCGdex lists W Promotional as a 7-card English set but returns zero card refs in the set payload.",
-        "English WoC-era supplemental promo gap; do not treat the English catalog as complete for this promo product.",
-    ),
-    GapTarget(
-        "en",
-        "sp",
-        "TCGdex lists Sample as a 10-card English e-Card-era set but returns zero card refs in the set payload.",
-        "English WoC-era supplemental sample-card gap; do not invent sample rows without a row-level source.",
-    ),
-    GapTarget(
-        "en",
         "jumbo",
         "TCGdex lists Jumbo cards as a 160-card English miscellaneous set but returns zero card refs in the set payload.",
         "Jumbo is not safely bounded to the WoC era from this source alone; needs a row-level and date-bounded source before modeling.",
@@ -72,6 +60,20 @@ GAP_TARGETS: tuple[GapTarget, ...] = (
 )
 
 RESOLVED_GAP_TARGETS: tuple[ResolvedGapTarget, ...] = (
+    ResolvedGapTarget(
+        "en",
+        "wp",
+        "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json",
+        "Bulbapedia raw wikitext + TCGdex set metadata",
+        "TCGdex still returns zero card refs, but Bulbapedia raw wikitext supplies the 7 W Promotional stamped promo rows.",
+    ),
+    ResolvedGapTarget(
+        "en",
+        "sp",
+        "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json",
+        "Bulbapedia raw wikitext + TCGdex set metadata",
+        "TCGdex still returns zero card refs, but Bulbapedia raw wikitext supplies the 10 English New York Press Conference Sample rows.",
+    ),
     ResolvedGapTarget(
         "ja",
         "ADV1",

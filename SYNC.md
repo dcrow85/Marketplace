@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — converted two English supplemental TCGdex gaps
+  into bounded row catalogs. Added `scripts/build_english_supplemental_catalogs.py`
+  and generated `data/english-supplemental-wotc/` for W Promotional (7 rows, gold
+  W-stamp identification rail) and the English New York Press Conference Sample Set
+  rows (10 rows, Sample-stamp identification rail). Source model: Bulbapedia raw
+  wikitext rows for card identity/type/rarity/promotion notes; TCGdex remains the
+  set/date/count cross-check and still returns zero card refs. Updated
+  `data/catalog-expansion/source-gaps.json`: active gaps now only English `jumbo`
+  (160 rows, not safely WoC-bounded from TCGdex alone); resolved gaps are `wp`, `sp`,
+  `ADV1`, and `ADV2`.
 - `[passive]` 2026-06-18 · Codex — converted the Japanese pre-cutoff ADV source gaps
   into a bounded row corpus. Added `scripts/build_japanese_adv_pre_wotc_catalogs.py`
   and generated `data/japanese-adv-pre-wotc/` for `ADV1` / Japanese ADV Expansion
