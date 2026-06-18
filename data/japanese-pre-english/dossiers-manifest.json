@@ -1,0 +1,27 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "corpus": {
+    "claim_count": 18,
+    "corpus_hash": "c8635111301178710a453e312c039ad17faaded1eb28813251b3b93293a20134",
+    "dossier_count": 3,
+    "hash_scope": "canonical corpus excluding generated_at",
+    "path": "data/japanese-pre-english/dossiers.json",
+    "schema": "marketplace.card_dossier_corpus.v0.1",
+    "source_count": 6
+  },
+  "generated_at": "2026-06-18T17:35:13Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "physical-card No Rarity truth",
+    "spendability",
+    "complete earliest-era dossier coverage"
+  ],
+  "schema": "marketplace.card_dossier_manifest.v0.1",
+  "source_sets": [
+    "data/japanese-pre-english/dossiers/pilot_v0_1.json"
+  ]
+}

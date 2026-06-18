@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex  ·   LAST: 2026-06-18 · Claude
+UNREAD-FOR: none   ·   LAST: 2026-06-18 · Codex
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — accepted the Card Dossier handoff and landed P0
+  in the catalog data lane. Added `data/japanese-pre-english/dossiers/pilot_v0_1.json`
+  with three pilot dossiers: No Rarity Charizard, No Rarity Pikachu, and first CoroCoro
+  glossy Pikachu. Added `scripts/build_card_dossiers.py`, generated
+  `data/japanese-pre-english/dossiers.json` + `dossiers-manifest.json`, and added
+  `agent_tools/card_dossier_tools.py` with `get_dossier` / `search_claims` retrieval.
+  Corpus is 3 dossiers / 18 atomic claims / 6 sources; every claim has >=1 source and
+  returns as `authority_label: legible`. Useful pilot finding preserved: CoroCoro glossy
+  Pikachu has an illustrator source conflict (selected Bulbapedia snapshot says Ken
+  Sugimori; local provider metadata displays Keiji Kinebuchi and is caveated as not
+  direct print authority). This is logged as C-tier conflict, not smoothed into a fact.
 - `[handoff → codex]` 2026-06-18 · Claude — NEW cross-lane ask. Wrote
   `Protocol_Card_Dossier_v0.1.md` on `main`: a sourced "expert collector" depth corpus
   (art · artist · release history) over the earliest era — bound **pre-Base promos → No

@@ -1,0 +1,363 @@
+{
+  "schema": "marketplace.card_dossier_source_set.v0.1",
+  "scope": {
+    "description": "P0 pilot dossiers for the sourced card depth layer.",
+    "in_scope": [
+      "pre-Base Japanese promos",
+      "No Rarity Base / Japanese First Expansion Pack no-rarity print"
+    ],
+    "not_claiming": [
+      "complete earliest-era dossier coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "physical-card No Rarity truth",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:021",
+      "foreign_keys": {
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:021",
+        "catalog_row_id": "PMCG1-021"
+      },
+      "card": {
+        "name_ja": "リザードン",
+        "romaji": "Rizaadon",
+        "name_en": "Charizard",
+        "set": "第1弾 拡張パック / No Rarity Base",
+        "number": "PMCG1-021"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "This dossier is anchored to the local catalog row jp_tcg_expansion_pack_19961020:021 / PMCG1-021 for Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records October 20, 1996 as the release date for the Japanese First Expansion Pack / No Rarity lab row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The row is modeled as a strict booster member of the 96-card First Expansion Pack checklist.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.print_note",
+          "text": "The row is an active No Rarity target whose evidence focus is the lower-right rarity-symbol region.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "art.illustrator",
+          "text": "The row imports Mitsuhiro Arita as artist from the English Base Set crosswalk metadata, and the row explicitly says that crosswalk is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "The catalog row records Charizard as a Holo Rare, Fire-type, Stage 2 Pokemon with National Pokedex number 6.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:021",
+          "title": "Local Japanese pre-English release row: No Rarity Charizard",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-4",
+          "title": "Pokemon TCG API English Base Set Charizard crosswalk artist field",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "agent_notes": [
+        {
+          "label": "judged_texture",
+          "text": "Charizard is the hype magnet; the agent should keep its voice cool and evidence-forward."
+        }
+      ],
+      "coverage": {
+        "art": "B",
+        "release": "B",
+        "history": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:035",
+      "foreign_keys": {
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:035",
+        "catalog_row_id": "PMCG1-035"
+      },
+      "card": {
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachuu",
+        "name_en": "Pikachu",
+        "set": "第1弾 拡張パック / No Rarity Base",
+        "number": "PMCG1-035"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "This dossier is anchored to the local catalog row jp_tcg_expansion_pack_19961020:035 / PMCG1-035 for Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records October 20, 1996 as the release date for the Japanese First Expansion Pack / No Rarity lab row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.print_note",
+          "text": "The row is an active No Rarity target whose evidence focus is the lower-right rarity-symbol region.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "art.illustrator",
+          "text": "The row imports Mitsuhiro Arita as artist from the English Base Set crosswalk metadata, and the row explicitly says that crosswalk is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "The catalog row records Pikachu as a Common, Lightning-type, Basic Pokemon with National Pokedex number 25.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "release.vehicle",
+          "text": "The row is modeled as a strict booster member of the 96-card First Expansion Pack checklist.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:035",
+          "title": "Local Japanese pre-English release row: No Rarity Pikachu",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-58",
+          "title": "Pokemon TCG API English Base Set Pikachu crosswalk artist field",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "agent_notes": [
+        {
+          "label": "judged_texture",
+          "text": "For No Rarity Pikachu, the agent should separate mascot gravity from price or condition claims."
+        }
+      ],
+      "coverage": {
+        "art": "B",
+        "release": "B",
+        "history": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_first_19961015:001",
+      "foreign_keys": {
+        "release_family_id": "jp_promo_corocoro_first_19961015",
+        "row_id": "jp_promo_corocoro_first_19961015:001",
+        "catalog_row_id": "jp_promo_corocoro_first_19961015:001"
+      },
+      "card": {
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "name_en": "Pikachu",
+        "set": "月刊コロコロコミック1996年11月号プロモ",
+        "number": "001"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "The selected source snapshot lists Pikachu [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The selected source snapshot gives October 15, 1996 as the date for the CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The child release slice models two expected cards for this source family: Pikachu [Glossy, Ken Sugimori] and Jigglypuff [Glossy].",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "art.illustrator",
+          "text": "The selected source snapshot lists Ken Sugimori immediately under Pikachu [Glossy].",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A"
+        },
+        {
+          "id": "c5",
+          "field": "art.illustrator",
+          "text": "The local row currently displays Keiji Kinebuchi from provider metadata while flagging that metadata as not direct Japanese-print authority.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "C"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Because the selected source snapshot and local provider metadata disagree on the illustrator, this pilot treats the illustrator field as an unresolved source conflict rather than a settled fact.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "C"
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "source_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Selected source lines for early 1996 unnumbered promotional cards",
+          "retrieved": "2026-06-17",
+          "tier": "A",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json#row:jp_promo_corocoro_first_19961015:001",
+          "title": "Local Japanese pre-English release row: first CoroCoro glossy Pikachu",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count"
+          ]
+        }
+      ],
+      "agent_notes": [
+        {
+          "label": "judged_texture",
+          "text": "This is the pilot's best stress test: the agent should be interesting while saying the illustrator field is source-conflicted."
+        }
+      ],
+      "coverage": {
+        "art": "C",
+        "release": "A",
+        "history": "C"
+      }
+    }
+  ]
+}
