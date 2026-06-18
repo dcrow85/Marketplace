@@ -1,0 +1,981 @@
+{
+  "cards": [
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Diglett is cataloged as the currently source-pinned row for Easily Understand How to Play Pokemon Cards Latest Edition promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+          "1998-11-13",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "054",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Miki Tanaka",
+        "name": "Miki Tanaka",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/54.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/54.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:054",
+        "promo_family_source_sort": 54,
+        "provider_id": "pokecardex:14255",
+        "provider_title": "Diglett - Unnumbered Promotional #54",
+        "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_latest_how_to_play_book_19981113:054",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "054",
+      "name_en": "Diglett",
+      "name_ja": "ディグダ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Asobikata promo page identifies Diglett as Japanese: ディグダ Digda; Pokumon/PokéCardex provide the source-pinned promo row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "complete book source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          50
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete book source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
+        "expected_source_card_count": 2,
+        "japanese_set_name": "「ポケモンカードの遊びかたがよくわかる本 最新版」プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim official copy counts, complete book-object provenance, sealed-book variant coverage, or a complete Asobikata promo variant census. It is not a complete family checklist beyond the source-pinned card pair, and it is not a complete book-object ledger.",
+        "release_date": "1998-11-13",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1998-11-13",
+        "date_source": "source_comment",
+        "distribution_comment": "Easily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "source_sort": 54
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete book source",
+        "expected_cards": [
+          "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+          "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+        ],
+        "expected_source_card_count": 2,
+        "modeled_source_sorts": [
+          54,
+          55
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos with Miki Tanaka illustration, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. The current PokéCardex UPC aggregate source-pins both rows to this family. This source slice models those card identities only; it does not model the full book object, sealed book variants, official copy count, or a complete Asobikata promo variant census.",
+        "source_local_id": "054",
+        "source_provider_sort": 54,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:054",
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 2,
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_local_id": "054",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Diglett",
+          "comment": "Easily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+          "id_card": 14255,
+          "id_tcgplayer": 617365,
+          "illustrator": "Miki Tanaka",
+          "provider_id": "pokecardex:14255",
+          "provider_title": "Diglett - Unnumbered Promotional #54",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 54,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14255,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:054",
+        "source_sort": 54
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+      "romaji": "Digda",
+      "row_id": "jp_promo_latest_how_to_play_book_19981113:054",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "054",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:054",
+          "source_sort": 54
+        },
+        {
+          "complete_source_boundary_denial": "complete book source",
+          "expected_cards": [
+            "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-book variant catalog",
+            "official copy count",
+            "complete Asobikata promo variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Diglett_(Asobikata_promo)&oldid=4251776",
+          "retrieved_at": "2026-06-18T01:32:55Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Easily Understand How to Play Pokemon Cards: Latest Edition Diglett/Dugtrio source slice, including source-pinned card identities, November 13, 1998 date, Miki Tanaka illustrator lines, Japanese name/transliteration lines, and Asobikata collector context. This snapshot is not a full book source, not a complete accessory-object ledger, not a sealed-book variant catalog, not an official copy-count authority, and not a raw HTML snapshot.",
+          "snapshot_hash": "d36944699188ec27c74d34ce5b5ed59371802e522458750e758460e92d10d218",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-book variant catalog",
+            "official copy count",
+            "complete Asobikata promo variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl rendered text extraction + Bulbapedia rendered page/table inspection",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/card/diglett-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+          "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+          "supporting_page_urls": [
+            "https://pokumon.com/card/dugtrio-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "aaf61e0a6dcde3e7b1eaafaa641e7863f56be2c3b66589f0337b158bd0212d4a",
+          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "complete book source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:054",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_latest_how_to_play_book_19981113"
+      },
+      "tags": [
+        "jp_promo_latest_how_to_play_book_19981113",
+        "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Dugtrio is cataloged as the currently source-pinned row for Easily Understand How to Play Pokemon Cards Latest Edition promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+          "1998-11-13",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "055",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Miki Tanaka",
+        "name": "Miki Tanaka",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/55.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/55.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:055",
+        "promo_family_source_sort": 55,
+        "provider_id": "pokecardex:14256",
+        "provider_title": "Dugtrio - Unnumbered Promotional #55",
+        "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_latest_how_to_play_book_19981113:055",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "055",
+      "name_en": "Dugtrio",
+      "name_ja": "ダグトリオ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Asobikata promo page identifies Dugtrio as Japanese: ダグトリオ Dugtrio; Pokumon/PokéCardex provide the source-pinned promo row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "complete book source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          51
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete book source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
+        "expected_source_card_count": 2,
+        "japanese_set_name": "「ポケモンカードの遊びかたがよくわかる本 最新版」プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim official copy counts, complete book-object provenance, sealed-book variant coverage, or a complete Asobikata promo variant census. It is not a complete family checklist beyond the source-pinned card pair, and it is not a complete book-object ledger.",
+        "release_date": "1998-11-13",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1998-11-13",
+        "date_source": "source_comment",
+        "distribution_comment": "Easily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "source_sort": 55
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete book source",
+        "expected_cards": [
+          "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+          "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+        ],
+        "expected_source_card_count": 2,
+        "modeled_source_sorts": [
+          54,
+          55
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos with Miki Tanaka illustration, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. The current PokéCardex UPC aggregate source-pins both rows to this family. This source slice models those card identities only; it does not model the full book object, sealed book variants, official copy count, or a complete Asobikata promo variant census.",
+        "source_local_id": "055",
+        "source_provider_sort": 55,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:055",
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 2,
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_local_id": "055",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Dugtrio",
+          "comment": "Easily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+          "id_card": 14256,
+          "id_tcgplayer": 617367,
+          "illustrator": "Miki Tanaka",
+          "provider_id": "pokecardex:14256",
+          "provider_title": "Dugtrio - Unnumbered Promotional #55",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 55,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14256,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:055",
+        "source_sort": 55
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+      "romaji": "Dugtrio",
+      "row_id": "jp_promo_latest_how_to_play_book_19981113:055",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "055",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:055",
+          "source_sort": 55
+        },
+        {
+          "complete_source_boundary_denial": "complete book source",
+          "expected_cards": [
+            "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-book variant catalog",
+            "official copy count",
+            "complete Asobikata promo variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Diglett_(Asobikata_promo)&oldid=4251776",
+          "retrieved_at": "2026-06-18T01:32:55Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Easily Understand How to Play Pokemon Cards: Latest Edition Diglett/Dugtrio source slice, including source-pinned card identities, November 13, 1998 date, Miki Tanaka illustrator lines, Japanese name/transliteration lines, and Asobikata collector context. This snapshot is not a full book source, not a complete accessory-object ledger, not a sealed-book variant catalog, not an official copy-count authority, and not a raw HTML snapshot.",
+          "snapshot_hash": "d36944699188ec27c74d34ce5b5ed59371802e522458750e758460e92d10d218",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-book variant catalog",
+            "official copy count",
+            "complete Asobikata promo variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl rendered text extraction + Bulbapedia rendered page/table inspection",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/card/diglett-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+          "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+          "supporting_page_urls": [
+            "https://pokumon.com/card/dugtrio-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "2de9d42b3a2592cc7a43f5830045dee3870d0f71a1bdf05f99cefc53c57fcff5",
+          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "complete book source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:055",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_latest_how_to_play_book_19981113"
+      },
+      "tags": [
+        "jp_promo_latest_how_to_play_book_19981113",
+        "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete pre-English catalog",
+    "complete promo family checklist",
+    "complete source object",
+    "complete tournament source",
+    "complete campaign source",
+    "complete magazine source",
+    "complete event source",
+    "complete book source",
+    "unmodeled expected card row",
+    "official copy count",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Promo target source-slice",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
+    "date_precision": "source_exact",
+    "expected_row_count": 2,
+    "expected_source_card_count": 2,
+    "name_en": "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+    "name_ja": "「ポケモンカードの遊びかたがよくわかる本 最新版」プロモ",
+    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the Latest Edition how-to-play book. Use it to preserve the Diglett/Dugtrio Asobikata lane while keeping book-object, sealed-variant, copy-count, and broader reprint-census claims outside row authority.",
+    "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+    "product_card_count": 0,
+    "product_count_basis": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. This child slice models the two currently source-pinned PokéCardex UPC rows; it does not claim official copy counts, complete book-object provenance, sealed-book variant coverage, or a complete Asobikata promo variant census. It is not a complete family checklist beyond the source-pinned card pair, and it is not a complete book-object ledger.",
+    "release_date": "1998-11-13",
+    "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+    "release_type": "promo_family_child_rollup_rows",
+    "source_gap_count": 0,
+    "strict_release_member": false,
+    "unique_catalog_row_count": 2,
+    "unmodeled_expected_cards": []
+  },
+  "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+  "sources": [
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "cards_found": 2,
+      "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+      "complete_source_boundary_denial": "complete book source",
+      "expected_cards": [
+        "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+        "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+      ],
+      "expected_source_card_count": 2,
+      "family_context_source": {
+        "complete_source_boundary_denial": "complete book source",
+        "extracted_claims": {
+          "collector_context": [
+            "Asobikata Diglett",
+            "Asobikata Dugtrio"
+          ],
+          "distribution_context": "Easily Understand How to Play Pokemon Cards: Latest Edition / Asobikata book",
+          "promo_card_count": 2,
+          "promo_cards": [
+            "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)"
+          ],
+          "release_date": "1998-11-13",
+          "source_aliases": [
+            "Easily Understand How to Play Pokémon Cards Latest Edition",
+            "Asobikata"
+          ],
+          "source_labeled_illustrators": {
+            "Diglett": "Miki Tanaka",
+            "Dugtrio": "Miki Tanaka"
+          },
+          "source_labeled_japanese_names": {
+            "Diglett": {
+              "name_ja": "ディグダ",
+              "romaji": "Digda"
+            },
+            "Dugtrio": {
+              "name_ja": "ダグトリオ",
+              "romaji": "Dugtrio"
+            }
+          }
+        },
+        "not_claiming": [
+          "raw HTML snapshot",
+          "complete book source",
+          "complete source object",
+          "complete accessory-object ledger",
+          "complete sealed-book variant catalog",
+          "official copy count",
+          "complete Asobikata promo variant census",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Diglett_(Asobikata_promo)&oldid=4251776",
+        "retrieved_at": "2026-06-18T01:32:55Z",
+        "selected_text": "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)\nEasily Understand How to Play Pokémon Cards Latest Edition (November 1998)\nDiglett\nEasily Understand How to Play Pokémon Cards\nUnnumbered\nMiki Tanaka\nDugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)\nDugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)\nEasily Understand How to Play Pokémon Cards Latest Edition (November 1998)\nDugtrio\nEasily Understand How to Play Pokémon Cards\nUnnumbered\nMiki Tanaka\nDiglett (Japanese: ディグダ Digda ) is a Fighting-type Basic Pokémon card. It was first released as one of the Unnumbered Promotional cards .\nIn Japan, this card was first available as an Unnumbered Promotional card alongside Dugtrio and was included in copies of Easily Understand How to Play Pokémon Cards: Latest Edition , released on November 13, 1998. It was later reprinted in the Japanese Pokémon Web expansion using the e-Card Series layout.\nIllus. Miki Tanaka\nThe original print of this card is commonly known as Asobikata Diglett in reference to the publication it was available in, which can be translated as how to play .\nDugtrio (Japanese: ダグトリオ Dugtrio ) is a Fighting-type Basic Pokémon card. It was first released as one of the Unnumbered Promotional cards .\nIn Japan, this card was first available as an Unnumbered Promotional card alongside Diglett and was included in copies of Easily Understand How to Play Pokémon Cards: Latest Edition , released on November 13, 1998. It was later reprinted in the Japanese Pokémon Web expansion using the e-Card Series layout.\nIllus. Miki Tanaka\nThe original print of this card is commonly known as Asobikata Dugtrio in reference to the publication it was available in, which can be translated as how to play .\nDiglett\nEasily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)\nDugtrio\nEasily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+        "snapshot_content_scope": "Selected rendered lines for the 1998 Easily Understand How to Play Pokemon Cards: Latest Edition Diglett/Dugtrio source slice, including source-pinned card identities, November 13, 1998 date, Miki Tanaka illustrator lines, Japanese name/transliteration lines, and Asobikata collector context. This snapshot is not a full book source, not a complete accessory-object ledger, not a sealed-book variant catalog, not an official copy-count authority, and not a raw HTML snapshot.",
+        "snapshot_hash": "d36944699188ec27c74d34ce5b5ed59371802e522458750e758460e92d10d218",
+        "snapshot_not_claiming": [
+          "raw HTML snapshot",
+          "complete book source",
+          "complete source object",
+          "complete accessory-object ledger",
+          "complete sealed-book variant catalog",
+          "official copy count",
+          "complete Asobikata promo variant census",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+        "snapshot_retrieval_method": "Codex curl rendered text extraction + Bulbapedia rendered page/table inspection",
+        "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+        "source": "Pokumon + Bulbapedia",
+        "source_page_url": "https://pokumon.com/card/diglett-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "supporting_page_urls": [
+          "https://pokumon.com/card/dugtrio-easily-understand-how-to-play-pokemon-cards-1998-unnumbered/",
+          "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+          "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+          "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+        ]
+      },
+      "modeled_source_rows": 2,
+      "modeled_source_sorts": [
+        54,
+        55
+      ],
+      "not_claiming": [
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "complete book source",
+        "unmodeled expected card row",
+        "official copy count",
+        "seller possession",
+        "authenticity",
+        "condition",
+        "price truth"
+      ],
+      "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "promo_family_id": "jp_promo_latest_how_to_play_book_19981113",
+      "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
+      "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
+      "source": "Marketplace UPC aggregate promo-family child source-slice",
+      "source_gap_count": 0,
+      "source_gap_reason": "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon Cards 1998 unnumbered promos with Miki Tanaka illustration, while Bulbapedia documents both Asobikata promo pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, released on November 13, 1998. The current PokéCardex UPC aggregate source-pins both rows to this family. This source slice models those card identities only; it does not model the full book object, sealed book variants, official copy count, or a complete Asobikata promo variant census.",
+      "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+      "source_release_type": "promo_aggregate_filtered_rows",
+      "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+      "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
+      "symbol_status_path": "data/pre-english-symbol-status.json",
+      "unmodeled_expected_cards": []
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium-high",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
+    "source_mode": "direct_promo_family_context",
+    "source_release_family_id": "jp_promo_latest_how_to_play_book_19981113"
+  }
+}

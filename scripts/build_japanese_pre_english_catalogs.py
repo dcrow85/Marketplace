@@ -125,6 +125,11 @@ ALL_CARD_CALENDAR_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json"
 )
+LATEST_HOW_TO_PLAY_BOOK_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -635,6 +640,49 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "おたんじょうび selected lines, not as a source-quoted card title. It does not model "
             "the full calendar object, sealed-calendar variants, official copy count, or a "
             "complete Birthday Pikachu variant census."
+        ),
+    },
+    "jp_promo_latest_how_to_play_book_19981113": {
+        "source_snapshot": "latest_how_to_play_book_1998",
+        "expected_source_card_count": 2,
+        "complete_source_boundary_denial": "complete book source",
+        "source_slice_authority_label": "source-pinned latest how-to-play book card identity slice",
+        "expected_cards": [
+            "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+        ],
+        "modeled_source_sorts": [54, 55],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Diglett (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Dugtrio (Easily Understand How to Play Pokemon Cards 1998) (Unnumbered)",
+            "Easily Understand How to Play Pokémon Cards Latest Edition (November 1998)",
+            "Easily Understand How to Play Pokémon Cards: Latest Edition , released on November 13, 1998",
+            "Diglett (Japanese: ディグダ Digda )",
+            "Dugtrio (Japanese: ダグトリオ Dugtrio )",
+            "Miki Tanaka",
+            "Easily Understand How to Play Pokémon Cards: Latest Edition (November 13, 1998)",
+        ],
+        "source_labeled_japanese_names": {
+            54: {
+                "name_ja": "ディグダ",
+                "romaji": "Digda",
+                "source_note": "Bulbapedia Asobikata promo page identifies Diglett as Japanese: ディグダ Digda; Pokumon/PokéCardex provide the source-pinned promo row.",
+            },
+            55: {
+                "name_ja": "ダグトリオ",
+                "romaji": "Dugtrio",
+                "source_note": "Bulbapedia Asobikata promo page identifies Dugtrio as Japanese: ダグトリオ Dugtrio; Pokumon/PokéCardex provide the source-pinned promo row.",
+            },
+        },
+        "source_gap_reason": (
+            "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon "
+            "Cards 1998 unnumbered promos with Miki Tanaka illustration, while Bulbapedia "
+            "documents both Asobikata promo pages as included in Easily Understand How to "
+            "Play Pokémon Cards: Latest Edition, released on November 13, 1998. The current "
+            "PokéCardex UPC aggregate source-pins both rows to this family. This source slice "
+            "models those card identities only; it does not model the full book object, sealed "
+            "book variants, official copy count, or a complete Asobikata promo variant census."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1464,6 +1512,38 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_latest_how_to_play_book_19981113",
+        name_en="Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+        name_ja="「ポケモンカードの遊びかたがよくわかる本 最新版」プロモ",
+        release_date="1998-11-13",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_exact",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents Diglett and Dugtrio as Easily Understand How to Play Pokemon "
+            "Cards 1998 unnumbered promos, while Bulbapedia documents both Asobikata promo "
+            "pages as included in Easily Understand How to Play Pokémon Cards: Latest Edition, "
+            "released on November 13, 1998. This child slice models the two currently "
+            "source-pinned PokéCardex UPC rows; it does not claim official copy counts, "
+            "complete book-object provenance, sealed-book variant coverage, or a complete "
+            "Asobikata promo variant census. It is not a complete family checklist beyond "
+            "the source-pinned card pair, and it is not a complete book-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the Latest "
+            "Edition how-to-play book. Use it to preserve the Diglett/Dugtrio Asobikata lane "
+            "while keeping book-object, sealed-variant, copy-count, and broader reprint-census "
+            "claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -2002,6 +2082,26 @@ def all_card_calendar_source_snapshot() -> dict[str, Any]:
     }
 
 
+def latest_how_to_play_book_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(LATEST_HOW_TO_PLAY_BOOK_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(LATEST_HOW_TO_PLAY_BOOK_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -2048,6 +2148,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return ana_get_in_a_jet_source_snapshot()
     if snapshot_id == "all_card_calendar_1998":
         return all_card_calendar_source_snapshot()
+    if snapshot_id == "latest_how_to_play_book_1998":
+        return latest_how_to_play_book_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -4573,6 +4675,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     product_context_source = primary_source.get("product_context_source", {})
     family_context_source = primary_source.get("family_context_source", {})
     failures: list[str] = []
+
+    def has_legacy_key(value: Any, key: str) -> bool:
+        if isinstance(value, dict):
+            return key in value or any(has_legacy_key(child, key) for child in value.values())
+        if isinstance(value, list):
+            return any(has_legacy_key(child, key) for child in value)
+        return False
+
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}
     if release_type == "launch_starter_pack_possible_rows":
@@ -6018,6 +6128,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_source_boundary_denial_mismatch")
         if "expected_complete_source_boundary" in primary_source:
             failures.append("promo_family_child_source_legacy_expected_boundary_key_present")
+        if has_legacy_key(primary_source, "source_slice_boundary_claim"):
+            failures.append("promo_family_child_source_legacy_boundary_claim_key_present")
         if primary_source.get("source_gap_count") != expected_gap_count:
             failures.append("promo_family_child_source_gap_count_mismatch")
         if primary_source.get("expected_source_card_count", 0) != primary_source.get("modeled_source_rows", 0) + primary_source.get("source_gap_count", 0):
@@ -6046,6 +6158,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_product_boundary_denial_mismatch")
         if any("expected_complete_source_boundary" in card.get("product_scope", {}) for card in cards):
             failures.append("promo_family_child_product_legacy_expected_boundary_key_present")
+        if any(has_legacy_key(card.get("product_scope", {}), "source_slice_boundary_claim") for card in cards):
+            failures.append("promo_family_child_product_legacy_boundary_claim_key_present")
         if any(card.get("product_scope", {}).get("strict_release_member") is not False for card in cards):
             failures.append("promo_family_child_row_strict_member_overclaim_count")
         if len(provider_path_reference_image_rows) != len(cards):
@@ -6132,6 +6246,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_boundary_denial_mismatch")
                 if any("expected_complete_source_boundary" in contact for contact in context_contacts):
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_legacy_expected_boundary_key_present")
+                if any(has_legacy_key(contact, "source_slice_boundary_claim") for contact in context_contacts):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_legacy_boundary_claim_key_present")
             selected_text = family_context.get("selected_text", "")
             if selected_text != promo_snapshot["selected_text"]:
                 failures.append("promo_family_child_context_selected_text_mismatch")
@@ -6150,6 +6266,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append("promo_family_child_context_boundary_denial_mismatch")
             if "expected_complete_source_boundary" in family_context:
                 failures.append("promo_family_child_context_legacy_expected_boundary_key_present")
+            if has_legacy_key(family_context, "source_slice_boundary_claim"):
+                failures.append("promo_family_child_context_legacy_boundary_claim_key_present")
         except FileNotFoundError:
             failures.append("promo_family_child_source_snapshot_missing")
     if release_type == "deck_kit_parent_rollup_rows":
