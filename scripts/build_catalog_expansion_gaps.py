@@ -32,6 +32,18 @@ HASH_ALGORITHM = "sha256"
 SOURCE_VERSION = "tcgdex-gap-register-v0.1"
 USER_AGENT = "MarketplaceCatalogGapRegister/0.1 (+local catalog builder)"
 
+PARTIAL_GAP_RESOLUTIONS: dict[tuple[str, str], dict[str, Any]] = {
+    ("en", "jumbo"): {
+        "status": "partially_resolved_by_bounded_subset",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
+        "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+        "resolution_note": (
+            "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only 8 clearly early "
+            "English WoC-era/edge rows through May 2003; later and unsafe-to-bound Jumbo rows remain unresolved."
+        ),
+    }
+}
+
 
 @dataclass(frozen=True)
 class GapTarget:
@@ -133,7 +145,7 @@ def build_gap(target: GapTarget) -> dict[str, Any]:
     cards = body.get("cards", []) or []
     card_count = body.get("cardCount", {}) or {}
     gap_count = max(int(card_count.get("total") or 0) - len(cards), 0)
-    return {
+    gap = {
         "schema": "marketplace.catalog_source_gap.v0.1",
         "authority_label": "legible",
         "language": target.language,
@@ -167,6 +179,26 @@ def build_gap(target: GapTarget) -> dict[str, Any]:
             "spendability",
         ],
     }
+    partial = PARTIAL_GAP_RESOLUTIONS.get((target.language, target.set_id))
+    if partial:
+        resolved_path = ROOT / partial["resolved_by"]
+        resolved_catalog = json.loads(resolved_path.read_text(encoding="utf-8"))
+        modeled_rows = len(resolved_catalog.get("cards", []))
+        gap["partial_resolution"] = {
+            **partial,
+            "modeled_row_count": modeled_rows,
+            "resolved_catalog_hash": canonical_hash(resolved_catalog),
+            "remaining_source_gap_count": max(gap_count - modeled_rows, 0),
+            "not_claiming": [
+                "complete Jumbo coverage",
+                "complete source-gap resolution",
+                "rows outside the bounded subset",
+                "seller possession",
+                "authenticity",
+                "condition truth",
+            ],
+        }
+    return gap
 
 
 def build_resolved_gap(target: ResolvedGapTarget) -> dict[str, Any]:
@@ -222,6 +254,11 @@ def build() -> dict[str, Any]:
         "source_docs_url": TCGDEX_DOCS_URL,
         "gap_count": len(gaps),
         "total_source_gap_rows": sum(gap["source_gap_count"] for gap in gaps),
+        "partial_resolution_count": sum(1 for gap in gaps if gap.get("partial_resolution")),
+        "partially_modeled_source_gap_rows": sum(
+            gap.get("partial_resolution", {}).get("modeled_row_count", 0)
+            for gap in gaps
+        ),
         "resolved_gap_count": len(resolved_gaps),
         "resolved_source_gap_rows": sum(gap["former_source_gap_count"] for gap in resolved_gaps),
         "gaps": gaps,

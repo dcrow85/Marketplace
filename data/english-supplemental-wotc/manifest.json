@@ -1,6 +1,6 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "generated_at": "2026-06-18T19:39:27Z",
+  "generated_at": "2026-06-18T19:45:31Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete English miscellaneous promo coverage",
@@ -12,7 +12,7 @@
     "price truth",
     "spendability"
   ],
-  "release_count": 2,
+  "release_count": 3,
   "releases": [
     {
       "bulbapedia_raw_sha256": "e570711fccaf6b4706b11666beccdba7a7ccf6447205aa0fad3cd4bc24c831b4",
@@ -79,11 +79,44 @@
       "tcgdex_set_cards_returned": 0,
       "tcgdex_set_id": "sp",
       "tcgdex_set_payload_hash": "005a1ca66f3b14165c663aaffdc4f5003eeef950df42a956fb16ac4e3f6269c1"
+    },
+    {
+      "bulbapedia_raw_sha256": "25ef253698294212fc906efb80dfde2d9306eae00ab3dd3139dd63bdab77e67f",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Jumbo_cards_%28TCG%29&action=raw",
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "9efb1f7d8cb3f121ea092db91bb9b4b79c82a528a3559f23f08d7b0fa09a75f0",
+      "catalog_treatment": "Catalog target",
+      "expected_row_count": 8,
+      "hash_algorithm": "sha256",
+      "path": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
+      "product_card_count": 8,
+      "product_count_basis": "Bulbapedia Jumbo cards raw wikitext spans many eras; this corpus models only the clearly early English WoC-era/edge rows through May 2003.",
+      "release_family_id": "en_wotc_jumbo_bounded_200002_200305",
+      "release_not_claiming": [
+        "complete English miscellaneous promo coverage",
+        "complete Jumbo coverage",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_type": "jumbo_partial_bounded_subset",
+      "row_count": 8,
+      "schema": "marketplace.english_supplemental_wotc_release_catalog.v0.1",
+      "source_payload_without_image_rows": 8,
+      "special_identification_instruction_rows": 8,
+      "strict_release_member": true,
+      "tcgdex_set_api_url": "https://api.tcgdex.net/v2/en/sets/jumbo",
+      "tcgdex_set_cards_returned": 0,
+      "tcgdex_set_id": "jumbo",
+      "tcgdex_set_payload_hash": "a88ff7ee1e529de75eca798cb03a716e3980c66bb315224103617f5cf02eba6f"
     }
   ],
   "schema": "marketplace.english_supplemental_wotc_manifest.v0.1",
   "source_contact_policy": "Rows are raw-wikitext reference identities without image promotion unless a row-specific image source is later added.",
-  "source_payload_without_image_rows": 17,
-  "special_identification_instruction_rows": 17,
-  "total_rows": 17
+  "source_payload_without_image_rows": 25,
+  "special_identification_instruction_rows": 25,
+  "total_rows": 25
 }

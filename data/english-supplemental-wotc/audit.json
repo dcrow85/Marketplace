@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T19:39:27Z",
+  "generated_at": "2026-06-18T19:45:31Z",
   "not_claiming": [
     "multi-agent audit complete",
     "complete English miscellaneous promo coverage",
@@ -28,11 +28,20 @@
       "row_count": 10,
       "source_payload_without_image_rows": 10,
       "special_identification_instruction_rows": 10
+    },
+    {
+      "expected_row_count": 8,
+      "failures": [],
+      "passed": true,
+      "release_family_id": "en_wotc_jumbo_bounded_200002_200305",
+      "row_count": 8,
+      "source_payload_without_image_rows": 8,
+      "special_identification_instruction_rows": 8
     }
   ],
-  "release_count": 2,
+  "release_count": 3,
   "schema": "marketplace.english_supplemental_wotc_audit.v0.1",
-  "source_payload_without_image_rows": 17,
-  "special_identification_instruction_rows": 17,
-  "total_rows": 17
+  "source_payload_without_image_rows": 25,
+  "special_identification_instruction_rows": 25,
+  "total_rows": 25
 }

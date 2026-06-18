@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — partially bounded the remaining English Jumbo
+  gap without pretending the whole TCGdex `jumbo` bucket is WoC-era. Extended
+  `scripts/build_english_supplemental_catalogs.py` and `data/english-supplemental-wotc/`
+  with `en_wotc_jumbo_bounded_200002_200305`: 8 early Jumbo/oversized rows from
+  Bulbapedia raw wikitext (Top Deck Pikachu, Warner Bros. movie jumbo, and Best of
+  Game Winner jumbos through May 2003). Every row has a Jumbo physical-format
+  `special_identification_instructions` rail. `data/catalog-expansion/source-gaps.json`
+  still keeps English `jumbo` active, now with `partial_resolution` showing 8 modeled
+  rows and 152 remaining source-gap rows not safely resolved/bounded.
 - `[passive]` 2026-06-18 · Codex — converted two English supplemental TCGdex gaps
   into bounded row catalogs. Added `scripts/build_english_supplemental_catalogs.py`
   and generated `data/english-supplemental-wotc/` for W Promotional (7 rows, gold

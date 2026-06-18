@@ -89,6 +89,18 @@ SUPPLEMENTAL_SETS: tuple[SupplementalSet, ...] = (
         "sample_stamp",
         "Bulbapedia Sample Set raw wikitext lists 10 English New York Press Conference sample rows; TCGdex supplies English set count/date but no row refs.",
     ),
+    SupplementalSet(
+        "jumbo",
+        "en_wotc_jumbo_bounded_200002_200305",
+        "Jumbo cards - WoC-era bounded subset",
+        "Jumbo_cards_(TCG)",
+        "2000-02-01",
+        8,
+        "jumbo_partial_bounded_subset",
+        "jumbo_wotc_bounded",
+        "jumbo_card",
+        "Bulbapedia Jumbo cards raw wikitext spans many eras; this corpus models only the clearly early English WoC-era/edge rows through May 2003.",
+    ),
 )
 
 
@@ -167,6 +179,18 @@ def parse_tcg_id(value: str) -> dict[str, str]:
     }
 
 
+def clean_wikitext(value: str) -> str:
+    text = value
+    text = re.sub(r"\{\{exp\|([^{}|]+)\}\}", r"\1", text)
+    text = re.sub(r"\{\{TCG\|([^{}|]+)\}\}", r"\1", text)
+    text = re.sub(r"\[\[[^|\]]+\|([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = text.replace("'''", "").replace("''", "")
+    text = text.replace("}}", "")
+    return " ".join(text.split())
+
+
 def parse_nmentry(line: str) -> dict[str, str]:
     text = line.strip()
     prefix = "{{Setlist/nmentry|"
@@ -175,7 +199,7 @@ def parse_nmentry(line: str) -> dict[str, str]:
     first_split = text[len(prefix) :].split("|{{TCG ID", 1)
     if len(first_split) != 2:
         raise ValueError(f"missing TCG ID template: {line}")
-    printed_number = first_split[0].strip()
+    printed_number = clean_wikitext(first_split[0].strip())
     tcg_match = re.search(r"\{\{TCG ID\|([^|{}]+)\|([^|{}]+)\|([^|{}]+)\}\}", text)
     if not tcg_match:
         raise ValueError(f"malformed TCG ID template: {line}")
@@ -185,13 +209,14 @@ def parse_nmentry(line: str) -> dict[str, str]:
         "source_number": tcg_match.group(3).strip(),
     }
     rest = text[tcg_match.end() :]
-    rest = re.sub(r"\{\{TCG\|[^{}]+\}\}", "", rest)
     rest = re.sub(r"\(''\s*''\)", "", rest)
     rest = re.sub(r"\(''[^']*''\)", "", rest)
+    rest = re.sub(r"\[\[[^|\]]+\|([^\]]+)\]\]", r"\1", rest)
+    rest = re.sub(r"\[\[([^\]]+)\]\]", r"\1", rest)
     fields = rest.split("|", 1)[1].split("|") if "|" in rest else []
     while len(fields) < 4:
         fields.append("")
-    fields = [field.replace("}}", "").strip() for field in fields]
+    fields = [clean_wikitext(field) for field in fields]
     return {
         "printed_number": printed_number,
         "source_set": tcg["source_set"],
@@ -210,11 +235,31 @@ def sample_new_york_lines(raw: str) -> list[str]:
     return re.findall(r"\{\{Setlist/nmentry\|[^\n]+", raw[start:end])
 
 
+def jumbo_wotc_bounded_lines(raw: str) -> list[str]:
+    entries = re.findall(r"\{\{Setlist/nmentry\|[^\n]+", raw)
+    bounded: list[str] = []
+    for line in entries:
+        if any(marker in line for marker in (
+            "Top Deck Magazine (February 2000)",
+            "Pokémon The Movie 2000]] promotion (July 2000)",
+            "BattleZone (December 2002)",
+            "BattleZone (January 2003)",
+            "BattleZone (February 2003)",
+            "BattleZone (March 2003)",
+            "BattleZone (April 2003)",
+            "BattleZone (May 2003)",
+        )):
+            bounded.append(line)
+    return bounded
+
+
 def row_inputs(config: SupplementalSet, raw: str) -> list[dict[str, str]]:
     if config.parse_section == "all_setlist_entries":
         lines = re.findall(r"\{\{Setlist/nmentry\|[^\n]+", raw)
     elif config.parse_section == "new_york_press_conference":
         lines = sample_new_york_lines(raw)
+    elif config.parse_section == "jumbo_wotc_bounded":
+        lines = jumbo_wotc_bounded_lines(raw)
     else:
         raise ValueError(f"unknown parse section {config.parse_section}")
     return [parse_nmentry(line) for line in lines]
@@ -250,6 +295,21 @@ def special_identification_instruction(kind: str) -> dict[str, Any]:
             ],
             "source_refs": [{"source": "Bulbapedia raw wikitext", "source_page_url": raw_url("Sample_Set_(TCG)")}],
             "not_claiming": ["seller possession", "authenticity", "condition", "stamp authenticity", "copy count truth"],
+        }
+    if kind == "jumbo_card":
+        return {
+            "id": "jumbo_card_physical_format_v0.1",
+            "authority_label": "legible",
+            "trigger": "Identifying an English Jumbo / oversized promotional card.",
+            "summary": "Confirm this is the oversized Jumbo physical format, not the regular-size card with the same name and art lineage.",
+            "steps": [
+                "Identify the underlying card row named by the source.",
+                "Confirm the seller card is the Jumbo / oversized physical format.",
+                "Preserve the promotion or distribution note when supplied.",
+                "Do not merge this row with the regular-size card or a later jumbo reissue.",
+            ],
+            "source_refs": [{"source": "Bulbapedia raw wikitext", "source_page_url": raw_url("Jumbo_cards_(TCG)")}],
+            "not_claiming": ["seller possession", "authenticity", "condition", "format authenticity", "complete Jumbo coverage"],
         }
     return {}
 
