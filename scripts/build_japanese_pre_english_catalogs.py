@@ -110,6 +110,11 @@ GARURA_PARENT_CHILD_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json"
 )
+KAMEX_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -495,6 +500,67 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "identities only; it does not model the full tournament rules packet, complete "
             "participant/winner ledger, official copy count, or complete Touch Change! "
             "distribution census."
+        ),
+    },
+    "jp_promo_kamex_mega_battle_199807": {
+        "source_snapshot": "kamex_mega_battle_1998",
+        "expected_source_card_count": 4,
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_cards": [
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)",
+        ],
+        "modeled_source_sorts": [45, 46, 47, 48],
+        "unmodeled_expected_cards": [],
+        "source_labeled_japanese_names": {
+            45: {
+                "name_ja": "パソコン大暴走！",
+                "romaji": "",
+                "source_note": "Bulbapedia Computer Error page selected lines 143-159.",
+            },
+        },
+        "source_provider_row_version_filters": {
+            45: {
+                "drop_if_any_text": [
+                    "Appearance (Red R logo)",
+                    "Apparence (logo R rouge)",
+                ],
+                "row_boundary_note": (
+                    "Kamex participation Computer Error is non-glossy with a white-drop-shadow "
+                    "Team Rocket R per selected Pokumon + Bulbapedia lines; glossy CoroCoro/"
+                    "Song Best Collection Computer Error prints are outside this child slice."
+                ),
+            },
+        },
+        "expected_snapshot_texts": [
+            "From July to August in the summer of 1998, regional tournaments were held across Japan",
+            "Computer Error (Regional Kamex Mega Battle 1998) (Unnumbered)",
+            "Kamex Mega Battle participation prize",
+            "the Team Rocket “R” symbol doesn’t have the red drop shadow and instead shows a white one",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)",
+            "Kamex Mega Battle regional first place prize",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)",
+            "Kamex Mega Battle regional second place prize",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)",
+            "Kamex Mega Battle regional third place prize",
+            "3rd Place: No.3 Trainer card",
+            "2nd Place: No.2 Trainer card",
+            "1st Place: No.1 Trainer card",
+            "The prints released via CoroCoro and the Pokémon Song Best Collection have an 'R' symbol with a red drop shadow",
+            "whereas the 'R' on the Kamex Mega Battle participation print has a white drop shadow",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents the Kamex Mega Battle regional tournament circuit, its "
+            "July-August 1998 regional window, and the source-pinned participation/placement "
+            "card identities, while Bulbapedia documents the Computer Error Japanese name "
+            "and the non-glossy white-drop-shadow Kamex print distinction from the glossy "
+            "CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex "
+            "UPC aggregate source-pins all four rows to this family. This source slice "
+            "models those card identities only; it does not model side-event phone cards, "
+            "trophy plaques, national-final objects, official copy counts, complete venue "
+            "schedule, participant/winner ledger, or a complete Computer Error variant census."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1219,6 +1285,43 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_kamex_mega_battle_199807",
+        name_en="Kamex Mega Battle source slice",
+        name_ja="カメックスメガバトル プロモ",
+        release_date="1998-07/1998-08",
+        expected_row_count=4,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_month_range",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents the Kamex Mega Battle regional tournament circuit as a "
+            "July-August 1998 series and source-pins the Computer Error participation "
+            "prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia "
+            "documents Computer Error as a Japanese Rocket's Secret Machine card and "
+            "separates the Kamex non-glossy white-drop-shadow print from the glossy "
+            "CoroCoro/Song Best Collection Computer Error prints. This child slice models "
+            "the four currently source-pinned PokéCardex UPC tournament rows; it does not "
+            "claim official copy counts, complete venue schedule, participant/winner ledger, "
+            "side-event prize coverage, trophy-plaque coverage, national-final coverage, "
+            "or a complete Computer Error variant census. It is not a complete family "
+            "checklist beyond the four source-pinned card identities, and it is not a "
+            "complete tournament-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the "
+            "Kamex Mega Battle regional tournament. Use it to preserve the Computer Error "
+            "participation lane and No.1/No.2/No.3 Trainer placement lanes while keeping "
+            "copy-count, venue, winner, trophy-plaque, national-final, side-event, and "
+            "Computer Error variant-census claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1697,6 +1800,26 @@ def garura_parent_child_source_snapshot() -> dict[str, Any]:
     }
 
 
+def kamex_mega_battle_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(KAMEX_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(KAMEX_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1737,6 +1860,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return trade_please_source_snapshot()
     if snapshot_id == "garura_parent_child_1998":
         return garura_parent_child_source_snapshot()
+    if snapshot_id == "kamex_mega_battle_1998":
+        return kamex_mega_battle_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3750,6 +3875,23 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "price truth",
             ],
         }
+        source_slice_boundary_claims = [
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+        ]
+        expected_complete_source_boundary = str(spec.get("expected_complete_source_boundary", ""))
+        if expected_complete_source_boundary:
+            child_card["promo_family_scope"]["source_slice_boundary_claim"] = expected_complete_source_boundary
+            source_slice_boundary_claims.append(expected_complete_source_boundary)
+        source_slice_boundary_claims = list(dict.fromkeys(source_slice_boundary_claims))
+        version_filters = spec.get("source_provider_row_version_filters", {})
+        version_filter = version_filters.get(source_sort) or version_filters.get(str(source_sort)) or {}
+        if version_filter:
+            child_card["promo_family_scope"]["variant_boundary_note"] = version_filter.get("row_boundary_note", "")
         child_card["product_scope"] = {
             "authority": "Promo-family child source slice plus Japanese pre-English release map.",
             "catalog_treatment": config.catalog_treatment,
@@ -3786,10 +3928,47 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
             "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession", "Base No Rarity proof"],
         }
+        source_provider_row = copy.deepcopy(source_card.get("provider_row", {}))
+        source_provider_version_boundary: dict[str, Any] = {
+            "applied": False,
+            "not_claiming": [
+                "provider variant metadata authority",
+                "complete variant census",
+                "physical card print-state proof",
+            ],
+        }
+        if version_filter:
+            blocked_texts = [str(text) for text in version_filter.get("drop_if_any_text", [])]
+            source_versions = list(source_provider_row.get("versions", []))
+            kept_versions: list[dict[str, Any]] = []
+            dropped_count = 0
+            for version in source_versions:
+                version_text = json.dumps(version, ensure_ascii=False, sort_keys=True)
+                if any(blocked_text in version_text for blocked_text in blocked_texts):
+                    dropped_count += 1
+                    continue
+                kept_versions.append(version)
+            source_provider_row["versions"] = kept_versions
+            source_provider_version_boundary = {
+                "applied": True,
+                "authority": (
+                    "The child slice keeps the parent provider row as provenance but filters "
+                    "aggregate provider variant labels that conflict with selected family context."
+                ),
+                "dropped_provider_version_count": dropped_count,
+                "row_boundary_note": version_filter.get("row_boundary_note", ""),
+                "not_claiming": [
+                    "provider variant metadata authority",
+                    "complete variant census",
+                    "physical card print-state proof",
+                    "CoroCoro/Song Best Collection Computer Error row",
+                ],
+            }
         child_card["provider_row"] = {
             "adapter": "promo_family_child_rollup",
             "source_catalog_hash": source_hash,
-            "source_provider_row": source_card.get("provider_row", {}),
+            "source_provider_row": source_provider_row,
+            "source_provider_version_boundary": source_provider_version_boundary,
             "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
             "source_row_id": source_card.get("row_id", ""),
             "source_local_id": source_local_id,
@@ -3896,18 +4075,30 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             retargeted_contact["promo_family_source_row_id"] = source_card.get("row_id", "")
             retargeted_contact["not_claiming"] = list(dict.fromkeys([
                 *retargeted_contact.get("not_claiming", []),
-                "complete promo family checklist",
+                *source_slice_boundary_claims,
                 "unmodeled expected card row",
                 "seller possession",
                 "authenticity",
                 "condition",
                 "price truth",
             ]))
+            if (
+                retargeted_contact.get("card_data_hash")
+                or retargeted_contact.get("encrypted_page_sha256")
+            ):
+                retargeted_contact["hash_preimage_scope"] = (
+                    "inherited from parent UPC source-slice contact; raw decrypted provider payload "
+                    "is not embedded in this child row"
+                )
+                retargeted_contact["hash_reproducibility"] = (
+                    "reproduce from the parent source release and builder/live-fetch lineage, "
+                    "not from this child release alone"
+                )
             source_contacts.append(retargeted_contact)
         child_card["source_contacts"] = source_contacts
         child_card["not_claiming"] = list(dict.fromkeys([
             *child_card.get("not_claiming", []),
-            "complete promo family checklist",
+            *source_slice_boundary_claims,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -3960,7 +4151,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "not_claiming": promo_snapshot["snapshot_not_claiming"],
         },
         "not_claiming": [
-            "complete promo family checklist",
+            *source_slice_boundary_claims,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -3970,9 +4161,9 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         ],
     }
     count_confidence = (
-        "promo_family_child_source_slice_closed"
+        "promo_family_child_source_pinned_card_identity_slice_closed"
         if not unmodeled_expected_cards
-        else "promo_family_child_source_slice_with_source_gap"
+        else "promo_family_child_source_pinned_card_identity_slice_with_source_gap"
     )
     return {
         "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
@@ -4009,7 +4200,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "cards": cards,
         "not_claiming": [
             "complete pre-English catalog",
-            "complete promo family checklist",
+            *source_slice_boundary_claims,
             "unmodeled expected card row",
             "official copy count",
             "seller possession",
@@ -4905,6 +5096,30 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: promo_family_child_provider_adapter_mismatch")
             if card.get("provider_row", {}).get("source_catalog_hash") != source_hash:
                 failures.append(f"{card.get('row_id')}: promo_family_child_provider_source_hash_mismatch")
+            source_sort_for_filter = int(card.get("promo_family_scope", {}).get("source_provider_sort", 0))
+            version_filters = family_spec.get("source_provider_row_version_filters", {})
+            version_filter = (
+                version_filters.get(source_sort_for_filter)
+                or version_filters.get(str(source_sort_for_filter))
+                or {}
+            )
+            provider_boundary = card.get("provider_row", {}).get("source_provider_version_boundary", {})
+            provider_row_text = json.dumps(
+                card.get("provider_row", {}).get("source_provider_row", {}),
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+            if version_filter:
+                if provider_boundary.get("applied") is not True:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_provider_version_boundary_missing")
+                if not provider_boundary.get("row_boundary_note"):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_provider_version_boundary_note_missing")
+                for blocked_text in version_filter.get("drop_if_any_text", []):
+                    if str(blocked_text) in provider_row_text:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_provider_version_filter_failed {blocked_text}")
+                        break
+            elif provider_boundary.get("applied") is not False:
+                failures.append(f"{card.get('row_id')}: promo_family_child_unexpected_provider_version_boundary")
             if image.get("release_family_id") != release_meta.get("release_family_id"):
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_release_family_mismatch")
             if image.get("row_id") != card.get("row_id"):
@@ -4968,6 +5183,10 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 if "unmodeled expected card row" not in contact.get("not_claiming", []):
                     failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_boundary_missing")
                     break
+                if contact.get("card_data_hash") or contact.get("encrypted_page_sha256"):
+                    if not contact.get("hash_preimage_scope") or not contact.get("hash_reproducibility"):
+                        failures.append(f"{card.get('row_id')}: promo_family_child_inherited_contact_hash_scope_missing")
+                        break
             if source_card:
                 source_sort = int(card.get("promo_family_scope", {}).get("source_provider_sort", 0))
                 source_labeled_japanese_names = family_spec.get("source_labeled_japanese_names", {})
@@ -5568,9 +5787,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         if release_meta.get("expected_source_card_count", 0) != len(cards) + release_meta.get("source_gap_count", 0):
             failures.append("promo_family_child_release_count_closure_mismatch")
         expected_count_confidence = (
-            "promo_family_child_source_slice_closed"
+            "promo_family_child_source_pinned_card_identity_slice_closed"
             if expected_gap_count == 0
-            else "promo_family_child_source_slice_with_source_gap"
+            else "promo_family_child_source_pinned_card_identity_slice_with_source_gap"
         )
         if release_meta.get("count_confidence") != expected_count_confidence:
             failures.append("promo_family_child_count_confidence_mismatch")
@@ -5580,6 +5799,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_catalog_treatment_mismatch")
         if release_meta.get("strict_release_member") is not False:
             failures.append("promo_family_child_release_strict_member_overclaim")
+        expected_complete_source_boundary = str(family_spec.get("expected_complete_source_boundary", ""))
+        if expected_complete_source_boundary and expected_complete_source_boundary not in release.get("not_claiming", []):
+            failures.append("promo_family_child_release_complete_source_boundary_missing")
         if "not a complete family checklist" not in release_meta.get("product_count_basis", "").lower():
             failures.append("promo_family_child_product_count_basis_missing_boundary")
         if release.get("symbol_status", {}).get("prints_without_rarity_symbol") != "yes":

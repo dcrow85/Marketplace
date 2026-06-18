@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "category": "Pokemon",
+      "category": "",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -9,14 +9,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Venusaur is cataloged as the currently source-pinned row for Trade Please Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Computer Error (Rocket's Secret Machine) is cataloged as the currently source-pinned row for Kamex Mega Battle source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Trade Please Campaign source slice",
-          "1998-02-10/1998-07-31",
+          "Kamex Mega Battle source slice",
+          "1998-07/1998-08",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "033",
+          "045",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -24,8 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Ken Sugimori",
-        "name": "Ken Sugimori",
+        "display": "Illus. Sumiyoshi Kizuki",
+        "name": "Sumiyoshi Kizuki",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -46,11 +46,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/33.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/45.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/33.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/45.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -66,13 +66,13 @@
         ],
         "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
-        "promo_family_source_sort": 33,
-        "provider_id": "pokecardex:14231",
-        "provider_title": "Venusaur - Unnumbered Promotional #33",
-        "release_family_id": "jp_promo_trade_please_199802",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:045",
+        "promo_family_source_sort": 45,
+        "provider_id": "pokecardex:14245",
+        "provider_title": "Computer Error (Rocket's Secret Machine) - Unnumbered Promotional #45",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_trade_please_199802:033",
+        "row_id": "jp_promo_kamex_mega_battle_199807:045",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -113,11 +113,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "033",
-      "name_en": "Venusaur",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "045",
+      "name_en": "Computer Error (Rocket's Secret Machine)",
+      "name_ja": "パソコン大暴走！",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Computer Error page selected lines 143-159.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -137,9 +137,7 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [
-          3
-        ],
+        "dex_id": [],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -149,16 +147,16 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 4,
-        "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
+        "japanese_set_name": "カメックスメガバトル プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Bulbapedia documents the Trade Please mail-in campaign as running from February 10 to July 31, 1998: participants mailed the campaign flyer, any two Pokemon trading cards, and a return envelope to MediaFactory, selected one of three courses, and received the chosen course pair. Pokumon source pages document the four campaign card identities. This child slice models the four currently source-pinned PokéCardex UPC rows; it does not claim copy counts, complete flyer/envelope variants, participant fulfillment, or that one participant received all four cards in one mailing. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete campaign-object ledger.",
-        "release_date": "1998-02-10/1998-07-31",
+        "product_count_basis": "Pokumon documents the Kamex Mega Battle regional tournament circuit as a July-August 1998 series and source-pins the Computer Error participation prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia documents Computer Error as a Japanese Rocket's Secret Machine card and separates the Kamex non-glossy white-drop-shadow print from the glossy CoroCoro/Song Best Collection Computer Error prints. This child slice models the four currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, complete venue schedule, participant/winner ledger, side-event prize coverage, trophy-plaque coverage, national-final coverage, or a complete Computer Error variant census. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-07/1998-08",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -168,34 +166,34 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1998-02-10 to 1998-07-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Trade Please campaign (February 10-July 31, 1998)",
+        "date_label": "1998-07 to 1998-08",
+        "date_source": "release_map",
+        "distribution_comment": "Kamex Mega Battle participation prize",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_sort": 33
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_sort": 45
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "Venusaur (Trade Please campaign 1998)",
-          "Charizard (Trade Please campaign 1998)",
-          "Blastoise (Trade Please campaign 1998)",
-          "Trade Please! (Trade Please campaign 1998)"
+          "Computer Error (Regional Kamex Mega Battle 1998)",
+          "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.3 Trainer (Regional Kamex Mega Battle 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
-          33,
-          34,
-          35,
-          36
+          45,
+          46,
+          47,
+          48
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -206,42 +204,43 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_trade_please_199802",
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
         "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "source_gap_count": 0,
-        "source_gap_reason": "Bulbapedia documents the Trade Please campaign window, mail-in trade mechanic, and A/B/C course structure, while Pokumon source pages document the four campaign card identities. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model every flyer, envelope, participant mailing, fulfillment object, or copy-count claim.",
-        "source_local_id": "033",
-        "source_provider_sort": 33,
+        "source_gap_reason": "Pokumon documents the Kamex Mega Battle regional tournament circuit, its July-August 1998 regional window, and the source-pinned participation/placement card identities, while Bulbapedia documents the Computer Error Japanese name and the non-glossy white-drop-shadow Kamex print distinction from the glossy CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model side-event phone cards, trophy plaques, national-final objects, official copy counts, complete venue schedule, participant/winner ledger, or a complete Computer Error variant census.",
+        "source_local_id": "045",
+        "source_provider_sort": 45,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:045",
+        "source_slice_boundary_claim": "complete tournament source",
         "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": []
+        "unmodeled_expected_cards": [],
+        "variant_boundary_note": "Kamex participation Computer Error is non-glossy with a white-drop-shadow Team Rocket R per selected Pokumon + Bulbapedia lines; glossy CoroCoro/Song Best Collection Computer Error prints are outside this child slice."
       },
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 4,
         "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "source_gap_count": 0,
-        "source_local_id": "033",
+        "source_local_id": "045",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Venusaur-V1-UNP",
-          "comment": "Trade Please campaign (February 10-July 31, 1998)",
-          "id_card": 14231,
+          "cardmarket_url": "Unnumbered-Promos/Computer-Error-UNP",
+          "comment": "Kamex Mega Battle participation prize",
+          "id_card": 14245,
           "id_tcgplayer": 0,
-          "illustrator": "Ken Sugimori",
-          "provider_id": "pokecardex:14231",
-          "provider_title": "Venusaur - Unnumbered Promotional #33",
+          "illustrator": "Sumiyoshi Kizuki",
+          "provider_id": "pokecardex:14245",
+          "provider_title": "Computer Error (Rocket's Secret Machine) - Unnumbered Promotional #45",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 33,
+          "sort": 45,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14231,
+              "id_card": 14245,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -250,28 +249,32 @@
           ]
         },
         "source_provider_version_boundary": {
-          "applied": false,
+          "applied": true,
+          "authority": "The child slice keeps the parent provider row as provenance but filters aggregate provider variant labels that conflict with selected family context.",
+          "dropped_provider_version_count": 1,
           "not_claiming": [
             "provider variant metadata authority",
             "complete variant census",
-            "physical card print-state proof"
-          ]
+            "physical card print-state proof",
+            "CoroCoro/Song Best Collection Computer Error row"
+          ],
+          "row_boundary_note": "Kamex participation Computer Error is non-glossy with a white-drop-shadow Team Rocket R per selected Pokumon + Bulbapedia lines; glossy CoroCoro/Song Best Collection Computer Error prints are outside this child slice."
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
-        "source_sort": 33
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:045",
+        "source_sort": 45
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_trade_please_199802",
+      "release_family_id": "jp_promo_kamex_mega_battle_199807",
       "romaji": "",
-      "row_id": "jp_promo_trade_please_199802:033",
+      "row_id": "jp_promo_kamex_mega_battle_199807:045",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "033",
+          "local_row_id": "045",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -281,29 +284,32 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_trade_please_199802",
+          "promo_family_id": "jp_promo_kamex_mega_battle_199807",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
-          "source_sort": 33
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:045",
+          "source_sort": 45
         },
         {
           "expected_cards": [
-            "Venusaur (Trade Please campaign 1998)",
-            "Charizard (Trade Please campaign 1998)",
-            "Blastoise (Trade Please campaign 1998)",
-            "Trade Please! (Trade Please campaign 1998)"
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
+          "expected_complete_source_boundary": "complete tournament source",
           "not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
             "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
             "seller possession",
             "authenticity",
             "condition",
@@ -311,38 +317,43 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T22:33:28Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1998 Trade Please campaign, its February 10 to July 31 campaign window, mail-in trade mechanic, three course structure, and the four source-pinned campaign card identities. This snapshot is not a full campaign archive, not a complete flyer or envelope variant catalog, not a fulfillment ledger, not an official copy-count authority, and not a raw HTML snapshot.",
-          "snapshot_hash": "879291cd9bfcd0800cbac893d5772724a9d9a1b82956cfdada3975219f3bbf2a",
+          "retrieved_at": "2026-06-17T23:47:21Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Kamex Mega Battle source slice, including July-August 1998 regional tournament timing, the four source-pinned participation/placement card identities, and the Computer Error non-glossy white-drop-shadow print distinction from glossy CoroCoro/Song Best Collection prints. This snapshot is not a full tournament archive, not a complete venue schedule, not a complete participant or winner ledger, not an official copy-count authority, not a complete trophy/side-event object ledger, not a complete Computer Error variant census, and not a raw HTML snapshot.",
+          "snapshot_hash": "ab51173ab9717271e49e0ee3e87c29057d5a4167d41ee21f009ff53d7e65d03a",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
             "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Bulbapedia + Pokumon",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/kamex-blastoise-mega-battle-tournaments/",
           "supporting_page_urls": [
-            "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/"
+            "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-1-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-2-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-3-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
           ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "96eb6122e4858763e6523256aaaf2d42907195d85c09567729a1853a1f83bd88",
+          "card_data_hash": "d6c0cf2fafce50cafba3a05f76efb90fb0a410bff2070f4bf6e822ed92420e8c",
           "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
@@ -363,7 +374,7 @@
           ],
           "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:033",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:045",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -381,815 +392,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_trade_please_199802"
+        "source_release_family_id": "jp_promo_kamex_mega_battle_199807"
       },
       "tags": [
-        "jp_promo_trade_please_199802",
-        "Trade Please Campaign source slice",
-        "promo family source slice",
-        "source accounting recorded",
-        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "Unnumbered Promotional Pre-English Source Slice",
-        "1996-10-15/1999-01-31",
-        "Sans rareté",
-        ""
-      ],
-      "tcgdex": {
-        "id": "",
-        "image_field_present": false,
-        "set_id": "",
-        "url": "",
-        "variants": {}
-      }
-    },
-    {
-      "category": "Pokemon",
-      "collector_texture": {
-        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
-        "basis": [
-          "PokéCardex decrypted series payload row and provider-path image convention",
-          "TCGdex row metadata when present",
-          "Japanese pre-English release map"
-        ],
-        "note": "Charizard is cataloged as the currently source-pinned row for Trade Please Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
-        "signals": [
-          "Trade Please Campaign source slice",
-          "1998-02-10/1998-07-31",
-          "promo family source slice",
-          "source accounting recorded",
-          "Unnumbered Promotional Pre-English Source Slice",
-          "034",
-          "Sans rareté",
-          "1996-10-15/1999-01-31"
-        ]
-      },
-      "holo_source": false,
-      "illustrator": {
-        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Ken Sugimori",
-        "name": "Ken Sugimori",
-        "not_claiming": [
-          "seller possession",
-          "authenticity",
-          "condition",
-          "Japanese print authority"
-        ],
-        "source": "pokecardex"
-      },
-      "image_provenance": {
-        "allowed_use": [
-          "manual_review",
-          "catalog_reference_link"
-        ],
-        "display_allowed": false,
-        "exactness_basis": [
-          "same PokéCardex Japanese series page",
-          "same decrypted source row order",
-          "same provider image path convention derived from the public site bundle",
-          "not a per-row image field inside the decrypted source payload",
-          "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
-        ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/34.jpg",
-        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/34.jpg",
-        "not_allowed_by_default": [
-          "training",
-          "seller evidence",
-          "authentication proof"
-        ],
-        "not_claiming": [
-          "seller possession",
-          "seller card match",
-          "condition",
-          "authenticity",
-          "complete promo family",
-          "unmodeled expected card row"
-        ],
-        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-        "promo_family_source_sort": 34,
-        "provider_id": "pokecardex:14232",
-        "provider_title": "Charizard - Unnumbered Promotional #34",
-        "release_family_id": "jp_promo_trade_please_199802",
-        "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_trade_please_199802:034",
-        "source": "PokéCardex",
-        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
-        "status": "provider_path_reference_image",
-        "verification_status": "provider_path_derived_external_reference_witness"
-      },
-      "information_audit": {
-        "agent_only": [
-          {
-            "field": "source page hashes",
-            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
-          },
-          {
-            "field": "TCGdex details",
-            "why": "Structured metadata helps agents, but is not seller evidence."
-          }
-        ],
-        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
-        "earns_keep": [
-          {
-            "field": "provider-path external reference image",
-            "surface": "primary",
-            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
-          },
-          {
-            "field": "release family and row id",
-            "surface": "primary",
-            "why": "These prevent cross-set image or name laundering."
-          },
-          {
-            "field": "symbol status",
-            "surface": "agent",
-            "why": "Missing-symbol claims must be judged in their release-family context."
-          }
-        ],
-        "promo_family_child_override": {
-          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
-          "current_status": "provider_path_reference_image",
-          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
-        }
-      },
-      "local_id": "034",
-      "name_en": "Charizard",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
-      "not_claiming": [
-        "seller possession",
-        "authenticity",
-        "condition truth",
-        "price truth",
-        "spendability",
-        "complete promo family checklist",
-        "complete source object",
-        "complete tournament source",
-        "complete campaign source",
-        "complete magazine source",
-        "complete event source",
-        "unmodeled expected card row",
-        "official copy count",
-        "condition"
-      ],
-      "pokemon_profile": {
-        "abilities": [],
-        "attacks": [],
-        "dex_id": [
-          6
-        ],
-        "hp": null,
-        "level": null,
-        "retreat": null,
-        "stage": "",
-        "types": []
-      },
-      "product_scope": {
-        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
-        "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
-        "expected_source_card_count": 4,
-        "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
-        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
-        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "product_card_count": 0,
-        "product_count_basis": "Bulbapedia documents the Trade Please mail-in campaign as running from February 10 to July 31, 1998: participants mailed the campaign flyer, any two Pokemon trading cards, and a return envelope to MediaFactory, selected one of three courses, and received the chosen course pair. Pokumon source pages document the four campaign card identities. This child slice models the four currently source-pinned PokéCardex UPC rows; it does not claim copy counts, complete flyer/envelope variants, participant fulfillment, or that one participant received all four cards in one mailing. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete campaign-object ledger.",
-        "release_date": "1998-02-10/1998-07-31",
-        "release_type": "promo_family_child_rollup_rows",
-        "source_aggregate_row": true,
-        "source_gap_count": 0,
-        "strict_release_member": false,
-        "unique_catalog_row_count": 4,
-        "unmodeled_expected_cards": []
-      },
-      "promo_context": {
-        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1998-02-10 to 1998-07-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Trade Please campaign (February 10-July 31, 1998)",
-        "not_claiming": [
-          "official copy count",
-          "seller possession",
-          "authenticity",
-          "condition"
-        ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_sort": 34
-      },
-      "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
-        "complete_family_modeled": false,
-        "expected_cards": [
-          "Venusaur (Trade Please campaign 1998)",
-          "Charizard (Trade Please campaign 1998)",
-          "Blastoise (Trade Please campaign 1998)",
-          "Trade Please! (Trade Please campaign 1998)"
-        ],
-        "expected_complete_source_boundary": "complete campaign source",
-        "expected_source_card_count": 4,
-        "modeled_source_sorts": [
-          33,
-          34,
-          35,
-          36
-        ],
-        "not_claiming": [
-          "complete promo family checklist",
-          "unmodeled expected card row",
-          "official copy count",
-          "seller possession",
-          "authenticity",
-          "condition",
-          "price truth"
-        ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "source_gap_count": 0,
-        "source_gap_reason": "Bulbapedia documents the Trade Please campaign window, mail-in trade mechanic, and A/B/C course structure, while Pokumon source pages document the four campaign card identities. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model every flyer, envelope, participant mailing, fulfillment object, or copy-count claim.",
-        "source_local_id": "034",
-        "source_provider_sort": 34,
-        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-        "source_slice_boundary_claim": "complete campaign source",
-        "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": []
-      },
-      "provider_row": {
-        "adapter": "promo_family_child_rollup",
-        "expected_source_card_count": 4,
-        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "source_gap_count": 0,
-        "source_local_id": "034",
-        "source_provider_row": {
-          "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Charizard-V1-UNP",
-          "comment": "Trade Please campaign (February 10-July 31, 1998)",
-          "id_card": 14232,
-          "id_tcgplayer": 617414,
-          "illustrator": "Ken Sugimori",
-          "provider_id": "pokecardex:14232",
-          "provider_title": "Charizard - Unnumbered Promotional #34",
-          "rarity": "Sans rareté",
-          "series_code": "UPC",
-          "series_name": "Unnumbered Promotional",
-          "sort": 34,
-          "versions": [
-            {
-              "comment": "",
-              "comment_us": "",
-              "id_card": 14232,
-              "id_version": 1,
-              "nom_version": "Standard",
-              "nom_version_us": "Standard",
-              "only_english": false
-            }
-          ]
-        },
-        "source_provider_version_boundary": {
-          "applied": false,
-          "not_claiming": [
-            "provider variant metadata authority",
-            "complete variant census",
-            "physical card print-state proof"
-          ]
-        },
-        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-        "source_sort": 34
-      },
-      "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_trade_please_199802",
-      "romaji": "",
-      "row_id": "jp_promo_trade_please_199802:034",
-      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
-      "source_contacts": [
-        {
-          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "034",
-          "not_claiming": [
-            "complete promo family checklist",
-            "unmodeled expected card row",
-            "official copy count",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "price truth"
-          ],
-          "promo_family_id": "jp_promo_trade_please_199802",
-          "source": "Promo-family child source-slice rollup",
-          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-          "source_sort": 34
-        },
-        {
-          "expected_cards": [
-            "Venusaur (Trade Please campaign 1998)",
-            "Charizard (Trade Please campaign 1998)",
-            "Blastoise (Trade Please campaign 1998)",
-            "Trade Please! (Trade Please campaign 1998)"
-          ],
-          "expected_complete_source_boundary": "complete campaign source",
-          "not_claiming": [
-            "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
-            "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "image rights",
-            "complete marketplace pricing"
-          ],
-          "oldid_url": "",
-          "retrieved_at": "2026-06-17T22:33:28Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1998 Trade Please campaign, its February 10 to July 31 campaign window, mail-in trade mechanic, three course structure, and the four source-pinned campaign card identities. This snapshot is not a full campaign archive, not a complete flyer or envelope variant catalog, not a fulfillment ledger, not an official copy-count authority, and not a raw HTML snapshot.",
-          "snapshot_hash": "879291cd9bfcd0800cbac893d5772724a9d9a1b82956cfdada3975219f3bbf2a",
-          "snapshot_not_claiming": [
-            "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
-            "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "image rights",
-            "complete marketplace pricing"
-          ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
-          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Bulbapedia + Pokumon",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
-          "supporting_page_urls": [
-            "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/"
-          ],
-          "unmodeled_expected_cards": []
-        },
-        {
-          "card_data_hash": "12daa490795035114d724814a2976eab2396b0ff80f82e894201d2daea2b2d1c",
-          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
-          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
-          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
-          "inherited_from_promo_family_source": true,
-          "not_claiming": [
-            "official source",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "complete promo family checklist",
-            "complete source object",
-            "complete tournament source",
-            "complete campaign source",
-            "complete magazine source",
-            "complete event source",
-            "unmodeled expected card row",
-            "price truth"
-          ],
-          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
-          "series_code": "UPC",
-          "source": "PokéCardex",
-          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
-        }
-      ],
-      "symbol_status": {
-        "confidence": "medium-high",
-        "not_claiming": [
-          "row-level physical truth",
-          "seller-card symbol state",
-          "seller possession",
-          "Base No Rarity proof"
-        ],
-        "prints_without_rarity_symbol": "yes",
-        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
-        "scope": "release_context_not_row_fact",
-        "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_trade_please_199802"
-      },
-      "tags": [
-        "jp_promo_trade_please_199802",
-        "Trade Please Campaign source slice",
-        "promo family source slice",
-        "source accounting recorded",
-        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "Unnumbered Promotional Pre-English Source Slice",
-        "1996-10-15/1999-01-31",
-        "Sans rareté",
-        ""
-      ],
-      "tcgdex": {
-        "id": "",
-        "image_field_present": false,
-        "set_id": "",
-        "url": "",
-        "variants": {}
-      }
-    },
-    {
-      "category": "Pokemon",
-      "collector_texture": {
-        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
-        "basis": [
-          "PokéCardex decrypted series payload row and provider-path image convention",
-          "TCGdex row metadata when present",
-          "Japanese pre-English release map"
-        ],
-        "note": "Blastoise is cataloged as the currently source-pinned row for Trade Please Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
-        "signals": [
-          "Trade Please Campaign source slice",
-          "1998-02-10/1998-07-31",
-          "promo family source slice",
-          "source accounting recorded",
-          "Unnumbered Promotional Pre-English Source Slice",
-          "035",
-          "Sans rareté",
-          "1996-10-15/1999-01-31"
-        ]
-      },
-      "holo_source": false,
-      "illustrator": {
-        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Ken Sugimori",
-        "name": "Ken Sugimori",
-        "not_claiming": [
-          "seller possession",
-          "authenticity",
-          "condition",
-          "Japanese print authority"
-        ],
-        "source": "pokecardex"
-      },
-      "image_provenance": {
-        "allowed_use": [
-          "manual_review",
-          "catalog_reference_link"
-        ],
-        "display_allowed": false,
-        "exactness_basis": [
-          "same PokéCardex Japanese series page",
-          "same decrypted source row order",
-          "same provider image path convention derived from the public site bundle",
-          "not a per-row image field inside the decrypted source payload",
-          "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
-        ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/35.jpg",
-        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/35.jpg",
-        "not_allowed_by_default": [
-          "training",
-          "seller evidence",
-          "authentication proof"
-        ],
-        "not_claiming": [
-          "seller possession",
-          "seller card match",
-          "condition",
-          "authenticity",
-          "complete promo family",
-          "unmodeled expected card row"
-        ],
-        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-        "promo_family_source_sort": 35,
-        "provider_id": "pokecardex:14233",
-        "provider_title": "Blastoise - Unnumbered Promotional #35",
-        "release_family_id": "jp_promo_trade_please_199802",
-        "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_trade_please_199802:035",
-        "source": "PokéCardex",
-        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
-        "status": "provider_path_reference_image",
-        "verification_status": "provider_path_derived_external_reference_witness"
-      },
-      "information_audit": {
-        "agent_only": [
-          {
-            "field": "source page hashes",
-            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
-          },
-          {
-            "field": "TCGdex details",
-            "why": "Structured metadata helps agents, but is not seller evidence."
-          }
-        ],
-        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
-        "earns_keep": [
-          {
-            "field": "provider-path external reference image",
-            "surface": "primary",
-            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
-          },
-          {
-            "field": "release family and row id",
-            "surface": "primary",
-            "why": "These prevent cross-set image or name laundering."
-          },
-          {
-            "field": "symbol status",
-            "surface": "agent",
-            "why": "Missing-symbol claims must be judged in their release-family context."
-          }
-        ],
-        "promo_family_child_override": {
-          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
-          "current_status": "provider_path_reference_image",
-          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
-        }
-      },
-      "local_id": "035",
-      "name_en": "Blastoise",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
-      "not_claiming": [
-        "seller possession",
-        "authenticity",
-        "condition truth",
-        "price truth",
-        "spendability",
-        "complete promo family checklist",
-        "complete source object",
-        "complete tournament source",
-        "complete campaign source",
-        "complete magazine source",
-        "complete event source",
-        "unmodeled expected card row",
-        "official copy count",
-        "condition"
-      ],
-      "pokemon_profile": {
-        "abilities": [],
-        "attacks": [],
-        "dex_id": [
-          9
-        ],
-        "hp": null,
-        "level": null,
-        "retreat": null,
-        "stage": "",
-        "types": []
-      },
-      "product_scope": {
-        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
-        "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
-        "expected_source_card_count": 4,
-        "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
-        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
-        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "product_card_count": 0,
-        "product_count_basis": "Bulbapedia documents the Trade Please mail-in campaign as running from February 10 to July 31, 1998: participants mailed the campaign flyer, any two Pokemon trading cards, and a return envelope to MediaFactory, selected one of three courses, and received the chosen course pair. Pokumon source pages document the four campaign card identities. This child slice models the four currently source-pinned PokéCardex UPC rows; it does not claim copy counts, complete flyer/envelope variants, participant fulfillment, or that one participant received all four cards in one mailing. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete campaign-object ledger.",
-        "release_date": "1998-02-10/1998-07-31",
-        "release_type": "promo_family_child_rollup_rows",
-        "source_aggregate_row": true,
-        "source_gap_count": 0,
-        "strict_release_member": false,
-        "unique_catalog_row_count": 4,
-        "unmodeled_expected_cards": []
-      },
-      "promo_context": {
-        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1998-02-10 to 1998-07-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Trade Please campaign (February 10-July 31, 1998)",
-        "not_claiming": [
-          "official copy count",
-          "seller possession",
-          "authenticity",
-          "condition"
-        ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_sort": 35
-      },
-      "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
-        "complete_family_modeled": false,
-        "expected_cards": [
-          "Venusaur (Trade Please campaign 1998)",
-          "Charizard (Trade Please campaign 1998)",
-          "Blastoise (Trade Please campaign 1998)",
-          "Trade Please! (Trade Please campaign 1998)"
-        ],
-        "expected_complete_source_boundary": "complete campaign source",
-        "expected_source_card_count": 4,
-        "modeled_source_sorts": [
-          33,
-          34,
-          35,
-          36
-        ],
-        "not_claiming": [
-          "complete promo family checklist",
-          "unmodeled expected card row",
-          "official copy count",
-          "seller possession",
-          "authenticity",
-          "condition",
-          "price truth"
-        ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "source_gap_count": 0,
-        "source_gap_reason": "Bulbapedia documents the Trade Please campaign window, mail-in trade mechanic, and A/B/C course structure, while Pokumon source pages document the four campaign card identities. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model every flyer, envelope, participant mailing, fulfillment object, or copy-count claim.",
-        "source_local_id": "035",
-        "source_provider_sort": 35,
-        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-        "source_slice_boundary_claim": "complete campaign source",
-        "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": []
-      },
-      "provider_row": {
-        "adapter": "promo_family_child_rollup",
-        "expected_source_card_count": 4,
-        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-        "source_gap_count": 0,
-        "source_local_id": "035",
-        "source_provider_row": {
-          "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Blastoise-V1-UNP",
-          "comment": "Trade Please campaign (February 10-July 31, 1998)",
-          "id_card": 14233,
-          "id_tcgplayer": 617409,
-          "illustrator": "Ken Sugimori",
-          "provider_id": "pokecardex:14233",
-          "provider_title": "Blastoise - Unnumbered Promotional #35",
-          "rarity": "Sans rareté",
-          "series_code": "UPC",
-          "series_name": "Unnumbered Promotional",
-          "sort": 35,
-          "versions": [
-            {
-              "comment": "",
-              "comment_us": "",
-              "id_card": 14233,
-              "id_version": 1,
-              "nom_version": "Standard",
-              "nom_version_us": "Standard",
-              "only_english": false
-            }
-          ]
-        },
-        "source_provider_version_boundary": {
-          "applied": false,
-          "not_claiming": [
-            "provider variant metadata authority",
-            "complete variant census",
-            "physical card print-state proof"
-          ]
-        },
-        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-        "source_sort": 35
-      },
-      "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_trade_please_199802",
-      "romaji": "",
-      "row_id": "jp_promo_trade_please_199802:035",
-      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
-      "source_contacts": [
-        {
-          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "035",
-          "not_claiming": [
-            "complete promo family checklist",
-            "unmodeled expected card row",
-            "official copy count",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "price truth"
-          ],
-          "promo_family_id": "jp_promo_trade_please_199802",
-          "source": "Promo-family child source-slice rollup",
-          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-          "source_sort": 35
-        },
-        {
-          "expected_cards": [
-            "Venusaur (Trade Please campaign 1998)",
-            "Charizard (Trade Please campaign 1998)",
-            "Blastoise (Trade Please campaign 1998)",
-            "Trade Please! (Trade Please campaign 1998)"
-          ],
-          "expected_complete_source_boundary": "complete campaign source",
-          "not_claiming": [
-            "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
-            "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "image rights",
-            "complete marketplace pricing"
-          ],
-          "oldid_url": "",
-          "retrieved_at": "2026-06-17T22:33:28Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1998 Trade Please campaign, its February 10 to July 31 campaign window, mail-in trade mechanic, three course structure, and the four source-pinned campaign card identities. This snapshot is not a full campaign archive, not a complete flyer or envelope variant catalog, not a fulfillment ledger, not an official copy-count authority, and not a raw HTML snapshot.",
-          "snapshot_hash": "879291cd9bfcd0800cbac893d5772724a9d9a1b82956cfdada3975219f3bbf2a",
-          "snapshot_not_claiming": [
-            "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
-            "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "image rights",
-            "complete marketplace pricing"
-          ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
-          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Bulbapedia + Pokumon",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
-          "supporting_page_urls": [
-            "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/"
-          ],
-          "unmodeled_expected_cards": []
-        },
-        {
-          "card_data_hash": "208c4ccdc638502a93749c6e3fa1fbfe5241a002a202667f8eb50dc1866c64ff",
-          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
-          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
-          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
-          "inherited_from_promo_family_source": true,
-          "not_claiming": [
-            "official source",
-            "seller possession",
-            "authenticity",
-            "condition",
-            "complete promo family checklist",
-            "complete source object",
-            "complete tournament source",
-            "complete campaign source",
-            "complete magazine source",
-            "complete event source",
-            "unmodeled expected card row",
-            "price truth"
-          ],
-          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
-          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:035",
-          "series_code": "UPC",
-          "source": "PokéCardex",
-          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
-        }
-      ],
-      "symbol_status": {
-        "confidence": "medium-high",
-        "not_claiming": [
-          "row-level physical truth",
-          "seller-card symbol state",
-          "seller possession",
-          "Base No Rarity proof"
-        ],
-        "prints_without_rarity_symbol": "yes",
-        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
-        "scope": "release_context_not_row_fact",
-        "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_trade_please_199802"
-      },
-      "tags": [
-        "jp_promo_trade_please_199802",
-        "Trade Please Campaign source slice",
+        "jp_promo_kamex_mega_battle_199807",
+        "Kamex Mega Battle source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -1215,14 +422,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "Trade Please! is cataloged as the currently source-pinned row for Trade Please Campaign source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "No.1 Trainer is cataloged as the currently source-pinned row for Kamex Mega Battle source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Trade Please Campaign source slice",
-          "1998-02-10/1998-07-31",
+          "Kamex Mega Battle source slice",
+          "1998-07/1998-08",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "036",
+          "046",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -1230,8 +437,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Imakuni?",
-        "name": "Imakuni?",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -1252,11 +459,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Bulbapedia + Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/36.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/46.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/36.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/46.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -1272,13 +479,13 @@
         ],
         "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
-        "promo_family_source_sort": 36,
-        "provider_id": "pokecardex:14234",
-        "provider_title": "Trade Please! - Unnumbered Promotional #36",
-        "release_family_id": "jp_promo_trade_please_199802",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:046",
+        "promo_family_source_sort": 46,
+        "provider_id": "pokecardex:14246",
+        "provider_title": "No.1 Trainer - Unnumbered Promotional #46",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_trade_please_199802:036",
+        "row_id": "jp_promo_kamex_mega_battle_199807:046",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -1319,8 +526,8 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "036",
-      "name_en": "Trade Please!",
+      "local_id": "046",
+      "name_en": "No.1 Trainer",
       "name_ja": "",
       "name_ja_status": "missing_from_exact_source",
       "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
@@ -1353,16 +560,16 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + Pokumon context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range",
-        "expected_complete_source_boundary": "complete campaign source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 4,
-        "japanese_set_name": "とりかえっこプリーズキャンペーン プロモ",
+        "japanese_set_name": "カメックスメガバトル プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Bulbapedia documents the Trade Please mail-in campaign as running from February 10 to July 31, 1998: participants mailed the campaign flyer, any two Pokemon trading cards, and a return envelope to MediaFactory, selected one of three courses, and received the chosen course pair. Pokumon source pages document the four campaign card identities. This child slice models the four currently source-pinned PokéCardex UPC rows; it does not claim copy counts, complete flyer/envelope variants, participant fulfillment, or that one participant received all four cards in one mailing. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete campaign-object ledger.",
-        "release_date": "1998-02-10/1998-07-31",
+        "product_count_basis": "Pokumon documents the Kamex Mega Battle regional tournament circuit as a July-August 1998 series and source-pins the Computer Error participation prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia documents Computer Error as a Japanese Rocket's Secret Machine card and separates the Kamex non-glossy white-drop-shadow print from the glossy CoroCoro/Song Best Collection Computer Error prints. This child slice models the four currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, complete venue schedule, participant/winner ledger, side-event prize coverage, trophy-plaque coverage, national-final coverage, or a complete Computer Error variant census. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-07/1998-08",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
@@ -1372,34 +579,34 @@
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1998-02-10 to 1998-07-31",
-        "date_source": "source_comment",
-        "distribution_comment": "Trade Please campaign (February 10-July 31, 1998)",
+        "date_label": "1998-07 to 1998-08",
+        "date_source": "release_map",
+        "distribution_comment": "Kamex Mega Battle regional first place prize",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_trade_please_199802",
-        "source_sort": 36
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_sort": 46
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
         "complete_family_modeled": false,
         "expected_cards": [
-          "Venusaur (Trade Please campaign 1998)",
-          "Charizard (Trade Please campaign 1998)",
-          "Blastoise (Trade Please campaign 1998)",
-          "Trade Please! (Trade Please campaign 1998)"
+          "Computer Error (Regional Kamex Mega Battle 1998)",
+          "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.3 Trainer (Regional Kamex Mega Battle 1998)"
         ],
-        "expected_complete_source_boundary": "complete campaign source",
+        "expected_complete_source_boundary": "complete tournament source",
         "expected_source_card_count": 4,
         "modeled_source_sorts": [
-          33,
-          34,
-          35,
-          36
+          45,
+          46,
+          47,
+          48
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -1410,15 +617,15 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_trade_please_199802",
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
         "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "source_gap_count": 0,
-        "source_gap_reason": "Bulbapedia documents the Trade Please campaign window, mail-in trade mechanic, and A/B/C course structure, while Pokumon source pages document the four campaign card identities. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model every flyer, envelope, participant mailing, fulfillment object, or copy-count claim.",
-        "source_local_id": "036",
-        "source_provider_sort": 36,
+        "source_gap_reason": "Pokumon documents the Kamex Mega Battle regional tournament circuit, its July-August 1998 regional window, and the source-pinned participation/placement card identities, while Bulbapedia documents the Computer Error Japanese name and the non-glossy white-drop-shadow Kamex print distinction from the glossy CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model side-event phone cards, trophy plaques, national-final objects, official copy counts, complete venue schedule, participant/winner ledger, or a complete Computer Error variant census.",
+        "source_local_id": "046",
+        "source_provider_sort": 46,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
-        "source_slice_boundary_claim": "complete campaign source",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:046",
+        "source_slice_boundary_claim": "complete tournament source",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -1427,25 +634,25 @@
         "expected_source_card_count": 4,
         "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
         "source_gap_count": 0,
-        "source_local_id": "036",
+        "source_local_id": "046",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": "Unnumbered-Promos/Trade-Please",
-          "comment": "Trade Please campaign (February 10-July 31, 1998)",
-          "id_card": 14234,
-          "id_tcgplayer": 617429,
-          "illustrator": "Imakuni?",
-          "provider_id": "pokecardex:14234",
-          "provider_title": "Trade Please! - Unnumbered Promotional #36",
+          "cardmarket_url": null,
+          "comment": "Kamex Mega Battle regional first place prize",
+          "id_card": 14246,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14246",
+          "provider_title": "No.1 Trainer - Unnumbered Promotional #46",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 36,
+          "sort": 46,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14234,
+              "id_card": 14246,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -1462,20 +669,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
-        "source_sort": 36
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:046",
+        "source_sort": 46
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_trade_please_199802",
+      "release_family_id": "jp_promo_kamex_mega_battle_199807",
       "romaji": "",
-      "row_id": "jp_promo_trade_please_199802:036",
+      "row_id": "jp_promo_kamex_mega_battle_199807:046",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "036",
+          "local_row_id": "046",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -1485,29 +692,32 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_trade_please_199802",
+          "promo_family_id": "jp_promo_kamex_mega_battle_199807",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
-          "source_sort": 36
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:046",
+          "source_sort": 46
         },
         {
           "expected_cards": [
-            "Venusaur (Trade Please campaign 1998)",
-            "Charizard (Trade Please campaign 1998)",
-            "Blastoise (Trade Please campaign 1998)",
-            "Trade Please! (Trade Please campaign 1998)"
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)"
           ],
-          "expected_complete_source_boundary": "complete campaign source",
+          "expected_complete_source_boundary": "complete tournament source",
           "not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
             "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
             "seller possession",
             "authenticity",
             "condition",
@@ -1515,38 +725,43 @@
             "complete marketplace pricing"
           ],
           "oldid_url": "",
-          "retrieved_at": "2026-06-17T22:33:28Z",
-          "snapshot_content_scope": "Selected rendered lines for the 1998 Trade Please campaign, its February 10 to July 31 campaign window, mail-in trade mechanic, three course structure, and the four source-pinned campaign card identities. This snapshot is not a full campaign archive, not a complete flyer or envelope variant catalog, not a fulfillment ledger, not an official copy-count authority, and not a raw HTML snapshot.",
-          "snapshot_hash": "879291cd9bfcd0800cbac893d5772724a9d9a1b82956cfdada3975219f3bbf2a",
+          "retrieved_at": "2026-06-17T23:47:21Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Kamex Mega Battle source slice, including July-August 1998 regional tournament timing, the four source-pinned participation/placement card identities, and the Computer Error non-glossy white-drop-shadow print distinction from glossy CoroCoro/Song Best Collection prints. This snapshot is not a full tournament archive, not a complete venue schedule, not a complete participant or winner ledger, not an official copy-count authority, not a complete trophy/side-event object ledger, not a complete Computer Error variant census, and not a raw HTML snapshot.",
+          "snapshot_hash": "ab51173ab9717271e49e0ee3e87c29057d5a4167d41ee21f009ff53d7e65d03a",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete campaign source",
-            "complete campaign flyer catalog",
-            "complete return-envelope variant catalog",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
             "official copy count",
-            "complete fulfillment ledger",
-            "proof that a participant received all four cards in one mailing",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
-          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Bulbapedia + Pokumon",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/kamex-blastoise-mega-battle-tournaments/",
           "supporting_page_urls": [
-            "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
-            "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/"
+            "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-1-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-2-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-3-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
           ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "5745cbd0a1dd3bb2fbbb57ce3b7a0feb86fc2956870ec1cce43c4684fcde308a",
+          "card_data_hash": "a55ef21b23532ce47441dea58f4a3284e495a634bffe16bf16ff5637efc96fc2",
           "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
@@ -1567,7 +782,7 @@
           ],
           "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:046",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -1585,11 +800,827 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_trade_please_199802"
+        "source_release_family_id": "jp_promo_kamex_mega_battle_199807"
       },
       "tags": [
-        "jp_promo_trade_please_199802",
-        "Trade Please Campaign source slice",
+        "jp_promo_kamex_mega_battle_199807",
+        "Kamex Mega Battle source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "No.2 Trainer is cataloged as the currently source-pinned row for Kamex Mega Battle source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Kamex Mega Battle source slice",
+          "1998-07/1998-08",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "047",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/47.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/47.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:047",
+        "promo_family_source_sort": 47,
+        "provider_id": "pokecardex:14247",
+        "provider_title": "No.2 Trainer - Unnumbered Promotional #47",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_kamex_mega_battle_199807:047",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "047",
+      "name_en": "No.2 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_source_card_count": 4,
+        "japanese_set_name": "カメックスメガバトル プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents the Kamex Mega Battle regional tournament circuit as a July-August 1998 series and source-pins the Computer Error participation prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia documents Computer Error as a Japanese Rocket's Secret Machine card and separates the Kamex non-glossy white-drop-shadow print from the glossy CoroCoro/Song Best Collection Computer Error prints. This child slice models the four currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, complete venue schedule, participant/winner ledger, side-event prize coverage, trophy-plaque coverage, national-final coverage, or a complete Computer Error variant census. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-07/1998-08",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "strict_release_member": false,
+        "unique_catalog_row_count": 4,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1998-07 to 1998-08",
+        "date_source": "release_map",
+        "distribution_comment": "Kamex Mega Battle regional second place prize",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_sort": 47
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "expected_cards": [
+          "Computer Error (Regional Kamex Mega Battle 1998)",
+          "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.3 Trainer (Regional Kamex Mega Battle 1998)"
+        ],
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_source_card_count": 4,
+        "modeled_source_sorts": [
+          45,
+          46,
+          47,
+          48
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents the Kamex Mega Battle regional tournament circuit, its July-August 1998 regional window, and the source-pinned participation/placement card identities, while Bulbapedia documents the Computer Error Japanese name and the non-glossy white-drop-shadow Kamex print distinction from the glossy CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model side-event phone cards, trophy plaques, national-final objects, official copy counts, complete venue schedule, participant/winner ledger, or a complete Computer Error variant census.",
+        "source_local_id": "047",
+        "source_provider_sort": 47,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:047",
+        "source_slice_boundary_claim": "complete tournament source",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 4,
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_local_id": "047",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": null,
+          "comment": "Kamex Mega Battle regional second place prize",
+          "id_card": 14247,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14247",
+          "provider_title": "No.2 Trainer - Unnumbered Promotional #47",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 47,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14247,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:047",
+        "source_sort": 47
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_kamex_mega_battle_199807",
+      "romaji": "",
+      "row_id": "jp_promo_kamex_mega_battle_199807:047",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "047",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:047",
+          "source_sort": 47
+        },
+        {
+          "expected_cards": [
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)"
+          ],
+          "expected_complete_source_boundary": "complete tournament source",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
+            "official copy count",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T23:47:21Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Kamex Mega Battle source slice, including July-August 1998 regional tournament timing, the four source-pinned participation/placement card identities, and the Computer Error non-glossy white-drop-shadow print distinction from glossy CoroCoro/Song Best Collection prints. This snapshot is not a full tournament archive, not a complete venue schedule, not a complete participant or winner ledger, not an official copy-count authority, not a complete trophy/side-event object ledger, not a complete Computer Error variant census, and not a raw HTML snapshot.",
+          "snapshot_hash": "ab51173ab9717271e49e0ee3e87c29057d5a4167d41ee21f009ff53d7e65d03a",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
+            "official copy count",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/kamex-blastoise-mega-battle-tournaments/",
+          "supporting_page_urls": [
+            "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-1-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-2-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-3-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "41baabde6cd50cc59265dfd6e3f8dd4ce875fed018b5728c01f2fb23b378c65b",
+          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:047",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_kamex_mega_battle_199807"
+      },
+      "tags": [
+        "jp_promo_kamex_mega_battle_199807",
+        "Kamex Mega Battle source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "No.3 Trainer is cataloged as the currently source-pinned row for Kamex Mega Battle source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Kamex Mega Battle source slice",
+          "1998-07/1998-08",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "048",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Mitsuhiro Arita",
+        "name": "Mitsuhiro Arita",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/48.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/48.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:048",
+        "promo_family_source_sort": 48,
+        "provider_id": "pokecardex:14248",
+        "provider_title": "No.3 Trainer - Unnumbered Promotional #48",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_kamex_mega_battle_199807:048",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "048",
+      "name_en": "No.3 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 4 cards for this family, while this slice currently models 4 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_month_range",
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_source_card_count": 4,
+        "japanese_set_name": "カメックスメガバトル プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents the Kamex Mega Battle regional tournament circuit as a July-August 1998 series and source-pins the Computer Error participation prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia documents Computer Error as a Japanese Rocket's Secret Machine card and separates the Kamex non-glossy white-drop-shadow print from the glossy CoroCoro/Song Best Collection Computer Error prints. This child slice models the four currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, complete venue schedule, participant/winner ledger, side-event prize coverage, trophy-plaque coverage, national-final coverage, or a complete Computer Error variant census. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete tournament-object ledger.",
+        "release_date": "1998-07/1998-08",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "strict_release_member": false,
+        "unique_catalog_row_count": 4,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1998-07 to 1998-08",
+        "date_source": "release_map",
+        "distribution_comment": "Kamex Mega Battle regional third place prize",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_sort": 48
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "expected_cards": [
+          "Computer Error (Regional Kamex Mega Battle 1998)",
+          "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+          "No.3 Trainer (Regional Kamex Mega Battle 1998)"
+        ],
+        "expected_complete_source_boundary": "complete tournament source",
+        "expected_source_card_count": 4,
+        "modeled_source_sorts": [
+          45,
+          46,
+          47,
+          48
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents the Kamex Mega Battle regional tournament circuit, its July-August 1998 regional window, and the source-pinned participation/placement card identities, while Bulbapedia documents the Computer Error Japanese name and the non-glossy white-drop-shadow Kamex print distinction from the glossy CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model side-event phone cards, trophy plaques, national-final objects, official copy counts, complete venue schedule, participant/winner ledger, or a complete Computer Error variant census.",
+        "source_local_id": "048",
+        "source_provider_sort": 48,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:048",
+        "source_slice_boundary_claim": "complete tournament source",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 4,
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_local_id": "048",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": null,
+          "comment": "Kamex Mega Battle regional third place prize",
+          "id_card": 14248,
+          "id_tcgplayer": 0,
+          "illustrator": "Mitsuhiro Arita",
+          "provider_id": "pokecardex:14248",
+          "provider_title": "No.3 Trainer - Unnumbered Promotional #48",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 48,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14248,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:048",
+        "source_sort": 48
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_kamex_mega_battle_199807",
+      "romaji": "",
+      "row_id": "jp_promo_kamex_mega_battle_199807:048",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "048",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_kamex_mega_battle_199807",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:048",
+          "source_sort": 48
+        },
+        {
+          "expected_cards": [
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)"
+          ],
+          "expected_complete_source_boundary": "complete tournament source",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
+            "official copy count",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T23:47:21Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 Kamex Mega Battle source slice, including July-August 1998 regional tournament timing, the four source-pinned participation/placement card identities, and the Computer Error non-glossy white-drop-shadow print distinction from glossy CoroCoro/Song Best Collection prints. This snapshot is not a full tournament archive, not a complete venue schedule, not a complete participant or winner ledger, not an official copy-count authority, not a complete trophy/side-event object ledger, not a complete Computer Error variant census, and not a raw HTML snapshot.",
+          "snapshot_hash": "ab51173ab9717271e49e0ee3e87c29057d5a4167d41ee21f009ff53d7e65d03a",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "complete venue schedule",
+            "complete participant/winner ledger",
+            "official copy count",
+            "complete trophy-plaque ledger",
+            "complete side-event prize ledger",
+            "complete national-final object ledger",
+            "complete Computer Error variant census",
+            "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/kamex-blastoise-mega-battle-tournaments/",
+          "supporting_page_urls": [
+            "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-1-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-2-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://pokumon.com/card/no-3-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "8d7e0700e492c7da34912c6ac8b98d6ae0b07281d1878afb782b7e7693230b8b",
+          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:048",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_kamex_mega_battle_199807"
+      },
+      "tags": [
+        "jp_promo_kamex_mega_battle_199807",
+        "Kamex Mega Battle source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -1626,17 +1657,17 @@
   "release": {
     "catalog_treatment": "Promo target source-slice",
     "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
-    "date_precision": "source_range",
+    "date_precision": "source_month_range",
     "expected_row_count": 4,
     "expected_source_card_count": 4,
-    "name_en": "Trade Please Campaign source slice",
-    "name_ja": "とりかえっこプリーズキャンペーン プロモ",
-    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the Trade Please campaign. Use it to preserve the Venusaur/Charizard/Blastoise/Trade Please! mail-in campaign lane while keeping course, fulfillment, flyer, envelope, and copy-count claims outside row authority.",
+    "name_en": "Kamex Mega Battle source slice",
+    "name_ja": "カメックスメガバトル プロモ",
+    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the Kamex Mega Battle regional tournament. Use it to preserve the Computer Error participation lane and No.1/No.2/No.3 Trainer placement lanes while keeping copy-count, venue, winner, trophy-plaque, national-final, side-event, and Computer Error variant-census claims outside row authority.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Bulbapedia documents the Trade Please mail-in campaign as running from February 10 to July 31, 1998: participants mailed the campaign flyer, any two Pokemon trading cards, and a return envelope to MediaFactory, selected one of three courses, and received the chosen course pair. Pokumon source pages document the four campaign card identities. This child slice models the four currently source-pinned PokéCardex UPC rows; it does not claim copy counts, complete flyer/envelope variants, participant fulfillment, or that one participant received all four cards in one mailing. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete campaign-object ledger.",
-    "release_date": "1998-02-10/1998-07-31",
-    "release_family_id": "jp_promo_trade_please_199802",
+    "product_count_basis": "Pokumon documents the Kamex Mega Battle regional tournament circuit as a July-August 1998 series and source-pins the Computer Error participation prize plus No.1/No.2/No.3 Trainer regional placement prizes. Bulbapedia documents Computer Error as a Japanese Rocket's Secret Machine card and separates the Kamex non-glossy white-drop-shadow print from the glossy CoroCoro/Song Best Collection Computer Error prints. This child slice models the four currently source-pinned PokéCardex UPC tournament rows; it does not claim official copy counts, complete venue schedule, participant/winner ledger, side-event prize coverage, trophy-plaque coverage, national-final coverage, or a complete Computer Error variant census. It is not a complete family checklist beyond the four source-pinned card identities, and it is not a complete tournament-object ledger.",
+    "release_date": "1998-07/1998-08",
+    "release_family_id": "jp_promo_kamex_mega_battle_199807",
     "release_type": "promo_family_child_rollup_rows",
     "source_gap_count": 0,
     "strict_release_member": false,
@@ -1650,44 +1681,47 @@
       "cards_found": 4,
       "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
       "expected_cards": [
-        "Venusaur (Trade Please campaign 1998)",
-        "Charizard (Trade Please campaign 1998)",
-        "Blastoise (Trade Please campaign 1998)",
-        "Trade Please! (Trade Please campaign 1998)"
+        "Computer Error (Regional Kamex Mega Battle 1998)",
+        "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+        "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+        "No.3 Trainer (Regional Kamex Mega Battle 1998)"
       ],
-      "expected_complete_source_boundary": "complete campaign source",
+      "expected_complete_source_boundary": "complete tournament source",
       "expected_source_card_count": 4,
       "family_context_source": {
-        "expected_complete_source_boundary": "complete campaign source",
+        "expected_complete_source_boundary": "complete tournament source",
         "extracted_claims": {
-          "course_structure": [
-            "A Course: Charizard plus Trade Please!",
-            "B Course: Blastoise plus Trade Please!",
-            "C Course: Venusaur plus Trade Please!"
-          ],
-          "distribution_context": "Trade Please mail-in campaign",
-          "mail_in_requirements": [
-            "campaign flyer",
-            "any two Pokemon trading cards",
-            "return envelope"
+          "distribution_context": "Kamex Mega Battle regional tournaments",
+          "japanese_name_claims": [
+            "Computer Error: パソコン大暴走！"
           ],
           "promo_card_count": 4,
           "promo_cards": [
-            "Venusaur (Trade Please campaign 1998)",
-            "Charizard (Trade Please campaign 1998)",
-            "Blastoise (Trade Please campaign 1998)",
-            "Trade Please! (Trade Please campaign 1998)"
+            "Computer Error (Regional Kamex Mega Battle 1998)",
+            "No.1 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.2 Trainer (Regional Kamex Mega Battle 1998)",
+            "No.3 Trainer (Regional Kamex Mega Battle 1998)"
           ],
-          "release_window": "1998-02-10/1998-07-31"
+          "release_window": "1998-07/1998-08",
+          "role_structure": [
+            "Computer Error: regional tournament participation prize",
+            "No.1 Trainer: regional first place prize",
+            "No.2 Trainer: regional second place prize",
+            "No.3 Trainer: regional third place prize"
+          ],
+          "variant_distinction": "Kamex Computer Error is the non-glossy / white-drop-shadow Team Rocket R participation print, distinct from glossy CoroCoro and Pokemon Song Best Collection Computer Error prints with red drop shadow."
         },
         "not_claiming": [
           "raw HTML snapshot",
-          "complete campaign source",
-          "complete campaign flyer catalog",
-          "complete return-envelope variant catalog",
+          "complete tournament source",
+          "complete venue schedule",
+          "complete participant/winner ledger",
           "official copy count",
-          "complete fulfillment ledger",
-          "proof that a participant received all four cards in one mailing",
+          "complete trophy-plaque ledger",
+          "complete side-event prize ledger",
+          "complete national-final object ledger",
+          "complete Computer Error variant census",
+          "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
           "seller possession",
           "authenticity",
           "condition",
@@ -1695,42 +1729,47 @@
           "complete marketplace pricing"
         ],
         "oldid_url": "",
-        "retrieved_at": "2026-06-17T22:33:28Z",
-        "selected_text": "In Japan, this card was available as part of the Trade Please campaign that ran from February 10 to July 31, 1998. Participants were required to mail a flyer included with copies of\nTrade Please\nto MediaFactory along with any two Pokemon trading cards and a return envelope within the campaign period. Participants could select a \"course\" detailed on the flyer by writing in the appropriate space. The \"A Course\" included a\nCharizard\ncard and a copy of this card. The \"B Course\" included a\nBlastoise\ncard and a copy of this card. The \"C Course\" included a\nVenusaur\ncard and a copy of this card. MediaFactory would then send the two cards from the chosen course to the participant, completing the trade.\nVenusaur (Trade Please campaign 1998) (Unnumbered)\nTrade Please campaign (February 1998)\nCharizard (Trade Please campaign 1998) (Unnumbered)\nTrade Please campaign (February 1998)\nBlastoise (Trade Please campaign 1998) (Unnumbered)\nTrade Please campaign (February 1998)\nTrade Please! (Trade Please campaign 1998) (Unnumbered)\nTrade Please campaign (February 1998)",
-        "snapshot_content_scope": "Selected rendered lines for the 1998 Trade Please campaign, its February 10 to July 31 campaign window, mail-in trade mechanic, three course structure, and the four source-pinned campaign card identities. This snapshot is not a full campaign archive, not a complete flyer or envelope variant catalog, not a fulfillment ledger, not an official copy-count authority, and not a raw HTML snapshot.",
-        "snapshot_hash": "879291cd9bfcd0800cbac893d5772724a9d9a1b82956cfdada3975219f3bbf2a",
+        "retrieved_at": "2026-06-17T23:47:21Z",
+        "selected_text": "Kamex (Blastoise) Mega Battle Tournaments\nFollowing the success of the first national tournament series, the 1998 Lizardon Mega Battles, a second tournament series and subsequent national championship was held later in the same year. From July to August in the summer of 1998, regional tournaments were held across Japan.\nSimilar to the Lizardon Mega Battles, a series of regional tournaments were held across Japan. This time, only 5 regional tournaments were held as opposed to 6 with the Lizardon Mega Battles.\nThe guide book would foreshadow the “twist” for each regional tournament–each player would be given a copy of the Computer Error trainer card and have it added to their decks. This card was significantly less powerful (and very questionably playable).\nAll participants of the regional tournaments received a special promotional Computer Error card, which had been printed earlier in the January 1998 issue of CoroCoro Comic. They were instructed to include this card in their decks during the deck eligibility check. This meant that all competitors’ decks were 61 cards instead of the usual 60.\nComputer Error (Regional Kamex Mega Battle 1998) (Unnumbered)\nThe version of the card handed out to participants of the Kamex Mega Battle had a matte texture, and the Team Rocket “R” symbol doesn’t have the red drop shadow and instead shows a white one. This version is considerably more rare, since it was only available to tournament participants.\nIn contrast, the version of the card from CoroCoro Comic had glossy texture, and the Team Rocket symbol had a red drop shadow. It was widely available in the magazine as well as the Pokemon Best Song CD.\nNo.1 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\nNo.2 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\nNo.3 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\n3rd Place: No.3 Trainer card\n2nd Place: No.2 Trainer card\n1st Place: No.1 Trainer card\nComputer Error (Regional Kamex Mega Battle 1998) (Unnumbered)\nKamex Mega Battle participation prize\nNo.1 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\nKamex Mega Battle regional first place prize\nNo.2 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\nKamex Mega Battle regional second place prize\nNo.3 Trainer (Regional Kamex Mega Battle 1998) (Unnumbered)\nKamex Mega Battle regional third place prize\nComputer Error\nパソコン大暴走！ The Computer's Out of Control!\nComputer Error (Japanese: パソコン大暴走！ The Computer's Out of Control!) is a Rocket's Secret Machine card. It is one of the Wizards Black Star Promos.\nThis card was released as a promotional card. In Japan, it was available as an insert with the January 1998 issue of CoroCoro Comic. It was later reprinted and given to participants of the Kamex Mega Battle regional tournaments, which ran from July to August 1998. It was reprinted again as one of a selection of cards included in the Pokémon Song Best Collection CD, released on January 1, 1999. The English version was available through the Pokémon League in May 2000.\nAll Japanese versions feature the Team Rocket expansion symbol, indicating that it is a promotional addition to the Japanese set. The prints released via CoroCoro and the Pokémon Song Best Collection have an 'R' symbol with a red drop shadow and are printed on glossy card stock, whereas the 'R' on the Kamex Mega Battle participation print has a white drop shadow and is printed on non-glossy card stock.\nComputer Error [Non-glossy]\nKamex Mega Battle participation prize\nNo.1 Trainer\nKamex Mega Battle regional first place prize\nNo.2 Trainer\nKamex Mega Battle regional second place prize\nNo.3 Trainer\nKamex Mega Battle regional third place prize",
+        "snapshot_content_scope": "Selected rendered lines for the 1998 Kamex Mega Battle source slice, including July-August 1998 regional tournament timing, the four source-pinned participation/placement card identities, and the Computer Error non-glossy white-drop-shadow print distinction from glossy CoroCoro/Song Best Collection prints. This snapshot is not a full tournament archive, not a complete venue schedule, not a complete participant or winner ledger, not an official copy-count authority, not a complete trophy/side-event object ledger, not a complete Computer Error variant census, and not a raw HTML snapshot.",
+        "snapshot_hash": "ab51173ab9717271e49e0ee3e87c29057d5a4167d41ee21f009ff53d7e65d03a",
         "snapshot_not_claiming": [
           "raw HTML snapshot",
-          "complete campaign source",
-          "complete campaign flyer catalog",
-          "complete return-envelope variant catalog",
+          "complete tournament source",
+          "complete venue schedule",
+          "complete participant/winner ledger",
           "official copy count",
-          "complete fulfillment ledger",
-          "proof that a participant received all four cards in one mailing",
+          "complete trophy-plaque ledger",
+          "complete side-event prize ledger",
+          "complete national-final object ledger",
+          "complete Computer Error variant census",
+          "proof that CoroCoro, Song Best Collection, and Kamex Computer Error prints are interchangeable",
           "seller possession",
           "authenticity",
           "condition",
           "image rights",
           "complete marketplace pricing"
         ],
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
-        "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+        "snapshot_retrieval_method": "Codex curl + standard-library HTML rendered text extraction",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-        "source": "Bulbapedia + Pokumon",
-        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+        "source": "Pokumon + Bulbapedia",
+        "source_page_url": "https://pokumon.com/kamex-blastoise-mega-battle-tournaments/",
         "supporting_page_urls": [
-          "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
-          "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
-          "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
-          "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/"
+          "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+          "https://pokumon.com/card/no-1-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+          "https://pokumon.com/card/no-2-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+          "https://pokumon.com/card/no-3-trainer-regional-kamex-mega-battle-1998-unnumbered/",
+          "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)",
+          "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
         ]
       },
       "modeled_source_rows": 4,
       "modeled_source_sorts": [
-        33,
-        34,
-        35,
-        36
+        45,
+        46,
+        47,
+        48
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -1747,12 +1786,12 @@
         "price truth"
       ],
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-      "promo_family_id": "jp_promo_trade_please_199802",
+      "promo_family_id": "jp_promo_kamex_mega_battle_199807",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
-      "source_gap_reason": "Bulbapedia documents the Trade Please campaign window, mail-in trade mechanic, and A/B/C course structure, while Pokumon source pages document the four campaign card identities. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model every flyer, envelope, participant mailing, fulfillment object, or copy-count claim.",
+      "source_gap_reason": "Pokumon documents the Kamex Mega Battle regional tournament circuit, its July-August 1998 regional window, and the source-pinned participation/placement card identities, while Bulbapedia documents the Computer Error Japanese name and the non-glossy white-drop-shadow Kamex print distinction from the glossy CoroCoro/Song Best Collection Computer Error prints. The current PokéCardex UPC aggregate source-pins all four rows to this family. This source slice models those card identities only; it does not model side-event phone cards, trophy plaques, national-final objects, official copy counts, complete venue schedule, participant/winner ledger, or a complete Computer Error variant census.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
@@ -1772,6 +1811,6 @@
     "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
-    "source_release_family_id": "jp_promo_trade_please_199802"
+    "source_release_family_id": "jp_promo_kamex_mega_battle_199807"
   }
 }
