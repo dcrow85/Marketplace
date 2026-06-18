@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — hardened the row-level
+  `special_identification_instructions` rail into a standard catalog row invariant.
+  Updated `scripts/build_japanese_pre_english_catalogs.py` to normalize every
+  generated pre-English card row to carry the field as a list, fail audit on missing
+  or malformed shapes, and report `special_identification_instruction_rows` in the
+  manifest/audit. Regenerated `data/japanese-pre-english/`; all 1,264 pre-English
+  rows now carry the field, with only the two glossy Pikachu rows non-empty. Cross-corpus
+  audit across pre-English, Japanese classic, and English WoC rows: 4,156 total,
+  0 missing, 0 malformed.
 - `[passive]` 2026-06-18 · Codex — expanded the catalog source-gap register with
   Japanese pre-cutoff ADV gaps exposed by TCGdex but not row-modelable from that source:
   `ja/ADV1` (55 listed / 0 refs, 2003-01-31) and `ja/ADV2` (53 / 0, 2003-04-18).

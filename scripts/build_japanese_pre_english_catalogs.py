@@ -5765,6 +5765,10 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         card for card in cards
         if card not in illustrator_named_rows and card not in illustrator_not_credited_rows
     ]
+    special_identification_instruction_rows = [
+        card for card in cards
+        if card.get("special_identification_instructions")
+    ]
     product_context_source = primary_source.get("product_context_source", {})
     family_context_source = primary_source.get("family_context_source", {})
     failures: list[str] = []
@@ -5780,6 +5784,13 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("release_legacy_boundary_claim_key_present")
     if has_legacy_key(release, "expected_complete_source_boundary"):
         failures.append("release_legacy_expected_boundary_key_present")
+    for card in cards:
+        if "special_identification_instructions" not in card:
+            failures.append(f"{card.get('row_id', '<missing-row-id>')}: special_identification_instructions_missing")
+            break
+        if not isinstance(card.get("special_identification_instructions"), list):
+            failures.append(f"{card.get('row_id', '<missing-row-id>')}: special_identification_instructions_not_list")
+            break
     row_by_id = {str(card.get("row_id", "")): card for card in cards}
     for glossy_pikachu_row_id in (
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
@@ -7578,6 +7589,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "illustrator_named_rows": len(illustrator_named_rows),
         "illustrator_not_credited_rows": len(illustrator_not_credited_rows),
         "illustrator_unresolved_rows": len(illustrator_unresolved_rows),
+        "special_identification_instruction_rows": len(special_identification_instruction_rows),
         "source_labeled_japanese_name_rows": len(name_ja_rows),
         "missing_japanese_name_rows": len(cards) - len(name_ja_rows),
         "tcgdex_enriched_rows": len(tcgdex_rows),
@@ -7590,6 +7602,17 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def normalize_release_cards(release: dict[str, Any]) -> None:
+    """Keep old row builders from omitting newer agent-facing rails."""
+    for card in release.get("cards", []):
+        instructions = card.get("special_identification_instructions", [])
+        if instructions is None:
+            instructions = []
+        if not isinstance(instructions, list):
+            raise TypeError(f"{card.get('row_id', '<missing-row-id>')}: special_identification_instructions must be a list")
+        card["special_identification_instructions"] = instructions
+
+
 def main() -> int:
     RELEASE_DIR.mkdir(parents=True, exist_ok=True)
     manifests: list[dict[str, Any]] = []
@@ -7597,6 +7620,7 @@ def main() -> int:
     stamp = utc_now()
     for config in RELEASES:
         release = build_release(config)
+        normalize_release_cards(release)
         release_hash = sha256_hex(release)
         path = RELEASE_DIR / f"{config.release_family_id}.json"
         write_json(path, release)
@@ -7661,6 +7685,7 @@ def main() -> int:
                 "illustrator_named_rows": audit["illustrator_named_rows"],
                 "illustrator_not_credited_rows": audit["illustrator_not_credited_rows"],
                 "illustrator_unresolved_rows": audit["illustrator_unresolved_rows"],
+                "special_identification_instruction_rows": audit["special_identification_instruction_rows"],
                 "tcgdex_set_id": config.tcgdex_set_id or "",
                 "source_adapter": config.source_adapter,
                 "source_url": source_url,
@@ -7684,6 +7709,7 @@ def main() -> int:
         "illustrator_named_rows": sum(item["illustrator_named_rows"] for item in manifests),
         "illustrator_not_credited_rows": sum(item["illustrator_not_credited_rows"] for item in manifests),
         "illustrator_unresolved_rows": sum(item["illustrator_unresolved_rows"] for item in manifests),
+        "special_identification_instruction_rows": sum(item["special_identification_instruction_rows"] for item in manifests),
         "hash_algorithm": "sha256",
         "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
         "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images, provider-path-derived reference images, inherited possible-content reference images, and product-component inherited reference images.",
@@ -7717,6 +7743,7 @@ def main() -> int:
         "illustrator_named_rows": sum(row["illustrator_named_rows"] for row in audit_rows),
         "illustrator_not_credited_rows": sum(row["illustrator_not_credited_rows"] for row in audit_rows),
         "illustrator_unresolved_rows": sum(row["illustrator_unresolved_rows"] for row in audit_rows),
+        "special_identification_instruction_rows": sum(row["special_identification_instruction_rows"] for row in audit_rows),
         "tcgdex_enriched_rows": sum(row["tcgdex_enriched_rows"] for row in audit_rows),
         "release_audits": audit_rows,
         "not_claiming": [
