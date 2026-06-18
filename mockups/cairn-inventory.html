@@ -37,6 +37,29 @@
   .themebtn{background:transparent;border:0.5px solid var(--rule);border-radius:5px;width:30px;height:26px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2);padding:0}
   .themebtn .ti{width:14px;height:14px;display:block} .themebtn .sun{display:none}
   html[data-theme="dark"] .themebtn .moon{display:none} html[data-theme="dark"] .themebtn .sun{display:block}
+  .walletbtn{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--ink2);background:transparent;border:0.5px solid var(--rule);border-radius:6px;padding:6px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;line-height:1}
+  .walletbtn:hover{color:var(--ink);border-color:var(--dim)}
+  .walletbtn.on{color:var(--ink);border-color:var(--agent)}
+  .walletbtn .wdot{width:6px;height:6px;border-radius:50%;background:var(--have);display:inline-block}
+  .walletbtn .idav{border-radius:5px;background:var(--mount);flex:none;display:block}
+  #agentlabel.named{display:inline-flex;align-items:center;gap:7px;color:var(--agent)}
+  #agentlabel.named .idav{border-radius:4px;background:var(--mount)}
+  /* meet-your-agent onboarding */
+  .meet{position:fixed;inset:0;z-index:120;background:rgba(10,9,12,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}
+  .meet[hidden]{display:none}
+  .meetcard{background:var(--paper);border:0.5px solid var(--rule);border-radius:12px;max-width:440px;width:100%;padding:30px 30px 26px;box-shadow:0 24px 70px rgba(0,0,0,.34)}
+  .meetav{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;overflow:hidden;background:var(--mount)}
+  .meetav svg{display:block;border-radius:0}
+  .meet-ek{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--agent);margin-bottom:10px;text-align:center}
+  .meetintro{font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink);margin:0 0 20px}
+  .meet-label{display:block;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:7px}
+  .meetrow{display:flex;gap:8px;margin-bottom:14px}
+  .meetrow input{flex:1;font-family:var(--sans);font-size:16px;color:var(--ink);background:var(--paper);border:0.5px solid var(--rule);border-radius:7px;padding:9px 12px;outline:none}
+  .meetrow input:focus{border-color:var(--agent)}
+  .meetdice{font-family:var(--mono);font-size:11px;color:var(--dim);background:transparent;border:0.5px solid var(--rule);border-radius:7px;padding:0 12px;cursor:pointer;white-space:nowrap}
+  .meetdice:hover{color:var(--ink)}
+  .meetgo{width:100%;font-family:var(--mono);font-size:13px;letter-spacing:.03em;color:var(--paper);background:var(--agent);border:0;border-radius:7px;padding:11px;cursor:pointer}
+  .meetgo:hover{filter:brightness(1.06)}
 
   header.hd{padding:34px 0 16px}
   .hd .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
@@ -171,7 +194,41 @@
   footer .note{font-size:12px;color:var(--dim);max-width:64ch;line-height:1.55}
   footer .note b{color:var(--ink2)}
   footer .hashes{font-family:var(--mono);font-size:10px;color:var(--faint);text-align:right;line-height:1.7}
-  @media(max-width:640px){.wrap{padding:0 20px} h1{font-size:24px} .mcols{grid-template-columns:1fr} .mleft{border-right:0;border-bottom:0.5px solid var(--rule2)} .sethead{position:static}}
+  /* agent call bar — the live judged layer */
+  .agentbar{border-bottom:0.5px solid var(--rule2);background:var(--agent-bg)}
+  .agentbar .wrap{padding:16px 36px}
+  .acall{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .acall .ek{color:var(--agent)}
+  .ainput{flex:1;min-width:240px;display:flex;align-items:center;gap:6px;border:0.5px solid var(--agent);border-radius:7px;padding:4px 4px 4px 12px;background:var(--paper)}
+  .ainput input{flex:1;border:0;background:transparent;color:var(--ink);font-family:var(--mono);font-size:13px;outline:none}
+  .ainput button{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--paper);background:var(--agent);border:0;border-radius:5px;padding:8px 16px;cursor:pointer}
+  .ainput button:disabled{opacity:.5;cursor:default}
+  .astatus{font-family:var(--mono);font-size:11px;color:var(--dim)}
+  .astatus.busy{color:var(--agent)} .astatus.off{color:var(--faint)}
+  .apanel{margin-top:14px;border:0.5px solid var(--rule);border-radius:9px;background:var(--paper);padding:14px 18px}
+  .apanel[hidden]{display:none}
+  .ahead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
+  .aclose{background:transparent;border:0;color:var(--dim);font-size:13px;cursor:pointer;line-height:1}
+  .aclose:hover{color:var(--ink)}
+  .atri{padding:11px 0;border-top:0.5px solid var(--rule2)}
+  .atag{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:9px}
+  .t-enf{color:var(--ink2);border:0.5px solid var(--rule)}
+  .t-jud{color:var(--agent);background:var(--agent-bg);border:0.5px solid var(--agent)}
+  .t-pick{color:var(--dim);border:0.5px solid var(--rule)}
+  .achips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px}
+  .fc{font-family:var(--mono);font-size:11.5px;color:var(--ink);border:0.5px solid var(--rule);border-radius:999px;padding:3px 10px}
+  .fc .fk{color:var(--dim);margin-right:6px}
+  .fc-none{color:var(--dim)}
+  .acut{font-family:var(--mono);font-size:11.5px;color:var(--dim)} .acut b{color:var(--ink)}
+  .aread{font-style:italic}
+  .acomm{font-family:var(--serif);font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .acav{margin-top:7px;font-family:var(--mono);font-size:11.5px;color:var(--extra)}
+  .apicks{padding-top:12px;border-top:0.5px solid var(--rule2)}
+  .agrid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
+  .aflag{margin-top:12px;padding:9px 12px;border:0.5px solid var(--signal);border-radius:7px;background:rgba(176,56,28,.07);font-size:12.5px;color:var(--signal);line-height:1.5}
+  .afoot{margin-top:12px;font-size:11.5px;color:var(--dim);line-height:1.5}
+  .aoffline{font-size:13px;color:var(--dim);line-height:1.55;padding:6px 0}
+  @media(max-width:640px){.wrap{padding:0 20px} h1{font-size:24px} .mcols{grid-template-columns:1fr} .mleft{border-right:0;border-bottom:0.5px solid var(--rule2)} .sethead{position:static} .agentbar .wrap{padding:14px 20px}}
 </style>
 <script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
@@ -182,6 +239,7 @@
   <span class="navr">
     <a href="cairn-landing.html">home</a>
     <a href="cairn-protocol.html">protocol</a>
+    <button class="walletbtn" id="walletbtn" onclick="walletAction()">sign in</button>
     <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
   </span>
 </div></nav>
@@ -200,6 +258,18 @@
     </div>
   </div>
 </div></header>
+
+<div class="agentbar"><div class="wrap">
+  <div class="acall">
+    <span class="ek" id="agentlabel">Ask your agent</span>
+    <div class="ainput">
+      <input id="acall" type="text" maxlength="280" autocomplete="off" placeholder="holos I&rsquo;m missing that won&rsquo;t break the bank…">
+      <button id="ago" onclick="askAgent()">browse</button>
+    </div>
+    <span class="astatus" id="astatus"></span>
+  </div>
+  <div class="apanel" id="apanel" hidden></div>
+</div></div>
 
 <div class="controls"><div class="wrap">
   <div class="search">
@@ -249,6 +319,20 @@
   </div>
 </div>
 
+<div class="meet" id="meet" hidden>
+  <div class="meetcard">
+    <div class="meetav" id="meetav"></div>
+    <div class="meet-ek">Your agent</div>
+    <p class="meetintro">I read the catalog — not the cards. I'll show you what's recorded, flag what's only claimed, and say plainly when something's just my judgment. I won't call a card mint when I can't see it, and I'll never sell you anything. Give me a name and we'll get to work.</p>
+    <label class="meet-label" for="agentname">Name your agent</label>
+    <div class="meetrow">
+      <input id="agentname" type="text" maxlength="24" autocomplete="off" placeholder="…">
+      <button class="meetdice" type="button" onclick="randomAgentName()" title="Pick one for me">surprise me</button>
+    </div>
+    <button class="meetgo" id="meetgo" type="button" onclick="confirmAgent()">meet your agent</button>
+  </div>
+</div>
+
 <script>
 function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cairn-theme',n)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -261,9 +345,81 @@ var TGT=[['any','Any condition'],['nm','NM or better'],['lp','LP+ or better'],['
 var TGT_SHORT={any:'any',nm:'NM+',lp:'LP+',played:'played'};
 var PROV_LABEL={exact_source:'Exact source image',provider_path:'Provider-path reference image',no_rarity_reference:'No Rarity reference image'};
 
-try{store=JSON.parse(localStorage.getItem('cairn-cards')||'null')||{}}catch(e){store={}}
-function save(){try{localStorage.setItem('cairn-cards',JSON.stringify(store))}catch(e){}}
+var ACCOUNT=null; // connected EVM address (lowercased) or null — client-side identity only
+function storeKey(){return ACCOUNT?'cairn-cards:'+ACCOUNT:'cairn-cards';}
+function loadStore(){try{store=JSON.parse(localStorage.getItem(storeKey())||'null')||{}}catch(e){store={}}}
+loadStore();
+function save(){try{localStorage.setItem(storeKey(),JSON.stringify(store))}catch(e){}}
 function us(id){return store[id]||(store[id]={});}
+
+/* EVM wallet / account — a FEEL prototype: client-side identity (your address scopes your
+   binder). NOT protocol-wired: no registry, no escrow, nothing on-chain, no funds move. */
+function shortAddr(a){return a?a.slice(0,6)+'…'+a.slice(-4):'';}
+/* identity layer — the app speaks "identity / account"; the wallet is just provider #1.
+   Deterministic handle + avatar from the address; the raw address is tucked into the
+   tooltip, swappable later for ENS / a user-set name / passkey / email. */
+function idHash(s){var h=2166136261>>>0;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h>>>0;}
+function idRng(seed){var s=seed>>>0;return function(){s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296;};}
+var ID_ADJ=['Vermilion','Cobalt','Quiet','Patient','Glossy','Shadowless','Pristine','Veteran','Amber','Indigo','Holo','Prism','Sealed','Sharp','First-Edition','Unlimited'];
+var ID_NOUN=['Archivist','Curator','Collector','Cartographer','Completionist','Registrar','Custodian','Sentinel','Steward','Scribe','Keeper','Sleever'];
+function handleFor(a){var h=idHash(a);return ID_ADJ[h%ID_ADJ.length]+' '+ID_NOUN[(h>>>8)%ID_NOUN.length];}
+function avatarSVG(a,size){size=size||18;var r=idRng(idHash(a));var fg='hsl('+Math.floor(r()*360)+',52%,47%)';var cells='';for(var y=0;y<5;y++)for(var x=0;x<3;x++){if(r()>0.5)cells+='<rect x="'+x+'" y="'+y+'" width="1.03" height="1.03"/><rect x="'+(4-x)+'" y="'+y+'" width="1.03" height="1.03"/>';}return '<svg class="idav" viewBox="0 0 5 5" width="'+size+'" height="'+size+'"><g fill="'+fg+'">'+cells+'</g></svg>';}
+function renderWallet(){
+  var b=document.getElementById('walletbtn');if(!b)return;
+  if(ACCOUNT){b.className='walletbtn on';b.innerHTML=avatarSVG(ACCOUNT,18)+'<span>'+esc(handleFor(ACCOUNT))+'</span>';b.title='Signed in as '+handleFor(ACCOUNT)+' · '+ACCOUNT+' — click to sign out';}
+  else{b.className='walletbtn';b.textContent='sign in';b.title=window.ethereum?'Sign in with your identity':'Sign in — needs a wallet provider for now';}
+}
+
+/* personal agent — your account meets + names its agent; the name persists per identity */
+var AGENT_NAMES=['Ledger','Quill','Vellum','Sable','Atlas','Juno','Onyx','Marlow','Vero','Pith','Calla','Ember','Reni','Koa','Tace','Sory','Indra','Wren'];
+function agentKey(){return 'cairn-agent:'+(ACCOUNT||'anon');}
+function getAgentName(){try{return localStorage.getItem(agentKey())||'';}catch(e){return '';}}
+function setAgentName(n){try{localStorage.setItem(agentKey(),n);}catch(e){}}
+function updateAgentLabel(){
+  var lbl=document.getElementById('agentlabel');if(!lbl)return;
+  var n=getAgentName();
+  lbl.innerHTML=n?(avatarSVG(n,15)+'<span>Ask '+esc(n)+'</span>'):'Ask your agent';
+  lbl.classList.toggle('named',!!n);
+}
+function renderMeetAvatar(name){
+  document.getElementById('meetav').innerHTML=avatarSVG((name||'').trim()||ACCOUNT||'agent',56);
+}
+function meetAgent(){
+  var m=document.getElementById('meet');if(!m)return;
+  var inp=document.getElementById('agentname'),go=document.getElementById('meetgo');
+  inp.value='';renderMeetAvatar('');go.textContent='meet your agent';
+  inp.oninput=function(){var v=inp.value.trim();renderMeetAvatar(v);go.textContent=v?('meet '+v):'meet your agent';};
+  inp.onkeydown=function(e){if(e.key==='Enter')confirmAgent();};
+  m.hidden=false;setTimeout(function(){inp.focus();},30);
+}
+function randomAgentName(){
+  var inp=document.getElementById('agentname');
+  inp.value=AGENT_NAMES[Math.floor(Math.random()*AGENT_NAMES.length)];
+  inp.oninput();
+}
+function confirmAgent(){
+  var inp=document.getElementById('agentname'),n=(inp.value||'').trim()||'Cairn';
+  setAgentName(n);
+  document.getElementById('meet').hidden=true;
+  updateAgentLabel();
+}
+function applyAccount(addr){
+  ACCOUNT=addr?String(addr).toLowerCase():null;
+  loadStore();renderWallet();updateAgentLabel();
+  if(DATA){render();}
+  if(ACCOUNT&&!getAgentName()){meetAgent();}   // first sign-in: meet your agent
+}
+async function walletAction(){
+  if(ACCOUNT){applyAccount(null);return;}                 // disconnect = the app forgets you
+  if(!window.ethereum){window.open('https://metamask.io/download/','_blank','noopener');return;}
+  try{var a=await window.ethereum.request({method:'eth_requestAccounts'});applyAccount(a&&a[0]);}catch(e){}
+}
+function initWallet(){
+  renderWallet();updateAgentLabel();
+  if(!window.ethereum)return;
+  window.ethereum.request({method:'eth_accounts'}).then(function(a){if(a&&a[0])applyAccount(a[0]);}).catch(function(){});
+  if(window.ethereum.on)window.ethereum.on('accountsChanged',function(a){applyAccount(a&&a[0]);});
+}
 
 function nm(c){return c.name_ja||c.name_en||c.uid;}
 function effStance(c){
@@ -495,6 +651,50 @@ function renderModal(){
 function openDetail(id){modalId=id;document.getElementById('modal').hidden=false;document.body.style.overflow='hidden';renderModal();}
 function closeDetail(){document.getElementById('modal').hidden=true;document.body.style.overflow='';modalId=null;}
 
+/* live judged-layer agent — POST a loose call to /api/browse, render the trichotomy */
+var AGENT_BUSY=false;
+function setAStatus(t,cls){var e=document.getElementById('astatus');if(e){e.textContent=t||'';e.className='astatus'+(cls?' '+cls:'');}}
+function askAgent(){
+  if(AGENT_BUSY)return;
+  var call=(document.getElementById('acall').value||'').trim();
+  if(!call)return;
+  AGENT_BUSY=true;document.getElementById('ago').disabled=true;setAStatus('thinking…','busy');
+  fetch('/api/browse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({call:call})})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+    .then(function(res){res.ok?renderAgent(res.j):renderAgentError(res.j);})
+    .catch(function(e){renderAgentError({error:'network',detail:String(e)});})
+    .then(function(){AGENT_BUSY=false;document.getElementById('ago').disabled=false;setAStatus('');});
+}
+function fchip(k,v){return '<span class="fc"><span class="fk">'+esc(k)+'</span>'+esc(String(v))+'</span>';}
+function renderAgent(o){
+  var panel=document.getElementById('apanel');panel.hidden=false;
+  var f=o.filter||{},r=o.result||{};
+  var dims=['holo','owned','exclude_grails','set','character','category'];
+  var chips=dims.filter(function(k){return f[k]!==null&&f[k]!==undefined&&f[k]!==false;}).map(function(k){return fchip(k,f[k]);}).join('');
+  if(!chips)chips='<span class="fc fc-none">no filter — whole catalog</span>';
+  var total=(DATA&&DATA.summary)?DATA.summary.cards:'';
+  var enforced='<div class="atri"><span class="atag t-enf">enforced · code</span><div class="achips">'+chips+'</div>'
+    +'<div class="acut">cut '+total+' → <b>'+o.n_survivors+'</b> candidates'+(f.reading?' · <span class="aread">'+esc(f.reading)+'</span>':'')+'</div></div>';
+  var judged='<div class="atri"><span class="atag t-jud">judged · agent</span><div class="acomm">'+esc(r.commentary||'')+'</div>'
+    +(r.caveat?'<div class="acav">⚠ '+esc(r.caveat)+'</div>':'')+'</div>';
+  var picks=(r.picks||[]).map(function(uid){return byId[uid];}).filter(Boolean);
+  var picksHTML=picks.length?'<div class="apicks"><span class="atag t-pick">surfaced first</span><div class="grid agrid">'+picks.map(function(c){return cellHTML(c,true);}).join('')+'</div></div>':'';
+  var flags=o.overclaim_flags||[];
+  var flagHTML=flags.length?'<div class="aflag">no-overclaim check flagged language in the agent&rsquo;s words: <b>'+flags.map(esc).join(', ')+'</b> — surfaced, not hidden.</div>':'';
+  panel.innerHTML='<div class="ahead"><span class="ek">'+esc(getAgentName()||'Agent')+' on &ldquo;'+esc(o.call)+'&rdquo;</span><button class="aclose" onclick="closeAgent()" aria-label="close">&#10005;</button></div>'
+    +enforced+judged+picksHTML+flagHTML
+    +'<div class="afoot">The filter is mechanical (code did the cut); the words are the agent&rsquo;s judgment. Value bands are a proxy, not a price; condition is unconfirmed; the agent never sells.</div>';
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function renderAgentError(j){
+  var panel=document.getElementById('apanel');panel.hidden=false;
+  var off=j&&j.error==='agent_offline';
+  var msg=off?'The agent is offline right now — the local model isn&rsquo;t running. The binder still works; this bar is the live judged layer.'
+    :'Could not reach the agent ('+esc((j&&(j.error||j.detail))||'error')+').';
+  panel.innerHTML='<div class="ahead"><span class="ek">Agent</span><button class="aclose" onclick="closeAgent()" aria-label="close">&#10005;</button></div><div class="aoffline">'+msg+'</div>';
+}
+function closeAgent(){document.getElementById('apanel').hidden=true;}
+
 fetch('catalog-sample.json').then(r=>r.json()).then(d=>{
   DATA=d; SETS=d.sets.slice().sort((a,b)=>a.order-b.order);
   d.cards.forEach(c=>byId[c.uid]=c); SETS.forEach(s=>setById[s.id]=s);
@@ -503,9 +703,13 @@ fetch('catalog-sample.json').then(r=>r.json()).then(d=>{
   document.getElementById('setsel').innerHTML='<option value="all">All sets ('+d.summary.cards+')</option>'+SETS.map(s=>'<option value="'+s.id+'">'+esc(s.label)+' ('+s.count+')</option>').join('');
   document.getElementById('setsel').onchange=function(e){setF=e.target.value;render();window.scrollTo(0,0);};
   document.getElementById('q').oninput=render;
+  var ac=document.getElementById('acall');
+  if(ac)ac.addEventListener('keydown',function(e){if(e.key==='Enter')askAgent();});
+  fetch('/api/health').then(r=>r.json()).then(function(h){setAStatus(h.qwen?'agent ready':'agent offline',h.qwen?'':'off');}).catch(function(){setAStatus('agent offline','off');});
   document.getElementById('sort').onchange=function(e){sortKey=e.target.value;render();};
   document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeDetail();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modalId)closeDetail();});
+  initWallet();
   render();
 }).catch(e=>{document.getElementById('binder').innerHTML='<div class="empty">could not load catalog-sample.json ('+e+')</div>';});
 </script>
