@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cairn — the protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* light — stark white */
+    --paper:#FFFFFF; --paper2:#F3F2EE; --ink:#16140E; --ink2:#3B382F;
+    --dim:#85827A; --faint:#B4B1A7; --rule:rgba(20,18,14,.15); --rule2:rgba(20,18,14,.065);
+    --signal:#B0381C; --amber:#9A6212;
+    --bench:#141310; --bone:#DBD5C8; --bdim:#8B8579; --bfaint:#5C574E; --coolrule:rgba(219,213,200,.12); --red:#C0402B;
+    --navbg:rgba(255,255,255,.85);
+    --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --serif:"Spectral",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    /* dark — the bench */
+    --paper:#0E0D11; --paper2:#17161C; --ink:#ECEAE3; --ink2:#C7C4B9;
+    --dim:#8C897F; --faint:#56534A; --rule:rgba(236,234,227,.15); --rule2:rgba(236,234,227,.07);
+    --signal:#D2654A; --amber:#C98A2E;
+    --bench:#1B1A21; --bone:#DBD5C8; --bdim:#8B8579; --bfaint:#6A675D; --coolrule:rgba(219,213,200,.13); --red:#D2654A;
+    --navbg:rgba(14,13,17,.82);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink2);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 40px}
+  a{color:inherit}
+  .ek{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+  nav{position:sticky;top:0;z-index:20;background:var(--navbg);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--rule2)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1040px}
+  .mark{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .mark .wm{font-family:var(--serif);font-size:23px;color:var(--ink);letter-spacing:.2px}
+  .mark .wm .pq{color:var(--faint)}
+  .navr{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em}
+  .navr a{text-decoration:none}
+  .navr .go{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
+  .mark svg,.fm svg{stroke:var(--ink)}
+  .mark svg ellipse,.mark svg path,.fm svg ellipse,.fm svg path{fill:var(--paper)}
+  .mark svg line{stroke:var(--faint)}
+  .themebtn{background:transparent;border:0.5px solid var(--rule);border-radius:5px;width:30px;height:26px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2);padding:0}
+  .themebtn .ti{width:14px;height:14px;display:block}
+  .themebtn .sun{display:none}
+  html[data-theme="dark"] .themebtn .moon{display:none}
+  html[data-theme="dark"] .themebtn .sun{display:block}
+
+  header.hd{padding:96px 0 70px}
+  header.hd .ek{margin-bottom:20px}
+  h1{font-weight:600;font-size:50px;line-height:1.04;letter-spacing:-.025em;color:var(--ink);margin:0;max-width:18ch}
+  .lede{font-size:18px;line-height:1.6;color:var(--ink2);max-width:64ch;margin:26px 0 0}
+  .lede b{font-weight:600;color:var(--ink)}
+
+  hr{border:0;border-top:0.5px solid var(--rule);margin:0}
+  section{padding:64px 0}
+  section .ek{margin-bottom:10px}
+  h2{font-size:27px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin:0 0 8px;line-height:1.1}
+  section > .wrap > p{font-size:16px;line-height:1.6;color:var(--ink2);max-width:64ch}
+  p .en{color:var(--dim)}
+
+  table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:left;font-weight:400;padding:0 16px 9px 0;border-bottom:0.5px solid var(--rule)}
+  td{padding:11px 16px 11px 0;border-bottom:0.5px solid var(--rule2);vertical-align:top;color:var(--ink2);line-height:1.45}
+  td.k{font-family:var(--mono);font-size:12.5px;color:var(--ink);white-space:nowrap}
+  td .en{color:var(--dim)}
+
+  .block{margin-top:24px;background:var(--paper2);border:0.5px solid var(--rule);border-radius:3px;
+    padding:18px 20px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--ink2);white-space:pre-wrap;overflow-x:auto}
+  .block .hl{color:var(--ink)}
+  .block .o{color:var(--signal)}
+  .bench{margin-top:24px;background:var(--bench);border:0.5px solid var(--coolrule);border-radius:3px;
+    padding:18px 20px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--bone);white-space:pre-wrap;overflow-x:auto}
+  .bench .vk{color:var(--bdim)}
+  .bench .o{color:var(--red)}
+
+  ul.list{list-style:none;margin:22px 0 0;padding:0;column-gap:44px}
+  ul.list li{padding:8px 0;border-bottom:0.5px solid var(--rule2);display:grid;grid-template-columns:200px 1fr;gap:16px;font-size:14px;line-height:1.45}
+  ul.list li b{font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--ink)}
+  ul.list li span{color:var(--ink2)}
+
+  .verdict{font-family:var(--serif);font-size:24px;color:var(--ink);margin:34px 0 0;font-weight:500}
+  .verdict .o{color:var(--signal)}
+
+  footer{border-top:0.5px solid var(--rule);padding:30px 0 40px;margin-top:30px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;max-width:1040px}
+  footer .disc{font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.6;max-width:430px}
+  footer .fm{display:flex;align-items:center;gap:9px;text-decoration:none}
+  footer .fm .wm{font-family:var(--serif);font-size:17px;color:var(--ink)}
+  footer .fm .wm .pq{color:var(--faint)}
+
+  @media(max-width:720px){
+    .wrap{padding:0 22px}
+    h1{font-size:38px}
+    ul.list li{grid-template-columns:1fr;gap:2px}
+    table{font-size:13px}
+  }
+</style>
+<script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="cairn-landing.html"><svg width="30" height="38" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2" aria-hidden="true"><line x1="26" y1="130" x2="84" y2="130" stroke="#A9A28D" stroke-width="1.4"/><ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/><ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/><ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/><ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/><path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/></svg><span class="wm">c<span class="pq">(</span>ai<span class="pq">)</span>rn</span></a>
+    <span class="navr">
+      <a href="#model">trust model</a>
+      <a href="#spine">the spine</a>
+      <a href="#gaps">the gaps</a>
+      <a href="cairn-landing.html" class="go">← home</a>
+      <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
+    </span>
+  </div>
+</nav>
+
+<header class="hd">
+  <div class="wrap">
+    <div class="ek">The protocol · technical overview</div>
+    <h1>A thin spine, and honest judgment.</h1>
+    <p class="lede">Cairn enforces as little as possible on-chain — funds, terms, the identity of keys, liveness — and is honest that everything else is judgment. The semantic questions (is the card real, is the seller trustworthy, is the grade right) are <b>anchored by hash, validated off-chain, disclosed, and measured</b>. The protocol makes a bad trade accountable; it does not make one impossible.</p>
+  </div>
+</header>
+
+<hr>
+<section id="model">
+  <div class="wrap">
+    <div class="ek">01 · The trust model</div>
+    <h2>Enforced, legible, judged.</h2>
+    <p>Every claim in a trade is labeled by who can stand behind it. This single distinction is the protocol's organizing idea — it decides what goes on-chain, what gets a signature, and what stays a human call.</p>
+    <table>
+      <thead><tr><th style="width:150px">Layer</th><th style="width:230px">Who checks it</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td class="k">enforced</td><td>the contract or a deterministic validator</td><td>escrow, seller bond, replay protection, registry status, typed spendability digest, state transitions</td></tr>
+        <tr><td class="k">legible</td><td>signed / typed evidence — still judgment-dependent</td><td>photos, shop-domain proof, route &amp; insurance evidence, verifier attestations</td></tr>
+        <tr><td class="k">judged</td><td>people: buyer, seller, verifier, arbiter, agent</td><td>authenticity, raw condition, trust weight, claim remedy, "is this evidence enough"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr>
+<section id="spine">
+  <div class="wrap">
+    <div class="ek">02 · The spine</div>
+    <h2>What the contract actually enforces.</h2>
+    <p>The on-chain surface is deliberately small — a smaller trusted base is cheaper, safer, and a smaller audit target. It holds the mechanical, funds-and-liveness skeleton and nothing semantic.</p>
+    <ul class="list">
+      <li><b>identity &amp; roles</b><span>actor registry, role authority, buyer-scoped verifier approvals</span></li>
+      <li><b>value</b><span>escrow, seller bond, buyer dispute bond, bounded payouts</span></li>
+      <li><b>integrity</b><span>signed packet hashes, replay protection, item fingerprint + inventory lock bound to it</span></li>
+      <li><b>spendability</b><span>typed route/delivery digest bound to contract·chain·trade·gate·leg·artifact·issuer</span></li>
+      <li><b>gating</b><span>fingerprint challenge blocks route until clearance; route consumes a spendability + wall-bundle hash; delivery evidence before inspection</span></li>
+      <li><b>lifecycle</b><span>claim / ruling / receipt state transitions</span></li>
+      <li><b>liveness</b><span>arbiter replacement + emergency timeout; a stuck claim escalates to a ruling, never deadlocks</span></li>
+    </ul>
+    <p style="margin-top:30px">The line between on-chain and off is drawn by one rule, applied to every guarantee:</p>
+    <div class="block"><span class="hl">bind on-chain</span>   ⟺   it protects <span class="hl">FUNDS</span> or <span class="hl">LIVENESS</span>   ∧   it is a <span class="hl">MECHANICAL</span> check
+<span class="hl">otherwise</span>       →   anchor the hash · validate off-chain · disclose · measure</div>
+    <p style="margin-top:22px"><span class="en">The spendability digest is the pattern in miniature — a real on-chain capability whose issuer is the committing party, so it is binding and non-replayable but self-minted:</span></p>
+    <div class="bench">RouteSpendability {
+  escrow, chain, trade, gate, leg, artifactHash,
+  issuer = msg.sender
+}
+<span class="vk">→</span> binding · non-replayable · <span class="o">self-minted</span> (not independent authorization)</div>
+  </div>
+</section>
+
+<hr>
+<section id="vector">
+  <div class="wrap">
+    <div class="ek">03 · Measuring the off-chain</div>
+    <h2>Trust is a vector, not a score.</h2>
+    <p>Everything off-chain is measured, not asserted. A source's trust is a multi-dimensional reading the agent and the human can both inspect — never collapsed into one authority number.</p>
+    <div class="block"><span class="hl">coverage</span>            what proof exists
+<span class="hl">independence</span>        whether sources share control
+<span class="hl">continuity</span>          whether the actor / history is continuous
+<span class="hl">scope_fit</span>           whether prior trust fits THIS trade
+<span class="hl">cost_to_fake</span>        how expensive the fake path looks
+<span class="hl">source_calibration</span>  how past calls have matched outcomes
+
+<span class="o">→ output a vector, never a verdict</span></div>
+    <p style="margin-top:22px"><span class="en">The settlement-calibration loop scores whether each off-chain judgment held, so residual risk stays visible instead of hidden. Calibration records are portable — they are the reputation of sources and of the judgment market.</span></p>
+  </div>
+</section>
+
+<hr>
+<section id="gaps">
+  <div class="wrap">
+    <div class="ek">04 · The gap taxonomy</div>
+    <h2>Where physical reality leaks.</h2>
+    <p>A protocol moves bytes; the trade is about an atom. Seven gaps name exactly where the digital record cannot reach the physical card. Cairn does not pretend to close them — it enumerates, prices, and routes them.</p>
+    <table>
+      <tbody>
+        <tr><td class="k">G1 · binding</td><td>bytes name a claim, not atoms — a hash commits a photo, not the object</td></tr>
+        <tr><td class="k">G2 · sensor</td><td>a photo is a sample, not the object; resolution and angle bound what can be seen</td></tr>
+        <tr><td class="k">G3 · continuity</td><td>a handoff is attested, not proven; custody between scans is inference</td></tr>
+        <tr><td class="k">G4 · identity</td><td>a key is not a person; control of a wallet is not a legal identity</td></tr>
+        <tr><td class="k">G5 · judgment</td><td>some calls (authenticity, grade) need a human; no validator settles them</td></tr>
+        <tr><td class="k">G6 · egress</td><td>final accept is human judgment on arrival, not physical truth</td></tr>
+        <tr><td class="k">G7 · time</td><td>evidence is a snapshot; the object is a process — true then can be false now</td></tr>
+      </tbody>
+    </table>
+    <p class="verdict">Accountable<span class="o">,</span> not impossible.</p>
+  </div>
+</section>
+
+<hr>
+<section id="judgment">
+  <div class="wrap">
+    <div class="ek">05 · Judgment supply</div>
+    <h2>The hard calls are bought from a market.</h2>
+    <p>The gaps that need a human (G5, forensic authenticity, dispute fault) are not resolved by the protocol. They are bought from a two-sided market of competing humans — <b>verifiers</b> pre-trade, <b>arbiters</b> post-dispute — that Cairn hosts but is not part of.</p>
+    <ul class="list">
+      <li><b>the floor</b><span>an always-present, reproducible LLM ruling on record coherence / completeness / comparison — scoped away from physical authentication by design</span></li>
+      <li><b>the ladder</b><span>floor → panel → human arbiter → specialist; the buyer's risk budget picks the tier, escalation is staged and loser-pays</span></li>
+      <li><b>the market</b><span>providers (shops, specialists) compete on calibration × cost × turnaround; the agent selects per trade, the human approves</span></li>
+      <li><b>commitment</b><span>the per-trade Judgment Supply Commitment is hashed on-chain; content (SLA, fee, remedy, conflict) stays off-chain and disclosed</span></li>
+    </ul>
+    <p style="margin-top:22px"><span class="en">A paid verdict is "reviewed by &lt;provider&gt; for &lt;scope&gt;," never "verified authentic." Conflict is disclosed, independence is measured against outcomes, and providers post a bond — a wrong call costs them.</span></p>
+  </div>
+</section>
+
+<hr>
+<section id="lifecycle">
+  <div class="wrap">
+    <div class="ek">06 · The lifecycle</div>
+    <h2>One trade, every leg on the record.</h2>
+    <p>The custody ledger is the trade's state machine. Each leg is tagged by who stands behind it, and the seams are preserved rather than smoothed over.</p>
+    <div class="block">created          <span class="hl">enforced</span>
+funded           <span class="hl">enforced</span>
+bonded           <span class="hl">enforced</span>
+evidence         legible      <span class="o">— ingress: bytes name a claim, not atoms</span>
+fingerprint      <span class="hl">enforced</span>     committed, nonce-bound
+inventory lock   <span class="hl">enforced</span>     bound to the committed fingerprint
+route            <span class="hl">enforced</span>     consumes spendability + wall-bundle
+delivery         legible      <span class="o">— continuity: handoff is attested, not proven</span>
+inspection       judged       opens the reserved arrival decision
+accept / claim   judged       <span class="o">— egress: final accept is human judgment</span>
+ruling           judged       legible &amp; reproducible from inputs
+settled          <span class="hl">enforced</span>
+receipt          legible      future trust, never universal proof</div>
+  </div>
+</section>
+
+<hr>
+<section id="open">
+  <div class="wrap">
+    <div class="ek">07 · Open, and no-overclaim</div>
+    <h2>Free to read. Honest about its limits.</h2>
+    <p>Cairn is a protocol, not a walled garden. The record is free to read, evidence can come from anywhere, and a collection's history attaches to the owner's wallet — portable, not hostage. Read is open; write is gated and signed; a private collection stays private.</p>
+    <table>
+      <thead><tr><th style="width:50%">Never claimed</th><th>Said instead</th></tr></thead>
+      <tbody>
+        <tr><td class="k">verified authentic</td><td>reviewed by &lt;who&gt; for &lt;scope&gt;</td></tr>
+        <tr><td class="k">guaranteed safe · trust score</td><td>the record is coherent enough to continue</td></tr>
+        <tr><td class="k">the protocol proved the card</td><td>the contract enforced the funding / bond / state transition</td></tr>
+        <tr><td class="k">the route proves delivery truth</td><td>the route evidence supports an insurance claim</td></tr>
+        <tr><td class="k">this raw card is NM</td><td>my read: looks LP+, not graded — judged from the photos</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="fm" href="cairn-landing.html"><svg width="22" height="28" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2.4" aria-hidden="true"><ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/><ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/><ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/><ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/><path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/></svg><span class="wm">c<span class="pq">(</span>ai<span class="pq">)</span>rn</span></a>
+    <div class="disc">Independent, open protocol. Cairn records evidence, holds funds, and locks terms; it does not verify authenticity or condition. Not affiliated with, sponsored by, or endorsed by Nintendo or The Pokémon Company.</div>
+  </div>
+</footer>
+
+<script>function toggleTheme(){var h=document.documentElement,dark=h.getAttribute('data-theme')==='dark',n=dark?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cairn-theme',n)}catch(e){}}</script>
+</body>
+</html>

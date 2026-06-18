@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cairn — glance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* light — stark white */
+    --paper:#FFFFFF; --surround:#E4E2DD; --mount:#ECEAE3; --ink:#16140E; --ink2:#3B382F; --dim:#85827A; --faint:#B4B1A7;
+    --rule:rgba(20,18,14,.16); --rule2:rgba(20,18,14,.07);
+    --signal:#B0381C; --amber:#9A6212; --amber-ink:#6E4A11;
+    --bench:#141310; --bone:#DBD5C8; --bdim:#8B8579; --bfaint:#5C574E; --coolrule:rgba(219,213,200,.12); --red:#C0402B;
+    --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  html[data-theme="dark"]{
+    /* dark — the bench */
+    --paper:#0E0D11; --surround:#050506; --mount:#23222A; --ink:#ECEAE3; --ink2:#C7C4B9; --dim:#8C897F; --faint:#56534A;
+    --rule:rgba(236,234,227,.15); --rule2:rgba(236,234,227,.07);
+    --signal:#D2654A; --amber:#C98A2E; --amber-ink:#D9A24E;
+    --bench:#1B1A21; --bone:#DBD5C8; --bdim:#8B8579; --bfaint:#6A675D; --coolrule:rgba(219,213,200,.12); --red:#D2654A;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--surround);color:var(--ink2);font-family:var(--sans);
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:34px 20px}
+  .sheet{position:relative;width:100%;max-width:700px;background:var(--paper);
+    border:0.5px solid var(--rule);box-shadow:0 30px 60px -34px rgba(0,0,0,.7);padding:18px 30px 22px}
+  .reg{position:absolute;width:11px;height:11px;color:var(--faint)}
+  .reg::before,.reg::after{content:"";position:absolute;background:currentColor}
+  .reg::before{left:5px;top:0;width:1px;height:11px}.reg::after{top:5px;left:0;height:1px;width:11px}
+  .reg.tl{top:8px;left:8px}.reg.tr{top:8px;right:8px}.reg.bl{bottom:8px;left:8px}.reg.br{bottom:8px;right:8px}
+
+  .top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-bottom:15px;border-bottom:0.5px solid var(--rule2)}
+  .mark{display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;color:var(--ink);letter-spacing:-.01em}
+  .mark .pq{color:var(--faint);font-weight:400}
+  .mark .ai{font-weight:700}
+  .ambient{font-family:var(--mono);font-size:11px;color:var(--dim);display:flex;align-items:center;gap:7px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--signal);display:inline-block;box-shadow:0 0 0 2.5px rgba(162,58,34,.16)}
+  .ambient b{color:var(--ink);font-weight:400}
+
+  .body{display:grid;grid-template-columns:176px minmax(0,1fr);gap:26px;padding:22px 0 4px;align-items:start}
+  .mount{position:relative;background:var(--mount);border:0.75px solid #6E6A60;padding:6px;cursor:zoom-in}
+  .mount img{width:100%;display:block;aspect-ratio:63/88;object-fit:cover}
+  .mount .tk{position:absolute;width:8px;height:8px;color:#6E6A60}
+  .mount .tk::before,.mount .tk::after{content:"";position:absolute;background:currentColor}
+  .mount .tk::before{left:3.5px;top:0;width:0.75px;height:8px}.mount .tk::after{top:3.5px;left:0;height:0.75px;width:8px}
+  .mount .tk.a{top:-1px;left:-1px}.mount .tk.b{top:-1px;right:-1px}.mount .tk.c{bottom:-1px;left:-1px}.mount .tk.d{bottom:-1px;right:-1px}
+  .mount .inspect{position:absolute;bottom:9px;right:9px;font-family:var(--mono);font-size:9.5px;color:#ECE7DA;background:rgba(15,13,18,.74);padding:2px 6px}
+
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+  .name{font-weight:600;font-size:28px;line-height:1.03;letter-spacing:-.015em;color:var(--ink);margin:7px 0 2px}
+  .sub{font-size:13px;color:var(--dim)}
+  .seller{display:flex;flex-wrap:wrap;gap:5px 18px;margin:10px 0 0;font-size:12.5px;color:var(--ink2)}
+  .seller .sk{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-right:6px}
+  .seller b{font-weight:600;color:var(--ink)}
+  .seller .d{color:var(--dim)}
+
+  .price{display:flex;align-items:baseline;gap:9px;margin:15px 0 0}
+  .price b{font-weight:600;font-size:26px;color:var(--ink);letter-spacing:-.01em}
+  .price span{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  .cond{font-size:13px;color:var(--ink2);margin:7px 0 0}
+  .cond .j{color:var(--dim)}
+  .market{font-size:12.5px;color:var(--dim);margin:2px 0 0}
+
+  .flag{display:flex;align-items:flex-start;gap:8px;margin:14px 0 0;font-size:12.5px;line-height:1.42;
+    padding:7px 11px;border-left:2px solid;border-radius:0 2px 2px 0}
+  .flag .fi{font-size:9px;line-height:1.7;flex:none}
+  .flag.amber{color:var(--amber-ink);background:rgba(178,106,25,.085);border-color:var(--amber)}
+  .flag.amber .fi{color:var(--amber)}
+  .flag.red{color:#7a281a;background:rgba(162,58,34,.10);border-color:var(--signal);font-weight:500}
+  .flag.red .fi{color:var(--signal)}
+
+  .rec{font-size:15px;line-height:1.5;color:var(--ink);margin:15px 0 0;max-width:46ch}
+
+  .acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+  .go{font-weight:500;font-size:14px;background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 16px;cursor:pointer;font-family:var(--sans)}
+  .go small{display:block;font-size:10.5px;opacity:.7;font-weight:400;margin-top:2px}
+  .b2{font-family:var(--sans);font-size:13.5px;color:var(--ink);background:transparent;border:0.75px solid var(--rule);border-radius:2px;padding:11px 15px;cursor:pointer}
+  .skip{font-family:var(--sans);font-size:13px;color:var(--dim);background:transparent;border:0;cursor:pointer;padding:11px 2px}
+  .skip .sep{color:var(--faint);margin:0 4px}
+
+  .offer{display:none;align-items:center;flex-wrap:wrap;gap:13px;margin-top:13px;padding:12px 14px;
+    background:rgba(26,24,19,.035);border:0.5px solid var(--rule2);border-radius:3px;font-size:13.5px}
+  .offer.open{display:flex}
+  .step{display:flex;align-items:center;border:0.75px solid var(--rule);border-radius:2px;overflow:hidden}
+  .step button{font-family:var(--mono);font-size:15px;width:30px;height:32px;background:transparent;border:0;cursor:pointer;color:var(--ink)}
+  .step .amt{min-width:78px;text-align:center;font-weight:600;color:var(--ink);border-left:0.75px solid var(--rule);border-right:0.75px solid var(--rule);height:32px;line-height:32px}
+  .offer .onote{font-size:11.5px;color:var(--dim)}
+  .offer .send{font-weight:500;font-size:13px;background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:8px 14px;cursor:pointer;font-family:var(--sans)}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:22px;padding-top:13px;border-top:0.5px solid var(--rule2)}
+  .showrec{font-family:var(--mono);font-size:11px;color:var(--dim);background:transparent;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0}
+  .showrec::before{content:"";width:15px;height:1px;background:var(--dim);display:inline-block}
+  .showrec b{color:var(--ink);font-weight:400}
+  .gate{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+  .record{margin-top:14px;background:var(--bench);border:0.5px solid var(--coolrule);padding:18px 20px;display:none;color:var(--bone);font-family:var(--mono)}
+  .record.open{display:block}
+  .rk{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bdim)}
+  .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;margin-top:11px}
+  .vrow{display:grid;grid-template-columns:116px 1fr;gap:8px;font-size:12px;color:var(--bone);padding:2.5px 0}
+  .vrow .vk{color:var(--bdim)}
+  .ev{font-size:12px;color:var(--bone);padding:2.5px 0;display:flex;gap:8px}
+  .ev .ok{color:var(--bdim)}.ev .need{color:var(--red)}
+  .rsummary{font-family:var(--sans);font-style:italic;font-size:14px;color:var(--bone);margin:14px 0 0}
+  .rbound{font-size:10.5px;color:var(--red);margin-top:10px;line-height:1.55;border-top:0.5px solid var(--coolrule);padding-top:10px}
+  .rdisc{font-size:9px;color:var(--bfaint);margin-top:11px;line-height:1.5;letter-spacing:.02em}
+
+  .lb{position:fixed;inset:0;background:rgba(8,7,10,.97);display:none;flex-direction:column;z-index:60;font-family:var(--mono);color:var(--bone)}
+  .lb.open{display:flex}
+  .lb-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 20px;font-size:11px;color:var(--bdim);border-bottom:0.5px solid var(--coolrule)}
+  .lb-bar .seg{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .lb-bar .view{color:var(--bone);letter-spacing:.16em;text-transform:uppercase}
+  .lb-bar button{background:transparent;border:0.5px solid var(--coolrule);color:var(--bone);font-family:var(--mono);font-size:11px;padding:5px 10px;cursor:pointer}
+  .lb-bar .close{border:0;font-size:21px;line-height:1;padding:0 4px;color:var(--bdim)}
+  .lb-stage{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:18px}
+  .lb-img{height:min(68vh,540px);width:auto;max-width:90vw;display:block;border:0.5px solid var(--coolrule);background:#000}
+  .lb-img.actual{height:240px;width:172px;max-width:none}
+  .lb-img.symbol{height:min(68vh,540px);width:auto;transform:scale(2.7);transform-origin:84% 84%}
+  .lb-note{text-align:center;font-size:11px;color:var(--red);padding:8px 24px 0;max-width:580px;margin:0 auto;line-height:1.55}
+  .lb-strip{display:flex;gap:9px;justify-content:center;align-items:flex-end;padding:16px 20px 20px}
+  .te{width:42px;height:59px;border:0.5px solid var(--coolrule);overflow:hidden;cursor:pointer;opacity:.55;position:relative;background:#000;flex:none}
+  .te.active{opacity:1;border-color:var(--bone)}
+  .te img{width:100%;height:100%;object-fit:cover;display:block}
+  .te.symb img{transform:scale(2.1);transform-origin:84% 86%}
+  .te.req{cursor:default;display:flex;align-items:center;justify-content:center;opacity:.4}
+  .te .rl{font-size:8px;color:var(--bdim);text-align:center;line-height:1.25}
+
+  .themebtn{position:fixed;top:16px;right:16px;z-index:40;background:var(--paper);border:0.5px solid var(--rule);border-radius:6px;width:32px;height:28px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2);padding:0;box-shadow:0 3px 10px -5px rgba(0,0,0,.45)}
+  .themebtn .ti{width:14px;height:14px;display:block}
+  .themebtn .sun{display:none}
+  html[data-theme="dark"] .themebtn .moon{display:none}
+  html[data-theme="dark"] .themebtn .sun{display:block}
+  html[data-theme="dark"] .flag.amber{background:rgba(201,138,46,.13)}
+  html[data-theme="dark"] .flag.red{background:rgba(210,101,74,.14);color:#E7A48F}
+  html[data-theme="dark"] .offer{background:rgba(255,255,255,.035)}
+</style>
+<script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+<button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
+<div class="wrap">
+  <div class="sheet">
+    <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+
+    <div class="top">
+      <span class="mark"><svg width="17" height="19" viewBox="0 0 18 20" aria-hidden="true"><g fill="none" stroke="#6E6A60" stroke-width="0.9"><ellipse cx="9" cy="16.5" rx="7" ry="2.2"/><ellipse cx="9.3" cy="12.2" rx="5.4" ry="2"/><ellipse cx="8.7" cy="8.2" rx="4.1" ry="1.85"/><ellipse cx="9" cy="4.7" rx="2.7" ry="1.65"/></g></svg><span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span></span>
+      <span class="ambient"><span class="dot"></span><b>one arrival</b>&nbsp;needs your eyes by 4:12 · two hunts on track</span>
+    </div>
+
+    <div class="body">
+      <figure class="mount" style="margin:0" onclick="openLB('front')" title="open on the light table">
+        <span class="tk a"></span><span class="tk b"></span><span class="tk c"></span><span class="tk d"></span>
+        <img src="assets/charizard-jp-base-obv.jpg" alt="No Rarity Charizard, obverse">
+        <span class="inspect">&#8689; inspect</span>
+      </figure>
+
+      <div>
+        <div class="tag">you want this</div>
+        <h1 class="name">No Rarity Charizard</h1>
+        <div class="sub">Base · Japanese 1996 · holo</div>
+        <div class="seller">
+          <span><span class="sk">seller</span><b>Kanto Cards</b> <span class="d">· shop · 40 receipts</span></span>
+          <span><span class="sk">ships</span>Osaka, JP <span class="d">· ~6 days, import</span></span>
+        </div>
+
+        <div class="price"><b>$6,400</b><span>shipped</span></div>
+        <div class="cond">Raw · my read: clean, looks LP+ <span class="j">— not graded</span></div>
+        <div class="market">Fair for the grade — raw copies sold $5.9k–6.8k lately</div>
+
+        <div class="flag amber" id="flag"><span class="fi" id="fi">&#9650;</span><span id="ft">Surface unconfirmed — I'm reading a low-res photo, so I can't vouch for the holo yet.</span></div>
+
+        <p class="rec" id="rec">Fair price, clean-looking copy. I'd confirm the surface first, then it's a buy.</p>
+
+        <div class="acts">
+          <button class="go">Ask for the holo shot · $5<small>credited if you buy</small></button>
+          <button class="b2">Buy now · $6,400</button>
+          <button class="b2" onclick="document.getElementById('offer').classList.toggle('open')">Make an offer</button>
+          <button class="skip">pass<span class="sep">·</span>save &amp; watch</button>
+        </div>
+
+        <div class="offer" id="offer">
+          <span>Your offer</span>
+          <span class="step"><button onclick="bump(-100)">&minus;</button><span class="amt" id="oamt">$6,000</span><button onclick="bump(100)">+</button></span>
+          <span class="onote" id="onote">I'd open at $6,000 — they'll likely take it. I'd stop around $5,500.</span>
+          <button class="send">Send offer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <button class="showrec" onclick="document.getElementById('rec2').classList.toggle('open')">open the <b>record</b> — proof, anchors, and what it does not claim</button>
+      <span class="gate">offer</span>
+    </div>
+
+    <div class="record" id="rec2">
+      <div class="rk">record · offer · not yet funded</div>
+      <div class="rgrid">
+        <div>
+          <div class="rk" style="margin-bottom:7px">trust vector</div>
+          <div class="vrow"><span class="vk">coverage</span><span>high</span></div>
+          <div class="vrow"><span class="vk">independence</span><span>medium</span></div>
+          <div class="vrow"><span class="vk">continuity</span><span>ok</span></div>
+          <div class="vrow"><span class="vk">scope_fit</span><span>ok</span></div>
+          <div class="vrow"><span class="vk">cost_to_fake</span><span>moderate</span></div>
+          <div class="vrow"><span class="vk">provenance</span><span>shop-domain + 40 receipts</span></div>
+        </div>
+        <div>
+          <div class="rk" style="margin-bottom:7px">evidence · condition</div>
+          <div class="ev"><span class="ok">✓</span>full front · anchored</div>
+          <div class="ev"><span class="ok">✓</span>full back · anchored</div>
+          <div class="ev"><span class="ok">✓</span>corners read LP+ (my judgment)</div>
+          <div class="ev"><span class="need">·</span>holo-surface shot · needed</div>
+          <div class="ev"><span class="need">·</span>fresh nonce · needed</div>
+          <div class="vrow" style="margin-top:8px"><span class="vk">fingerprint</span><span>0x9f3a7c…e2b1</span></div>
+          <div class="vrow"><span class="vk">floor arbiter</span><span>bound · jsc 4a7f</span></div>
+        </div>
+      </div>
+      <div class="vrow" style="margin-top:13px"><span class="vk">seller</span><span>Kanto Cards · controls kantocards.jp · 40 receipts · self-declared Osaka, JP</span></div>
+      <div class="vrow"><span class="vk">ships</span><span>Osaka, JP → you · ~6 days · import / customs possible</span></div>
+      <p class="rsummary">Strong shop proof, thin protocol history, route looks normal.</p>
+      <div class="rbound">condition is my read, not a grade. the record is coherent enough to continue — it does not prove the card is in hand, authentic, or correctly graded. those stay judged, by you and on arrival.</div>
+      <div class="rdisc">independent record · Cairn records evidence and holds funds · not affiliated with, sponsored by, or endorsed by Nintendo or The Pokémon Company</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
+  <div class="lb-bar">
+    <div class="seg"><span class="view" id="lbview">front · obverse</span><span>as sent by seller</span></div>
+    <div class="seg"><span><span id="lbdim">172 × 240 px</span> · <span id="lbzoom">enlarged, soft</span></span>
+      <button id="lbtoggle" onclick="toggleActual(event)">actual size</button>
+      <button class="close" onclick="closeLB()" aria-label="close">×</button>
+    </div>
+  </div>
+  <div class="lb-stage" onclick="if(event.target===this)closeLB()"><img class="lb-img" id="lbimg" src="assets/charizard-jp-base-obv.jpg" alt="No Rarity Charizard, as sent by the seller"></div>
+  <div class="lb-note" id="lbnote">Low resolution as sent (172 × 240). A surface or corner call needs a high-res scan — your agent already asked the seller for a fresh holo shot.</div>
+  <div class="lb-strip">
+    <div class="te active" data-v="front" onclick="setView('front')"><img src="assets/charizard-jp-base-obv.jpg" alt=""></div>
+    <div class="te symb" data-v="symbol" onclick="setView('symbol')"><img src="assets/charizard-jp-base-obv.jpg" alt=""></div>
+    <div class="te req"><span class="rl">back<br>req</span></div>
+    <div class="te req"><span class="rl">holo<br>req</span></div>
+    <div class="te req"><span class="rl">nonce<br>req</span></div>
+  </div>
+</div>
+
+<script>
+  let offer=6000;
+  function bump(d){offer=Math.max(4000,offer+d);
+    document.getElementById('oamt').textContent='$'+offer.toLocaleString();
+    const n=document.getElementById('onote');
+    if(offer<5500){n.textContent='Below my read — they may walk, but it costs nothing to ask.';n.style.color='var(--signal)';}
+    else{n.textContent="I'd open at $6,000 — they'll likely take it. I'd stop around $5,500.";n.style.color='var(--dim)';}}
+
+  const _lb=document.getElementById('lb'),_img=document.getElementById('lbimg');
+  function openLB(v){_lb.classList.add('open');setView(v||'front');document.body.style.overflow='hidden';}
+  function closeLB(){_lb.classList.remove('open');document.body.style.overflow='';_img.classList.remove('actual');}
+  function setView(v){
+    _img.classList.remove('symbol','actual');
+    document.querySelectorAll('.te[data-v]').forEach(t=>t.classList.toggle('active',t.dataset.v===v));
+    const view=document.getElementById('lbview'),zoom=document.getElementById('lbzoom'),
+          note=document.getElementById('lbnote'),tog=document.getElementById('lbtoggle');
+    if(v==='symbol'){
+      _img.classList.add('symbol');
+      view.textContent='lower-right · No Rarity field';zoom.textContent='zoomed 3× · soft';
+      note.textContent='The rarity-symbol region, zoomed from the same 172×240 front. At this fidelity the blank field is suggestive, not conclusive — legible, to be judged on a sharp crop.';
+      tog.style.display='none';
+    } else {
+      view.textContent='front · obverse';zoom.textContent='enlarged, soft';
+      note.textContent='Low resolution as sent (172 × 240). A surface or corner call needs a high-res scan — your agent already asked the seller for a fresh holo shot.';
+      tog.style.display='';tog.textContent='actual size';
+    }
+  }
+  function toggleActual(e){e.stopPropagation();const a=_img.classList.toggle('actual');
+    document.getElementById('lbzoom').textContent=a?'actual size · 1:1':'enlarged, soft';
+    e.target.textContent=a?'fit to screen':'actual size';}
+  // demo helper: setFlag('amber'|'red'|'none')
+  function setFlag(level,text){const f=document.getElementById('flag');f.className='flag '+(level==='none'?'':level);f.style.display=level==='none'?'none':'flex';if(text)document.getElementById('ft').textContent=text;}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+  function toggleTheme(){var h=document.documentElement,dark=h.getAttribute('data-theme')==='dark',n=dark?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cairn-theme',n)}catch(e){}}
+</script>
+</body>
+</html>

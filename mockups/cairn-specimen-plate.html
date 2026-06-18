@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cairn — provenance record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0F0D12; --panel:#15131A; --bench:#0A090D;
+    --bone:#DBD5C8; --dim:#8B8579; --faint:#5C574E;
+    --rule:rgba(219,213,200,.13); --red:#C0402B; --reddim:#9B4836;
+    --serif:"EB Garamond",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--black);color:var(--bone);font-family:var(--mono);
+    -webkit-font-smoothing:antialiased;font-size:15px;line-height:1.5}
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+  .sheet{position:relative;width:100%;max-width:860px;background:var(--panel);
+    border:0.5px solid var(--rule);padding:30px 34px 22px}
+  .reg{position:absolute;width:13px;height:13px;color:var(--faint)}
+  .reg::before,.reg::after{content:"";position:absolute;background:currentColor}
+  .reg::before{left:6px;top:0;width:1px;height:13px}
+  .reg::after{top:6px;left:0;height:1px;width:13px}
+  .reg.tl{top:9px;left:9px}.reg.tr{top:9px;right:9px}.reg.bl{bottom:9px;left:9px}.reg.br{bottom:9px;right:9px}
+
+  .hd{display:flex;justify-content:space-between;align-items:flex-end;
+    padding-bottom:14px;border-bottom:0.5px solid var(--rule)}
+  .chop{font-family:var(--serif);font-weight:500;font-size:30px;letter-spacing:.5px;line-height:.9}
+  .chop+.k{display:block;margin-top:7px}
+  .k{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+  .meta{text-align:right;font-size:11px;line-height:1.85;color:var(--dim)}
+  .meta b{color:var(--bone);font-weight:400}
+
+  .body{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+    gap:30px;padding:22px 0 6px}
+  .plate{width:100%;display:block}
+
+  .spec-k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+  .spec-n{font-family:var(--serif);font-size:25px;line-height:1.08;margin:4px 0 14px}
+  .fields{border-top:0.5px solid var(--rule);padding-top:12px}
+  .f{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:4px 0;font-size:12px;line-height:1.5}
+  .f .fk{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);padding-top:2px}
+  .f .fv .d{color:var(--dim)}
+  .neg{margin-top:15px;border-top:0.5px solid var(--rule);padding-top:12px}
+  .neg .negk{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
+  .neg p{margin:7px 0 0;font-size:11.5px;line-height:1.6;color:var(--bone)}
+
+  .sealrow{display:flex;align-items:center;gap:14px;margin-top:18px}
+  .sealcap{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);line-height:1.7}
+  .sealcap b{color:var(--bone);font-weight:400}
+
+  .ft{display:flex;justify-content:space-between;gap:20px;margin-top:18px;
+    padding-top:12px;border-top:0.5px solid var(--rule)}
+  .ft div{font-size:10.5px;letter-spacing:.04em;color:var(--faint);line-height:1.6}
+  .ft .r{text-align:right}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sheet">
+    <span class="reg tl"></span><span class="reg tr"></span><span class="reg bl"></span><span class="reg br"></span>
+
+    <div class="hd">
+      <div>
+        <span class="chop">Cairn</span>
+        <span class="k">provenance record</span>
+      </div>
+      <div class="meta">
+        <b>record</b>&nbsp;&nbsp;crn·1996·021·4a7f<br>
+        <b>issued</b>&nbsp;&nbsp;2026·06·11<br>
+        <b>gate</b>&nbsp;&nbsp;&nbsp;&nbsp;route — locked
+      </div>
+    </div>
+
+    <div class="body">
+      <svg class="plate" viewBox="0 0 420 360" role="img" aria-label="Examination plate: the obverse of a Japanese Base Charizard under raking light, with callouts to the holo surface and the absent lower-right rarity symbol, and a scale bar.">
+        <rect x="0" y="0" width="420" height="360" fill="#0A090D"/>
+        <rect x="8" y="8" width="404" height="344" fill="none" stroke="rgba(219,213,200,.11)" stroke-width="0.5"/>
+        <g stroke="rgba(219,213,200,.28)" stroke-width="0.5">
+          <path d="M16 22 L24 22 M20 18 L20 26"/><path d="M396 22 L404 22 M400 18 L400 26"/>
+          <path d="M16 338 L24 338 M20 334 L20 342"/><path d="M396 338 L404 338 M400 334 L400 342"/>
+        </g>
+        <text x="22" y="32" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.6" fill="#8B8579">PLATE I — OBVERSE</text>
+
+        <rect x="68" y="56" width="154" height="213" fill="#000" stroke="#6E6A60" stroke-width="0.75"/>
+        <image href="assets/charizard-jp-base-obv.jpg" x="70" y="58" width="150" height="209" preserveAspectRatio="xMidYMid slice"/>
+        <polygon points="70,58 150,58 110,150 70,118" fill="#DBD5C8" opacity="0.05"/>
+
+        <g stroke="#C0402B" stroke-width="1.3" fill="none">
+          <path d="M200 256 L200 250 L206 250"/><path d="M210 250 L216 250 L216 256"/>
+          <path d="M216 260 L216 266 L210 266"/><path d="M206 266 L200 266 L200 260"/>
+        </g>
+
+        <g stroke="#9B4836" stroke-width="0.75" fill="none">
+          <path d="M222 138 L250 118"/><path d="M216 258 L250 244"/>
+        </g>
+        <text x="256" y="115" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1" fill="#C0402B">HOLO SURFACE</text>
+        <text x="256" y="129" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9C7A6C">raking light · clean</text>
+        <text x="256" y="241" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1" fill="#C0402B">RARITY FIELD</text>
+        <text x="256" y="255" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9C7A6C">symbol absent</text>
+
+        <g stroke="#9B4836" stroke-width="0.75">
+          <path d="M70 292 L220 292" fill="none"/>
+          <path d="M70 288 L70 296 M220 288 L220 296 M145 289 L145 295"/>
+        </g>
+        <text x="145" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#8B8579">63 × 88 mm</text>
+      </svg>
+
+      <div>
+        <div class="spec-k">specimen</div>
+        <div class="spec-n">No Rarity Charizard</div>
+        <div class="fields">
+          <div class="f"><span class="fk">ref</span><span class="fv">PMCG1·021 <span class="d">· Base · JP 1996 · holo</span></span></div>
+          <div class="f"><span class="fk">condition</span><span class="fv">raw · LP+ or better <span class="d">(observed)</span></span></div>
+          <div class="f"><span class="fk">evidence</span><span class="fv">have: front, back, symbol-crop<br><span class="d">need: corners, holo-angle, cert, nonce</span></span></div>
+          <div class="f"><span class="fk">provenance</span><span class="fv">shop-domain + 40 receipts <span class="d">(legible)</span></span></div>
+          <div class="f"><span class="fk">escrow</span><span class="fv">$6,400 · funded, held</span></div>
+          <div class="f"><span class="fk">anchor</span><span class="fv">0x9f3a7c…e2b1</span></div>
+          <div class="f"><span class="fk">issuer</span><span class="fv">0x4e…a019 <span class="d">(seller)</span></span></div>
+        </div>
+        <div class="neg">
+          <div class="negk">this record does not certify</div>
+          <p>authenticity · the condition grade · that the card is in hand. Those are your call. Cairn records the evidence and holds the funds.</p>
+        </div>
+        <div class="sealrow">
+          <svg width="128" height="128" viewBox="0 0 130 130" role="img" aria-label="Cairn seal: a cairn seen from above as concentric contour rings within a milled rim.">
+            <circle cx="65" cy="65" r="62" fill="none" stroke="#B0A996" stroke-width="0.7"/>
+            <circle cx="65" cy="65" r="60" fill="none" stroke="#B0A996" stroke-width="2.6" stroke-dasharray="0.7 5.3"/>
+            <circle cx="65" cy="65" r="55.5" fill="none" stroke="#B0A996" stroke-width="0.7"/>
+            <defs><path id="rim" d="M65,17 a48,48 0 1,1 -0.1,0"/></defs>
+            <text font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2.4" fill="#9A9384">
+              <textPath href="#rim" startOffset="0">· CAIRN · PROVENANCE · 1996 · NO RARITY </textPath>
+            </text>
+            <g fill="none" stroke="#CCC4B1" stroke-width="0.85">
+              <ellipse cx="65" cy="64" rx="40" ry="37" transform="rotate(-6 65 64)"/>
+              <ellipse cx="66.5" cy="66" rx="31" ry="30" transform="rotate(9 66.5 66)"/>
+              <ellipse cx="64" cy="65" rx="22" ry="23" transform="rotate(-5 64 65)"/>
+              <ellipse cx="65" cy="64" rx="13.5" ry="14" transform="rotate(11 65 64)"/>
+            </g>
+            <polygon points="65,54 73.5,70 56.5,70" fill="none" stroke="#C0402B" stroke-width="1.1"/>
+            <circle cx="65" cy="65.5" r="1.9" fill="#C0402B"/>
+          </svg>
+          <div class="sealcap"><b>cairn</b><br>crn-021-4a7f</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft">
+      <div>plate I obverse · reverse on file · examined under raking light · 2026·06·11</div>
+      <div class="r">independent record · not affiliated with,<br>sponsored by, or endorsed by Nintendo or The Pokémon Company</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

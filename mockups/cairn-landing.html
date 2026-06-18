@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cairn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* light — stark white */
+    --paper:#FFFFFF; --paper2:#F3F2EE; --mount:#ECEAE3; --ink:#16140E; --ink2:#3B382F;
+    --dim:#85827A; --faint:#B4B1A7; --rule:rgba(20,18,14,.15); --rule2:rgba(20,18,14,.065);
+    --signal:#B0381C; --amber:#9A6212; --agent:#2C5B8C; --agent-bg:rgba(44,91,140,.055);
+    --bench:#141310; --bone:#DBD5C8; --bdim:#8B8579; --coolrule:rgba(219,213,200,.12);
+    --navbg:rgba(255,255,255,.85);
+    --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --serif:"Spectral",Georgia,serif;
+  }
+  html[data-theme="dark"]{
+    /* dark — the bench */
+    --paper:#0E0D11; --paper2:#17161C; --mount:#23222A; --ink:#ECEAE3; --ink2:#C7C4B9;
+    --dim:#8C897F; --faint:#56534A; --rule:rgba(236,234,227,.15); --rule2:rgba(236,234,227,.07);
+    --signal:#D2654A; --amber:#C98A2E; --agent:#7BA7D6; --agent-bg:rgba(123,167,214,.09);
+    --bench:#1B1A21; --bone:#DBD5C8; --bdim:#8B8579; --coolrule:rgba(219,213,200,.12);
+    --navbg:rgba(14,13,17,.82);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink2);font-family:var(--sans);
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+  a{color:inherit}
+  .ek{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:var(--navbg);backdrop-filter:blur(8px);
+    border-bottom:0.5px solid var(--rule2)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .mark{display:flex;align-items:center;gap:11px}
+  .mark .wm{font-family:var(--serif);font-size:23px;color:var(--ink);letter-spacing:.2px}
+  .mark .wm .pq{color:var(--faint)}
+  .wm .ai{color:var(--agent)}
+  .navr{display:flex;align-items:center;gap:24px;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em}
+  .navr a{text-decoration:none}
+  .navr .go{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
+  .mark svg,svg.cairn,.fm svg{stroke:var(--ink)}
+  .mark svg ellipse,.mark svg path,svg.cairn ellipse,svg.cairn path,.fm svg ellipse,.fm svg path{fill:var(--paper)}
+  .mark svg line,svg.cairn line{stroke:var(--faint)}
+  .themebtn{background:transparent;border:0.5px solid var(--rule);border-radius:5px;width:30px;height:26px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2);padding:0}
+  .themebtn .ti{width:14px;height:14px;display:block}
+  .themebtn .sun{display:none}
+  html[data-theme="dark"] .themebtn .moon{display:none}
+  html[data-theme="dark"] .themebtn .sun{display:block}
+
+  /* hero */
+  .hero{padding:118px 0 96px}
+  .hero .cairn{margin-bottom:30px}
+  .hero .ek{margin-bottom:22px}
+  h1{font-weight:600;font-size:67px;line-height:1.02;letter-spacing:-.025em;color:var(--ink);margin:0;max-width:14ch}
+  h1 .q{color:var(--dim)}
+  .lede{font-size:19px;line-height:1.55;color:var(--ink2);max-width:60ch;margin:30px 0 0}
+  .cta{display:flex;align-items:center;gap:22px;margin-top:38px}
+  .btn{font-family:var(--sans);font-weight:500;font-size:15px;background:var(--ink);color:var(--paper);
+    border:0;border-radius:2px;padding:14px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn-ghost{font-family:var(--mono);font-size:13px;color:var(--dim);text-decoration:none;letter-spacing:.04em}
+  .btn-ghost:hover{color:var(--ink)}
+
+  hr{border:0;border-top:0.5px solid var(--rule);margin:0}
+  section{padding:86px 0}
+
+  /* problem */
+  .problem .big{font-family:var(--serif);font-size:33px;line-height:1.32;color:var(--ink);max-width:24ch;margin:18px 0 0;font-weight:400}
+  .problem .big i{font-style:italic;color:var(--dim)}
+  .pbody{font-size:17px;line-height:1.6;color:var(--ink2);max-width:58ch;margin:22px 0 0}
+  .field{margin-top:28px;max-width:56ch;border-top:0.5px solid var(--rule)}
+  .field .fk{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);padding:13px 0 4px}
+  .frow{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:baseline;padding:8px 0;border-bottom:0.5px solid var(--rule2);font-size:14.5px}
+  .frow .fl{color:var(--ink2)}
+  .frow .fv{font-family:var(--mono);font-size:13px;color:var(--ink)}
+  .frow.zero .fl{color:var(--ink)}
+  .field .note{font-family:var(--mono);font-size:10px;color:var(--faint);padding-top:11px;letter-spacing:.02em;line-height:1.5}
+
+  /* steps */
+  .steps{margin-top:34px;border-top:0.5px solid var(--rule)}
+  .step{display:grid;grid-template-columns:64px 200px 1fr;gap:24px;align-items:baseline;
+    padding:24px 0;border-bottom:0.5px solid var(--rule2)}
+  .step .no{font-family:var(--mono);font-size:13px;color:var(--faint)}
+  .step h3{font-size:21px;font-weight:600;color:var(--ink);margin:0;letter-spacing:-.01em}
+  .step p{margin:0;font-size:15.5px;color:var(--ink2);line-height:1.5}
+  .step p .en{color:var(--dim)}
+
+  /* artifact / specimen */
+  .show{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-top:38px}
+  .spec{background:var(--paper2);border:0.5px solid var(--rule);padding:18px}
+  .spec .reg{position:relative}
+  .mount{position:relative;background:var(--mount);border:0.75px solid #6E6A60;padding:6px}
+  .mount img{width:100%;display:block;aspect-ratio:63/88;object-fit:cover}
+  .mount .tk{position:absolute;width:8px;height:8px;color:#6E6A60}
+  .mount .tk::before,.mount .tk::after{content:"";position:absolute;background:currentColor}
+  .mount .tk::before{left:3.5px;top:0;width:.75px;height:8px}.mount .tk::after{top:3.5px;left:0;height:.75px;width:8px}
+  .mount .tk.a{top:-1px;left:-1px}.mount .tk.b{top:-1px;right:-1px}.mount .tk.c{bottom:-1px;left:-1px}.mount .tk.d{bottom:-1px;right:-1px}
+  .spec .sn{font-weight:600;font-size:18px;color:var(--ink);margin:13px 0 1px;letter-spacing:-.01em}
+  .spec .ss{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.02em}
+  .spec .sp{font-weight:600;font-size:19px;color:var(--ink);margin:10px 0 0}
+  .spec .sr{font-size:12.5px;color:var(--ink2);line-height:1.42;margin:8px 0 0}
+  .spec .flag{display:flex;gap:7px;font-size:11px;color:#6E4A11;background:rgba(178,106,25,.09);
+    border-left:2px solid var(--amber);padding:6px 9px;margin:11px 0 0;line-height:1.4}
+  .spec .flag .fi{color:var(--amber);font-size:8px;line-height:1.7}
+  html[data-theme="dark"] .spec .flag{color:#D9A24E;background:rgba(201,138,46,.12)}
+  .show .cap .ek{margin-bottom:14px}
+  .show .cap h2{font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin:0 0 14px;line-height:1.1}
+  .show .cap p{font-size:16px;color:var(--ink2);max-width:46ch;margin:0 0 10px}
+  .show .cap .pt{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:16px;letter-spacing:.02em}
+
+  h2.lead{font-size:34px;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin:14px 0 0;max-width:20ch;line-height:1.08}
+  .lead2{font-size:18px;line-height:1.6;color:var(--ink2);max-width:62ch;margin:20px 0 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;border-top:0.5px solid var(--rule);padding-top:28px}
+  .two h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0 0 9px}
+  .two p{font-size:15px;color:var(--ink2);line-height:1.55;margin:0;max-width:44ch}
+  .two .en{color:var(--dim)}
+
+  /* why an agent — the agent-blue gets the stage here */
+  .dive{margin-top:30px;background:var(--agent-bg);border:0.5px solid var(--rule2);border-left:2px solid var(--agent);
+    border-radius:0 3px 3px 0;padding:17px 22px;max-width:58ch}
+  .dive .dk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--agent);margin-bottom:11px}
+  .dive ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:1.5}
+  .dive li{display:flex;gap:11px;padding:3px 0;color:var(--ink2)}
+  .dive li .c{color:var(--agent);font-size:12px;flex:none}
+  .dive li b{font-weight:600;color:var(--ink)}
+  .dive .dist{margin-top:13px;padding-top:12px;border-top:0.5px solid var(--rule2);font-size:14px;color:var(--ink2)}
+  .dive .dist b{color:var(--ink);font-weight:600}
+  .scalar{font-size:17px;line-height:1.6;color:var(--ink2);max-width:60ch;margin:30px 0 0}
+  .scalar i{color:var(--dim)}
+
+  /* honest */
+  .honest p.body{font-size:17px;line-height:1.6;color:var(--ink2);max-width:60ch;margin:22px 0 0}
+  .trich{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px;border-top:0.5px solid var(--rule);padding-top:26px}
+  .trich h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0 0 8px}
+  .trich p{font-size:14px;color:var(--ink2);line-height:1.5;margin:0}
+  .verdict{font-family:var(--serif);font-size:30px;color:var(--ink);margin:46px 0 0;font-weight:500}
+  .verdict .o{color:var(--signal)}
+  .verdict .ag{color:var(--agent)}
+
+  /* start */
+  .start{text-align:center;padding:100px 0 90px}
+  .start h2{font-size:42px;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin:0 auto;max-width:18ch;line-height:1.08}
+  .start p{font-size:16px;color:var(--dim);margin:18px auto 0;max-width:48ch}
+  .start .cta{justify-content:center;margin-top:34px}
+
+  footer{border-top:0.5px solid var(--rule);padding:30px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+  footer .disc{font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.6;max-width:430px}
+  footer .fm{display:flex;align-items:center;gap:9px}
+  footer .fm .wm{font-family:var(--serif);font-size:17px;color:var(--ink)}
+  footer .fm .wm .pq{color:var(--faint)}
+
+  @media(max-width:760px){
+    .wrap{padding:0 24px}
+    h1{font-size:46px}
+    .show{grid-template-columns:1fr;gap:30px}
+    .step{grid-template-columns:40px 1fr;gap:14px}
+    .step p{grid-column:1/-1}
+    .trich{grid-template-columns:1fr;gap:20px}
+    .two{grid-template-columns:1fr;gap:22px}
+  }
+</style>
+<script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+<!-- Cairn landing — served at /mockups/cairn-landing.html -->
+<nav>
+  <div class="wrap">
+    <span class="mark">
+      <svg width="30" height="38" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2" aria-hidden="true">
+        <line x1="26" y1="130" x2="84" y2="130" stroke="#A9A28D" stroke-width="1.4"/>
+        <ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/>
+        <ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/>
+        <ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/>
+        <ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/>
+        <path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/>
+      </svg>
+      <span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span>
+    </span>
+    <span class="navr">
+      <a href="#how">how it works</a>
+      <a href="#see">what you see</a>
+      <a href="cairn-protocol.html">protocol</a>
+      <a href="#start" class="go">start a hunt</a>
+      <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="cairn" width="78" height="98" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="1.7" aria-hidden="true">
+      <line x1="24" y1="131" x2="86" y2="131" stroke="#A9A28D" stroke-width="1.1"/>
+      <ellipse cx="55" cy="118" rx="34" ry="13" fill="#EAE3D4"/>
+      <ellipse cx="56" cy="95.5" rx="28" ry="11.2" fill="#EAE3D4" transform="rotate(-3 56 95.5)"/>
+      <ellipse cx="54" cy="76" rx="22" ry="9.8" fill="#EAE3D4" transform="rotate(4 54 76)"/>
+      <ellipse cx="55.5" cy="58.5" rx="16.4" ry="8.4" fill="#EAE3D4" transform="rotate(-3 55.5 58.5)"/>
+      <path d="M45.5 45 Q55 32 64.5 45 Q61 50.5 55 51 Q49 50.5 45.5 45 Z" fill="#EAE3D4"/>
+    </svg>
+    <div class="ek">Agentic trade for things that have to be real</div>
+    <h1>Your agent hunts.<br>The protocol holds.<br><span class="you">You decide.</span></h1>
+    <p class="lede">Cairn is where your agent buys, sells, and trades collectibles for you — and the protocol keeps every deal accountable. Starting with vintage Pokémon. It finds the card or the swap, reads the evidence, and locks the money, the terms, and the other side's accountability before anything moves. You just see the deal and make the call.</p>
+    <div class="cta">
+      <a href="#start" class="btn">Start a hunt</a>
+      <a href="#how" class="btn-ghost">see how it works ↓</a>
+    </div>
+  </div>
+</header>
+
+<hr>
+<section class="problem">
+  <div class="wrap">
+    <div class="ek">The problem</div>
+    <p class="big">Trust isn't free. And the price is all over the place.</p>
+    <p class="pbody">Buy a pricey card from a stranger, and you're really paying someone to vouch that it's real — a marketplace, an auction house, a grader. Here's what that runs on one $6,000 card:</p>
+    <div class="field">
+      <div class="fk">the cost of trusting one $6,000 card</div>
+      <div class="frow"><span class="fl">eBay</span><span class="fv">~13%</span></div>
+      <div class="frow"><span class="fl">TCGplayer</span><span class="fv">~4% here · ~13% on a common card</span></div>
+      <div class="frow"><span class="fl">an auction house</span><span class="fv">~20%</span></div>
+      <div class="frow"><span class="fl">PSA / CGC grading</span><span class="fv">~$100–150, plus weeks, plus mailing your card off</span></div>
+      <div class="frow zero"><span class="fl">a seller you already trust</span><span class="fv">nothing</span></div>
+      <div class="note">U.S. rates, early 2026 — and that's just the money.</div>
+    </div>
+    <p class="pbody">Same card, wildly different cost. The cheapest option is the one nobody sells you — a seller you already trust. And no one adds it up for you, so you either overpay to feel safe, or skip a check you actually needed.</p>
+  </div>
+</section>
+
+<hr>
+<section class="why">
+  <div class="wrap">
+    <div class="ek">Why an agent</div>
+    <h2 class="lead">The agent does the part you'd hate.</h2>
+    <p class="lead2">Safety is clerical. Vetting a $6,000 trade with a stranger means cross-referencing them across their shop, their receipts, their eBay history; re-pulling comps; holding six dimensions of trust at once. Exhausting for you. Nothing for an agent.</p>
+    <div class="dive">
+      <div class="dk">your agent, on this seller</div>
+      <ul>
+        <li><span class="c">✓</span>controls <b>kantocards.jp</b> — shop domain signed</li>
+        <li><span class="c">✓</span>40 receipts on Cairn, none disputed</li>
+        <li><span class="c">✓</span>6 years on eBay · 1,400 feedback at 99.6%</li>
+        <li><span class="c">✓</span>Google Business listing matches the shop</li>
+        <li><span class="c">✓</span>3 prior Cairn trades, all settled clean</li>
+      </ul>
+      <div class="dist">→ one line for you: <b>"known shop, strong history."</b></div>
+    </div>
+    <p class="scalar">Here's the trap: faced with all of that, you'd want one number — <i>just tell me it's safe.</i> That number would be a lie; it hides every dimension it averaged. So the agent holds the vector and hands you only what would change your mind.</p>
+    <p class="verdict">You want a number.<br>Your agent keeps the <span class="ag">vector</span>.</p>
+  </div>
+</section>
+
+<hr>
+<section id="how">
+  <div class="wrap">
+    <div class="ek">How it works</div>
+    <div class="steps">
+      <div class="step">
+        <span class="no">01</span><h3>Hunt</h3>
+        <p>Tell your agent the card, the condition, and your budget. It finds candidates, reads the seller's evidence, and ranks what it can and can't yet vouch for. <span class="en">Out-of-scope and overpriced offers never reach you.</span></p>
+      </div>
+      <div class="step">
+        <span class="no">02</span><h3>Lock</h3>
+        <p>Before the card moves, the protocol holds the money in escrow, locks the terms, binds the seller's bond, and anchors every photo and claim. <span class="en">Nothing depends on the seller keeping their word — only on the record.</span></p>
+      </div>
+      <div class="step">
+        <span class="no">03</span><h3>See</h3>
+        <p>You get one card and one honest read: what it is, who's selling, what it's worth, and the one thing still unproven. <span class="en">You're only interrupted when something spends money or needs your eyes.</span></p>
+      </div>
+      <div class="step">
+        <span class="no">04</span><h3>Settle</h3>
+        <p>Accept on arrival and the funds release. If something's wrong, open a claim that's already on the record, with the evidence to compare. <span class="en">A bad trade becomes answerable, not a shrug.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+<section id="see">
+  <div class="wrap">
+    <div class="show">
+      <div class="spec">
+        <div class="reg">
+          <div class="mount"><span class="tk a"></span><span class="tk b"></span><span class="tk c"></span><span class="tk d"></span><img src="assets/charizard-jp-base-obv.jpg" alt="No Rarity Charizard"></div>
+        </div>
+        <div class="sn">No Rarity Charizard</div>
+        <div class="ss">Base · Japanese 1996 · Kanto Cards, Osaka</div>
+        <div class="sp">$6,400 <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400">· fair for the grade</span></div>
+        <div class="sr">Right row, from a shop I know. I'd get one fresh holo shot before your money moves — the rest looks ready.</div>
+        <div class="flag"><span class="fi">▲</span><span>Surface unconfirmed — I'm reading a low-res photo.</span></div>
+      </div>
+      <div class="cap">
+        <div class="ek">What you see</div>
+        <h2>One card. One honest read.</h2>
+        <p>No dashboards, no jargon. The card, the price against the market, the seller, and your agent's recommendation — in a glance.</p>
+        <p>And the part most marketplaces hide: the one thing still unproven, named in plain language, before you spend a dollar.</p>
+        <p class="pt">The full record — proof, hashes, trust vector — is one gesture away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+<section class="beyond">
+  <div class="wrap">
+    <div class="ek">Beyond one trade</div>
+    <h2 class="lead">The record outlives the trade.</h2>
+    <p class="lead2">A cairn is built one stone at a time. Every trade leaves a permanent record — the images, the evidence, the provenance, the custody — and it doesn't vanish when the deal closes. It accretes.</p>
+    <div class="two">
+      <div><h4>Yours</h4><p>The record attaches to your wallet, not to Cairn. Your collection becomes a verifiable history you own and carry. <span class="en">Vintage cards today — anything that has to be real next.</span></p></div>
+      <div><h4>Open</h4><p>Cairn is a protocol, not a walled garden. Evidence can come from anywhere, and the record is free to read — like any open API. <span class="en">Bring your history in; take your data out. Nothing is locked in.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<hr>
+<section class="market">
+  <div class="wrap">
+    <div class="ek">A market for judgment</div>
+    <h2 class="lead">Cairn doesn't judge. It hosts the judges.</h2>
+    <p class="lead2">Is the card authentic? Is the grade right? Who's at fault? A protocol can't answer those — so Cairn doesn't pretend to. It opens a market of ways to establish trust — human and machine — competing on price, turnaround, and a calibration record you can see: a shop in hand, an AI grade, an LLM ruling, a specialist, or simply the seller you already trust. Your agent maps them to your cost for this trade; you approve.</p>
+    <div class="two">
+      <div><h4>Verifiers</h4><p>Inspect, authenticate, grade — before your money moves, by a shop in hand or an AI in seconds. <span class="en">A shop in Osaka can vouch for a card for a buyer in Ohio — the one gap no protocol crosses.</span></p></div>
+      <div><h4>Arbiters</h4><p>Rule on a dispute from the record. <span class="en">A free LLM baseline runs on every trade; a human expert is one tier up, when the value justifies it.</span></p></div>
+    </div>
+    <p class="lead2" style="margin-top:26px">For shops and specialists, it's a new income stream — paid for expertise, not just inventory. Every call is on the record, and a wrong one costs their standing.</p>
+  </div>
+</section>
+
+<hr>
+<section class="honest">
+  <div class="wrap">
+    <div class="ek">The honest part</div>
+    <h2 class="lead">It won't promise a card is genuine. Nothing online honestly can.</h2>
+    <p class="body">What Cairn can do is make every trade recorded, gated, and accountable — so a bad one is visible and answerable instead of a surprise. Every fact on the surface wears its status, so you always know exactly where you stand.</p>
+    <div class="trich">
+      <div><h4>Enforced</h4><p>The contract holds it: the escrow, the bond, the terms, the state of the trade. Mechanical, not optional.</p></div>
+      <div><h4>Legible</h4><p>Signed and on the record: photos, shop proof, the route. Real evidence — still to be judged.</p></div>
+      <div><h4>Judged</h4><p>Left to people: is the card authentic, is the condition right. Your call, and the arrival's.</p></div>
+    </div>
+    <p class="verdict">Accountable<span class="o">,</span> not impossible.</p>
+  </div>
+</section>
+
+<hr>
+<section class="start" id="start">
+  <div class="wrap">
+    <h2>Tell your agent what you're hunting.</h2>
+    <p>Cairn is in alpha, scoped to vintage Pokémon singles — the set that started it.</p>
+    <div class="cta">
+      <a href="#" class="btn">Start a hunt</a>
+      <a href="cairn-protocol.html" class="btn-ghost">read the protocol →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="fm">
+      <svg width="22" height="28" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2.4" aria-hidden="true">
+        <ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/>
+        <ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/>
+        <ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/>
+        <ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/>
+        <path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/>
+      </svg>
+      <span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span>
+    </span>
+    <div class="disc">Independent, open protocol. Cairn records evidence, holds funds, and locks terms; it does not verify authenticity or condition. Not affiliated with, sponsored by, or endorsed by Nintendo or The Pokémon Company.</div>
+  </div>
+</footer>
+
+<script>function toggleTheme(){var h=document.documentElement,dark=h.getAttribute('data-theme')==='dark',n=dark?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cairn-theme',n)}catch(e){}}</script>
+</body>
+</html>
