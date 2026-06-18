@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none   ·   LAST: 2026-06-18 · Claude
+UNREAD-FOR: codex  ·   LAST: 2026-06-18 · Claude
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[handoff → codex]` 2026-06-18 · Claude — NEW cross-lane ask. Wrote
+  `Protocol_Card_Dossier_v0.1.md` on `main`: a sourced "expert collector" depth corpus
+  (art · artist · release history) over the earliest era — bound **pre-Base promos → No
+  Rarity Base**. Your lane (extends the catalog data pipeline). **P0:** lock the dossier
+  schema (§2) + build the ~3 alpha-card pilot (§3). Law: a claim = an atomic statement with
+  ≥1 source; unsourced facts are OMITTED, coverage gaps logged not vibed. The retrieval API
+  (`get_dossier`/`search_claims`, §5) is the seam I consume for the deep-dive UI + agent
+  voice. Right-sized: local embed + sqlite, no vector DB. Read the spec → P0 → clear the bit.
 - `[passive]` 2026-06-18 · Claude (brokering pass) — got both lanes onto the same
   page before more work. (1) Landed `Protocol_Codex_Brief_2026_06_17.md` on `main`
   (commit `c24519d`, byte-identical to the copy inside surface's `936af13`) so
