@@ -24,6 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
         "display": "Illus. Toshinao Aoki",
         "name": "Toshinao Aoki",
         "not_claiming": [
@@ -32,7 +34,11 @@
           "condition",
           "Japanese print authority"
         ],
-        "source": "pokecardex"
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
       },
       "image_provenance": {
         "allowed_use": [
@@ -64,7 +70,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "promo_family_source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "promo_family_source_sort": 14,
@@ -205,7 +211,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; Mew is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "014",
@@ -220,7 +226,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "source_gap_count": 0,
         "source_local_id": "014",
         "source_provider_row": {
@@ -269,7 +275,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "014",
           "not_claiming": [
@@ -332,7 +338,7 @@
         },
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "39948ca21ce6772f407ea56b18e5231db61ac9a7f968bb1b116f3a3748413a56",
+          "encrypted_page_sha256": "d1b1056d488cebd5a343f61774006c810a83f9ae07e88cda54160a5d166751b3",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -350,7 +356,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "promo_family_source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
@@ -454,7 +460,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "promo_family_source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/015",
         "promo_family_source_sort": 15,
@@ -588,7 +594,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; Mew is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "015",
@@ -603,7 +609,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
         "source_gap_count": 0,
         "source_local_id": "015",
         "source_provider_row": {
@@ -637,7 +643,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "015",
           "not_claiming": [
@@ -717,7 +723,7 @@
             "complete event source",
             "unmodeled expected card row"
           ],
-          "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "promo_family_source_catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/015",
           "provider_image_path": "UPC/15.jpg",
@@ -804,7 +810,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 2,
-      "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+      "catalog_hash": "6b9127126e1ff475847d8410e0233c030cc405cc1d6a0375c2a776f15cfb9e1c",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Surfing Pikachu (JR Train Rally 1997)",

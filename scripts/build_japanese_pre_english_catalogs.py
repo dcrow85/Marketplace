@@ -159,6 +159,16 @@ POKUMON_BASE = "https://pokumon.com"
 POKECARDEX_DATA_KEY = b"oe61R0RgVTJm9omokoKuRem2N2GUbUZ8"
 USER_AGENT = "MarketplaceCatalogBuilder/0.1 (+https://github.com/dcrow85/Marketplace)"
 
+BULBAPEDIA_ILLUSTRATOR_SETLISTS: dict[str, tuple[str, str]] = {
+    "jp_tcg_jungle_19970305": ("Jungle_(TCG)", "Pokémon Jungle"),
+    "jp_tcg_mystery_of_the_fossils_19970621": ("Fossil_(TCG)", "Mystery of the Fossils"),
+    "jp_tcg_rocket_gang_19971121": ("Team_Rocket_(TCG)", "Rocket Gang"),
+    "jp_tcg_expansion_sheet_1_blue_19980323": ("Vending_Machine_cards_(TCG)", "Series 1 (Blue)"),
+    "jp_tcg_expansion_sheet_2_red_19980617": ("Vending_Machine_cards_(TCG)", "Series 2 (Red)"),
+    "jp_tcg_expansion_sheet_3_green_19981124": ("Vending_Machine_cards_(TCG)", "Series 3 (Green)"),
+    "jp_tcg_leaders_stadium_19981024": ("Gym_Heroes_(TCG)", "Leaders' Stadium"),
+}
+
 UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
     1: {"promo_family_id": "jp_promo_corocoro_first_19961015", "date_label": "1996-10-15", "date_source": "source_comment"},
     4: {"promo_family_id": "jp_promo_how_to_play_book_19961130", "date_label": "1996-11-30", "date_source": "source_comment"},
@@ -2115,6 +2125,186 @@ def fetch_json(url: str) -> Any:
     return json.loads(fetch_text(url))
 
 
+def bulbapedia_api_wikitext(page_title: str) -> dict[str, str]:
+    params = urllib.parse.urlencode({
+        "action": "parse",
+        "format": "json",
+        "page": page_title,
+        "prop": "wikitext",
+    })
+    url = f"{BULBAPEDIA_BASE}/w/api.php?{params}"
+    data = fetch_json(url)
+    parsed = data.get("parse", {})
+    title = parsed.get("title", page_title)
+    return {
+        "api_url": url,
+        "page_title": title,
+        "page_url": f"{BULBAPEDIA_BASE}/wiki/{urllib.parse.quote(title.replace(' ', '_'), safe='()_:%')}",
+        "wikitext": parsed.get("wikitext", {}).get("*", ""),
+    }
+
+
+def bulbapedia_query_wikitext_pages(page_titles: list[str]) -> dict[str, dict[str, str]]:
+    out: dict[str, dict[str, str]] = {}
+    for index in range(0, len(page_titles), 20):
+        batch = page_titles[index:index + 20]
+        params = urllib.parse.urlencode({
+            "action": "query",
+            "format": "json",
+            "formatversion": "2",
+            "inprop": "url",
+            "prop": "info|revisions",
+            "redirects": "1",
+            "rvprop": "content",
+            "rvslots": "main",
+            "titles": "|".join(batch),
+        })
+        data = fetch_json(f"{BULBAPEDIA_BASE}/w/api.php?{params}")
+        normalized = {
+            item.get("from", ""): item.get("to", "")
+            for item in data.get("query", {}).get("normalized", [])
+        }
+        redirects = {
+            item.get("from", ""): item.get("to", "")
+            for item in data.get("query", {}).get("redirects", [])
+        }
+        pages = {
+            page.get("title", ""): page
+            for page in data.get("query", {}).get("pages", [])
+        }
+        for requested in batch:
+            key = normalized.get(requested, requested)
+            key = redirects.get(key, key)
+            page = pages.get(key, {})
+            content = (
+                page.get("revisions", [{}])[0]
+                .get("slots", {})
+                .get("main", {})
+                .get("content", "")
+            )
+            resolved_title = page.get("title", key)
+            out[requested] = {
+                "requested_page_title": requested,
+                "resolved_page_title": resolved_title,
+                "page_url": page.get(
+                    "fullurl",
+                    f"{BULBAPEDIA_BASE}/wiki/{urllib.parse.quote(resolved_title.replace(' ', '_'), safe='()_:%')}",
+                ),
+                "wikitext": content,
+                "missing": bool(page.get("missing")),
+            }
+        time.sleep(0.05)
+    return out
+
+
+def setlist_block_for_title(wikitext: str, table_title: str) -> str:
+    marker = f"{{{{Setlist/nmheader|title={table_title}"
+    start = wikitext.find(marker)
+    if start < 0:
+        raise ValueError(f"missing Bulbapedia setlist title {table_title}")
+    end = wikitext.find("{{Setlist/nmfooter", start)
+    if end < 0:
+        raise ValueError(f"missing Bulbapedia setlist footer {table_title}")
+    return wikitext[start:end]
+
+
+def bulbapedia_tcg_id_page_title(params: list[str]) -> str:
+    if len(params) < 3:
+        return ""
+    prefix, name, suffix = params[0], params[1], params[2]
+    if prefix == "Pokémon":
+        context = f"Pokémon {suffix}"
+    elif prefix == "Mystery of the":
+        context = f"Mystery of the {suffix}"
+    elif prefix == "Rocket":
+        context = f"Rocket {suffix}"
+    elif prefix == "Leaders'":
+        context = f"Leaders' {suffix}"
+    elif prefix in {"Leaders' Stadium", "Vending S3"}:
+        context = f"{prefix} {suffix}" if suffix else prefix
+    elif prefix == "Vending":
+        context = f"Vending {suffix}"
+    else:
+        context = f"{prefix} {suffix}" if suffix else prefix
+    return f"{name} ({context})"
+
+
+def bulbapedia_setlist_card_titles(page_title: str, table_title: str) -> tuple[list[str], dict[str, str]]:
+    set_page = bulbapedia_api_wikitext(page_title)
+    block = setlist_block_for_title(set_page["wikitext"], table_title)
+    titles: list[str] = []
+    for line in block.splitlines():
+        match = re.search(r"\{\{TCG ID\|([^{}]+)\}\}", line)
+        if not match:
+            continue
+        card_title = bulbapedia_tcg_id_page_title(match.group(1).split("|"))
+        if card_title:
+            titles.append(card_title)
+    source = {
+        "source": "Bulbapedia",
+        "source_page_title": set_page["page_title"],
+        "source_page_url": set_page["page_url"],
+        "source_page_wikitext_sha256": sha256_text(set_page["wikitext"]),
+        "setlist_title": table_title,
+        "cards_found": len(titles),
+        "not_claiming": ["official source", "seller possession", "authenticity", "condition"],
+    }
+    return titles, source
+
+
+def extract_bulbapedia_illustrator_credit(wikitext: str) -> tuple[str, str]:
+    match = re.search(r"^\|caption\s*=\s*(.+)$", wikitext, re.M)
+    caption = match.group(1).strip() if match else ""
+    if "Illus." not in caption:
+        return "", caption
+    after = caption.split("Illus.", 1)[1].strip()
+    wikilink = re.search(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]", after)
+    if wikilink:
+        return (wikilink.group(2) or wikilink.group(1)).strip(), caption
+    cleaned = re.sub(r"<[^>]+>|\{\{[^}]+\}\}", "", after)
+    return html.unescape(cleaned).strip(), caption
+
+
+def bulbapedia_illustrator_sources(
+    config: ReleaseConfig,
+    source_rows: list[dict[str, Any]],
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any] | None]:
+    setlist = BULBAPEDIA_ILLUSTRATOR_SETLISTS.get(config.release_family_id)
+    if not setlist:
+        return {}, None
+    card_titles, source = bulbapedia_setlist_card_titles(*setlist)
+    if len(card_titles) != len(source_rows):
+        raise ValueError(
+            f"Bulbapedia illustrator setlist count mismatch for {config.release_family_id}: "
+            f"{len(card_titles)} titles vs {len(source_rows)} source rows"
+        )
+    pages = bulbapedia_query_wikitext_pages(card_titles)
+    credits: dict[str, dict[str, Any]] = {}
+    for source_row, requested_title in zip(source_rows, card_titles):
+        page = pages.get(requested_title, {})
+        illustrator, caption = extract_bulbapedia_illustrator_credit(page.get("wikitext", ""))
+        credit_status = "credited" if illustrator else "not_credited_in_source_page"
+        credits[source_row["local_id"]] = {
+            "caption": caption,
+            "credit_status": credit_status,
+            "illustrator": illustrator,
+            "requested_page_title": requested_title,
+            "resolved_page_title": page.get("resolved_page_title", requested_title),
+            "source": "Bulbapedia card page",
+            "source_page_url": page.get("page_url", ""),
+            "source_page_wikitext_sha256": sha256_text(page.get("wikitext", "")),
+        }
+    credited = sum(1 for item in credits.values() if item.get("credit_status") == "credited")
+    source["card_page_count"] = len(credits)
+    source["credited_illustrator_rows"] = credited
+    source["not_credited_rows"] = len(credits) - credited
+    source["authority"] = (
+        "Bulbapedia card-page caption metadata used only to fill artist-credit texture "
+        "when the primary source provider lacks illustrator data."
+    )
+    return credits, source
+
+
 def decrypt_pokecardex_payload(raw_html: str) -> dict[str, Any]:
     match = re.search(r"window\.__INITIAL_DATA_ENCRYPTED__\s*=\s*(\{.*?\});", raw_html, re.S)
     if not match:
@@ -3235,7 +3425,12 @@ def pokemon_profile_from_tcgdex(card: dict[str, Any] | None) -> dict[str, Any]:
     }
 
 
-def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_row: dict[str, Any] | None) -> dict[str, Any]:
+def row_from_sources(
+    config: ReleaseConfig,
+    source_row: dict[str, Any],
+    tcgdex_row: dict[str, Any] | None,
+    supplemental_illustrator: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     local_id = source_row["local_id"]
     row_id = f"{config.release_family_id}:{local_id}"
     tcgdex_id = tcgdex_row.get("id", "") if tcgdex_row else ""
@@ -3255,7 +3450,33 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         profile["level"] = source_profile.get("level")
         profile["types"] = source_profile.get("types", [])
     illustrator_name = source_profile.get("illustrator") or provider_row.get("illustrator") or ""
-    illustrator_display = f"Illus. {illustrator_name}" if illustrator_name else ""
+    illustrator_credit = supplemental_illustrator or {}
+    illustrator_source = adapter
+    illustrator_status = "credited" if illustrator_name else "not_provided_by_primary_source"
+    illustrator_caption = ""
+    illustrator_source_page_url = ""
+    illustrator_source_page_sha256 = ""
+    illustrator_requested_title = ""
+    illustrator_resolved_title = ""
+    if not illustrator_name and illustrator_credit:
+        illustrator_name = illustrator_credit.get("illustrator", "")
+        illustrator_source = illustrator_credit.get("source", "Bulbapedia card page")
+        illustrator_status = illustrator_credit.get("credit_status", "credited" if illustrator_name else "not_credited_in_source_page")
+        illustrator_caption = illustrator_credit.get("caption", "")
+        illustrator_source_page_url = illustrator_credit.get("source_page_url", "")
+        illustrator_source_page_sha256 = illustrator_credit.get("source_page_wikitext_sha256", "")
+        illustrator_requested_title = illustrator_credit.get("requested_page_title", "")
+        illustrator_resolved_title = illustrator_credit.get("resolved_page_title", "")
+    illustrator_display = (
+        f"Illus. {illustrator_name}"
+        if illustrator_name
+        else ("No illustrator credited on source page" if illustrator_status == "not_credited_in_source_page" else "")
+    )
+    illustrator_authority = (
+        "Bulbapedia card-page caption metadata. Useful for catalog texture, not direct print-name or authenticity proof."
+        if illustrator_source == "Bulbapedia card page"
+        else "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof."
+    )
     symbol_source_release_id = config.symbol_status_source_release_family_id or config.release_family_id
     symbol_source_mode = "inherited_from_parent_release_family" if symbol_source_release_id != config.release_family_id else "direct_release_family"
     promo_context = source_row.get("promo_context", {})
@@ -3293,11 +3514,17 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
         "holo_source": bool(variants.get("holo")),
         "pokemon_profile": profile,
         "illustrator": {
-            "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+            "authority": illustrator_authority,
+            "caption": illustrator_caption,
+            "credit_status": illustrator_status,
             "display": illustrator_display,
             "name": illustrator_name,
             "not_claiming": ["seller possession", "authenticity", "condition", "Japanese print authority"],
-            "source": adapter,
+            "requested_page_title": illustrator_requested_title,
+            "resolved_page_title": illustrator_resolved_title,
+            "source": illustrator_source,
+            "source_page_sha256": illustrator_source_page_sha256,
+            "source_page_url": illustrator_source_page_url,
         },
         "tcgdex": {
             "id": tcgdex_id,
@@ -3361,6 +3588,23 @@ def row_from_sources(config: ReleaseConfig, source_row: dict[str, Any], tcgdex_r
             *(
                 [
                     {
+                        "caption": illustrator_caption,
+                        "credit_status": illustrator_status,
+                        "illustrator": illustrator_name,
+                        "not_claiming": ["seller possession", "authenticity", "condition", "Japanese print authority"],
+                        "requested_page_title": illustrator_requested_title,
+                        "resolved_page_title": illustrator_resolved_title,
+                        "source": "Bulbapedia card page",
+                        "source_page_url": illustrator_source_page_url,
+                        "source_page_wikitext_sha256": illustrator_source_page_sha256,
+                    }
+                ]
+                if illustrator_credit
+                else []
+            ),
+            *(
+                [
+                    {
                         "source": "TCGdex",
                         "card_api_url": f"{TCGDEX_API_BASE}/cards/{tcgdex_id}",
                         "card_payload_hash": sha256_hex(tcgdex_row),
@@ -3399,7 +3643,16 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
     else:
         raise ValueError(f"unknown source_adapter={config.source_adapter}")
     tcgdex_by_local_id, tcgdex_source = tcgdex_cards(config.tcgdex_set_id)
-    rows = [row_from_sources(config, row, tcgdex_by_local_id.get(row["local_id"])) for row in source_rows]
+    illustrator_by_local_id, illustrator_source = bulbapedia_illustrator_sources(config, source_rows)
+    rows = [
+        row_from_sources(
+            config,
+            row,
+            tcgdex_by_local_id.get(row["local_id"]),
+            illustrator_by_local_id.get(row["local_id"]),
+        )
+        for row in source_rows
+    ]
     count_confidence = (
         "source_cross_checked"
         if config.tcgdex_set_id
@@ -3435,7 +3688,11 @@ def build_release(config: ReleaseConfig) -> dict[str, Any]:
             "source_release_family_id": symbol_source_release_id,
             "not_claiming": ["row-level physical truth", "seller possession", "Base No Rarity claim"],
         },
-        "sources": [primary_source, *([tcgdex_source] if tcgdex_source else [])],
+        "sources": [
+            primary_source,
+            *([tcgdex_source] if tcgdex_source else []),
+            *([illustrator_source] if illustrator_source else []),
+        ],
         "cards": rows,
         "not_claiming": [
             "complete pre-English catalog",
@@ -5383,6 +5640,19 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
     tcgdex_rows = [card for card in cards if card.get("tcgdex", {}).get("id")]
     name_ja_rows = [card for card in cards if card.get("name_ja_status") == "source_labeled"]
     promo_context_rows = [card for card in cards if card.get("promo_context", {}).get("promo_family_id")]
+    illustrator_named_rows = [
+        card for card in cards
+        if (card.get("illustrator", {}).get("name") if isinstance(card.get("illustrator"), dict) else card.get("illustrator"))
+    ]
+    illustrator_not_credited_rows = [
+        card for card in cards
+        if isinstance(card.get("illustrator"), dict)
+        and card.get("illustrator", {}).get("credit_status") == "not_credited_in_source_page"
+    ]
+    illustrator_unresolved_rows = [
+        card for card in cards
+        if card not in illustrator_named_rows and card not in illustrator_not_credited_rows
+    ]
     product_context_source = primary_source.get("product_context_source", {})
     family_context_source = primary_source.get("family_context_source", {})
     failures: list[str] = []
@@ -5449,6 +5719,26 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             failures.append("promo_family_child_source_file_missing")
     quick_starter_children: dict[str, dict[str, Any]] = {}
     quick_starter_child_rows: dict[tuple[str, str], dict[str, Any]] = {}
+
+    for card in cards:
+        illustrator = card.get("illustrator", {})
+        illustrator_name = illustrator.get("name", "") if isinstance(illustrator, dict) else str(illustrator or "")
+        credit_status = illustrator.get("credit_status", "") if isinstance(illustrator, dict) else ""
+        if not illustrator_name and credit_status != "not_credited_in_source_page":
+            failures.append(f"{card.get('row_id')}: illustrator_credit_unresolved")
+        if credit_status == "not_credited_in_source_page" and illustrator_name:
+            failures.append(f"{card.get('row_id')}: illustrator_not_credited_has_name")
+        if isinstance(illustrator, dict) and illustrator.get("source") == "Bulbapedia card page":
+            if not illustrator.get("source_page_url") or not illustrator.get("source_page_sha256"):
+                failures.append(f"{card.get('row_id')}: illustrator_bulbapedia_source_missing_hash_or_url")
+            if not any(
+                contact.get("source") == "Bulbapedia card page"
+                and contact.get("source_page_url") == illustrator.get("source_page_url")
+                and contact.get("source_page_wikitext_sha256") == illustrator.get("source_page_sha256")
+                and contact.get("credit_status") == credit_status
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: illustrator_bulbapedia_contact_missing")
     if release_type == "deck_kit_parent_rollup_rows":
         for _, child_id in quick_starter_child_specs():
             child_path = RELEASE_DIR / f"{child_id}.json"
@@ -7153,6 +7443,9 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         "inherited_source_reference_image_rows": len(inherited_source_reference_image_rows),
         "component_inherited_reference_image_rows": len(component_inherited_reference_image_rows),
         "promo_context_rows": len(promo_context_rows),
+        "illustrator_named_rows": len(illustrator_named_rows),
+        "illustrator_not_credited_rows": len(illustrator_not_credited_rows),
+        "illustrator_unresolved_rows": len(illustrator_unresolved_rows),
         "source_labeled_japanese_name_rows": len(name_ja_rows),
         "missing_japanese_name_rows": len(cards) - len(name_ja_rows),
         "tcgdex_enriched_rows": len(tcgdex_rows),
@@ -7233,6 +7526,9 @@ def main() -> int:
                 "source_labeled_japanese_name_rows": audit["source_labeled_japanese_name_rows"],
                 "missing_japanese_name_rows": audit["missing_japanese_name_rows"],
                 "promo_context_rows": audit["promo_context_rows"],
+                "illustrator_named_rows": audit["illustrator_named_rows"],
+                "illustrator_not_credited_rows": audit["illustrator_not_credited_rows"],
+                "illustrator_unresolved_rows": audit["illustrator_unresolved_rows"],
                 "tcgdex_set_id": config.tcgdex_set_id or "",
                 "source_adapter": config.source_adapter,
                 "source_url": source_url,
@@ -7253,6 +7549,9 @@ def main() -> int:
         "provider_path_reference_image_rows": sum(item["provider_path_reference_image_rows"] for item in manifests),
         "inherited_source_reference_image_rows": sum(item["inherited_source_reference_image_rows"] for item in manifests),
         "component_inherited_reference_image_rows": sum(item["component_inherited_reference_image_rows"] for item in manifests),
+        "illustrator_named_rows": sum(item["illustrator_named_rows"] for item in manifests),
+        "illustrator_not_credited_rows": sum(item["illustrator_not_credited_rows"] for item in manifests),
+        "illustrator_unresolved_rows": sum(item["illustrator_unresolved_rows"] for item in manifests),
         "hash_algorithm": "sha256",
         "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
         "source_contact_policy": "Images are bounded external reference witnesses and are not approved display/training/seller evidence by default; provenance status distinguishes exact source images, provider-path-derived reference images, inherited possible-content reference images, and product-component inherited reference images.",
@@ -7283,6 +7582,9 @@ def main() -> int:
         "provider_path_reference_image_rows": sum(row["provider_path_reference_image_rows"] for row in audit_rows),
         "inherited_source_reference_image_rows": sum(row["inherited_source_reference_image_rows"] for row in audit_rows),
         "component_inherited_reference_image_rows": sum(row["component_inherited_reference_image_rows"] for row in audit_rows),
+        "illustrator_named_rows": sum(row["illustrator_named_rows"] for row in audit_rows),
+        "illustrator_not_credited_rows": sum(row["illustrator_not_credited_rows"] for row in audit_rows),
+        "illustrator_unresolved_rows": sum(row["illustrator_unresolved_rows"] for row in audit_rows),
         "tcgdex_enriched_rows": sum(row["tcgdex_enriched_rows"] for row in audit_rows),
         "release_audits": audit_rows,
         "not_claiming": [
