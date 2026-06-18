@@ -80,9 +80,17 @@ FILTER_SYS = (
 
 COMMENT_SYS = (
     "You are a collector's browsing agent. A deterministic filter has ALREADY narrowed the catalog (you did "
-    "not see all 711 rows). Write a brief bit of commentary, in the collector's cost-field terms: what the "
-    "filter cut and why, and flag anything JUDGED (condition is unconfirmed; the value band is a proxy, not a "
-    "price). Explain the filter; never SELL a card. Then pick up to 6 uids to surface first.\n\n"
+    "not see every row). Write a brief bit of commentary, in the collector's cost-field terms: what the "
+    "filter cut and why.\n\n"
+    "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
+    " - 'holo' = the card is holographic.\n"
+    " - 'unowned' / 'in-collection' = whether it is in the collection. This is an OWNERSHIP fact, NOT a "
+    "condition. 'unowned' does NOT mean a missing foil, a defect, or anything physical.\n"
+    " - 'value-tierN' = a market value band (a price PROXY; higher N = pricier). NOT a grade, NOT centering, "
+    "NOT a defect.\n"
+    "Do NOT infer condition, foil presence, surface, centering, or defects from these flags — condition is "
+    "unconfirmed and the value tier is a proxy, not a price. Never SELL a card. Then pick up to 6 uids to "
+    "surface first.\n\n"
     'Return ONLY JSON: {"commentary":"2-4 sentences", "picks":["uid",..], "caveat":"one honest limitation"}'
 )
 
@@ -107,25 +115,51 @@ def apply_filter(cards: list[dict], f: dict) -> list[dict]:
 
 
 def brief(c: dict) -> str:
+    # Self-describing tags: the model used to read cryptic "missing"/"band2" as
+    # physical facts ("foil absent", "spine defect"). Name them for what they are.
     tags = []
     if c["holo"]:
         tags.append("holo")
     if c.get("band_rank"):
-        tags.append(f"band{c['band_rank']}")
-    tags.append("OWNED" if c["owned"] else "missing")
+        tags.append(f"value-tier{c['band_rank']}")
+    tags.append("in-collection" if c["owned"] else "unowned")
     return f"{c['uid']} · {c['num']} {nm(c)} · {SETLABEL.get(c['set_id'],'?')} · {' '.join(tags)}"
 
 
-def browse(call: str, cap: int = 30) -> dict:
+def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
+    """Survivors arrive in catalog (set) order, so a naive [:cap] traps the model in
+    the earliest set(s) — it never sees, and so never picks, later sets. Round-robin
+    across sets (set order preserved) so the shown pool spans the whole match set."""
+    if len(cards) <= cap:
+        return cards
+    by_set: dict[str, list[dict]] = {}
+    for c in cards:
+        by_set.setdefault(c["set_id"], []).append(c)
+    out: list[dict] = []
+    while len(out) < cap:
+        progressed = False
+        for bucket in by_set.values():
+            if bucket:
+                out.append(bucket.pop(0))
+                progressed = True
+                if len(out) >= cap:
+                    break
+        if not progressed:
+            break
+    return out
+
+
+def browse(call: str, cap: int = 42) -> dict:
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
     f = call_model(MODEL, FILTER_SYS, fuser, ENDPOINT, 180)
     survivors = apply_filter(DATA["cards"], f)
-    pool = survivors[:cap]
+    pool = diverse_pool(survivors, cap)
+    n_sets = len({c["set_id"] for c in survivors})
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','owned','exclude_grails','set','character','category')})}\n"
-        f"It cut the {len(DATA['cards'])}-row catalog to {len(survivors)} candidates"
-        + (f" (showing the first {cap})" if len(survivors) > cap else "")
+        f"It cut the {len(DATA['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
+        + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c) for c in pool) + "\n\nWrite the commentary JSON."
     )
     c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}

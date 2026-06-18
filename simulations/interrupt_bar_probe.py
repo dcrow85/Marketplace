@@ -95,11 +95,16 @@ def call_model(model: str, system: str, user: str, endpoint: str, timeout: int =
         "temperature": 0,
         "max_tokens": 800,
         "stream": False,
+        # Qwen3.6 is a thinking model; qualification ran thinking-disabled. Without
+        # this the model can spend the whole token budget reasoning and return a
+        # message with NO content field at all (KeyError downstream).
+        "chat_template_kwargs": {"enable_thinking": False},
     }).encode()
     req = urllib.request.Request(endpoint, data=body, headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         resp = json.loads(r.read())
-    content = resp["choices"][0]["message"]["content"]
+    msg = resp["choices"][0]["message"]
+    content = msg.get("content") or msg.get("reasoning_content") or ""
     try:
         return json.loads(content)
     except Exception:
