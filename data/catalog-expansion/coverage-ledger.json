@@ -1,0 +1,228 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "completion_status": {
+    "known_remaining_work": [
+      "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
+      "Add a release-family coverage proof for Japanese promos after the pre-English slice and before/through the US WoC-era endpoint.",
+      "Add a release-family coverage proof for any English miscellaneous/promotional products not exposed by Pokemon TCG API or TCGdex set lists.",
+      "Unify row schema expectations across corpora if downstream agents require a single schema version."
+    ],
+    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. English Jumbo remains active/partially resolved, and Japanese/English promo universe completeness still requires source-by-source boundary proof.",
+    "status": "in_progress"
+  },
+  "generated_at": "2026-06-18T19:51:26Z",
+  "hash_algorithm": "sha256",
+  "ledger_hash": "4827569bb6ddbb6a6fa3009f41f98dd58517eb7d41dfe8cb3afc17a38e7f569a",
+  "modeled_corpora": [
+    {
+      "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
+      "audit_passed": true,
+      "audit_path": "data/japanese-pre-english/audit.json",
+      "boundary": "Japanese TCG launch through pre-English Base / early January 1999 boundary, including curated promo slices.",
+      "corpus_id": "japanese_pre_english",
+      "language_scope": "ja",
+      "manifest_hash": "52734f968efa602e217fcb92f7be21c302222f4df1fc00f59c17a7e6ef601064",
+      "manifest_path": "data/japanese-pre-english/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 40,
+      "row_count": 1264,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 2
+    },
+    {
+      "audit_hash": "61483e5133977613fec89041a1170f304e3449ab125f830084c521b8b6bb1258",
+      "audit_passed": true,
+      "audit_path": "data/english-wotc/audit.json",
+      "boundary": "English WoC-era main/promo sets through Skyridge / 2003-05-12 from Pokemon TCG API v2.",
+      "corpus_id": "english_wotc",
+      "language_scope": "en",
+      "manifest_hash": "c4a1b895a74df0e527f47e1f0632b5573af7ce9b6c024109ec49259d3c55e7d8",
+      "manifest_path": "data/english-wotc/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 18,
+      "row_count": 1789,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 0
+    },
+    {
+      "audit_hash": "2e1064811e28e2cc6b0a4aae506e837f4c931d03d744ed077eed36a101be2309",
+      "audit_passed": true,
+      "audit_path": "data/japanese-classic/audit.json",
+      "boundary": "Japanese classic/WoC-corresponding main sets from Challenge from the Darkness through Mysterious Mountains.",
+      "corpus_id": "japanese_classic",
+      "language_scope": "ja",
+      "manifest_hash": "f383a5d0817d18a975bf7df765e4d1aca06bf9511ea6b69331e254500a628e60",
+      "manifest_path": "data/japanese-classic/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 12,
+      "row_count": 1103,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 1,
+      "special_identification_instruction_rows": 0
+    },
+    {
+      "audit_hash": "5cdaf8788e4b0269cc1965e20841d012eed708ad99bc6d7af2d0e05a7a33a773",
+      "audit_passed": true,
+      "audit_path": "data/japanese-adv-pre-wotc/audit.json",
+      "boundary": "Japanese ADV1/ADV2 releases before the English Skyridge / US WoC-era endpoint.",
+      "corpus_id": "japanese_adv_pre_wotc",
+      "language_scope": "ja",
+      "manifest_hash": "ed711b61489128ca2790dcabd05dabe5f483447073cfc9d70b9cf74d7348ee6d",
+      "manifest_path": "data/japanese-adv-pre-wotc/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 2,
+      "row_count": 108,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 0
+    },
+    {
+      "audit_hash": "8631e6f6f26773d387529b1aa6a5babd02b22e58b5698842680e818f58a732c0",
+      "audit_passed": true,
+      "audit_path": "data/english-supplemental-wotc/audit.json",
+      "boundary": "Bounded English supplemental WoC-era promo rows: W Promotional, Sample Set, and early Jumbo subset.",
+      "corpus_id": "english_supplemental_wotc",
+      "language_scope": "en",
+      "manifest_hash": "ea7336e1cc683a2273eeb1b3230934ae788a46006781d6d01c6de6b7b3016ef0",
+      "manifest_path": "data/english-supplemental-wotc/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 3,
+      "row_count": 25,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 25
+    }
+  ],
+  "modeled_release_count": 75,
+  "modeled_row_count": 4289,
+  "not_claiming": [
+    "goal complete",
+    "complete English/Japanese through-2003 universe",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image rights"
+  ],
+  "row_invariant_summary": {
+    "malformed_special_identification_instructions": 0,
+    "missing_source_contacts": 0,
+    "missing_special_identification_instructions": 0,
+    "passed": true,
+    "row_count": 4289,
+    "sample_failures": {
+      "malformed_special_identification_instructions": [],
+      "missing_source_contacts": [],
+      "missing_special_identification_instructions": []
+    },
+    "schema": "marketplace.catalog_row_invariant_summary.v0.1",
+    "special_identification_instruction_rows": 27
+  },
+  "schema": "marketplace.catalog_coverage_ledger.v0.1",
+  "source_gap_register": {
+    "active_gap_count": 1,
+    "active_gaps": [
+      {
+        "language": "en",
+        "name": "Jumbo cards",
+        "partial_resolution": {
+          "modeled_row_count": 8,
+          "not_claiming": [
+            "complete Jumbo coverage",
+            "complete source-gap resolution",
+            "rows outside the bounded subset",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ],
+          "remaining_source_gap_count": 152,
+          "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only 8 clearly early English WoC-era/edge rows through May 2003; later and unsafe-to-bound Jumbo rows remain unresolved.",
+          "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+          "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
+          "resolved_catalog_hash": "9efb1f7d8cb3f121ea092db91bb9b4b79c82a528a3559f23f08d7b0fa09a75f0",
+          "status": "partially_resolved_by_bounded_subset"
+        },
+        "set_id": "jumbo",
+        "source_gap_count": 160
+      }
+    ],
+    "active_source_gap_rows": 160,
+    "hash": "7e286a4ef8f4fe2b7fb45a0e4ab421e1846e8650e7dda509fdcac121afd1d952",
+    "partial_resolution_count": 1,
+    "partially_modeled_source_gap_rows": 8,
+    "path": "data/catalog-expansion/source-gaps.json",
+    "resolved_gap_count": 4,
+    "resolved_gaps": [
+      {
+        "former_source_gap_count": 7,
+        "language": "en",
+        "name": "W Promotional",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json",
+        "resolved_catalog_hash": "2eefac26d455399ae77c62626ae07cd01fa5d89d4825935c269057e505a644f4",
+        "set_id": "wp"
+      },
+      {
+        "former_source_gap_count": 10,
+        "language": "en",
+        "name": "Sample",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json",
+        "resolved_catalog_hash": "0e51640e1145fd4fbe155561f0a146946f6c43120714ea3eb9e0be84186db4d9",
+        "set_id": "sp"
+      },
+      {
+        "former_source_gap_count": 55,
+        "language": "ja",
+        "name": "拡張パック",
+        "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json",
+        "resolved_catalog_hash": "4f5140781f4d584447061f5674bc258a5f8c6727e4f822a38a24a6f2bab5a67a",
+        "set_id": "ADV1"
+      },
+      {
+        "former_source_gap_count": 53,
+        "language": "ja",
+        "name": "砂漠のきせき",
+        "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json",
+        "resolved_catalog_hash": "c4747b5dda6c31c145bb88072b3f4a3bfef390c4fa47b2404ddafa3c5e729a69",
+        "set_id": "ADV2"
+      }
+    ],
+    "resolved_source_gap_rows": 125
+  }
+}
