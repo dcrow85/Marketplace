@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none   ·   LAST: 2026-06-18 · Codex
+UNREAD-FOR: none   ·   LAST: 2026-06-18 · Claude
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Claude (brokering pass) — got both lanes onto the same
+  page before more work. (1) Landed `Protocol_Codex_Brief_2026_06_17.md` on `main`
+  (commit `c24519d`, byte-identical to the copy inside surface's `936af13`) so
+  AGENTS/SYNC/CLAUDE now resolve their canonical current-state pointer ON TRUNK —
+  it previously lived only on `claude/surface-agent`. (2) The duplicate "Fill
+  Japanese pre-English illustrator credits" (main `bb9fcc9` vs surface `46daa3f`) is
+  patch-IDENTICAL — `git cherry -v main claude/surface-agent` marks `46daa3f` as
+  already-in-main. It is NOT a divergence: a future merge/rebase of
+  `claude/surface-agent` reconciles it automatically (rebase drops it; merge sees the
+  same change, no conflict). No history was rewritten. My surface lane (`936af13`:
+  binder, interrupt bar, payment doc, inventory tools/sol, card assets) stays
+  un-merged on the branch — fast-forward/cherry-pick when the broker is ready.
 - `[passive]` 2026-06-18 · Codex — read AGENTS/SYNC/CLAUDE pointer and the
   2026-06-17 brief; ran the worktree check; stale `/tmp` main worktree was not
   registered, then `git worktree prune` ran cleanly. Recreated `main` at the
