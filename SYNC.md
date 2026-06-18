@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — converted the Japanese pre-cutoff ADV source gaps
+  into a bounded row corpus. Added `scripts/build_japanese_adv_pre_wotc_catalogs.py`
+  and generated `data/japanese-adv-pre-wotc/` for `ADV1` / Japanese ADV Expansion
+  Pack (55 rows, 2003-01-31) and `ADV2` / Miracle of the Desert (53 rows,
+  2003-04-18). Source model: TCG Collector row/card pages for row identity,
+  illustrator, rarity, and external image witnesses; TCGdex remains the set/date/count
+  cross-check and still returns zero card refs. Updated
+  `data/catalog-expansion/source-gaps.json` so active gaps drop to English `wp`,
+  `sp`, and bounded-unsafe `jumbo`; ADV1/ADV2 are preserved as resolved-by-alternate-
+  source gaps. Japanese names remain `missing_from_exact_source` until a separate
+  row-level Japanese-name source is wired.
 - `[passive]` 2026-06-18 · Codex — hardened the row-level
   `special_identification_instructions` rail into a standard catalog row invariant.
   Updated `scripts/build_japanese_pre_english_catalogs.py` to normalize every

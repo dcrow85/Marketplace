@@ -1,6 +1,6 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "gap_count": 5,
+  "gap_count": 3,
   "gaps": [
     {
       "authority_label": "legible",
@@ -133,17 +133,33 @@
         "total": 160
       },
       "source_gap_count": 160
-    },
+    }
+  ],
+  "generated_at": "2026-06-18T19:29:55Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "complete catalog expansion gap inventory",
+    "card-row model",
+    "complete set checklist",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ],
+  "resolved_gap_count": 2,
+  "resolved_gaps": [
     {
       "authority_label": "legible",
-      "boundary_note": "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
       "card_refs_returned": 0,
       "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 55,
       "language": "ja",
       "name": "拡張パック",
       "not_claiming": [
-        "card-row model",
-        "complete set checklist",
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
         "approved image rights",
         "seller possession",
         "authenticity",
@@ -151,15 +167,12 @@
         "price truth",
         "spendability"
       ],
-      "reason": "TCGdex lists the Japanese ADV Expansion Pack as a 55-card 2003-01-31 set but returns zero card refs in the set payload.",
       "release_date": "2003-01-31",
-      "resolution_required_before_card_rows": [
-        "row-level card identities",
-        "source-attributed local IDs or card numbers",
-        "source payload hashes or snapshots",
-        "current catalog row fields and non-claims"
-      ],
-      "schema": "marketplace.catalog_source_gap.v0.1",
+      "resolution_note": "TCGdex still returns zero card refs, but TCG Collector supplies 55 row-level pages for the Japanese ADV Expansion Pack.",
+      "resolution_source": "TCG Collector row pages + TCGdex set metadata",
+      "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json",
+      "resolved_catalog_hash": "4f5140781f4d584447061f5674bc258a5f8c6727e4f822a38a24a6f2bab5a67a",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
       "series": {
         "id": "ADV",
         "name": "ADV"
@@ -176,18 +189,19 @@
         "reverse": 0,
         "total": 55
       },
-      "source_gap_count": 55
+      "status": "resolved_by_alternate_row_source"
     },
     {
       "authority_label": "legible",
-      "boundary_note": "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
       "card_refs_returned": 0,
       "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 53,
       "language": "ja",
       "name": "砂漠のきせき",
       "not_claiming": [
-        "card-row model",
-        "complete set checklist",
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
         "approved image rights",
         "seller possession",
         "authenticity",
@@ -195,15 +209,12 @@
         "price truth",
         "spendability"
       ],
-      "reason": "TCGdex lists Miracle of the Desert as a 53-card 2003-04-18 set but returns zero card refs in the set payload.",
       "release_date": "2003-04-18",
-      "resolution_required_before_card_rows": [
-        "row-level card identities",
-        "source-attributed local IDs or card numbers",
-        "source payload hashes or snapshots",
-        "current catalog row fields and non-claims"
-      ],
-      "schema": "marketplace.catalog_source_gap.v0.1",
+      "resolution_note": "TCGdex still returns zero card refs, but TCG Collector supplies 53 row-level pages for Miracle of the Desert.",
+      "resolution_source": "TCG Collector row pages + TCGdex set metadata",
+      "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json",
+      "resolved_catalog_hash": "c4747b5dda6c31c145bb88072b3f4a3bfef390c4fa47b2404ddafa3c5e729a69",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
       "series": {
         "id": "ADV",
         "name": "ADV"
@@ -220,23 +231,12 @@
         "reverse": 0,
         "total": 53
       },
-      "source_gap_count": 53
+      "status": "resolved_by_alternate_row_source"
     }
   ],
-  "generated_at": "2026-06-18T18:58:54Z",
-  "hash_algorithm": "sha256",
-  "not_claiming": [
-    "complete catalog expansion gap inventory",
-    "card-row model",
-    "complete set checklist",
-    "approved image rights",
-    "seller possession",
-    "authenticity",
-    "condition truth",
-    "price truth"
-  ],
+  "resolved_source_gap_rows": 108,
   "schema": "marketplace.catalog_expansion_gap_register.v0.1",
   "source": "TCGdex REST API",
   "source_docs_url": "https://tcgdex.dev/rest",
-  "total_source_gap_rows": 285
+  "total_source_gap_rows": 177
 }
