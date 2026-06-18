@@ -65,7 +65,7 @@ CORPUS_MANIFESTS: tuple[dict[str, str], ...] = (
         "path": "data/japanese-unnumbered-promo-wotc/manifest.json",
         "audit_path": "data/japanese-unnumbered-promo-wotc/audit.json",
         "language_scope": "ja",
-        "boundary": "Japanese unnumbered promo aggregate source-slice rows 061-257, ending at Battle Road Spring 2003.",
+        "boundary": "Japanese unnumbered promo source rows 061-257 split into source-derived campaign families, ending at Battle Road Spring 2003.",
     },
     {
         "corpus_id": "english_supplemental_wotc",
@@ -275,12 +275,11 @@ def build() -> dict[str, Any]:
             "status": "in_progress",
             "reason": (
                 "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. "
-                "The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved "
-                "and aggregate promo slices may still need campaign-level splitting."
+                "The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved."
             ),
             "known_remaining_work": [
                 "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
-                "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
+                "Run a final external-source completion audit before claiming the full English/Japanese through-US-WoC-era objective is complete.",
             ],
         },
         "not_claiming": [

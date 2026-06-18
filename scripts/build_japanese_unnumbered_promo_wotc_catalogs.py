@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Build a bounded Japanese unnumbered promo continuation source-slice.
+"""Build bounded Japanese unnumbered promo continuation campaign catalogs.
 
 The existing japanese-pre-english corpus already preserves the early unnumbered
 promo source slice through selected pre-English rows. This builder adds the next
-aggregate Bulbapedia source slice rather than prematurely splitting every promo
-campaign into finished product families.
+bounded Bulbapedia source slice and splits it into release-family files by the
+source's promotion/distribution note. These are source-derived campaign families,
+not official product-boundary proofs.
 """
 
 from __future__ import annotations
@@ -28,7 +29,7 @@ RELEASE_DIR = OUT_DIR / "releases"
 CACHE_DIR = ROOT / ".cache" / "bulbapedia_japanese_unnumbered_promo_wotc"
 BULBAPEDIA_RAW_BASE = "https://bulbapedia.bulbagarden.net/w/index.php"
 RAW_TITLE = "Unnumbered_Promotional_cards_(TCG)/1996-2005"
-RELEASE_FAMILY_ID = "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring"
+SOURCE_SLICE_ID = "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring"
 CANONICALIZATION = "json_sorted_keys_no_whitespace_v0.1"
 HASH_ALGORITHM = "sha256"
 BULBAPEDIA_SOURCE_VERSION = "bulbapedia-japanese-unnumbered-promo-wotc-v0.1"
@@ -40,7 +41,7 @@ EXPECTED_ROW_COUNT = SOURCE_INDEX_END - SOURCE_INDEX_START + 1
 
 NOT_CLAIMING = [
     "complete Japanese unnumbered promo universe",
-    "fully split campaign release families",
+    "official campaign boundary proof beyond the source promotion note",
     "approved image rights",
     "seller possession",
     "authenticity",
@@ -48,6 +49,21 @@ NOT_CLAIMING = [
     "price truth",
     "spendability",
 ]
+
+MONTHS = {
+    "January": "01",
+    "February": "02",
+    "March": "03",
+    "April": "04",
+    "May": "05",
+    "June": "06",
+    "July": "07",
+    "August": "08",
+    "September": "09",
+    "October": "10",
+    "November": "11",
+    "December": "12",
+}
 
 
 def utc_now() -> str:
@@ -109,6 +125,29 @@ def clean_wikitext(value: str) -> str:
     text = re.sub(r"<[^>]+>", "", text)
     text = text.replace("'''", "").replace("''", "")
     return " ".join(text.split())
+
+
+def slugify(value: str, max_len: int = 64) -> str:
+    text = value.lower()
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    text = re.sub(r"_+", "_", text).strip("_")
+    return (text or "unnamed")[:max_len].strip("_")
+
+
+def date_from_promotion(value: str) -> tuple[str, str]:
+    exact = re.search(
+        r"\((January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2}), (\d{4})\)",
+        value,
+    )
+    if exact:
+        return f"{exact.group(3)}-{MONTHS[exact.group(1)]}-{int(exact.group(2)):02d}", "day"
+    month = re.search(r"\((January|February|March|April|May|June|July|August|September|October|November|December) (\d{4})\)", value)
+    if month:
+        return f"{month.group(2)}-{MONTHS[month.group(1)]}", "month"
+    year = re.search(r"\((\d{4})\)", value)
+    if year:
+        return year.group(1), "year"
+    return "1998-11-13", "mixed_source_notes"
 
 
 def split_top_level(value: str) -> list[str]:
@@ -182,7 +221,10 @@ def parse_nmentry(line: str, source_index: int) -> dict[str, str]:
     text = line.strip()
     if not text.startswith(prefix):
         raise ValueError(f"not a Setlist/nmentry line: {line}")
-    fields = split_top_level(text[len(prefix) :].rstrip("}"))
+    body = text[len(prefix) :]
+    if body.endswith("}}"):
+        body = body[:-2]
+    fields = split_top_level(body)
     while len(fields) < 6:
         fields.append("")
     identity = parse_tcg_identity(fields[1])
@@ -216,7 +258,7 @@ def category_from_type(card_type: str) -> str:
     return ""
 
 
-def special_identification_instruction() -> dict[str, Any]:
+def special_identification_instruction(release_family_id: str) -> dict[str, Any]:
     return {
         "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
         "authority_label": "legible",
@@ -230,19 +272,19 @@ def special_identification_instruction() -> dict[str, Any]:
             "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row.",
         ],
         "source_refs": [{"source": "Bulbapedia raw wikitext", "source_page_url": raw_url()}],
-        "not_claiming": ["seller possession", "authenticity", "condition", "complete campaign release split", "exact date for season-only rows"],
+        "not_claiming": ["seller possession", "authenticity", "condition", "official campaign boundary proof beyond the source promotion note", "exact date for season-only rows"],
     }
 
 
-def build_card_row(raw_hash: str, source_url: str, item: dict[str, str]) -> dict[str, Any]:
+def build_card_row(raw_hash: str, source_url: str, item: dict[str, str], release_family_id: str, group: dict[str, Any]) -> dict[str, Any]:
     local_id = item["source_index"]
-    row_id = f"{RELEASE_FAMILY_ID}:{local_id}"
+    row_id = f"{release_family_id}:{local_id}"
     card_type = item["type"]
     category = category_from_type(card_type)
     return {
         "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
         "row_id": row_id,
-        "release_family_id": RELEASE_FAMILY_ID,
+        "release_family_id": release_family_id,
         "local_id": local_id,
         "card_number": item["printed_number"],
         "source_index": item["source_index"],
@@ -285,30 +327,31 @@ def build_card_row(raw_hash: str, source_url: str, item: dict[str, str]) -> dict
         "product_scope": {
             "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
             "boundary_note": (
-                f"Models source rows {SOURCE_INDEX_START:03d}-{SOURCE_INDEX_END:03d}. "
-                "Rows before this are covered by the pre-English source slice or earlier product rows; row 258 begins Summer 2003 and later rows stay outside this bounded slice."
+                f"Models source rows {group['source_index_start']}-{group['source_index_end']} that share the same Bulbapedia promotion/distribution note. "
+                "This is a source-derived campaign family, not an official product-boundary proof."
             ),
             "catalog_treatment": "Catalog target",
-            "counting_note": "This is an aggregate source-slice, not a claim that every row has been split into its final campaign release family.",
-            "date_precision": "mixed_source_notes",
-            "english_context_name": "Unnumbered Promotional cards - WoC-era continuation source slice",
+            "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+            "date_precision": group["date_precision"],
+            "english_context_name": group["name_en"],
             "japanese_set_name": "アンナンバードプロモカード",
-            "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-            "product_card_count": EXPECTED_ROW_COUNT,
-            "product_count_basis": f"Bulbapedia raw wikitext source rows {SOURCE_INDEX_START:03d}-{SOURCE_INDEX_END:03d}.",
-            "release_date": "1998-11-13",
-            "release_type": "unnumbered_promo_source_slice_bounded",
+            "parent_release_family_id": SOURCE_SLICE_ID,
+            "product_card_count": group["row_count"],
+            "product_count_basis": f"Bulbapedia raw wikitext source rows {group['source_index_start']}-{group['source_index_end']} with promotion note: {group['promotion']}",
+            "release_date": group["release_date"],
+            "release_type": "unnumbered_promo_campaign_source_group",
+            "source_slice_id": SOURCE_SLICE_ID,
             "source_expansion_name": item["source_set"],
             "source_expansion_number": item["source_number"],
             "strict_release_member": True,
-            "unique_catalog_row_count": EXPECTED_ROW_COUNT,
+            "unique_catalog_row_count": group["row_count"],
         },
         "symbol_status": {
             "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
             "confidence": "low",
             "scope": "release_context_not_row_fact",
             "source_mode": "bulbapedia_unnumbered_promo_setlist",
-            "source_release_family_id": RELEASE_FAMILY_ID,
+            "source_release_family_id": release_family_id,
             "not_claiming": ["row-level physical truth", "seller-card symbol state", "seller possession", "No Rarity proof"],
         },
         "image_provenance": {
@@ -322,7 +365,7 @@ def build_card_row(raw_hash: str, source_url: str, item: dict[str, str]) -> dict
             "not_claiming": ["seller possession", "seller card match", "condition", "authenticity", "image availability", "image rights approval"],
             "provider_id": f"bulbapedia:{RAW_TITLE}:{item['source_index']}",
             "provider_title": f"{item['name']} - Unnumbered Promotional source row {item['source_index']}",
-            "release_family_id": RELEASE_FAMILY_ID,
+            "release_family_id": release_family_id,
             "rights_status": "no_image_source_supplied",
             "row_id": row_id,
             "source": "Bulbapedia raw wikitext",
@@ -330,7 +373,7 @@ def build_card_row(raw_hash: str, source_url: str, item: dict[str, str]) -> dict
             "status": "source_payload_without_image",
             "verification_status": "raw_wikitext_catalog_row_without_image_witness",
         },
-        "special_identification_instructions": [special_identification_instruction()],
+        "special_identification_instructions": [special_identification_instruction(release_family_id)],
         "collector_texture": {
             "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
             "basis": ["Bulbapedia raw wikitext Setlist row"],
@@ -371,35 +414,67 @@ def build_card_row(raw_hash: str, source_url: str, item: dict[str, str]) -> dict
             "type": card_type,
         },
         "not_claiming": ["seller possession", "authenticity", "condition truth", "price truth", "spendability"],
-        "tags": [RELEASE_FAMILY_ID, item["source_index"], item["source_set"], item["name"], card_type, item["subtype_or_rarity"], item["variant_note"]],
+        "tags": [release_family_id, SOURCE_SLICE_ID, item["source_index"], item["source_set"], item["name"], card_type, item["subtype_or_rarity"], item["variant_note"]],
     }
 
 
-def build_release() -> dict[str, Any]:
-    source_url = raw_url()
-    raw = fetch_text(source_url)
-    raw_hash = sha256_text(raw)
-    rows = row_inputs(raw)
-    cards = [build_card_row(raw_hash, source_url, item) for item in rows]
+def group_rows(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for item in rows:
+        grouped.setdefault(item["promotion"], []).append(item)
+    groups: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for promotion, items in grouped.items():
+        source_indices = [int(item["source_index"]) for item in items]
+        release_date, date_precision = date_from_promotion(promotion)
+        base_slug = slugify(promotion)
+        release_family_id = f"jp_promo_unnumbered_wotc_{source_indices[0]:03d}_{base_slug}"
+        while release_family_id in seen_ids:
+            release_family_id = f"{release_family_id}_{source_indices[0]:03d}"
+        seen_ids.add(release_family_id)
+        groups.append(
+            {
+                "release_family_id": release_family_id,
+                "name_en": promotion,
+                "promotion": promotion,
+                "release_date": release_date,
+                "date_precision": date_precision,
+                "source_index_start": f"{min(source_indices):03d}",
+                "source_index_end": f"{max(source_indices):03d}",
+                "source_indices": [f"{index:03d}" for index in source_indices],
+                "source_indices_contiguous": source_indices == list(range(min(source_indices), max(source_indices) + 1)),
+                "row_count": len(items),
+                "items": items,
+            }
+        )
+    return sorted(groups, key=lambda group: int(group["source_index_start"]))
+
+
+def build_release(raw_hash: str, source_url: str, group: dict[str, Any]) -> dict[str, Any]:
+    release_family_id = group["release_family_id"]
+    cards = [build_card_row(raw_hash, source_url, item, release_family_id, group) for item in group["items"]]
     return {
         "schema": "marketplace.japanese_unnumbered_promo_wotc_release_catalog.v0.1",
         "release": {
-            "release_family_id": RELEASE_FAMILY_ID,
-            "name_en": "Unnumbered Promotional cards - WoC-era continuation source slice",
+            "release_family_id": release_family_id,
+            "name_en": group["name_en"],
             "name_ja": "アンナンバードプロモカード",
-            "release_date": "1998-11-13",
-            "date_precision": "mixed_source_notes",
-            "release_type": "unnumbered_promo_source_slice_bounded",
-            "expected_row_count": EXPECTED_ROW_COUNT,
-            "count_confidence": "bulbapedia_raw_source_index_slice",
-            "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-            "product_card_count": EXPECTED_ROW_COUNT,
-            "product_count_basis": f"Bulbapedia raw source rows {SOURCE_INDEX_START:03d}-{SOURCE_INDEX_END:03d}.",
-            "boundary_note": "Rows 061-257 cover late pre-English leftovers through Battle Road Spring 2003; row 258 begins Summer 2003 and is not modeled here.",
+            "release_date": group["release_date"],
+            "date_precision": group["date_precision"],
+            "release_type": "unnumbered_promo_campaign_source_group",
+            "expected_row_count": group["row_count"],
+            "count_confidence": "bulbapedia_raw_promotion_group",
+            "parent_release_family_id": SOURCE_SLICE_ID,
+            "source_slice_id": SOURCE_SLICE_ID,
+            "product_card_count": group["row_count"],
+            "product_count_basis": f"Bulbapedia raw source rows {group['source_index_start']}-{group['source_index_end']} with promotion note: {group['promotion']}",
+            "boundary_note": "Source-derived campaign family grouped by the exact Bulbapedia promotion/distribution note; not an official product-boundary proof.",
             "strict_release_member": True,
             "unique_catalog_row_count": len(cards),
             "catalog_treatment": "Catalog target",
-            "note": "Aggregate source slice used to keep unnumbered promo coverage legible before deeper campaign-level splitting.",
+            "source_indices": group["source_indices"],
+            "source_indices_contiguous": group["source_indices_contiguous"],
+            "note": "Campaign-level split derived from the source promotion note to make unnumbered promo matching more legible for agents.",
         },
         "symbol_status": {
             "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
@@ -407,7 +482,7 @@ def build_release() -> dict[str, Any]:
             "source": "Bulbapedia unnumbered promo table; physical symbol state varies by row and must be checked from evidence.",
             "scope": "release_context_not_row_fact",
             "source_mode": "bulbapedia_unnumbered_promo_setlist",
-            "source_release_family_id": RELEASE_FAMILY_ID,
+            "source_release_family_id": release_family_id,
             "not_claiming": ["row-level physical truth", "seller possession", "No Rarity proof without seller evidence"],
         },
         "sources": [
@@ -416,14 +491,24 @@ def build_release() -> dict[str, Any]:
                 "bulbapedia_raw_url": source_url,
                 "bulbapedia_raw_sha256": raw_hash,
                 "bulbapedia_rows_found": len(cards),
-                "source_index_start": SOURCE_INDEX_START,
-                "source_index_end": SOURCE_INDEX_END,
+                "source_index_start": group["source_index_start"],
+                "source_index_end": group["source_index_end"],
+                "source_indices": group["source_indices"],
+                "promotion": group["promotion"],
                 "not_claiming": ["official source", "approved image rights", "seller possession", "authenticity", "condition"],
             }
         ],
         "cards": cards,
         "not_claiming": NOT_CLAIMING,
     }
+
+
+def build_releases() -> list[dict[str, Any]]:
+    source_url = raw_url()
+    raw = fetch_text(source_url)
+    raw_hash = sha256_text(raw)
+    rows = row_inputs(raw)
+    return [build_release(raw_hash, source_url, group) for group in group_rows(rows)]
 
 
 def audit_release(path: Path, release: dict[str, Any]) -> dict[str, Any]:
@@ -434,19 +519,18 @@ def audit_release(path: Path, release: dict[str, Any]) -> dict[str, Any]:
     missing_source = [card["row_id"] for card in cards if not card.get("source_contacts")]
     return {
         "path": path.relative_to(ROOT).as_posix(),
-        "release_family_id": RELEASE_FAMILY_ID,
+        "release_family_id": release["release"]["release_family_id"],
         "row_count": len(cards),
-        "expected_row_count": EXPECTED_ROW_COUNT,
+        "expected_row_count": release["release"]["expected_row_count"],
         "source_index_start": min(source_indices) if source_indices else None,
         "source_index_end": max(source_indices) if source_indices else None,
-        "source_indices_contiguous": source_indices == list(range(SOURCE_INDEX_START, SOURCE_INDEX_END + 1)),
-        "row_count_matches_expected": len(cards) == EXPECTED_ROW_COUNT,
+        "source_indices_contiguous": release["release"]["source_indices_contiguous"],
+        "row_count_matches_expected": len(cards) == release["release"]["expected_row_count"],
         "missing_special_identification_instructions": missing_special,
         "malformed_special_identification_instructions": malformed_special,
         "missing_source_contacts": missing_source,
         "passed": (
-            len(cards) == EXPECTED_ROW_COUNT
-            and source_indices == list(range(SOURCE_INDEX_START, SOURCE_INDEX_END + 1))
+            len(cards) == release["release"]["expected_row_count"]
             and not missing_special
             and not malformed_special
             and not missing_source
@@ -456,62 +540,88 @@ def audit_release(path: Path, release: dict[str, Any]) -> dict[str, Any]:
 
 def build_all(write: bool) -> dict[str, Any]:
     RELEASE_DIR.mkdir(parents=True, exist_ok=True)
-    release = build_release()
-    path = RELEASE_DIR / f"{RELEASE_FAMILY_ID}.json"
+    releases = build_releases()
     if write:
-        write_json(path, release)
-    catalog_hash = canonical_hash(release)
-    audit_item = audit_release(path, release)
-    source = release["sources"][0]
-    row_count = len(release["cards"])
-    source_payload_without_image_rows = sum(1 for card in release["cards"] if card["image_provenance"]["status"] == "source_payload_without_image")
-    special_rows = sum(1 for card in release["cards"] if card.get("special_identification_instructions"))
+        for old_path in RELEASE_DIR.glob("jp_promo_unnumbered_wotc_*.json"):
+            old_path.unlink()
+        old_aggregate = RELEASE_DIR / f"{SOURCE_SLICE_ID}.json"
+        if old_aggregate.exists():
+            old_aggregate.unlink()
+    manifest_releases: list[dict[str, Any]] = []
+    audit_items: list[dict[str, Any]] = []
+    row_count = 0
+    source_payload_without_image_rows = 0
+    special_rows = 0
+    source_indices: list[int] = []
+    for release in releases:
+        release_family_id = release["release"]["release_family_id"]
+        path = RELEASE_DIR / f"{release_family_id}.json"
+        if write:
+            write_json(path, release)
+        catalog_hash = canonical_hash(release)
+        audit_item = audit_release(path, release)
+        audit_items.append(audit_item)
+        source = release["sources"][0]
+        cards = release["cards"]
+        row_count += len(cards)
+        source_indices.extend(int(card["source_index"]) for card in cards)
+        source_payload_without_image_rows += sum(1 for card in cards if card["image_provenance"]["status"] == "source_payload_without_image")
+        special_rows += sum(1 for card in cards if card.get("special_identification_instructions"))
+        manifest_releases.append(
+            {
+                "schema": "marketplace.japanese_unnumbered_promo_wotc_manifest_release.v0.1",
+                "release_family_id": release_family_id,
+                "path": path.relative_to(ROOT).as_posix(),
+                "catalog_hash": catalog_hash,
+                "canonicalization": CANONICALIZATION,
+                "hash_algorithm": HASH_ALGORITHM,
+                "release_type": release["release"]["release_type"],
+                "catalog_treatment": "Catalog target",
+                "expected_row_count": release["release"]["expected_row_count"],
+                "row_count": len(cards),
+                "product_card_count": release["release"]["product_card_count"],
+                "product_count_basis": release["release"]["product_count_basis"],
+                "boundary_note": release["release"]["boundary_note"],
+                "strict_release_member": True,
+                "release_not_claiming": NOT_CLAIMING,
+                "bulbapedia_raw_url": source["bulbapedia_raw_url"],
+                "bulbapedia_raw_sha256": source["bulbapedia_raw_sha256"],
+                "source_index_start": source["source_index_start"],
+                "source_index_end": source["source_index_end"],
+                "source_indices": source["source_indices"],
+                "source_indices_contiguous": release["release"]["source_indices_contiguous"],
+                "source_payload_without_image_rows": sum(1 for card in cards if card["image_provenance"]["status"] == "source_payload_without_image"),
+                "special_identification_instruction_rows": sum(1 for card in cards if card.get("special_identification_instructions")),
+            }
+        )
     manifest = {
         "schema": "marketplace.japanese_unnumbered_promo_wotc_manifest.v0.1",
         "generated_at": utc_now(),
         "canonicalization": CANONICALIZATION,
         "hash_algorithm": HASH_ALGORITHM,
-        "release_count": 1,
+        "release_count": len(releases),
         "total_rows": row_count,
+        "source_slice_id": SOURCE_SLICE_ID,
+        "source_index_start": SOURCE_INDEX_START,
+        "source_index_end": SOURCE_INDEX_END,
+        "source_indices_contiguous_across_corpus": sorted(source_indices) == list(range(SOURCE_INDEX_START, SOURCE_INDEX_END + 1)),
         "source_payload_without_image_rows": source_payload_without_image_rows,
         "special_identification_instruction_rows": special_rows,
-        "releases": [
-            {
-                "schema": "marketplace.japanese_unnumbered_promo_wotc_manifest_release.v0.1",
-                "release_family_id": RELEASE_FAMILY_ID,
-                "path": path.relative_to(ROOT).as_posix(),
-                "catalog_hash": catalog_hash,
-                "canonicalization": CANONICALIZATION,
-                "hash_algorithm": HASH_ALGORITHM,
-                "release_type": "unnumbered_promo_source_slice_bounded",
-                "catalog_treatment": "Catalog target",
-                "expected_row_count": EXPECTED_ROW_COUNT,
-                "row_count": row_count,
-                "product_card_count": EXPECTED_ROW_COUNT,
-                "product_count_basis": f"Bulbapedia raw source rows {SOURCE_INDEX_START:03d}-{SOURCE_INDEX_END:03d}.",
-                "boundary_note": "Rows 061-257 cover late pre-English leftovers through Battle Road Spring 2003; row 258 begins Summer 2003 and is not modeled here.",
-                "strict_release_member": True,
-                "release_not_claiming": NOT_CLAIMING,
-                "bulbapedia_raw_url": source["bulbapedia_raw_url"],
-                "bulbapedia_raw_sha256": source["bulbapedia_raw_sha256"],
-                "source_index_start": SOURCE_INDEX_START,
-                "source_index_end": SOURCE_INDEX_END,
-                "source_payload_without_image_rows": source_payload_without_image_rows,
-                "special_identification_instruction_rows": special_rows,
-            }
-        ],
+        "releases": manifest_releases,
         "source_contact_policy": "Rows are raw-wikitext reference identities without image promotion unless a row-specific image source is later added.",
         "not_claiming": NOT_CLAIMING,
     }
     audit = {
         "schema": "marketplace.japanese_unnumbered_promo_wotc_audit.v0.1",
         "generated_at": utc_now(),
-        "release_count": 1,
+        "release_count": len(releases),
         "total_rows": row_count,
+        "source_slice_id": SOURCE_SLICE_ID,
+        "source_indices_contiguous_across_corpus": sorted(source_indices) == list(range(SOURCE_INDEX_START, SOURCE_INDEX_END + 1)),
         "special_identification_instruction_rows": special_rows,
         "source_payload_without_image_rows": source_payload_without_image_rows,
-        "release_audits": [audit_item],
-        "passed": audit_item["passed"],
+        "release_audits": audit_items,
+        "passed": all(item["passed"] for item in audit_items) and row_count == EXPECTED_ROW_COUNT and sorted(source_indices) == list(range(SOURCE_INDEX_START, SOURCE_INDEX_END + 1)),
         "not_claiming": NOT_CLAIMING,
     }
     if write:

@@ -1,9 +1,9 @@
 {
   "boundary_proof": {
-    "hash": "33784f0ce95f137ee3bef1c3da20e27a1228e8da740ba7361f8e5a3ec5b8228d",
+    "hash": "3b8e99793d38137f0d5bca54515dc9aa3e543ecf1b36fa42c55d831e1b551076",
     "passed": true,
     "path": "data/catalog-expansion/boundary-proof.json",
-    "proof_hash": "cb122452464c511ff1666aa8d75117e1af69de2725909f4ab684a2f1d6d06106",
+    "proof_hash": "b5f5244632fd8e4e505202256e950bff0aeec66552d2fe504228aeb5881f78a2",
     "sections": {
       "english_pokemontcg_api": {
         "not_claiming": [
@@ -25,7 +25,7 @@
       },
       "japanese_promo_sources": {
         "not_claiming": [
-          "campaign-level split for every unnumbered promo row",
+          "official campaign boundary proof beyond source promotion notes",
           "official source",
           "post-boundary promo coverage",
           "physical-card truth"
@@ -47,9 +47,9 @@
   "completion_status": {
     "known_remaining_work": [
       "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
-      "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter."
+      "Run a final external-source completion audit before claiming the full English/Japanese through-US-WoC-era objective is complete."
     ],
-    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved and aggregate promo slices may still need campaign-level splitting.",
+    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved.",
     "status": "in_progress"
   },
   "english_jumbo_boundary_proof": {
@@ -72,9 +72,9 @@
     "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
     "unclassified_excluded_count": 50
   },
-  "generated_at": "2026-06-18T20:36:10Z",
+  "generated_at": "2026-06-18T20:46:29Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "550ef238c3d7b777d8c7c8bb18c2e54b2c207f982c689d9b5b594b00def8711e",
+  "ledger_hash": "b8d7d9c583d7842284bdc7cd50296dfe405ef3d83aec0489e95f90959bc48620",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -192,13 +192,13 @@
       "special_identification_instruction_rows": 61
     },
     {
-      "audit_hash": "09b24cd3d7a4901655dbedfc410d1ae4d93a4feeed6754ae374097c8f88f30e9",
+      "audit_hash": "b67a80069ce21001fd45385bb65470ae452257265e3b3e25af069bfcc51d2122",
       "audit_passed": true,
       "audit_path": "data/japanese-unnumbered-promo-wotc/audit.json",
-      "boundary": "Japanese unnumbered promo aggregate source-slice rows 061-257, ending at Battle Road Spring 2003.",
+      "boundary": "Japanese unnumbered promo source rows 061-257 split into source-derived campaign families, ending at Battle Road Spring 2003.",
       "corpus_id": "japanese_unnumbered_promo_wotc",
       "language_scope": "ja",
-      "manifest_hash": "942e3f88a627a4d20d09a184289108342636197f2d4cc9b7b8fad781c4c24873",
+      "manifest_hash": "86ec91d3ec8e3c3961f37f7d966503efda3f5217420a9dc5b00a980981fa68b4",
       "manifest_path": "data/japanese-unnumbered-promo-wotc/manifest.json",
       "not_claiming": [
         "complete through-2003 universe by itself",
@@ -208,7 +208,7 @@
         "price truth",
         "approved image rights"
       ],
-      "release_count": 1,
+      "release_count": 132,
       "row_count": 197,
       "schema": "marketplace.catalog_coverage_corpus.v0.1",
       "source_gap_count": 0,
@@ -238,7 +238,7 @@
       "special_identification_instruction_rows": 27
     }
   ],
-  "modeled_release_count": 78,
+  "modeled_release_count": 209,
   "modeled_row_count": 4549,
   "not_claiming": [
     "goal complete",
@@ -266,7 +266,7 @@
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
   "schema_profile": {
     "canonical_fields_passed": true,
-    "hash": "41878734bc4d2c20ff47c9d64e16df0c5df9dca43ea8517c8de8f73747532118",
+    "hash": "b713d2ab036fb758379d452f422ff6ba0c48864d7f5e704dc6c3fdf56d953367",
     "known_schema_asymmetries": [
       {
         "affected_schema": "marketplace.japanese_pre_english_card_row.v0.1",
@@ -282,7 +282,7 @@
     "normalized_projection_schema": "marketplace.catalog_agent_projection.v0.1",
     "passed": true,
     "path": "data/catalog-expansion/schema-profile.json",
-    "profile_hash": "57c55a240efe1e219183949b31d957adafd088f856128e3f5ec7c4fd5611e854",
+    "profile_hash": "34b811a84441efbba87b932f4fcd50df67abae7fa60dfe7d03788011cc97e95d",
     "row_count": 4549,
     "schema_counts": {
       "marketplace.english_supplemental_wotc_card_row.v0.1": 27,

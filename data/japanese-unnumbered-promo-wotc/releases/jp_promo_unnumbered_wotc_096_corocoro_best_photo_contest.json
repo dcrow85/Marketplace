@@ -1,0 +1,1245 @@
+{
+  "cards": [
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Bulbasaur appears in the unnumbered promotional source slice at row 096. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "096",
+          "Base Set",
+          "Bulbasaur",
+          "",
+          "Grass",
+          "",
+          "CoroCoro Best Photo Contest"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:096",
+        "provider_title": "Bulbasaur - Unnumbered Promotional source row 096",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:096",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "096",
+      "name_en": "Bulbasaur",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 096-100 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "CoroCoro Best Photo Contest",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "44",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "CoroCoro Best Photo Contest",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "44",
+        "source_index": "096",
+        "type": "Grass",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:096",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Base Set|Bulbasaur|44}}|Grass|||{{DL|Illustration contests|CoroCoro Best Photo Contest|''CoroCoro'' Best Photo Contest}}}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "096",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "096",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "096",
+        "Base Set",
+        "Bulbasaur",
+        "Grass",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Gyarados appears in the unnumbered promotional source slice at row 097. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "097",
+          "Base Set",
+          "Gyarados",
+          "",
+          "Water",
+          "",
+          "CoroCoro Best Photo Contest"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:097",
+        "provider_title": "Gyarados - Unnumbered Promotional source row 097",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:097",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "097",
+      "name_en": "Gyarados",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 096-100 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "CoroCoro Best Photo Contest",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "6",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "CoroCoro Best Photo Contest",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "6",
+        "source_index": "097",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:097",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Base Set|Gyarados|6}}|Water|||''CoroCoro'' Best Photo Contest}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "097",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "097",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "097",
+        "Base Set",
+        "Gyarados",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Magikarp appears in the unnumbered promotional source slice at row 098. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "098",
+          "Base Set",
+          "Magikarp",
+          "",
+          "Water",
+          "",
+          "CoroCoro Best Photo Contest"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:098",
+        "provider_title": "Magikarp - Unnumbered Promotional source row 098",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:098",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "098",
+      "name_en": "Magikarp",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 096-100 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "CoroCoro Best Photo Contest",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "35",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "CoroCoro Best Photo Contest",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "35",
+        "source_index": "098",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:098",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Base Set|Magikarp|35}}|Water|||''CoroCoro'' Best Photo Contest}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "098",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "098",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "098",
+        "Base Set",
+        "Magikarp",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Poliwag appears in the unnumbered promotional source slice at row 099. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "099",
+          "Base Set",
+          "Poliwag",
+          "",
+          "Water",
+          "",
+          "CoroCoro Best Photo Contest"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:099",
+        "provider_title": "Poliwag - Unnumbered Promotional source row 099",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:099",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "099",
+      "name_en": "Poliwag",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 096-100 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "CoroCoro Best Photo Contest",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "59",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "CoroCoro Best Photo Contest",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "59",
+        "source_index": "099",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:099",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Base Set|Poliwag|59}}|Water|||''CoroCoro'' Best Photo Contest}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "099",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "099",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "099",
+        "Base Set",
+        "Poliwag",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Pikachu appears in the unnumbered promotional source slice at row 100. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "100",
+          "Base Set",
+          "Pikachu",
+          "",
+          "Lightning",
+          "",
+          "CoroCoro Best Photo Contest"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:100",
+        "provider_title": "Pikachu - Unnumbered Promotional source row 100",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:100",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "100",
+      "name_en": "Pikachu",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Lightning"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 096-100 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "CoroCoro Best Photo Contest",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "58",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "CoroCoro Best Photo Contest",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Base Set",
+        "source_expansion_number": "58",
+        "source_index": "100",
+        "type": "Lightning",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "row_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:100",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Base Set|Pikachu|58}}|Lightning|||''CoroCoro'' Best Photo Contest}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "100",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "100",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "100",
+        "Base Set",
+        "Pikachu",
+        "Lightning",
+        "",
+        ""
+      ]
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese unnumbered promo universe",
+    "official campaign boundary proof beyond the source promotion note",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "boundary_note": "Source-derived campaign family grouped by the exact Bulbapedia promotion/distribution note; not an official product-boundary proof.",
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "bulbapedia_raw_promotion_group",
+    "date_precision": "mixed_source_notes",
+    "expected_row_count": 5,
+    "name_en": "CoroCoro Best Photo Contest",
+    "name_ja": "アンナンバードプロモカード",
+    "note": "Campaign-level split derived from the source promotion note to make unnumbered promo matching more legible for agents.",
+    "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "product_card_count": 5,
+    "product_count_basis": "Bulbapedia raw source rows 096-100 with promotion note: CoroCoro Best Photo Contest",
+    "release_date": "1998-11-13",
+    "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+    "release_type": "unnumbered_promo_campaign_source_group",
+    "source_indices": [
+      "096",
+      "097",
+      "098",
+      "099",
+      "100"
+    ],
+    "source_indices_contiguous": true,
+    "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 5
+  },
+  "schema": "marketplace.japanese_unnumbered_promo_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "bulbapedia_raw_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+      "bulbapedia_rows_found": 5,
+      "not_claiming": [
+        "official source",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "promotion": "CoroCoro Best Photo Contest",
+      "source": "Bulbapedia raw wikitext",
+      "source_index_end": "100",
+      "source_index_start": "096",
+      "source_indices": [
+        "096",
+        "097",
+        "098",
+        "099",
+        "100"
+      ]
+    }
+  ],
+  "symbol_status": {
+    "confidence": "low",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+    "scope": "release_context_not_row_fact",
+    "source": "Bulbapedia unnumbered promo table; physical symbol state varies by row and must be checked from evidence.",
+    "source_mode": "bulbapedia_unnumbered_promo_setlist",
+    "source_release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest"
+  }
+}

@@ -329,7 +329,7 @@ def japanese_promo_source_proof() -> dict[str, Any]:
         "modeled_rows": int(pre_source.get("row_count", 0)) + int(numbered_rows) + int(unnumbered_rows),
         "passed": int(pre_source.get("row_count", 0)) == 55 and int(numbered_rows) == 61 and int(unnumbered_rows) == 197,
         "not_claiming": [
-            "campaign-level split for every unnumbered promo row",
+            "official campaign boundary proof beyond source promotion notes",
             "official source",
             "post-boundary promo coverage",
             "physical-card truth",
@@ -353,7 +353,7 @@ def build() -> dict[str, Any]:
         "passed": all(section.get("passed") for section in sections.values()),
         "completion_status": {
             "status": "in_progress",
-            "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and aggregate promo slices may still need campaign-level splitting.",
+            "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and final external-source completion still needs a dedicated audit.",
         },
         "not_claiming": [
             "goal complete",

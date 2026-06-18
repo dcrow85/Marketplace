@@ -1,10 +1,10 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "completion_status": {
-    "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and aggregate promo slices may still need campaign-level splitting.",
+    "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and final external-source completion still needs a dedicated audit.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:36:10Z",
+  "generated_at": "2026-06-18T20:46:29Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "goal complete",
@@ -18,7 +18,7 @@
     "price truth"
   ],
   "passed": true,
-  "proof_hash": "cb122452464c511ff1666aa8d75117e1af69de2725909f4ab684a2f1d6d06106",
+  "proof_hash": "b5f5244632fd8e4e505202256e950bff0aeec66552d2fe504228aeb5881f78a2",
   "schema": "marketplace.catalog_boundary_proof.v0.1",
   "sections": {
     "english_pokemontcg_api": {
@@ -317,7 +317,7 @@
         }
       ],
       "not_claiming": [
-        "campaign-level split for every unnumbered promo row",
+        "official campaign boundary proof beyond source promotion notes",
         "official source",
         "post-boundary promo coverage",
         "physical-card truth"
