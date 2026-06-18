@@ -81,13 +81,16 @@ def _norm_custody(custody: dict[str, Any] | None) -> dict[str, Any]:
     mode = custody.get("mode", "self")
     if mode not in CUSTODY_MODES:
         raise InventoryError(f"unknown custody mode: {mode!r} ({'|'.join(sorted(CUSTODY_MODES))})")
-    # self-custody can never be "attested" — no node holds it to vouch
-    attested = bool(custody.get("attested", False)) and mode in {"shop", "vault"}
+    # self-custody can never be "attested" — no node holds it to vouch. And an
+    # attestation with no reference is an empty claim that cannot be checked, so it
+    # must NOT count as attested: attested REQUIRES a non-empty attestation_ref.
+    ref = custody.get("attestation_ref")
+    attested = bool(custody.get("attested", False)) and mode in {"shop", "vault"} and bool(ref)
     return {
         "mode": mode,
         "node_ref": custody.get("node_ref", "owner" if mode == "self" else None),
         "attested": attested,
-        "attestation_ref": custody.get("attestation_ref") if attested else None,
+        "attestation_ref": ref if attested else None,
     }
 
 
@@ -157,8 +160,16 @@ def item_partition(item: dict[str, Any]) -> dict[str, Any]:
         "physical No Rarity truth",
     ]
     if custody.get("mode") in {"shop", "vault"} and custody.get("attested"):
-        enforced.append("custody lock + attestation binding")
-        legible.append(f"custody attestation by {custody.get('node_ref')} (content is the node's judgment)")
+        # An off-chain attestation flag is a RECORDED CLAIM, not enforcement. Only an
+        # on-chain MarketplaceInventory.attestCustody by the assigned custodian (read
+        # via isCustodyAttested) makes custody enforceable — which this off-chain
+        # model does NOT verify. So it stays legible, and its truth stays judged,
+        # until that on-chain check is wired in.
+        legible.append(
+            f"custody attestation by {custody.get('node_ref')} "
+            f"(ref {custody.get('attestation_ref')}; node's recorded claim)"
+        )
+        judgment_needed.append("custody attestation truth (pending on-chain verification)")
     else:
         judgment_needed.append("possession (self-held; claimed, not custodied)")
     return {
@@ -205,6 +216,8 @@ def validate_item(item: dict[str, Any], *, check_catalog_currency: bool = True) 
         issues.append(f"bad custody mode: {cust.get('mode')!r}")
     if cust.get("attested") and cust.get("mode") == "self":
         issues.append("self-custody cannot be 'attested' (no node holds it)")
+    if cust.get("attested") and not cust.get("attestation_ref"):
+        issues.append("attested custody has no attestation_ref (an attestation must reference a signed record)")
 
     recomputed = cat._canonical_hash({k: v for k, v in item.items() if k != "item_hash"})
     if item.get("item_hash") != recomputed:

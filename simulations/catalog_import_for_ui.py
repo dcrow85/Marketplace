@@ -53,6 +53,13 @@ SET_LABELS = {
 }
 STATUS_MAP = {"exact_source_image": "exact_source", "provider_path_reference_image": "provider_path"}
 
+# PMCG1 (Base Set / Expansion Pack) is covered by the dedicated No Rarity slice
+# (build_no_rarity, from no_rarity_catalog_tools) — the richer encoding with the
+# owned overlay, value bands, and content-addressed citations. The manifest's
+# jp_tcg_expansion_pack_19961020 is the same Base Set from the same lab catalog, so
+# importing both would DUPLICATE PMCG1 in the UI. Skip the manifest copy.
+SKIP_RELEASES = {"jp_tcg_expansion_pack_19961020"}
+
 
 def _strip_date(family: str) -> str:
     return re.sub(r"_\d{8}(_\d{8})?$", "", family)
@@ -130,6 +137,8 @@ def build_pre_english():
     sets, cards = [], []
     for rel in man["releases"]:
         fam = rel["release_family_id"]
+        if fam in SKIP_RELEASES:
+            continue  # PMCG1 duplicate — covered by the No Rarity slice
         label = _label_for(fam)
         date = _first_date(fam)
         rel_cards = json.loads((ROOT / rel["path"]).read_text(encoding="utf-8")).get("cards", [])

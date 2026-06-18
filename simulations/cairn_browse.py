@@ -5,8 +5,11 @@ A call -> Qwen3.6 reads it into a structured filter (given the cost field) ->
 CODE applies the filter deterministically over catalog-sample.json (the mechanical,
 enforced part) -> Qwen3.6 writes a bit of commentary over the survivors (the judged
 part), labeling what it cut and flagging anything judged. Trichotomy by construction:
-code does facts, the model does judgment + words. No-overclaim: the model never
-sells a card, and surfaces honest limits (the catalog has value BANDS, not prices).
+code does facts, the model does judgment + words. No-overclaim is INSTRUCTED (the
+prompt forbids selling and requires judged-caveats) AND post-checked: commentary_flags
+scans the model's words for selling/hype or asserted physical-facts and surfaces any
+hits (heuristic, not a hard proof — it catches the blatant cases). The catalog has
+value BANDS, not prices.
 
 Usage:
   python3 simulations/cairn_browse.py "holos I'm missing that won't break the bank"
@@ -16,10 +19,29 @@ Requires the Qwen3.6 mlx_lm.server running on :8081 (see session notes).
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# heuristic no-overclaim guard on the model's WORDS: selling/hype, or asserting a
+# physical/authenticity/condition fact the agent has no standing to assert.
+_SELL_PAT = re.compile(
+    r"you'?ll love|great deal|\bsteal\b|must[- ]have|don'?t miss|grab it|snap it up|"
+    r"\bbargain\b|perfect for you|worth every|once[- ]in[- ]a[- ]lifetime|can'?t go wrong|"
+    r"guaranteed|\bauthentic\b|\bgenuine\b|mint condition|will appreciate|great investment|sure thing",
+    re.I,
+)
+
+
+def commentary_flags(*texts: str) -> list[str]:
+    """Flag blatant selling/overclaim in the model's commentary. Heuristic, not proof —
+    it catches the cases the prompt is supposed to prevent so they never reach the human."""
+    hits: list[str] = []
+    for t in texts:
+        hits += [m.group(0).lower() for m in _SELL_PAT.finditer(t or "")]
+    return sorted(set(hits))
 sys.path.insert(0, str(ROOT / "simulations"))
 from interrupt_bar_probe import call_model  # noqa: E402  (reuse the proven mlx call)
 
@@ -102,12 +124,13 @@ def browse(call: str, cap: int = 30) -> dict:
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','owned','exclude_grails','set','character','category')})}\n"
-        f"It cut the 711-row catalog to {len(survivors)} candidates"
+        f"It cut the {len(DATA['cards'])}-row catalog to {len(survivors)} candidates"
         + (f" (showing the first {cap})" if len(survivors) > cap else "")
         + ":\n" + "\n".join(brief(c) for c in pool) + "\n\nWrite the commentary JSON."
     )
     c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
-    return {"call": call, "filter": f, "n_survivors": len(survivors), "result": c}
+    flags = commentary_flags(c.get("commentary", ""), c.get("caveat", ""))
+    return {"call": call, "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
 
 
 def main() -> int:
@@ -126,6 +149,8 @@ def main() -> int:
     for uid in (r.get("picks") or [])[:6]:
         c = by.get(uid)
         print(f"  - {brief(c)}" if c else f"  - {uid} (?)")
+    if out.get("overclaim_flags"):
+        print(f"\n!! NO-OVERCLAIM CHECK flagged selling/overclaim language: {out['overclaim_flags']} — surface for review, do not present as-is.")
     return 0
 
 
