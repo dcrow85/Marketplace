@@ -47,15 +47,14 @@
   "completion_status": {
     "known_remaining_work": [
       "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
-      "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
-      "Unify row schema expectations across corpora if downstream agents require a single schema version."
+      "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter."
     ],
     "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved and aggregate promo slices may still need campaign-level splitting.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:21:46Z",
+  "generated_at": "2026-06-18T20:26:44Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "34cfb5fd77e7514e1840ed99f3b49e20853771bc59f96eabae9b7b8b9214cadf",
+  "ledger_hash": "cfc24279068de4a65990154c70635ceeed2ab46198b29c5da959a958ed70e0d0",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -245,6 +244,36 @@
     "special_identification_instruction_rows": 287
   },
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
+  "schema_profile": {
+    "canonical_fields_passed": true,
+    "hash": "41878734bc4d2c20ff47c9d64e16df0c5df9dca43ea8517c8de8f73747532118",
+    "known_schema_asymmetries": [
+      {
+        "affected_schema": "marketplace.japanese_pre_english_card_row.v0.1",
+        "field": "card_number",
+        "handling": "Use normalized_agent_projection.display_number = local_id for these rows unless/until the historical corpus is regenerated with card_number.",
+        "missing_rows": 1264,
+        "not_claiming": [
+          "underlying source schema equality",
+          "physical-card printed-number verification"
+        ]
+      }
+    ],
+    "normalized_projection_schema": "marketplace.catalog_agent_projection.v0.1",
+    "passed": true,
+    "path": "data/catalog-expansion/schema-profile.json",
+    "profile_hash": "57c55a240efe1e219183949b31d957adafd088f856128e3f5ec7c4fd5611e854",
+    "row_count": 4549,
+    "schema_counts": {
+      "marketplace.english_supplemental_wotc_card_row.v0.1": 27,
+      "marketplace.english_wotc_card_row.v0.1": 1789,
+      "marketplace.japanese_adv_pre_wotc_card_row.v0.1": 108,
+      "marketplace.japanese_classic_card_row.v0.1": 1103,
+      "marketplace.japanese_pre_english_card_row.v0.1": 1264,
+      "marketplace.japanese_promo_wotc_card_row.v0.1": 61,
+      "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1": 197
+    }
+  },
   "source_gap_register": {
     "active_gap_count": 1,
     "active_gaps": [

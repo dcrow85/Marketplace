@@ -184,8 +184,10 @@ def build() -> dict[str, Any]:
     corpora = [build_corpus_entry(config) for config in CORPUS_MANIFESTS]
     gap_register_path = "data/catalog-expansion/source-gaps.json"
     boundary_proof_path = "data/catalog-expansion/boundary-proof.json"
+    schema_profile_path = "data/catalog-expansion/schema-profile.json"
     gap_register = read_json(gap_register_path)
     boundary_proof = read_json(boundary_proof_path)
+    schema_profile = read_json(schema_profile_path)
     invariant_summary = row_invariant_summary()
     modeled_rows = sum(corpus["row_count"] for corpus in corpora)
     modeled_releases = sum(corpus["release_count"] for corpus in corpora)
@@ -213,6 +215,17 @@ def build() -> dict[str, Any]:
                 }
                 for key, value in boundary_proof.get("sections", {}).items()
             },
+        },
+        "schema_profile": {
+            "path": schema_profile_path,
+            "hash": file_hash(schema_profile_path),
+            "profile_hash": schema_profile.get("profile_hash", ""),
+            "passed": bool(schema_profile.get("passed")),
+            "row_count": int(schema_profile.get("row_count") or 0),
+            "schema_counts": schema_profile.get("schema_counts", {}),
+            "canonical_fields_passed": bool(schema_profile.get("canonical_fields_passed")),
+            "known_schema_asymmetries": schema_profile.get("known_schema_asymmetries", []),
+            "normalized_projection_schema": schema_profile.get("normalized_agent_projection", {}).get("schema", ""),
         },
         "source_gap_register": {
             "path": gap_register_path,
@@ -255,7 +268,6 @@ def build() -> dict[str, Any]:
             "known_remaining_work": [
                 "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
                 "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
-                "Unify row schema expectations across corpora if downstream agents require a single schema version.",
             ],
         },
         "not_claiming": [
