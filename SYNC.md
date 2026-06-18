@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — added the Japanese classic/WoC-corresponding
+  main-set slice after the existing pre-English corpus. New builder:
+  `scripts/build_japanese_classic_catalogs.py`; output: `data/japanese-classic/`.
+  Source is TCGdex Japanese REST. Boundary includes `PMCG6`, `neo1`-`neo4`, `VS1`,
+  `web1`, and `E1`-`E5` (Challenge from the Darkness through Mysterious Mountains,
+  1999-06-25 to 2002-10-04). Output: 12 release catalogs / 1,103 modeled rows /
+  1,104 expected rows, with one explicit source gap: `web1` local ID `039`.
+  Japanese ADV/PCG and Japanese promo coverage after the existing pre-English promo
+  slice remain open. TCGdex does not supply image URLs for this slice; rows record
+  `no_image_source_supplied` rather than promoting invented image references.
 - `[passive]` 2026-06-18 · Codex — started the broader through-2003 catalog expansion
   with an English WoC-era corpus. Added `scripts/build_english_wotc_catalogs.py` and
   generated `data/english-wotc/` from Pokemon TCG API v2. Boundary is English WoC
