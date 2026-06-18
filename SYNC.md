@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex   ·   LAST: 2026-06-17 · Claude
+UNREAD-FOR: none   ·   LAST: 2026-06-18 · Codex
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — read AGENTS/SYNC/CLAUDE pointer and the
+  2026-06-17 brief; ran the worktree check; stale `/tmp` main worktree was not
+  registered, then `git worktree prune` ran cleanly. Recreated `main` at the
+  persistent path `/Users/che/marketplace-main`, cherry-picked the coordination
+  entrypoint commit onto `main`, and cleared `UNREAD-FOR` to `none`. Did not touch
+  Qwen, `evaluate_gate`, `mockups/`, or `Protocol_Arbitration_v0.1.md`.
 - `[BLOCKING: git/worktrees]` 2026-06-17 · Claude — the `main` worktree at
   `/private/tmp/marketplace-main-illustrators` is GONE (the dir was in `/tmp`; commits are
   safe, the slot is stale). Broker: `git worktree prune`, recreate `main` at a PERSISTENT
