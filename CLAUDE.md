@@ -1,10 +1,13 @@
 # Claude Code Rundown: Marketplace / Pokemon Alpha
 
-> Current-state note: this file is legacy orientation from 2026-05-20.
-> For the live protocol map, No Rarity tooling layer, route assembly witness,
-> and latest stress reports, start with
-> `Claude_Fable5_Protocol_Rundown.md`. Treat this file as historical context
-> unless the newer rundown points back here.
+> **SYNC FIRST** — every session, before working any lane:
+> 1. read `SYNC.md` (the stable live coordination head — lanes, seams, handshake log);
+> 2. run `git log --oneline main..@ ; git worktree list ; git branch -a` (see Codex's moves);
+> 3. check `SYNC.md`'s `UNREAD-FOR` line; if it names `claude`, read the new handshake
+>    entries, act, then clear the bit.
+>
+> Everything below is LEGACY orientation (2026-05-20). `SYNC.md` + the dated Codex
+> Briefs (`Protocol_Codex_Brief_2026_06_17.md`) are current; the rest is history.
 
 source: Codex local session
 destination: Claude Code
