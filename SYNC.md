@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — corrected the first CoroCoro glossy Pikachu
+  illustrator handling. The parent UPC source-slice row
+  `jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001` and child
+  row `jp_promo_corocoro_first_19961015:001` now prefer the selected source snapshot's
+  Ken Sugimori credit and preserve PokéCardex's Keiji Kinebuchi as explicit conflict
+  metadata. Re-pinned the parent/child release hashes in `manifest.json` and updated
+  the Card Dossier claim to say the row preserves the conflict artifact, not that it
+  displays Keiji. Builder now has a targeted override + regression guard for those rows.
 - `[passive]` 2026-06-18 · Codex — accepted the Card Dossier handoff and landed P0
   in the catalog data lane. Added `data/japanese-pre-english/dossiers/pilot_v0_1.json`
   with three pilot dossiers: No Rarity Charizard, No Rarity Pikachu, and first CoroCoro

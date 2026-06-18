@@ -231,6 +231,20 @@ UPC_BULBAPEDIA_CARD_PAGES: dict[int, str] = {
     60: f"{BULBAPEDIA_BASE}/wiki/Dragonite_%28Pok%C3%A9mon_Card_GB_promo%29",
 }
 
+UPC_SELECTED_SNAPSHOT_ILLUSTRATOR_OVERRIDES: dict[tuple[str, int], dict[str, Any]] = {
+    (
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        1,
+    ): {
+        "name": "Ken Sugimori",
+        "source": "Bulbapedia selected source snapshot",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+        "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+        "selected_line": "Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
+        "reason": "The selected early-1996 promo snapshot places Ken Sugimori immediately under Pikachu [Glossy]; PokéCardex provider metadata is preserved as a conflict artifact, not the preferred credit.",
+    },
+}
+
 PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_corocoro_first_19961015": {
         "source_snapshot": "early_1996_promos",
@@ -3052,6 +3066,7 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
         image_url = f"{POKECARDEX_BASE}/assets/images/sets_jp/{config.pokecardex_code}/{sort_value}.jpg"
         provider_id = f"pokecardex:{card.get('id_card')}"
         title = f"{card.get('name_card_en', '')} - {series.get('fullName', config.name_en)} #{sort_value}"
+        illustrator_override = UPC_SELECTED_SNAPSHOT_ILLUSTRATOR_OVERRIDES.get((config.release_family_id, sort_value), {})
         source_contact = {
             "card_data_hash": sha256_hex(card),
             "series_code": config.pokecardex_code,
@@ -3118,7 +3133,7 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                     "comment": card.get("comment", ""),
                     "dex_id": card.get("id_pokedex_list") or ([card.get("id_pokedex")] if card.get("id_pokedex") else []),
                     "hp": bulbapedia_profile.get("hp") or None,
-                    "illustrator": bulbapedia_profile.get("illustrator") or card.get("nom_illustrateur", ""),
+                    "illustrator": bulbapedia_profile.get("illustrator") or illustrator_override.get("name") or card.get("nom_illustrateur", ""),
                     "jtrans": bulbapedia_profile.get("jtrans", ""),
                     "level": bulbapedia_profile.get("level") or None,
                     "name_card_de": card.get("name_card_de", ""),
@@ -3126,6 +3141,7 @@ def parse_pokecardex_set(config: ReleaseConfig) -> tuple[list[dict[str, Any]], d
                     "types": bulbapedia_profile.get("types", []),
                     "versions": card.get("versions", []),
                 },
+                **({"illustrator_override": illustrator_override} if illustrator_override else {}),
                 **(
                     {
                         "additional_source_contacts": [
@@ -3449,15 +3465,19 @@ def row_from_sources(
         profile["hp"] = source_profile.get("hp")
         profile["level"] = source_profile.get("level")
         profile["types"] = source_profile.get("types", [])
-    illustrator_name = source_profile.get("illustrator") or provider_row.get("illustrator") or ""
+    illustrator_override = source_row.get("illustrator_override", {})
+    provider_illustrator = provider_row.get("illustrator") or ""
+    source_profile_illustrator = source_profile.get("illustrator") or ""
+    illustrator_name = illustrator_override.get("name") or source_profile_illustrator or provider_illustrator
     illustrator_credit = supplemental_illustrator or {}
-    illustrator_source = adapter
+    illustrator_source = illustrator_override.get("source") or adapter
     illustrator_status = "credited" if illustrator_name else "not_provided_by_primary_source"
     illustrator_caption = ""
     illustrator_source_page_url = ""
     illustrator_source_page_sha256 = ""
     illustrator_requested_title = ""
     illustrator_resolved_title = ""
+    illustrator_conflict = {}
     if not illustrator_name and illustrator_credit:
         illustrator_name = illustrator_credit.get("illustrator", "")
         illustrator_source = illustrator_credit.get("source", "Bulbapedia card page")
@@ -3467,6 +3487,20 @@ def row_from_sources(
         illustrator_source_page_sha256 = illustrator_credit.get("source_page_wikitext_sha256", "")
         illustrator_requested_title = illustrator_credit.get("requested_page_title", "")
         illustrator_resolved_title = illustrator_credit.get("resolved_page_title", "")
+    if illustrator_override:
+        illustrator_status = "source_conflict_preferred_selected_snapshot"
+        illustrator_source_page_url = illustrator_override.get("source_page_url", "")
+        if provider_illustrator and provider_illustrator != illustrator_name:
+            illustrator_conflict = {
+                "conflicting_name": provider_illustrator,
+                "conflicting_source": adapter,
+                "resolution": "selected_source_snapshot_preferred",
+                "not_claiming": [
+                    "provider metadata is false in all contexts",
+                    "direct physical-card inspection",
+                    "authenticity",
+                ],
+            }
     illustrator_display = (
         f"Illus. {illustrator_name}"
         if illustrator_name
@@ -3475,6 +3509,8 @@ def row_from_sources(
     illustrator_authority = (
         "Bulbapedia card-page caption metadata. Useful for catalog texture, not direct print-name or authenticity proof."
         if illustrator_source == "Bulbapedia card page"
+        else "Selected source snapshot credit preferred over conflicting provider metadata. Useful for catalog texture, not direct print authenticity proof."
+        if illustrator_override
         else "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof."
     )
     symbol_source_release_id = config.symbol_status_source_release_family_id or config.release_family_id
@@ -3519,6 +3555,7 @@ def row_from_sources(
             "credit_status": illustrator_status,
             "display": illustrator_display,
             "name": illustrator_name,
+            **({"conflict": illustrator_conflict} if illustrator_conflict else {}),
             "not_claiming": ["seller possession", "authenticity", "condition", "Japanese print authority"],
             "requested_page_title": illustrator_requested_title,
             "resolved_page_title": illustrator_resolved_title,
@@ -3600,6 +3637,28 @@ def row_from_sources(
                     }
                 ]
                 if illustrator_credit
+                else []
+            ),
+            *(
+                [
+                    {
+                        "source": illustrator_override.get("source", ""),
+                        "source_page_url": illustrator_override.get("source_page_url", ""),
+                        "snapshot_path": illustrator_override.get("snapshot_path", ""),
+                        "selected_line": illustrator_override.get("selected_line", ""),
+                        "preferred_illustrator": illustrator_override.get("name", ""),
+                        "conflicting_provider_illustrator": provider_illustrator,
+                        "reason": illustrator_override.get("reason", ""),
+                        "not_claiming": [
+                            "raw HTML snapshot",
+                            "seller possession",
+                            "authenticity",
+                            "condition",
+                            "physical-card inspection",
+                        ],
+                    }
+                ]
+                if illustrator_override
                 else []
             ),
             *(
@@ -5668,6 +5727,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         failures.append("release_legacy_boundary_claim_key_present")
     if has_legacy_key(release, "expected_complete_source_boundary"):
         failures.append("release_legacy_expected_boundary_key_present")
+    row_by_id = {str(card.get("row_id", "")): card for card in cards}
+    for glossy_pikachu_row_id in (
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
+        "jp_promo_corocoro_first_19961015:001",
+    ):
+        glossy_pikachu = row_by_id.get(glossy_pikachu_row_id)
+        if glossy_pikachu:
+            illustrator = glossy_pikachu.get("illustrator", {})
+            if illustrator.get("name") != "Ken Sugimori":
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_illustrator_not_ken_sugimori")
+            if illustrator.get("conflict", {}).get("conflicting_name") != "Keiji Kinebuchi":
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_provider_conflict_not_recorded")
 
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}

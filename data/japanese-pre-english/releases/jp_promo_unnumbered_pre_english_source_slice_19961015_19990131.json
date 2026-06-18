@@ -19,11 +19,21 @@
       },
       "holo_source": false,
       "illustrator": {
-        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "authority": "Selected source snapshot credit preferred over conflicting provider metadata. Useful for catalog texture, not direct print authenticity proof.",
         "caption": "",
-        "credit_status": "credited",
-        "display": "Illus. Keiji Kinebuchi",
-        "name": "Keiji Kinebuchi",
+        "conflict": {
+          "conflicting_name": "Keiji Kinebuchi",
+          "conflicting_source": "pokecardex",
+          "not_claiming": [
+            "provider metadata is false in all contexts",
+            "direct physical-card inspection",
+            "authenticity"
+          ],
+          "resolution": "selected_source_snapshot_preferred"
+        },
+        "credit_status": "source_conflict_preferred_selected_snapshot",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -32,9 +42,9 @@
         ],
         "requested_page_title": "",
         "resolved_page_title": "",
-        "source": "pokecardex",
+        "source": "Bulbapedia selected source snapshot",
         "source_page_sha256": "",
-        "source_page_url": ""
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
       },
       "image_provenance": {
         "allowed_use": [
@@ -216,6 +226,22 @@
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        },
+        {
+          "conflicting_provider_illustrator": "Keiji Kinebuchi",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card inspection"
+          ],
+          "preferred_illustrator": "Ken Sugimori",
+          "reason": "The selected early-1996 promo snapshot places Ken Sugimori immediately under Pikachu [Glossy]; PokéCardex provider metadata is preserved as a conflict artifact, not the preferred credit.",
+          "selected_line": "Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "source": "Bulbapedia selected source snapshot",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
         }
       ],
       "symbol_status": {
