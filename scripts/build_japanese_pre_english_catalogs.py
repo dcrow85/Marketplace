@@ -130,6 +130,11 @@ LATEST_HOW_TO_PLAY_BOOK_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json"
 )
+COROCORO_MARCH_1998_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_corocoro_march_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -177,8 +182,8 @@ UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
     34: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
     35: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
     36: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
-    37: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-02-15", "date_source": "source_comment"},
-    38: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-02-15", "date_source": "source_comment"},
+    37: {"promo_family_id": "jp_promo_corocoro_march_1998_19980215", "date_label": "1998-02-15", "date_source": "source_comment"},
+    38: {"promo_family_id": "jp_promo_corocoro_march_1998_19980215", "date_label": "1998-02-15", "date_source": "source_comment"},
     39: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
     40: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
     41: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
@@ -683,6 +688,50 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "PokéCardex UPC aggregate source-pins both rows to this family. This source slice "
             "models those card identities only; it does not model the full book object, sealed "
             "book variants, official copy count, or a complete Asobikata promo variant census."
+        ),
+    },
+    "jp_promo_corocoro_march_1998_19980215": {
+        "source_snapshot": "corocoro_march_1998",
+        "expected_source_card_count": 2,
+        "complete_source_boundary_denial": "complete magazine source",
+        "source_slice_authority_label": "source-pinned CoroCoro March 1998 issue card identity slice",
+        "expected_cards": [
+            "Brock's Onix",
+            "Misty's Staryu",
+        ],
+        "modeled_source_sorts": [37, 38],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Brock's Onix",
+            "Misty's Staryu",
+            "CoroCoro Comic",
+            "March 1998 issue insert (February 15, 1998)",
+            "available on a two-card insert alongside",
+            "タケシのイワーク",
+            "Takeshi's Iwark",
+            "カスミのヒトデマン",
+            "Kasumi's Hitodeman",
+            "Ken Sugimori",
+        ],
+        "source_labeled_japanese_names": {
+            37: {
+                "name_ja": "タケシのイワーク",
+                "romaji": "Takeshi's Iwark",
+                "source_note": "Bulbapedia Gym Heroes page identifies Brock's Onix as Japanese: タケシのイワーク Takeshi's Iwark and documents the CoroCoro March 1998 insert context.",
+            },
+            38: {
+                "name_ja": "カスミのヒトデマン",
+                "romaji": "Kasumi's Hitodeman",
+                "source_note": "Bulbapedia Gym Challenge page identifies Misty's Staryu as Japanese: カスミのヒトデマン Kasumi's Hitodeman and documents the CoroCoro March 1998 insert context.",
+            },
+        },
+        "source_gap_reason": (
+            "Bulbapedia documents Brock's Onix and Misty's Staryu as a two-card insert in "
+            "the March 1998 issue of CoroCoro Comic, released on February 15, 1998, and "
+            "the current PokéCardex UPC aggregate source-pins both rows to matching CoroCoro "
+            "March 1998 issue comments. This source slice models those two card identities "
+            "only; it does not model the whole CoroCoro 1998 promo run, later mail-in prize "
+            "draws, reprint history, official copy counts, or the complete magazine object."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1370,6 +1419,41 @@ RELEASES: tuple[ReleaseConfig, ...] = (
             "Trade Please campaign. Use it to preserve the Venusaur/Charizard/Blastoise/"
             "Trade Please! mail-in campaign lane while keeping course, fulfillment, "
             "flyer, envelope, and copy-count claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
+        release_family_id="jp_promo_corocoro_march_1998_19980215",
+        name_en="CoroCoro Comic March 1998 promos source slice",
+        name_ja="月刊コロコロコミック1998年3月号プロモ",
+        release_date="1998-02-15",
+        expected_row_count=2,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_exact",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia documents Brock's Onix and Misty's Staryu as Unnumbered "
+            "Promotional cards available together on a two-card insert in the March "
+            "1998 issue of CoroCoro Comic, released on February 15, 1998. The current "
+            "PokéCardex UPC aggregate source-pins both rows to matching CoroCoro "
+            "March 1998 issue comments. This child slice models those two source-pinned "
+            "card identities only; it does not claim complete magazine-object provenance, "
+            "later mail-in prize-draw coverage, reprint history, official copy counts, "
+            "or a complete CoroCoro 1998 promo census. It is not a complete family "
+            "checklist beyond the source-pinned card pair, and it is not a complete "
+            "magazine-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the "
+            "CoroCoro Comic March 1998 issue. Use it to preserve the Brock's Onix/"
+            "Misty's Staryu two-card insert lane while keeping magazine-object, "
+            "mail-in, reprint-history, copy-count, and broader CoroCoro promo claims "
+            "outside row authority."
         ),
     ),
     ReleaseConfig(
@@ -2102,6 +2186,26 @@ def latest_how_to_play_book_source_snapshot() -> dict[str, Any]:
     }
 
 
+def corocoro_march_1998_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(COROCORO_MARCH_1998_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Bulbapedia + PokéCardex"),
+        "snapshot_path": str(COROCORO_MARCH_1998_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -2150,6 +2254,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return all_card_calendar_source_snapshot()
     if snapshot_id == "latest_how_to_play_book_1998":
         return latest_how_to_play_book_source_snapshot()
+    if snapshot_id == "corocoro_march_1998":
+        return corocoro_march_1998_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
