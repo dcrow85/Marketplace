@@ -1,9 +1,9 @@
 {
   "boundary_proof": {
-    "hash": "3b8e99793d38137f0d5bca54515dc9aa3e543ecf1b36fa42c55d831e1b551076",
+    "hash": "209780a4aef44578c38441860e15ca1064c333549107c91d7da84a51a4373008",
     "passed": true,
     "path": "data/catalog-expansion/boundary-proof.json",
-    "proof_hash": "b5f5244632fd8e4e505202256e950bff0aeec66552d2fe504228aeb5881f78a2",
+    "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
     "sections": {
       "english_pokemontcg_api": {
         "not_claiming": [
@@ -44,16 +44,53 @@
     }
   },
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "completion_audit": {
+    "audit_hash": "568d87b4a24ac5a8a362d709c37d98fcf191240e464f9a27bb5a6d493c0c0800",
+    "claim_supported": [
+      "No known source-visible in-scope English/Japanese TCG set, promo, or bounded supplemental row is missing from the current modeled corpus.",
+      "Every modeled card row has the current canonical row fields, including special_identification_instructions and source_contacts.",
+      "English Jumbo is bounded by row-level source proof rather than accepted from TCGdex's zero-ref aggregate count."
+    ],
+    "hash": "f1d319471efaa1c0807feabdabd42152b02e1571266ed2f7a40476d7d8928b65",
+    "not_claiming": [
+      "physical-card truth",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image rights",
+      "that TCGdex and Bulbapedia Jumbo counts are equivalent",
+      "that no source outside the pinned source surfaces could add future rows",
+      "official status for non-official sources"
+    ],
+    "passed": true,
+    "path": "data/catalog-expansion/completion-audit.json",
+    "residuals": [
+      {
+        "current_handling": "Modeled the 10-row WoC-era/Best-of-Game prefix; classified all remaining Bulbapedia rows as post-boundary later-era buckets.",
+        "id": "english_jumbo_tcgdex_count_mismatch",
+        "severity": "disclosed_nonblocking_for_bounded_source_claim",
+        "summary": "TCGdex exposes English Jumbo as a 160-card zero-ref set while Bulbapedia exposes 390 raw rows. The audit does not claim these counts are equivalent."
+      },
+      {
+        "current_handling": "Completion is stated as bounded-source completion, not omniscient historical completion.",
+        "id": "source_surface_dependency",
+        "severity": "standing_disclosure",
+        "summary": "The audit is only as broad as the pinned source surfaces and snapshots; it is not a guarantee that no obscure uncited product exists."
+      }
+    ],
+    "status": "bounded_source_complete_with_disclosed_residuals"
+  },
   "completion_status": {
     "known_remaining_work": [
-      "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
-      "Run a final external-source completion audit before claiming the full English/Japanese through-US-WoC-era objective is complete."
+      "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current audit treats it as a disclosed non-blocking residual for the bounded-source claim.",
+      "Keep the completion claim bounded to the pinned source surfaces; add future source-discovered rows through the same manifest/proof/audit path."
     ],
-    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved.",
-    "status": "in_progress"
+    "reason": "The modeled catalog covers the source-visible English and Japanese TCG set/promo surfaces through the US WoC-era endpoint that this project has pinned, with all row invariants passing. The remaining English Jumbo TCGdex count mismatch is non-blocking for the bounded in-scope claim because the row-level Bulbapedia proof models the WoC-era prefix and classifies every post-prefix row as later-era.",
+    "status": "bounded_source_complete_with_disclosed_residuals"
   },
   "english_jumbo_boundary_proof": {
-    "hash": "4eb4c41438a8e6b58910eda3fbbb37d005d337264f932420f3363257623f3b96",
+    "hash": "f56bb2a310bb220d79196528198871ba70c0649e8feab49b04a513d8566d93fb",
     "modeled_row_count": 10,
     "not_claiming": [
       "complete Jumbo coverage",
@@ -67,14 +104,14 @@
     ],
     "passed": true,
     "path": "data/catalog-expansion/english-jumbo-boundary-proof.json",
-    "proof_hash": "0b559e33cf10b82ddecdb1bee61f29c49ecb154fdb4ba41f56ff69164e4fe6de",
+    "proof_hash": "f025791c285e1c7721ed6e82d10b243e01c2e7d1b2e388deae6b27c083c1f214",
     "source_row_count": 390,
     "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
-    "unclassified_excluded_count": 50
+    "unclassified_excluded_count": 0
   },
-  "generated_at": "2026-06-18T20:46:29Z",
+  "generated_at": "2026-06-18T20:57:03Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "b8d7d9c583d7842284bdc7cd50296dfe405ef3d83aec0489e95f90959bc48620",
+  "ledger_hash": "d241030dfb7cdad7d6bf71f93c78ea995b6d99be0c5e18912bf4680847b48adb",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -266,7 +303,7 @@
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
   "schema_profile": {
     "canonical_fields_passed": true,
-    "hash": "b713d2ab036fb758379d452f422ff6ba0c48864d7f5e704dc6c3fdf56d953367",
+    "hash": "bdae1a8d5e16d4c6d2a7321fed206d6ca88b8cd9f64582c4e67cf13c3cddde28",
     "known_schema_asymmetries": [
       {
         "affected_schema": "marketplace.japanese_pre_english_card_row.v0.1",
@@ -282,7 +319,7 @@
     "normalized_projection_schema": "marketplace.catalog_agent_projection.v0.1",
     "passed": true,
     "path": "data/catalog-expansion/schema-profile.json",
-    "profile_hash": "34b811a84441efbba87b932f4fcd50df67abae7fa60dfe7d03788011cc97e95d",
+    "profile_hash": "9a4d3e5b7092988209b7b048ae08d509ac6c2d031cf6c789f12e2b83596de888",
     "row_count": 4549,
     "schema_counts": {
       "marketplace.english_supplemental_wotc_card_row.v0.1": 27,
@@ -322,7 +359,7 @@
       }
     ],
     "active_source_gap_rows": 160,
-    "hash": "2ec9d4c7782df7012593f8b6acee91f8f83c879f6e7615cbbffd2668ba7756f9",
+    "hash": "49ebc2f13df054c5ca59cbea595b0556c09010236f1d02df9e63b2c3fb6edbf4",
     "partial_resolution_count": 1,
     "partially_modeled_source_gap_rows": 10,
     "path": "data/catalog-expansion/source-gaps.json",

@@ -4,7 +4,7 @@
     "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and final external-source completion still needs a dedicated audit.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:46:29Z",
+  "generated_at": "2026-06-18T20:56:44Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "goal complete",
@@ -18,7 +18,7 @@
     "price truth"
   ],
   "passed": true,
-  "proof_hash": "b5f5244632fd8e4e505202256e950bff0aeec66552d2fe504228aeb5881f78a2",
+  "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
   "schema": "marketplace.catalog_boundary_proof.v0.1",
   "sections": {
     "english_pokemontcg_api": {
@@ -164,7 +164,7 @@
         "jumbo"
       ],
       "jumbo_boundary_proof": {
-        "hash": "4eb4c41438a8e6b58910eda3fbbb37d005d337264f932420f3363257623f3b96",
+        "hash": "70d8d7de1864d10cbd70e5b642ca031e98638930ab7e3a4435cb38f9e2cef279",
         "modeled_prefix": {
           "entries": [
             {
@@ -257,10 +257,10 @@
         },
         "passed": true,
         "path": "data/catalog-expansion/english-jumbo-boundary-proof.json",
-        "proof_hash": "0b559e33cf10b82ddecdb1bee61f29c49ecb154fdb4ba41f56ff69164e4fe6de",
+        "proof_hash": "d378bb185220d589fd423d3a75ae8c51a5a5059d6f32b16413c8ee74b0b15423",
         "source_row_count": 390,
         "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
-        "unclassified_excluded_count": 50
+        "unclassified_excluded_count": 0
       },
       "modeled_release_family_ids": [
         "en_wotc_w_promotional_19990901",
@@ -283,7 +283,7 @@
       ],
       "schema": "marketplace.boundary_proof.english_supplemental_sources.v0.1",
       "source": "TCGdex zero-ref source gap register plus Bulbapedia row sources",
-      "source_gap_register_hash": "2ec9d4c7782df7012593f8b6acee91f8f83c879f6e7615cbbffd2668ba7756f9",
+      "source_gap_register_hash": "49ebc2f13df054c5ca59cbea595b0556c09010236f1d02df9e63b2c3fb6edbf4",
       "source_gap_register_path": "data/catalog-expansion/source-gaps.json",
       "supplemental_manifest_hash": "193dd361d0b1e0a2b7dfc248f8fca0211f4fec151d44e1fda505c7b42b93dda2",
       "supplemental_manifest_path": "data/english-supplemental-wotc/manifest.json"

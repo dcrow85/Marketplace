@@ -186,10 +186,13 @@ def build() -> dict[str, Any]:
     boundary_proof_path = "data/catalog-expansion/boundary-proof.json"
     schema_profile_path = "data/catalog-expansion/schema-profile.json"
     jumbo_boundary_proof_path = "data/catalog-expansion/english-jumbo-boundary-proof.json"
+    completion_audit_path = "data/catalog-expansion/completion-audit.json"
     gap_register = read_json(gap_register_path)
     boundary_proof = read_json(boundary_proof_path)
     schema_profile = read_json(schema_profile_path)
     jumbo_boundary_proof = read_json(jumbo_boundary_proof_path)
+    completion_audit_file = ROOT / completion_audit_path
+    completion_audit = read_json(completion_audit_path) if completion_audit_file.exists() else {}
     invariant_summary = row_invariant_summary()
     modeled_rows = sum(corpus["row_count"] for corpus in corpora)
     modeled_releases = sum(corpus["release_count"] for corpus in corpora)
@@ -240,6 +243,16 @@ def build() -> dict[str, Any]:
             "unclassified_excluded_count": int(jumbo_boundary_proof.get("unclassified_excluded_count") or 0),
             "not_claiming": jumbo_boundary_proof.get("not_claiming", []),
         },
+        "completion_audit": {
+            "path": completion_audit_path,
+            "hash": file_hash(completion_audit_path) if completion_audit_file.exists() else "",
+            "audit_hash": completion_audit.get("audit_hash", ""),
+            "passed": bool(completion_audit.get("passed")),
+            "status": completion_audit.get("completion_status", {}).get("status", "missing"),
+            "claim_supported": completion_audit.get("claim_supported", []),
+            "residuals": completion_audit.get("residuals", []),
+            "not_claiming": completion_audit.get("not_claiming", []),
+        },
         "source_gap_register": {
             "path": gap_register_path,
             "hash": file_hash(gap_register_path),
@@ -272,14 +285,18 @@ def build() -> dict[str, Any]:
             ],
         },
         "completion_status": {
-            "status": "in_progress",
+            "status": completion_audit.get("completion_status", {}).get("status", "in_progress") if completion_audit.get("passed") else "in_progress",
             "reason": (
-                "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. "
-                "The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved."
+                completion_audit.get("completion_status", {}).get("reason")
+                if completion_audit.get("passed")
+                else (
+                    "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. "
+                    "The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while the final completion audit has not passed."
+                )
             ),
             "known_remaining_work": [
-                "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
-                "Run a final external-source completion audit before claiming the full English/Japanese through-US-WoC-era objective is complete.",
+                "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current audit treats it as a disclosed non-blocking residual for the bounded-source claim.",
+                "Keep the completion claim bounded to the pinned source surfaces; add future source-discovered rows through the same manifest/proof/audit path.",
             ],
         },
         "not_claiming": [

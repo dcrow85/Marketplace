@@ -1,8 +1,7 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "classification_counts": {
-    "excluded_after_modeled_prefix_unclassified_by_rule": 50,
-    "excluded_later_merchandise_era": 273,
+    "excluded_later_merchandise_era": 323,
     "excluded_later_series_source_set": 26,
     "excluded_modern_25th_anniversary": 25,
     "excluded_post_wotc_nintendo_eleague": 6,
@@ -118,7 +117,7 @@
       "source_set": "EX Sandstorm"
     }
   ],
-  "generated_at": "2026-06-18T20:36:10Z",
+  "generated_at": "2026-06-18T20:56:44Z",
   "hash_algorithm": "sha256",
   "modeled_prefix": {
     "entries": [
@@ -221,7 +220,7 @@
     "price truth"
   ],
   "passed": true,
-  "proof_hash": "0b559e33cf10b82ddecdb1bee61f29c49ecb154fdb4ba41f56ff69164e4fe6de",
+  "proof_hash": "f025791c285e1c7721ed6e82d10b243e01c2e7d1b2e388deae6b27c083c1f214",
   "schema": "marketplace.english_jumbo_boundary_proof.v0.1",
   "source": "Bulbapedia raw wikitext",
   "source_page_sha256": "25ef253698294212fc906efb80dfde2d9306eae00ab3dd3139dd63bdab77e67f",
@@ -233,132 +232,11 @@
       "Bulbapedia raw row count equals TCGdex official count",
       "complete Jumbo coverage from TCGdex"
     ],
-    "source_gap_register_hash": "2ec9d4c7782df7012593f8b6acee91f8f83c879f6e7615cbbffd2668ba7756f9",
+    "source_gap_register_hash": "49ebc2f13df054c5ca59cbea595b0556c09010236f1d02df9e63b2c3fb6edbf4",
     "source_gap_register_path": "data/catalog-expansion/source-gaps.json",
     "tcgdex_official_count": 160,
     "tcgdex_set_id": "jumbo"
   },
-  "unclassified_excluded_count": 50,
-  "unclassified_excluded_samples": [
-    {
-      "name": "Shadow Lugia",
-      "promotion": "Pokémon XD: Gale of Darkness launch",
-      "source_index": 24,
-      "source_set": "Nintendo World"
-    },
-    {
-      "name": "Palkia & Dialga LEGEND",
-      "promotion": "Clash of Legends Box",
-      "source_index": 34,
-      "source_set": "Triumphant"
-    },
-    {
-      "name": "Zorua and Celebi",
-      "promotion": "Pokémon Black and White Sampling Tour",
-      "source_index": 35,
-      "source_set": "Black and White Tour"
-    },
-    {
-      "name": "Zoroark and Legendary Pokémon",
-      "promotion": "{{TCGMerch|Call of Legends|Series|World of Illusions Box",
-      "source_index": 36,
-      "source_set": "World of Illusions"
-    },
-    {
-      "name": "Victini",
-      "promotion": "Pokémon The Movie: White—Victini and ZekromPokémon the Movie: Black—Victini and Reshiram",
-      "source_index": 44,
-      "source_set": "Noble Victories"
-    },
-    {
-      "name": "Charizard",
-      "promotion": "Mega Charizard Box",
-      "source_index": 59,
-      "source_set": ""
-    },
-    {
-      "name": "Primal Kyogre",
-      "promotion": "Hoenn Collection",
-      "source_index": 61,
-      "source_set": ""
-    },
-    {
-      "name": "Primal Groudon",
-      "promotion": "Shiny Rayquaza-EX Box",
-      "source_index": 73,
-      "source_set": ""
-    },
-    {
-      "name": "Rayquaza",
-      "promotion": "Shiny Rayquaza-EX Box",
-      "source_index": 74,
-      "source_set": ""
-    },
-    {
-      "name": "Mewtwo",
-      "promotion": "Mega Mewtwo Box",
-      "source_index": 79,
-      "source_set": ""
-    },
-    {
-      "name": "Mewtwo",
-      "promotion": "Kanto Power Collection",
-      "source_index": 119,
-      "source_set": ""
-    },
-    {
-      "name": "Solgaleo",
-      "promotion": "Alola Collection (redacted)",
-      "source_index": 125,
-      "source_set": ""
-    },
-    {
-      "name": "Eevee",
-      "promotion": "Eevee-GX Box",
-      "source_index": 174,
-      "source_set": ""
-    },
-    {
-      "name": "Eevee",
-      "promotion": "Eevee-GX Box",
-      "source_index": 175,
-      "source_set": ""
-    },
-    {
-      "name": "Umbreon & Darkrai",
-      "promotion": "TAG TEAM Powers Collection",
-      "source_index": 196,
-      "source_set": ""
-    },
-    {
-      "name": "Mimikyu",
-      "promotion": "Mimikyu-GX Box (French only)",
-      "source_index": 197,
-      "source_set": ""
-    },
-    {
-      "name": "Gardevoir & Sylveon",
-      "promotion": "Gardevoir & Sylveon-GX Box (French only)",
-      "source_index": 198,
-      "source_set": ""
-    },
-    {
-      "name": "Zamazenta",
-      "promotion": "Galar Collection Portuguese only",
-      "source_index": 211,
-      "source_set": ""
-    },
-    {
-      "name": "Toxtricity",
-      "promotion": "\"Rebel Clash\" stamp gift with purchase exclusive (various countries)",
-      "source_index": 219,
-      "source_set": ""
-    },
-    {
-      "name": "Eternatus",
-      "promotion": "\"Darkness Ablaze\" stamp gift with purchase exclusive (various countries)",
-      "source_index": 222,
-      "source_set": ""
-    }
-  ]
+  "unclassified_excluded_count": 0,
+  "unclassified_excluded_samples": []
 }

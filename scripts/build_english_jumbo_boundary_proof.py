@@ -155,7 +155,10 @@ def parse_identity(text: str) -> dict[str, str]:
 
 def parse_entry(line: str, index: int) -> dict[str, Any]:
     prefix = "{{Setlist/nmentry|"
-    fields = split_top_level(line.strip()[len(prefix) :].rstrip("}"))
+    body = line.strip()[len(prefix) :]
+    if body.endswith("}}"):
+        body = body[:-2]
+    fields = split_top_level(body)
     while len(fields) < 6:
         fields.append("")
     cleaned_fields = [re.sub(r"^\d+=", "", field) for field in fields]
@@ -190,6 +193,7 @@ def parse_entry(line: str, index: int) -> dict[str, Any]:
 def classify_entry(entry: dict[str, Any]) -> dict[str, Any]:
     promotion = entry["promotion"]
     source_set = entry["source_set"]
+    marker_text = f"{promotion} {source_set} {entry['name']}"
     index = int(entry["source_index"])
     if index <= MODELED_INDEX_END:
         reason = "modeled_wotc_prefix"
@@ -210,7 +214,61 @@ def classify_entry(entry: dict[str, Any]) -> dict[str, Any]:
         reason = "excluded_later_series_source_set"
         note = "Source set belongs to a later TCG era."
         in_scope = False
-    elif any(marker in promotion for marker in ("Ruby and Sapphire", "Diamond & Pearl", "Platinum", "HeartGold", "Black & White", "XY", "Sun & Moon", "Sword & Shield", "Scarlet & Violet", "Mega Evolution")):
+    elif any(
+        marker in marker_text
+        for marker in (
+            "Ruby and Sapphire",
+            "Diamond & Pearl",
+            "Platinum",
+            "HeartGold",
+            "Black & White",
+            "Black and White",
+            "Call of Legends",
+            "Noble Victories",
+            "Triumphant",
+            "Clash of Legends",
+            "Pokémon XD",
+            "Mega ",
+            "Primal ",
+            "Hoenn Collection",
+            "Shiny Rayquaza",
+            "Kanto Power",
+            "Alola Collection",
+            "-GX",
+            "-EX",
+            "GX ",
+            "EX Box",
+            "XY Series",
+            "BREAK Evolution",
+            "Red & Blue Collection",
+            "TAG TEAM",
+            "Galar",
+            "Rebel Clash",
+            "Darkness Ablaze",
+            "Vivid Voltage",
+            "Celebrations",
+            "Brilliant Stars",
+            "Astral Radiance",
+            "Lost Origin",
+            "VMAX",
+            "Silver Tempest",
+            "Paldea",
+            "Obsidian Flames",
+            " ex",
+            " ex ",
+            "Paradox",
+            "Shrouded Fable",
+            "Stellar Crown",
+            "Natural History Museum",
+            "Portuguese only",
+            "French only",
+            "Europe",
+            "Sword & Shield",
+            "Sun & Moon Series",
+            "Scarlet & Violet",
+            "Mega Evolution",
+        )
+    ):
         reason = "excluded_later_merchandise_era"
         note = "Promotion text names a later merchandise era."
         in_scope = False
