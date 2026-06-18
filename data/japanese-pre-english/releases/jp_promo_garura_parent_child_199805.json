@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
         "promo_family_source_sort": 42,
@@ -75,6 +75,7 @@
         "row_id": "jp_promo_garura_parent_child_199805:042",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -202,13 +203,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_garura_parent_child_199805",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_gap_reason": "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, while Pokumon documents the two card identities and the Touch Change! Fan Club Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both tournament rows to this family. This source slice models those tournament card identities only; it does not model the full tournament rules packet, complete participant/winner ledger, official copy count, or complete Touch Change! distribution census.",
         "source_local_id": "042",
         "source_provider_sort": 42,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
@@ -216,7 +218,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_local_id": "042",
         "source_provider_row": {
@@ -254,6 +256,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 42
       },
       "rarity_source": "Sans rareté",
@@ -264,7 +267,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "042",
           "not_claiming": [
@@ -281,6 +284,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 42
         },
         {
@@ -341,7 +345,7 @@
         },
         {
           "card_data_hash": "506ec06c792a318a30fa175be75c8f5434369a439d65129cd7571f303359db76",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -359,7 +363,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:042",
           "series_code": "UPC",
@@ -464,7 +468,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
         "promo_family_source_sort": 43,
@@ -475,6 +479,7 @@
         "row_id": "jp_promo_garura_parent_child_199805:043",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -604,13 +609,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_garura_parent_child_199805",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_gap_reason": "Bulbapedia documents the May 1998 Garura Parent/Child Tournament roles for Touch Change! participation and Kangaskhan winner/reached-win-threshold prize, while Pokumon documents the two card identities and the Touch Change! Fan Club Vol. 5 reprint caveat. The current PokéCardex UPC aggregate source-pins both tournament rows to this family. This source slice models those tournament card identities only; it does not model the full tournament rules packet, complete participant/winner ledger, official copy count, or complete Touch Change! distribution census.",
         "source_local_id": "043",
         "source_provider_sort": 43,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
@@ -618,7 +624,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_local_id": "043",
         "source_provider_row": {
@@ -656,6 +662,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 43
       },
       "rarity_source": "Sans rareté",
@@ -666,7 +673,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "043",
           "not_claiming": [
@@ -683,6 +690,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 43
         },
         {
@@ -743,7 +751,7 @@
         },
         {
           "card_data_hash": "0faef479f021c94fe100ec7fece9775312460f5c429319ad827a3f1ca677078e",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -761,7 +769,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:043",
           "series_code": "UPC",
@@ -812,6 +820,7 @@
     "complete magazine source",
     "complete event source",
     "unmodeled expected card row",
+    "manual provider-path rows are not parent aggregate decrypted rows",
     "official copy count",
     "seller possession",
     "authenticity",
@@ -844,7 +853,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 2,
-      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
       "complete_source_boundary_denial": "complete tournament source",
       "expected_cards": [
         "Touch Change! (Garura Parent/Child Tournament 1998)",
@@ -917,6 +926,8 @@
           "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
         ]
       },
+      "manual_source_row_count": 0,
+      "manual_source_rows": [],
       "modeled_source_rows": 2,
       "modeled_source_sorts": [
         42,
@@ -930,6 +941,7 @@
         "complete magazine source",
         "complete event source",
         "unmodeled expected card row",
+        "manual provider-path rows are not parent aggregate decrypted rows",
         "official copy count",
         "seller possession",
         "authenticity",

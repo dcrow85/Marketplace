@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
         "promo_family_source_sort": 25,
@@ -75,6 +75,7 @@
         "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -206,13 +207,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
         "source_local_id": "025",
         "source_provider_sort": 25,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
@@ -220,7 +222,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_local_id": "025",
         "source_provider_row": {
@@ -258,6 +260,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 25
       },
       "rarity_source": "Sans rareté",
@@ -268,7 +271,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "025",
           "not_claiming": [
@@ -285,6 +288,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 25
         },
         {
@@ -339,7 +343,7 @@
         },
         {
           "card_data_hash": "9ec6d1a61f64934952302417976a939015bf43f1eee4a7c439e23359202204db",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -357,7 +361,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:025",
           "series_code": "UPC",
@@ -462,7 +466,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
         "promo_family_source_sort": 26,
@@ -473,6 +477,7 @@
         "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -604,13 +609,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
         "source_local_id": "026",
         "source_provider_sort": 26,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
@@ -618,7 +624,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_local_id": "026",
         "source_provider_row": {
@@ -656,6 +662,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 26
       },
       "rarity_source": "Sans rareté",
@@ -666,7 +673,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "026",
           "not_claiming": [
@@ -683,6 +690,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 26
         },
         {
@@ -737,7 +745,7 @@
         },
         {
           "card_data_hash": "9b24d9459efdb9fc45af8724447d3f8f15b30a63b18783b2029ad4d1f8a7a8de",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -755,7 +763,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:026",
           "series_code": "UPC",
@@ -860,7 +868,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
         "promo_family_source_sort": 27,
@@ -871,6 +879,7 @@
         "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -1002,13 +1011,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_gap_reason": "Pokumon timeline lines document the 7th Next Generation World Hobby Fair window and three World Hobby Fair Special Sheet promo identities, while Bulbapedia documents the special preview expansion sheet/Series 00 context. The current PokéCardex UPC aggregate source-pins Pikachu, Mew, and Mewtwo rows to this exact family. This source slice models those card identities only; it does not model a complete event schedule, venue-by-venue sale ledger, sheet-object variant catalog, later CD reprint census, or copy-count claims.",
         "source_local_id": "027",
         "source_provider_sort": 27,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
@@ -1016,7 +1026,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 3,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 0,
         "source_local_id": "027",
         "source_provider_row": {
@@ -1054,6 +1064,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 27
       },
       "rarity_source": "Sans rareté",
@@ -1064,7 +1075,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "027",
           "not_claiming": [
@@ -1081,6 +1092,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 27
         },
         {
@@ -1135,7 +1147,7 @@
         },
         {
           "card_data_hash": "45d038dbb95af6a846171d77c4fe4a6434aa84ecccf3355ae376f5ad3e4e26fa",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -1153,7 +1165,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:027",
           "series_code": "UPC",
@@ -1204,6 +1216,7 @@
     "complete magazine source",
     "complete event source",
     "unmodeled expected card row",
+    "manual provider-path rows are not parent aggregate decrypted rows",
     "official copy count",
     "seller possession",
     "authenticity",
@@ -1236,7 +1249,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 3,
-      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Pikachu (World Hobby Fair Special Sheet 1997)",
@@ -1307,6 +1320,8 @@
           "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
         ]
       },
+      "manual_source_row_count": 0,
+      "manual_source_rows": [],
       "modeled_source_rows": 3,
       "modeled_source_sorts": [
         25,
@@ -1321,6 +1336,7 @@
         "complete magazine source",
         "complete event source",
         "unmodeled expected card row",
+        "manual provider-path rows are not parent aggregate decrypted rows",
         "official copy count",
         "seller possession",
         "authenticity",

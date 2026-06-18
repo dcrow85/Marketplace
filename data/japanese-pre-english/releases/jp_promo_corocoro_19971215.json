@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
         "promo_family_source_sort": 30,
@@ -75,6 +75,7 @@
         "row_id": "jp_promo_corocoro_19971215:030",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -205,13 +206,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_corocoro_19971215",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 1,
         "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. The current PokéCardex UPC aggregate source-pins Meowth to this exact family, while the currently modeled Computer Error UPC row is the later Kamex Mega Battle participation context. This child slice therefore models Meowth only and records the glossy CoroCoro/Song Best Collection Computer Error as an explicit source gap rather than reusing the Kamex row.",
         "source_local_id": "030",
         "source_provider_sort": 30,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": [
@@ -221,7 +223,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 1,
         "source_local_id": "030",
         "source_provider_row": {
@@ -259,6 +261,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 30
       },
       "rarity_source": "Sans rareté",
@@ -269,7 +272,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "030",
           "not_claiming": [
@@ -286,6 +289,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 30
         },
         {
@@ -345,7 +349,7 @@
         },
         {
           "card_data_hash": "7200e113ce8d2108d9e2704fd48e0a4e8b18c6def927731946e40c92779d0166",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -363,7 +367,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
           "series_code": "UPC",
@@ -414,6 +418,7 @@
     "complete magazine source",
     "complete event source",
     "unmodeled expected card row",
+    "manual provider-path rows are not parent aggregate decrypted rows",
     "official copy count",
     "seller possession",
     "authenticity",
@@ -448,7 +453,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 1,
-      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Meowth (CoroCoro 1997)",
@@ -517,6 +522,8 @@
           "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)"
         ]
       },
+      "manual_source_row_count": 0,
+      "manual_source_rows": [],
       "modeled_source_rows": 1,
       "modeled_source_sorts": [
         30
@@ -529,6 +536,7 @@
         "complete magazine source",
         "complete event source",
         "unmodeled expected card row",
+        "manual provider-path rows are not parent aggregate decrypted rows",
         "official copy count",
         "seller possession",
         "authenticity",

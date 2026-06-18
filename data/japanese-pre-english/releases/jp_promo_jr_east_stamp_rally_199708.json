@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "promo_family_source_sort": 14,
@@ -75,6 +75,7 @@
         "row_id": "jp_promo_jr_east_stamp_rally_199708:014",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -205,13 +206,14 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 1,
         "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
         "source_local_id": "014",
         "source_provider_sort": 14,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": [
@@ -221,7 +223,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "source_gap_count": 1,
         "source_local_id": "014",
         "source_provider_row": {
@@ -259,6 +261,7 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 14
       },
       "rarity_source": "Sans rareté",
@@ -269,7 +272,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "014",
           "not_claiming": [
@@ -286,6 +289,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 14
         },
         {
@@ -333,7 +337,7 @@
         },
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -351,7 +355,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
@@ -402,6 +406,7 @@
     "complete magazine source",
     "complete event source",
     "unmodeled expected card row",
+    "manual provider-path rows are not parent aggregate decrypted rows",
     "official copy count",
     "seller possession",
     "authenticity",
@@ -436,7 +441,7 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 1,
-      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Surfing Pikachu (JR Train Rally 1997)",
@@ -495,6 +500,8 @@
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "supporting_page_urls": []
       },
+      "manual_source_row_count": 0,
+      "manual_source_rows": [],
       "modeled_source_rows": 1,
       "modeled_source_sorts": [
         14
@@ -507,6 +514,7 @@
         "complete magazine source",
         "complete event source",
         "unmodeled expected card row",
+        "manual provider-path rows are not parent aggregate decrypted rows",
         "official copy count",
         "seller possession",
         "authenticity",

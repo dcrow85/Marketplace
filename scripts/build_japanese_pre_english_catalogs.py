@@ -226,8 +226,29 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
         "source_snapshot": "early_1996_promos",
         "expected_source_card_count": 2,
         "expected_cards": ["Pikachu [Glossy, Ken Sugimori]", "Jigglypuff [Glossy]"],
-        "modeled_source_sorts": [1],
-        "unmodeled_expected_cards": ["Jigglypuff [Glossy]"],
+        "modeled_source_sorts": [1, 2],
+        "manual_source_rows": [
+            {
+                "source_sort": 2,
+                "local_id": "002",
+                "name_en": "Jigglypuff",
+                "name_ja": "プリン",
+                "romaji": "Purin",
+                "illustrator": "Keiji Kinebuchi",
+                "category": "Pokemon",
+                "hp": "50",
+                "level": "12",
+                "types": ["Colorless"],
+                "rarity": "Unnumbered Promotional / Glossy CoroCoro issue insert",
+                "image_large": f"{POKECARDEX_BASE}/assets/images/sets_jp/UPC/2.jpg",
+                "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Jigglypuff_%28Wizards_Promo_7%29",
+                "source_note": "Bulbapedia Jigglypuff Wizards Promo page identifies Japanese: プリン Purin; the early 1996 promo snapshot identifies Jigglypuff [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+                "distribution_comment": "CoroCoro Comic November 1996 issue insert (October 15, 1996)",
+                "date_label": "1996-10-15",
+                "date_source": "source_snapshot",
+            }
+        ],
+        "unmodeled_expected_cards": [],
         "expected_snapshot_texts": [
             "Pikachu [Glossy]",
             "Jigglypuff [Glossy]",
@@ -236,18 +257,53 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Jigglypuff [Non-glossy]",
             "November 30, 1996",
         ],
+        "source_labeled_japanese_names": {
+            1: {
+                "name_ja": "ピカチュウ",
+                "romaji": "Pikachu",
+                "source_note": "Bulbapedia Pikachu Wizards Promo page identifies Japanese: ピカチュウ Pikachu; the early 1996 promo snapshot identifies Pikachu [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+            },
+            2: {
+                "name_ja": "プリン",
+                "romaji": "Purin",
+                "source_note": "Bulbapedia Jigglypuff Wizards Promo page identifies Japanese: プリン Purin; the early 1996 promo snapshot identifies Jigglypuff [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+            },
+        },
         "source_gap_reason": (
             "Bulbapedia lists glossy Pikachu and glossy Jigglypuff for CoroCoro Comic "
-            "November 1996, but the current PokéCardex UPC aggregate source-pins only "
-            "Pikachu to this exact family."
+            "November 1996. Pikachu is inherited from the parent UPC aggregate row; "
+            "Jigglypuff is modeled as a manual provider-path gap row because the current "
+            "parent aggregate does not decrypt a dedicated row while the provider image "
+            "path and selected source lines remain usable as bounded references."
         ),
     },
     "jp_promo_how_to_play_book_19961130": {
         "source_snapshot": "early_1996_promos",
         "expected_source_card_count": 2,
         "expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]", "Jigglypuff [Non-glossy]"],
-        "modeled_source_sorts": [4],
-        "unmodeled_expected_cards": ["Pikachu [Non-glossy, Keiji Kinebuchi]"],
+        "modeled_source_sorts": [3, 4],
+        "manual_source_rows": [
+            {
+                "source_sort": 3,
+                "local_id": "003",
+                "name_en": "Pikachu",
+                "name_ja": "ピカチュウ",
+                "romaji": "Pikachu",
+                "illustrator": "Keiji Kinebuchi",
+                "category": "Pokemon",
+                "hp": "60",
+                "level": "16",
+                "types": ["Lightning"],
+                "rarity": "Unnumbered Promotional / Non-glossy how-to-play book insert",
+                "image_large": f"{POKECARDEX_BASE}/assets/images/sets_jp/UPC/3.jpg",
+                "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Pikachu_%28Wizards_Promo_1%29",
+                "source_note": "Bulbapedia Pikachu Wizards Promo page identifies Japanese: ピカチュウ Pikachu; the early 1996 promo snapshot identifies Pikachu [Non-glossy] with Keiji Kinebuchi in Easily Understand How to Play Pokemon Cards.",
+                "distribution_comment": "Easily Understand How to Play Pokemon Cards (November 30, 1996)",
+                "date_label": "1996-11-30",
+                "date_source": "source_snapshot",
+            }
+        ],
+        "unmodeled_expected_cards": [],
         "expected_snapshot_texts": [
             "Pikachu [Glossy]",
             "Jigglypuff [Glossy]",
@@ -256,10 +312,24 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Jigglypuff [Non-glossy]",
             "November 30, 1996",
         ],
+        "source_labeled_japanese_names": {
+            3: {
+                "name_ja": "ピカチュウ",
+                "romaji": "Pikachu",
+                "source_note": "Bulbapedia Pikachu Wizards Promo page identifies Japanese: ピカチュウ Pikachu; the early 1996 promo snapshot identifies Pikachu [Non-glossy] with Keiji Kinebuchi in Easily Understand How to Play Pokemon Cards.",
+            },
+            4: {
+                "name_ja": "プリン",
+                "romaji": "Purin",
+                "source_note": "Bulbapedia Jigglypuff Wizards Promo page identifies Japanese: プリン Purin; the early 1996 promo snapshot identifies Jigglypuff [Non-glossy] in Easily Understand How to Play Pokemon Cards.",
+            },
+        },
         "source_gap_reason": (
             "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily "
-            "Understand How to Play Pokemon Cards, but the current PokéCardex UPC "
-            "aggregate source-pins only Jigglypuff to this exact family."
+            "Understand How to Play Pokemon Cards. Jigglypuff is inherited from the parent "
+            "UPC aggregate row; Pikachu is modeled as a manual provider-path gap row because "
+            "the current parent aggregate does not decrypt a dedicated row while the provider "
+            "image path and selected source lines remain usable as bounded references."
         ),
     },
     "jp_promo_corocoro_early_1997": {
@@ -1274,7 +1344,7 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         name_en="First CoroCoro glossy promos source slice",
         name_ja="月刊コロコロコミック1996年11月号プロモ",
         release_date="1996-10-15",
-        expected_row_count=1,
+        expected_row_count=2,
         release_type="promo_family_child_rollup_rows",
         prints_without_rarity_symbol="yes",
         symbol_status_confidence="medium-high",
@@ -1283,16 +1353,17 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_card_count=0,
         product_count_basis=(
             "Bulbapedia source snapshot lists two glossy CoroCoro Comic November 1996 "
-            "promo entries. This child slice models only the current source-pinned "
-            "PokéCardex UPC row for this exact family and records the missing counterpart "
-            "as a source gap; it is not a complete family checklist."
+            "promo entries. This child slice models the parent source-pinned Pikachu row "
+            "and a bounded manual provider-path Jigglypuff row for the expected counterpart; "
+            "manual provider-path rows are not parent aggregate decrypted rows. It is not a "
+            "complete family checklist, complete magazine-object source, or copy-count source."
         ),
         strict_release_member=False,
         catalog_treatment="Promo target source-slice",
         note=(
-            "Narrow source-slice over the UPC aggregate row currently pinned to the first "
-            "CoroCoro promo family. Use it to preserve the exact modeled reference image "
-            "while keeping the unmodeled Jigglypuff gap visible."
+            "Narrow source-slice over the first CoroCoro promo family. Use it to preserve "
+            "the Pikachu parent-row lineage and the Jigglypuff manual provider-path witness "
+            "without promoting either to possession, authenticity, or image-rights proof."
         ),
     ),
     ReleaseConfig(
@@ -1300,7 +1371,7 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         name_en="Easily Understand How to Play Pokemon Cards promos source slice",
         name_ja="「ポケモンカードの遊びかたがよくわかる本」プロモ",
         release_date="1996-11-30",
-        expected_row_count=1,
+        expected_row_count=2,
         release_type="promo_family_child_rollup_rows",
         prints_without_rarity_symbol="yes",
         symbol_status_confidence="medium-high",
@@ -1309,16 +1380,17 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_card_count=0,
         product_count_basis=(
             "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play "
-            "Pokemon Cards promo entries. This child slice models only the current "
-            "source-pinned PokéCardex UPC row for this exact family and records the missing "
-            "counterpart as a source gap; it is not a complete family checklist."
+            "Pokemon Cards promo entries. This child slice models a bounded manual provider-path "
+            "Pikachu row for the expected counterpart and the parent source-pinned Jigglypuff row; "
+            "manual provider-path rows are not parent aggregate decrypted rows. It is not a complete "
+            "family checklist, complete book-object source, or copy-count source."
         ),
         strict_release_member=False,
         catalog_treatment="Promo target source-slice",
         note=(
-            "Narrow source-slice over the UPC aggregate row currently pinned to the how-to-play "
-            "book promo family. Use it to preserve the exact modeled reference image while "
-            "keeping the unmodeled non-glossy Pikachu gap visible."
+            "Narrow source-slice over the how-to-play book promo family. Use it to preserve "
+            "the Pikachu manual provider-path witness and the Jigglypuff parent-row lineage "
+            "without promoting either to possession, authenticity, or image-rights proof."
         ),
     ),
     ReleaseConfig(
@@ -4457,6 +4529,186 @@ def build_team_rocket_gift_pack_product_rollup(config: ReleaseConfig) -> dict[st
     }
 
 
+def manual_promo_family_child_source_card(
+    config: ReleaseConfig,
+    manual_row: dict[str, Any],
+    promo_snapshot: dict[str, Any],
+) -> dict[str, Any]:
+    local_id = str(manual_row["local_id"])
+    source_sort = int(manual_row["source_sort"])
+    row_id = f"manual-provider-path:pokecardex:UPC/{local_id}"
+    image_large = str(manual_row.get("image_large", ""))
+    source_page_url = str(manual_row.get("source_page_url", ""))
+    name_en = str(manual_row.get("name_en", ""))
+    name_ja = str(manual_row.get("name_ja", ""))
+    romaji = str(manual_row.get("romaji", ""))
+    illustrator = str(manual_row.get("illustrator", ""))
+    category = str(manual_row.get("category", ""))
+    hp = manual_row.get("hp")
+    level = manual_row.get("level")
+    types = list(manual_row.get("types", []))
+    rarity = str(manual_row.get("rarity", "Unnumbered Promotional"))
+    distribution_comment = str(manual_row.get("distribution_comment", ""))
+    date_label = str(manual_row.get("date_label", config.release_date))
+    date_source = str(manual_row.get("date_source", "source_snapshot"))
+    source_note = str(manual_row.get("source_note", ""))
+    return {
+        "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+        "row_id": row_id,
+        "release_family_id": "manual-provider-path-gap-row",
+        "local_id": local_id,
+        "name_en": name_en,
+        "name_ja": name_ja,
+        "name_ja_status": "source_labeled" if name_ja else "missing_from_exact_source",
+        "romaji": romaji,
+        "name_source_note": source_note,
+        "category": category,
+        "promo_child_source_row_mode": "manual_provider_path_gap_row",
+        "promo_context": {
+            "authority": (
+                "Promo distribution context derived from a selected source snapshot plus a "
+                "bounded provider-path image witness. This is catalog scope, not proof of a physical card."
+            ),
+            "date_label": date_label,
+            "date_source": date_source,
+            "distribution_comment": distribution_comment,
+            "promo_family_id": config.release_family_id,
+            "source_sort": source_sort,
+            "not_claiming": ["official copy count", "seller possession", "authenticity", "condition"],
+        },
+        "rarity_source": rarity,
+        "holo_source": False,
+        "pokemon_profile": {
+            "abilities": [],
+            "attacks": [],
+            "dex_id": [],
+            "hp": hp,
+            "level": level,
+            "retreat": None,
+            "stage": "",
+            "types": types,
+        },
+        "illustrator": {
+            "authority": "Selected source/card-page metadata only. Useful for catalog texture, not direct print authenticity proof.",
+            "display": f"Illus. {illustrator}" if illustrator else "",
+            "name": illustrator,
+            "not_claiming": ["seller possession", "authenticity", "condition", "Japanese print authority"],
+            "source": "manual_source_gap_row",
+        },
+        "tcgdex": {
+            "id": "",
+            "set_id": "",
+            "url": "",
+            "variants": {},
+            "image_field_present": False,
+        },
+        "product_scope": {},
+        "symbol_status": {},
+        "image_provenance": {
+            "allowed_use": ["manual_review", "catalog_reference_link"] if image_large else [],
+            "display_allowed": False,
+            "exactness_basis": [
+                "selected promo-family context snapshot names the expected card",
+                "Bulbapedia card page supplies Japanese name/transliteration when available",
+                "provider path exists at the matching PokéCardex UPC image number",
+                "manual source-gap row because the parent aggregate does not currently expose a decrypted row",
+            ],
+            "image_large": image_large,
+            "image_role": (
+                "Provider-path-derived reference image for a manually modeled source-gap row; "
+                "not a parent aggregate decrypted row, not seller evidence, and not image-rights approval."
+            ),
+            "image_small": image_large,
+            "not_allowed_by_default": ["training", "seller evidence", "authentication proof"],
+            "not_claiming": [
+                "seller possession",
+                "seller card match",
+                "condition",
+                "authenticity",
+                "parent aggregate decrypted row",
+                "complete promo family",
+            ],
+            "provider_id": f"pokecardex:UPC/{local_id}",
+            "provider_title": f"{name_en} - manual UPC provider-path row #{source_sort}",
+            "release_family_id": config.release_family_id,
+            "rights_status": "external_reference_witness",
+            "row_id": f"{config.release_family_id}:{local_id}",
+            "source": "PokéCardex provider path",
+            "source_page_url": f"{POKECARDEX_BASE}/en/series/jp/UPC",
+            "status": "provider_path_reference_image",
+            "verification_status": "manual_provider_path_external_reference_witness",
+        },
+        "collector_texture": {
+            "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+            "basis": [
+                "Selected promo-family source snapshot",
+                "Bulbapedia card-page metadata where available",
+                "PokéCardex provider-path image convention",
+            ],
+            "note": (
+                f"{name_en} is modeled as a manual source-gap row for {config.name_en}. "
+                "The useful claim is that the expected card is now visible to agents with bounded source accounting."
+            ),
+            "signals": [config.name_en, local_id, rarity, config.release_date],
+        },
+        "information_audit": {
+            "audit_scope": (
+                "Manual promo-family gap-row information architecture only. This row makes an expected "
+                "card legible; it does not authenticate a physical card, condition, possession, or price."
+            ),
+            "earns_keep": [
+                {"field": "manual provider-path reference image", "surface": "primary", "why": "The agent needs a visual reference for an otherwise unmodeled expected card."},
+                {"field": "source-row mode", "surface": "agent", "why": "Prevents treating this row as a parent aggregate decrypted row."},
+            ],
+            "agent_only": [
+                {"field": "snapshot and card-page source contacts", "why": "Useful for audit and re-fetch checks, noisy for the human glance."},
+            ],
+        },
+        "source_contacts": [
+            {
+                "source": "Manual source-gap row declaration",
+                "source_row_mode": "manual_provider_path_gap_row",
+                "source_page_url": source_page_url,
+                "family_context_source_page_url": promo_snapshot.get("source_page_url", ""),
+                "snapshot_path": promo_snapshot.get("snapshot_path", ""),
+                "snapshot_hash": promo_snapshot.get("snapshot_hash", ""),
+                "provider_image_url": image_large,
+                "provider_image_path": f"UPC/{source_sort}.jpg",
+                "source_sort": source_sort,
+                "not_claiming": [
+                    "parent aggregate decrypted row",
+                    "complete promo family checklist",
+                    "official copy count",
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "price truth",
+                    "image rights approval",
+                ],
+            }
+        ],
+        "provider_row": {
+            "adapter": "manual_provider_path_gap_row",
+            "comment": distribution_comment,
+            "image_large": image_large,
+            "manual_source_gap_row": True,
+            "name": name_en,
+            "rarity": rarity,
+            "sort": source_sort,
+            "source_page_url": source_page_url,
+        },
+        "not_claiming": [
+            "parent aggregate decrypted row",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+        ],
+        "tags": [config.release_family_id, config.name_en, config.release_date, rarity, category],
+    }
+
+
 def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
     spec = PROMO_FAMILY_CHILD_SPECS.get(config.release_family_id)
     if not spec:
@@ -4480,9 +4732,16 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         if source_card.get("promo_context", {}).get("promo_family_id") == config.release_family_id
         and int(source_card.get("provider_row", {}).get("sort", 0)) in modeled_sorts
     ]
+    manual_source_rows = [
+        manual_promo_family_child_source_card(config, manual_row, promo_snapshot)
+        for manual_row in spec.get("manual_source_rows", [])
+    ]
+    source_rows.extend(manual_source_rows)
     for source_card in sorted(source_rows, key=lambda card: int(card.get("provider_row", {}).get("sort", 0))):
         source_local_id = source_card.get("local_id", "")
         source_sort = int(source_card.get("provider_row", {}).get("sort", 0))
+        source_row_mode = source_card.get("promo_child_source_row_mode", "parent_aggregate_row")
+        source_row_id = source_card.get("row_id", "")
         row_id = f"{config.release_family_id}:{source_local_id}"
         child_card = copy.deepcopy(source_card)
         child_card["row_id"] = row_id
@@ -4514,8 +4773,9 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "source_catalog_hash": source_hash,
             "source_local_id": source_local_id,
             "source_provider_sort": source_sort,
+            "source_row_mode": source_row_mode,
             "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
-            "source_row_id": source_card.get("row_id", ""),
+            "source_row_id": source_row_id,
             "not_claiming": [
                 "complete promo family checklist",
                 "unmodeled expected card row",
@@ -4620,7 +4880,8 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "source_provider_row": source_provider_row,
             "source_provider_version_boundary": source_provider_version_boundary,
             "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
-            "source_row_id": source_card.get("row_id", ""),
+            "source_row_id": source_row_id,
+            "source_row_mode": source_row_mode,
             "source_local_id": source_local_id,
             "source_sort": source_sort,
             "expected_source_card_count": spec.get("expected_source_card_count", 0),
@@ -4631,21 +4892,29 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         image["row_id"] = row_id
         image["promo_family_source_catalog_hash"] = source_hash
         image["promo_family_source_release_family_id"] = source_release.get("release", {}).get("release_family_id", "")
-        image["promo_family_source_row_id"] = source_card.get("row_id", "")
+        image["promo_family_source_row_id"] = source_row_id
         image["promo_family_source_sort"] = source_sort
+        image["source_row_mode"] = source_row_mode
         image["image_role"] = (
             "Provider-path-derived reference image for the source-pinned UPC row in this promo family; "
             "not a complete-family image witness and not seller evidence."
+            if source_row_mode == "parent_aggregate_row"
+            else "Provider-path-derived reference image for a manual source-gap row; not a parent aggregate decrypted row, not seller evidence, and not image-rights approval."
         )
         image["exactness_basis"] = list(dict.fromkeys([
             *image.get("exactness_basis", []),
-            "source-pinned UPC aggregate row for this promo family child slice",
+            (
+                "source-pinned UPC aggregate row for this promo family child slice"
+                if source_row_mode == "parent_aggregate_row"
+                else "manual provider-path row for an expected card named by the promo-family context snapshot"
+            ),
             f"family-level completeness checked against selected {promo_snapshot.get('source', 'context')} lines with explicit source-gap accounting",
         ]))
         image["not_claiming"] = list(dict.fromkeys([
             *image.get("not_claiming", []),
             "complete promo family",
             "unmodeled expected card row",
+            *([] if source_row_mode == "parent_aggregate_row" else ["parent aggregate decrypted row"]),
         ]))
         child_card["image_provenance"] = image
         collector_texture = child_card.get("collector_texture", {})
@@ -4683,6 +4952,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
                 "catalog_path": str(source_path.relative_to(ROOT)),
                 "local_row_id": source_local_id,
+                "source_row_mode": source_row_mode,
                 "not_claiming": [
                     "complete promo family checklist",
                     "unmodeled expected card row",
@@ -4696,7 +4966,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
                 "source": "Promo-family child source-slice rollup",
                 "source_page_url": promo_family_child_source_id(),
                 "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
-                "source_row_id": source_card.get("row_id", ""),
+                "source_row_id": source_row_id,
                 "source_sort": source_sort,
             },
             {
@@ -4782,6 +5052,16 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "source_gap_count": len(unmodeled_expected_cards),
         "source_gap_reason": spec.get("source_gap_reason", ""),
         "unmodeled_expected_cards": unmodeled_expected_cards,
+        "manual_source_row_count": len(manual_source_rows),
+        "manual_source_rows": [
+            {
+                "local_id": row.get("local_id", ""),
+                "name_en": row.get("name_en", ""),
+                "source_row_id": row.get("row_id", ""),
+                "source_sort": row.get("provider_row", {}).get("sort", ""),
+            }
+            for row in manual_source_rows
+        ],
         "source_release_family_id": source_release.get("release", {}).get("release_family_id", ""),
         "source_release_type": source_release.get("release", {}).get("release_type", ""),
         "cards_found": len(cards),
@@ -4806,6 +5086,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
         "not_claiming": [
             *source_slice_boundary_denials,
             "unmodeled expected card row",
+            "manual provider-path rows are not parent aggregate decrypted rows",
             "official copy count",
             "seller possession",
             "authenticity",
@@ -4855,6 +5136,7 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "complete pre-English catalog",
             *source_slice_boundary_denials,
             "unmodeled expected card row",
+            "manual provider-path rows are not parent aggregate decrypted rows",
             "official copy count",
             "seller possession",
             "authenticity",
@@ -5715,6 +5997,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             expected_row_id = f"{release_meta.get('release_family_id')}:{source_local_id}" if source_local_id else ""
             expected_sorts = set(int(value) for value in family_spec.get("modeled_source_sorts", []))
             source_sort = family_scope.get("source_provider_sort")
+            source_row_mode = family_scope.get("source_row_mode", "parent_aggregate_row")
+            expected_parent_source_row_id = f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}"
+            expected_manual_source_row_id = f"manual-provider-path:pokecardex:UPC/{source_local_id}"
+            expected_source_row_id = (
+                expected_manual_source_row_id
+                if source_row_mode == "manual_provider_path_gap_row"
+                else expected_parent_source_row_id
+            )
             if not family_spec:
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_spec")
             if card.get("row_id") != expected_row_id:
@@ -5739,8 +6029,19 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: promo_family_child_source_hash_mismatch")
             if family_scope.get("source_release_family_id") != "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131":
                 failures.append(f"{card.get('row_id')}: promo_family_child_source_release_mismatch")
-            if family_scope.get("source_row_id") != f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}":
+            if family_scope.get("source_row_id") != expected_source_row_id:
                 failures.append(f"{card.get('row_id')}: promo_family_child_source_row_mismatch")
+            if source_row_mode not in {"parent_aggregate_row", "manual_provider_path_gap_row"}:
+                failures.append(f"{card.get('row_id')}: promo_family_child_unknown_source_row_mode")
+            if source_row_mode == "manual_provider_path_gap_row":
+                if source_card is not None:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_manual_row_collides_with_parent")
+                if card.get("provider_row", {}).get("source_provider_row", {}).get("manual_source_gap_row") is not True:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_manual_row_flag_missing")
+                if "parent aggregate decrypted row" not in card.get("not_claiming", []):
+                    failures.append(f"{card.get('row_id')}: promo_family_child_manual_parent_boundary_missing")
+            elif source_card is None:
+                failures.append(f"{card.get('row_id')}: promo_family_child_parent_source_row_missing")
             if source_sort not in expected_sorts:
                 failures.append(f"{card.get('row_id')}: promo_family_child_source_sort_not_modeled")
             if card.get("product_scope", {}).get("release_type") != "promo_family_child_rollup_rows":
@@ -5803,10 +6104,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_not_allowed_boundary_missing")
             if image.get("promo_family_source_catalog_hash") != source_hash:
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_source_hash_mismatch")
-            if image.get("promo_family_source_row_id") != f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}":
+            if image.get("promo_family_source_row_id") != expected_source_row_id:
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_source_row_mismatch")
+            if image.get("source_row_mode", "parent_aggregate_row") != source_row_mode:
+                failures.append(f"{card.get('row_id')}: promo_family_child_image_source_row_mode_mismatch")
             if "complete promo family" not in image.get("not_claiming", []):
                 failures.append(f"{card.get('row_id')}: promo_family_child_image_family_boundary_missing")
+            if source_row_mode == "manual_provider_path_gap_row" and "parent aggregate decrypted row" not in image.get("not_claiming", []):
+                failures.append(f"{card.get('row_id')}: promo_family_child_manual_image_parent_boundary_missing")
             required_image_not_claiming = {
                 "seller possession",
                 "seller card match",
@@ -5820,10 +6125,18 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             if not any(
                 contact.get("source") == "Promo-family child source-slice rollup"
                 and contact.get("catalog_hash") == source_hash
-                and contact.get("source_row_id") == f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}"
+                and contact.get("source_row_id") == expected_source_row_id
+                and contact.get("source_row_mode", "parent_aggregate_row") == source_row_mode
                 for contact in card.get("source_contacts", [])
             ):
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_rollup_contact")
+            if source_row_mode == "manual_provider_path_gap_row" and not any(
+                contact.get("source") == "Manual source-gap row declaration"
+                and contact.get("inherited_from_promo_family_source") is True
+                and contact.get("source_row_mode") == "manual_provider_path_gap_row"
+                for contact in card.get("source_contacts", [])
+            ):
+                failures.append(f"{card.get('row_id')}: promo_family_child_missing_manual_gap_contact")
             if not any(
                 contact.get("source") == family_context_source.get("source")
                 and contact.get("snapshot_hash") == family_context_source.get("snapshot_hash")
@@ -5903,7 +6216,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     if image.get(field) != source_image.get(field):
                         failures.append(f"{card.get('row_id')}: promo_family_child_source_image_drift {field}")
                         break
-            else:
+            elif source_row_mode != "manual_provider_path_gap_row":
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_source_row")
         if release_type == "deck_kit_parent_rollup_rows":
             parent_rollup = card.get("parent_rollup", {})
@@ -6563,6 +6876,7 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                     contact
                     for contact in card.get("source_contacts", [])
                     if contact.get("snapshot_path") == promo_snapshot["snapshot_path"]
+                    and contact.get("source_slice_authority_label") == source_slice_authority_label
                 ]
                 if not context_contacts:
                     failures.append(f"{card.get('row_id')}: promo_family_child_context_contact_missing")

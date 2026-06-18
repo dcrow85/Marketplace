@@ -5,6 +5,374 @@
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
+          "Selected promo-family source snapshot",
+          "Bulbapedia card-page metadata where available",
+          "PokéCardex provider-path image convention"
+        ],
+        "note": "Pikachu is cataloged as the currently source-pinned row for Easily Understand How to Play Pokemon Cards promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "Easily Understand How to Play Pokemon Cards promos source slice",
+          "1996-11-30",
+          "promo family source slice",
+          "source accounting recorded",
+          "003",
+          "Unnumbered Promotional / Non-glossy how-to-play book insert"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Selected source/card-page metadata only. Useful for catalog texture, not direct print authenticity proof.",
+        "display": "Illus. Keiji Kinebuchi",
+        "name": "Keiji Kinebuchi",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "manual_source_gap_row"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "selected promo-family context snapshot names the expected card",
+          "Bulbapedia card page supplies Japanese name/transliteration when available",
+          "provider path exists at the matching PokéCardex UPC image number",
+          "manual source-gap row because the parent aggregate does not currently expose a decrypted row",
+          "manual provider-path row for an expected card named by the promo-family context snapshot",
+          "family-level completeness checked against selected Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/3.jpg",
+        "image_role": "Provider-path-derived reference image for a manual source-gap row; not a parent aggregate decrypted row, not seller evidence, and not image-rights approval.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/3.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "parent aggregate decrypted row",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/003",
+        "promo_family_source_sort": 3,
+        "provider_id": "pokecardex:UPC/003",
+        "provider_title": "Pikachu - manual UPC provider-path row #3",
+        "release_family_id": "jp_promo_how_to_play_book_19961130",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_how_to_play_book_19961130:003",
+        "source": "PokéCardex provider path",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "status": "provider_path_reference_image",
+        "verification_status": "manual_provider_path_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "snapshot and card-page source contacts",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "manual provider-path reference image",
+            "surface": "primary",
+            "why": "The agent needs a visual reference for an otherwise unmodeled expected card."
+          },
+          {
+            "field": "source-row mode",
+            "surface": "agent",
+            "why": "Prevents treating this row as a parent aggregate decrypted row."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "003",
+      "name_en": "Pikachu",
+      "name_ja": "ピカチュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Pikachu Wizards Promo page identifies Japanese: ピカチュウ Pikachu; the early 1996 promo snapshot identifies Pikachu [Non-glossy] with Keiji Kinebuchi in Easily Understand How to Play Pokemon Cards.",
+      "not_claiming": [
+        "parent aggregate decrypted row",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "60",
+        "level": "16",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Lightning"
+        ]
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "exact",
+        "expected_source_card_count": 2,
+        "japanese_set_name": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models a bounded manual provider-path Pikachu row for the expected counterpart and the parent source-pinned Jigglypuff row; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete book-object source, or copy-count source.",
+        "release_date": "1996-11-30",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
+      },
+      "promo_child_source_row_mode": "manual_provider_path_gap_row",
+      "promo_context": {
+        "authority": "Promo distribution context derived from a selected source snapshot plus a bounded provider-path image witness. This is catalog scope, not proof of a physical card.",
+        "date_label": "1996-11-30",
+        "date_source": "source_snapshot",
+        "distribution_comment": "Easily Understand How to Play Pokemon Cards (November 30, 1996)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_how_to_play_book_19961130",
+        "source_sort": 3
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "",
+        "expected_cards": [
+          "Pikachu [Non-glossy, Keiji Kinebuchi]",
+          "Jigglypuff [Non-glossy]"
+        ],
+        "expected_source_card_count": 2,
+        "modeled_source_sorts": [
+          3,
+          4
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_how_to_play_book_19961130",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards. Jigglypuff is inherited from the parent UPC aggregate row; Pikachu is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
+        "source_local_id": "003",
+        "source_provider_sort": 3,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/003",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 2,
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "source_gap_count": 0,
+        "source_local_id": "003",
+        "source_provider_row": {
+          "adapter": "manual_provider_path_gap_row",
+          "comment": "Easily Understand How to Play Pokemon Cards (November 30, 1996)",
+          "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/3.jpg",
+          "manual_source_gap_row": true,
+          "name": "Pikachu",
+          "rarity": "Unnumbered Promotional / Non-glossy how-to-play book insert",
+          "sort": 3,
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Wizards_Promo_1%29"
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/003",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_sort": 3
+      },
+      "rarity_source": "Unnumbered Promotional / Non-glossy how-to-play book insert",
+      "release_family_id": "jp_promo_how_to_play_book_19961130",
+      "romaji": "Pikachu",
+      "row_id": "jp_promo_how_to_play_book_19961130:003",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "003",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_how_to_play_book_19961130",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/003",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 3
+        },
+        {
+          "complete_source_boundary_denial": "",
+          "expected_cards": [
+            "Pikachu [Non-glossy, Keiji Kinebuchi]",
+            "Jigglypuff [Non-glossy]"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T18:45:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the first 1996 Unnumbered Promotional print entries only. This snapshot is used to record early promo-family membership expectations and source gaps; it is not a raw HTML archive and not a full UPC source mirror.",
+          "snapshot_hash": "fe060860ad15c9b59f1bf1bc914d33d613da844eb7b4ca003768f009435780ec",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Bulbapedia",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
+          "supporting_page_urls": [],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "family_context_source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "parent aggregate decrypted row",
+            "complete promo family checklist",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row"
+          ],
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/003",
+          "provider_image_path": "UPC/3.jpg",
+          "provider_image_url": "https://www.pokecardex.com/assets/images/sets_jp/UPC/3.jpg",
+          "snapshot_hash": "fe060860ad15c9b59f1bf1bc914d33d613da844eb7b4ca003768f009435780ec",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "source": "Manual source-gap row declaration",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Wizards_Promo_1%29",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 3
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_how_to_play_book_19961130"
+      },
+      "tags": [
+        "jp_promo_how_to_play_book_19961130",
+        "Easily Understand How to Play Pokemon Cards promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "1996-11-30",
+        "Unnumbered Promotional / Non-glossy how-to-play book insert",
+        "Pokemon"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
           "PokéCardex decrypted series payload row and provider-path image convention",
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
@@ -64,7 +432,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
         "promo_family_source_sort": 4,
@@ -75,6 +443,7 @@
         "row_id": "jp_promo_how_to_play_book_19961130:004",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "parent_aggregate_row",
         "status": "provider_path_reference_image",
         "verification_status": "provider_path_derived_external_reference_witness"
       },
@@ -115,9 +484,9 @@
       },
       "local_id": "004",
       "name_en": "Jigglypuff",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "name_ja": "プリン",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Jigglypuff Wizards Promo page identifies Japanese: プリン Purin; the early 1996 promo snapshot identifies Jigglypuff [Non-glossy] in Easily Understand How to Play Pokemon Cards.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -150,24 +519,22 @@
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
         "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "exact",
         "expected_source_card_count": 2,
         "japanese_set_name": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models only the current source-pinned PokéCardex UPC row for this exact family and records the missing counterpart as a source gap; it is not a complete family checklist.",
+        "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models a bounded manual provider-path Pikachu row for the expected counterpart and the parent source-pinned Jigglypuff row; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete book-object source, or copy-count source.",
         "release_date": "1996-11-30",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
-        "source_gap_count": 1,
+        "source_gap_count": 0,
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
-        "unique_catalog_row_count": 1,
-        "unmodeled_expected_cards": [
-          "Pikachu [Non-glossy, Keiji Kinebuchi]"
-        ]
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
@@ -193,6 +560,7 @@
         ],
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
+          3,
           4
         ],
         "not_claiming": [
@@ -205,24 +573,23 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_how_to_play_book_19961130",
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
-        "source_gap_count": 1,
-        "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards, but the current PokéCardex UPC aggregate source-pins only Jigglypuff to this exact family.",
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards. Jigglypuff is inherited from the parent UPC aggregate row; Pikachu is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "004",
         "source_provider_sort": 4,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+        "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": [
-          "Pikachu [Non-glossy, Keiji Kinebuchi]"
-        ]
+        "unmodeled_expected_cards": []
       },
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
-        "source_gap_count": 1,
+        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "source_gap_count": 0,
         "source_local_id": "004",
         "source_provider_row": {
           "adapter": "pokecardex",
@@ -268,17 +635,18 @@
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+        "source_row_mode": "parent_aggregate_row",
         "source_sort": 4
       },
       "rarity_source": "Sans rareté",
       "release_family_id": "jp_promo_how_to_play_book_19961130",
-      "romaji": "",
+      "romaji": "Purin",
       "row_id": "jp_promo_how_to_play_book_19961130:004",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "004",
           "not_claiming": [
@@ -295,6 +663,7 @@
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+          "source_row_mode": "parent_aggregate_row",
           "source_sort": 4
         },
         {
@@ -334,13 +703,11 @@
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
           "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [],
-          "unmodeled_expected_cards": [
-            "Pikachu [Non-glossy, Keiji Kinebuchi]"
-          ]
+          "unmodeled_expected_cards": []
         },
         {
           "card_data_hash": "665162a14f1b47b8a54806ec32cabb8db20555cf1064b039835a07757c25a818",
-          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -358,7 +725,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
           "series_code": "UPC",
@@ -409,6 +776,7 @@
     "complete magazine source",
     "complete event source",
     "unmodeled expected card row",
+    "manual provider-path rows are not parent aggregate decrypted rows",
     "official copy count",
     "seller possession",
     "authenticity",
@@ -418,32 +786,30 @@
   ],
   "release": {
     "catalog_treatment": "Promo target source-slice",
-    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_with_source_gap",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
     "date_precision": "exact",
-    "expected_row_count": 1,
+    "expected_row_count": 2,
     "expected_source_card_count": 2,
     "name_en": "Easily Understand How to Play Pokemon Cards promos source slice",
     "name_ja": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
-    "note": "Narrow source-slice over the UPC aggregate row currently pinned to the how-to-play book promo family. Use it to preserve the exact modeled reference image while keeping the unmodeled non-glossy Pikachu gap visible.",
+    "note": "Narrow source-slice over the how-to-play book promo family. Use it to preserve the Pikachu manual provider-path witness and the Jigglypuff parent-row lineage without promoting either to possession, authenticity, or image-rights proof.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models only the current source-pinned PokéCardex UPC row for this exact family and records the missing counterpart as a source gap; it is not a complete family checklist.",
+    "product_count_basis": "Bulbapedia source snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards promo entries. This child slice models a bounded manual provider-path Pikachu row for the expected counterpart and the parent source-pinned Jigglypuff row; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete book-object source, or copy-count source.",
     "release_date": "1996-11-30",
     "release_family_id": "jp_promo_how_to_play_book_19961130",
     "release_type": "promo_family_child_rollup_rows",
-    "source_gap_count": 1,
+    "source_gap_count": 0,
     "strict_release_member": false,
-    "unique_catalog_row_count": 1,
-    "unmodeled_expected_cards": [
-      "Pikachu [Non-glossy, Keiji Kinebuchi]"
-    ]
+    "unique_catalog_row_count": 2,
+    "unmodeled_expected_cards": []
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
   "sources": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "cards_found": 1,
-      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "cards_found": 2,
+      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Pikachu [Non-glossy, Keiji Kinebuchi]",
@@ -491,8 +857,18 @@
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "supporting_page_urls": []
       },
-      "modeled_source_rows": 1,
+      "manual_source_row_count": 1,
+      "manual_source_rows": [
+        {
+          "local_id": "003",
+          "name_en": "Pikachu",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/003",
+          "source_sort": 3
+        }
+      ],
+      "modeled_source_rows": 2,
       "modeled_source_sorts": [
+        3,
         4
       ],
       "not_claiming": [
@@ -503,6 +879,7 @@
         "complete magazine source",
         "complete event source",
         "unmodeled expected card row",
+        "manual provider-path rows are not parent aggregate decrypted rows",
         "official copy count",
         "seller possession",
         "authenticity",
@@ -514,17 +891,15 @@
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
-      "source_gap_count": 1,
-      "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards, but the current PokéCardex UPC aggregate source-pins only Jigglypuff to this exact family.",
+      "source_gap_count": 0,
+      "source_gap_reason": "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily Understand How to Play Pokemon Cards. Jigglypuff is inherited from the parent UPC aggregate row; Pikachu is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
       "source_slice_authority_label": "source-pinned promo family card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
-      "unmodeled_expected_cards": [
-        "Pikachu [Non-glossy, Keiji Kinebuchi]"
-      ]
+      "unmodeled_expected_cards": []
     }
   ],
   "symbol_status": {
