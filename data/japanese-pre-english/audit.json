@@ -3,7 +3,7 @@
   "basic_energy_caveat_rows": 24,
   "component_inherited_reference_image_rows": 322,
   "exact_source_image_rows": 489,
-  "generated_at": "2026-06-18T03:42:17Z",
+  "generated_at": "2026-06-18T04:28:51Z",
   "inherited_source_reference_image_rows": 96,
   "not_claiming": [
     "multi-agent audit complete",
@@ -14,8 +14,8 @@
     "image rights approval"
   ],
   "passed": true,
-  "provider_path_reference_image_rows": 332,
-  "reference_image_witness_rows": 1239,
+  "provider_path_reference_image_rows": 333,
+  "reference_image_witness_rows": 1240,
   "release_audits": [
     {
       "active_no_rarity_rows": 96,
@@ -1557,7 +1557,7 @@
       "component_inherited_reference_image_rows": 0,
       "component_lanes": [],
       "exact_source_image_rows": 0,
-      "expected_row_count": 1,
+      "expected_row_count": 2,
       "expected_source_card_count": 2,
       "failures": [],
       "family_context_complete_source_boundary_denial": "",
@@ -1573,8 +1573,8 @@
         "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)"
       ],
       "inherited_source_reference_image_rows": 0,
-      "missing_japanese_name_rows": 1,
-      "modeled_candidate_rows": 1,
+      "missing_japanese_name_rows": 0,
+      "modeled_candidate_rows": 2,
       "passed": true,
       "physical_product_card_count": 0,
       "product_card_count": 0,
@@ -1582,10 +1582,10 @@
       "product_context_snapshot_hash": "",
       "product_context_snapshot_path": "",
       "product_context_source_url": "",
-      "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the one currently source-pinned PokéCardex UPC row, Meowth; it records glossy Computer Error as a source gap because the currently modeled Computer Error UPC row belongs to the later Kamex Mega Battle participation context. It is not a complete family checklist.",
-      "promo_context_rows": 1,
-      "provider_path_reference_image_rows": 1,
-      "reference_image_witness_rows": 1,
+      "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the parent source-pinned Meowth row and a bounded manual provider-path Computer Error row for the glossy CoroCoro/Song Best print lane; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete magazine source, complete Computer Error variant catalog, Song Best reprint census, or copy-count source.",
+      "promo_context_rows": 2,
+      "provider_path_reference_image_rows": 2,
+      "reference_image_witness_rows": 2,
       "release_family_id": "jp_promo_corocoro_19971215",
       "release_not_claiming": [
         "complete pre-English catalog",
@@ -1605,16 +1605,14 @@
         "approved image display rights"
       ],
       "release_type": "promo_family_child_rollup_rows",
-      "row_count": 1,
-      "source_gap_count": 1,
-      "source_labeled_japanese_name_rows": 0,
+      "row_count": 2,
+      "source_gap_count": 0,
+      "source_labeled_japanese_name_rows": 2,
       "strict_booster_rows": 0,
       "strict_release_member": false,
       "tcgdex_enriched_rows": 0,
       "unique_underlying_rocket_gang_rows": 0,
-      "unmodeled_expected_cards": [
-        "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-      ],
+      "unmodeled_expected_cards": [],
       "unmodeled_special_card_slots": 0,
       "unresolved_fixed_deck_lists": false
     },
@@ -2303,8 +2301,8 @@
   ],
   "release_count": 40,
   "schema": "marketplace.japanese_pre_english_catalog_audit.v0.1",
-  "source_gap_count": 1,
+  "source_gap_count": 0,
   "strict_booster_rows": 96,
   "tcgdex_enriched_rows": 795,
-  "total_rows": 1263
+  "total_rows": 1264
 }

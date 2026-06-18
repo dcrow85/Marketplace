@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
         "promo_family_source_sort": 30,
@@ -116,9 +116,9 @@
       },
       "local_id": "030",
       "name_en": "Meowth",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "name_ja": "ニャース",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Meowth CoroCoro promo page identifies Japanese print naming; the CoroCoro January 1998 snapshot identifies the December 15, 1997 issue insert context.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -151,24 +151,22 @@
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
         "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_exact",
         "expected_source_card_count": 2,
         "japanese_set_name": "月刊コロコロコミック1998年1月号プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the one currently source-pinned PokéCardex UPC row, Meowth; it records glossy Computer Error as a source gap because the currently modeled Computer Error UPC row belongs to the later Kamex Mega Battle participation context. It is not a complete family checklist.",
+        "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the parent source-pinned Meowth row and a bounded manual provider-path Computer Error row for the glossy CoroCoro/Song Best print lane; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete magazine source, complete Computer Error variant catalog, Song Best reprint census, or copy-count source.",
         "release_date": "1997-12-15",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
-        "source_gap_count": 1,
+        "source_gap_count": 0,
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
-        "unique_catalog_row_count": 1,
-        "unmodeled_expected_cards": [
-          "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-        ]
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
@@ -194,7 +192,8 @@
         ],
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
-          30
+          30,
+          31
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -206,9 +205,9 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_corocoro_19971215",
-        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
-        "source_gap_count": 1,
-        "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. The current PokéCardex UPC aggregate source-pins Meowth to this exact family, while the currently modeled Computer Error UPC row is the later Kamex Mega Battle participation context. This child slice therefore models Meowth only and records the glossy CoroCoro/Song Best Collection Computer Error as an explicit source gap rather than reusing the Kamex row.",
+        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. Meowth is inherited from the parent UPC aggregate row; Computer Error is modeled as a manual provider-path gap row because the current parent aggregate source-pins the later Kamex Mega Battle participation row separately at UPC/45. The manual row preserves the glossy CoroCoro/Song Best lane without reusing the non-glossy Kamex row.",
         "source_local_id": "030",
         "source_provider_sort": 30,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -216,15 +215,13 @@
         "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": [
-          "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-        ]
+        "unmodeled_expected_cards": []
       },
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
-        "source_gap_count": 1,
+        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_gap_count": 0,
         "source_local_id": "030",
         "source_provider_row": {
           "adapter": "pokecardex",
@@ -266,13 +263,13 @@
       },
       "rarity_source": "Sans rareté",
       "release_family_id": "jp_promo_corocoro_19971215",
-      "romaji": "",
+      "romaji": "Nyarth",
       "row_id": "jp_promo_corocoro_19971215:030",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+          "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "030",
           "not_claiming": [
@@ -343,13 +340,11 @@
             "https://bulbapedia.bulbagarden.net/wiki/Meowth_(CoroCoro_promo)",
             "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)"
           ],
-          "unmodeled_expected_cards": [
-            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-          ]
+          "unmodeled_expected_cards": []
         },
         {
           "card_data_hash": "7200e113ce8d2108d9e2704fd48e0a4e8b18c6def927731946e40c92779d0166",
-          "encrypted_page_sha256": "8f57382a9be140aaabb4d1fa6e596f0d746f3420961c81edc12ece1b0670a015",
+          "encrypted_page_sha256": "39948ca21ce6772f407ea56b18e5231db61ac9a7f968bb1b116f3a3748413a56",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -367,7 +362,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+          "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:030",
           "series_code": "UPC",
@@ -407,6 +402,389 @@
         "url": "",
         "variants": {}
       }
+    },
+    {
+      "category": "Trainer",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Selected promo-family source snapshot",
+          "Bulbapedia card-page metadata where available",
+          "PokéCardex provider-path image convention"
+        ],
+        "note": "Computer Error is cataloged as the currently source-pinned row for CoroCoro Comic January 1998 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic January 1998 promos source slice",
+          "1997-12-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "031",
+          "Unnumbered Promotional / Glossy CoroCoro and Song Best Collection print"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Selected source/card-page metadata only. Useful for catalog texture, not direct print authenticity proof.",
+        "display": "Illus. Sumiyoshi Kizuki",
+        "name": "Sumiyoshi Kizuki",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "manual_source_gap_row"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "selected promo-family context snapshot names the expected card",
+          "Bulbapedia card page supplies Japanese name/transliteration when available",
+          "provider path exists at the matching PokéCardex UPC image number",
+          "manual source-gap row because the parent aggregate does not currently expose a decrypted row",
+          "manual provider-path row for an expected card named by the promo-family context snapshot",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/31.jpg",
+        "image_role": "Provider-path-derived reference image for a manual source-gap row; not a parent aggregate decrypted row, not seller evidence, and not image-rights approval.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/31.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "parent aggregate decrypted row",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/031",
+        "promo_family_source_sort": 31,
+        "provider_id": "pokecardex:UPC/031",
+        "provider_title": "Computer Error - manual UPC provider-path row #31",
+        "release_family_id": "jp_promo_corocoro_19971215",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_19971215:031",
+        "source": "PokéCardex provider path",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "status": "provider_path_reference_image",
+        "variant_boundary_note": "Glossy CoroCoro/Song Best Collection print with red drop-shadow R; do not reuse the later non-glossy Kamex Mega Battle UPC/45 row.",
+        "verification_status": "manual_provider_path_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "snapshot and card-page source contacts",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "manual provider-path reference image",
+            "surface": "primary",
+            "why": "The agent needs a visual reference for an otherwise unmodeled expected card."
+          },
+          {
+            "field": "source-row mode",
+            "surface": "agent",
+            "why": "Prevents treating this row as a parent aggregate decrypted row."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "031",
+      "name_en": "Computer Error",
+      "name_ja": "パソコン大暴走！",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Computer Error Wizards Promo page identifies Japanese: パソコン大暴走！ with the English gloss The Computer's Out of Control!; the CoroCoro January 1998 snapshot identifies the glossy CoroCoro/Song Best print context. Romaji is catalog-normalized as Pasokon Dai Bousou!.",
+      "not_claiming": [
+        "parent aggregate decrypted row",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
+        "expected_source_card_count": 2,
+        "japanese_set_name": "月刊コロコロコミック1998年1月号プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the parent source-pinned Meowth row and a bounded manual provider-path Computer Error row for the glossy CoroCoro/Song Best print lane; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete magazine source, complete Computer Error variant catalog, Song Best reprint census, or copy-count source.",
+        "release_date": "1997-12-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
+      },
+      "promo_child_source_row_mode": "manual_provider_path_gap_row",
+      "promo_context": {
+        "authority": "Promo distribution context derived from a selected source snapshot plus a bounded provider-path image witness. This is catalog scope, not proof of a physical card.",
+        "date_label": "1997-12-15",
+        "date_source": "source_snapshot",
+        "distribution_comment": "CoroCoro Comic January 1998 issue insert (December 15, 1997); later reprinted in Pokemon Song Best Collection CD",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_19971215",
+        "source_sort": 31
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "",
+        "expected_cards": [
+          "Meowth (CoroCoro 1997)",
+          "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
+        ],
+        "expected_source_card_count": 2,
+        "modeled_source_sorts": [
+          30,
+          31
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_19971215",
+        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. Meowth is inherited from the parent UPC aggregate row; Computer Error is modeled as a manual provider-path gap row because the current parent aggregate source-pins the later Kamex Mega Battle participation row separately at UPC/45. The manual row preserves the glossy CoroCoro/Song Best lane without reusing the non-glossy Kamex row.",
+        "source_local_id": "031",
+        "source_provider_sort": 31,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/031",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 2,
+        "source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+        "source_gap_count": 0,
+        "source_local_id": "031",
+        "source_provider_row": {
+          "adapter": "manual_provider_path_gap_row",
+          "comment": "CoroCoro Comic January 1998 issue insert (December 15, 1997); later reprinted in Pokemon Song Best Collection CD",
+          "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/31.jpg",
+          "manual_source_gap_row": true,
+          "name": "Computer Error",
+          "rarity": "Unnumbered Promotional / Glossy CoroCoro and Song Best Collection print",
+          "sort": 31,
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "variant_boundary_note": "Glossy CoroCoro/Song Best Collection print with red drop-shadow R; do not reuse the later non-glossy Kamex Mega Battle UPC/45 row."
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/031",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_sort": 31
+      },
+      "rarity_source": "Unnumbered Promotional / Glossy CoroCoro and Song Best Collection print",
+      "release_family_id": "jp_promo_corocoro_19971215",
+      "romaji": "Pasokon Dai Bousou!",
+      "row_id": "jp_promo_corocoro_19971215:031",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "031",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_19971215",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/031",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 31
+        },
+        {
+          "complete_source_boundary_denial": "",
+          "expected_cards": [
+            "Meowth (CoroCoro 1997)",
+            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "complete Song Best Collection reprint census",
+            "glossy Computer Error row image",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T22:06:44Z",
+          "snapshot_content_scope": "Selected rendered lines for the CoroCoro Comic January 1998 issue promo context, its two-card Meowth/Computer Error claim, and the Computer Error print-context distinction between glossy CoroCoro/Song Best Collection prints and the later non-glossy Kamex Mega Battle participation print. This snapshot is not a full CoroCoro issue archive, not a raw HTML snapshot, not a complete Computer Error variant catalog, and not a copy-count authority.",
+          "snapshot_hash": "0a00fcd18bb24d05716e9948b66af89570d82ab8bb905869dda75b2cb76266aa",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "complete Song Best Collection reprint census",
+            "glossy Computer Error row image",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_corocoro_jan1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/timeline/",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
+          "supporting_page_urls": [
+            "https://pokumon.com/card/meowth-corocoro-1997-unnumbered/",
+            "https://pokumon.com/card/computer-error-corocoro-pokemon-song-best-collection-cd-1997-unnumbered/",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+            "https://bulbapedia.bulbagarden.net/wiki/Meowth_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "family_context_source_page_url": "https://pokumon.com/timeline/",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "parent aggregate decrypted row",
+            "complete promo family checklist",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row"
+          ],
+          "promo_family_source_catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/031",
+          "provider_image_path": "UPC/31.jpg",
+          "provider_image_url": "https://www.pokecardex.com/assets/images/sets_jp/UPC/31.jpg",
+          "snapshot_hash": "0a00fcd18bb24d05716e9948b66af89570d82ab8bb905869dda75b2cb76266aa",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_corocoro_jan1998_selected_lines.json",
+          "source": "Manual source-gap row declaration",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 31,
+          "variant_boundary_note": "Glossy CoroCoro/Song Best Collection print with red drop-shadow R; do not reuse the later non-glossy Kamex Mega Battle UPC/45 row."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_19971215"
+      },
+      "tags": [
+        "jp_promo_corocoro_19971215",
+        "CoroCoro Comic January 1998 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "1997-12-15",
+        "Unnumbered Promotional / Glossy CoroCoro and Song Best Collection print",
+        "Trainer"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
     }
   ],
   "not_claiming": [
@@ -428,32 +806,30 @@
   ],
   "release": {
     "catalog_treatment": "Promo target source-slice",
-    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_with_source_gap",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
     "date_precision": "source_exact",
-    "expected_row_count": 1,
+    "expected_row_count": 2,
     "expected_source_card_count": 2,
     "name_en": "CoroCoro Comic January 1998 promos source slice",
     "name_ja": "月刊コロコロコミック1998年1月号プロモ",
-    "note": "Narrow source-slice over the UPC aggregate row currently pinned to CoroCoro Comic January 1998. Use it to preserve the Meowth issue-insert lane while keeping the unmodeled glossy Computer Error row visible as a source gap.",
+    "note": "Narrow source-slice over the CoroCoro Comic January 1998 promo family. Use it to preserve the Meowth parent-row lineage and the glossy Computer Error manual provider-path witness without reusing the later Kamex Mega Battle UPC/45 row.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the one currently source-pinned PokéCardex UPC row, Meowth; it records glossy Computer Error as a source gap because the currently modeled Computer Error UPC row belongs to the later Kamex Mega Battle participation context. It is not a complete family checklist.",
+    "product_count_basis": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, published December 15, 1997, with two promo cards: Meowth and a glossy Computer Error. This child slice models the parent source-pinned Meowth row and a bounded manual provider-path Computer Error row for the glossy CoroCoro/Song Best print lane; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete magazine source, complete Computer Error variant catalog, Song Best reprint census, or copy-count source.",
     "release_date": "1997-12-15",
     "release_family_id": "jp_promo_corocoro_19971215",
     "release_type": "promo_family_child_rollup_rows",
-    "source_gap_count": 1,
+    "source_gap_count": 0,
     "strict_release_member": false,
-    "unique_catalog_row_count": 1,
-    "unmodeled_expected_cards": [
-      "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-    ]
+    "unique_catalog_row_count": 2,
+    "unmodeled_expected_cards": []
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
   "sources": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "cards_found": 1,
-      "catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+      "cards_found": 2,
+      "catalog_hash": "e1ae0c9d433a3a3af5ff7b48b3614fc9b89a9d209313a6ee6e477caeb95716d4",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Meowth (CoroCoro 1997)",
@@ -522,11 +898,19 @@
           "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_(Wizards_Promo_16)"
         ]
       },
-      "manual_source_row_count": 0,
-      "manual_source_rows": [],
-      "modeled_source_rows": 1,
+      "manual_source_row_count": 1,
+      "manual_source_rows": [
+        {
+          "local_id": "031",
+          "name_en": "Computer Error",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/031",
+          "source_sort": 31
+        }
+      ],
+      "modeled_source_rows": 2,
       "modeled_source_sorts": [
-        30
+        30,
+        31
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -548,17 +932,15 @@
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
-      "source_gap_count": 1,
-      "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. The current PokéCardex UPC aggregate source-pins Meowth to this exact family, while the currently modeled Computer Error UPC row is the later Kamex Mega Battle participation context. This child slice therefore models Meowth only and records the glossy CoroCoro/Song Best Collection Computer Error as an explicit source gap rather than reusing the Kamex row.",
+      "source_gap_count": 0,
+      "source_gap_reason": "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a two-card promo insert with Meowth and a glossy Computer Error. Meowth is inherited from the parent UPC aggregate row; Computer Error is modeled as a manual provider-path gap row because the current parent aggregate source-pins the later Kamex Mega Battle participation row separately at UPC/45. The manual row preserves the glossy CoroCoro/Song Best lane without reusing the non-glossy Kamex row.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
       "source_slice_authority_label": "source-pinned promo family card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
-      "unmodeled_expected_cards": [
-        "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)"
-      ]
+      "unmodeled_expected_cards": []
     }
   ],
   "symbol_status": {

@@ -608,10 +608,27 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Meowth (CoroCoro 1997)",
             "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
         ],
-        "modeled_source_sorts": [30],
-        "unmodeled_expected_cards": [
-            "Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
+        "modeled_source_sorts": [30, 31],
+        "manual_source_rows": [
+            {
+                "source_sort": 31,
+                "local_id": "031",
+                "name_en": "Computer Error",
+                "name_ja": "パソコン大暴走！",
+                "romaji": "Pasokon Dai Bousou!",
+                "illustrator": "Sumiyoshi Kizuki",
+                "category": "Trainer",
+                "rarity": "Unnumbered Promotional / Glossy CoroCoro and Song Best Collection print",
+                "image_large": f"{POKECARDEX_BASE}/assets/images/sets_jp/UPC/31.jpg",
+                "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Computer_Error_%28Wizards_Promo_16%29",
+                "source_note": "Bulbapedia Computer Error Wizards Promo page identifies Japanese: パソコン大暴走！ with the English gloss The Computer's Out of Control!; the CoroCoro January 1998 snapshot distinguishes the glossy CoroCoro/Song Best print from the later non-glossy Kamex Mega Battle participation print. Romaji is catalog-normalized as Pasokon Dai Bousou!.",
+                "distribution_comment": "CoroCoro Comic January 1998 issue insert (December 15, 1997); later reprinted in Pokemon Song Best Collection CD",
+                "date_label": "1997-12-15",
+                "date_source": "source_snapshot",
+                "variant_boundary_note": "Glossy CoroCoro/Song Best Collection print with red drop-shadow R; do not reuse the later non-glossy Kamex Mega Battle UPC/45 row.",
+            }
         ],
+        "unmodeled_expected_cards": [],
         "expected_snapshot_texts": [
             "December 15, 1997",
             "'s January 1998 issue is published with 2 promo cards",
@@ -622,14 +639,26 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "have an 'R' symbol with a red drop shadow and are printed on glossy card stock",
             "whereas the 'R' on the Kamex Mega Battle participation print has a white drop shadow",
         ],
+        "source_labeled_japanese_names": {
+            30: {
+                "name_ja": "ニャース",
+                "romaji": "Nyarth",
+                "source_note": "Bulbapedia Meowth CoroCoro promo page identifies Japanese print naming; the CoroCoro January 1998 snapshot identifies the December 15, 1997 issue insert context.",
+            },
+            31: {
+                "name_ja": "パソコン大暴走！",
+                "romaji": "Pasokon Dai Bousou!",
+                "source_note": "Bulbapedia Computer Error Wizards Promo page identifies Japanese: パソコン大暴走！ with the English gloss The Computer's Out of Control!; the CoroCoro January 1998 snapshot identifies the glossy CoroCoro/Song Best print context. Romaji is catalog-normalized as Pasokon Dai Bousou!.",
+            },
+        },
         "source_gap_reason": (
             "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue as a "
-            "two-card promo insert with Meowth and a glossy Computer Error. The current "
-            "PokéCardex UPC aggregate source-pins Meowth to this exact family, while the "
-            "currently modeled Computer Error UPC row is the later Kamex Mega Battle "
-            "participation context. This child slice therefore models Meowth only and "
-            "records the glossy CoroCoro/Song Best Collection Computer Error as an "
-            "explicit source gap rather than reusing the Kamex row."
+            "two-card promo insert with Meowth and a glossy Computer Error. Meowth is "
+            "inherited from the parent UPC aggregate row; Computer Error is modeled as a "
+            "manual provider-path gap row because the current parent aggregate source-pins "
+            "the later Kamex Mega Battle participation row separately at UPC/45. The manual "
+            "row preserves the glossy CoroCoro/Song Best lane without reusing the non-glossy "
+            "Kamex row."
         ),
     },
     "jp_promo_trade_please_199802": {
@@ -1645,7 +1674,7 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         name_en="CoroCoro Comic January 1998 promos source slice",
         name_ja="月刊コロコロコミック1998年1月号プロモ",
         release_date="1997-12-15",
-        expected_row_count=1,
+        expected_row_count=2,
         release_type="promo_family_child_rollup_rows",
         prints_without_rarity_symbol="yes",
         symbol_status_confidence="medium-high",
@@ -1656,17 +1685,18 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_count_basis=(
             "Pokumon and Bulbapedia document the CoroCoro Comic January 1998 issue, "
             "published December 15, 1997, with two promo cards: Meowth and a glossy "
-            "Computer Error. This child slice models the one currently source-pinned "
-            "PokéCardex UPC row, Meowth; it records glossy Computer Error as a source "
-            "gap because the currently modeled Computer Error UPC row belongs to the "
-            "later Kamex Mega Battle participation context. It is not a complete family checklist."
+            "Computer Error. This child slice models the parent source-pinned Meowth row "
+            "and a bounded manual provider-path Computer Error row for the glossy CoroCoro/"
+            "Song Best print lane; manual provider-path rows are not parent aggregate decrypted "
+            "rows. It is not a complete family checklist, complete magazine source, complete "
+            "Computer Error variant catalog, Song Best reprint census, or copy-count source."
         ),
         strict_release_member=False,
         catalog_treatment="Promo target source-slice",
         note=(
-            "Narrow source-slice over the UPC aggregate row currently pinned to CoroCoro "
-            "Comic January 1998. Use it to preserve the Meowth issue-insert lane while "
-            "keeping the unmodeled glossy Computer Error row visible as a source gap."
+            "Narrow source-slice over the CoroCoro Comic January 1998 promo family. Use it "
+            "to preserve the Meowth parent-row lineage and the glossy Computer Error manual "
+            "provider-path witness without reusing the later Kamex Mega Battle UPC/45 row."
         ),
     ),
     ReleaseConfig(
@@ -4589,6 +4619,7 @@ def manual_promo_family_child_source_card(
     date_label = str(manual_row.get("date_label", config.release_date))
     date_source = str(manual_row.get("date_source", "source_snapshot"))
     source_note = str(manual_row.get("source_note", ""))
+    variant_boundary_note = str(manual_row.get("variant_boundary_note", ""))
     return {
         "schema": "marketplace.japanese_pre_english_card_row.v0.1",
         "row_id": row_id,
@@ -4655,6 +4686,7 @@ def manual_promo_family_child_source_card(
                 "Provider-path-derived reference image for a manually modeled source-gap row; "
                 "not a parent aggregate decrypted row, not seller evidence, and not image-rights approval."
             ),
+            **({"variant_boundary_note": variant_boundary_note} if variant_boundary_note else {}),
             "image_small": image_large,
             "not_allowed_by_default": ["training", "seller evidence", "authentication proof"],
             "not_claiming": [
@@ -4711,6 +4743,7 @@ def manual_promo_family_child_source_card(
                 "snapshot_hash": promo_snapshot.get("snapshot_hash", ""),
                 "provider_image_url": image_large,
                 "provider_image_path": f"UPC/{source_sort}.jpg",
+                **({"variant_boundary_note": variant_boundary_note} if variant_boundary_note else {}),
                 "source_sort": source_sort,
                 "not_claiming": [
                     "parent aggregate decrypted row",
@@ -4733,6 +4766,7 @@ def manual_promo_family_child_source_card(
             "rarity": rarity,
             "sort": source_sort,
             "source_page_url": source_page_url,
+            **({"variant_boundary_note": variant_boundary_note} if variant_boundary_note else {}),
         },
         "not_claiming": [
             "parent aggregate decrypted row",
@@ -6035,6 +6069,12 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             expected_sorts = set(int(value) for value in family_spec.get("modeled_source_sorts", []))
             source_sort = family_scope.get("source_provider_sort")
             source_row_mode = family_scope.get("source_row_mode", "parent_aggregate_row")
+            manual_source_rows = {
+                int(row.get("source_sort", 0)): row
+                for row in family_spec.get("manual_source_rows", [])
+                if row.get("source_sort")
+            }
+            manual_source_row = manual_source_rows.get(int(source_sort or 0))
             expected_parent_source_row_id = f"jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:{source_local_id}"
             expected_manual_source_row_id = f"manual-provider-path:pokecardex:UPC/{source_local_id}"
             expected_source_row_id = (
@@ -6073,10 +6113,26 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
             if source_row_mode == "manual_provider_path_gap_row":
                 if source_card is not None:
                     failures.append(f"{card.get('row_id')}: promo_family_child_manual_row_collides_with_parent")
+                if not manual_source_row:
+                    failures.append(f"{card.get('row_id')}: promo_family_child_manual_spec_row_missing")
                 if card.get("provider_row", {}).get("source_provider_row", {}).get("manual_source_gap_row") is not True:
                     failures.append(f"{card.get('row_id')}: promo_family_child_manual_row_flag_missing")
                 if "parent aggregate decrypted row" not in card.get("not_claiming", []):
                     failures.append(f"{card.get('row_id')}: promo_family_child_manual_parent_boundary_missing")
+                if manual_source_row:
+                    expected_manual_image = manual_source_row.get("image_large", "")
+                    if image.get("image_large") != expected_manual_image or image.get("image_small") != expected_manual_image:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_image_url_mismatch")
+                    expected_variant_note = manual_source_row.get("variant_boundary_note", "")
+                    if expected_variant_note and image.get("variant_boundary_note") != expected_variant_note:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_variant_note_mismatch")
+                    source_provider_row = card.get("provider_row", {}).get("source_provider_row", {})
+                    if source_provider_row.get("image_large") != expected_manual_image:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_provider_image_url_mismatch")
+                    if expected_variant_note and source_provider_row.get("variant_boundary_note") != expected_variant_note:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_provider_variant_note_mismatch")
+                    if source_provider_row.get("source_page_url") != manual_source_row.get("source_page_url", ""):
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_source_page_mismatch")
             elif source_card is None:
                 failures.append(f"{card.get('row_id')}: promo_family_child_parent_source_row_missing")
             if source_sort not in expected_sorts:
@@ -6174,6 +6230,27 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 for contact in card.get("source_contacts", [])
             ):
                 failures.append(f"{card.get('row_id')}: promo_family_child_missing_manual_gap_contact")
+            if source_row_mode == "manual_provider_path_gap_row" and manual_source_row:
+                expected_manual_image = manual_source_row.get("image_large", "")
+                expected_manual_path = f"UPC/{int(source_sort or 0)}.jpg"
+                expected_variant_note = manual_source_row.get("variant_boundary_note", "")
+                manual_contacts = [
+                    contact
+                    for contact in card.get("source_contacts", [])
+                    if contact.get("source") == "Manual source-gap row declaration"
+                    and contact.get("inherited_from_promo_family_source") is True
+                    and contact.get("source_row_mode") == "manual_provider_path_gap_row"
+                ]
+                for contact in manual_contacts:
+                    if contact.get("provider_image_url") != expected_manual_image:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_contact_image_url_mismatch")
+                        break
+                    if contact.get("provider_image_path") != expected_manual_path:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_contact_image_path_mismatch")
+                        break
+                    if expected_variant_note and contact.get("variant_boundary_note") != expected_variant_note:
+                        failures.append(f"{card.get('row_id')}: promo_family_child_manual_contact_variant_note_mismatch")
+                        break
             if not any(
                 contact.get("source") == family_context_source.get("source")
                 and contact.get("snapshot_hash") == family_context_source.get("snapshot_hash")
