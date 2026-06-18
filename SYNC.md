@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — added a machine-readable source-gap register for
+  supplemental products exposed by TCGdex but not card-row-modelable from that source:
+  `data/catalog-expansion/source-gaps.json` plus builder
+  `scripts/build_catalog_expansion_gaps.py`. Current gaps: English `wp` W Promotional
+  (7 listed / 0 refs), English `sp` Sample (10 / 0), and English `jumbo` Jumbo cards
+  (160 / 0, not safely WoC-bounded from TCGdex alone). This is not a card catalog; it is
+  an anti-overclaim target list for the next source pass.
 - `[passive]` 2026-06-18 · Codex — added the Japanese classic/WoC-corresponding
   main-set slice after the existing pre-English corpus. New builder:
   `scripts/build_japanese_classic_catalogs.py`; output: `data/japanese-classic/`.

@@ -1,0 +1,154 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "gap_count": 3,
+  "gaps": [
+    {
+      "authority_label": "legible",
+      "boundary_note": "English WoC-era supplemental promo gap; do not treat the English catalog as complete for this promo product.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "en",
+      "name": "W Promotional",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "reason": "TCGdex lists W Promotional as a 7-card English set but returns zero card refs in the set payload.",
+      "release_date": "1999-09-01",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "base",
+        "name": "Base"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/wp",
+      "set_id": "wp",
+      "set_payload_hash": "7f04c760a87f6fb4c57f7d57ad94a1c3b09320f15a44b2f34d2ecfdcfd8ba25e",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 7,
+        "reverse": 0,
+        "total": 7
+      },
+      "source_gap_count": 7
+    },
+    {
+      "authority_label": "legible",
+      "boundary_note": "English WoC-era supplemental sample-card gap; do not invent sample rows without a row-level source.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "en",
+      "name": "Sample",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "reason": "TCGdex lists Sample as a 10-card English e-Card-era set but returns zero card refs in the set payload.",
+      "release_date": "2002-08-01",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "ecard",
+        "name": "E-Card"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/sp",
+      "set_id": "sp",
+      "set_payload_hash": "005a1ca66f3b14165c663aaffdc4f5003eeef950df42a956fb16ac4e3f6269c1",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 10,
+        "reverse": 0,
+        "total": 10
+      },
+      "source_gap_count": 10
+    },
+    {
+      "authority_label": "legible",
+      "boundary_note": "Jumbo is not safely bounded to the WoC era from this source alone; needs a row-level and date-bounded source before modeling.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "en",
+      "name": "Jumbo cards",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "reason": "TCGdex lists Jumbo cards as a 160-card English miscellaneous set but returns zero card refs in the set payload.",
+      "release_date": "2000-02-01",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "misc",
+        "name": "Miscellaneous"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/jumbo",
+      "set_id": "jumbo",
+      "set_payload_hash": "a88ff7ee1e529de75eca798cb03a716e3980c66bb315224103617f5cf02eba6f",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 160,
+        "reverse": 0,
+        "total": 160
+      },
+      "source_gap_count": 160
+    }
+  ],
+  "generated_at": "2026-06-18T18:55:33Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "complete catalog expansion gap inventory",
+    "card-row model",
+    "complete set checklist",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ],
+  "schema": "marketplace.catalog_expansion_gap_register.v0.1",
+  "source": "TCGdex REST API",
+  "source_docs_url": "https://tcgdex.dev/rest",
+  "total_source_gap_rows": 177
+}
