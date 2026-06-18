@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — added a row-level
+  `special_identification_instructions` rail for conflict-heavy catalog rows, starting
+  with the first CoroCoro glossy Pikachu. The parent UPC source-slice row and child
+  CoroCoro row now carry a legible instruction that says to identify it first as
+  `Pikachu [Glossy]` from the CoroCoro Comic November 1996 insert, prefer the selected
+  snapshot's Ken Sugimori credit, and preserve PokéCardex's Keiji Kinebuchi value as a
+  conflict artifact. The Card Dossier pilot now has a matching
+  `identification.special_instructions` claim. Re-pinned the parent UPC source-slice,
+  all promo-family child releases that cite that parent hash, the manifest entries, and
+  the dossier corpus.
 - `[passive]` 2026-06-18 · Codex — corrected the first CoroCoro glossy Pikachu
   illustrator handling. The parent UPC source-slice row
   `jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001` and child

@@ -305,7 +305,17 @@
         {
           "id": "c6",
           "field": "history.variant",
-          "text": "Because the selected source snapshot and local provider metadata disagree on the illustrator, this pilot treats the illustrator field as an unresolved source conflict rather than a settled fact.",
+          "text": "Because the selected source snapshot and local provider metadata disagree on the illustrator, this pilot treats the illustrator field as source-conflicted rather than a provider-only fact.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "C"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Special identification instruction: identify this row first as Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert, then prefer the selected source snapshot's Ken Sugimori credit while preserving PokéCardex's Keiji Kinebuchi value as conflicting provider metadata.",
           "sources": [
             "s1",
             "s2"

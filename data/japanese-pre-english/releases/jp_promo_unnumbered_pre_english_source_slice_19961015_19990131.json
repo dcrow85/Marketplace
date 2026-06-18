@@ -244,6 +244,39 @@
           "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
         }
       ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "glossy_pikachu_illustrator_conflict_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card inspection",
+            "provider metadata is false in all contexts"
+          ],
+          "source_refs": [
+            {
+              "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+              "source": "Bulbapedia selected source snapshot",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+            },
+            {
+              "conflicting_provider_illustrator": "Keiji Kinebuchi",
+              "source": "PokéCardex provider metadata"
+            }
+          ],
+          "steps": [
+            "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
+            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
+            "Do not infer illustrator from provider metadata alone when selected source lines disagree.",
+            "Do not merge this with non-glossy, How-to-Play, Game Boy, or other early Pikachu rows.",
+            "For a seller-provided card, use this only as catalog identification guidance; require seller evidence for the physical card."
+          ],
+          "summary": "Prefer the selected source snapshot's Ken Sugimori credit; preserve the PokéCardex Keiji Kinebuchi value as conflicting provider metadata.",
+          "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
+        }
+      ],
       "symbol_status": {
         "confidence": "medium",
         "not_claiming": [

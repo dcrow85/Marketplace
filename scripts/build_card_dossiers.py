@@ -38,6 +38,7 @@ CLAIM_FIELDS = {
     "history.significance",
     "history.lineage",
     "history.variant",
+    "identification.special_instructions",
 }
 NOT_CLAIMING = [
     "seller possession",

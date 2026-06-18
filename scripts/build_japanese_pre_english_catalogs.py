@@ -245,6 +245,53 @@ UPC_SELECTED_SNAPSHOT_ILLUSTRATOR_OVERRIDES: dict[tuple[str, int], dict[str, Any
     },
 }
 
+
+def special_identification_instructions_for_source_row(
+    source_row: dict[str, Any],
+    illustrator_override: dict[str, Any],
+    provider_illustrator: str,
+) -> list[dict[str, Any]]:
+    instructions = list(source_row.get("special_identification_instructions", []))
+    if illustrator_override:
+        instructions.append(
+            {
+                "id": "glossy_pikachu_illustrator_conflict_v0.1",
+                "authority_label": "legible",
+                "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit.",
+                "summary": (
+                    "Prefer the selected source snapshot's Ken Sugimori credit; preserve the "
+                    "PokéCardex Keiji Kinebuchi value as conflicting provider metadata."
+                ),
+                "steps": [
+                    "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
+                    f"Use the selected source line: {illustrator_override.get('selected_line', '')}",
+                    "Do not infer illustrator from provider metadata alone when selected source lines disagree.",
+                    "Do not merge this with non-glossy, How-to-Play, Game Boy, or other early Pikachu rows.",
+                    "For a seller-provided card, use this only as catalog identification guidance; require seller evidence for the physical card.",
+                ],
+                "source_refs": [
+                    {
+                        "source": illustrator_override.get("source", ""),
+                        "source_page_url": illustrator_override.get("source_page_url", ""),
+                        "snapshot_path": illustrator_override.get("snapshot_path", ""),
+                    },
+                    {
+                        "source": "PokéCardex provider metadata",
+                        "conflicting_provider_illustrator": provider_illustrator,
+                    },
+                ],
+                "not_claiming": [
+                    "seller possession",
+                    "authenticity",
+                    "condition",
+                    "physical-card inspection",
+                    "provider metadata is false in all contexts",
+                ],
+            }
+        )
+    return instructions
+
+
 PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_corocoro_first_19961015": {
         "source_snapshot": "early_1996_promos",
@@ -3521,6 +3568,11 @@ def row_from_sources(
         source_basis = "PokéCardex decrypted series payload row and provider-path image convention"
     elif adapter == "bulbapedia_song_best":
         source_basis = "Bulbapedia membership/card page plus bounded image witness"
+    special_identification_instructions = special_identification_instructions_for_source_row(
+        source_row,
+        illustrator_override,
+        provider_illustrator,
+    )
     image_audit_label = (
         "provider-path external reference image"
         if image.get("status") == "provider_path_reference_image"
@@ -3601,6 +3653,7 @@ def row_from_sources(
         },
         **({"print_context": source_row["print_context"]} if source_row.get("print_context") else {}),
         "image_provenance": image,
+        "special_identification_instructions": special_identification_instructions,
         "collector_texture": {
             "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
             "basis": [source_basis, "TCGdex row metadata when present", "Japanese pre-English release map"],
@@ -5739,6 +5792,14 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_illustrator_not_ken_sugimori")
             if illustrator.get("conflict", {}).get("conflicting_name") != "Keiji Kinebuchi":
                 failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_provider_conflict_not_recorded")
+            instructions = glossy_pikachu.get("special_identification_instructions", [])
+            if not any(
+                instruction.get("id") == "glossy_pikachu_illustrator_conflict_v0.1"
+                and instruction.get("authority_label") == "legible"
+                and "Do not infer illustrator from provider metadata alone" in " ".join(instruction.get("steps", []))
+                for instruction in instructions
+            ):
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_special_identification_instruction_missing")
 
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}

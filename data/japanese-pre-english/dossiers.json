@@ -1,7 +1,7 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "coverage": {
-    "claim_count": 18,
+    "claim_count": 19,
     "coverage_by_dimension": {
       "art": {
         "A": 0,
@@ -99,7 +99,17 @@
             "s1",
             "s2"
           ],
-          "text": "Because the selected source snapshot and local provider metadata disagree on the illustrator, this pilot treats the illustrator field as an unresolved source conflict rather than a settled fact.",
+          "text": "Because the selected source snapshot and local provider metadata disagree on the illustrator, this pilot treats the illustrator field as source-conflicted rather than a provider-only fact.",
+          "tier": "C"
+        },
+        {
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "Special identification instruction: identify this row first as Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert, then prefer the selected source snapshot's Ken Sugimori credit while preserving PokéCardex's Keiji Kinebuchi value as conflicting provider metadata.",
           "tier": "C"
         }
       ],
@@ -374,7 +384,7 @@
       "uid": "jp_tcg_expansion_pack_19961020:035"
     }
   ],
-  "generated_at": "2026-06-18T18:06:41Z",
+  "generated_at": "2026-06-18T18:20:37Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "seller possession",
