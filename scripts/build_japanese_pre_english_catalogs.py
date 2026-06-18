@@ -120,6 +120,11 @@ ANA_GET_IN_A_JET_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "pokumon_bulbapedia_ana_get_in_a_jet_1998_selected_lines.json"
 )
+ALL_CARD_CALENDAR_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -597,6 +602,39 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "source-pins both rows to this family. This source slice models those card "
             "identities only; it does not model the full airline campaign, redemption forms, "
             "flight/passenger/customer ledger, official copy count, or a complete ANA promo census."
+        ),
+    },
+    "jp_promo_all_card_calendar_19981105": {
+        "source_snapshot": "all_card_calendar_1998",
+        "expected_source_card_count": 1,
+        "complete_source_boundary_denial": "complete calendar source",
+        "source_slice_authority_label": "source-pinned calendar card identity slice",
+        "expected_cards": [
+            "_____'s Pikachu (All Card Calendar / Pokemon 2nd Anniversary Calendar 1998)",
+        ],
+        "modeled_source_sorts": [53],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "_____’s Pikachu (Pokemon 2nd Anniversary Calendar 1998) (Unnumbered)",
+            "Pokémon 2nd Anniversary Calendar",
+            "_____'s Pikachu",
+            "Kagemaru Himeno",
+            "Birthday Surprise",
+            "おたんじょうび",
+            "All Card Calendar",
+            "released on November 5, 1998 in celebration of the second anniversary of the Trading Card Game",
+            "(November 5, 1998)",
+        ],
+        "source_gap_reason": (
+            "Pokumon documents _____'s Pikachu as a Pokemon 2nd Anniversary Calendar "
+            "unnumbered promo with Kagemaru Himeno illustration, while Bulbapedia documents "
+            "the All Card Calendar date as November 5, 1998 and cross-checks the same card "
+            "in its unnumbered promo table. The current PokéCardex UPC aggregate source-pins "
+            "one row to this family. This source slice models that card identity only; it "
+            "treats Birthday Pikachu as collector shorthand grounded in the Birthday Surprise/"
+            "おたんじょうび selected lines, not as a source-quoted card title. It does not model "
+            "the full calendar object, sealed-calendar variants, official copy count, or a "
+            "complete Birthday Pikachu variant census."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1392,6 +1430,40 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_all_card_calendar_19981105",
+        name_en="All Card Calendar source slice",
+        name_ja="オールカードカレンダー プロモ",
+        release_date="1998-11-05",
+        expected_row_count=1,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_exact",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Pokumon documents _____'s Pikachu as a Pokémon 2nd Anniversary Calendar "
+            "1998 unnumbered promo, while Bulbapedia documents the All Card Calendar "
+            "release on November 5, 1998 in celebration of the Trading Card Game's "
+            "second anniversary. This child slice models the one currently source-pinned "
+            "PokéCardex UPC row; Birthday Pikachu is collector shorthand grounded in the "
+            "selected birthday-attack lines, not a source-quoted title. It does not claim "
+            "official copy counts, complete calendar object provenance, sealed-calendar "
+            "variant coverage, or a complete Birthday Pikachu variant census. It is not a "
+            "complete family checklist beyond the one source-pinned card identity, and it "
+            "is not a complete calendar-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate row currently pinned to the All "
+            "Card Calendar / Pokémon 2nd Anniversary Calendar. Use it to preserve the "
+            "Birthday Pikachu calendar lane while keeping calendar-object, sealed-variant, "
+            "copy-count, and broader Birthday Pikachu variant-census claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_fan_club_vol3_19971118",
         name_en="Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
         name_ja="ポケモンカードファンクラブVol.3 ダークペルシアン プロモ",
@@ -1910,6 +1982,26 @@ def ana_get_in_a_jet_source_snapshot() -> dict[str, Any]:
     }
 
 
+def all_card_calendar_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(ALL_CARD_CALENDAR_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Pokumon + Bulbapedia"),
+        "snapshot_path": str(ALL_CARD_CALENDAR_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -1954,6 +2046,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return kamex_mega_battle_source_snapshot()
     if snapshot_id == "ana_get_in_a_jet_1998":
         return ana_get_in_a_jet_source_snapshot()
+    if snapshot_id == "all_card_calendar_1998":
+        return all_card_calendar_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -3981,7 +4075,6 @@ def build_promo_family_child_rollup(config: ReleaseConfig) -> dict[str, Any]:
             "complete event source",
         ]
         if complete_source_boundary_denial:
-            child_card["promo_family_scope"]["source_slice_boundary_denial"] = complete_source_boundary_denial
             source_slice_boundary_denials.append(complete_source_boundary_denial)
         source_slice_boundary_denials = list(dict.fromkeys(source_slice_boundary_denials))
         version_filters = spec.get("source_provider_row_version_filters", {})
@@ -5977,6 +6070,8 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
                 "complete magazine source",
                 "complete campaign source",
                 "complete tournament source",
+                "complete calendar source",
+                "complete book source",
             }
             if family_context.get("snapshot_hash") != promo_snapshot["snapshot_hash"]:
                 failures.append("promo_family_child_context_snapshot_hash_mismatch")

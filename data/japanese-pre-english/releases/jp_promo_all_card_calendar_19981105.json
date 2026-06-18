@@ -1,0 +1,567 @@
+{
+  "cards": [
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "_____'s Pikachu is cataloged as the currently source-pinned row for All Card Calendar source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "All Card Calendar source slice",
+          "1998-11-05",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "053",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Kagemaru Himeno",
+        "name": "Kagemaru Himeno",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Pokumon + Bulbapedia lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/53.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/53.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+        "promo_family_source_sort": 53,
+        "provider_id": "pokecardex:14254",
+        "provider_title": "_____'s Pikachu - Unnumbered Promotional #53",
+        "release_family_id": "jp_promo_all_card_calendar_19981105",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_all_card_calendar_19981105:053",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "053",
+      "name_en": "_____'s Pikachu",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "complete calendar source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          25
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete calendar source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon + Bulbapedia context snapshot expects 1 cards for this family, while this slice currently models 1 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
+        "expected_source_card_count": 1,
+        "japanese_set_name": "オールカードカレンダー プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents _____'s Pikachu as a Pokémon 2nd Anniversary Calendar 1998 unnumbered promo, while Bulbapedia documents the All Card Calendar release on November 5, 1998 in celebration of the Trading Card Game's second anniversary. This child slice models the one currently source-pinned PokéCardex UPC row; Birthday Pikachu is collector shorthand grounded in the selected birthday-attack lines, not a source-quoted title. It does not claim official copy counts, complete calendar object provenance, sealed-calendar variant coverage, or a complete Birthday Pikachu variant census. It is not a complete family checklist beyond the one source-pinned card identity, and it is not a complete calendar-object ledger.",
+        "release_date": "1998-11-05",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned calendar card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 1,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1998-11-05",
+        "date_source": "source_comment",
+        "distribution_comment": "All Card Calendar (November 5, 1998)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_all_card_calendar_19981105",
+        "source_sort": 53
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon + Bulbapedia context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete calendar source",
+        "expected_cards": [
+          "_____'s Pikachu (All Card Calendar / Pokemon 2nd Anniversary Calendar 1998)"
+        ],
+        "expected_source_card_count": 1,
+        "modeled_source_sorts": [
+          53
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_all_card_calendar_19981105",
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents _____'s Pikachu as a Pokemon 2nd Anniversary Calendar unnumbered promo with Kagemaru Himeno illustration, while Bulbapedia documents the All Card Calendar date as November 5, 1998 and cross-checks the same card in its unnumbered promo table. The current PokéCardex UPC aggregate source-pins one row to this family. This source slice models that card identity only; it treats Birthday Pikachu as collector shorthand grounded in the Birthday Surprise/おたんじょうび selected lines, not as a source-quoted card title. It does not model the full calendar object, sealed-calendar variants, official copy count, or a complete Birthday Pikachu variant census.",
+        "source_local_id": "053",
+        "source_provider_sort": 53,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+        "source_slice_authority_label": "source-pinned calendar card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 1,
+        "source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+        "source_gap_count": 0,
+        "source_local_id": "053",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/s-Pikachu-V1",
+          "comment": "All Card Calendar (November 5, 1998)",
+          "id_card": 14254,
+          "id_tcgplayer": 0,
+          "illustrator": "Kagemaru Himeno",
+          "provider_id": "pokecardex:14254",
+          "provider_title": "_____'s Pikachu - Unnumbered Promotional #53",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 53,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14254,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+        "source_sort": 53
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_all_card_calendar_19981105",
+      "romaji": "",
+      "row_id": "jp_promo_all_card_calendar_19981105:053",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "053",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_all_card_calendar_19981105",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+          "source_sort": 53
+        },
+        {
+          "complete_source_boundary_denial": "complete calendar source",
+          "expected_cards": [
+            "_____'s Pikachu (All Card Calendar / Pokemon 2nd Anniversary Calendar 1998)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete calendar source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-calendar variant catalog",
+            "official copy count",
+            "complete Birthday Pikachu variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=%27s_Pikachu_(Wizards_Promo_24)&oldid=3870838",
+          "retrieved_at": "2026-06-18T00:54:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1998 All Card Calendar / Pokemon 2nd Anniversary Calendar _____'s Pikachu source slice, including the source-pinned card identity, calendar alias tension, November 5, 1998 date, illustrator, unnumbered status, and birthday-attack collector context. The selected lines support Birthday Pikachu only as collector shorthand derived from Birthday Surprise / おたんじょうび context, not as a quoted source title. This snapshot is not a full calendar source, not a complete accessory-object ledger, not a sealed-calendar variant catalog, not an official copy-count authority, and not a raw HTML snapshot.",
+          "snapshot_hash": "9f26fc8a09cfd2ef4b1ea2ea6b8d449be6997b6ba975ecedd0a575598440d014",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete calendar source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-calendar variant catalog",
+            "official copy count",
+            "complete Birthday Pikachu variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia rendered page/table inspection",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon + Bulbapedia",
+          "source_page_url": "https://pokumon.com/card/_____s-pikachu-pokemon-2nd-anniversary-calendar-1998-unnumbered/",
+          "source_slice_authority_label": "source-pinned calendar card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/%27s_Pikachu_(Wizards_Promo_24)",
+            "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "433571d728fdb026e7a147bc2042cb1104723e498242d4ca953d824c30e00504",
+          "encrypted_page_sha256": "c2905d0db0cf92c825258f69188740d5c3b216a5ebf16bd8a6cc09ec4041e1ad",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "complete calendar source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_all_card_calendar_19981105"
+      },
+      "tags": [
+        "jp_promo_all_card_calendar_19981105",
+        "All Card Calendar source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete pre-English catalog",
+    "complete promo family checklist",
+    "complete source object",
+    "complete tournament source",
+    "complete campaign source",
+    "complete magazine source",
+    "complete event source",
+    "complete calendar source",
+    "unmodeled expected card row",
+    "official copy count",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Promo target source-slice",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
+    "date_precision": "source_exact",
+    "expected_row_count": 1,
+    "expected_source_card_count": 1,
+    "name_en": "All Card Calendar source slice",
+    "name_ja": "オールカードカレンダー プロモ",
+    "note": "Narrow source-slice over the UPC aggregate row currently pinned to the All Card Calendar / Pokémon 2nd Anniversary Calendar. Use it to preserve the Birthday Pikachu calendar lane while keeping calendar-object, sealed-variant, copy-count, and broader Birthday Pikachu variant-census claims outside row authority.",
+    "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+    "product_card_count": 0,
+    "product_count_basis": "Pokumon documents _____'s Pikachu as a Pokémon 2nd Anniversary Calendar 1998 unnumbered promo, while Bulbapedia documents the All Card Calendar release on November 5, 1998 in celebration of the Trading Card Game's second anniversary. This child slice models the one currently source-pinned PokéCardex UPC row; Birthday Pikachu is collector shorthand grounded in the selected birthday-attack lines, not a source-quoted title. It does not claim official copy counts, complete calendar object provenance, sealed-calendar variant coverage, or a complete Birthday Pikachu variant census. It is not a complete family checklist beyond the one source-pinned card identity, and it is not a complete calendar-object ledger.",
+    "release_date": "1998-11-05",
+    "release_family_id": "jp_promo_all_card_calendar_19981105",
+    "release_type": "promo_family_child_rollup_rows",
+    "source_gap_count": 0,
+    "strict_release_member": false,
+    "unique_catalog_row_count": 1,
+    "unmodeled_expected_cards": []
+  },
+  "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+  "sources": [
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "cards_found": 1,
+      "catalog_hash": "adf618dc22cbd6cc10c6cd7318bec59077735af8d40fa34d13a5cc82acc8b4ed",
+      "complete_source_boundary_denial": "complete calendar source",
+      "expected_cards": [
+        "_____'s Pikachu (All Card Calendar / Pokemon 2nd Anniversary Calendar 1998)"
+      ],
+      "expected_source_card_count": 1,
+      "family_context_source": {
+        "complete_source_boundary_denial": "complete calendar source",
+        "extracted_claims": {
+          "collector_aliases": [
+            {
+              "alias": "Birthday Pikachu",
+              "basis": "Birthday Surprise / おたんじょうび selected lines",
+              "status": "collector shorthand, not source-quoted title"
+            }
+          ],
+          "collector_context": [
+            "Birthday Surprise attack",
+            "おたんじょうび"
+          ],
+          "distribution_context": "All Card Calendar / Pokemon 2nd Anniversary Calendar",
+          "promo_card_count": 1,
+          "promo_cards": [
+            "_____'s Pikachu (All Card Calendar / Pokemon 2nd Anniversary Calendar 1998)"
+          ],
+          "release_date": "1998-11-05",
+          "source_aliases": [
+            "Pokémon 2nd Anniversary Calendar",
+            "All Card Calendar"
+          ],
+          "source_labeled_illustrators": {
+            "_____'s Pikachu": "Kagemaru Himeno"
+          }
+        },
+        "not_claiming": [
+          "raw HTML snapshot",
+          "complete calendar source",
+          "complete source object",
+          "complete accessory-object ledger",
+          "complete sealed-calendar variant catalog",
+          "official copy count",
+          "complete Birthday Pikachu variant census",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=%27s_Pikachu_(Wizards_Promo_24)&oldid=3870838",
+        "retrieved_at": "2026-06-18T00:54:00Z",
+        "selected_text": "_____’s Pikachu (Pokemon 2nd Anniversary Calendar 1998) (Unnumbered)\nPokémon 2nd Anniversary Calendar\n_____'s\nPikachu\nBundle Promo\nPokémon 2nd Anniversary Calendar\n1998\nUnnumbered\nKagemaru Himeno\n_____'s Pikachu (Wizards Promo 24)\n_____'s Pikachu\nKagemaru Himeno\nBirthday Surprise\nおたんじょうび\nKagemaru Himeno\nAll Card Calendar\n, released on November 5, 1998 in celebration of the second anniversary of the Trading Card Game. It was first available in English as a non holofoil\n_____'s Pikachu\nAll Card Calendar\n(November 5, 1998)",
+        "snapshot_content_scope": "Selected rendered lines for the 1998 All Card Calendar / Pokemon 2nd Anniversary Calendar _____'s Pikachu source slice, including the source-pinned card identity, calendar alias tension, November 5, 1998 date, illustrator, unnumbered status, and birthday-attack collector context. The selected lines support Birthday Pikachu only as collector shorthand derived from Birthday Surprise / おたんじょうび context, not as a quoted source title. This snapshot is not a full calendar source, not a complete accessory-object ledger, not a sealed-calendar variant catalog, not an official copy-count authority, and not a raw HTML snapshot.",
+        "snapshot_hash": "9f26fc8a09cfd2ef4b1ea2ea6b8d449be6997b6ba975ecedd0a575598440d014",
+        "snapshot_not_claiming": [
+          "raw HTML snapshot",
+          "complete calendar source",
+          "complete source object",
+          "complete accessory-object ledger",
+          "complete sealed-calendar variant catalog",
+          "official copy count",
+          "complete Birthday Pikachu variant census",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json",
+        "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia rendered page/table inspection",
+        "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+        "source": "Pokumon + Bulbapedia",
+        "source_page_url": "https://pokumon.com/card/_____s-pikachu-pokemon-2nd-anniversary-calendar-1998-unnumbered/",
+        "source_slice_authority_label": "source-pinned calendar card identity slice",
+        "supporting_page_urls": [
+          "https://bulbapedia.bulbagarden.net/wiki/%27s_Pikachu_(Wizards_Promo_24)",
+          "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005"
+        ]
+      },
+      "modeled_source_rows": 1,
+      "modeled_source_sorts": [
+        53
+      ],
+      "not_claiming": [
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "complete calendar source",
+        "unmodeled expected card row",
+        "official copy count",
+        "seller possession",
+        "authenticity",
+        "condition",
+        "price truth"
+      ],
+      "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "promo_family_id": "jp_promo_all_card_calendar_19981105",
+      "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
+      "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
+      "source": "Marketplace UPC aggregate promo-family child source-slice",
+      "source_gap_count": 0,
+      "source_gap_reason": "Pokumon documents _____'s Pikachu as a Pokemon 2nd Anniversary Calendar unnumbered promo with Kagemaru Himeno illustration, while Bulbapedia documents the All Card Calendar date as November 5, 1998 and cross-checks the same card in its unnumbered promo table. The current PokéCardex UPC aggregate source-pins one row to this family. This source slice models that card identity only; it treats Birthday Pikachu as collector shorthand grounded in the Birthday Surprise/おたんじょうび selected lines, not as a source-quoted card title. It does not model the full calendar object, sealed-calendar variants, official copy count, or a complete Birthday Pikachu variant census.",
+      "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+      "source_release_type": "promo_aggregate_filtered_rows",
+      "source_slice_authority_label": "source-pinned calendar card identity slice",
+      "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
+      "symbol_status_path": "data/pre-english-symbol-status.json",
+      "unmodeled_expected_cards": []
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium-high",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
+    "source_mode": "direct_promo_family_context",
+    "source_release_family_id": "jp_promo_all_card_calendar_19981105"
+  }
+}
