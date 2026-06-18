@@ -54,6 +54,13 @@ CORPUS_MANIFESTS: tuple[dict[str, str], ...] = (
         "boundary": "Japanese ADV1/ADV2 releases before the English Skyridge / US WoC-era endpoint.",
     },
     {
+        "corpus_id": "japanese_promo_wotc",
+        "path": "data/japanese-promo-wotc/manifest.json",
+        "audit_path": "data/japanese-promo-wotc/audit.json",
+        "language_scope": "ja",
+        "boundary": "Japanese numbered P Promotional rows and bounded ADV-P rows through the May 2003 edge.",
+    },
+    {
         "corpus_id": "english_supplemental_wotc",
         "path": "data/english-supplemental-wotc/manifest.json",
         "audit_path": "data/english-supplemental-wotc/audit.json",
@@ -127,6 +134,7 @@ def row_invariant_summary() -> dict[str, Any]:
         ROOT / "data/english-wotc/releases",
         ROOT / "data/japanese-classic/releases",
         ROOT / "data/japanese-adv-pre-wotc/releases",
+        ROOT / "data/japanese-promo-wotc/releases",
         ROOT / "data/english-supplemental-wotc/releases",
     ]
     total = 0
@@ -222,7 +230,7 @@ def build() -> dict[str, Any]:
             ),
             "known_remaining_work": [
                 "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
-                "Add a release-family coverage proof for Japanese promos after the pre-English slice and before/through the US WoC-era endpoint.",
+                "Add or close release-family coverage proof for Japanese unnumbered promos after the pre-English slice and before/through the US WoC-era endpoint.",
                 "Add a release-family coverage proof for any English miscellaneous/promotional products not exposed by Pokemon TCG API or TCGdex set lists.",
                 "Unify row schema expectations across corpora if downstream agents require a single schema version.",
             ],

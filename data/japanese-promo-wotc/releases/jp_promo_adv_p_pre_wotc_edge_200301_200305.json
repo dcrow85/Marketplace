@@ -1,0 +1,3210 @@
+{
+  "cards": [
+    {
+      "card_number": "001/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Kyogre ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 001/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "001/ADV-P",
+          "Water",
+          "",
+          "February 2003 CoroCoro Comic (January 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):001/ADV-P",
+        "provider_title": "Kyogre ex - ADV-P Promotional cards - pre-WoC-edge subset 001/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-001-adv-p",
+      "name_en": "Kyogre ex",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "1",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "001/ADV-P",
+        "promotion": "February 2003 CoroCoro Comic (January 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "1",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|001/ADV-P|{{TCG ID|ADV-P Promo|Kyogre ex|1}}|Water|||February 2003 ''[[CoroCoro]] Comic'' (January 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "001/ADV-P",
+        "Kyogre ex",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "002/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Groudon ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 002/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "002/ADV-P",
+          "Fighting",
+          "",
+          "CoroCoro Comic (January 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):002/ADV-P",
+        "provider_title": "Groudon ex - ADV-P Promotional cards - pre-WoC-edge subset 002/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-002-adv-p",
+      "name_en": "Groudon ex",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "2",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "002/ADV-P",
+        "promotion": "CoroCoro Comic (January 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "2",
+        "type": "Fighting",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|002/ADV-P|{{TCG ID|ADV-P Promo|Groudon ex|2}}|Fighting|||''CoroCoro Comic'' (January 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "002/ADV-P",
+        "Groudon ex",
+        "Fighting",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "003/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Treecko is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 003/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "003/ADV-P",
+          "Grass",
+          "",
+          "McDonald's promotion (January 17 - February 6, 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):003/ADV-P",
+        "provider_title": "Treecko - ADV-P Promotional cards - pre-WoC-edge subset 003/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-003-adv-p",
+      "name_en": "Treecko",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "3",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "003/ADV-P",
+        "promotion": "McDonald's promotion (January 17 - February 6, 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "3",
+        "type": "Grass",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|003/ADV-P|{{TCG ID|ADV-P Promo|Treecko|3}}|Grass|||McDonald's promotion (January 17 - February 6, 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "003/ADV-P",
+        "Treecko",
+        "Grass",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "004/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Torchic is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 004/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "004/ADV-P",
+          "Fire",
+          "",
+          "McDonald's promotion (January 17 - February 6, 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):004/ADV-P",
+        "provider_title": "Torchic - ADV-P Promotional cards - pre-WoC-edge subset 004/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-004-adv-p",
+      "name_en": "Torchic",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fire"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "4",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "004/ADV-P",
+        "promotion": "McDonald's promotion (January 17 - February 6, 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "4",
+        "type": "Fire",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|004/ADV-P|{{TCG ID|ADV-P Promo|Torchic|4}}|Fire|||McDonald's promotion (January 17 - February 6, 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "004/ADV-P",
+        "Torchic",
+        "Fire",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "005/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Mudkip is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 005/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "005/ADV-P",
+          "Water",
+          "",
+          "McDonald's promotion (January 17 - February 6, 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):005/ADV-P",
+        "provider_title": "Mudkip - ADV-P Promotional cards - pre-WoC-edge subset 005/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-005-adv-p",
+      "name_en": "Mudkip",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "5",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "005/ADV-P",
+        "promotion": "McDonald's promotion (January 17 - February 6, 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "5",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|005/ADV-P|{{TCG ID|ADV-P Promo|Mudkip|5}}|Water|||McDonald's promotion (January 17 - February 6, 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "005/ADV-P",
+        "Mudkip",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "006/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Latias is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 006/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "006/ADV-P",
+          "Colorless",
+          "",
+          "McDonald's promotion (January 17 - February 6, 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):006/ADV-P",
+        "provider_title": "Latias - ADV-P Promotional cards - pre-WoC-edge subset 006/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-006-adv-p",
+      "name_en": "Latias",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Colorless"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "6",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "006/ADV-P",
+        "promotion": "McDonald's promotion (January 17 - February 6, 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "6",
+        "type": "Colorless",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|006/ADV-P|{{TCG ID|ADV-P Promo|Latias|6}}|Colorless|||McDonald's promotion (January 17 - February 6, 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "006/ADV-P",
+        "Latias",
+        "Colorless",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "007/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Latios is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 007/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "007/ADV-P",
+          "Colorless",
+          "",
+          "McDonald's promotion (January 17 - February 6, 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):007/ADV-P",
+        "provider_title": "Latios - ADV-P Promotional cards - pre-WoC-edge subset 007/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-007-adv-p",
+      "name_en": "Latios",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Colorless"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "7",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "007/ADV-P",
+        "promotion": "McDonald's promotion (January 17 - February 6, 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "7",
+        "type": "Colorless",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|007/ADV-P|{{TCG ID|ADV-P Promo|Latios|7}}|Colorless|||McDonald's promotion (January 17 - February 6, 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "007/ADV-P",
+        "Latios",
+        "Colorless",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "008/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Grovyle is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 008/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "008/ADV-P",
+          "Grass",
+          "",
+          "Shogakukan Elementary School magazines (March-April 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):008/ADV-P",
+        "provider_title": "Grovyle - ADV-P Promotional cards - pre-WoC-edge subset 008/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-008-adv-p",
+      "name_en": "Grovyle",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "8",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "008/ADV-P",
+        "promotion": "Shogakukan Elementary School magazines (March-April 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "8",
+        "type": "Grass",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|008/ADV-P|{{TCG ID|ADV-P Promo|Grovyle|8}}|Grass|||[[Shogakukan]] ''Elementary School'' magazines (March-April 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "008/ADV-P",
+        "Grovyle",
+        "Grass",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "009/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Combusken is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 009/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "009/ADV-P",
+          "Fire",
+          "",
+          "Shogakukan Elementary School magazines (February 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):009/ADV-P",
+        "provider_title": "Combusken - ADV-P Promotional cards - pre-WoC-edge subset 009/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-009-adv-p",
+      "name_en": "Combusken",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fire"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "9",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "009/ADV-P",
+        "promotion": "Shogakukan Elementary School magazines (February 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "9",
+        "type": "Fire",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|009/ADV-P|{{TCG ID|ADV-P Promo|Combusken|9}}|Fire|||Shogakukan ''Elementary School'' magazines (February 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "009/ADV-P",
+        "Combusken",
+        "Fire",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "010/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Marshtomp is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 010/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "010/ADV-P",
+          "Water",
+          "",
+          "Shogakukan Elementary School magazines (February 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):010/ADV-P",
+        "provider_title": "Marshtomp - ADV-P Promotional cards - pre-WoC-edge subset 010/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-010-adv-p",
+      "name_en": "Marshtomp",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "10",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "010/ADV-P",
+        "promotion": "Shogakukan Elementary School magazines (February 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "10",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|010/ADV-P|{{TCG ID|ADV-P Promo|Marshtomp|10}}|Water|||Shogakukan ''Elementary School'' magazines (February 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "010/ADV-P",
+        "Marshtomp",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "011/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Kyogre ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 011/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "011/ADV-P",
+          "Water",
+          "",
+          "February 2003 CoroCoro Comic ticket exchange",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):011/ADV-P",
+        "provider_title": "Kyogre ex - ADV-P Promotional cards - pre-WoC-edge subset 011/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-011-adv-p",
+      "name_en": "Kyogre ex",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "11",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "011/ADV-P",
+        "promotion": "February 2003 CoroCoro Comic ticket exchange",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "11",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|011/ADV-P|{{TCG ID|ADV-P Promo|Kyogre ex|11}}|Water|||February 2003 ''CoroCoro Comic'' ticket exchange}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "011/ADV-P",
+        "Kyogre ex",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "012/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Groudon ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 012/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "012/ADV-P",
+          "Fighting",
+          "",
+          "February 2003 CoroCoro Comic ticket exchange",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):012/ADV-P",
+        "provider_title": "Groudon ex - ADV-P Promotional cards - pre-WoC-edge subset 012/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-012-adv-p",
+      "name_en": "Groudon ex",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "12",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "012/ADV-P",
+        "promotion": "February 2003 CoroCoro Comic ticket exchange",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "12",
+        "type": "Fighting",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|012/ADV-P|{{TCG ID|ADV-P Promo|Groudon ex|12}}|Fighting|||February 2003 ''CoroCoro Comic'' ticket exchange}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "012/ADV-P",
+        "Groudon ex",
+        "Fighting",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "013/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Armaldo ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 013/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "013/ADV-P",
+          "Fighting",
+          "",
+          "May 2003 CoroCoro Comic (April 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):013/ADV-P",
+        "provider_title": "Armaldo ex - ADV-P Promotional cards - pre-WoC-edge subset 013/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-013-adv-p",
+      "name_en": "Armaldo ex",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "13",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "013/ADV-P",
+        "promotion": "May 2003 CoroCoro Comic (April 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "13",
+        "type": "Fighting",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|013/ADV-P|{{TCG ID|ADV-P Promo|Armaldo ex|13}}|Fighting|||May 2003 ''CoroCoro Comic'' (April 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "013/ADV-P",
+        "Armaldo ex",
+        "Fighting",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "014/ADV-P",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Jirachi is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 014/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "2003-01-01",
+          "014/ADV-P",
+          "Psychic",
+          "",
+          "June 2003 CoroCoro Comic (May 2003)",
+          ""
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this numbered promo slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:ADV-P_Promotional_cards_(TCG):014/ADV-P",
+        "provider_title": "Jirachi - ADV-P Promotional cards - pre-WoC-edge subset 014/ADV-P",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "Bulbapedia raw row",
+            "surface": "primary",
+            "why": "The agent needs row identity for a promo family not modeled in TCGdex set rows."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "The printed promo numbering and distribution note are the main identification risk."
+          },
+          {
+            "field": "boundary note",
+            "surface": "agent",
+            "why": "Prevents silently importing post-boundary ADV-P rows."
+          }
+        ]
+      },
+      "local_id": "numbered_adv_p_promo_bounded_subset-014-adv-p",
+      "name_en": "Jirachi",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Psychic"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese numbered promo row derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Modeled as a promo product row, separate from any source expansion or reprint counterpart.",
+        "date_precision": "month_range_start",
+        "english_context_name": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "japanese_set_name": "ADV-Pプロモカード",
+        "parent_release_family_id": "",
+        "product_card_count": 14,
+        "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+        "release_date": "2003-01-01",
+        "release_type": "numbered_adv_p_promo_bounded_subset",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "14",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 14
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "014/ADV-P",
+        "promotion": "June 2003 CoroCoro Comic (May 2003)",
+        "raw_title": "ADV-P_Promotional_cards_(TCG)",
+        "source_expansion_name": "ADV-P Promo",
+        "source_expansion_number": "14",
+        "type": "Psychic",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+      "schema": "marketplace.japanese_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|014/ADV-P|{{TCG ID|ADV-P Promo|Jirachi|14}}|Psychic|||June 2003 ''CoroCoro Comic'' (May 2003)}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_page_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_adv_p_promo_bounded_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ADV-P coverage"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw"
+            }
+          ],
+          "steps": [
+            "Read the printed promo number and confirm it matches the NNN/ADV-P row.",
+            "For this corpus, only treat 001/ADV-P through 014/ADV-P as in-scope.",
+            "Preserve the distribution note because later ADV-P rows are deliberately out of this bounded slice.",
+            "Do not infer possession, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
+          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_setlist_symbol_promo",
+        "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+      },
+      "tags": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "ADV-P Promotional cards - pre-WoC-edge subset",
+        "014/ADV-P",
+        "Jirachi",
+        "Psychic",
+        "",
+        ""
+      ]
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese promo universe",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "bulbapedia_raw_setlist",
+    "date_precision": "month_range_start",
+    "expected_row_count": 14,
+    "name_en": "ADV-P Promotional cards - pre-WoC-edge subset",
+    "name_ja": "ADV-Pプロモカード",
+    "note": "Japanese numbered promo product modeled from raw setlist rows.",
+    "parent_release_family_id": "",
+    "product_card_count": 14,
+    "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+    "release_date": "2003-01-01",
+    "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+    "release_type": "numbered_adv_p_promo_bounded_subset",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 14
+  },
+  "schema": "marketplace.japanese_promo_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "bulbapedia_raw_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+      "bulbapedia_rows_found": 14,
+      "not_claiming": [
+        "official source",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "source": "Bulbapedia raw wikitext"
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "not_applicable_numbered_japanese_promo",
+    "scope": "release_context_not_row_fact",
+    "source": "Bulbapedia setlist header marks this as a promo-symbol page; row-level physical symbol state still requires card evidence.",
+    "source_mode": "bulbapedia_setlist_symbol_promo",
+    "source_release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305"
+  }
+}

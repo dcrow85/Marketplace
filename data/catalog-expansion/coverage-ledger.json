@@ -3,16 +3,16 @@
   "completion_status": {
     "known_remaining_work": [
       "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
-      "Add a release-family coverage proof for Japanese promos after the pre-English slice and before/through the US WoC-era endpoint.",
+      "Add or close release-family coverage proof for Japanese unnumbered promos after the pre-English slice and before/through the US WoC-era endpoint.",
       "Add a release-family coverage proof for any English miscellaneous/promotional products not exposed by Pokemon TCG API or TCGdex set lists.",
       "Unify row schema expectations across corpora if downstream agents require a single schema version."
     ],
     "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. English Jumbo remains active/partially resolved, and Japanese/English promo universe completeness still requires source-by-source boundary proof.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T19:51:26Z",
+  "generated_at": "2026-06-18T20:01:00Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "4827569bb6ddbb6a6fa3009f41f98dd58517eb7d41dfe8cb3afc17a38e7f569a",
+  "ledger_hash": "c41d4094084185142649730b67cd7475487419d695ba2080ec3010b3edd3bd5c",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -107,6 +107,29 @@
       "special_identification_instruction_rows": 0
     },
     {
+      "audit_hash": "b25cfc50c54a1b384c82802081ea0d41c4a2ee904019fc12d34ff30a4d65795c",
+      "audit_passed": true,
+      "audit_path": "data/japanese-promo-wotc/audit.json",
+      "boundary": "Japanese numbered P Promotional rows and bounded ADV-P rows through the May 2003 edge.",
+      "corpus_id": "japanese_promo_wotc",
+      "language_scope": "ja",
+      "manifest_hash": "68f503c1fa0377bc7c6026213ad90038f067e275bf5579b481b5e8cf965795ee",
+      "manifest_path": "data/japanese-promo-wotc/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 2,
+      "row_count": 61,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 61
+    },
+    {
       "audit_hash": "8631e6f6f26773d387529b1aa6a5babd02b22e58b5698842680e818f58a732c0",
       "audit_passed": true,
       "audit_path": "data/english-supplemental-wotc/audit.json",
@@ -130,8 +153,8 @@
       "special_identification_instruction_rows": 25
     }
   ],
-  "modeled_release_count": 75,
-  "modeled_row_count": 4289,
+  "modeled_release_count": 77,
+  "modeled_row_count": 4350,
   "not_claiming": [
     "goal complete",
     "complete English/Japanese through-2003 universe",
@@ -146,14 +169,14 @@
     "missing_source_contacts": 0,
     "missing_special_identification_instructions": 0,
     "passed": true,
-    "row_count": 4289,
+    "row_count": 4350,
     "sample_failures": {
       "malformed_special_identification_instructions": [],
       "missing_source_contacts": [],
       "missing_special_identification_instructions": []
     },
     "schema": "marketplace.catalog_row_invariant_summary.v0.1",
-    "special_identification_instruction_rows": 27
+    "special_identification_instruction_rows": 88
   },
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
   "source_gap_register": {
