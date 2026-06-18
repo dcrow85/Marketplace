@@ -91,15 +91,15 @@ SUPPLEMENTAL_SETS: tuple[SupplementalSet, ...] = (
     ),
     SupplementalSet(
         "jumbo",
-        "en_wotc_jumbo_bounded_200002_200305",
+        "en_wotc_jumbo_bounded_200002_200307",
         "Jumbo cards - WoC-era bounded subset",
         "Jumbo_cards_(TCG)",
         "2000-02-01",
-        8,
+        10,
         "jumbo_partial_bounded_subset",
         "jumbo_wotc_bounded",
         "jumbo_card",
-        "Bulbapedia Jumbo cards raw wikitext spans many eras; this corpus models only the clearly early English WoC-era/edge rows through May 2003.",
+        "Bulbapedia Jumbo cards raw wikitext spans many eras; this corpus models only the clearly early English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before the Nintendo/e-League rows begin.",
     ),
 )
 
@@ -248,6 +248,8 @@ def jumbo_wotc_bounded_lines(raw: str) -> list[str]:
             "BattleZone (March 2003)",
             "BattleZone (April 2003)",
             "BattleZone (May 2003)",
+            "BattleZone (June 2003)",
+            "BattleZone (July 2003)",
         )):
             bounded.append(line)
     return bounded

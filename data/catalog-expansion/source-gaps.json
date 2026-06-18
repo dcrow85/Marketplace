@@ -20,7 +20,7 @@
         "spendability"
       ],
       "partial_resolution": {
-        "modeled_row_count": 8,
+        "modeled_row_count": 10,
         "not_claiming": [
           "complete Jumbo coverage",
           "complete source-gap resolution",
@@ -29,11 +29,11 @@
           "authenticity",
           "condition truth"
         ],
-        "remaining_source_gap_count": 152,
-        "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only 8 clearly early English WoC-era/edge rows through May 2003; later and unsafe-to-bound Jumbo rows remain unresolved.",
+        "remaining_source_gap_count": 150,
+        "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only the 10 clearly early English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before the Nintendo/e-League rows begin; later and unsafe-to-bound Jumbo rows remain unresolved.",
         "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
-        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
-        "resolved_catalog_hash": "9efb1f7d8cb3f121ea092db91bb9b4b79c82a528a3559f23f08d7b0fa09a75f0",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+        "resolved_catalog_hash": "7839a2bbbf77fbe8e8403ba2e77b9f5d67c29c76c5b9ed10ab3f06d125837726",
         "status": "partially_resolved_by_bounded_subset"
       },
       "reason": "TCGdex lists Jumbo cards as a 160-card English miscellaneous set but returns zero card refs in the set payload.",
@@ -64,7 +64,7 @@
       "source_gap_count": 160
     }
   ],
-  "generated_at": "2026-06-18T19:46:14Z",
+  "generated_at": "2026-06-18T20:14:33Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete catalog expansion gap inventory",
@@ -77,7 +77,7 @@
     "price truth"
   ],
   "partial_resolution_count": 1,
-  "partially_modeled_source_gap_rows": 8,
+  "partially_modeled_source_gap_rows": 10,
   "resolved_gap_count": 4,
   "resolved_gaps": [
     {

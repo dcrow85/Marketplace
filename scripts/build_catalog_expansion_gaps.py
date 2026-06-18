@@ -35,11 +35,12 @@ USER_AGENT = "MarketplaceCatalogGapRegister/0.1 (+local catalog builder)"
 PARTIAL_GAP_RESOLUTIONS: dict[tuple[str, str], dict[str, Any]] = {
     ("en", "jumbo"): {
         "status": "partially_resolved_by_bounded_subset",
-        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
         "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
         "resolution_note": (
-            "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only 8 clearly early "
-            "English WoC-era/edge rows through May 2003; later and unsafe-to-bound Jumbo rows remain unresolved."
+            "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only the 10 clearly early "
+            "English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before "
+            "the Nintendo/e-League rows begin; later and unsafe-to-bound Jumbo rows remain unresolved."
         ),
     }
 }

@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — widened the bounded English Jumbo WoC-era
+  subset from 8 to 10 rows after rechecking the source boundary: BattleZone
+  June/July 2003 are still Best of Game Winner Jumbo rows, and Best of Game is
+  already modeled as English WoC-era. The first post-boundary Jumbo rows in the
+  source are September-November 2003 Nintendo Promo/e-League rows. Renamed the
+  generated release to `en_wotc_jumbo_bounded_200002_200307`, removed the stale
+  May-bound file, updated source-gap accounting to 10 modeled / 150 remaining,
+  and regenerated the coverage ledger.
 - `[passive]` 2026-06-18 · Codex — added a bounded Japanese unnumbered promo
   continuation source-slice at `data/japanese-unnumbered-promo-wotc/`, generated
   by `scripts/build_japanese_unnumbered_promo_wotc_catalogs.py`. It models

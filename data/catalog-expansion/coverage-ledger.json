@@ -10,9 +10,9 @@
     "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. English Jumbo remains active/partially resolved, and Japanese/English promo universe completeness still requires source-by-source boundary proof.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:09:28Z",
+  "generated_at": "2026-06-18T20:15:08Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "b09532ff3e7cc9aa9ac505f6811ca7de45e240408cd8384effc83d04a9122c96",
+  "ledger_hash": "cfbe643da2a235d1983df91fae2095ee64ca2f2dedb000d2c322331214571066",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -153,13 +153,13 @@
       "special_identification_instruction_rows": 197
     },
     {
-      "audit_hash": "8631e6f6f26773d387529b1aa6a5babd02b22e58b5698842680e818f58a732c0",
+      "audit_hash": "36f219cb323bf5502e06e15938eec54b3d689b1e00a3dbdbe78939fb83713230",
       "audit_passed": true,
       "audit_path": "data/english-supplemental-wotc/audit.json",
       "boundary": "Bounded English supplemental WoC-era promo rows: W Promotional, Sample Set, and early Jumbo subset.",
       "corpus_id": "english_supplemental_wotc",
       "language_scope": "en",
-      "manifest_hash": "ea7336e1cc683a2273eeb1b3230934ae788a46006781d6d01c6de6b7b3016ef0",
+      "manifest_hash": "193dd361d0b1e0a2b7dfc248f8fca0211f4fec151d44e1fda505c7b42b93dda2",
       "manifest_path": "data/english-supplemental-wotc/manifest.json",
       "not_claiming": [
         "complete through-2003 universe by itself",
@@ -170,14 +170,14 @@
         "approved image rights"
       ],
       "release_count": 3,
-      "row_count": 25,
+      "row_count": 27,
       "schema": "marketplace.catalog_coverage_corpus.v0.1",
       "source_gap_count": 0,
-      "special_identification_instruction_rows": 25
+      "special_identification_instruction_rows": 27
     }
   ],
   "modeled_release_count": 78,
-  "modeled_row_count": 4547,
+  "modeled_row_count": 4549,
   "not_claiming": [
     "goal complete",
     "complete English/Japanese through-2003 universe",
@@ -192,14 +192,14 @@
     "missing_source_contacts": 0,
     "missing_special_identification_instructions": 0,
     "passed": true,
-    "row_count": 4547,
+    "row_count": 4549,
     "sample_failures": {
       "malformed_special_identification_instructions": [],
       "missing_source_contacts": [],
       "missing_special_identification_instructions": []
     },
     "schema": "marketplace.catalog_row_invariant_summary.v0.1",
-    "special_identification_instruction_rows": 285
+    "special_identification_instruction_rows": 287
   },
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
   "source_gap_register": {
@@ -209,7 +209,7 @@
         "language": "en",
         "name": "Jumbo cards",
         "partial_resolution": {
-          "modeled_row_count": 8,
+          "modeled_row_count": 10,
           "not_claiming": [
             "complete Jumbo coverage",
             "complete source-gap resolution",
@@ -218,11 +218,11 @@
             "authenticity",
             "condition truth"
           ],
-          "remaining_source_gap_count": 152,
-          "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only 8 clearly early English WoC-era/edge rows through May 2003; later and unsafe-to-bound Jumbo rows remain unresolved.",
+          "remaining_source_gap_count": 150,
+          "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only the 10 clearly early English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before the Nintendo/e-League rows begin; later and unsafe-to-bound Jumbo rows remain unresolved.",
           "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
-          "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200305.json",
-          "resolved_catalog_hash": "9efb1f7d8cb3f121ea092db91bb9b4b79c82a528a3559f23f08d7b0fa09a75f0",
+          "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+          "resolved_catalog_hash": "7839a2bbbf77fbe8e8403ba2e77b9f5d67c29c76c5b9ed10ab3f06d125837726",
           "status": "partially_resolved_by_bounded_subset"
         },
         "set_id": "jumbo",
@@ -230,9 +230,9 @@
       }
     ],
     "active_source_gap_rows": 160,
-    "hash": "7e286a4ef8f4fe2b7fb45a0e4ab421e1846e8650e7dda509fdcac121afd1d952",
+    "hash": "2ec9d4c7782df7012593f8b6acee91f8f83c879f6e7615cbbffd2668ba7756f9",
     "partial_resolution_count": 1,
-    "partially_modeled_source_gap_rows": 8,
+    "partially_modeled_source_gap_rows": 10,
     "path": "data/catalog-expansion/source-gaps.json",
     "resolved_gap_count": 4,
     "resolved_gaps": [
