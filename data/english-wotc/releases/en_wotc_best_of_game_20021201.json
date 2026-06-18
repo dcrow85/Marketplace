@@ -1,0 +1,3265 @@
+{
+  "cards": [
+    {
+      "card_number": "1",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Electabuzz is cataloged as Best of Game #1. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "1",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-1"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/1_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/1.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-1",
+        "provider_title": "Electabuzz - Best of Game #1",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-1",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-1",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-1",
+      "name_en": "Electabuzz",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Lightning"
+            ],
+            "damage": "10",
+            "name": "Thundershock",
+            "text": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Lightning",
+              "Colorless"
+            ],
+            "damage": "30+",
+            "name": "Thunderpunch",
+            "text": "Flip a coin. If heads, this attack does 30 damage plus 10 more damage; if tails, this attack does 30 damage plus Electabuzz does 10 damage to itself."
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          125
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [
+          "Electivire"
+        ],
+        "hp": "70",
+        "level": "35",
+        "resistances": [],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Lightning"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fighting",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-1",
+        "card_payload_hash": "6bf1fc27fde2f73575b4745073a837dc33b8e723556bba20272e5bcdfa92d7cf",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-1"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Ken Sugimori",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Lightning"
+            ],
+            "damage": "10",
+            "name": "Thundershock",
+            "text": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Lightning",
+              "Colorless"
+            ],
+            "damage": "30+",
+            "name": "Thunderpunch",
+            "text": "Flip a coin. If heads, this attack does 30 damage plus 10 more damage; if tails, this attack does 30 damage plus Electabuzz does 10 damage to itself."
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 64.25,
+            "avg1": 45.0,
+            "avg30": 33.39,
+            "avg7": 48.99,
+            "germanProLow": 0.0,
+            "lowPrice": 33.95,
+            "lowPriceExPlus": 39.0,
+            "reverseHoloAvg1": 20.0,
+            "reverseHoloAvg30": 11.11,
+            "reverseHoloAvg7": 19.16,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 17.01,
+            "suggestedPrice": 0.0,
+            "trendPrice": 48.98
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-1"
+        },
+        "convertedRetreatCost": 2,
+        "evolvesTo": [
+          "Electivire"
+        ],
+        "flavorText": "Normally found near power plants, it can wander away and cause major blackouts in cities.",
+        "hp": "70",
+        "id": "bp-1",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/1_hires.png",
+          "small": "https://images.pokemontcg.io/bp/1.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "level": "35",
+        "name": "Electabuzz",
+        "nationalPokedexNumbers": [
+          125
+        ],
+        "number": "1",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "reverseHolofoil": {
+              "directLow": null,
+              "high": 396.9,
+              "low": 39.99,
+              "market": 30.08,
+              "mid": 80.32
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-1"
+        },
+        "types": [
+          "Lightning"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fighting",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-1",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-1",
+          "card_payload_hash": "6bf1fc27fde2f73575b4745073a837dc33b8e723556bba20272e5bcdfa92d7cf",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "1",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "2",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Hitmonchan is cataloged as Best of Game #2. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "2",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-2"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/2_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/2.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-2",
+        "provider_title": "Hitmonchan - Best of Game #2",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-2",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-2",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-2",
+      "name_en": "Hitmonchan",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Fighting"
+            ],
+            "damage": "20",
+            "name": "Jab",
+            "text": ""
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Fighting",
+              "Fighting",
+              "Colorless"
+            ],
+            "damage": "40",
+            "name": "Special Punch",
+            "text": ""
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          107
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": "70",
+        "level": "33",
+        "resistances": [],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-2",
+        "card_payload_hash": "e1cad3917ffd207cc0c2de2b8a4d90ea426148afed2f70be14759732a5d1c3ab",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-2"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Ken Sugimori",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Fighting"
+            ],
+            "damage": "20",
+            "name": "Jab",
+            "text": ""
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Fighting",
+              "Fighting",
+              "Colorless"
+            ],
+            "damage": "40",
+            "name": "Special Punch",
+            "text": ""
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 35.0,
+            "avg1": 35.0,
+            "avg30": 40.0,
+            "avg7": 40.0,
+            "germanProLow": 0.0,
+            "lowPrice": 300.0,
+            "lowPriceExPlus": 0.0,
+            "reverseHoloAvg1": 0.0,
+            "reverseHoloAvg30": 0.0,
+            "reverseHoloAvg7": 0.0,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 0.0,
+            "suggestedPrice": 0.0,
+            "trendPrice": 23.69
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-2"
+        },
+        "convertedRetreatCost": 2,
+        "flavorText": "While seeming to do nothing, it fires punches in lightning-fast volleys that are impossible to see.",
+        "hp": "70",
+        "id": "bp-2",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/2_hires.png",
+          "small": "https://images.pokemontcg.io/bp/2.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "level": "33",
+        "name": "Hitmonchan",
+        "nationalPokedexNumbers": [
+          107
+        ],
+        "number": "2",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "reverseHolofoil": {
+              "directLow": 37.99,
+              "high": 341.9,
+              "low": 31.94,
+              "market": 37.7,
+              "mid": 39.96
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-2"
+        },
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-2",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-2",
+          "card_payload_hash": "e1cad3917ffd207cc0c2de2b8a4d90ea426148afed2f70be14759732a5d1c3ab",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "2",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "3",
+      "category": "Trainer",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Professor Elm is cataloged as Best of Game #3. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "3",
+          "Promo",
+          "Trainer"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-3"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/3_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/3.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-3",
+        "provider_title": "Professor Elm - Best of Game #3",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-3",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-3",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-3",
+      "name_en": "Professor Elm",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": [],
+        "rules": [
+          "Shuffle your hand into your deck. Then, draw 7 cards. You can't play any more Trainer cards this turn."
+        ],
+        "stage": "",
+        "types": [],
+        "weaknesses": []
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-3",
+        "card_payload_hash": "d9fec52ee5a8274bd80862de0de544f03b56aaca60fe0582b754e8bae7d4a04b",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-3"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Ken Sugimori",
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 21.16,
+            "avg1": 35.0,
+            "avg30": 20.89,
+            "avg7": 26.11,
+            "germanProLow": 0.0,
+            "lowPrice": 12.9,
+            "lowPriceExPlus": 27.5,
+            "reverseHoloAvg1": 19.97,
+            "reverseHoloAvg30": 9.89,
+            "reverseHoloAvg7": 15.21,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 15.1,
+            "suggestedPrice": 0.0,
+            "trendPrice": 25.9
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-3"
+        },
+        "id": "bp-3",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/3_hires.png",
+          "small": "https://images.pokemontcg.io/bp/3.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "name": "Professor Elm",
+        "number": "3",
+        "rarity": "Promo",
+        "rules": [
+          "Shuffle your hand into your deck. Then, draw 7 cards. You can't play any more Trainer cards this turn."
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "supertype": "Trainer",
+        "tcgplayer": {
+          "prices": {
+            "reverseHolofoil": {
+              "directLow": null,
+              "high": 259.9,
+              "low": 25.0,
+              "market": 27.25,
+              "mid": 25.0
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-3"
+        }
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-3",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-3",
+          "card_payload_hash": "d9fec52ee5a8274bd80862de0de544f03b56aaca60fe0582b754e8bae7d4a04b",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "3",
+        "Promo",
+        "Trainer"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "4",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Rocket's Scizor is cataloged as Best of Game #4. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "4",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. K Hoshiba",
+        "name": "K Hoshiba",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-4"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/4_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/4.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-4",
+        "provider_title": "Rocket's Scizor - Best of Game #4",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-4",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-4",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-4",
+      "name_en": "Rocket's Scizor",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Colorless"
+            ],
+            "damage": "",
+            "name": "Focus",
+            "text": "During your next turn, Rocket's Scizor's Agility attack's damage is doubled."
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Metal",
+              "Colorless",
+              "Colorless"
+            ],
+            "damage": "20",
+            "name": "Agility",
+            "text": "Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Rocket's Scizor."
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          212
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": "60",
+        "level": null,
+        "resistances": [
+          {
+            "type": "Grass",
+            "value": "-30"
+          }
+        ],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Metal"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-4",
+        "card_payload_hash": "3b9687eb42bc927d0173c4fffdae606a50d89d634a4e763104e5e2f01eddd7e6",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-4"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "K Hoshiba",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Colorless"
+            ],
+            "damage": "",
+            "name": "Focus",
+            "text": "During your next turn, Rocket's Scizor's Agility attack's damage is doubled."
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Metal",
+              "Colorless",
+              "Colorless"
+            ],
+            "damage": "20",
+            "name": "Agility",
+            "text": "Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Rocket's Scizor."
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 52.0,
+            "avg1": 40.0,
+            "avg30": 28.05,
+            "avg7": 50.29,
+            "germanProLow": 0.0,
+            "lowPrice": 55.0,
+            "lowPriceExPlus": 55.0,
+            "reverseHoloAvg1": 3.49,
+            "reverseHoloAvg30": 3.49,
+            "reverseHoloAvg7": 3.49,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 3.49,
+            "suggestedPrice": 0.0,
+            "trendPrice": 42.89
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-4"
+        },
+        "convertedRetreatCost": 2,
+        "hp": "60",
+        "id": "bp-4",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/4_hires.png",
+          "small": "https://images.pokemontcg.io/bp/4.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "name": "Rocket's Scizor",
+        "nationalPokedexNumbers": [
+          212
+        ],
+        "number": "4",
+        "rarity": "Promo",
+        "resistances": [
+          {
+            "type": "Grass",
+            "value": "-30"
+          }
+        ],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "normal": {
+              "directLow": 96.95,
+              "high": 739.06,
+              "low": 42.99,
+              "market": 31.47,
+              "mid": 49.79
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-4"
+        },
+        "types": [
+          "Metal"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-4",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-4",
+          "card_payload_hash": "3b9687eb42bc927d0173c4fffdae606a50d89d634a4e763104e5e2f01eddd7e6",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "4",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "5",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Rocket's Sneasel is cataloged as Best of Game #5. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "5",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Katsura Tabata",
+        "name": "Katsura Tabata",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-5"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/5_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/5.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-5",
+        "provider_title": "Rocket's Sneasel - Best of Game #5",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-5",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-5",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-5",
+      "name_en": "Rocket's Sneasel",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Darkness"
+            ],
+            "damage": "",
+            "name": "Entrap",
+            "text": "The Defending Pokémon can't retreat during your opponent's next turn."
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Colorless",
+              "Colorless"
+            ],
+            "damage": "10×",
+            "name": "Continuous Scratch",
+            "text": "Flip 4 coins. This attack does 10 damage times the number of heads."
+          }
+        ],
+        "convertedRetreatCost": 1,
+        "dex_id": [
+          215
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": "60",
+        "level": null,
+        "resistances": [
+          {
+            "type": "Psychic",
+            "value": "-30"
+          }
+        ],
+        "retreatCost": [
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Darkness"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fighting",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-5",
+        "card_payload_hash": "26f8253265ade93ff5409797ca7ccb71f7c10bcc368bc9f710452218ee1f4730",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-5"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Katsura Tabata",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Darkness"
+            ],
+            "damage": "",
+            "name": "Entrap",
+            "text": "The Defending Pokémon can't retreat during your opponent's next turn."
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Colorless",
+              "Colorless"
+            ],
+            "damage": "10×",
+            "name": "Continuous Scratch",
+            "text": "Flip 4 coins. This attack does 10 damage times the number of heads."
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 58.6,
+            "avg1": 30.0,
+            "avg30": 31.87,
+            "avg7": 22.29,
+            "germanProLow": 0.0,
+            "lowPrice": 14.99,
+            "lowPriceExPlus": 25.0,
+            "reverseHoloAvg1": 2.75,
+            "reverseHoloAvg30": 2.75,
+            "reverseHoloAvg7": 2.75,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 2.75,
+            "suggestedPrice": 0.0,
+            "trendPrice": 42.74
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-5"
+        },
+        "convertedRetreatCost": 1,
+        "hp": "60",
+        "id": "bp-5",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/5_hires.png",
+          "small": "https://images.pokemontcg.io/bp/5.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "name": "Rocket's Sneasel",
+        "nationalPokedexNumbers": [
+          215
+        ],
+        "number": "5",
+        "rarity": "Promo",
+        "resistances": [
+          {
+            "type": "Psychic",
+            "value": "-30"
+          }
+        ],
+        "retreatCost": [
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "normal": {
+              "directLow": 20.47,
+              "high": 219.5,
+              "low": 12.0,
+              "market": 19.1,
+              "mid": 21.49
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-5"
+        },
+        "types": [
+          "Darkness"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fighting",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-5",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-5",
+          "card_payload_hash": "26f8253265ade93ff5409797ca7ccb71f7c10bcc368bc9f710452218ee1f4730",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "5",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "6",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Dark Ivysaur is cataloged as Best of Game #6. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "6",
+          "Promo",
+          "Pokémon",
+          "Stage 1"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Shin-ichi Yoshida",
+        "name": "Shin-ichi Yoshida",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-6"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/6_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/6.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-6",
+        "provider_title": "Dark Ivysaur - Best of Game #6",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-6",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-6",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-6",
+      "name_en": "Dark Ivysaur",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [
+          {
+            "name": "Vine Pull",
+            "text": "Once during your turn when Dark Ivysaur retreats, choose 1 of your opponent's Benched Pokémon and switch it with his or her Active Pokémon.",
+            "type": "Poké-Body"
+          }
+        ],
+        "attacks": [
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Grass",
+              "Grass"
+            ],
+            "damage": "",
+            "name": "Fury Strikes",
+            "text": "Your opponent puts 3 markers onto his or her Pokémon (divided as he or she chooses). (More than 1 marker can be put on the same Pokémon.) Then, this attack does 10 damage to each Pokémon for each marker on it. Don't apply Weakness and Resistance. Remove the markers at the end of the turn."
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          2
+        ],
+        "evolvesFrom": "Bulbasaur",
+        "evolvesTo": [
+          "Dark Venusaur"
+        ],
+        "hp": "50",
+        "level": null,
+        "resistances": [],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Stage 1",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-6",
+        "card_payload_hash": "cdc6df494ee6606dd9c47dbf7c0ea43c29553bed4d8963bed33e8a13e45aced2",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-6"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "abilities": [
+          {
+            "name": "Vine Pull",
+            "text": "Once during your turn when Dark Ivysaur retreats, choose 1 of your opponent's Benched Pokémon and switch it with his or her Active Pokémon.",
+            "type": "Poké-Body"
+          }
+        ],
+        "artist": "Shin-ichi Yoshida",
+        "attacks": [
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Grass",
+              "Grass"
+            ],
+            "damage": "",
+            "name": "Fury Strikes",
+            "text": "Your opponent puts 3 markers onto his or her Pokémon (divided as he or she chooses). (More than 1 marker can be put on the same Pokémon.) Then, this attack does 10 damage to each Pokémon for each marker on it. Don't apply Weakness and Resistance. Remove the markers at the end of the turn."
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 67.06,
+            "avg1": 24.99,
+            "avg30": 40.88,
+            "avg7": 61.59,
+            "germanProLow": 0.0,
+            "lowPrice": 36.0,
+            "lowPriceExPlus": 44.0,
+            "reverseHoloAvg1": 4.99,
+            "reverseHoloAvg30": 4.32,
+            "reverseHoloAvg7": 4.32,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 4.98,
+            "suggestedPrice": 0.0,
+            "trendPrice": 65.48
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-6"
+        },
+        "convertedRetreatCost": 2,
+        "evolvesFrom": "Bulbasaur",
+        "evolvesTo": [
+          "Dark Venusaur"
+        ],
+        "hp": "50",
+        "id": "bp-6",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/6_hires.png",
+          "small": "https://images.pokemontcg.io/bp/6.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "name": "Dark Ivysaur",
+        "nationalPokedexNumbers": [
+          2
+        ],
+        "number": "6",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Stage 1"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "normal": {
+              "directLow": 343.38,
+              "high": 650.0,
+              "low": 60.0,
+              "market": 38.48,
+              "mid": 87.5
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-6"
+        },
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-6",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-6",
+          "card_payload_hash": "cdc6df494ee6606dd9c47dbf7c0ea43c29553bed4d8963bed33e8a13e45aced2",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Stage 1"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "6",
+        "Promo",
+        "Pokémon",
+        "Stage 1"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "7",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Dark Venusaur is cataloged as Best of Game #7. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "7",
+          "Promo",
+          "Pokémon",
+          "Stage 2"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Shin-ichi Yoshida",
+        "name": "Shin-ichi Yoshida",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-7"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/7_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/7.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-7",
+        "provider_title": "Dark Venusaur - Best of Game #7",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-7",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-7",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-7",
+      "name_en": "Dark Venusaur",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Grass",
+              "Grass",
+              "Grass"
+            ],
+            "damage": "30",
+            "name": "Horrid Pollen",
+            "text": "Flip 2 coins. If 1 is heads, the Defending Pokémon is now Asleep and Poisoned. If both are heads, the Defending Pokémon is now Confused and Poisoned. If both are tails, the Defending Pokémon is now Paralyzed and Poisoned."
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          3
+        ],
+        "evolvesFrom": "Dark Ivysaur",
+        "evolvesTo": [],
+        "hp": "70",
+        "level": null,
+        "resistances": [],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Stage 2",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-7",
+        "card_payload_hash": "4b44b9ad693b1eed4e54c8f235347be5f52609c477c718c918e25e9a7e468af1",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-7"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Shin-ichi Yoshida",
+        "attacks": [
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Grass",
+              "Grass",
+              "Grass"
+            ],
+            "damage": "30",
+            "name": "Horrid Pollen",
+            "text": "Flip 2 coins. If 1 is heads, the Defending Pokémon is now Asleep and Poisoned. If both are heads, the Defending Pokémon is now Confused and Poisoned. If both are tails, the Defending Pokémon is now Paralyzed and Poisoned."
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 109.12,
+            "avg1": 120.0,
+            "avg30": 69.28,
+            "avg7": 91.66,
+            "germanProLow": 0.0,
+            "lowPrice": 55.0,
+            "lowPriceExPlus": 190.0,
+            "reverseHoloAvg1": 8.95,
+            "reverseHoloAvg30": 9.45,
+            "reverseHoloAvg7": 9.45,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 8.95,
+            "suggestedPrice": 0.0,
+            "trendPrice": 111.96
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-7"
+        },
+        "convertedRetreatCost": 2,
+        "evolvesFrom": "Dark Ivysaur",
+        "hp": "70",
+        "id": "bp-7",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/7_hires.png",
+          "small": "https://images.pokemontcg.io/bp/7.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "name": "Dark Venusaur",
+        "nationalPokedexNumbers": [
+          3
+        ],
+        "number": "7",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Stage 2"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "normal": {
+              "directLow": null,
+              "high": 499.99,
+              "low": 150.0,
+              "market": 130.78,
+              "mid": 237.49
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-7"
+        },
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": [
+          {
+            "type": "Fire",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-7",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-7",
+          "card_payload_hash": "4b44b9ad693b1eed4e54c8f235347be5f52609c477c718c918e25e9a7e468af1",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Stage 2"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "7",
+        "Promo",
+        "Pokémon",
+        "Stage 2"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "8",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Rocket's Mewtwo is cataloged as Best of Game #8. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "8",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Shin-ichi Yoshida",
+        "name": "Shin-ichi Yoshida",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-8"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/8_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/8.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-8",
+        "provider_title": "Rocket's Mewtwo - Best of Game #8",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-8",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-8",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-8",
+      "name_en": "Rocket's Mewtwo",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Psychic"
+            ],
+            "damage": "",
+            "name": "Juxtapose",
+            "text": "Flip a coin. If heads, switch the number of damage counters on Rocket's Mewtwo with the number of damage counters on the Defending Pokémon (even if it would Knock Out either Pokémon). (It's okay if 1 of the Pokémon has no damage counters on it.)"
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Psychic",
+              "Psychic"
+            ],
+            "damage": "20",
+            "name": "Hypnoblast",
+            "text": "Flip a coin. If heads, the Defending Pokémon is now Asleep."
+          },
+          {
+            "convertedEnergyCost": 4,
+            "cost": [
+              "Psychic",
+              "Psychic",
+              "Psychic",
+              "Colorless"
+            ],
+            "damage": "60",
+            "name": "Psyburn",
+            "text": ""
+          }
+        ],
+        "convertedRetreatCost": 2,
+        "dex_id": [
+          150
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": "70",
+        "level": "35",
+        "resistances": [],
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Psychic"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-8",
+        "card_payload_hash": "b5565c525260a800a4092ae38eddbe49136fd37c64a2672900fb45d4d2e4c2d4",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-8"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Shin-ichi Yoshida",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Psychic"
+            ],
+            "damage": "",
+            "name": "Juxtapose",
+            "text": "Flip a coin. If heads, switch the number of damage counters on Rocket's Mewtwo with the number of damage counters on the Defending Pokémon (even if it would Knock Out either Pokémon). (It's okay if 1 of the Pokémon has no damage counters on it.)"
+          },
+          {
+            "convertedEnergyCost": 2,
+            "cost": [
+              "Psychic",
+              "Psychic"
+            ],
+            "damage": "20",
+            "name": "Hypnoblast",
+            "text": "Flip a coin. If heads, the Defending Pokémon is now Asleep."
+          },
+          {
+            "convertedEnergyCost": 4,
+            "cost": [
+              "Psychic",
+              "Psychic",
+              "Psychic",
+              "Colorless"
+            ],
+            "damage": "60",
+            "name": "Psyburn",
+            "text": ""
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 298.0,
+            "avg1": 399.0,
+            "avg30": 338.56,
+            "avg7": 334.14,
+            "germanProLow": 0.0,
+            "lowPrice": 250.0,
+            "lowPriceExPlus": 497.0,
+            "reverseHoloAvg1": 180.0,
+            "reverseHoloAvg30": 43.31,
+            "reverseHoloAvg7": 87.64,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 92.64,
+            "suggestedPrice": 0.0,
+            "trendPrice": 377.25
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-8"
+        },
+        "convertedRetreatCost": 2,
+        "hp": "70",
+        "id": "bp-8",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/8_hires.png",
+          "small": "https://images.pokemontcg.io/bp/8.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "level": "35",
+        "name": "Rocket's Mewtwo",
+        "nationalPokedexNumbers": [
+          150
+        ],
+        "number": "8",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "reverseHolofoil": {
+              "directLow": null,
+              "high": 2400.0,
+              "low": 650.0,
+              "market": 500.0,
+              "mid": 1620.0
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-8"
+        },
+        "types": [
+          "Psychic"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-8",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-8",
+          "card_payload_hash": "b5565c525260a800a4092ae38eddbe49136fd37c64a2672900fb45d4d2e4c2d4",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "8",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "9",
+      "category": "Pokémon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Pokemon TCG API set metadata",
+          "Pokemon TCG API card payload"
+        ],
+        "note": "Rocket's Hitmonchan is cataloged as Best of Game #9. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "signals": [
+          "Best of Game",
+          "2002/12/01",
+          "9",
+          "Promo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Pokemon TCG API card artist field. Useful for catalog texture, not direct physical-print authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "physical-card print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Pokemon TCG API v2",
+        "source_page_sha256": "",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-9"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Pokemon TCG API card row id",
+          "Pokemon TCG API set id",
+          "image URLs supplied on the same card payload"
+        ],
+        "image_large": "https://images.pokemontcg.io/bp/9_hires.png",
+        "image_role": "External reference witness for this English WoC catalog row; rights are not promoted to approved in-app display.",
+        "image_small": "https://images.pokemontcg.io/bp/9.png",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image rights approval"
+        ],
+        "provider_id": "bp-9",
+        "provider_title": "Rocket's Hitmonchan - Best of Game #9",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "rights_status": "external_reference_witness",
+        "row_id": "en_wotc_best_of_game_20021201:bp-9",
+        "source": "Pokemon TCG API v2",
+        "source_page_url": "https://api.pokemontcg.io/v2/cards/bp-9",
+        "status": "external_api_reference_image",
+        "verification_status": "api_payload_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source payload hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "market links",
+            "why": "Useful for agent discovery, not price truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "external API reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and card id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "set/card number",
+            "surface": "agent",
+            "why": "WoC-era cards are commonly identified by English set and printed number."
+          }
+        ]
+      },
+      "local_id": "bp-9",
+      "name_en": "Rocket's Hitmonchan",
+      "name_ja": "",
+      "name_ja_status": "not_applicable_english_print",
+      "name_source_note": "Pokemon TCG API v2 English card row.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Fighting"
+            ],
+            "damage": "",
+            "name": "Crosscounter",
+            "text": "If an attack does damage to Rocket's Hitmonchan during your opponent's next turn (even if Rocket's Hitmonchan is Knocked Out), flip a coin. If heads, Rocket's Hitmonchan attacks your opponent's Active Pokémon for double that amount of damage. (If Rocket's Hitmonchan takes 20 damage, it does 40 damage to that Pokémon.)"
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Fighting",
+              "Fighting",
+              "Colorless"
+            ],
+            "damage": "50",
+            "name": "Magnum Punch",
+            "text": ""
+          }
+        ],
+        "convertedRetreatCost": 1,
+        "dex_id": [
+          107
+        ],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": "60",
+        "level": "29",
+        "resistances": [],
+        "retreatCost": [
+          "Colorless"
+        ],
+        "rules": [],
+        "stage": "Basic",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "pokemon_tcg_api": {
+        "card_id": "bp-9",
+        "card_payload_hash": "7e8767708c208ad20abaef79f4351a3a8f2ee523da360155f4ce1f820d4c06c8",
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "regulationMark": "",
+        "set_id": "bp",
+        "url": "https://api.pokemontcg.io/v2/cards/bp-9"
+      },
+      "product_scope": {
+        "api_printed_total": 9,
+        "api_total": 9,
+        "authority": "English WoC-era release-family catalog row derived from Pokemon TCG API v2 set and card payloads.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to the English Wizards-era source slice. It is not a Japanese card, not a No Rarity claim, and not proof of a seller's physical copy.",
+        "date_precision": "day",
+        "english_set_name": "Best of Game",
+        "parent_release_family_id": "",
+        "product_card_count": 9,
+        "product_count_basis": "Pokemon TCG API set metadata supplies printedTotal and total. Rows include every card returned by the set.id query, including secret/extra-numbered cards when present.",
+        "release_date": "2002-12-01",
+        "release_type": "promo_series",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 9
+      },
+      "provider_row": {
+        "artist": "Ken Sugimori",
+        "attacks": [
+          {
+            "convertedEnergyCost": 1,
+            "cost": [
+              "Fighting"
+            ],
+            "damage": "",
+            "name": "Crosscounter",
+            "text": "If an attack does damage to Rocket's Hitmonchan during your opponent's next turn (even if Rocket's Hitmonchan is Knocked Out), flip a coin. If heads, Rocket's Hitmonchan attacks your opponent's Active Pokémon for double that amount of damage. (If Rocket's Hitmonchan takes 20 damage, it does 40 damage to that Pokémon.)"
+          },
+          {
+            "convertedEnergyCost": 3,
+            "cost": [
+              "Fighting",
+              "Fighting",
+              "Colorless"
+            ],
+            "damage": "50",
+            "name": "Magnum Punch",
+            "text": ""
+          }
+        ],
+        "cardmarket": {
+          "prices": {
+            "averageSellPrice": 129.75,
+            "avg1": 249.0,
+            "avg30": 114.58,
+            "avg7": 169.71,
+            "germanProLow": 0.0,
+            "lowPrice": 55.0,
+            "lowPriceExPlus": 92.99,
+            "reverseHoloAvg1": 95.0,
+            "reverseHoloAvg30": 29.2,
+            "reverseHoloAvg7": 55.41,
+            "reverseHoloLow": 0.0,
+            "reverseHoloSell": 0.0,
+            "reverseHoloTrend": 48.73,
+            "suggestedPrice": 0.0,
+            "trendPrice": 165.58
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/cardmarket/bp-9"
+        },
+        "convertedRetreatCost": 1,
+        "hp": "60",
+        "id": "bp-9",
+        "images": {
+          "large": "https://images.pokemontcg.io/bp/9_hires.png",
+          "small": "https://images.pokemontcg.io/bp/9.png"
+        },
+        "legalities": {
+          "unlimited": "Legal"
+        },
+        "level": "29",
+        "name": "Rocket's Hitmonchan",
+        "nationalPokedexNumbers": [
+          107
+        ],
+        "number": "9",
+        "rarity": "Promo",
+        "retreatCost": [
+          "Colorless"
+        ],
+        "set": {
+          "id": "bp",
+          "images": {
+            "logo": "https://images.pokemontcg.io/bp/logo.png",
+            "symbol": "https://images.pokemontcg.io/bp/symbol.png"
+          },
+          "legalities": {
+            "unlimited": "Legal"
+          },
+          "name": "Best of Game",
+          "printedTotal": 9,
+          "ptcgoCode": "BP",
+          "releaseDate": "2002/12/01",
+          "series": "Other",
+          "total": 9,
+          "updatedAt": "2021/10/16 09:52:00"
+        },
+        "subtypes": [
+          "Basic"
+        ],
+        "supertype": "Pokémon",
+        "tcgplayer": {
+          "prices": {
+            "reverseHolofoil": {
+              "directLow": null,
+              "high": 1849.8,
+              "low": 249.0,
+              "market": 215.0,
+              "mid": 1000.0
+            }
+          },
+          "updatedAt": "2026/06/18",
+          "url": "https://prices.pokemontcg.io/tcgplayer/bp-9"
+        },
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": [
+          {
+            "type": "Psychic",
+            "value": "×2"
+          }
+        ]
+      },
+      "rarity_source": "Promo",
+      "release_family_id": "en_wotc_best_of_game_20021201",
+      "romaji": "",
+      "row_id": "en_wotc_best_of_game_20021201:bp-9",
+      "schema": "marketplace.english_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "card_api_url": "https://api.pokemontcg.io/v2/cards/bp-9",
+          "card_payload_hash": "7e8767708c208ad20abaef79f4351a3a8f2ee523da360155f4ce1f820d4c06c8",
+          "docs_url": "https://docs.pokemontcg.io/",
+          "hash_algorithm": "sha256",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ],
+          "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+          "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+          "source": "Pokemon TCG API v2"
+        }
+      ],
+      "special_identification_instructions": [],
+      "subtypes": [
+        "Basic"
+      ],
+      "symbol_status": {
+        "confidence": "high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "not_applicable_english_wotc",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "not_applicable_english_wotc",
+        "source_release_family_id": "en_wotc_best_of_game_20021201"
+      },
+      "tags": [
+        "english",
+        "wotc",
+        "en_wotc_best_of_game_20021201",
+        "Best of Game",
+        "Other",
+        "2002/12/01",
+        "9",
+        "Promo",
+        "Pokémon",
+        "Basic"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese catalog",
+    "post-WoC Nintendo/EX-era coverage",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "api_printed_total": 9,
+    "api_set_id": "bp",
+    "api_total": 9,
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "pokemon_tcg_api_set_and_card_query",
+    "date_precision": "day",
+    "expected_row_count": 9,
+    "language": "English",
+    "name_en": "Best of Game",
+    "name_ja": "",
+    "printed_total": 9,
+    "product_count_basis": "Pokemon TCG API v2 set metadata and cards query. Includes every card returned for set.id:bp; not a physical-product collation claim.",
+    "release_date": "2002-12-01",
+    "release_family_id": "en_wotc_best_of_game_20021201",
+    "release_type": "promo_series",
+    "series": "Other",
+    "strict_release_member": true
+  },
+  "schema": "marketplace.english_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "api_printed_total": 9,
+      "api_set_id": "bp",
+      "api_total": 9,
+      "cards_api_url": "https://api.pokemontcg.io/v2/cards?q=set.id%3Abp&pageSize=250&orderBy=number&select=id%2Cname%2Csupertype%2Csubtypes%2Clevel%2Chp%2Ctypes%2CevolvesFrom%2CevolvesTo%2Crules%2CancientTrait%2Cabilities%2Cattacks%2Cweaknesses%2Cresistances%2CretreatCost%2CconvertedRetreatCost%2Cset%2Cnumber%2Cartist%2Crarity%2CflavorText%2CnationalPokedexNumbers%2Clegalities%2CregulationMark%2Cimages%2Ctcgplayer%2Ccardmarket",
+      "cards_found": 9,
+      "cards_payload_hash": "b50625be858eb05cdf99772a3d38effc7af4fe62bc614119bc4ce0cb85acbe38",
+      "docs_url": "https://docs.pokemontcg.io/",
+      "fetched_at": "2026-06-18T18:36:48Z",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition",
+        "price truth",
+        "image rights approval"
+      ],
+      "page_count": 9,
+      "set_api_url": "https://api.pokemontcg.io/v2/sets/bp",
+      "set_payload_hash": "46e04212515e184b81f4f78d5ae7c162a9145e8f96b68706c185e908e634cec3",
+      "source": "Pokemon TCG API v2",
+      "total_count": 9
+    }
+  ],
+  "symbol_status": {
+    "confidence": "high",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity proof"
+    ],
+    "prints_without_rarity_symbol": "not_applicable_english_wotc",
+    "scope": "release_context_not_row_fact",
+    "source": "Pokemon TCG API v2 set/card context",
+    "source_mode": "not_applicable_english_wotc",
+    "source_release_family_id": "en_wotc_best_of_game_20021201"
+  }
+}

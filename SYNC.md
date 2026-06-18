@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — started the broader through-2003 catalog expansion
+  with an English WoC-era corpus. Added `scripts/build_english_wotc_catalogs.py` and
+  generated `data/english-wotc/` from Pokemon TCG API v2. Boundary is English WoC
+  through Skyridge / 2003-05-12: Base, Jungle, Wizards Black Star Promos, Fossil, Base
+  Set 2, Team Rocket, Gym Heroes/Challenge, Neo Genesis/Discovery/Revelation/Destiny,
+  Southern Islands, Legendary Collection, Expedition, Best of Game, Aquapolis, and
+  Skyridge. Explicitly excludes post-WoC 2003 API set IDs `ex1`, `ex2`, `ex3`, and
+  `np`. Output: 18 release catalogs / 1,789 card rows, with source hashes, bounded
+  external image witnesses, non-claims, manifest, and audit. Japanese post-1999 through
+  2003 is still open.
 - `[passive]` 2026-06-18 · Codex — added a row-level
   `special_identification_instructions` rail for conflict-heavy catalog rows, starting
   with the first CoroCoro glossy Pikachu. The parent UPC source-slice row and child
