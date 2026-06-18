@@ -1,0 +1,2299 @@
+{
+  "cards": [
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Mew is cataloged as the currently source-pinned row for CoroCoro Comic early 1997 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic early 1997 promos source slice",
+          "1997-01-15/1997-10-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "005",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Bulbapedia API wikitext lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/5.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/5.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+        "promo_family_source_sort": 5,
+        "provider_id": "pokecardex:14201",
+        "provider_title": "Mew - Unnumbered Promotional #5",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_early_1997:005",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "005",
+      "name_en": "Mew",
+      "name_ja": "ミュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Mew Wizards Promo page identifies Japanese: ミュウ Mew and documents the CoroCoro February 1997 issue context.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          151
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia API wikitext context snapshot expects 5 cards for this family, while this slice currently models 5 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_issue_exact_multi_date",
+        "expected_source_card_count": 5,
+        "japanese_set_name": "月刊コロコロコミック1997年前期プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+        "release_date": "1997-01-15/1997-10-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 5,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-01-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic February 1997 issue insert (January 15, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_sort": 5
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia API wikitext context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete magazine source",
+        "expected_cards": [
+          "Mew [Glossy] (CoroCoro February 1997 issue)",
+          "Mewtwo (CoroCoro June 1997 issue)",
+          "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+          "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+          "Flying Pikachu (CoroCoro November 1997 issue)"
+        ],
+        "expected_source_card_count": 5,
+        "modeled_source_sorts": [
+          5,
+          7,
+          16,
+          17,
+          20
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+        "source_local_id": "005",
+        "source_provider_sort": 5,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 5,
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_local_id": "005",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Mew-V1",
+          "comment": "CoroCoro Comic February 1997 issue insert (January 15, 1997)",
+          "id_card": 14201,
+          "id_tcgplayer": 617379,
+          "illustrator": "Ken Sugimori",
+          "provider_id": "pokecardex:14201",
+          "provider_title": "Mew - Unnumbered Promotional #5",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 5,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14201,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            },
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14201,
+              "id_version": 27,
+              "nom_version": "Apparence (Glossy)",
+              "nom_version_us": "Appearance (Glossy)",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+        "source_sort": 5
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_corocoro_early_1997",
+      "romaji": "Mew",
+      "row_id": "jp_promo_corocoro_early_1997:005",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "005",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_early_1997",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+          "source_sort": 5
+        },
+        {
+          "complete_source_boundary_denial": "complete magazine source",
+          "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:48:00Z",
+          "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+          "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+          "source": "Bulbapedia API wikitext",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+            "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+            "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+            "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "878230f23f121cd061e2b351a11dc166782342323c2a5342ef563f57657e8959",
+          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_early_1997"
+      },
+      "tags": [
+        "jp_promo_corocoro_early_1997",
+        "CoroCoro Comic early 1997 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Mewtwo is cataloged as the currently source-pinned row for CoroCoro Comic early 1997 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic early 1997 promos source slice",
+          "1997-01-15/1997-10-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "007",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Benimaru Itoh",
+        "name": "Benimaru Itoh",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Bulbapedia API wikitext lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/7.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/7.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+        "promo_family_source_sort": 7,
+        "provider_id": "pokecardex:14203",
+        "provider_title": "Mewtwo - Unnumbered Promotional #7",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_early_1997:007",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "007",
+      "name_en": "Mewtwo",
+      "name_ja": "ミュウツー",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Mewtwo Wizards Promo page identifies Japanese: ミュウツー Mewtwo and documents the CoroCoro June 1997 issue context.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          150
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia API wikitext context snapshot expects 5 cards for this family, while this slice currently models 5 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_issue_exact_multi_date",
+        "expected_source_card_count": 5,
+        "japanese_set_name": "月刊コロコロコミック1997年前期プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+        "release_date": "1997-01-15/1997-10-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 5,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-05-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic June 1997 issue insert (May 15, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_sort": 7
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia API wikitext context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete magazine source",
+        "expected_cards": [
+          "Mew [Glossy] (CoroCoro February 1997 issue)",
+          "Mewtwo (CoroCoro June 1997 issue)",
+          "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+          "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+          "Flying Pikachu (CoroCoro November 1997 issue)"
+        ],
+        "expected_source_card_count": 5,
+        "modeled_source_sorts": [
+          5,
+          7,
+          16,
+          17,
+          20
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+        "source_local_id": "007",
+        "source_provider_sort": 7,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 5,
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_local_id": "007",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Mewtwo-V2",
+          "comment": "CoroCoro Comic June 1997 issue insert (May 15, 1997)",
+          "id_card": 14203,
+          "id_tcgplayer": 617380,
+          "illustrator": "Benimaru Itoh",
+          "provider_id": "pokecardex:14203",
+          "provider_title": "Mewtwo - Unnumbered Promotional #7",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 7,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14203,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+        "source_sort": 7
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_corocoro_early_1997",
+      "romaji": "Mewtwo",
+      "row_id": "jp_promo_corocoro_early_1997:007",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "007",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_early_1997",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+          "source_sort": 7
+        },
+        {
+          "complete_source_boundary_denial": "complete magazine source",
+          "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:48:00Z",
+          "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+          "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+          "source": "Bulbapedia API wikitext",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+            "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+            "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+            "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "0de8c5d931c8e2f519c36b53e90dd183dfa691b9d91c75b3278c4e40e4864e82",
+          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_early_1997"
+      },
+      "tags": [
+        "jp_promo_corocoro_early_1997",
+        "CoroCoro Comic early 1997 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Surfing Pikachu is cataloged as the currently source-pinned row for CoroCoro Comic early 1997 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic early 1997 promos source slice",
+          "1997-01-15/1997-10-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "016",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Toshinao Aoki",
+        "name": "Toshinao Aoki",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Bulbapedia API wikitext lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/16.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/16.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+        "promo_family_source_sort": 16,
+        "provider_id": "pokecardex:14213",
+        "provider_title": "Surfing Pikachu - Unnumbered Promotional #16",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_early_1997:016",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "016",
+      "name_en": "Surfing Pikachu",
+      "name_ja": "なみのりピカチュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Surfing Pikachu Wizards Promo page identifies Japanese: なみのりピカチュウ Surfing Pikachu and documents the CoroCoro September 1997 issue context.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          25
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia API wikitext context snapshot expects 5 cards for this family, while this slice currently models 5 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_issue_exact_multi_date",
+        "expected_source_card_count": 5,
+        "japanese_set_name": "月刊コロコロコミック1997年前期プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+        "release_date": "1997-01-15/1997-10-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 5,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-08-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic September 1997 issue insert (August 15, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_sort": 16
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia API wikitext context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete magazine source",
+        "expected_cards": [
+          "Mew [Glossy] (CoroCoro February 1997 issue)",
+          "Mewtwo (CoroCoro June 1997 issue)",
+          "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+          "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+          "Flying Pikachu (CoroCoro November 1997 issue)"
+        ],
+        "expected_source_card_count": 5,
+        "modeled_source_sorts": [
+          5,
+          7,
+          16,
+          17,
+          20
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+        "source_local_id": "016",
+        "source_provider_sort": 16,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 5,
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_local_id": "016",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Surfing-Pikachu-V2-UNP",
+          "comment": "CoroCoro Comic September 1997 issue insert (August 15, 1997)",
+          "id_card": 14213,
+          "id_tcgplayer": 0,
+          "illustrator": "Toshinao Aoki",
+          "provider_id": "pokecardex:14213",
+          "provider_title": "Surfing Pikachu - Unnumbered Promotional #16",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 16,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14213,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+        "source_sort": 16
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_corocoro_early_1997",
+      "romaji": "Surfing Pikachu",
+      "row_id": "jp_promo_corocoro_early_1997:016",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "016",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_early_1997",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+          "source_sort": 16
+        },
+        {
+          "complete_source_boundary_denial": "complete magazine source",
+          "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:48:00Z",
+          "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+          "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+          "source": "Bulbapedia API wikitext",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+            "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+            "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+            "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "e9fa459202ee7d568828216984eab97c500a708aec2d5e9e8f279923e53a3f21",
+          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_early_1997"
+      },
+      "tags": [
+        "jp_promo_corocoro_early_1997",
+        "CoroCoro Comic early 1997 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Imakuni? is cataloged as the currently source-pinned row for CoroCoro Comic early 1997 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic early 1997 promos source slice",
+          "1997-01-15/1997-10-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "017",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Takumi Akabane",
+        "name": "Takumi Akabane",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Bulbapedia API wikitext lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/17.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/17.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+        "promo_family_source_sort": 17,
+        "provider_id": "pokecardex:14214",
+        "provider_title": "Imakuni? - Unnumbered Promotional #17",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_early_1997:017",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "017",
+      "name_en": "Imakuni?",
+      "name_ja": "イマクニ？",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Imakuni? CoroCoro promo page identifies Japanese: イマクニ？ Imakuni? and documents the CoroCoro September 1997 issue context.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia API wikitext context snapshot expects 5 cards for this family, while this slice currently models 5 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_issue_exact_multi_date",
+        "expected_source_card_count": 5,
+        "japanese_set_name": "月刊コロコロコミック1997年前期プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+        "release_date": "1997-01-15/1997-10-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 5,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-08-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic September 1997 issue insert (August 15, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_sort": 17
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia API wikitext context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete magazine source",
+        "expected_cards": [
+          "Mew [Glossy] (CoroCoro February 1997 issue)",
+          "Mewtwo (CoroCoro June 1997 issue)",
+          "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+          "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+          "Flying Pikachu (CoroCoro November 1997 issue)"
+        ],
+        "expected_source_card_count": 5,
+        "modeled_source_sorts": [
+          5,
+          7,
+          16,
+          17,
+          20
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+        "source_local_id": "017",
+        "source_provider_sort": 17,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 5,
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_local_id": "017",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Imakuni",
+          "comment": "CoroCoro Comic September 1997 issue insert (August 15, 1997)",
+          "id_card": 14214,
+          "id_tcgplayer": 0,
+          "illustrator": "Takumi Akabane",
+          "provider_id": "pokecardex:14214",
+          "provider_title": "Imakuni? - Unnumbered Promotional #17",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 17,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14214,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            },
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14214,
+              "id_version": 27,
+              "nom_version": "Apparence (Glossy)",
+              "nom_version_us": "Appearance (Glossy)",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+        "source_sort": 17
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_corocoro_early_1997",
+      "romaji": "Imakuni?",
+      "row_id": "jp_promo_corocoro_early_1997:017",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "017",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_early_1997",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+          "source_sort": 17
+        },
+        {
+          "complete_source_boundary_denial": "complete magazine source",
+          "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:48:00Z",
+          "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+          "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+          "source": "Bulbapedia API wikitext",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+            "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+            "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+            "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "3faa5b35a0e40262fcfd8e862bb7d75f36cd90d4d2725023e77b01178f46f9f5",
+          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_early_1997"
+      },
+      "tags": [
+        "jp_promo_corocoro_early_1997",
+        "CoroCoro Comic early 1997 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex decrypted series payload row and provider-path image convention",
+          "TCGdex row metadata when present",
+          "Japanese pre-English release map"
+        ],
+        "note": "Flying Pikachu is cataloged as the currently source-pinned row for CoroCoro Comic early 1997 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "CoroCoro Comic early 1997 promos source slice",
+          "1997-01-15/1997-10-15",
+          "promo family source slice",
+          "source accounting recorded",
+          "Unnumbered Promotional Pre-English Source Slice",
+          "020",
+          "Sans rareté",
+          "1996-10-15/1999-01-31"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "display": "Illus. Toshinao Aoki",
+        "name": "Toshinao Aoki",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "pokecardex"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload",
+          "source-pinned UPC aggregate row for this promo family child slice",
+          "family-level completeness checked against selected Bulbapedia API wikitext lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/20.jpg",
+        "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/20.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+        "promo_family_source_sort": 20,
+        "provider_id": "pokecardex:14218",
+        "provider_title": "Flying Pikachu - Unnumbered Promotional #20",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_corocoro_early_1997:020",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "020",
+      "name_en": "Flying Pikachu",
+      "name_ja": "そらをとぶピカチュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Flying Pikachu Wizards Promo page identifies Japanese: そらをとぶピカチュウ Flying Pikachu and documents the CoroCoro November 1997 issue context.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          25
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia API wikitext context snapshot expects 5 cards for this family, while this slice currently models 5 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_issue_exact_multi_date",
+        "expected_source_card_count": 5,
+        "japanese_set_name": "月刊コロコロコミック1997年前期プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+        "release_date": "1997-01-15/1997-10-15",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 5,
+        "unmodeled_expected_cards": []
+      },
+      "promo_context": {
+        "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
+        "date_label": "1997-10-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic November 1997 issue insert (October 15, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_sort": 20
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia API wikitext context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "complete magazine source",
+        "expected_cards": [
+          "Mew [Glossy] (CoroCoro February 1997 issue)",
+          "Mewtwo (CoroCoro June 1997 issue)",
+          "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+          "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+          "Flying Pikachu (CoroCoro November 1997 issue)"
+        ],
+        "expected_source_card_count": 5,
+        "modeled_source_sorts": [
+          5,
+          7,
+          16,
+          17,
+          20
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_corocoro_early_1997",
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+        "source_local_id": "020",
+        "source_provider_sort": 20,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 5,
+        "source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+        "source_gap_count": 0,
+        "source_local_id": "020",
+        "source_provider_row": {
+          "adapter": "pokecardex",
+          "cardmarket_url": "Unnumbered-Promos/Flying-Pikachu-V3-UNP",
+          "comment": "CoroCoro Comic November 1997 issue insert (October 15, 1997)",
+          "id_card": 14218,
+          "id_tcgplayer": 0,
+          "illustrator": "Toshinao Aoki",
+          "provider_id": "pokecardex:14218",
+          "provider_title": "Flying Pikachu - Unnumbered Promotional #20",
+          "rarity": "Sans rareté",
+          "series_code": "UPC",
+          "series_name": "Unnumbered Promotional",
+          "sort": 20,
+          "versions": [
+            {
+              "comment": "",
+              "comment_us": "",
+              "id_card": 14218,
+              "id_version": 1,
+              "nom_version": "Standard",
+              "nom_version_us": "Standard",
+              "only_english": false
+            }
+          ]
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+        "source_sort": 20
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_promo_corocoro_early_1997",
+      "romaji": "Flying Pikachu",
+      "row_id": "jp_promo_corocoro_early_1997:020",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "020",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_corocoro_early_1997",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+          "source_sort": 20
+        },
+        {
+          "complete_source_boundary_denial": "complete magazine source",
+          "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:48:00Z",
+          "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete CoroCoro 1997 promo census",
+            "later mail-in prize draw source",
+            "JR East reprint context authority",
+            "Fan Book reprint context authority",
+            "ANA reprint context authority",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+          "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+          "source": "Bulbapedia API wikitext",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+            "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+            "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+            "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "card_data_hash": "e5ed4b42d6ff538916a442f21d8ef46679d67ead6126e00b5f0a0664cf3a76fd",
+          "encrypted_page_sha256": "49bee37348e0181c282bfb9e2e30e6f1f310159d0a190429799ef1902a31e3ed",
+          "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
+          "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete promo family checklist",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row",
+            "price truth"
+          ],
+          "promo_family_source_catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+          "series_code": "UPC",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_corocoro_early_1997"
+      },
+      "tags": [
+        "jp_promo_corocoro_early_1997",
+        "CoroCoro Comic early 1997 promos source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "Unnumbered Promotional Pre-English Source Slice",
+        "1996-10-15/1999-01-31",
+        "Sans rareté",
+        ""
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "complete pre-English catalog",
+    "complete promo family checklist",
+    "complete source object",
+    "complete tournament source",
+    "complete campaign source",
+    "complete magazine source",
+    "complete event source",
+    "unmodeled expected card row",
+    "official copy count",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Promo target source-slice",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
+    "date_precision": "source_issue_exact_multi_date",
+    "expected_row_count": 5,
+    "expected_source_card_count": 5,
+    "name_en": "CoroCoro Comic early 1997 promos source slice",
+    "name_ja": "月刊コロコロコミック1997年前期プロモ",
+    "note": "Multi-issue source-slice over the UPC aggregate rows currently pinned to CoroCoro early 1997 issue inserts. Use it to preserve Mew, Mewtwo, Surfing Pikachu, Imakuni?, and Flying Pikachu issue context while keeping mail-in, reprint, copy-count, and magazine-object claims outside row authority.",
+    "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+    "product_card_count": 0,
+    "product_count_basis": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts dated January 15, May 15, August 15, and October 15, 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This child slice models those five card identities only; it does not claim complete magazine-object provenance, later mail-in prize draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census. It is not a complete family checklist beyond the source-pinned rows.",
+    "release_date": "1997-01-15/1997-10-15",
+    "release_family_id": "jp_promo_corocoro_early_1997",
+    "release_type": "promo_family_child_rollup_rows",
+    "source_gap_count": 0,
+    "strict_release_member": false,
+    "unique_catalog_row_count": 5,
+    "unmodeled_expected_cards": []
+  },
+  "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
+  "sources": [
+    {
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "cards_found": 5,
+      "catalog_hash": "e89fa618fc9d91512c6db9bc5af5fedd1f4649b5041e9bf01bcc00d968150351",
+      "complete_source_boundary_denial": "complete magazine source",
+      "expected_cards": [
+        "Mew [Glossy] (CoroCoro February 1997 issue)",
+        "Mewtwo (CoroCoro June 1997 issue)",
+        "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+        "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+        "Flying Pikachu (CoroCoro November 1997 issue)"
+      ],
+      "expected_source_card_count": 5,
+      "family_context_source": {
+        "complete_source_boundary_denial": "complete magazine source",
+        "extracted_claims": {
+          "cards": [
+            {
+              "issue": "CoroCoro Comic February 1997 issue",
+              "name_en": "Mew",
+              "name_ja": "ミュウ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/5.jpg",
+              "release_date": "1997-01-15",
+              "romaji": "Mew",
+              "source_sort": 5
+            },
+            {
+              "issue": "CoroCoro Comic June 1997 issue",
+              "name_en": "Mewtwo",
+              "name_ja": "ミュウツー",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/7.jpg",
+              "release_date": "1997-05-15",
+              "romaji": "Mewtwo",
+              "source_sort": 7
+            },
+            {
+              "issue": "CoroCoro Comic September 1997 issue",
+              "name_en": "Surfing Pikachu",
+              "name_ja": "なみのりピカチュウ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/16.jpg",
+              "release_date": "1997-08-15",
+              "romaji": "Surfing Pikachu",
+              "source_sort": 16
+            },
+            {
+              "issue": "CoroCoro Comic September 1997 issue",
+              "name_en": "Imakuni?",
+              "name_ja": "イマクニ？",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/17.jpg",
+              "release_date": "1997-08-15",
+              "romaji": "Imakuni?",
+              "source_sort": 17
+            },
+            {
+              "issue": "CoroCoro Comic November 1997 issue",
+              "name_en": "Flying Pikachu",
+              "name_ja": "そらをとぶピカチュウ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/20.jpg",
+              "release_date": "1997-10-15",
+              "romaji": "Flying Pikachu",
+              "source_sort": 20
+            }
+          ],
+          "excluded_contexts": [
+            "later mail-in prize draws",
+            "JR East regular-stock Mew reprint",
+            "Fan Book Mewtwo print",
+            "ANA Flying Pikachu print"
+          ],
+          "issue_insert_count": 4,
+          "modeled_card_count": 5,
+          "release_date_range": "1997-01-15/1997-10-15"
+        },
+        "not_claiming": [
+          "raw HTML snapshot",
+          "complete CoroCoro issue archive",
+          "complete magazine source",
+          "complete CoroCoro 1997 promo census",
+          "later mail-in prize draw source",
+          "JR East reprint context authority",
+          "Fan Book reprint context authority",
+          "ANA reprint context authority",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+        "retrieved_at": "2026-06-18T02:48:00Z",
+        "selected_text": "{{Setlist/nmentry|None|{{TCG ID|CoroCoro|Mew|promo}} [Glossy]|Psychic|||''CoroCoro Comic'' February 1997 issue insert (January 15, 1997)}}\n{{Setlist/nmentry|None|{{TCG ID|CoroCoro|Mewtwo|promo}}|Psychic|||''CoroCoro Comic'' June 1997 issue insert (May 15, 1997)}}\n{{Setlist/nmentry|None|{{TCG ID|CoroCoro|Surfing Pikachu|promo}} [Glossy]|Lightning|||''CoroCoro Comic'' September 1997 issue insert (August 15, 1997)}}\n{{Setlist/nmentry|None|{{TCG ID|CoroCoro|Imakuni?|promo}} [Glossy]|Trainer|||''CoroCoro Comic'' September 1997 issue insert (August 15, 1997)}}\n{{Setlist/nmentry|None|{{TCG ID|CoroCoro|Flying Pikachu|promo}}|Lightning|||''CoroCoro Comic'' November 1997 issue insert (October 15, 1997)}}\n|jname=ミュウ\n|jtrans=Mew\n|caption=Illus. [[Ken Sugimori]]\nIn Japan, it was first available as an Unnumbered Promotional card on an insert in the February 1997 issue of CoroCoro Comic, released on January 15, 1997. This print uses glossy card stock.\n|jname=ミュウツー\n|jtrans=Mewtwo\n|recaption1=VHS/DVD release print<br>Illus. [[Benimaru Itoh]]\nIn Japan, this print was available on an insert in the June 1997 issue of CoroCoro Comic, released on May 15, 1997.\n|jname=なみのりピカチュウ\n|jtrans=Surfing Pikachu\n|caption={{TCG|Wizards Black Star Promos|Wizards Black Star Promo}} print<br>Illus. [[Toshinao Aoki]]\nIn Japan, it was first available as an Unnumbered Promotional card on a two-card insert alongside Imakuni? in the September 1997 issue of CoroCoro Comic, released on August 15, 1997.\n|jname=イマクニ？\n|jtrans=Imakuni?\n|caption={{TCG|Unnumbered Promotional cards|Unnumbered Promotional}} print<br>Photo. [[Takumi Akabane]]\nIn Japan, this card was first available as a glossy Unnumbered Promotional card on a two-card insert alongside Surfing Pikachu in the September 1997 issue of CoroCoro Comic, released on August 15, 1997.\n|jname=そらをとぶピカチュウ\n|jtrans=Flying Pikachu\n|caption={{TCG|Wizards Black Star Promos|Wizards Black Star Promo}} print<br>Illus. [[Toshinao Aoki]]\nIn Japan, it was first available as an Unnumbered Promotional card on an insert in the November 1997 issue of CoroCoro Comic, released on October 15, 1997.",
+        "snapshot_content_scope": "Selected wikitext lines for CoroCoro Comic early 1997 Unnumbered Promotional card identities, issue dates, Japanese names/transliterations, illustrator lines, and release-context lines. This snapshot is not a full CoroCoro issue archive, not a complete magazine-object ledger, not later mail-in prize draw coverage, not JR/ANA/Fan Book reprint context authority, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+        "snapshot_hash": "7adeb0827a63fc282086ea7d313bd98d2fee5bcbf789fb369685ff67b0315750",
+        "snapshot_not_claiming": [
+          "raw HTML snapshot",
+          "complete CoroCoro issue archive",
+          "complete magazine source",
+          "complete CoroCoro 1997 promo census",
+          "later mail-in prize draw source",
+          "JR East reprint context authority",
+          "Fan Book reprint context authority",
+          "ANA reprint context authority",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "image rights",
+          "complete marketplace pricing"
+        ],
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+        "snapshot_retrieval_method": "Codex Python urllib Bulbapedia API wikitext extraction with MarketplaceCatalogResearch user agent",
+        "snapshot_schema": "marketplace.source_snapshot.selected_wikitext_lines.v0.1",
+        "source": "Bulbapedia API wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "supporting_page_urls": [
+          "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+          "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+          "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+          "https://bulbapedia.bulbagarden.net/wiki/Imakuni%3F_(CoroCoro_promo)",
+          "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+          "https://www.pokecardex.com/en/series/jp/UPC"
+        ]
+      },
+      "modeled_source_rows": 5,
+      "modeled_source_sorts": [
+        5,
+        7,
+        16,
+        17,
+        20
+      ],
+      "not_claiming": [
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "seller possession",
+        "authenticity",
+        "condition",
+        "price truth"
+      ],
+      "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "promo_family_id": "jp_promo_corocoro_early_1997",
+      "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
+      "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
+      "source": "Marketplace UPC aggregate promo-family child source-slice",
+      "source_gap_count": 0,
+      "source_gap_reason": "Bulbapedia documents five Unnumbered Promotional cards distributed through CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC aggregate source-pins all five matching rows. This source slice models those five card identities only; it does not model complete magazine issues, later mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, or a complete CoroCoro 1997 promo census.",
+      "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+      "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+      "source_release_type": "promo_aggregate_filtered_rows",
+      "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+      "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
+      "symbol_status_path": "data/pre-english-symbol-status.json",
+      "unmodeled_expected_cards": []
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium-high",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "yes",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
+    "source_mode": "direct_promo_family_context",
+    "source_release_family_id": "jp_promo_corocoro_early_1997"
+  }
+}

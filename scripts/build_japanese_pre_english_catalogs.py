@@ -65,6 +65,11 @@ EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_early_1996_promos_selected_lines.json"
 )
+COROCORO_EARLY_1997_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_corocoro_early_1997_selected_lines.json"
+)
 LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -255,6 +260,81 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Bulbapedia lists non-glossy Pikachu and non-glossy Jigglypuff for Easily "
             "Understand How to Play Pokemon Cards, but the current PokéCardex UPC "
             "aggregate source-pins only Jigglypuff to this exact family."
+        ),
+    },
+    "jp_promo_corocoro_early_1997": {
+        "source_snapshot": "corocoro_early_1997",
+        "expected_source_card_count": 5,
+        "complete_source_boundary_denial": "complete magazine source",
+        "source_slice_authority_label": "source-pinned CoroCoro early 1997 issue card identity slice",
+        "expected_cards": [
+            "Mew [Glossy] (CoroCoro February 1997 issue)",
+            "Mewtwo (CoroCoro June 1997 issue)",
+            "Surfing Pikachu [Glossy] (CoroCoro September 1997 issue)",
+            "Imakuni? [Glossy] (CoroCoro September 1997 issue)",
+            "Flying Pikachu (CoroCoro November 1997 issue)",
+        ],
+        "modeled_source_sorts": [5, 7, 16, 17, 20],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Mew|promo}} [Glossy]",
+            "Mewtwo",
+            "Surfing Pikachu",
+            "Imakuni?",
+            "Flying Pikachu",
+            "February 1997 issue insert (January 15, 1997)",
+            "June 1997 issue insert (May 15, 1997)",
+            "September 1997 issue insert (August 15, 1997)",
+            "November 1997 issue insert (October 15, 1997)",
+            "ミュウ",
+            "Mew",
+            "ミュウツー",
+            "Mewtwo",
+            "なみのりピカチュウ",
+            "Surfing Pikachu",
+            "イマクニ？",
+            "Imakuni?",
+            "そらをとぶピカチュウ",
+            "Flying Pikachu",
+            "Ken Sugimori",
+            "Benimaru Itoh",
+            "Toshinao Aoki",
+            "Takumi Akabane",
+        ],
+        "source_labeled_japanese_names": {
+            5: {
+                "name_ja": "ミュウ",
+                "romaji": "Mew",
+                "source_note": "Bulbapedia Mew Wizards Promo page identifies Japanese: ミュウ Mew and documents the CoroCoro February 1997 issue context.",
+            },
+            7: {
+                "name_ja": "ミュウツー",
+                "romaji": "Mewtwo",
+                "source_note": "Bulbapedia Mewtwo Wizards Promo page identifies Japanese: ミュウツー Mewtwo and documents the CoroCoro June 1997 issue context.",
+            },
+            16: {
+                "name_ja": "なみのりピカチュウ",
+                "romaji": "Surfing Pikachu",
+                "source_note": "Bulbapedia Surfing Pikachu Wizards Promo page identifies Japanese: なみのりピカチュウ Surfing Pikachu and documents the CoroCoro September 1997 issue context.",
+            },
+            17: {
+                "name_ja": "イマクニ？",
+                "romaji": "Imakuni?",
+                "source_note": "Bulbapedia Imakuni? CoroCoro promo page identifies Japanese: イマクニ？ Imakuni? and documents the CoroCoro September 1997 issue context.",
+            },
+            20: {
+                "name_ja": "そらをとぶピカチュウ",
+                "romaji": "Flying Pikachu",
+                "source_note": "Bulbapedia Flying Pikachu Wizards Promo page identifies Japanese: そらをとぶピカチュウ Flying Pikachu and documents the CoroCoro November 1997 issue context.",
+            },
+        },
+        "source_gap_reason": (
+            "Bulbapedia documents five Unnumbered Promotional cards distributed through "
+            "CoroCoro Comic issue inserts in early 1997, and the current PokéCardex UPC "
+            "aggregate source-pins all five matching rows. This source slice models those "
+            "five card identities only; it does not model complete magazine issues, later "
+            "mail-in prize draws, JR/ANA/Fan Book reprint contexts, official copy counts, "
+            "or a complete CoroCoro 1997 promo census."
         ),
     },
     "jp_promo_lizardon_mega_battle_199711_199804": {
@@ -1242,6 +1322,38 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         ),
     ),
     ReleaseConfig(
+        release_family_id="jp_promo_corocoro_early_1997",
+        name_en="CoroCoro Comic early 1997 promos source slice",
+        name_ja="月刊コロコロコミック1997年前期プロモ",
+        release_date="1997-01-15/1997-10-15",
+        expected_row_count=5,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_issue_exact_multi_date",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia documents five Unnumbered Promotional cards distributed through "
+            "CoroCoro Comic issue inserts dated January 15, May 15, August 15, and "
+            "October 15, 1997, and the current PokéCardex UPC aggregate source-pins all "
+            "five matching rows. This child slice models those five card identities only; "
+            "it does not claim complete magazine-object provenance, later mail-in prize "
+            "draw coverage, JR/ANA/Fan Book reprint contexts, official copy counts, or a "
+            "complete CoroCoro 1997 promo census. It is not a complete family checklist "
+            "beyond the source-pinned rows."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Multi-issue source-slice over the UPC aggregate rows currently pinned to "
+            "CoroCoro early 1997 issue inserts. Use it to preserve Mew, Mewtwo, Surfing "
+            "Pikachu, Imakuni?, and Flying Pikachu issue context while keeping mail-in, "
+            "reprint, copy-count, and magazine-object claims outside row authority."
+        ),
+    ),
+    ReleaseConfig(
         release_family_id="jp_promo_first_official_tournament_199706",
         name_en="First Official Pokemon Card Game Tournament trophy source slice",
         name_ja="第1回公式ポケモンカードゲーム大会 トロフィープロモ",
@@ -2027,6 +2139,26 @@ def early_1996_promo_source_snapshot() -> dict[str, Any]:
     }
 
 
+def corocoro_early_1997_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(COROCORO_EARLY_1997_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Bulbapedia"),
+        "snapshot_path": str(COROCORO_EARLY_1997_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def lizardon_mega_battle_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(LIZARDON_MEGA_BATTLE_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -2344,6 +2476,8 @@ def n64_double_get_source_snapshot() -> dict[str, Any]:
 def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
     if snapshot_id == "early_1996_promos":
         return early_1996_promo_source_snapshot()
+    if snapshot_id == "corocoro_early_1997":
+        return corocoro_early_1997_source_snapshot()
     if snapshot_id == "lizardon_mega_battle":
         return lizardon_mega_battle_source_snapshot()
     if snapshot_id == "jr_east_stamp_rally_1997":
