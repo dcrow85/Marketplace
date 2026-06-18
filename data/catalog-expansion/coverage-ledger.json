@@ -1,9 +1,9 @@
 {
   "boundary_proof": {
-    "hash": "b5957cec55530bbfeb1abfd11dec13157db73cea74e1bcaeef21ae8e6346e28c",
+    "hash": "33784f0ce95f137ee3bef1c3da20e27a1228e8da740ba7361f8e5a3ec5b8228d",
     "passed": true,
     "path": "data/catalog-expansion/boundary-proof.json",
-    "proof_hash": "a03d808d18c2f79488f8bd1bec72c1a3c0ccdf29b27a7421d3691b3dd1214eef",
+    "proof_hash": "cb122452464c511ff1666aa8d75117e1af69de2725909f4ab684a2f1d6d06106",
     "sections": {
       "english_pokemontcg_api": {
         "not_claiming": [
@@ -46,15 +46,35 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "completion_status": {
     "known_remaining_work": [
-      "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
+      "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
       "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter."
     ],
     "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved and aggregate promo slices may still need campaign-level splitting.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:26:44Z",
+  "english_jumbo_boundary_proof": {
+    "hash": "4eb4c41438a8e6b58910eda3fbbb37d005d337264f932420f3363257623f3b96",
+    "modeled_row_count": 10,
+    "not_claiming": [
+      "complete Jumbo coverage",
+      "Bulbapedia raw row count equals TCGdex official count",
+      "every post-prefix row has exact release-date proof",
+      "approved image rights",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth"
+    ],
+    "passed": true,
+    "path": "data/catalog-expansion/english-jumbo-boundary-proof.json",
+    "proof_hash": "0b559e33cf10b82ddecdb1bee61f29c49ecb154fdb4ba41f56ff69164e4fe6de",
+    "source_row_count": 390,
+    "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
+    "unclassified_excluded_count": 50
+  },
+  "generated_at": "2026-06-18T20:36:10Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "cfc24279068de4a65990154c70635ceeed2ab46198b29c5da959a958ed70e0d0",
+  "ledger_hash": "550ef238c3d7b777d8c7c8bb18c2e54b2c207f982c689d9b5b594b00def8711e",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",

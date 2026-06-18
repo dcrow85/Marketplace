@@ -185,9 +185,11 @@ def build() -> dict[str, Any]:
     gap_register_path = "data/catalog-expansion/source-gaps.json"
     boundary_proof_path = "data/catalog-expansion/boundary-proof.json"
     schema_profile_path = "data/catalog-expansion/schema-profile.json"
+    jumbo_boundary_proof_path = "data/catalog-expansion/english-jumbo-boundary-proof.json"
     gap_register = read_json(gap_register_path)
     boundary_proof = read_json(boundary_proof_path)
     schema_profile = read_json(schema_profile_path)
+    jumbo_boundary_proof = read_json(jumbo_boundary_proof_path)
     invariant_summary = row_invariant_summary()
     modeled_rows = sum(corpus["row_count"] for corpus in corpora)
     modeled_releases = sum(corpus["release_count"] for corpus in corpora)
@@ -226,6 +228,17 @@ def build() -> dict[str, Any]:
             "canonical_fields_passed": bool(schema_profile.get("canonical_fields_passed")),
             "known_schema_asymmetries": schema_profile.get("known_schema_asymmetries", []),
             "normalized_projection_schema": schema_profile.get("normalized_agent_projection", {}).get("schema", ""),
+        },
+        "english_jumbo_boundary_proof": {
+            "path": jumbo_boundary_proof_path,
+            "hash": file_hash(jumbo_boundary_proof_path),
+            "proof_hash": jumbo_boundary_proof.get("proof_hash", ""),
+            "passed": bool(jumbo_boundary_proof.get("passed")),
+            "status": jumbo_boundary_proof.get("status", ""),
+            "source_row_count": int(jumbo_boundary_proof.get("source_row_count") or 0),
+            "modeled_row_count": int(jumbo_boundary_proof.get("modeled_prefix", {}).get("modeled_row_count") or 0),
+            "unclassified_excluded_count": int(jumbo_boundary_proof.get("unclassified_excluded_count") or 0),
+            "not_claiming": jumbo_boundary_proof.get("not_claiming", []),
         },
         "source_gap_register": {
             "path": gap_register_path,
@@ -266,7 +279,7 @@ def build() -> dict[str, Any]:
                 "and aggregate promo slices may still need campaign-level splitting."
             ),
             "known_remaining_work": [
-                "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
+                "Resolve the English Jumbo TCGdex/Bulbapedia count mismatch if a stronger row-level source appears; current proof only establishes a bounded WoC-era prefix.",
                 "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
             ],
         },

@@ -189,6 +189,8 @@ def english_pokemontcg_api_proof() -> dict[str, Any]:
 def english_supplemental_proof() -> dict[str, Any]:
     source_gaps = read_json("data/catalog-expansion/source-gaps.json")
     supplemental_manifest = read_json("data/english-supplemental-wotc/manifest.json")
+    jumbo_boundary_proof_path = "data/catalog-expansion/english-jumbo-boundary-proof.json"
+    jumbo_boundary_proof = read_json(jumbo_boundary_proof_path)
     releases = supplemental_manifest.get("releases", [])
     resolved_ids = {item.get("set_id", "") for item in source_gaps.get("resolved_gaps", [])}
     active_ids = {item.get("set_id", "") for item in source_gaps.get("gaps", [])}
@@ -201,6 +203,16 @@ def english_supplemental_proof() -> dict[str, Any]:
         "source_gap_register_hash": file_hash("data/catalog-expansion/source-gaps.json"),
         "supplemental_manifest_path": "data/english-supplemental-wotc/manifest.json",
         "supplemental_manifest_hash": file_hash("data/english-supplemental-wotc/manifest.json"),
+        "jumbo_boundary_proof": {
+            "path": jumbo_boundary_proof_path,
+            "hash": file_hash(jumbo_boundary_proof_path),
+            "proof_hash": jumbo_boundary_proof.get("proof_hash", ""),
+            "passed": bool(jumbo_boundary_proof.get("passed")),
+            "status": jumbo_boundary_proof.get("status", ""),
+            "source_row_count": jumbo_boundary_proof.get("source_row_count", 0),
+            "modeled_prefix": jumbo_boundary_proof.get("modeled_prefix", {}),
+            "unclassified_excluded_count": jumbo_boundary_proof.get("unclassified_excluded_count", 0),
+        },
         "resolved_tcgdex_zero_ref_set_ids": sorted(resolved_ids),
         "active_tcgdex_zero_ref_set_ids": sorted(active_ids),
         "modeled_release_family_ids": [item.get("release_family_id", "") for item in releases],
@@ -214,7 +226,7 @@ def english_supplemental_proof() -> dict[str, Any]:
             }
             for item in source_gaps.get("gaps", [])
         ],
-        "passed": expected_resolved.issubset(resolved_ids) and active_ids == expected_active,
+        "passed": expected_resolved.issubset(resolved_ids) and active_ids == expected_active and bool(jumbo_boundary_proof.get("passed")),
         "not_claiming": [
             "complete Jumbo coverage",
             "all English miscellaneous products outside the named source register",
