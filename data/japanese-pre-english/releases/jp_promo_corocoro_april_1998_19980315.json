@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -9,14 +9,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.1 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Jynx is cataloged as the currently source-pinned row for CoroCoro Comic April 1998 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Lizardon / Charizard Mega Battle regional trophy source slice",
-          "1997-11-08/1998-04-26",
+          "CoroCoro Comic April 1998 promos source slice",
+          "1998-03-15",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "021",
+          "039",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -24,8 +24,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Atsuko Nishida",
+        "name": "Atsuko Nishida",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -46,11 +46,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Bulbapedia + PokéCardex lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/21.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/39.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/21.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/39.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -66,13 +66,13 @@
         ],
         "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
-        "promo_family_source_sort": 21,
-        "provider_id": "pokecardex:14219",
-        "provider_title": "No.1 Trainer - Unnumbered Promotional #21",
-        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:039",
+        "promo_family_source_sort": 39,
+        "provider_id": "pokecardex:14237",
+        "provider_title": "Jynx - Unnumbered Promotional #39",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021",
+        "row_id": "jp_promo_corocoro_april_1998_19980315:039",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -113,11 +113,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "021",
-      "name_en": "No.1 Trainer",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "039",
+      "name_en": "Jynx",
+      "name_ja": "ルージュラ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Jynx CoroCoro promo page identifies Jynx as Japanese: ルージュラ Rougela and documents the CoroCoro April 1998 insert context.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -137,7 +137,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          124
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -147,52 +149,52 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range_with_final_event",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + PokéCardex context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
         "expected_source_card_count": 3,
-        "japanese_set_name": "リザードンメガバトル プロモ",
+        "japanese_set_name": "月刊コロコロコミック1998年4月号プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
-        "release_date": "1997-11-08/1998-04-26",
+        "product_count_basis": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as Unnumbered Promotional cards available together on a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998. The current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This child slice models those three source-pinned card identities only; it does not claim complete magazine-object provenance, later mail-in prize-draw coverage, accessory counter/sheet variants, reprint history, official copy counts, or a complete CoroCoro 1998 promo census. It is not a complete family checklist beyond the source-pinned card trio, and it is not a complete magazine-object ledger.",
+        "release_date": "1998-03-15",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 3,
         "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-11-08 to 1998-04-26",
-        "date_source": "release_map",
-        "distribution_comment": "Lizardon Mega Battle regional first place prize",
+        "date_label": "1998-03-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_sort": 21
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "source_sort": 39
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + PokéCardex context snapshot.",
         "complete_family_modeled": false,
-        "complete_source_boundary_denial": "",
+        "complete_source_boundary_denial": "complete magazine source",
         "expected_cards": [
-          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          "Jynx",
+          "Cubone",
+          "Farfetch'd"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          21,
-          22,
-          23
+          39,
+          40,
+          41
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -203,15 +205,15 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
-        "source_local_id": "021",
-        "source_provider_sort": 21,
+        "source_gap_reason": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998, and the current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This source slice models those three card identities only; it does not model the whole CoroCoro 1998 promo run, the later December 1998 mail-in prize draw, accessory counter/sheet variants, reprint history, official copy counts, or the complete magazine object.",
+        "source_local_id": "039",
+        "source_provider_sort": 39,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:039",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -220,25 +222,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_local_id": "021",
+        "source_local_id": "039",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Lizardon Mega Battle regional first place prize",
-          "id_card": 14219,
+          "cardmarket_url": "Unnumbered-Promos/Jynx-V1-UNP",
+          "comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
+          "id_card": 14237,
           "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14219",
-          "provider_title": "No.1 Trainer - Unnumbered Promotional #21",
+          "illustrator": "Atsuko Nishida",
+          "provider_id": "pokecardex:14237",
+          "provider_title": "Jynx - Unnumbered Promotional #39",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 21,
+          "sort": 39,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14219,
+              "id_card": 14237,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -255,20 +257,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
-        "source_sort": 21
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:039",
+        "source_sort": 39
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-      "romaji": "",
-      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021",
+      "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+      "romaji": "Rougela",
+      "row_id": "jp_promo_corocoro_april_1998_19980315:039",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "021",
+          "local_row_id": "039",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -278,57 +280,74 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
-          "source_sort": 21
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:039",
+          "source_sort": 39
         },
         {
-          "complete_source_boundary_denial": "",
+          "complete_source_boundary_denial": "complete magazine source",
           "expected_cards": [
-            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+            "Jynx",
+            "Cubone",
+            "Farfetch'd"
           ],
           "not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:06:00Z",
-          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
-          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:17:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the CoroCoro Comic April 1998 issue three-card insert source slice, including the unnumbered promo table rows for Jynx, Cubone, and Farfetch'd, March 15, 1998 date, Japanese name/transliteration lines, illustrator lines, and three-card insert release-context lines. This snapshot is not a full CoroCoro issue archive, not a full magazine-object ledger, not the later December 1998 mail-in prize-draw source, not an accessory counter or mounted-sheet variant census, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "1b9d4941b3428435631c5bbe1354228798eb1cc2a356990937fd4e696d9acb8b",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_april_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia MediaWiki API revision inspection + existing PokéCardex UPC provider row inspection",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
-          "source_slice_authority_label": "source-pinned promo family card identity slice",
-          "supporting_page_urls": [],
+          "source": "Bulbapedia + PokéCardex",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Jynx_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Cubone_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Farfetch%27d_(CoroCoro_promo)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "7afe2c6fc34b807fc2d101c1e347cf05691f31c265f29378e3b0b87fed9ac89e",
+          "card_data_hash": "58e2cfa6daf9b947362d445cc87b875865619abb17fb6f347040ef6eaa243fbd",
           "encrypted_page_sha256": "f0682aeb6d667c86d8803ff93272fbb683d185b8323cc76568e557fac71144b3",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
@@ -349,7 +368,7 @@
           ],
           "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:039",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -367,11 +386,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+        "source_release_family_id": "jp_promo_corocoro_april_1998_19980315"
       },
       "tags": [
-        "jp_promo_lizardon_mega_battle_199711_199804",
-        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "jp_promo_corocoro_april_1998_19980315",
+        "CoroCoro Comic April 1998 promos source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -389,7 +408,7 @@
       }
     },
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -397,14 +416,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.2 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Cubone is cataloged as the currently source-pinned row for CoroCoro Comic April 1998 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Lizardon / Charizard Mega Battle regional trophy source slice",
-          "1997-11-08/1998-04-26",
+          "CoroCoro Comic April 1998 promos source slice",
+          "1998-03-15",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "022",
+          "040",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -412,8 +431,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Miki Tanaka",
+        "name": "Miki Tanaka",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -434,11 +453,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Bulbapedia + PokéCardex lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/22.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/40.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/22.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/40.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -454,13 +473,13 @@
         ],
         "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
-        "promo_family_source_sort": 22,
-        "provider_id": "pokecardex:14220",
-        "provider_title": "No.2 Trainer - Unnumbered Promotional #22",
-        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:040",
+        "promo_family_source_sort": 40,
+        "provider_id": "pokecardex:14238",
+        "provider_title": "Cubone - Unnumbered Promotional #40",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022",
+        "row_id": "jp_promo_corocoro_april_1998_19980315:040",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -501,11 +520,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "022",
-      "name_en": "No.2 Trainer",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "040",
+      "name_en": "Cubone",
+      "name_ja": "カラカラ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Cubone CoroCoro promo page identifies Cubone as Japanese: カラカラ Karakara and documents the CoroCoro April 1998 insert context.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -525,7 +544,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          104
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -535,52 +556,52 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range_with_final_event",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + PokéCardex context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
         "expected_source_card_count": 3,
-        "japanese_set_name": "リザードンメガバトル プロモ",
+        "japanese_set_name": "月刊コロコロコミック1998年4月号プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
-        "release_date": "1997-11-08/1998-04-26",
+        "product_count_basis": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as Unnumbered Promotional cards available together on a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998. The current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This child slice models those three source-pinned card identities only; it does not claim complete magazine-object provenance, later mail-in prize-draw coverage, accessory counter/sheet variants, reprint history, official copy counts, or a complete CoroCoro 1998 promo census. It is not a complete family checklist beyond the source-pinned card trio, and it is not a complete magazine-object ledger.",
+        "release_date": "1998-03-15",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 3,
         "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-11-08 to 1998-04-26",
-        "date_source": "release_map",
-        "distribution_comment": "Lizardon Mega Battle regional second place prize",
+        "date_label": "1998-03-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_sort": 22
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "source_sort": 40
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + PokéCardex context snapshot.",
         "complete_family_modeled": false,
-        "complete_source_boundary_denial": "",
+        "complete_source_boundary_denial": "complete magazine source",
         "expected_cards": [
-          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          "Jynx",
+          "Cubone",
+          "Farfetch'd"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          21,
-          22,
-          23
+          39,
+          40,
+          41
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -591,15 +612,15 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
-        "source_local_id": "022",
-        "source_provider_sort": 22,
+        "source_gap_reason": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998, and the current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This source slice models those three card identities only; it does not model the whole CoroCoro 1998 promo run, the later December 1998 mail-in prize draw, accessory counter/sheet variants, reprint history, official copy counts, or the complete magazine object.",
+        "source_local_id": "040",
+        "source_provider_sort": 40,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:040",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -608,25 +629,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_local_id": "022",
+        "source_local_id": "040",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Lizardon Mega Battle regional second place prize",
-          "id_card": 14220,
+          "cardmarket_url": "Unnumbered-Promos/Cubone",
+          "comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
+          "id_card": 14238,
           "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14220",
-          "provider_title": "No.2 Trainer - Unnumbered Promotional #22",
+          "illustrator": "Miki Tanaka",
+          "provider_id": "pokecardex:14238",
+          "provider_title": "Cubone - Unnumbered Promotional #40",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 22,
+          "sort": 40,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14220,
+              "id_card": 14238,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -643,20 +664,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
-        "source_sort": 22
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:040",
+        "source_sort": 40
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-      "romaji": "",
-      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022",
+      "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+      "romaji": "Karakara",
+      "row_id": "jp_promo_corocoro_april_1998_19980315:040",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "022",
+          "local_row_id": "040",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -666,57 +687,74 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
-          "source_sort": 22
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:040",
+          "source_sort": 40
         },
         {
-          "complete_source_boundary_denial": "",
+          "complete_source_boundary_denial": "complete magazine source",
           "expected_cards": [
-            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+            "Jynx",
+            "Cubone",
+            "Farfetch'd"
           ],
           "not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:06:00Z",
-          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
-          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:17:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the CoroCoro Comic April 1998 issue three-card insert source slice, including the unnumbered promo table rows for Jynx, Cubone, and Farfetch'd, March 15, 1998 date, Japanese name/transliteration lines, illustrator lines, and three-card insert release-context lines. This snapshot is not a full CoroCoro issue archive, not a full magazine-object ledger, not the later December 1998 mail-in prize-draw source, not an accessory counter or mounted-sheet variant census, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "1b9d4941b3428435631c5bbe1354228798eb1cc2a356990937fd4e696d9acb8b",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_april_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia MediaWiki API revision inspection + existing PokéCardex UPC provider row inspection",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
-          "source_slice_authority_label": "source-pinned promo family card identity slice",
-          "supporting_page_urls": [],
+          "source": "Bulbapedia + PokéCardex",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Jynx_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Cubone_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Farfetch%27d_(CoroCoro_promo)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "b7cf45dbd6b86d4388c4a114cfecdc56a08a907ab595d7d27507485be45147f6",
+          "card_data_hash": "0800b499188c7a246b321db59c10d69e04328d94776dfffffd7deafd281f88dc",
           "encrypted_page_sha256": "f0682aeb6d667c86d8803ff93272fbb683d185b8323cc76568e557fac71144b3",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
@@ -737,7 +775,7 @@
           ],
           "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:040",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -755,11 +793,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+        "source_release_family_id": "jp_promo_corocoro_april_1998_19980315"
       },
       "tags": [
-        "jp_promo_lizardon_mega_battle_199711_199804",
-        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "jp_promo_corocoro_april_1998_19980315",
+        "CoroCoro Comic April 1998 promos source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -777,7 +815,7 @@
       }
     },
     {
-      "category": "",
+      "category": "Pokemon",
       "collector_texture": {
         "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
         "basis": [
@@ -785,14 +823,14 @@
           "TCGdex row metadata when present",
           "Japanese pre-English release map"
         ],
-        "note": "No.3 Trainer is cataloged as the currently source-pinned row for Lizardon / Charizard Mega Battle regional trophy source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "note": "Farfetch'd is cataloged as the currently source-pinned row for CoroCoro Comic April 1998 promos source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
         "signals": [
-          "Lizardon / Charizard Mega Battle regional trophy source slice",
-          "1997-11-08/1998-04-26",
+          "CoroCoro Comic April 1998 promos source slice",
+          "1998-03-15",
           "promo family source slice",
           "source accounting recorded",
           "Unnumbered Promotional Pre-English Source Slice",
-          "023",
+          "041",
           "Sans rareté",
           "1996-10-15/1999-01-31"
         ]
@@ -800,8 +838,8 @@
       "holo_source": false,
       "illustrator": {
         "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
-        "display": "Illus. Mitsuhiro Arita",
-        "name": "Mitsuhiro Arita",
+        "display": "Illus. Tomokazu Komiya",
+        "name": "Tomokazu Komiya",
         "not_claiming": [
           "seller possession",
           "authenticity",
@@ -822,11 +860,11 @@
           "same provider image path convention derived from the public site bundle",
           "not a per-row image field inside the decrypted source payload",
           "source-pinned UPC aggregate row for this promo family child slice",
-          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+          "family-level completeness checked against selected Bulbapedia + PokéCardex lines with explicit source-gap accounting"
         ],
-        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/23.jpg",
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/41.jpg",
         "image_role": "Provider-path-derived reference image for the source-pinned UPC row in this promo family; not a complete-family image witness and not seller evidence.",
-        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/23.jpg",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/41.jpg",
         "not_allowed_by_default": [
           "training",
           "seller evidence",
@@ -842,13 +880,13 @@
         ],
         "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
-        "promo_family_source_sort": 23,
-        "provider_id": "pokecardex:14221",
-        "provider_title": "No.3 Trainer - Unnumbered Promotional #23",
-        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:041",
+        "promo_family_source_sort": 41,
+        "provider_id": "pokecardex:14239",
+        "provider_title": "Farfetch'd - Unnumbered Promotional #41",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
         "rights_status": "external_reference_witness",
-        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023",
+        "row_id": "jp_promo_corocoro_april_1998_19980315:041",
         "source": "PokéCardex",
         "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
         "status": "provider_path_reference_image",
@@ -889,11 +927,11 @@
           "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
         }
       },
-      "local_id": "023",
-      "name_en": "No.3 Trainer",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "local_id": "041",
+      "name_en": "Farfetch'd",
+      "name_ja": "カモネギ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Farfetch'd Base Set page identifies the CoroCoro promo as Japanese: カモネギ Kamonegi with different artwork and documents the CoroCoro April 1998 insert context.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -913,7 +951,9 @@
       "pokemon_profile": {
         "abilities": [],
         "attacks": [],
-        "dex_id": [],
+        "dex_id": [
+          83
+        ],
         "hp": null,
         "level": null,
         "retreat": null,
@@ -923,52 +963,52 @@
       "product_scope": {
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
-        "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
-        "date_precision": "source_range_with_final_event",
+        "complete_source_boundary_denial": "complete magazine source",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Bulbapedia + PokéCardex context snapshot expects 3 cards for this family, while this slice currently models 3 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_exact",
         "expected_source_card_count": 3,
-        "japanese_set_name": "リザードンメガバトル プロモ",
+        "japanese_set_name": "月刊コロコロコミック1998年4月号プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
-        "release_date": "1997-11-08/1998-04-26",
+        "product_count_basis": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as Unnumbered Promotional cards available together on a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998. The current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This child slice models those three source-pinned card identities only; it does not claim complete magazine-object provenance, later mail-in prize-draw coverage, accessory counter/sheet variants, reprint history, official copy counts, or a complete CoroCoro 1998 promo census. It is not a complete family checklist beyond the source-pinned card trio, and it is not a complete magazine-object ledger.",
+        "release_date": "1998-03-15",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
         "source_gap_count": 0,
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_release_member": false,
         "unique_catalog_row_count": 3,
         "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
-        "date_label": "1997-11-08 to 1998-04-26",
-        "date_source": "release_map",
-        "distribution_comment": "Lizardon Mega Battle regional third place prize",
+        "date_label": "1998-03-15",
+        "date_source": "source_comment",
+        "distribution_comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
         "not_claiming": [
           "official copy count",
           "seller possession",
           "authenticity",
           "condition"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-        "source_sort": 23
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "source_sort": 41
       },
       "promo_family_scope": {
-        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Bulbapedia + PokéCardex context snapshot.",
         "complete_family_modeled": false,
-        "complete_source_boundary_denial": "",
+        "complete_source_boundary_denial": "complete magazine source",
         "expected_cards": [
-          "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-          "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+          "Jynx",
+          "Cubone",
+          "Farfetch'd"
         ],
         "expected_source_card_count": 3,
         "modeled_source_sorts": [
-          21,
-          22,
-          23
+          39,
+          40,
+          41
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -979,15 +1019,15 @@
           "condition",
           "price truth"
         ],
-        "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
-        "source_local_id": "023",
-        "source_provider_sort": 23,
+        "source_gap_reason": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998, and the current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This source slice models those three card identities only; it does not model the whole CoroCoro 1998 promo run, the later December 1998 mail-in prize draw, accessory counter/sheet variants, reprint history, official copy counts, or the complete magazine object.",
+        "source_local_id": "041",
+        "source_provider_sort": 41,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:041",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
         "strict_family_member_for_modeled_row": true,
         "unmodeled_expected_cards": []
       },
@@ -996,25 +1036,25 @@
         "expected_source_card_count": 3,
         "source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
         "source_gap_count": 0,
-        "source_local_id": "023",
+        "source_local_id": "041",
         "source_provider_row": {
           "adapter": "pokecardex",
-          "cardmarket_url": null,
-          "comment": "Lizardon Mega Battle regional third place prize",
-          "id_card": 14221,
+          "cardmarket_url": "Unnumbered-Promos/Farfetchd",
+          "comment": "CoroCoro Comic April 1998 issue insert (March 15, 1998)",
+          "id_card": 14239,
           "id_tcgplayer": 0,
-          "illustrator": "Mitsuhiro Arita",
-          "provider_id": "pokecardex:14221",
-          "provider_title": "No.3 Trainer - Unnumbered Promotional #23",
+          "illustrator": "Tomokazu Komiya",
+          "provider_id": "pokecardex:14239",
+          "provider_title": "Farfetch'd - Unnumbered Promotional #41",
           "rarity": "Sans rareté",
           "series_code": "UPC",
           "series_name": "Unnumbered Promotional",
-          "sort": 23,
+          "sort": 41,
           "versions": [
             {
               "comment": "",
               "comment_us": "",
-              "id_card": 14221,
+              "id_card": 14239,
               "id_version": 1,
               "nom_version": "Standard",
               "nom_version_us": "Standard",
@@ -1031,20 +1071,20 @@
           ]
         },
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
-        "source_sort": 23
+        "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:041",
+        "source_sort": 41
       },
       "rarity_source": "Sans rareté",
-      "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
-      "romaji": "",
-      "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023",
+      "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+      "romaji": "Kamonegi",
+      "row_id": "jp_promo_corocoro_april_1998_19980315:041",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
           "catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-          "local_row_id": "023",
+          "local_row_id": "041",
           "not_claiming": [
             "complete promo family checklist",
             "unmodeled expected card row",
@@ -1054,57 +1094,74 @@
             "condition",
             "price truth"
           ],
-          "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+          "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
           "source": "Promo-family child source-slice rollup",
           "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
-          "source_sort": 23
+          "source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:041",
+          "source_sort": 41
         },
         {
-          "complete_source_boundary_denial": "",
+          "complete_source_boundary_denial": "complete magazine source",
           "expected_cards": [
-            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+            "Jynx",
+            "Cubone",
+            "Farfetch'd"
           ],
           "not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "oldid_url": "",
-          "retrieved_at": "2026-06-17T19:06:00Z",
-          "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
-          "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+          "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "retrieved_at": "2026-06-18T02:17:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the CoroCoro Comic April 1998 issue three-card insert source slice, including the unnumbered promo table rows for Jynx, Cubone, and Farfetch'd, March 15, 1998 date, Japanese name/transliteration lines, illustrator lines, and three-card insert release-context lines. This snapshot is not a full CoroCoro issue archive, not a full magazine-object ledger, not the later December 1998 mail-in prize-draw source, not an accessory counter or mounted-sheet variant census, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+          "snapshot_hash": "1b9d4941b3428435631c5bbe1354228798eb1cc2a356990937fd4e696d9acb8b",
           "snapshot_not_claiming": [
             "raw HTML snapshot",
-            "complete event source",
-            "official copy counts",
-            "plaque variant catalog",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later December 1998 mail-in prize-draw coverage",
+            "accessory counter or mounted-sheet variant census",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "approved image rights",
             "seller possession",
             "authenticity",
             "condition",
             "image rights",
             "complete marketplace pricing"
           ],
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
-          "snapshot_retrieval_method": "Codex web.open rendered text lines",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_april_1998_selected_lines.json",
+          "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia MediaWiki API revision inspection + existing PokéCardex UPC provider row inspection",
           "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-          "source": "Pokumon",
-          "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
-          "source_slice_authority_label": "source-pinned promo family card identity slice",
-          "supporting_page_urls": [],
+          "source": "Bulbapedia + PokéCardex",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
+          "supporting_page_urls": [
+            "https://bulbapedia.bulbagarden.net/wiki/Jynx_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Cubone_(CoroCoro_promo)",
+            "https://bulbapedia.bulbagarden.net/wiki/Farfetch%27d_(CoroCoro_promo)",
+            "https://www.pokecardex.com/en/series/jp/UPC"
+          ],
           "unmodeled_expected_cards": []
         },
         {
-          "card_data_hash": "b70a16fe3ea736cc5f1d714a223d93280eba970b1aff0951d08dbb795eabd962",
+          "card_data_hash": "d2b36a74b6620aac5b538a5899ea8c559d576953371847707a8cea899a437d0f",
           "encrypted_page_sha256": "f0682aeb6d667c86d8803ff93272fbb683d185b8323cc76568e557fac71144b3",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
@@ -1125,7 +1182,7 @@
           ],
           "promo_family_source_catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
-          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023",
+          "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:041",
           "series_code": "UPC",
           "source": "PokéCardex",
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
@@ -1143,11 +1200,11 @@
         "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
         "scope": "release_context_not_row_fact",
         "source_mode": "direct_promo_family_context",
-        "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+        "source_release_family_id": "jp_promo_corocoro_april_1998_19980315"
       },
       "tags": [
-        "jp_promo_lizardon_mega_battle_199711_199804",
-        "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "jp_promo_corocoro_april_1998_19980315",
+        "CoroCoro Comic April 1998 promos source slice",
         "promo family source slice",
         "source accounting recorded",
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -1184,17 +1241,17 @@
   "release": {
     "catalog_treatment": "Promo target source-slice",
     "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
-    "date_precision": "source_range_with_final_event",
+    "date_precision": "source_exact",
     "expected_row_count": 3,
     "expected_source_card_count": 3,
-    "name_en": "Lizardon / Charizard Mega Battle regional trophy source slice",
-    "name_ja": "リザードンメガバトル プロモ",
-    "note": "Narrow source-slice over the UPC aggregate regional Lizardon Mega Battle trophy rows. Use it to distinguish these rows from First Official Tournament trophy cards while keeping copy counts and plaque variants outside the row claim.",
+    "name_en": "CoroCoro Comic April 1998 promos source slice",
+    "name_ja": "月刊コロコロコミック1998年4月号プロモ",
+    "note": "Narrow source-slice over the UPC aggregate rows currently pinned to the CoroCoro Comic April 1998 issue. Use it to preserve the Jynx/Cubone/Farfetch'd three-card insert lane while keeping magazine-object, mail-in, counter/sheet, reprint-history, copy-count, and broader CoroCoro promo claims outside row authority.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Pokumon event context documents the Lizardon Mega Battle tournament arc and its regional No.1/No.2/No.3 Trainer trophy cards. This child slice models the three currently source-pinned PokéCardex UPC regional trophy rows; it does not claim official copy counts, plaque variants, complete award-object context, and it is not a complete family checklist beyond the source-pinned regional trophy row trio.",
-    "release_date": "1997-11-08/1998-04-26",
-    "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+    "product_count_basis": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as Unnumbered Promotional cards available together on a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998. The current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This child slice models those three source-pinned card identities only; it does not claim complete magazine-object provenance, later mail-in prize-draw coverage, accessory counter/sheet variants, reprint history, official copy counts, or a complete CoroCoro 1998 promo census. It is not a complete family checklist beyond the source-pinned card trio, and it is not a complete magazine-object ledger.",
+    "release_date": "1998-03-15",
+    "release_family_id": "jp_promo_corocoro_april_1998_19980315",
     "release_type": "promo_family_child_rollup_rows",
     "source_gap_count": 0,
     "strict_release_member": false,
@@ -1207,65 +1264,102 @@
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 3,
       "catalog_hash": "f1559c1a79ccabb09f2a08611ed0fdd54f756e73dc21790806d59f39f375f882",
-      "complete_source_boundary_denial": "",
+      "complete_source_boundary_denial": "complete magazine source",
       "expected_cards": [
-        "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-        "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-        "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
+        "Jynx",
+        "Cubone",
+        "Farfetch'd"
       ],
       "expected_source_card_count": 3,
       "family_context_source": {
-        "complete_source_boundary_denial": "",
+        "complete_source_boundary_denial": "complete magazine source",
         "extracted_claims": {
-          "event_date": "1998-04-26",
-          "regional_qualifier_window": "1997-11-08/1998-02-15",
-          "regional_trophy_card_count": 3,
-          "regional_trophy_cards": [
-            "No.1 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.2 Trainer (Regional Lizardon Mega Battle 1997)",
-            "No.3 Trainer (Regional Lizardon Mega Battle 1997)"
-          ]
+          "cards": [
+            {
+              "illustrator": "Atsuko Nishida",
+              "name_en": "Jynx",
+              "name_ja": "ルージュラ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/39.jpg",
+              "provider_sort": 39,
+              "romaji": "Rougela"
+            },
+            {
+              "illustrator": "Miki Tanaka",
+              "name_en": "Cubone",
+              "name_ja": "カラカラ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/40.jpg",
+              "provider_sort": 40,
+              "romaji": "Karakara"
+            },
+            {
+              "illustrator": "Tomokazu Komiya",
+              "name_en": "Farfetch'd",
+              "name_ja": "カモネギ",
+              "provider_image_path": "https://www.pokecardex.com/assets/images/sets_jp/UPC/41.jpg",
+              "provider_sort": 41,
+              "romaji": "Kamonegi"
+            }
+          ],
+          "source_card_count": 3,
+          "source_slice": "CoroCoro Comic April 1998 issue insert, released March 15, 1998"
         },
         "not_claiming": [
           "raw HTML snapshot",
-          "complete event source",
-          "official copy counts",
-          "plaque variant catalog",
+          "complete CoroCoro issue archive",
+          "complete magazine source",
+          "complete magazine-object ledger",
+          "later December 1998 mail-in prize-draw coverage",
+          "accessory counter or mounted-sheet variant census",
+          "theme-deck or expansion reprint census",
+          "official copy count",
+          "complete CoroCoro 1998 promo census",
+          "approved image rights",
           "seller possession",
           "authenticity",
           "condition",
           "image rights",
           "complete marketplace pricing"
         ],
-        "oldid_url": "",
-        "retrieved_at": "2026-06-17T19:06:00Z",
-        "selected_text": "Lizardon (Charizard) Mega Battle Tournaments\nThe Lizardon Mega Battle (also known as the Charizard Mega Battle, as Charizard's Japanese name is Lizardon), was the second official Pokemon TCG tournament.\nThe Lizardon Mega Battle was held on April 26, 1998.\nA series of qualifying tournaments were held across 6 locations in Japan from November 8, 1997 to February 15, 1998.\nThe top 3 players at each cup from each age division received No.1 - 3 Trainer cards.\nNo.1 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nNo.2 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nNo.3 Trainer (Regional Lizardon Mega Battle 1997) (Unnumbered)\nThe cards were presented in acrylic plaque which designated the cup that they were awarded at.",
-        "snapshot_content_scope": "Selected rendered lines for Lizardon Mega Battle event context and the regional No.1/No.2/No.3 Trainer trophy card headings. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
-        "snapshot_hash": "b8c6dd7e99ebe369257640468a04f447fb2c94561027c93bf50932da33de9a9b",
+        "oldid_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+        "retrieved_at": "2026-06-18T02:17:00Z",
+        "selected_text": "Jynx\nCoroCoro Comic\nApril 1998 issue insert (March 15, 1998)\nCubone\nCoroCoro Comic\nApril 1998 issue insert (March 15, 1998)\nFarfetch'd\nCoroCoro Comic\nApril 1998 issue insert (March 15, 1998)\nJynx\nルージュラ\nRougela\nAtsuko Nishida\nIn Japan, this card was first available as an\nUnnumbered Promotional card\non a three-card insert alongside\nCubone\nFarfetch'd\nin the April 1998 issue of\nCoroCoro\nComic\nCubone\nカラカラ\nKarakara\nMiki Tanaka\nIn Japan, this card was first available as an\nUnnumbered Promotional card\non a three-card insert alongside\nJynx\nFarfetch'd\nin the April 1998 issue of\nCoroCoro\nComic\nFarfetch'd\nカモネギ\nKamonegi\nTomokazu Komiya\nUnnumbered Promotional card\nwith different artwork by\nTomokazu Komiya\nand was available on a three-card insert alongside\nJynx\nCubone\nin the April 1998 issue of\nCoroCoro\nComic",
+        "snapshot_content_scope": "Selected rendered lines for the CoroCoro Comic April 1998 issue three-card insert source slice, including the unnumbered promo table rows for Jynx, Cubone, and Farfetch'd, March 15, 1998 date, Japanese name/transliteration lines, illustrator lines, and three-card insert release-context lines. This snapshot is not a full CoroCoro issue archive, not a full magazine-object ledger, not the later December 1998 mail-in prize-draw source, not an accessory counter or mounted-sheet variant census, not an official copy-count authority, not an image-rights grant, and not a raw HTML snapshot.",
+        "snapshot_hash": "1b9d4941b3428435631c5bbe1354228798eb1cc2a356990937fd4e696d9acb8b",
         "snapshot_not_claiming": [
           "raw HTML snapshot",
-          "complete event source",
-          "official copy counts",
-          "plaque variant catalog",
+          "complete CoroCoro issue archive",
+          "complete magazine source",
+          "complete magazine-object ledger",
+          "later December 1998 mail-in prize-draw coverage",
+          "accessory counter or mounted-sheet variant census",
+          "theme-deck or expansion reprint census",
+          "official copy count",
+          "complete CoroCoro 1998 promo census",
+          "approved image rights",
           "seller possession",
           "authenticity",
           "condition",
           "image rights",
           "complete marketplace pricing"
         ],
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
-        "snapshot_retrieval_method": "Codex web.open rendered text lines",
+        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_april_1998_selected_lines.json",
+        "snapshot_retrieval_method": "Codex urllib rendered text extraction + Bulbapedia MediaWiki API revision inspection + existing PokéCardex UPC provider row inspection",
         "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
-        "source": "Pokumon",
-        "source_page_url": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
-        "source_slice_authority_label": "source-pinned promo family card identity slice",
-        "supporting_page_urls": []
+        "source": "Bulbapedia + PokéCardex",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
+        "supporting_page_urls": [
+          "https://bulbapedia.bulbagarden.net/wiki/Jynx_(CoroCoro_promo)",
+          "https://bulbapedia.bulbagarden.net/wiki/Cubone_(CoroCoro_promo)",
+          "https://bulbapedia.bulbagarden.net/wiki/Farfetch%27d_(CoroCoro_promo)",
+          "https://www.pokecardex.com/en/series/jp/UPC"
+        ]
       },
       "modeled_source_rows": 3,
       "modeled_source_sorts": [
-        21,
-        22,
-        23
+        39,
+        40,
+        41
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -1282,16 +1376,16 @@
         "price truth"
       ],
       "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
-      "promo_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+      "promo_family_id": "jp_promo_corocoro_april_1998_19980315",
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
       "source_gap_count": 0,
-      "source_gap_reason": "Current PokéCardex UPC aggregate source-pins the three regional Lizardon Mega Battle trophy rows. The source slice models card identities only; it does not model plaque variants, award copies, or every physical award context.",
+      "source_gap_reason": "Bulbapedia documents Jynx, Cubone, and Farfetch'd as a three-card insert in the April 1998 issue of CoroCoro Comic, released on March 15, 1998, and the current PokéCardex UPC aggregate source-pins all three rows to matching CoroCoro April 1998 issue comments. This source slice models those three card identities only; it does not model the whole CoroCoro 1998 promo run, the later December 1998 mail-in prize draw, accessory counter/sheet variants, reprint history, official copy counts, or the complete magazine object.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
-      "source_slice_authority_label": "source-pinned promo family card identity slice",
+      "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
       "unmodeled_expected_cards": []
@@ -1308,6 +1402,6 @@
     "scope": "release_context_not_row_fact",
     "source": "data/pre-english-symbol-status.json, Japanese_Pre_English_Release_Map_v0.1.md, and selected promo-family context snapshot lines",
     "source_mode": "direct_promo_family_context",
-    "source_release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+    "source_release_family_id": "jp_promo_corocoro_april_1998_19980315"
   }
 }

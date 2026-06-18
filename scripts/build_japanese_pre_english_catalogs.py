@@ -135,6 +135,11 @@ COROCORO_MARCH_1998_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_corocoro_march_1998_selected_lines.json"
 )
+COROCORO_APRIL_1998_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_corocoro_april_1998_selected_lines.json"
+)
 N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -184,9 +189,9 @@ UPC_PRE_ENGLISH_PROMO_CONTEXT: dict[int, dict[str, str]] = {
     36: {"promo_family_id": "jp_promo_trade_please_199802", "date_label": "1998-02-10 to 1998-07-31", "date_source": "source_comment"},
     37: {"promo_family_id": "jp_promo_corocoro_march_1998_19980215", "date_label": "1998-02-15", "date_source": "source_comment"},
     38: {"promo_family_id": "jp_promo_corocoro_march_1998_19980215", "date_label": "1998-02-15", "date_source": "source_comment"},
-    39: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
-    40: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
-    41: {"promo_family_id": "jp_promo_corocoro_1998", "date_label": "1998-03-15", "date_source": "source_comment"},
+    39: {"promo_family_id": "jp_promo_corocoro_april_1998_19980315", "date_label": "1998-03-15", "date_source": "source_comment"},
+    40: {"promo_family_id": "jp_promo_corocoro_april_1998_19980315", "date_label": "1998-03-15", "date_source": "source_comment"},
+    41: {"promo_family_id": "jp_promo_corocoro_april_1998_19980315", "date_label": "1998-03-15", "date_source": "source_comment"},
     42: {"promo_family_id": "jp_promo_garura_parent_child_199805", "date_label": "1998-05", "date_source": "release_map"},
     43: {"promo_family_id": "jp_promo_garura_parent_child_199805", "date_label": "1998-05", "date_source": "release_map"},
     45: {"promo_family_id": "jp_promo_kamex_mega_battle_199807", "date_label": "1998-07 to 1998-08", "date_source": "release_map"},
@@ -732,6 +737,62 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "March 1998 issue comments. This source slice models those two card identities "
             "only; it does not model the whole CoroCoro 1998 promo run, later mail-in prize "
             "draws, reprint history, official copy counts, or the complete magazine object."
+        ),
+    },
+    "jp_promo_corocoro_april_1998_19980315": {
+        "source_snapshot": "corocoro_april_1998",
+        "expected_source_card_count": 3,
+        "complete_source_boundary_denial": "complete magazine source",
+        "source_slice_authority_label": "source-pinned CoroCoro April 1998 issue card identity slice",
+        "expected_cards": [
+            "Jynx",
+            "Cubone",
+            "Farfetch'd",
+        ],
+        "modeled_source_sorts": [39, 40, 41],
+        "unmodeled_expected_cards": [],
+        "expected_snapshot_texts": [
+            "Jynx",
+            "Cubone",
+            "Farfetch'd",
+            "CoroCoro Comic",
+            "April 1998 issue insert (March 15, 1998)",
+            "three-card insert alongside",
+            "ルージュラ",
+            "Rougela",
+            "カラカラ",
+            "Karakara",
+            "カモネギ",
+            "Kamonegi",
+            "Atsuko Nishida",
+            "Miki Tanaka",
+            "Tomokazu Komiya",
+        ],
+        "source_labeled_japanese_names": {
+            39: {
+                "name_ja": "ルージュラ",
+                "romaji": "Rougela",
+                "source_note": "Bulbapedia Jynx CoroCoro promo page identifies Jynx as Japanese: ルージュラ Rougela and documents the CoroCoro April 1998 insert context.",
+            },
+            40: {
+                "name_ja": "カラカラ",
+                "romaji": "Karakara",
+                "source_note": "Bulbapedia Cubone CoroCoro promo page identifies Cubone as Japanese: カラカラ Karakara and documents the CoroCoro April 1998 insert context.",
+            },
+            41: {
+                "name_ja": "カモネギ",
+                "romaji": "Kamonegi",
+                "source_note": "Bulbapedia Farfetch'd Base Set page identifies the CoroCoro promo as Japanese: カモネギ Kamonegi with different artwork and documents the CoroCoro April 1998 insert context.",
+            },
+        },
+        "source_gap_reason": (
+            "Bulbapedia documents Jynx, Cubone, and Farfetch'd as a three-card insert in "
+            "the April 1998 issue of CoroCoro Comic, released on March 15, 1998, and the "
+            "current PokéCardex UPC aggregate source-pins all three rows to matching "
+            "CoroCoro April 1998 issue comments. This source slice models those three "
+            "card identities only; it does not model the whole CoroCoro 1998 promo run, "
+            "the later December 1998 mail-in prize draw, accessory counter/sheet variants, "
+            "reprint history, official copy counts, or the complete magazine object."
         ),
     },
     "jp_promo_fan_club_vol3_19971118": {
@@ -1454,6 +1515,41 @@ RELEASES: tuple[ReleaseConfig, ...] = (
             "Misty's Staryu two-card insert lane while keeping magazine-object, "
             "mail-in, reprint-history, copy-count, and broader CoroCoro promo claims "
             "outside row authority."
+        ),
+    ),
+    ReleaseConfig(
+        release_family_id="jp_promo_corocoro_april_1998_19980315",
+        name_en="CoroCoro Comic April 1998 promos source slice",
+        name_ja="月刊コロコロコミック1998年4月号プロモ",
+        release_date="1998-03-15",
+        expected_row_count=3,
+        release_type="promo_family_child_rollup_rows",
+        prints_without_rarity_symbol="yes",
+        symbol_status_confidence="medium-high",
+        pokellector_path="",
+        date_precision="source_exact",
+        source_adapter="promo_family_child_rollup",
+        product_card_count=0,
+        product_count_basis=(
+            "Bulbapedia documents Jynx, Cubone, and Farfetch'd as Unnumbered Promotional "
+            "cards available together on a three-card insert in the April 1998 issue of "
+            "CoroCoro Comic, released on March 15, 1998. The current PokéCardex UPC "
+            "aggregate source-pins all three rows to matching CoroCoro April 1998 issue "
+            "comments. This child slice models those three source-pinned card identities "
+            "only; it does not claim complete magazine-object provenance, later mail-in "
+            "prize-draw coverage, accessory counter/sheet variants, reprint history, "
+            "official copy counts, or a complete CoroCoro 1998 promo census. It is not "
+            "a complete family checklist beyond the source-pinned card trio, and it is "
+            "not a complete magazine-object ledger."
+        ),
+        strict_release_member=False,
+        catalog_treatment="Promo target source-slice",
+        note=(
+            "Narrow source-slice over the UPC aggregate rows currently pinned to the "
+            "CoroCoro Comic April 1998 issue. Use it to preserve the Jynx/Cubone/"
+            "Farfetch'd three-card insert lane while keeping magazine-object, mail-in, "
+            "counter/sheet, reprint-history, copy-count, and broader CoroCoro promo "
+            "claims outside row authority."
         ),
     ),
     ReleaseConfig(
@@ -2206,6 +2302,26 @@ def corocoro_march_1998_source_snapshot() -> dict[str, Any]:
     }
 
 
+def corocoro_april_1998_source_snapshot() -> dict[str, Any]:
+    snapshot = json.loads(COROCORO_APRIL_1998_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
+    selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
+    return {
+        "source": snapshot.get("source", "Bulbapedia + PokéCardex"),
+        "snapshot_path": str(COROCORO_APRIL_1998_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "snapshot_hash": sha256_hex(snapshot),
+        "snapshot_schema": snapshot.get("schema", ""),
+        "snapshot_retrieval_method": snapshot.get("retrieval_method", ""),
+        "snapshot_content_scope": snapshot.get("content_scope", ""),
+        "snapshot_not_claiming": snapshot.get("not_claiming", []),
+        "source_page_url": snapshot.get("source_page_url", ""),
+        "supporting_page_urls": snapshot.get("supporting_page_urls", []),
+        "oldid_url": snapshot.get("oldid_url", ""),
+        "retrieved_at": snapshot.get("retrieved_at", ""),
+        "extracted_claims": snapshot.get("extracted_claims", {}),
+        "selected_text": selected_text,
+    }
+
+
 def n64_double_get_source_snapshot() -> dict[str, Any]:
     snapshot = json.loads(N64_DOUBLE_GET_SOURCE_SNAPSHOT_PATH.read_text(encoding="utf-8"))
     selected_text = "\n".join(str(line.get("text", "")) for line in snapshot.get("selected_lines", []))
@@ -2256,6 +2372,8 @@ def promo_family_context_snapshot(snapshot_id: str) -> dict[str, Any]:
         return latest_how_to_play_book_source_snapshot()
     if snapshot_id == "corocoro_march_1998":
         return corocoro_march_1998_source_snapshot()
+    if snapshot_id == "corocoro_april_1998":
+        return corocoro_april_1998_source_snapshot()
     if snapshot_id == "n64_double_get_campaign_1997":
         return n64_double_get_source_snapshot()
     raise ValueError(f"unknown promo family context snapshot {snapshot_id}")
@@ -4788,6 +4906,11 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         if isinstance(value, list):
             return any(has_legacy_key(child, key) for child in value)
         return False
+
+    if has_legacy_key(release, "source_slice_boundary_claim"):
+        failures.append("release_legacy_boundary_claim_key_present")
+    if has_legacy_key(release, "expected_complete_source_boundary"):
+        failures.append("release_legacy_expected_boundary_key_present")
 
     starter_source_release: dict[str, Any] = {}
     starter_source_rows: dict[str, dict[str, Any]] = {}
