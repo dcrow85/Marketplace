@@ -1,18 +1,61 @@
 {
+  "boundary_proof": {
+    "hash": "b5957cec55530bbfeb1abfd11dec13157db73cea74e1bcaeef21ae8e6346e28c",
+    "passed": true,
+    "path": "data/catalog-expansion/boundary-proof.json",
+    "proof_hash": "a03d808d18c2f79488f8bd1bec72c1a3c0ccdf29b27a7421d3691b3dd1214eef",
+    "sections": {
+      "english_pokemontcg_api": {
+        "not_claiming": [
+          "non-PokemonTCG-API supplemental coverage",
+          "post-WoC Nintendo/EX-era coverage",
+          "approved image rights",
+          "physical-card truth"
+        ],
+        "passed": true
+      },
+      "english_supplemental_sources": {
+        "not_claiming": [
+          "complete Jumbo coverage",
+          "all English miscellaneous products outside the named source register",
+          "approved image rights",
+          "physical-card truth"
+        ],
+        "passed": true
+      },
+      "japanese_promo_sources": {
+        "not_claiming": [
+          "campaign-level split for every unnumbered promo row",
+          "official source",
+          "post-boundary promo coverage",
+          "physical-card truth"
+        ],
+        "passed": true
+      },
+      "japanese_tcgdex_api": {
+        "not_claiming": [
+          "Japanese promo coverage from TCGdex",
+          "official source",
+          "post-cutoff ADV/PCG coverage",
+          "physical-card truth"
+        ],
+        "passed": true
+      }
+    }
+  },
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "completion_status": {
     "known_remaining_work": [
       "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
       "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
-      "Add a release-family coverage proof for any English miscellaneous/promotional products not exposed by Pokemon TCG API or TCGdex set lists.",
       "Unify row schema expectations across corpora if downstream agents require a single schema version."
     ],
-    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. English Jumbo remains active/partially resolved, and Japanese/English promo universe completeness still requires source-by-source boundary proof.",
+    "reason": "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved and aggregate promo slices may still need campaign-level splitting.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:15:08Z",
+  "generated_at": "2026-06-18T20:21:46Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "cfbe643da2a235d1983df91fae2095ee64ca2f2dedb000d2c322331214571066",
+  "ledger_hash": "34cfb5fd77e7514e1840ed99f3b49e20853771bc59f96eabae9b7b8b9214cadf",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",

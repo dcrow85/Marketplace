@@ -183,7 +183,9 @@ def row_invariant_summary() -> dict[str, Any]:
 def build() -> dict[str, Any]:
     corpora = [build_corpus_entry(config) for config in CORPUS_MANIFESTS]
     gap_register_path = "data/catalog-expansion/source-gaps.json"
+    boundary_proof_path = "data/catalog-expansion/boundary-proof.json"
     gap_register = read_json(gap_register_path)
+    boundary_proof = read_json(boundary_proof_path)
     invariant_summary = row_invariant_summary()
     modeled_rows = sum(corpus["row_count"] for corpus in corpora)
     modeled_releases = sum(corpus["release_count"] for corpus in corpora)
@@ -199,6 +201,19 @@ def build() -> dict[str, Any]:
         "modeled_row_count": modeled_rows,
         "modeled_corpora": corpora,
         "row_invariant_summary": invariant_summary,
+        "boundary_proof": {
+            "path": boundary_proof_path,
+            "hash": file_hash(boundary_proof_path),
+            "proof_hash": boundary_proof.get("proof_hash", ""),
+            "passed": bool(boundary_proof.get("passed")),
+            "sections": {
+                key: {
+                    "passed": bool(value.get("passed")),
+                    "not_claiming": value.get("not_claiming", []),
+                }
+                for key, value in boundary_proof.get("sections", {}).items()
+            },
+        },
         "source_gap_register": {
             "path": gap_register_path,
             "hash": file_hash(gap_register_path),
@@ -234,12 +249,12 @@ def build() -> dict[str, Any]:
             "status": "in_progress",
             "reason": (
                 "The modeled corpora cover the current source-backed slices, but the broad objective is not yet proven complete. "
-                "English Jumbo remains active/partially resolved, and Japanese/English promo universe completeness still requires source-by-source boundary proof."
+                "The boundary proof accounts for API-visible main-set/promo sources and selected promo source pages, while English Jumbo remains active/partially resolved "
+                "and aggregate promo slices may still need campaign-level splitting."
             ),
             "known_remaining_work": [
                 "Resolve or further bound the remaining English Jumbo source-gap rows without importing later-era rows.",
                 "Split aggregate Japanese unnumbered promo source-slice rows into campaign release families where exact product boundaries matter.",
-                "Add a release-family coverage proof for any English miscellaneous/promotional products not exposed by Pokemon TCG API or TCGdex set lists.",
                 "Unify row schema expectations across corpora if downstream agents require a single schema version.",
             ],
         },
