@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-18 · Codex — expanded the catalog source-gap register with
+  Japanese pre-cutoff ADV gaps exposed by TCGdex but not row-modelable from that source:
+  `ja/ADV1` (55 listed / 0 refs, 2003-01-31) and `ja/ADV2` (53 / 0, 2003-04-18).
+  These are before the English Skyridge / US WoC-era endpoint, so they remain in-scope
+  as explicit gaps. `ADV3` and later are after the cutoff and remain excluded from this
+  boundary unless the product boundary is deliberately widened.
 - `[passive]` 2026-06-18 · Codex — added a machine-readable source-gap register for
   supplemental products exposed by TCGdex but not card-row-modelable from that source:
   `data/catalog-expansion/source-gaps.json` plus builder

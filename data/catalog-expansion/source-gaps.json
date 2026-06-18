@@ -1,6 +1,6 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-  "gap_count": 3,
+  "gap_count": 5,
   "gaps": [
     {
       "authority_label": "legible",
@@ -133,9 +133,97 @@
         "total": 160
       },
       "source_gap_count": 160
+    },
+    {
+      "authority_label": "legible",
+      "boundary_note": "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "ja",
+      "name": "拡張パック",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "reason": "TCGdex lists the Japanese ADV Expansion Pack as a 55-card 2003-01-31 set but returns zero card refs in the set payload.",
+      "release_date": "2003-01-31",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "ADV",
+        "name": "ADV"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/ja/sets/ADV1",
+      "set_id": "ADV1",
+      "set_payload_hash": "809fe0326dd8be79ac0d80658c720b9002ad805e5be1de4814652aa1f85e5a50",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 55,
+        "reverse": 0,
+        "total": 55
+      },
+      "source_gap_count": 55
+    },
+    {
+      "authority_label": "legible",
+      "boundary_note": "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "ja",
+      "name": "砂漠のきせき",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "reason": "TCGdex lists Miracle of the Desert as a 53-card 2003-04-18 set but returns zero card refs in the set payload.",
+      "release_date": "2003-04-18",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "ADV",
+        "name": "ADV"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/ja/sets/ADV2",
+      "set_id": "ADV2",
+      "set_payload_hash": "a7987eab6c5b3c05df7433ba7d714928e6637f1e418e7cac5827751dbfc6a1a4",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 53,
+        "reverse": 0,
+        "total": 53
+      },
+      "source_gap_count": 53
     }
   ],
-  "generated_at": "2026-06-18T18:55:33Z",
+  "generated_at": "2026-06-18T18:58:54Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "complete catalog expansion gap inventory",
@@ -150,5 +238,5 @@
   "schema": "marketplace.catalog_expansion_gap_register.v0.1",
   "source": "TCGdex REST API",
   "source_docs_url": "https://tcgdex.dev/rest",
-  "total_source_gap_rows": 177
+  "total_source_gap_rows": 285
 }

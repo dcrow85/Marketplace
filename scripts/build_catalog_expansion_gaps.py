@@ -60,6 +60,18 @@ GAP_TARGETS: tuple[GapTarget, ...] = (
         "TCGdex lists Jumbo cards as a 160-card English miscellaneous set but returns zero card refs in the set payload.",
         "Jumbo is not safely bounded to the WoC era from this source alone; needs a row-level and date-bounded source before modeling.",
     ),
+    GapTarget(
+        "ja",
+        "ADV1",
+        "TCGdex lists the Japanese ADV Expansion Pack as a 55-card 2003-01-31 set but returns zero card refs in the set payload.",
+        "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
+    ),
+    GapTarget(
+        "ja",
+        "ADV2",
+        "TCGdex lists Miracle of the Desert as a 53-card 2003-04-18 set but returns zero card refs in the set payload.",
+        "Japanese 2003 set before the English Skyridge / US WoC-era endpoint; in scope as a source-visible gap, not safe to row-model without row-level card refs.",
+    ),
 )
 
 
