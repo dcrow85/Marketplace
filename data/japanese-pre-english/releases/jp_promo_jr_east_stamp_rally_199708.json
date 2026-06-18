@@ -64,7 +64,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+        "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
         "promo_family_source_sort": 14,
@@ -116,9 +116,9 @@
       },
       "local_id": "014",
       "name_en": "Surfing Pikachu",
-      "name_ja": "",
-      "name_ja_status": "missing_from_exact_source",
-      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "name_ja": "なみのりピカチュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Surfing Pikachu Wizards Promo page identifies Japanese: なみのりピカチュウ Surfing Pikachu; the Pokumon JR East Stamp Rally snapshot identifies the JR Train Rally 1997 Surfing Pikachu booklet card and matte/JR-train artwork distinction.",
       "not_claiming": [
         "seller possession",
         "authenticity",
@@ -151,24 +151,22 @@
         "authority": "Promo-family child source slice plus Japanese pre-English release map.",
         "catalog_treatment": "Promo target source-slice",
         "complete_source_boundary_denial": "",
-        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 1 source-pinned row(s) and records 1 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
         "date_precision": "source_range",
         "expected_source_card_count": 2,
         "japanese_set_name": "JR東日本ポケモンスタンプラリー プロモ",
         "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
         "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "product_card_count": 0,
-        "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the one currently source-pinned PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a source gap and is not a complete family checklist.",
+        "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the parent source-pinned Surfing Pikachu row and a bounded manual provider-path Mew row for the expected booklet counterpart; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete event source, complete booklet-object source, or copy-count source.",
         "release_date": "1997-08-09/1997-08-17",
         "release_type": "promo_family_child_rollup_rows",
         "source_aggregate_row": true,
-        "source_gap_count": 1,
+        "source_gap_count": 0,
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_release_member": false,
-        "unique_catalog_row_count": 1,
-        "unmodeled_expected_cards": [
-          "Mew (JR Train Rally 1997)"
-        ]
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
       },
       "promo_context": {
         "authority": "Promo distribution context derived from the source row comment and/or the Japanese pre-English release map. It is catalog scope, not proof of a physical card.",
@@ -194,7 +192,8 @@
         ],
         "expected_source_card_count": 2,
         "modeled_source_sorts": [
-          14
+          14,
+          15
         ],
         "not_claiming": [
           "complete promo family checklist",
@@ -206,9 +205,9 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
-        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
-        "source_gap_count": 1,
-        "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
+        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; Mew is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "014",
         "source_provider_sort": 14,
         "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
@@ -216,15 +215,13 @@
         "source_row_mode": "parent_aggregate_row",
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "strict_family_member_for_modeled_row": true,
-        "unmodeled_expected_cards": [
-          "Mew (JR Train Rally 1997)"
-        ]
+        "unmodeled_expected_cards": []
       },
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
-        "source_gap_count": 1,
+        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "source_gap_count": 0,
         "source_local_id": "014",
         "source_provider_row": {
           "adapter": "pokecardex",
@@ -266,13 +263,13 @@
       },
       "rarity_source": "Sans rareté",
       "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
-      "romaji": "",
+      "romaji": "Surfing Pikachu",
       "row_id": "jp_promo_jr_east_stamp_rally_199708:014",
       "schema": "marketplace.japanese_pre_english_card_row.v0.1",
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+          "catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "014",
           "not_claiming": [
@@ -331,13 +328,11 @@
           "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
           "source_slice_authority_label": "source-pinned promo family card identity slice",
           "supporting_page_urls": [],
-          "unmodeled_expected_cards": [
-            "Mew (JR Train Rally 1997)"
-          ]
+          "unmodeled_expected_cards": []
         },
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "c4d5a1e73b10259ac7a8324a2450b322e5cf780d1f9b629c1ddc73a7fa8e9c3a",
+          "encrypted_page_sha256": "8f57382a9be140aaabb4d1fa6e596f0d746f3420961c81edc12ece1b0670a015",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -355,7 +350,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+          "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
           "series_code": "UPC",
@@ -395,6 +390,376 @@
         "url": "",
         "variants": {}
       }
+    },
+    {
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Selected promo-family source snapshot",
+          "Bulbapedia card-page metadata where available",
+          "PokéCardex provider-path image convention"
+        ],
+        "note": "Mew is cataloged as the currently source-pinned row for JR East Pokemon Stamp Rally source slice. The useful claim is precise family context plus explicit source accounting; the physical card still needs seller evidence.",
+        "signals": [
+          "JR East Pokemon Stamp Rally source slice",
+          "1997-08-09/1997-08-17",
+          "promo family source slice",
+          "source accounting recorded",
+          "015",
+          "Unnumbered Promotional / Matte JR East Stamp Rally booklet print"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Selected source/card-page metadata only. Useful for catalog texture, not direct print authenticity proof.",
+        "display": "Illus. Ken Sugimori",
+        "name": "Ken Sugimori",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "source": "manual_source_gap_row"
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "selected promo-family context snapshot names the expected card",
+          "Bulbapedia card page supplies Japanese name/transliteration when available",
+          "provider path exists at the matching PokéCardex UPC image number",
+          "manual source-gap row because the parent aggregate does not currently expose a decrypted row",
+          "manual provider-path row for an expected card named by the promo-family context snapshot",
+          "family-level completeness checked against selected Pokumon lines with explicit source-gap accounting"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/15.jpg",
+        "image_role": "Provider-path-derived reference image for a manual source-gap row; not a parent aggregate decrypted row, not seller evidence, and not image-rights approval.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/UPC/15.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "parent aggregate decrypted row",
+          "complete promo family",
+          "unmodeled expected card row"
+        ],
+        "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/015",
+        "promo_family_source_sort": 15,
+        "provider_id": "pokecardex:UPC/015",
+        "provider_title": "Mew - manual UPC provider-path row #15",
+        "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_promo_jr_east_stamp_rally_199708:015",
+        "source": "PokéCardex provider path",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "status": "provider_path_reference_image",
+        "verification_status": "manual_provider_path_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "snapshot and card-page source contacts",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          }
+        ],
+        "audit_scope": "Promo-family child information architecture only. The row image and source lineage help agents compare the modeled UPC row, but they do not complete the promo family, authenticate a card, prove possession, condition, or price.",
+        "earns_keep": [
+          {
+            "field": "manual provider-path reference image",
+            "surface": "primary",
+            "why": "The agent needs a visual reference for an otherwise unmodeled expected card."
+          },
+          {
+            "field": "source-row mode",
+            "surface": "agent",
+            "why": "Prevents treating this row as a parent aggregate decrypted row."
+          }
+        ],
+        "promo_family_child_override": {
+          "authority": "Use promo_family_scope for family completeness; image_provenance remains row-reference only.",
+          "current_status": "provider_path_reference_image",
+          "primary_surface_rule": "Show the modeled row as a reference witness and keep expected source count, modeled rows, and any source gaps visible in agent-facing audit/detail views."
+        }
+      },
+      "local_id": "015",
+      "name_en": "Mew",
+      "name_ja": "ミュウ",
+      "name_ja_status": "source_labeled",
+      "name_source_note": "Bulbapedia Mew Wizards Promo page identifies Japanese: ミュウ Mew; the Pokumon JR East Stamp Rally snapshot identifies Mew (JR Train Rally 1997) as one of two matte booklet cards.",
+      "not_claiming": [
+        "parent aggregate decrypted row",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability",
+        "complete promo family checklist",
+        "complete source object",
+        "complete tournament source",
+        "complete campaign source",
+        "complete magazine source",
+        "complete event source",
+        "unmodeled expected card row",
+        "official copy count",
+        "condition"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [],
+        "hp": "40",
+        "level": "8",
+        "retreat": null,
+        "stage": "",
+        "types": [
+          "Psychic"
+        ]
+      },
+      "product_scope": {
+        "authority": "Promo-family child source slice plus Japanese pre-English release map.",
+        "catalog_treatment": "Promo target source-slice",
+        "complete_source_boundary_denial": "",
+        "counting_note": "This row is one member of a source-pinned child slice over UPC aggregate rows. The Pokumon context snapshot expects 2 cards for this family, while this slice currently models 2 source-pinned row(s) and records 0 source gap(s). It must not be read as a full promo-family checklist beyond the source-pinned and explicitly caveated scope.",
+        "date_precision": "source_range",
+        "expected_source_card_count": 2,
+        "japanese_set_name": "JR東日本ポケモンスタンプラリー プロモ",
+        "membership_note": "This modeled source row is pinned to this promo family; family completeness remains governed by source-slice counts and gaps.",
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "product_card_count": 0,
+        "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the parent source-pinned Surfing Pikachu row and a bounded manual provider-path Mew row for the expected booklet counterpart; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete event source, complete booklet-object source, or copy-count source.",
+        "release_date": "1997-08-09/1997-08-17",
+        "release_type": "promo_family_child_rollup_rows",
+        "source_aggregate_row": true,
+        "source_gap_count": 0,
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_release_member": false,
+        "unique_catalog_row_count": 2,
+        "unmodeled_expected_cards": []
+      },
+      "promo_child_source_row_mode": "manual_provider_path_gap_row",
+      "promo_context": {
+        "authority": "Promo distribution context derived from a selected source snapshot plus a bounded provider-path image witness. This is catalog scope, not proof of a physical card.",
+        "date_label": "1997-08-09/1997-08-17",
+        "date_source": "source_snapshot",
+        "distribution_comment": "JR East Pokemon Stamp Rally booklet prize (August 9-17, 1997)",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition"
+        ],
+        "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "source_sort": 15
+      },
+      "promo_family_scope": {
+        "authority": "Promo-family child source slice over the source-pinned UPC aggregate row plus a selected-line Pokumon context snapshot.",
+        "complete_family_modeled": false,
+        "complete_source_boundary_denial": "",
+        "expected_cards": [
+          "Surfing Pikachu (JR Train Rally 1997)",
+          "Mew (JR Train Rally 1997)"
+        ],
+        "expected_source_card_count": 2,
+        "modeled_source_sorts": [
+          14,
+          15
+        ],
+        "not_claiming": [
+          "complete promo family checklist",
+          "unmodeled expected card row",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth"
+        ],
+        "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "source_gap_count": 0,
+        "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; Mew is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
+        "source_local_id": "015",
+        "source_provider_sort": 15,
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/015",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_slice_authority_label": "source-pinned promo family card identity slice",
+        "strict_family_member_for_modeled_row": true,
+        "unmodeled_expected_cards": []
+      },
+      "provider_row": {
+        "adapter": "promo_family_child_rollup",
+        "expected_source_card_count": 2,
+        "source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+        "source_gap_count": 0,
+        "source_local_id": "015",
+        "source_provider_row": {
+          "adapter": "manual_provider_path_gap_row",
+          "comment": "JR East Pokemon Stamp Rally booklet prize (August 9-17, 1997)",
+          "image_large": "https://www.pokecardex.com/assets/images/sets_jp/UPC/15.jpg",
+          "manual_source_gap_row": true,
+          "name": "Mew",
+          "rarity": "Unnumbered Promotional / Matte JR East Stamp Rally booklet print",
+          "sort": 15,
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_%28Wizards_Promo_47%29"
+        },
+        "source_provider_version_boundary": {
+          "applied": false,
+          "not_claiming": [
+            "provider variant metadata authority",
+            "complete variant census",
+            "physical card print-state proof"
+          ]
+        },
+        "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "source_row_id": "manual-provider-path:pokecardex:UPC/015",
+        "source_row_mode": "manual_provider_path_gap_row",
+        "source_sort": 15
+      },
+      "rarity_source": "Unnumbered Promotional / Matte JR East Stamp Rally booklet print",
+      "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
+      "romaji": "Mew",
+      "row_id": "jp_promo_jr_east_stamp_rally_199708:015",
+      "schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "source_contacts": [
+        {
+          "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+          "catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+          "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "local_row_id": "015",
+          "not_claiming": [
+            "complete promo family checklist",
+            "unmodeled expected card row",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "promo_family_id": "jp_promo_jr_east_stamp_rally_199708",
+          "source": "Promo-family child source-slice rollup",
+          "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/015",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 15
+        },
+        {
+          "complete_source_boundary_denial": "",
+          "expected_cards": [
+            "Surfing Pikachu (JR Train Rally 1997)",
+            "Mew (JR Train Rally 1997)"
+          ],
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "oldid_url": "",
+          "retrieved_at": "2026-06-17T19:31:00Z",
+          "snapshot_content_scope": "Selected rendered lines for the 1997 JR East Stamp Rally event context, prize booklet, two-card claim, and matte/JR-train Surfing Pikachu distinction. This snapshot is not a full event archive and not a copy-count authority beyond the selected lines.",
+          "snapshot_hash": "2c8237c8b5014a9cb45844c22ef87868945c03b9f46eb171f2b3c83dcc1187a8",
+          "snapshot_not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ],
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "snapshot_retrieval_method": "Codex Python urllib rendered text extraction",
+          "snapshot_schema": "marketplace.source_snapshot.selected_rendered_lines.v0.1",
+          "source": "Pokumon",
+          "source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
+          "source_slice_authority_label": "source-pinned promo family card identity slice",
+          "supporting_page_urls": [],
+          "unmodeled_expected_cards": []
+        },
+        {
+          "family_context_source_page_url": "https://pokumon.com/japan-rail-east-stamp-rally-1997/",
+          "inherited_from_promo_family_source": true,
+          "not_claiming": [
+            "parent aggregate decrypted row",
+            "complete promo family checklist",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "complete source object",
+            "complete tournament source",
+            "complete campaign source",
+            "complete magazine source",
+            "complete event source",
+            "unmodeled expected card row"
+          ],
+          "promo_family_source_catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
+          "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+          "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/015",
+          "provider_image_path": "UPC/15.jpg",
+          "provider_image_url": "https://www.pokecardex.com/assets/images/sets_jp/UPC/15.jpg",
+          "snapshot_hash": "2c8237c8b5014a9cb45844c22ef87868945c03b9f46eb171f2b3c83dcc1187a8",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "source": "Manual source-gap row declaration",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Mew_%28Wizards_Promo_47%29",
+          "source_row_mode": "manual_provider_path_gap_row",
+          "source_sort": 15
+        }
+      ],
+      "symbol_status": {
+        "confidence": "medium-high",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "Base No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "yes",
+        "row_caveat": "Unnumbered promo context; not a Base No Rarity Expansion Pack claim.",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_promo_family_context",
+        "source_release_family_id": "jp_promo_jr_east_stamp_rally_199708"
+      },
+      "tags": [
+        "jp_promo_jr_east_stamp_rally_199708",
+        "JR East Pokemon Stamp Rally source slice",
+        "promo family source slice",
+        "source accounting recorded",
+        "1997-08-09/1997-08-17",
+        "Unnumbered Promotional / Matte JR East Stamp Rally booklet print",
+        "Pokemon"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
     }
   ],
   "not_claiming": [
@@ -416,32 +781,30 @@
   ],
   "release": {
     "catalog_treatment": "Promo target source-slice",
-    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_with_source_gap",
+    "count_confidence": "promo_family_child_source_pinned_card_identity_slice_closed",
     "date_precision": "source_range",
-    "expected_row_count": 1,
+    "expected_row_count": 2,
     "expected_source_card_count": 2,
     "name_en": "JR East Pokemon Stamp Rally source slice",
     "name_ja": "JR東日本ポケモンスタンプラリー プロモ",
-    "note": "Narrow source-slice over the UPC aggregate row currently pinned to the JR East Stamp Rally family. Use it to preserve the matte JR-train Surfing Pikachu lane while keeping the unmodeled Mew booklet card visible as a source gap.",
+    "note": "Narrow source-slice over the JR East Stamp Rally booklet family. Use it to preserve the Surfing Pikachu parent-row lineage and the Mew manual provider-path witness without promoting either to possession, authenticity, or image-rights proof.",
     "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
     "product_card_count": 0,
-    "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the one currently source-pinned PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a source gap and is not a complete family checklist.",
+    "product_count_basis": "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing Pikachu and Mew. This child slice models the parent source-pinned Surfing Pikachu row and a bounded manual provider-path Mew row for the expected booklet counterpart; manual provider-path rows are not parent aggregate decrypted rows. It is not a complete family checklist, complete event source, complete booklet-object source, or copy-count source.",
     "release_date": "1997-08-09/1997-08-17",
     "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
     "release_type": "promo_family_child_rollup_rows",
-    "source_gap_count": 1,
+    "source_gap_count": 0,
     "strict_release_member": false,
-    "unique_catalog_row_count": 1,
-    "unmodeled_expected_cards": [
-      "Mew (JR Train Rally 1997)"
-    ]
+    "unique_catalog_row_count": 2,
+    "unmodeled_expected_cards": []
   },
   "schema": "marketplace.japanese_pre_english_release_catalog.v0.1",
   "sources": [
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-      "cards_found": 1,
-      "catalog_hash": "9083c209984efc2593cdc1df2ceefa890566a52a9b36acdccb28cb18877c4f70",
+      "cards_found": 2,
+      "catalog_hash": "0e41429883a13e0c06f99633c1e6d4a4ed8ad44e2e1ee79b84bd2b4fefa5fe9a",
       "complete_source_boundary_denial": "",
       "expected_cards": [
         "Surfing Pikachu (JR Train Rally 1997)",
@@ -500,11 +863,19 @@
         "source_slice_authority_label": "source-pinned promo family card identity slice",
         "supporting_page_urls": []
       },
-      "manual_source_row_count": 0,
-      "manual_source_rows": [],
-      "modeled_source_rows": 1,
+      "manual_source_row_count": 1,
+      "manual_source_rows": [
+        {
+          "local_id": "015",
+          "name_en": "Mew",
+          "source_row_id": "manual-provider-path:pokecardex:UPC/015",
+          "source_sort": 15
+        }
+      ],
+      "modeled_source_rows": 2,
       "modeled_source_sorts": [
-        14
+        14,
+        15
       ],
       "not_claiming": [
         "complete promo family checklist",
@@ -526,17 +897,15 @@
       "release_map_path": "Japanese_Pre_English_Release_Map_v0.1.md",
       "release_map_sha256": "4393bad49dda6242af91fd4781fb1a045dc75c5371a0d219924ef39c790459be",
       "source": "Marketplace UPC aggregate promo-family child source-slice",
-      "source_gap_count": 1,
-      "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing Pikachu to this exact family. The Mew booklet card remains an explicit source gap.",
+      "source_gap_count": 0,
+      "source_gap_reason": "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; Mew is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
       "source_page_url": "local-rollup:data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
       "source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
       "source_release_type": "promo_aggregate_filtered_rows",
       "source_slice_authority_label": "source-pinned promo family card identity slice",
       "symbol_status_hash": "be057d141fa4c0a02229ed0657dbe8804f5bd3f6d672aac79409e0ce9b1b6642",
       "symbol_status_path": "data/pre-english-symbol-status.json",
-      "unmodeled_expected_cards": [
-        "Mew (JR Train Rally 1997)"
-      ]
+      "unmodeled_expected_cards": []
     }
   ],
   "symbol_status": {

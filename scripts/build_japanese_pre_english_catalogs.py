@@ -465,8 +465,29 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "Surfing Pikachu (JR Train Rally 1997)",
             "Mew (JR Train Rally 1997)",
         ],
-        "modeled_source_sorts": [14],
-        "unmodeled_expected_cards": ["Mew (JR Train Rally 1997)"],
+        "modeled_source_sorts": [14, 15],
+        "manual_source_rows": [
+            {
+                "source_sort": 15,
+                "local_id": "015",
+                "name_en": "Mew",
+                "name_ja": "ミュウ",
+                "romaji": "Mew",
+                "illustrator": "Ken Sugimori",
+                "category": "Pokemon",
+                "hp": "40",
+                "level": "8",
+                "types": ["Psychic"],
+                "rarity": "Unnumbered Promotional / Matte JR East Stamp Rally booklet print",
+                "image_large": f"{POKECARDEX_BASE}/assets/images/sets_jp/UPC/15.jpg",
+                "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Mew_%28Wizards_Promo_47%29",
+                "source_note": "Bulbapedia Mew Wizards Promo page identifies Japanese: ミュウ Mew; the Pokumon JR East Stamp Rally snapshot identifies Mew (JR Train Rally 1997) as one of two matte booklet cards.",
+                "distribution_comment": "JR East Pokemon Stamp Rally booklet prize (August 9-17, 1997)",
+                "date_label": "1997-08-09/1997-08-17",
+                "date_source": "source_snapshot",
+            }
+        ],
+        "unmodeled_expected_cards": [],
         "expected_snapshot_texts": [
             "Japan Rail East Stamp Rally 1997",
             "issued 2 of the earliest Pokemon promo cards",
@@ -477,10 +498,24 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
             "matte texture instead of glossy",
             "Mt. Fuji and a Japan Rail train",
         ],
+        "source_labeled_japanese_names": {
+            14: {
+                "name_ja": "なみのりピカチュウ",
+                "romaji": "Surfing Pikachu",
+                "source_note": "Bulbapedia Surfing Pikachu Wizards Promo page identifies Japanese: なみのりピカチュウ Surfing Pikachu; the Pokumon JR East Stamp Rally snapshot identifies the JR Train Rally 1997 Surfing Pikachu booklet card and matte/JR-train artwork distinction.",
+            },
+            15: {
+                "name_ja": "ミュウ",
+                "romaji": "Mew",
+                "source_note": "Bulbapedia Mew Wizards Promo page identifies Japanese: ミュウ Mew; the Pokumon JR East Stamp Rally snapshot identifies Mew (JR Train Rally 1997) as one of two matte booklet cards.",
+            },
+        },
         "source_gap_reason": (
             "Pokumon documents a two-card JR East Stamp Rally booklet with Surfing Pikachu "
-            "and Mew, but the current PokéCardex UPC aggregate source-pins only Surfing "
-            "Pikachu to this exact family. The Mew booklet card remains an explicit source gap."
+            "and Mew. Surfing Pikachu is inherited from the parent UPC aggregate row; "
+            "Mew is modeled as a manual provider-path gap row because the current parent "
+            "aggregate does not decrypt a dedicated row while the provider image path and "
+            "selected source lines remain usable as bounded references."
         ),
     },
     "jp_promo_toyota_auto_199710_199712": {
@@ -1488,7 +1523,7 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         name_en="JR East Pokemon Stamp Rally source slice",
         name_ja="JR東日本ポケモンスタンプラリー プロモ",
         release_date="1997-08-09/1997-08-17",
-        expected_row_count=1,
+        expected_row_count=2,
         release_type="promo_family_child_rollup_rows",
         prints_without_rarity_symbol="yes",
         symbol_status_confidence="medium-high",
@@ -1498,16 +1533,18 @@ RELEASES: tuple[ReleaseConfig, ...] = (
         product_card_count=0,
         product_count_basis=(
             "Pokumon documents a two-card JR East Stamp Rally booklet containing Surfing "
-            "Pikachu and Mew. This child slice models the one currently source-pinned "
-            "PokéCardex UPC row, Surfing Pikachu; it records the Mew booklet card as a "
-            "source gap and is not a complete family checklist."
+            "Pikachu and Mew. This child slice models the parent source-pinned Surfing "
+            "Pikachu row and a bounded manual provider-path Mew row for the expected "
+            "booklet counterpart; manual provider-path rows are not parent aggregate "
+            "decrypted rows. It is not a complete family checklist, complete event source, "
+            "complete booklet-object source, or copy-count source."
         ),
         strict_release_member=False,
         catalog_treatment="Promo target source-slice",
         note=(
-            "Narrow source-slice over the UPC aggregate row currently pinned to the JR East "
-            "Stamp Rally family. Use it to preserve the matte JR-train Surfing Pikachu lane "
-            "while keeping the unmodeled Mew booklet card visible as a source gap."
+            "Narrow source-slice over the JR East Stamp Rally booklet family. Use it to "
+            "preserve the Surfing Pikachu parent-row lineage and the Mew manual provider-path "
+            "witness without promoting either to possession, authenticity, or image-rights proof."
         ),
     ),
     ReleaseConfig(
