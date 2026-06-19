@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eleventh
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_discovery_v0_1.json`.
+  Neo Discovery is now a hand-authored release dossier, with Espeon 1,
+  Tyranitar 12, Umbreon 13, Espeon 20, Tyranitar 31, and Umbreon 32
+  promoted from generated baseline to sourced card dossiers. The pass
+  frames Neo Discovery as Johto excavation: ruins lineage, Unown/Ruin Wall
+  atmosphere, Eeveelution branching, and Darkness typing as discovery rather
+  than raw escalation. Added special identification rails for English neo2
+  versus Japanese Crossing the Ruins... context, holo/non-holo paired row
+  boundaries, Espeon 1 versus 20 illustrator/rarity split, Tyranitar 12
+  versus 31 shared-attack trap, and Umbreon 13 versus 32 artist/rarity split.
+  Sources: local English WoC catalog, Pokemon TCG API v2 set/card endpoints,
+  Bulbapedia community pages for Neo Discovery and the six promoted cards,
+  plus PSA's Neo Discovery 1st Edition collecting overview as a lower-tier
+  pack-context source. Generated gap moved from 197 releases / 4,496 cards
+  to 196 releases / 4,490 cards. Current catalog-history corpus: 22,922
+  claims, 4,904 sources, corpus hash
+  `64c7a1580a7c36bece18acb3bbd0070db206c8a1fedb835f1ca3b96831f89fb2`;
+  index hash `bf488c1adf2212e386643377ccc366809125bf2610079acbeeb25a3f32ed7965`;
+  queue hash `e4cc00a290ab78a5a14e71cd9f3a4d47036709356ce378461971c84220da8fa0`.
 - `[passive]` 2026-06-19 · Codex — completed the tenth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/legendary_collection_v0_1.json`.

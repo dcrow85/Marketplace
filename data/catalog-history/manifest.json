@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22925,
-    "corpus_hash": "48775a2a10e633ba89ec4d01c0854cc43b8e150550daf48b58640738c8f25414",
-    "generated_card_dossier_count": 4496,
-    "generated_release_dossier_count": 197,
+    "claim_count": 22922,
+    "corpus_hash": "64c7a1580a7c36bece18acb3bbd0070db206c8a1fedb835f1ca3b96831f89fb2",
+    "generated_card_dossier_count": 4490,
+    "generated_release_dossier_count": 196,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4889
+    "source_count": 4904
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "39810e1d740985ddcfde56cdbff4372e2654fb02e5cffef4436efd0c67aa08af",
+    "queue_hash": "e4cc00a290ab78a5a14e71cd9f3a4d47036709356ce378461971c84220da8fa0",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T02:27:34Z",
+  "generated_at": "2026-06-19T02:40:53Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "729b21c2c0144be1a88d442692416dc994271be11e8ef9da56b80c358c7bd53f",
+    "index_hash": "bf488c1adf2212e386643377ccc366809125bf2610079acbeeb25a3f32ed7965",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -49,6 +49,7 @@
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/legendary_collection_v0_1.json",
     "data/catalog-history/source-sets/neo_destiny_v0_1.json",
+    "data/catalog-history/source-sets/neo_discovery_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json"

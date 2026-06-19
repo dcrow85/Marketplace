@@ -1,0 +1,1171 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Neo Discovery and six rows that show Johto discovery, ruins-language, Eeveelution branching, Darkness typing, and holo/non-holo row boundaries.",
+    "in_scope": [
+      "Neo Discovery release dossier",
+      "Espeon 1",
+      "Tyranitar 12",
+      "Umbreon 13",
+      "Espeon 20",
+      "Tyranitar 31",
+      "Umbreon 32"
+    ],
+    "not_claiming": [
+      "complete Neo Discovery scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_neo_discovery_20010601",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Discovery",
+        "name_ja": "遺跡をこえて...",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "release_date": "2001-06-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json",
+          "title": "Local English WoC release catalog: Neo Discovery",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/neo2",
+          "title": "Pokemon TCG API v2 set record: Neo Discovery",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_Discovery_(TCG)",
+          "title": "Bulbapedia: Neo Discovery (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.psacard.com/articles/articleview/9436/psa-set-registry-collecting-2001-poke-mon-neo-discovery-1st-edition",
+          "title": "PSA: Collecting the 2001 Pokemon Neo Discovery 1st Edition Set",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Wizards statement",
+            "price truth",
+            "condition truth",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Neo Discovery with set id neo2 and an English release date of June 1, 2001.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model Neo Discovery with printedTotal 75 and total 75; the local corpus keeps 75 returned rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia connects Neo Discovery to the Japanese Crossing the Ruins... release context and describes the English set as expanded to include Non Holofoil prints of Rare Holo cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.vehicle",
+          "text": "PSA describes Neo Discovery 1st Edition booster packs as 11-card packs with seven commons, three uncommons, and one rare, and describes holographic cards as inserted in approximately one of every three packs.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Espeon, Tyranitar, Umbreon, Houndoom, Kabutops, Poliwrath, Scizor, Smeargle, Unown, and several paired Rare Holo / Rare branches.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Neo Discovery are led by CR CG gangs, Hironobu Yoshida, Kimiya Masago, Shin-ichi Yoshida, Sumiyoshi Kizuki, Atsuko Nishida, Aya Kusube, Naoyo Kimura, Yuka Morii, Miki Tanaka, and Yukiko Baba.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Neo Discovery matters because it gives the Neo era its archaeological mood: Johto's new species arrive through ruins, alphabets, and paired evolutions, so collecting the set feels less like finding bigger monsters and more like learning a new grammar.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_holo_nonholo_pairing_and_ruins_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese pack collation truth for every English row"
+          ],
+          "steps": [
+            "Confirm English set id neo2, name Neo Discovery, and 75-card local/API count before importing Japanese Crossing the Ruins... context.",
+            "Treat the Japanese title Crossing the Ruins... as release-lineage context, not proof that every English row was issued through the same Japanese product path.",
+            "When a species appears as both Rare Holo and Rare in this release, preserve card number, rarity, and illustrator before merging wants or listings.",
+            "For Espeon, separate number 1 Rare Holo from number 20 Rare; for Tyranitar, separate number 12 Rare Holo from number 31 Rare; for Umbreon, separate number 13 Rare Holo from number 32 Rare.",
+            "Do not use species popularity, Darkness/Psychic typing, or an image resemblance as a physical-card authenticity signal."
+          ],
+          "summary": "Neo Discovery's collector traps are mostly row-boundary traps: ruins lineage, paired holo/non-holo identities, and repeated species names must stay explicit.",
+          "trigger": "A listing, want, or agent search references Neo Discovery, Crossing the Ruins..., Espeon, Umbreon, Tyranitar, or a generic holo/non-holo Neo row."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Johto as an excavation",
+        "why_it_matters": "Neo Discovery is where the second generation starts to feel ancient instead of merely new. Espeon and Umbreon make Eevee feel newly branching, Tyranitar gives Darkness a heavy body, and the Unown/Ruin Wall atmosphere turns the binder page into a little dig site. It is a set about finding out that Pokemon history has rooms behind it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-1",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon",
+        "name_ja": "エーフィ",
+        "romaji": "Eifie",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-1",
+        "catalog_row_id": "neo2-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-1",
+          "title": "Local English WoC card row: Espeon 1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-1",
+          "title": "Pokemon TCG API v2 card record: Espeon neo2-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Neo_Discovery_1)",
+          "title": "Bulbapedia: Espeon (Neo Discovery 1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Espeon as Neo Discovery number 1, a Rare Holo Stage 1 Psychic Pokemon credited to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Espeon 1 with Bite and Psychic; Psychic scales upward for each Energy attached to the Defending Pokemon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Espeon 1 to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Espeon 1 matters because it is the holo introduction of the sun-side Eevee branch in English Neo Discovery: elegant, Psychic, and treated by the set as a headline discovery rather than a footnote evolution.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_espeon_1_vs_20_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 1/75 and Rare Holo before using this row for a want or seller offer.",
+            "Record Atsuko Nishida as the illustrator for this holo row.",
+            "Do not collapse this row into Neo Discovery Espeon 20/75, which is Rare, non-holo in the API/local row, and credited to Naoyo Kimura.",
+            "Do not collapse this row into Dark Espeon from Neo Destiny or later Espeon e-Reader rows.",
+            "Use images only as comparison aids; the catalog row does not prove a submitted physical card is holo, authentic, or in the stated condition."
+          ],
+          "summary": "Espeon 1 is the Atsuko Nishida Rare Holo row; Espeon 20 is a separate Naoyo Kimura Rare row.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Espeon, Espeon holo, or Espeon 1/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The daylight Eeveelution arrives",
+        "why_it_matters": "This Espeon has that early-Johto thrill: Eevee suddenly has a future that feels graceful instead of simply stronger. In Neo Discovery, the holo slot makes that branching feel ceremonial. Atsuko Nishida's credit gives the card an origin-touch too; one of Pokemon's defining designers is there when the Eeveelution family opens another door.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-12",
+      "type": "card",
+      "context": {
+        "name_en": "Tyranitar",
+        "name_ja": "バンギラス",
+        "romaji": "Bangiras",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-12",
+        "catalog_row_id": "neo2-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-12",
+          "title": "Local English WoC card row: Tyranitar 12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-12",
+          "title": "Pokemon TCG API v2 card record: Tyranitar neo2-12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tyranitar_(Neo_Discovery_12)",
+          "title": "Bulbapedia: Tyranitar (Neo Discovery 12)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Tyranitar 12 as a Neo Discovery Rare Holo Stage 2 Darkness Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Tyranitar 12 with Slam and Trample; Trample can damage Benched Pokemon after coin flips, giving the card a board-wide destructive flavor.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Tyranitar 12 to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Tyranitar 12 matters because Neo Discovery gives Darkness a kaiju-like body: not a trick, not a villain costume, but a huge new Johto final evolution that can shake the whole board.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_tyranitar_12_vs_31_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 12/75 and Rare Holo before treating this as the holo Tyranitar row.",
+            "Record Hironobu Yoshida as illustrator and keep Darkness Stage 2 context attached.",
+            "Separate this row from Neo Discovery Tyranitar 31/75, which the API/local catalog model as Rare rather than Rare Holo.",
+            "Because the API/local catalog show the same attack package for 12 and 31, do not use attack text alone to decide the row.",
+            "Do not use a Tyranitar image resemblance as proof that the submitted physical card is holo or authentic."
+          ],
+          "summary": "Tyranitar 12 and Tyranitar 31 share much of their catalog identity; card number and rarity carry the row boundary.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Tyranitar, Tyranitar holo, or Tyranitar 12/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Darkness gets heavy",
+        "why_it_matters": "Tyranitar is the moment Neo Discovery stops whispering and starts rumbling. The ruins mood is still there, but this card turns it into mass: a Darkness-type final evolution with an attack literally called Trample. Hironobu Yoshida's row feels like Johto's mystery developing teeth.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-13",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "ブラッキー",
+        "romaji": "Blacky",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-13",
+        "catalog_row_id": "neo2-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-13",
+          "title": "Local English WoC card row: Umbreon 13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-13",
+          "title": "Pokemon TCG API v2 card record: Umbreon neo2-13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Umbreon_(Neo_Discovery_13)",
+          "title": "Bulbapedia: Umbreon (Neo Discovery 13)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Umbreon 13 as a Neo Discovery Rare Holo Stage 1 Darkness Pokemon credited to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Umbreon 13 with Bite and Feint Attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Umbreon 13 to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Umbreon 13 matters because it is the moon-side Eevee branch arriving as a headline Darkness holo, giving Neo Discovery one of its cleanest character-and-type fusions.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_umbreon_13_vs_32_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 13/75 and Rare Holo before using this as the holo Umbreon row.",
+            "Record Kimiya Masago as illustrator for the holo row.",
+            "Do not collapse this row into Umbreon 32/75, which the API/local catalog model as Rare and credit to Naoyo Kimura.",
+            "Do not collapse this row into Dark Umbreon, Umbreon star, or later e-Reader / ex-era Umbreon rows.",
+            "Use the Darkness-type signal as catalog identity only, not as authentication or price evidence."
+          ],
+          "summary": "Umbreon 13 is the Kimiya Masago Rare Holo row; Umbreon 32 is a separate Naoyo Kimura Rare row.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Umbreon, Umbreon holo, or Umbreon 13/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The night branch clicks into place",
+        "why_it_matters": "Umbreon is one of those cards where the set's whole idea becomes obvious. Neo Discovery is about finding hidden branches, and here Eevee's hidden branch is literally Darkness. Kimiya Masago's credited holo row turns the evolution into a small piece of night in the binder.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-20",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon",
+        "name_ja": "エーフィ",
+        "romaji": "Eifie",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-20",
+        "catalog_row_id": "neo2-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-20",
+          "title": "Local English WoC card row: Espeon 20",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-20",
+          "title": "Pokemon TCG API v2 card record: Espeon neo2-20",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Neo_Discovery_20)",
+          "title": "Bulbapedia: Espeon (Neo Discovery 20)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Espeon 20 as a Neo Discovery Rare Stage 1 Psychic Pokemon credited to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Espeon 20 with Quick Attack and Psybeam, including a confusion effect on Psybeam after a successful coin flip.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Espeon 20 to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia's Neo Discovery release page notes that Neo Discovery was expanded to include Non Holofoil prints of Rare Holo cards; the local row keeps Espeon 20 as its own Rare row.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Espeon 20 matters because it shows the set's non-holo branch is not just a cheaper shadow of the holo; it has its own number, attack package, HP, and artist credit.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_espeon_20_nonholo_branch_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm card number 20/75 and Rare status before treating this as the non-holo Espeon row.",
+            "Record Naoyo Kimura as illustrator for this row.",
+            "Compare against Espeon 1/75 only after preserving the different number, rarity, HP, attacks, and illustrator.",
+            "If a listing says only 'Neo Discovery Espeon,' ask whether it is number 1/75 Rare Holo or number 20/75 Rare before routing the want.",
+            "Do not infer physical holofoil absence or authenticity from catalog row identity alone."
+          ],
+          "summary": "Espeon 20 is the Naoyo Kimura Rare row; ambiguity with Espeon 1 should trigger a clarifying question.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Espeon without a number or says Espeon 20/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The quieter Espeon branch",
+        "why_it_matters": "This is the card that reminds an agent not to let popularity flatten identity. Espeon 20 is not merely 'the other Espeon'; it has a different artist, a different game text shape, and a different job in the set. For collectors, that is exactly the kind of quiet row where a binder becomes precise.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-31",
+      "type": "card",
+      "context": {
+        "name_en": "Tyranitar",
+        "name_ja": "バンギラス",
+        "romaji": "Bangiras",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-31",
+        "catalog_row_id": "neo2-31"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-31",
+          "title": "Local English WoC card row: Tyranitar 31",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-31",
+          "title": "Pokemon TCG API v2 card record: Tyranitar neo2-31",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tyranitar_(Neo_Discovery_31)",
+          "title": "Bulbapedia: Tyranitar (Neo Discovery 31)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Tyranitar 31 as a Neo Discovery Rare Stage 2 Darkness Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Tyranitar 31 with the same Slam and Trample attack names and text as Tyranitar 12.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Tyranitar 31 to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia's Neo Discovery release page notes that Neo Discovery was expanded to include Non Holofoil prints of Rare Holo cards; the local row keeps Tyranitar 31 as its own Rare row.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Tyranitar 31 matters because it shows why row identity cannot be inferred from text alone: a collector or agent needs number and rarity, not just name and attacks.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_tyranitar_31_nonholo_branch_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm card number 31/75 and Rare status before treating this as the non-holo Tyranitar row.",
+            "Record Hironobu Yoshida as illustrator, but do not use the shared artist credit to merge it with Tyranitar 12.",
+            "Because Tyranitar 12 and 31 share the same attack package in the API/local data, preserve card number and rarity as the decisive row fields.",
+            "If a listing says 'Tyranitar Neo Discovery' without number or holo status, ask for the number and a clear lower-front image before routing the offer.",
+            "Do not infer physical holofoil absence or authenticity from catalog row identity alone."
+          ],
+          "summary": "Tyranitar 31 is the Rare row, and attack text alone cannot separate it from Tyranitar 12.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Tyranitar without a number or says Tyranitar 31/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The same monster, a different row",
+        "why_it_matters": "Tyranitar 31 is a perfect agent-training card. It looks easy because the name, artist, typing, and attacks line up with the holo row. That is exactly why it matters: the catalog has to teach the agent to slow down and ask for the row boundary before it acts.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_discovery_20010601:neo2-32",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "ブラッキー",
+        "romaji": "Blacky",
+        "release_family_id": "en_wotc_neo_discovery_20010601",
+        "row_id": "en_wotc_neo_discovery_20010601:neo2-32",
+        "catalog_row_id": "neo2-32"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_discovery_20010601.json#row:en_wotc_neo_discovery_20010601:neo2-32",
+          "title": "Local English WoC card row: Umbreon 32",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo2-32",
+          "title": "Pokemon TCG API v2 card record: Umbreon neo2-32",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Umbreon_(Neo_Discovery_32)",
+          "title": "Bulbapedia: Umbreon (Neo Discovery 32)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Umbreon 32 as a Neo Discovery Rare Stage 1 Darkness Pokemon credited to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Umbreon 32 with Quick Attack and Pursuit; Pursuit adds damage if the Defending Pokemon tries to retreat on the opponent's next turn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Umbreon 32 to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia's Neo Discovery release page notes that Neo Discovery was expanded to include Non Holofoil prints of Rare Holo cards; the local row keeps Umbreon 32 as its own Rare row.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon 32 matters because it is the quieter counterpart to the headline holo, preserving the moon-side Eeveelution while changing artist, HP, and attack texture.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_discovery_umbreon_32_nonholo_branch_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm card number 32/75 and Rare status before treating this as the non-holo Umbreon row.",
+            "Record Naoyo Kimura as illustrator for this row.",
+            "Compare against Umbreon 13/75 only after preserving the different number, rarity, HP, attacks, and illustrator.",
+            "If a listing says only 'Neo Discovery Umbreon,' ask whether it is number 13/75 Rare Holo or number 32/75 Rare before routing the want.",
+            "Do not infer physical holofoil absence or authenticity from catalog row identity alone."
+          ],
+          "summary": "Umbreon 32 is the Naoyo Kimura Rare row; ambiguity with Umbreon 13 should trigger a clarifying question.",
+          "trigger": "A listing, want, or binder import says Neo Discovery Umbreon without a number or says Umbreon 32/75."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The non-holo moon path",
+        "why_it_matters": "Umbreon 32 is where the binder gets honest about wanting detail. It is still Umbreon, still Darkness, still Neo Discovery, but the row is not the holo. For an agent, that distinction is not clerical; it is the difference between helping a collector and steering them wrong.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
