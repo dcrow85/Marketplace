@@ -1,0 +1,670 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Team Rocket and three chase/structure cards.",
+    "in_scope": [
+      "English Team Rocket release dossier",
+      "Dark Blastoise holo",
+      "Dark Charizard holo",
+      "Dark Raichu secret card"
+    ],
+    "not_claiming": [
+      "complete Team Rocket scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "official market ranking"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_team_rocket_20000424",
+      "type": "release",
+      "context": {
+        "name_en": "Team Rocket",
+        "name_ja": "",
+        "release_family_id": "en_wotc_team_rocket_20000424",
+        "release_date": "2000-04-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_team_rocket_20000424.json",
+          "title": "Local English WoC release catalog: Team Rocket",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base5",
+          "title": "Pokémon TCG API v2 set record: Team Rocket",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official narrative essay",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Team_Rocket_(TCG)&action=raw",
+          "title": "Bulbapedia raw wikitext: Team Rocket (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "official copy-count proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API both record April 24, 2000 as the English Team Rocket release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The Pokémon TCG API set record reports printedTotal 82 and total 83 for Team Rocket, while the local catalog models 83 card rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Team Rocket as the fifth main English expansion and says the Japanese set name was Rocket Gang.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Team Rocket introduced Dark Pokémon and describes their dark artwork windows, evolution boxes, and Pokédex boxes as a visual system distinct from normal Pokémon cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia lists Dark Raichu as 83/82, and the local/API catalog rows preserve that over-numbered Secret Rare structure as Team Rocket's 83rd card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Dark Blastoise, Dark Charizard, Dark Gyarados, Dark Dragonite, Dark Raichu, and holo Trainer cards such as Here Comes Team Rocket! and Rocket's Sneak Attack.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Team Rocket are led by Kagemaru Himeno, Mitsuhiro Arita, Ken Sugimori, Sumiyoshi Kizuki, and Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Team Rocket matters because it turns the binder into a moral weather system: familiar Generation I creatures are reintroduced through ownership, neglect, and villain framing, while the checklist itself hides a structural wink in Dark Raichu's 83/82 numbering.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_dark_pokemon_and_secret_numbering_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Dark Pokémon cards are equally scarce"
+          ],
+          "steps": [
+            "Confirm the card belongs to English Team Rocket / set id base5.",
+            "For Dark Pokémon, preserve the Dark-name identity rather than merging with the normal species row.",
+            "For Dark Raichu, preserve the 83/82 over-numbering and Secret Rare structure.",
+            "Do not treat Team Rocket's villain theme as evidence of condition, authenticity, or market value."
+          ],
+          "summary": "Team Rocket identification lives on two rails: Dark Pokémon naming/visual framing and the 83/82 Dark Raichu secret-card exception.",
+          "trigger": "Explaining or identifying English Team Rocket cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When the binder learned to misbehave",
+        "why_it_matters": "Team Rocket is the set where the familiar gets tilted. The starters and icons are still there, but the card frame has learned a villain's grammar: Dark names, sharper tradeoffs, blackened windows, secret numbering. It is not just a checklist after Base Set 2; it is the hobby discovering that a set can have a mood.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_team_rocket_20000424:base5-3",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_team_rocket_20000424",
+        "row_id": "en_wotc_team_rocket_20000424:base5-3",
+        "catalog_row_id": "3"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_team_rocket_20000424.json#row:en_wotc_team_rocket_20000424:base5-3",
+          "title": "Local Team Rocket row: Dark Blastoise 3/82",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base5-3",
+          "title": "Pokémon TCG API v2 card record: Dark Blastoise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Team_Rocket_(TCG)&action=raw",
+          "title": "Bulbapedia raw wikitext: Team Rocket set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Blastoise as Team Rocket row base5-3 / card number 3.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog, Pokémon TCG API, and Bulbapedia set list all treat Dark Blastoise 3/82 as a Rare Holo Team Rocket card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Mitsuhiro Arita as the illustrator for Dark Blastoise 3/82.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API row records Dark Blastoise as a Stage 2 Water Pokémon with Hydrocannon and Rocket Tackle attacks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Blastoise matters because it lets Team Rocket corrupt a mascot-tier starter evolution without losing the silhouette collectors know; the card is both familiar and newly suspect.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The heavy starter turned sideways",
+        "why_it_matters": "Dark Blastoise is the set's trick in miniature: you already know the shell, the cannons, the weight. Then Team Rocket changes the light around it. Arita's row sits right where collector memory meets the set's darker premise.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_team_rocket_20000424:base5-4",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_team_rocket_20000424",
+        "row_id": "en_wotc_team_rocket_20000424:base5-4",
+        "catalog_row_id": "4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_team_rocket_20000424.json#row:en_wotc_team_rocket_20000424:base5-4",
+          "title": "Local Team Rocket row: Dark Charizard 4/82",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base5-4",
+          "title": "Pokémon TCG API v2 card record: Dark Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Team_Rocket_(TCG)&action=raw",
+          "title": "Bulbapedia raw wikitext: Team Rocket set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Charizard as Team Rocket row base5-4 / card number 4.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog, Pokémon TCG API, and Bulbapedia set list all treat Dark Charizard 4/82 as a Rare Holo Team Rocket card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Ken Sugimori as the illustrator for Dark Charizard 4/82.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API row records Dark Charizard as a Stage 2 Fire Pokémon with Nail Flick and Continuous Fireball attacks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Charizard matters because it is the set's most obvious pressure point: Charizard already carried Base-era gravity, and Team Rocket's Dark frame turns that gravity into a villain-story test.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The obvious danger card",
+        "why_it_matters": "Dark Charizard barely needs explanation, which is why the dossier has to be careful. The card arrives loaded with Charizard memory, then Team Rocket makes it sharper, stranger, and more theatrical. The job is to honor that pull without letting hype become evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_team_rocket_20000424:base5-83",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Raichu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_team_rocket_20000424",
+        "row_id": "en_wotc_team_rocket_20000424:base5-83",
+        "catalog_row_id": "83"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_team_rocket_20000424.json#row:en_wotc_team_rocket_20000424:base5-83",
+          "title": "Local Team Rocket row: Dark Raichu 83/82",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base5-83",
+          "title": "Pokémon TCG API v2 card record: Dark Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Team_Rocket_(TCG)&action=raw",
+          "title": "Bulbapedia raw wikitext: Team Rocket set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Raichu as Team Rocket row base5-83 / card number 83.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokémon TCG API record Dark Raichu as Rare Secret, while Bulbapedia lists the set-list number as 83/82 and rarity as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Mitsuhiro Arita as the illustrator for Dark Raichu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API row records Dark Raichu as a Stage 1 Lightning Pokémon with Surprise Thunder.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Raichu matters because it changes the checklist itself: 83/82 makes the secret-card idea visible as a counting problem, not just a rare pull.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_dark_raichu_secret_number_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm the row is English Team Rocket Dark Raichu.",
+            "Confirm the printed/set-list number is 83/82, not a regular 1-82 row.",
+            "Preserve the Rare Secret / Rare Holo source-language difference instead of flattening it.",
+            "Do not treat the secret numbering as physical-card authenticity proof."
+          ],
+          "summary": "Dark Raichu is load-bearing because of the 83/82 secret-number structure; preserve the numbering and source-language nuance.",
+          "trigger": "Identifying or explaining English Team Rocket Dark Raichu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The number that breaks the page",
+        "why_it_matters": "Dark Raichu is the card where Team Rocket stops only darkening the Pokémon and starts bending the checklist. 83/82 is tiny, almost silly, and absolutely electric: a secret hiding in arithmetic.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

@@ -55,6 +55,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the first post-baseline
+  hand-researched deepening pass in `data/catalog-history/source-sets/team_rocket_v0_1.json`.
+  Team Rocket is now a hand-authored release dossier, and Dark Blastoise
+  3/82, Dark Charizard 4/82, and Dark Raichu 83/82 are hand-authored card
+  dossiers rather than generated baselines. Sources: local English WoC catalog,
+  Pokémon TCG API v2 set/card endpoints, and Bulbapedia raw wikitext for Team
+  Rocket/Dark Pokémon/83-82 context. Generated gap moved from 207 releases /
+  4,545 cards to 206 releases / 4,542 cards. Current catalog-history corpus:
+  22,948 claims, 4,772 sources, corpus hash
+  `a3331ef872e822b27d390cad86ee342469f0380d71eda54a68718d1afd0a33f7`;
+  index hash `0e1721be6eb333abe9b1f775cfae73b98009c7f624d8af7c5065edbf471e5a22`;
+  queue hash `5e92d0df3818a442a9f0ae39441019be0beb1e4f1730ee106eb08dfe5adbb19e`.
 - `[passive]` 2026-06-19 · Codex — enriched generated catalog-history
   dossiers with local-catalog assembly profiles and added a prioritized
   research queue at `data/catalog-history/deepening-queue.json`. Generated
