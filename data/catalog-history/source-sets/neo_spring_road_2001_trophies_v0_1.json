@@ -1,0 +1,1331 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Six-release deepening tranche for Neo Spring Road / Neo Battle Road 2001 trophy promos: regional No.1/No.2/No.3 Trainer rows 222-224 and Best in Japan No.1/No.2/No.3 Trainer rows 230-232. The tranche emphasizes tournament placement as identity, regional-versus-finals route, boy/regional wording, artist and foil-treatment split, collector-estimated copy counts, and special identification instructions for agents handling trophy-card claims.",
+    "in_scope": [
+      "Neo Spring Road regional first place prize",
+      "Neo Spring Road regional second place prize",
+      "Neo Spring Road regional third place prize",
+      "Neo Spring Road Best in Japan first place prize",
+      "Neo Spring Road Best in Japan second place prize",
+      "Neo Spring Road Best in Japan third place prize",
+      "No.1 Trainer row 222",
+      "No.2 Trainer row 223",
+      "No.3 Trainer row 224",
+      "No.1 Trainer row 230",
+      "No.2 Trainer row 231",
+      "No.3 Trainer row 232",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Neo Battle Road archive",
+      "official tournament ledger",
+      "official copy count",
+      "complete entrant list",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_222_neo_spring_road_regional_first_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_222_neo_spring_road_regional_first_place_prize",
+        "name_en": "Neo Spring Road regional first place prize",
+        "source_row": "222",
+        "modeled_card": "No.1 Trainer",
+        "event_context": "Neo Battle Road 2001 / Neo Spring Road regional"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road regional first place prize row: No.1 Trainer row 222.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as Boy Neo Spring No.1 Trainer from Neo Battle Road 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this regional No.1 Trainer as Ken Sugimori art, non-holo, Japanese, with an estimated 18 copies. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This card matters because a trophy Trainer is not primarily character memory; it is placement memory. No.1 means first-place route, regional tier, and the spring event apparatus before it means card art.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 222, Neo Spring Road regional first-place route, No.1 Trainer title, Ken Sugimori/non-holo regional context, and non-equivalence with Best in Japan finals, Neo Summer Road, other No.1 Trainer eras, and later trophy cards before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Battle Road 2001",
+          "regional first-place trophy",
+          "No.1 Trainer placement identity",
+          "Ken Sugimori regional art",
+          "non-holo trophy route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_222_neo_spring_road_regional_first_place_prize:222",
+            "name": "No.1 Trainer",
+            "why": "The chase is the placement itself: row 222 is a regional first-place proof object, not a normal collectible release.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "No.1 Trainer"
+            ],
+            "why": "Sugimori's name sits on the regional trophy route, while the finals route uses Takumi Akabane. That artist split is a useful identity boundary.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Regional No.1 Trainer — first place as provenance",
+        "why_it_matters": "A No.1 Trainer is almost pure assembly. The card is not loved because it has a famous monster on it; it is loved because it names a tournament moment. Row 222 needs the agent to hold first place, regional route, Neo Spring Road, Ken Sugimori, and non-holo treatment together. That bundle is the card's collector gravity.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road regional first place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_222_neo_spring_road_regional_first_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 222",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Boy Neo Spring No.1 Trainer (Neo Battle Road 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/boy-neo-spring-no-1-trainer-neo-battle-road-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_regional_no1_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road, Neo Battle Road 2001, Boy Neo Spring, regional, No.1 Trainer, first place, Tournament Winner, Ken Sugimori, non-holo, or row 222.",
+          "summary": "Confirm regional first-place route before treating this as row 222. No.1 Trainer is a placement title, not enough identity by itself.",
+          "steps": [
+            "Confirm row 222 and Neo Spring Road regional first place prize route.",
+            "Preserve Boy Neo Spring / Neo Battle Road 2001 wording when present.",
+            "Record Ken Sugimori and non-holo as collector-database context, not physical-card proof.",
+            "Keep estimated 18 copies as a collector/database estimate only.",
+            "Check against Best in Japan No.1 Trainer, Neo Summer Road No.1 Trainer, earlier/later No.1 Trainer trophy cards, and generic trophy-card memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_223_neo_spring_road_regional_second_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_223_neo_spring_road_regional_second_place_prize",
+        "name_en": "Neo Spring Road regional second place prize",
+        "source_row": "223",
+        "modeled_card": "No.2 Trainer",
+        "event_context": "Neo Battle Road 2001 / Neo Spring Road regional"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road regional second place prize row: No.2 Trainer row 223.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as Boy Neo Spring No.2 Trainer from Neo Battle Road 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this regional No.2 Trainer as Ken Sugimori art, non-holo, Japanese, with an estimated 18 copies. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "No.2 Trainer carries the same tournament apparatus as No.1, but a different social fact: second place is still prize identity, not a lower-rarity variant of the same card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 223, Neo Spring Road regional second-place route, No.2 Trainer title, Ken Sugimori/non-holo regional context, and non-equivalence with No.1/No.3, Best in Japan finals, Neo Summer Road, and other Trainer trophies before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Battle Road 2001",
+          "regional second-place trophy",
+          "No.2 Trainer placement identity",
+          "Ken Sugimori regional art",
+          "non-holo trophy route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_223_neo_spring_road_regional_second_place_prize:223",
+            "name": "No.2 Trainer",
+            "why": "No.2 Trainer is a second-place proof object; its importance is the exact result it records.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "No.2 Trainer"
+            ],
+            "why": "Sugimori anchors the regional trophy art lane, separating it from the Takumi Akabane finals lane.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Regional No.2 Trainer — the result is the card",
+        "why_it_matters": "No.2 Trainer asks an agent to respect tournament grammar. It is not just adjacent to No.1 and No.3; it records a different finish. That second-place fact is the collector meaning, and the regional Spring Road route is the wall that keeps it from smearing into every other Trainer trophy.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road regional second place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_223_neo_spring_road_regional_second_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 223",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Boy Neo Spring No.2 Trainer (Neo Battle Road 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/boy-neo-spring-no-2-trainer-neo-battle-road-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_regional_no2_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road, Neo Battle Road 2001, Boy Neo Spring, regional, No.2 Trainer, second place, Tournament Winner, Ken Sugimori, non-holo, or row 223.",
+          "summary": "Confirm regional second-place route before treating this as row 223. No.2 Trainer is placement-specific.",
+          "steps": [
+            "Confirm row 223 and Neo Spring Road regional second place prize route.",
+            "Preserve Boy Neo Spring / Neo Battle Road 2001 wording when present.",
+            "Record Ken Sugimori and non-holo as collector-database context, not physical-card proof.",
+            "Keep estimated 18 copies as a collector/database estimate only.",
+            "Check against No.1/No.3 regional trophies, Best in Japan finals trophies, Neo Summer Road trophies, and other Trainer eras before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_224_neo_spring_road_regional_third_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_224_neo_spring_road_regional_third_place_prize",
+        "name_en": "Neo Spring Road regional third place prize",
+        "source_row": "224",
+        "modeled_card": "No.3 Trainer",
+        "event_context": "Neo Battle Road 2001 / Neo Spring Road regional"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road regional third place prize row: No.3 Trainer row 224.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as Boy Neo Spring No.3 Trainer from Neo Battle Road 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this regional No.3 Trainer as Ken Sugimori art, non-holo, Japanese, with an estimated 35 copies. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "No.3 Trainer widens the podium without becoming generic: third place, regional tier, Spring Road, and non-holo regional art are all part of the identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 224, Neo Spring Road regional third-place route, No.3 Trainer title, Ken Sugimori/non-holo regional context, and non-equivalence with No.1/No.2, Best in Japan finals, Neo Summer Road, and other Trainer trophies before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Battle Road 2001",
+          "regional third-place trophy",
+          "No.3 Trainer placement identity",
+          "Ken Sugimori regional art",
+          "non-holo trophy route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_224_neo_spring_road_regional_third_place_prize:224",
+            "name": "No.3 Trainer",
+            "why": "No.3 Trainer is the third-place podium object; its assembly is result, route, and season.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "No.3 Trainer"
+            ],
+            "why": "Sugimori completes the regional Spring Road trio before the finals cards switch lanes.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Regional No.3 Trainer — the podium still matters",
+        "why_it_matters": "The third-place card is where a lazy catalog would start to blur. But podium cards are exact social records. Row 224 says someone reached a regional podium in the Neo Spring Road apparatus, and that fact has to stay visible beside the Ken Sugimori/non-holo card surface.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road regional third place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_224_neo_spring_road_regional_third_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 224",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Boy Neo Spring No.3 Trainer (Neo Battle Road 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/boy-neo-spring-no-3-trainer-neo-battle-road-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_regional_no3_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road, Neo Battle Road 2001, Boy Neo Spring, regional, No.3 Trainer, third place, Tournament Winner, Ken Sugimori, non-holo, or row 224.",
+          "summary": "Confirm regional third-place route before treating this as row 224. No.3 Trainer is placement-specific.",
+          "steps": [
+            "Confirm row 224 and Neo Spring Road regional third place prize route.",
+            "Preserve Boy Neo Spring / Neo Battle Road 2001 wording when present.",
+            "Record Ken Sugimori and non-holo as collector-database context, not physical-card proof.",
+            "Keep estimated 35 copies as a collector/database estimate only.",
+            "Check against No.1/No.2 regional trophies, Best in Japan finals trophies, Neo Summer Road trophies, and other Trainer eras before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_230_neo_spring_road_best_in_japan_first_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_230_neo_spring_road_best_in_japan_first_place_prize",
+        "name_en": "Neo Spring Road Best in Japan first place prize",
+        "source_row": "230",
+        "modeled_card": "No.1 Trainer",
+        "event_context": "Neo Spring Road Best in Japan 2001 finals"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road Best in Japan first place prize row: No.1 Trainer row 230.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as No.1 Trainer from Neo Spring Road Best in Japan 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this Best in Japan No.1 Trainer as Takumi Akabane art, Cosmos holofoil treatment, Japanese, with an estimated 1 copy. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The Best in Japan No.1 Trainer is a national-final result object. Compared with the regional No.1, it changes route, artist lane, foil treatment, and scarcity estimate.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 230, Neo Spring Road Best in Japan first-place finals route, No.1 Trainer title, Takumi Akabane/Cosmos finals context, and non-equivalence with regional No.1, Neo Summer Road, and other No.1 Trainer eras before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Spring Road Best in Japan",
+          "national-final first-place trophy",
+          "No.1 Trainer placement identity",
+          "Takumi Akabane finals art",
+          "Cosmos finals route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_230_neo_spring_road_best_in_japan_first_place_prize:230",
+            "name": "No.1 Trainer",
+            "why": "The chase is almost pure provenance: Best in Japan first place, finals route, and a one-copy collector estimate.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Takumi Akabane",
+            "row_count": 1,
+            "examples": [
+              "No.1 Trainer"
+            ],
+            "why": "Akabane marks the finals lane, separating the Best in Japan trophies from the Sugimori regional trophies.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Best in Japan No.1 Trainer — the finals apex",
+        "why_it_matters": "This is the version where the trophy grammar tightens to a point. Best in Japan first place is not just a better regional prize; it is a different route through the tournament apparatus. The Akabane/Cosmos lane and one-copy collector estimate make the card feel less like cardboard and more like a preserved final result.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road Best in Japan first place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_230_neo_spring_road_best_in_japan_first_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 230",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: No.1 Trainer (Neo Spring Road Best in Japan 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/no-1-trainer-neo-spring-road-best-in-japan-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_best_in_japan_no1_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road Best in Japan, finals, national champion, No.1 Trainer, first place, Tournament Winner, Takumi Akabane, Cosmos, or row 230.",
+          "summary": "Confirm Best in Japan finals first-place route before treating this as row 230.",
+          "steps": [
+            "Confirm row 230 and Neo Spring Road Best in Japan first place prize route.",
+            "Preserve finals / Best in Japan wording separately from regional Neo Spring Road wording.",
+            "Record Takumi Akabane and Cosmos treatment as collector-database context, not physical-card proof.",
+            "Keep estimated 1 copy as a collector/database estimate only.",
+            "Check against regional No.1 Trainer row 222, Neo Summer Road finals, and other No.1 Trainer eras before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize",
+        "name_en": "Neo Spring Road Best in Japan second place prize",
+        "source_row": "231",
+        "modeled_card": "No.2 Trainer",
+        "event_context": "Neo Spring Road Best in Japan 2001 finals"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road Best in Japan second place prize row: No.2 Trainer row 231.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as No.2 Trainer from Neo Spring Road Best in Japan 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this Best in Japan No.2 Trainer as Takumi Akabane art, Cosmos holofoil treatment, Japanese, with an estimated 1 copy. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The Best in Japan No.2 Trainer is a finals-placement object, not a generic second-place label. Its identity is the national-final route plus the exact podium slot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 231, Neo Spring Road Best in Japan second-place finals route, No.2 Trainer title, Takumi Akabane/Cosmos finals context, and non-equivalence with regional No.2, Neo Summer Road, and other No.2 Trainer eras before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Spring Road Best in Japan",
+          "national-final second-place trophy",
+          "No.2 Trainer placement identity",
+          "Takumi Akabane finals art",
+          "Cosmos finals route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize:231",
+            "name": "No.2 Trainer",
+            "why": "The second-place finals card is a one-result memory, not a generic No.2 Trainer.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Takumi Akabane",
+            "row_count": 1,
+            "examples": [
+              "No.2 Trainer"
+            ],
+            "why": "Akabane marks the finals lane, separating the Best in Japan trophies from the Sugimori regional trophies.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Best in Japan No.2 Trainer — finals memory, second slot",
+        "why_it_matters": "The second-place finals card is quieter than No.1 only if you flatten it into a ranking. In assembly terms it is just as precise: one podium slot, one finals route, one Akabane/Cosmos lane. The agent has to keep that precision alive.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road Best in Japan second place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 231",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: No.2 Trainer (Neo Spring Road Best in Japan 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/no-2-trainer-neo-spring-road-best-in-japan-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_best_in_japan_no2_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road Best in Japan, finals, No.2 Trainer, second place, Tournament Winner, Takumi Akabane, Cosmos, or row 231.",
+          "summary": "Confirm Best in Japan finals second-place route before treating this as row 231.",
+          "steps": [
+            "Confirm row 231 and Neo Spring Road Best in Japan second place prize route.",
+            "Preserve finals / Best in Japan wording separately from regional Neo Spring Road wording.",
+            "Record Takumi Akabane and Cosmos treatment as collector-database context, not physical-card proof.",
+            "Keep estimated 1 copy as a collector/database estimate only.",
+            "Check against regional No.2 Trainer row 223, Neo Summer Road finals, and other No.2 Trainer eras before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize",
+        "name_en": "Neo Spring Road Best in Japan third place prize",
+        "source_row": "232",
+        "modeled_card": "No.3 Trainer",
+        "event_context": "Neo Spring Road Best in Japan 2001 finals"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Neo Spring Road Best in Japan third place prize row: No.3 Trainer row 232.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pokumon catalogs the matching card as No.3 Trainer from Neo Spring Road Best in Japan 2001, a Japanese unnumbered Tournament Winner card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Pokumon lists this Best in Japan No.3 Trainer as Takumi Akabane art, Cosmos holofoil treatment, Japanese, with an estimated 1 copy. Treat the copy count as collector/database estimate, not official copy-count truth.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The Best in Japan No.3 Trainer shows that even third place in a finals path can be a singular provenance object when the route, treatment, and result are preserved.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 232, Neo Spring Road Best in Japan third-place finals route, No.3 Trainer title, Takumi Akabane/Cosmos finals context, and non-equivalence with regional No.3, Neo Summer Road, and other No.3 Trainer eras before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Spring Road Best in Japan",
+          "national-final third-place trophy",
+          "No.3 Trainer placement identity",
+          "Takumi Akabane finals art",
+          "Cosmos finals route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize:232",
+            "name": "No.3 Trainer",
+            "why": "The finals third-place card is still a single-route proof object; the podium slot is the meaning.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Takumi Akabane",
+            "row_count": 1,
+            "examples": [
+              "No.3 Trainer"
+            ],
+            "why": "Akabane completes the Spring finals trio and keeps the finals visual lane distinct from the regional trio.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "official art-correction authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete tournament archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Neo Spring Road Best in Japan No.3 Trainer — the final podium's third mark",
+        "why_it_matters": "This card keeps the catalog honest about trophies. Third is not vague. Finals is not regional. Cosmos is not non-holo. Akabane is not Sugimori. A collector-facing agent should hold every one of those distinctions before it dares to say it found the right No.3 Trainer.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road Best in Japan third place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 232",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_database_reference",
+          "title": "Pokumon: No.3 Trainer (Neo Spring Road Best in Japan 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/no-3-trainer-neo-spring-road-best-in-japan-2001-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "neo_spring_road_best_in_japan_no3_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Neo Spring Road Best in Japan, finals, No.3 Trainer, third place, Tournament Winner, Takumi Akabane, Cosmos, or row 232.",
+          "summary": "Confirm Best in Japan finals third-place route before treating this as row 232.",
+          "steps": [
+            "Confirm row 232 and Neo Spring Road Best in Japan third place prize route.",
+            "Preserve finals / Best in Japan wording separately from regional Neo Spring Road wording.",
+            "Record Takumi Akabane and Cosmos treatment as collector-database context, not physical-card proof.",
+            "Keep estimated 1 copy as a collector/database estimate only.",
+            "Check against regional No.3 Trainer row 224, Neo Summer Road finals, and other No.3 Trainer eras before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete tournament archive",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

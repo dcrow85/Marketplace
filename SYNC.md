@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-ninth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`.
+  The Neo Spring Road / Neo Battle Road 2001 trophy tranche now has
+  hand-authored release coverage for six one-card prize routes: regional
+  No.1/No.2/No.3 Trainer rows 222-224 and Best in Japan No.1/No.2/No.3
+  Trainer rows 230-232. The pass frames these as tournament-result objects:
+  placement, regional-versus-finals route, artist lane, foil treatment, and
+  collector-estimated copy count carry the identity before normal card-name
+  matching can do useful work. Added bespoke `special_identification_instructions`
+  requiring agents to preserve exact row, Spring/Neo Battle Road 2001 context,
+  regional versus Best in Japan wording, placement title, Ken Sugimori/non-holo
+  regional context, Takumi Akabane/Cosmos finals context, and non-equivalence
+  with the adjacent placement, Neo Summer Road, and other No.1/No.2/No.3 Trainer
+  trophy eras. Copy counts are explicitly held as collector/database estimates,
+  not official copy-count truth. Sources: local Japanese unnumbered promo
+  release files, Bulbapedia raw unnumbered promotional rows 222-224 and 230-232,
+  and Pokumon collector database pages for the six Neo Spring Road / Neo Battle
+  Road 2001 trophy cards. Generated gap moved from 115 releases / 3,931 cards
+  to 109 releases / 3,931 cards; this pass is release-route hardening, with
+  card-level generated dossiers still queued for later deep card essays. Current
+  catalog-history corpus:
+  `0ad8d582088ef073bd2a2ded48304567db3e999bd1e9790abda98d2780a16f3d`;
+  index: `40d9e64df5e1be8d873a2c5d932f40ded357d17f1384f2054cc48723ede7743f`;
+  queue: `dfc8c7707427b6a8d3c95b5e1195a07617d357aa77f46b447cd7ab8b23ffff1d`.
+  Audit counts: 23,259 claims, 6,111 sources, 100 hand-authored release
+  dossiers, 618 hand-authored card dossiers, and 871 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/fan_club_get_point_prize_ladder_v0_1.json`.
