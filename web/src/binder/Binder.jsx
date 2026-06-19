@@ -9,7 +9,9 @@ function effStance(c, store) {
   if (st === 'extra') { st = 'have'; extra = true }
   if (st === 'wish') st = 'want'
   if (!st) st = 'none'
-  return { stance: st, extra }
+  const trade = u.trade !== undefined ? !!u.trade : extra
+  const grail = u.grail !== undefined ? !!u.grail : !!c.grail
+  return { stance: st, extra, trade, grail }
 }
 function wantActive(c, store) {
   const u = store[c.uid] || {}
@@ -18,8 +20,10 @@ function wantActive(c, store) {
   return (max !== '' && max != null) || (cond && cond !== 'any')
 }
 function capMeta(c, e, store) {
-  if (e.stance === 'have') return { t: c.cond || 'add details ›', cls: 'm-have' }
-  if (e.stance === 'want') return wantActive(c, store) ? { t: 'want', cls: 'm-want' } : { t: 'wishlist', cls: 'm-wish' }
+  if (e.grail && (e.stance === 'have' || e.stance === 'want')) return { t: 'grail ★', cls: 'm-grail' }
+  if (e.stance === 'pass') return { t: 'pass', cls: 'm-pass' }
+  if (e.stance === 'have') return e.trade ? { t: 'for trade', cls: 'm-trade' } : { t: c.cond || 'keeper', cls: 'm-have' }
+  if (e.stance === 'want') return wantActive(c, store) ? { t: 'hunt', cls: 'm-want' } : { t: 'wishlist', cls: 'm-wish' }
   return { t: c.rarity || '', cls: 'm-none' }
 }
 function provBadge(c) {
@@ -45,13 +49,14 @@ function applyAgentFilter(cards, f, setById) {
 function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
-  const ring = have ? (e.extra ? 's-extra' : 's-have') : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
+  const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
   const meta = capMeta(c, e, store)
   return (
-    <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '')}>
+    <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '') + (e.stance === 'pass' ? ' passed' : '')}>
       <div className="stancebar">
         <button className={'seg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
         <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
+        <button className={'seg sg-pass' + (e.stance === 'pass' ? ' on' : '')} onClick={() => setStance(c.uid, 'pass')}>Pass</button>
       </div>
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
@@ -134,9 +139,21 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
             <div className="m-stance">
               <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
               <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
+              <button className={'mseg sg-pass' + (e.stance === 'pass' ? ' on' : '')} onClick={() => setStance(c.uid, 'pass')}>Pass</button>
             </div>
+            {(e.stance === 'have' || e.stance === 'want') && (
+              <button className={'grailtog' + (e.grail ? ' on' : '')} onClick={() => setField(c.uid, 'grail', !e.grail)}>
+                <span className="gstar">★</span>{e.grail ? 'Grail — top of your list' : 'Mark as grail'}
+              </button>
+            )}
             <div className="m-fields">
               {e.stance === 'have' && <>
+                <Frow label="Holding">
+                  <div className="switch2">
+                    <button className={'sw' + (!e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', false)}>Keeper</button>
+                    <button className={'sw' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', true)}>For trade</button>
+                  </div>
+                </Frow>
                 <Frow label="Condition"><input className="ti" placeholder="raw NM · PSA 9 · …" value={u.cond || ''} onChange={(ev) => setField(c.uid, 'cond', ev.target.value)} /></Frow>
                 <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
@@ -149,7 +166,8 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                   ? <><b>Active hunt.</b> {agentName} flags matches that meet your condition and budget.</>
                   : <><b>On your wishlist.</b> Set a condition or budget to make it an active hunt.</>}</div>
               </>}
-              {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b>. Have records condition + custody; Want sets the terms your agent hunts to.</div>}
+              {e.stance === 'pass' && <div className="fnote">Marked <b>pass</b> — this card dims and sinks to the bottom of its set. Switch to Have or Want anytime.</div>}
+              {e.stance === 'none' && <div className="fnote">Pick <b>Have</b>, <b>Want</b>, or <b>Pass</b>. Have records condition + custody; Want sets the terms your agent hunts to; Pass clears it out of the way.</div>}
             </div>
             <div className="provbox">
               <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
@@ -245,7 +263,8 @@ export default function Binder({ accountId, agentName }) {
       const cur = effStance(byUid(data, uid), prev).stance
       const u = { ...(prev[uid] || {}) }
       u.stance = cur === st ? 'none' : st
-      if (u.stance !== 'have') u.extra = false
+      if (u.stance !== 'have') { u.extra = false; u.trade = false }
+      if (u.stance === 'none' || u.stance === 'pass') u.grail = false
       const next = { ...prev, [uid]: u }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
       return next
@@ -280,7 +299,8 @@ export default function Binder({ accountId, agentName }) {
 
   const rows = useMemo(() => {
     if (!data) return []
-    const cmp = (a, b) => (setById[a.set_id].order - setById[b.set_id].order) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
+    const passed = (c) => effStance(c, store).stance === 'pass' ? 1 : 0
+    const cmp = (a, b) => (setById[a.set_id].order - setById[b.set_id].order) || (passed(a) - passed(b)) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
     let base = data.cards
     if (agentActive) base = applyAgentFilter(base, agentRes.data.filter || {}, setById)
     const qq = q.trim().toLowerCase()
