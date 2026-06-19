@@ -1,0 +1,1755 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Best of Game and all nine rows carrying its promo, Winner-stamp, Rocket, Dark evolution, and organized-play branch structure.",
+    "in_scope": [
+      "Best of Game release dossier",
+      "Electabuzz",
+      "Hitmonchan",
+      "Professor Elm",
+      "Rocket's Scizor",
+      "Rocket's Sneasel",
+      "Dark Ivysaur",
+      "Dark Venusaur",
+      "Rocket's Mewtwo",
+      "Rocket's Hitmonchan"
+    ],
+    "not_claiming": [
+      "complete Best of Game scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "Winner stamp status",
+      "jumbo status",
+      "event provenance"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_best_of_game_20021201",
+      "type": "release",
+      "context": {
+        "name_en": "Best of Game",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "release_date": "2002-12-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json",
+          "title": "Local English WoC catalog: Best of Game",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/bp",
+          "title": "Pokemon TCG API v2 set record: Best of Game",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Best of Game with a December 1, 2002 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API support a 9-row Best of Game promo-series checklist.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia treats Best of Game as a promotional set tied to Wizards-era organized-play distribution, with Winner-stamped and non-Winner branches as well as jumbo context for selected cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local catalog preserves Best of Game as Pokemon TCG API set id bp and release_family_id en_wotc_best_of_game_20021201, separate from Gym Challenge, BattleZone, jumbo, and later reprint branches.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local Best of Game attention rows include Dark Venusaur, Rocket's Mewtwo, Rocket's Scizor, Rocket's Sneasel, Dark Ivysaur, Rocket's Hitmonchan, Professor Elm, Electabuzz, and Hitmonchan.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local Best of Game artist clusters include Ken Sugimori for early competitive staples and Shin-ichi Yoshida for the Dark Ivysaur / Dark Venusaur / Rocket's Mewtwo branch, with K Hoshiba and Katsura Tabata carrying single Rocket rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Best of Game matters because it turns tournament participation, winning, and late-Wizards promo distribution into a compact nine-card object: the card is not only a game piece, it is a trace of where competitive Pokemon was being handed to players.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_bp_winner_jumbo_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, bp, Winner stamp, Rocket's Mewtwo, Rocket's Scizor, Rocket's Sneasel, Dark Venusaur, jumbo, BattleZone, or Gym Challenge.",
+          "summary": "Best of Game is a nine-row English promo series under set id bp. Preserve row id, Winner-stamp status, jumbo status, and source release before comparing to Gym Challenge or other branches.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and Pokemon TCG API set id bp.",
+            "Ask for a clear scan of any claimed Winner stamp; do not infer stamp status from the Best of Game row alone.",
+            "Ask for physical dimensions or slab/label evidence before treating a copy as jumbo.",
+            "Do not collapse Best of Game Rocket's Mewtwo into Gym Challenge Rocket's Mewtwo without naming the release change.",
+            "Do not infer price, condition, authenticity, winner status, event provenance, or seller possession from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance",
+            "Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The prize table at the edge of Wizards",
+        "why_it_matters": "Best of Game feels like a little end-of-era packet. It is only nine rows, but it carries a lot of machinery: Winner stamps, Rocket ownership, Dark evolution, jumbo echoes, and the feeling of cards moving through tournaments rather than booster packs. The set is not trying to be a world. It is a receipt from organized play, with just enough villain shine to make the receipt collectible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Best of Game history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-1",
+      "type": "card",
+      "context": {
+        "name_en": "Electabuzz",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-1",
+        "catalog_row_id": "bp-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-1",
+          "title": "Local Best of Game row: Electabuzz bp-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-1",
+          "title": "Pokemon TCG API v2 card record: Electabuzz",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-1 as Electabuzz.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Electabuzz bp-1 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Electabuzz bp-1 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Electabuzz is old competitive muscle wearing promo-series clothes. Sugimori’s image points back to early play memory, but Best of Game changes the context: this is a tournament/distribution row, not a Base Set row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Electabuzz bp-1 is Best of Game; preserve bp row identity and do not treat it as Base Set Electabuzz.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_electabuzz_1_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Electabuzz, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Electabuzz bp-1 is Best of Game; preserve bp row identity and do not treat it as Base Set Electabuzz.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-1.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The old staple becomes a prize trace",
+        "why_it_matters": "Electabuzz is old competitive muscle wearing promo-series clothes. Sugimori’s image points back to early play memory, but Best of Game changes the context: this is a tournament/distribution row, not a Base Set row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-2",
+      "type": "card",
+      "context": {
+        "name_en": "Hitmonchan",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-2",
+        "catalog_row_id": "bp-2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-2",
+          "title": "Local Best of Game row: Hitmonchan bp-2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-2",
+          "title": "Pokemon TCG API v2 card record: Hitmonchan",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-2 as Hitmonchan.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Hitmonchan bp-2 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Hitmonchan bp-2 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Hitmonchan is another early fighting staple pulled into the Best of Game lane. It gives the tiny set a practical, tournament-body feeling: punches, staples, and organized play rather than sealed-pack discovery.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Hitmonchan bp-2 is Best of Game; preserve promo-series identity before comparing to Base Set Hitmonchan.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_hitmonchan_2_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Hitmonchan, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Hitmonchan bp-2 is Best of Game; preserve promo-series identity before comparing to Base Set Hitmonchan.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-2.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Hitmonchan keeps the prize table physical",
+        "why_it_matters": "Hitmonchan is another early fighting staple pulled into the Best of Game lane. It gives the tiny set a practical, tournament-body feeling: punches, staples, and organized play rather than sealed-pack discovery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-3",
+      "type": "card",
+      "context": {
+        "name_en": "Professor Elm",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-3",
+        "catalog_row_id": "bp-3"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-3",
+          "title": "Local Best of Game row: Professor Elm bp-3",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-3",
+          "title": "Pokemon TCG API v2 card record: Professor Elm",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-3 as Professor Elm.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Professor Elm bp-3 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Professor Elm bp-3 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Professor Elm makes the set feel less like pure Kanto nostalgia. It brings Johto-era trainer memory into the prize packet, showing that Best of Game is a competitive handout lane, not only a Rocket showcase.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Professor Elm bp-3 is a Best of Game promo trainer row; do not collapse it into Neo-era pack rows without source evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_professor_elm_3_trainer_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Professor Elm, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Professor Elm bp-3 is a Best of Game promo trainer row; do not collapse it into Neo-era pack rows without source evidence.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-3.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Professor Elm as the bridge to Johto play",
+        "why_it_matters": "Professor Elm makes the set feel less like pure Kanto nostalgia. It brings Johto-era trainer memory into the prize packet, showing that Best of Game is a competitive handout lane, not only a Rocket showcase.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-4",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Scizor",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-4",
+        "catalog_row_id": "bp-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-4",
+          "title": "Local Best of Game row: Rocket's Scizor bp-4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-4",
+          "title": "Pokemon TCG API v2 card record: Rocket's Scizor",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-4 as Rocket's Scizor.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Rocket's Scizor bp-4 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Scizor bp-4 to K Hoshiba.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Scizor is where Best of Game sharpens. K Hoshiba’s local credit gives the row a different hand, and Rocket ownership turns Scizor from cool species into controlled weapon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Scizor bp-4 needs Best of Game row identity plus scan evidence for any Winner-stamp claim.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_rockets_scizor_4_rocket_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Rocket's Scizor, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Rocket’s Scizor bp-4 needs Best of Game row identity plus scan evidence for any Winner-stamp claim.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-4.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket gets a metallic edge",
+        "why_it_matters": "Rocket’s Scizor is where Best of Game sharpens. K Hoshiba’s local credit gives the row a different hand, and Rocket ownership turns Scizor from cool species into controlled weapon.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-5",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Sneasel",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-5",
+        "catalog_row_id": "bp-5"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-5",
+          "title": "Local Best of Game row: Rocket's Sneasel bp-5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-5",
+          "title": "Pokemon TCG API v2 card record: Rocket's Sneasel",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-5 as Rocket's Sneasel.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Rocket's Sneasel bp-5 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Sneasel bp-5 to Katsura Tabata.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Sneasel carries exactly the kind of dark, fast trouble this little set wants. Katsura Tabata’s local credit makes it its own branch, not just another Rocket name in the pile.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Sneasel bp-5 is a Best of Game promo row; preserve artist, row, and stamp evidence separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_rockets_sneasel_5_rocket_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Rocket's Sneasel, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Rocket’s Sneasel bp-5 is a Best of Game promo row; preserve artist, row, and stamp evidence separately.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-5.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Sneasel at the edge of mischief",
+        "why_it_matters": "Rocket’s Sneasel carries exactly the kind of dark, fast trouble this little set wants. Katsura Tabata’s local credit makes it its own branch, not just another Rocket name in the pile.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-6",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Ivysaur",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-6",
+        "catalog_row_id": "bp-6"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-6",
+          "title": "Local Best of Game row: Dark Ivysaur bp-6",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-6",
+          "title": "Pokemon TCG API v2 card record: Dark Ivysaur",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-6 as Dark Ivysaur.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Dark Ivysaur bp-6 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Dark Ivysaur bp-6 to Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Ivysaur is the step before the flashier chase. Shin-ichi Yoshida’s local cluster starts here, giving the set a small evolution thread inside a nine-row prize object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Dark Ivysaur bp-6 belongs to the Best of Game Dark evolution branch; do not infer Dark Venusaur identity or stamp status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_dark_ivysaur_6_dark_evolution_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Dark Ivysaur, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Dark Ivysaur bp-6 belongs to the Best of Game Dark evolution branch; do not infer Dark Venusaur identity or stamp status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-6.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The dark evolution begins small",
+        "why_it_matters": "Dark Ivysaur is the step before the flashier chase. Shin-ichi Yoshida’s local cluster starts here, giving the set a small evolution thread inside a nine-row prize object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-7",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Venusaur",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-7",
+        "catalog_row_id": "bp-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-7",
+          "title": "Local Best of Game row: Dark Venusaur bp-7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-7",
+          "title": "Pokemon TCG API v2 card record: Dark Venusaur",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-7 as Dark Venusaur.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Dark Venusaur bp-7 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Dark Venusaur bp-7 to Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Venusaur is the compact set’s plant-monster center. It feels like a chase because it joins starter-line gravity to Rocket/dark-era language, and Yoshida’s local credit links it to the small Best of Game dark-evolution cluster.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Dark Venusaur bp-7 needs Best of Game row identity and explicit stamp evidence before a Winner-stamp claim advances.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_dark_venusaur_7_dark_chase_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Dark Venusaur, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Dark Venusaur bp-7 needs Best of Game row identity and explicit stamp evidence before a Winner-stamp claim advances.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-7.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Dark Venusaur gives the packet a grail shape",
+        "why_it_matters": "Dark Venusaur is the compact set’s plant-monster center. It feels like a chase because it joins starter-line gravity to Rocket/dark-era language, and Yoshida’s local credit links it to the small Best of Game dark-evolution cluster.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-8",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Mewtwo",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-8",
+        "catalog_row_id": "bp-8"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-8",
+          "title": "Local Best of Game row: Rocket's Mewtwo bp-8",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-8",
+          "title": "Pokemon TCG API v2 card record: Rocket's Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-8 as Rocket's Mewtwo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Rocket's Mewtwo bp-8 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Mewtwo bp-8 to Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Mewtwo is the biggest memory hazard here. It has Gym Challenge, Best of Game, Winner-stamp, and jumbo branches in collector speech. The agent must make the branch visible before saying anything confident.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Mewtwo bp-8 must be separated from Gym Challenge, Winner-stamp, and jumbo branches with scan/label evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_rockets_mewtwo_8_winner_jumbo_branch_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Rocket's Mewtwo, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Rocket’s Mewtwo bp-8 must be separated from Gym Challenge, Winner-stamp, and jumbo branches with scan/label evidence.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-8.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket’s Mewtwo is the whole trap in one row",
+        "why_it_matters": "Rocket’s Mewtwo is the biggest memory hazard here. It has Gym Challenge, Best of Game, Winner-stamp, and jumbo branches in collector speech. The agent must make the branch visible before saying anything confident.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_best_of_game_20021201:bp-9",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Hitmonchan",
+        "name_ja": "",
+        "release_family_id": "en_wotc_best_of_game_20021201",
+        "row_id": "en_wotc_best_of_game_20021201:bp-9",
+        "catalog_row_id": "bp-9"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_best_of_game_20021201.json#row:en_wotc_best_of_game_20021201:bp-9",
+          "title": "Local Best of Game row: Rocket's Hitmonchan bp-9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/bp-9",
+          "title": "Pokemon TCG API v2 card record: Rocket's Hitmonchan",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_(TCG)",
+          "title": "Bulbapedia: Best of Game (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Best of Game row bp-9 as Rocket's Hitmonchan.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Rocket's Hitmonchan bp-9 as Promo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Hitmonchan bp-9 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Hitmonchan closes the nine-row packet with another owned fighter. It is not just Hitmonchan; it is Hitmonchan under Rocket grammar, held inside the Best of Game distribution lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Hitmonchan bp-9 is Best of Game; preserve Rocket ownership and promo-series row identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "best_of_game_rockets_hitmonchan_9_rocket_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Best of Game, Rocket's Hitmonchan, bp, Winner stamp, jumbo, BattleZone, Gym Challenge, or promo.",
+          "summary": "Rocket’s Hitmonchan bp-9 is Best of Game; preserve Rocket ownership and promo-series row identity.",
+          "steps": [
+            "Preserve release_family_id en_wotc_best_of_game_20021201 and local row id bp-9.",
+            "Ask for scan or graded label evidence before accepting Winner-stamp status.",
+            "Ask for size/slab evidence before accepting jumbo status.",
+            "Do not infer seller possession, authenticity, condition, price, event provenance, or branch identity from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Winner stamp status",
+            "jumbo status",
+            "event provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket throws one last punch",
+        "why_it_matters": "Rocket’s Hitmonchan closes the nine-row packet with another owned fighter. It is not just Hitmonchan; it is Hitmonchan under Rocket grammar, held inside the Best of Game distribution lane.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "confirmed event attendance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

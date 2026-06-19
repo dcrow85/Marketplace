@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-eighth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/best_of_game_v0_1.json`. English
+  Best of Game is now a hand-authored release dossier, with all nine rows
+  promoted from generated baseline to sourced card dossiers: Electabuzz 1,
+  Hitmonchan 2, Professor Elm 3, Rocket's Scizor 4, Rocket's Sneasel 5,
+  Dark Ivysaur 6, Dark Venusaur 7, Rocket's Mewtwo 8, and Rocket's
+  Hitmonchan 9. The pass frames Best of Game as the prize table at the
+  edge of Wizards: a compact organized-play packet where Winner stamps,
+  Rocket ownership, Dark evolution, jumbo echoes, and tournament
+  distribution memory all become identification pressure. Added special
+  identification rails for Pokemon TCG API set id `bp`, Winner-stamp
+  scan requirements, jumbo size / label evidence, separation from Gym
+  Challenge and BattleZone memory, Rocket's Mewtwo branch discipline, and
+  the rule that event provenance cannot be inferred from the catalog row.
+  Sources: local English WoC Best of Game catalog, Pokemon TCG API v2 set /
+  card records, and Bulbapedia Best of Game. Generated gap moved from 180
+  releases / 4,365 cards to 179 releases / 4,356 cards. Current
+  catalog-history corpus: 22,837 claims, 5,202 sources, corpus hash
+  `bf841e0cc6ccd1c36df5a810e98ee5c92fbe89ae5bb4e4a74c7b2515ac921b00`;
+  index hash `ca6f1b29bc5ebf28240a2ccefa93cf19618c0c55e70b542f274f4986226e558d`;
+  queue hash `c2bfab209370946ee6ecaea6567dda397444647ce21025e95e19fedc7ea0f960`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-seventh
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/base_set_2_v0_1.json`. English Base
