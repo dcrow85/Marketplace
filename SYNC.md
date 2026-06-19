@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_ssb_best_in_japan_no2_trainer_v0_1.json`
+  deepens row 200 / No.2 Trainer from the World Challenge Secret Super Battle Best in Japan
+  second-place route. This pass keeps rank legible instead of flattening the card into a generic
+  No.2 trophy: second place / runner-up, senior-track SSB final, Pokemon Center Tokyo on August
+  19 2000, Holofoil and reported cosmos/winner-photograph trophy boundary, and Ken Sugimori
+  lineage. Special ID rails require agents to separate this exact route from regional SSB
+  non-holo No.2 Trainer, TMB/Hawaii/World Exchange Battle, Worlds, Challenge Road, Lizardon Mega
+  Battle, Kamex Mega Battle, Neo Road, Battle Road, and name-only No.2 Trainer claims; the
+  Pokumon caveat remains visible that SSB finals photo trophies are reported but surfaced-photo
+  confirmation is not claimed. Generated gaps moved to 56 release / 3882 card. Current hashes:
+  corpus `7ade122c29a3125eff152c1c999f51ffa07321a327a2fbbd632a1bdff6657127`, index
+  `21ba7495437625189c7f2a07dc41173f792395c4f9fe7f2784fafc33ef2721fd`, queue
+  `c2f4ba9c353013d1b62ff9b8f3e0d384bbb45305d06c4bdc3c3dcf79309e9a4c`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-second
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_ssb_best_in_japan_no1_trainer_v0_1.json`

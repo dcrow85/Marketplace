@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23495,
-    "corpus_hash": "cbabe66781ae52d87a4e4fa3c9cfa061552bd4fa2bd92b7cf62a82691fc7ac35",
-    "generated_card_dossier_count": 3883,
-    "generated_release_dossier_count": 57,
+    "claim_count": 23504,
+    "corpus_hash": "7ade122c29a3125eff152c1c999f51ffa07321a327a2fbbd632a1bdff6657127",
+    "generated_card_dossier_count": 3882,
+    "generated_release_dossier_count": 56,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6484
+    "source_count": 6494
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "781e4404e82f77408019c9046d3e8de3ca2f2a2cc7f17f5dbe3ae51db184387b",
-    "release_queue_count": 57,
+    "queue_hash": "c2f4ba9c353013d1b62ff9b8f3e0d384bbb45305d06c4bdc3c3dcf79309e9a4c",
+    "release_queue_count": 56,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T19:24:36Z",
+  "generated_at": "2026-06-19T19:31:01Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "426f60945faf6b1c4b864ddf8a2d5be31ebb112b4e099b35dc9d5f430475733c",
+    "index_hash": "21ba7495437625189c7f2a07dc41173f792395c4f9fe7f2784fafc33ef2721fd",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -159,6 +159,7 @@
     "data/catalog-history/source-sets/wind_from_the_sea_tranche_v0_1.json",
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_best_in_japan_no1_trainer_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_ssb_best_in_japan_no2_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_regional_no1_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_regional_no2_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_regional_no3_trainer_v0_1.json",
