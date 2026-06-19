@@ -59,6 +59,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_february_2000_cleffa_v0_1.json`
+  deepens row 156 / Cleffa from the CoroCoro Comic February 2000 issue insert route
+  (January 15, 2000). The pass frames Cleffa as an early Johto baby-Pokemon card: Ken Sugimori
+  art, Colorless Baby Pokemon context, Eek draw-card memory, glossy CoroCoro stock, Gold/Silver
+  symbol, and CoroCoro February-issue bonus-card border text are now legible. Special ID rails
+  separate it from English Wizards Promo 31, Japanese Gold/Silver expansion Cleffa, modern Cleffa
+  cards, and generic #173/Pokedex labels. Generated gaps moved to 82 release / 3908 card.
+  Current hashes: corpus `cfd479bedd6c2ae2a93ece09b3a2f5b5a9eff7d62706ee7840d37e191236f084`,
+  index `d9101ae65092de5bd7fc453f8d053d7c716ea92bb084bdeee0eb39b21ac01b78`, queue
+  `289bee2cba899394a71cd6b6648fa2d773d41e6a3f7d2e9752f3ced7203cd9e4`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/fan_club_january_2000_new_year_present_v0_1.json`

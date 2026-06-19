@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23312,
-    "corpus_hash": "8cb12f87468ed99fec9d38bb5fe55f93d79231f1e179c8c90405df635b3df897",
-    "generated_card_dossier_count": 3909,
-    "generated_release_dossier_count": 83,
+    "claim_count": 23318,
+    "corpus_hash": "cfd479bedd6c2ae2a93ece09b3a2f5b5a9eff7d62706ee7840d37e191236f084",
+    "generated_card_dossier_count": 3908,
+    "generated_release_dossier_count": 82,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6253
+    "source_count": 6265
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "c4474ec808e3be5f1728b45223262da4a946c8b63ffbe818a15d8d61b4ec98f3",
-    "release_queue_count": 83,
+    "queue_hash": "289bee2cba899394a71cd6b6648fa2d773d41e6a3f7d2e9752f3ced7203cd9e4",
+    "release_queue_count": 82,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T15:56:22Z",
+  "generated_at": "2026-06-19T16:06:53Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "0358426e81cd60cebeceefff77a265d3419579d1a1bf293bdb5180d432f6c1f1",
+    "index_hash": "d9101ae65092de5bd7fc453f8d053d7c716ea92bb084bdeee0eb39b21ac01b78",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -63,6 +63,7 @@
     "data/catalog-history/source-sets/corocoro_december_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_early_1997_v0_1.json",
     "data/catalog-history/source-sets/corocoro_february_1999_meowth_v0_1.json",
+    "data/catalog-history/source-sets/corocoro_february_2000_cleffa_v0_1.json",
     "data/catalog-history/source-sets/corocoro_first_1996_glossy_promos_v0_1.json",
     "data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_january_2000_wooper_v0_1.json",
