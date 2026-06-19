@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 145: New Garura Touch Generation Change deepened; corpus 45b2312e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 146: Battle Road Spring No.1 Trainer deepened; corpus c30e369c)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/battle_road_spring_2002_no1_trainer_v0_1.json`
+  deepens row 247 / No.1 Trainer from the Battle Road Spring 2002 regional
+  first-place prize route. The pass preserves source index 247, Japanese title
+  `Ｎｏ.１トレーナー`, March-April 2002 regional champion distribution,
+  e-Card Era layout, first-place recognition text, winner-name and regional-
+  conference personalization, male/female variant boundary, the 2002 Master
+  age-division context, and the Spring-to-Summer bye apparatus. The pass
+  deliberately does not promote an exact artist credit for this row because the
+  local row lacks one and the broad trophy page does not separately caption the
+  Battle Road Spring 2002 print in the visible reprint-caption surface. Special
+  ID rails require agents to separate this row from No.2/No.3 Trainer, Battle
+  Road Summer 2002, World Championships, Neo Road, Lizardon/Kamex, Tropical
+  Mega Battle, Secret Super Battle, and generic No.1 trophy listings; catalog
+  identity remains legible support until seller-controlled front/back, rank,
+  event text, personalization/conference, layout, surface/corner, and slab/cert
+  evidence appears. Generated gaps moved to 43 release / 3869 card. Current
+  hashes: corpus
+  `c30e369ce6bb4e36e395b427ac09873927c2343d60159b43d3858a96f801d0fd`, index
+  `15ab4ae8f196c1d7ae1cf94a052b81c1f653351af1e03255da4e98c67a10c379`, queue
+  `1c78eb5bddeacd4ec18848d5ff8c24f0cd5acdcc0a149ee9bbd775355af5b4f1`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/new_garura_parent_child_touch_generation_change_v0_1.json`
