@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-fourth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/champion_road_2000_participation_prize_v0_1.json`.
+  Champion Road 2000 participation prize source group now has complete
+  three-row hand-authored coverage for Chikorita row 151, Cyndaquil row 152,
+  and Totodile row 153. The pass frames the release as Johto first-partner
+  tournament memory: familiar Neo Genesis-era starters made route-specific by
+  Champion Road 2000 attendance text and gold-foil expansion-symbol markers.
+  Added `special_identification_instructions` requiring agents to preserve exact
+  `Champion Road 2000 participation prize` promotion note, row 151/152/153
+  identity, January 2000 event-date caveat, bottom-border attendance text,
+  gold-foil symbol, and card-specific artist evidence before accepting a match.
+  Agents must not collapse this trio into 11th Next Generation World Hobby Fair,
+  regular Neo Genesis / Gold, Silver, to a New World..., Premium File, Johto
+  First Partner Pack jumbo, or adjacent Champion Road 2000 3-Man Tournament
+  Corner Berry/Miracle Berry memories without explicit route evidence. Sources:
+  local Japanese unnumbered promo release file, Bulbapedia raw wikitext rows
+  151-153, Bulbapedia Chikorita/Cyndaquil/Totodile card pages, and PokeBoon
+  collector context as low-tier texture with route-label tension preserved rather
+  than flattened. Generated gap moved from 134 releases / 3,971 cards to 133
+  releases / 3,968 cards. Current catalog-history corpus:
+  `24119d8253d169349874c03d5fa5431fcf03b4ef191eb8256ec0d1db747321dc`;
+  index: `b6322c7988a2d098a46d390ba9f036328411e9097ee632c42a4c87814b368f88`;
+  queue: `b330b3ed0b079305e2162ef9830767c7715b9202d53b314f0d030c1f4b9feb47`.
+  Audit counts: 23,232 claims, 5,973 sources, 76 hand-authored release dossiers,
+  581 hand-authored card dossiers, and 840 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/champion_road_2000_participation_prize_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/tropical_mega_battle_finals_participation_prize_v0_1.json`.
