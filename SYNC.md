@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventeenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json`.
+  Pokemon Song Best Collection is now a hand-authored release dossier, with
+  Venusaur 001, Charizard 002, Blastoise 003, Mewtwo 005, Mew 006, and
+  Pikachu 011 promoted from generated baseline to sourced card dossiers.
+  The pass frames Song Best as a media-product reprint object rather than a
+  normal booster set: a music CD with an eleven-card memory cabinet inside,
+  bundling starters, mythics, prior campaign/promo routes, Computer Error
+  variant context, and one English Pikachu inside a Japanese CD product.
+  Added special identification rails for CD inclusion versus first
+  distribution, Song Best membership versus earlier promo/campaign lanes,
+  Base/Trade Please/WHF lineage boundaries, Computer Error glossy
+  CoroCoro/Song Best versus non-glossy Kamex variant context, mixed symbol
+  status not being Base No Rarity proof, and Pikachu 011 as the
+  language-boundary trap. Sources: local Japanese pre-English Song Best
+  catalog, Bulbapedia Pokemon Song Best Collection, Bulbapedia card pages
+  for Venusaur, Charizard, Blastoise, Mewtwo, Mew, Pikachu, Bulbapedia
+  Computer Error, and the local Kamex Computer Error variant snapshot.
+  Generated gap moved from 191 releases / 4,459 cards to 190 releases /
+  4,453 cards. Current catalog-history corpus: 22,889 claims, 4,994
+  sources, corpus hash
+  `fe0ff6eb329a09e857606c4af8731ee6a2bdee578157afeb976733dadc5e155c`;
+  index hash `6e307dfb288be6ede99d14ec5cb40ee2f64fc6dd8a713774bfeb505bc791c482`;
+  queue hash `859a1560a49865cb1aa9d203ca3f6bd1d67fcc8a760f5d80f30ba56fd83f7ba2`.
 - `[passive]` 2026-06-19 · Codex — completed the sixteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/miracle_of_the_desert_v0_1.json`.
