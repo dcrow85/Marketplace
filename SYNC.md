@@ -55,6 +55,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_march_1999_insert_v0_1.json`.
+  CoroCoro Comic March 1999 issue insert source slice now has complete two-row
+  hand-authored coverage for Blaine's Growlithe row 084 and Sabrina's Abra row
+  085. The pass frames the release as CoroCoro making two Gym Leader
+  relationships collectible before later Gym expansion, theme-deck, and Wizards
+  promo memories can swallow the route: Blaine/Growlithe as the warm fire-gym
+  half, Sabrina/Abra as the psychic-gym hinge. Added
+  `special_identification_instructions` requiring agents to preserve exact
+  February 15 1999 CoroCoro March issue route, row 084/085 identity, two-card
+  insert relationship, Japanese/romaji names from card-page context, Gym-symbol
+  promotional-addition context, and artist-lineage traps before accepting a
+  match. Agents must not collapse Blaine's Growlithe into ordinary Gym Heroes or
+  Guren Town Gym memory, nor collapse Sabrina's Abra into Gym Challenge,
+  Yamabuki City Gym, Wizards Black Star Promo 19, Nintendo Power, or generic
+  Sabrina/Abra memories without explicit route and image evidence. The
+  artist/illustrator treatment lists Ken Sugimori and Atsuko Nishida as
+  source-page lineage context, with the exact promo-print image required before
+  treating an artist memory as route evidence. Sources: local Japanese
+  unnumbered promo release file, Bulbapedia raw unnumbered promotional rows
+  084-085, and Bulbapedia card pages for Blaine's Growlithe / Sabrina's Abra as
+  bounded database references. Generated gap moved from 131 releases / 3,962
+  cards to 130 releases / 3,960 cards. Current catalog-history corpus:
+  `c7121fe1a81f90441c9491058a991f8187d93cf07876e5e9169121f8e5df0457`;
+  index: `f34dcb0026c99b8bdaf79064f025f70b860add973bd69444e11d7e5656583732`;
+  queue: `1749b393db021795c5a1a876ac941b1c22456d29d4937c15568904752969aa48`.
+  Audit counts: 23,233 claims, 6,005 sources, 79 hand-authored release dossiers,
+  589 hand-authored card dossiers, and 849 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_march_1999_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-sixth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/ana_get_in_a_jet_campaign_v0_1.json`.
