@@ -1,0 +1,649 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for New Century Present, the Pokemon Card Fan Club Summer 2000 jumbo postcard special card, emphasizing Fan Club member mailing, 200 GET Points, new-century celebration framing, Sumiyoshi Kizuki art, postcard/Jumbo format, Fan Club logo identity, and traps against New Year Present, Tropical Present, ordinary Fan Club Pokemon cards, and generic Present-card memory.",
+    "in_scope": [
+      "Pokemon Card Fan Club Summer 2000 release dossier",
+      "New Century Present unnumbered promotional row 194",
+      "Fan Club jumbo postcard / GET Points history",
+      "Sumiyoshi Kizuki illustration context",
+      "Postcard-format identification rails"
+    ],
+    "not_claiming": [
+      "complete Fan Club member mailing records",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000",
+        "name_en": "Pokemon Card Fan Club (Summer 2000)",
+        "release_date": "2000-summer",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club mailing",
+          "jumbo postcard special card",
+          "GET Points membership economy",
+          "new-century celebration",
+          "Sumiyoshi Kizuki artwork",
+          "Fan Club logo / postcard rail"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000:194",
+            "name": "New Century Present",
+            "why": "This is a chase because it is a club object more than a pack object: a summer 2000 Fan Club postcard, a 200 GET Points account event, and a century-turning celebration printed as a Jumbo Special Card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Sumiyoshi Kizuki",
+            "row_count": 1,
+            "examples": [
+              "New Century Present"
+            ],
+            "why": "Kizuki matters here because the card is social and celebratory rather than battle-forward. His art turns a Fan Club accounting event into a little festival card, which is exactly the kind of apparatus-history this catalog should preserve.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Sumiyoshi Kizuki bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Fan Club art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Fan Club member records",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Fan Club (Summer 2000) as a one-row unnumbered promotional source group containing New Century Present at source index 194, with Postcard as the variant note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list places New Century Present [Postcard] in the Pokemon Card Fan Club (Summer 2000) promotion.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia's New Century Present page says the card was sent to Pokemon Card Fan Club members in the summer of 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says members who were sent New Century Present received an additional 200 GET Points to their Pokemon Fan Club account.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Pokumon describes Fan Club jumbo postcards as mailings styled as Jumbo Trainer cards, used for events such as New Years or GET Point thresholds, with GET Points automatically credited to the member.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits New Century Present to Sumiyoshi Kizuki.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon lists Sumiyoshi Kizuki as the illustrator for New Century Present and describes the object as a Jumbo Special Card postcard from Pokemon Card Fan Club Summer 2000.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.other_work",
+          "text": "Bulbapedia describes Sumiyoshi Kizuki as an illustrator who has contributed artwork to the Pokemon Trading Card Game.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies New Century Present as a Special Card with the English expansion title Fan Club and says it was never released in English.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says New Century Present is part of the Jumbo cards group and features the Pokemon Card Fan Club logo in place of an expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "New Century Present matters as judged collector texture because the postcard format, Fan Club route, 200 GET Points account credit, and celebratory art turn membership itself into the collectible object.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7",
+            "c10"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete Fan Club mailing record",
+            "authentication",
+            "seller possession",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_summer_2000_new_century_present_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says New Century Present, Pokemon Card Fan Club Summer 2000, Fan Club postcard, Jumbo postcard, 200 GET Points, Sumiyoshi Kizuki, New Year Present, Tropical Present, Fan Club Special Card, or unreleased in English.",
+          "summary": "Identify New Century Present by Fan Club Summer 2000 postcard/Jumbo route, 200 GET Points text, Sumiyoshi Kizuki art, and Fan Club logo before trusting generic Fan Club or Present-card memory.",
+          "steps": [
+            "Confirm the object is New Century Present / ニューセンチュリープレゼント, not New Year Present or Tropical Present.",
+            "Confirm the distribution route is Pokemon Card Fan Club Summer 2000, with Fan Club member-mailing context.",
+            "Confirm the physical format is a postcard / Jumbo Special Card rather than a standard playable TCG card.",
+            "Look for the 200 GET Points award text or equivalent readable evidence on the card face.",
+            "Preserve Sumiyoshi Kizuki as illustrator and inspect the celebration/new-century art rather than substituting the Komiya New Year Present scene.",
+            "Look for the Pokemon Card Fan Club logo in place of an expansion symbol.",
+            "Inspect the reverse side as postcard evidence where available; address markings or used-postcard traces are condition/provenance evidence, not automatic authenticity.",
+            "Separate New Year Present, Tropical Present, ordinary Fan Club Pokemon cards, and later Fan Club/Players Club prizes unless source evidence proves this exact row.",
+            "Request seller front/back photos, size evidence, Fan Club logo evidence, 200 GET Points text, and postcard-back condition separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "New Year Present equivalence",
+            "Tropical Present equivalence",
+            "standard-size card equivalence",
+            "other Fan Club promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "New Century Present: the Fan Club turns membership into a card",
+        "why_it_matters": "New Century Present is not trying to be a pack chase. It is Pokemon as club infrastructure: a postcard-sized special card mailed to members, a 200 GET Points account moment, and a summer 2000 greeting dressed up as a collectible. The object is soft but very exact. It asks the agent to remember that belonging can leave paperwork, and sometimes that paperwork is the card.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Fan Club mailing records",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Fan Club Summer 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Unnumbered Promotional cards (TCG)/1996-2005 - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Fan Club mailing records",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/New_Century_Present_(Fan_Club_promo)",
+          "title": "New Century Present (Fan Club promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Fan Club mailing records",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/additional_attributes/postcard/",
+          "title": "Additional Attributes: Postcard - Pokumon",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "complete Fan Club mailing records",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokeboon.com/new-century-present-pokemon-card-fan-club/",
+          "title": "New Century Present Pokemon Card Fan Club postcard - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sumiyoshi_Kizuki",
+          "title": "Sumiyoshi Kizuki - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000:194",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000:194",
+        "release_family_id": "jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000",
+        "name_en": "New Century Present",
+        "name_ja": "ニューセンチュリープレゼント",
+        "card_number": "None",
+        "rarity_signal": "Fan Club postcard / Jumbo Special Card"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 194 as New Century Present from the Pokemon Card Fan Club Summer 2000 source slice, with Postcard as the variant note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies New Century Present as ニューセンチュリープレゼント and as a Special Card in the Fan Club promotional line.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places New Century Present among Jumbo cards, and PokeBoon identifies the object as a Jumbo Special Card postcard.",
+          "sources": [
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon identify Sumiyoshi Kizuki as the illustrator of New Century Present.",
+          "sources": [
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.art",
+          "text": "As interpretive art context, Sumiyoshi Kizuki's New Century Present artwork matters because it turns Fan Club account credit into a celebratory scene rather than leaving the object as bookkeeping.",
+          "sources": [
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "cc2",
+            "cc4"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "complete art-history account",
+            "authentication",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This card must be separated from New Year Present, Tropical Present, ordinary Fan Club Pokemon cards, later Fan Club/Players Club prizes, and any standard-size card claim.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, New Century Present matters because it is a Fan Club membership object where physical mail, postcard format, GET Points, and celebratory art all carry the Pokemon apparatus.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "New Century Present: the membership receipt with a grin",
+        "why_it_matters": "New Century Present is wonderfully strange because the object is so gentle and so administrative at once. It is a postcard, a Jumbo Special Card, a Fan Club mailing, and a 200 GET Points moment. The card says that Pokemon collecting was not only opening packs or winning tournaments; it was being in the club, receiving mail, accumulating points, and letting a little illustrated celebration turn the account system into memory.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Fan Club mailing records",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_summer_2000_new_century_present_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says New Century Present, Pokemon Card Fan Club Summer 2000, Fan Club postcard, Jumbo Special Card, 200 GET Points, Sumiyoshi Kizuki, New Year Present, or Tropical Present.",
+          "summary": "Match this card by exact New Century Present title, Fan Club Summer 2000 route, postcard/Jumbo format, 200 GET Points text, and Sumiyoshi Kizuki credit before accepting it as row 194.",
+          "steps": [
+            "Confirm the card title is New Century Present / ニューセンチュリープレゼント.",
+            "Confirm the source route is Pokemon Card Fan Club Summer 2000, not January 2000 New Year Present, January 1999 Tropical Present, or Summer 2001 Tropical Present.",
+            "Confirm the object is a postcard / Jumbo Special Card and not a standard playable TCG card.",
+            "Look for the 200 GET Points text and the Pokemon Card Fan Club logo in place of an expansion symbol.",
+            "Preserve Sumiyoshi Kizuki as illustrator; do not import Tomokazu Komiya from New Year Present.",
+            "Inspect the reverse side as postcard evidence where available, but keep address/use marks as condition or provenance signals rather than automatic authenticity.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, size evidence, Fan Club logo, 200 GET Points text, postcard back, surface, edge/corner condition, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "New Year Present equivalence",
+            "Tropical Present equivalence",
+            "standard-size card equivalence",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_194_pok_mon_card_fan_club_summer_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Fan Club Summer 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Unnumbered Promotional cards (TCG)/1996-2005 - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Fan Club mailing records",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/New_Century_Present_(Fan_Club_promo)",
+          "title": "New Century Present (Fan Club promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Fan Club mailing records",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/additional_attributes/postcard/",
+          "title": "Additional Attributes: Postcard - Pokumon",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "complete Fan Club mailing records",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokeboon.com/new-century-present-pokemon-card-fan-club/",
+          "title": "New Century Present Pokemon Card Fan Club postcard - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sumiyoshi_Kizuki",
+          "title": "Sumiyoshi Kizuki - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}

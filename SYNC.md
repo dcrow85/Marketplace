@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirtieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/fan_club_summer_2000_new_century_present_v0_1.json`
+  deepens row 194 / New Century Present from the Pokemon Card Fan Club Summer 2000 route. The
+  pass treats the card as a membership object rather than a pack object: Fan Club member
+  mailing, postcard/Jumbo Special Card format, 200 GET Points account credit, Sumiyoshi Kizuki
+  celebration art, and the Fan Club logo replacing a normal expansion symbol. Special ID rails
+  now require agents to preserve exact New Century Present title, Summer 2000 Fan Club route,
+  postcard/Jumbo format, 200 GET Points text, Sumiyoshi Kizuki credit, Fan Club logo, and
+  separation from New Year Present, Tropical Present, standard playable cards, and later Fan
+  Club/Players Club prizes before treating a listing as this exact print. Generated gaps moved
+  to 59 release / 3885 card. Current hashes: corpus
+  `a3885be142d043966c52e8adeff6c53f5915bbaa06f157b8d09ac53a20caf1d7`, index
+  `3725d083ca8cc825d639e4c21ff56f2a5994d321a3ad005325d46fa5a7e5dd1d`, queue
+  `c147c74e300608a29ecc08f5aee19afca90da5d735c6156ff28d71860bcbec3a`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_crystal_tower_entei_jumbo_v0_1.json`
