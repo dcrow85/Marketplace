@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-fifth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_june_1999_togepi_v0_1.json`.
+  The CoroCoro Comic June 1999 issue insert source slice now has hand-authored
+  release and card coverage for Togepi row 093. The pass frames the card as a
+  soft Johto-forward magazine bridge rather than a generic Togepi: CoroCoro
+  June 1999 issue route, May 15 1999 date, source index 093, Japanese Togepy /
+  トゲピー search aid, Ken Sugimori source-reference credit, Japanese Original
+  Series layout, and English Wizards Promo / Neo / ANA comparison traps all
+  remain legible. Added bespoke `special_identification_instructions` requiring
+  agents to preserve source index 093, CoroCoro route, Japanese Original Series
+  layout, and non-equivalence with English Wizards Promo 30, ANA Togepi, Neo
+  Genesis / Gold Silver to a New World Togepi, and later Togepi rows before
+  accepting a match. Sources: local Japanese unnumbered promo release file,
+  Bulbapedia raw unnumbered-promo row, Bulbapedia Togepi (Wizards Promo 30),
+  and Pokumon first-design promo visual reference. Generated gap moved from 99
+  releases / 3,925 cards to 98 releases / 3,924 cards. Current catalog-history
+  corpus:
+  `17484d30cbe2d49c11677a4adfb653289496bfa1c7be0f38e64b059a48577ad9`;
+  index: `fddc00c8c4ee5d730ee6aec6ffb693de160e6e87faf1392887086a094d9cdf70`;
+  queue: `5ae91b88f176a2a858d66d5f981d961e22931b1c543d81749cd2c14c78cb327f`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-fourth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_february_1999_meowth_v0_1.json`.
