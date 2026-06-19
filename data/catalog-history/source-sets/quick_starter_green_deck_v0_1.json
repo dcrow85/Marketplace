@@ -1,0 +1,1084 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the Green Deck child lane inside Japanese Quick Starter Gift Set.",
+    "in_scope": [
+      "Quick Starter Gift Set Green Deck release dossier",
+      "Bulbasaur",
+      "Scyther",
+      "Moltres",
+      "Mewtwo",
+      "Chansey",
+      "Pokemon Trader"
+    ],
+    "not_claiming": [
+      "complete Quick Starter scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+      "type": "release",
+      "context": {
+        "name_en": "Quick Starter Gift Set Green Deck",
+        "name_ja": "クイックスターターギフト 緑デッキ",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "release_date": "1998-12-04"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set parent rollup",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Quick_Starter_Gift_Set_(TCG)",
+          "title": "Bulbapedia: Quick Starter Gift Set (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise",
+          "title": "Bulbapedia: Original TCG Era merchandise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete merchandise archive",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models the Quick Starter Gift Set Green Deck as released on December 4, 1998, as a child lane inside the Quick Starter Gift Set product.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia describes Quick Starter Gift Set as a two-deck kit containing a Red Deck and a Green Deck.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local Green Deck catalog models one 60-card deck with 32 unique catalog rows; the parent rollup preserves the green lane rather than deduplicating by card name.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia frames Quick Starter cards as reprints from Vending Machine / Expansion Sheet material, while the local catalog preserves the Green Deck as a child lane with its own row order.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix marks the Quick Starter parent product as printing without rarity symbols and identifies Base-overlap trainer traps, including Pokemon Trader.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Lower-tier collector research warns that Quick Starter trainer reprints without rarity symbols can be mistaken for Japanese Base No Rarity cards, especially when text/layout differences are ignored.",
+          "sources": [
+            "s7"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.chase_structure",
+          "text": "The local Green Deck attention rows include Mewtwo, Chansey, Bulbasaur, Scyther, Moltres, and Pokemon Trader.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "The local Green Deck artist clusters include Atsuko Nishida, Keiji Kinebuchi, Aya Kusube, Sumiyoshi Kizuki, Kagemaru Himeno, Ken Sugimori, Mitsuhiro Arita, and others.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "The Green Deck matters because it shows Quick Starter's gentler half: Bulbasaur ecology, fire/psychic pivots, Mewtwo and Chansey collector gravity, and the same missing-symbol trainer discipline that makes the parent product so important to agentic identification.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_deck_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "red and green deck rows are interchangeable"
+          ],
+          "steps": [
+            "Preserve this as the Green Deck child lane, not the parent rollup and not the Red Deck.",
+            "Keep local row numbers 001-032 attached to the green deck; do not strip the child-release context.",
+            "Do not treat missing rarity symbols as Japanese Base No Rarity proof.",
+            "For Pokemon Trader and other sensitive trainer names, require Japanese text/layout comparison before any No Rarity Base claim advances.",
+            "When comparing to the parent rollup, retain the source child row id so the same card name does not erase lane provenance."
+          ],
+          "summary": "The Green Deck is a child lane inside Quick Starter; lane membership and missing-symbol caveats must remain visible.",
+          "trigger": "A listing, want, or binder import says Quick Starter Green Deck, QSGSG, green deck, no-rarity trainer, or one of the Green Deck row names."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The green half of the lesson",
+        "why_it_matters": "The Green Deck is Quick Starter at its most welcoming: Bulbasaur at the door, little evolution lines, a few strange old Vending memories, then Mewtwo and Chansey waiting deeper in the lane. It feels gentle until the identification work starts. Then it becomes serious, because the same missing-symbol surface that makes these cards feel old can mislead an agent unless the green child lane stays attached to every row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:001",
+      "type": "card",
+      "context": {
+        "name_en": "Bulbasaur",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:001",
+          "title": "Local Quick Starter Green Deck row: Bulbasaur 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 001 as Bulbasaur in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Bulbasaur 001 to Sumiyoshi Kizuki.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Bulbasaur matters because it opens the Green Deck with a starter identity, making the child lane feel like an invitation rather than only a reprint bundle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_bulbasaur_001_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 001.",
+            "Do not collapse this row into Base Set Bulbasaur, Expansion Pack Bulbasaur, or the parent rollup without the child lane.",
+            "Record Sumiyoshi Kizuki as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Bulbasaur 001 is the Green Deck opening row; child-lane provenance must stay attached.",
+          "trigger": "A listing or want says Quick Starter Bulbasaur, green deck Bulbasaur, old-back Bulbasaur, or no-rarity Bulbasaur."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The green deck begins with a familiar door",
+        "why_it_matters": "Bulbasaur at row 001 makes the Green Deck feel immediately legible. Before the traps and the variant talk, the product starts with a starter. Sumiyoshi Kizuki's credit gives this lane its own texture, and the row reminds the agent that even the friendliest opening card still needs its exact release path preserved.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:006",
+      "type": "card",
+      "context": {
+        "name_en": "Scyther",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:006",
+        "catalog_row_id": "006"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:006",
+          "title": "Local Quick Starter Green Deck row: Scyther 006",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 006 as Scyther in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Scyther 006 to Hironobu Yoshida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Scyther matters because it gives the Green Deck a sharp collector silhouette before the deck reaches its legendary and psychic anchors.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_scyther_006_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Jungle or Vending equivalence"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 006.",
+            "Do not collapse this row into Jungle Scyther, Vending/Expansion Sheet Scyther, or the parent rollup without child-lane context.",
+            "Record Hironobu Yoshida as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Scyther 006 is a Green Deck child-lane row and needs separation from other early Scyther identities.",
+          "trigger": "A listing or want says Quick Starter Scyther, green deck Scyther, old-back Scyther, or no-rarity Scyther."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A sharp silhouette in a gentle lane",
+        "why_it_matters": "Scyther gives the Green Deck an edge. Around it are starter and utility rhythms, but Scyther cuts through the lane as a collector shape people recognize instantly. Hironobu Yoshida's credit keeps the row tied to a specific hand, which is exactly the kind of texture the catalog needs before a seller ever talks about a physical card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:014",
+      "type": "card",
+      "context": {
+        "name_en": "Moltres",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:014",
+        "catalog_row_id": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:014",
+          "title": "Local Quick Starter Green Deck row: Moltres 014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 014 as Moltres in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Moltres 014 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Moltres matters because the Green Deck carries a legendary-bird signal without becoming a booster chase product, and Arita's credit gives that signal early-card gravity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_moltres_014_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Fossil or Vending equivalence"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 014.",
+            "Do not collapse this row into Fossil Moltres, Vending/Expansion Sheet Moltres, or the parent rollup without child-lane context.",
+            "Record Mitsuhiro Arita as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Moltres 014 is the Green Deck legendary-bird row, not a generic Moltres reference.",
+          "trigger": "A listing or want says Quick Starter Moltres, green deck Moltres, legendary bird, old-back Moltres, or no-rarity Moltres."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A legendary bird tucked into the teaching box",
+        "why_it_matters": "Moltres is a small thrill inside the Green Deck. The product is meant to teach, but Arita's legendary bird makes it feel like there is myth hiding inside the lesson. That is the early TCG at its best: practical cardboard that still knows how to make a kid stop and stare.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:020",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:020",
+        "catalog_row_id": "020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:020",
+          "title": "Local Quick Starter Green Deck row: Mewtwo 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 020 as Mewtwo in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mewtwo 020 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Mewtwo matters because the Green Deck gives the beginner lane a mythic center of gravity, making a practical product feel story-rich.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_mewtwo_020_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base or promo equivalence"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 020.",
+            "Do not collapse this row into Base Mewtwo, promo Mewtwo, or the parent rollup without child-lane context.",
+            "Record Atsuko Nishida as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Mewtwo 020 is the Green Deck child-lane mythic anchor and needs row-level identity.",
+          "trigger": "A listing or want says Quick Starter Mewtwo, green deck Mewtwo, old-back Mewtwo, or no-rarity Mewtwo."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mythic boss inside the green lane",
+        "why_it_matters": "Mewtwo is where the Green Deck gets dramatic. The kit is supposed to be accessible, but this row gives it a final-room feeling. Atsuko Nishida's credit is wonderful here because one of Pokemon's foundational designers is carrying the strange laboratory icon into a product built for immediate play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:023",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:023",
+        "catalog_row_id": "023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:023",
+          "title": "Local Quick Starter Green Deck row: Chansey 023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 023 as Chansey in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Chansey 023 to Tomokazu Komiya.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Chansey matters because Komiya's handmade visual language gives the Green Deck a deeply human-feeling row inside a product designed for instruction.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_chansey_023_child_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base equivalence"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 023.",
+            "Do not collapse this row into Base Chansey, no-rarity Chansey, or the parent rollup without child-lane context.",
+            "Record Tomokazu Komiya as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Chansey 023 is the Green Deck child-lane Komiya row and needs separation from other Chansey identities.",
+          "trigger": "A listing or want says Quick Starter Chansey, green deck Chansey, old-back Chansey, or no-rarity Chansey."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Komiya warmth in a teaching product",
+        "why_it_matters": "Chansey gives the Green Deck a soft center. Tomokazu Komiya's style makes the card feel handmade, almost diary-like, which is funny and lovely inside a product designed for quick structured play. It is a reminder that even instructional Pokemon objects were full of individual artist fingerprints.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_green_deck_19981204:031",
+      "type": "card",
+      "context": {
+        "name_en": "Pokemon Trader",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_green_deck_19981204:031",
+        "catalog_row_id": "031"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:031",
+          "title": "Local Quick Starter Green Deck row: Pokemon Trader 031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/no-rarity-vs-qss-pokemon-trader-psa-question/15195",
+          "title": "Elite Fourum: No Rarity vs QSS Pokemon Trader PSA Question",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete text-layout proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 031 as Pokemon Trader in the Quick Starter Gift Set Green Deck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pokemon Trader 031 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix lists Pokemon Trader among the explicit Base-overlap trainer trap rows for Quick Starter Gift Set.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Lower-tier collector discussion specifically treats Pokemon Trader as a Quick Starter versus No Rarity comparison problem, supporting row-level text/layout checking before a No Rarity Base claim advances.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pokemon Trader matters because it carries the Green Deck's strongest identification warning: a missing symbol can look persuasive while still belonging to the wrong assembly history.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_green_pokemon_trader_031_text_layout_trap_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "PSA or population label correctness"
+          ],
+          "steps": [
+            "Preserve the Green Deck child release and row 031; note that a red-deck Pokemon Trader row also exists.",
+            "Do not accept missing rarity symbol alone as Japanese Base No Rarity evidence.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack and Quick Starter exemplars before a No Rarity Base Pokemon Trader claim can advance.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Pokemon Trader 031 is the Green Deck version of a named Quick Starter text-layout trap.",
+          "trigger": "A listing, want, or slab label says Pokemon Trader, No Rarity, Quick Starter, QSS, Green Deck, or missing rarity symbol."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The green lane's quiet little trapdoor",
+        "why_it_matters": "Pokemon Trader is where the Green Deck stops being gentle and starts being forensic. It is just a trainer card until somebody calls it No Rarity. Then the whole protocol wakes up: text layout, row lane, release history, and proof burden all matter. This is exactly the kind of card an agent should love, because it turns confusion into a clean question.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the nineteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/quick_starter_green_deck_v0_1.json`.
+  Japanese Quick Starter Gift Set Green Deck is now a hand-authored child
+  release dossier, with Bulbasaur 001, Scyther 006, Moltres 014, Mewtwo
+  020, Chansey 023, and Pokemon Trader 031 promoted from generated baseline
+  to sourced card dossiers. The pass frames the Green Deck as the gentler
+  half of Quick Starter: Bulbasaur at the door, Scyther and Moltres adding
+  collector silhouettes, Mewtwo and Chansey adding gravity, and Pokemon
+  Trader carrying the child lane's strongest missing-symbol warning.
+  Added special identification rails for Green Deck child-lane provenance,
+  parent rollup versus child release, row-number preservation, Scyther /
+  Moltres / Mewtwo / Chansey separation from other early identities, and
+  Pokemon Trader as a Green Deck text-layout trap where missing-symbol
+  appearance is not Base No Rarity proof. Sources: local Japanese
+  pre-English Green Deck and parent Quick Starter catalogs, PokeCardex
+  QSGSG, Bulbapedia Quick Starter Gift Set, Bulbapedia Original TCG Era
+  merchandise, local pre-English symbol-status matrix, and lower-tier
+  Elite Fourum collector discussion for Quick Starter / No Rarity trainer
+  confusion. Generated gap moved from 189 releases / 4,446 cards to 188
+  releases / 4,440 cards. Current catalog-history corpus: 22,871 claims,
+  5,025 sources, corpus hash
+  `7e8f520cc7db3de36c600e0f9494e137d29cdd184541abfe11f940706bb3f9eb`;
+  index hash `3bf6803ac0a70304a90709de38276aa3807f756e5299f58073cb4c8a81e3f2c1`;
+  queue hash `4930bdac32ae80f1a33213bcef9a021405647bfd18df186546f82d12cd5260cc`.
 - `[passive]` 2026-06-19 · Codex — completed the eighteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/quick_starter_gift_set_v0_1.json`.
