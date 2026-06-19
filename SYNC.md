@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`.
+  Japanese ADV-P Promotional cards - pre-WoC-edge subset now has a
+  hand-authored release dossier plus a high-gravity first Hoenn tranche:
+  Kyogre ex 001/ADV-P, Groudon ex 002/ADV-P, Treecko 003/ADV-P, Torchic
+  004/ADV-P, Mudkip 005/ADV-P, Latias 006/ADV-P, Latios 007/ADV-P, and
+  Jirachi 014/ADV-P. The pass frames ADV-P as the catalog turning toward
+  Ruby/Sapphire: ocean, continent, starters, Eon twins, and the wish star
+  moving through CoroCoro, McDonald's, Shogakukan / magazine, and ticket
+  exchange routes. Added `special_identification_instructions` requiring
+  agents to read the printed `NNN/ADV-P` number, preserve the 001-014 bounded
+  slice, and keep distribution notes separate from physical provenance. This
+  is intentionally not complete ADV-P coverage; rows 008/ADV-P through
+  013/ADV-P remain generated card-level follow-up work, and 015/ADV-P onward
+  remain outside this bounded corpus. Artists remain intentionally unset
+  because the numbered ADV-P source rows do not provide illustrator authority.
+  Sources: local Japanese promo WotC ADV-P bounded catalog, Bulbapedia raw
+  ADV-P wikitext, and local catalog boundary proof. Generated gap moved from
+  167 releases / 4,221 cards to 166 releases / 4,213 cards. Current
+  catalog-history corpus: 22,788 claims, 5,560 sources, 618 dossiers with
+  special identification instructions, corpus hash
+  `379dbbdcd07afbde8ecad453276845b462d363e991c6794b4f8647d16544e089`;
+  index hash `1da38d1d263525a8202c4031f3480a50b8053167aca6cd84ec32d0b58cc04891`;
+  queue hash `bd9a55ea91f699245a4868e1ccb1e313de65903783c6c6b18df0376671c3312a`.
 - `[passive]` 2026-06-19 · Codex — completed the fortieth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/w_promotional_v0_1.json`. English WotC

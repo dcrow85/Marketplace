@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22796,
-    "corpus_hash": "05af7e903c1ae2f9d0202b4c62b28d44c5bd4f98feed23f9057154abd4e2523f",
-    "generated_card_dossier_count": 4221,
-    "generated_release_dossier_count": 167,
+    "claim_count": 22788,
+    "corpus_hash": "379dbbdcd07afbde8ecad453276845b462d363e991c6794b4f8647d16544e089",
+    "generated_card_dossier_count": 4213,
+    "generated_release_dossier_count": 166,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5550
+    "source_count": 5560
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "66feb6cfad8b4de9f1d23b5d87485dbed6afb516a3142608e20307c209a6b544",
+    "queue_hash": "bd9a55ea91f699245a4868e1ccb1e313de65903783c6c6b18df0376671c3312a",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T07:04:57Z",
+  "generated_at": "2026-06-19T07:13:10Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "00acaf4501693f2fd93fea481e2507099edb9706a0c1a01ed19bc06c978c6c56",
+    "index_hash": "1da38d1d263525a8202c4031f3480a50b8053167aca6cd84ec32d0b58cc04891",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -42,6 +42,7 @@
   "schema": "marketplace.catalog_history_manifest.v0.1",
   "source_sets": [
     "data/catalog-history/source-sets/adv_expansion_pack_v0_1.json",
+    "data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json",
     "data/catalog-history/source-sets/aquapolis_v0_1.json",
     "data/catalog-history/source-sets/base_set_2_v0_1.json",
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
