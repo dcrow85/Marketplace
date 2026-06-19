@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/song_best_collection_cd_v0_1.json`.
+  Pokémon Song Best Collection CD insert is now a complete hand-authored
+  11-row dossier for the modeled unnumbered promo campaign group: Venusaur
+  068, Arcanine 069, Charizard 070, Blastoise 071, Mew 072, Mewtwo 073,
+  Cool Porygon 074, Hungry Snorlax 075, Computer Error 076, Super Energy
+  Retrieval 077, and Pikachu 078. The pass frames Song Best as Pokémon
+  assembling itself through music-media distribution: flagship monsters,
+  older campaign reprints, booklet/CD physicality, glossy trainer variants,
+  and an English Base Set Pikachu caveat inside a Japanese CD product story.
+  Added artist-context claims from the richer local Song Best rows:
+  Mitsuhiro Arita, Ken Sugimori, Christopher Rush, Hiromichi Sugiyama,
+  Sumiyoshi Kizuki, and Keiji Kinebuchi. Added `special_identification_instructions`
+  requiring agents to preserve the CD insert route, source row, campaign
+  reuse lineage, gloss/Team Rocket R shadow for Computer Error, and language
+  caveat for Pikachu before treating a listing as a Song Best row. Sources:
+  local Japanese unnumbered promo Song Best group, local Japanese pre-English
+  Song Best release witness, Bulbapedia raw unnumbered promo wikitext, and
+  local selected-line snapshots for Toyota, World Hobby Fair, Nintendo 64
+  W Double Get, and Kamex/Computer Error variant distinction. Generated gap
+  moved from 166 releases / 4,213 cards to 165 releases / 4,202 cards.
+  Current catalog-history corpus: 22,773 claims, 5,582 sources, 619 dossiers
+  with special identification instructions, corpus hash
+  `d74013c2c5f9b4eeecb79500d93e29d1845940abbac2644809bdc5ab4cd35068`;
+  index hash `efc85313d85f5b16a53e34f8c1ff3d64e41c986d4d4b51f62dd1484b46fd6e31`;
+  queue hash `73bc8be0a002409b829eb79189218109c5088c1543067fd7c6a71e5c3a57611e`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`.

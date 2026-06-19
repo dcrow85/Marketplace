@@ -1,0 +1,1791 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Pokémon Song Best Collection CD insert",
+    "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+    "notes": [
+      "Japanese unnumbered promo campaign source group for the January 1, 1999 Pokémon Song Best Collection CD insert.",
+      "This pass deepens all 11 modeled rows and bridges the current unnumbered-promo source group with the richer local Song Best Collection release witness."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+      "type": "release",
+      "context": {
+        "name_en": "Pokémon Song Best Collection CD insert (January 1, 1999)",
+        "name_ja": "ポケモンソング・ベストコレクション",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "release_date": "1999-01-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Song Best Collection CD insert campaign group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json",
+          "title": "Local Japanese pre-English catalog: Pokemon Song Best Collection",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "participating-store ledger",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_toyota_auto_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "dealership participation ledger",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: 7th Next Generation World Hobby Fair Special Sheet",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete event archive",
+            "venue schedule",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered-promo catalog models the Pokémon Song Best Collection CD insert group with a January 1, 1999 date.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local unnumbered-promo group and the local Song Best release both model 11 included card rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local catalogs identify this as a CD insert / CD included reprint promo context rather than a booster release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The row group assembles card memory through music-media distribution: flagship Pokémon, earlier campaign reprints, glossy trainer variants, and an English Base Set Pikachu caveat all meet inside one CD object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "The richer local Song Best rows credit Mitsuhiro Arita, Ken Sugimori, Christopher Rush, Hiromichi Sugiyama, Sumiyoshi Kizuki, and Keiji Kinebuchi across the 11-card witness set.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Because Song Best rows are unnumbered promo/campaign rows, an agent must identify the card by name, Song Best CD insert route, variant notes, language caveats, and source-index context rather than by printed set number alone.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_cd_insert_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Pokémon Song Best Collection, Song Best CD, CD insert, unnumbered Song Best promo, or one of the 11 Song Best card names.",
+          "summary": "Confirm the Song Best CD insert route and row-specific caveats before treating a card as this unnumbered promo group.",
+          "steps": [
+            "Confirm the claimed card is one of the 11 modeled Song Best rows.",
+            "Preserve the Song Best Collection CD insert / reprint context separately from the card name.",
+            "Check row-specific caveats: earlier campaign reuse, glossy trainer variant, Computer Error print lane, or English Pikachu inclusion.",
+            "Do not merge with No Rarity, Toyota, World Hobby Fair, Nintendo 64, CoroCoro, Kamex, or ordinary Base/Fossil-style rows without the matching route evidence.",
+            "For transactional use, ask for front, back, surface, stock/gloss, language, and any CD/booklet/packaging provenance photos."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official product-boundary proof beyond cited catalogs",
+            "price truth",
+            "complete variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When the cards arrived inside the music",
+        "why_it_matters": "Song Best is beautiful because it does not behave like a set. It feels like Pokémon assembling itself sideways: songs, booklets, campaign leftovers, classic monsters, a glossy Computer Error lane, even an English Pikachu sitting inside a Japanese product story. The CD turns cards into liner notes for the franchise. For an agent, that means the route is not decorative; it is the identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "complete variant census"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:068",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:068",
+        "catalog_row_id": "068"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:068",
+          "title": "Local Japanese unnumbered promo row: Song Best Venusaur 068",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:001",
+          "title": "Local Song Best row: Venusaur 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Venusaur as source row 068 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Venusaur to Mitsuhiro Arita.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Venusaur gives the CD insert an immediate Base-era starter anchor: one of the original final evolutions reappears as music-media memory rather than booster collation.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_venusaur_068_cd_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Venusaur, CD insert Venusaur, or unnumbered promo Venusaur.",
+          "summary": "Confirm Venusaur belongs to the Song Best CD insert route before treating it as row 068.",
+          "steps": [
+            "Confirm the card name is Venusaur / フシギバナ.",
+            "Preserve source row 068 and the Song Best CD insert route.",
+            "Do not merge with No Rarity, Expansion Pack, Base Set, or other Venusaur rows without route evidence.",
+            "Use the Mitsuhiro Arita credit as catalog metadata, not physical-card proof.",
+            "For a trade, ask for full front/back photos plus any CD/booklet provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CD provenance",
+            "other Venusaur equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The garden returns as a song insert",
+        "why_it_matters": "Venusaur in Song Best is not trying to be a new monster. It is old power placed in a different vessel. Arita's familiar starter gravity becomes part of a CD object, which is exactly why the route matters: the card is carrying music-media memory now.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:069",
+      "type": "card",
+      "context": {
+        "name_en": "Arcanine",
+        "name_ja": "ウィンディ",
+        "romaji": "Windie",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:069",
+        "catalog_row_id": "069"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:069",
+          "title": "Local Japanese unnumbered promo row: Song Best Arcanine 069",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:004",
+          "title": "Local Song Best row: Arcanine 004",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_toyota_auto_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete dealership ledger",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Arcanine as source row 069 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Arcanine to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local Toyota campaign snapshot says Arcanine was later printed with the Pokémon Song Best Collection CD and describes that version as identical to the Toyota pamphlet version.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Arcanine makes Song Best feel like a reuse archive: a dealership-campaign card becomes part of the CD's collected Pokémon memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_arcanine_069_toyota_reuse_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Arcanine, Toyota Arcanine, CD insert Arcanine, or unnumbered promo Arcanine.",
+          "summary": "Confirm the Song Best route and Toyota-reuse lineage before treating Arcanine as row 069.",
+          "steps": [
+            "Confirm the card name is Arcanine / ウィンディ.",
+            "Preserve source row 069 and the Song Best CD insert route.",
+            "Keep Toyota campaign lineage legible, but do not treat it as proof of a specific physical copy's provenance.",
+            "Do not merge with other Arcanine rows without route evidence.",
+            "For a trade, ask for full front/back photos and any CD/booklet or Toyota pamphlet provenance claimed by the seller."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "Toyota provenance",
+            "CD provenance",
+            "other Arcanine equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The dealership dog in the CD archive",
+        "why_it_matters": "Arcanine is one of those cards where the route is the romance. A Sugimori creature from an odd Toyota campaign gets folded into Song Best, as if the CD is gathering stray pieces of Pokémon's public life and pressing them together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:070",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Rizaadon",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:070",
+        "catalog_row_id": "070"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:070",
+          "title": "Local Japanese unnumbered promo row: Song Best Charizard 070",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:002",
+          "title": "Local Song Best row: Charizard 002",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Charizard as source row 070 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Charizard to Mitsuhiro Arita.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Charizard gives the CD insert its obvious heat: a famous Arita image pulled out of set logic and into the franchise's music archive.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_charizard_070_cd_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Charizard, CD insert Charizard, or unnumbered promo Charizard.",
+          "summary": "Confirm Charizard belongs to the Song Best CD insert route before treating it as row 070.",
+          "steps": [
+            "Confirm the card name is Charizard / リザードン.",
+            "Preserve source row 070 and the Song Best CD insert route.",
+            "Do not merge with No Rarity, Expansion Pack, Base Set, or other Charizard rows without route evidence.",
+            "Use the Mitsuhiro Arita credit as catalog metadata, not physical-card proof.",
+            "For a trade, ask for full front/back photos plus any CD/booklet provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CD provenance",
+            "other Charizard equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The dragon as liner-note gravity",
+        "why_it_matters": "Charizard changes the emotional temperature of any object it enters. In Song Best, that gravity is almost funny: the card world and the music world both need the dragon in the room. The agent's job is to keep that desire from flattening the route.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:071",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "romaji": "Kamekkusu",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:071",
+        "catalog_row_id": "071"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:071",
+          "title": "Local Japanese unnumbered promo row: Song Best Blastoise 071",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:003",
+          "title": "Local Song Best row: Blastoise 003",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Blastoise as source row 071 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Blastoise to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Blastoise completes the starter-final trio inside the CD insert and gives Song Best its water-weighted Base-era memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_blastoise_071_cd_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Blastoise, CD insert Blastoise, or unnumbered promo Blastoise.",
+          "summary": "Confirm Blastoise belongs to the Song Best CD insert route before treating it as row 071.",
+          "steps": [
+            "Confirm the card name is Blastoise / カメックス.",
+            "Preserve source row 071 and the Song Best CD insert route.",
+            "Do not merge with No Rarity, Expansion Pack, Base Set, or other Blastoise rows without route evidence.",
+            "Use the Ken Sugimori credit as catalog metadata, not physical-card proof.",
+            "For a trade, ask for full front/back photos plus any CD/booklet provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CD provenance",
+            "other Blastoise equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The cannon-backed memory in the booklet",
+        "why_it_matters": "Blastoise makes Song Best feel complete in the old starter sense. Sugimori's water giant belongs to the original visual grammar, but here it is bound to a CD route, which makes the object feel like a collected echo rather than a normal release.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:072",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "ミュウ",
+        "romaji": "Myuu",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:072",
+        "catalog_row_id": "072"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:072",
+          "title": "Local Japanese unnumbered promo row: Song Best Mew 072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:006",
+          "title": "Local Song Best row: Mew 006",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: 7th Next Generation World Hobby Fair Special Sheet",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Mew as source row 072 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Mew to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local World Hobby Fair snapshot associates Mew with the World Hobby Fair Special Sheet and Pokemon Song Best Collection CD 1997 context.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew gives Song Best secret-myth energy: a legendary promo lineage folded into a music collection rather than a normal set slot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_mew_072_whf_cd_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Mew, World Hobby Fair Mew, CD insert Mew, or unnumbered promo Mew.",
+          "summary": "Confirm the Song Best CD route and Mew-specific lineage before treating it as row 072.",
+          "steps": [
+            "Confirm the card name is Mew / ミュウ.",
+            "Preserve source row 072 and the Song Best CD insert route.",
+            "Keep World Hobby Fair lineage legible, but do not treat it as proof of a specific copy's provenance.",
+            "Do not merge with other Mew promo rows without route evidence.",
+            "For a trade, ask for full front/back photos plus any CD/booklet or event provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "World Hobby Fair provenance",
+            "CD provenance",
+            "other Mew equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The secret Pokémon inside the soundtrack",
+        "why_it_matters": "Mew always makes an object feel like it has a hidden door. In Song Best, the door opens through a CD insert and older event memory. It is the perfect example of why this catalog cares about assembly: the same character means different things depending on how it reached a person.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:073",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Myuutsuu",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:073",
+        "catalog_row_id": "073"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:073",
+          "title": "Local Japanese unnumbered promo row: Song Best Mewtwo 073",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:005",
+          "title": "Local Song Best row: Mewtwo 005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: 7th Next Generation World Hobby Fair Special Sheet",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Mewtwo as source row 073 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Mewtwo to Christopher Rush.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local World Hobby Fair snapshot associates Mewtwo with the World Hobby Fair Special Sheet and Pokemon Song Best Collection CD 1997 context.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo adds international-art lineage and movie-era psychological weight to the CD insert's collection of iconic Pokémon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_mewtwo_073_whf_cd_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Mewtwo, World Hobby Fair Mewtwo, CD insert Mewtwo, or unnumbered promo Mewtwo.",
+          "summary": "Confirm the Song Best CD route and Mewtwo-specific lineage before treating it as row 073.",
+          "steps": [
+            "Confirm the card name is Mewtwo / ミュウツー.",
+            "Preserve source row 073 and the Song Best CD insert route.",
+            "Keep World Hobby Fair lineage legible, but do not treat it as proof of a specific copy's provenance.",
+            "Use the Christopher Rush credit as catalog metadata, not physical-card proof.",
+            "For a trade, ask for full front/back photos plus any CD/booklet or event provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "World Hobby Fair provenance",
+            "CD provenance",
+            "other Mewtwo equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A strange outside hand on a central myth",
+        "why_it_matters": "Mewtwo in Song Best has a different charge because the credited artist in the richer local row is Christopher Rush. That gives the card an odd cross-current: a deeply central Pokémon, a Japanese CD route, and a non-Japanese artist trace all occupying one small catalog object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:074",
+      "type": "card",
+      "context": {
+        "name_en": "Cool Porygon",
+        "name_ja": "かっこいいポリゴン",
+        "romaji": "Kakkoii Porygon",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:074",
+        "catalog_row_id": "074"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:074",
+          "title": "Local Japanese unnumbered promo row: Song Best Cool Porygon 074",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:007",
+          "title": "Local Song Best row: Cool Porygon 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "participating-store ledger",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Cool Porygon as source row 074 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Cool Porygon to Hiromichi Sugiyama.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local Nintendo 64 W Double Get Campaign snapshot says Cool Porygon and Hungry Snorlax were later reprinted in the Pokemon Song Best Collection CD and describes those reprints as identical to the Nintendo 64 campaign versions.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Cool Porygon carries video-game hardware campaign memory into the Song Best CD object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_cool_porygon_074_n64_reuse_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Cool Porygon, Nintendo 64 Cool Porygon, CD insert Cool Porygon, or unnumbered promo Cool Porygon.",
+          "summary": "Confirm the Song Best route and Nintendo 64 campaign reuse context before treating Cool Porygon as row 074.",
+          "steps": [
+            "Confirm the card name is Cool Porygon / かっこいいポリゴン.",
+            "Preserve source row 074 and the Song Best CD insert route.",
+            "Keep Nintendo 64 W Double Get lineage legible, but do not treat it as proof of a specific copy's provenance.",
+            "Do not merge with other Porygon rows without route evidence.",
+            "For a trade, ask for full front/back photos and any CD/booklet or Nintendo 64 campaign provenance claimed by the seller."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "Nintendo 64 campaign provenance",
+            "CD provenance",
+            "other Porygon equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A polygonal mascot from the hardware lane",
+        "why_it_matters": "Cool Porygon is one of the most delightful assembly clues in Song Best. It points backward to a Nintendo 64 purchase campaign, then sideways into a music CD. Few cards say 'Pokémon was becoming a media machine' this efficiently.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:075",
+      "type": "card",
+      "context": {
+        "name_en": "Hungry Snorlax",
+        "name_ja": "くいしんぼカビゴン",
+        "romaji": "Kuishinbo Kabigon",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:075",
+        "catalog_row_id": "075"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:075",
+          "title": "Local Japanese unnumbered promo row: Song Best Hungry Snorlax 075",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:008",
+          "title": "Local Song Best row: Hungry Snorlax 008",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "participating-store ledger",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Hungry Snorlax as source row 075 in the Song Best CD insert group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Hungry Snorlax to Sumiyoshi Kizuki.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local Nintendo 64 W Double Get Campaign snapshot says Hungry Snorlax and Cool Porygon were later reprinted in the Pokemon Song Best Collection CD and describes those reprints as identical to the Nintendo 64 campaign versions.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Hungry Snorlax keeps the physical booklet/game-token memory visible inside the Song Best line: the CD is not only audio, but packaging, counters, and card play meeting.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_hungry_snorlax_075_n64_reuse_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Hungry Snorlax, Nintendo 64 Hungry Snorlax, CD insert Hungry Snorlax, or unnumbered promo Hungry Snorlax.",
+          "summary": "Confirm the Song Best route and Nintendo 64 campaign reuse context before treating Hungry Snorlax as row 075.",
+          "steps": [
+            "Confirm the card name is Hungry Snorlax / くいしんぼカビゴン.",
+            "Preserve source row 075 and the Song Best CD insert route.",
+            "Keep Nintendo 64 W Double Get and booklet/token context legible, but do not treat it as proof of a specific copy's provenance.",
+            "Do not merge with other Snorlax rows without route evidence.",
+            "For a trade, ask for full front/back photos and any CD/booklet/Food-counter provenance claimed by the seller."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "Nintendo 64 campaign provenance",
+            "CD provenance",
+            "complete token/booklet state"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The hungry card with packaging memory",
+        "why_it_matters": "Hungry Snorlax is wonderfully material. The local snapshot keeps pointing to booklet, CD, and Food counters, so this is not just another Snorlax image. It is Pokémon as a little bundle of game pieces and music-media packaging.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:076",
+      "type": "card",
+      "context": {
+        "name_en": "Computer Error",
+        "name_ja": "パソコン大暴走！",
+        "romaji": "Pasokon Dai Bousou!",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:076",
+        "catalog_row_id": "076"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:076",
+          "title": "Local Japanese unnumbered promo row: Song Best Computer Error 076",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:009",
+          "title": "Local Song Best row: Computer Error 009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_kamex_mega_battle_1998_selected_lines.json",
+          "title": "Local selected-lines snapshot: Kamex Mega Battle and Computer Error variant distinction",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete Computer Error variant census",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Computer Error as source row 076 in the Song Best CD insert group and marks the row glossy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Computer Error to Sumiyoshi Kizuki.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local Kamex snapshot distinguishes glossy CoroCoro/Song Best Computer Error prints with red-drop-shadow Team Rocket R from the later non-glossy Kamex Mega Battle participation print with white drop shadow.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Computer Error is the row where Song Best becomes a serious identification trap: name, gloss, Team Rocket R shadow, and route all matter.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_computer_error_076_glossy_variant_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Computer Error, glossy Computer Error, Rocket's Secret Machine, CoroCoro/Song Best Computer Error, or Kamex Computer Error.",
+          "summary": "Confirm the glossy Song Best / CoroCoro print lane before treating Computer Error as row 076.",
+          "steps": [
+            "Confirm the card name is Computer Error / パソコン大暴走！.",
+            "Preserve source row 076 and the Song Best CD insert route.",
+            "Check the glossy stock and Team Rocket R shadow lane; do not collapse into the non-glossy Kamex Mega Battle participation print.",
+            "Treat variant identification as evidence to inspect, not as authentication from the catalog row alone.",
+            "For a trade, ask for angled surface/gloss photos, close Team Rocket R photos, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Computer Error variant census",
+            "Kamex equivalence",
+            "Song Best physical provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The row where gloss matters",
+        "why_it_matters": "Computer Error is exactly why this catalog exists. A casual eye sees the name; a good agent sees stock, R shadow, source route, and the danger of borrowing the wrong story from Kamex. Song Best turns this trainer into a little forensic lesson.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:077",
+      "type": "card",
+      "context": {
+        "name_en": "Super Energy Retrieval",
+        "name_ja": "超エネルギー回収",
+        "romaji": "Chou Energy Kaishuu",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:077",
+        "catalog_row_id": "077"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:077",
+          "title": "Local Japanese unnumbered promo row: Song Best Super Energy Retrieval 077",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:010",
+          "title": "Local Song Best row: Super Energy Retrieval 010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Super Energy Retrieval as source row 077 in the Song Best CD insert group and marks the row glossy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Super Energy Retrieval to Keiji Kinebuchi.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Super Energy Retrieval keeps the play-system side of Song Best alive: not only famous creatures, but the trainer grammar of the TCG enters the CD insert.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_super_energy_retrieval_077_glossy_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Super Energy Retrieval, glossy Super Energy Retrieval, or CD insert Super Energy Retrieval.",
+          "summary": "Confirm the Song Best route and glossy trainer context before treating Super Energy Retrieval as row 077.",
+          "steps": [
+            "Confirm the card name is Super Energy Retrieval / 超エネルギー回収.",
+            "Preserve source row 077 and the Song Best CD insert route.",
+            "Keep the glossy trainer note legible.",
+            "Do not merge with ordinary trainer rows without route evidence.",
+            "For a trade, ask for angled surface/gloss photos, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CD provenance",
+            "ordinary trainer equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A trainer card among the songs",
+        "why_it_matters": "Super Energy Retrieval is easy to miss beside Charizard and Mew, but it tells a different truth: Song Best was not only mascot memory. It also carried the mechanical language of the card game, and Keiji Kinebuchi's trainer design grammar belongs in that assembly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:078",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachuu",
+        "release_family_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:078",
+        "catalog_row_id": "078"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999.json#row:jp_promo_unnumbered_wotc_068_pok_mon_song_best_collection_cd_insert_january_1_1999:078",
+          "title": "Local Japanese unnumbered promo row: Song Best Pikachu 078",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json#row:jp_tcg_pokemon_song_best_collection_19990101:011",
+          "title": "Local Song Best row: Pikachu 011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Pikachu as source row 078 in the Song Best CD insert group and records an English Base Set caveat.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The richer local Song Best row credits Pikachu to Mitsuhiro Arita.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The richer local Song Best row states that this Pikachu is an English Base Set card included in a Japanese CD product and carries a row-level language caveat.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu is the release's cleanest boundary test: the mascot appears, but the language caveat and CD route matter more than generic Pikachu recognition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "song_best_pikachu_078_english_language_boundary_v0.1",
+          "trigger": "A user or listing says Song Best Pikachu, English Pikachu in Japanese CD, CD insert Pikachu, or unnumbered promo Pikachu.",
+          "summary": "Confirm the English Pikachu caveat and Song Best CD route before treating Pikachu as row 078.",
+          "steps": [
+            "Confirm the card name is Pikachu / ピカチュウ.",
+            "Preserve source row 078 and the Song Best CD insert route.",
+            "Check the English-language caveat; do not treat this as a normal Japanese Pikachu row.",
+            "Do not merge with No Rarity, Toyota, CoroCoro, Base, or other Pikachu promos without route evidence.",
+            "For a trade, ask for full front/back photos showing language, set details, and any CD/booklet provenance evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CD provenance",
+            "other Pikachu equivalence",
+            "Japanese-language row"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot as the language caveat",
+        "why_it_matters": "Song Best Pikachu is a perfect trap for lazy cataloging. It is Pikachu, yes, but the interesting part is that the richer row marks it as an English Base Set card inside a Japanese CD product. The mascot is almost too familiar; the language boundary is where the real story lives.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
