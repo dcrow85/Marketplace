@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 144: Fan Club Tropical Present Summer 2001 deepened; corpus aad656f3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 145: New Garura Touch Generation Change deepened; corpus 45b2312e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-fifth
+  catalog-history pass:
+  `data/catalog-history/source-sets/new_garura_parent_child_touch_generation_change_v0_1.json`
+  deepens row 246 / Touch Generation Change! from the New Garura Parent/Child
+  Tournament participation-prize route. The pass preserves February 2002 event
+  context, source index 246, Japanese title `タッチ世代交代!`, Tomokazu Komiya
+  art credit, New Garura Rules exclusive-use status, the 30 old-back / 30
+  current-back deck apparatus, the two-promotional-card partner-switch
+  mechanism, and the simultaneous unnumbered-vs-P Promotional 027/P print
+  boundary. The texture is apparatus-forward: a rule card that lets parent and
+  child partners hand the game across the table, not a normal trainer-card
+  memory. Special ID rails require agents to separate Touch Generation Change!
+  from 1998 Touch Change!, later Touch Exchange!, P Promo 027/P with e-Reader
+  strip evidence, Kangaskhan prize cards, and generic Garura/Kangaskhan
+  tournament listings; catalog identity stays legible support until seller-
+  controlled front/back, title, back-design, e-Reader-strip-if-relevant,
+  surface/corner, and slab/cert evidence appears. Generated gaps moved to 44
+  release / 3870 card. Current hashes: corpus
+  `45b2312e72c948bc56203242fd662c2369190651e5f15f43673c8b2c11e16281`, index
+  `0369603ace8dfa6b35f24a1686220002cde984853080e96bc46151b5ce149ac5`, queue
+  `428276057292e166a516634a2060e40255ccb0a02418e9511e590f35ded32718`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-fourth
   catalog-history pass:
   `data/catalog-history/source-sets/fan_club_summer_2001_tropical_present_v0_1.json`
