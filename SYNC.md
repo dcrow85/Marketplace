@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/quick_starter_gift_set_v0_1.json`.
+  Japanese Quick Starter Gift Set is now a hand-authored release dossier,
+  with Mewtwo green-020, Chansey green-023, Pikachu red-009, Pikachu
+  red-010, Raichu red-011, Zapdos red-015, and Pokemon Trader red-030
+  promoted from generated baseline to sourced card dossiers. The pass
+  frames Quick Starter as both a ready-to-play red/green deck kit and a
+  provenance trap: missing-symbol Vending/Expansion Sheet reprints that can
+  look close enough to Base No Rarity to fool a name-or-corner-only agent.
+  Added special identification rails for parent rollup versus red/green
+  child lanes, lane prefixes, duplicate Pikachu rows, Mewtwo/Chansey/
+  Raichu/Zapdos row separation, the five sensitive trainer overlap rows,
+  and Pokemon Trader as a text-layout trap where absence of a rarity symbol
+  is not spendable provenance. Sources: local Japanese pre-English Quick
+  Starter parent/red/green catalogs, PokeCardex QSGSR/QSGSG, Bulbapedia
+  Quick Starter Gift Set, Bulbapedia Original TCG Era merchandise, local
+  pre-English symbol-status matrix, and lower-tier Elite Fourum collector
+  discussions for Quick Starter / No Rarity trainer confusion. Generated
+  gap moved from 190 releases / 4,453 cards to 189 releases / 4,446 cards.
+  Current catalog-history corpus: 22,879 claims, 5,011 sources, corpus
+  hash `8718e5adbbcacd0cfbb2937204893f47ae9222fe74cff0ea004782352ccf3433`;
+  index hash `3a9eccb1fa5731c7945f7fe5d89c700bf0b121065ff3698ba9c122e0df56353a`;
+  queue hash `386a5e6c2b50006851fc22273caff8f16084137920f41481178f4ef92a9ab323`.
 - `[passive]` 2026-06-19 · Codex — completed the seventeenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json`.

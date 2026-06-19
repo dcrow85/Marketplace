@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22889,
-    "corpus_hash": "fe0ff6eb329a09e857606c4af8731ee6a2bdee578157afeb976733dadc5e155c",
-    "generated_card_dossier_count": 4453,
-    "generated_release_dossier_count": 190,
+    "claim_count": 22879,
+    "corpus_hash": "8718e5adbbcacd0cfbb2937204893f47ae9222fe74cff0ea004782352ccf3433",
+    "generated_card_dossier_count": 4446,
+    "generated_release_dossier_count": 189,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4994
+    "source_count": 5011
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "859a1560a49865cb1aa9d203ca3f6bd1d67fcc8a760f5d80f30ba56fd83f7ba2",
+    "queue_hash": "386a5e6c2b50006851fc22273caff8f16084137920f41481178f4ef92a9ab323",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T03:39:16Z",
+  "generated_at": "2026-06-19T03:48:38Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "6e307dfb288be6ede99d14ec5cb40ee2f64fc6dd8a713774bfeb505bc791c482",
+    "index_hash": "3a9eccb1fa5731c7945f7fe5d89c700bf0b121065ff3698ba9c122e0df56353a",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -56,6 +56,7 @@
     "data/catalog-history/source-sets/neo_revelation_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json",
+    "data/catalog-history/source-sets/quick_starter_gift_set_v0_1.json",
     "data/catalog-history/source-sets/skyridge_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json"
