@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23162,
-    "corpus_hash": "5cd7246eff772646672adddadb48b2455b839d7819050628cefb7ac2b1152a89",
-    "generated_card_dossier_count": 4003,
-    "generated_release_dossier_count": 140,
+    "claim_count": 23170,
+    "corpus_hash": "13874be1636c39a1077b7e29899030a40651da24ab376a170d3b97cef0262e85",
+    "generated_card_dossier_count": 4001,
+    "generated_release_dossier_count": 139,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5832
+    "source_count": 5847
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "780275bafe1488797fb625d4052abf02ffabefa8d9facf567a0bf58276bbf34b",
+    "queue_hash": "2385ad185161200699f54a146cbcdd4d28e2466535c28be9d62bf66049723db5",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T09:53:33Z",
+  "generated_at": "2026-06-19T10:01:06Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "43b17d5f814c823930d41308855023b1ab5d7bf1b4e83f79488d24b89ca9d815",
+    "index_hash": "02853345cdb6e4c3f03c06292f26361bed6c402fa08368bfc9e3502211bfa9a3",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -62,6 +62,7 @@
     "data/catalog-history/source-sets/expedition_base_set_v0_1.json",
     "data/catalog-history/source-sets/first_official_tournament_1997_trophies_v0_1.json",
     "data/catalog-history/source-sets/fossil_v0_1.json",
+    "data/catalog-history/source-sets/garura_parent_child_1998_v0_1.json",
     "data/catalog-history/source-sets/gift_pack_v0_1.json",
     "data/catalog-history/source-sets/gold_silver_new_world_tranche_v0_1.json",
     "data/catalog-history/source-sets/gym_challenge_v0_1.json",

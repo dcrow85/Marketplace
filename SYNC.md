@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/garura_parent_child_1998_v0_1.json`.
+  Garura Parent/Child Tournament source slice now has complete two-row
+  hand-authored coverage for Touch Change! row 042 and Kangaskhan row 043.
+  The pass frames the release as family-tournament assembly: Touch Change! is
+  the participation/Garura Rules-use object that made the format playable,
+  while Kangaskhan is the prize lane and emotional thesis of the parent-child
+  event. Added `special_identification_instructions` requiring agents to
+  preserve May 1998 Garura Parent/Child / Parent-Child Mega Battle route,
+  row 042/043 identity, participation-vs-prize lane, Touch Change! tournament
+  route vs Pokémon Card Fan Club Vol. 5 reprint caveat, Garura/ガルーラ identity,
+  original Pocket Monsters Card Game logo signal, and source-scoped artist
+  credits before accepting a match. Artist layer improved but remains
+  source-attributed: Touch Change! is credited to Nobuyuki Habu and Kangaskhan
+  to Ken Sugimori; external artist-index references are texture only, not
+  physical-card proof or complete biography. Sources: local Japanese
+  pre-English release file, Bulbapedia/Pokumon selected rendered-lines snapshot,
+  Bulbapedia card pages, Pokumon card pages, and artist-index references.
+  Generated gap moved from 140 releases / 4,003 cards to 139 releases / 4,001
+  cards. Current catalog-history corpus:
+  `13874be1636c39a1077b7e29899030a40651da24ab376a170d3b97cef0262e85`; index:
+  `02853345cdb6e4c3f03c06292f26361bed6c402fa08368bfc9e3502211bfa9a3`; queue:
+  `2385ad185161200699f54a146cbcdd4d28e2466535c28be9d62bf66049723db5`.
+  Audit counts: 23,170 claims, 5,847 sources, 70 hand-authored release dossiers,
+  548 hand-authored card dossiers, and 810 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/garura_parent_child_1998_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_first_1996_glossy_promos_v0_1.json`.
