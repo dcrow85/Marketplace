@@ -1,0 +1,2299 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Leaders' Stadium and twelve rows that carry gym-leader ownership, Rocket ownership, location/trainer machinery, and English Gym Heroes boundary risk.",
+    "in_scope": [
+      "Leaders' Stadium release dossier",
+      "Erika's Vileplume",
+      "Rocket's Scyther",
+      "Brock's Ninetales",
+      "Rocket's Moltres",
+      "Misty's Gyarados",
+      "Lt. Surge's Pikachu",
+      "Lt. Surge's Electabuzz",
+      "Brock's Rhydon",
+      "Erika's Dragonair",
+      "Misty's Tears",
+      "Chaos Gym",
+      "The Rocket's Trap"
+    ],
+    "not_claiming": [
+      "complete Leaders' Stadium scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "English Gym Heroes equivalence",
+      "gym deck equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024",
+      "type": "release",
+      "context": {
+        "name_en": "Leaders' Stadium",
+        "name_ja": "リーダーズスタジアム",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "release_date": "1998-10-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json",
+          "title": "Local Japanese pre-English catalog: Leaders' Stadium",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/",
+          "title": "Pokellector: Leaders' Stadium expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG5",
+          "title": "TCGdex API set record: PMCG5 Leaders' Stadium",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Gym_Heroes_(TCG)",
+          "title": "Bulbapedia: Gym Heroes / Leaders' Stadium",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json#jp_tcg_leaders_stadium_19981024",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md#jp_tcg_leaders_stadium_19981024",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Japanese pre-English release map model Leaders' Stadium as released on October 24, 1998.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog, Pokellector snapshot, and TCGdex snapshot support a 96-row Japanese Leaders' Stadium checklist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia frames Gym Heroes as the English expansion corresponding to Japanese Gym Expansion 1: Leaders' Stadium, while the local catalog preserves Leaders' Stadium as its own Japanese release_family_id.",
+          "sources": [
+            "s1",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The Japanese pre-English release map notes that English Gym Heroes later combines Japanese deck and booster material; the catalog therefore keeps Leaders' Stadium booster rows separate from gym theme deck lanes.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix records Leaders' Stadium booster cards as with-rarity-symbol; cards without symbols belong to gym theme deck lanes, not this booster release.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local attention rows include Erika's Vileplume, Rocket's Scyther, Brock's Ninetales, Rocket's Moltres, Misty's Gyarados, Lt. Surge's Pikachu, Lt. Surge's Electabuzz, Brock's Rhydon, Erika's Dragonair, Chaos Gym, and The Rocket's Trap.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local Leaders' Stadium artist clusters are led by Ken Sugimori, with Atsuko Nishida shaping several softer owned-Pokemon rows and Keiji Kinebuchi carrying gym/location/tool rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Leaders' Stadium matters because it turns ownership into a full booster language: gym leaders, Rocket ownership, places, methods, wishes, traps, and city rules all become card identities rather than flavor pasted onto ordinary species.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_stadium_96_booster_with_symbol_gym_assembly_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Leaders' Stadium, Gym Heroes, Japanese Gym Expansion 1, owner Pokemon, Rocket's Scyther, Misty's Gyarados, Lt. Surge's Pikachu, The Rocket's Trap, or missing rarity.",
+          "summary": "Preserve Leaders' Stadium as a 96-row Japanese booster with rarity symbols, distinct from gym deck missing-symbol lanes and English Gym Heroes assembly.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and Japanese booster context.",
+            "Do not collapse Leaders' Stadium into English Gym Heroes without naming the language and assembly change.",
+            "Do not import missing-symbol gym deck status into Leaders' Stadium booster rows; the local symbol matrix marks this booster as with-rarity-symbol.",
+            "Keep owner-name identity intact: Erika's, Misty's, Brock's, Lt. Surge's, and Rocket's rows are not ordinary species rows.",
+            "For rows also seen through deck, English, or promo memory, require exact row id, language, and release-family evidence before treating two cards as comparable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ownership becomes the stadium",
+        "why_it_matters": "Leaders' Stadium is where the Gym idea becomes too large for a deck box. Brock, Misty, Erika, Lt. Surge, and Rocket all step into one booster field, and suddenly Pokemon cards are not just creatures with attacks. They are loyalties, places, methods, traps, wishes, and gym rules. It feels like the game discovering that a card can carry social geography: who trained it, where it belongs, and what kind of room it wants the battle to happen in.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Leaders' Stadium history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:014",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Vileplume",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:014",
+        "catalog_row_id": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:014",
+          "title": "Local Leaders' Stadium row: Erika's Vileplume 014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Erikas-Vileplume-Card-14",
+          "title": "Pokellector row page: Erika's Vileplume 014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-014",
+          "title": "TCGdex API card record: Erika's Vileplume",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 014 as Erika's Vileplume.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Erika's Vileplume row 014 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Vileplume row 014 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika’s Vileplume is the floral center of the booster’s ownership grammar. Sugimori’s local credit keeps it tied to core Pokemon memory, but the owner name changes the feeling: this is not just Vileplume, it is a creature growing inside Erika’s room.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Erika’s Vileplume row 014 is a Leaders’ Stadium Rare holo; preserve owner name and Japanese booster row before comparing to English Gym Heroes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_erikas_vileplume_014_owner_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Vileplume, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 014.",
+          "summary": "Erika’s Vileplume row 014 is a Leaders’ Stadium Rare holo; preserve owner name and Japanese booster row before comparing to English Gym Heroes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 014.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Erika makes the garden bloom",
+        "why_it_matters": "Erika’s Vileplume is the floral center of the booster’s ownership grammar. Sugimori’s local credit keeps it tied to core Pokemon memory, but the owner name changes the feeling: this is not just Vileplume, it is a creature growing inside Erika’s room.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:016",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Scyther",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:016",
+          "title": "Local Leaders' Stadium row: Rocket's Scyther 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Rockets-Scyther-Card-16",
+          "title": "Pokellector row page: Rocket's Scyther 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-016",
+          "title": "TCGdex API card record: Rocket's Scyther",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 016 as Rocket's Scyther.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Rocket's Scyther row 016 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Scyther row 016 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Scyther is the sharp intrusion. In a set full of gym leaders and careful places, Rocket ownership makes Scyther feel recruited into an opposing apparatus. It is one of the rows that proves Leaders’ Stadium is not only gentle ownership; it also makes villain control collectible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Scyther row 016 is a Leaders’ Stadium Rare holo; do not collapse it into ordinary Scyther or English Gym Heroes without release proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_rockets_scyther_016_rocket_owner_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Scyther, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 016.",
+          "summary": "Rocket’s Scyther row 016 is a Leaders’ Stadium Rare holo; do not collapse it into ordinary Scyther or English Gym Heroes without release proof.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 016.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket gets a blade in the garden",
+        "why_it_matters": "Rocket’s Scyther is the sharp intrusion. In a set full of gym leaders and careful places, Rocket ownership makes Scyther feel recruited into an opposing apparatus. It is one of the rows that proves Leaders’ Stadium is not only gentle ownership; it also makes villain control collectible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:019",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Ninetales",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:019",
+        "catalog_row_id": "019"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:019",
+          "title": "Local Leaders' Stadium row: Brock's Ninetales 019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Brocks-Ninetales-Card-19",
+          "title": "Pokellector row page: Brock's Ninetales 019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-019",
+          "title": "TCGdex API card record: Brock's Ninetales",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 019 as Brock's Ninetales.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Brock's Ninetales row 019 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Ninetales row 019 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Brock’s Ninetales feels like a strange treasure because it bends Brock away from pure rock memory. The owner-name grammar lets a familiar Gym Leader hold an unexpected creature, which is exactly the kind of personality shift this era made possible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Ninetales row 019 is a Leaders’ Stadium Rare holo; preserve owner-name and row identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_brocks_ninetales_019_owner_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Ninetales, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 019.",
+          "summary": "Brock’s Ninetales row 019 is a Leaders’ Stadium Rare holo; preserve owner-name and row identity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 019.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Brock turns fire into a puzzle",
+        "why_it_matters": "Brock’s Ninetales feels like a strange treasure because it bends Brock away from pure rock memory. The owner-name grammar lets a familiar Gym Leader hold an unexpected creature, which is exactly the kind of personality shift this era made possible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:020",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Moltres",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:020",
+        "catalog_row_id": "020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:020",
+          "title": "Local Leaders' Stadium row: Rocket's Moltres 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Rockets-Moltres-Card-20",
+          "title": "Pokellector row page: Rocket's Moltres 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-020",
+          "title": "TCGdex API card record: Rocket's Moltres",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 020 as Rocket's Moltres.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Rocket's Moltres row 020 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Rocket's Moltres row 020 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket’s Moltres is ownership at mythic scale. The set has ordinary trainer identity, then suddenly Rocket reaches up and claims a legendary bird. That jump is part of the drama: ownership is not just friendship, it can be capture, control, and spectacle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Rocket’s Moltres row 020 is a Leaders’ Stadium Rare holo; do not treat it as Fossil Moltres or generic Moltres memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_rockets_moltres_020_legendary_owner_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Moltres, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 020.",
+          "summary": "Rocket’s Moltres row 020 is a Leaders’ Stadium Rare holo; do not treat it as Fossil Moltres or generic Moltres memory.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 020.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket steals the sky fire",
+        "why_it_matters": "Rocket’s Moltres is ownership at mythic scale. The set has ordinary trainer identity, then suddenly Rocket reaches up and claims a legendary bird. That jump is part of the drama: ownership is not just friendship, it can be capture, control, and spectacle.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:035",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Gyarados",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:035",
+        "catalog_row_id": "035"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:035",
+          "title": "Local Leaders' Stadium row: Misty's Gyarados 035",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Mistys-Gyarados-Card-35",
+          "title": "Pokellector row page: Misty's Gyarados 035",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-035",
+          "title": "TCGdex API card record: Misty's Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 035 as Misty's Gyarados.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Misty's Gyarados row 035 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Misty's Gyarados row 035 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty’s Gyarados gives water personality and danger. It takes a species already loaded with drama and gives it a trainer address, turning Gyarados into part of Misty’s emotional weather rather than a loose monster in the binder.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Misty’s Gyarados row 035 is a Leaders’ Stadium Rare holo; preserve Japanese booster row before English comparisons.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_mistys_gyarados_035_owner_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Misty's Gyarados, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 035.",
+          "summary": "Misty’s Gyarados row 035 is a Leaders’ Stadium Rare holo; preserve Japanese booster row before English comparisons.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 035.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty gets the storm serpent",
+        "why_it_matters": "Misty’s Gyarados gives water personality and danger. It takes a species already loaded with drama and gives it a trainer address, turning Gyarados into part of Misty’s emotional weather rather than a loose monster in the binder.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:036",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:036",
+        "catalog_row_id": "036"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:036",
+          "title": "Local Leaders' Stadium row: Lt. Surge's Pikachu 036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Lt-Surges-Pikachu-Card-36",
+          "title": "Pokellector row page: Lt. Surge's Pikachu 036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-036",
+          "title": "TCGdex API card record: Lt. Surge's Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 036 as Lt. Surge's Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Lt. Surge's Pikachu row 036 as Common.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Pikachu row 036 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge’s Pikachu is not a holo chase, but it is a collector magnet because it joins Pikachu to a specific human style. Atsuko Nishida’s local credit adds a softer hand inside Surge’s hard electric identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Lt. Surge’s Pikachu row 036 is a Common Leaders’ Stadium row; do not let Pikachu gravity erase rarity, row, or release context.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_lt_surges_pikachu_036_character_owner_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Pikachu, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 036.",
+          "summary": "Lt. Surge’s Pikachu row 036 is a Common Leaders’ Stadium row; do not let Pikachu gravity erase rarity, row, or release context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 036.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A tiny electric signature",
+        "why_it_matters": "Lt. Surge’s Pikachu is not a holo chase, but it is a collector magnet because it joins Pikachu to a specific human style. Atsuko Nishida’s local credit adds a softer hand inside Surge’s hard electric identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:041",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Electabuzz",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:041",
+        "catalog_row_id": "041"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:041",
+          "title": "Local Leaders' Stadium row: Lt. Surge's Electabuzz 041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Lt-Surges-Electabuzz-Card-41",
+          "title": "Pokellector row page: Lt. Surge's Electabuzz 041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-041",
+          "title": "TCGdex API card record: Lt. Surge's Electabuzz",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 041 as Lt. Surge's Electabuzz.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Lt. Surge's Electabuzz row 041 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Electabuzz row 041 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge’s Electabuzz is the cleanest version of Surge’s energy: direct, hard, trained. In this set, owner names are not decoration; they make each species feel like it has been shaped by a person.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Lt. Surge’s Electabuzz row 041 is a Leaders’ Stadium Rare holo; preserve owner name and Japanese row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_lt_surges_electabuzz_041_owner_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Electabuzz, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 041.",
+          "summary": "Lt. Surge’s Electabuzz row 041 is a Leaders’ Stadium Rare holo; preserve owner name and Japanese row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 041.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Surge turns Electabuzz into discipline",
+        "why_it_matters": "Lt. Surge’s Electabuzz is the cleanest version of Surge’s energy: direct, hard, trained. In this set, owner names are not decoration; they make each species feel like it has been shaped by a person.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:055",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Rhydon",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:055",
+        "catalog_row_id": "055"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:055",
+          "title": "Local Leaders' Stadium row: Brock's Rhydon 055",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Brocks-Rhydon-Card-55",
+          "title": "Pokellector row page: Brock's Rhydon 055",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-055",
+          "title": "TCGdex API card record: Brock's Rhydon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 055 as Brock's Rhydon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Brock's Rhydon row 055 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Rhydon row 055 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Brock’s Rhydon feels like the heavy endpoint of the Brock lane. After the fixed-deck Brock object, Leaders’ Stadium lets that identity expand into the booster, with a holo rare that feels like weight, patience, and gym discipline.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Rhydon row 055 is a Leaders’ Stadium Rare holo; do not merge with Nivi City Gym deck identity without naming the product change.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_brocks_rhydon_055_owner_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Rhydon, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 055.",
+          "summary": "Brock’s Rhydon row 055 is a Leaders’ Stadium Rare holo; do not merge with Nivi City Gym deck identity without naming the product change.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 055.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Brock’s stone line reaches the holo wall",
+        "why_it_matters": "Brock’s Rhydon feels like the heavy endpoint of the Brock lane. After the fixed-deck Brock object, Leaders’ Stadium lets that identity expand into the booster, with a holo rare that feels like weight, patience, and gym discipline.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:066",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Dragonair",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:066",
+        "catalog_row_id": "066"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:066",
+          "title": "Local Leaders' Stadium row: Erika's Dragonair 066",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Erikas-Dragonair-Card-66",
+          "title": "Pokellector row page: Erika's Dragonair 066",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-066",
+          "title": "TCGdex API card record: Erika's Dragonair",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 066 as Erika's Dragonair.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Erika's Dragonair row 066 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Dragonair row 066 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika’s Dragonair is one of the prettiest signals that ownership can change emotional temperature. The local catalog credits Atsuko Nishida, and the row feels like Erika’s gentleness carried into a dragon evolution line.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Erika’s Dragonair row 066 is a Leaders’ Stadium Rare holo; preserve Atsuko Nishida local artist credit and owner-name identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_erikas_dragonair_066_artist_owner_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Dragonair, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 066.",
+          "summary": "Erika’s Dragonair row 066 is a Leaders’ Stadium Rare holo; preserve Atsuko Nishida local artist credit and owner-name identity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 066.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Atsuko Nishida softens the dragon line",
+        "why_it_matters": "Erika’s Dragonair is one of the prettiest signals that ownership can change emotional temperature. The local catalog credits Atsuko Nishida, and the row feels like Erika’s gentleness carried into a dragon evolution line.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:069",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tears",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:069",
+        "catalog_row_id": "069"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:069",
+          "title": "Local Leaders' Stadium row: Misty's Tears 069",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Mistys-Tears-Card-69",
+          "title": "Pokellector row page: Misty's Tears 069",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-069",
+          "title": "TCGdex API card record: Misty's Tears",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 069 as Misty's Tears.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Misty's Tears row 069 as Common.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Misty's Tears row 069 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty’s Tears is culturally loud because people remember the later controversy around the English-era image change. The protocol job is not to sensationalize it; it is to keep the Japanese Leaders’ Stadium row, English adaptation memory, and physical scan evidence separated.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Misty’s Tears row 069 needs exact Japanese Leaders’ Stadium context before any English censorship/adaptation claim is carried forward.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_mistys_tears_069_adaptation_memory_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Misty's Tears, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 069.",
+          "summary": "Misty’s Tears row 069 needs exact Japanese Leaders’ Stadium context before any English censorship/adaptation claim is carried forward.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 069.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The banned-memory row needs exact naming",
+        "why_it_matters": "Misty’s Tears is culturally loud because people remember the later controversy around the English-era image change. The protocol job is not to sensationalize it; it is to keep the Japanese Leaders’ Stadium row, English adaptation memory, and physical scan evidence separated.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:087",
+      "type": "card",
+      "context": {
+        "name_en": "Chaos Gym",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:087",
+        "catalog_row_id": "087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:087",
+          "title": "Local Leaders' Stadium row: Chaos Gym 087",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/Chaos-Gym-Card-87",
+          "title": "Pokellector row page: Chaos Gym 087",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-087",
+          "title": "TCGdex API card record: Chaos Gym",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 087 as Chaos Gym.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Chaos Gym row 087 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Chaos Gym row 087 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Chaos Gym is where the stadium idea turns mechanical. Kinebuchi’s local credit places the row in the tool/location layer: not a creature, not a trainer face, but a place that changes how the battle behaves.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Chaos Gym row 087 is a Leaders’ Stadium Trainer/Stadium row; do not treat it as a Pokemon species row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_chaos_gym_087_location_rule_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Chaos Gym, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 087.",
+          "summary": "Chaos Gym row 087 is a Leaders’ Stadium Trainer/Stadium row; do not treat it as a Pokemon species row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 087.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The room itself becomes unstable",
+        "why_it_matters": "Chaos Gym is where the stadium idea turns mechanical. Kinebuchi’s local credit places the row in the tool/location layer: not a creature, not a trainer face, but a place that changes how the battle behaves.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_leaders_stadium_19981024:096",
+      "type": "card",
+      "context": {
+        "name_en": "The Rocket's Trap",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_leaders_stadium_19981024",
+        "row_id": "jp_tcg_leaders_stadium_19981024:096",
+        "catalog_row_id": "096"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:096",
+          "title": "Local Leaders' Stadium row: The Rocket's Trap 096",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Leaders-Stadium-Expansion/The-Rockets-Trap-Card-96",
+          "title": "Pokellector row page: The Rocket's Trap 096",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG5-096",
+          "title": "TCGdex API card record: The Rocket's Trap",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Leaders' Stadium row 096 as The Rocket's Trap.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record The Rocket's Trap row 096 as Rare.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits The Rocket's Trap row 096 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The Rocket’s Trap is a perfect capstone because it turns villain identity into an event. After all the owner-name Pokemon and gym places, Rocket gets the last word as a trap: not just a card, but a moment sprung inside the rules.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "The Rocket’s Trap row 096 is a Leaders’ Stadium Rare holo trainer row; preserve trainer-row identity and Japanese release context.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "leaders_the_rockets_trap_096_rocket_capstone_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says The Rocket's Trap, Leaders' Stadium, Gym Heroes, owner Pokemon, Japanese Gym, or row 096.",
+          "summary": "The Rocket’s Trap row 096 is a Leaders’ Stadium Rare holo trainer row; preserve trainer-row identity and Japanese release context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_leaders_stadium_19981024 and local row id 096.",
+            "Confirm the card is being discussed as Japanese Leaders' Stadium before comparing to English Gym Heroes or Japanese gym deck rows.",
+            "Do not import missing-symbol deck status into this booster row.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or English equivalence from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes equivalence",
+            "gym deck equivalence",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket closes the set with a trap",
+        "why_it_matters": "The Rocket’s Trap is a perfect capstone because it turns villain identity into an event. After all the owner-name Pokemon and gym places, Rocket gets the last word as a trap: not just a card, but a moment sprung inside the rules.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

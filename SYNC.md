@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-sixth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/leaders_stadium_v0_1.json`.
+  Japanese Leaders' Stadium is now a hand-authored release dossier, with
+  Erika's Vileplume 014, Rocket's Scyther 016, Brock's Ninetales 019,
+  Rocket's Moltres 020, Misty's Gyarados 035, Lt. Surge's Pikachu 036,
+  Lt. Surge's Electabuzz 041, Brock's Rhydon 055, Erika's Dragonair 066,
+  Misty's Tears 069, Chaos Gym 087, and The Rocket's Trap 096 promoted
+  from generated baseline to sourced card dossiers. The pass frames the
+  booster as ownership becoming the stadium: gym leaders, Rocket control,
+  places, methods, wishes, traps, and city rules turning into card
+  identities. Added special identification rails for the 96-row Japanese
+  booster boundary, with-rarity-symbol status, separation from gym deck
+  missing-symbol lanes, separation from English Gym Heroes' mixed assembly,
+  owner-name preservation across Erika / Misty / Brock / Lt. Surge /
+  Rocket rows, and exact-row handling for adaptation-memory cards like
+  Misty's Tears. Sources: local Japanese pre-English Leaders' Stadium
+  catalog, Pokellector Leaders' Stadium, TCGdex PMCG5, Bulbapedia Gym
+  Heroes / Leaders' Stadium, local pre-English symbol-status matrix, and
+  the Japanese pre-English release map. Generated gap moved from 182
+  releases / 4,389 cards to 181 releases / 4,377 cards. Current
+  catalog-history corpus: 22,837 claims, 5,168 sources, corpus hash
+  `71ca780efa0d5f92614b65679dd69735e9a1aba8090f77e5ee8a4a87a24cc902`;
+  index hash `c683aa3ed3011398f0c59a46511a0cc5779df4584ff00b42827b1dc6f7a128cd`;
+  queue hash `ed742b7a36751039bb0d3ce8b597bedf84fdb407dfcf718d9cf9d19db6567924`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-fifth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/nivi_city_gym_brock_v0_1.json`.

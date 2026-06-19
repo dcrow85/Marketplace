@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22836,
-    "corpus_hash": "5284cb47e7aaf8f6addc6786fce871bf923a6da78f8a78e478ef332cac7b9939",
-    "generated_card_dossier_count": 4389,
-    "generated_release_dossier_count": 182,
+    "claim_count": 22837,
+    "corpus_hash": "71ca780efa0d5f92614b65679dd69735e9a1aba8090f77e5ee8a4a87a24cc902",
+    "generated_card_dossier_count": 4377,
+    "generated_release_dossier_count": 181,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5139
+    "source_count": 5168
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "532b509f57cdd2f4967287f7fbd41703f7aeb8f948dd21ed4dca62b94593270f",
+    "queue_hash": "ed742b7a36751039bb0d3ce8b597bedf84fdb407dfcf718d9cf9d19db6567924",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T04:50:37Z",
+  "generated_at": "2026-06-19T04:58:15Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "e81ac2eca880c9bf45b00133396abd8f9f38f1ef122c9bf463e856649537888b",
+    "index_hash": "c683aa3ed3011398f0c59a46511a0cc5779df4584ff00b42827b1dc6f7a128cd",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -49,6 +49,7 @@
     "data/catalog-history/source-sets/gym_heroes_v0_1.json",
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json",
+    "data/catalog-history/source-sets/leaders_stadium_v0_1.json",
     "data/catalog-history/source-sets/legendary_collection_v0_1.json",
     "data/catalog-history/source-sets/miracle_of_the_desert_v0_1.json",
     "data/catalog-history/source-sets/mystery_of_the_fossils_v0_1.json",
