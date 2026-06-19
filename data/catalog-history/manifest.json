@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22841,
-    "corpus_hash": "c435459c70fa62566d8736b505f2083a77b7d4bb3a320ce852b56a672065e749",
-    "generated_card_dossier_count": 4259,
-    "generated_release_dossier_count": 172,
+    "claim_count": 22836,
+    "corpus_hash": "2b02398d7d43aad706adac7fabf306a01ea35a915fe12d217e98aef33367c3e7",
+    "generated_card_dossier_count": 4249,
+    "generated_release_dossier_count": 171,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5517
+    "source_count": 5522
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "5892a6abbecc882645c42440b989ab5b12710416c64272183168946c39bab856",
+    "queue_hash": "df5a3e8ec68f5adb9b5077fba48a4716d6afec100952d1c696af6c8f61e0e912",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T06:18:33Z",
+  "generated_at": "2026-06-19T06:30:08Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "5371103c5b8b03109d791a1ff0280efe22919d66c3d9a5d83e994a241fcf9b53",
+    "index_hash": "e065c29bc8c94702fcfe8727123586933968c93854dce950376db9ab5bb7ea72",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -76,6 +76,7 @@
     "data/catalog-history/source-sets/tamamushi_city_gym_erika_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_gift_pack_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",
-    "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json"
+    "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json",
+    "data/catalog-history/source-sets/wotc_jumbo_bounded_v0_1.json"
   ]
 }

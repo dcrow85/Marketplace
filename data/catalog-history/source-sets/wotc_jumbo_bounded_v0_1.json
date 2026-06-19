@@ -1,0 +1,1786 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the English WotC-era bounded Jumbo / oversized subset, emphasizing physical-format identification, movie and magazine distribution, BattleZone / Best of Game Winner jumbo prize memory, and the boundary between modeled early rows and the much larger later Jumbo universe.",
+    "not_claiming": [
+      "complete Jumbo card universe",
+      "complete WotC-era Jumbo coverage beyond the bounded local rows",
+      "physical-size verification",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "regular-size card equivalence",
+      "later Jumbo reissue equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307",
+      "type": "release",
+      "context": {
+        "name_en": "Jumbo cards - WoC-era bounded subset",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "release_date": "2000-02-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+          "title": "Local English supplemental WotC catalog: Jumbo cards - WoC-era bounded subset",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete Jumbo universe",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_proof",
+          "ref": "data/catalog-expansion/english-jumbo-boundary-proof.json",
+          "title": "English Jumbo boundary proof",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete Jumbo universe",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Jumbo_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: Jumbo cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete WotC-era isolation",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://api.tcgdex.net/v2/en/sets/jumbo",
+          "title": "TCGdex English Jumbo set metadata endpoint",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete WotC-era isolation",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog dates the bounded English WotC-era Jumbo subset from February 2000 through July 2003, beginning with the Top Deck Magazine Pikachu row and ending with the BattleZone / Best of Game Winner Jumbo rows before the later Nintendo/e-League sequence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The local catalog classifies the release as a jumbo_partial_bounded_subset: a supplemental oversized-card format rather than a standard playable expansion, theme deck, or complete modern Jumbo archive.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local release models 10 rows, and the boundary proof classifies the same 10 source rows as modeled_wotc_prefix while excluding 323 later merchandise-era rows, 26 later source-set rows, 25 modern 25th Anniversary rows, and 6 post-WotC Nintendo/e-League rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The modeled rows preserve three early oversized routes: Top Deck Magazine's February 2000 Pikachu, the July 2000 Warner Bros. Pokemon The Movie 2000 triple-bird promotion, and BattleZone / Best of Game Winner Jumbo rows from December 2002 through July 2003.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "The boundary proof keeps the full TCGdex Jumbo bucket from being treated as a WotC-era set: later 25th Anniversary, Nintendo/e-League, later source-set, and later merchandise-era oversized rows are deliberately outside this release dossier.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local attention structure is led by Pikachu 58/102, Articuno, Moltres, and Zapdos, Electabuzz Best 1, Hitmonchan Best 2, Rocket's Scizor Best 4, Rocket's Sneasel Best 5, Dark Ivysaur Best 6, Dark Venusaur Best 7, Rocket's Mewtwo Best 8, and Rocket's Hitmonchan Best 9.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local supplemental source rows do not provide illustrator names for this slice. That absence is itself load-bearing: agents must not fill artist authority from regular-size memory when the cataloged object is an oversized promotional format.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "This bounded Jumbo slice matters because Pokemon cards are no longer only things shuffled into a deck; they become wall-sized mascot memory, movie-promotion spectacle, magazine reward, and organized-play prize evidence. The card shape remains familiar, but the use changes: display, announcement, trophy, proof-of-being-there.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_wotc_jumbo_bounded_physical_format_boundary_v0.1",
+          "trigger": "A listing, want, scan, binder photo, or agent search result names an English Jumbo, oversized, Top Deck, Warner Bros., or Best of Game Winner Jumbo card.",
+          "summary": "Confirm oversized Jumbo physical format and exact distribution route before treating a familiar card name or art lineage as this catalog row.",
+          "steps": [
+            "Ask whether the object is an oversized / Jumbo physical card; a regular-size card with the same name, art lineage, number, or Winner stamp is not this row.",
+            "Preserve the source route: Top Deck Magazine, Warner Bros. Pokemon The Movie 2000, or BattleZone / Best of Game Winner Jumbo.",
+            "Preserve the printed number or absence of number exactly, including 58/102, None, and Best 1 through Best 9.",
+            "Check the boundary proof before importing later Jumbo rows; the full TCGdex Jumbo bucket is not this bounded WotC-era subset.",
+            "Request size-bearing evidence for transactional use, such as a photo beside a regular card, ruler, sleeve/page, or other scale reference."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "complete Jumbo coverage",
+            "regular-size equivalence",
+            "later Jumbo reissue equivalence"
+          ],
+          "source_refs": [
+            {
+              "source": "Local English supplemental WotC Jumbo catalog",
+              "source_page_url": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json"
+            },
+            {
+              "source": "English Jumbo boundary proof",
+              "source_page_url": "data/catalog-expansion/english-jumbo-boundary-proof.json"
+            }
+          ]
+        }
+      ],
+      "release_highlights": {
+        "assembly_themes": [
+          "supplemental physical format",
+          "magazine/media distribution",
+          "movie promotion",
+          "tournament/prize culture",
+          "villain/team identity"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-58-102",
+            "name": "Pikachu",
+            "number": "58/102"
+          },
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-warner-bros-promo",
+            "name": "Articuno, Moltres, and Zapdos",
+            "number": "None"
+          },
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-7",
+            "name": "Dark Venusaur",
+            "number": "Best 7"
+          },
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-8",
+            "name": "Rocket's Mewtwo",
+            "number": "Best 8"
+          },
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-1",
+            "name": "Electabuzz",
+            "number": "Best 1"
+          },
+          {
+            "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-2",
+            "name": "Hitmonchan",
+            "number": "Best 2"
+          }
+        ],
+        "key_artists": [],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Jumbo cards - WoC-era bounded subset: oversized memory before it becomes a bucket",
+        "why_it_matters": "Jumbo is where the card stops pretending it belongs in a deck and starts acting like a poster, prize, magazine insert, or movie object. This bounded WotC-era slice is small on purpose: Top Deck Pikachu, the Warner Bros. triple birds, and the BattleZone / Best of Game Winner Jumbos are allowed to speak before the later Jumbo universe floods the room. The agent's job is to keep the physical format visible, because the art may look familiar while the object is doing a different job.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Jumbo history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-58-102",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-58-102",
+        "catalog_row_id": "58/102",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-58-102",
+          "title": "Local catalog row: Pikachu 58/102 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_proof",
+          "ref": "data/catalog-expansion/english-jumbo-boundary-proof.json",
+          "title": "English Jumbo boundary proof",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete Jumbo universe",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as the 58/102 Jumbo row in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Top Deck Magazine (February 2000) and Base Set as the source route for this oversized Pikachu row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The supplemental source row does not provide an illustrator for this Jumbo slice; the dossier deliberately leaves the artist field empty rather than borrowing from regular Base Set memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "The local row carries special identification instructions requiring Jumbo / oversized physical-format confirmation and exclusion of regular-size cards or later jumbo reissues.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pikachu 58/102 is the cleanest trap in the slice: everyone recognizes Base Set Pikachu, which is exactly why the agent must slow down and ask whether this is the Top Deck oversized object. The mascot has been enlarged into a magazine-era display artifact.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_pikachu_58_102_top_deck_format_boundary_v0.1",
+          "trigger": "A user or seller says Pikachu 58/102, Base Set Pikachu, Top Deck Pikachu, or Jumbo Pikachu.",
+          "summary": "Confirm this is the oversized Top Deck Magazine Jumbo Pikachu, not a regular Base Set Pikachu or later oversized reissue.",
+          "steps": [
+            "Require evidence that the physical object is oversized / Jumbo.",
+            "Preserve the Top Deck Magazine (February 2000) route.",
+            "Preserve the printed 58/102 number without treating the row as ordinary Base Set inventory.",
+            "Exclude regular-size Base Set Pikachu and 25th Anniversary First Partner oversized Pikachu unless a separate catalog row is selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence",
+            "later Jumbo reissue equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "58/102",
+        "rarity_signal": "Top Deck Magazine (February 2000)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "magazine/media distribution",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "A familiar Pikachu face becomes a format problem: for this row, the important first question is not 'which Pikachu?' but 'what size object is in the hand?'",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 58/102: the mascot made too large for the deck",
+        "why_it_matters": "This is the row that teaches the whole Jumbo lesson. A regular Base Set Pikachu can make the eye relax; the oversized Top Deck route should make the agent wake up. The charm is familiar, but the object belongs to magazine/display culture, not ordinary binder-page Base Set.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-warner-bros-promo",
+      "type": "card",
+      "context": {
+        "name_en": "Articuno, Moltres, and Zapdos",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-warner-bros-promo",
+        "catalog_row_id": "None",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-warner-bros-promo",
+          "title": "Local catalog row: Articuno, Moltres, and Zapdos Warner Bros. Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_proof",
+          "ref": "data/catalog-expansion/english-jumbo-boundary-proof.json",
+          "title": "English Jumbo boundary proof",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete Jumbo universe",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Articuno, Moltres, and Zapdos as the unnumbered Warner Bros. Jumbo row in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Warner Bros. Pokemon The Movie 2000 promotion (July 2000), with no printed number supplied by the modeled row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The supplemental source row does not provide an illustrator for this Warner Bros. Jumbo slice; the dossier leaves artist authority unfilled.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "The row requires preservation of the Warner Bros. movie-promotion route and confirmation that the object is an oversized Jumbo, not a regular legendary-bird card or non-TCG movie collectible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "The triple-bird Jumbo is the movie made card-shaped: Articuno, Moltres, and Zapdos gathered into one oversized object at the moment Pokemon The Movie 2000 was teaching American audiences to read the legendary birds as weather, myth, and spectacle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_warner_bros_movie_2000_triple_bird_boundary_v0.1",
+          "trigger": "A user or seller says Warner Bros., Pokemon The Movie 2000, legendary birds, Articuno Moltres Zapdos, or unnumbered Jumbo promo.",
+          "summary": "Confirm the oversized Warner Bros. Pokemon The Movie 2000 Jumbo route and do not collapse it into ordinary legendary-bird cards or movie merchandise.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Confirm the card depicts or names Articuno, Moltres, and Zapdos together.",
+            "Preserve the Warner Bros. Pokemon The Movie 2000 promotion route and July 2000 context.",
+            "Preserve the unnumbered row state as None rather than inventing a printed set number.",
+            "Exclude regular-size legendary-bird TCG cards and non-TCG movie collectibles unless they are separately cataloged."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "movie merchandise completeness",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "None",
+        "rarity_signal": "Warner Bros. Pokemon The Movie 2000 promotion (July 2000)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "movie promotion",
+          "legendary-bird mythology",
+          "identity trap"
+        ],
+        "collector_texture_note": "The three birds are not just characters here; they are the movie's weather system turned into an oversized promotional object.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Articuno, Moltres, and Zapdos: the movie made oversized",
+        "why_it_matters": "This Jumbo feels like a lobby poster that learned how to be a card. The useful collector memory is not only the three legendary birds, but the Warner Bros. Movie 2000 route: spectacle, distribution, and format all have to arrive together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-1",
+      "type": "card",
+      "context": {
+        "name_en": "Electabuzz",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-1",
+        "catalog_row_id": "Best 1",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-1",
+          "title": "Local catalog row: Electabuzz Best 1 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Electabuzz as Best 1 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (December 2002) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The supplemental source row does not provide an illustrator for this Jumbo slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "The row requires Jumbo physical-format confirmation and separation from any regular-size Best of Game Winner-stamped Electabuzz card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Electabuzz Best 1 opens the BattleZone Jumbo run like a prize-table shout: a familiar early competitive bruiser, now enlarged into a Winner object rather than merely played from a hand.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_1_electabuzz_boundary_v0.1",
+          "trigger": "A listing or want names Electabuzz Best 1, Best of Game, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm the oversized Best 1 BattleZone / Best of Game Winner Jumbo, not a regular-size Electabuzz or regular Best of Game Winner card.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve printed Best 1 and BattleZone (December 2002).",
+            "Confirm the Best of Game / Winner Jumbo route before using this row.",
+            "Exclude regular-size Electabuzz rows and regular Best of Game Winner-stamped copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 1",
+        "rarity_signal": "BattleZone (December 2002)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "Best of Game Winner identity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Electabuzz is not rare because the name is obscure; it matters here because Best 1 turns a known battler into a large-format prize signal.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Electabuzz Best 1: the prize row starts loud",
+        "why_it_matters": "Best 1 is a useful little flag: this is not just Electabuzz, and not just Best of Game. It is the oversized Winner version, where the card becomes evidence of a BattleZone prize lane.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-5",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Sneasel",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-5",
+        "catalog_row_id": "Best 5",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-5",
+          "title": "Local catalog row: Rocket's Sneasel Best 5 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Rocket's Sneasel as Best 5 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (January 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires preservation of Rocket's owner-name identity, Best 5 numbering, and oversized Best of Game Winner Jumbo format.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Sneasel Best 5 is a small knot of early-2000s collecting language: Rocket ownership, a Dark-type Johto edge, Best of Game numbering, Winner status, and Jumbo prize format all have to stay attached.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_5_rockets_sneasel_boundary_v0.1",
+          "trigger": "A listing or want names Rocket's Sneasel, Best 5, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm the oversized Best 5 Rocket's Sneasel Winner Jumbo and preserve Rocket ownership before comparing to regular-size Sneasel rows.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Rocket's owner-name identity and printed Best 5.",
+            "Preserve BattleZone (January 2003) and Best of Game Winner Jumbo route.",
+            "Exclude regular-size Sneasel, Rocket's Sneasel, and Best of Game Winner copies unless separately cataloged."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 5",
+        "rarity_signal": "BattleZone (January 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain/team identity",
+          "identity trap"
+        ],
+        "collector_texture_note": "This row is a stack of qualifiers; the agent should enjoy the sharpness, not flatten it.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Sneasel Best 5: every word matters",
+        "why_it_matters": "Rocket's Sneasel Best 5 is exactly why this catalog needs special identification instructions. Remove any one word and the row changes shape: Rocket, Sneasel, Best 5, Winner, Jumbo, BattleZone. The card is a little identity machine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-2",
+      "type": "card",
+      "context": {
+        "name_en": "Hitmonchan",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-2",
+        "catalog_row_id": "Best 2",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-2",
+          "title": "Local catalog row: Hitmonchan Best 2 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Hitmonchan as Best 2 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (February 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Jumbo physical-format confirmation and separation from Base Set Hitmonchan, promo Hitmonchan, and regular-size Best of Game Winner copies.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Hitmonchan Best 2 carries one of the original competitive faces of the TCG into BattleZone's oversized prize register. The point is not just Hitmonchan; it is Hitmonchan as a Winner Jumbo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_2_hitmonchan_boundary_v0.1",
+          "trigger": "A listing or want names Hitmonchan Best 2, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm the oversized Best 2 Hitmonchan Winner Jumbo, not a regular Hitmonchan or regular-size Best of Game Winner card.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve printed Best 2 and BattleZone (February 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Exclude regular-size Hitmonchan and regular Best of Game Winner copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 2",
+        "rarity_signal": "BattleZone (February 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "early-play memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Hitmonchan's old competitive memory gets enlarged into a prize object; the format change is the point.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Hitmonchan Best 2: a battler becomes a prize sheet",
+        "why_it_matters": "Hitmonchan already has plenty of TCG memory. Best 2 asks the collector to see a different thing: not the old deck attacker, but the oversized BattleZone Winner lane where play culture becomes display culture.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-4",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Scizor",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-4",
+        "catalog_row_id": "Best 4",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-4",
+          "title": "Local catalog row: Rocket's Scizor Best 4 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Rocket's Scizor as Best 4 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (March 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Rocket ownership, Best 4 numbering, Metal-type signal, and oversized Winner Jumbo route to remain attached.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Scizor Best 4 brings the late-WotC metal edge into the Jumbo prize lane. It feels sharper than the early Base echoes because the character, owner-name, and format all point toward a more specialized collector vocabulary.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_4_rockets_scizor_boundary_v0.1",
+          "trigger": "A listing or want names Rocket's Scizor, Best 4, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm oversized Rocket's Scizor Best 4 Winner Jumbo format before comparing to regular Scizor or Rocket's Scizor rows.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Rocket's owner-name identity, printed Best 4, and BattleZone (March 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Exclude regular-size Scizor, Rocket's Scizor, and regular Best of Game Winner copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 4",
+        "rarity_signal": "BattleZone (March 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain/team identity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Rocket's Scizor makes the Jumbo prize run feel less like nostalgia only and more like late-WotC specialist collecting.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Scizor Best 4: metal edge, oversized proof",
+        "why_it_matters": "This is not the cuddly side of Jumbo. Rocket's Scizor Best 4 feels like late-WotC prize language sharpening itself: owner-name, metal iconography, Best numbering, and oversized format all matter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-6",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Ivysaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-6",
+        "catalog_row_id": "Best 6",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-6",
+          "title": "Local catalog row: Dark Ivysaur Best 6 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Ivysaur as Best 6 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (April 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Dark evolution identity, Best 6 numbering, and oversized Best of Game Winner Jumbo format to remain attached.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Ivysaur Best 6 is a bridge card: the starter-line nostalgia is there, but Rocket's 'Dark' grammar and the Jumbo Winner format pull it into prize/display territory rather than ordinary evolution collecting.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_6_dark_ivysaur_boundary_v0.1",
+          "trigger": "A listing or want names Dark Ivysaur, Best 6, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm oversized Dark Ivysaur Best 6 Winner Jumbo route before comparing to Team Rocket, regular-size, or later oversized Venusaur-line objects.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Dark Ivysaur identity, printed Best 6, and BattleZone (April 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Exclude regular-size Dark Ivysaur and regular Best of Game Winner copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 6",
+        "rarity_signal": "BattleZone (April 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain reframing",
+          "starter-line memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "The Venusaur line enters the Jumbo lane through a Dark middle evolution first, which makes the later Dark Venusaur row feel earned.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Dark Ivysaur Best 6: the middle evolution gets its prize lane",
+        "why_it_matters": "Dark Ivysaur Best 6 is not just a step toward Dark Venusaur. It shows how the Jumbo Winner run could make a middle evolution feel ceremonial, as if the whole line is being walked onto a larger stage.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-7",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-7",
+        "catalog_row_id": "Best 7",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-7",
+          "title": "Local catalog row: Dark Venusaur Best 7 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Venusaur as Best 7 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (May 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Dark Venusaur identity, Best 7 numbering, and oversized Best of Game Winner Jumbo format before comparison to any regular Team Rocket or Best of Game card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Venusaur Best 7 is one of the rows collectors will want to collapse into a chase name. The dossier keeps the chase honest: it is Dark Venusaur, yes, but specifically as an oversized BattleZone / Best of Game Winner object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_7_dark_venusaur_boundary_v0.1",
+          "trigger": "A listing or want names Dark Venusaur, Best 7, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm oversized Dark Venusaur Best 7 Winner Jumbo route, not regular-size Dark Venusaur or regular Best of Game Winner.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Dark Venusaur identity, printed Best 7, and BattleZone (May 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Exclude regular-size Dark Venusaur, ordinary Team Rocket Venusaur-line rows, and regular Best of Game Winner copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 7",
+        "rarity_signal": "BattleZone (May 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain reframing",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Dark Venusaur has chase gravity, which makes the format rail more important, not less.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Dark Venusaur Best 7: the chase name with a format rail",
+        "why_it_matters": "Dark Venusaur Best 7 has the kind of name that makes collectors lean in. That is exactly when the agent should become precise: Best 7, BattleZone, Winner, Jumbo. The thrill survives the precision.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-8",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-8",
+        "catalog_row_id": "Best 8",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-8",
+          "title": "Local catalog row: Rocket's Mewtwo Best 8 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Rocket's Mewtwo as Best 8 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (June 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Rocket's Mewtwo identity, Best 8 numbering, and oversized Best of Game Winner Jumbo format before comparison to Gym Challenge, Best of Game regular-size, or other Mewtwo rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Mewtwo Best 8 has enormous identity gravity: Mewtwo, Rocket ownership, prize status, and Jumbo format all compete for attention. The useful agent behavior is to keep all four visible instead of letting the famous name swallow the route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_8_rockets_mewtwo_boundary_v0.1",
+          "trigger": "A listing or want names Rocket's Mewtwo, Best 8, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm oversized Rocket's Mewtwo Best 8 Winner Jumbo route and do not merge it with Gym Challenge, regular Best of Game, or other Mewtwo cards.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Rocket's owner-name identity, printed Best 8, and BattleZone (June 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Exclude Gym Challenge Rocket's Mewtwo, regular-size Best of Game Winner copies, and other Mewtwo rows unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 8",
+        "rarity_signal": "BattleZone (June 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain/team identity",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "The name can overpower the details; this row exists to keep the details in the room.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Mewtwo Best 8: the famous name is not enough",
+        "why_it_matters": "Rocket's Mewtwo Best 8 is the row where an agent earns its keep. A human may say 'Rocket's Mewtwo' and mean several things. This dossier keeps the purchasable target sharp: oversized, Winner, Best 8, BattleZone, June 2003.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-9",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Hitmonchan",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_jumbo_bounded_200002_200307",
+        "row_id": "en_wotc_jumbo_bounded_200002_200307:jumbo-best-9",
+        "catalog_row_id": "Best 9",
+        "release_name": "Jumbo cards - WoC-era bounded subset"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json#row:en_wotc_jumbo_bounded_200002_200307:jumbo-best-9",
+          "title": "Local catalog row: Rocket's Hitmonchan Best 9 Jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Rocket's Hitmonchan as Best 9 in the bounded English WotC-era Jumbo subset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Best of Game and BattleZone (July 2003) as the route for this oversized Winner Jumbo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The row requires Rocket's Hitmonchan identity, Best 9 numbering, and oversized Best of Game Winner Jumbo format before comparison to regular Hitmonchan or Rocket's Hitmonchan rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Hitmonchan Best 9 closes the modeled WotC-era Jumbo prefix in this local release. That makes it a boundary row as much as a card row: after it, the proof turns away from Nintendo/e-League and later Jumbo material.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jumbo_best_of_game_best_9_rockets_hitmonchan_boundary_v0.1",
+          "trigger": "A listing or want names Rocket's Hitmonchan, Best 9, BattleZone, Winner, or Jumbo.",
+          "summary": "Confirm oversized Rocket's Hitmonchan Best 9 Winner Jumbo route and preserve its boundary-row role at the end of the modeled WotC-era prefix.",
+          "steps": [
+            "Require oversized / Jumbo physical-format evidence.",
+            "Preserve Rocket's owner-name identity, printed Best 9, and BattleZone (July 2003).",
+            "Confirm Best of Game Winner Jumbo route.",
+            "Treat this as the last modeled WotC-era prefix row in the current boundary proof, not permission to import later Jumbo material.",
+            "Exclude regular-size Hitmonchan, Rocket's Hitmonchan, and regular Best of Game Winner copies unless separately selected."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "format authenticity",
+            "regular-size equivalence",
+            "later Jumbo reissue equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "Best 9",
+        "rarity_signal": "BattleZone (July 2003)",
+        "artist": "",
+        "assembly_themes": [
+          "supplemental physical format",
+          "tournament/prize culture",
+          "villain/team identity",
+          "boundary row",
+          "identity trap"
+        ],
+        "collector_texture_note": "Rocket's Hitmonchan Best 9 is both a prize row and a stop sign for the bounded WotC-era slice.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Hitmonchan Best 9: the row that closes the gate",
+        "why_it_matters": "Rocket's Hitmonchan Best 9 has the nice finality of a boundary marker. It is a BattleZone Winner Jumbo, but it also tells the catalog where to stop before the later Jumbo world begins.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

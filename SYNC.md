@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-sixth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/wotc_jumbo_bounded_v0_1.json`.
+  English WotC-era bounded Jumbo / oversized cards are now a hand-authored
+  supplemental physical-format dossier, with all 10 modeled rows promoted from
+  generated baseline to sourced card dossiers: Top Deck Magazine Pikachu
+  58/102, Warner Bros. Pokemon The Movie 2000 Articuno, Moltres, and Zapdos,
+  and the BattleZone / Best of Game Winner Jumbo rows for Electabuzz Best 1,
+  Rocket's Sneasel Best 5, Hitmonchan Best 2, Rocket's Scizor Best 4, Dark
+  Ivysaur Best 6, Dark Venusaur Best 7, Rocket's Mewtwo Best 8, and Rocket's
+  Hitmonchan Best 9. This pass makes `special_identification_instructions`
+  load-bearing in the history layer: every row now says, explicitly, that the
+  oversized / Jumbo physical format, source route, printed number, and later
+  reissue exclusion must be checked before a familiar name or art lineage can
+  be treated as the target row. The release is framed as a small bounded
+  display/prize/movie/magazine slice, not the complete TCGdex Jumbo bucket;
+  artists remain intentionally unset because the supplemental source rows do
+  not provide illustrator authority. Sources: local English supplemental WotC
+  Jumbo release file, English Jumbo boundary proof, Bulbapedia raw Jumbo
+  wikitext, and TCGdex English Jumbo metadata endpoint. Generated gap moved
+  from 172 releases / 4,259 cards to 171 releases / 4,249 cards. Current
+  catalog-history corpus: 22,836 claims, 5,522 sources, corpus hash
+  `2b02398d7d43aad706adac7fabf306a01ea35a915fe12d217e98aef33367c3e7`;
+  index hash `e065c29bc8c94702fcfe8727123586933968c93854dce950376db9ab5bb7ea72`;
+  queue hash `df5a3e8ec68f5adb9b5077fba48a4716d6afec100952d1c696af6c8f61e0e912`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-fifth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/tamamushi_city_gym_erika_v0_1.json`.
