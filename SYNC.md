@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_march_1998_insert_v0_1.json`.
+  CoroCoro Comic March 1998 promo source slice now has complete two-row
+  hand-authored coverage for Brock's Onix row 037 and Misty's Staryu row 038.
+  The pass frames the release as a paired magazine object: February 15 1998
+  CoroCoro March issue insert, Brock/Misty Gym Leader ownership, Ken Sugimori
+  source-credit texture, and the two-card relationship as provenance. Added
+  `special_identification_instructions` requiring agents to preserve exact
+  CoroCoro March 1998 issue route, row 037/038 identity, Japanese/romaji names
+  タケシのイワーク / Takeshi's Iwark and カスミのヒトデマン / Kasumi's
+  Hitodeman, the paired-insert relationship, UPC source-row mode, Ken Sugimori
+  source/provider credit, and later Gym/theme-deck/expansion/mail-in
+  non-equivalence before accepting a match. Sources: local Japanese pre-English
+  release file, Bulbapedia/PokéCardex selected rendered-lines snapshot,
+  Bulbapedia card pages, and PokéCardex UPC aggregate reference. Generated gap
+  moved from 137 releases / 3,979 cards to 136 releases / 3,977 cards. Current
+  catalog-history corpus:
+  `12f2fe160cb775caf3f89a7e8fc08974626bfd48b52575222a9ea82dfe227e7e`;
+  index: `ac32521cd76848a789c90160c01a07a9737d541183386b62b4a7e36c654a771d`;
+  queue: `7e137719961ff43b470a257c06519f5ed1ad9c1020266310a6d293eca1f391c4`.
+  Audit counts: 23,220 claims, 5,929 sources, 73 hand-authored release dossiers,
+  572 hand-authored card dossiers, and 837 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_march_1998_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventieth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/expansion_sheet_3_green_tranche_v0_1.json`.
