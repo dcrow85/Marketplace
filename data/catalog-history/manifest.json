@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23386,
-    "corpus_hash": "f8dc6157ec568e6ef363cae5819fc88cdf7e6b8569e9784bcad97ca072e108a3",
-    "generated_card_dossier_count": 3896,
-    "generated_release_dossier_count": 70,
+    "claim_count": 23394,
+    "corpus_hash": "e3f4195d6bb42fb25ab8db7aa59110d623251918eeb12e539fef342a5a28047b",
+    "generated_card_dossier_count": 3895,
+    "generated_release_dossier_count": 69,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6366
+    "source_count": 6374
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "e798f5384ed9ae121b8fdbf5e79bbf736d969b78bcf9bcb6b3cfcc055b2d2b20",
-    "release_queue_count": 70,
+    "queue_hash": "be3e81c263097ccbfdd0497d4eded4a4851eb56ee72995805697d45770be00e0",
+    "release_queue_count": 69,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T17:32:34Z",
+  "generated_at": "2026-06-19T17:40:39Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "09cb400149627f70239db8e0621ab604796cfe79bc6a8d916810473b2cb7252c",
+    "index_hash": "4d0b5b9d56dfa1b6678547fd6958cedc54107b94f207ba7bce6a89f4338d8f64",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -155,6 +155,7 @@
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_chubu_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_chugoku_shikoku_lucky_stadium_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_summer_hokkaido_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_hokushinetsu_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_kansai_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_kanto_lucky_stadium_v0_1.json",

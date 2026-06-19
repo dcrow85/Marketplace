@@ -1,0 +1,604 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Lucky Stadium [Pikachu], the Hokkaidō World Challenge Summer participation-prize print, emphasizing the regional-stadium architecture of the 2000 Lucky Stadium campaign, the Pikachu / Sapporo Clock Tower / Snow Festival identity, the July 16, 2000 Tsukisamu Green Dome event route, \"Big Mama\" Tagawa and CR CG gangs artwork, and traps against the other seven World Challenge Summer regional Lucky Stadium cards, Spring/Summer date confusion, Tropical Mega Battle, Neo Destiny, Intro Pack Neo, and Pokemon Center New York prints.",
+    "in_scope": [
+      "World Challenge Summer Hokkaidō participation-prize release dossier",
+      "Lucky Stadium [Pikachu] unnumbered promotional row 173",
+      "World Challenge Summer 2000 regional Lucky Stadium family context",
+      "\"Big Mama\" Tagawa and CR CG gangs illustration credit",
+      "Hokkaidō / Pikachu / Sapporo Clock Tower and Snow Festival identification rails"
+    ],
+    "not_claiming": [
+      "complete World Challenge event archive",
+      "official attendance count",
+      "official print run",
+      "resolution of every Spring/Summer secondary-source date conflict",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference",
+        "name_en": "World Challenge Summer participation prize (Hokkaidō conference)",
+        "release_date": "2000-07-16",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "World Challenge Summer 2000 tournament participation prize",
+          "Hokkaidō regional Lucky Stadium print",
+          "Pikachu mascot cue",
+          "Sapporo Clock Tower and Snow Festival landmark cue",
+          "\"Big Mama\" Tagawa / CR CG gangs artwork",
+          "regional-variant and date-conflict identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference:173",
+            "name": "Lucky Stadium [Pikachu] [Hokkaidō]",
+            "why": "This is a chase because the Hokkaidō print gives the regional Stadium family its most instantly lovable face: Pikachu as a snowy local sculpture, not just a mascot pasted onto a prize card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "\"Big Mama\" Tagawa and CR CG gangs",
+            "row_count": 1,
+            "examples": [
+              "Lucky Stadium [Pikachu] [Hokkaidō]"
+            ],
+            "why": "This credit matters because Tagawa and CR CG gangs were part of the early Creatures CG/game apparatus that helped build the world around Pokémon. Here that apparatus turns Pikachu into a place-specific public sculpture.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Lucky Stadium art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete World Challenge event archive",
+          "complete date-conflict resolution",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Hokkaidō World Challenge Summer participation-prize source group as one row containing Lucky Stadium at source index 173.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.context",
+          "text": "Bulbapedia says Lucky Stadium was first awarded to participants of the Japanese World Challenge Summer tournaments held between July and August 2000, with eight variations printed, each one exclusive to a region of Japan.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia lists the Hokkaidō print, featuring Pikachu, as available at the Tsukisamu Green Dome, Sapporo on July 16, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies Lucky Stadium [Pikachu] [Hokkaido] as a World Challenge Summer participation prize and gives the Pikachu/Hokkaido identity, while showing a May 27, 2000 distribution date that this dossier treats as a secondary-source date conflict against Bulbapedia's July 16 Summer event listing.",
+          "sources": [
+            "s3",
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Lucky Stadium gallery credits the Hokkaidō region print to \"Big Mama\" Tagawa and CR CG gangs.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits Lucky Stadium [Pikachu] [Hokkaido] to Big Mama Tagawa and CR CG gangs.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Bulbapedia says Yoshiyuki Tagawa, credited on cards as \"Big Mama\" Tagawa, worked as a graphic designer at Creatures, Inc., worked on 3D Pokémon models, illustrated Pokémon TCG cards, and has credits on Pokémon Stadium, Hey You, Pikachu!, Pokémon Snap, Pokémon Stadium 2, Pokémon Colosseum, and Pokémon XD: Gale of Darkness.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.other_work",
+          "text": "Bulbapedia describes CR CG gangs as a group of artists making Pokémon TCG illustrations, mostly Neo-era Trainer and Unown cards, and notes they were credited in Meowth's Party.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.variant",
+          "text": "Bulbapedia says all World Challenge Summer Lucky Stadium prints feature regional landmarks; the Hokkaidō print features a sculpture of Pikachu in front of the Sapporo Clock Tower in celebration of the Sapporo Snow Festival.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.lineage",
+          "text": "Bulbapedia separates the regional World Challenge Summer prints from the Tropical Mega Battle bilingual print, Neo Destiny English print, Intro Pack Neo print, and Pokemon Center New York print, each of which has different artwork or route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Hokkaidō print matters because Pikachu is not only the mascot cue; the card turns Pikachu into a local winter landmark object, tying tournament attendance to public festival memory.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c5",
+            "c8",
+            "c9",
+            "c10"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity",
+            "resolution of every date conflict"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Pikachu] [Hokkaidō]: mascot, snow, clock tower",
+        "why_it_matters": "The Hokkaidō print is the regional Lucky Stadium that almost smiles back. Pikachu is already the public face of Pokémon, but here the card makes that face local: a sculpture, Sapporo, snow-festival memory, and a tournament stop at Tsukisamu Green Dome. It is cute, yes, but not thin. It shows how Pokémon was learning to become civic scenery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "complete World Challenge event archive",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "resolution of every secondary-source date conflict"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_hokkaido_lucky_stadium_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "Use when a card, listing, image, or agent claim says Lucky Stadium, Hokkaidō, Hokkaido, Pikachu, World Challenge Summer, Sapporo, Tsukisamu Green Dome, Sapporo Clock Tower, Snow Festival, or May 27.",
+          "summary": "First establish the Hokkaidō/Pikachu/Summer route, then keep it separate from other regional Lucky Stadium prints and from later or bilingual Lucky Stadium releases.",
+          "steps": [
+            "Check that the card is Lucky Stadium / ラッキースタジアム and that the claimed route is World Challenge Summer participation prize, not Neo Destiny, Intro Pack Neo, Tropical Mega Battle, or Pokemon Center New York.",
+            "Confirm the regional identity is Hokkaidō / Hokkaido and the depicted Pokémon cue is Pikachu; do not substitute the other regional mascots such as Lugia, Ho-Oh, Mew, Zapdos, Onix, Gyarados, or Diglett.",
+            "Look for the Hokkaidō landmark cue: a Pikachu sculpture in front of the Sapporo Clock Tower, linked to the Sapporo Snow Festival; treat generic Pikachu or snow language as insufficient unless tied back to this region.",
+            "Record Bulbapedia's July 16, 2000 Tsukisamu Green Dome, Sapporo listing as the current event-route anchor, while preserving PokeBoon's May 27, 2000 date as a visible secondary-source conflict rather than resolving it silently.",
+            "Treat source-page identity, artist credit, and release route as catalog legibility only; require seller photos, possession evidence, and card-condition evidence before a transaction gate."
+          ],
+          "not_claiming": [
+            "authentication",
+            "seller possession",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete date-conflict resolution",
+            "that Pikachu alone proves the card is the Hokkaidō print"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference.json",
+          "title": "Local unnumbered WotC promo release slice: World Challenge Summer participation prize (Hokkaidō conference)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "artist authority",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_(Neo_Destiny_100)",
+          "title": "Lucky Stadium (Neo Destiny 100) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print-run disclosure",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://pokeboon.com/hokkaido_luckystadium-pikachu_promo/",
+          "title": "Lucky Stadium [Pikachu] [Hokkaido] Promo: World Challenge Summer participation prize - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official event-route authority",
+            "resolution of the May 27 date conflict",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/%22Big_Mama%22_Tagawa",
+          "title": "\"Big Mama\" Tagawa - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete career biography",
+            "complete TCG bibliography",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/CR_CG_gangs",
+          "title": "CR CG gangs - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete group history",
+            "complete TCG bibliography",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference:173",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference:173",
+        "release_family_id": "jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference",
+        "name_en": "Lucky Stadium [Pikachu] [Hokkaidō]",
+        "card_number": "None",
+        "rarity_signal": "Stadium"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 173 as Lucky Stadium, a Trainer/Stadium card from the World Challenge Summer participation-prize Hokkaidō conference slice, with Pikachu as the Pokémon cue.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Hokkaidō World Challenge Summer Lucky Stadium print as the Pikachu variant available at the Tsukisamu Green Dome, Sapporo on July 16, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.identity",
+          "text": "PokeBoon identifies the card as Lucky Stadium [Pikachu] [Hokkaido], unnumbered, and a World Challenge Summer participation prize.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "card.art",
+          "text": "Bulbapedia says the Hokkaidō print features a sculpture of Pikachu in front of the Sapporo Clock Tower in celebration of the Sapporo Snow Festival.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both credit Lucky Stadium [Pikachu] [Hokkaidō] to \"Big Mama\" Tagawa and CR CG gangs.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc6",
+          "field": "artist.impact",
+          "text": "As interpretive art context, the Tagawa/CR CG gangs credit makes this Pikachu print feel like built-world Pokémon: card art, 3D game craft, civic scenery, and mascot design all touching the same prize object.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "cc5"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "complete art-history account",
+            "authentication",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "cc7",
+          "field": "history.variant",
+          "text": "The Hokkaidō print should be separated from the other World Challenge Summer regional prints, the Tropical Mega Battle bilingual print, Neo Destiny, Intro Pack Neo, Pokemon Center New York, and generic Lucky Stadium listings because those carry different route, artwork, or language context.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc8",
+          "field": "history.significance",
+          "text": "As judged collector texture, Lucky Stadium [Pikachu] [Hokkaidō] is interesting because it makes Pikachu both mascot and landmark: the card reads as a regional festival memory, not only a tournament participation card.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc4",
+            "cc5",
+            "cc7"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Pikachu] [Hokkaidō]: cute enough to be architecture",
+        "why_it_matters": "This is the regional Lucky Stadium that proves cute can still carry history. Pikachu is doing mascot work, but the card is more specific than mascot work alone: Sapporo Clock Tower, Snow Festival, Hokkaidō, and a summer tournament prize all fold into the picture. It is Pokémon becoming a place you could visit.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7",
+          "cc8"
+        ],
+        "not_claiming": [
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "official artist intent",
+          "complete World Challenge event archive"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_hokkaido_lucky_stadium_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "Use when evaluating a specific card image, listing, slab label, or seller claim for Lucky Stadium [Pikachu] [Hokkaidō].",
+          "summary": "Identify this card by the combined Hokkaidō + Pikachu + Sapporo Clock Tower/Snow Festival + World Challenge Summer route, not by Lucky Stadium or Pikachu name alone.",
+          "steps": [
+            "Confirm the card name is Lucky Stadium / ラッキースタジアム and that the row is unnumbered promotional, not Neo Destiny 100/105 or another numbered print.",
+            "Confirm the variant claim says Hokkaidō / Hokkaido and shows Pikachu; if it shows a different Pokémon, route to the matching regional Lucky Stadium instead.",
+            "Check the artwork cue against a Pikachu sculpture in front of the Sapporo Clock Tower and the Snow Festival context; do not accept generic Pikachu art as sufficient variant support.",
+            "If a source or listing uses May 27, 2000, preserve it as a secondary-source conflict unless supported by a stronger event archive; do not replace Bulbapedia's July 16, 2000 Tsukisamu Green Dome anchor without evidence.",
+            "Before spending or trade gating, ask for seller-controlled photos and evidence of the actual card; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "authentication",
+            "seller possession",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "that a slab label alone resolves the variant",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_173_world_challenge_summer_participation_prize_hokkaid_conference.json",
+          "title": "Local unnumbered WotC promo release slice: World Challenge Summer participation prize (Hokkaidō conference)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "artist authority",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_(Neo_Destiny_100)",
+          "title": "Lucky Stadium (Neo Destiny 100) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print-run disclosure",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://pokeboon.com/hokkaido_luckystadium-pikachu_promo/",
+          "title": "Lucky Stadium [Pikachu] [Hokkaido] Promo: World Challenge Summer participation prize - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official event-route authority",
+            "resolution of the May 27 date conflict",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/%22Big_Mama%22_Tagawa",
+          "title": "\"Big Mama\" Tagawa - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete career biography",
+            "complete TCG bibliography",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/CR_CG_gangs",
+          "title": "CR CG gangs - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete group history",
+            "complete TCG bibliography",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}

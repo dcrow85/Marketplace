@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twentieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_hokkaido_lucky_stadium_v0_1.json`
+  deepens row 173 / Lucky Stadium `[Pikachu] [Hokkaidō]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's July 16, 2000 Tsukisamu Green Dome,
+  Sapporo listing and preserves PokeBoon's May 27 date as a visible secondary-source conflict
+  rather than flattening it. Pikachu, Hokkaidō, Sapporo Clock Tower, Snow Festival,
+  "Big Mama" Tagawa, CR CG gangs, and the eight-region Lucky Stadium structure are now legible.
+  Special ID rails separate it from other World Challenge Summer regional prints, Tropical Mega
+  Battle bilingual Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New York, and
+  generic Lucky Stadium rows. Generated gaps moved to 69 release / 3895 card. Current hashes:
+  corpus `e3f4195d6bb42fb25ab8db7aa59110d623251918eeb12e539fef342a5a28047b`, index
+  `4d0b5b9d56dfa1b6678547fd6958cedc54107b94f207ba7bce6a89f4338d8f64`, queue
+  `be3e81c263097ccbfdd0497d4eded4a4851eb56ee72995805697d45770be00e0`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-nineteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_hokushinetsu_lucky_stadium_v0_1.json`
