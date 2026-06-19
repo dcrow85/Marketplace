@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-seventeenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_chubu_lucky_stadium_v0_1.json`
+  deepens row 170 / Lucky Stadium `[Zapdos] [Chūbu]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's July 22, 2000 Nagoya Trade &
+  Industry Center, Nagoya listing and preserves PokeBoon's April 29 date as a visible
+  secondary-source conflict rather than flattening it. Zapdos, Chūbu, Osaka Castle central
+  tower, Nagoya, Ryuta Kusumi, CR CG gangs, and the eight-region Lucky Stadium structure are
+  now legible. Special ID rails separate it from other World Challenge Summer regional prints,
+  Tropical Mega Battle bilingual Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New
+  York, and generic Lucky Stadium rows. Generated gaps moved to 72 release / 3898 card. Current
+  hashes: corpus `bd5b988e221f02c2590bf2cfd768038c068e2d9af39d4a5e9205d34a04997fa6`, index
+  `681619f3afac7eaa903e7cc4549386b70c9238cad3d9cee1b7cf31b12abe5145`, queue
+  `1a0b94320459c0c0c2b20171169c842ca32040c38e17c487c08c26c7153eb839`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_chugoku_shikoku_lucky_stadium_v0_1.json`
