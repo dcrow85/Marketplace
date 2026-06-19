@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fourteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_kanto_lucky_stadium_v0_1.json`
+  deepens row 167 / Lucky Stadium `[Lugia] [Kantō]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's July 1-2, 2000 Pacifico
+  Yokohama event listing for this Summer row while preserving PokeBoon's March 26 date as a
+  visible secondary-source conflict, not a silent merge. Lugia, Kantō, Tokyo cityscape,
+  Tokyo Radio Tower, Yousuke Hirata, CR CG gangs, and the eight-region Lucky Stadium structure
+  are now legible. Special ID rails separate it from other World Challenge Summer regional
+  prints, Tropical Mega Battle bilingual Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon
+  Center New York, and generic Lucky Stadium rows. Generated gaps moved to 75 release / 3901
+  card. Current hashes: corpus
+  `a6f1936dbfa34b73f232f6ec77dd90c09f58bdff0b090f17bbeea405048cda99`, index
+  `ce66e4b9e14fa9d415ed2d32d83cf9d0fb542a787bc17bd65301a4e3a1e1f899`, queue
+  `fa53ee3fea076771d3fcef7ddde77e51c04f7580dc8b7178701e8cb402cf28cc`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_kyushu_lucky_stadium_v0_1.json`

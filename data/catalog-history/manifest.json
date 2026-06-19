@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23350,
-    "corpus_hash": "e9966f18daa2e77b32ea10db13a6c36927656cb6a68c0237809e2def26e0361d",
-    "generated_card_dossier_count": 3902,
-    "generated_release_dossier_count": 76,
+    "claim_count": 23355,
+    "corpus_hash": "a6f1936dbfa34b73f232f6ec77dd90c09f58bdff0b090f17bbeea405048cda99",
+    "generated_card_dossier_count": 3901,
+    "generated_release_dossier_count": 75,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6326
+    "source_count": 6332
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "cfe356dc528e513b1ebb9bf9447f21a52b3f22b1d3a3332923d75bf059dfb90c",
-    "release_queue_count": 76,
+    "queue_hash": "fa53ee3fea076771d3fcef7ddde77e51c04f7580dc8b7178701e8cb402cf28cc",
+    "release_queue_count": 75,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T16:53:41Z",
+  "generated_at": "2026-06-19T16:58:51Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "0cec7ebd9ac6b705753bdbaaea1500ec1e78ba75902ced34f4509b18a84d109f",
+    "index_hash": "ce66e4b9e14fa9d415ed2d32d83cf9d0fb542a787bc17bd65301a4e3a1e1f899",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -153,6 +153,7 @@
     "data/catalog-history/source-sets/whf_special_limited_expansion_sheet_v0_1.json",
     "data/catalog-history/source-sets/wind_from_the_sea_tranche_v0_1.json",
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_summer_kanto_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_kyushu_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/wotc_jumbo_bounded_v0_1.json"
   ]
