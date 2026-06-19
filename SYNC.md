@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/trainers_vol7_smeargle_v0_1.json` deepens row 180 /
+  Smeargle from the Pokemon Card Trainers Vol. 7 insert route. The pass treats the card as a
+  magazine-bonus Japanese unnumbered promo whose why is unusually clean: Smeargle is the
+  paintbrush/Sketch Pokemon, Tomokazu Komiya is the loose hand-made image lane, and Pokemon
+  Card Trainers is the magazine apparatus that put a card about mark-making into readers'
+  hands. Special ID rails now require agents to preserve the Vol. 7 bonus-card border text,
+  Crossing the Ruins promotional-addition symbol, Japanese unnumbered status, English Wizards
+  Black Star Promo 32 separation, and the No.235/Pokedex-number trap before treating a listing
+  as this exact print. Generated gaps moved to 62 release / 3888 card. Current hashes: corpus
+  `17742797c989d12b8965e9d32b553b697498e2b71edc2b1c6539f19ce01699a0`, index
+  `6fcb3b0307e826d6a89237bb0203f8acb6cb9a52905c4bf3b7640e5373f0bd18`, queue
+  `a181b0217957d6464441e96db53c3b414f059f1837d17f0ebf02f163862937e3`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_ssb_regional_no3_trainer_v0_1.json`

@@ -1,0 +1,638 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Smeargle, the Pokemon Card Trainers Vol. 7 insert released July 1, 2000, emphasizing magazine distribution, Japanese unnumbered promo identity, the later English Wizards Black Star Promo 32 relationship, Crossing the Ruins symbol/border-text identifiers, Tomokazu Komiya's illustrator lane, and Smeargle's painter/Sketch lore.",
+    "in_scope": [
+      "Pokemon Card Trainers Vol. 7 insert release dossier",
+      "Smeargle unnumbered promotional row 180",
+      "July 1, 2000 magazine-bonus distribution",
+      "Japanese unnumbered promo versus English Wizards Black Star Promo 32 boundary",
+      "Tomokazu Komiya illustration context",
+      "Smeargle species and Sketch context"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers magazine archive",
+      "official print run",
+      "sealed-magazine population",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000",
+        "name_en": "Pokemon Card Trainers Vol. 7 insert (July 1, 2000)",
+        "release_date": "2000-07-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Trainers magazine distribution",
+          "Japanese unnumbered promotional insert",
+          "Smeargle as painter Pokemon",
+          "Tomokazu Komiya artist lane",
+          "English Wizards Black Star Promo relationship"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000:180",
+            "name": "Smeargle [Pokemon Card Trainers Vol. 7 insert]",
+            "why": "This is a chase less because of raw rarity language and more because of fit: Smeargle, the painter Pokemon, arrives through an official card magazine as a Komiya illustration with bonus-card border text. The distribution vehicle and the subject are talking to each other.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Tomokazu Komiya",
+            "row_count": 1,
+            "examples": [
+              "Smeargle [Pokemon Card Trainers Vol. 7 insert]"
+            ],
+            "why": "Komiya matters because Smeargle is already a Pokemon about mark-making, painting, and copying. His loose, deformed, heavily personal visual language turns a magazine insert into an artist-to-artist card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7",
+              "c8",
+              "c9"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokemon Card Trainers archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Pokemon Card Trainers Vol. 7 insert source group as one row containing Smeargle at source index 180.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Japanese Smeargle print was available as an Unnumbered Promotional card and was included in Volume 7 of Pokemon Card Trainers magazine, released on July 1, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the English version of this Smeargle card was released as Wizards Black Star Promo 32 through the Pokemon League in March 2001.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the Japanese print features the Crossing the Ruins symbol, indicating that it is a promotional addition to that expansion.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the bottom border text on the Japanese print reads Pokemon Card Official Magazine Trainers Vol. 7 bonus card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies the Smeargle card as illustrated by Tomokazu Komiya, and PokeBoon also lists Tomokazu Komiya for the Pokemon Card Trainers Vol. 7 Smeargle promo.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Bulbapedia describes Tomokazu Komiya as a Pokemon Trading Card Game illustrator and Pokemon Tales book illustrator whose style is known in the Pokemon community for deformed and loosely colored images.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Bulbapedia says Komiya has illustrated Pokemon cards since the Japanese Expansion Sheet 1 expansion and often uses vibrant colors, unusual tones, exaggerated proportions, and varied brushwork to create different feelings.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.other_work",
+          "text": "Bulbapedia says Komiya contributed Smeargle and Sunflora illustrations for the 2023 Pokemon x Van Gogh art collaboration, tying his later official Pokemon work back to art-history quotation.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Smeargle as ドーブル Doble, a Colorless-type Basic Pokemon card with 40 HP and the Paint attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Smeargle is a bipedal, beagle-like Pokemon with a paintbrush-like tail and paint-like fluid, and that it uses paint to mark its territory.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c12",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Smeargle is the only known Pokemon capable of learning the move Sketch, which lets it copy moves from other Pokemon.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c13",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Vol. 7 Smeargle insert matters because magazine distribution, Komiya's handmade style, and Smeargle's paint/Sketch identity all converge in a card about copying and mark-making.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c11",
+            "c12"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "price truth",
+            "condition truth",
+            "authenticity",
+            "seller possession"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokemon Card Trainers Vol. 7 Smeargle: the magazine gave the painter a page",
+        "why_it_matters": "This is the sort of promo that makes the early Japanese apparatus feel alive. A card magazine did not just report on the game; it carried a card into the hands of readers. And the card was Smeargle, the painter Pokemon, drawn by Tomokazu Komiya, one of the TCG's great oddball image-makers. The result feels self-aware in the best collector way: a printed magazine giving out a printed card about making marks.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12",
+          "c13"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete magazine archive",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "that every Smeargle listing uses this same route"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol7_smeargle_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "Use when a card, listing, slab label, auction description, or agent claim says Smeargle, Pokemon Card Trainers, Trainers Vol. 7, Japanese promo, Crossing the Ruins, Wizards Promo 32, No.235, or Tomokazu Komiya.",
+          "summary": "Treat Smeargle as a reusable Pokemon/card identity. Establish the Japanese Pokemon Card Trainers Vol. 7 unnumbered insert route before comparing value, rarity, or historical meaning.",
+          "steps": [
+            "Confirm the card is Smeargle / ドーブル Doble and that the claimed Japanese route is Pokemon Card Trainers Vol. 7 insert released July 1, 2000.",
+            "Separate the Japanese unnumbered promotional print from the English Wizards Black Star Promo 32 release through Pokemon League in March 2001.",
+            "Look for the Japanese print's bottom border text identifying Pokemon Card Official Magazine Trainers Vol. 7 bonus card.",
+            "Keep the Crossing the Ruins symbol legible as a promotional-addition marker; do not treat it as ordinary booster-set membership by itself.",
+            "Do not confuse Pokedex No. 235 or marketplace shorthand like No.235 with a printed collector number; the Japanese promo is modeled here as unnumbered.",
+            "Before spending or trade gating, require seller-controlled photos of the actual card, including the Vol. 7 border text area, expansion-symbol area, front/back, surface, edge, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "authentication",
+            "seller possession",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "sealed-magazine provenance",
+            "that Smeargle name alone identifies the exact print",
+            "that a grading label alone resolves the route"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000.json",
+          "title": "Local unnumbered WotC promo release slice: Pokemon Card Trainers Vol. 7 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "artist authority",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smeargle_(Wizards_Promo_32)",
+          "title": "Smeargle (Wizards Promo 32) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tomokazu_Komiya",
+          "title": "Tomokazu Komiya - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/trainers_smeargle_promo/",
+          "title": "Smeargle Promo: Pokemon Card Trainers Vol. 7 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smeargle_(Pok%C3%A9mon)",
+          "title": "Smeargle (Pokemon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "seller possession",
+            "physical-card authenticity",
+            "complete species history"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000:180",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000:180",
+        "release_family_id": "jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000",
+        "name_en": "Smeargle [Pokemon Card Trainers Vol. 7 insert]",
+        "name_ja": "ドーブル",
+        "card_number": "None",
+        "rarity_signal": "magazine bonus unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 180 as Smeargle from the Pokemon Card Trainers Vol. 7 insert source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese name as ドーブル Doble and identifies the card as a Colorless-type Basic Pokemon card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese print in Unnumbered Promotional cards and PokeBoon lists the card as No. Unnumbered.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon identify Tomokazu Komiya as the illustrator of this Smeargle promo.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.art",
+          "text": "As interpretive art context, Smeargle's painter identity makes Komiya's loose, mark-forward style feel especially apt for this magazine insert.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "cc2",
+            "cc4"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "complete art-history account",
+            "authentication",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This card must be separated from English Wizards Black Star Promo 32, ordinary Crossing the Ruins booster-set expectations, and species-number shorthand that presents No.235 as if it were a printed promo number.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Smeargle [Pokemon Card Trainers Vol. 7 insert] matters because the Pokemon, the illustrator, and the magazine vehicle all revolve around drawing, copying, printing, and marks.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Smeargle: Komiya draws the painter dog for the magazine crowd",
+        "why_it_matters": "This card has the joy of a perfect little assignment. Smeargle is the Pokemon with the paintbrush tail and the copying move; Tomokazu Komiya is the illustrator whose TCG work often feels hand-made, bent, loose, and alive; Pokemon Card Trainers is the magazine apparatus that put the card directly into readers' hands. The result is not just a checklist promo. It is a small artifact about Pokemon learning to circulate through magazines, artists, fans, and the act of making marks.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "that every Smeargle print follows this route"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol7_smeargle_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "Use when evaluating a specific Smeargle image, listing, slab, or seller claim connected to Pokemon Card Trainers Vol. 7.",
+          "summary": "Identify this card by the Japanese magazine-insert route and visible print cues, not by species name, English promo number, or No.235 shorthand.",
+          "steps": [
+            "Confirm the card title is Smeargle / ドーブル Doble and the Japanese route is Pokemon Card Trainers Vol. 7 insert released July 1, 2000.",
+            "Check that the card is a Japanese unnumbered promotional print rather than English Wizards Black Star Promo 32.",
+            "Inspect the bottom border text area for the Pokemon Card Official Magazine Trainers Vol. 7 bonus-card wording.",
+            "Inspect the expansion-symbol area for the Crossing the Ruins promotional-addition marker and keep it separate from ordinary booster-set membership.",
+            "Treat No.235 as Smeargle's Pokedex number context, not as proof of a printed promo collector number.",
+            "Before spending or trade gating, require seller-controlled photos of the actual card, including border text, symbol area, front/back, surface, edge, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "authentication",
+            "seller possession",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "sealed-magazine provenance",
+            "that a grading label alone resolves the route",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_180_pok_mon_card_trainers_vol_7_insert_july_1_2000.json",
+          "title": "Local unnumbered WotC promo release slice: Pokemon Card Trainers Vol. 7 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "artist authority",
+            "physical-card authenticity",
+            "seller possession"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smeargle_(Wizards_Promo_32)",
+          "title": "Smeargle (Wizards Promo 32) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tomokazu_Komiya",
+          "title": "Tomokazu Komiya - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/trainers_smeargle_promo/",
+          "title": "Smeargle Promo: Pokemon Card Trainers Vol. 7 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "seller possession",
+            "physical-card authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smeargle_(Pok%C3%A9mon)",
+          "title": "Smeargle (Pokemon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "seller possession",
+            "physical-card authenticity",
+            "complete species history"
+          ]
+        }
+      ]
+    }
+  ]
+}
