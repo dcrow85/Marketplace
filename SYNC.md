@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/adv_expansion_pack_v0_1.json`.
+  Japanese ADV Expansion Pack is now a hand-authored release dossier, with
+  Sceptile 003/055, Blaziken 011/055, Swampert 016/055, Mewtwo ex
+  026/055, and Chansey ex 036/055 promoted from generated baseline to
+  sourced card dossiers. The pass frames ADV Expansion Pack as the
+  Ruby/Sapphire hinge: Hoenn starters, the Game Boy Advance era, early
+  Pokemon-ex risk grammar, and post-WotC Japanese ADV production all arriving
+  together. Added special identification rails for Japanese ADV versus
+  English EX Ruby & Sapphire comparison, ADV1 numbering, lowercase ex versus
+  later uppercase EX conventions, Hoenn starter-final-form row boundaries,
+  Mewtwo ex's old-myth/new-suffix context, and Chansey ex's recoil/risk
+  context. Sources: local Japanese ADV catalog, TCG Collector, TCGdex API,
+  and Bulbapedia community pages for EX Ruby & Sapphire, ADV TCG Era
+  merchandise, Pokemon Ruby/Sapphire, Sceptile, Blaziken, Swampert, Mewtwo
+  ex, Chansey ex, and Pokemon-ex. Generated gap moved from 200 releases /
+  4,512 cards to 199 releases / 4,507 cards. Current catalog-history
+  corpus: 22,932 claims, 4,858 sources, corpus hash
+  `d1702a44a9bc9b18f35ab572785ebbdc465822756695019d8ca724ec4d31b851`;
+  index hash `44a205f84f52f02a13e7ff959125b0695a30015793d0daf4bbbadbcf38150dc4`;
+  queue hash `495db99c7f16339ba9f0156fc47c51552c6e35175cd6d35b6fb6fe44f946c163`.
 - `[passive]` 2026-06-19 · Codex — completed the seventh hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_destiny_v0_1.json`.

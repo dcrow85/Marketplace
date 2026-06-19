@@ -1,0 +1,1065 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese ADV Expansion Pack and five rows that show the Ruby/Sapphire hinge into Pokemon-ex.",
+    "in_scope": [
+      "ADV Expansion Pack release dossier",
+      "Sceptile",
+      "Blaziken",
+      "Swampert",
+      "Mewtwo ex",
+      "Chansey ex"
+    ],
+    "not_claiming": [
+      "complete ADV-era scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131",
+      "type": "release",
+      "context": {
+        "name_en": "ADV Expansion Pack",
+        "name_ja": "拡張パック",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "release_date": "2003-01-31"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json",
+          "title": "Local Japanese ADV release catalog: ADV Expansion Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/ADV1",
+          "title": "TCGdex API set record: ADV1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level card refs",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Ruby_%26_Sapphire_(TCG)",
+          "title": "Bulbapedia: EX Ruby & Sapphire (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/ADV_TCG_Era_merchandise",
+          "title": "Bulbapedia: ADV TCG Era merchandise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete merchandise coverage",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Ruby_and_Sapphire_Versions",
+          "title": "Bulbapedia: Pokemon Ruby and Sapphire Versions",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG product proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, TCG Collector, and Bulbapedia model ADV Expansion Pack / the Japanese EX Ruby & Sapphire counterpart with a January 31, 2003 Japanese release date.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog models 55 rows for ADV Expansion Pack, with TCGdex set count and TCG Collector row pages used as the count basis.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes the English EX Ruby & Sapphire release as the first main expansion of the EX Series and says the Japanese release was Expansion Pack, the first expansion in the Pokemon Card Game ADV Era.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says EX Ruby & Sapphire is based on Pokemon Ruby and Sapphire and features Generation III Pokemon; Bulbapedia's Ruby and Sapphire page lists the games' Japanese release date as November 21, 2002.",
+          "sources": [
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.vehicle",
+          "text": "Bulbapedia's ADV merchandise page says the ADV era began with Expansion Pack and three accompanying half decks on January 31, 2003.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Mewtwo ex, Chansey ex, Sceptile, Blaziken, Swampert, and several other Rare Holo or Rare Holo ex rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for ADV Expansion Pack are led by Ken Sugimori, Hajime Kusajima, Atsuko Nishida, Mitsuhiro Arita, Kagemaru Himeno, Midori Harada, Kouki Saitou, and Naoyo Kimura.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "ADV Expansion Pack matters because it is the Japanese hinge from the classic frame into the ADV/ex grammar: Hoenn starters, Ruby/Sapphire timing, Pokemon-ex rows, and a new post-WotC manufacturing era all arrive together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_expansion_pack_ex_series_hinge_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English EX Ruby & Sapphire and Japanese ADV rows are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is the Japanese ADV Expansion Pack row or the later English EX Ruby & Sapphire row before comparing images, numbers, or market references.",
+            "Preserve the Japanese 055 numbering and the ADV1 local row id in agent-facing records.",
+            "Treat Pokemon-ex status as a row-level mechanic and rarity signal, not proof of physical authenticity, holo texture, or condition.",
+            "If a listing says Ruby & Sapphire without language, ask for the printed language, card number, and set mark before routing to a buy/sell decision."
+          ],
+          "summary": "ADV Expansion Pack is the Japanese ADV/ex hinge; language, numbering, and ex status must be explicit before comparison.",
+          "trigger": "Identifying or comparing Japanese ADV Expansion Pack, English EX Ruby & Sapphire, or early Pokemon-ex rows."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The hinge where Hoenn enters the card frame",
+        "why_it_matters": "ADV Expansion Pack feels like the first breath after a door opens. Ruby and Sapphire have just moved Pokemon onto the Game Boy Advance, and the cards answer with Hoenn starters, cleaner digital-era structure, and the dangerous little suffix `ex`. It is not as mythologized as Base or Neo, but it is where the machinery changes: new region, new frame language, new risk, new collectors learning what modern Pokemon cards are about to become.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131:ADV1-003",
+      "type": "card",
+      "context": {
+        "name_en": "Sceptile",
+        "name_ja": "ジュカイン",
+        "romaji": "Jukain",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "row_id": "jp_tcg_adv_expansion_pack_20030131:ADV1-003",
+        "catalog_row_id": "ADV1-003"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json#row:jp_tcg_adv_expansion_pack_20030131:ADV1-003",
+          "title": "Local Japanese ADV card row: Sceptile",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sceptile_(EX_Ruby_%26_Sapphire_11)",
+          "title": "Bulbapedia: Sceptile (EX Ruby & Sapphire 11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and TCG Collector identify Sceptile as ADV Expansion Pack number 003/055, a Rare Holo Grass row credited locally to Midori Harada.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia describes Sceptile as a Grass-type Stage 2 card that was first released as part of EX Ruby & Sapphire, with Japanese Expansion Pack number 003/055.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Japanese ADV Expansion Pack Sceptile row to Midori Harada.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Sceptile matters in this set because it is one of the Hoenn first-partner final forms arriving at the exact moment the card frame pivots into ADV.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sceptile_adv1_003_japanese_vs_english_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English and Japanese Sceptile rows share identical numbering"
+          ],
+          "steps": [
+            "Confirm Japanese ADV Expansion Pack number 003/055 before comparing to English EX Ruby & Sapphire Sceptile rows.",
+            "Record the Japanese name ジュカイン / Jukain when the listing is Japanese.",
+            "Preserve Rare Holo and Grass context as catalog facts, not physical-card proof.",
+            "If a listing only says Sceptile Ruby Sapphire, ask for language and printed number."
+          ],
+          "summary": "Sceptile is a Hoenn starter-final-form anchor, but language and number must be explicit before comparison.",
+          "trigger": "A listing or want references Sceptile, Jukain, ADV1-003, or EX Ruby & Sapphire Sceptile."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The grass starter as a new-frame signal",
+        "why_it_matters": "Sceptile is not just a starter final form here; it is Hoenn announcing itself in the card language. The old binder logic still recognizes a holo rare, but the species belongs to a new Game Boy Advance world. That makes the row feel like a fresh leaf pressed into a new machine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131:ADV1-011",
+      "type": "card",
+      "context": {
+        "name_en": "Blaziken",
+        "name_ja": "バシャーモ",
+        "romaji": "Bursyamo",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "row_id": "jp_tcg_adv_expansion_pack_20030131:ADV1-011",
+        "catalog_row_id": "ADV1-011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json#row:jp_tcg_adv_expansion_pack_20030131:ADV1-011",
+          "title": "Local Japanese ADV card row: Blaziken",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaziken_(EX_Ruby_%26_Sapphire_15)",
+          "title": "Bulbapedia: Blaziken (EX Ruby & Sapphire 15)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and TCG Collector identify Blaziken as ADV Expansion Pack number 011/055, a Rare Holo Fire row credited locally to Kouki Saitou.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia describes Blaziken as a Fire-type Stage 2 card that is part of EX Ruby & Sapphire.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Japanese ADV Expansion Pack Blaziken row to Kouki Saitou.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaziken matters because Hoenn's Fire starter final form becomes one of the first big visual anchors of the ADV card frame.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "blaziken_adv1_011_japanese_vs_english_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Blaziken Ruby Sapphire rows share one art or number"
+          ],
+          "steps": [
+            "Confirm Japanese ADV Expansion Pack number 011/055 before comparing to English EX Ruby & Sapphire Blaziken rows.",
+            "Record バシャーモ / Bursyamo when the card is a Japanese print.",
+            "Keep the local Kouki Saitou credit attached to this row only unless another source supports a broader artist claim.",
+            "Ask for language, set mark, and number when a listing says Blaziken Ruby Sapphire without more detail."
+          ],
+          "summary": "Blaziken is a Hoenn starter-final-form anchor; Japanese ADV1-011 needs language and number preserved.",
+          "trigger": "A listing or want references Blaziken, Bursyamo, ADV1-011, or EX Ruby & Sapphire Blaziken."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Fire learns the ADV stance",
+        "why_it_matters": "Blaziken is one of the cards where the generation shift becomes physical. It is tall, combative, and unmistakably Hoenn: not a Kanto memory carried forward, but a new starter final form asking collectors to care about a new region on its own terms.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131:ADV1-016",
+      "type": "card",
+      "context": {
+        "name_en": "Swampert",
+        "name_ja": "ラグラージ",
+        "romaji": "Laglarge",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "row_id": "jp_tcg_adv_expansion_pack_20030131:ADV1-016",
+        "catalog_row_id": "ADV1-016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json#row:jp_tcg_adv_expansion_pack_20030131:ADV1-016",
+          "title": "Local Japanese ADV card row: Swampert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Swampert_(EX_Ruby_%26_Sapphire_13)",
+          "title": "Bulbapedia: Swampert (EX Ruby & Sapphire 13)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and TCG Collector identify Swampert as ADV Expansion Pack number 016/055, a Rare Holo Water row credited locally to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia describes Swampert as a Water-type Stage 2 card that is part of EX Ruby & Sapphire.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Japanese ADV Expansion Pack Swampert row to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Swampert matters because the Hoenn starter trio needs all three final forms to make the ADV launch feel complete; Arita's credit gives the Water anchor an old-franchise hand inside the new era.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "swampert_adv1_016_japanese_vs_english_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Swampert Ruby Sapphire rows share one art or number"
+          ],
+          "steps": [
+            "Confirm Japanese ADV Expansion Pack number 016/055 before comparing to English EX Ruby & Sapphire Swampert rows.",
+            "Record ラグラージ / Laglarge when the card is a Japanese print.",
+            "Keep the local Mitsuhiro Arita credit attached to this row only unless another source supports a broader artist claim.",
+            "Ask for language, set mark, and number when a listing says Swampert Ruby Sapphire without more detail."
+          ],
+          "summary": "Swampert is a Hoenn starter-final-form anchor; Japanese ADV1-016 needs language and number preserved.",
+          "trigger": "A listing or want references Swampert, Laglarge, ADV1-016, or EX Ruby & Sapphire Swampert."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Arita carries water into the new machine",
+        "why_it_matters": "Swampert is the quiet proof that a new era does not erase the hands that built the old one. The species is Hoenn, the frame is ADV, but Mitsuhiro Arita's credit ties it back to the visual muscle memory of early Pokemon collecting. It lets the binder turn the page without losing the thread.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131:ADV1-026",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo ex",
+        "name_ja": "ミュウツー ex",
+        "romaji": "Myuutsuu ex",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "row_id": "jp_tcg_adv_expansion_pack_20030131:ADV1-026",
+        "catalog_row_id": "ADV1-026"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json#row:jp_tcg_adv_expansion_pack_20030131:ADV1-026",
+          "title": "Local Japanese ADV card row: Mewtwo ex",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_ex_(EX_Ruby_%26_Sapphire_101)",
+          "title": "Bulbapedia: Mewtwo ex (EX Ruby & Sapphire 101)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete rules history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, TCG Collector, and Bulbapedia identify Mewtwo ex as ADV Expansion Pack number 026/055, a Rare Holo ex Psychic row credited locally to Katsura Tabata.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Pokemon-ex page says Pokemon-ex first appeared in EX Ruby & Sapphire.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Japanese ADV Expansion Pack Mewtwo ex row to Katsura Tabata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo ex matters because the first ex-era grammar borrows one of Pokemon's oldest engineered myths to teach collectors a new suffix, a new risk label, and a new chase vocabulary.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mewtwo_ex_adv1_026_lowercase_ex_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Mewtwo EX/ex cards are the same mechanic or era"
+          ],
+          "steps": [
+            "Preserve lowercase Pokemon-ex / Mewtwo ex wording for the ADV-era row; do not collapse it into later uppercase Mewtwo-EX rows.",
+            "Confirm Japanese ADV Expansion Pack number 026/055 before comparing to English EX Ruby & Sapphire 101/109 or later Mewtwo ex/EX cards.",
+            "Record Rare Holo ex as a row-level rarity signal, not proof of holo texture or authenticity.",
+            "Ask for full-card photos when a listing uses only 'Mewtwo ex' without language, number, or set."
+          ],
+          "summary": "Mewtwo ex is an early Pokemon-ex row; lowercase ex, language, and number carry real identity work.",
+          "trigger": "A listing or want references Mewtwo ex, Mewtwo-EX, ADV1-026, or EX Ruby & Sapphire Mewtwo."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The old lab myth teaches the new suffix",
+        "why_it_matters": "Mewtwo ex is exactly the kind of bridge card this catalog should care about. Mewtwo brings the old laboratory aura, but the small `ex` tells the collector the game has changed. A familiar myth becomes a tutorial for a new era of power, risk, and row identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_expansion_pack_20030131:ADV1-036",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey ex",
+        "name_ja": "ラッキー ex",
+        "romaji": "Lucky ex",
+        "release_family_id": "jp_tcg_adv_expansion_pack_20030131",
+        "row_id": "jp_tcg_adv_expansion_pack_20030131:ADV1-036",
+        "catalog_row_id": "ADV1-036"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json#row:jp_tcg_adv_expansion_pack_20030131:ADV1-036",
+          "title": "Local Japanese ADV card row: Chansey ex",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Chansey_ex_(EX_Ruby_%26_Sapphire_96)",
+          "title": "Bulbapedia: Chansey ex (EX Ruby & Sapphire 96)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete rules history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11165/adv-expansion-pack",
+          "title": "TCG Collector: ADV Expansion Pack card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, TCG Collector, and Bulbapedia identify Chansey ex as ADV Expansion Pack number 036/055, a Rare Holo ex Colorless row credited locally to Ryo Ueda.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Chansey ex's Double-edge attack as doing 80 damage while Chansey ex does 60 damage to itself.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Pokemon-ex page says Pokemon-ex first appeared in EX Ruby & Sapphire.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Japanese ADV Expansion Pack Chansey ex row to Ryo Ueda.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Chansey ex matters because it makes the ex mechanic legible through contradiction: the soft healing icon becomes a high-risk row with recoil in the same first ex-era launch set.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "chansey_ex_adv1_036_recoil_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "attack text proves physical identity"
+          ],
+          "steps": [
+            "Preserve lowercase Pokemon-ex / Chansey ex wording for the ADV-era row; do not collapse it into later uppercase EX conventions.",
+            "Confirm Japanese ADV Expansion Pack number 036/055 before comparing to English EX Ruby & Sapphire 96/109.",
+            "Record the Double-edge recoil context as card-row information, not standalone authentication.",
+            "If a listing depends on Chansey ex identity, ask for language, number, name line, and attack text photos."
+          ],
+          "summary": "Chansey ex is an early ex row where the gentle species and recoil attack make the ex risk visible; number and language must stay explicit.",
+          "trigger": "A listing or want references Chansey ex, Lucky ex, ADV1-036, or EX Ruby & Sapphire Chansey."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The gentle card learns recoil",
+        "why_it_matters": "Chansey ex is sneakily perfect for the first ex-era set. Chansey has always felt like care, softness, and HP, but this row gives that softness a cost. Double-edge turns the friendly round shape into a lesson: ex power is not just bigger, it is riskier.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
