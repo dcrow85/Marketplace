@@ -55,6 +55,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-fifth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/premium_file_3_v0_1.json`. Japanese
+  unnumbered promo Premium File 3 is now a complete hand-authored eight-row
+  dossier for the modeled 1998-11-13 source group: Entei 211, Suicune 212,
+  Raikou 213, Lugia 214, Sudowoodo 215, Skarmory 216, Sneasel 217, and
+  Ho-Oh 218. The pass frames Premium File 3 as Johto becoming a mythic map:
+  the legendary beasts, Lugia and Ho-Oh, Metal/Darkness texture, and a
+  Sudowoodo game-world interruption arranged as one file object. Added
+  `special_identification_instructions` requiring agents to preserve the
+  Premium File 3 route, source indices 211-218, and exact card name together;
+  to avoid silently absorbing adjacent source row 210 / Neo Era Premium File
+  3 / Celebi; and to avoid merging these rows with Neo Revelation, Neo
+  Genesis, later legendary-beast, Lugia, Ho-Oh, Skarmory, Sneasel, or
+  Sudowoodo printings without route evidence. Artists remain intentionally
+  unset because the local Premium File 3 source rows do not provide
+  illustrator authority; each card records that as unknown, not as no artist.
+  Sources: local Japanese unnumbered promo Premium File 3 group, adjacent
+  local Neo Era Premium File 3 singleton, and Bulbapedia raw unnumbered promo
+  wikitext. Generated gap moved from 163 releases / 4,186 cards to 162
+  releases / 4,178 cards. Current catalog-history corpus: 22,752 claims,
+  5,588 sources, 622 dossiers with special identification instructions,
+  corpus hash
+  `6feddb7652b0bdc32d61e2eb9afeef65bb23146257b9142e1581822133ab2a83`;
+  index hash `0d129df3c9b376994a35c675711a45b6ccc69c3fd6b11b5852c3cd0e8f4a5f57`;
+  queue hash `064ac135206922caaef0796fb30ee7a2b22d736e799d00d9cb0aa68a290d2b4e`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-fourth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/premium_file_2_v0_1.json`. Japanese

@@ -1,0 +1,1168 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Premium File 3",
+    "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+    "notes": [
+      "Japanese unnumbered promo campaign source group for the November 13, 1998 Premium File 3 rows.",
+      "This pass deepens all eight modeled Premium File 3 rows and treats the file route plus adjacent Celebi boundary as the important identification rail."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3",
+      "type": "release",
+      "context": {
+        "name_en": "Premium File 3",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "release_date": "1998-11-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_210_neo_era_premium_file_3.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: adjacent Neo Era Premium File 3 singleton",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence with the eight-row Premium File 3 group"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered-promo catalog models Premium File 3 with a November 13, 1998 release date.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local Premium File 3 group models eight contiguous source rows: 211 through 218.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The source group is an unnumbered promotional Premium File 3 object, not a normal expansion with printed set numbers.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The adjacent source row 210 is modeled separately as Neo Era Premium File 3 / Celebi, so this eight-row dossier does not silently absorb it.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Premium File 3 matters because it arranges Johto as a mythic map: the legendary beasts, Lugia and Ho-Oh, and the new Metal/Darkness texture all appear inside one file route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around Ho-Oh, Lugia, Entei, Raikou, Suicune, Skarmory, and Sneasel, while Sudowoodo gives the object a memorable game-world interruption.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A Premium File 3 match should preserve the file route, the source-index range 211-218, and the exact card name together; name alone is not enough for unnumbered promo identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_19981113_eight_row_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Premium File 3, Neo-era Premium File 3, legendary beast file, Lugia file, Ho-Oh file, or one of the eight Premium File 3 card names.",
+          "summary": "Confirm the November 13, 1998 Premium File 3 route and source-index boundary before treating a card as one of these eight unnumbered promo rows.",
+          "steps": [
+            "Confirm the claimed card is one of source rows 211-218: Entei, Suicune, Raikou, Lugia, Sudowoodo, Skarmory, Sneasel, or Ho-Oh.",
+            "Preserve the Premium File 3 route separately from the card name; the unnumbered promo identity is not carried by name alone.",
+            "Do not silently absorb adjacent source row 210 / Neo Era Premium File 3 / Celebi into this eight-row group.",
+            "Do not merge these rows with Neo Revelation, Neo Genesis, later legendary-beast, Lugia, Ho-Oh, Skarmory, Sneasel, or Sudowoodo printings without route evidence.",
+            "For transactional use, ask for full front/back photos, any file/page/insert evidence, and close images of corners, stock, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official product-boundary proof beyond cited catalogs",
+            "price truth",
+            "complete Premium File 3 variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Johto becomes a mythic map",
+        "why_it_matters": "Premium File 3 feels like the file where Johto stops being merely new and becomes legendary. The beasts roam through it, Lugia and Ho-Oh pull the sky and sea into view, and Metal/Darkness cards make the world feel sharper. The agent lesson is simple and important: these names are famous, but fame is not identity. The file route is what turns them into this object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:211",
+      "type": "card",
+      "context": {
+        "name_en": "Entei",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:211",
+        "catalog_row_id": "211"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:211",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Entei 211",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Entei as Premium File 3 source row 211.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Entei.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Entei opens Premium File 3 with the force of a roaming legend. After Premium File 2 already used Entei, this row reminds the agent that repeated names across file objects are not interchangeable without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Entei, preserve source row 211 and the Premium File 3 route; do not treat another Entei print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_entei_211_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Entei, Neo-era file Entei, or unnumbered promo Entei.",
+          "summary": "Confirm Entei belongs to Premium File 3 source row 211 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Entei.",
+            "Preserve source row 211 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Entei equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the roaming fire returns",
+        "why_it_matters": "Entei opens Premium File 3 with the force of a roaming legend. After Premium File 2 already used Entei, this row reminds the agent that repeated names across file objects are not interchangeable without route evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:212",
+      "type": "card",
+      "context": {
+        "name_en": "Suicune",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:212",
+        "catalog_row_id": "212"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:212",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Suicune 212",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Suicune as Premium File 3 source row 212.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Suicune.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Suicune gives the file a calmer kind of chase gravity: the legendary beast that would become one of Johto's cleanest visual icons. In this object it helps complete the roaming-beast grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Suicune, preserve source row 212 and the Premium File 3 route; do not treat another Suicune print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_suicune_212_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Suicune, Neo-era file Suicune, or unnumbered promo Suicune.",
+          "summary": "Confirm Suicune belongs to Premium File 3 source row 212 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Suicune.",
+            "Preserve source row 212 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Suicune equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the blue legend joins the route",
+        "why_it_matters": "Suicune gives the file a calmer kind of chase gravity: the legendary beast that would become one of Johto's cleanest visual icons. In this object it helps complete the roaming-beast grammar.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:213",
+      "type": "card",
+      "context": {
+        "name_en": "Raikou",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:213",
+        "catalog_row_id": "213"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:213",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Raikou 213",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Raikou as Premium File 3 source row 213.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Raikou.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Raikou makes the beast trio legible inside the file. The card matters because it turns separate legendary names into an assembled pattern: fire, water, lightning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Raikou, preserve source row 213 and the Premium File 3 route; do not treat another Raikou print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_raikou_213_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Raikou, Neo-era file Raikou, or unnumbered promo Raikou.",
+          "summary": "Confirm Raikou belongs to Premium File 3 source row 213 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Raikou.",
+            "Preserve source row 213 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Raikou equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the storm catches up",
+        "why_it_matters": "Raikou makes the beast trio legible inside the file. The card matters because it turns separate legendary names into an assembled pattern: fire, water, lightning.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:214",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:214",
+        "catalog_row_id": "214"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:214",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Lugia 214",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Lugia as Premium File 3 source row 214.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Lugia.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lugia is one of Premium File 3's obvious gravitational centers. The card carries movie-era and Johto-era pressure at once, but the dossier keeps that as collector texture, not price truth.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Lugia, preserve source row 214 and the Premium File 3 route; do not treat another Lugia print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_lugia_214_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Lugia, Neo-era file Lugia, or unnumbered promo Lugia.",
+          "summary": "Confirm Lugia belongs to Premium File 3 source row 214 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Lugia.",
+            "Preserve source row 214 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Lugia equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the sea-shadow centerpiece",
+        "why_it_matters": "Lugia is one of Premium File 3's obvious gravitational centers. The card carries movie-era and Johto-era pressure at once, but the dossier keeps that as collector texture, not price truth.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:215",
+      "type": "card",
+      "context": {
+        "name_en": "Sudowoodo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:215",
+        "catalog_row_id": "215"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:215",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Sudowoodo 215",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Sudowoodo as Premium File 3 source row 215.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Sudowoodo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Sudowoodo is the delightful interruption. In a file full of legends, it keeps Johto weird and game-like: a strange obstacle becoming memorable enough to sit beside myth.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Sudowoodo, preserve source row 215 and the Premium File 3 route; do not treat another Sudowoodo print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_sudowoodo_215_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Sudowoodo, Neo-era file Sudowoodo, or unnumbered promo Sudowoodo.",
+          "summary": "Confirm Sudowoodo belongs to Premium File 3 source row 215 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Sudowoodo.",
+            "Preserve source row 215 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Sudowoodo equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the roadblock with personality",
+        "why_it_matters": "Sudowoodo is the delightful interruption. In a file full of legends, it keeps Johto weird and game-like: a strange obstacle becoming memorable enough to sit beside myth.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:216",
+      "type": "card",
+      "context": {
+        "name_en": "Skarmory",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:216",
+        "catalog_row_id": "216"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:216",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Skarmory 216",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Skarmory as Premium File 3 source row 216.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Skarmory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Skarmory is important because it points at the new Metal texture Johto brought into collecting memory. Even without illustrator authority here, the type signal gives the agent a reason to preserve this row carefully.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Skarmory, preserve source row 216 and the Premium File 3 route; do not treat another Skarmory print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_skarmory_216_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Skarmory, Neo-era file Skarmory, or unnumbered promo Skarmory.",
+          "summary": "Confirm Skarmory belongs to Premium File 3 source row 216 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Skarmory.",
+            "Preserve source row 216 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Skarmory equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "metal enters the binder",
+        "why_it_matters": "Skarmory is important because it points at the new Metal texture Johto brought into collecting memory. Even without illustrator authority here, the type signal gives the agent a reason to preserve this row carefully.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:217",
+      "type": "card",
+      "context": {
+        "name_en": "Sneasel",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:217",
+        "catalog_row_id": "217"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:217",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Sneasel 217",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Sneasel as Premium File 3 source row 217.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Sneasel.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Sneasel carries the new Darkness edge: quick, sharp, and not quite like Kanto. It gives Premium File 3 some of the attitude that made Johto feel older and stranger.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Sneasel, preserve source row 217 and the Premium File 3 route; do not treat another Sneasel print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_sneasel_217_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Sneasel, Neo-era file Sneasel, or unnumbered promo Sneasel.",
+          "summary": "Confirm Sneasel belongs to Premium File 3 source row 217 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Sneasel.",
+            "Preserve source row 217 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Sneasel equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "darkness sharpens the file",
+        "why_it_matters": "Sneasel carries the new Darkness edge: quick, sharp, and not quite like Kanto. It gives Premium File 3 some of the attitude that made Johto feel older and stranger.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_211_premium_file_3:218",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_211_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_211_premium_file_3:218",
+        "catalog_row_id": "218"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_211_premium_file_3.json#row:jp_promo_unnumbered_wotc_211_premium_file_3:218",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 3 row: Ho-Oh 218",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Ho-Oh as Premium File 3 source row 218.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 3 row does not provide an illustrator credit for Ho-Oh.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Ho-Oh closes the eight-row group with a mythic capstone. It is the source row that makes the file feel like a sky opening after the beasts have passed through.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Ho-Oh, preserve source row 218 and the Premium File 3 route; do not treat another Ho-Oh print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_3_ho_oh_218_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 3 Ho-Oh, Neo-era file Ho-Oh, or unnumbered promo Ho-Oh.",
+          "summary": "Confirm Ho-Oh belongs to Premium File 3 source row 218 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Ho-Oh.",
+            "Preserve source row 218 and the Premium File 3 route.",
+            "Do not merge with later Neo expansion, legendary-beast, Lugia/Ho-Oh, Metal, Darkness, or other promo rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Ho-Oh equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the rainbow closes the file",
+        "why_it_matters": "Ho-Oh closes the eight-row group with a mythic capstone. It is the source row that makes the file feel like a sky opening after the beasts have passed through.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
