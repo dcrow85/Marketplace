@@ -37,6 +37,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 MOCKUPS = ROOT / "mockups"
+STATIC_DIR = MOCKUPS  # overridable via --static-dir (e.g. the built web/dist in production)
 
 import sys
 sys.path.insert(0, str(ROOT / "simulations"))
@@ -75,7 +76,7 @@ def qwen_up(timeout: float = 0.4) -> bool:
 
 class BrowseHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, directory=str(MOCKUPS), **kwargs)
+        super().__init__(*args, directory=str(STATIC_DIR), **kwargs)
 
     def _authorized(self) -> bool:
         """Shared-password (HTTP Basic) gate. Off when no password is configured.
@@ -100,8 +101,8 @@ class BrowseHandler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:
         if not self._authorized():
             return
-        if self.path == "/":
-            self.path = "/cairn-inventory.html"
+        if self.path == "/" and not (STATIC_DIR / "index.html").exists():
+            self.path = "/cairn-inventory.html"  # mockups has no index.html; an SPA build does
         elif self.path == "/api/health":
             self.send_json({"qwen": qwen_up()})
             return
@@ -159,7 +160,11 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8788)
     parser.add_argument("--require-auth", action="store_true",
                         help="refuse to start unless a Keychain password is loaded (fail closed — never serve unguarded)")
+    parser.add_argument("--static-dir", default=None, help="directory to serve (default: mockups/; use web/dist for the built app)")
     args = parser.parse_args()
+    if args.static_dir:
+        global STATIC_DIR
+        STATIC_DIR = Path(args.static_dir).resolve()
     if args.require_auth and not DEMO_PASSWORD:
         print("FATAL: --require-auth set but no cairn-demo-password in Keychain — refusing to serve unguarded.", file=sys.stderr)
         raise SystemExit(2)
