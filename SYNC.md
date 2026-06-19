@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_tmb_regional_no3_trainer_v0_1.json`
+  deepens row 176 / No.3 Trainer from the World Challenge Tropical Mega Battle regional
+  third-place route. The pass treats No.3 Trainer as a reusable trophy title that must be
+  identified by exact route: World Challenge Summer 2000 regional Tropical Mega Battle third
+  place, personalized winner name and regional conference, non-holo male/female base versions,
+  Ken Sugimori artwork, and separation from Best in Japan photo trophies and the 1999 Tropical
+  Mega Battle Exeggutor/logo print. Special ID rails separate it from No.1/No.2 Trainer, Secret
+  Super Battle, Lizardon Mega Battle, Kamex Mega Battle, Neo Road, Battle Road, World
+  Championships, and name-only No.3 Trainer claims. Generated gaps moved to 66 release / 3892
+  card. Current hashes: corpus `27da6ac0493fe3342fca665034d5de036d15533f8550fb82bbce36dca0e273d5`,
+  index `b1f5c1786181fa723c7a4d5c9709a2e5ada3329745f94a1327624d01d3ef3c21`, queue
+  `f7474af1111affa6154d419392025d498cb84bf4634a25bbdde0802c61d928e6`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-second
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_tmb_regional_no2_trainer_v0_1.json`

@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23412,
-    "corpus_hash": "07655ec5aa471d85cd26273ab48814af94e2c6b2f300a9507172e5d3c10b88ce",
-    "generated_card_dossier_count": 3893,
-    "generated_release_dossier_count": 67,
+    "claim_count": 23421,
+    "corpus_hash": "27da6ac0493fe3342fca665034d5de036d15533f8550fb82bbce36dca0e273d5",
+    "generated_card_dossier_count": 3892,
+    "generated_release_dossier_count": 66,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6394
+    "source_count": 6402
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "5d1d638e205f67cd44947380e8d0ce42f398c12d6c4b02cab4c50132c7a11d8b",
-    "release_queue_count": 67,
+    "queue_hash": "f7474af1111affa6154d419392025d498cb84bf4634a25bbdde0802c61d928e6",
+    "release_queue_count": 66,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T17:56:21Z",
+  "generated_at": "2026-06-19T18:04:01Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "873f879011b5e3efe4ee52a61a6fa77b4e9d2d3316bc1053c1f44718ab74ba21",
+    "index_hash": "b1f5c1786181fa723c7a4d5c9709a2e5ada3329745f94a1327624d01d3ef3c21",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -163,6 +163,7 @@
     "data/catalog-history/source-sets/world_challenge_summer_tohoku_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_regional_no1_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_regional_no2_trainer_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_tmb_regional_no3_trainer_v0_1.json",
     "data/catalog-history/source-sets/wotc_jumbo_bounded_v0_1.json"
   ]
 }
