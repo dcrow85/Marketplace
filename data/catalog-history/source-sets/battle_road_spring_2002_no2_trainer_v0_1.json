@@ -1,0 +1,659 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for No.2 Trainer, the Battle Road Spring 2002 regional second place prize, emphasizing runner-up trophy identity, e-Card Era layout, personalized winner-name and regional-conference fields, male/female variants, collector-estimated distribution by gender, Ken Sugimori exact-row credit at collector-reference tier, and traps against No.1/No.3 Trainer, Battle Road Summer 2002, Neo Road, Worlds, and generic trophy-card listings.",
+    "in_scope": [
+      "Battle Road Spring 2002 regional second place release dossier",
+      "No.2 Trainer unnumbered promotional row 248",
+      "Battle Road Spring 2002 runner-up recognition text",
+      "e-Card Era trophy-card context",
+      "winner name / regional conference / male-female variant identity",
+      "collector-estimated boy/girl distribution counts",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Battle Road Spring 2002 tournament archive",
+      "official winner ledger",
+      "official copy count",
+      "primary-source exact artist proof",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize",
+        "name_en": "Battle Road Spring 2002 regional second place prize",
+        "featured_card_name_ja": "Ｎｏ.２トレーナー",
+        "release_date": "2002-03/2002-04",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Battle Road Spring 2002 regional runner-up lane",
+          "No.2 Trainer second-place trophy identity",
+          "e-Card Era trophy layout",
+          "personalized winner name / regional conference",
+          "male and female variant boundary",
+          "collector-estimated gender split"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize:248",
+            "name": "No.2 Trainer",
+            "why": "This is a chase because second place is not a lesser generic trophy; it is its own coordinate in the 2002 circuit. The card names a runner-up, a region, a gendered variant, and a place in a tournament structure that was widening to include Masters.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "No.2 Trainer [Battle Road Spring 2002]"
+            ],
+            "why": "Collector references pin Ken Sugimori to this Battle Road Spring 2002 No.2 Trainer row, while Bulbapedia's Sugimori page supplies the broader art lineage. The authority is useful, but it stays below primary-source strength until a stronger row-level source is attached.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c7",
+              "c9"
+            ],
+            "not_claiming": [
+              "primary-source exact artist proof",
+              "complete Ken Sugimori bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Battle Road Spring 2002 regional second place prize as one unnumbered promotional source row containing No.2 Trainer at source index 248.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the 2002 No.2 Trainer Battle Road Spring print was awarded to runners-up of each regional Battle Road Spring 2002 tournament, held between March and April 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia says the Battle Road 2002 series was the first to introduce the Master age division for players 18 and over, in addition to Junior and Senior divisions.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the 2002 No.2 Trainer versions were the last to include the winner's name and regional conference on the card itself and the last to feature male and female variants.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives the Battle Road Spring 2002 No.2 Trainer text as recognizing and praising the second place winner of the Pokémon Card Game Official Tournament 'Battle Road Spring 2002'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Battle Road Spring 2002 tournaments did not feature a Best in Japan final; top ranking players instead earned byes in Battle Road Summer 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon's exact Battle Road Spring 2002 No.2 Trainer page lists Ken Sugimori as illustrator; this is useful collector-reference support, not primary-source print authority.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Pokumon's Battle Road 2002 research reconstructs Spring 2002 No.2 Trainer distribution as 2 girls and 25 boys from Trainers Magazine winner data; this is a collector estimate, not an official copy count.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Ken Sugimori page says there are many Pokémon TCG cards illustrated by Sugimori, though most include reused artwork from games, and indexes his broad official artwork role in the franchise.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "As judged collector texture, this No.2 Trainer matters because it makes runner-up status legible instead of generic: second place, regional Battle Road Spring 2002, personalized name/conference, gender variant, and the small-N trophy ecology around it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c8"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve No.2 rank, Battle Road Spring 2002 regional runner-up route, source index 248, e-Card Era layout, winner name and regional conference fields, male/female variant boundary, Spring-vs-Summer distinction, and non-equivalence with No.1/No.3 Trainer or other No.2 Trainer eras before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Battle Road Spring 2002 No.2 Trainer: the runner-up still has an address",
+        "why_it_matters": "No.2 Trainer is the card that keeps the trophy ladder honest. It refuses the lazy idea that only first place matters. This row is a runner-up object from a specific regional Battle Road Spring 2002 machine, still personalized by name and conference, still split by variant, and still scarce enough that collector research talks in tiny counts. The card's power is not just rank. It is placement made physical.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "battle_road_spring_2002_no2_trainer_regional_runner_up_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says No.2 Trainer, Ｎｏ.２トレーナー, Battle Road Spring 2002, regional second place, runner-up, e-Card Era trophy, winner name, regional conference, male variant, female variant, Ken Sugimori, Battle Road Summer 2002, No.1 Trainer, No.3 Trainer, World Championships, Neo Spring Road, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle.",
+          "summary": "Identify this row by No.2 Trainer / Ｎｏ.２トレーナー second-place rank plus Battle Road Spring 2002 regional runner-up route, personalized winner/conference text, e-Card Era layout, and male/female variant boundary before trusting the famous trophy name.",
+          "steps": [
+            "Confirm the rank is No.2 Trainer / second place, not No.1 or No.3 Trainer.",
+            "Confirm the route is Battle Road Spring 2002 regional second place prize, source index 248, held March-April 2002.",
+            "Look for Battle Road Spring 2002 second-place recognition text rather than Battle Road Summer 2002, Neo Road, World Championships, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle wording.",
+            "Preserve the e-Card Era layout clue, but do not use layout alone as proof of route.",
+            "Check whether winner name and regional conference are present; their presence is route support and also means exact-name privacy/provenance should be handled carefully.",
+            "Check male/female variant evidence and do not collapse those variants into one generic No.2 Trainer identity.",
+            "Treat Ken Sugimori as collector-reference-supported for this row unless stronger physical-card or primary-source evidence is supplied.",
+            "Before spending or trade gating, request seller-controlled front/back photos, title/rank close-up, event-text close-up, personalization/conference close-up with privacy-aware handling, e-Card layout evidence, surface/corner evidence, and slab label/cert if graded."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist proof",
+            "No.1 Trainer equivalence",
+            "No.3 Trainer equivalence",
+            "Battle Road Summer 2002 equivalence",
+            "World Championships equivalence",
+            "Neo Road equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize.json#row:jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize:248",
+          "title": "Local Japanese unnumbered promotional source-slice row 248",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.2_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)",
+          "title": "Bulbapedia: No.2 Trainer (Pokémon Card Game Official Tournament promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Spring 2002 archive",
+            "complete winner ledger",
+            "primary-source exact artist proof for this row",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokeboon.com/no2trainer-brspring2002-promo/",
+          "title": "PokeBoon: No.2 Trainer [BRSpring2002] Promo (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "primary-source print authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "exact Battle Road Spring 2002 No.2 Trainer print authority",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize:248",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize:248",
+        "release_family_id": "jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize",
+        "name_en": "No.2 Trainer",
+        "name_ja": "Ｎｏ.２トレーナー",
+        "source_index": "248",
+        "release_date": "2002-03/2002-04"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "No.2 Trainer",
+        "name_ja": "Ｎｏ.２トレーナー",
+        "romaji": "No.2 Torenaa",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / regional second place trophy",
+        "artist": "Ken Sugimori (collector-reference-supported)",
+        "release": "Battle Road Spring 2002 regional second place prize"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the broader card as No.2 Trainer, Japanese Ｎｏ.２トレーナー, translated No.2 Trainer, while the local source row pins this dossier to the Battle Road Spring 2002 regional second place prize at source index 248.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Battle Road Spring 2002 No.2 Trainer print was awarded to runners-up of each regional tournament held between March and April 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records the Battle Road Spring 2002 print text as recognizing and praising the second place winner of the Pokémon Card Game Official Tournament 'Battle Road Spring 2002'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the 2002 versions were the last No.2 Trainer versions to include the winner's name and regional conference on the card and the last to feature male and female variants.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "PokeBoon lists Ken Sugimori as illustrator for No.2 Trainer [BRSpring2002]; this card dossier keeps that as collector-reference-supported rather than primary-source exact print authority.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Pokumon separates Battle Road 2002 trophy cards into boy and girl No.2 Trainer variants and reports a Spring 2002 reconstruction of 2 girls and 25 boys for No.2 Trainer.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, No.2 Trainer matters because it records runner-up excellence in the same personalized trophy grammar as first place: rank, region, name, variant, and circuit all have to remain attached.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "complete winner ledger",
+            "primary-source exact artist proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "A Battle Road Spring 2002 No.2 Trainer match should preserve second-place rank, Spring 2002 regional route, source index 248, e-Card Era layout, personalization/conference fields, male/female variant evidence, Spring-vs-Summer distinction, and non-equivalence with other trophy ranks or eras before a physical object is accepted.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "No.2 Trainer, Spring 2002: the runner-up card with a name",
+        "why_it_matters": "The No.2 Trainer is easy to flatten if you only chase rank. But second place is a real position in the tournament memory. This card says someone made the final table of a regional Battle Road Spring event, carried a name and conference into the cardboard, and stood inside a tiny variant population that collectors are still reconstructing. The why is not simply scarcity. It is recognition made specific.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "no2_trainer_battle_road_spring_2002_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says No.2 Trainer, Ｎｏ.２トレーナー, Battle Road Spring 2002, regional runner-up, second place, winner name, regional conference, male variant, female variant, e-Card, Ken Sugimori, Battle Road Summer, No.1 Trainer, No.3 Trainer, World Championships, Neo Road, Lizardon, Kamex, Tropical Mega Battle, or Secret Super Battle.",
+          "summary": "Treat this No.2 Trainer as a specific Spring 2002 regional second-place object, not a generic trophy-card name: rank, event text, personalization, conference, variant, and era all need to line up.",
+          "steps": [
+            "Confirm the title/rank is No.2 Trainer / Ｎｏ.２トレーナー and second place.",
+            "Confirm Battle Road Spring 2002 second-place event text, not Battle Road Summer 2002, Neo Spring Road, Neo Summer Road, World Championships, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle.",
+            "Confirm the local route: regional second place prize, source index 248, March-April 2002 tournament window.",
+            "Inspect winner name and regional conference fields; preserve them as identity evidence while handling privacy/provenance carefully.",
+            "Inspect male/female variant evidence and do not collapse variants into a single generic No.2 Trainer object.",
+            "Treat Ken Sugimori as collector-reference-supported unless stronger physical-card or primary-source evidence is supplied.",
+            "Before spending or trade gating, require seller-controlled front/back photos, title/rank close-up, event text close-up, personalization/conference close-up, e-Card layout evidence, surface/corner evidence, and slab label/cert if graded."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist proof",
+            "No.1 Trainer equivalence",
+            "No.3 Trainer equivalence",
+            "Battle Road Summer 2002 equivalence",
+            "World Championships equivalence",
+            "Neo Road equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize.json#row:jp_promo_unnumbered_wotc_248_battle_road_spring_2002_regional_second_place_prize:248",
+          "title": "Local Japanese unnumbered promotional source-slice row 248",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.2_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)",
+          "title": "Bulbapedia: No.2 Trainer (Pokémon Card Game Official Tournament promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Spring 2002 archive",
+            "complete winner ledger",
+            "primary-source exact artist proof for this row",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokeboon.com/no2trainer-brspring2002-promo/",
+          "title": "PokeBoon: No.2 Trainer [BRSpring2002] Promo (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "primary-source print authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}
