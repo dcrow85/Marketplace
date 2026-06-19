@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-ninth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/tropical_mega_battle_1999_regional_trainers_v0_1.json`.
+  The 1999 Tropical Mega Battle regional podium rows now have hand-authored
+  release and card coverage for No.1 Trainer row 110, No.2 Trainer row 111,
+  and No.3 Trainer row 112. The pass treats the cards as a rank-bound
+  Challenge Road '99 SUMMER / Tropical Mega Battle junior-division route, not
+  generic recurring Trainer trophies: source indices 110-112, regional
+  first/second/third place ranks, Exeggutor/event-logo art context, and the
+  Ken Sugimori / Hiromi Ito source-reference credit remain legible without
+  claiming official copy counts, possession, authenticity, condition, price, or
+  spendability. Added bespoke `special_identification_instructions` on each
+  release and card dossier so agents must preserve route, rank, source index,
+  artwork context, and non-equivalence with Secret Super Battle, 2000 World
+  Challenge Summer, Best in Japan personalized-photo cards, Neo Road, Battle
+  Road, and Worlds trophy memories before accepting a match. Sources: local
+  Japanese unnumbered promo release files, Bulbapedia raw unnumbered-promo
+  rows, Bulbapedia No.1/No.2/No.3 Trainer pages, and Pokumon Challenge Road
+  1999 SUMMER/AUTUMN reference. Generated gap moved from 95 releases / 3,921
+  cards to 92 releases / 3,918 cards. Current catalog-history corpus:
+  `fb59b13433a475dc216c00d35e65769c02d62aa851df3f5d94bc3ccb2ab32f0b`;
+  index: `062034e0ad79f403ca0962bbe08064b2e77a5ccef8916a037ab068f24b70942c`;
+  queue: `b62ebaa6266a4716a62b16b7e30f4608ee80531511c7300df97f41962a90647b`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/bessatsu_corocoro_august_1999_pokemon_valley_v0_1.json`.
