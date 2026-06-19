@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 139: Trainers Vol. 8 Unown J deepened; corpus 5e3d04f3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 140: CoroCoro Unown R deepened; corpus ecd318cb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fortieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_november_2000_unown_r_v0_1.json`
+  deepens row 209 / Unown R from the CoroCoro Comic November 2000 issue insert
+  route. The pass preserves October 15 2000 magazine distribution, Japanese
+  unnumbered promo status, Hideki Kazama art credit, Reassure / Hidden Power
+  card identity, and the asymmetric J/R alphabet edge: J got an English Wizards
+  Black Star Promo path, while R remained a Japanese CoroCoro promo until later
+  non-Wizards localization. Special ID rails require agents to keep source index
+  209, CoroCoro route, Japanese language/unnumbered promo context, and
+  seller-controlled photos attached before treating a card as this row; it must
+  not collapse into Unown J, English Wizards Black Star Promo 38, nonexistent
+  Wizards-era English Unown R, EX Unseen Forces Unown R, Neo expansion Unown
+  rows, other Japanese Unown promos, or name-only Unown listings. Generated gaps
+  moved to 49 release / 3875 card. Current hashes: corpus
+  `ecd318cb6061be9e7d902f084603397c81f07c7c258869967777e0a495cecc98`, index
+  `3fd0a59ceec3ff7ef26744036338d7cc82bcbaaf2a08d820f6ffb90968b955ec`, queue
+  `a99cbaca6f55a98379f743c2d4e8cd6378d15427786a5b76be7e04327eb67172`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/trainers_vol8_unown_j_v0_1.json`

@@ -1,0 +1,548 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Unown R, the CoroCoro Comic November 2000 issue insert released October 15, 2000, emphasizing magazine distribution, Hideki Kazama art, the Reassure / Hidden Power card identity, the J-and-R edge case outside the Neo expansion run, and the important asymmetry that Unown R was not localized outside Japan until EX Unseen Forces.",
+    "in_scope": [
+      "CoroCoro Comic November 2000 issue insert release dossier",
+      "Unown R unnumbered promotional row 209",
+      "CoroCoro magazine distribution",
+      "Hideki Kazama illustrator context",
+      "Unown R card identity and Reassure / Hidden Power context",
+      "Unown J and Unown R as Neo-era forms distributed through promos rather than Neo booster rows",
+      "Unown R localization boundary"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete Unown print census",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000",
+        "name_en": "CoroCoro Comic November 2000 issue insert (October 15, 2000)",
+        "release_date": "2000-10-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro magazine distribution",
+          "single-card Unown promo route",
+          "Hideki Kazama art",
+          "Neo-era alphabet completion edge",
+          "Japanese-only Wizards-era boundary"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000:209",
+            "name": "Unown R [CoroCoro Comic November 2000]",
+            "why": "This is a chase because it is a quiet letter with a loud boundary. R sits beside J as a Generation II Unown form outside the normal Neo expansion run, but unlike J it did not get an English Wizards-era counterpart.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hideki Kazama",
+            "row_count": 1,
+            "examples": [
+              "Unown R [CoroCoro Comic November 2000]"
+            ],
+            "why": "Kazama matters here because the card is almost pure sign-language: a letter, a Pokémon, and a promo object. The art credit helps preserve the graphic alphabet lane without letting artist identity replace route evidence.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic November 2000 issue insert source group as one row containing Unown R at source index 209.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia places the Japanese Unown R print in Unnumbered Promotional cards and identifies its release as a CoroCoro Comic November 2000 issue insert on October 15, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Unown R as a Psychic-type Basic Pokémon card with 30 HP, the Reassure Pokémon Power, and the Hidden Power attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Generation II Unown forms J and R were not released in a Japanese or English expansion; they were instead released as Japanese Unnumbered Promotional cards and, for J only, as an English Wizards Black Star Promo.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Unown R artwork to Hideki Kazama.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hideki Kazama category includes multiple Unown letter cards, tying Kazama's early TCG credit surface to the alphabet-creature lane.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Unown R would not be released outside Japan until the EX Unseen Forces expansion.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, Unown R matters because it is the other half of the J/R Neo-era gap, but its route is sharper: CoroCoro in Japan, no English Wizards-era counterpart, and a later localization boundary.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro issue archive",
+            "complete Unown print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro November 2000 Unown R: the letter with no easy English twin",
+        "why_it_matters": "Unown R is quiet, but it teaches the catalog something important. J and R are the Neo-era letters that escaped the normal expansion grid, yet R takes the stranger path: a CoroCoro insert in Japan, no Wizards Black Star echo, and no non-Japanese release until much later. It is exactly the kind of card an agent can misread if it treats Unown as a flat alphabet instead of an assembly of magazines, languages, and release decisions.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_november_2000_unown_r_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Unown R, アンノーンR, CoroCoro Comic November 2000, October 15 2000, Wizards Promo, Spell of the Unown, EX Unseen Forces, Neo Unown, Hideki Kazama, or Unown alphabet set.",
+          "summary": "Identify Unown R by CoroCoro Comic November 2000 insert route, source index 209, Japanese unnumbered promo status, and no-Wizards-counterpart boundary before trusting name-only Unown matching.",
+          "steps": [
+            "Confirm the card is Unown R, not another Unown letter.",
+            "Preserve the source route: CoroCoro Comic November 2000 issue insert, October 15, 2000, local source index 209.",
+            "Check that the object is being treated as a Japanese Unnumbered Promotional card, not as English Wizards Black Star Promo 38, a nonexistent Wizards Unown R counterpart, EX Unseen Forces, or a Neo expansion row.",
+            "Use the Reassure / Hidden Power card text as contextual support, not as a substitute for row identity.",
+            "Preserve Hideki Kazama art credit without treating the credit alone as route proof.",
+            "Separate this row from Unown J, English Spell of the Unown / Wizards Promo copies, EX Unseen Forces Unown R, Neo Discovery/Neo Destiny Unown cards, and name-only Unown listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete CoroCoro issue archive",
+            "complete Unown print census",
+            "English Wizards Promo equivalence",
+            "Neo expansion equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic November 2000 Unown R",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unown_R_(CoroCoro_promo)",
+          "title": "Unown R (CoroCoro promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro issue archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/CoroCoro_Comic",
+          "title": "CoroCoro Comic - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine archive",
+            "complete insert census",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Hideki_Kazama",
+          "title": "Category: Illus. by Hideki Kazama - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000:209",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000:209",
+        "release_family_id": "jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000",
+        "name_en": "Unown R [CoroCoro Comic November 2000]",
+        "name_ja": "アンノーンR",
+        "card_number": "None",
+        "rarity_signal": "CoroCoro unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 209 as Unown R from the CoroCoro Comic November 2000 issue insert source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese card as アンノーンR Unown R, a Psychic-type Basic Pokémon card with 30 HP.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese Unown R in Unnumbered Promotional cards, while the local row models it with no printed number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Unown R artwork to Hideki Kazama.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says Unown R has the Reassure Pokémon Power and Hidden Power attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This row must be separated from Unown J, English Wizards Black Star Promo 38, any nonexistent Wizards-era English Unown R counterpart, EX Unseen Forces Unown R, Neo expansion Unown cards, and other Japanese Unown promotional rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Unown R matters because it is the letter that makes the J/R edge case uneven: J became an English Wizards promo, while R stayed Japanese until a later non-Wizards release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Unown R: the letter without a Wizards shadow",
+        "why_it_matters": "Unown R is easy to flatten into alphabet filler, but that is exactly the trap. It belongs to CoroCoro November 2000, not a booster run, and its English absence in the Wizards era makes it different from Unown J even though collectors naturally pair them. The route is the meaning: magazine insert, Japanese unnumbered promo, Kazama letter-creature, and a localization gap that an agent has to keep visible.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_november_2000_unown_r_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says Unown R, アンノーンR, CoroCoro Comic November 2000, October 15 2000, Wizards Promo, Spell of the Unown, EX Unseen Forces, Hideki Kazama, or Neo Unown.",
+          "summary": "Match this card by exact Unown R identity plus CoroCoro November 2000 insert route and Japanese unnumbered promo status before accepting it as row 209.",
+          "steps": [
+            "Confirm the card title is Unown R / アンノーンR.",
+            "Confirm the source route is CoroCoro Comic November 2000 issue insert, October 15, 2000.",
+            "Preserve local source index 209 and no printed number.",
+            "Use Reassure / Hidden Power text as support, not as a substitute for row identity.",
+            "Preserve Hideki Kazama illustrator credit but do not use artist alone to prove route.",
+            "Separate this print from Unown J, English Wizards Black Star Promo 38, any nonexistent Wizards-era English Unown R, EX Unseen Forces Unown R, Neo expansion Unown cards, and other Japanese Unown promo rows.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "English Wizards Promo equivalence",
+            "EX Unseen Forces equivalence",
+            "Neo expansion equivalence",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_209_corocoro_comic_november_2000_issue_insert_october_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic November 2000 Unown R",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unown_R_(CoroCoro_promo)",
+          "title": "Unown R (CoroCoro promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro issue archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/CoroCoro_Comic",
+          "title": "CoroCoro Comic - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine archive",
+            "complete insert census",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Hideki_Kazama",
+          "title": "Category: Illus. by Hideki Kazama - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}
