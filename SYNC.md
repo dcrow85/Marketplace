@@ -55,6 +55,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/tropical_mega_battle_finals_participation_prize_v0_1.json`.
+  Tropical Mega Battle finals participation prize source group now has complete
+  three-row hand-authored coverage for Exeggutor row 126, Tropical Wind row 127,
+  and Lucky Stadium row 202. The pass frames the release as bilingual
+  tournament memory: a finals/participation object lane where Exeggutor turns
+  language exchange into card text, Tropical Wind turns hospitality into the
+  Psyduck-in-a-hammock lineage, and Lucky Stadium turns Hawaii/place into a
+  collectible route. Added `special_identification_instructions` requiring
+  agents to preserve exact `Tropical Mega Battle finals participation prize`
+  promotion note, non-contiguous row identity, event-date caveat, card-specific
+  artist evidence, Exeggutor regular-stock-vs-glossy Trainers Vol. 3 trap,
+  Tropical Wind print lineage, and Lucky Stadium bilingual-vs-regional variant
+  distinction before accepting a match. Agents must not collapse this group into
+  Challenge Road, P Promotional, later Worlds Tropical Wind/Tropical Breeze,
+  World Challenge Summer regional Lucky Stadium, Neo Destiny, Intro Pack Neo,
+  New York City, or ordinary Exeggutor/Stadium memories without explicit route
+  evidence. Sources: local Japanese unnumbered promo release file, Bulbapedia
+  raw wikitext rows 126/127/202, Bulbapedia Tropical Mega Battle event context,
+  Bulbapedia Exeggutor/Tropical Wind/Lucky Stadium card pages, and Pokumon
+  collector context as low-tier texture. Generated gap moved from 135 releases /
+  3,974 cards to 134 releases / 3,971 cards. Current catalog-history corpus:
+  `bd0afe718b9e3738fb3960be08eb67fa776f0fd105781d622a9d868b4b8b0b65`;
+  index: `c32c3d99f4c997edaed86b886aa7bd4eae9eb95450294ef8a2bc6872b6113970`;
+  queue: `35eae0e17c7d42612efaa907619816d39d7e724b93042b0f0742e91ad760da87`.
+  Audit counts: 23,229 claims, 5,957 sources, 75 hand-authored release dossiers,
+  578 hand-authored card dossiers, and 839 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/tropical_mega_battle_finals_participation_prize_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/tropical_mega_battle_dugtrio_team_battle_v0_1.json`.
