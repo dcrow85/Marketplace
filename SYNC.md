@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-third
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/fossil_v0_1.json`. English Fossil is
+  now a hand-authored release dossier, with Aerodactyl 1, Articuno 2,
+  Dragonite 4, Gengar 5, Lapras 10, Moltres 12, Zapdos 15, and
+  Mysterious Fossil 62 promoted from generated baseline to sourced card
+  dossiers. The pass frames Fossil as the binder becoming an excavation:
+  legendary birds above, ghosts in the cave wall, Dragonite as the soft
+  surprise, and Mysterious Fossil as the tiny mechanical hinge that turns
+  the set title into play. Added special identification rails for the
+  English 62-row WoC boundary, English Fossil versus Japanese Mystery of
+  the Fossils separation, holo / non-holo row preservation on the headline
+  cards, Dragonite error or no-symbol claims requiring seller scan or
+  graded evidence rather than catalog memory, and Mysterious Fossil as a
+  Trainer row rather than a Pokemon species row. Sources: local English
+  WoC Fossil catalog, Pokemon TCG API v2 set / card records, and
+  Bulbapedia Fossil. Generated gap moved from 185 releases / 4,420 cards
+  to 184 releases / 4,412 cards. Current catalog-history corpus: 22,843
+  claims, 5,084 sources, corpus hash
+  `04426082dd97dbec4c58359437cae6d24e8ec9d198a253cecb422577b2c1aa01`;
+  index hash `65e61fe0a139817fe86c3d7fd7c7fee0221dd4eacbc4ecf833061c70e4a76ffa`;
+  queue hash `c3f094365b4866dc4cb502538374545d310dafc988ae56f71e9fbd35739c45c4`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-second
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/team_rocket_gift_pack_v0_1.json`.

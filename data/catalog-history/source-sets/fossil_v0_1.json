@@ -1,0 +1,1279 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Fossil and eight rows that show fossil revival, legendary birds, holo/non-holo duplicate rows, and the trainer hinge that gives the set its name.",
+    "in_scope": [
+      "Fossil release dossier",
+      "Aerodactyl holo",
+      "Articuno holo",
+      "Dragonite holo",
+      "Gengar holo",
+      "Lapras holo",
+      "Moltres holo",
+      "Zapdos holo",
+      "Mysterious Fossil"
+    ],
+    "not_claiming": [
+      "complete Fossil scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "Japanese Mystery of the Fossils equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_fossil_19991010",
+      "type": "release",
+      "context": {
+        "name_en": "Fossil",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "release_date": "1999-10-10"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json",
+          "title": "Local English WoC release catalog: Fossil",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base3",
+          "title": "Pokemon TCG API v2 set record: Fossil",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Fossil_(TCG)",
+          "title": "Bulbapedia: Fossil (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model English Fossil as released on October 10, 1999.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API both model Fossil as a 62-card English Wizards of the Coast set.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Fossil as an English expansion corresponding to the Japanese Mystery of the Fossils era, while the local catalog treats the English release as its own release_family_id.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.chase_structure",
+          "text": "The local Fossil catalog's opening holo rows include Aerodactyl, Articuno, Dragonite, Gengar, Lapras, Moltres, and Zapdos, while Mysterious Fossil appears as the common trainer row that makes the fossil mechanic legible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "The local Fossil artist credits for the promoted rows include Kagemaru Himeno, Mitsuhiro Arita, Keiji Kinebuchi, and Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Fossil matters because it turns the early binder into an excavation site: prehistoric Pokemon, legendary birds, ghost-line atmosphere, and the Mysterious Fossil trainer make discovery itself part of the card-game apparatus.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_english_62_row_holo_nonholo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Fossil, English Fossil, Mystery of the Fossils, legendary birds, Fossil Dragonite, Fossil Gengar, or Mysterious Fossil.",
+          "summary": "English Fossil is a 62-row Wizards release; preserve language, set id, row number, and holo/non-holo distinction.",
+          "steps": [
+            "Preserve release_family_id en_wotc_fossil_19991010 for the English Wizards release.",
+            "Do not collapse English Fossil into Japanese Mystery of the Fossils without naming the language and release-family change.",
+            "For headline Pokemon with both holo and non-holo rows, preserve the exact card number and rarity signal before treating rows as equivalent.",
+            "Do not infer 1st Edition, shadowless, print-error, or condition claims from the catalog row alone.",
+            "For fossil-themed identity, separate Pokemon rows from the Mysterious Fossil trainer row that supports evolution in play."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese Mystery of the Fossils equivalence",
+            "print-error proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The binder becomes an excavation",
+        "why_it_matters": "Fossil is one of those early sets that changes the room temperature. Jungle made the world feel alive; Fossil makes it feel buried, haunted, and waiting to be uncovered. The legendary birds give the sky a mythic ceiling, Gengar gives the caves a grin, Dragonite gives the set a soft surprise, and Mysterious Fossil makes the idea of recovery mechanical. It is not just a set of old creatures. It is a lesson in how Pokemon turns absence into play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Fossil history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-1",
+      "type": "card",
+      "context": {
+        "name_en": "Aerodactyl",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-1",
+        "catalog_row_id": "base3-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-1",
+          "title": "Local Fossil row: Aerodactyl 1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-1",
+          "title": "Pokemon TCG API v2 card record: Aerodactyl",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-1 as Aerodactyl.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Aerodactyl base3-1 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Aerodactyl base3-1 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aerodactyl matters because it is the set's thesis card: a fossil creature returned as a holo, with the name of the set made visible in one prehistoric silhouette.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_aerodactyl_1_holo_vs_16_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Aerodactyl, Aerodactyl holo, Aerodactyl 1, or Aerodactyl 16.",
+          "summary": "Aerodactyl base3-1 is the Rare Holo row; keep it separate from the non-holo rare row base3-16.",
+          "steps": [
+            "Preserve card id base3-1 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-16 before treating a generic Fossil Aerodactyl mention as the holo.",
+            "Do not infer 1st Edition, print-error, condition, or authenticity from the catalog row alone.",
+            "Record Kagemaru Himeno as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "print-error proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The fossil that wakes the set",
+        "why_it_matters": "Aerodactyl is Fossil saying its own name out loud. It is old life turned back into a card, and Himeno's credit gives the prehistoric idea a softer creature presence than the premise might suggest. The row is also a clean agent test: Aerodactyl has both holo and non-holo Fossil rows, so affection has to yield to number.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-2",
+      "type": "card",
+      "context": {
+        "name_en": "Articuno",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-2",
+        "catalog_row_id": "base3-2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-2",
+          "title": "Local Fossil row: Articuno 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-2",
+          "title": "Pokemon TCG API v2 card record: Articuno",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-2 as Articuno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Articuno base3-2 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Articuno base3-2 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Articuno matters because Fossil gives the legendary birds their early English holo-stage presence, letting the set reach above caves and bones into weather and myth.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_articuno_2_holo_vs_17_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Articuno, Articuno holo, Articuno 2, Articuno 17, or legendary bird.",
+          "summary": "Articuno base3-2 is the Rare Holo row; keep it separate from the non-holo rare row base3-17.",
+          "steps": [
+            "Preserve card id base3-2 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-17 before treating a generic Fossil Articuno mention as the holo.",
+            "Do not collapse Articuno, Moltres, and Zapdos into a single legendary-bird want without naming the exact bird and row.",
+            "Record Mitsuhiro Arita as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Cold air over the excavation",
+        "why_it_matters": "Articuno gives Fossil a high, icy ceiling. The set may be named for buried things, but Arita's legendary bird pulls the eye upward, making the checklist feel like an island with ruins below and weather above. It is a chase card, but also a map marker.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-4",
+      "type": "card",
+      "context": {
+        "name_en": "Dragonite",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-4",
+        "catalog_row_id": "base3-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-4",
+          "title": "Local Fossil row: Dragonite 4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-4",
+          "title": "Pokemon TCG API v2 card record: Dragonite",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-4 as Dragonite.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Dragonite base3-4 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Dragonite base3-4 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dragonite matters because Fossil places one of Pokemon's gentlest large silhouettes inside a set otherwise full of bones, ghosts, and ancient pressure.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_dragonite_4_holo_vs_19_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Dragonite, Dragonite holo, Dragonite 4, Dragonite 19, missing-symbol Dragonite, or error Dragonite.",
+          "summary": "Dragonite base3-4 is the Rare Holo row; keep it separate from non-holo base3-19 and from any separately evidenced error claim.",
+          "steps": [
+            "Preserve card id base3-4 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-19 before treating a generic Fossil Dragonite mention as the holo.",
+            "Do not infer missing-symbol, no-symbol, or other error status from the catalog row alone; require a seller scan or graded-label evidence for any error claim.",
+            "Record Kagemaru Himeno as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "print-error proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The soft giant in the bone set",
+        "why_it_matters": "Dragonite is Fossil's emotional surprise. The set is ancient, sharp, and haunted, then Himeno gives it this rounded, generous creature. That tension is the charm. A collector may chase the holo because it is Dragonite; an agent has to care that it is specifically base3-4, not the non-holo row and not an error claim smuggled in by memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-5",
+      "type": "card",
+      "context": {
+        "name_en": "Gengar",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-5",
+        "catalog_row_id": "base3-5"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-5",
+          "title": "Local Fossil row: Gengar 5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-5",
+          "title": "Pokemon TCG API v2 card record: Gengar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-5 as Gengar.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Gengar base3-5 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Gengar base3-5 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gengar matters because Fossil is not only prehistoric; it also gives the early English binder one of its strongest ghost-line holo anchors.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_gengar_5_holo_vs_20_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Gengar, Gengar holo, Gengar 5, or Gengar 20.",
+          "summary": "Gengar base3-5 is the Rare Holo row; keep it separate from the non-holo rare row base3-20.",
+          "steps": [
+            "Preserve card id base3-5 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-20 before treating a generic Fossil Gengar mention as the holo.",
+            "Do not infer condition or holo surface quality from the catalog row alone.",
+            "Record Keiji Kinebuchi as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A grin in the cave wall",
+        "why_it_matters": "Gengar gives Fossil its grin. The set could have been only bones and birds, but Kinebuchi's ghost-line holo makes the place feel inhabited by mischief. It is a chase card because people love Gengar; it is a Fossil card because the whole set feels like something looked back from the dark.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-10",
+      "type": "card",
+      "context": {
+        "name_en": "Lapras",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-10",
+        "catalog_row_id": "base3-10"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-10",
+          "title": "Local Fossil row: Lapras 10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-10",
+          "title": "Pokemon TCG API v2 card record: Lapras",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-10 as Lapras.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Lapras base3-10 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Lapras base3-10 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lapras matters because Fossil needs one gentle sea-crossing presence among its ancient and haunted silhouettes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_lapras_10_holo_vs_25_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Lapras, Lapras holo, Lapras 10, or Lapras 25.",
+          "summary": "Lapras base3-10 is the Rare Holo row; keep it separate from the non-holo rare row base3-25.",
+          "steps": [
+            "Preserve card id base3-10 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-25 before treating a generic Fossil Lapras mention as the holo.",
+            "Do not infer condition or holo surface quality from the catalog row alone.",
+            "Record Ken Sugimori as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The ferry through the old world",
+        "why_it_matters": "Lapras is Fossil's kindness. Around it are ancient teeth, legendary weather, and cave ghosts; then this calm creature offers passage. Sugimori's credit makes the card feel close to core Pokemon design memory, and the holo row gives the set a gentler kind of chase.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-12",
+      "type": "card",
+      "context": {
+        "name_en": "Moltres",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-12",
+        "catalog_row_id": "base3-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-12",
+          "title": "Local Fossil row: Moltres 12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-12",
+          "title": "Pokemon TCG API v2 card record: Moltres",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-12 as Moltres.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Moltres base3-12 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Moltres base3-12 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Moltres matters because the legendary-bird trio gives Fossil a mythic sky above its excavation theme.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_moltres_12_holo_vs_27_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Moltres, Moltres holo, Moltres 12, Moltres 27, or legendary bird.",
+          "summary": "Moltres base3-12 is the Rare Holo row; keep it separate from the non-holo rare row base3-27.",
+          "steps": [
+            "Preserve card id base3-12 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-27 before treating a generic Fossil Moltres mention as the holo.",
+            "Do not collapse Articuno, Moltres, and Zapdos into a single legendary-bird want without naming the exact bird and row.",
+            "Record Mitsuhiro Arita as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Fire over the fossil beds",
+        "why_it_matters": "Moltres makes Fossil flare. Arita's legendary bird gives the set heat and motion, balancing the buried, cold, ancient feeling elsewhere in the checklist. In a collector's binder, the trio is a little weather system; this row is the flame front.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-15",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-15",
+        "catalog_row_id": "base3-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-15",
+          "title": "Local Fossil row: Zapdos 15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-15",
+          "title": "Pokemon TCG API v2 card record: Zapdos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-15 as Zapdos.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Zapdos base3-15 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Zapdos base3-15 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Zapdos matters because it completes the Fossil legendary-bird pressure, giving the set lightning alongside ice and fire.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_zapdos_15_holo_vs_30_nonholo_boundary_v0.1",
+          "trigger": "A listing or want says Fossil Zapdos, Zapdos holo, Zapdos 15, Zapdos 30, or legendary bird.",
+          "summary": "Zapdos base3-15 is the Rare Holo row; keep it separate from the non-holo rare row base3-30.",
+          "steps": [
+            "Preserve card id base3-15 and Rare Holo rarity when the evidence points to this row.",
+            "Compare against base3-30 before treating a generic Fossil Zapdos mention as the holo.",
+            "Do not collapse Articuno, Moltres, and Zapdos into a single legendary-bird want without naming the exact bird and row.",
+            "Record Mitsuhiro Arita as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lightning on the last bird",
+        "why_it_matters": "Zapdos completes the Fossil sky. With Articuno and Moltres, it makes the set feel less like a museum drawer and more like an island where ancient things and elemental birds share the same weather. The row is a holo chase, but also a coordinate in a trio.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-62",
+      "type": "card",
+      "context": {
+        "name_en": "Mysterious Fossil",
+        "name_ja": "",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-62",
+        "catalog_row_id": "base3-62"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-62",
+          "title": "Local Fossil row: Mysterious Fossil 62",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-62",
+          "title": "Pokemon TCG API v2 card record: Mysterious Fossil",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Fossil row base3-62 as Mysterious Fossil.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Mysterious Fossil base3-62 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Mysterious Fossil base3-62 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mysterious Fossil matters because it turns the set's title into a play object: fossil Pokemon are not only pictured, they are mechanically staged through a Trainer row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_mysterious_fossil_62_trainer_not_pokemon_boundary_v0.1",
+          "trigger": "A listing or want says Mysterious Fossil, Fossil trainer, fossil evolution support, Aerodactyl fossil, Kabuto fossil, or Omanyte fossil.",
+          "summary": "Mysterious Fossil base3-62 is the common Trainer row that supports fossil evolution context; do not collapse it into a Pokemon species row.",
+          "steps": [
+            "Preserve card id base3-62 and Common Trainer identity.",
+            "Do not treat Mysterious Fossil as Aerodactyl, Kabuto, Omanyte, or any other fossil Pokemon row.",
+            "When a buyer wants fossil Pokemon support or binder completeness, distinguish Trainer row completion from Pokemon row completion.",
+            "Record Keiji Kinebuchi as the catalog illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The little hinge under the whole set",
+        "why_it_matters": "Mysterious Fossil is humble, but it is the hinge. Without it, Fossil is mostly a theme; with it, the theme becomes a rule. Kinebuchi's trainer row tells the agent that the set's deepest idea is not just old Pokemon. It is the act of bringing something buried into play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
