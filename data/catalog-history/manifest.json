@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22835,
-    "corpus_hash": "1c3ceb97407a29c6f303057ae238927262807ef31ce06c86e45169594018863c",
-    "generated_card_dossier_count": 4402,
-    "generated_release_dossier_count": 183,
+    "claim_count": 22836,
+    "corpus_hash": "5284cb47e7aaf8f6addc6786fce871bf923a6da78f8a78e478ef332cac7b9939",
+    "generated_card_dossier_count": 4389,
+    "generated_release_dossier_count": 182,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5109
+    "source_count": 5139
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "f6cacb842b1b8e60e8754a8ec72ab7857347669f5b8fd4f2fb97efd1321087f0",
+    "queue_hash": "532b509f57cdd2f4967287f7fbd41703f7aeb8f948dd21ed4dca62b94593270f",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T04:41:05Z",
+  "generated_at": "2026-06-19T04:50:37Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "99b34df39666a2555da5c18d2c4c79c74a0424e89956dc096885c2e1fc75c3fd",
+    "index_hash": "e81ac2eca880c9bf45b00133396abd8f9f38f1ef122c9bf463e856649537888b",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -56,6 +56,7 @@
     "data/catalog-history/source-sets/neo_discovery_v0_1.json",
     "data/catalog-history/source-sets/neo_genesis_v0_1.json",
     "data/catalog-history/source-sets/neo_revelation_v0_1.json",
+    "data/catalog-history/source-sets/nivi_city_gym_brock_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json",
     "data/catalog-history/source-sets/quick_starter_gift_set_v0_1.json",

@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-fifth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/nivi_city_gym_brock_v0_1.json`.
+  Japanese Nivi City Gym / Brock is now a hand-authored release dossier,
+  with Brock's Zubat 001, Brock's Vulpix 002, Brock's Sandslash 004,
+  Brock's Mankey 005, Brock's Geodude 006 / 007, Brock's Onix 010 / 011,
+  Brock's Rhyhorn 012, Brock 018, Brock's Training Method 019, Pewter
+  City Gym 021, and Double Colorless Energy 025 promoted from generated
+  baseline to sourced card dossiers. The pass frames the deck as Brock
+  becoming an apparatus: owned Pokemon, trainer, method, city, and energy
+  resource all folded into one Japanese Standard Deck object. Added
+  special identification rails for the 64-card product context versus
+  25 unique catalog rows, missing-symbol Gym deck status versus Base No
+  Rarity, owner-name preservation, duplicate Geodude and Onix row
+  separation, common-rare carryover into English Gym Heroes, and the rule
+  that catalog rows do not prove sealed-deck inclusion or physical-card
+  truth. Sources: local Japanese pre-English Nivi City Gym / Brock catalog,
+  PokéCardex NCGYM, Bulbapedia Nivi City Gym, local pre-English
+  symbol-status matrix, and the Japanese pre-English release map. Generated
+  gap moved from 183 releases / 4,402 cards to 182 releases / 4,389 cards.
+  Current catalog-history corpus: 22,836 claims, 5,139 sources, corpus hash
+  `5284cb47e7aaf8f6addc6786fce871bf923a6da78f8a78e478ef332cac7b9939`;
+  index hash `e81ac2eca880c9bf45b00133396abd8f9f38f1ef122c9bf463e856649537888b`;
+  queue hash `532b509f57cdd2f4967287f7fbd41703f7aeb8f948dd21ed4dca62b94593270f`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-fourth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/mystery_of_the_fossils_v0_1.json`.
