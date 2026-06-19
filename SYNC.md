@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/mysterious_mountains_tranche_v0_1.json`.
+  Japanese Mysterious Mountains / 神秘なる山 now has a hand-authored release
+  dossier plus twelve high-gravity / identity-teaching card dossiers:
+  Beedrill holo 005, Nidoqueen holo 010, Arcanine holo 017, Moltres holo 019,
+  Dewgong holo 025, Gyarados holo 028, Articuno 031, Gengar 044, Steelix 074,
+  Ancient Ruins 084, Charizard late-number row 089, and Celebi late-number
+  row 091. The pass frames the release as late e-Card terrain: mountain,
+  ruin, legendary weather, old Kanto power, and row-map edges all become part
+  of the set's identity. Added `special_identification_instructions` requiring
+  agents to preserve Japanese title 神秘なる山, TCGdex set id `E5`, card number,
+  local id, rough source-row text, normalized collector label, and the 88
+  official / 91 total row distinction before accepting famous-species or
+  English Skyridge matches. Ancient Ruins is treated as place/rule memory
+  rather than a creature chase; late-number Charizard and Celebi keep their
+  map-edge status visible. The tranche deliberately keeps rough local source
+  text and normalized labels separate; clean translated-name authority is not
+  claimed. English Skyridge, later reprints, and same-character rows are
+  explicitly not equivalent without set/number evidence. This is a bounded
+  high-gravity tranche, not complete 91-card hand-authored coverage; 79
+  Mysterious Mountains rows remain generated follow-up work. Artists remain
+  intentionally unset because the local Japanese classic rows do not provide
+  illustrator authority. Sources: local Japanese classic Mysterious Mountains
+  release file and TCGdex Japanese set/card payload references. Generated gap
+  moved from 156 releases / 4,121 cards to 155 releases / 4,109 cards. Current
+  catalog-history corpus: 22,893 claims, 5,637 sources, 698 dossiers with
+  special identification instructions, corpus hash
+  `74612fec3a9a76529b3645e543da63fef721cb994d6686beb22fec4ccbf15a0d`;
+  index hash `b812749344a785179cf33e2b74055b22e193d261dcf7b5d508caa5f133a26a5a`;
+  queue hash `c64c2902f58af7474267a3af67d0108f19607fde0388a364ed44484046d846c3`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/gold_silver_new_world_tranche_v0_1.json`.
