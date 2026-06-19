@@ -55,6 +55,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventieth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/expansion_sheet_3_green_tranche_v0_1.json`.
+  Expansion Sheet Series 3 Green now has a hand-authored release dossier plus
+  twelve high-gravity anchor card dossiers: Scyther 008, Kadabra 019,
+  Kadabra 020, Mewtwo 026, Kangaskhan 033, 4 Prize Battle 037,
+  3 Deck Battle 039, 3 vs 3 Dugtrio Team Battle 040, Ooyama's Pikachu 042,
+  Imakuni?'s Nasty Plot 044, Pokémon Machine 047, and The Last Cave -
+  Cerulean! 053. The pass frames Green as the vending sheet that starts like a
+  set and turns into a funhouse: ordinary Kanto rows, Mewtwo/Scyther/Kangaskhan
+  gravity, then rule-format cards, Ooyama/Imakuni? personality rows, and
+  location/adventure prompts. Added `special_identification_instructions`
+  requiring agents to preserve Expansion Sheet Series 3 Green /
+  拡張シート 第3弾 緑版, November 24 1998 date, row numbers, glossy
+  vending-sheet physical format, Common rarity signal, 53-row / 36-standard +
+  17-special count caveat, standard-vs-special/non-standard row context,
+  source-scoped artist/personality credits, non-playable warnings where
+  surfaced, and symbol-status no/not-Base-No-Rarity boundary before accepting a
+  match. This is intentionally a bounded tranche, not complete 53-row
+  hand-authored coverage. Sources: local Japanese pre-English release file,
+  Pokellector source page, Bulbapedia Vending Machine artist-caption metadata,
+  and the local pre-English symbol-status matrix. Generated gap moved from 138
+  releases / 3,991 cards to 137 releases / 3,979 cards. Current catalog-history
+  corpus: `e78b488535d9fadfe268cf112e7d1d83e52d6b72fca9d491e32bc2b02a0105ed`;
+  index: `e2771584299868ef1a7b8c7b44b53b1d690d62cbd7c2fa8eab63efc065ea30c8`;
+  queue: `7edcac8bc97b49effc0a8905d0e703e9dc2cdf4a31907753d7780c3578b2c0f0`.
+  Audit counts: 23,215 claims, 5,919 sources, 72 hand-authored release dossiers,
+  570 hand-authored card dossiers, and 834 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/expansion_sheet_3_green_tranche_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-ninth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/expansion_sheet_2_red_tranche_v0_1.json`.
