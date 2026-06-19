@@ -1,0 +1,820 @@
+{
+  "dossiers": [
+    {
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.date",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog and selected Pokumon/Bulbapedia snapshot place the CoroCoro Comic January 1998 issue promo insert on December 15, 1997.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.product_count",
+          "id": "c2",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The source slice models two promo identities for the January 1998 CoroCoro issue: Meowth (CoroCoro 1997) and Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997).",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c3",
+          "sources": [
+            "s2"
+          ],
+          "text": "The selected snapshot says CoroCoro Comic's January 1998 issue was published with two promo cards, Meowth and Computer Error.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "history.variant",
+          "id": "c4",
+          "sources": [
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "text": "Computer Error is the load-bearing variant row: Bulbapedia separates the glossy CoroCoro/Song Best Collection prints with red drop shadow on the Team Rocket R from the later Kamex Mega Battle participation print with non-glossy stock and white drop shadow.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog preserves Meowth as a parent source-pinned row and Computer Error as a manual provider-path row for the glossy CoroCoro/Song Best print lane, explicitly not reusing the later Kamex Mega Battle UPC/45 row.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c6",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local row credits Ken Sugimori for Meowth and Sumiyoshi Kizuki for Computer Error. These remain source/provider metadata, not physical-card proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "field": "history.significance",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "This CoroCoro insert is small but unusually instructive: Meowth is the mascot-like magazine freebie, while Computer Error is a rules-card gag that later becomes a variant maze across CoroCoro, Song Best, Kamex, and English Wizards Promo memory. The issue shows CoroCoro as a distribution machine where cute character pull and mechanical TCG weirdness could travel together.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "text": "Agents should preserve CoroCoro January 1998 issue route, December 15 1997 date, Meowth row 030, Computer Error row 031, glossy/red-drop-shadow Computer Error lane, Song Best reprint association, and Kamex non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "name_en": "CoroCoro Comic January 1998 promos source slice",
+        "name_ja": "月刊コロコロコミック1998年1月号プロモ",
+        "release_date": "1997-12-15",
+        "release_family_id": "jp_promo_corocoro_19971215"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "CoroCoro January 1998: cute mascot, broken machine",
+        "not_claiming": [
+          "complete CoroCoro issue history",
+          "official copy counts",
+          "complete Computer Error variant census",
+          "price truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "This two-card insert has real charm because it splits the magazine brain perfectly. Meowth is the character hook: recognizable, Sugimori-clean, binder-friendly. Computer Error is the system joke: a trainer card about machinery going sideways, later tangled into one of the best tiny variant puzzles in early Japanese promos. Together they show CoroCoro not merely advertising Pokemon, but distributing little pieces of how Pokemon felt: cute, strange, mechanical, collectible."
+      },
+      "release_highlights": {
+        "assembly_themes": [
+          "magazine/media distribution",
+          "variant discipline",
+          "glossy-vs-non-glossy boundary",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "chase_cards": [
+          {
+            "name": "Meowth",
+            "number": "030",
+            "row_id": "jp_promo_corocoro_19971215:030"
+          },
+          {
+            "name": "Computer Error",
+            "number": "031",
+            "row_id": "jp_promo_corocoro_19971215:031"
+          }
+        ],
+        "key_artists": [
+          {
+            "authority_label": "local_catalog_fact",
+            "examples": [
+              "Meowth"
+            ],
+            "name": "Ken Sugimori",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ],
+            "row_count": 1
+          },
+          {
+            "authority_label": "local_catalog_fact",
+            "examples": [
+              "Computer Error"
+            ],
+            "name": "Sumiyoshi Kizuki",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ],
+            "row_count": 1
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ],
+        "source_contacts": [
+          "local Japanese pre-English release file",
+          "selected Pokumon/Bulbapedia rendered-line snapshot",
+          "Pokumon card pages",
+          "Bulbapedia Computer Error page"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_19971215.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic January 1998 promos source slice",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_corocoro_jan1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon + Bulbapedia selected lines: CoroCoro January 1998 promos and Computer Error variant boundary",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://pokumon.com/card/meowth-corocoro-1997-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Meowth (CoroCoro 1997) (Unnumbered)",
+          "type": "database_reference"
+        },
+        {
+          "id": "s4",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ],
+          "ref": "https://pokumon.com/card/computer-error-corocoro-pokemon-song-best-collection-cd-1997-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
+          "type": "database_reference"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Computer Error release information and Japanese print distinctions",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_january_1998_glossy_computer_error_boundary_v0.1",
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "complete Song Best Collection reprint census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "Kamex equivalence",
+            "Song Best physical-origin proof"
+          ],
+          "steps": [
+            "Confirm CoroCoro Comic January 1998 issue context, published December 15, 1997.",
+            "Preserve row identity: Meowth 030 and Computer Error 031.",
+            "For Computer Error, check the glossy CoroCoro/Song Best lane with red drop shadow on the Team Rocket R.",
+            "Do not collapse this Computer Error into the later Kamex Mega Battle participation print, which is non-glossy with white drop shadow.",
+            "Preserve Song Best Collection reprint association as a variant/reprint note, not as proof that an offered copy came from CoroCoro.",
+            "Use seller photos for stock, gloss, Team Rocket R drop-shadow color, dimensions, and condition before any transaction claim."
+          ],
+          "summary": "Preserve the January 1998 CoroCoro issue route and Computer Error glossy/red-shadow lane before treating a card as this source slice.",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro January 1998, December 1997 CoroCoro, Meowth CoroCoro, Computer Error, Rocket's Secret Machine, Song Best, Kamex Computer Error, red drop shadow, white drop shadow, glossy, or non-glossy."
+        }
+      ],
+      "type": "release",
+      "uid": "jp_promo_corocoro_19971215"
+    },
+    {
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Meowth sits in the CoroCoro January 1998 insert as CoroCoro January 1998 unnumbered promo card; row, source route, and variant lane need to stay together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "variant discipline",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Meowth is the friendly half of the insert: a familiar Team Rocket-adjacent mascot delivered through the magazine instead of a pack. Sugimori makes it feel official and immediate, the kind of card a kid could understand before caring about rarity machinery.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "030",
+        "rarity_signal": "CoroCoro January 1998 unnumbered promo card",
+        "signals": [
+          "CoroCoro Comic January 1998 issue insert",
+          "December 15 1997",
+          "030",
+          "CoroCoro January 1998 unnumbered promo card",
+          "Ken Sugimori"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors Meowth as CoroCoro January 1998 promo source-slice row 030.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected snapshot places Meowth in the CoroCoro Comic January 1998 issue insert published December 15, 1997.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The meaningful local rarity/format signal for Meowth is: CoroCoro January 1998 unnumbered promo card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local row credits Ken Sugimori for Meowth, with source/provider caveats preserved.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep Meowth pinned to CoroCoro January 1998 row 030 and do not accept Meowth name alone as source identity.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Meowth is the friendly half of the insert: a familiar Team Rocket-adjacent mascot delivered through the magazine instead of a pack. Sugimori makes it feel official and immediate, the kind of card a kid could understand before caring about rarity machinery.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep Meowth pinned to CoroCoro January 1998 row 030 and do not accept Meowth name alone as source identity.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "030",
+        "name_en": "Meowth",
+        "name_ja": "ニャース",
+        "release_family_id": "jp_promo_corocoro_19971215",
+        "release_name": "CoroCoro Comic January 1998 promos source slice",
+        "romaji": "Nyarth",
+        "row_id": "jp_promo_corocoro_19971215:030"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Meowth: CoroCoro January 1998 unnumbered promo card",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Meowth is the friendly half of the insert: a familiar Team Rocket-adjacent mascot delivered through the magazine instead of a pack. Sugimori makes it feel official and immediate, the kind of card a kid could understand before caring about rarity machinery. It is a small card-story, but it teaches the agent to care about route, print lane, and the feel of the media object."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_19971215.json#row:jp_promo_corocoro_19971215:030",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Meowth / CoroCoro January 1998",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_corocoro_jan1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon + Bulbapedia selected lines: CoroCoro January 1998 promos and Computer Error variant boundary",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://pokumon.com/card/meowth-corocoro-1997-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Meowth (CoroCoro 1997) (Unnumbered)",
+          "type": "database_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_january_1998_030_identity_boundary_v0.1",
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "complete Song Best Collection reprint census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic January 1998 issue context and row 030 before naming this exact card.",
+            "Preserve Japanese/romaji name: ニャース / Nyarth.",
+            "Preserve the source route; do not rely on card name alone.",
+            "For Computer Error, confirm gloss and Team Rocket R drop-shadow lane before choosing CoroCoro/Song Best vs Kamex.",
+            "Use seller photos for physical format, stock/gloss, symbols, dimensions, and condition before any transaction claim."
+          ],
+          "summary": "Keep Meowth pinned to CoroCoro January 1998 row 030 and do not accept Meowth name alone as source identity.",
+          "trigger": "A listing, want, scan, or agent memory says Meowth, ニャース, CoroCoro January 1998, December 1997 CoroCoro, Song Best, Kamex, glossy, red drop shadow, white drop shadow, or unnumbered promo."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_corocoro_19971215:030"
+    },
+    {
+      "card_highlights": {
+        "artist": "Sumiyoshi Kizuki",
+        "assembly_note": "Computer Error sits in the CoroCoro January 1998 insert as Glossy CoroCoro / Song Best Collection Computer Error print lane; row, source route, and variant lane need to stay together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "variant discipline",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Computer Error is the strange half of the insert: a trainer card about a machine misbehaving, drawn with Kizuki interface-energy, then made collectible through a variant trail. The red-shadow glossy lane is the whole point; without it, an agent can wander into the Kamex participation print by accident.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "031",
+        "rarity_signal": "Glossy CoroCoro / Song Best Collection Computer Error print lane",
+        "signals": [
+          "CoroCoro Comic January 1998 issue insert",
+          "December 15 1997",
+          "031",
+          "Glossy CoroCoro / Song Best Collection Computer Error print lane",
+          "Sumiyoshi Kizuki"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors Computer Error as CoroCoro January 1998 promo source-slice row 031.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected snapshot places Computer Error in the CoroCoro Comic January 1998 issue insert published December 15, 1997.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The meaningful local rarity/format signal for Computer Error is: Glossy CoroCoro / Song Best Collection Computer Error print lane.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local row credits Sumiyoshi Kizuki for Computer Error, with source/provider caveats preserved.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "text": "Keep Computer Error pinned to CoroCoro January 1998 row 031 and the glossy red-drop-shadow lane; do not merge with Kamex white-shadow non-glossy Computer Error.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "text": "Computer Error is the strange half of the insert: a trainer card about a machine misbehaving, drawn with Kizuki interface-energy, then made collectible through a variant trail. The red-shadow glossy lane is the whole point; without it, an agent can wander into the Kamex participation print by accident.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "text": "Keep Computer Error pinned to CoroCoro January 1998 row 031 and the glossy red-drop-shadow lane; do not merge with Kamex white-shadow non-glossy Computer Error.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "031",
+        "name_en": "Computer Error",
+        "name_ja": "パソコン大暴走！",
+        "release_family_id": "jp_promo_corocoro_19971215",
+        "release_name": "CoroCoro Comic January 1998 promos source slice",
+        "romaji": "Pasokon Dai Bousou!",
+        "row_id": "jp_promo_corocoro_19971215:031"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Computer Error: Glossy CoroCoro / Song Best Collection Computer Error print lane",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Computer Error is the strange half of the insert: a trainer card about a machine misbehaving, drawn with Kizuki interface-energy, then made collectible through a variant trail. The red-shadow glossy lane is the whole point; without it, an agent can wander into the Kamex participation print by accident. It is a small card-story, but it teaches the agent to care about route, print lane, and the feel of the media object."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_19971215.json#row:jp_promo_corocoro_19971215:031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Computer Error / CoroCoro January 1998",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_corocoro_jan1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon + Bulbapedia selected lines: CoroCoro January 1998 promos and Computer Error variant boundary",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ],
+          "ref": "https://pokumon.com/card/computer-error-corocoro-pokemon-song-best-collection-cd-1997-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Computer Error (CoroCoro, Pokemon Song Best Collection CD 1997)",
+          "type": "database_reference"
+        },
+        {
+          "id": "s4",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Computer Error release information and Japanese print distinctions",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_january_1998_031_identity_boundary_v0.1",
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "complete Computer Error variant catalog",
+            "complete Song Best Collection reprint census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic January 1998 issue context and row 031 before naming this exact card.",
+            "Preserve Japanese/romaji name: パソコン大暴走！ / Pasokon Dai Bousou!.",
+            "Preserve the source route; do not rely on card name alone.",
+            "For Computer Error, confirm gloss and Team Rocket R drop-shadow lane before choosing CoroCoro/Song Best vs Kamex.",
+            "Use seller photos for physical format, stock/gloss, symbols, dimensions, and condition before any transaction claim."
+          ],
+          "summary": "Keep Computer Error pinned to CoroCoro January 1998 row 031 and the glossy red-drop-shadow lane; do not merge with Kamex white-shadow non-glossy Computer Error.",
+          "trigger": "A listing, want, scan, or agent memory says Computer Error, パソコン大暴走！, CoroCoro January 1998, December 1997 CoroCoro, Song Best, Kamex, glossy, red drop shadow, white drop shadow, or unnumbered promo."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_corocoro_19971215:031"
+    }
+  ],
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row tranche for the CoroCoro Comic January 1998 promo source slice, emphasizing Meowth/Computer Error magazine distribution, glossy Computer Error red-drop-shadow variant lane, Song Best reprint association, and Kamex non-equivalence.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Meowth row 030",
+      "Computer Error row 031",
+      "Computer Error glossy-vs-non-glossy variant boundary"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete magazine source",
+      "official copy count",
+      "complete Computer Error variant catalog",
+      "complete Song Best Collection reprint census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  }
+}

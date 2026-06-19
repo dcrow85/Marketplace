@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-sixth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json`.
+  CoroCoro Comic January 1998 promo source slice now has complete two-row
+  hand-authored coverage for Meowth 030 and Computer Error 031. The pass frames
+  the release as a tiny magazine machine: Meowth carries the cute
+  Sugimori-clean character hook, while Computer Error carries a rules-card gag
+  that turns into a serious variant trail across CoroCoro, Song Best, Kamex, and
+  English Wizards Promo memory. Added `special_identification_instructions`
+  requiring agents to preserve December 15, 1997 CoroCoro January 1998 issue
+  route, row 030/031 identity, Computer Error glossy red-drop-shadow Team Rocket
+  R lane, Song Best reprint association, and Kamex non-glossy white-drop-shadow
+  non-equivalence before accepting a match. Artist credits remain source-scoped:
+  Ken Sugimori for Meowth and Sumiyoshi Kizuki for Computer Error. Sources:
+  local Japanese pre-English release file, selected Pokumon/Bulbapedia
+  rendered-line snapshot, Pokumon card pages, and Bulbapedia Computer Error
+  print-distinction lines. Generated gap moved from 142 releases / 4,006 cards
+  to 141 releases / 4,004 cards. Current catalog-history corpus:
+  `e3b69c5607a24d316516eac428ee3df563b22a71129a9131092ec753655753ba`; index:
+  `4bc7211863df758eed9816fa07c406e9acfc991fec50ffa939aa861c6cc7c97b`; queue:
+  `a729b50b0b0a4243679708b2f28232ec374b1af1327b37f33cafdc71c43804ff`.
+  Audit counts: 23,158 claims, 5,827 sources, 68 hand-authored release dossiers,
+  545 hand-authored card dossiers, and 805 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-fifth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_august_1999_insert_v0_1.json`.
