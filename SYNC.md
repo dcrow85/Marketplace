@@ -55,6 +55,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twentieth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/quick_starter_red_deck_v0_1.json`.
+  Japanese Quick Starter Gift Set Red Deck is now a hand-authored child
+  release dossier, with Squirtle 001, Pikachu 009, Pikachu 010, Raichu
+  011, Zapdos 015, Gust of Wind 028, and Switch 032 promoted from
+  generated baseline to sourced card dossiers. The pass frames the Red
+  Deck as the charged half of Quick Starter: Squirtle as the friendly
+  water doorway, two adjacent Pikachu rows as the row-identity lesson,
+  Raichu and Zapdos as the electric ceiling, and Gust of Wind / Switch as
+  text-layout trap rows where missing-symbol appearance is not Base No
+  Rarity proof. Added special identification rails for Red Deck
+  child-lane provenance, parent rollup versus child release, duplicate
+  Pikachu row preservation, Raichu / Zapdos separation from Base/Fossil
+  or generic Pikachu-line searches, and trainer text/layout comparison
+  before any No Rarity claim can advance. Sources: local Japanese
+  pre-English Red Deck and parent Quick Starter catalogs, PokeCardex
+  QSGSR, Bulbapedia Quick Starter Gift Set, Bulbapedia Original TCG Era
+  merchandise, local pre-English symbol-status matrix, and lower-tier
+  Elite Fourum collector discussion for Quick Starter / No Rarity trainer
+  confusion. Generated gap moved from 188 releases / 4,440 cards to 187
+  releases / 4,433 cards. Current catalog-history corpus: 22,863 claims,
+  5,042 sources, corpus hash
+  `87816313dc5c01c599a04fc2d688877a3ab17a29abb4d052f4d971cda6162ed8`;
+  index hash `e7994316841a817e3abd98a7cab166789829914d940b4ca32e89c618939a8365`;
+  queue hash `717d7fc35d098f90ceb89244300bd94485a6b6e5a1e433edf46430e5eafa7514`.
 - `[passive]` 2026-06-19 · Codex — completed the nineteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/quick_starter_green_deck_v0_1.json`.
