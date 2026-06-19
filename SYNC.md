@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/base_expansion_pack_e_tranche_v0_1.json`.
+  Japanese Pokemon Card e Base Expansion Pack / 基本拡張パック now has a
+  hand-authored release dossier plus nine high-gravity / interface-teaching
+  card dossiers: Pikachu 016, Mewtwo 086, Venusaur 097, Butterfree 098,
+  Arbok 099, Vileplume 100, Meganium 102, Charizard 103, and Mewtwo 118.
+  The pass frames Base Expansion Pack e as an apparatus shift: Pokemon asking
+  the card to behave like an interface, with Japanese title, TCGdex set id
+  `E1`, e-Card border/number area, and local row id becoming identity rails.
+  Added `special_identification_instructions` requiring agents to preserve
+  Japanese title 基本拡張パック, set id `E1`, card number, local row id,
+  messy source-row text, and normalized collector label separately before
+  accepting famous-name matches. English Expedition Base Set, later e-Card
+  reprints, and same-character rows are explicitly not equivalent without
+  set/number evidence. This is a bounded high-gravity tranche, not complete
+  128-card hand-authored coverage; 119 Base Expansion Pack e rows remain
+  generated follow-up work. Artists remain intentionally unset because the
+  local Japanese classic rows do not provide illustrator authority. Sources:
+  local Japanese classic Base Expansion Pack e release file and TCGdex
+  Japanese set/card payload references. Generated gap moved from 161 releases
+  / 4,168 cards to 160 releases / 4,159 cards. Current catalog-history
+  corpus: 22,773 claims, 5,590 sources, 643 dossiers with special
+  identification instructions, corpus hash
+  `6a1e95be426796010b424db79924fedafbd47f8cc50a9fb57924466f8e51e0dd`;
+  index hash `71c91a8c41de164e4d4bab32a9b6fa27d9df0e7a76d593c698a88503dbcb1b4a`;
+  queue hash `001c7e2e96b8ad876afc2e167221920a9fe4782fb2fc249439bb2a8a3b1565d4`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-sixth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/awakening_legends_tranche_v0_1.json`.

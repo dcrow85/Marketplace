@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22763,
-    "corpus_hash": "505d48d9e4533e7dd780adcf02b8893ac44355438a547a457a22e78138d98aac",
-    "generated_card_dossier_count": 4168,
-    "generated_release_dossier_count": 161,
+    "claim_count": 22773,
+    "corpus_hash": "6a1e95be426796010b424db79924fedafbd47f8cc50a9fb57924466f8e51e0dd",
+    "generated_card_dossier_count": 4159,
+    "generated_release_dossier_count": 160,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5589
+    "source_count": 5590
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "4e2075ed05300d43c94155bb99e5100781645133aa7983aeeb31f6bf27f5ff4e",
+    "queue_hash": "001c7e2e96b8ad876afc2e167221920a9fe4782fb2fc249439bb2a8a3b1565d4",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T07:50:11Z",
+  "generated_at": "2026-06-19T07:56:06Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "dc56c91317c0edde1bdc2467ea4c8c3b9f13904bc3a91644753d164f76c3c66c",
+    "index_hash": "71c91a8c41de164e4d4bab32a9b6fa27d9df0e7a76d593c698a88503dbcb1b4a",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -45,6 +45,7 @@
     "data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json",
     "data/catalog-history/source-sets/aquapolis_v0_1.json",
     "data/catalog-history/source-sets/awakening_legends_tranche_v0_1.json",
+    "data/catalog-history/source-sets/base_expansion_pack_e_tranche_v0_1.json",
     "data/catalog-history/source-sets/base_set_2_v0_1.json",
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
     "data/catalog-history/source-sets/corocoro_early_1997_v0_1.json",
