@@ -55,6 +55,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-fourth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/lizardon_mega_battle_1997_trophies_v0_1.json`.
+  Japanese Lizardon / Charizard Mega Battle regional trophy source slice now has
+  complete three-row hand-authored coverage for No.1 Trainer 021, No.2 Trainer
+  022, and No.3 Trainer 023. The pass frames the release as Pokemon learning to
+  stage a national championship: six regional qualifier locations, a
+  November 8, 1997-February 15, 1998 qualifier window, April 26, 1998 national
+  event context, age divisions, ranked Trainer trophy cards, acrylic plaque
+  context, and Arita source-scoped credits become an event ladder in cardboard.
+  Added `special_identification_instructions` requiring agents to preserve
+  Lizardon / Charizard Mega Battle regional context, rank number, source row
+  021-023, qualifier-to-final route, plaque/object-state question, Arita credit,
+  and First Official Tournament / Kamex / later Trainer-trophy non-equivalence
+  before accepting a match. Sources: local Japanese pre-English release file,
+  selected Pokumon rendered-line snapshot, live Pokumon article URL, local
+  symbol-status matrix, and local Arita example catalog. Generated gap moved from
+  144 releases / 4,012 cards to 143 releases / 4,009 cards. Current
+  catalog-history corpus:
+  `7e51b1a33c716cefdfb90af1257f76fc837744d061e26d9946115e956dc4e1ec`; index:
+  `0ae14079c1c13428158873269d09578c7783bb0a6609dbeb643017fbd400441c`; queue:
+  `0d3e44f780470454792d8be9cde69a7745a0832baf1bc583f4bb5eaf5b647683`.
+  Audit counts: 23,145 claims, 5,808 sources, 66 hand-authored release dossiers,
+  540 hand-authored card dossiers, and 801 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/lizardon_mega_battle_1997_trophies_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/first_official_tournament_1997_trophies_v0_1.json`.
