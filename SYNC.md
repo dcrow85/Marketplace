@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fiftieth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/darkness_and_to_light_tranche_v0_1.json`.
+  Japanese Darkness, and to Light... / 闇、そして光へ... now has a
+  hand-authored release dossier plus eleven high-gravity / identity-teaching
+  card dossiers: Dark Crobat 012, Light Arcanine 021, Dark Typhlosion 022,
+  Shining Charizard 025, Dark Feraligatr 039, Light Azumarill 040, Dark
+  Ampharos 046, Dark Gengar 066, Dark Espeon 067, Shining Mewtwo 068, and
+  Shining Tyranitar 082. The pass frames the release as the moment morality
+  becomes set structure: Dark, Light, and Shining are not decorative labels but
+  identity rails that teach agents and collectors how the same species body can
+  become shadowed, protected, or made rare. Added
+  `special_identification_instructions` requiring agents to preserve Japanese
+  title 闇、そして光へ..., TCGdex set id `neo4`, card number, local id, rough
+  source-row text, normalized collector label, and Dark/Light/Shining prefix
+  before accepting famous-species or English Neo Destiny matches. The tranche
+  deliberately keeps rough local source text and normalized labels separate;
+  clean translated-name authority is not claimed. English Neo Destiny, later
+  reprints, and same-character rows are explicitly not equivalent without
+  set/number/prefix evidence. This is a bounded high-gravity tranche, not
+  complete 113-card hand-authored coverage; 102 Darkness, and to Light rows
+  remain generated follow-up work. Artists remain intentionally unset because
+  the local Japanese classic rows do not provide illustrator authority.
+  Sources: local Japanese classic Darkness, and to Light release file and
+  TCGdex Japanese set/card payload references. Generated gap moved from 158
+  releases / 4,143 cards to 157 releases / 4,132 cards. Current
+  catalog-history corpus: 22,836 claims, 5,612 sources, 673 dossiers with
+  special identification instructions, corpus hash
+  `e86479d9194fdac52a9c9ef5b340cddba3a66c893869f926d3c8f3dd628edc2f`;
+  index hash `ed41d179f9e778ae10ec394b86564bffba79a0a3393155136a380eb70297c052`;
+  queue hash `4c0ec7b972ad27ca232e403cf7bcdb5b477c30699dd6e085aebaa1eb90a81b55`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-ninth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/crossing_the_ruins_tranche_v0_1.json`.
