@@ -55,6 +55,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/first_official_tournament_1997_trophies_v0_1.json`.
+  Japanese First Official Pokemon Card Game Tournament trophy source slice now
+  has complete three-row hand-authored coverage for No.1 Trainer 011, No.2
+  Trainer 012, and No.3 Trainer 013. The pass frames the release as competitive
+  Pokemon becoming material ceremony: four tournament sessions, ranked winners,
+  trophy cards, provider-path reference images, and Arita source-scoped credits
+  become a small event ledger in cardboard. Added
+  `special_identification_instructions` requiring agents to preserve First
+  Official Tournament context, June 14-15, 1997 event window, rank number,
+  source row 011-013, Arita credit, selected-source four-copy caveat, and
+  Charizard/Lizardon Mega Battle non-equivalence before accepting a match.
+  Selected-source copy-count language is recorded as context, not official
+  surviving-copy authority, possession proof, or price truth. Sources: local
+  Japanese pre-English release file, selected Pokumon rendered-line snapshot,
+  local symbol-status matrix, and local Arita example catalog. Generated gap
+  moved from 145 releases / 4,015 cards to 144 releases / 4,012 cards. Current
+  catalog-history corpus:
+  `eff92eb3bc86bc2ebab600fcdb54f25552ceb42f28f3d6df2f9d8cb011798387`; index:
+  `730951b5d72906d55b65d5bf7933101920198fc80ca291294b91eb7a9c7062f0`; queue:
+  `34a6a0edeeec179bf5a7db52c3a187fae9e3fb3874090458090af559c31c403b`. Audit
+  counts: 23,132 claims, 5,795 sources, 65 hand-authored release dossiers, 537
+  hand-authored card dossiers, and 797 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/first_official_tournament_1997_trophies_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/jr_east_stamp_rally_1997_v0_1.json`.

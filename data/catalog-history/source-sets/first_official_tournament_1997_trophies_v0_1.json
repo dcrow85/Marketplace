@@ -1,0 +1,983 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete three-row tranche for Japanese First Official Pokemon Card Game Tournament trophy source slice.",
+    "in_scope": [
+      "First Official Tournament trophy release/source-slice dossier",
+      "all three trophy rows 011-013: No.1 Trainer, No.2 Trainer, No.3 Trainer",
+      "tournament rank, selected-source copy-count caveat, Arita credit, and Mega Battle confusion-boundary identification rails"
+    ],
+    "not_claiming": [
+      "complete event source",
+      "complete session-level award ledger",
+      "complete trophy-case or plaque variant catalog",
+      "official surviving copy counts",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "complete artist biography"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_first_official_tournament_199706",
+      "type": "release",
+      "context": {
+        "name_en": "First Official Pokemon Card Game Tournament trophy source slice",
+        "name_ja": "第1回公式ポケモンカードゲーム大会 トロフィープロモ",
+        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "release_date": "1997-06-14/1997-06-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_first_official_tournament_199706.json",
+          "title": "Local Japanese pre-English catalog: First Official Pokemon Card Game Tournament trophy source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "official surviving copy counts",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: 1st Official Pokemon Card Game Tournament",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Mitsuhiro Arita artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese pre-English catalog models the First Official Pokemon Card Game Tournament trophy source slice with a June 14-15, 1997 event window.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The source slice models three source-pinned trophy card identities: No.1 Trainer 011, No.2 Trainer 012, and No.3 Trainer 013.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected source lines describe the 1st Official Pokemon Card Game Tournament as held June 14-15, 1997, with four tournament sessions and No.1/No.2/No.3 Trainer cards awarded to the corresponding place winners across those sessions.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Selected source lines report four copies of each No.1, No.2, and No.3 Trainer card were given out; this tranche records that as selected-source context, not official surviving-copy authority.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "Selected source lines explicitly warn that the 1st official tournament No.1-3 Trainer cards and trophies are often confused with Charizard/Lizardon Mega Battle No.1-3 Trainer cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This source slice matters because it captures Pokemon TCG organized play becoming material: rank, session, trophy, and card identity fused into a tiny event ledger.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local rows credit all three trophy cards to Mitsuhiro Arita, scoped as provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.other_work",
+          "text": "Local catalog examples connect Mitsuhiro Arita to many early card memories; this tranche uses that only as local artist-footprint context and not as a complete biography or same-art equivalence claim.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve First Official Tournament context, June 14-15, 1997 event window, rank number, source row 011-013, Arita credit, selected-source copy-count caveat, and Charizard/Lizardon Mega Battle confusion boundary before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "first_official_tournament_1997_trophy_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says First Official Pokemon Card Game Tournament, No.1 Trainer, No.2 Trainer, No.3 Trainer, trophy card, June 1997, four copies, or Charizard Mega Battle comparison.",
+          "summary": "Keep the 1997 First Official Tournament trophy source slice separate from later Mega Battle trophy cards; rank, event, and source row are identity rails.",
+          "steps": [
+            "Require First Official Pokemon Card Game Tournament / June 14-15, 1997 context before naming this exact trophy slice.",
+            "Preserve rank and row together: No.1 Trainer 011, No.2 Trainer 012, No.3 Trainer 013.",
+            "Treat selected-source reported copy counts as source context, not official surviving-copy authority or possession proof.",
+            "Preserve the confusion boundary against later Charizard/Lizardon Mega Battle No.1-3 Trainer cards.",
+            "Treat provider-path images as catalog comparison aids, not seller evidence, authentication, condition proof, or image-rights approval.",
+            "Use seller provenance, physical-card evidence, and expert review before any transaction claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy counts",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "Charizard Mega Battle equivalence",
+            "image rights approval",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "First Official Tournament trophies — when rank became cardboard",
+        "why_it_matters": "This is where competitive Pokemon stops being only play and becomes ceremony. Four sessions, three ranks, three Arita trophy cards: the event made a scoreboard you could hold. The beauty is also the danger for agents: trophy language is magnetic, so rank, event, row, and the not-Charizard-Mega-Battle boundary have to stay bolted on.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "spendability",
+          "complete event source",
+          "official surviving copy counts",
+          "complete session-level award ledger",
+          "complete artist biography"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_first_official_tournament_199706:011",
+      "type": "card",
+      "context": {
+        "name_en": "No.1 Trainer",
+        "name_ja": "",
+        "normalized_label": "No.1 Trainer",
+        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "local_id": "011",
+        "card_number": "011",
+        "artist": "Mitsuhiro Arita",
+        "rank": "1st place"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_first_official_tournament_199706.json",
+          "title": "Local Japanese pre-English catalog: First Official Pokemon Card Game Tournament trophy source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "official surviving copy counts",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: 1st Official Pokemon Card Game Tournament",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Mitsuhiro Arita artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models No.1 Trainer as First Official Pokemon Card Game Tournament trophy source row 011, source-pinned to the UPC aggregate row and missing row-level Japanese print-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected source lines identify No.1 Trainer as the 1st place trophy card awarded across each of four tournament sessions at the June 14-15, 1997 event.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected source lines report four copies of No.1 Trainer were given out; this is selected-source context, not official surviving-copy authority.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits No.1 Trainer to Mitsuhiro Arita, scoped as provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "No.1 Trainer is the sharpest edge of the first official tournament story: not just a trophy card, but a card that says competitive Pokemon had learned to make victory into an object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "No.1 Trainer is part of a rank trio; its identity depends on the first-place rank, the 1997 First Official Tournament context, and source row 011, not name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve No.1 Trainer, 1st place rank, row 011, First Official Tournament 1997 context, Arita credit, selected-source four-copy caveat, and Charizard/Lizardon Mega Battle non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "first_official_tournament_1997_011_rank_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says No.1 Trainer, 1st place, 1997 trophy, First Official Tournament, Arita, four copies, or Charizard Mega Battle comparison.",
+          "summary": "Keep No.1 Trainer pinned to First Official Tournament row 011; rank and event are identity, not decoration.",
+          "steps": [
+            "Require First Official Pokemon Card Game Tournament / June 14-15, 1997 context and row 011 before naming this exact card.",
+            "Preserve rank: No.1 Trainer is the 1st place trophy row in this source slice.",
+            "Treat selected-source four-copy language as source context, not official surviving-copy authority, possession proof, or price truth.",
+            "Keep this row separate from later Charizard/Lizardon Mega Battle No.1-3 Trainer cards and other trophy families.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, and expert review before any transaction claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy counts",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "Charizard Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "No.1 Trainer — 1st place at the first official tournament",
+        "why_it_matters": "No.1 Trainer is the sharpest edge of the first official tournament story: not just a trophy card, but a card that says competitive Pokemon had learned to make victory into an object.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "official surviving copy counts",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_first_official_tournament_199706:012",
+      "type": "card",
+      "context": {
+        "name_en": "No.2 Trainer",
+        "name_ja": "",
+        "normalized_label": "No.2 Trainer",
+        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "local_id": "012",
+        "card_number": "012",
+        "artist": "Mitsuhiro Arita",
+        "rank": "2nd place"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_first_official_tournament_199706.json",
+          "title": "Local Japanese pre-English catalog: First Official Pokemon Card Game Tournament trophy source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "official surviving copy counts",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: 1st Official Pokemon Card Game Tournament",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Mitsuhiro Arita artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models No.2 Trainer as First Official Pokemon Card Game Tournament trophy source row 012, source-pinned to the UPC aggregate row and missing row-level Japanese print-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected source lines identify No.2 Trainer as the 2nd place trophy card awarded across each of four tournament sessions at the June 14-15, 1997 event.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected source lines report four copies of No.2 Trainer were given out; this is selected-source context, not official surviving-copy authority.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits No.2 Trainer to Mitsuhiro Arita, scoped as provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "No.2 Trainer is the row that keeps the podium honest. Without it, the story collapses into grail-only thinking; with it, the tournament becomes a ranked social machine.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "No.2 Trainer is part of a rank trio; its identity depends on the second-place rank, the 1997 First Official Tournament context, and source row 012, not name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve No.2 Trainer, 2nd place rank, row 012, First Official Tournament 1997 context, Arita credit, selected-source four-copy caveat, and Charizard/Lizardon Mega Battle non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "first_official_tournament_1997_012_rank_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says No.2 Trainer, 2nd place, 1997 trophy, First Official Tournament, Arita, four copies, or Charizard Mega Battle comparison.",
+          "summary": "Keep No.2 Trainer pinned to First Official Tournament row 012; rank and event are identity, not decoration.",
+          "steps": [
+            "Require First Official Pokemon Card Game Tournament / June 14-15, 1997 context and row 012 before naming this exact card.",
+            "Preserve rank: No.2 Trainer is the 2nd place trophy row in this source slice.",
+            "Treat selected-source four-copy language as source context, not official surviving-copy authority, possession proof, or price truth.",
+            "Keep this row separate from later Charizard/Lizardon Mega Battle No.1-3 Trainer cards and other trophy families.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, and expert review before any transaction claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy counts",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "Charizard Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "No.2 Trainer — 2nd place at the first official tournament",
+        "why_it_matters": "No.2 Trainer is the row that keeps the podium honest. Without it, the story collapses into grail-only thinking; with it, the tournament becomes a ranked social machine.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "official surviving copy counts",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_first_official_tournament_199706:013",
+      "type": "card",
+      "context": {
+        "name_en": "No.3 Trainer",
+        "name_ja": "",
+        "normalized_label": "No.3 Trainer",
+        "release_family_id": "jp_promo_first_official_tournament_199706",
+        "local_id": "013",
+        "card_number": "013",
+        "artist": "Mitsuhiro Arita",
+        "rank": "3rd place"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_first_official_tournament_199706.json",
+          "title": "Local Japanese pre-English catalog: First Official Pokemon Card Game Tournament trophy source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "official surviving copy counts",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_first_official_tournament_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: 1st Official Pokemon Card Game Tournament",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Mitsuhiro Arita artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models No.3 Trainer as First Official Pokemon Card Game Tournament trophy source row 013, source-pinned to the UPC aggregate row and missing row-level Japanese print-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected source lines identify No.3 Trainer as the 3rd place trophy card awarded across each of four tournament sessions at the June 14-15, 1997 event.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected source lines report four copies of No.3 Trainer were given out; this is selected-source context, not official surviving-copy authority.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits No.3 Trainer to Mitsuhiro Arita, scoped as provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "No.3 Trainer completes the podium and makes the set feel like an event ledger in card form. Its value is not only scarcity, but the way it records participation, rank, and ceremony.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "No.3 Trainer is part of a rank trio; its identity depends on the third-place rank, the 1997 First Official Tournament context, and source row 013, not name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve No.3 Trainer, 3rd place rank, row 013, First Official Tournament 1997 context, Arita credit, selected-source four-copy caveat, and Charizard/Lizardon Mega Battle non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "first_official_tournament_1997_013_rank_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says No.3 Trainer, 3rd place, 1997 trophy, First Official Tournament, Arita, four copies, or Charizard Mega Battle comparison.",
+          "summary": "Keep No.3 Trainer pinned to First Official Tournament row 013; rank and event are identity, not decoration.",
+          "steps": [
+            "Require First Official Pokemon Card Game Tournament / June 14-15, 1997 context and row 013 before naming this exact card.",
+            "Preserve rank: No.3 Trainer is the 3rd place trophy row in this source slice.",
+            "Treat selected-source four-copy language as source context, not official surviving-copy authority, possession proof, or price truth.",
+            "Keep this row separate from later Charizard/Lizardon Mega Battle No.1-3 Trainer cards and other trophy families.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, and expert review before any transaction claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy counts",
+            "complete event source",
+            "complete session-level award ledger",
+            "complete trophy-case or plaque variant catalog",
+            "Charizard Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "No.3 Trainer — 3rd place at the first official tournament",
+        "why_it_matters": "No.3 Trainer completes the podium and makes the set feel like an event ledger in card form. Its value is not only scarcity, but the way it records participation, rank, and ceremony.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "official surviving copy counts",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
