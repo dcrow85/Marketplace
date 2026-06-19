@@ -1,0 +1,1522 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Awakening Legends high-gravity tranche",
+    "release_family_id": "jp_tcg_awakening_legends_20001123",
+    "notes": [
+      "Japanese Neo-era main expansion released November 23, 2000 with 57 modeled rows in the local catalog.",
+      "This pass deepens the release dossier plus ten high-gravity identity cards; the remaining 47 card rows stay generated follow-up work."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_awakening_legends_20001123",
+      "type": "release",
+      "context": {
+        "name_en": "Awakening Legends",
+        "name_ja": "めざめる伝説",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "release_date": "2000-11-23"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json",
+          "title": "Local Japanese classic catalog: Awakening Legends",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/neo3",
+          "title": "TCGdex Japanese set endpoint: neo3 / Awakening Legends",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Awakening Legends / めざめる伝説 with a November 23, 2000 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 57 card rows for Awakening Legends, with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Awakening Legends is modeled as a Japanese main expansion in the ポケモンカード★neo series, using TCGdex set id neo3.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Awakening Legends matters because it gathers Johto's mythic pressure into one release: Ho-Oh, the roaming beasts, Celebi, and the Shining Magikarp/Gyarados reversal all sit in the same local set spine.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around Ho-Oh, Entei, Suicune, Raikou, Celebi, and the Shining Magikarp/Shining Gyarados pair, while Crobat, Jumpluff, and Kingdra show Johto extending older evolution lines.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "This source-set pass deepens the release and ten high-gravity card rows only; the other 47 Awakening Legends rows remain generated catalog-history follow-up work.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "An Awakening Legends match should preserve Japanese title めざめる伝説, TCGdex set id neo3, local card number, and row id together; translated names alone are not enough.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_neo3_release_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Awakening Legends, Japanese Neo 3, Neo Revelation Japanese, めざめる伝説, Shining Magikarp, Shining Gyarados, Ho-Oh, Celebi, or one of the legendary beasts.",
+          "summary": "Confirm Japanese Awakening Legends / neo3 identity by title, set id, card number, and row id before treating a card as this release.",
+          "steps": [
+            "Confirm the Japanese release title めざめる伝説 and/or TCGdex set id neo3.",
+            "Confirm the card number/local id against the local row, especially for high-gravity names that appear in other products.",
+            "Do not treat English Neo Revelation, Premium File, later reprints, or same-character cards as equivalent without route evidence.",
+            "Preserve local source names and normalized collector names separately when the source text is messy or translated.",
+            "For transactional use, ask for front/back photos, number area, holo or secret-rarity features, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "complete 57-card hand-authored coverage",
+            "illustrator authority",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When Johto myth wakes up",
+        "why_it_matters": "Awakening Legends is where Johto starts to feel ancient instead of merely new. Ho-Oh lifts the sky, the beasts move through the grass, Celebi bends the forest toward time, and the Shining Magikarp/Gyarados pair turns evolution into a secret. It is a release about memory changing state. For an agent, the important move is to keep the assembly visible: Japanese title, neo3 spine, card number, and row id before the famous names start pulling everything into generic want-language.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-006",
+      "type": "card",
+      "context": {
+        "name_en": "Crobat",
+        "name_ja": "クロバット",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-006",
+        "catalog_row_id": "006"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-006",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Crobat 006",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Crobat as Awakening Legends card 006 / local id neo3-006; the source row name appears as クロバット.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Crobat as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Crobat.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Crobat matters because Johto turns an old Kanto nuisance into a final evolution with real collector presence. It is one of Awakening Legends' best examples of the set waking up older lines rather than only introducing new mascots.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Crobat, preserve the Japanese set id neo3, card number 006, local id neo3-006, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_crobat_006_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Crobat, Japanese Neo 3 Crobat, Neo Revelation Crobat, or Crobat #006.",
+          "summary": "Confirm Crobat by set identity plus card number 006, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 006 / neo3-006.",
+            "Preserve the source-row name 'クロバット' and normalized collector name 'Crobat' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Crobat equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the cave line grows wings",
+        "why_it_matters": "Crobat matters because Johto turns an old Kanto nuisance into a final evolution with real collector presence. It is one of Awakening Legends' best examples of the set waking up older lines rather than only introducing new mascots.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-007",
+      "type": "card",
+      "context": {
+        "name_en": "Jumpluff",
+        "name_ja": "ジャンプラフ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-007",
+        "catalog_row_id": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-007",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Jumpluff 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Jumpluff as Awakening Legends card 007 / local id neo3-007; the source row name appears as ジャンプラフ.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Jumpluff as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Jumpluff.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jumpluff is gentle compared with the set's legends, which is exactly why it matters. Awakening Legends is not only about power; it gives small, drifting Johto ecology a holo-stage seat at the table.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Jumpluff, preserve the Japanese set id neo3, card number 007, local id neo3-007, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_jumpluff_007_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Jumpluff, Japanese Neo 3 Jumpluff, Neo Revelation Jumpluff, or Jumpluff #007.",
+          "summary": "Confirm Jumpluff by set identity plus card number 007, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 007 / neo3-007.",
+            "Preserve the source-row name 'ジャンプラフ' and normalized collector name 'Jumpluff' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Jumpluff equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "softness gets a spotlight",
+        "why_it_matters": "Jumpluff is gentle compared with the set's legends, which is exactly why it matters. Awakening Legends is not only about power; it gives small, drifting Johto ecology a holo-stage seat at the table.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-010",
+      "type": "card",
+      "context": {
+        "name_en": "Entei",
+        "name_ja": "entei",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-010",
+        "catalog_row_id": "010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-010",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Entei 010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Entei as Awakening Legends card 010 / local id neo3-010; the source row name appears as entei.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Entei as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Entei.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Entei carries the roaming-beast myth into the main expansion spine. The card helps an agent see Awakening Legends as a legendary-beast release, not just a list with one famous bird at the top.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Entei, preserve the Japanese set id neo3, card number 010, local id neo3-010, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_entei_010_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Entei, Japanese Neo 3 Entei, Neo Revelation Entei, or Entei #010.",
+          "summary": "Confirm Entei by set identity plus card number 010, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 010 / neo3-010.",
+            "Preserve the source-row name 'entei' and normalized collector name 'Entei' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Entei equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the first beast in the set spine",
+        "why_it_matters": "Entei carries the roaming-beast myth into the main expansion spine. The card helps an agent see Awakening Legends as a legendary-beast release, not just a list with one famous bird at the top.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-011",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh",
+        "name_ja": "ho-oh",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-011",
+        "catalog_row_id": "011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-011",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Ho-Oh 011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Ho-Oh as Awakening Legends card 011 / local id neo3-011; the source row name appears as ho-oh.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Ho-Oh as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Ho-Oh.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Ho-Oh is the release's sky signal. In this tranche it is the cleanest example of the title doing what it says: a legend waking into the collector's hand.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Ho-Oh, preserve the Japanese set id neo3, card number 011, local id neo3-011, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_ho_oh_011_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Ho-Oh, Japanese Neo 3 Ho-Oh, Neo Revelation Ho-Oh, or Ho-Oh #011.",
+          "summary": "Confirm Ho-Oh by set identity plus card number 011, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 011 / neo3-011.",
+            "Preserve the source-row name 'ho-oh' and normalized collector name 'Ho-Oh' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Ho-Oh equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the rainbow headline",
+        "why_it_matters": "Ho-Oh is the release's sky signal. In this tranche it is the cleanest example of the title doing what it says: a legend waking into the collector's hand.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-020",
+      "type": "card",
+      "context": {
+        "name_en": "Kingdra",
+        "name_ja": "キングドラ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-020",
+        "catalog_row_id": "020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-020",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Kingdra 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Kingdra as Awakening Legends card 020 / local id neo3-020; the source row name appears as キングドラ.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Kingdra as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Kingdra.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Kingdra is an evolution payoff card: Johto reaches back to Seadra and gives the line a new final shape. That makes it a perfect assembly card, because it shows the franchise extending existing memory instead of replacing it.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Kingdra, preserve the Japanese set id neo3, card number 020, local id neo3-020, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_kingdra_020_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Kingdra, Japanese Neo 3 Kingdra, Neo Revelation Kingdra, or Kingdra #020.",
+          "summary": "Confirm Kingdra by set identity plus card number 020, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 020 / neo3-020.",
+            "Preserve the source-row name 'キングドラ' and normalized collector name 'Kingdra' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Kingdra equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "a dragon-shaped Johto upgrade",
+        "why_it_matters": "Kingdra is an evolution payoff card: Johto reaches back to Seadra and gives the line a new final shape. That makes it a perfect assembly card, because it shows the franchise extending existing memory instead of replacing it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-021",
+      "type": "card",
+      "context": {
+        "name_en": "Suicune",
+        "name_ja": "suicune",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-021",
+        "catalog_row_id": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-021",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Suicune 021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Suicune as Awakening Legends card 021 / local id neo3-021; the source row name appears as suicune.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Suicune as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Suicune.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Suicune gives Awakening Legends a different legendary temperature from Entei: quieter, cleaner, more elusive. Together with Raikou and Entei, it makes the roaming-beast pattern legible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Suicune, preserve the Japanese set id neo3, card number 021, local id neo3-021, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_suicune_021_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Suicune, Japanese Neo 3 Suicune, Neo Revelation Suicune, or Suicune #021.",
+          "summary": "Confirm Suicune by set identity plus card number 021, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 021 / neo3-021.",
+            "Preserve the source-row name 'suicune' and normalized collector name 'Suicune' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Suicune equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the blue beast anchors the water side",
+        "why_it_matters": "Suicune gives Awakening Legends a different legendary temperature from Entei: quieter, cleaner, more elusive. Together with Raikou and Entei, it makes the roaming-beast pattern legible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-022",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Magikarp",
+        "name_ja": "輝くマジカルプ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-022",
+        "catalog_row_id": "022"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-022",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Shining Magikarp 022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Shining Magikarp as Awakening Legends card 022 / local id neo3-022; the source row name appears as 輝くマジカルプ.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Shining Magikarp as Secret Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Shining Magikarp.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Shining Magikarp is the set's best reminder that Pokemon loves reversal. The weakest joke fish becomes a secret-rate attention point, and the agent should treat that as identity texture rather than ordinary rarity chatter.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Shining Magikarp, preserve the Japanese set id neo3, card number 022, local id neo3-022, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_shining_magikarp_022_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Shining Magikarp, Japanese Neo 3 Shining Magikarp, Neo Revelation Shining Magikarp, or Shining Magikarp #022.",
+          "summary": "Confirm Shining Magikarp by set identity plus card number 022, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 022 / neo3-022.",
+            "Preserve the source-row name '輝くマジカルプ' and normalized collector name 'Shining Magikarp' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Shining Magikarp equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the joke fish becomes a secret",
+        "why_it_matters": "Shining Magikarp is the set's best reminder that Pokemon loves reversal. The weakest joke fish becomes a secret-rate attention point, and the agent should treat that as identity texture rather than ordinary rarity chatter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-023",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Gyarados",
+        "name_ja": "輝くギャラドス",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-023",
+        "catalog_row_id": "023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-023",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Shining Gyarados 023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Shining Gyarados as Awakening Legends card 023 / local id neo3-023; the source row name appears as 輝くギャラドス.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Shining Gyarados as Secret Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Shining Gyarados.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Shining Gyarados is the other half of the secret pair: the dramatic answer to Magikarp's small joke. Together they make Awakening Legends feel like a set about transformation under pressure.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Shining Gyarados, preserve the Japanese set id neo3, card number 023, local id neo3-023, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_shining_gyarados_023_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Shining Gyarados, Japanese Neo 3 Shining Gyarados, Neo Revelation Shining Gyarados, or Shining Gyarados #023.",
+          "summary": "Confirm Shining Gyarados by set identity plus card number 023, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 023 / neo3-023.",
+            "Preserve the source-row name '輝くギャラドス' and normalized collector name 'Shining Gyarados' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Shining Gyarados equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the reversal turns monstrous",
+        "why_it_matters": "Shining Gyarados is the other half of the secret pair: the dramatic answer to Magikarp's small joke. Together they make Awakening Legends feel like a set about transformation under pressure.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-029",
+      "type": "card",
+      "context": {
+        "name_en": "Raikou",
+        "name_ja": "ライコウ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-029",
+        "catalog_row_id": "029"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-029",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Raikou 029",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Raikou as Awakening Legends card 029 / local id neo3-029; the source row name appears as ライコウ.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Raikou as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Raikou.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Raikou completes the legendary-beast reading of the set. It keeps the agent from over-focusing on Ho-Oh alone: Awakening Legends is a wider Johto myth packet.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Raikou, preserve the Japanese set id neo3, card number 029, local id neo3-029, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_raikou_029_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Raikou, Japanese Neo 3 Raikou, Neo Revelation Raikou, or Raikou #029.",
+          "summary": "Confirm Raikou by set identity plus card number 029, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 029 / neo3-029.",
+            "Preserve the source-row name 'ライコウ' and normalized collector name 'Raikou' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Raikou equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the storm completes the beasts",
+        "why_it_matters": "Raikou completes the legendary-beast reading of the set. It keeps the agent from over-focusing on Ho-Oh alone: Awakening Legends is a wider Johto myth packet.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_awakening_legends_20001123:neo3-036",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "セレビ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_awakening_legends_20001123",
+        "row_id": "jp_tcg_awakening_legends_20001123:neo3-036",
+        "catalog_row_id": "036"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_awakening_legends_20001123.json#row:jp_tcg_awakening_legends_20001123:neo3-036",
+          "title": "Local Japanese classic catalog: Awakening Legends row: Celebi 036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Celebi as Awakening Legends card 036 / local id neo3-036; the source row name appears as セレビ.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Celebi as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Awakening Legends row does not provide an illustrator credit for Celebi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Celebi gives the set a myth that feels different from beasts and birds: small, temporal, forest-like. It broadens the release from legendary force into legendary mystery.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Celebi, preserve the Japanese set id neo3, card number 036, local id neo3-036, and Awakening Legends release route; do not rely on the translated or normalized name alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "awakening_legends_celebi_036_identity_v0.1",
+          "trigger": "A user or listing says Awakening Legends Celebi, Japanese Neo 3 Celebi, Neo Revelation Celebi, or Celebi #036.",
+          "summary": "Confirm Celebi by set identity plus card number 036, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is めざめる伝説 / Awakening Legends with TCGdex set id neo3.",
+            "Confirm the printed or cataloged card number/local id matches 036 / neo3-036.",
+            "Preserve the source-row name 'セレビ' and normalized collector name 'Celebi' separately.",
+            "Do not merge with English Neo Revelation, Premium File, later reprints, or same-character cards without route and number evidence.",
+            "For a trade, ask for full front/back photos, number area, holo/secret-rarity area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Neo Revelation equivalence",
+            "other Celebi equivalence",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "time slips into the release",
+        "why_it_matters": "Celebi gives the set a myth that feels different from beasts and birds: small, temporal, forest-like. It broadens the release from legendary force into legendary mystery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

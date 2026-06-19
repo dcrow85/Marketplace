@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-sixth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/awakening_legends_tranche_v0_1.json`.
+  Japanese Awakening Legends / めざめる伝説 now has a hand-authored release
+  dossier plus ten high-gravity card dossiers: Crobat 006, Jumpluff 007,
+  Entei 010, Ho-Oh 011, Kingdra 020, Suicune 021, Shining Magikarp 022,
+  Shining Gyarados 023, Raikou 029, and Celebi 036. The pass frames
+  Awakening Legends as Johto myth waking up: Ho-Oh, the roaming beasts,
+  Celebi, and the Shining Magikarp/Gyarados reversal gathered into the neo3
+  spine. Added `special_identification_instructions` requiring agents to
+  preserve Japanese title めざめる伝説, TCGdex set id `neo3`, card number,
+  local row id, and source-row name before accepting famous-name matches;
+  English Neo Revelation, Premium File, later reprints, and same-character
+  rows are explicitly not equivalent without route evidence. This is a
+  bounded high-gravity tranche, not complete 57-card hand-authored coverage;
+  47 Awakening Legends card rows remain generated follow-up work. Artists
+  remain intentionally unset because the local Japanese classic rows do not
+  provide illustrator authority. Sources: local Japanese classic Awakening
+  Legends release file and TCGdex Japanese set/card payload references.
+  Generated gap moved from 162 releases / 4,178 cards to 161 releases /
+  4,168 cards. Current catalog-history corpus: 22,763 claims, 5,589 sources,
+  633 dossiers with special identification instructions, corpus hash
+  `505d48d9e4533e7dd780adcf02b8893ac44355438a547a457a22e78138d98aac`;
+  index hash `dc56c91317c0edde1bdc2467ea4c8c3b9f13904bc3a91644753d164f76c3c66c`;
+  queue hash `4e2075ed05300d43c94155bb99e5100781645133aa7983aeeb31f6bf27f5ff4e`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-fifth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/premium_file_3_v0_1.json`. Japanese
