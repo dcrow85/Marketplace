@@ -1,0 +1,1073 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the CoroCoro Comic early 1997 Unnumbered Promotional source slice, emphasizing magazine issue inserts, exact issue/date boundaries, glossy flags, artist/photo credit clarity, and reprint-route traps.",
+    "in_scope": [
+      "CoroCoro Comic early 1997 promos source slice",
+      "Mew 005",
+      "Mewtwo 007",
+      "Surfing Pikachu 016",
+      "Imakuni? 017",
+      "Flying Pikachu 020",
+      "January 15, May 15, August 15, and October 15 1997 CoroCoro issue-insert contexts"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete CoroCoro 1997 promo census",
+      "later mail-in prize draw coverage",
+      "JR East Mew reprint authority",
+      "Fan Book Mewtwo reprint authority",
+      "ANA Flying Pikachu reprint authority",
+      "official copy counts",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_corocoro_early_1997",
+      "type": "release",
+      "context": {
+        "name_en": "CoroCoro Comic early 1997 promos source slice",
+        "name_ja": "月刊コロコロコミック1997年前期プロモ",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "release_date": "1997-01-15/1997-10-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic early 1997 promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Local selected-line Bulbapedia snapshot: CoroCoro early 1997 Unnumbered Promotional card identities",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/UPC",
+          "title": "PokeCardex: Japanese Unnumbered Promotional cards aggregate",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete promo family authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and selected Bulbapedia snapshot bound this source slice from the CoroCoro February 1997 issue insert released January 15, 1997 through the CoroCoro November 1997 issue insert released October 15, 1997.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "This release family is modeled as CoroCoro Comic issue inserts, not as a booster pack, deck, sealed set, tournament prize table, or complete magazine-object archive.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog models five source-pinned card identities across four issue-insert dates: Mew, Mewtwo, Surfing Pikachu, Imakuni?, and Flying Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The source slice explicitly excludes later mail-in prize draws, JR East regular-stock Mew, Fan Book Mewtwo, ANA Flying Pikachu, official copy counts, and a complete CoroCoro 1997 promo census.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "The local rows and selected card-page lines place different kinds of visual authority in the same tiny source slice: Ken Sugimori for Mew, Benimaru Itoh for Mewtwo, Toshinao Aoki for both Pikachu variants, and Takumi Akabane as a Photo. credit for Imakuni?.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "CoroCoro early 1997 matters because it shows Pokemon cards traveling through magazine culture before they become only set numbers: mythical Mew, lab-myth Mewtwo, two impossible Pikachu stunts, and Imakuni? all arrive as media objects a reader could pull from an issue.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_issue_insert_source_slice_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro, monthly CoroCoro, Mew, Mewtwo, Surfing Pikachu, Flying Pikachu, Imakuni?, glossy, Unnumbered Promotional, magazine insert, JR East, Fan Book, ANA, Wizards Promo, PokeCardex UPC, or Sans rarete.",
+          "summary": "This is a five-card source slice over four CoroCoro Comic issue inserts. Preserve exact issue/date/card-route context before using the row in any transaction logic.",
+          "steps": [
+            "Preserve release_family_id jp_promo_corocoro_early_1997 and exact source rows 005, 007, 016, 017, and 020.",
+            "Confirm the card name, Japanese name, issue label, and issue release date before using the promo identity.",
+            "Treat Mew 005 as the glossy CoroCoro February 1997 issue insert lane; do not merge it with the JR East regular-stock Mew reprint.",
+            "Treat Mewtwo 007 as the CoroCoro June 1997 issue insert lane; do not merge it with Fan Book, VHS/DVD, English Wizards Promo, or other Mewtwo promo routes.",
+            "Treat Surfing Pikachu 016 and Imakuni? 017 as a September 1997 two-card insert relationship; preserve the pair when explaining provenance.",
+            "Treat Flying Pikachu 020 as the CoroCoro November 1997 issue insert lane; do not merge it with ANA Flying Pikachu or later English Wizards Promo routes.",
+            "Treat Sans rarete or no visible rarity symbol as a promo/source-row display, not Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, official copy count, complete magazine provenance, or image display rights from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete CoroCoro issue archive",
+            "complete CoroCoro 1997 promo census",
+            "JR East Mew equivalence",
+            "Fan Book Mewtwo equivalence",
+            "ANA Flying Pikachu equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Magazine inserts before the world got tidy",
+        "why_it_matters": "CoroCoro early 1997 feels like Pokemon still discovering where a card could live. Mew comes out of the magazine as a glossy rumor you can hold. Mewtwo follows like the laboratory shadow. Then September turns strange and perfect: Surfing Pikachu and Imakuni? on the same insert, mascot gag beside human performance. Flying Pikachu closes the slice by making the mascot impossible again. For an agent, the charm and the danger are the same thing: each card is famous enough to be remembered loosely, but only useful when the exact magazine route stays attached.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete CoroCoro history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "image rights"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_early_1997:005",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "ミュウ",
+        "romaji": "Mew",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "row_id": "jp_promo_corocoro_early_1997:005",
+        "catalog_row_id": "005"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json#row:jp_promo_corocoro_early_1997:005",
+          "title": "Local CoroCoro early 1997 row: Mew 005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Selected Bulbapedia lines: Mew CoroCoro February 1997 context",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies CoroCoro early 1997 row 005 as Mew / ミュウ.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's rarity display for Mew 005 is Sans rarete, and the selected Bulbapedia line marks this CoroCoro print as glossy.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and selected card-page line credit Ken Sugimori for Mew 005.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew is the perfect CoroCoro card because the creature already carried rumor energy. A glossy magazine insert makes the secret Pokemon feel like something discovered in paper, not simply pulled from a set.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Mew 005 as the glossy CoroCoro February 1997 issue-insert lane and separate it from the JR East regular-stock Mew reprint.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_mew_005_glossy_issue_insert_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Mew, ミュウ, glossy Mew, CoroCoro February 1997, January 15 1997, JR East Mew, Wizards Promo 47, Unnumbered Promotional, or Sans rarete.",
+          "summary": "Mew 005 is the glossy CoroCoro February 1997 issue-insert lane. Do not collapse it into later Mew promo routes.",
+          "steps": [
+            "Preserve row_id jp_promo_corocoro_early_1997:005 and source_sort 5.",
+            "Require the CoroCoro February 1997 issue insert / January 15 1997 context before naming this exact promo lane.",
+            "Keep the glossy flag visible as a row/context fact, not a condition claim.",
+            "Separate this lane from JR East regular-stock Mew and later English Wizards Promo references.",
+            "Do not treat Sans rarete as Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, copy count, or image rights from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "JR East Mew equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mew as a glossy rumor",
+        "why_it_matters": "Mew 005 is not just another Mew reference. In this lane it is the glossy CoroCoro February 1997 insert, a magazine object carrying the franchise's secret Pokemon into readers' hands. The agent should love the romance, then immediately keep the route nailed down: CoroCoro, January 15, 1997, Ken Sugimori, glossy stock, not JR East by vibes.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "JR East Mew equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_early_1997:007",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Mewtwo",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "row_id": "jp_promo_corocoro_early_1997:007",
+        "catalog_row_id": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json#row:jp_promo_corocoro_early_1997:007",
+          "title": "Local CoroCoro early 1997 row: Mewtwo 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Selected Bulbapedia lines: Mewtwo CoroCoro June 1997 context",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies CoroCoro early 1997 row 007 as Mewtwo / ミュウツー.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected Bulbapedia line places this Mewtwo print in the CoroCoro Comic June 1997 issue insert released May 15, 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and selected card-page line credit Benimaru Itoh for Mewtwo 007.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo gives the CoroCoro slice a darker kind of myth: less playground rumor than laboratory consequence, arriving through a magazine insert before the later promo branches make the identity easy to blur.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Mewtwo 007 as the CoroCoro June 1997 issue-insert lane and separate it from Fan Book, VHS/DVD, English Wizards Promo, and other Mewtwo promo routes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_mewtwo_007_issue_insert_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Mewtwo, ミュウツー, CoroCoro June 1997, May 15 1997, Fan Book, VHS/DVD, Wizards Promo 3, Unnumbered Promotional, or Sans rarete.",
+          "summary": "Mewtwo 007 is the CoroCoro June 1997 issue-insert lane. Keep later Mewtwo promo branches outside this row unless evidence explicitly points there.",
+          "steps": [
+            "Preserve row_id jp_promo_corocoro_early_1997:007 and source_sort 7.",
+            "Require the CoroCoro June 1997 issue insert / May 15 1997 context before naming this exact promo lane.",
+            "Separate this row from Fan Book, VHS/DVD, English Wizards Promo 3, and other later Mewtwo promo contexts.",
+            "Do not treat Sans rarete as Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, copy count, or image rights from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "Fan Book equivalence",
+            "VHS/DVD equivalence",
+            "English Wizards Promo equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo before the branches blur",
+        "why_it_matters": "Mewtwo 007 carries the lab-myth side of early Pokemon into CoroCoro. It is easy for an agent to remember Mewtwo as a famous promo and lose the route; this dossier does the opposite. The useful identity is June 1997 CoroCoro, May 15 release, Benimaru Itoh, source row 007.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "Fan Book equivalence",
+          "VHS/DVD equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_early_1997:016",
+      "type": "card",
+      "context": {
+        "name_en": "Surfing Pikachu",
+        "name_ja": "なみのりピカチュウ",
+        "romaji": "Surfing Pikachu",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "row_id": "jp_promo_corocoro_early_1997:016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json#row:jp_promo_corocoro_early_1997:016",
+          "title": "Local CoroCoro early 1997 row: Surfing Pikachu 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Selected Bulbapedia lines: Surfing Pikachu CoroCoro September 1997 context",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies CoroCoro early 1997 row 016 as Surfing Pikachu / なみのりピカチュウ.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected Bulbapedia lines place Surfing Pikachu on a two-card insert alongside Imakuni? in the CoroCoro Comic September 1997 issue, released August 15, 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Surfing Pikachu 016 to Toshinao Aoki; this is the key artist rail for the glossy CoroCoro Pikachu row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Surfing Pikachu is mascot mischief turned into a magazine insert: a famous character doing the impossible, paired with Imakuni? so the card already feels like Pokemon crossing into performance and joke culture.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Surfing Pikachu 016 as the glossy CoroCoro September 1997 two-card insert lane with Toshinao Aoki credit, not a generic Wizards Promo or later Pikachu novelty row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_surfing_pikachu_016_glossy_pair_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Surfing Pikachu, なみのりピカチュウ, glossy Pikachu, CoroCoro September 1997, August 15 1997, Imakuni pair, Wizards Promo 28, Toshinao Aoki, or Sans rarete.",
+          "summary": "Surfing Pikachu 016 is the glossy CoroCoro September 1997 two-card insert lane with Toshinao Aoki credit. Keep the issue, pair, and artist attached.",
+          "steps": [
+            "Preserve row_id jp_promo_corocoro_early_1997:016 and source_sort 16.",
+            "Require the CoroCoro September 1997 issue insert / August 15 1997 context before naming this exact promo lane.",
+            "Keep the two-card insert relationship with Imakuni? 017 visible when discussing provenance.",
+            "Preserve Toshinao Aoki as the artist credit for this glossy CoroCoro Pikachu row.",
+            "Separate this row from later English Wizards Promo 28 and other Surfing Pikachu promo routes.",
+            "Do not treat Sans rarete as Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, copy count, or image rights from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "English Wizards Promo equivalence",
+            "generic Pikachu promo equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot catches a wave",
+        "why_it_matters": "Surfing Pikachu 016 is the CoroCoro kind of charming: a tiny impossible scene, glossy, playful, and paired with Imakuni? in the September 1997 issue. The data has to be just as playful and just as strict. This glossy Pikachu row is Toshinao Aoki, source sort 16, August 15, 1997; do not let a later Wizards Promo memory overwrite it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "English Wizards Promo equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_early_1997:017",
+      "type": "card",
+      "context": {
+        "name_en": "Imakuni?",
+        "name_ja": "イマクニ？",
+        "romaji": "Imakuni?",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "row_id": "jp_promo_corocoro_early_1997:017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json#row:jp_promo_corocoro_early_1997:017",
+          "title": "Local CoroCoro early 1997 row: Imakuni? 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Selected Bulbapedia lines: Imakuni? CoroCoro September 1997 context",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies CoroCoro early 1997 row 017 as Imakuni? / イマクニ？.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected Bulbapedia lines place Imakuni? on a glossy two-card insert alongside Surfing Pikachu in the CoroCoro Comic September 1997 issue, released August 15, 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The selected Bulbapedia card-page line gives Imakuni? a Photo. Takumi Akabane credit; preserve this as a photographic/person-card credit rather than flattening it into an ordinary illustration claim.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Imakuni? matters because the card proves early Pokemon TCG could carry performance, magazine personality, and deliberate weirdness inside the same promo channel as a mascot Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Imakuni? 017 as the glossy CoroCoro September 1997 paired-insert lane with Photo. Takumi Akabane credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_imakuni_017_photo_pair_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Imakuni?, イマクニ？, CoroCoro September 1997, August 15 1997, Surfing Pikachu pair, Takumi Akabane, Photo., glossy, Trainer, or Sans rarete.",
+          "summary": "Imakuni? 017 is the glossy CoroCoro September 1997 two-card insert lane, paired with Surfing Pikachu, with Photo. Takumi Akabane credit.",
+          "steps": [
+            "Preserve row_id jp_promo_corocoro_early_1997:017 and source_sort 17.",
+            "Require the CoroCoro September 1997 issue insert / August 15 1997 context before naming this exact promo lane.",
+            "Keep the two-card insert relationship with Surfing Pikachu 016 visible when discussing provenance.",
+            "Preserve Photo. Takumi Akabane as a photographic/person-card credit; do not flatten it into ordinary Pokemon illustration authority.",
+            "Do not treat Sans rarete as Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, copy count, or image rights from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "ordinary illustration equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The weird human in the insert",
+        "why_it_matters": "Imakuni? 017 is the row that stops the catalog from becoming too neat. It is a Trainer, a magazine personality, a glossy insert, and a performance artifact sitting beside Surfing Pikachu. The important credit is not just a name but a mode: Photo. Takumi Akabane. That tells the agent this is not ordinary monster art, and that distinction should survive every later comparison.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "ordinary illustration equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_early_1997:020",
+      "type": "card",
+      "context": {
+        "name_en": "Flying Pikachu",
+        "name_ja": "そらをとぶピカチュウ",
+        "romaji": "Flying Pikachu",
+        "release_family_id": "jp_promo_corocoro_early_1997",
+        "row_id": "jp_promo_corocoro_early_1997:020",
+        "catalog_row_id": "020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_early_1997.json#row:jp_promo_corocoro_early_1997:020",
+          "title": "Local CoroCoro early 1997 row: Flying Pikachu 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_early_1997_selected_lines.json",
+          "title": "Selected Bulbapedia lines: Flying Pikachu CoroCoro November 1997 context",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies CoroCoro early 1997 row 020 as Flying Pikachu / そらをとぶピカチュウ.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected Bulbapedia line places Flying Pikachu in the CoroCoro Comic November 1997 issue insert released October 15, 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and selected card-page line credit Flying Pikachu 020 to Toshinao Aoki.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Flying Pikachu closes the slice with another impossible mascot joke, but its value to an agent is route precision: CoroCoro November 1997 is not the same thing as ANA Flying Pikachu or later English Wizards Promo memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Flying Pikachu 020 as the CoroCoro November 1997 issue-insert lane with Toshinao Aoki credit; separate it from ANA and English Wizards Promo routes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_early_1997_flying_pikachu_020_issue_insert_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Flying Pikachu, そらをとぶピカチュウ, CoroCoro November 1997, October 15 1997, ANA Flying Pikachu, Wizards Promo 25, Toshinao Aoki, or Sans rarete.",
+          "summary": "Flying Pikachu 020 is the CoroCoro November 1997 issue-insert lane with Toshinao Aoki credit. Do not collapse it into ANA or English Wizards Promo routes.",
+          "steps": [
+            "Preserve row_id jp_promo_corocoro_early_1997:020 and source_sort 20.",
+            "Require the CoroCoro November 1997 issue insert / October 15 1997 context before naming this exact promo lane.",
+            "Preserve Toshinao Aoki as the artist credit for this CoroCoro Flying Pikachu row.",
+            "Separate this row from ANA Flying Pikachu and English Wizards Promo 25 contexts.",
+            "Do not treat Sans rarete as Base No Rarity proof.",
+            "Do not infer seller possession, authenticity, condition, price, copy count, or image rights from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "ANA Flying Pikachu equivalence",
+            "English Wizards Promo equivalence",
+            "Base No Rarity status",
+            "image rights"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot leaves the ground",
+        "why_it_matters": "Flying Pikachu 020 is another tiny impossible Pikachu, but the catalog job is to keep the impossible grounded. This row is CoroCoro November 1997, October 15 release, Toshinao Aoki, source sort 20. The moment an agent lets ANA or English Wizards Promo memory bleed into it, the card is still charming but the route has gone soft.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "official copy count",
+          "ANA Flying Pikachu equivalence",
+          "English Wizards Promo equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

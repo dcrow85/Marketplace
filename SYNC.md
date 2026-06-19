@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-third
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_early_1997_v0_1.json`.
+  CoroCoro Comic early 1997 promos are now a hand-authored magazine/media
+  distribution source-slice dossier, with five rows promoted from generated
+  baseline to sourced card dossiers: Mew 005, Mewtwo 007, Surfing Pikachu
+  016, Imakuni? 017, and Flying Pikachu 020. The pass frames these cards as
+  issue inserts rather than booster, deck, tournament, or complete magazine
+  archive objects: Mew as a glossy rumor, Mewtwo as lab myth, Surfing Pikachu
+  and Imakuni? as the September two-card insert, and Flying Pikachu as the
+  mascot leaving the ground. Added special identification rails for exact
+  issue/date/source-sort preservation, glossy flags, the five-card / four-issue
+  source-slice boundary, JR East Mew exclusion, Fan Book / VHS / Wizards Mewtwo
+  exclusion, ANA Flying Pikachu exclusion, `Sans rareté` not being Base No
+  Rarity proof, Toshinao Aoki as the glossy CoroCoro Surfing/Flying Pikachu
+  artist, and Imakuni? preserving `Photo. Takumi Akabane` rather than ordinary
+  illustration authority. Sources: local CoroCoro promo source-slice catalog,
+  local selected-line Bulbapedia wikitext snapshot, Bulbapedia Unnumbered
+  Promotional cards page and supporting card pages, and PokéCardex UPC. Generated
+  gap moved from 175 releases / 4,286 cards to 174 releases / 4,281 cards.
+  Current catalog-history corpus: 22,859 claims, 5,492 sources, corpus hash
+  `77edbb820cc9c2cb7c76017d2912ead562ae5326f0bf7dfe5326ab8645701f56`;
+  index hash `f39763e8bb544a40761002cd3ca980d5447475c9e2ffb6f2123bd0c6472b47c5`;
+  queue hash `7d100b93b054b4586aa58dc119ab2e4cfa83cee41d6353e274e45e514c0178da`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-second
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/series_1_starter_pack_v0_1.json`.
