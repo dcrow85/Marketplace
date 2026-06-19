@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/miracle_of_the_desert_v0_1.json`.
+  Japanese ADV2 Miracle of the Desert is now a hand-authored release
+  dossier, with Shiftry 003/053, Cradily 010/053, Armaldo 039/053,
+  Typhlosion ex 013/053, Wailord ex 021/053, and Raichu ex 023/053
+  promoted from generated baseline to sourced card dossiers. The pass
+  frames Miracle of the Desert as early ADV becoming an environment:
+  Hoenn desert/fossil context, Mirage Tower mood, Root Fossil / Claw
+  Fossil branches, evolution-stage lowercase Pokemon-ex risk, and Ryo
+  Ueda's 3D ex language making mass and shine visible without overclaiming
+  physical authenticity or condition. Added special identification rails
+  for Japanese ADV2 versus English EX Sandstorm, 053 numbering, lowercase
+  ex versus later uppercase EX, fossil theme versus row identity, Shiftry
+  versus Seedot/Nuzleaf, Cradily versus Lileep/Root Fossil, Armaldo versus
+  Anorith/Claw Fossil, and Raichu ex versus generic Pikachu-line searches.
+  Sources: local Japanese ADV pre-WotC catalog, TCG Collector Miracle of
+  the Desert set/card pages, TCGdex ADV2 set record, Bulbapedia EX
+  Sandstorm, Bulbapedia ADV TCG Era merchandise, and Bulbapedia Pokemon-ex.
+  Generated gap moved from 192 releases / 4,465 cards to 191 releases /
+  4,459 cards. Current catalog-history corpus: 22,895 claims, 4,985
+  sources, corpus hash
+  `76bee4d43dbb99ebad67071e41b332da4aa86b8641b85f140342503d3dfabc0f`;
+  index hash `e7deaa348f0f691603275d72b35a8d7fe461fcff4e9ce59ec8ad67c8f33f8e00`;
+  queue hash `5f3f034f1b053040f20d86be7d60781342164cf1c6005f61b9fda9572adb542d`.
 - `[passive]` 2026-06-19 · Codex — completed the fifteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json`.

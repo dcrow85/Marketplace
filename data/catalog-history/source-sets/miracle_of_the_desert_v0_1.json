@@ -1,0 +1,1207 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese ADV2 Miracle of the Desert and six rows that show the desert/fossil/ex assembly.",
+    "in_scope": [
+      "Miracle of the Desert release dossier",
+      "Shiftry",
+      "Cradily",
+      "Armaldo",
+      "Typhlosion ex",
+      "Wailord ex",
+      "Raichu ex"
+    ],
+    "not_claiming": [
+      "complete ADV-era scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418",
+      "type": "release",
+      "context": {
+        "name_en": "Miracle of the Desert",
+        "name_ja": "砂漠のきせき",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "release_date": "2003-04-18"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json",
+          "title": "Local Japanese ADV release catalog: Miracle of the Desert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/sets/11166/miracle-of-the-desert",
+          "title": "TCG Collector: Miracle of the Desert card list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/ADV2",
+          "title": "TCGdex API set record: ADV2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level card refs",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)",
+          "title": "Bulbapedia: EX Sandstorm (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Japanese source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/ADV_TCG_Era_merchandise",
+          "title": "Bulbapedia: ADV TCG Era merchandise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete merchandise coverage",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "market ranking",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models Miracle of the Desert as a Japanese main expansion released on April 18, 2003.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog models Miracle of the Desert as 53 rows, with TCGdex set count and TCG Collector row pages used as the count basis.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes EX Sandstorm as the English expansion corresponding to the Japanese Miracle of the Desert release, with the Japanese expansion identified as the second ADV Era expansion.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's EX Sandstorm page frames the expansion around Hoenn desert and fossil context, including Mirage Tower and Fossil mechanics, while the local catalog surfaces Lileep, Cradily, Anorith, Armaldo, Claw Fossil, and Root Fossil rows.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Raichu ex, Wailord ex, Typhlosion ex, Gardevoir ex, Aggron ex, Shiftry, Cacturne, Seviper, Cradily, and Armaldo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia describes Pokemon-ex as powerful Pokemon cards that give up two Prize cards when Knocked Out; this supports treating the lowercase ex rows as a risk/reward mechanic, not just a shine label.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters are led by Mitsuhiro Arita, Atsuko Nishida, Midori Harada, Ryo Ueda, Hajime Kusajima, Kouki Saitou, Kagemaru Himeno, Naoyo Kimura, and Hikaru Koike.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Miracle of the Desert matters because it makes the new ADV frame feel environmental: Hoenn's desert, Fossil recovery, and evolution-stage Pokemon-ex all push the card game into a modern ecology where place, mechanic, and risk are assembled together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_of_the_desert_adv2_language_and_ex_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese ADV2 and English EX Sandstorm rows are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Japanese Miracle of the Desert / ADV2 or English EX Sandstorm before comparing numbers, scans, or market references.",
+            "Preserve the Japanese 053 numbering and the ADV2 local row id in agent-facing records.",
+            "Treat lowercase Pokemon-ex as a row-level mechanic and rarity signal; do not use it as proof of physical authenticity, holo texture, or condition.",
+            "Do not identify Fossil rows by theme alone. Distinguish Lileep, Cradily, Anorith, Armaldo, Claw Fossil, and Root Fossil by row id and printed language.",
+            "If a listing says Sandstorm, desert, ADV2, or early ex without language, ask for printed language, card number, and set mark before routing to a buy/sell decision."
+          ],
+          "summary": "Miracle of the Desert is the Japanese ADV2 desert/fossil/ex release; language, numbering, and ex status must be explicit before comparison.",
+          "trigger": "Identifying or comparing Japanese Miracle of the Desert, English EX Sandstorm, early Pokemon-ex, or desert/fossil ADV rows."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The desert teaches the new frame how to breathe",
+        "why_it_matters": "Miracle of the Desert is where early ADV stops feeling like a format change and starts feeling like a place. Hoenn's dry route logic, Fossil recovery, Mirage Tower mood, and lowercase `ex` risk all gather in one small Japanese set. The collector appeal is not only Raichu ex or Typhlosion ex; it is the feeling that the card game has learned to make an environment, then ask the big shiny cards to survive inside it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-003",
+      "type": "card",
+      "context": {
+        "name_en": "Shiftry",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-003",
+        "catalog_row_id": "ADV2-003",
+        "number": "003/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-003",
+          "title": "Local Japanese ADV row: Shiftry 003/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28694/shiftry-miracle-of-the-desert-003-053",
+          "title": "TCG Collector: Shiftry (Miracle of the Desert 003/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)",
+          "title": "Bulbapedia: EX Sandstorm (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-003 as Shiftry in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Shiftry 003/053 to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia frames the broader EX Sandstorm / Miracle of the Desert release around desert and Hoenn context, placing Shiftry inside a set where evolved Hoenn species share space with fossil and ex rows.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Shiftry matters as one of Atsuko Nishida's non-mascot Hoenn evolution anchors in the set: it shows that ADV's new ecology was not only carried by ex cards, but by evolved species that made the desert-era checklist feel inhabited.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_shiftry_003_language_and_evolution_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm the row as Japanese Miracle of the Desert 003/053 before comparing against English EX Sandstorm Shiftry rows.",
+            "Record Atsuko Nishida as the local illustrator credit, but do not use artist credit alone as a physical-card identifier.",
+            "Do not collapse Shiftry into Seedot or Nuzleaf rows from the same release; preserve the evolution stage and row id."
+          ],
+          "summary": "Shiftry 003/053 is an evolved Hoenn row, not a generic Shiftry reference.",
+          "trigger": "A listing or want says Shiftry, Japanese ADV, Sandstorm, or Miracle of the Desert without row number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A forest spirit carried into the desert set",
+        "why_it_matters": "Shiftry is a nice little contradiction in Miracle of the Desert: a forest trickster standing inside the dry ADV release. That contrast is part of the set's charm. Atsuko Nishida's credit ties it back to one of Pokemon's most important creature designers, while the row itself reminds an agent that not every important card is a headline ex.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-010",
+      "type": "card",
+      "context": {
+        "name_en": "Cradily",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-010",
+        "catalog_row_id": "ADV2-010",
+        "number": "010/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-010",
+          "title": "Local Japanese ADV row: Cradily 010/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28701/cradily-miracle-of-the-desert-010-053",
+          "title": "TCG Collector: Cradily (Miracle of the Desert 010/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)",
+          "title": "Bulbapedia: EX Sandstorm (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-010 as Cradily in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Cradily 010/053 to Midori Harada.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia's EX Sandstorm page frames the expansion around desert and Fossil context; the local catalog also includes Lileep, Cradily, Root Fossil, Anorith, Armaldo, and Claw Fossil rows.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Cradily matters because it makes the Fossil theme feel biological rather than merely mechanical: Root Fossil is not just a trainer-like object, it is a route into an ancient Hoenn creature.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_cradily_010_root_fossil_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm ADV2-010 / 010/053 before comparing this row to English EX Sandstorm Cradily.",
+            "Keep Cradily separate from Lileep and Root Fossil evidence; fossil theme is context, not identity.",
+            "Record Midori Harada as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Cradily 010/053 is the evolved Root Fossil branch and needs row-level separation from Lileep and Root Fossil.",
+          "trigger": "A listing or want says Cradily, fossil, Root Fossil, ADV2, or EX Sandstorm without row number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The fossil becomes a living thing again",
+        "why_it_matters": "Cradily is where the set's fossil machinery starts to feel alive. Midori Harada's row sits between ancient-object logic and creature memory, which is exactly why Miracle of the Desert works: the desert is not background. It is a place where old things are found, named, and played.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-039",
+      "type": "card",
+      "context": {
+        "name_en": "Armaldo",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-039",
+        "catalog_row_id": "ADV2-039",
+        "number": "039/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-039",
+          "title": "Local Japanese ADV row: Armaldo 039/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28730/armaldo-miracle-of-the-desert-039-053",
+          "title": "TCG Collector: Armaldo (Miracle of the Desert 039/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)",
+          "title": "Bulbapedia: EX Sandstorm (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-039 as Armaldo in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Armaldo 039/053 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia's EX Sandstorm page frames the expansion around desert and Fossil context; the local catalog also includes Anorith, Armaldo, and Claw Fossil rows.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Armaldo matters as the other fossil branch in the release: an Arita-credited ancient creature that keeps the set from being only about ex spectacle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_armaldo_039_claw_fossil_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm ADV2-039 / 039/053 before comparing this row to English EX Sandstorm Armaldo.",
+            "Keep Armaldo separate from Anorith and Claw Fossil evidence; fossil theme is context, not identity.",
+            "Record Mitsuhiro Arita as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Armaldo 039/053 is the evolved Claw Fossil branch and needs row-level separation from Anorith and Claw Fossil.",
+          "trigger": "A listing or want says Armaldo, fossil, Claw Fossil, ADV2, or EX Sandstorm without row number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Arita gives the fossil branch weight",
+        "why_it_matters": "Armaldo is the set's other fossil answer. Where Cradily feels strange and rooted, Armaldo feels armored and awake. Mitsuhiro Arita's credit gives the row extra historical gravity because his work is already threaded through Pokemon's earliest card memory, now carried into Hoenn's ancient-life machinery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-013",
+      "type": "card",
+      "context": {
+        "name_en": "Typhlosion ex",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-013",
+        "catalog_row_id": "ADV2-013",
+        "number": "013/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-013",
+          "title": "Local Japanese ADV row: Typhlosion ex 013/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28704/typhlosion-ex-miracle-of-the-desert-013-053",
+          "title": "TCG Collector: Typhlosion ex (Miracle of the Desert 013/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-013 as Typhlosion ex in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Typhlosion ex 013/053 to Hikaru Koike.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia describes Pokemon-ex as powerful Pokemon cards that give up two Prize cards when Knocked Out; Typhlosion ex therefore belongs to the early ADV risk/reward grammar rather than being merely a name variant.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Typhlosion ex matters because it brings a Johto starter-final evolution into the new ADV ex contract: an older fan memory now has to wear the two-Prize risk grammar.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_typhlosion_ex_013_lowercase_ex_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "later uppercase EX equivalence"
+          ],
+          "steps": [
+            "Confirm the exact printed row as Japanese Miracle of the Desert 013/053 before comparing to English EX Sandstorm or later Typhlosion rows.",
+            "Preserve lowercase ex wording in agent records; do not silently normalize it to later uppercase EX.",
+            "Treat Pokemon-ex status as a mechanic and row identity signal, not proof of physical authenticity or condition.",
+            "Record Hikaru Koike as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Typhlosion ex 013/053 must keep its Japanese ADV2 row, lowercase ex, and language boundary intact.",
+          "trigger": "A listing or want says Typhlosion ex, early ex, ADV2, or EX Sandstorm without printed language and number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "An old starter memory enters the two-Prize era",
+        "why_it_matters": "Typhlosion ex is a little jolt of continuity. Johto is not gone; it has been plugged into ADV's sharper machinery. The lowercase `ex` makes the card feel more dangerous than nostalgic: the big familiar fire starter is back, but now the game asks what that power costs.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-021",
+      "type": "card",
+      "context": {
+        "name_en": "Wailord ex",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-021",
+        "catalog_row_id": "ADV2-021",
+        "number": "021/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-021",
+          "title": "Local Japanese ADV row: Wailord ex 021/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28712/wailord-ex-miracle-of-the-desert-021-053",
+          "title": "TCG Collector: Wailord ex (Miracle of the Desert 021/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-021 as Wailord ex in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Wailord ex 021/053 to Ryo Ueda.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia describes Pokemon-ex as powerful Pokemon cards that give up two Prize cards when Knocked Out; Wailord ex therefore belongs to the early ADV risk/reward grammar.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Wailord ex matters because Ryo Ueda's 3D-rendered ex language makes the new ADV scale visible: the biggest Hoenn body becomes one of the set's clearest demonstrations that the card frame can now stage mass, shine, and risk together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_wailord_ex_021_ryo_ueda_3d_ex_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "later uppercase EX equivalence"
+          ],
+          "steps": [
+            "Confirm the exact printed row as Japanese Miracle of the Desert 021/053 before comparing to English EX Sandstorm or later Wailord rows.",
+            "Preserve lowercase ex wording in agent records; do not silently normalize it to later uppercase EX.",
+            "Treat the Ryo Ueda credit and 3D style as catalog/art context, not proof of physical authenticity.",
+            "Do not infer card scale, rarity, or condition from the character's size; ask for row-level images and seller evidence."
+          ],
+          "summary": "Wailord ex 021/053 is a Japanese ADV2 lowercase-ex row whose Ryo Ueda 3D context helps identification but does not prove the physical card.",
+          "trigger": "A listing or want says Wailord ex, early ex, Ryo Ueda, ADV2, or EX Sandstorm without printed language and number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The new frame learns how big a Pokemon can feel",
+        "why_it_matters": "Wailord ex is ADV scale made visible. Ryo Ueda's 3D ex texture gives the card a heavy, modern shine, and the species itself makes the frame feel almost too small. It is not just a Water-type chase; it is the moment Miracle of the Desert proves the new era can make mass, risk, and spectacle feel native.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-023",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu ex",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_adv_miracle_of_the_desert_20030418",
+        "row_id": "jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-023",
+        "catalog_row_id": "ADV2-023",
+        "number": "023/053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json#row:jp_tcg_adv_miracle_of_the_desert_20030418:ADV2-023",
+          "title": "Local Japanese ADV row: Raichu ex 023/053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.tcgcollector.com/cards/28714/raichu-ex-miracle-of-the-desert-023-053",
+          "title": "TCG Collector: Raichu ex (Miracle of the Desert 023/053)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)",
+          "title": "Bulbapedia: EX Sandstorm (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon-ex_(TCG)",
+          "title": "Bulbapedia: Pokemon-ex (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies ADV2-023 as Raichu ex in Japanese Miracle of the Desert, with TCG Collector supplying the row page used by the local snapshot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and TCG Collector-rendered footer credit Raichu ex 023/053 to Ryo Ueda.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.chase_structure",
+          "text": "Bulbapedia's EX Sandstorm page specifically names Raichu ex among Pokemon-ex evolution cards in the English counterpart to Miracle of the Desert.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia describes Pokemon-ex as powerful Pokemon cards that give up two Prize cards when Knocked Out; Raichu ex therefore belongs to the early ADV risk/reward grammar.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Raichu ex matters because the set turns an evolved mascot-line Pokemon into an early ex headline: familiar enough to pull attention, mechanically expensive enough to teach the new era's cost.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "miracle_raichu_ex_023_evolution_ex_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "later uppercase EX equivalence"
+          ],
+          "steps": [
+            "Confirm the exact printed row as Japanese Miracle of the Desert 023/053 before comparing to English EX Sandstorm Raichu ex or other Raichu cards.",
+            "Preserve lowercase ex wording in agent records; do not silently normalize it to later uppercase EX.",
+            "Treat Ryo Ueda's credit and ex styling as catalog/art context, not proof of physical authenticity.",
+            "Do not collapse Raichu ex into Pikachu-family searches without row, language, and number."
+          ],
+          "summary": "Raichu ex 023/053 is an early evolution Pokemon-ex row, not a generic Raichu or Pikachu-line placeholder.",
+          "trigger": "A listing or want says Raichu ex, Pikachu line, early ex, ADV2, or EX Sandstorm without printed language and number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot line grows teeth",
+        "why_it_matters": "Raichu ex is the cleanest way Miracle of the Desert explains the new era to a collector. It starts with a creature everyone recognizes from the Pikachu line, then puts that creature into Ryo Ueda's glossy ex language and the two-Prize economy. The card says: yes, this is still Pokemon, but power now has a sharper accounting.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
