@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22948,
-    "corpus_hash": "a3331ef872e822b27d390cad86ee342469f0380d71eda54a68718d1afd0a33f7",
-    "generated_card_dossier_count": 4542,
-    "generated_release_dossier_count": 206,
+    "claim_count": 22947,
+    "corpus_hash": "e2ae673cf1046dbe251c15a575307950c16cd2e44c97a2b46e9ea9831c551193",
+    "generated_card_dossier_count": 4538,
+    "generated_release_dossier_count": 205,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4772
+    "source_count": 4780
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "5e92d0df3818a442a9f0ae39441019be0beb1e4f1730ee106eb08dfe5adbb19e",
+    "queue_hash": "22f42a06f3c7b3bcf48eee2078f049f151734cd24d787364308fc0783b50c028",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T01:07:20Z",
+  "generated_at": "2026-06-19T01:19:27Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "0e1721be6eb333abe9b1f775cfae73b98009c7f624d8af7c5065edbf471e5a22",
+    "index_hash": "f462626880f71521c7e35811de7cafba99f1c1f7a0ca61c7735e4b0718ffe188",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -41,6 +41,7 @@
   ],
   "schema": "marketplace.catalog_history_manifest.v0.1",
   "source_sets": [
+    "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json"
   ]

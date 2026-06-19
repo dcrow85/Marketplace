@@ -55,6 +55,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the second hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json`.
+  Hanada City Gym / Misty is now a hand-authored release dossier, with
+  Misty's Psyduck 001, Misty's Tentacool 003, Misty's Goldeen 009, and
+  Misty's Tears 018 promoted from generated baseline to sourced card dossiers.
+  The pass adds special identification rails for fixed-deck no-rarity context,
+  common-rare rarity-language drift, duplicate same-name Goldeen rows, and the
+  Misty's Tears Japanese/English artwork boundary. Sources: local Japanese
+  pre-English catalog, PokéCardex HCGYM series page, and Bulbapedia community
+  pages for Hanada City Gym and Misty's Tears. Generated gap moved from
+  206 releases / 4,542 cards to 205 releases / 4,538 cards. Current
+  catalog-history corpus: 22,947 claims, 4,780 sources, corpus hash
+  `e2ae673cf1046dbe251c15a575307950c16cd2e44c97a2b46e9ea9831c551193`;
+  index hash `f462626880f71521c7e35811de7cafba99f1c1f7a0ca61c7735e4b0718ffe188`;
+  queue hash `22f42a06f3c7b3bcf48eee2078f049f151734cd24d787364308fc0783b50c028`.
 - `[passive]` 2026-06-19 · Codex — completed the first post-baseline
   hand-researched deepening pass in `data/catalog-history/source-sets/team_rocket_v0_1.json`.
   Team Rocket is now a hand-authored release dossier, and Dark Blastoise
