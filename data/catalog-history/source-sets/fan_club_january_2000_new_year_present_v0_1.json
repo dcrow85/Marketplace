@@ -1,0 +1,609 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for New Year Present, the Pokemon Card Fan Club January 2000 jumbo postcard special card, emphasizing Fan Club membership delivery, GET Points, millennium/New Year framing, Tomokazu Komiya art, postcard back, and traps against New Century Present, Tropical Present, ordinary TCG cards, and generic Fan Club memory.",
+    "in_scope": [
+      "Pokemon Card Fan Club January 2000 release dossier",
+      "New Year Present unnumbered promotional row 147",
+      "Fan Club jumbo postcard / GET Points history",
+      "Tomokazu Komiya illustration context",
+      "Postcard-format identification rails"
+    ],
+    "not_claiming": [
+      "complete Fan Club member mailing records",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000",
+        "name_en": "Pokemon Card Fan Club (January 2000)",
+        "release_date": "2000-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club mailing",
+          "jumbo postcard special card",
+          "GET Points membership economy",
+          "New Year / millennium celebration",
+          "Tomokazu Komiya chaos art",
+          "Trainers magazine logo / Fan Club rail"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000:147",
+            "name": "New Year Present",
+            "why": "This is a chase because it is not just a card; it is Fan Club mail, a jumbo postcard, a points receipt, a New Year greeting, and a Komiya gag scene all in one object.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c5",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Tomokazu Komiya",
+            "row_count": 1,
+            "examples": [
+              "New Year Present"
+            ],
+            "why": "Komiya matters here because the card is a postcard-shaped celebration rather than a normal battle card; his odd, energetic style turns a membership mailing into a remembered collector object.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Tomokazu Komiya bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Fan Club art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Fan Club member records",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Fan Club (January 2000) as a one-row unnumbered promotional source group containing New Year Present at source index 147.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list places New Year Present [Postcard] in the Pokemon Card Fan Club (January 2000) promotion.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia's New Year Present page says the card was released by MediaFactory in 2000 to celebrate the millennium and sent to members of the Pokemon Fan Club.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says members who were sent the card received an additional 200 GET Points to their Pokemon Fan Club account.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Pokumon describes Fan Club jumbo postcards as mailings styled as Jumbo Trainer cards, used for events such as New Years or GET Point thresholds, with GET Points automatically credited to the member.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits New Year Present to Tomokazu Komiya.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "Heritage Auctions describes the illustration as Tomokazu Komiya's Gyarados shooting a '2000 A Happy New Year' beam while Dragonite, Charizard, Seadra, and Dratini react.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.other_work",
+          "text": "The official Pokemon TCG Illustration Contest interview says Tomokazu Komiya has illustrated Pokemon TCG cards since 1996, has also worked on Pokemon Center merchandise, and has had art published in children's books and popular magazines.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "New Year Present matters as a Fan Club object because the card, postcard back, member account points, and celebratory art all tie physical mail to the membership economy instead of separating collecting from participation.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve New Year Present name, Special Card category, Postcard/Jumbo format, Fan Club January 2000 route, 200 GET Points text, Tomokazu Komiya credit, and New Year / millennium art before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_january_2000_new_year_present_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says New Year Present, Pokemon Card Fan Club January 2000, Fan Club postcard, jumbo postcard, 200 GET Points, millennium card, Tomokazu Komiya, Gyarados New Year beam, New Century Present, Tropical Present, or Fan Club special card.",
+          "summary": "Identify New Year Present by Fan Club January 2000 postcard/Jumbo route, 200 GET Points text, Tomokazu Komiya art, and New Year/millennium framing before trusting generic Fan Club or Present-card memory.",
+          "steps": [
+            "Confirm the object is New Year Present / ニューイヤープレゼント, not Tropical Present or New Century Present.",
+            "Confirm the distribution route is Pokemon Card Fan Club January 2000, with Fan Club member-mailing context.",
+            "Confirm the physical format is a postcard / Jumbo special card rather than a standard playable TCG card.",
+            "Look for the 200 GET Points award text or equivalent readable evidence on the card face.",
+            "Preserve Tomokazu Komiya as illustrator and inspect for the New Year / millennium gag scene with Gyarados, Dragonite, Charizard, Seadra, and Dratini when image quality allows.",
+            "Inspect the reverse side as postcard evidence where available; address markings or used-postcard traces are condition/provenance evidence, not automatic authenticity.",
+            "Separate New Century Present, Tropical Present, Fan Club Pokemon cards, and later Fan Club/Players Club prizes unless source evidence proves this exact row.",
+            "Request seller front/back photos, size evidence, and postcard-back condition separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "New Century Present equivalence",
+            "Tropical Present equivalence",
+            "standard-size card equivalence",
+            "other Fan Club promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "New Year Present: when the Fan Club mailed you the future",
+        "why_it_matters": "This is Pokemon as a club, not just Pokemon as a product. New Year Present came through the mail as a jumbo postcard, carried a greeting for 2000, credited points to a member account, and let Tomokazu Komiya turn the whole thing into comic weather: Gyarados blasting the New Year while the dragons panic. It is not famous because it sits in packs. It is loved because it remembers a relationship: the child, the club, the mailbox, and the strange joy of getting a Pokemon object that also says, yes, you belong here.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Fan Club mailing records",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Fan Club January 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/New_Year_Present_%28Fan_Club_promo%29",
+          "title": "Bulbapedia: New Year Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/pokemon-card-fan-club/",
+          "title": "Pokumon: Pokemon Card Fan Club",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://comics.ha.com/itm/memorabilia/trading-cards/pokemon-new-year-present-japanese-fan-club-special-jumbo-promo-psa-trading-card-game-vg-ex-4-media-factory-2000-/a/7419-37079.s",
+          "title": "Heritage Auctions: Pokemon New Year Present Japanese Fan Club Special Jumbo Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "stable market price"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.ptcgic-cr.com/2024/en/column/article-6/",
+          "title": "Pokemon TCG Illustration Contest 2024: Conversation with Kouki Saitou and Tomokazu Komiya",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000:147",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000",
+        "row_id": "jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000:147",
+        "name_en": "New Year Present",
+        "name_ja": "ニューイヤープレゼント",
+        "source_index": "147",
+        "release_date": "2000-01"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 147 as New Year Present, a Special Card / Postcard in the Pokemon Card Fan Club January 2000 source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese name as ニューイヤープレゼント and classifies the card as a Special Card and Unnumbered Promotional card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "card.rarity",
+          "text": "Bulbapedia's unnumbered promotional list marks the row as New Year Present [Postcard], type SC, with no listed rarity.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the illustration to Tomokazu Komiya.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k5",
+          "field": "card.art",
+          "text": "Heritage Auctions describes the scene as Gyarados shooting a '2000 A Happy New Year' beam while Dragonite, Charizard, Seadra, and Dratini are frightened.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k6",
+          "field": "artist.impact",
+          "text": "Komiya's long-running TCG role and deliberately unusual style make New Year Present a strong early example of artist-collector appeal: the card is remembered as much for Komiya's comic energy as for its membership distribution.",
+          "sources": [
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k4",
+            "k5"
+          ]
+        },
+        {
+          "id": "k7",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as a jumbo postcard Special Card with Fan Club January 2000 distribution and 200 GET Points text, not as a standard-size playable card or another Fan Club Present postcard.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_january_2000_new_year_present_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies New Year Present, Fan Club postcard, 200 GET Points card, Komiya Gyarados New Year card, jumbo promo, millennium promo, or source index 147.",
+          "summary": "Match row 147 by New Year Present name plus Fan Club January 2000 jumbo postcard rails; do not collapse it into other Present postcards or standard TCG cards.",
+          "steps": [
+            "Confirm the English name New Year Present and Japanese name ニューイヤープレゼント when a scan or citation allows.",
+            "Confirm Special Card / Postcard format rather than a normal Pokemon, Trainer, or Energy card.",
+            "Confirm the Fan Club January 2000 distribution route and 200 GET Points text.",
+            "Preserve Tomokazu Komiya as illustrator and inspect for the Gyarados New Year beam scene where image quality allows.",
+            "Inspect the reverse postcard side and any address/message area as provenance and condition evidence, not automatic authenticity.",
+            "Separate New Century Present, Tropical Present, Fan Club Pokemon-card prizes, and other jumbo postcards unless evidence supports this exact row.",
+            "Escalate to seller evidence for dimensions, front/back photos, authenticity, condition, and mailing/address marks."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "New Century Present equivalence",
+            "Tropical Present equivalence",
+            "standard-card equivalence",
+            "other Fan Club postcard equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "New Year Present: Komiya's mailbox firework",
+        "why_it_matters": "New Year Present is the kind of object that makes the Pokemon Card Fan Club feel alive. It is oversized, mailed, point-bearing, and completely uninterested in behaving like a normal card. Komiya gives it exactly the right noise: Gyarados firing the year 2000 across the scene while famous dragons scatter. For an agent, this card teaches a beautiful lesson: sometimes the chase is not scarcity alone, but format, mail route, account credit, artist signature, and the evidence of a club talking back to its members.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "k5",
+          "k7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_147_pok_mon_card_fan_club_january_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Fan Club January 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/New_Year_Present_%28Fan_Club_promo%29",
+          "title": "Bulbapedia: New Year Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/pokemon-card-fan-club/",
+          "title": "Pokumon: Pokemon Card Fan Club",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://comics.ha.com/itm/memorabilia/trading-cards/pokemon-new-year-present-japanese-fan-club-special-jumbo-promo-psa-trading-card-game-vg-ex-4-media-factory-2000-/a/7419-37079.s",
+          "title": "Heritage Auctions: Pokemon New Year Present Japanese Fan Club Special Jumbo Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "stable market price"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.ptcgic-cr.com/2024/en/column/article-6/",
+          "title": "Pokemon TCG Illustration Contest 2024: Conversation with Kouki Saitou and Tomokazu Komiya",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

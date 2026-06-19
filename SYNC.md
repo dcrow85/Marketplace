@@ -59,6 +59,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/fan_club_january_2000_new_year_present_v0_1.json`
+  deepens row 147 / New Year Present from the Pokemon Card Fan Club January 2000 route.
+  The pass treats it as a Fan Club jumbo postcard / Special Card, not a normal playable card:
+  member-mailing context, 200 GET Points, New Year / millennium framing, Tomokazu Komiya art,
+  and Gyarados / Dragonite / Charizard scene texture are now legible. Special ID rails separate
+  it from New Century Present, Tropical Present, standard-size TCG cards, and generic Fan Club
+  promos. Generated gaps moved to 83 release / 3909 card. Current hashes: corpus
+  `8cb12f87468ed99fec9d38bb5fe55f93d79231f1e179c8c90405df635b3df897`, index
+  `0358426e81cd60cebeceefff77a265d3419579d1a1bf293bdb5180d432f6c1f1`, queue
+  `c4474ec808e3be5f1728b45223262da4a946c8b63ffbe818a15d8d61b4ec98f3`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifth
   catalog-history pass: `data/catalog-history/source-sets/corocoro_january_2000_wooper_v0_1.json`
   deepens row 146 / Wooper from the CoroCoro Comic January 2000 issue insert route
