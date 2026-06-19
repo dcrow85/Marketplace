@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-eighth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/kamex_mega_battle_v0_1.json`.
+  Kamex Mega Battle is now a complete hand-authored source-slice dossier, with
+  all four modeled rows promoted from generated baseline to sourced card
+  dossiers: Computer Error / Rocket's Secret Machine 045, No.1 Trainer 046,
+  No.2 Trainer 047, and No.3 Trainer 048. The pass frames the July-August 1998
+  regional circuit as a tournament apparatus leaving four fingerprints:
+  Computer Error as the participation lane, and No.1/No.2/No.3 Trainer as the
+  podium ladder. Added special identification rails for Kamex Computer Error
+  versus CoroCoro / Song Best Collection / English Wizards Promo 16 variants,
+  including the non-glossy stock and white Team Rocket R drop-shadow tell, and
+  for preserving Kamex regional placement lanes without merging into Lizardon
+  Mega Battle, Challenge Road, World Challenge, Neo Road, or later trophy
+  Trainer rows. Copy counts, venue/winner ledgers, trophy-plaque coverage, and
+  national-final coverage remain explicitly outside catalog authority. Sources:
+  local Kamex Mega Battle source-slice catalog, Elite Fourum / Pokumon-linked
+  Kamex Mega Battle guide, Pokumon Computer Error page, Bulbapedia Computer
+  Error, Bulbapedia Unnumbered Promotional cards, and Bulbapedia No.1 Trainer
+  tournament-promo lineage. Generated gap moved from 170 releases / 4,242 cards
+  to 169 releases / 4,238 cards. Current catalog-history corpus: 22,820 claims,
+  5,536 sources, corpus hash
+  `4f2061640f13105e6aaf77b0548ba78423538d072f5e19ab2ee12128d6f8d849`;
+  index hash `b781477db4c795fe6435aa83700b333bdf7dd436b3e0a359b13b3b68e33304f6`;
+  queue hash `c7263cba833414fd34b3583deece2701a9ba21ba56472563b39f879dc78c2078`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-seventh
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`.

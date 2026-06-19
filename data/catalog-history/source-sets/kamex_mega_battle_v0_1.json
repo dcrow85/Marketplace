@@ -1,0 +1,1012 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the Kamex Mega Battle source slice, emphasizing the July-August 1998 regional tournament circuit, Computer Error participation memory, No.1/No.2/No.3 Trainer placement lanes, and the need to preserve variant tells without overclaiming official copy counts or complete tournament-object coverage.",
+    "not_claiming": [
+      "official copy counts",
+      "complete venue schedule",
+      "complete participant ledger",
+      "complete winner ledger",
+      "complete trophy-plaque coverage",
+      "complete national-final coverage",
+      "complete side-event prize coverage",
+      "complete Computer Error variant census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_kamex_mega_battle_199807",
+      "type": "release",
+      "context": {
+        "name_en": "Kamex Mega Battle source slice",
+        "name_ja": "カメックスメガバトル プロモ",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "release_date": "1998-07/1998-08"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_kamex_mega_battle_199807.json",
+          "title": "Local Japanese pre-English catalog: Kamex Mega Battle source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete tournament-object ledger"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_research",
+          "ref": "https://www.elitefourum.com/t/1998-kamex-mega-battle-guide/33934",
+          "title": "Elite Fourum / Pokumon-linked 1998 Kamex Mega Battle guide",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+          "title": "Pokumon: Computer Error (Regional Kamex Mega Battle 1998)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "title": "Bulbapedia: Computer Error (Wizards Promo 16)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.1_Trainer_%28Pok%C3%A9mon_Card_Game_Official_Tournament_promo%29",
+          "title": "Bulbapedia: No.1 Trainer official tournament promo lineage",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, Elite Fourum guide, Pokumon page, and Bulbapedia Computer Error page all place the Kamex Mega Battle regional tournament circuit in July-August 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The local catalog treats Kamex Mega Battle as a child source-slice under the unnumbered pre-English promotional family, preserving four source-pinned rows rather than claiming a complete tournament-object ledger.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models four currently source-pinned card identities: Computer Error, No.1 Trainer, No.2 Trainer, and No.3 Trainer.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The Elite Fourum guide frames Kamex Mega Battle as a follow-up to Lizardon Mega Battle and says it was the final tournament series to issue trophy cards with the original No.1-3 Trainer artworks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list describes Computer Error as the Kamex Mega Battle participation prize and No.1/No.2/No.3 Trainer as regional first-, second-, and third-place prizes.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local slice credits Sumiyoshi Kizuki for Computer Error and Mitsuhiro Arita for all three No.1/No.2/No.3 Trainer placement rows. Arita's three-row cluster makes the placement ladder visually continuous; Kizuki's Computer Error makes the participation lane feel like game machinery gone delightfully wrong.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Kamex Mega Battle matters because it is a small tournament apparatus made legible through cards: one broad participation object and three placement objects. The release is not just rare-card glamour; it is the event leaving behind an ordered trail of who played, who placed, and how early organized Pokemon learned to remember itself.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kamex_mega_battle_source_slice_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent search result names Kamex Mega Battle, Blastoise Mega Battle, Computer Error, No.1 Trainer, No.2 Trainer, or No.3 Trainer.",
+          "summary": "Preserve the Kamex Mega Battle July-August 1998 route and the participation-vs-placement lane before treating a card as this source-slice row.",
+          "steps": [
+            "Confirm the claimed row is one of the four modeled source-pinned identities: Computer Error, No.1 Trainer, No.2 Trainer, or No.3 Trainer.",
+            "Separate Computer Error participation route from No.1/No.2/No.3 Trainer placement routes.",
+            "For Computer Error, check Kamex-specific variant tells rather than collapsing it into CoroCoro, Song Best Collection, or English Wizards Promo 16.",
+            "For No.1/No.2/No.3 Trainer, preserve the regional Kamex placement lane and do not merge with Lizardon Mega Battle, Challenge Road, or later Trainer trophy rows.",
+            "Treat copy counts and venue/winner details as external estimates unless separately evidenced."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts",
+            "complete venue schedule",
+            "complete winner ledger",
+            "complete tournament-object ledger"
+          ]
+        }
+      ],
+      "release_highlights": {
+        "assembly_themes": [
+          "tournament/prize culture",
+          "participation-vs-placement ladder",
+          "variant discipline",
+          "artist trace"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_kamex_mega_battle_199807:046",
+            "name": "No.1 Trainer",
+            "number": "046"
+          },
+          {
+            "row_id": "jp_promo_kamex_mega_battle_199807:047",
+            "name": "No.2 Trainer",
+            "number": "047"
+          },
+          {
+            "row_id": "jp_promo_kamex_mega_battle_199807:048",
+            "name": "No.3 Trainer",
+            "number": "048"
+          },
+          {
+            "row_id": "jp_promo_kamex_mega_battle_199807:045",
+            "name": "Computer Error (Rocket's Secret Machine)",
+            "number": "045"
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Mitsuhiro Arita",
+            "row_count": 3,
+            "examples": [
+              "No.1 Trainer",
+              "No.2 Trainer",
+              "No.3 Trainer"
+            ]
+          },
+          {
+            "name": "Sumiyoshi Kizuki",
+            "row_count": 1,
+            "examples": [
+              "Computer Error (Rocket's Secret Machine)"
+            ]
+          }
+        ],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kamex Mega Battle: the tournament leaves four fingerprints",
+        "why_it_matters": "Kamex Mega Battle is tiny in the catalog and enormous in atmosphere. Four rows carry the shape of a 1998 tournament circuit: Computer Error for being there, No.1 through No.3 Trainer for placing. That ladder is the romance. Early Pokemon was already learning how to turn play into memory, rank into artifact, and a weekend of competition into cards that still feel electric.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete Kamex Mega Battle history",
+          "official copy counts",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_kamex_mega_battle_199807:045",
+      "type": "card",
+      "context": {
+        "name_en": "Computer Error (Rocket's Secret Machine)",
+        "name_ja": "パソコン大暴走！",
+        "romaji": "",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "row_id": "jp_promo_kamex_mega_battle_199807:045",
+        "catalog_row_id": "045",
+        "release_name": "Kamex Mega Battle source slice"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_kamex_mega_battle_199807.json#row:jp_promo_kamex_mega_battle_199807:045",
+          "title": "Local catalog row: Computer Error / Kamex Mega Battle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://pokumon.com/card/computer-error-regional-kamex-mega-battle-1998-unnumbered/",
+          "title": "Pokumon: Computer Error (Regional Kamex Mega Battle 1998)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Computer_Error_%28Wizards_Promo_16%29",
+          "title": "Bulbapedia: Computer Error release information and trivia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_research",
+          "ref": "https://www.elitefourum.com/t/1998-kamex-mega-battle-guide/33934",
+          "title": "Elite Fourum Kamex Mega Battle guide and variant discussion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Computer Error (Rocket's Secret Machine), Japanese name パソコン大暴走！, as Kamex Mega Battle source-slice row 045.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Sumiyoshi Kizuki for the Kamex Mega Battle Computer Error row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "Pokumon describes this Computer Error as a Kamex Mega Battle participation prize and gives an estimated-copy figure; the dossier treats that as a collector estimate, not an official count.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia and Elite Fourum discussion distinguish the Kamex print from CoroCoro and Song Best Collection prints by non-glossy stock and white drop shadow on the Team Rocket R, while glossy CoroCoro/Song Best prints use a red drop shadow.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Computer Error is the democratic half of Kamex Mega Battle memory: not first, second, or third place, but the participation lane. It makes the event's broad floor collectible while its own rules text jokes about a system breaking.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kamex_computer_error_variant_boundary_v0.1",
+          "trigger": "A user says Kamex Computer Error, Computer Error, Rocket's Secret Machine, white drop shadow, glossy, non-glossy, or Wizards Promo 16.",
+          "summary": "Confirm Kamex participation route and variant tells before treating a Computer Error as this row.",
+          "steps": [
+            "Preserve Kamex Mega Battle participation-prize route.",
+            "Check for the Kamex variant tells: non-glossy stock and white drop shadow on the Team Rocket R.",
+            "Do not merge with the January 1998 CoroCoro glossy print, Pokemon Song Best Collection CD print, or English Wizards Promo 16.",
+            "Treat the 896-copy figure as an estimate unless a separate official source is provided.",
+            "Ask for surface/lighting evidence carefully because gloss can be hard to judge from ordinary listing photos."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count",
+            "complete Computer Error variant census",
+            "variant proof from catalog row alone"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "045",
+        "rarity_signal": "Kamex Mega Battle participation prize",
+        "artist": "Sumiyoshi Kizuki",
+        "assembly_themes": [
+          "participation prize",
+          "variant discipline",
+          "artist trace",
+          "identity trap"
+        ],
+        "collector_texture_note": "The joke of the card and the seriousness of the event sit right on top of each other.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Computer Error 045: the participation lane glitches beautifully",
+        "why_it_matters": "Computer Error is funny until you realize how serious its route is. It is the Kamex participation memory: the card you can imagine many competitors carrying home, while the trophy Trainers went to the podium. The white-shadow, non-glossy tell turns a small print detail into a whole provenance question.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_kamex_mega_battle_199807:046",
+      "type": "card",
+      "context": {
+        "name_en": "No.1 Trainer",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "row_id": "jp_promo_kamex_mega_battle_199807:046",
+        "catalog_row_id": "046",
+        "release_name": "Kamex Mega Battle source slice"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_kamex_mega_battle_199807.json#row:jp_promo_kamex_mega_battle_199807:046",
+          "title": "Local catalog row: No.1 Trainer / Kamex Mega Battle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.1_Trainer_%28Pok%C3%A9mon_Card_Game_Official_Tournament_promo%29",
+          "title": "Bulbapedia: No.1 Trainer official tournament promo lineage",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_research",
+          "ref": "https://www.elitefourum.com/t/1998-kamex-mega-battle-guide/33934",
+          "title": "Elite Fourum Kamex Mega Battle guide",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors No.1 Trainer as Kamex Mega Battle source-slice row 046.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mitsuhiro Arita for No.1 Trainer, matching the three-row Kamex placement-card cluster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "Bulbapedia describes the No.1 Trainer Kamex print as distributed to champions of each regional Kamex Mega Battle conference held between July and August 1998.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "No.1 Trainer is the top of the Kamex ladder. It is not merely a rare card; it is first place made portable, the tournament saying this person stood above the field.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kamex_no1_trainer_placement_boundary_v0.1",
+          "trigger": "A user says No.1 Trainer, Kamex No.1 Trainer, first-place Trainer trophy, Lizardon, Challenge Road, or later Trainer trophy.",
+          "summary": "Confirm the regional Kamex Mega Battle first-place route before treating a No.1 Trainer as this row.",
+          "steps": [
+            "Preserve No.1 Trainer first-place placement lane.",
+            "Confirm the claimed route is regional Kamex Mega Battle July-August 1998.",
+            "Do not merge with Lizardon Mega Battle, Challenge Road, World Challenge, Neo Road, or later No.1 Trainer rows.",
+            "Treat copy counts and winner identity as external evidence, not catalog authority."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count",
+            "winner identity",
+            "other No.1 Trainer equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "046",
+        "rarity_signal": "Kamex Mega Battle regional first place prize",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "trophy card",
+          "first-place memory",
+          "artist trace",
+          "identity trap"
+        ],
+        "collector_texture_note": "No.1 Trainer is rank made physical; the number is the event's crown.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "No.1 Trainer 046: first place becomes an artifact",
+        "why_it_matters": "No.1 Trainer is one of the purest forms of Pokemon cardboard as social memory. It is not a monster, not a deck tool, not a booster chase. It is a placement, a person, and a weekend of play compressed into Arita's trophy language.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_kamex_mega_battle_199807:047",
+      "type": "card",
+      "context": {
+        "name_en": "No.2 Trainer",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "row_id": "jp_promo_kamex_mega_battle_199807:047",
+        "catalog_row_id": "047",
+        "release_name": "Kamex Mega Battle source slice"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_kamex_mega_battle_199807.json#row:jp_promo_kamex_mega_battle_199807:047",
+          "title": "Local catalog row: No.2 Trainer / Kamex Mega Battle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors No.2 Trainer as Kamex Mega Battle source-slice row 047.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mitsuhiro Arita for No.2 Trainer.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "Bulbapedia's unnumbered promotional listing describes this lane as the Kamex Mega Battle regional second-place prize.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "No.2 Trainer is the middle placement artifact, which makes it emotionally sharper than a generic trophy label: it records excellence and near-miss at once.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kamex_no2_trainer_placement_boundary_v0.1",
+          "trigger": "A user says No.2 Trainer, Kamex No.2 Trainer, second-place Trainer trophy, or another Trainer trophy route.",
+          "summary": "Confirm the regional Kamex Mega Battle second-place route before treating a No.2 Trainer as this row.",
+          "steps": [
+            "Preserve No.2 Trainer second-place placement lane.",
+            "Confirm the claimed route is regional Kamex Mega Battle July-August 1998.",
+            "Do not merge with Lizardon Mega Battle, Challenge Road, World Challenge, Neo Road, or later No.2 Trainer rows.",
+            "Treat copy counts and winner identity as external evidence, not catalog authority."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count",
+            "winner identity",
+            "other No.2 Trainer equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "047",
+        "rarity_signal": "Kamex Mega Battle regional second place prize",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "trophy card",
+          "second-place memory",
+          "artist trace",
+          "identity trap"
+        ],
+        "collector_texture_note": "Second place is not lesser in the archive; it is the ladder becoming legible.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "No.2 Trainer 047: the ladder has a middle rung",
+        "why_it_matters": "No.2 Trainer is where the podium becomes human. First place gets the crown, third place gets the bronze romance, but second place carries the ache of almost. The card makes that placement durable.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_kamex_mega_battle_199807:048",
+      "type": "card",
+      "context": {
+        "name_en": "No.3 Trainer",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_kamex_mega_battle_199807",
+        "row_id": "jp_promo_kamex_mega_battle_199807:048",
+        "catalog_row_id": "048",
+        "release_name": "Kamex Mega Battle source slice"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_kamex_mega_battle_199807.json#row:jp_promo_kamex_mega_battle_199807:048",
+          "title": "Local catalog row: No.3 Trainer / Kamex Mega Battle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors No.3 Trainer as Kamex Mega Battle source-slice row 048.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mitsuhiro Arita for No.3 Trainer.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "Bulbapedia's unnumbered promotional listing describes this lane as the Kamex Mega Battle regional third-place prize.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "No.3 Trainer closes the Kamex placement trio: the third-place object turns the last podium step into lasting evidence, which is why the row must stay tied to the regional Kamex route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kamex_no3_trainer_placement_boundary_v0.1",
+          "trigger": "A user says No.3 Trainer, Kamex No.3 Trainer, third-place Trainer trophy, or another Trainer trophy route.",
+          "summary": "Confirm the regional Kamex Mega Battle third-place route before treating a No.3 Trainer as this row.",
+          "steps": [
+            "Preserve No.3 Trainer third-place placement lane.",
+            "Confirm the claimed route is regional Kamex Mega Battle July-August 1998.",
+            "Do not merge with Lizardon Mega Battle, Challenge Road, World Challenge, Neo Road, or later No.3 Trainer rows.",
+            "Treat copy counts and winner identity as external evidence, not catalog authority."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count",
+            "winner identity",
+            "other No.3 Trainer equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "048",
+        "rarity_signal": "Kamex Mega Battle regional third place prize",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "trophy card",
+          "third-place memory",
+          "artist trace",
+          "identity trap"
+        ],
+        "collector_texture_note": "Third place is where the trio completes; without it the podium is not an apparatus.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "No.3 Trainer 048: the podium closes",
+        "why_it_matters": "No.3 Trainer is the bronze hinge of the Kamex story. It completes the ladder and proves the event cared about more than a single winner. The card is a little ceremony: you were there, you placed, the game remembers.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
