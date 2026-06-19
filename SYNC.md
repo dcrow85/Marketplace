@@ -55,6 +55,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — patched
+  `Protocol_Card_Dossier_v0.1.md` to make
+  `special_identification_instructions` a first-class dossier field and
+  agent preflight rail, not just an implementation detail in generated rows.
+  The spec now says trap-heavy rows must either carry a non-empty legible
+  instruction packet or explicitly explain why the confusion surface is out of
+  scope. Agents must check those instructions before identifying, comparing,
+  narrating, or recommending action on a card; famous species names, matching
+  artwork, cert labels, and provider titles are not enough when the dossier has
+  a trap rail. The no-overclaim boundary is explicit: these instructions avoid
+  catalog laundering but do not claim seller possession, authenticity,
+  condition, image-only proof, or spendability. Verified with
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and
+  `git diff --check`. The existing first CoroCoro glossy Pikachu pilot remains
+  clear: preferred selected-source illustrator credit Ken Sugimori, conflicting
+  provider metadata Keiji Kinebuchi preserved as conflict rather than silently
+  overwritten.
 - `[passive]` 2026-06-19 · Codex — completed the forty-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/challenge_from_darkness_tranche_v0_1.json`.

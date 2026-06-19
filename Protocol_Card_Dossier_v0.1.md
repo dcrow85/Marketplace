@@ -37,6 +37,16 @@ One dossier per catalog `uid`. The unit of truth is the **claim**: an atomic, re
 {
   "uid": "no_rarity_base_set:021",          // FK to the catalog row (the enforced anchor)
   "card": { "name_ja": "…", "name_en": "…", "set": "…", "number": "…" }, // denormalized context; catalog stays canonical
+  "special_identification_instructions": [   // legible trap rails; checked before narrative or matching
+    {
+      "id": "no_rarity_lower_right_region_v0.1",
+      "authority_label": "legible",
+      "trigger": "Identifying a claimed Japanese No Rarity card.",
+      "summary": "Inspect the lower-right rarity-symbol region and keep set/row identity attached.",
+      "steps": ["…"],
+      "not_claiming": ["seller possession", "authenticity", "condition", "image-only proof"]
+    }
+  ],
   "claims": [
     {
       "id": "c1",
@@ -64,11 +74,22 @@ One dossier per catalog `uid`. The unit of truth is the **claim**: an atomic, re
   (No-Rarity / first-print markers)
 - `history.significance` (why collectors care), `history.lineage` (the JP→EN relationship),
   `history.variant` (print variants)
+- `identification.special_instructions` (trap-aware instructions for exact-row identity:
+  lower-right no-rarity region, glossy/non-glossy route, issue insert, source row, owner name,
+  card number, conflicting provider metadata, or any other cue an agent must preserve before
+  treating two similar-looking cards as the same object)
 
 **Hard rules:**
 
 - No claim without ≥1 `source`. A fact with no source is **omitted**, not asserted.
 - `text` is a single narrow statement — atomic enough to cite cleanly.
+- `special_identification_instructions` is not a claim that the physical card is authentic,
+  possessed, correctly graded, correctly photographed, or spendable. It is a legible checklist
+  for avoiding catalog laundering before the agent makes a match, narrates a card, or advances
+  a buyer/seller workflow.
+- If a row has a known confusion surface, the dossier must include either a non-empty
+  `special_identification_instructions` packet or an explicit claim explaining why the confusion
+  surface is out of scope for that dossier.
 - `agent_notes` is the only home for unsourced framing, and it is explicitly judged — never
   promoted to a claim.
 
@@ -115,6 +136,10 @@ Tier-A/B sources before reaching outward.
 
 - The agent narrates a card **only from retrieved claims**; every factual sentence maps to ≥1
   `source_id`. Output keeps **legible (cited facts) separate from judged (its framing / voice).**
+- Before the agent identifies, compares, narrates, or recommends action on a card, it checks
+  `special_identification_instructions` first. A famous species name, matching artwork,
+  matching cert label, or provider title is never enough when the dossier says the exact row has
+  a trap rail.
 - **Faithfulness probe** (author ≠ verifier): a battery like the interrupt-bar probe — feed the
   agent a dossier and check (a) every factual statement is grounded in a claim, (b) nothing
   invented, (c) source tiers honored (C-tier hedged). Qwen drafts; a stronger model
