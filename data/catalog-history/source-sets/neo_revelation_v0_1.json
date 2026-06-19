@@ -1,0 +1,1154 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Neo Revelation and six rows that show the Johto mythic turn: Ho-Oh, Celebi, Lugia, the printedTotal/total Shining boundary, and the first English Shining pair.",
+    "in_scope": [
+      "Neo Revelation release dossier",
+      "Celebi",
+      "Ho-Oh 7",
+      "Ho-Oh 18",
+      "Lugia 20",
+      "Shining Gyarados",
+      "Shining Magikarp"
+    ],
+    "not_claiming": [
+      "complete Neo Revelation scholarship",
+      "complete Shining Pokemon scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_neo_revelation_20010921",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Revelation",
+        "name_ja": "めざめる伝説",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "release_date": "2001-09-21"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json",
+          "title": "Local English WoC release catalog: Neo Revelation",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/neo3",
+          "title": "Pokemon TCG API v2 set record: Neo Revelation",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_Revelation_(TCG)",
+          "title": "Bulbapedia: Neo Revelation (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-65",
+          "title": "Pokemon TCG API v2 card record: Shining Gyarados neo3-65",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-66",
+          "title": "Pokemon TCG API v2 card record: Shining Magikarp neo3-66",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Neo Revelation with set id neo3 and an English release date of September 21, 2001.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model Neo Revelation with printedTotal 64 and total 66; the local corpus keeps 66 returned rows, including Shining Gyarados 65 and Shining Magikarp 66.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia connects Neo Revelation to the Japanese Awakening Legends release lineage and describes it as the third Neo Series expansion in English.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia notes that Neo Revelation has no theme decks and that its introduction of Shining Pokemon is a major identity point of the set.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Ho-Oh, Lugia, Raichu, Ampharos, Celebi, and the Rare Shining rows Shining Gyarados and Shining Magikarp.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Neo Revelation are led by Ken Sugimori, Keiji Kinebuchi, Sumiyoshi Kizuki, Yuka Morii, Tomokazu Komiya, Mitsuhiro Arita, Kagemaru Himeno, Atsuko Nishida, Miki Tanaka, Shin-ichi Yoshida, Naoyo Kimura, Aya Kusube, Masako Yamashita, and Yukiko Baba.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Neo Revelation matters because it turns Johto mythology into a reveal: Ho-Oh and Celebi bring legendary time/fire atmosphere, while Shining Gyarados and Shining Magikarp push rarity beyond the printed checklist boundary.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_64_printed_66_total_shining_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese pack collation truth",
+            "complete Shining Pokemon taxonomy"
+          ],
+          "steps": [
+            "Confirm English set id neo3, name Neo Revelation, and the local/API printedTotal 64 versus total 66 before treating rows 65 and 66 as ordinary checklist rows.",
+            "Treat Japanese Awakening Legends as release-lineage context, not proof that every English row maps to one Japanese product or variant path.",
+            "If a listing references Shining Gyarados or Shining Magikarp, preserve Rare Shining rarity, card number beyond printedTotal, and the one-per-deck rule from the API/local row.",
+            "Separate Ho-Oh 7 Rare Holo from Ho-Oh 18 Rare before routing wants; separate Lugia 20 from Neo Genesis Lugia 9 and Aquapolis Crystal Lugia.",
+            "Do not treat Shining rarity, legendary species, or image resemblance as physical-card authenticity, condition, or price evidence."
+          ],
+          "summary": "Neo Revelation's main trap is the 64 printed / 66 total Shining boundary plus repeated legendary names.",
+          "trigger": "A listing, want, or binder import references Neo Revelation, Awakening Legends, Ho-Oh, Lugia, Shining Gyarados, or Shining Magikarp."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When Johto becomes myth",
+        "why_it_matters": "Neo Revelation feels like the Neo era pulling back a curtain. Ho-Oh is no longer only rumor and box-art glow, Celebi bends the set toward time, and the two Shining cards break through the normal printed count like secret color under old water. It is not the broad doorway of Neo Genesis; it is the hush after someone says, look closer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-7",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh",
+        "name_ja": "ホウオウ",
+        "romaji": "Houou",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-7",
+        "catalog_row_id": "neo3-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-7",
+          "title": "Local English WoC card row: Ho-Oh 7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-7",
+          "title": "Pokemon TCG API v2 card record: Ho-Oh neo3-7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ho-Oh_(Neo_Revelation_7)",
+          "title": "Bulbapedia: Ho-Oh (Neo Revelation 7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ho-Oh 7 as a Neo Revelation Rare Holo Basic Fire Pokemon credited to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ho-Oh 7 with Stoke, Sacred Fire, and Dive Bomb, including a five-Fire-Energy printed cost for Dive Bomb.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Ho-Oh 7 to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Ho-Oh 7 matters because it gives Neo Revelation its fire-bird center: a legendary body, a Sacred Fire attack, and a heavy five-Fire attack cost all pointing at the set's reveal-of-myth mood.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_ho_oh_7_vs_18_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 7/64 and Rare Holo before routing this as the holo Ho-Oh row.",
+            "Record Kimiya Masago as illustrator and preserve Fire typing and Sacred Fire/Dive Bomb text as row identity.",
+            "Do not collapse this row into Ho-Oh 18/64, which the API/local catalog model as Rare, Colorless, and credited to Aya Kusube.",
+            "Do not collapse this row into later Ho-Oh promos, Neo Revelation Japanese branches, or non-English rows.",
+            "Use image and attack text as comparison aids only; they do not prove physical holofoil status, authenticity, or condition."
+          ],
+          "summary": "Ho-Oh 7 is the Kimiya Masago Rare Holo Fire row; Ho-Oh 18 is a separate Aya Kusube Rare Colorless row.",
+          "trigger": "A listing, want, or binder import says Neo Revelation Ho-Oh, Ho-Oh holo, Sacred Fire, or Ho-Oh 7/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The fire bird revealed",
+        "why_it_matters": "Ho-Oh 7 is the card that makes the set title feel literal. Neo Revelation is not just showing more Johto species; it is finally letting the myth stand in the light. Kimiya Masago's holo row gives Ho-Oh a ceremonial weight, and that five-Fire Dive Bomb cost makes the card feel almost ritualistic.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-18",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh",
+        "name_ja": "ホウオウ",
+        "romaji": "Houou",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-18",
+        "catalog_row_id": "neo3-18"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-18",
+          "title": "Local English WoC card row: Ho-Oh 18",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-18",
+          "title": "Pokemon TCG API v2 card record: Ho-Oh neo3-18",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ho-Oh_(Neo_Revelation_18)",
+          "title": "Bulbapedia: Ho-Oh (Neo Revelation 18)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Ho-Oh 18 as a Neo Revelation Rare Basic Colorless Pokemon credited to Aya Kusube.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ho-Oh 18 with Rainbow Burn, which scales damage by the number of Basic Energy types attached to Ho-Oh.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Ho-Oh 18 to Aya Kusube.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Ho-Oh 18 matters because it is the rainbow-reading counterpart to the Fire holo row: same legendary name, different color logic, different artist, different row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_ho_oh_18_nonholo_branch_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm card number 18/64 and Rare status before routing this as the non-holo Ho-Oh row.",
+            "Record Aya Kusube as illustrator and Rainbow Burn as the API/local attack identity.",
+            "Compare against Ho-Oh 7/64 only after preserving number, rarity, type, attacks, and illustrator.",
+            "If a listing says only 'Neo Revelation Ho-Oh,' ask whether it is number 7 Rare Holo or number 18 Rare.",
+            "Do not infer physical holofoil absence or authenticity from catalog row identity alone."
+          ],
+          "summary": "Ho-Oh 18 is the Aya Kusube Rare Colorless row; ambiguity with Ho-Oh 7 should trigger a clarifying question.",
+          "trigger": "A listing, want, or binder import says Neo Revelation Ho-Oh without a number or says Ho-Oh 18/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The rainbow branch",
+        "why_it_matters": "Ho-Oh 18 is a lovely reminder that rarity is not the only thing that makes a row worth caring about. Rainbow Burn turns Ho-Oh into a color-counting card, and Aya Kusube's credit marks it as a different assembly from the fire-heavy holo. Same legend, different way of reading light.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-20",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "ルギア",
+        "romaji": "Lugia",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-20",
+        "catalog_row_id": "neo3-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-20",
+          "title": "Local English WoC card row: Lugia 20",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-20",
+          "title": "Pokemon TCG API v2 card record: Lugia neo3-20",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Neo_Revelation_20)",
+          "title": "Bulbapedia: Lugia (Neo Revelation 20)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Lugia 20 as a Neo Revelation Rare Basic Psychic Pokemon credited to Aya Kusube.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Lugia 20 with Aerowing, a Colorless-cost attack that may flip for 80 damage or do nothing.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Lugia 20 to Aya Kusube.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lugia 20 matters because it keeps Neo Revelation in dialogue with Neo Genesis while refusing to be the same card: different set, type, attack, number, and artist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_lugia_20_vs_neo_genesis_lugia_9_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm card number 20/64 and Rare status before routing this as Neo Revelation Lugia.",
+            "Record Aya Kusube as illustrator and Aerowing as the API/local attack identity.",
+            "Do not collapse this row into Neo Genesis Lugia 9/111, which is a Rare Holo Colorless row credited to Hironobu Yoshida with Elemental Blast.",
+            "Do not collapse this row into Aquapolis Crystal Lugia or later Lugia rows.",
+            "If a listing says only 'Neo Lugia,' ask for set, number, rarity, and a clear name/number image."
+          ],
+          "summary": "Lugia 20 is a Neo Revelation Rare row, not the Neo Genesis holo and not Crystal Lugia.",
+          "trigger": "A listing, want, or binder import says Neo Revelation Lugia, Neo Lugia, Aerowing, or Lugia 20/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The echo of Genesis",
+        "why_it_matters": "Lugia 20 is not the thunderclap Lugia from Neo Genesis, and that is the point. Neo Revelation brings the myth back as an echo: Psychic, quieter, riskier, with Aerowing living on a coin flip. It teaches the catalog to respect returning legends as new assemblies, not duplicate names.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-3",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "セレビィ",
+        "romaji": "Celebi",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-3",
+        "catalog_row_id": "neo3-3"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-3",
+          "title": "Local English WoC card row: Celebi",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-3",
+          "title": "Pokemon TCG API v2 card record: Celebi neo3-3",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Neo_Revelation_3)",
+          "title": "Bulbapedia: Celebi (Neo Revelation 3)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Celebi as Neo Revelation number 3, a Rare Holo Basic Psychic Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Celebi with Time Travel, a Pokemon Power that can shuffle Celebi and its attached cards back into the deck instead of being Knocked Out after a successful coin flip.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Celebi to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Celebi matters because Time Travel makes the set's revelation theme mechanical: the card can escape a knockout by returning to the deck, turning lore into a rules gesture.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_celebi_3_time_travel_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 3/64 and Rare Holo before routing this as Neo Revelation Celebi.",
+            "Record Hironobu Yoshida as illustrator and Time Travel as the API/local Pokemon Power.",
+            "Do not collapse this row into later Celebi promo, e-Reader, or ex-era rows.",
+            "If a listing says only 'Celebi holo,' ask for set, number, and a clear power/text image.",
+            "Use Time Travel as row identity only, not as physical authenticity evidence."
+          ],
+          "summary": "Celebi 3 is the Neo Revelation Time Travel holo row and should not merge with later Celebi appearances.",
+          "trigger": "A listing, want, or binder import says Neo Revelation Celebi, Celebi holo, Time Travel, or Celebi 3/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Time becomes a rule",
+        "why_it_matters": "Celebi is the elegant quiet card of Neo Revelation. The set reveals myth with Ho-Oh and rarity with the Shining pair, but Celebi does something stranger: it puts time into the rules box. Hironobu Yoshida's credited row makes the card feel like a small loop in the middle of the binder.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-65",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Gyarados",
+        "name_ja": "ひかるギャラドス",
+        "romaji": "Hikaru Gyarados",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-65",
+        "catalog_row_id": "neo3-65"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-65",
+          "title": "Local English WoC card row: Shining Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-65",
+          "title": "Pokemon TCG API v2 card record: Shining Gyarados neo3-65",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Gyarados_(Neo_Revelation_65)",
+          "title": "Bulbapedia: Shining Gyarados (Neo Revelation 65)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Gyarados as Neo Revelation number 65, a Rare Shining Basic Water Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Shining Gyarados with a one-per-deck rule and attacks Outrage and Devastate, with Devastate requiring Fire Energy discard in a Water Pokemon's attack cost package.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Shining Gyarados to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Shining Gyarados matters because it turns the Lake of Rage color-change myth into a secret-style English set row beyond printedTotal 64, with a special deck-building restriction attached.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_shining_gyarados_65_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical shiny/authenticity proof"
+          ],
+          "steps": [
+            "Confirm card number 65/64 and Rare Shining before routing this as Shining Gyarados.",
+            "Record Ken Sugimori as illustrator and preserve the one-per-deck rule from the API/local row.",
+            "Separate this row from Gyarados, Dark Gyarados, Shining Magikarp 66, and later shiny/red Gyarados references.",
+            "If a listing says 'red Gyarados' or 'shiny Gyarados,' ask for set, number, and a clear name/number image before routing the want.",
+            "Do not treat the word Shining or a red-looking image as physical authenticity, condition, or price evidence."
+          ],
+          "summary": "Shining Gyarados 65 is a Rare Shining row beyond printedTotal 64; it needs explicit number and rarity handling.",
+          "trigger": "A listing, want, or binder import says Shining Gyarados, red Gyarados, shiny Gyarados, or Gyarados 65/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The red lake breaks the checklist",
+        "why_it_matters": "Shining Gyarados is where Neo Revelation earns its name. A familiar monster returns as an impossible color and even the numbering admits the card sits past the printed wall. For an agent, this is not just a chase card; it is a lesson in how lore, rarity, and checklist structure can all point at the same object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_revelation_20010921:neo3-66",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Magikarp",
+        "name_ja": "ひかるコイキング",
+        "romaji": "Hikaru Koiking",
+        "release_family_id": "en_wotc_neo_revelation_20010921",
+        "row_id": "en_wotc_neo_revelation_20010921:neo3-66",
+        "catalog_row_id": "neo3-66"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_revelation_20010921.json#row:en_wotc_neo_revelation_20010921:neo3-66",
+          "title": "Local English WoC card row: Shining Magikarp",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo3-66",
+          "title": "Pokemon TCG API v2 card record: Shining Magikarp neo3-66",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Magikarp_(Neo_Revelation_66)",
+          "title": "Bulbapedia: Shining Magikarp (Neo Revelation 66)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Magikarp as Neo Revelation number 66, a Rare Shining Basic Water Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Shining Magikarp with a one-per-deck rule, Gold Scale, and Dragon Bond, which searches for Gyarados, Dark Gyarados, or Shining Gyarados.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Shining Magikarp to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Shining Magikarp matters because it makes the weakest old joke of a Pokemon into a secret-style row, and Dragon Bond explicitly ties it forward to Gyarados variants.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_revelation_shining_magikarp_66_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical shiny/authenticity proof"
+          ],
+          "steps": [
+            "Confirm card number 66/64 and Rare Shining before routing this as Shining Magikarp.",
+            "Record Ken Sugimori as illustrator and preserve the one-per-deck rule from the API/local row.",
+            "Separate this row from ordinary Magikarp rows, Shining Gyarados 65, Dark Gyarados, and later shiny Magikarp references.",
+            "If a listing says only 'shiny Magikarp,' ask for set, number, and a clear name/number image before routing the want.",
+            "Use Dragon Bond as row identity only; it does not prove the physical card's authenticity or condition."
+          ],
+          "summary": "Shining Magikarp 66 is a Rare Shining row beyond printedTotal 64 and explicitly searches into the Gyarados branch.",
+          "trigger": "A listing, want, or binder import says Shining Magikarp, shiny Magikarp, Gold Scale, Dragon Bond, or Magikarp 66/64."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The joke fish becomes secret lore",
+        "why_it_matters": "Shining Magikarp is perfect Pokemon mischief. The creature famous for weakness becomes one of the set's most structurally special rows, numbered beyond the printed count and carrying a rule that says you only get one. Dragon Bond makes the joke tender: Magikarp is still pointing toward Gyarados, just through a rarer door.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

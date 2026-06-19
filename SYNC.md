@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_revelation_v0_1.json`.
+  Neo Revelation is now a hand-authored release dossier, with Ho-Oh 7,
+  Ho-Oh 18, Lugia 20, Celebi 3, Shining Gyarados 65, and Shining Magikarp
+  66 promoted from generated baseline to sourced card dossiers. The pass
+  frames Neo Revelation as the set where Johto becomes myth: Ho-Oh, Celebi,
+  returning Lugia, and the first English Rare Shining pair make the reveal
+  feel structural rather than just thematic. Added special identification
+  rails for English neo3 versus Japanese Awakening Legends context, 64
+  printed / 66 total Shining boundary, Ho-Oh 7 Rare Holo versus Ho-Oh 18
+  Rare, Lugia 20 versus Neo Genesis Lugia 9 / Crystal Lugia branches,
+  Celebi's Time Travel row, Shining Gyarados 65, and Shining Magikarp 66.
+  Sources: local English WoC catalog, Pokemon TCG API v2 set/card endpoints,
+  and Bulbapedia community pages for Neo Revelation and the promoted cards.
+  Generated gap moved from 195 releases / 4,483 cards to 194 releases /
+  4,477 cards. Current catalog-history corpus: 22,910 claims, 4,938
+  sources, corpus hash
+  `bcb32ddcfed27397c249fd60259860a7e165e958268775ceeb061abe35e4fed1`;
+  index hash `1f33c68944b4917eedcc766e3cb898749d50770a236230931657f61b437f5750`;
+  queue hash `3a0aa8359cce25124245b66cf206ceb6ea4a68cac33fd8df080bc46f6b17a3a4`.
 - `[passive]` 2026-06-19 · Codex — completed the twelfth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_genesis_v0_1.json`.
