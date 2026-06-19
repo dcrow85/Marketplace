@@ -55,6 +55,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the third hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json`.
+  Wizards Black Star Promos is now a hand-authored release dossier, with
+  Pikachu 1, Mew 8, Mew 9, _____'s Pikachu 24, and Lucky Stadium 41 promoted
+  from generated baseline to sourced card dossiers. The pass treats the promo
+  star as a distribution/contact map rather than a normal expansion: League,
+  movie, guide/book, Game Boy, mail-in/Create-a-Card, Pokémon Center New York,
+  home-video, and magazine routes stay legible instead of collapsing into
+  "promo." Added special identification rails for row-specific Pikachu/Mew
+  comparisons, Birthday Pikachu owner/birthdate-field state, and Lucky Stadium
+  New York print context. Sources: local English WoC catalog, Pokémon TCG API
+  v2 set/card endpoints, and Bulbapedia community pages for Wizards Black Star
+  Promos, Mew 8, _____'s Pikachu, and Lucky Stadium. Generated gap moved from
+  205 releases / 4,538 cards to 204 releases / 4,533 cards. Current
+  catalog-history corpus: 22,945 claims, 4,793 sources, corpus hash
+  `0ec101102b0bf36e85d3f2f0848d0988678813932cc9fa99fd2b682a1c038bd7`;
+  index hash `ee4912d0858396b5f6a929f50faba4cb4f43cd508577e59f75ea205398f1d364`;
+  queue hash `d77381336e290adaab7127b22181e246cd60d73e2ae3b665c45ee67c1c21e5e8`.
 - `[passive]` 2026-06-19 · Codex — completed the second hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json`.

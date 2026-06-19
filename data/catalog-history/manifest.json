@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22947,
-    "corpus_hash": "e2ae673cf1046dbe251c15a575307950c16cd2e44c97a2b46e9ea9831c551193",
-    "generated_card_dossier_count": 4538,
-    "generated_release_dossier_count": 205,
+    "claim_count": 22945,
+    "corpus_hash": "0ec101102b0bf36e85d3f2f0848d0988678813932cc9fa99fd2b682a1c038bd7",
+    "generated_card_dossier_count": 4533,
+    "generated_release_dossier_count": 204,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4780
+    "source_count": 4793
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "22f42a06f3c7b3bcf48eee2078f049f151734cd24d787364308fc0783b50c028",
+    "queue_hash": "d77381336e290adaab7127b22181e246cd60d73e2ae3b665c45ee67c1c21e5e8",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T01:19:27Z",
+  "generated_at": "2026-06-19T01:28:14Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "f462626880f71521c7e35811de7cafba99f1c1f7a0ca61c7735e4b0718ffe188",
+    "index_hash": "ee4912d0858396b5f6a929f50faba4cb4f43cd508577e59f75ea205398f1d364",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -43,6 +43,7 @@
   "source_sets": [
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
-    "data/catalog-history/source-sets/team_rocket_v0_1.json"
+    "data/catalog-history/source-sets/team_rocket_v0_1.json",
+    "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json"
   ]
 }
