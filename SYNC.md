@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`.
+  Aquapolis is now a hand-authored release dossier, with Tyranitar H28,
+  Umbreon H29, Espeon H9, Zapdos H32, Crystal Energy 146, and Lugia 149
+  promoted from generated baseline to sourced card dossiers. The pass
+  frames Aquapolis as the e-Reader interface city: H-number holos,
+  Dot-Code strips, secret rows, Crystal Type, and count-basis ambiguity
+  all become part of assembly. Added special identification rails for
+  local/API printedTotal 147 / total 182 versus Bulbapedia's 186-card
+  blurb, H-number versus non-Holofoil counterparts, promo and Box Topper
+  branches, e-Reader card IDs, Crystal Energy's promo / Creatures Deck
+  context, and Lugia's 149/147 Crystal secret-row boundary. Sources:
+  local English WoC catalog, Pokemon TCG API v2 set/card endpoints, and
+  Bulbapedia community pages for Aquapolis, Crystal Pokemon, Tyranitar,
+  Umbreon, Espeon, Zapdos, Crystal Energy, and Lugia. Generated gap moved
+  from 199 releases / 4,507 cards to 198 releases / 4,501 cards. Current
+  catalog-history corpus: 22,928 claims, 4,873 sources, corpus hash
+  `b891e139f9db2dfe92a97357dec4b6b4a60f62d7ce98c65947e1903056fe77b0`;
+  index hash `23f6e4cbc043172e61399f218c9557b3960eeca13c687917d40eaf21c0623e0f`;
+  queue hash `2eeefc24b5721a0a7885abfe16d7f29d49ac0ab1f3074fecef3fc216acab00c0`.
 - `[passive]` 2026-06-19 · Codex — completed the eighth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/adv_expansion_pack_v0_1.json`.

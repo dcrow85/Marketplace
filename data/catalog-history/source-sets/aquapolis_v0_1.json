@@ -1,0 +1,1153 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Aquapolis and six rows that show the e-Reader interface, H-number identity, Crystal Pokemon, and late-Wizards chase gravity.",
+    "in_scope": [
+      "Aquapolis release dossier",
+      "Tyranitar H28",
+      "Umbreon H29",
+      "Espeon H9",
+      "Zapdos H32",
+      "Crystal Energy 146",
+      "Lugia 149"
+    ],
+    "not_claiming": [
+      "complete Aquapolis scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_aquapolis_20030115",
+      "type": "release",
+      "context": {
+        "name_en": "Aquapolis",
+        "name_ja": "",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "release_date": "2003-01-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WoC release catalog: Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Crystal_Pok%C3%A9mon_(TCG)",
+          "title": "Bulbapedia: Crystal Pokemon (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete rules history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Aquapolis with a January 15, 2003 English release date; Bulbapedia also lists English release date January 15, 2003.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model Aquapolis set id ecard2 with printedTotal 147 and total 182; Bulbapedia's blurb describes Aquapolis as having 186 cards, so count-basis differences must remain visible.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Aquapolis as the second main expansion of the e-Card Series in English and says the Japanese materials came from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis introduced Crystal Pokemon, whose Crystal Type Poke-Body changes the Pokemon's type to match a basic Energy attached for the turn.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia notes Aquapolis has a separate H-number collection sequence for Rare Holo cards and that some cards have lettered variants with different Dot-Code strip data.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Tyranitar H28, Umbreon H29, Zapdos H32, Espeon H9, and Lugia 149 as major Aquapolis chase or identity-bearing rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Aquapolis are led by Hajime Kusajima, Kagemaru Himeno, Naoyo Kimura, Atsuko Nishida, Shin-ichi Yoshida, Kyoko Umemoto, Mitsuhiro Arita, Yukiko Baba, Yuka Morii, Miki Tanaka, Big Mama Tagawa, and Hisao Nakamura.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Aquapolis matters because it is not just a checklist but a machine-readable coastal city: H-number holos, Dot-Code strips, Crystal Type, secret rows, and e-Reader interactivity all make the card frame behave like an interface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_ecard_h_number_count_basis_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "one card-count source resolves every collection convention"
+          ],
+          "steps": [
+            "Preserve the count-basis distinction: local/API model printedTotal 147 and total 182, while Bulbapedia's blurb says 186 cards.",
+            "For H-number holos, record the H-number and the non-H counterpart separately before comparing images, prices, or wants.",
+            "For e-Reader rows, treat Dot-Code strip data as an identification and interaction feature, not proof that a seller's card scans or is authentic.",
+            "For Crystal Pokemon, record Crystal Type and secret numbering explicitly before treating a row as an ordinary rare."
+          ],
+          "summary": "Aquapolis identity depends on e-Reader strips, H-number holos, secret rows, and count-basis conventions; agents should keep those boundaries visible.",
+          "trigger": "Identifying or comparing Aquapolis cards, especially H-number holos, Crystal Pokemon, or secret-number rows."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The city where the card became an interface",
+        "why_it_matters": "Aquapolis feels like Wizards building a coastal machine out of cardboard. The Pokemon are still there, but the frame has become stranger: H numbers, Dot-Code strips, hidden data, Crystal Type, and secret rows. It is beautiful because it is slightly overbuilt. A collector is not only holding a picture; they are holding the remains of a moment when the card wanted to talk to hardware.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
+      "type": "card",
+      "context": {
+        "name_en": "Tyranitar",
+        "name_ja": "バンギラス",
+        "romaji": "Bangiras",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H28",
+        "catalog_row_id": "ecard2-H28"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H28",
+          "title": "Local English WoC card row: Tyranitar H28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H28",
+          "title": "Pokemon TCG API v2 card record: Tyranitar H28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tyranitar_(Aquapolis_H28)",
+          "title": "Bulbapedia: Tyranitar (Aquapolis H28)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Tyranitar as Aquapolis H28/H32, a Rare Holo Stage 2 Darkness row credited to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Tyranitar's Destructive Roar, Tail Slap, and Gigacrush attacks, with Gigacrush making each player discard the top three cards of their deck.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records separate Holofoil and Non Holofoil card IDs for this Tyranitar, with D-69 for the Holofoil print and D-69-# for the Non Holofoil print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aquapolis Tyranitar matters because the set's interface logic wraps around a heavy Johto chase species: H-number identity, Darkness typing, deck destruction, and e-Reader strip differences all matter at once.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_tyranitar_h28_nonholo_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "card ID proves scanability or physical truth"
+          ],
+          "steps": [
+            "Separate Tyranitar H28/H32 from the non-Holofoil Aquapolis Tyranitar 40/147 before comparing references.",
+            "Record H-number, rarity, and e-Reader card ID context when available.",
+            "Do not treat Dot-Code or card ID text from a catalog page as proof that a seller's physical card scans correctly.",
+            "If a seller only says Aquapolis Tyranitar, ask for images showing number, holo status, and e-Reader strip."
+          ],
+          "summary": "Aquapolis Tyranitar has Holofoil and Non Holofoil row boundaries; H28 must not collapse into 40/147.",
+          "trigger": "A listing or want references Aquapolis Tyranitar, H28, 40/147, D-69, or D-69-#."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A heavy monster inside a delicate interface",
+        "why_it_matters": "Tyranitar H28 is funny in the best way: the species is brute force, but Aquapolis makes you care about numbering, strips, card IDs, and print boundaries. It is a boulder wrapped in metadata. That is the set's magic in miniature.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H29",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "ブラッキー",
+        "romaji": "Blacky",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H29",
+        "catalog_row_id": "ecard2-H29"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H29",
+          "title": "Local English WoC card row: Umbreon H29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H29",
+          "title": "Pokemon TCG API v2 card record: Umbreon H29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Umbreon_(Aquapolis_H29)",
+          "title": "Bulbapedia: Umbreon (Aquapolis H29)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Umbreon as Aquapolis H29/H32, a Rare Holo Stage 1 Darkness row credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Umbreon's Dark Moon Poke-Power, which can look at and shuffle cards from the opponent's hand based on Darkness Energy attached to Umbreon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says this Umbreon has three prints and gives card ID C-74 for the Holofoil Aquapolis print and C-74-# for the Non Holofoil Aquapolis and P Promotional prints.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aquapolis Umbreon matters because it combines one of the most beloved Johto evolutions with Arita's credit, Darkness-type hand disruption, H-number identity, and a promo/non-holo/holo print fork.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_umbreon_h29_promo_nonholo_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "card ID proves scanability or physical truth"
+          ],
+          "steps": [
+            "Separate Umbreon H29/H32, Umbreon 41/147, and the Japanese P Promotional print before comparing evidence or value.",
+            "Record whether the listing claims Holofoil Aquapolis, Non Holofoil Aquapolis, or P Promotional context.",
+            "Keep C-74 / C-74-# card ID context as catalog legibility, not physical verification.",
+            "If a listing only says Aquapolis Umbreon, ask for number, holo status, and e-Reader strip images."
+          ],
+          "summary": "Aquapolis Umbreon has Holofoil, Non Holofoil, and P Promotional branches; the H29 row must stay separate.",
+          "trigger": "A listing or want references Aquapolis Umbreon, H29, 41/147, P Promo, C-74, or C-74-#."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A moon card with three doors",
+        "why_it_matters": "Umbreon H29 is why Aquapolis still hums for collectors. It is not only a beautiful Darkness Eeveelution; it is an Arita row with three print paths and a power that literally reaches into the opponent's hand. The card feels secretive before the market ever gets involved.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H9",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon",
+        "name_ja": "エーフィ",
+        "romaji": "Eifie",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H9",
+        "catalog_row_id": "ecard2-H9"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H9",
+          "title": "Local English WoC card row: Espeon H9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H9",
+          "title": "Pokemon TCG API v2 card record: Espeon H9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Aquapolis_H9)",
+          "title": "Bulbapedia: Espeon (Aquapolis H9)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Espeon as Aquapolis H9/H32, a Rare Holo Stage 1 Psychic row credited to Kyoko Umemoto.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Espeon as H9/H32 for the Holofoil print, 11/147 for the Non Holofoil print, and 6/12 for the English Reverse Holofoil Jumbo Box Topper.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the Holofoil and Box Topper prints use card ID C-70, while the Non Holofoil print uses C-70-#.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aquapolis Espeon matters because the same art-context family fans chase can exist as H-number holo, non-holo, and jumbo Box Topper branches, making the row a perfect test of agent-side identity discipline.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_espeon_h9_nonholo_box_topper_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "box topper and standard card are interchangeable"
+          ],
+          "steps": [
+            "Separate Espeon H9/H32, Espeon 11/147, and the English Box Topper 6/12 before comparing images or value.",
+            "Record whether a listing claims standard Holofoil, Non Holofoil, or Reverse Holofoil Jumbo Box Topper context.",
+            "Keep C-70 / C-70-# card ID context as catalog legibility, not physical verification.",
+            "Ask for size/context evidence if a listing may be a jumbo Box Topper rather than a standard card."
+          ],
+          "summary": "Aquapolis Espeon is a high-confusion row: H holo, non-holo, and jumbo Box Topper branches must stay separate.",
+          "trigger": "A listing or want references Aquapolis Espeon, H9, 11/147, Box Topper, C-70, or C-70-#."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The psychic branch with a jumbo shadow",
+        "why_it_matters": "Espeon H9 is an elegant card, but the real Aquapolis lesson is that elegance has paperwork. Holo, non-holo, and Box Topper branches sit close enough to confuse a casual search and far enough apart to matter. It is a beautiful Eeveelution and an identity drill at the same time.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H32",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "romaji": "Thunder",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H32",
+        "catalog_row_id": "ecard2-H32"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H32",
+          "title": "Local English WoC card row: Zapdos H32",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H32",
+          "title": "Pokemon TCG API v2 card record: Zapdos H32",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Zapdos_(Aquapolis_H32)",
+          "title": "Bulbapedia: Zapdos (Aquapolis H32)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Zapdos as Aquapolis H32/H32, a Rare Holo Basic Lightning row credited to Hajime Kusajima.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Zapdos's Anti-Lightning Poke-Body, Plasma, and Lightning Storm attacks, including the self-damage risk on Lightning Storm.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says this Zapdos has three prints and gives card ID C-68 for the Holofoil Aquapolis print and C-68-# for the Non Holofoil Aquapolis and P Promotional prints.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aquapolis Zapdos matters because the set turns a legendary bird into an interface object with H-number finality, promo branching, card IDs, and a strange Anti-Lightning body.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_zapdos_h32_promo_nonholo_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "card ID proves scanability or physical truth"
+          ],
+          "steps": [
+            "Separate Zapdos H32/H32, Zapdos 44/147, and the Japanese P Promotional print before comparing evidence or value.",
+            "Record whether the listing claims Holofoil Aquapolis, Non Holofoil Aquapolis, or P Promotional context.",
+            "Keep C-68 / C-68-# card ID context as catalog legibility, not physical verification.",
+            "If a listing only says Aquapolis Zapdos, ask for number, holo status, and e-Reader strip images."
+          ],
+          "summary": "Aquapolis Zapdos has Holofoil, Non Holofoil, and P Promotional branches; H32 must stay separate.",
+          "trigger": "A listing or want references Aquapolis Zapdos, H32, 44/147, P Promo, C-68, or C-68-#."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The last H-number throws sparks",
+        "why_it_matters": "Zapdos H32 has a satisfying edge because it is literally the last H-number in the Aquapolis holo sequence. The card is legendary, but the catalog work is mechanical: H32, 44/147, promo branch, C-68. It is thunder with a filing system.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-146",
+      "type": "card",
+      "context": {
+        "name_en": "Crystal Energy",
+        "name_ja": "クリスタルエネルギー",
+        "romaji": "Crystal Energy",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-146",
+        "catalog_row_id": "ecard2-146"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-146",
+          "title": "Local English WoC card row: Crystal Energy",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-146",
+          "title": "Pokemon TCG API v2 card record: Crystal Energy",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Crystal_Energy_(Aquapolis_146)",
+          "title": "Bulbapedia: Crystal Energy (Aquapolis 146)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Crystal Energy as Aquapolis 146/147, an Uncommon Special Energy row credited to Shin-ichi Yoshikawa.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Crystal Energy as providing Energy of all basic Energy types attached to the Pokemon it is attached to, or Colorless if no basic Energy is attached.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says Crystal Energy has Aquapolis and P Promotional prints, with card ID D-53-# for the Aquapolis print and D-53 for the P Promotional print, and notes the Aquapolis print includes a short Dot Code strip.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Wind from the Sea print of Crystal Energy was included in the Pokemon Card Game 25th Anniversary Creatures Deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Crystal Energy matters because it is the abstract version of Aquapolis's Crystal idea: type as a temporary relationship between the card and the Energy around it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_crystal_energy_promo_creatures_deck_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Aquapolis and promo prints are interchangeable"
+          ],
+          "steps": [
+            "Separate Aquapolis 146/147, Japanese Wind from the Sea, P Promotional, and 25th Anniversary Creatures Deck context before comparing references.",
+            "Record D-53-# versus D-53 card ID context as catalog legibility, not physical verification.",
+            "Treat the short Dot Code strip as an identification feature, not proof that a seller's card scans.",
+            "Ask for print-context evidence if a listing references Creatures Deck or P Promotional Crystal Energy."
+          ],
+          "summary": "Crystal Energy is an interface card with Aquapolis, promo, and later Creatures Deck context; print branch must be explicit.",
+          "trigger": "A listing or want references Crystal Energy, Aquapolis 146, P Promo, Creatures Deck, D-53, or D-53-#."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The set's idea, condensed into Energy",
+        "why_it_matters": "Crystal Energy is not the loudest card in Aquapolis, but it may be the cleanest statement of the set. It says identity is conditional: attach something, and the card becomes differently useful. For this protocol, that is deliciously relevant. The card is a tiny lesson in context becoming function.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-149",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "ルギア",
+        "romaji": "Lugia",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-149",
+        "catalog_row_id": "ecard2-149"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-149",
+          "title": "Local English WoC card row: Lugia 149",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-149",
+          "title": "Pokemon TCG API v2 card record: Lugia 149",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Aquapolis_149)",
+          "title": "Bulbapedia: Lugia (Aquapolis 149)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Lugia as Aquapolis 149/147, a Rare Secret Basic Colorless Crystal Pokemon row credited locally to Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Lugia's Crystal Type Poke-Body, which changes Lugia's type when Fire, Water, or Psychic basic Energy is attached from hand for the turn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia identifies Lugia as Aquapolis 149/147 in English and Wind from the Sea 90/87 in Japanese.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aquapolis Lugia matters because it compresses the set's whole ambition into one chase row: secret numbering, Crystal Type, Lugia gravity, and the e-Card era's obsession with cards that do more than sit still.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_lugia_crystal_secret_number_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Crystal Type proves physical authenticity"
+          ],
+          "steps": [
+            "Confirm Aquapolis 149/147 before comparing to other Lugia rows or Japanese Wind from the Sea 90/87.",
+            "Record Rare Secret, Crystal Pokemon, and Crystal Type context explicitly.",
+            "Do not use secret numbering or Crystal Type as standalone proof of a physical card's authenticity, holo state, or condition.",
+            "If a listing says Crystal Lugia, ask for full-card photos showing number, name, type/Crystal Type text, and e-Reader strip."
+          ],
+          "summary": "Aquapolis Lugia is a secret-number Crystal Pokemon row; set, number, and Crystal Type must remain visible.",
+          "trigger": "A listing or want references Aquapolis Lugia, Crystal Lugia, Lugia 149/147, or Wind from the Sea 90/87."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The secret row where the city crystallizes",
+        "why_it_matters": "Lugia 149 is Aquapolis becoming myth. The number already steps past the printed frame, then Crystal Type makes Lugia change color with the Energy around it. It is the kind of row an agent must handle carefully because the romance and the identification burden are the same object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
