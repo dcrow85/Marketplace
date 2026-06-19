@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22940,
-    "corpus_hash": "d1db51ecf2a0f7dd8d15ab78750f2477d6938141430b7779a0b68da67e424bf7",
-    "generated_card_dossier_count": 4523,
-    "generated_release_dossier_count": 202,
+    "claim_count": 22935,
+    "corpus_hash": "aa5ec59a831d4184726bafbda536834080912a71bc3e59e5b51d115867988cf3",
+    "generated_card_dossier_count": 4518,
+    "generated_release_dossier_count": 201,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4815
+    "source_count": 4827
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "df685fae52c870407272c83ed56da0a434ac0ce2a41e272c32ea34784c041323",
+    "queue_hash": "ee497dcf9e3fe8ae07bd057b901c5b1a01d1782f384cb95852e1076fafbde587",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T01:43:12Z",
+  "generated_at": "2026-06-19T01:51:43Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "a54e51d0ce6a30f72fd43889ff984fb62c768542250a8eb657bdd954f219da94",
+    "index_hash": "aefb5b4b63385f50470e8f35d7c06133c4c9c035de1a1164a99b182efb2f470a",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -43,6 +43,7 @@
   "source_sets": [
     "data/catalog-history/source-sets/expedition_base_set_v0_1.json",
     "data/catalog-history/source-sets/gym_challenge_v0_1.json",
+    "data/catalog-history/source-sets/gym_heroes_v0_1.json",
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",

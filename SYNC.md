@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/gym_heroes_v0_1.json`.
+  Gym Heroes is now a hand-authored release dossier, with Blaine's
+  Moltres 1, Misty's Tentacruel 10, Rocket's Scyther 13, Lt. Surge's
+  Raichu 28, and Misty's Psyduck 54 promoted from generated baseline to
+  sourced card dossiers. The pass frames Gym Heroes as the first English
+  Leaders' Stadium / Gym owner-name assembly: a familiar Pokemon can now
+  arrive as somebody's trained Pokemon, and that relationship becomes part
+  of catalog identity. Added special identification rails for the release's
+  borrowed-team context, Blaine's Moltres five-Energy milestone, Misty's
+  Tentacruel Hanada City Gym / Leaders' Stadium path, Rocket's Scyther's
+  pre-evolution text error, Lt. Surge's Raichu Kuchiba / Vermilion Gym
+  context, and Misty's Psyduck standard / W-stamped / Hanada branches.
+  Sources: local English WoC catalog, Pokemon TCG API v2 set/card
+  endpoints, and Bulbapedia community pages for Gym Heroes, Blaine's
+  Moltres, Misty's Tentacruel, Rocket's Scyther, Lt. Surge's Raichu, and
+  Misty's Psyduck. Generated gap moved from 202 releases / 4,523 cards to
+  201 releases / 4,518 cards. Current catalog-history corpus: 22,935
+  claims, 4,827 sources, corpus hash
+  `aa5ec59a831d4184726bafbda536834080912a71bc3e59e5b51d115867988cf3`;
+  index hash `aefb5b4b63385f50470e8f35d7c06133c4c9c035de1a1164a99b182efb2f470a`;
+  queue hash `ee497dcf9e3fe8ae07bd057b901c5b1a01d1782f384cb95852e1076fafbde587`.
 - `[passive]` 2026-06-19 · Codex — completed the fifth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/gym_challenge_v0_1.json`.
