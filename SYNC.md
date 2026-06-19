@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twelfth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_genesis_v0_1.json`.
+  Neo Genesis is now a hand-authored release dossier, with Lugia 9,
+  Feraligatr 5, Meganium 11, Pichu 12, Skarmory 13, Metal Energy 19,
+  and Ampharos 1 promoted from generated baseline to sourced card dossiers.
+  The pass frames Neo Genesis as the English TCG's second beginning:
+  Johto species, Baby Pokemon, Metal type, Special Energy grammar, and
+  starter power engines arriving together instead of as a simple sequel.
+  Added special identification rails for English neo1 versus Japanese Gold,
+  Silver, to a New World... context, Lugia 9 versus later Lugia/Crystal
+  Lugia branches, Feraligatr 5 versus 4, Meganium 11 versus 10, Pichu's
+  Baby-rule boundary, Skarmory versus Metal Energy, Metal Energy as Special
+  Energy rather than Basic Energy, and Ampharos 1 as the checklist-opening
+  Neo Genesis row. Sources: local English WoC catalog, Pokemon TCG API v2
+  set/card endpoints, Bulbapedia community pages for Neo Genesis and the
+  promoted cards, plus PSA's Neo Genesis 1st Edition collecting overview as
+  a lower-tier pack/chase-context source. Generated gap moved from 196
+  releases / 4,490 cards to 195 releases / 4,483 cards. Current
+  catalog-history corpus: 22,916 claims, 4,922 sources, corpus hash
+  `245eca5ab955094f2ab82b7dbb83262c8684f9df043595da6701ce63128aeec1`;
+  index hash `e23e196ce5adbbd32c49214771d57580fc9251c3a4c9d92cdef40e2ee35a988f`;
+  queue hash `6ccd5698e615163d4e62227acc258545a863a46a28b6b6686b5a97f81843822d`.
 - `[passive]` 2026-06-19 · Codex — completed the eleventh
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_discovery_v0_1.json`.
