@@ -55,6 +55,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-sixth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/town_on_no_map_tranche_v0_1.json`.
+  Japanese Town on No Map / 地図にない町 now has a hand-authored release dossier
+  plus thirteen high-gravity / identity-teaching card dossiers: Suicune rare
+  030, Zapdos rare 037, Zapdos holo 038, Espeon rare 045, Espeon holo 046,
+  Umbreon rare 067, Umbreon holo 068, Houndoom 070, Weakness Guard 075,
+  Town Volunteers 079, Pokemon Park 088, Power Plant 089, and Rainbow Energy
+  092. The pass frames the release as coordinates becoming the collector
+  problem: if the town is not on a map, the row number is the map. Added
+  `special_identification_instructions` requiring agents to preserve Japanese
+  title 地図にない町, TCGdex set id `E2`, card number, local id, rough source-row
+  text, normalized collector label, and paired-name row context before
+  accepting famous-species or English Aquapolis matches. Zapdos 037/038,
+  Espeon 045/046, and Umbreon 067/068 are explicitly separate until number and
+  rarity evidence are checked. Civic/infrastructure cards such as Town
+  Volunteers, Pokemon Park, and Power Plant are treated as location apparatus,
+  not filler. This is a bounded high-gravity tranche, not complete 92-card
+  hand-authored coverage; 79 Town on No Map rows remain generated follow-up
+  work. Artists remain intentionally unset because the local Japanese classic
+  rows do not provide illustrator authority. Sources: local Japanese classic
+  Town on No Map release file and TCGdex Japanese set/card payload references.
+  Generated gap moved from 152 releases / 4,071 cards to 151 releases / 4,058
+  cards. Current catalog-history corpus:
+  `8644165c97ffe9b630a03e8efcdf741d4219aacef7e5dc090b5648cf479910e0`; index:
+  `3e85e54612b730f7d17c393f2c31103fe62a90cae8feccd30a87e85a6326071f`; queue:
+  `c62bf4b20c8c9fec3dc861a3ca128d2d286a1774cfcdfb67200a11d23046ed98`. Audit
+  counts: 23,031 claims, 5,692 sources, 58 hand-authored release dossiers, 491
+  hand-authored card dossiers, and 753 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/town_on_no_map_tranche_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-fifth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/split_earth_tranche_v0_1.json`.

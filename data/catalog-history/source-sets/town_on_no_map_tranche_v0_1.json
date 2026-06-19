@@ -1,0 +1,2617 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Town on No Map / 地図にない町 within the catalog-history deepening pass.",
+    "in_scope": [
+      "Town on No Map release dossier",
+      "selected paired-row / location / infrastructure identity-teaching card dossiers",
+      "special identification rails for exact Japanese E2 row identity"
+    ],
+    "not_claiming": [
+      "complete 92-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308",
+      "type": "release",
+      "context": {
+        "name_en": "Town on No Map",
+        "name_ja": "地図にない町",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "release_date": "2002-03-08"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json",
+          "title": "Local Japanese classic catalog: Town on No Map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E2",
+          "title": "TCGdex Japanese set endpoint: E2 / Town on No Map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Town on No Map / 地図にない町 with a March 8, 2002 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 92 total and official rows for Town on No Map, with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Town on No Map is modeled as a Japanese main expansion in the ポケモンカードe series, using TCGdex set id E2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Town on No Map matters because it turns the e-Card set into a place with unstable coordinates: paired chase rows, civic trainer cards, parks, power plants, and energy cubes all make location part of card identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights paired Zapdos 037/038, Espeon 045/046, and Umbreon 067/068 rows; this tranche also hand-authors Suicune, Houndoom, Weakness Guard, Town Volunteers, Pokemon Park, Power Plant, and Rainbow Energy because they teach place, infrastructure, and paired-row identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 地図にない町, TCGdex set id E2, card number, local id, rough source-row text, normalized collector label, and paired-name row context before treating a famous species or English Aquapolis match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "town_on_no_map_release_paired_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Town on No Map, 地図にない町, Aquapolis, E2, Zapdos, Espeon, Umbreon, Pokemon Park, Power Plant, or paired rows.",
+          "summary": "Keep Town on No Map as Japanese E2 / 地図にない町 with paired-name row identity; do not collapse rare/holo pairs or English Aquapolis rows.",
+          "steps": [
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Preserve paired-name rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068 as distinct until number and rarity evidence are checked.",
+            "Treat civic/infrastructure cards such as Town Volunteers, Pokemon Park, and Power Plant as part of the location apparatus, not filler.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Town on No Map — when coordinates become the collector problem",
+        "why_it_matters": "Town on No Map is an e-Card place that refuses to be flattened. The title is almost a warning to the agent: if the town is not on a map, the row number is the map. Zapdos, Espeon, and Umbreon each split into paired desire, while civic cards make the release feel inhabited.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 92-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-030",
+      "type": "card",
+      "context": {
+        "name_en": "Suicune rare",
+        "name_ja": "Suicune -030/092",
+        "normalized_label": "Suicune rare",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-030",
+        "card_number": "030"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-030",
+          "title": "Local Japanese classic catalog row: Suicune rare / Town on No Map #030",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-030",
+          "title": "TCGdex Japanese card endpoint: E2-030",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-030 as Town on No Map / 地図にない町 card #030, with rough source-row text 'Suicune -030/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Suicune rare' as a normalized collector label while preserving the rough local source-row text 'Suicune -030/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-030 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Suicune rare matters in this tranche because it gives the town a wandering-water myth, a Johto beast appearing as part of place-memory rather than only legendary spectacle.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Suicune rare, preserve Japanese title 地図にない町, TCGdex set id E2, card #030, local id E2-030, rough source-row text 'Suicune -030/092', and normalized label 'Suicune rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-030_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Suicune rare, Suicune -030/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 030.",
+          "summary": "Preserve Suicune rare as Japanese Town on No Map / 地図にない町 #030, local id E2-030, source-row text 'Suicune -030/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-030 and local id E2-030.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 030, rough source-row text 'Suicune -030/092', and normalized collector label 'Suicune rare' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Suicune rare — Town on No Map #030",
+        "why_it_matters": "Suicune rare makes Town on No Map feel like a place with uncertain coordinates: it gives the town a wandering-water myth, a Johto beast appearing as part of place-memory rather than only legendary spectacle. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-038",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos holo",
+        "name_ja": "Zapdos -038/092",
+        "normalized_label": "Zapdos holo",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-038",
+        "card_number": "038"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-038",
+          "title": "Local Japanese classic catalog row: Zapdos holo / Town on No Map #038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-038",
+          "title": "TCGdex Japanese card endpoint: E2-038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-038 as Town on No Map / 地図にない町 card #038, with rough source-row text 'Zapdos -038/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Zapdos holo' as a normalized collector label while preserving the rough local source-row text 'Zapdos -038/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-038 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Zapdos holo matters in this tranche because it is the higher-attention Zapdos row, but paired with Zapdos 037 so number and rarity must drive matching.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Zapdos holo, preserve Japanese title 地図にない町, TCGdex set id E2, card #038, local id E2-038, rough source-row text 'Zapdos -038/092', and normalized label 'Zapdos holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Zapdos holo is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-038_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos holo, Zapdos -038/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 038.",
+          "summary": "Preserve Zapdos holo as Japanese Town on No Map / 地図にない町 #038, local id E2-038, source-row text 'Zapdos -038/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-038 and local id E2-038.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 038, rough source-row text 'Zapdos -038/092', and normalized collector label 'Zapdos holo' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Zapdos holo — Town on No Map #038",
+        "why_it_matters": "Zapdos holo makes Town on No Map feel like a place with uncertain coordinates: it is the higher-attention Zapdos row, but paired with Zapdos 037 so number and rarity must drive matching. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-037",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos rare",
+        "name_ja": "Zapdos -037/092",
+        "normalized_label": "Zapdos rare",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-037",
+        "card_number": "037"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-037",
+          "title": "Local Japanese classic catalog row: Zapdos rare / Town on No Map #037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-037",
+          "title": "TCGdex Japanese card endpoint: E2-037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-037 as Town on No Map / 地図にない町 card #037, with rough source-row text 'Zapdos -037/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Zapdos rare' as a normalized collector label while preserving the rough local source-row text 'Zapdos -037/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-037 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Zapdos rare matters in this tranche because it teaches the paired-row problem directly: same legendary name, different row, different signal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Zapdos rare, preserve Japanese title 地図にない町, TCGdex set id E2, card #037, local id E2-037, rough source-row text 'Zapdos -037/092', and normalized label 'Zapdos rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Zapdos rare is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-037_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos rare, Zapdos -037/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 037.",
+          "summary": "Preserve Zapdos rare as Japanese Town on No Map / 地図にない町 #037, local id E2-037, source-row text 'Zapdos -037/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-037 and local id E2-037.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 037, rough source-row text 'Zapdos -037/092', and normalized collector label 'Zapdos rare' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Zapdos rare — Town on No Map #037",
+        "why_it_matters": "Zapdos rare makes Town on No Map feel like a place with uncertain coordinates: it teaches the paired-row problem directly: same legendary name, different row, different signal. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-046",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon holo",
+        "name_ja": "Espeon -046/092",
+        "normalized_label": "Espeon holo",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-046",
+        "card_number": "046"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-046",
+          "title": "Local Japanese classic catalog row: Espeon holo / Town on No Map #046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-046",
+          "title": "TCGdex Japanese card endpoint: E2-046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-046 as Town on No Map / 地図にない町 card #046, with rough source-row text 'Espeon -046/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Espeon holo' as a normalized collector label while preserving the rough local source-row text 'Espeon -046/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-046 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Espeon holo matters in this tranche because it gives the mapless town a psychic Eevee beacon and one of the release’s strongest desire signals.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Espeon holo, preserve Japanese title 地図にない町, TCGdex set id E2, card #046, local id E2-046, rough source-row text 'Espeon -046/092', and normalized label 'Espeon holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Espeon holo is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-046_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Espeon holo, Espeon -046/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 046.",
+          "summary": "Preserve Espeon holo as Japanese Town on No Map / 地図にない町 #046, local id E2-046, source-row text 'Espeon -046/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-046 and local id E2-046.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 046, rough source-row text 'Espeon -046/092', and normalized collector label 'Espeon holo' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Espeon holo — Town on No Map #046",
+        "why_it_matters": "Espeon holo makes Town on No Map feel like a place with uncertain coordinates: it gives the mapless town a psychic Eevee beacon and one of the release’s strongest desire signals. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-045",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon rare",
+        "name_ja": "Espeon -045/092",
+        "normalized_label": "Espeon rare",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-045",
+        "card_number": "045"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-045",
+          "title": "Local Japanese classic catalog row: Espeon rare / Town on No Map #045",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-045",
+          "title": "TCGdex Japanese card endpoint: E2-045",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-045 as Town on No Map / 地図にない町 card #045, with rough source-row text 'Espeon -045/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Espeon rare' as a normalized collector label while preserving the rough local source-row text 'Espeon -045/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-045 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Espeon rare matters in this tranche because it keeps the agent honest: Espeon demand cannot collapse the rare and holo rows into one object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Espeon rare, preserve Japanese title 地図にない町, TCGdex set id E2, card #045, local id E2-045, rough source-row text 'Espeon -045/092', and normalized label 'Espeon rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Espeon rare is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-045_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Espeon rare, Espeon -045/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 045.",
+          "summary": "Preserve Espeon rare as Japanese Town on No Map / 地図にない町 #045, local id E2-045, source-row text 'Espeon -045/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-045 and local id E2-045.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 045, rough source-row text 'Espeon -045/092', and normalized collector label 'Espeon rare' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Espeon rare — Town on No Map #045",
+        "why_it_matters": "Espeon rare makes Town on No Map feel like a place with uncertain coordinates: it keeps the agent honest: Espeon demand cannot collapse the rare and holo rows into one object. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-068",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon holo",
+        "name_ja": "Umbreon -068/092",
+        "normalized_label": "Umbreon holo",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-068",
+        "card_number": "068"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-068",
+          "title": "Local Japanese classic catalog row: Umbreon holo / Town on No Map #068",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-068",
+          "title": "TCGdex Japanese card endpoint: E2-068",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-068 as Town on No Map / 地図にない町 card #068, with rough source-row text 'Umbreon -068/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Umbreon holo' as a normalized collector label while preserving the rough local source-row text 'Umbreon -068/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-068 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon holo matters in this tranche because it is the night-side chase anchor and a perfect example of why row coordinates matter.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Umbreon holo, preserve Japanese title 地図にない町, TCGdex set id E2, card #068, local id E2-068, rough source-row text 'Umbreon -068/092', and normalized label 'Umbreon holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Umbreon holo is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-068_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Umbreon holo, Umbreon -068/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 068.",
+          "summary": "Preserve Umbreon holo as Japanese Town on No Map / 地図にない町 #068, local id E2-068, source-row text 'Umbreon -068/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-068 and local id E2-068.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 068, rough source-row text 'Umbreon -068/092', and normalized collector label 'Umbreon holo' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Umbreon holo — Town on No Map #068",
+        "why_it_matters": "Umbreon holo makes Town on No Map feel like a place with uncertain coordinates: it is the night-side chase anchor and a perfect example of why row coordinates matter. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-067",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon rare",
+        "name_ja": "Umbreon -067/092",
+        "normalized_label": "Umbreon rare",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-067",
+        "card_number": "067"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-067",
+          "title": "Local Japanese classic catalog row: Umbreon rare / Town on No Map #067",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-067",
+          "title": "TCGdex Japanese card endpoint: E2-067",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-067 as Town on No Map / 地図にない町 card #067, with rough source-row text 'Umbreon -067/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Umbreon rare' as a normalized collector label while preserving the rough local source-row text 'Umbreon -067/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-067 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon rare matters in this tranche because it shadows the holo row and makes duplicate-name discipline part of the collector story.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Umbreon rare, preserve Japanese title 地図にない町, TCGdex set id E2, card #067, local id E2-067, rough source-row text 'Umbreon -067/092', and normalized label 'Umbreon rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Umbreon rare is part of a paired-name row structure in Town on No Map; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-067_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Umbreon rare, Umbreon -067/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 067.",
+          "summary": "Preserve Umbreon rare as Japanese Town on No Map / 地図にない町 #067, local id E2-067, source-row text 'Umbreon -067/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-067 and local id E2-067.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 067, rough source-row text 'Umbreon -067/092', and normalized collector label 'Umbreon rare' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Umbreon rare — Town on No Map #067",
+        "why_it_matters": "Umbreon rare makes Town on No Map feel like a place with uncertain coordinates: it shadows the holo row and makes duplicate-name discipline part of the collector story. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-070",
+      "type": "card",
+      "context": {
+        "name_en": "Houndoom",
+        "name_ja": "猟犬-070/092",
+        "normalized_label": "Houndoom",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-070",
+        "card_number": "070"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-070",
+          "title": "Local Japanese classic catalog row: Houndoom / Town on No Map #070",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-070",
+          "title": "TCGdex Japanese card endpoint: E2-070",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-070 as Town on No Map / 地図にない町 card #070, with rough source-row text '猟犬-070/092'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Houndoom' as a normalized collector label while preserving the rough local source-row text '猟犬-070/092'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-070 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Houndoom matters in this tranche because it adds dark-type local threat and sits near the Umbreon rows as part of the town’s night grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Houndoom, preserve Japanese title 地図にない町, TCGdex set id E2, card #070, local id E2-070, rough source-row text '猟犬-070/092', and normalized label 'Houndoom'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-070_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Houndoom, 猟犬-070/092, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 070.",
+          "summary": "Preserve Houndoom as Japanese Town on No Map / 地図にない町 #070, local id E2-070, source-row text '猟犬-070/092'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-070 and local id E2-070.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 070, rough source-row text '猟犬-070/092', and normalized collector label 'Houndoom' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Houndoom — Town on No Map #070",
+        "why_it_matters": "Houndoom makes Town on No Map feel like a place with uncertain coordinates: it adds dark-type local threat and sits near the Umbreon rows as part of the town’s night grammar. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-075",
+      "type": "card",
+      "context": {
+        "name_en": "Weakness Guard",
+        "name_ja": "脱力感ガード",
+        "normalized_label": "Weakness Guard",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-075",
+        "card_number": "075"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-075",
+          "title": "Local Japanese classic catalog row: Weakness Guard / Town on No Map #075",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-075",
+          "title": "TCGdex Japanese card endpoint: E2-075",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-075 as Town on No Map / 地図にない町 card #075, with rough source-row text '脱力感ガード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Weakness Guard' as a normalized collector label while preserving the rough local source-row text '脱力感ガード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-075 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Weakness Guard matters in this tranche because a trainer/tool row that makes the town feel like an apparatus of protection and rules, not only creatures.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Weakness Guard, preserve Japanese title 地図にない町, TCGdex set id E2, card #075, local id E2-075, rough source-row text '脱力感ガード', and normalized label 'Weakness Guard'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-075_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Weakness Guard, 脱力感ガード, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 075.",
+          "summary": "Preserve Weakness Guard as Japanese Town on No Map / 地図にない町 #075, local id E2-075, source-row text '脱力感ガード'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-075 and local id E2-075.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 075, rough source-row text '脱力感ガード', and normalized collector label 'Weakness Guard' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Weakness Guard — Town on No Map #075",
+        "why_it_matters": "Weakness Guard makes Town on No Map feel like a place with uncertain coordinates: a trainer/tool row that makes the town feel like an apparatus of protection and rules, not only creatures. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-079",
+      "type": "card",
+      "context": {
+        "name_en": "Town Volunteers",
+        "name_ja": "町のボランティア",
+        "normalized_label": "Town Volunteers",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-079",
+        "card_number": "079"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-079",
+          "title": "Local Japanese classic catalog row: Town Volunteers / Town on No Map #079",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-079",
+          "title": "TCGdex Japanese card endpoint: E2-079",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-079 as Town on No Map / 地図にない町 card #079, with rough source-row text '町のボランティア'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Town Volunteers' as a normalized collector label while preserving the rough local source-row text '町のボランティア'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-079 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Town Volunteers matters in this tranche because it names the civic texture of the release directly: a town on no map still has people maintaining it.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Town Volunteers, preserve Japanese title 地図にない町, TCGdex set id E2, card #079, local id E2-079, rough source-row text '町のボランティア', and normalized label 'Town Volunteers'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Town Volunteers is treated as location/infrastructure memory: it makes the release title feel inhabited rather than merely decorative.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-079_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Town Volunteers, 町のボランティア, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 079.",
+          "summary": "Preserve Town Volunteers as Japanese Town on No Map / 地図にない町 #079, local id E2-079, source-row text '町のボランティア'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-079 and local id E2-079.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 079, rough source-row text '町のボランティア', and normalized collector label 'Town Volunteers' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Town Volunteers — Town on No Map #079",
+        "why_it_matters": "Town Volunteers makes Town on No Map feel like a place with uncertain coordinates: it names the civic texture of the release directly: a town on no map still has people maintaining it. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-088",
+      "type": "card",
+      "context": {
+        "name_en": "Pokemon Park",
+        "name_ja": "ポケモンパーク",
+        "normalized_label": "Pokemon Park",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-088",
+        "card_number": "088"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-088",
+          "title": "Local Japanese classic catalog row: Pokemon Park / Town on No Map #088",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-088",
+          "title": "TCGdex Japanese card endpoint: E2-088",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-088 as Town on No Map / 地図にない町 card #088, with rough source-row text 'ポケモンパーク'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Pokemon Park' as a normalized collector label while preserving the rough local source-row text 'ポケモンパーク'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-088 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pokemon Park matters in this tranche because it gives the location a public-space feeling, a place card that makes the release more than a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Pokemon Park, preserve Japanese title 地図にない町, TCGdex set id E2, card #088, local id E2-088, rough source-row text 'ポケモンパーク', and normalized label 'Pokemon Park'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Pokemon Park is treated as location/infrastructure memory: it makes the release title feel inhabited rather than merely decorative.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-088_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Park, ポケモンパーク, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 088.",
+          "summary": "Preserve Pokemon Park as Japanese Town on No Map / 地図にない町 #088, local id E2-088, source-row text 'ポケモンパーク'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-088 and local id E2-088.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 088, rough source-row text 'ポケモンパーク', and normalized collector label 'Pokemon Park' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Park — Town on No Map #088",
+        "why_it_matters": "Pokemon Park makes Town on No Map feel like a place with uncertain coordinates: it gives the location a public-space feeling, a place card that makes the release more than a roster. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-089",
+      "type": "card",
+      "context": {
+        "name_en": "Power Plant",
+        "name_ja": "発電所",
+        "normalized_label": "Power Plant",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-089",
+        "card_number": "089"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-089",
+          "title": "Local Japanese classic catalog row: Power Plant / Town on No Map #089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-089",
+          "title": "TCGdex Japanese card endpoint: E2-089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-089 as Town on No Map / 地図にない町 card #089, with rough source-row text '発電所'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Power Plant' as a normalized collector label while preserving the rough local source-row text '発電所'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-089 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Power Plant matters in this tranche because it anchors Zapdos and Lightning rows in infrastructure, turning place into energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Power Plant, preserve Japanese title 地図にない町, TCGdex set id E2, card #089, local id E2-089, rough source-row text '発電所', and normalized label 'Power Plant'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Power Plant is treated as location/infrastructure memory: it makes the release title feel inhabited rather than merely decorative.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-089_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Power Plant, 発電所, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 089.",
+          "summary": "Preserve Power Plant as Japanese Town on No Map / 地図にない町 #089, local id E2-089, source-row text '発電所'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-089 and local id E2-089.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 089, rough source-row text '発電所', and normalized collector label 'Power Plant' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Power Plant — Town on No Map #089",
+        "why_it_matters": "Power Plant makes Town on No Map feel like a place with uncertain coordinates: it anchors Zapdos and Lightning rows in infrastructure, turning place into energy. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_town_on_no_map_20020308:E2-092",
+      "type": "card",
+      "context": {
+        "name_en": "Rainbow Energy",
+        "name_ja": "レインボーエネルギー",
+        "normalized_label": "Rainbow Energy",
+        "release_family_id": "jp_tcg_town_on_no_map_20020308",
+        "local_id": "E2-092",
+        "card_number": "092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#row:jp_tcg_town_on_no_map_20020308:E2-092",
+          "title": "Local Japanese classic catalog row: Rainbow Energy / Town on No Map #092",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E2-092",
+          "title": "TCGdex Japanese card endpoint: E2-092",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_town_on_no_map_20020308:E2-092 as Town on No Map / 地図にない町 card #092, with rough source-row text 'レインボーエネルギー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Rainbow Energy' as a normalized collector label while preserving the rough local source-row text 'レインボーエネルギー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_town_on_no_map_20020308:E2-092 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rainbow Energy matters in this tranche because it closes the set as flexible energy grammar, fitting a town whose map is unstable by design.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Rainbow Energy, preserve Japanese title 地図にない町, TCGdex set id E2, card #092, local id E2-092, rough source-row text 'レインボーエネルギー', and normalized label 'Rainbow Energy'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_town_on_no_map_20020308_E2-092_e2_town_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Rainbow Energy, レインボーエネルギー, Town on No Map, 地図にない町, E2, Aquapolis, Zapdos, Espeon, Umbreon, or card 092.",
+          "summary": "Preserve Rainbow Energy as Japanese Town on No Map / 地図にない町 #092, local id E2-092, source-row text 'レインボーエネルギー'; do not accept famous-name, English Aquapolis, or paired-row matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_town_on_no_map_20020308:E2-092 and local id E2-092.",
+            "Require Japanese title 地図にない町 or TCGdex set id E2 before naming this exact catalog row.",
+            "Preserve card number 092, rough source-row text 'レインボーエネルギー', and normalized collector label 'Rainbow Energy' separately.",
+            "For paired rows such as Zapdos 037/038, Espeon 045/046, and Umbreon 067/068, preserve number and rarity signal before treating them as the same card.",
+            "Separate this row from English Aquapolis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "paired-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Rainbow Energy — Town on No Map #092",
+        "why_it_matters": "Rainbow Energy makes Town on No Map feel like a place with uncertain coordinates: it closes the set as flexible energy grammar, fitting a town whose map is unstable by design. The agent should let the story breathe only after preserving the Japanese E2 row identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
