@@ -1,0 +1,571 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the January 1999 Pokemon Card Fan Club Tropical Present postcard / Special Card, emphasizing Fan Club account infrastructure, GET-point feedback, jumbo/postcard physical format, Atsuko Nishida's friendly ensemble art, and traps against Tropical Mega Battle, Southern Islands, ordinary Trainer cards, and later tropical-themed promos.",
+    "in_scope": [
+      "Pokemon Card Fan Club January 1999 release/source-slice dossier",
+      "Tropical Present unnumbered promotional row 079",
+      "Fan Club / GET-point context",
+      "postcard / Special Card / jumbo identity",
+      "Atsuko Nishida art context",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Fan Club mail archive",
+      "complete sealed-postcard object ledger",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999",
+        "name_en": "Pokemon Card Fan Club (January 1999)",
+        "name_ja": "ポケモンカードファンクラブ 1999年1月",
+        "release_date": "1999-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Fan Club as collector infrastructure",
+          "GET-point feedback loop",
+          "postcard / jumbo physical format",
+          "tropical mood before tournament branding",
+          "Atsuko Nishida ensemble art",
+          "special-card rules joke"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999:079",
+            "name": "Tropical Present",
+            "why": "The whole source slice is one Fan Club object: a tropical postcard/Special Card that rewards club participation and gives the catalog a tiny social machine rather than a normal set slot.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Atsuko Nishida",
+            "row_count": 1,
+            "examples": [
+              "Tropical Present"
+            ],
+            "why": "Bulbapedia credits Tropical Present to Atsuko Nishida, whose early Pokemon work repeatedly makes the franchise feel approachable: soft creatures, readable poses, and a sense that collecting is also a form of play.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Tropical Present print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Fan Club mail archive",
+          "complete sealed-postcard object ledger",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Fan Club January 1999 as a one-row unnumbered promotional source group containing Tropical Present at source index 079.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records January 1999 as the month-level release date for this Fan Club source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as Pokemon Card Fan Club (January 1999), while the source row describes Tropical Present as a postcard / Special Card rather than a booster, deck, or standard set card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia describes Tropical Present as a jumbo promotional card sent to Pokemon Card Fan Club members in January 1999.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Tropical Present as a Special Card with a Do Nothing text box and an effect that can grant the player 10 GET points, which ties the card back into Fan Club participation rather than tournament legality.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Tropical Present to Atsuko Nishida.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "card.art",
+          "text": "Pokumon describes the Tropical Present art as featuring Hoppip, Mareep, Pichu, Pikachu, and Snorlax under a tropical/present motif.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Tropical Present matters because it shows the Fan Club not only mailing collectibles but also turning card ownership back into participation through GET points.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Fan Club January 1999 route, Tropical Present name, postcard / Special Card / jumbo format, GET-point text, Atsuko Nishida credit, and non-equivalence with Tropical Mega Battle or Southern Islands tropical memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tropical Present: the Fan Club sends the island back",
+        "why_it_matters": "Tropical Present is charming because it is not trying to be a normal card. It is a Fan Club object with a postcard body, a Special Card label, a tropical gathering of friendly Pokemon, and a little rules joke that can send GET points back to the person who received it. That is the assembly we care about: mail, club membership, participation points, Nishida's warmth, and an object that sits halfway between card, gift, and receipt. An agent should never flatten it into just 'tropical promo.' The format and route are the card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete Fan Club mail archive",
+          "complete sealed-postcard object ledger",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: Pokemon Card Fan Club January 1999",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Fan Club mail archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 079",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_tropical_present_postcard_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Tropical Present, Fan Club January 1999, postcard, Special Card, GET points, jumbo promo, Atsuko Nishida, tropical promo, Tropical Mega Battle, Southern Islands, or island Pokemon.",
+          "summary": "Identify Tropical Present by Fan Club route, postcard/Special Card/jumbo format, and GET-point text before relying on tropical naming or friendly island artwork.",
+          "steps": [
+            "Preserve the source route: Pokemon Card Fan Club January 1999.",
+            "Confirm the object is Tropical Present, not Tropical Wind, Tropical Mega Battle participation/prize material, Southern Islands, or a later tropical-themed promo.",
+            "Preserve postcard / Special Card / jumbo identity; do not treat ordinary card dimensions as assumed.",
+            "Look for the Fan Club / GET-point context and Do Nothing text before routing it as this row.",
+            "Preserve Atsuko Nishida as the source-stated artist credit, but do not use artist alone as a match.",
+            "Ask for seller front/back photos and any mailing/postcard provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Fan Club mail archive",
+            "Tropical Mega Battle equivalence",
+            "Southern Islands equivalence",
+            "ordinary card-size equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999:079",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999:079",
+        "name_en": "Tropical Present",
+        "name_ja": "トロピカルプレゼント",
+        "romaji": "Toropikaru Purezento",
+        "release_family_id": "jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999",
+        "catalog_row_id": "079"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "079",
+        "rarity_signal": "postcard / Special Card / Fan Club January 1999 unnumbered promo",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "Fan Club mail object",
+          "GET-point feedback",
+          "jumbo/postcard format",
+          "Nishida warmth",
+          "tropical naming trap"
+        ],
+        "collector_texture_note": "Tropical Present is sweetly literal: the Fan Club gives the member a tropical present, and the card can give points back. It is part card, part postcard, part club machinery.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "official copy count"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Tropical Present, source index 079, within the Pokemon Card Fan Club January 1999 source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese title トロピカルプレゼント romanizes cleanly as Toropikaru Purezento, a direct phonetic rendering of Tropical Present.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for Tropical Present is postcard / Special Card / Fan Club January 1999 unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Tropical Present to Atsuko Nishida.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "Pokumon describes the card art as showing Hoppip, Mareep, Pichu, Pikachu, and Snorlax together, giving the card its small ensemble-gift feeling.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Tropical Present with a Do Nothing text box and a GET-point effect, making the card's play text part of the Fan Club participation apparatus.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Tropical Present matters because it makes the Pokemon Card Fan Club visible as a social loop: membership sends the card, and the card can send points back.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "For Tropical Present, agents should preserve Fan Club January 1999 route, postcard / Special Card / jumbo format, GET-point context, Atsuko Nishida credit, and non-equivalence with Tropical Mega Battle or Southern Islands before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tropical Present: a postcard that gives back",
+        "why_it_matters": "Tropical Present has the soft magic of early Pokemon infrastructure. It is not a chase because it attacks hard. It is a chase because it shows the Fan Club acting like a living system: a member receives a bright oversized/postcard object, Nishida fills it with friendly Pokemon, and the text loops the gift back into GET points. It is a little receipt from a club that wanted children to keep participating.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Fan Club mail archive",
+          "complete sealed-postcard object ledger",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999.json#row:jp_promo_unnumbered_wotc_079_pok_mon_card_fan_club_january_1999:079",
+          "title": "Local Japanese unnumbered promo catalog row: Tropical Present 079",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Fan Club mail archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 079",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_present_fan_club_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Tropical Present, トロピカルプレゼント, Fan Club, postcard, Special Card, GET points, Do Nothing, jumbo promo, Atsuko Nishida, Tropical Mega Battle, Southern Islands, or tropical Pokemon.",
+          "summary": "Match Tropical Present by Fan Club route and postcard/Special Card format before trusting tropical name, art mood, or artist memory.",
+          "steps": [
+            "Start with route: Pokemon Card Fan Club January 1999.",
+            "Preserve object format: postcard / Special Card / jumbo-style promo, not ordinary set-card assumptions.",
+            "Use トロピカルプレゼント / Toropikaru Purezento as Japanese-language search help, not as a sufficient match.",
+            "Check for Do Nothing / GET-point context before routing it as this row.",
+            "Separate this row from Tropical Wind, Tropical Mega Battle prize/participation cards, Southern Islands, and later tropical-themed promos.",
+            "Request seller front/back photos and any mailing/postcard provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Fan Club mail archive",
+            "Tropical Mega Battle equivalence",
+            "Southern Islands equivalence",
+            "ordinary card-size equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

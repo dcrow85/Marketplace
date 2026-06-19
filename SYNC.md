@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/fan_club_january_1999_tropical_present_v0_1.json`.
+  The Pokemon Card Fan Club January 1999 source slice now has hand-authored
+  release and card coverage for Tropical Present row 079. The pass frames the
+  card as a Fan Club mail/account object rather than a generic tropical promo:
+  postcard / Special Card / jumbo physical-format language, GET-point feedback,
+  Do Nothing text, Atsuko Nishida credit, and the friendly ensemble-art memory
+  all remain legible. Added bespoke `special_identification_instructions`
+  requiring agents to preserve Fan Club January 1999 route, Tropical Present
+  title, postcard/Special Card/jumbo format, GET-point context, Nishida credit,
+  and non-equivalence with Tropical Wind, Tropical Mega Battle, Southern
+  Islands, ordinary card-size assumptions, and later tropical-themed promos
+  before accepting a match. Sources: local Japanese unnumbered promo release
+  file, Bulbapedia raw unnumbered-promo row, Bulbapedia Tropical Present card
+  reference, and Pokumon first-design promo visual reference. Generated gap
+  moved from 101 releases / 3,927 cards to 100 releases / 3,926 cards. Current
+  catalog-history corpus:
+  `aa8507acb924de7434b82f123f7c06d8beed1b6350fd3d6b653ed063927df216`;
+  index: `f4b5e80a43eeae95bce16128fc696a100224f1bf8aff684441f937cdee2b74da`;
+  queue: `aa95204ed3d5bd942ae00cfbb4ac88d01c8e465246bdd6deead2eb9ee30ad31f`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/celadon_university_hyper_professor_magikarp_v0_1.json`.
