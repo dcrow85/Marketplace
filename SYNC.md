@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-seventh
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`.
+  Japanese numbered P Promotional cards now have a hand-authored release
+  dossier plus a high-gravity tranche of seven sourced card dossiers: ANA
+  Pikachu 004/P, Tropical Wind 008/P, CoroCoro Ho-Oh 010/P, Starter Triple
+  Get Charizard 014/P, McDonald's Umbreon 025/P, McDonald's Mew 033/P, and
+  Happy Adventure Rally Lugia 047/P. The release is framed as a numbered
+  social-distribution spine rather than one generic promo bucket: airlines,
+  magazines, tournaments, fast food, fan clubs, movies, city stores, and
+  rallies all become card routes. Added `special_identification_instructions`
+  for preserving the printed NNN/P number and exact distribution route before
+  treating famous names like Pikachu, Charizard, Umbreon, Mew, or Lugia as the
+  target row. Artists remain intentionally unset because the selected raw P
+  Promotional source rows do not provide illustrator authority; no regular
+  expansion artist memory was imported. Sources: local Japanese promo WotC P
+  Promotional release file, Bulbapedia raw P Promotional wikitext, and the
+  Japanese promo boundary proof. Generated gap moved from 171 releases / 4,249
+  cards to 170 releases / 4,242 cards. Current catalog-history corpus: 22,823
+  claims, 5,524 sources, corpus hash
+  `ed04d5c7be80f1efd5820b3fbdf2f02b443047082ef410d976bf2edbbe642ea1`;
+  index hash `50e28140b950e3662f014470e2bd7f5d6af0c7c3ea374555f6a1a38d6f7e85cd`;
+  queue hash `328df0d013e24342688646b46922023d44a2f082d18acac87224cba31d0add5d`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-sixth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/wotc_jumbo_bounded_v0_1.json`.

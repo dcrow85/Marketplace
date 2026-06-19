@@ -1,0 +1,1148 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening tranche for Japanese numbered P Promotional cards, emphasizing the numbered 001/P-047/P promo spine, route-specific distribution memory, and high-gravity rows where mascot, legend, campaign, food, travel, tournament, and fan-club culture can easily collapse into generic promo language.",
+    "not_claiming": [
+      "complete P Promotional deep-history coverage",
+      "complete Japanese promo universe",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "illustrator authority where the source row does not provide it",
+      "regular expansion equivalence",
+      "later reprint equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231",
+      "type": "release",
+      "context": {
+        "name_en": "P Promotional cards",
+        "name_ja": "Pプロモカード",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "release_date": "2001-07-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json",
+          "title": "Local Japanese promo WotC catalog: P Promotional cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete deep-history research"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_proof",
+          "ref": "data/catalog-expansion/boundary-proof.json",
+          "title": "Japanese promo boundary proof",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical verification",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models P Promotional cards as a numbered Japanese promo release beginning July 2001 and running through 2002.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local release and boundary proof model 47 numbered P Promotional rows, 001/P through 047/P, from the selected raw setlist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The local rows show P Promotional as a distribution web rather than one product: movie tie-ins, Pokemon Card Trainers inserts, CoroCoro, ANA, Nintendo Spaceworld, Tropical Mega Battle, Starter Triple Get Campaign, Pokemon Fan Club, Pokemon Center commemorations, McDonald's, Battle Road, Pokemon Festa, and Happy Adventure Rally all appear in the modeled page.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.chase_structure",
+          "text": "This tranche deepens the rows most likely to pull collector and agent attention: ANA Pikachu 004/P, Tropical Wind 008/P, Ho-Oh 010/P, Starter Triple Get Venusaur 012/P, Blastoise 013/P, Charizard 014/P, Shining Imakuni? 018/P, McDonald's Pikachu 021/P, McDonald's Umbreon 025/P, McDonald's Mew 033/P, and Happy Adventure Rally Lugia 047/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "The selected raw P Promotional source rows do not provide illustrator names for this slice. The history layer preserves that silence rather than importing regular-card artist memory into a route-specific promo row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "P Promotional cards matter because they show Pokemon's early-2000s assembly as a social machine: airlines, magazines, tournaments, fast food counters, fan clubs, movie releases, city stores, and rallies all become card routes. The printed NNN/P number is the thin line that keeps that social route from dissolving into generic promo fog.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promotional_numbered_route_spine_v0.1",
+          "trigger": "A listing, want, scan, or agent search result names a Japanese P Promotional card, P promo, or NNN/P card.",
+          "summary": "Confirm the printed NNN/P number and distribution route before treating a famous character as the target P Promotional row.",
+          "steps": [
+            "Read the printed promo number and match it to the exact NNN/P row.",
+            "Preserve the distribution route, such as ANA, CoroCoro, McDonald's, Starter Triple Get, Tropical Mega Battle, Fan Club, or Happy Adventure Rally.",
+            "Do not collapse multiple P Promotional cards with the same Pokemon name into one want or seller response.",
+            "Do not borrow illustrator authority, rarity, price, or physical authenticity from a regular expansion print.",
+            "Ask for row-number evidence if the card is being used transactionally."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Japanese promo universe",
+            "regular expansion equivalence",
+            "later reprint equivalence"
+          ]
+        }
+      ],
+      "release_highlights": {
+        "assembly_themes": [
+          "promo distribution",
+          "character gravity",
+          "campaign culture",
+          "magazine/media distribution",
+          "tournament/prize culture"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
+            "name": "Pikachu",
+            "number": "004/P"
+          },
+          {
+            "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
+            "name": "Charizard",
+            "number": "014/P"
+          },
+          {
+            "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
+            "name": "Umbreon",
+            "number": "025/P"
+          },
+          {
+            "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
+            "name": "Mew",
+            "number": "033/P"
+          },
+          {
+            "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
+            "name": "Lugia",
+            "number": "047/P"
+          }
+        ],
+        "key_artists": [],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "P Promotional cards: the numbered spine of a social machine",
+        "why_it_matters": "P Promotional is not one vibe. It is Pokemon learning to move through everyday Japanese life: a plane campaign, a comic insert, a movie ticket, a fast-food weekend, a fan-club welcome, a tournament table, a summer rally. The collector romance is in the route. The protocol lesson is simple and severe: the name is not enough; the number and route have to come with it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete P Promotional history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
+        "catalog_row_id": "004/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
+          "title": "Local catalog row: Pikachu 004/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as numbered P Promotional row 004/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign, July-September 2001, as the route for this Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "This row must be separated from other Pikachu P Promotional rows and from ordinary expansion Pikachu cards by printed 004/P number and ANA campaign route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu 004/P is charming because it is not only mascot gravity; it is mascot gravity in transit. The ANA route turns Pikachu into an airline-era souvenir of Pokemon moving through the real world, not just through packs.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_004_p_ana_pikachu_boundary_v0.1",
+          "trigger": "A user says ANA Pikachu, P promo Pikachu, Pokemon Card e ANA Special '01, or 004/P.",
+          "summary": "Confirm printed 004/P and ANA Special '01 route before treating this as the target Pikachu.",
+          "steps": [
+            "Read the printed 004/P number.",
+            "Preserve All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign route.",
+            "Do not merge with P Promotional Pikachu 021/P, 038/P, 044/P, or any expansion Pikachu.",
+            "Ask for number and route evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete ANA campaign documentation",
+            "other Pikachu equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "004/P",
+        "rarity_signal": "ANA Special '01 Version Campaign",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "travel/campaign distribution",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "The Pikachu is familiar; the airplane route is the point.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 004/P: the mascot boards the plane",
+        "why_it_matters": "This is a beautiful little route card. Pikachu is already everywhere, but 004/P says: here, specifically, Pokemon is traveling through ANA's campaign machinery. The joy is not just the character; it is the way the character moved.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
+      "type": "card",
+      "context": {
+        "name_en": "Tropical Wind",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
+        "catalog_row_id": "008/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
+          "title": "Local catalog row: Tropical Wind 008/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Tropical Wind as numbered P Promotional row 008/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Tropical Mega Battle 2001 finals participation prize as the route for this row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Tropical Wind 008/P is one of the rows where participation itself becomes collectible memory. It is a tournament atmosphere card: the prize is not merely cardboard, but proof that a very specific competitive summer existed.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_008_p_tropical_wind_boundary_v0.1",
+          "trigger": "A user says Tropical Wind, Tropical Mega Battle, finals participation, or 008/P.",
+          "summary": "Confirm 008/P and Tropical Mega Battle 2001 finals participation route before comparing to other Tropical Wind prints.",
+          "steps": [
+            "Read the printed 008/P number.",
+            "Preserve Tropical Mega Battle 2001 finals participation route.",
+            "Do not merge with other Tropical Wind years, languages, or tournament routes.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Tropical Mega Battle prize history",
+            "other Tropical Wind equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "008/P",
+        "rarity_signal": "Tropical Mega Battle 2001 finals participation prize",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "tournament/prize culture",
+          "identity trap"
+        ],
+        "collector_texture_note": "Tournament aura lives in the route, not merely in the title.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tropical Wind 008/P: participation made visible",
+        "why_it_matters": "Tropical Wind always feels like weather from a more secret room of the hobby. The 008/P row keeps that weather pinned to Tropical Mega Battle 2001 finals participation, which is exactly the kind of route an agent must not blur.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-010-p",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-010-p",
+        "catalog_row_id": "010/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-010-p",
+          "title": "Local catalog row: Ho-Oh 010/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Ho-Oh as numbered P Promotional row 010/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves December 2001 CoroCoro Comic, released November 2001, as the route for this Ho-Oh.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Ho-Oh 010/P carries Johto myth through CoroCoro's magazine pipeline. It is a legendary bird, yes, but here the important memory is that the magazine made the legend arrive in a child's hands.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_010_p_ho_oh_corocoro_boundary_v0.1",
+          "trigger": "A user says Ho-Oh P promo, CoroCoro Ho-Oh, or 010/P.",
+          "summary": "Confirm 010/P and December 2001 CoroCoro route before treating the card as this Ho-Oh.",
+          "steps": [
+            "Read the printed 010/P number.",
+            "Preserve December 2001 CoroCoro Comic / November 2001 release route.",
+            "Do not merge with expansion Ho-Oh cards or other promo Ho-Oh rows.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete CoroCoro issue evidence",
+            "other Ho-Oh equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "010/P",
+        "rarity_signal": "December 2001 CoroCoro Comic",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "magazine/media distribution",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Ho-Oh's mythic scale meets the very ordinary magic of a magazine insert.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ho-Oh 010/P: the legend through CoroCoro",
+        "why_it_matters": "Ho-Oh is supposed to feel like an apparition. The 010/P row makes the apparition logistical: a CoroCoro route, a printed number, a specific magazine moment. That tension is the good stuff.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
+        "catalog_row_id": "014/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
+          "title": "Local catalog row: Charizard 014/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Charizard as numbered P Promotional row 014/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Starter Triple Get Campaign as the route for Charizard 014/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Charizard 014/P is the row where chase gravity can do damage if the route disappears. Starter Triple Get Campaign is not flavor text; it is the assembly history that keeps this from becoming just another Charizard want.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_014_p_charizard_starter_triple_get_boundary_v0.1",
+          "trigger": "A user says Charizard P promo, Starter Triple Get Charizard, or 014/P.",
+          "summary": "Confirm 014/P and Starter Triple Get Campaign route before treating a Charizard listing as this row.",
+          "steps": [
+            "Read the printed 014/P number.",
+            "Preserve Starter Triple Get Campaign route.",
+            "Do not merge with expansion Charizard, CD promos, or other Japanese promo Charizard rows.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Starter Triple Get campaign proof",
+            "other Charizard equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "014/P",
+        "rarity_signal": "Starter Triple Get Campaign",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "campaign culture",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Charizard can overpower context; this row makes context fight back.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard 014/P: chase gravity with a campaign spine",
+        "why_it_matters": "Collectors will see Charizard first. The agent has to see 014/P first, or at least soon after. The beauty of this row is that the famous dragon is tethered to Starter Triple Get Campaign, and the tether is the history.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
+        "catalog_row_id": "025/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
+          "title": "Local catalog row: Umbreon 025/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Umbreon as numbered P Promotional row 025/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves the McDonald's promotion held on Saturdays, Sundays, and public holidays from January 26 through February 24, 2002, as the route for Umbreon 025/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Umbreon 025/P is where a later collector darling appears through a mass weekend food promotion. That contrast is the texture: moonlit scarcity feeling, fast-food route reality.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_025_p_umbreon_mcdonalds_boundary_v0.1",
+          "trigger": "A user says Umbreon P promo, McDonald's Umbreon, Aquapolis Umbreon P Promotional, or 025/P.",
+          "summary": "Confirm 025/P and McDonald's January-February 2002 route before comparing to Aquapolis or other Umbreon rows.",
+          "steps": [
+            "Read the printed 025/P number.",
+            "Preserve McDonald's January 26-February 24, 2002 promotion route.",
+            "Do not merge with Aquapolis Umbreon H29/H32, Umbreon 41/147, or other Umbreon cards.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete McDonald's campaign proof",
+            "other Umbreon equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "025/P",
+        "rarity_signal": "McDonald's promotion, January 26-February 24, 2002",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "food/campaign distribution",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "The modern Umbreon aura is real, but the catalog row is a McDonald's weekend route.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Umbreon 025/P: moonlight through a fast-food window",
+        "why_it_matters": "Umbreon always brings atmosphere. The 025/P row adds a funny, concrete route: McDonald's weekends and public holidays. That is exactly the kind of human distribution fact that makes the card feel more real, not less magical.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
+        "catalog_row_id": "033/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
+          "title": "Local catalog row: Mew 033/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mew as numbered P Promotional row 033/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves the McDonald's promotion held on Saturdays and Sundays from May 25 through June 16, 2002, as the route for Mew 033/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Mew 033/P is playful because a mythical Pokemon arrives through a repeatable weekend promotion. The row turns mystery into a public distribution ritual without losing the character's old secret charge.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_033_p_mew_mcdonalds_boundary_v0.1",
+          "trigger": "A user says Mew P promo, McDonald's Mew, Expedition Mew P Promotional, or 033/P.",
+          "summary": "Confirm 033/P and McDonald's May-June 2002 route before comparing to Expedition, glossy, or other Mew rows.",
+          "steps": [
+            "Read the printed 033/P number.",
+            "Preserve McDonald's May 25-June 16, 2002 promotion route.",
+            "Do not merge with Expedition Mew, CoroCoro glossy Mew, JR East Mew, or other Mew cards.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete McDonald's campaign proof",
+            "other Mew equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "033/P",
+        "rarity_signal": "McDonald's promotion, May 25-June 16, 2002",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "food/campaign distribution",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "Mew is mystery; 033/P is mystery with a weekend distribution window.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mew 033/P: the secret becomes a weekend",
+        "why_it_matters": "Mew began as playground rumor energy. 033/P is delicious because it gives that energy a McDonald's calendar window. The myth does not vanish; it learns how to be distributed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
+        "catalog_row_id": "047/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
+          "title": "Local catalog row: Lugia 047/P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Lugia as numbered P Promotional row 047/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector signal preserves Pokemon Happy Adventure Rally 2002 as the route for Lugia 047/P.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lugia 047/P closes the numbered page with a character big enough to feel like a finale. The row matters as both Lugia gravity and Happy Adventure Rally route, a public event memory rather than a booster-pack chase.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_047_p_lugia_happy_adventure_rally_boundary_v0.1",
+          "trigger": "A user says Lugia P promo, Happy Adventure Rally Lugia, or 047/P.",
+          "summary": "Confirm 047/P and Pokemon Happy Adventure Rally 2002 route before treating a Lugia listing as this final numbered P Promotional row.",
+          "steps": [
+            "Read the printed 047/P number.",
+            "Preserve Pokemon Happy Adventure Rally 2002 route.",
+            "Do not merge with Neo Genesis Lugia, movie Lugia, or other Lugia promo rows.",
+            "Ask for row-number evidence before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Happy Adventure Rally proof",
+            "other Lugia equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "047/P",
+        "rarity_signal": "Pokemon Happy Adventure Rally 2002",
+        "artist": "",
+        "assembly_themes": [
+          "promo distribution",
+          "rally/campaign distribution",
+          "character gravity",
+          "boundary row",
+          "identity trap"
+        ],
+        "collector_texture_note": "Lugia gives the numbered P Promotional page a finale with route attached.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lugia 047/P: the numbered page ends with a storm",
+        "why_it_matters": "Lugia is a natural finale because the character already feels like weather. 047/P makes the ending concrete: Happy Adventure Rally 2002, final printed number, route preserved. The big feeling and the small catalog discipline belong together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
