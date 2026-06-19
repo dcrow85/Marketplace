@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23531,
-    "corpus_hash": "bd4bac352a086491204820963d97abf50c2ab1dc40ebb921941fd4f856363123",
-    "generated_card_dossier_count": 3879,
-    "generated_release_dossier_count": 53,
+    "claim_count": 23540,
+    "corpus_hash": "9aa0fda18e70c7f5655d588802a82a791ccc87a8b18b65bba7936b4d705c3490",
+    "generated_card_dossier_count": 3878,
+    "generated_release_dossier_count": 52,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6520
+    "source_count": 6528
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "225f9b7da0a744ddf1c5cb126f19fa1ef4afffa547790b66f8ee8cb13851368e",
-    "release_queue_count": 53,
+    "queue_hash": "8ec892211bd8b0f7f79826c41880856b6e714f4f785379025ea239fcdab7310e",
+    "release_queue_count": 52,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T19:51:00Z",
+  "generated_at": "2026-06-19T19:57:33Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "3563c31d1c78c9c8dbbf30e1fca18088668636addb27acf4e52503e88087cd66",
+    "index_hash": "ac42121d4af3314b693d43ff69f71ba5c865d7fb3cecec8e1b3c10d7e54bfaa7",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -174,6 +174,7 @@
     "data/catalog-history/source-sets/world_challenge_summer_tohoku_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no1_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no2_trainer_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no3_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_regional_no1_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_regional_no2_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_tmb_regional_no3_trainer_v0_1.json",
