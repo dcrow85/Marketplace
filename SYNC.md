@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-fifth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_august_1999_insert_v0_1.json`.
+  CoroCoro Comic August 1999 issue insert source group now has complete
+  three-row hand-authored coverage for Giovanni's Nidoking 118, Koga's Ninja Gym
+  119, and Lawrence III 120. The pass frames the release as magazine assembly:
+  one July 15, 1999 CoroCoro issue carrying Gym-era owner identity through a
+  two-card regular insert while also carrying movie-era Lawrence III spectacle
+  through a separate Jumbo insert. Added `special_identification_instructions`
+  requiring agents to preserve exact CoroCoro August 1999 issue route, row
+  118-120, regular-vs-Jumbo insert distinction, Japanese/romaji names,
+  source-attributed artist credits, and physical-format evidence before accepting
+  a match. Artist layer improved but remains source-attributed: Giovanni's
+  Nidoking is credited to Atsuko Nishida via its individual card page, Koga's
+  Ninja Gym to Keiji Kinebuchi, and Lawrence III remains Unknown in the cited
+  page; the local raw source rows themselves do not provide illustrator credits.
+  Sources: local Japanese unnumbered promo release file, Bulbapedia raw
+  unnumbered promo rows, and individual Bulbapedia card pages. Generated gap
+  moved from 143 releases / 4,009 cards to 142 releases / 4,006 cards. Current
+  catalog-history corpus:
+  `781918d1dc2c603e1d51407185ec63430afaf4ab871f6f6653eb0cbb2dbea283`; index:
+  `4376173f235afbf98b47b8d494584da3dcf7acf9a43b334ca863af0964a580f5`; queue:
+  `1b0f025691351896866b495334e636bd6d8cb1a88e8dbc9f412b91623a056fff`.
+  Audit counts: 23,153 claims, 5,818 sources, 67 hand-authored release dossiers,
+  543 hand-authored card dossiers, and 802 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_august_1999_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-fourth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/lizardon_mega_battle_1997_trophies_v0_1.json`.
