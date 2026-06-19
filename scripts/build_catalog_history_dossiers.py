@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data" / "catalog-history"
 SOURCE_DIR = DATA_DIR / "source-sets"
 OUT_PATH = DATA_DIR / "dossiers.json"
+INDEX_PATH = DATA_DIR / "index.json"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 AUDIT_PATH = DATA_DIR / "audit.json"
 
@@ -72,20 +73,402 @@ def canonical_hash(value: Any) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def load_catalog_ids() -> tuple[set[str], set[str]]:
-    release_ids: set[str] = set()
-    row_ids: set[str] = set()
+def load_catalog_releases() -> dict[str, dict[str, Any]]:
+    releases: dict[str, dict[str, Any]] = {}
     for path in sorted(ROOT.glob("data/**/releases/*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         release = data.get("release", {})
         release_id = release.get("release_family_id")
         if release_id:
-            release_ids.add(str(release_id))
-        for card in data.get("cards", []):
+            releases[str(release_id)] = {"path": path, "data": data}
+    return releases
+
+
+def load_catalog_ids() -> tuple[set[str], set[str]]:
+    releases = load_catalog_releases()
+    release_ids = set(releases)
+    row_ids: set[str] = set()
+    for item in releases.values():
+        for card in item["data"].get("cards", []):
             row_id = card.get("row_id")
             if row_id:
                 row_ids.add(str(row_id))
     return release_ids, row_ids
+
+
+def clean_text(value: Any, fallback: str = "") -> str:
+    if value is None:
+        return fallback
+    text = str(value).strip()
+    return text if text else fallback
+
+
+def display_release_name(release: dict[str, Any]) -> str:
+    return clean_text(release.get("name_en") or release.get("name_ja") or release.get("release_family_id"), "Unknown release")
+
+
+def display_card_name(card: dict[str, Any]) -> str:
+    return clean_text(card.get("name_en") or card.get("name_ja") or card.get("row_id"), "Unknown card")
+
+
+def card_number(card: dict[str, Any]) -> str:
+    return clean_text(card.get("card_number") or card.get("local_id") or card.get("provider_row", {}).get("number"), "")
+
+
+def card_rarity(card: dict[str, Any]) -> str:
+    rarity = card.get("rarity")
+    if rarity:
+        return clean_text(rarity)
+    for signal in card.get("collector_texture", {}).get("signals", []):
+        if isinstance(signal, str) and any(token in signal.lower() for token in ("rare", "common", "promo")):
+            return signal
+    rarity_source = card.get("rarity_source")
+    if isinstance(rarity_source, dict):
+        return clean_text(rarity_source.get("display"), "not provided")
+    return clean_text(rarity_source, "not provided")
+
+
+def illustrator_name(card: dict[str, Any]) -> str:
+    illustrator = card.get("illustrator")
+    if isinstance(illustrator, dict):
+        return clean_text(illustrator.get("name") or illustrator.get("display"))
+    return ""
+
+
+def row_ref(path: Path, row_id: str | None = None) -> str:
+    ref = path.relative_to(ROOT).as_posix()
+    return f"{ref}#row:{row_id}" if row_id else ref
+
+
+def release_chase_cards(cards: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
+    scored: list[tuple[int, dict[str, Any]]] = []
+    chase_names = {
+        "charizard",
+        "blastoise",
+        "venusaur",
+        "pikachu",
+        "mewtwo",
+        "mew",
+        "lugia",
+        "ho-oh",
+        "umbreon",
+        "espeon",
+        "tyranitar",
+        "gyarados",
+        "raichu",
+        "chansey",
+        "zapdos",
+    }
+    for card in cards:
+        name = display_card_name(card)
+        rarity = card_rarity(card)
+        signals = " ".join(str(signal) for signal in card.get("collector_texture", {}).get("signals", []))
+        score = 0
+        haystack = f"{name} {rarity} {signals}".lower()
+        if any(chase in haystack for chase in chase_names):
+            score += 50
+        if "holo" in haystack:
+            score += 40
+        if "rare" in haystack:
+            score += 25
+        if "promo" in haystack:
+            score += 15
+        if card.get("special_identification_instructions"):
+            score += 10
+        if score:
+            scored.append((score, card))
+    scored.sort(key=lambda item: (-item[0], clean_text(card_number(item[1]), "9999"), display_card_name(item[1])))
+    result: list[dict[str, Any]] = []
+    for score, card in scored[:limit]:
+        result.append(
+            {
+                "row_id": card.get("row_id"),
+                "name": display_card_name(card),
+                "number": card_number(card),
+                "rarity_signal": card_rarity(card),
+                "why": "local catalog chase heuristic: iconic name, holo/rare/promo signal, or special identification rail",
+                "authority_label": "interpretive",
+                "not_claiming": ["price truth", "condition truth", "seller possession", "authenticity"],
+            }
+        )
+    return result
+
+
+def release_key_artists(cards: list[dict[str, Any]], limit: int = 6) -> list[dict[str, Any]]:
+    counts: dict[str, int] = {}
+    examples: dict[str, list[str]] = {}
+    for card in cards:
+        artist = illustrator_name(card)
+        if not artist:
+            continue
+        counts[artist] = counts.get(artist, 0) + 1
+        examples.setdefault(artist, [])
+        if len(examples[artist]) < 3:
+            examples[artist].append(display_card_name(card))
+    ordered = sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:limit]
+    return [
+        {
+            "name": artist,
+            "row_count": count,
+            "examples": examples.get(artist, []),
+            "authority_label": "local_catalog_fact",
+            "not_claiming": ["complete artist biography", "direct physical-card print authority"],
+        }
+        for artist, count in ordered
+    ]
+
+
+def source_contacts_for_release(data: dict[str, Any]) -> list[str]:
+    contacts: list[str] = []
+    for source in data.get("sources", []):
+        source_name = source.get("source")
+        url = source.get("source_page_url") or source.get("cards_api_url") or source.get("set_api_url")
+        if source_name:
+            contacts.append(f"{source_name}: {url}" if url else str(source_name))
+    return contacts[:5]
+
+
+def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> dict[str, Any]:
+    release = data.get("release", {})
+    cards = data.get("cards", [])
+    name = display_release_name(release)
+    count = release.get("expected_row_count") or release.get("unique_catalog_row_count") or release.get("printed_total") or len(cards)
+    release_date = clean_text(release.get("release_date"), "date not provided")
+    release_type = clean_text(release.get("release_type"), "release type not provided")
+    product_basis = clean_text(release.get("product_count_basis"), "local catalog row count")
+    chase_cards = release_chase_cards(cards)
+    key_artists = release_key_artists(cards)
+    source_contacts = source_contacts_for_release(data)
+    claims = [
+        {
+            "id": "g1",
+            "field": "release.date",
+            "text": f"The local catalog records {release_date} as the release date for {name}.",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "local_catalog_fact",
+        },
+        {
+            "id": "g2",
+            "field": "release.vehicle",
+            "text": f"The local catalog classifies {name} as release type {release_type}.",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "local_catalog_fact",
+        },
+        {
+            "id": "g3",
+            "field": "release.product_count",
+            "text": f"The local catalog currently models {len(cards)} rows for {name}; its count basis says: {product_basis}",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "local_catalog_fact",
+        },
+    ]
+    basis_claims = ["g1", "g2", "g3"]
+    if chase_cards:
+        names = ", ".join(card["name"] for card in chase_cards[:5])
+        claims.append(
+            {
+                "id": "g4",
+                "field": "release.chase_structure",
+                "text": f"A local catalog heuristic highlights these attention-bearing rows for {name}: {names}. This is a collector-navigation cue, not a price ranking.",
+                "sources": ["s1"],
+                "tier": "B",
+                "authority_label": "interpretive",
+                "basis_claims": ["g3"],
+            }
+        )
+        basis_claims.append("g4")
+    if key_artists:
+        artists = ", ".join(f"{artist['name']} ({artist['row_count']} rows)" for artist in key_artists[:4])
+        claims.append(
+            {
+                "id": "g5",
+                "field": "artist.impact",
+                "text": f"The local catalog's credited-artist surface for {name} is led by {artists}. This measures row coverage, not full artistic biography.",
+                "sources": ["s1"],
+                "tier": "B",
+                "authority_label": "local_catalog_fact",
+            }
+        )
+        basis_claims.append("g5")
+    if source_contacts:
+        claims.append(
+            {
+                "id": "g6",
+                "field": "release.context",
+                "text": f"The release row preserves source contacts for agent follow-up: {'; '.join(source_contacts)}.",
+                "sources": ["s1"],
+                "tier": "B",
+                "authority_label": "local_catalog_fact",
+            }
+        )
+        basis_claims.append("g6")
+    return {
+        "uid": release_id,
+        "type": "release",
+        "generated": True,
+        "generation_method": "baseline_from_local_catalog_v0.1",
+        "context": {
+            "name_en": clean_text(release.get("name_en")),
+            "name_ja": clean_text(release.get("name_ja")),
+            "release_family_id": release_id,
+            "release_date": release_date,
+            "release_type": release_type,
+            "row_count": len(cards),
+            "modeled_count": count,
+        },
+        "sources": [
+            {
+                "id": "s1",
+                "type": "local_catalog",
+                "ref": row_ref(path),
+                "title": f"Local release catalog: {name}",
+                "retrieved": "2026-06-19",
+                "tier": "B",
+                "not_claiming": ["seller possession", "authenticity", "condition", "price truth", "complete deep-history research"],
+            }
+        ],
+        "claims": claims,
+        "release_highlights": {
+            "chase_cards": chase_cards,
+            "key_artists": key_artists,
+            "source_contacts": source_contacts,
+            "authority_label": "local_catalog_fact_with_interpretive_chase_heuristic",
+            "not_claiming": ["price ranking", "complete artist biography", "market liquidity", "physical-card truth"],
+        },
+        "special_identification_instructions": [],
+        "narrative": {
+            "authority_label": "judged_texture",
+            "human_title": f"{name}: first-pass assembly note",
+            "why_it_matters": f"{name} is now in the history layer instead of sitting as a silent checklist. This baseline tells an agent when it appeared, what kind of release it is, which rows carry obvious collector attention, and which artists surface in the local catalog, while reserving deeper lore for researched upgrades.",
+            "basis_claims": basis_claims,
+            "not_claiming": ["complete deep history", "official emotional history", "price truth", "physical-card authenticity"],
+        },
+        "coverage": {
+            "release": "B",
+            "art": "B" if key_artists else "none",
+            "history": "C",
+            "identification": "B",
+        },
+    }
+
+
+def make_card_dossier(release_id: str, path: Path, release_data: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]:
+    row_id = clean_text(card.get("row_id"))
+    name = display_card_name(card)
+    release = release_data.get("release", {})
+    release_name = display_release_name(release)
+    number = card_number(card)
+    rarity = card_rarity(card)
+    artist = illustrator_name(card)
+    texture = card.get("collector_texture", {}) if isinstance(card.get("collector_texture"), dict) else {}
+    texture_note = clean_text(texture.get("note"), f"{name} is cataloged in {release_name}.")
+    claims = [
+        {
+            "id": "g1",
+            "field": "card.identity",
+            "text": f"The local catalog anchors {name} as row {row_id} in {release_name}.",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "local_catalog_fact",
+        },
+        {
+            "id": "g2",
+            "field": "card.rarity",
+            "text": f"The local catalog's visible rarity or collector signal for {name} is: {rarity}.",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "local_catalog_fact",
+        },
+        {
+            "id": "g3",
+            "field": "history.significance",
+            "text": f"The local collector texture says: {texture_note}",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "judged_texture",
+            "basis_claims": ["g1", "g2"],
+        },
+    ]
+    basis_claims = ["g1", "g2", "g3"]
+    art_coverage = "none"
+    if artist:
+        claims.append(
+            {
+                "id": "g4",
+                "field": "artist.credit",
+                "text": f"The local catalog credits {artist} for {name}, with the row's own illustrator authority caveats preserved in the source row.",
+                "sources": ["s1"],
+                "tier": "B",
+                "authority_label": "local_catalog_fact",
+            }
+        )
+        basis_claims.append("g4")
+        art_coverage = "B"
+    if card.get("special_identification_instructions"):
+        claims.append(
+            {
+                "id": "g5",
+                "field": "identification.special_instructions",
+                "text": f"The local row carries {len(card.get('special_identification_instructions', []))} special identification instruction packet(s) for this card.",
+                "sources": ["s1"],
+                "tier": "B",
+                "authority_label": "local_catalog_fact",
+            }
+        )
+        basis_claims.append("g5")
+    return {
+        "uid": row_id,
+        "type": "card",
+        "generated": True,
+        "generation_method": "baseline_from_local_catalog_v0.1",
+        "context": {
+            "name_en": clean_text(card.get("name_en")),
+            "name_ja": clean_text(card.get("name_ja")),
+            "romaji": clean_text(card.get("romaji")),
+            "release_family_id": release_id,
+            "row_id": row_id,
+            "catalog_row_id": number,
+            "release_name": release_name,
+        },
+        "sources": [
+            {
+                "id": "s1",
+                "type": "local_catalog",
+                "ref": row_ref(path, row_id),
+                "title": f"Local catalog row: {name} / {release_name}",
+                "retrieved": "2026-06-19",
+                "tier": "B",
+                "not_claiming": ["seller possession", "authenticity", "condition", "price truth", "complete deep-history research"],
+            }
+        ],
+        "claims": claims,
+        "card_highlights": {
+            "number": number,
+            "rarity_signal": rarity,
+            "artist": artist,
+            "collector_texture_note": texture_note,
+            "signals": texture.get("signals", []),
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": ["price truth", "condition truth", "seller possession", "authenticity"],
+        },
+        "special_identification_instructions": card.get("special_identification_instructions", []),
+        "narrative": {
+            "authority_label": "judged_texture",
+            "human_title": f"{name}: first-pass card note",
+            "why_it_matters": f"{name} now has a card-level history foothold: identity, rarity signal, artist when known, and the local collector texture are all available to an agent before any trade evidence appears.",
+            "basis_claims": basis_claims,
+            "not_claiming": ["complete deep history", "price truth", "condition truth", "physical-card authenticity"],
+        },
+        "coverage": {
+            "release": "B",
+            "art": art_coverage,
+            "history": "C",
+            "identification": "B",
+        },
+    }
 
 
 def validate_source_ref(ref: str) -> None:
@@ -241,7 +624,49 @@ def load_source_sets() -> list[dict[str, Any]]:
     return source_sets
 
 
-def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def build_index(dossiers: list[dict[str, Any]]) -> dict[str, Any]:
+    entries: list[dict[str, Any]] = []
+    for dossier in dossiers:
+        narrative = dossier.get("narrative", {})
+        entry = {
+            "uid": dossier["uid"],
+            "type": dossier["type"],
+            "generated": bool(dossier.get("generated")),
+            "human_title": narrative.get("human_title", ""),
+            "why_it_matters": narrative.get("why_it_matters", ""),
+            "coverage": dossier.get("coverage", {}),
+            "claim_count": len(dossier.get("claims", [])),
+            "special_identification_instruction_count": len(dossier.get("special_identification_instructions", [])),
+        }
+        if "release_highlights" in dossier:
+            highlights = dossier["release_highlights"]
+            entry["chase_cards"] = [
+                {"row_id": card.get("row_id"), "name": card.get("name"), "number": card.get("number")}
+                for card in highlights.get("chase_cards", [])[:6]
+            ]
+            entry["key_artists"] = [
+                {"name": artist.get("name"), "row_count": artist.get("row_count")}
+                for artist in highlights.get("key_artists", [])[:6]
+            ]
+        if "card_highlights" in dossier:
+            highlights = dossier["card_highlights"]
+            entry["card"] = {
+                "number": highlights.get("number", ""),
+                "rarity_signal": highlights.get("rarity_signal", ""),
+                "artist": highlights.get("artist", ""),
+            }
+        entries.append(entry)
+    return {
+        "schema": "marketplace.catalog_history_index.v0.1",
+        "canonicalization": CANONICALIZATION,
+        "hash_algorithm": HASH_ALGORITHM,
+        "not_claiming": NOT_CLAIMING,
+        "entries": entries,
+    }
+
+
+def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+    catalog_releases = load_catalog_releases()
     release_ids, row_ids = load_catalog_ids()
     source_sets = load_source_sets()
     dossiers: list[dict[str, Any]] = []
@@ -257,6 +682,27 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             seen.add(uid)
             dossiers.append(dossier)
 
+    generated_release_count = 0
+    generated_card_count = 0
+    for release_id, item in sorted(catalog_releases.items()):
+        path = item["path"]
+        data = item["data"]
+        if release_id not in seen:
+            dossier = make_release_dossier(release_id, path, data)
+            validate_dossier(dossier, release_ids, row_ids)
+            seen.add(release_id)
+            dossiers.append(dossier)
+            generated_release_count += 1
+        for card in data.get("cards", []):
+            row_id = card.get("row_id")
+            if not row_id or row_id in seen:
+                continue
+            dossier = make_card_dossier(release_id, path, data, card)
+            validate_dossier(dossier, release_ids, row_ids)
+            seen.add(str(row_id))
+            dossiers.append(dossier)
+            generated_card_count += 1
+
     dossiers.sort(key=lambda item: (item["type"], item["uid"]))
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     claim_count = sum(len(dossier["claims"]) for dossier in dossiers)
@@ -264,11 +710,15 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     release_count = sum(1 for dossier in dossiers if dossier["type"] == "release")
     card_count = sum(1 for dossier in dossiers if dossier["type"] == "card")
     coverage = {
-        "status": "pilot_in_progress",
+        "status": "baseline_full_corpus_with_deep_research_gap",
         "modeled_catalog_releases": len(release_ids),
         "modeled_catalog_rows": len(row_ids),
         "release_dossier_count": release_count,
         "card_dossier_count": card_count,
+        "hand_authored_release_dossier_count": release_count - generated_release_count,
+        "hand_authored_card_dossier_count": card_count - generated_card_count,
+        "generated_release_dossier_count": generated_release_count,
+        "generated_card_dossier_count": generated_card_count,
         "claim_count": claim_count,
         "source_count": source_count,
         "special_identification_instruction_dossiers": sum(
@@ -281,7 +731,9 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "not_complete": {
             "release_dossiers_remaining_minimum": max(0, len(release_ids) - release_count),
             "card_dossiers_remaining_minimum": max(0, len(row_ids) - card_count),
-            "note": "Pilot proves schema and sourcing rails only; it does not satisfy full-corpus deep history coverage.",
+            "deep_researched_release_dossiers_remaining_minimum": generated_release_count,
+            "deep_researched_card_dossiers_remaining_minimum": generated_card_count,
+            "note": "Every modeled release and card now has a baseline dossier; generated dossiers are first-pass local-catalog footholds, not complete researched histories.",
         },
         "uids": [dossier["uid"] for dossier in dossiers],
     }
@@ -295,8 +747,10 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "coverage": coverage,
         "dossiers": dossiers,
     }
+    index = build_index(dossiers)
     hash_preimage = {key: value for key, value in corpus.items() if key != "generated_at"}
     corpus_hash = canonical_hash(hash_preimage)
+    index_hash = canonical_hash(index)
     manifest = {
         "schema": MANIFEST_SCHEMA,
         "generated_at": generated_at,
@@ -309,8 +763,17 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
             "hash_scope": "canonical corpus excluding generated_at",
             "release_dossier_count": release_count,
             "card_dossier_count": card_count,
+            "generated_release_dossier_count": generated_release_count,
+            "generated_card_dossier_count": generated_card_count,
             "claim_count": claim_count,
             "source_count": source_count,
+        },
+        "index": {
+            "path": INDEX_PATH.relative_to(ROOT).as_posix(),
+            "schema": index["schema"],
+            "entry_count": len(index["entries"]),
+            "index_hash": index_hash,
+            "hash_scope": "canonical index",
         },
         "source_sets": source_paths,
         "not_claiming": NOT_CLAIMING,
@@ -319,18 +782,19 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "schema": AUDIT_SCHEMA,
         "generated_at": generated_at,
         "passed": True,
-        "status": "pilot_in_progress",
+        "status": "baseline_full_corpus_with_deep_research_gap",
         "corpus_hash": corpus_hash,
+        "index_hash": index_hash,
         "counts": coverage,
         "residuals": [
             {
-                "id": "catalog_history_full_corpus_incomplete_v0.1",
-                "severity": "expected_pilot_gap",
-                "description": "The requested end state is deep history for every modeled release and card. This pilot only establishes schema, validation, and first high-signal dossiers.",
+                "id": "catalog_history_deep_research_incomplete_v0.1",
+                "severity": "expected_baseline_gap",
+                "description": "Every modeled release and card has a baseline sourced dossier, but most are generated from local catalog facts. The requested end state still requires deeper fact-checked history, lore, artist context, and card-specific collector texture across the full corpus.",
             }
         ],
     }
-    return corpus, manifest, audit
+    return corpus, index, manifest, audit
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -342,13 +806,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build catalog-history dossiers.")
     parser.add_argument("--check", action="store_true", help="validate and report without writing")
     args = parser.parse_args()
-    corpus, manifest, audit = build()
+    corpus, index, manifest, audit = build()
     existing_manifest_ok = None
     if args.check and MANIFEST_PATH.exists():
         existing = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
         existing_manifest_ok = existing.get("corpus", {}).get("corpus_hash") == manifest["corpus"]["corpus_hash"]
     if not args.check:
         write_json(OUT_PATH, corpus)
+        write_json(INDEX_PATH, index)
         write_json(MANIFEST_PATH, manifest)
         write_json(AUDIT_PATH, audit)
     print(
@@ -356,6 +821,8 @@ def main() -> None:
             {
                 "release_dossiers": manifest["corpus"]["release_dossier_count"],
                 "card_dossiers": manifest["corpus"]["card_dossier_count"],
+                "generated_release_dossiers": manifest["corpus"]["generated_release_dossier_count"],
+                "generated_card_dossiers": manifest["corpus"]["generated_card_dossier_count"],
                 "claims": manifest["corpus"]["claim_count"],
                 "sources": manifest["corpus"]["source_count"],
                 "corpus_hash": manifest["corpus"]["corpus_hash"],
@@ -365,6 +832,7 @@ def main() -> None:
                 if args.check
                 else [
                     manifest["corpus"]["path"],
+                    manifest["index"]["path"],
                     MANIFEST_PATH.relative_to(ROOT).as_posix(),
                     AUDIT_PATH.relative_to(ROOT).as_posix(),
                 ],

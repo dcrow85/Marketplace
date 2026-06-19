@@ -1,17 +1,26 @@
 {
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
-    "card_dossier_count": 4,
-    "claim_count": 30,
-    "corpus_hash": "bd32888847d4ea11407c3e229bb59bd89f3c5e398c87e5bbf4f9442a1a627be2",
+    "card_dossier_count": 4549,
+    "claim_count": 18195,
+    "corpus_hash": "1f65c6c6043d751eae187bf2d10699693f6a8dd97678f3e54c5f31cefa1e80d1",
+    "generated_card_dossier_count": 4545,
+    "generated_release_dossier_count": 207,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
-    "release_dossier_count": 2,
+    "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 12
+    "source_count": 4764
   },
-  "generated_at": "2026-06-19T00:43:51Z",
+  "generated_at": "2026-06-19T00:52:40Z",
   "hash_algorithm": "sha256",
+  "index": {
+    "entry_count": 4758,
+    "hash_scope": "canonical index",
+    "index_hash": "f1685e7417f4732a6e67188542e0f57d566245438ca4e02a995677367b482b51",
+    "path": "data/catalog-history/index.json",
+    "schema": "marketplace.catalog_history_index.v0.1"
+  },
   "not_claiming": [
     "complete deep-history coverage",
     "seller possession",
