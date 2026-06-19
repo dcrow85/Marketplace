@@ -5232,8 +5232,8 @@
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3931,
-    "generated_release_candidates_considered": 103,
+    "generated_card_candidates_considered": 3928,
+    "generated_release_candidates_considered": 102,
     "release_queue_count": 100
   },
   "description": "Prioritized generated dossiers for the next hand-researched deep history pass.",
@@ -5245,93 +5245,6 @@
     "physical-card authenticity"
   ],
   "release_queue": [
-    {
-      "assembly_themes": [
-        "cataloged release memory"
-      ],
-      "chase_cards": [
-        {
-          "authority_label": "interpretive",
-          "name": "Pikachu",
-          "not_claiming": [
-            "price truth",
-            "condition truth",
-            "seller possession",
-            "authenticity"
-          ],
-          "number": "025",
-          "rarity_signal": "promo family source slice",
-          "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
-          "why": "local catalog chase heuristic: iconic name, holo/rare/promo signal, or special identification rail"
-        },
-        {
-          "authority_label": "interpretive",
-          "name": "Mew",
-          "not_claiming": [
-            "price truth",
-            "condition truth",
-            "seller possession",
-            "authenticity"
-          ],
-          "number": "026",
-          "rarity_signal": "promo family source slice",
-          "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
-          "why": "local catalog chase heuristic: iconic name, holo/rare/promo signal, or special identification rail"
-        },
-        {
-          "authority_label": "interpretive",
-          "name": "Mewtwo",
-          "not_claiming": [
-            "price truth",
-            "condition truth",
-            "seller possession",
-            "authenticity"
-          ],
-          "number": "027",
-          "rarity_signal": "promo family source slice",
-          "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
-          "why": "local catalog chase heuristic: iconic name, holo/rare/promo signal, or special identification rail"
-        }
-      ],
-      "human_title": "WHF Special Limited Expansion Sheet source slice: first-pass assembly note",
-      "key_artists": [
-        {
-          "authority_label": "local_catalog_fact",
-          "examples": [
-            "Pikachu",
-            "Mew",
-            "Mewtwo"
-          ],
-          "name": "Ken Sugimori",
-          "not_claiming": [
-            "complete artist biography",
-            "direct physical-card print authority"
-          ],
-          "row_count": 3
-        }
-      ],
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 33,
-      "reasons": [
-        "3 local chase/attention rows",
-        "1 surfaced artist clusters",
-        "1 assembly themes"
-      ],
-      "type": "release",
-      "uid": "jp_promo_whf_special_limited_expansion_sheet_199712",
-      "why_it_matters": "WHF Special Limited Expansion Sheet source slice is now in the history layer instead of sitting as a silent checklist. WHF Special Limited Expansion Sheet source slice currently reads through cataloged release memory: Pikachu, Mew, Mewtwo pull collector attention, while Ken Sugimori show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
-    },
     {
       "assembly_themes": [
         "magazine/media distribution"
@@ -9899,6 +9812,49 @@
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001",
       "why_it_matters": "Pokémon Card Information Vol. 2 insert (April 1, 2001) is now in the history layer instead of sitting as a silent checklist. Pokémon Card Information Vol. 2 insert (April 1, 2001) currently reads through cataloged release memory: Bellossom pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
+    },
+    {
+      "assembly_themes": [
+        "cataloged release memory"
+      ],
+      "chase_cards": [
+        {
+          "authority_label": "interpretive",
+          "name": "Pryce's Lapras",
+          "not_claiming": [
+            "price truth",
+            "condition truth",
+            "seller possession",
+            "authenticity"
+          ],
+          "number": "None",
+          "rarity_signal": "not provided",
+          "row_id": "jp_promo_unnumbered_wotc_237_pok_mon_card_information_vol_3_insert_july_19_2001:237",
+          "why": "local catalog chase heuristic: iconic name, holo/rare/promo signal, or special identification rail"
+        }
+      ],
+      "human_title": "Pokémon Card Information Vol. 3 insert (July 19, 2001): first-pass assembly note",
+      "key_artists": [],
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 12,
+      "reasons": [
+        "1 local chase/attention rows",
+        "1 assembly themes"
+      ],
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_237_pok_mon_card_information_vol_3_insert_july_19_2001",
+      "why_it_matters": "Pokémon Card Information Vol. 3 insert (July 19, 2001) is now in the history layer instead of sitting as a silent checklist. Pokémon Card Information Vol. 3 insert (July 19, 2001) currently reads through cataloged release memory: Pryce's Lapras pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
     }
   ],
   "schema": "marketplace.catalog_history_deepening_queue.v0.1"

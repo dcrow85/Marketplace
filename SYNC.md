@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/whf_special_limited_expansion_sheet_v0_1.json`.
+  The 7th Next Generation World Hobby Fair Special Limited Expansion Sheet /
+  Series 00 source slice now has hand-authored coverage for the release and all
+  three modeled cards: Pikachu row 025, Mew row 026, and Mewtwo row 027. The pass
+  frames the object as a liminal sheet-route rather than a normal promo or
+  ordinary Vending release: World Hobby Fair event context, special limited
+  Expansion Sheet, Unnumbered Promotional status, Series 00 / Vending-adjacent
+  collector classification, Ken Sugimori source-provider artist texture, and
+  Song Best Collection overlap for Mew/Mewtwo all remain legible. Added bespoke
+  `special_identification_instructions` requiring agents to preserve WHF sheet
+  route, 1997-12-07/1998-02-01 selected-source window, rows 025-027,
+  Series 00 caveat, Mew/Mewtwo CD-overlap caveat, and non-equivalence with JR,
+  ANA, CoroCoro, ordinary Vending, Song Best-only, Base/Expansion Pack, Fossil,
+  Movie Promo, and later Pikachu/Mew/Mewtwo memories before accepting a match.
+  Sources: local Japanese pre-English release file and selected Pokumon +
+  Bulbapedia rendered-line snapshot for the WHF Special Limited Expansion Sheet
+  / Series 00 context. Generated gap moved from 103 releases / 3,931 cards to
+  102 releases / 3,928 cards. Current catalog-history corpus:
+  `5a074dcbb99d0b10cac3e8bd1a860945b8e0e240cd1bb6a57d95464f59424bb4`;
+  index: `1ba4972a998dbe8c7458e180e4811f8123f5aebb0db7b5c3fa6c8b855bdf6a5c`;
+  queue: `d968ec9a2aba6dd67882b4377643c5b2be729b15dd4b67186920108e070aa9cb`.
+  Audit counts: 23,253 claims, 6,127 sources, 107 hand-authored release
+  dossiers, 621 hand-authored card dossiers, and 881 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/whf_special_limited_expansion_sheet_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the ninetieth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`.
