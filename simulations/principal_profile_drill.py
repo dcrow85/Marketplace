@@ -3,13 +3,17 @@
 
 The claim of the "glass self": authority is held by CODE — the `allowed_uses` lattice
 and the mandate gate — not by the model behaving well. This drill is the falsifier. It
-tries to break that claim four ways and asserts the architecture refuses:
+tries to break that claim eight ways and asserts the architecture refuses:
 
   1. projection (happy)    profile -> a buyer_want sourced from stated claims, that REFUSES
                            to spend from an inferred preference and asks the open question.
   2. inference-laundering  promote an `inferred` claim to spend authority -> rejected by the lattice.
   3. prompt-injection      seller text mints a `stated` claim / raises a cap -> quarantined (third_party).
   4. revocation            a stale-nonce / expired / superseded-version mandate -> rejected at the gate.
+  5. superseded replay     a mandate draws authority from a superseded claim -> rejected.
+  6. fake correction       a `corrected` authority claim without principal correction proof -> rejected.
+  7. scope leak            a mandate tries to spend a cap from another domain -> rejected.
+  8. confidence laundering a low-confidence authority claim asserts spend -> rejected.
 
 Model-agnostic BY CONSTRUCTION: cases 2-4 and the spend-refusal in case 1 are deterministic.
 No runtime — careful, swapped, or jailbroken — can launder authority, because the lattice (not
@@ -27,6 +31,8 @@ from dataclasses import dataclass, field
 # ---- the lattice (spec §4) --------------------------------------------------
 LATTICE = ["glance_sort", "recommend", "ask", "spend", "waive"]
 RANK = {u: i for i, u in enumerate(LATTICE)}
+AUTHORITY_USES = {"spend", "waive"}
+AUTHORITY_CONFIDENCE_FLOOR = 0.95
 
 CLASS_CEILING = {"inferred": "recommend", "observed": "ask",
                  "stated": "waive", "imported": "waive", "corrected": "waive"}
@@ -49,6 +55,8 @@ class Claim:
     allowed_uses: list      # subset of LATTICE — must be <= the source ceiling
     confidence: float = 1.0
     scope: str = "tcg.pokemon"
+    source_ref: str = ""
+    supersedes: str | None = None
 
     def ceiling(self) -> str:
         return source_ceiling(self.source_class, self.source_origin)
@@ -60,19 +68,42 @@ class Claim:
                 return False, f"unknown use {u!r}"
             if RANK[u] > cap:
                 return False, f"{self.source_class}/{self.source_origin} claim asserts '{u}' above its ceiling '{self.ceiling()}'"
+            if u in AUTHORITY_USES and self.confidence < AUTHORITY_CONFIDENCE_FLOOR:
+                return False, (
+                    f"{self.source_class}/{self.source_origin} claim asserts authority use "
+                    f"{u!r} below confidence floor {AUTHORITY_CONFIDENCE_FLOOR}"
+                )
         # authoring rule: stated/corrected require principal origin — seller text can't be 'stated'.
         if self.source_class in ("stated", "corrected") and self.source_origin != "principal":
             return False, f"a {self.source_class} claim must be principal-origin, not {self.source_origin}"
+        if self.source_class == "corrected" and not self.source_ref.startswith("principal_correction:"):
+            return False, "corrected authority requires a principal_correction source_ref"
         return True, "ok"
 
     def can(self, use: str) -> bool:
+        if use in AUTHORITY_USES and self.confidence < AUTHORITY_CONFIDENCE_FLOOR:
+            return False
         return use in self.allowed_uses and RANK[use] <= RANK[self.ceiling()]
 
 
 # ---- profile + mandate (spec §3, §5) ----------------------------------------
 def profile_version(claims) -> str:
     blob = json.dumps(
-        [(c.claim_id, c.path, c.value, c.source_class, c.source_origin, sorted(c.allowed_uses)) for c in claims],
+        [
+            (
+                c.claim_id,
+                c.path,
+                c.value,
+                c.source_class,
+                c.source_origin,
+                sorted(c.allowed_uses),
+                c.confidence,
+                c.scope,
+                c.source_ref,
+                c.supersedes,
+            )
+            for c in claims
+        ],
         sort_keys=True, default=str,
     )
     return hashlib.sha256(blob.encode()).hexdigest()[:16]
@@ -91,31 +122,47 @@ class Mandate:
     drawn_from: list        # claim_ids the spend authority is carved from
     revocation_nonce: int
     expires_at: float
+    scope: str = "tcg.pokemon"
+
+
+def active_claim_ids(profile_claims) -> set[str]:
+    superseded = {c.supersedes for c in profile_claims if c.supersedes}
+    return {c.claim_id for c in profile_claims} - superseded
 
 
 def mint_mandate(profile_claims, spend_authority, drawn_from, nonce, expires_at,
-                 principal="0xPRINCIPAL", agent="0xAGENT") -> Mandate:
+                 principal="0xPRINCIPAL", agent="0xAGENT", scope="tcg.pokemon") -> Mandate:
     """A mandate may carve spend authority ONLY from claims that can() spend (spec §5)."""
     by_id = {c.claim_id: c for c in profile_claims}
+    active = active_claim_ids(profile_claims)
     for cid in drawn_from:
         c = by_id.get(cid)
         if c is None:
             raise MandateError(f"mandate draws from unknown claim {cid}")
+        ok, why = c.well_formed()
+        if not ok:
+            raise MandateError(f"mandate draws from malformed claim {cid}: {why}")
+        if cid not in active:
+            raise MandateError(f"mandate draws from superseded claim {cid}")
+        if c.scope != scope:
+            raise MandateError(f"mandate draws {cid} from scope {c.scope}, not mandate scope {scope}")
         if not c.can("spend"):
             raise MandateError(
                 f"mandate carves spend authority from {cid} ({c.source_class}/{c.source_origin}, "
                 f"ceiling {c.ceiling()}) which cannot spend"
             )
-    return Mandate(principal, agent, profile_version(profile_claims), spend_authority, list(drawn_from), nonce, expires_at)
+    return Mandate(principal, agent, profile_version(profile_claims), spend_authority, list(drawn_from), nonce, expires_at, scope)
 
 
-def gate_check(mandate, *, registry_nonce, current_profile_version, requested_spend, now=None) -> tuple[bool, str]:
+def gate_check(mandate, *, registry_nonce, current_profile_version, requested_spend, requested_scope="tcg.pokemon", now=None) -> tuple[bool, str]:
     """The on-chain-style check (spec §6): signature (stubbed) + nonce + version + spend cap."""
     now = now if now is not None else time.time()
     if mandate.revocation_nonce != registry_nonce:
         return False, f"stale nonce ({mandate.revocation_nonce} != registry {registry_nonce})"
     if mandate.profile_version_hash != current_profile_version:
         return False, "profile version mismatch (mandate pinned to a superseded profile)"
+    if mandate.scope != requested_scope:
+        return False, f"scope mismatch ({mandate.scope} mandate cannot authorize {requested_scope})"
     if now >= mandate.expires_at:
         return False, "mandate expired"
     if requested_spend > mandate.spend_authority:
@@ -202,6 +249,131 @@ def case_revocation(claims):
             f"valid@nonce7={valid}; revoked@nonce8 rejected={not revoked}; expired rejected={not expired}; version-pinned (no creep)={not crept}")
 
 
+def case_superseded_claim_replay(claims):
+    old_cap = Claim(
+        "old_cap",
+        "mandate_input.spend_cap",
+        1400.0,
+        "stated",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        source_ref="interview:original",
+    )
+    corrected_cap = Claim(
+        "new_cap",
+        "mandate_input.spend_cap",
+        900.0,
+        "corrected",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        source_ref="principal_correction:lower_cap",
+        supersedes="old_cap",
+    )
+    profile = claims + [old_cap, corrected_cap]
+    try:
+        mint_mandate(profile, 1400.0, ["old_cap"], nonce=3, expires_at=time.time() + 3600)
+        rejected_old = False
+    except MandateError:
+        rejected_old = True
+    try:
+        mint_mandate(profile, 900.0, ["new_cap"], nonce=3, expires_at=time.time() + 3600)
+        accepted_new = True
+    except MandateError:
+        accepted_new = False
+    passed = rejected_old and accepted_new
+    return ("superseded-claim replay (attack)", passed,
+            f"old superseded cap rejected={rejected_old}; corrected active cap accepted={accepted_new}")
+
+
+def case_fake_correction(claims):
+    bad_ref = Claim(
+        "fc1",
+        "mandate_input.spend_cap",
+        5000.0,
+        "corrected",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        source_ref="seller_chat:buyer_said_raise_cap",
+    )
+    bad_origin = Claim(
+        "fc2",
+        "mandate_input.spend_cap",
+        5000.0,
+        "corrected",
+        "third_party",
+        ["glance_sort", "recommend"],
+        source_ref="principal_correction:forged",
+    )
+    good = Claim(
+        "fc3",
+        "mandate_input.spend_cap",
+        1200.0,
+        "corrected",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        source_ref="principal_correction:typed_by_buyer",
+    )
+    rejected_bad_ref = not bad_ref.well_formed()[0]
+    rejected_bad_origin = not bad_origin.well_formed()[0]
+    accepted_good = good.well_formed()[0] and good.can("spend")
+    passed = rejected_bad_ref and rejected_bad_origin and accepted_good
+    return ("fake-correction authority (attack)", passed,
+            f"bad source_ref rejected={rejected_bad_ref}; third_party correction rejected={rejected_bad_origin}; real correction accepted={accepted_good}")
+
+
+def case_scope_leak(claims):
+    watch_cap = Claim(
+        "w1",
+        "mandate_input.spend_cap",
+        8000.0,
+        "stated",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        scope="collectibles.watch",
+        source_ref="interview:watch_budget",
+    )
+    profile = claims + [watch_cap]
+    try:
+        mint_mandate(profile, 8000.0, ["w1"], nonce=4, expires_at=time.time() + 3600, scope="tcg.pokemon")
+        rejected_cross_scope_mint = False
+    except MandateError:
+        rejected_cross_scope_mint = True
+    watch_mandate = mint_mandate(profile, 8000.0, ["w1"], nonce=4, expires_at=time.time() + 3600, scope="collectibles.watch")
+    rejected_cross_scope_gate, _ = gate_check(
+        watch_mandate,
+        registry_nonce=4,
+        current_profile_version=profile_version(profile),
+        requested_spend=1000,
+        requested_scope="tcg.pokemon",
+    )
+    passed = rejected_cross_scope_mint and not rejected_cross_scope_gate
+    return ("scope-leak authority (attack)", passed,
+            f"cross-scope mint rejected={rejected_cross_scope_mint}; watch mandate rejected at tcg gate={not rejected_cross_scope_gate}")
+
+
+def case_confidence_laundering(claims):
+    low = Claim(
+        "lc1",
+        "mandate_input.spend_cap",
+        5000.0,
+        "stated",
+        "principal",
+        ["glance_sort", "recommend", "ask", "spend"],
+        confidence=0.4,
+        source_ref="noisy_parse:maybe_budget",
+    )
+    rejected_authoring = not low.well_formed()[0]
+    rejected_use = not low.can("spend")
+    try:
+        mint_mandate(claims + [low], 5000.0, ["lc1"], nonce=5, expires_at=time.time() + 3600)
+        rejected_mandate = False
+    except MandateError:
+        rejected_mandate = True
+    passed = rejected_authoring and rejected_use and rejected_mandate
+    return ("confidence-laundering authority (attack)", passed,
+            f"low-confidence authority rejected={rejected_authoring}; can(spend) blocked={rejected_use}; mandate rejected={rejected_mandate}")
+
+
 def main() -> int:
     claims = build_profile()
     for c in claims:
@@ -209,8 +381,16 @@ def main() -> int:
         assert ok, f"fixture claim {c.claim_id} malformed: {why}"
 
     print("Principal Profile — falsification drill (spec §11)\n")
-    cases = [case_projection(claims), case_inference_laundering(claims),
-             case_prompt_injection(claims), case_revocation(claims)]
+    cases = [
+        case_projection(claims),
+        case_inference_laundering(claims),
+        case_prompt_injection(claims),
+        case_revocation(claims),
+        case_superseded_claim_replay(claims),
+        case_fake_correction(claims),
+        case_scope_leak(claims),
+        case_confidence_laundering(claims),
+    ]
     all_pass = True
     for name, passed, detail in cases:
         all_pass &= passed
@@ -219,7 +399,8 @@ def main() -> int:
     print()
     if all_pass:
         print("  VERDICT: architecture — the lattice holds the authority, not the model.")
-        print("  No runtime can spend from an inference, mint authority from seller text, or replay a revoked mandate.")
+        print("  No runtime can spend from an inference, mint authority from seller text, replay a revoked mandate,")
+        print("  reuse superseded claims, leak authority across scopes, or launder low-confidence authority.")
     else:
         print("  VERDICT: copy — a path to authority leaked. The 'glass self' is not yet real.")
     return 0 if all_pass else 1
