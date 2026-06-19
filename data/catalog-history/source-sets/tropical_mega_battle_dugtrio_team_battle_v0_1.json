@@ -1,0 +1,1112 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete three-row deepening tranche for the Tropical Mega Battle: Dugtrio Team Battle source group, emphasizing legendary-bird phone-card object status, raw promotion-note boundary, tournament/event context, and unresolved artist/source-art claims.",
+    "in_scope": [
+      "release/source-group dossier",
+      "Moltres phone card row 123",
+      "Articuno phone card row 124",
+      "Zapdos phone card row 125",
+      "phone-card object boundary",
+      "Tropical Mega Battle: Dugtrio Team Battle promotion-note identity rails"
+    ],
+    "not_claiming": [
+      "official product-boundary proof",
+      "complete Tropical Mega Battle archive",
+      "complete Dugtrio Team Battle event rules",
+      "complete phone-card distribution census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle",
+        "name_en": "Tropical Mega Battle: Dugtrio Team Battle",
+        "release_date": "1998-11-13",
+        "expected_row_count": 3,
+        "source_indices": [
+          "123",
+          "124",
+          "125"
+        ],
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Tropical Mega Battle event culture",
+          "Dugtrio Team Battle promotion note",
+          "legendary-bird phone-card trio",
+          "non-card object boundary",
+          "raw-source promotion grouping",
+          "GB-art collector context"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:123",
+            "name": "Moltres phone card",
+            "why": "Fire legendary bird phone-card lane in the Dugtrio Team Battle trio",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:124",
+            "name": "Articuno phone card",
+            "why": "Water/ice legendary bird phone-card lane with collector references to official tournament Dugtrio Team Battle events",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:125",
+            "name": "Zapdos phone card",
+            "why": "Lightning legendary bird phone-card lane, often the kind of object buyers misread as a normal card promo",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "not surfaced by local raw rows",
+            "row_count": 3,
+            "examples": [
+              "Moltres",
+              "Articuno",
+              "Zapdos"
+            ],
+            "why": "The local source rows name the phone-card subjects and types but do not surface illustrator credits. Collector discussion points toward legendary bird artwork context, but that remains texture unless row-level authority is added.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority",
+              "official artwork source"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official product-boundary proof",
+          "complete Tropical Mega Battle archive",
+          "complete Dugtrio Team Battle event rules",
+          "complete phone-card distribution census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local release groups Bulbapedia raw source rows 123-125 under the promotion note Tropical Mega Battle: Dugtrio Team Battle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The source group contains three modeled rows: Moltres phone card 123, Articuno phone card 124, and Zapdos phone card 125.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "The local release boundary is source-derived from the exact Bulbapedia promotion/distribution note and is not official product-boundary proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia describes the Tropical Mega Battle as a TCG tournament held annually from 1999 through 2001 in Honolulu, while the local row group carries a mixed-source release date and a Dugtrio Team Battle promotion note. Treat the wider event context as context, not row-level distribution proof.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Pokumon collector pages describe the legendary bird phone cards as given out at Dugtrio Team Battle events including Tropical Mega Battle, Regional Kamex Mega Battle, and Challenge Road events during 1998-1999; this is collector context, not an official distribution census.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "authority_label": "interpretive",
+          "tier": "C",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local raw rows do not surface illustrator credits for these phone-card rows; artist or source-art claims should remain unresolved unless supported by card-specific evidence.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Elite Fourum discussion connects the legendary bird phone-card artwork to broader GB-art/prototype-like legendary bird context. This is useful collector texture only and must not be promoted to official row authority.",
+          "sources": [
+            "s6"
+          ],
+          "authority_label": "interpretive",
+          "tier": "C",
+          "basis_claims": [
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "This source group matters because it is not a normal card trio: it is the legendary birds translated into phone-card tournament memory, where the collectible object is adjacent to play, travel, event attendance, and prize culture.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 123/124/125 identity, Phone Card type, exact Tropical Mega Battle: Dugtrio Team Battle promotion note, legendary-bird subject, non-card object status, and unresolved artist credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "human_title": "Tropical Mega Battle Dugtrio Team Battle — legendary birds as phone-card event memory",
+        "why_it_matters": "This slice is beautiful because it sits slightly outside the ordinary card binder. Moltres, Articuno, and Zapdos are unmistakable TCG gravity, but here the object type is phone card and the route is tournament/event culture. That changes everything. The agent has to see the legendary-bird allure while refusing the easy shortcut: these are not Fossil birds, not vending birds, not ordinary promos with attacks and HP. They are phone-card artifacts grouped by a Dugtrio Team Battle promotion note, part of the wider Tropical Mega Battle/Kamex/Challenge Road collector fog. The romance is real, but the boundary has to be sharper than the romance.",
+        "not_claiming": [
+          "complete Tropical Mega Battle history",
+          "complete phone-card distribution census",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Tropical Mega Battle Dugtrio Team Battle",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official product-boundary proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_source",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards rows 123-125",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "event_context_reference",
+          "title": "Bulbapedia: Tropical Mega Battle",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Mega_Battle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "card-specific distribution proof",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Articuno Tropical Mega Battle / Regional Kamex Mega Battle / Challenge Road phone card context",
+          "ref": "https://pokumon.com/card/articuno-tropical-mega-battleregional-kamex-mega-battlechallenge-road-19981999-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Zapdos Tropical Mega Battle / Regional Kamex Mega Battle / Challenge Road phone card context",
+          "ref": "https://pokumon.com/card/zapdos-tropical-mega-battleregional-kamex-mega-battlechallenge-road-19981999-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_forum_context",
+          "title": "Elite Fourum: Legendary birds GB art / Tropical Mega Battle phone card discussion",
+          "ref": "https://www.elitefourum.com/t/information-about-the-prototype-like-moltres-articuno-zapdos/43706",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete provenance proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_mega_battle_dugtrio_team_battle_phone_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Tropical Mega Battle, Dugtrio Team Battle, phone card, Moltres, Articuno, Zapdos, Regional Kamex Mega Battle, Challenge Road, legendary bird phone card, or rows 123-125.",
+          "summary": "Preserve the phone-card object type and exact Dugtrio Team Battle promotion note before treating these as the Tropical Mega Battle source group.",
+          "steps": [
+            "Confirm the exact promotion note: Tropical Mega Battle: Dugtrio Team Battle.",
+            "Preserve source row identity: Moltres 123, Articuno 124, Zapdos 125.",
+            "Preserve object type as Phone Card; do not treat these as ordinary playable TCG cards without evidence.",
+            "Preserve the source-derived boundary caveat: this group is based on Bulbapedia raw promotion rows, not official product-boundary proof.",
+            "Do not collapse these into Fossil, Vending, GB, Kamex, Challenge Road, or generic legendary bird promos without explicit route evidence.",
+            "Treat artist/source-art claims as unresolved unless the seller or source provides card-specific evidence.",
+            "Use seller photos for front/back, phone-card format, serial/printing details where visible, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "official product-boundary proof",
+            "complete Tropical Mega Battle archive",
+            "complete Dugtrio Team Battle event rules",
+            "complete phone-card distribution census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography",
+            "official artwork source"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:123",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle",
+        "release_name": "Tropical Mega Battle: Dugtrio Team Battle",
+        "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:123",
+        "catalog_row_id": "123",
+        "name_en": "Moltres",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "123",
+        "artist": "not surfaced by local raw row",
+        "rarity_signal": "Phone Card",
+        "signals": [
+          "Tropical Mega Battle: Dugtrio Team Battle",
+          "123",
+          "Phone Card",
+          "Moltres",
+          "Fire",
+          "Tropical Mega Battle: Dugtrio Team Battle"
+        ],
+        "assembly_themes": [
+          "tournament/event distribution",
+          "phone-card object boundary",
+          "legendary-bird gravity",
+          "identity trap",
+          "unresolved artist credit"
+        ],
+        "assembly_note": "Moltres sits in the Dugtrio Team Battle source group as phone-card row 123; object type and promotion note need to stay attached.",
+        "collector_texture_note": "Moltres is the fire corner of the phone-card trio. In an ordinary binder, Moltres means Fossil, flame, legendary bird nostalgia. Here it means something stranger: a non-playable phone-card artifact carrying event memory. The agent should keep the flame and refuse the shortcut.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof",
+          "artist proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Moltres as Tropical Mega Battle: Dugtrio Team Battle row 123.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The raw source row identifies Moltres as a Phone Card with Fire typing/context in the source row, not as an ordinary playable TCG card row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The row carries the promotion note Tropical Mega Battle: Dugtrio Team Battle; this is the source route that must stay attached to Moltres.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local raw row does not surface an illustrator credit for Moltres; do not invent one or infer it from similar legendary bird art.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Moltres is the fire corner of the phone-card trio. In an ordinary binder, Moltres means Fossil, flame, legendary bird nostalgia. Here it means something stranger: a non-playable phone-card artifact carrying event memory. The agent should keep the flame and refuse the shortcut.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Moltres row 123, Phone Card object type, Tropical Mega Battle: Dugtrio Team Battle promotion note, Fire context, and unresolved artist credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Moltres phone card — Tropical Mega Battle Dugtrio Team Battle row 123",
+        "why_it_matters": "Moltres is the fire corner of the phone-card trio. In an ordinary binder, Moltres means Fossil, flame, legendary bird nostalgia. Here it means something stranger: a non-playable phone-card artifact carrying event memory. The agent should keep the flame and refuse the shortcut.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Tropical Mega Battle Dugtrio Team Battle",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official product-boundary proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_source",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards rows 123-125",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_forum_context",
+          "title": "Elite Fourum: Legendary birds GB art / Tropical Mega Battle phone card discussion",
+          "ref": "https://www.elitefourum.com/t/information-about-the-prototype-like-moltres-articuno-zapdos/43706",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete provenance proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_mega_battle_dugtrio_team_battle_123_phone_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Moltres, Tropical Mega Battle, Dugtrio Team Battle, Phone Card, legendary bird phone card, or row 123.",
+          "summary": "Keep Moltres pinned to phone-card row 123 and the exact Dugtrio Team Battle promotion note.",
+          "steps": [
+            "Require row 123 and subject Moltres.",
+            "Preserve object type: Phone Card, not ordinary playable TCG card unless separately evidenced.",
+            "Preserve exact promotion note: Tropical Mega Battle: Dugtrio Team Battle.",
+            "Preserve unresolved artist credit; do not infer illustrator from similar legendary bird artwork.",
+            "Do not collapse into Fossil, Vending, GB, Kamex, Challenge Road, or generic legendary bird promo memories without explicit route evidence.",
+            "Use seller photos for front/back, phone-card format, serial/printing details where visible, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "official product-boundary proof",
+            "complete Tropical Mega Battle archive",
+            "complete Dugtrio Team Battle event rules",
+            "complete phone-card distribution census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography",
+            "official artwork source"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:124",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle",
+        "release_name": "Tropical Mega Battle: Dugtrio Team Battle",
+        "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:124",
+        "catalog_row_id": "124",
+        "name_en": "Articuno",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "124",
+        "artist": "not surfaced by local raw row",
+        "rarity_signal": "Phone Card",
+        "signals": [
+          "Tropical Mega Battle: Dugtrio Team Battle",
+          "124",
+          "Phone Card",
+          "Articuno",
+          "Water",
+          "Tropical Mega Battle: Dugtrio Team Battle"
+        ],
+        "assembly_themes": [
+          "tournament/event distribution",
+          "phone-card object boundary",
+          "legendary-bird gravity",
+          "identity trap",
+          "unresolved artist credit"
+        ],
+        "assembly_note": "Articuno sits in the Dugtrio Team Battle source group as phone-card row 124; object type and promotion note need to stay attached.",
+        "collector_texture_note": "Articuno is the cool center of the trio and perhaps the easiest to over-romanticize, because collector references around these phone cards are already thick with tournament lore. The safe move is precise: Articuno, row 124, Phone Card, Dugtrio Team Battle promotion note, distribution context unresolved beyond cited sources.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof",
+          "artist proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Articuno as Tropical Mega Battle: Dugtrio Team Battle row 124.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The raw source row identifies Articuno as a Phone Card with Water typing/context in the source row, not as an ordinary playable TCG card row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The row carries the promotion note Tropical Mega Battle: Dugtrio Team Battle; this is the source route that must stay attached to Articuno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local raw row does not surface an illustrator credit for Articuno; do not invent one or infer it from similar legendary bird art.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Articuno is the cool center of the trio and perhaps the easiest to over-romanticize, because collector references around these phone cards are already thick with tournament lore. The safe move is precise: Articuno, row 124, Phone Card, Dugtrio Team Battle promotion note, distribution context unresolved beyond cited sources.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Articuno row 124, Phone Card object type, Tropical Mega Battle: Dugtrio Team Battle promotion note, Water context, and unresolved artist credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Articuno phone card — Tropical Mega Battle Dugtrio Team Battle row 124",
+        "why_it_matters": "Articuno is the cool center of the trio and perhaps the easiest to over-romanticize, because collector references around these phone cards are already thick with tournament lore. The safe move is precise: Articuno, row 124, Phone Card, Dugtrio Team Battle promotion note, distribution context unresolved beyond cited sources.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Tropical Mega Battle Dugtrio Team Battle",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official product-boundary proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_source",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards rows 123-125",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Articuno Tropical Mega Battle / Regional Kamex Mega Battle / Challenge Road phone card context",
+          "ref": "https://pokumon.com/card/articuno-tropical-mega-battleregional-kamex-mega-battlechallenge-road-19981999-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_forum_context",
+          "title": "Elite Fourum: Legendary birds GB art / Tropical Mega Battle phone card discussion",
+          "ref": "https://www.elitefourum.com/t/information-about-the-prototype-like-moltres-articuno-zapdos/43706",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete provenance proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_mega_battle_dugtrio_team_battle_124_phone_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Articuno, Tropical Mega Battle, Dugtrio Team Battle, Phone Card, legendary bird phone card, or row 124.",
+          "summary": "Keep Articuno pinned to phone-card row 124 and the exact Dugtrio Team Battle promotion note.",
+          "steps": [
+            "Require row 124 and subject Articuno.",
+            "Preserve object type: Phone Card, not ordinary playable TCG card unless separately evidenced.",
+            "Preserve exact promotion note: Tropical Mega Battle: Dugtrio Team Battle.",
+            "Preserve unresolved artist credit; do not infer illustrator from similar legendary bird artwork.",
+            "Do not collapse into Fossil, Vending, GB, Kamex, Challenge Road, or generic legendary bird promo memories without explicit route evidence.",
+            "Use seller photos for front/back, phone-card format, serial/printing details where visible, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "official product-boundary proof",
+            "complete Tropical Mega Battle archive",
+            "complete Dugtrio Team Battle event rules",
+            "complete phone-card distribution census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography",
+            "official artwork source"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:125",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle",
+        "release_name": "Tropical Mega Battle: Dugtrio Team Battle",
+        "row_id": "jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle:125",
+        "catalog_row_id": "125",
+        "name_en": "Zapdos",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "125",
+        "artist": "not surfaced by local raw row",
+        "rarity_signal": "Phone Card",
+        "signals": [
+          "Tropical Mega Battle: Dugtrio Team Battle",
+          "125",
+          "Phone Card",
+          "Zapdos",
+          "Lightning",
+          "Tropical Mega Battle: Dugtrio Team Battle"
+        ],
+        "assembly_themes": [
+          "tournament/event distribution",
+          "phone-card object boundary",
+          "legendary-bird gravity",
+          "identity trap",
+          "unresolved artist credit"
+        ],
+        "assembly_note": "Zapdos sits in the Dugtrio Team Battle source group as phone-card row 125; object type and promotion note need to stay attached.",
+        "collector_texture_note": "Zapdos completes the electric triangle. This is where the catalog has to be almost stubborn: famous subject, scarce-looking event lane, huge marketplace gravity, but still a phone-card row first. The route and object type matter more than the bird name.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof",
+          "artist proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Zapdos as Tropical Mega Battle: Dugtrio Team Battle row 125.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The raw source row identifies Zapdos as a Phone Card with Lightning typing/context in the source row, not as an ordinary playable TCG card row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The row carries the promotion note Tropical Mega Battle: Dugtrio Team Battle; this is the source route that must stay attached to Zapdos.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local raw row does not surface an illustrator credit for Zapdos; do not invent one or infer it from similar legendary bird art.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Zapdos completes the electric triangle. This is where the catalog has to be almost stubborn: famous subject, scarce-looking event lane, huge marketplace gravity, but still a phone-card row first. The route and object type matter more than the bird name.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Zapdos row 125, Phone Card object type, Tropical Mega Battle: Dugtrio Team Battle promotion note, Lightning context, and unresolved artist credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Zapdos phone card — Tropical Mega Battle Dugtrio Team Battle row 125",
+        "why_it_matters": "Zapdos completes the electric triangle. This is where the catalog has to be almost stubborn: famous subject, scarce-looking event lane, huge marketplace gravity, but still a phone-card row first. The route and object type matter more than the bird name.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Tropical Mega Battle Dugtrio Team Battle",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_123_tropical_mega_battle_dugtrio_team_battle.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official product-boundary proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_source",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards rows 123-125",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Zapdos Tropical Mega Battle / Regional Kamex Mega Battle / Challenge Road phone card context",
+          "ref": "https://pokumon.com/card/zapdos-tropical-mega-battleregional-kamex-mega-battlechallenge-road-19981999-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_forum_context",
+          "title": "Elite Fourum: Legendary birds GB art / Tropical Mega Battle phone card discussion",
+          "ref": "https://www.elitefourum.com/t/information-about-the-prototype-like-moltres-articuno-zapdos/43706",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete provenance proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_mega_battle_dugtrio_team_battle_125_phone_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos, Tropical Mega Battle, Dugtrio Team Battle, Phone Card, legendary bird phone card, or row 125.",
+          "summary": "Keep Zapdos pinned to phone-card row 125 and the exact Dugtrio Team Battle promotion note.",
+          "steps": [
+            "Require row 125 and subject Zapdos.",
+            "Preserve object type: Phone Card, not ordinary playable TCG card unless separately evidenced.",
+            "Preserve exact promotion note: Tropical Mega Battle: Dugtrio Team Battle.",
+            "Preserve unresolved artist credit; do not infer illustrator from similar legendary bird artwork.",
+            "Do not collapse into Fossil, Vending, GB, Kamex, Challenge Road, or generic legendary bird promo memories without explicit route evidence.",
+            "Use seller photos for front/back, phone-card format, serial/printing details where visible, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "official product-boundary proof",
+            "complete Tropical Mega Battle archive",
+            "complete Dugtrio Team Battle event rules",
+            "complete phone-card distribution census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography",
+            "official artwork source"
+          ]
+        }
+      ]
+    }
+  ]
+}

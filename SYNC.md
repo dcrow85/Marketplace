@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/tropical_mega_battle_dugtrio_team_battle_v0_1.json`.
+  Tropical Mega Battle: Dugtrio Team Battle source group now has complete
+  three-row hand-authored coverage for Moltres phone card row 123, Articuno
+  phone card row 124, and Zapdos phone card row 125. The pass frames the release
+  as legendary birds translated into phone-card tournament memory: a non-playable
+  object lane adjacent to Tropical Mega Battle / Dugtrio Team Battle event
+  culture, travel, attendance, and prize/participation mythology. Added
+  `special_identification_instructions` requiring agents to preserve exact
+  `Tropical Mega Battle: Dugtrio Team Battle` promotion note, row 123/124/125
+  identity, Phone Card object type, elemental context, source-derived boundary
+  caveat, and unresolved artist/source-art claims before accepting a match.
+  Agents must not collapse these into Fossil, Vending, GB, Kamex, Challenge
+  Road, or generic legendary bird promo memories without explicit route evidence.
+  Sources: local Japanese unnumbered promo release file, Bulbapedia raw wikitext
+  rows 123-125, Bulbapedia Tropical Mega Battle context, Pokumon collector
+  context references, and Elite Fourum collector discussion as low-tier texture.
+  Generated gap moved from 136 releases / 3,977 cards to 135 releases / 3,974
+  cards. Current catalog-history corpus:
+  `ef5082e2257868ab73ad575bbf9375eae668c6726e7e7b61008a024e9c1e9cab`;
+  index: `6125d1582f8d677ae725f3184e62950168568005a2e5a53808ed09352be829da`;
+  queue: `c5f105fd5a1cb8ecc7601fe23949245c970b56820375df815b2b8ae11a897f41`.
+  Audit counts: 23,226 claims, 5,942 sources, 74 hand-authored release dossiers,
+  575 hand-authored card dossiers, and 838 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/tropical_mega_battle_dugtrio_team_battle_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_march_1998_insert_v0_1.json`.
