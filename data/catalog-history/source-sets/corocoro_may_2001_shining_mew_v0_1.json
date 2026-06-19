@@ -1,0 +1,623 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Shining Mew, the CoroCoro Comic May 2001 issue insert released April 15, 2001, emphasizing magazine distribution, Hironobu Yoshida art, the Darkness, and to Light... promotional symbol, Cosmos Holofoil / glitter-coating identity, bottom-border bonus-card text, Mew myth texture, and traps against ordinary Mew promos, Ancient Mew, glossy Gotta Comic Mew, Song Best Mew, Shining Mewtwo, and name-only shiny-Mew matching.",
+    "in_scope": [
+      "CoroCoro Comic May 2001 issue insert release dossier",
+      "Shining Mew unnumbered promotional row 234",
+      "Japanese name ひかるミュウ and English translation Shining Mew",
+      "Hironobu Yoshida illustrator context",
+      "Darkness, and to Light... symbol and Cosmos Holofoil / glitter-coating identity",
+      "Mew myth and Shining Pokemon lineage as collector texture",
+      "Special identification instructions for avoiding Mew/Shining route laundering"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete Mew print census",
+      "complete Shining Pokemon print census",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001",
+        "name_en": "CoroCoro Comic May 2001 issue insert (April 15, 2001)",
+        "release_date": "2001-04-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro magazine insert",
+          "single-card Mew promo route",
+          "Shining Pokemon outside normal booster pull",
+          "Hironobu Yoshida art",
+          "Darkness, and to Light... promotional-symbol boundary",
+          "Mew myth as collector gravity"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001:234",
+            "name": "Shining Mew",
+            "why": "This is a chase because it fuses three things collectors chase separately: Mew, Shining Pokemon, and CoroCoro magazine distribution. The exact assembly matters because a shiny-looking Mew, a Mew promo, or a Shining card is not automatically this April 2001 insert.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c9"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hironobu Yoshida",
+            "row_count": 1,
+            "examples": [
+              "Shining Mew"
+            ],
+            "why": "Yoshida matters here because the illustration has to carry a tiny mythical creature and an exceptional card class at once: small Mew, bright Mew, secret Mew, but still a playable card object with route-specific tells.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Mew print census",
+          "complete Shining Pokemon print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic May 2001 issue insert source group as one row containing Shining Mew at source index 234.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Shining Mew was available in Japan as an Unnumbered Promotional card on an insert in the May 2001 issue of CoroCoro Comic, released on April 15, 2001.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Shining Mew, Japanese ひかるミュウ, translated Shining Mew, a Psychic-type Basic Pokemon card with level 24, HP 50, and class Shiny.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Flash Search and Mystic Fire as Shining Mew's attacks; Mystic Fire costs Psychic and Fire Energy, does 20 damage, and can leave the Defending Pokemon Confused or Asleep if the required Fire discard and coin flip resolve.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Shining Mew's illustration to Hironobu Yoshida.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hironobu Yoshida page says there are multiple Pokemon cards illustrated by Yoshida and lists his core-series game artwork contributions, including later graphic-design and Pokemon-design work.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The card's Pokédex text says Mew apparently appears only to people who are pure of heart and have a strong desire to see it, giving the CoroCoro insert a fitting collector texture: the mythical Pokemon is visible through a magazine route, but still needs exact identification.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Shining Pokemon page says that in Japan Shining Mew was released as an exclusive promotional card in CoroCoro Comic and is holofoil with an additional glitter coating.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.variant",
+          "text": "Bulbapedia says Shining Mew features the Darkness, and to Light... symbol, is Cosmos Holofoil rather than the embossed foil treatment of the Shining Pokemon included in that expansion, and has bottom-border text reading 'CoroCoro Comic May issue bonus card'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the exact CoroCoro Comic May 2001 route, source index 234, Japanese name ひかるミュウ, Darkness, and to Light... symbol, Cosmos Holofoil / glitter-coating distinction, bottom-border bonus-card text, and Hironobu Yoshida credit before accepting a Shining Mew match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro May 2001 Shining Mew: the secret Pokemon as a magazine apparition",
+        "why_it_matters": "Shining Mew is the kind of card that tempts an agent to move too fast. It says Mew, it says Shining, it shines everywhere, and the collector brain wants to leap. But the beauty is in the assembly: a May 2001 CoroCoro insert, a Darkness, and to Light... promotional symbol, Yoshida's small mythical creature, and border text that fixes the route. The card feels like a secret because Mew has always felt like a secret; the catalog has to keep that romance without letting romance become evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Mew print census",
+          "complete Shining Pokemon print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_may_2001_shining_mew_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Shining Mew, ひかるミュウ, CoroCoro Comic May 2001, April 15 2001, Darkness and to Light, Cosmos Holofoil, glitter coating, shiny Mew, Hironobu Yoshida, Ancient Mew, Gotta Comic Mew, Song Best Mew, Shining Mewtwo, or generic Mew promo.",
+          "summary": "Identify this card by route plus physical-print tells: Shining Mew / ひかるミュウ, CoroCoro Comic May 2001 insert, source index 234, Darkness, and to Light... symbol, Cosmos Holofoil / glitter-coating distinction, and bottom-border bonus-card text.",
+          "steps": [
+            "Confirm the exact card name pair: Shining Mew / ひかるミュウ, not ordinary Mew, Ancient Mew, Song Best Mew, Gotta Comic glossy Mew, Wizards Promo Mew, JR/CoroCoro Mew 005, or Shining Mewtwo.",
+            "Preserve the source route: CoroCoro Comic May 2001 issue insert, released April 15, 2001, local source index 234, Japanese Unnumbered Promotional card.",
+            "Check that the card carries the Darkness, and to Light... symbol as a promotional addition signal, rather than treating Shining name or Mew name as enough.",
+            "Check for the Shining Mew-specific foil story: Cosmos Holofoil / glitter coating and not the embossed Shining Pokemon treatment used by expansion Shining cards.",
+            "Look for the bottom-border text reading 'CoroCoro Comic May issue bonus card' as route support.",
+            "Preserve Hironobu Yoshida as the credited illustrator, but do not use artist credit alone as route proof.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, symbol area, bottom border, holo surface, edges/corners, and slab label/cert if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete CoroCoro issue archive",
+            "complete Mew print census",
+            "complete Shining Pokemon print census",
+            "Ancient Mew equivalence",
+            "ordinary Mew promo equivalence",
+            "Shining Mewtwo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001.json#row:jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001:234",
+          "title": "Local Japanese unnumbered promotional source-slice row 234",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Mew_(CoroCoro_promo)",
+          "title": "Bulbapedia: Shining Mew (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Pok%C3%A9mon_(TCG)",
+          "title": "Bulbapedia: Shining Pokémon (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Shining Pokemon print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hironobu_Yoshida",
+          "title": "Bulbapedia: Hironobu Yoshida",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001:234",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001:234",
+        "release_family_id": "jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001",
+        "name_en": "Shining Mew",
+        "name_ja": "ひかるミュウ",
+        "source_index": "234",
+        "release_date": "2001-04-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Shining Mew",
+        "name_ja": "ひかるミュウ",
+        "romaji": "Hikaru Myuu",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional card / Shining Pokemon",
+        "artist": "Hironobu Yoshida",
+        "release": "CoroCoro Comic May 2001 issue insert (April 15, 2001)"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Shining Mew as Japanese ひかるミュウ, translated Shining Mew, a Psychic-type Basic Pokemon card with level 24, HP 50, class Shiny, Psychic weakness, and one retreat cost.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records the Shining card rule text for Mew as a special Shiny Pokemon card and lists Flash Search and Mystic Fire as its attacks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says this card was an Unnumbered Promotional card insert in the May 2001 issue of CoroCoro Comic, released April 15, 2001.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Shining Mew illustration to Hironobu Yoshida.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says Shining Mew features the Darkness, and to Light... symbol, is Cosmos Holofoil instead of embossed like expansion Shining Pokemon, and has bottom-border text reading 'CoroCoro Comic May issue bonus card'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Shining Pokemon page places Shining Mew as a Japan-exclusive CoroCoro Comic promotional Shining card with holofoil and additional glitter coating.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "card.art",
+          "text": "As judged collector texture, Yoshida's Shining Mew works because it keeps Mew small and elusive while the card surface does the spectacle; the illustration and foil story point in different registers.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c4",
+            "c5"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "complete art-history account",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, this row matters because it is not just a Mew card and not just a Shining card: it is a CoroCoro-distributed Mew exception whose exact route, symbol, foil, and border text all need to survive agent interpretation.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete Mew print census",
+            "complete Shining Pokemon print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "A Shining Mew match should preserve the exact name pair, CoroCoro Comic May 2001 route, source index 234, Darkness, and to Light... symbol, Cosmos Holofoil / glitter coating, bottom-border bonus-card text, and Hironobu Yoshida credit, while rejecting Mew/Shining lookalikes until seller evidence is supplied.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Shining Mew: tiny myth, loud surface, exact route",
+        "why_it_matters": "This is the card where an agent has to slow down because everything about it is magnetic. Mew is already the hidden Pokémon of the early franchise; Shining turns that secrecy into a visible surface; CoroCoro turns it into a magazine moment a kid could pull from paper rather than a booster. The right read is passionate but strict: love the little apparition, then check the symbol, the border text, the route, the foil story, and the seller's actual card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Mew print census",
+          "complete Shining Pokemon print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "shining_mew_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Shining Mew, ひかるミュウ, Mew promo, shiny Mew, CoroCoro, Darkness and to Light, Cosmos Holofoil, glitter, Ancient Mew, Gotta Comic Mew, Song Best Mew, Shining Mewtwo, or Hironobu Yoshida.",
+          "summary": "Treat Shining Mew as a route-specific identity, not a name match: exact Japanese title, April 2001 CoroCoro insert, Darkness, and to Light... symbol, holo/glitter treatment, and bottom-border text all matter.",
+          "steps": [
+            "Confirm the exact English/Japanese name pair: Shining Mew / ひかるミュウ.",
+            "Confirm the release route: CoroCoro Comic May 2001 issue insert, released April 15, 2001, source index 234, Japanese Unnumbered Promotional card.",
+            "Inspect the lower/set-symbol area for the Darkness, and to Light... symbol; do not accept name-only Shining identification.",
+            "Inspect the surface story: Cosmos Holofoil / glitter coating is expected, while embossed expansion-Shining treatment is not the same route.",
+            "Inspect the bottom border for the 'CoroCoro Comic May issue bonus card' text.",
+            "Cross-check against common wrong buckets: Ancient Mew, ordinary Mew promos, glossy Gotta Comic Mew, Song Best Mew, JR/CoroCoro Mew 005, Shining Mewtwo, Neo Destiny Shining cards, and modern shiny Mew products.",
+            "For a transaction, request seller-controlled front/back photos plus close-ups of the symbol, bottom border, holo surface, corners/edges, and slab label/cert if graded; only then can an agent judge whether the catalog row should attach to that physical object."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete Mew print census",
+            "complete Shining Pokemon print census",
+            "slab-label correctness",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001.json#row:jp_promo_unnumbered_wotc_234_corocoro_comic_may_2001_issue_insert_april_15_2001:234",
+          "title": "Local Japanese unnumbered promotional source-slice row 234",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Mew_(CoroCoro_promo)",
+          "title": "Bulbapedia: Shining Mew (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Pok%C3%A9mon_(TCG)",
+          "title": "Bulbapedia: Shining Pokémon (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Shining Pokemon print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hironobu_Yoshida",
+          "title": "Bulbapedia: Hironobu Yoshida",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    }
+  ]
+}

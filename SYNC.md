@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 142: CoroCoro Smoochum deepened; corpus 37afb2fb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 143: CoroCoro Shining Mew deepened; corpus ee90e4b1)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_may_2001_shining_mew_v0_1.json`
+  deepens row 234 / Shining Mew from the CoroCoro Comic May 2001 issue insert
+  route. The pass preserves April 15 2001 magazine distribution, Japanese
+  unnumbered promo status, the Japanese title `ひかるミュウ`, Hironobu Yoshida
+  art credit, Flash Search / Mystic Fire card identity, the Darkness, and to
+  Light... promotional symbol, Cosmos Holofoil / glitter-coating distinction,
+  and the bottom-border `CoroCoro Comic May issue bonus card` route tell. This
+  is intentionally a special-identification-heavy row: agents must not collapse
+  Shining Mew into Ancient Mew, ordinary Mew promos, glossy Gotta Comic Mew,
+  Song Best Mew, Shining Mewtwo, expansion Shining memories, modern shiny-Mew
+  products, or name-only Mew listings. Special ID rails now require seller-
+  controlled photos of front/back, symbol area, bottom border, holo surface,
+  corners/edges, and slab label/cert if graded before a physical card can be
+  treated as a candidate match; catalog identity remains legible support, not
+  authenticity, possession, condition truth, price truth, or spendability.
+  Generated gaps moved to 46 release / 3872 card. Current hashes: corpus
+  `ee90e4b1bb281945b6cb637665d35a76e70943bb816802f3108e4821d528607f`, index
+  `e91d8e78351cda34a62bedbd21b3f5322a5afa222234d04ec32686ac6edfc864`, queue
+  `85819c97449f2eafdda4deb3dde98cc6dd414eb98f1d490ddfade576b6d09384`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-second
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_january_2001_smoochum_v0_1.json`
