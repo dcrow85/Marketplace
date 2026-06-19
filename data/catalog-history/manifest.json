@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22853,
-    "corpus_hash": "0ba896391a23d1d52151c831e42faf5f85bd2d083c36fd52d83e75e722eacfcc",
-    "generated_card_dossier_count": 4306,
-    "generated_release_dossier_count": 176,
+    "claim_count": 22860,
+    "corpus_hash": "cd03cc73ade662957eb362b1ac5a22430edc20a43d9b25f9dc1b7378965f9098",
+    "generated_card_dossier_count": 4286,
+    "generated_release_dossier_count": 175,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5391
+    "source_count": 5484
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "58b49c89004a2045de7c3bc0a6a0db6152b322582fdaa3f2637a9ba37800bc9a",
+    "queue_hash": "3f50301f8f196b8d1941f55b748b8d71707af62074d25ecb3db7349918c014e2",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T05:41:39Z",
+  "generated_at": "2026-06-19T05:49:12Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "907312bba9e42dc931725aa35c645be7b16dde33937190e85e2d85866821efa1",
+    "index_hash": "0759cf8f6998c1c887410761c1d16b3c9f15059c691c8a1241a59524986c98e8",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -69,6 +69,7 @@
     "data/catalog-history/source-sets/quick_starter_green_deck_v0_1.json",
     "data/catalog-history/source-sets/quick_starter_red_deck_v0_1.json",
     "data/catalog-history/source-sets/rocket_gang_v0_1.json",
+    "data/catalog-history/source-sets/series_1_starter_pack_v0_1.json",
     "data/catalog-history/source-sets/skyridge_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_gift_pack_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",

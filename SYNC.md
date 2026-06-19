@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-second
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/series_1_starter_pack_v0_1.json`.
+  Japanese Series 1 Starter Pack is now a hand-authored possible-content
+  release dossier, with 20 rows promoted from generated baseline to sourced
+  card dossiers: Venusaur 011, Charizard 021, Blastoise 032, Pikachu 035,
+  Raichu 038, Alakazam 049, Mewtwo 050, Porygon 064, Potion 071, Gust of
+  Wind 072, Switch 073, Energy Retrieval 076, Professor Oak 077, Super
+  Energy Removal 088, Computer Search 090, Pokemon Trader 093, Double
+  Colorless Energy 096, Grass Energy 097, Fire Energy 098, and Water Energy
+  099. The pass frames Starter Pack as the launch grammar becoming playable:
+  a 60-card product context and 102-row possible-content pool where Pokemon,
+  trainers, and energy become a teaching apparatus rather than only booster
+  discoveries. Added special identification rails for `第1弾スターターパック`,
+  possible-content row preservation, no fixed deck-list inference, no
+  sealed-deck contents inference, mixed No Rarity / missing-symbol risk,
+  Expansion Pack / Starter Pack / Gift Pack separation, Quick Starter trainer
+  trap comparison, and the six Basic Energy caveat that separates the broad
+  102-row launch-family model from the strict 96-card booster checklist.
+  Sources: local Starter Pack possible-content catalog, local Expansion Pack /
+  No Rarity launch-family catalog, Japanese Pre-English Release Map, local
+  pre-English symbol-status matrix, PokemonWiki Starter Pack, Bulbapedia
+  Expansion Pack, Elite Fourum No Rarity packs/decks research, Elite Fourum
+  Quick Starter trap research, and the local Gift Pack history dossier for
+  comparison boundary only. Generated gap moved from 176 releases / 4,306
+  cards to 175 releases / 4,286 cards. Current catalog-history corpus:
+  22,860 claims, 5,484 sources, corpus hash
+  `cd03cc73ade662957eb362b1ac5a22430edc20a43d9b25f9dc1b7378965f9098`;
+  index hash `0759cf8f6998c1c887410761c1d16b3c9f15059c691c8a1241a59524986c98e8`;
+  queue hash `3f50301f8f196b8d1941f55b748b8d71707af62074d25ecb3db7349918c014e2`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-first
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/pokemon_jungle_v0_1.json`. Japanese
