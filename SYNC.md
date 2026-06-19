@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none   ·   LAST: 2026-06-18 · Codex
+UNREAD-FOR: none   ·   LAST: 2026-06-19 · Codex
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/celadon_university_hyper_professor_magikarp_v0_1.json`.
+  The Celadon University Hyper Professor Test certification prize source slice
+  now has hand-authored release and card coverage for Magikarp row 080. The pass
+  frames the card as an exam-earned credential rather than a generic rare
+  Magikarp: Shogakukan / Celadon-Tamamushi University context, Entrance /
+  Professor / Super Professor / Hyper Professor test ladder, certificate-return
+  mechanics, source-reported 1,000-copy award language, prototype/final-card
+  distinction, and later Pokemon Web reprint boundary all remain legible.
+  Added bespoke `special_identification_instructions` requiring agents to
+  preserve Hyper Professor certification route, unnumbered promo source index
+  080, Koiking/Japanese-name search aid, prototype/final distinction, Pokemon
+  Web non-equivalence, and seller-evidence separation before accepting a match.
+  Sources: local Japanese unnumbered promo release file, Bulbapedia raw
+  unnumbered-promo row, Bulbapedia Celadon University reference, and Bulbapedia
+  University Magikarp card reference. Generated gap moved from 102 releases /
+  3,928 cards to 101 releases / 3,927 cards. Current catalog-history corpus:
+  `63afcc1c71f2f86723ff2be0115535f81ff76ba83c298cdf17d77298607ac625`;
+  index: `4f78ab529e593065d589b324b84912f2c43f0ded20b3192afca482610ea3553a`;
+  queue: `fc4bd153cf52bc7e53110583233f616c54c42a886b4918372041c67b8427bc10`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/whf_special_limited_expansion_sheet_v0_1.json`.
