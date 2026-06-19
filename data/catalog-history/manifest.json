@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22773,
-    "corpus_hash": "d74013c2c5f9b4eeecb79500d93e29d1845940abbac2644809bdc5ab4cd35068",
-    "generated_card_dossier_count": 4202,
-    "generated_release_dossier_count": 165,
+    "claim_count": 22766,
+    "corpus_hash": "2d4e7bb959597113b1f9ffee87eb93839163525a790742574d8583aafded4252",
+    "generated_card_dossier_count": 4194,
+    "generated_release_dossier_count": 164,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5582
+    "source_count": 5584
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "73bc8be0a002409b829eb79189218109c5088c1543067fd7c6a71e5c3a57611e",
+    "queue_hash": "1bd390eafaf199e339f603e7b44a7fcf0072f5cd8ac89d92cf4e03e0b9b09629",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T07:22:35Z",
+  "generated_at": "2026-06-19T07:33:48Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "efc85313d85f5b16a53e34f8c1ff3d64e41c986d4d4b51f62dd1484b46fd6e31",
+    "index_hash": "23465e519034e7ea7ffcad72cd4ad8cd8c2fd91c68790012759f5934c867296a",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -70,6 +70,7 @@
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/pokemon_jungle_v0_1.json",
     "data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json",
+    "data/catalog-history/source-sets/premium_file_v0_1.json",
     "data/catalog-history/source-sets/quick_starter_gift_set_v0_1.json",
     "data/catalog-history/source-sets/quick_starter_green_deck_v0_1.json",
     "data/catalog-history/source-sets/quick_starter_red_deck_v0_1.json",

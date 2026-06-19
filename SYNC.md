@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/premium_file_v0_1.json`. Japanese
+  unnumbered promo Premium File is now a complete hand-authored eight-row
+  dossier for the modeled 1998-11-13 source group: Bayleef 138, Meganium
+  139, Cyndaquil 140, Quilava 141, Typhlosion 142, Totodile 143, Croconaw
+  144, and Feraligatr 145. The pass frames Premium File as a Johto starter
+  handoff object: three evolution lines arranged as a file rather than loose
+  checklist trivia. Added `special_identification_instructions` at release
+  and card level requiring agents to preserve the Premium File route, source
+  indices 138-145, and exact card name together; to avoid silently absorbing
+  adjacent source row 137 / Neo Era Premium File / Chikorita; and to avoid
+  merging these rows with Neo Genesis or later Johto printings without route
+  evidence. Artists remain intentionally unset because the local Premium File
+  source rows do not provide illustrator authority; each card records that as
+  unknown, not as no artist. Sources: local Japanese unnumbered promo Premium
+  File group, adjacent local Neo Era Premium File singleton, and Bulbapedia
+  raw unnumbered promo wikitext. Generated gap moved from 165 releases /
+  4,202 cards to 164 releases / 4,194 cards. Current catalog-history corpus:
+  22,766 claims, 5,584 sources, 620 dossiers with special identification
+  instructions, corpus hash
+  `2d4e7bb959597113b1f9ffee87eb93839163525a790742574d8583aafded4252`;
+  index hash `23465e519034e7ea7ffcad72cd4ad8cd8c2fd91c68790012759f5934c867296a`;
+  queue hash `1bd390eafaf199e339f603e7b44a7fcf0072f5cd8ac89d92cf4e03e0b9b09629`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/song_best_collection_cd_v0_1.json`.
