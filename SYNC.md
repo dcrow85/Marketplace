@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 140: CoroCoro Unown R deepened; corpus ecd318cb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 141: Trainers Vol. 9 Misdreavus deepened; corpus 4125f624)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-first
+  catalog-history pass:
+  `data/catalog-history/source-sets/trainers_vol9_misdreavus_v0_1.json`
+  deepens row 219 / Misdreavus from the Pokémon Card Trainers Vol. 9 insert
+  route. The pass preserves December 1 2000 magazine/specialist-periodical
+  distribution, Japanese unnumbered promo status, Shin-ichi Yoshida art credit,
+  Awakening Legends symbol/border-text identity, Pain Split / Confuse Ray card
+  text, English Neo Revelation lineage, and Johto ghost folklore around night,
+  fear, hair-yanking, and red orbs that absorb fear. Special ID rails require
+  agents to keep source index 219, Trainers Vol. 9, Japanese language/unnumbered
+  promo context, Awakening Legends border evidence, and seller-controlled photos
+  attached before treating a card as this row; it must not collapse into English
+  Neo Revelation Misdreavus, Japanese Awakening Legends booster memories, later
+  Misdreavus prints, or name-only Misdreavus listings. Generated gaps moved to
+  48 release / 3874 card. Current hashes: corpus
+  `4125f624923eb3836f46c590115d9ef0cb05925c2248f0a0fd573b2e19b7ce7f`, index
+  `7ef883c54c73950007c17985406afd4e2d5a542eb52b98cbbe938efd619d7f72`, queue
+  `9920d94f8a8ec9c122a505061fcc7f0f0d6d34ef7311bcd4169d33ded9a37fe2`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fortieth
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_november_2000_unown_r_v0_1.json`

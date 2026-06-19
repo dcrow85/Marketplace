@@ -1,0 +1,550 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Misdreavus, the Pokémon Card Trainers Vol. 9 insert released December 1, 2000, emphasizing magazine / specialist-periodical distribution, Shin-ichi Yoshida art, Awakening Legends border-symbol identity, Pain Split / Confuse Ray card text, English Neo Revelation lineage, and Johto ghost folklore texture.",
+    "in_scope": [
+      "Pokémon Card Trainers Vol. 9 insert release dossier",
+      "Misdreavus unnumbered promotional row 219",
+      "magazine / specialist-periodical distribution",
+      "Shin-ichi Yoshida illustrator context",
+      "Awakening Legends symbol and border text",
+      "Misdreavus Johto ghost folklore texture",
+      "Japanese promo route versus English Neo Revelation memory"
+    ],
+    "not_claiming": [
+      "complete Pokémon Card Trainers magazine archive",
+      "complete Misdreavus print census",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000",
+        "name_en": "Pokémon Card Trainers Vol. 9 insert (December 1, 2000)",
+        "release_date": "2000-12-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokémon Card Trainers magazine distribution",
+          "single-card Johto ghost promo route",
+          "Shin-ichi Yoshida art",
+          "Awakening Legends border-symbol identity",
+          "English Neo Revelation lineage",
+          "Misdreavus folklore texture"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000:219",
+            "name": "Misdreavus [Pokémon Card Trainers Vol. 9]",
+            "why": "This is a chase because it is a small ghost routed through a specialist magazine: a Johto-era atmosphere card with Awakening Legends bones, English Neo memory, and a species built around fear as energy.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Shin-ichi Yoshida",
+            "row_count": 1,
+            "examples": [
+              "Misdreavus [Pokémon Card Trainers Vol. 9]"
+            ],
+            "why": "Yoshida matters here because Misdreavus is a mood card: the illustrator credit keeps the visual atmosphere attached to the exact magazine promo route instead of letting later English Neo memory flatten it.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Misdreavus print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Pokémon Card Trainers Vol. 9 insert source group as one row containing Misdreavus at source index 219.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia places the Japanese Misdreavus print in Unnumbered Promotional cards and identifies its release as a Pokémon Card Trainers Vol. 9 insert on December 1, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese promo as ムウマ Misdreavus, a Psychic-type Basic Pokémon card with 60 HP, Pain Split, and Confuse Ray.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Misdreavus artwork to Shin-ichi Yoshida.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the Japanese print includes the Awakening Legends symbol and border text, while the English print appeared in Neo Revelation.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Shin-ichi Yoshida category includes multiple Japanese-era cards, making the artist credit useful as a sourced art trace but not a substitute for release-route proof.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Bulbapedia's Misdreavus species page describes it as a Generation II Ghost-type Pokémon that startles people at night, uses its red orbs to absorb fear, and may yank or bite at hair to generate reactions.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, Trainers Vol. 9 Misdreavus matters because the release route and the species mood line up: a quiet magazine insert for a ghost Pokémon whose whole identity is atmosphere, fear, and sudden attention.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete magazine archive",
+            "complete Misdreavus print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokémon Card Trainers Vol. 9 Misdreavus: a ghost in the magazine lane",
+        "why_it_matters": "Misdreavus is exactly the sort of card that disappears if the catalog only knows set names. It is a Japanese Trainers Vol. 9 insert with Awakening Legends text in its bones, an English Neo Revelation afterimage, and a Johto ghost identity built around fear, night, and sudden attention. The card feels like a small haunting in the release map: quiet, specific, and easy to misfile unless the route stays attached.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Misdreavus print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol9_misdreavus_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Misdreavus, ムウマ, Pokémon Card Trainers Vol. 9, December 1 2000, Awakening Legends, Neo Revelation, Shin-ichi Yoshida, Pain Split, or Confuse Ray.",
+          "summary": "Identify Misdreavus by Pokémon Card Trainers Vol. 9 insert route, source index 219, Japanese unnumbered promo status, and Awakening Legends border/symbol evidence before trusting later Neo Revelation memory.",
+          "steps": [
+            "Confirm the card is Misdreavus / ムウマ.",
+            "Preserve the source route: Pokémon Card Trainers Vol. 9 insert, December 1, 2000, local source index 219.",
+            "Check that the object is being treated as a Japanese Unnumbered Promotional card, not as English Neo Revelation or a generic Awakening Legends row.",
+            "Look for Awakening Legends symbol and border text on the Japanese print when image evidence is available.",
+            "Use Pain Split / Confuse Ray text and Shin-ichi Yoshida credit as contextual support, not as substitutes for route proof.",
+            "Separate this row from English Neo Revelation Misdreavus, Japanese Awakening Legends booster Misdreavus memories, later Misdreavus prints, and name-only Misdreavus listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, border text, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "complete Misdreavus print census",
+            "English Neo Revelation equivalence",
+            "Awakening Legends booster equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokémon Card Trainers Vol. 9 Misdreavus",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misdreavus_(Wizards_Promo_39)",
+          "title": "Misdreavus (Wizards Promo 39) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misdreavus_(Pok%C3%A9mon)",
+          "title": "Misdreavus (Pokémon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "complete species history",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Shin-ichi_Yoshida",
+          "title": "Category: Illus. by Shin-ichi Yoshida - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000:219",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000:219",
+        "release_family_id": "jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000",
+        "name_en": "Misdreavus [Pokémon Card Trainers Vol. 9]",
+        "name_ja": "ムウマ",
+        "card_number": "None",
+        "rarity_signal": "Pokémon Card Trainers unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 219 as Misdreavus from the Pokémon Card Trainers Vol. 9 insert source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese card as ムウマ Misdreavus, a Psychic-type Basic Pokémon card with 60 HP.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese Misdreavus in Unnumbered Promotional cards, while the local row models it with no printed number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Misdreavus artwork to Shin-ichi Yoshida.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says the card has Pain Split and Confuse Ray as its attacks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This row must be separated from English Neo Revelation Misdreavus, Japanese Awakening Legends booster memories, later Misdreavus prints, and name-only Misdreavus listings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Misdreavus matters here because the species' night-and-fear identity makes the quiet Trainers Vol. 9 insert feel less like a loose promo and more like a small Johto atmosphere object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misdreavus: the magazine ghost",
+        "why_it_matters": "Misdreavus is not just a stray promo row. It is the kind of card that rewards an agent for caring about the path: Pokémon Card Trainers Vol. 9, Japanese unnumbered promo, Awakening Legends border memory, English Neo Revelation echo, and a ghost Pokémon whose lore is literally built from startling people. The route and the character rhyme.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Misdreavus print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol9_misdreavus_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says Misdreavus, ムウマ, Pokémon Card Trainers Vol. 9, December 1 2000, Awakening Legends, Neo Revelation, Shin-ichi Yoshida, Pain Split, or Confuse Ray.",
+          "summary": "Match this card by exact Misdreavus identity plus Pokémon Card Trainers Vol. 9 insert route, Japanese unnumbered promo status, and Awakening Legends border/symbol evidence before accepting it as row 219.",
+          "steps": [
+            "Confirm the card title is Misdreavus / ムウマ.",
+            "Confirm the source route is Pokémon Card Trainers Vol. 9 insert, December 1, 2000.",
+            "Preserve local source index 219 and no printed number.",
+            "Look for Awakening Legends symbol and border text on the Japanese print when image evidence is available.",
+            "Use Pain Split / Confuse Ray text and Shin-ichi Yoshida credit as support, not as substitutes for row identity.",
+            "Separate this print from English Neo Revelation Misdreavus, Japanese Awakening Legends booster memories, later Misdreavus prints, and name-only Misdreavus listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, border text, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "English Neo Revelation equivalence",
+            "Awakening Legends booster equivalence",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_219_pok_mon_card_trainers_vol_9_insert_december_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokémon Card Trainers Vol. 9 Misdreavus",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misdreavus_(Wizards_Promo_39)",
+          "title": "Misdreavus (Wizards Promo 39) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misdreavus_(Pok%C3%A9mon)",
+          "title": "Misdreavus (Pokémon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "complete species history",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Shin-ichi_Yoshida",
+          "title": "Category: Illus. by Shin-ichi Yoshida - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}
