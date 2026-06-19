@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-second
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/team_rocket_gift_pack_v0_1.json`.
+  Japanese Team Rocket Gift Pack deck-component context is now a
+  hand-authored product-context dossier, with Dark Charizard, Dark
+  Blastoise, and Dark Gyarados candidate rows promoted in both modeled
+  lanes (`rocket_deck_a` and `rocket_deck_b`). The pass frames the Gift
+  Pack as Rocket Gang becoming a two-player tabletop apparatus: two fixed
+  60-card decks, counters, poison markers, playmat, and guidebook. The
+  hard boundary is the point: this catalog models 130 candidate rows as
+  2 x 65 Rocket Gang source rows because source-pinned fixed deck lists are
+  not present here; those rows are not a claim of 130 product cards or
+  proof that any candidate was included in a sealed deck. Added special
+  identification rails for product context versus booster release,
+  unresolved fixed deck lists, 120-card product count versus 130 modeled
+  candidate rows, `rocket_deck_a` / `rocket_deck_b` lane preservation,
+  duplicated candidate rows not proving both physical decks contain a card,
+  unresolved symbol status not inherited from Rocket Gang, and sealed
+  product claims requiring product photographs plus source-pinned contents
+  evidence. Sources: local Team Rocket Gift Pack product-context catalog,
+  selected PokemonWiki rendered-line snapshot, local Rocket Gang catalog,
+  Japanese pre-English release map, and local pre-English symbol-status
+  matrix. Generated gap moved from 186 releases / 4,426 cards to 185
+  releases / 4,420 cards. Current catalog-history corpus: 22,852 claims,
+  5,074 sources, corpus hash
+  `33681867d3baac04373bd5cf721aabe97b0b0f3e8ffb1bdc9e08125e97ca6f87`;
+  index hash `011f78f5685b27b0e4de295aa581ecdce8df4be7c0543436a66d537c49cec9ca`;
+  queue hash `f146eb7e1e3208c32ca880eb8b6bace1e71094d0c22c9bd69bcd4437f93a2fc2`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-first
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/rocket_gang_v0_1.json`.
