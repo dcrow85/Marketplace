@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no2_trainer_v0_1.json`
+  deepens row 204 / No.2 Trainer from the World Challenge Tropical Mega Battle Best in Japan
+  second-place route. The pass preserves the runner-up / almost-champion texture inside the
+  junior/TMB domestic final: Pokemon Center Tokyo on August 26 2000, Hawaii / World Exchange
+  Battle adjacency on August 27, Holofoil and cosmos/winner-photograph trophy signals, and Ken
+  Sugimori lineage. Special ID rails require agents to keep this as the domestic TMB Best in
+  Japan runner-up card at the door to Hawaii, not a regional TMB non-holo No.2, not SSB/SSB Best
+  in Japan, not the Hawaii event card itself, and not Worlds, Challenge Road, Lizardon Mega
+  Battle, Kamex Mega Battle, Neo Road, Battle Road, or name-only No.2 Trainer. Generated gaps
+  moved to 53 release / 3879 card. Current hashes: corpus
+  `bd4bac352a086491204820963d97abf50c2ab1dc40ebb921941fd4f856363123`, index
+  `3563c31d1c78c9c8dbbf30e1fca18088668636addb27acf4e52503e88087cd66`, queue
+  `225f9b7da0a744ddf1c5cb126f19fa1ef4afffa547790b66f8ee8cb13851368e`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no1_trainer_v0_1.json`
