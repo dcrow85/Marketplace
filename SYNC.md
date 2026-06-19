@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/challenge_from_darkness_tranche_v0_1.json`.
+  Japanese Challenge from the Darkness / 闇からの挑戦 now has a hand-authored
+  release dossier plus eight trainer-owner identity card dossiers: Erika's
+  Venusaur 017, Koga's Beedrill 018, Giovanni's Nidoking 021, Blaine's
+  Charizard 032, Blaine's Arcanine 034, Lt. Surge's Raichu 041, Sabrina's
+  Abra 043, and Giovanni's Machop 057. The pass frames the release as the
+  moment ownership becomes identity: Blaine changes Charizard, Giovanni
+  changes Nidoking, Erika changes Venusaur, and the owner name is the
+  apparatus that tells an agent what the card is. Added
+  `special_identification_instructions` requiring agents to preserve Japanese
+  title 闇からの挑戦, TCGdex set id `PMCG6`, trainer-owner name, card number,
+  local row id, rough source-row text, and normalized collector label before
+  accepting famous-species matches. English Gym Challenge, later reprints,
+  and generic species rows are explicitly not equivalent without set/owner/
+  number evidence. This is a bounded high-gravity tranche, not complete
+  98-card hand-authored coverage; 90 Challenge from the Darkness rows remain
+  generated follow-up work. Artists remain intentionally unset because the
+  local Japanese classic rows do not provide illustrator authority. Sources:
+  local Japanese classic Challenge from the Darkness release file and TCGdex
+  Japanese set/card payload references. Generated gap moved from 160 releases
+  / 4,159 cards to 159 releases / 4,151 cards. Current catalog-history
+  corpus: 22,782 claims, 5,591 sources, 652 dossiers with special
+  identification instructions, corpus hash
+  `963865879ab1f9ed5e31596a7e1835c28d3e8680711723d26e4c589e7df61558`;
+  index hash `4d61798845c0334a7995e9cf53ff3a2d97ebb622f9572cd726b397c587b1f684`;
+  queue hash `fbeebf9b086dacfbf081ac1f327f63f02a8ef123256ff2c1bf07441443a58293`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/base_expansion_pack_e_tranche_v0_1.json`.

@@ -1,0 +1,1275 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Challenge from the Darkness high-gravity tranche",
+    "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+    "notes": [
+      "Japanese Gym-era main expansion released June 25, 1999 with 98 modeled rows in the local catalog.",
+      "This pass deepens the release dossier plus eight trainer-owner identity cards; the remaining 90 card rows stay generated follow-up work."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625",
+      "type": "release",
+      "context": {
+        "name_en": "Challenge from the Darkness",
+        "name_ja": "闇からの挑戦",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "release_date": "1999-06-25"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG6",
+          "title": "TCGdex Japanese set endpoint: PMCG6 / Challenge from the Darkness",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Challenge from the Darkness / 闇からの挑戦 with a June 25, 1999 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 98 card rows for Challenge from the Darkness, with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Challenge from the Darkness is modeled as a Japanese main expansion in the ポケットモンスターカードゲーム series, using TCGdex set id PMCG6.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Challenge from the Darkness matters because it makes ownership part of card identity: Erika, Koga, Giovanni, Blaine, Sabrina, and Lt. Surge turn species into trainer-world artifacts.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around Blaine's Charizard, Blaine's Arcanine, Giovanni's Nidoking, Erika's Venusaur, Koga's Beedrill, and Lt. Surge's Raichu, but lower-rarity owner rows show that the set's real system is trainer ownership rather than only holo gravity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "This source-set pass deepens the release and eight trainer-owner card rows only; the other 90 Challenge from the Darkness rows remain generated catalog-history follow-up work.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A Challenge from the Darkness match should preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, local card number, row id, trainer-owner name, and source-row text together; species name alone is not enough.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_pmcg6_release_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Challenge from the Darkness, Japanese Gym Challenge, PMCG6, 闇からの挑戦, Blaine's Charizard, Giovanni's Nidoking, or another trainer-owned card.",
+          "summary": "Confirm Japanese Challenge from the Darkness / PMCG6 identity by title, set id, trainer-owner name, card number, and row id before treating a card as this release.",
+          "steps": [
+            "Confirm the Japanese release title 闇からの挑戦 and/or TCGdex set id PMCG6.",
+            "Confirm the trainer-owner name and card number/local id against the local row, especially for famous species that appear in many products.",
+            "Do not treat English Gym Challenge, later reprints, or generic species cards as equivalent without set/owner/number evidence.",
+            "Preserve rough source-row text and normalized collector labels separately when local translation is uncertain.",
+            "For transactional use, ask for front/back photos, card number area, trainer-owner name area, holo features where applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "complete 98-card hand-authored coverage",
+            "illustrator authority",
+            "price truth",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When ownership becomes identity",
+        "why_it_matters": "Challenge from the Darkness is where the card stops being only a monster and starts being a relationship. Blaine changes Charizard. Giovanni changes Nidoking. Erika changes Venusaur. The owner name is not decorative; it is the apparatus that tells an agent what the card is. This is exactly the kind of set where a famous species name can mislead a market unless the trainer-owner rail stays visible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-017",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Venusaur",
+        "name_ja": "エリカの金星",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-017",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Erika's Venusaur 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 017 / local id PMCG6-017; the source row name appears as エリカの金星, while this dossier uses normalized collector label Erika's Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Erika's Venusaur / PMCG6-017 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Erika's Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika's Venusaur matters because the owner is not garnish. The card is Venusaur filtered through Erika's garden-world, which makes the trainer name part of the identity rather than a subtitle.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Erika's Venusaur, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 017, local id PMCG6-017, trainer-owner label, source-row text エリカの金星, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_erikas_venusaur_017_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Erika's Venusaur, Japanese Gym Erika's Venusaur, Erika's Venusaur #017, or a loose Venusaur claim that may actually be trainer-owned.",
+          "summary": "Confirm Erika's Venusaur by Japanese PMCG6 set identity, trainer-owner name, and card number 017; do not collapse it into generic Venusaur.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 017 / PMCG6-017.",
+            "Preserve trainer-owner identity and species identity separately; \"Erika's Venusaur\" is not generic 'Venusaur'.",
+            "Preserve source-row text 'エリカの金星' and normalized collector label \"Erika's Venusaur\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Venusaur equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Erika turns the starter into a relationship",
+        "why_it_matters": "Erika's Venusaur matters because the owner is not garnish. The card is Venusaur filtered through Erika's garden-world, which makes the trainer name part of the identity rather than a subtitle.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-018",
+      "type": "card",
+      "context": {
+        "name_en": "Koga's Beedrill",
+        "name_ja": "コガのビードリル",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-018",
+        "catalog_row_id": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-018",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Koga's Beedrill 018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 018 / local id PMCG6-018; the source row name appears as コガのビードリル, while this dossier uses normalized collector label Koga's Beedrill.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Koga's Beedrill / PMCG6-018 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Koga's Beedrill.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Koga's Beedrill gives the set its ninja-poison grammar. It is familiar Kanto material, but ownership changes the read: the card belongs to a style, not just a species.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Koga's Beedrill, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 018, local id PMCG6-018, trainer-owner label, source-row text コガのビードリル, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_kogas_beedrill_018_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Koga's Beedrill, Japanese Gym Koga's Beedrill, Koga's Beedrill #018, or a loose Beedrill claim that may actually be trainer-owned.",
+          "summary": "Confirm Koga's Beedrill by Japanese PMCG6 set identity, trainer-owner name, and card number 018; do not collapse it into generic Beedrill.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 018 / PMCG6-018.",
+            "Preserve trainer-owner identity and species identity separately; \"Koga's Beedrill\" is not generic 'Beedrill'.",
+            "Preserve source-row text 'コガのビードリル' and normalized collector label \"Koga's Beedrill\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Beedrill equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "poison gets a master",
+        "why_it_matters": "Koga's Beedrill gives the set its ninja-poison grammar. It is familiar Kanto material, but ownership changes the read: the card belongs to a style, not just a species.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-021",
+      "type": "card",
+      "context": {
+        "name_en": "Giovanni's Nidoking",
+        "name_ja": "ジョヴァンニのニドキング",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-021",
+        "catalog_row_id": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-021",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Giovanni's Nidoking 021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 021 / local id PMCG6-021; the source row name appears as ジョヴァンニのニドキング, while this dossier uses normalized collector label Giovanni's Nidoking.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Giovanni's Nidoking / PMCG6-021 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Giovanni's Nidoking.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Giovanni's Nidoking is one of the cleanest examples of the set's premise: a monster becomes more specific when it has a boss. The agent must preserve Giovanni before treating the card as Nidoking.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Giovanni's Nidoking, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 021, local id PMCG6-021, trainer-owner label, source-row text ジョヴァンニのニドキング, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_giovannis_nidoking_021_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Giovanni's Nidoking, Japanese Gym Giovanni's Nidoking, Giovanni's Nidoking #021, or a loose Nidoking claim that may actually be trainer-owned.",
+          "summary": "Confirm Giovanni's Nidoking by Japanese PMCG6 set identity, trainer-owner name, and card number 021; do not collapse it into generic Nidoking.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 021 / PMCG6-021.",
+            "Preserve trainer-owner identity and species identity separately; \"Giovanni's Nidoking\" is not generic 'Nidoking'.",
+            "Preserve source-row text 'ジョヴァンニのニドキング' and normalized collector label \"Giovanni's Nidoking\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Nidoking equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "power under a boss name",
+        "why_it_matters": "Giovanni's Nidoking is one of the cleanest examples of the set's premise: a monster becomes more specific when it has a boss. The agent must preserve Giovanni before treating the card as Nidoking.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-032",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Charizard",
+        "name_ja": "ブレインのカリザード",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-032",
+        "catalog_row_id": "032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-032",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Blaine's Charizard 032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 032 / local id PMCG6-032; the source row name appears as ブレインのカリザード, while this dossier uses normalized collector label Blaine's Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Blaine's Charizard / PMCG6-032 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Blaine's Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaine's Charizard is the obvious gravity well, but the important point is not generic Charizard fame. It is Charizard inside Blaine's volcano identity, which is exactly why owner/name/number must stay bound together.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Blaine's Charizard, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 032, local id PMCG6-032, trainer-owner label, source-row text ブレインのカリザード, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_blaines_charizard_032_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Blaine's Charizard, Japanese Gym Blaine's Charizard, Blaine's Charizard #032, or a loose Charizard claim that may actually be trainer-owned.",
+          "summary": "Confirm Blaine's Charizard by Japanese PMCG6 set identity, trainer-owner name, and card number 032; do not collapse it into generic Charizard.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 032 / PMCG6-032.",
+            "Preserve trainer-owner identity and species identity separately; \"Blaine's Charizard\" is not generic 'Charizard'.",
+            "Preserve source-row text 'ブレインのカリザード' and normalized collector label \"Blaine's Charizard\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Charizard equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the fire crown gets an owner",
+        "why_it_matters": "Blaine's Charizard is the obvious gravity well, but the important point is not generic Charizard fame. It is Charizard inside Blaine's volcano identity, which is exactly why owner/name/number must stay bound together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-034",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Arcanine",
+        "name_ja": "ブレインのアルカニン",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-034",
+        "catalog_row_id": "034"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-034",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Blaine's Arcanine 034",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 034 / local id PMCG6-034; the source row name appears as ブレインのアルカニン, while this dossier uses normalized collector label Blaine's Arcanine.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Blaine's Arcanine / PMCG6-034 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Blaine's Arcanine.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaine's Arcanine keeps the Fire-type ownership from collapsing into only Charizard. It gives the trainer's line a broader texture: loyal, fast, hot, and still unmistakably Blaine.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Blaine's Arcanine, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 034, local id PMCG6-034, trainer-owner label, source-row text ブレインのアルカニン, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_blaines_arcanine_034_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Blaine's Arcanine, Japanese Gym Blaine's Arcanine, Blaine's Arcanine #034, or a loose Arcanine claim that may actually be trainer-owned.",
+          "summary": "Confirm Blaine's Arcanine by Japanese PMCG6 set identity, trainer-owner name, and card number 034; do not collapse it into generic Arcanine.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 034 / PMCG6-034.",
+            "Preserve trainer-owner identity and species identity separately; \"Blaine's Arcanine\" is not generic 'Arcanine'.",
+            "Preserve source-row text 'ブレインのアルカニン' and normalized collector label \"Blaine's Arcanine\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Arcanine equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the other Blaine flame",
+        "why_it_matters": "Blaine's Arcanine keeps the Fire-type ownership from collapsing into only Charizard. It gives the trainer's line a broader texture: loyal, fast, hot, and still unmistakably Blaine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-041",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Raichu",
+        "name_ja": "Surge's Raichu中t",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-041",
+        "catalog_row_id": "041"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-041",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Lt. Surge's Raichu 041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 041 / local id PMCG6-041; the source row name appears as Surge's Raichu中t, while this dossier uses normalized collector label Lt. Surge's Raichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Lt. Surge's Raichu / PMCG6-041 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Lt. Surge's Raichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge's Raichu shows the Gym set idea working at full charge. The card is not simply Raichu; it carries Surge's militarized Electric identity into the release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Lt. Surge's Raichu, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 041, local id PMCG6-041, trainer-owner label, source-row text Surge's Raichu中t, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_lt_surges_raichu_041_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Lt. Surge's Raichu, Japanese Gym Lt. Surge's Raichu, Lt. Surge's Raichu #041, or a loose Raichu claim that may actually be trainer-owned.",
+          "summary": "Confirm Lt. Surge's Raichu by Japanese PMCG6 set identity, trainer-owner name, and card number 041; do not collapse it into generic Raichu.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 041 / PMCG6-041.",
+            "Preserve trainer-owner identity and species identity separately; \"Lt. Surge's Raichu\" is not generic 'Raichu'.",
+            "Preserve source-row text \"Surge's Raichu中t\" and normalized collector label \"Lt. Surge's Raichu\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Raichu equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "electric command language",
+        "why_it_matters": "Lt. Surge's Raichu shows the Gym set idea working at full charge. The card is not simply Raichu; it carries Surge's militarized Electric identity into the release.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-043",
+      "type": "card",
+      "context": {
+        "name_en": "Sabrina's Abra",
+        "name_ja": "サブリナのアブラ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-043",
+        "catalog_row_id": "043"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-043",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Sabrina's Abra 043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 043 / local id PMCG6-043; the source row name appears as サブリナのアブラ, while this dossier uses normalized collector label Sabrina's Abra.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Sabrina's Abra / PMCG6-043 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Sabrina's Abra.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Sabrina's Abra is low-rarity, but it matters because the ownership system works from the bottom up. Even a small Abra becomes part of Sabrina's psychic theatre.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Sabrina's Abra, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 043, local id PMCG6-043, trainer-owner label, source-row text サブリナのアブラ, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_sabrinas_abra_043_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Sabrina's Abra, Japanese Gym Sabrina's Abra, Sabrina's Abra #043, or a loose Abra claim that may actually be trainer-owned.",
+          "summary": "Confirm Sabrina's Abra by Japanese PMCG6 set identity, trainer-owner name, and card number 043; do not collapse it into generic Abra.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 043 / PMCG6-043.",
+            "Preserve trainer-owner identity and species identity separately; \"Sabrina's Abra\" is not generic 'Abra'.",
+            "Preserve source-row text 'サブリナのアブラ' and normalized collector label \"Sabrina's Abra\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Abra equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "psychic ownership begins small",
+        "why_it_matters": "Sabrina's Abra is low-rarity, but it matters because the ownership system works from the bottom up. Even a small Abra becomes part of Sabrina's psychic theatre.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-057",
+      "type": "card",
+      "context": {
+        "name_en": "Giovanni's Machop",
+        "name_ja": "ジョヴァンニのマチュップ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_challenge_from_the_darkness_19990625",
+        "row_id": "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-057",
+        "catalog_row_id": "057"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-057",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Giovanni's Machop 057",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Challenge from the Darkness card 057 / local id PMCG6-057; the source row name appears as ジョヴァンニのマチュップ, while this dossier uses normalized collector label Giovanni's Machop.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Giovanni's Machop / PMCG6-057 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Challenge from the Darkness row does not provide an illustrator credit for Giovanni's Machop.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Giovanni's Machop keeps the boss identity from being only a holo chase. The set's system is stronger because ownership reaches common rows too.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Giovanni's Machop, preserve Japanese title 闇からの挑戦, TCGdex set id PMCG6, card number 057, local id PMCG6-057, trainer-owner label, source-row text ジョヴァンニのマチュップ, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "challenge_from_darkness_giovannis_machop_057_identity_v0.1",
+          "trigger": "A user or listing says Challenge from the Darkness Giovanni's Machop, Japanese Gym Giovanni's Machop, Giovanni's Machop #057, or a loose Machop claim that may actually be trainer-owned.",
+          "summary": "Confirm Giovanni's Machop by Japanese PMCG6 set identity, trainer-owner name, and card number 057; do not collapse it into generic Machop.",
+          "steps": [
+            "Confirm the Japanese release is 闇からの挑戦 / Challenge from the Darkness with TCGdex set id PMCG6.",
+            "Confirm the printed or cataloged card number/local id matches 057 / PMCG6-057.",
+            "Preserve trainer-owner identity and species identity separately; \"Giovanni's Machop\" is not generic 'Machop'.",
+            "Preserve source-row text 'ジョヴァンニのマチュップ' and normalized collector label \"Giovanni's Machop\" separately when local translation is rough.",
+            "For a trade, ask for full front/back photos, card number area, trainer-owner name area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Gym Challenge equivalence",
+            "generic Machop equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the boss reaches the commons",
+        "why_it_matters": "Giovanni's Machop keeps the boss identity from being only a holo chase. The set's system is stronger because ownership reaches common rows too.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
