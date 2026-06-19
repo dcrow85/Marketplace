@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 158: World Hobby Fair 2000 Johto starter trio deepened; corpus 839eb7ed)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 159: How-to-Play 1996 non-glossy pair deepened; corpus 3dd7c258)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_to_play_book_1996_promos_v0_1.json`
+  deepens the November 30 1996 Easily Understand How to Play Pokemon Cards
+  non-glossy promo pair: Pikachu 003 and Jigglypuff 004. The pass frames the
+  release as an early rule-teaching book object rather than just another mascot
+  promo lane: the booster made the TCG collectible, this book helped make it
+  learnable. It preserves the two-card source slice, non-glossy / regular-stock
+  identity, Keiji Kinebuchi credit on both cards, Bulbapedia's Pikachu
+  correction rail from the CoroCoro glossy Ken Sugimori miscredit to Kinebuchi,
+  the Pikachu manual-provider-path caveat, and Jigglypuff parent-row lineage.
+  Special ID rails separate this 1996 book route from October 1996 CoroCoro
+  glossy rows, English Wizards Black Star Pikachu/Jigglypuff, Toyota / Intro
+  Pack / later mascot routes, and the 1998 Latest Edition Diglett/Dugtrio book
+  promos; book/sealed/slab stories remain provenance evidence, not possession,
+  authenticity, completeness, or spendability. Generated gaps moved to 30
+  release / 3852 card. Current hashes: corpus
+  `3dd7c25856e9118f7a8358a5f61819143a9a4fc6cfbd7809cae3f34152807893`,
+  index `89cea88ed4dec931478d2dd1e8d1c4c68cbf5be2bf26edabf864ae690980e9ec`,
+  queue `dab1bf9ebf79d2d23d884693700b2532c5482b614688aa6fd5f86693ca86158f`.
+
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/world_hobby_fair_2000_commemoration_trio_v0_1.json`
