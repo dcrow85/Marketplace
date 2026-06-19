@@ -55,6 +55,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`.
+  Gym Challenge is now a hand-authored release dossier, with Blaine's
+  Charizard 2, Misty's Gyarados 13, Rocket's Mewtwo 14, Rocket's Zapdos 15,
+  and Misty's Tears 118 promoted from generated baseline to sourced card
+  dossiers. The pass frames Gym Challenge as owner-name grammar: relationship
+  is part of card identity, not flavor text. Added special identification
+  rails for owner-name flattening, Blaine's Charizard Roaring Flames symbol
+  context, Misty's Gyarados Rebellion context, Rocket's Mewtwo three-attack /
+  Winner-stamp / jumbo branches, Rocket's Zapdos anniversary and Creatures
+  Deck branches, and English/Japanese Misty's Tears artwork boundaries.
+  Sources: local English WoC catalog, Pokémon TCG API v2 set/card endpoints,
+  and Bulbapedia community pages for Gym Challenge, Blaine's Charizard,
+  Rocket's Mewtwo, Rocket's Zapdos, and Misty's Tears. Generated gap moved
+  from 203 releases / 4,528 cards to 202 releases / 4,523 cards. Current
+  catalog-history corpus: 22,940 claims, 4,815 sources, corpus hash
+  `d1db51ecf2a0f7dd8d15ab78750f2477d6938141430b7779a0b68da67e424bf7`;
+  index hash `a54e51d0ce6a30f72fd43889ff984fb62c768542250a8eb657bdd954f219da94`;
+  queue hash `df685fae52c870407272c83ed56da0a434ac0ce2a41e272c32ea34784c041323`.
 - `[passive]` 2026-06-19 · Codex — completed the fourth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`.

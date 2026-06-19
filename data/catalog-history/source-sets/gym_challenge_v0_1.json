@@ -1,0 +1,952 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Gym Challenge and five rows that show trainer ownership, Rocket pressure, and localization boundaries.",
+    "in_scope": [
+      "Gym Challenge release dossier",
+      "Blaine's Charizard",
+      "Misty's Gyarados",
+      "Rocket's Mewtwo",
+      "Rocket's Zapdos",
+      "Misty's Tears"
+    ],
+    "not_claiming": [
+      "complete Gym Challenge scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_gym_challenge_20001016",
+      "type": "release",
+      "context": {
+        "name_en": "Gym Challenge",
+        "name_ja": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "release_date": "2000-10-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json",
+          "title": "Local English WoC release catalog: Gym Challenge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokémon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Gym_Challenge_(TCG)",
+          "title": "Bulbapedia: Gym Challenge (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API model Gym Challenge with an October 16, 2000 English release date; Bulbapedia also lists English release date October 16, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokémon TCG API both model 132 Gym Challenge rows for set id gym2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Gym Challenge as the seventh main English Pokémon TCG expansion and says the Japanese release was Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's set blurb frames Gym Challenge around Blaine, Sabrina, Koga, and Giovanni as trickster or mischievous Gym Leaders.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Blaine's Charizard, Erika's Venusaur, Giovanni's Gyarados, Misty's Gyarados, Rocket's Mewtwo, Rocket's Zapdos, Lt. Surge's Raichu, Sabrina's Alakazam, and holo trainer portraits.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Gym Challenge are led by Ken Sugimori, Keiji Kinebuchi, Atsuko Nishida, Shin-ichi Yoshida, Hikaru Koike, and Sumiyoshi Kizuki.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Gym Challenge matters because it makes ownership the set's organizing grammar: Pokémon are not just species, they are Blaine's, Misty's, Giovanni's, Rocket's, Sabrina's, Koga's, or Surge's, so the card identity includes a relationship.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_owner_name_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all owner-named cards share the same release context"
+          ],
+          "steps": [
+            "Preserve the full owner-name string, including Rocket's, Blaine's, Misty's, Giovanni's, or Sabrina's, before comparing species rows.",
+            "Confirm English Gym Challenge / set id gym2 before importing Challenge from the Darkness or Japanese deck context.",
+            "Do not collapse owner-named Pokémon into normal species rows for search, pricing, or evidence comparison.",
+            "If a card has a known artwork, error, or reprint boundary, keep that boundary separate from the owner-name identity."
+          ],
+          "summary": "Gym Challenge identity is owner-plus-species. Agents should not flatten owner-named rows into ordinary Pokémon names.",
+          "trigger": "Identifying or comparing English Gym Challenge cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When ownership became the card's grammar",
+        "why_it_matters": "Gym Challenge is less about discovering new creatures than seeing old ones under someone else's hand. Blaine turns Charizard into a lesson in volatility, Misty makes Gyarados rebellious, Rocket makes Mewtwo and Zapdos feel captured, and the trainer portraits stare back from the checklist. The set matters because it makes relationship part of identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-2",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-2",
+        "catalog_row_id": "gym2-2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-2",
+          "title": "Local Gym Challenge row: Blaine's Charizard 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-2",
+          "title": "Pokémon TCG API v2 card record: Blaine's Charizard gym2-2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Charizard_(Gym_Challenge_2)",
+          "title": "Bulbapedia: Blaine's Charizard (Gym Challenge 2)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Blaine's Charizard as Gym Challenge number 2, a Rare Holo Stage 2 Fire Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Blaine's Charizard with the attacks Roaring Flames and Flame Jet.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says some early copies of Blaine's Charizard were printed with a symbol in the Roaring Flames attack.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaine's Charizard is the set's cleanest chase-card collision: Charizard demand meets Gym Leader ownership and an early-print attack-symbol issue.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "blaines_charizard_roaring_flames_symbol_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "every copy has the attack-symbol issue"
+          ],
+          "steps": [
+            "Preserve the full name Blaine's Charizard and row 2 before comparing to any ordinary Charizard row.",
+            "Ask for a clear image of the Roaring Flames attack area if a buyer cares about the early-copy symbol note.",
+            "Do not treat the existence of the symbol variant as proof that a seller's physical card has it.",
+            "Keep Ken Sugimori credit as catalog metadata, not physical-card authentication."
+          ],
+          "summary": "Blaine's Charizard needs owner-name and attack-text inspection; the Roaring Flames symbol note is a seller-image question, not an automatic claim.",
+          "trigger": "A listing references Blaine's Charizard, early print, error, symbol, or variant language."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard under a teacher's hand",
+        "why_it_matters": "Blaine's Charizard is not just another Charizard tax on a set. It has a handler, an attitude, and a mechanical appetite: Roaring Flames burns through energy because that is what this relationship feels like. Then the attack-symbol note adds the little print-history hook collectors love to argue over.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-13",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Gyarados",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-13",
+        "catalog_row_id": "gym2-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-13",
+          "title": "Local Gym Challenge row: Misty's Gyarados 13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-13",
+          "title": "Pokémon TCG API v2 card record: Misty's Gyarados gym2-13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Gyarados as Gym Challenge number 13, a Rare Holo Stage 1 Water Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Gyarados with the Pokémon Power Rebellion and the attack Tidal Wave.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Misty's Gyarados matters because the owner name and Rebellion power make the old Magikarp-to-Gyarados drama explicitly relational: the card is about control, not just evolution.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_gyarados_owner_power_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "ordinary Gyarados rows are equivalent"
+          ],
+          "steps": [
+            "Preserve Misty's owner-name context before comparing this card to ordinary Gyarados rows.",
+            "Check row 13 and Rebellion / Tidal Wave text before treating the card as Gym Challenge Misty's Gyarados.",
+            "If a listing says only Gyarados, ask for the owner-name and row evidence before importing Gym Challenge context."
+          ],
+          "summary": "Misty's Gyarados is owner-specific; the Rebellion power is part of the row's meaning and should not be flattened into generic Gyarados history.",
+          "trigger": "A user or seller references Misty's Gyarados or a Gym-era Gyarados."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty tries to hold the storm",
+        "why_it_matters": "Misty's Gyarados is funny and perfect because Gyarados was never going to become polite just because a Gym Leader claimed it. The Rebellion power makes the relationship visible in rules text: power is present, but control is not guaranteed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-14",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-14",
+        "catalog_row_id": "gym2-14"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-14",
+          "title": "Local Gym Challenge row: Rocket's Mewtwo 14",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-14",
+          "title": "Pokémon TCG API v2 card record: Rocket's Mewtwo gym2-14",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Mewtwo_(Gym_Challenge_14)",
+          "title": "Bulbapedia: Rocket's Mewtwo (Gym Challenge 14)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Rocket's Mewtwo as Gym Challenge number 14, a Rare Holo Basic Psychic Pokémon illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Rocket's Mewtwo with three attacks: Juxtapose, Hypnoblast, and Psyburn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Mewtwo was reprinted as a Reverse Holofoil Best of Game promotional card with a gold Winner stamp, and that a non-holofoil jumbo version was also released.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Mewtwo was the first card to have three attacks and that its art window is shorter because of the extra attack text.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Mewtwo is a control story in both fiction and cardboard: Giovanni/Rocket ownership, three attacks, a compressed art window, and later Winner/jumbo branches all make the row easy to misdescribe if the agent only sees 'Mewtwo'.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rockets_mewtwo_three_attack_winner_jumbo_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Gym Challenge, Winner, and jumbo prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Gym Challenge 14, Best of Game Winner-stamp, or jumbo before comparing value or rarity.",
+            "Check for the Rocket's owner-name and three-attack layout; do not treat ordinary Mewtwo rows as matches.",
+            "Ask for scale evidence if a seller image could be jumbo.",
+            "Ask for a clear bottom-right artwork image if the seller claims a gold Winner stamp."
+          ],
+          "summary": "Rocket's Mewtwo has Gym Challenge, Winner-stamp, and jumbo branches; owner-name, three attacks, stamp, and size must remain legible.",
+          "trigger": "A listing references Rocket's Mewtwo, Best of Game, Winner stamp, or jumbo format."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo under Rocket grammar",
+        "why_it_matters": "Rocket's Mewtwo feels wrong in the productive way. Mewtwo was already a story about control; putting Rocket's name on the card makes that explicit, then the three attacks crowd the frame like the card itself is under pressure.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-15",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Zapdos",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-15",
+        "catalog_row_id": "gym2-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-15",
+          "title": "Local Gym Challenge row: Rocket's Zapdos 15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-15",
+          "title": "Pokémon TCG API v2 card record: Rocket's Zapdos gym2-15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Zapdos_(Gym_Challenge_15)",
+          "title": "Bulbapedia: Rocket's Zapdos (Gym Challenge 15)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Rocket's Zapdos as Gym Challenge number 15, a Rare Holo Basic Lightning Pokémon illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Rocket's Zapdos with Plasma and Electroburn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Zapdos was later rereleased in Celebrations Classic Collection and in Japan's 25th Anniversary Promo Card Pack, both with anniversary-logo differences from the Wizards print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Challenge from the Darkness print was included in the Pokémon Card Game 25th Anniversary Creatures Deck, where it represented the year 1999 in Creatures' history.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Zapdos matters because it ties villain ownership, legendary-bird collecting, anniversary reprint memory, and a Creatures company-history object into one row lineage.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rockets_zapdos_anniversary_reprint_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Wizards and anniversary prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is the Wizards Gym Challenge print, Celebrations Classic Collection, Japanese 25th Anniversary promo, or Creatures Deck print.",
+            "Check for anniversary logos, copyright differences, and any special back/context before importing a lineage claim.",
+            "Do not let the Rocket's owner-name or Zapdos species name substitute for print identification.",
+            "If a seller claims Creatures Deck provenance, ask for evidence of that specific physical context separately."
+          ],
+          "summary": "Rocket's Zapdos has later anniversary and Creatures-history branches; print context must be explicit.",
+          "trigger": "A listing references Rocket's Zapdos, Celebrations, 25th Anniversary, or Creatures Deck provenance."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A captured storm with a long afterlife",
+        "why_it_matters": "Rocket's Zapdos is wonderfully overdetermined: a legendary bird, Rocket ownership, self-burning lightning, later anniversary returns, even a Creatures history deck. The card keeps getting used as a marker of memory, which means the print context matters every time.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-118",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tears",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-118",
+        "catalog_row_id": "gym2-118"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-118",
+          "title": "Local Gym Challenge row: Misty's Tears 118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-118",
+          "title": "Pokémon TCG API v2 card record: Misty's Tears gym2-118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Tears_(Gym_Challenge_118)",
+          "title": "Bulbapedia: Misty's Tears (Gym Challenge 118)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Tears as Gym Challenge number 118, an Uncommon Trainer card illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Tears as discarding one other card from hand to search the deck for up to two Water Energy cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Misty's Tears is one of several cards whose artwork changed between Japanese and English releases.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Tears is the cross-release bridge card in this pass: the English Gym Challenge row carries the same name and function into a localized artwork boundary that agents must not flatten.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_mistys_tears_artwork_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese and English artwork are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the listing is English Gym Challenge 118 or Japanese Hanada City Gym row 018 before comparing artwork.",
+            "Do not use the English artwork as the sole reference image for a Japanese card, or the Japanese artwork as the sole reference image for an English card.",
+            "Preserve Ken Sugimori credit and Water Energy search function, but treat artwork match as a print-context clue, not authentication.",
+            "If a buyer cares about variant context, route the Japanese/English artwork boundary to human-facing explanation."
+          ],
+          "summary": "English Misty's Tears needs artwork-boundary handling against the Japanese Hanada City Gym card.",
+          "trigger": "A listing or agent note compares Misty's Tears across Japanese and English prints."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The same tear, redrawn",
+        "why_it_matters": "Misty's Tears is small but load-bearing. It proves that translation is not just language; sometimes the image itself moves. A good catalog has to remember that the English row is not merely a renamed Japanese object. It is the same gameplay idea passing through a different visual gate.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
