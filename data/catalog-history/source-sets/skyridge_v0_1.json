@@ -1,0 +1,1179 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Skyridge and six rows that show the late-Wizards e-Reader peak: H-number holos, Crystal Type secrets, Dot-Code interface memory, and the final-English-WoC aura.",
+    "in_scope": [
+      "Skyridge release dossier",
+      "Crystal Celebi",
+      "Crystal Charizard",
+      "Crystal Ho-Oh",
+      "Crystal Kabutops",
+      "Alakazam H1",
+      "Umbreon H30"
+    ],
+    "not_claiming": [
+      "complete Skyridge scholarship",
+      "complete e-Reader compatibility proof",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_skyridge_20030512",
+      "type": "release",
+      "context": {
+        "name_en": "Skyridge",
+        "name_ja": "",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "release_date": "2003-05-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json",
+          "title": "Local English WoC release catalog: Skyridge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard3",
+          "title": "Pokemon TCG API v2 set record: Skyridge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Skyridge_(TCG)",
+          "title": "Bulbapedia: Skyridge (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Crystal_Pok%C3%A9mon_(TCG)",
+          "title": "Bulbapedia: Crystal Pokemon (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.psacard.com/articles/articleview/10052/psa-set-registry-collecting-2003-pokemon-skyridge",
+          "title": "PSA: Collecting the 2003 Pokemon Skyridge Set",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Wizards source",
+            "price truth",
+            "condition truth",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Skyridge with set id ecard3 and an English release date of May 12, 2003.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model Skyridge with printedTotal 144 and total 182; the local corpus keeps 182 returned rows, including H-number holos and secret Crystal Pokemon rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia treats Skyridge as an e-Card Series expansion and connects it to the broader e-Reader era rather than a conventional pre-e-Reader Wizards set.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "PSA's Skyridge collecting overview frames Skyridge as a late Wizards-era release and emphasizes the scarcity and collector focus of the set; this is used here as collecting context, not price truth.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Crystal Celebi 145, Crystal Charizard 146, Crystal Crobat 147, Crystal Golem 148, Crystal Ho-Oh 149, Crystal Kabutops 150, H-number holos such as Alakazam H1 and Umbreon H30, and non-Holofoil counterparts for some H-number Pokemon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Skyridge are led by Mitsuhiro Arita, Atsuko Nishida, Hajime Kusajima, Kouki Saitou, Kyoko Umemoto, Midori Harada, Naoyo Kimura, Kagemaru Himeno, Kimiya Masago, Hikaru Koike, Yuka Morii, Sumiyoshi Kizuki, Yukiko Baba, Hisao Nakamura, Miki Tanaka, and Tomokazu Komiya.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Skyridge matters because it feels like the e-Reader experiment pushed to its ornate endpoint: scannable card architecture, H-number holos, and Crystal Type secret rows all make the card into both collectible object and machine-readable interface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_144_printed_182_total_e_reader_crystal_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy",
+            "complete variant taxonomy"
+          ],
+          "steps": [
+            "Confirm English set id ecard3, name Skyridge, and local/API printedTotal 144 versus total 182 before treating H-number and secret rows as ordinary checklist rows.",
+            "Preserve the e-Reader frame / Dot-Code context as release architecture, not proof that a submitted physical card scans or is authentic.",
+            "For H-number holos, preserve the H-number and compare against any non-Holofoil counterpart before merging wants or listings.",
+            "For Crystal Pokemon rows 145 through 150, preserve card number, Rare Secret rarity, Crystal Type text, and illustrator before routing a trade.",
+            "Do not treat Crystal Type, H-number status, e-Reader borders, or species popularity as price, condition, possession, or authenticity evidence."
+          ],
+          "summary": "Skyridge needs count-basis, H-number, e-Reader, and Crystal Type rails before an agent acts on a listing.",
+          "trigger": "A listing, want, or binder import references Skyridge, e-Reader, H-number holo, Crystal Pokemon, Crystal Charizard, Crystal Ho-Oh, or Crystal Kabutops."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The last machine-readable mountain",
+        "why_it_matters": "Skyridge feels like a summit and a goodbye. The cards are still Pokemon, still binder objects, still chaseable art, but the e-Reader frame makes them feel like artifacts with a port on the side. Then the Crystal Pokemon arrive beyond the printed count, changing type when energy touches them, as if the card itself is admitting it can be several things for one turn. It is late Wizards-era Pokemon at its strangest and most beautiful.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-146",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Lizardon",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-146",
+        "catalog_row_id": "ecard3-146"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-146",
+          "title": "Local English WoC card row: Crystal Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-146",
+          "title": "Pokemon TCG API v2 card record: Charizard ecard3-146",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Skyridge_146)",
+          "title": "Bulbapedia: Charizard (Skyridge 146)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Crystal_Pok%C3%A9mon_(TCG)",
+          "title": "Bulbapedia: Crystal Pokemon (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Charizard as Skyridge number 146, a Rare Secret Stage 2 Colorless Pokemon with Crystal Type, credited to Kouki Saitou.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Crystal Type text for Charizard that changes its type for the turn when Fire, Lightning, or Fighting basic Energy is attached from hand.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Charizard 146 to Kouki Saitou.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Crystal Charizard matters because it turns the franchise's most persistent chase species into an e-Reader-era secret row whose identity is explicitly mutable by attached Energy.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_crystal_charizard_146_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 146/144, Rare Secret, and Crystal Type before routing this as Skyridge Crystal Charizard.",
+            "Record Kouki Saitou as illustrator and preserve Fire/Lightning/Fighting Crystal Type text from the API/local row.",
+            "Separate this row from Base Charizard, Legendary Collection Charizard, Expedition Charizard 6/39, and later Crystal/Charizard references.",
+            "If a listing says only 'Crystal Charizard,' ask for set, number, and clear lower-number/e-Reader-border images before routing the want.",
+            "Do not treat Crystal Type or Charizard name gravity as proof of physical authenticity, condition, or price."
+          ],
+          "summary": "Skyridge Charizard 146 is the Kouki Saitou Rare Secret Crystal Type row beyond printedTotal 144.",
+          "trigger": "A listing, want, or binder import says Skyridge Charizard, Crystal Charizard, Charizard 146/144, or e-Reader Charizard."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The chase card becomes an interface",
+        "why_it_matters": "Crystal Charizard is what happens when the old chase gravity meets the weirdest late-Wizards machinery. It is Charizard, yes, but it is also a Colorless Crystal Type object that becomes Fire, Lightning, or Fighting for a turn. The card feels less like a statue and more like a switchboard.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-149",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-oh",
+        "name_ja": "ホウオウ",
+        "romaji": "Houou",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-149",
+        "catalog_row_id": "ecard3-149"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-149",
+          "title": "Local English WoC card row: Crystal Ho-Oh",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-149",
+          "title": "Pokemon TCG API v2 card record: Ho-Oh ecard3-149",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ho-Oh_(Skyridge_149)",
+          "title": "Bulbapedia: Ho-Oh (Skyridge 149)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ho-Oh as Skyridge number 149, a Rare Secret Basic Colorless Pokemon with Crystal Type, credited to Hajime Kusajima.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Crystal Type text for Ho-Oh that changes its type for the turn when Fire, Water, or Lightning basic Energy is attached from hand.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Ho-Oh 149 to Hajime Kusajima.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Crystal Ho-Oh matters because it carries the Johto myth bird into the e-Reader secret-row language, turning Neo Revelation's mythic figure into a late-Wizards Crystal Type object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_crystal_ho_oh_149_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 149/144, Rare Secret, and Crystal Type before routing this as Skyridge Crystal Ho-Oh.",
+            "Record Hajime Kusajima as illustrator and preserve Fire/Water/Lightning Crystal Type text.",
+            "Separate this row from Neo Revelation Ho-Oh 7 and Ho-Oh 18, plus later Ho-Oh promo or ex-era rows.",
+            "If a listing says only 'Crystal Ho-Oh,' ask for set, number, and clear e-Reader-border images.",
+            "Do not treat Ho-Oh species, Crystal Type, or e-Reader frame as physical authenticity evidence."
+          ],
+          "summary": "Skyridge Ho-Oh 149 is a Rare Secret Crystal Type row, not Neo Revelation Ho-Oh.",
+          "trigger": "A listing, want, or binder import says Skyridge Ho-Oh, Crystal Ho-Oh, or Ho-Oh 149/144."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The rainbow bird becomes crystal",
+        "why_it_matters": "Crystal Ho-Oh is a beautiful late echo of the Neo myth cycle. The bird that felt like revelation now sits inside Skyridge's machinery, changing type as energy touches it. Hajime Kusajima's row makes Ho-Oh feel less like a mascot and more like a prism.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-150",
+      "type": "card",
+      "context": {
+        "name_en": "Kabutops",
+        "name_ja": "カブトプス",
+        "romaji": "Kabutops",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-150",
+        "catalog_row_id": "ecard3-150"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-150",
+          "title": "Local English WoC card row: Crystal Kabutops",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-150",
+          "title": "Pokemon TCG API v2 card record: Kabutops ecard3-150",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kabutops_(Skyridge_150)",
+          "title": "Bulbapedia: Kabutops (Skyridge 150)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Kabutops as Skyridge number 150, a Rare Secret Stage 2 Colorless Pokemon with Crystal Type, credited to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Crystal Type text for Kabutops that changes its type for the turn when Water, Lightning, or Fighting basic Energy is attached from hand.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Kabutops 150 to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Crystal Kabutops matters because it closes the secret Crystal row sequence with a fossil Pokemon: an old-world creature made newly mutable by e-Reader-era rules.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_crystal_kabutops_150_vs_h13_14_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 150/144, Rare Secret, and Crystal Type before routing this as Crystal Kabutops.",
+            "Record Atsuko Nishida as illustrator and preserve Water/Lightning/Fighting Crystal Type text.",
+            "Separate this row from Kabutops H13 Rare Holo and Kabutops 14 Rare in the same Skyridge set.",
+            "If a listing says only 'Skyridge Kabutops,' ask for number, rarity, and whether it is Crystal, H-number holo, or regular Rare.",
+            "Do not use fossil species identity or Crystal Type as proof of physical-card authenticity."
+          ],
+          "summary": "Skyridge has multiple Kabutops identities; Crystal Kabutops 150 is the Rare Secret row beyond printedTotal 144.",
+          "trigger": "A listing, want, or binder import says Skyridge Kabutops, Crystal Kabutops, or Kabutops 150/144."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The fossil becomes programmable",
+        "why_it_matters": "Crystal Kabutops is a strange and perfect endpoint. Fossil Pokemon usually feel ancient, fixed, recovered from stone. Here Kabutops becomes type-shifting machinery, drawn into the e-Reader age by Atsuko Nishida's secret row. Old body, new apparatus.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-145",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "セレビィ",
+        "romaji": "Celebi",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-145",
+        "catalog_row_id": "ecard3-145"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-145",
+          "title": "Local English WoC card row: Crystal Celebi",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-145",
+          "title": "Pokemon TCG API v2 card record: Celebi ecard3-145",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Skyridge_145)",
+          "title": "Bulbapedia: Celebi (Skyridge 145)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Celebi as Skyridge number 145, a Rare Secret Basic Colorless Pokemon with Crystal Type, credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Crystal Type text for Celebi that changes its type for the turn when Grass, Water, or Psychic basic Energy is attached from hand.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Celebi 145 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Crystal Celebi matters because it puts a time-myth Pokemon at the opening of Skyridge's secret Crystal sequence, giving the mutable-type mechanic a legendary, almost ritual first row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_crystal_celebi_145_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 145/144, Rare Secret, and Crystal Type before routing this as Skyridge Crystal Celebi.",
+            "Record Mitsuhiro Arita as illustrator and preserve Grass/Water/Psychic Crystal Type text.",
+            "Separate this row from Neo Revelation Celebi 3 and later Celebi promo/e-Reader/ex-era rows.",
+            "If a listing says only 'Crystal Celebi,' ask for set, number, and clear e-Reader-border images.",
+            "Do not treat Celebi species or Crystal Type as proof of physical authenticity, condition, or price."
+          ],
+          "summary": "Skyridge Celebi 145 is the Mitsuhiro Arita Rare Secret Crystal Type row, not Neo Revelation Celebi.",
+          "trigger": "A listing, want, or binder import says Skyridge Celebi, Crystal Celebi, or Celebi 145/144."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Time enters the crystal row",
+        "why_it_matters": "Crystal Celebi is the secret sequence opening with a time traveler. Mitsuhiro Arita's row makes the Crystal mechanic feel almost mythic: Celebi can become Grass, Water, or Psychic for a turn, as if time itself is choosing a color.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-H1",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam",
+        "name_ja": "フーディン",
+        "romaji": "Foodin",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-H1",
+        "catalog_row_id": "ecard3-H1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-H1",
+          "title": "Local English WoC card row: Alakazam H1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-H1",
+          "title": "Pokemon TCG API v2 card record: Alakazam ecard3-H1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Skyridge_H1)",
+          "title": "Bulbapedia: Alakazam (Skyridge H1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Alakazam as Skyridge H1, a Rare Holo Stage 2 Psychic Pokemon credited to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Alakazam H1 with Energy Jump, a Poke-Power that moves Energy from one Pokemon to another.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Alakazam H1 to Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Alakazam H1 matters because it shows the H-number layer as more than chase labeling: an old Base-era psychic icon is rebuilt as an e-Reader holo with Energy movement at its center.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_alakazam_h1_vs_2_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm H1 numbering and Rare Holo before routing this as Skyridge Alakazam H1.",
+            "Record Kimiya Masago as illustrator and Energy Jump as the API/local Poke-Power.",
+            "Separate H1 from Skyridge Alakazam 2, which is the non-H-number Rare counterpart in the local/API corpus.",
+            "Do not collapse this row into Base Set Alakazam or other Alakazam appearances.",
+            "Use H-number status as catalog identity only, not physical holofoil or authenticity proof."
+          ],
+          "summary": "Alakazam H1 is the H-number holo row; Alakazam 2 is a separate Skyridge Rare counterpart.",
+          "trigger": "A listing, want, or binder import says Skyridge Alakazam, Alakazam H1, or H-number Alakazam."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The old psychic icon in a new frame",
+        "why_it_matters": "Alakazam H1 gives Skyridge a bridge back to the beginning. The species has Base Set memory, but here it sits inside the e-Reader system with an H-number and an Energy-moving power. It is the old psychic grammar rebuilt with a scanner edge.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_skyridge_20030512:ecard3-H30",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "ブラッキー",
+        "romaji": "Blacky",
+        "release_family_id": "en_wotc_skyridge_20030512",
+        "row_id": "en_wotc_skyridge_20030512:ecard3-H30",
+        "catalog_row_id": "ecard3-H30"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-H30",
+          "title": "Local English WoC card row: Umbreon H30",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard3-H30",
+          "title": "Pokemon TCG API v2 card record: Umbreon ecard3-H30",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Umbreon_(Skyridge_H30)",
+          "title": "Bulbapedia: Umbreon (Skyridge H30)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Umbreon as Skyridge H30, a Rare Holo Stage 1 Darkness Pokemon credited to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Umbreon H30 with Dark Gaze, a Poke-Body that stops Benched Pokemon from using Poke-Powers while Umbreon is Active.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skyridge Umbreon H30 to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Umbreon H30 matters because it carries Eeveelution demand into Skyridge's H-number layer while its Dark Gaze text makes attention and denial part of the card's identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "skyridge_umbreon_h30_vs_32_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader scanability of a physical copy"
+          ],
+          "steps": [
+            "Confirm H30 numbering and Rare Holo before routing this as Skyridge Umbreon H30.",
+            "Record Atsuko Nishida as illustrator and Dark Gaze as the API/local Poke-Body.",
+            "Separate H30 from Skyridge Umbreon 32, which is the non-H-number Rare counterpart in the local/API corpus.",
+            "Do not collapse this row into Neo Discovery Umbreon 13/32, Aquapolis Umbreon H29, or later Umbreon rows.",
+            "Use H-number status and Eeveelution popularity as catalog context only, not price, condition, or authenticity proof."
+          ],
+          "summary": "Umbreon H30 is the H-number holo row; Umbreon 32 is a separate Skyridge Rare counterpart.",
+          "trigger": "A listing, want, or binder import says Skyridge Umbreon, Umbreon H30, H-number Umbreon, or Dark Gaze."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Darkness in the H-number layer",
+        "why_it_matters": "Umbreon H30 is the kind of card that makes Skyridge feel expensive in attention even before money enters the room. Atsuko Nishida's Eeveelution line, an H-number holo, Darkness typing, and a power-denial body all converge. It is a small dark jewel in a very technical set.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fourteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/skyridge_v0_1.json`.
+  Skyridge is now a hand-authored release dossier, with Crystal Charizard
+  146, Crystal Ho-Oh 149, Crystal Kabutops 150, Crystal Celebi 145,
+  Alakazam H1, and Umbreon H30 promoted from generated baseline to sourced
+  card dossiers. The pass frames Skyridge as the late-Wizards e-Reader
+  summit: machine-readable card architecture, H-number holos, Crystal Type
+  secret rows, and a final-English-WoC aura without overclaiming physical
+  scanability or authenticity. Added special identification rails for
+  English ecard3 count basis (printedTotal 144 / total 182), e-Reader /
+  Dot-Code context, H-number holos versus regular Rare counterparts,
+  Crystal Charizard versus earlier Charizard rows, Crystal Ho-Oh versus Neo
+  Revelation Ho-Oh, Crystal Kabutops versus H13 / 14, Crystal Celebi versus
+  Neo Revelation Celebi, Alakazam H1 versus 2, and Umbreon H30 versus 32 /
+  Aquapolis H29 / Neo Discovery branches. Sources: local English WoC catalog,
+  Pokemon TCG API v2 set/card endpoints, Bulbapedia community pages for
+  Skyridge, Crystal Pokemon, and the promoted cards, plus PSA's Skyridge
+  collecting overview as a lower-tier context source. Generated gap moved
+  from 194 releases / 4,477 cards to 193 releases / 4,471 cards. Current
+  catalog-history corpus: 22,904 claims, 4,955 sources, corpus hash
+  `99c01938ae110b92d4b197e51a0cac73c6f80e54cd55a319e46176121f6f08fb`;
+  index hash `bdccebf84878a3b08bf466e76dd270effd7252011e30cf20271abb2850404f6d`;
+  queue hash `811787aadc3fd7218f21f27c065f00fc5bd5252a445b3447714800812e8478d1`.
 - `[passive]` 2026-06-19 · Codex — completed the thirteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_revelation_v0_1.json`.
