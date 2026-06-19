@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-ninth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/jungle_v0_1.json`. English Jungle is
+  now a hand-authored release dossier, with 21 rows promoted from generated
+  baseline to sourced card dossiers: Clefable 1, Flareon 3, Jolteon 4,
+  Kangaskhan 5, Mr. Mime 6, Nidoqueen 7, Pidgeot 8, Pinsir 9, Scyther 10,
+  Snorlax 11, Vaporeon 12, Vileplume 15, Wigglytuff 16, non-holo Flareon
+  19, non-holo Jolteon 20, non-holo Scyther 26, non-holo Snorlax 27,
+  non-holo Vaporeon 28, Eevee 51, Pikachu 60, and Poke Ball 64. The pass
+  frames Jungle as the first English sequel expansion: the binder opening
+  into a habitat of Eeveelutions, Snorlax, Scyther, Pikachu, holo/non-holo
+  mirrors, and lower-right set-symbol folklore. Added special
+  identification rails for Pokemon TCG API set id `base2`, the 64-row
+  English Jungle boundary, holo rows 1-16 versus non-holo mirror rows 17-32,
+  no-symbol Unlimited holo-rare caution, First Edition / Unlimited
+  separation, Prerelease Clefable / W Promo Pikachu / gold-border Meowth
+  adjacency, and Base Set 2 / Legendary Collection / Japanese Jungle
+  separation. Sources: local English WoC Jungle catalog, Pokemon TCG API v2
+  set / card records, Bulbapedia Jungle, and Bulbapedia Error cards. Generated
+  gap moved from 179 releases / 4,356 cards to 178 releases / 4,335 cards.
+  Current catalog-history corpus: 22,851 claims, 5,263 sources, corpus hash
+  `4efa22f3f7232ba3eeeeff14f00d9ae5b6f93cbd2accbabefabf18207b2be43d`;
+  index hash `5186ca830832c0e189ac197c8ad601f279fb48fa0e37eb6e0258ea6ecd00c55f`;
+  queue hash `277fc7eb24d743bf8eacccab7532774f0765e0dbd61408e14ecf03938defaf3d`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-eighth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/best_of_game_v0_1.json`. English
