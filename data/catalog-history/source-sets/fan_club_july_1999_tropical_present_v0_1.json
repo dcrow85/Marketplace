@@ -1,0 +1,547 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the July 1999 Pokemon Card Fan Club Tropical Present postcard / Special Card, emphasizing the Summer 1999 reprint route, Southern Islands Sea-scene artwork by Naoyo Kimura, Fan Club postcard/jumbo format, GET-point participation loop, and traps against the January 1999 Atsuko Nishida print, Summer 2001 e-card print, Southern Islands set cards, Tropical Mega Battle material, and ordinary Trainer cards.",
+    "in_scope": [
+      "Pokemon Card Fan Club July 1999 release dossier",
+      "Tropical Present unnumbered promotional row 117",
+      "Summer 1999 Tropical Present print",
+      "Southern Islands Sea-scene artwork route",
+      "postcard / Special Card / jumbo format",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Fan Club membership ledger",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999",
+        "name_en": "Pokemon Card Fan Club (July 1999)",
+        "release_date": "1999-07",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club mailing route",
+          "Summer 1999 Tropical Present print",
+          "postcard / Special Card / jumbo object",
+          "Southern Islands Sea-scene artwork reuse",
+          "GET-point participation loop",
+          "same-title print-version trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999:117",
+            "name": "Tropical Present",
+            "why": "The July 1999 Tropical Present is a chase because the same Fan Club title changes visual identity: it carries Southern Islands Sea-scene artwork into a postcard/jumbo participation object.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 1,
+            "examples": [
+              "Tropical Present"
+            ],
+            "why": "Bulbapedia says the July 1999 Tropical Present reprint used artwork from the Southern Islands Sea scene by Naoyo Kimura; the artist credit is the cleanest way to keep the Summer 1999 print separate from Atsuko Nishida's earlier Fan Club version.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c5"
+            ],
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Tropical Present print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Fan Club archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Fan Club July 1999 as a one-row unnumbered promotional source group containing Tropical Present at source index 117.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list identifies source row 117 as Tropical Present [Postcard], Special Card, distributed through Pokemon Card Fan Club in July 1999.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Tropical Present as a Fan Club object connected to GET Points, with copies sent to members and additional points awarded back to the account.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies the Summer 1999 Tropical Present print as illustrated by Naoyo Kimura.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says the July 1999 Tropical Present reprint used artwork from the Southern Islands Sea scene, while the earlier 1999 print was illustrated by Atsuko Nishida and the Summer 2001 e-card print used new artwork by Hiromi Ito.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "The July 1999 Tropical Present matters because it shows Pokemon's early card culture remixing its own scenes: a Southern Islands image becomes Fan Club mail, and a gift-card mechanic remains tied to the membership account.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Fan Club July 1999 route, Tropical Present name, postcard / Special Card / jumbo format, Southern Islands Sea-scene artwork, Naoyo Kimura credit, and non-equivalence with January 1999 and Summer 2001 Tropical Present prints before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_july_1999_tropical_present_summer_print_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Tropical Present, Fan Club July 1999, Summer 1999, postcard, Special Card, jumbo promo, GET points, Naoyo Kimura, Southern Islands, Sea scene, Atsuko Nishida, Hiromi Ito, Tropical Mega Battle, or Summer 2001.",
+          "summary": "Identify July 1999 Tropical Present by Fan Club route, postcard/Special Card/jumbo format, and Southern Islands Sea-scene artwork before trusting the repeated Tropical Present title.",
+          "steps": [
+            "Confirm the route is Pokemon Card Fan Club July 1999 / Summer 1999, not January 1999 or Summer 2001.",
+            "Confirm the object is Tropical Present [Postcard], Special Card, and jumbo-format rather than a standard-size set card.",
+            "Check for Southern Islands Sea-scene artwork and Naoyo Kimura credit when matching this July print.",
+            "Separate the January 1999 Atsuko Nishida Tropical Present and the Summer 2001 Hiromi Ito e-card-stock Tropical Present.",
+            "Separate Southern Islands set cards from the Fan Club postcard object even when artwork lineage overlaps.",
+            "Separate Tropical Mega Battle / Tropical Wind / tropical-themed promos unless source evidence proves this exact Fan Club row.",
+            "Request seller front/back photos and size/context evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "January 1999 equivalence",
+            "Summer 2001 equivalence",
+            "Southern Islands set-card equivalence",
+            "Tropical Mega Battle equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Tropical Present, July 1999: the island scene becomes Fan Club mail",
+        "why_it_matters": "This print is where the catalog has to care about assembly rather than just name. Tropical Present is still a postcard-like Special Card, still part of the Fan Club point loop, but the July version changes the visual memory by borrowing the Southern Islands Sea scene. That makes it a little archive of Pokemon's summer machinery: membership, points, jumbo mail, art reuse, and a tropical image traveling from one product grammar into another.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "complete Fan Club archive",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: Pokemon Card Fan Club July 1999 Tropical Present",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 117",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://pokumon.com/card/tropical-present-pokemon-card-fan-club-1999-unnumbered/",
+          "title": "Pokumon: Tropical Present Pokemon Card Fan Club 1999",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999:117",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999",
+        "row_id": "jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999:117",
+        "name_en": "Tropical Present",
+        "name_ja": "トロピカルプレゼント",
+        "romaji": "Toropikaru Purezento",
+        "source_index": "117"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Fan Club postcard object",
+          "Special Card / jumbo format",
+          "GET-point participation loop",
+          "Southern Islands Sea-scene art reuse",
+          "same-title variant trap"
+        ],
+        "artist": "Naoyo Kimura",
+        "collector_texture_note": "Tropical Present row 117 is the Summer 1999 Fan Club version; match art-route and date before assuming it is the January 1999 or 2001 print.",
+        "signals": [
+          "117",
+          "Tropical Present",
+          "トロピカルプレゼント",
+          "Fan Club July 1999",
+          "Postcard",
+          "Special Card",
+          "Naoyo Kimura",
+          "Southern Islands Sea"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "official copy count"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Tropical Present, source index 117, within the Pokemon Card Fan Club July 1999 source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese title トロピカルプレゼント romanizes as Toropikaru Purezento, a direct phonetic rendering of Tropical Present.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is postcard / Special Card / Fan Club July 1999 unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Summer 1999 Tropical Present print to Naoyo Kimura.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "Bulbapedia says the July 1999 Tropical Present reprint used artwork from the Southern Islands Sea scene.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Tropical Present with a Do Nothing text box and a GET-point effect, keeping the card tied to Fan Club participation rather than normal tournament play.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The July 1999 Tropical Present matters because it turns a familiar Southern Islands summer scene into a mailed Fan Club object with participation/account meaning.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "For row 117, agents should preserve Fan Club July 1999 route, postcard / Special Card / jumbo format, Southern Islands Sea-scene artwork, Naoyo Kimura credit, GET-point context, and non-equivalence with January 1999 or Summer 2001 Tropical Present prints before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "tropical_present_117_fan_club_july_1999_summer_print_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Tropical Present, トロピカルプレゼント, Fan Club July 1999, Summer 1999, postcard, Special Card, jumbo, GET points, Naoyo Kimura, Southern Islands Sea, Atsuko Nishida, Hiromi Ito, Tropical Mega Battle, Tropical Wind, or source index 117.",
+          "summary": "Match Tropical Present row 117 by July 1999 Fan Club route and Southern Islands Sea-scene art before trusting the repeated Tropical Present title.",
+          "steps": [
+            "Start with route: Pokemon Card Fan Club July 1999 / Summer 1999.",
+            "Preserve row identity as source index 117.",
+            "Confirm postcard / Special Card / jumbo-format object identity.",
+            "Confirm Southern Islands Sea-scene artwork and Naoyo Kimura credit for this print.",
+            "Separate January 1999 Atsuko Nishida Tropical Present and Summer 2001 Hiromi Ito e-card Tropical Present.",
+            "Separate Southern Islands set cards, Tropical Mega Battle material, Tropical Wind, and generic tropical promos.",
+            "Request seller front/back photos and scale/context evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "January 1999 equivalence",
+            "Summer 2001 equivalence",
+            "Southern Islands set-card equivalence",
+            "Tropical Mega Battle equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Tropical Present 117: same name, new summer skin",
+        "why_it_matters": "This is the collector trap and the charm in one object. The name says Tropical Present again, but the July 1999 card carries a different memory: Southern Islands art, Kimura's scene language, and Fan Club points moving through a postcard-sized object. It is not enough for an agent to know the title. It has to know which summer the title belongs to.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_117_pok_mon_card_fan_club_july_1999.json",
+          "title": "Local Japanese unnumbered promo catalog row: Tropical Present 117",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 117",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://pokumon.com/card/tropical-present-pokemon-card-fan-club-1999-unnumbered/",
+          "title": "Pokumon: Tropical Present Pokemon Card Fan Club 1999",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

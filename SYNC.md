@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/fan_club_july_1999_tropical_present_v0_1.json`.
+  The Pokemon Card Fan Club July 1999 Tropical Present row now has
+  hand-authored release and card coverage for source index 117. The pass treats
+  this as the Summer 1999 Fan Club postcard / Special Card / jumbo-format print
+  with Southern Islands Sea-scene artwork and Naoyo Kimura source-reference
+  credit, not a generic repeat of the Tropical Present title. Added bespoke
+  `special_identification_instructions` so agents must preserve July 1999 Fan
+  Club route, row 117, postcard/Special Card/jumbo format, GET-point context,
+  Southern Islands Sea-scene artwork, Naoyo Kimura credit, and non-equivalence
+  with the January 1999 Atsuko Nishida print, Summer 2001 Hiromi Ito e-card
+  print, Southern Islands set cards, Tropical Mega Battle material, Tropical
+  Wind, and generic tropical promos before accepting a match. Sources: local
+  Japanese unnumbered promo release file, Bulbapedia unnumbered promo row,
+  Bulbapedia Tropical Present page, and Pokumon Tropical Present collector
+  reference. Generated gap moved from 89 releases / 3,915 cards to 88 releases
+  / 3,914 cards. Current catalog-history corpus:
+  `52bde697b7120047cebe48fcf6c331b1ad3cbcb7d5a8b19d1978fb11147ed08f`;
+  index: `2abe84e2b57e8dddc0e4aacecee76ed7de6a0e987d9723ebc52e9450a472bed4`;
+  queue: `925996c25a996cbc9df8a5043053876506e79f69303405de0f133dbfef7c9765`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundredth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/secret_super_battle_1999_regional_trainers_v0_1.json`.
