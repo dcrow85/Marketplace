@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-second catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/trainers_vol10_dark_venusaur_line_v0_1.json`.
+  Pokemon Card Trainers Vol. 10 insert now has complete two-row hand-authored
+  coverage for Dark Ivysaur row 225 and Dark Venusaur row 226. The pass frames
+  the release as Team GR / Game Boy Color memory entering the paper TCG through
+  a magazine insert: March 1 2001, Pokemon Card Trainers Vol. 10, GB symbol in
+  place of an expansion symbol, Neo-era Dark Pokemon design, and a
+  Dark-Ivysaur/Dark-Venusaur evolution pair. Added
+  `special_identification_instructions` requiring agents to preserve Vol. 10
+  route, row 225/226 identity, `わるいフシギソウ` / Bad Fushigisou and
+  `わるいフシギバナ` / Bad Fushigibana name context, GB-symbol and Team GR tie,
+  Shin-ichi Yoshida source-page credit, Dark Venusaur holofoil caveat, pair
+  relationship, and non-equivalence with Pokemon Web, Best of Game,
+  Winner-stamped, Jumbo, Rocket, and generic Venusaur-line memories before
+  accepting a match. Sources: local Japanese unnumbered promo release file,
+  Bulbapedia raw unnumbered promotional rows 225-226, and Bulbapedia card pages
+  for Dark Ivysaur / Dark Venusaur as bounded database references. Generated
+  gap moved from 126 releases / 3,947 cards to 125 releases / 3,945 cards.
+  Current catalog-history corpus:
+  `8e53aa74f54f4381c17868907d1e40fe835d926ca8d20ec12dfbfd06688e6693`;
+  index: `265c64519676ef8f2c8ee806ceba7abd4d6a434f70bdbed9d673fcfeda93d0ff`;
+  queue: `28e9a38d06fc1589924cfa45eacfeb4b793db4feb86939fe4772c1618dc1ce65`.
+  Audit counts: 23,243 claims, 6,045 sources, 84 hand-authored release dossiers,
+  604 hand-authored card dossiers, and 855 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/trainers_vol10_dark_venusaur_line_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-first catalog-history
   deepening pass in
   `data/catalog-history/source-sets/hyper_corocoro_spring_1999_insert_v0_1.json`.
