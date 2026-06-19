@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (G1 chain fix implemented: post-delivery timeout default now needs floor-signed unresolvable receipt; surface 104/104 + gates 5/5; trunk escrow 92/92)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 138: ANA Get in a Jet! 2000 phase 2 Togepi deepened; corpus 180c723e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/ana_get_in_a_jet_2000_phase2_togepi_v0_1.json`
+  deepens row 207 / Togepi from the All Nippon Airlines / All Nippon Airways
+  Get in a Jet! 2000 campaign phase 2 route. The pass preserves the September
+  1-October 31 2000 domestic-flight window, two boarding-pass stub + special
+  postcard redemption mechanics, Media Factory November 10 2000 deadline, ANA
+  special 2000 border text, and the soft Johto-era Togepi texture inside a
+  hard travel-receipt route. Special ID rails require agents to separate this
+  phase 2 Togepi from phase 1 Marill, the 1998 ANA Get in a Jet Double Chance
+  Campaign, ANA Everyone's Happy Campaign, CoroCoro June 1999 Togepi, Neo /
+  Gold Silver Togepi, English Wizards Promo 30, Southern Islands Togepi, and
+  generic Togepi/ANA merchandise memories. Illustrator-credit conflict is kept
+  legible rather than collapsed: Bulbapedia credits Ryuta Kusumi / CR CG gangs;
+  PokeBoon lists Naoyo Kimura; neither is allowed to prove route, seller
+  possession, condition, authenticity, or spendability. Generated gaps moved to
+  51 release / 3877 card. Current hashes: corpus
+  `180c723e7538eb4e7bffba54da5cc4541b8d68387b7c5eba57e91b51011032b5`, index
+  `8e4d153a013623c33be94dedffc5788313dc593d006f6b05fe0f26565df6cccc`, queue
+  `d39d1c7dd667084fda484db4ac594c5cf0a860696dd6ebe073703d17a15e6657`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_tmb_best_in_japan_no3_trainer_v0_1.json`
