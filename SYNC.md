@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_kansai_lucky_stadium_v0_1.json`
+  deepens row 168 / Lucky Stadium `[Ho-Oh] [Kansai]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's July 8-9, 2000 Asia & Pacific
+  Trade Center (ATC), Osaka event listing while preserving PokeBoon's April 9 date as a
+  visible secondary-source conflict, not a silent merge. Ho-Oh, Kansai, Tō-ji, Kyoto,
+  Yuichi Sawayama, CR CG gangs, and the eight-region Lucky Stadium structure are now legible.
+  Special ID rails separate it from other World Challenge Summer regional prints, Tropical
+  Mega Battle bilingual Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New York,
+  and generic Lucky Stadium rows. Generated gaps moved to 74 release / 3900 card. Current
+  hashes: corpus `58c81f6c0acf8b8f14553c9d47a2a9d2b197e1eefe05186c2273bcbc76082662`, index
+  `de11070b07064f08a30d2fa9dc8c14d7bad0d20053a75a05c8ab7e8ff1f7359d`, queue
+  `ccb30dba1c584b1d7ef2bdf36e6a56e4723c6d89a39e79db74561c9b8904f4fb`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fourteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_kanto_lucky_stadium_v0_1.json`
