@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 149: Battle Road Summer regional No.1 Trainer deepened; corpus 74b2641a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 150: Battle Road Summer regional No.2 Trainer deepened; corpus b71d66e3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fiftieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/battle_road_summer_2002_no2_trainer_v0_1.json`
+  deepens row 251 / No.2 Trainer from the Battle Road Summer 2002 regional
+  second-place prize route. The pass preserves source index 251, Japanese
+  title `Ｎｏ.２トレーナー`, the July 20-August 11 2002 regional distribution
+  window, seven-venue Summer circuit, e-Card Era layout, runner-up recognition
+  text, winner-name and regional-conference personalization, male/female
+  variant boundary, black folio / gold-embossing / September mail-back
+  provenance texture, the Master age-division context, and the Summer bridge
+  into Best in Japan and Tropical Mega Battle adjacency. It adds collector-
+  reference-supported Ken Sugimori credit and Pokumon small-count texture
+  (`1 girl / 26 boys`) with explicit caveats: neither is treated as
+  primary-source print authority or official copy-count truth. Special ID rails
+  require agents to separate this row from Battle Road Spring 2002, No.1/No.3
+  Trainer, Battle Road Summer 2002 Best in Japan photo-card routes, Elite Four
+  Trainer, Worlds, Neo Road, Lizardon/Kamex, Tropical Mega Battle, Secret Super
+  Battle, and generic trophy listings; catalog identity remains legible support
+  until seller-controlled front/back, rank, event text, personalization/
+  conference, layout, surface/corner, and slab/cert/folio evidence appears.
+  Generated gaps moved to 39 release / 3865 card. Current hashes: corpus
+  `b71d66e346ec905611387fdeea5061a6d3ecea2d8ddb1f9910666e1be82d8841`, index
+  `45e85e37a4a9b3550578e9a6a089a51e4aadd3525ba6b870541e2d879ffceaa0`, queue
+  `f4c0adddfb1a3046e063ad0cd2a6467eb646bd4c73fb418c3da1bd98ed782ccb`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/battle_road_summer_2002_no1_trainer_v0_1.json`

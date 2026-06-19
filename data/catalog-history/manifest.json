@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23621,
-    "corpus_hash": "74b2641a9e380d724f7884643d62412fc4b262ea2f935bcdc059f4176296d5a9",
-    "generated_card_dossier_count": 3866,
-    "generated_release_dossier_count": 40,
+    "claim_count": 23634,
+    "corpus_hash": "b71d66e346ec905611387fdeea5061a6d3ecea2d8ddb1f9910666e1be82d8841",
+    "generated_card_dossier_count": 3865,
+    "generated_release_dossier_count": 39,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6603
+    "source_count": 6612
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "1671b1887620b18d3e78bafecc837fb9c01f3374912775385a40156f0461c47f",
-    "release_queue_count": 40,
+    "queue_hash": "f4c0adddfb1a3046e063ad0cd2a6467eb646bd4c73fb418c3da1bd98ed782ccb",
+    "release_queue_count": 39,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T22:05:06Z",
+  "generated_at": "2026-06-19T22:14:03Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "7f4e23b12a4ece6e483f3033fc0d298c4c5c5af81f1c86252c7a1ff3c3ac17cb",
+    "index_hash": "45e85e37a4a9b3550578e9a6a089a51e4aadd3525ba6b870541e2d879ffceaa0",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -56,6 +56,7 @@
     "data/catalog-history/source-sets/battle_road_spring_2002_no2_trainer_v0_1.json",
     "data/catalog-history/source-sets/battle_road_spring_2002_no3_trainer_v0_1.json",
     "data/catalog-history/source-sets/battle_road_summer_2002_no1_trainer_v0_1.json",
+    "data/catalog-history/source-sets/battle_road_summer_2002_no2_trainer_v0_1.json",
     "data/catalog-history/source-sets/bessatsu_corocoro_august_1999_pokemon_valley_v0_1.json",
     "data/catalog-history/source-sets/bessatsu_corocoro_pikachu_pichu_jumbo_v0_1.json",
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
