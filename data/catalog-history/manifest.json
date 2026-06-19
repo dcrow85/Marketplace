@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23440,
-    "corpus_hash": "50eb63d4a276faea04f20cd68a1aa03d93fba30476470c01d71cdb9c3fba69ce",
-    "generated_card_dossier_count": 3890,
-    "generated_release_dossier_count": 64,
+    "claim_count": 23450,
+    "corpus_hash": "70cff816074d0668b99f341f9ac525a77c28ad499a097d5e19152fcea8e57d8d",
+    "generated_card_dossier_count": 3889,
+    "generated_release_dossier_count": 63,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6422
+    "source_count": 6432
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "ba8e56863605944936f6f7d339b06d1db8b1c12a894a44979ddfec3eff47baa5",
-    "release_queue_count": 64,
+    "queue_hash": "4f194d7aeb9a7bdc6a74f336edad86752b2f59e0f4e68a069edd2241aaa104c2",
+    "release_queue_count": 63,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T18:20:00Z",
+  "generated_at": "2026-06-19T18:30:06Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "173683696b51d9074018bf99a6209ce27f6c34f02d7a93e994a5bcc8fee8aacf",
+    "index_hash": "75d3683209ed00ab636c21abccd0df15fb64ae089824c91080dbf5317d70e349",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -155,6 +155,7 @@
     "data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_regional_no1_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_ssb_regional_no2_trainer_v0_1.json",
+    "data/catalog-history/source-sets/world_challenge_ssb_regional_no3_trainer_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_chubu_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_chugoku_shikoku_lucky_stadium_v0_1.json",
     "data/catalog-history/source-sets/world_challenge_summer_hokkaido_lucky_stadium_v0_1.json",
