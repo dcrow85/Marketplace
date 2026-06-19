@@ -1,0 +1,948 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete three-row tranche for Japanese CoroCoro Comic April 1998 promos source slice.",
+    "in_scope": [
+      "CoroCoro Comic April 1998 source-slice release dossier",
+      "all three source rows 039-041: Jynx, Cubone, Farfetch'd",
+      "source-scoped artist credits and local-catalog other-work examples",
+      "special identification rails for magazine-insert row identity"
+    ],
+    "not_claiming": [
+      "complete magazine source",
+      "complete magazine-object ledger",
+      "later mail-in prize-draw coverage",
+      "counter or mounted-sheet variant census",
+      "official copy count",
+      "complete CoroCoro 1998 promo census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "complete artist biography"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_corocoro_april_1998_19980315",
+      "type": "release",
+      "context": {
+        "name_en": "CoroCoro Comic April 1998 promos source slice",
+        "name_ja": "月刊コロコロコミック1998年4月号プロモ",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "release_date": "1998-03-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_april_1998_19980315.json",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic April 1998 promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "snapshot_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "title": "Bulbapedia oldid source lines captured in local catalog: CoroCoro April 1998 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Aquapolis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: Neo Genesis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese pre-English catalog models the CoroCoro Comic April 1998 promos source slice with a March 15, 1998 release date and source-exact date precision.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The child source slice models exactly three source-pinned card identities: Jynx 039, Cubone 040, and Farfetch'd 041.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local catalog describes the three rows as an April 1998 CoroCoro Comic three-card insert lane, while explicitly keeping broader magazine-object, mail-in, counter/sheet, reprint-history, copy-count, and complete CoroCoro promo census claims outside row authority.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "This slice matters because it shows CoroCoro acting as distribution machinery: three small character cards become a bounded magazine insert memory, not merely checklist filler.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local source-pinned rows credit Jynx to Atsuko Nishida, Cubone to Miki Tanaka, and Farfetch'd to Tomokazu Komiya, with the artist authority scoped to provider metadata and selected source lines rather than direct physical-card print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Local catalog examples connect Nishida with Aquapolis Entei/Kingdra/Suicune rows, Tanaka with Aquapolis Victreebel and Neo Genesis Elekid/Horsea rows, and Komiya with Aquapolis fighting-line rows plus Neo Genesis Slowpoke and Trainer rows; these are local examples, not complete biographies.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source slice name, row ids 039-041, Japanese names, romaji, provider-path reference-image status, and the explicit boundary denials before treating these cards as transaction candidates.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_1998_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro Comic April 1998, Jynx, Cubone, Farfetch'd, Rougela, Karakara, Kamonegi, unnumbered promo, three-card insert, or rows 039-041.",
+          "summary": "Keep the April 1998 CoroCoro insert as a three-card source slice, not a complete magazine-object ledger or broad CoroCoro promo census.",
+          "steps": [
+            "Require the source-slice context: CoroCoro Comic April 1998 issue insert, released March 15, 1998.",
+            "Preserve row ids 039, 040, and 041, plus Japanese names and romaji where supplied.",
+            "Keep provider-path reference images as comparison aids only; they are not seller evidence, authentication proof, or image-rights approval.",
+            "Keep boundary denials visible: not complete magazine source, not later mail-in prize-draw coverage, not counter/sheet variant census, not official copy count.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "counter or mounted-sheet variant census",
+            "official copy count",
+            "complete CoroCoro 1998 promo census",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "CoroCoro April 1998 — three artists on a magazine insert",
+        "why_it_matters": "This is a small slice with a lot of assembly inside it: three cards, three artists, one magazine insert lane. Nishida, Tanaka, and Komiya are not just credits here; they show how Pokemon visual memory was being braided through media distribution, character choice, and the magazine culture that carried early collectors from page to card.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "complete magazine-object ledger",
+          "complete artist biography"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_april_1998_19980315:039",
+      "type": "card",
+      "context": {
+        "name_en": "Jynx",
+        "name_ja": "ルージュラ",
+        "romaji": "Rougela",
+        "normalized_label": "Jynx",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "local_id": "039",
+        "card_number": "039",
+        "artist": "Atsuko Nishida"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_april_1998_19980315.json",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic April 1998 promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "snapshot_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "title": "Bulbapedia oldid source lines captured in local catalog: CoroCoro April 1998 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Aquapolis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: Neo Genesis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Jynx as row 039 in the CoroCoro Comic April 1998 promos source slice, with Japanese name ルージュラ and romaji Rougela.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Jynx is part of the three-card April 1998 CoroCoro Comic insert lane modeled by the local source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row carries rarity/source signal Sans rareté for Jynx; this is catalog metadata, not a physical missing-symbol or authenticity proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local source-pinned row credits Jynx to Atsuko Nishida, scoped as provider/source metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Aquapolis Entei, Kingdra, and Suicune rows appear in the local English WotC catalog as additional Nishida examples, so the artist note can say her catalog footprint reaches major creature cards without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Jynx is the Nishida row in this insert: a face-forward character card whose importance is less market thunder than source precision, because it anchors one third of the CoroCoro April 1998 trio.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 039, Japanese name ルージュラ, romaji Rougela, artist credit Atsuko Nishida, source-slice context, and provider-path reference-image limits before accepting a Jynx match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_1998_039_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Jynx, ルージュラ, Rougela, Atsuko Nishida, CoroCoro April 1998, unnumbered promo, or row 039.",
+          "summary": "Keep Jynx pinned to CoroCoro April 1998 row 039; artist credit and reference image are legible metadata, not physical-card proof.",
+          "steps": [
+            "Require row id jp_promo_corocoro_april_1998_19980315:039 or equivalent CoroCoro April 1998 source-slice evidence before naming this exact row.",
+            "Preserve Japanese name ルージュラ, romaji Rougela, and artist credit Atsuko Nishida as source-scoped metadata.",
+            "Keep provider-path reference image status bounded to manual review/catalog reference; do not treat it as seller evidence or image-rights approval.",
+            "Keep this row separate from other Jynx/Cubone/Farfetch'd releases, later promos, and English-name-only matches.",
+            "Check seller photos, physical format, distribution tells, and condition before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "same-art equivalence",
+            "English release equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Jynx — Atsuko Nishida in the CoroCoro April 1998 insert",
+        "why_it_matters": "Jynx is the Nishida row in this insert: a face-forward character card whose importance is less market thunder than source precision, because it anchors one third of the CoroCoro April 1998 trio.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_april_1998_19980315:040",
+      "type": "card",
+      "context": {
+        "name_en": "Cubone",
+        "name_ja": "カラカラ",
+        "romaji": "Karakara",
+        "normalized_label": "Cubone",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "local_id": "040",
+        "card_number": "040",
+        "artist": "Miki Tanaka"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_april_1998_19980315.json",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic April 1998 promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "snapshot_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "title": "Bulbapedia oldid source lines captured in local catalog: CoroCoro April 1998 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Aquapolis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: Neo Genesis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Cubone as row 040 in the CoroCoro Comic April 1998 promos source slice, with Japanese name カラカラ and romaji Karakara.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Cubone is part of the three-card April 1998 CoroCoro Comic insert lane modeled by the local source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row carries rarity/source signal Sans rareté for Cubone; this is catalog metadata, not a physical missing-symbol or authenticity proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local source-pinned row credits Cubone to Miki Tanaka, scoped as provider/source metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Aquapolis Victreebel and Neo Genesis Elekid/Horsea rows appear locally as additional Tanaka examples, showing a quiet range from expressive creature cards to small character moments without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Cubone gives the insert its ache. In a tiny magazine-distribution slice, Tanaka's credited row matters because the character already carries absence, memory, and childhood feeling in a way the catalog should not flatten.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 040, Japanese name カラカラ, romaji Karakara, artist credit Miki Tanaka, source-slice context, and provider-path reference-image limits before accepting a Cubone match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_1998_040_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Cubone, カラカラ, Karakara, Miki Tanaka, CoroCoro April 1998, unnumbered promo, or row 040.",
+          "summary": "Keep Cubone pinned to CoroCoro April 1998 row 040; artist credit and reference image are legible metadata, not physical-card proof.",
+          "steps": [
+            "Require row id jp_promo_corocoro_april_1998_19980315:040 or equivalent CoroCoro April 1998 source-slice evidence before naming this exact row.",
+            "Preserve Japanese name カラカラ, romaji Karakara, and artist credit Miki Tanaka as source-scoped metadata.",
+            "Keep provider-path reference image status bounded to manual review/catalog reference; do not treat it as seller evidence or image-rights approval.",
+            "Keep this row separate from other Jynx/Cubone/Farfetch'd releases, later promos, and English-name-only matches.",
+            "Check seller photos, physical format, distribution tells, and condition before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "same-art equivalence",
+            "English release equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Cubone — Miki Tanaka in the CoroCoro April 1998 insert",
+        "why_it_matters": "Cubone gives the insert its ache. In a tiny magazine-distribution slice, Tanaka's credited row matters because the character already carries absence, memory, and childhood feeling in a way the catalog should not flatten.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_april_1998_19980315:041",
+      "type": "card",
+      "context": {
+        "name_en": "Farfetch'd",
+        "name_ja": "カモネギ",
+        "romaji": "Kamonegi",
+        "normalized_label": "Farfetch'd",
+        "release_family_id": "jp_promo_corocoro_april_1998_19980315",
+        "local_id": "041",
+        "card_number": "041",
+        "artist": "Tomokazu Komiya"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_april_1998_19980315.json",
+          "title": "Local Japanese pre-English catalog: CoroCoro Comic April 1998 promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "snapshot_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&oldid=4433654",
+          "title": "Bulbapedia oldid source lines captured in local catalog: CoroCoro April 1998 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: Aquapolis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: Neo Genesis artist examples",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Farfetch'd as row 041 in the CoroCoro Comic April 1998 promos source slice, with Japanese name カモネギ and romaji Kamonegi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Farfetch'd is part of the three-card April 1998 CoroCoro Comic insert lane modeled by the local source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row carries rarity/source signal Sans rareté for Farfetch'd; this is catalog metadata, not a physical missing-symbol or authenticity proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local source-pinned row credits Farfetch'd to Tomokazu Komiya, scoped as provider/source metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Aquapolis Primeape/Tyrogue/Hitmonchan/Hitmontop/Mankey and Neo Genesis Slowpoke plus Trainer rows appear locally as additional Komiya examples, fitting his offbeat, hand-drawn presence in the catalog without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Farfetch'd is the Komiya row, and it has that perfect early-promo oddness: a common-looking bird with a leek becomes a source-slice landmark because the artist, magazine lane, and row number all line up.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 041, Japanese name カモネギ, romaji Kamonegi, artist credit Tomokazu Komiya, source-slice context, and provider-path reference-image limits before accepting a Farfetch'd match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_1998_041_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Farfetch'd, カモネギ, Kamonegi, Tomokazu Komiya, CoroCoro April 1998, unnumbered promo, or row 041.",
+          "summary": "Keep Farfetch'd pinned to CoroCoro April 1998 row 041; artist credit and reference image are legible metadata, not physical-card proof.",
+          "steps": [
+            "Require row id jp_promo_corocoro_april_1998_19980315:041 or equivalent CoroCoro April 1998 source-slice evidence before naming this exact row.",
+            "Preserve Japanese name カモネギ, romaji Kamonegi, and artist credit Tomokazu Komiya as source-scoped metadata.",
+            "Keep provider-path reference image status bounded to manual review/catalog reference; do not treat it as seller evidence or image-rights approval.",
+            "Keep this row separate from other Jynx/Cubone/Farfetch'd releases, later promos, and English-name-only matches.",
+            "Check seller photos, physical format, distribution tells, and condition before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source",
+            "complete magazine-object ledger",
+            "same-art equivalence",
+            "English release equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Farfetch'd — Tomokazu Komiya in the CoroCoro April 1998 insert",
+        "why_it_matters": "Farfetch'd is the Komiya row, and it has that perfect early-promo oddness: a common-looking bird with a leek becomes a source-slice landmark because the artist, magazine lane, and row number all line up.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

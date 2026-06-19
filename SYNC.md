@@ -55,6 +55,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-ninth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_april_1998_insert_v0_1.json`.
+  Japanese CoroCoro Comic April 1998 promos source slice now has complete
+  three-row hand-authored coverage for Jynx / ルージュラ / Rougela row 039,
+  Cubone / カラカラ / Karakara row 040, and Farfetch'd / カモネギ / Kamonegi
+  row 041. The pass frames the slice as three artists on a magazine insert:
+  CoroCoro as distribution machinery, and Atsuko Nishida, Miki Tanaka, and
+  Tomokazu Komiya as source-scoped visual credits inside one small promo lane.
+  Added `special_identification_instructions` requiring agents to preserve the
+  CoroCoro Comic April 1998 issue insert context, March 15, 1998 source date,
+  row ids 039-041, Japanese names, romaji, artist credits, provider-path
+  reference-image limits, and explicit source-boundary denials before accepting
+  a match. Artist `other_work` claims now cite local catalog examples only:
+  Nishida with Aquapolis Entei/Kingdra/Suicune rows; Tanaka with Aquapolis
+  Victreebel and Neo Genesis Elekid/Horsea rows; Komiya with Aquapolis
+  fighting-line rows plus Neo Genesis Slowpoke and Trainer rows. These are local
+  examples, not complete biographies or direct physical-card print proof. The
+  slice remains explicitly not a complete CoroCoro issue archive, complete
+  magazine-object ledger, later mail-in prize-draw source, counter/sheet variant
+  census, official copy-count authority, or image-rights grant. Sources: local
+  Japanese pre-English release file, selected Bulbapedia oldid lines captured in
+  that file, and local English WotC Aquapolis / Neo Genesis catalog examples.
+  Generated gap moved from 149 releases / 4,037 cards to 148 releases / 4,034
+  cards. Current catalog-history corpus:
+  `09fbcca84396e38b35521d1574614ffc2d68d9899ca534289aacd1876bb2d438`; index:
+  `d78942266b0dd2f04c84e9db32a612358698ba5aa71bbe20b9fb82f2c1664113`; queue:
+  `ef52fcdafdb0971bbfd9c9fe5a46bd6f6c820235eb4fd857f1f10bb367cb80b8`. Audit
+  counts: 23,082 claims, 5,727 sources, 61 hand-authored release dossiers, 515
+  hand-authored card dossiers, and 775 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_april_1998_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_best_photo_contest_v0_1.json`.
