@@ -1,0 +1,562 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Lucky Stadium [Onix], the Kyūshū World Challenge Summer participation-prize print, emphasizing the regional-stadium architecture of the 2000 Lucky Stadium campaign, the Onix / Mount Aso identity, the July 30, 2000 Fukuoka event, Ryuta Kusumi and Benimaru Itoh artwork, and traps against the other seven World Challenge Summer regional Lucky Stadium cards, the Tropical Mega Battle bilingual print, Neo Destiny, Intro Pack Neo, and Pokemon Center New York prints.",
+    "in_scope": [
+      "World Challenge Summer Kyūshū participation-prize release dossier",
+      "Lucky Stadium [Onix] unnumbered promotional row 166",
+      "World Challenge Summer 2000 regional Lucky Stadium family context",
+      "Ryuta Kusumi and Benimaru Itoh illustration credit",
+      "Kyūshū / Onix / Mount Aso identification rails"
+    ],
+    "not_claiming": [
+      "complete World Challenge event archive",
+      "official attendance count",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference",
+        "name_en": "World Challenge Summer participation prize (Kyūshū conference)",
+        "release_date": "2000-07-30",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "World Challenge Summer 2000 tournament participation prize",
+          "Kyūshū regional Lucky Stadium print",
+          "Onix mascot cue",
+          "Mount Aso landmark cue",
+          "Ryuta Kusumi / Benimaru Itoh artwork",
+          "regional-variant identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference:166",
+            "name": "Lucky Stadium [Onix] [Kyūshū]",
+            "why": "This is a chase because Lucky Stadium is not one card here; it is a map. The Kyūshū print makes tournament participation, a region, a landmark, and Onix's stone-body presence all count inside one Stadium card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ryuta Kusumi and Benimaru Itoh",
+            "row_count": 1,
+            "examples": [
+              "Lucky Stadium [Onix] [Kyūshū]"
+            ],
+            "why": "This credit matters because the card is not simply character art. It is cartography, event memory, and mascot placement: Onix has to belong to a specific regional stage, not just appear on a Trainer card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Lucky Stadium art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete World Challenge event archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Kyūshū World Challenge Summer participation-prize source group as one row containing Lucky Stadium at source index 166.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.context",
+          "text": "Bulbapedia says Lucky Stadium was first awarded to participants of the Japanese World Challenge Summer tournaments held between July and August 2000, with eight variations printed, each exclusive to a region of Japan.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia lists the Kyūshū print, featuring Onix, as available at the West Japan General Exhibition Center in Fukuoka on July 30, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies Lucky Stadium [Onix] [Kyūshū] as a World Challenge Summer participation prize and gives the same Kyūshū / Onix identity.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Lucky Stadium gallery credits the Kyūshū region print to Ryuta Kusumi and Benimaru Itoh.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits Lucky Stadium [Onix] [Kyūshū] to Benimaru Itoh and Ryuta Kusumi.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says all World Challenge Summer Lucky Stadium prints feature regional landmarks; the Kyūshū print features Mount Aso, Japan's largest active volcano.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.lineage",
+          "text": "Bulbapedia separates the regional World Challenge Summer prints from the Tropical Mega Battle bilingual print, Neo Destiny English print, Intro Pack Neo print, and Pokemon Center New York print, each of which has different artwork or route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Kyūshū print matters because it turns a tournament participation card into a regional postcard: Onix, Mount Aso, Fukuoka, and the World Challenge Summer route are all part of the card's identity.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Onix] [Kyūshū]: a tournament card as a map",
+        "why_it_matters": "The World Challenge Summer Lucky Stadium cards are wonderful because they make a card behave like a place. Kyūshū is not just a parenthetical label here: the Onix, Mount Aso, Fukuoka event route, and regional tournament memory are all load-bearing. It is the kind of promo where a collector is not only asking whether they have Lucky Stadium, but which piece of the 2000 Japan map they are holding.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete World Challenge event archive",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_kyushu_lucky_stadium_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A seller, collector, or agent identifies a Lucky Stadium as the World Challenge Summer Kyūshū participation-prize print.",
+          "summary": "Do not identify this row from Lucky Stadium name alone. The legible target is the Kyūshū regional participation prize: Onix + Kyūshū route + Mount Aso / Fukuoka event context.",
+          "steps": [
+            "Confirm the card is a Japanese World Challenge Summer Lucky Stadium regional print, not the English Neo Destiny 100/105 card.",
+            "Confirm the featured Pokemon is Onix; other regional World Challenge Summer prints feature Lugia, Ho-Oh, Gyarados, Zapdos, Diglett, Mew, or Pikachu.",
+            "Ask for clear front images of the regional artwork and any readable event/region text; Kyūshū should not be inferred from Lucky Stadium name alone.",
+            "Screen against the Tropical Mega Battle bilingual Lucky Stadium, Intro Pack Neo Lucky Stadium, Pokemon Center New York Lucky Stadium, and later Stadium cards before publishing a confident row match.",
+            "If a seller calls it 'Kyushu Lucky Stadium' but shows no Onix/region evidence, mark the identification provisional and ask for targeted photos.",
+            "Do not promote regional identity into authenticity, possession, condition, or price truth."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference.json",
+          "title": "Local release catalog: World Challenge Summer participation prize (Kyūshū conference)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/kyushu_luckystadium-onix_promo/",
+          "title": "PokeBoon: Lucky Stadium [Onix] [Kyūshū] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference:166",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference:166",
+        "release_family_id": "jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference",
+        "name_en": "Lucky Stadium [Onix] [Kyūshū]",
+        "name_ja": "ラッキースタジアム",
+        "romaji": "Lucky Stadium",
+        "release_date": "2000-07-30"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_profile": {
+        "authority_label": "local_catalog_fact_and_reference_fact",
+        "identity": "Lucky Stadium [Onix] [Kyūshū], World Challenge Summer participation-prize regional Stadium card",
+        "artist": "Ryuta Kusumi and Benimaru Itoh",
+        "mechanical_texture": [
+          "Trainer",
+          "Stadium",
+          "regional World Challenge Summer print",
+          "Onix featured Pokemon",
+          "Mount Aso landmark cue",
+          "participation prize"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors row 166 as Lucky Stadium in the World Challenge Summer Kyūshū participation-prize source group, with Onix as the row's distinguishing Pokemon signal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Lucky Stadium as a Stadium card and lists the Japanese name as ラッキースタジアム Lucky Stadium.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text for the Neo Destiny-style Lucky Stadium effect lets each player flip a coin once during their turn before attacking; on heads, that player draws a card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both associate the Kyūshū Onix Lucky Stadium artwork with Ryuta Kusumi and Benimaru Itoh.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "As judged art texture, the Kyūshū card works because Onix is not decoration; its stone-body identity rhymes with Mount Aso and makes the regional landmark feel like part of the Pokemon world.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ],
+          "not_claiming": [
+            "official art interpretation",
+            "all illustrator work",
+            "authentication",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Kyūshū print is one member of an eight-print World Challenge Summer regional set; Bulbapedia lists separate region/Pokemon pairings for Kantō/Lugia, Kansai/Ho-Oh, Hokkaidō/Pikachu, Chūbu/Zapdos, Hokushin'etsu/Mew, Chūgoku-Shikoku/Gyarados, and Tōhoku/Diglett.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Lucky Stadium [Onix] [Kyūshū] is the kind of card that rewards set-building discipline: the name is shared, the rules text is shared, but the region/Pokemon/artwork assembly is the collectible object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c6"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Onix] [Kyūshū]: holding one region of a map",
+        "why_it_matters": "This card asks the collector to slow down. Lucky Stadium is not enough. Onix is not enough. The Kyūshū print is the particular assembly: regional tournament, Fukuoka stop, Mount Aso landmark, Onix as stone-bodied mascot, and the shared Stadium mechanic underneath it. That is exactly the kind of object an agent should keep crisp: same title, different place, different memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official art interpretation",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_kyushu_lucky_stadium_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A card-level Lucky Stadium match is being prepared for a want, sale, dossier, or agent comparison.",
+          "summary": "The card name is too broad. Confirm the Kyūshū regional print by Onix, regional/event cues, and exclusion of the other Lucky Stadium routes.",
+          "steps": [
+            "Confirm the front artwork features Onix; this is the Kyūshū print's key Pokemon cue.",
+            "Ask for close images of any region/event text and the whole artwork field; do not infer Kyūshū from a seller title alone.",
+            "Compare against all other World Challenge Summer regional prints: Lugia, Ho-Oh, Gyarados, Zapdos, Diglett, Mew, and Pikachu variants.",
+            "Compare against the Tropical Mega Battle bilingual Lucky Stadium and ordinary Neo Destiny / Intro Pack Neo / New York City Lucky Stadium prints.",
+            "If the user provides only a cropped card title or a generic Lucky Stadium listing, mark the row match provisional and request full-front evidence.",
+            "Do not treat CGC/PSA population, auction title, or marketplace category as physical-card proof without matching images and seller evidence."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference.json#row:jp_promo_unnumbered_wotc_166_world_challenge_summer_participation_prize_ky_sh_conference:166",
+          "title": "Local catalog row: Lucky Stadium [Onix] / World Challenge Summer Kyūshū participation prize",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/kyushu_luckystadium-onix_promo/",
+          "title": "PokeBoon: Lucky Stadium [Onix] [Kyūshū] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

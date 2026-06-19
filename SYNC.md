@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_kyushu_lucky_stadium_v0_1.json`
+  deepens row 166 / Lucky Stadium `[Onix] [Kyūshū]` from the World Challenge Summer
+  participation-prize route. The pass keeps the local catalog row as anchor while surfacing
+  the externally sourced event date/place: July 30, 2000 at the West Japan General Exhibition
+  Center in Fukuoka. Onix, Mount Aso, Kyūshū, Ryuta Kusumi, Benimaru Itoh, Stadium-card text,
+  and the eight-region Lucky Stadium structure are now legible. Special ID rails separate it
+  from the other World Challenge Summer regional prints, Tropical Mega Battle bilingual Lucky
+  Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New York, and generic Lucky Stadium rows.
+  Generated gaps moved to 76 release / 3902 card. Current hashes: corpus
+  `e9966f18daa2e77b32ea10db13a6c36927656cb6a68c0237809e2def26e0361d`, index
+  `0cec7ebd9ac6b705753bdbaaea1500ec1e78ba75902ced34f4509b18a84d109f`, queue
+  `cfe356dc528e513b1ebb9bf9447f21a52b3f22b1d3a3332923d75bf059dfb90c`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twelfth
   catalog-history pass:
   `data/catalog-history/source-sets/gotta_comic_august_2000_french_pikachu_v0_1.json`
