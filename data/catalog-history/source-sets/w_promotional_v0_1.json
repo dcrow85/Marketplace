@@ -1,0 +1,1198 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "W Promotional",
+    "release_family_id": "en_wotc_w_promotional_19990901",
+    "notes": [
+      "English WotC-era supplemental stamped-promo source set.",
+      "This source set deepens the seven modeled W Promotional rows and treats the gold W stamp as a legible identity rail, not as authentication."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_w_promotional_19990901",
+      "type": "release",
+      "context": {
+        "name_en": "W Promotional",
+        "name_ja": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "release_date": "1999-09-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json",
+          "title": "Local English supplemental WotC catalog: W Promotional",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_manifest",
+          "ref": "data/english-supplemental-wotc/manifest.json",
+          "title": "Local English supplemental WotC manifest",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card verification",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models W Promotional with a September 1, 1999 release date.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and manifest model seven W Promotional stamped-promo rows.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local rows frame W Promotional as stamped cards drawn from existing English source sets and distributed through magazine, league, and giveaway routes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The W Promotional identity depends on two pieces at once: the underlying source card and the stylized gold foil W stamp. The unstamped source expansion card is not enough.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "W Promotional is interesting because it turns ordinary set cards into evidence of early English Pokemon distribution infrastructure: Duelist and Top Deck magazines, regional league use, and brand-partner giveaways.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "The special identification instruction for this release is to preserve the W stamp, the source set identity, and the distribution note as separate legible facts before an agent treats a scan or listing as a W Promotional row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_release_gold_w_stamp_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says W Promotional, W stamp, gold W stamp, stamped Pikachu, stamped Dark Arbok, stamped Brock's Vulpix, or Top Deck / Duelist promo.",
+          "summary": "Treat W Promotional as a stamped source-card identity: confirm the underlying card and the gold W stamp before using the row.",
+          "steps": [
+            "Identify the underlying English source card named by the W Promotional row.",
+            "Confirm the visible stylized gold foil W stamp on the card front.",
+            "Preserve the distribution route when supplied, such as magazine issue, league route, regional giveaway, or Kraft Australia route.",
+            "Do not merge the row with the unstamped source expansion card or with a different stamped promo family.",
+            "For transactional use, ask for close photos of the W stamp, card name, set/number area, back, surface, and any packaging or provenance claimed by the seller."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "price truth",
+            "complete distribution ledger"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The little gold W as a distribution fossil",
+        "why_it_matters": "W Promotional is small, but it shows a very early English Pokemon machine learning how to reach people. A Jungle Pikachu, a Fossil Kabuto, a Team Rocket Dark Arbok, a Gym card: the card face is familiar, then a small gold W turns it into a trace of magazines, leagues, and giveaways. The stamp is the story, but only if the agent keeps it separate from the ordinary card underneath.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-jungle-60",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-jungle-60",
+        "catalog_row_id": "wp-jungle-60"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-jungle-60",
+          "title": "Local English supplemental WotC catalog row: W Promotional Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Pikachu as the stamped card derived from Jungle number 60.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records The Duelist Magazine, September 1999, as the distribution note for W Promotional Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier therefore leaves the artist unset instead of importing an unstamped Jungle-row credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This Pikachu matters because the mascot is being routed through an early English hobby-publication channel: the familiar Jungle card becomes a magazine-contact artifact when the W stamp is present.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "An agent should not accept a generic Jungle Pikachu as this row; it needs the Jungle 60 identity and the W stamp visible as separate legible features.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_pikachu_jungle_60_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Pikachu, Duelist Pikachu, Jungle Pikachu W, or W Promotional Pikachu.",
+          "summary": "Confirm Jungle Pikachu 60 and the gold W stamp before treating the card as W Promotional Pikachu.",
+          "steps": [
+            "Confirm the underlying card is English Jungle Pikachu number 60.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep The Duelist Magazine September 1999 route as a distribution note, not as proof of physical provenance.",
+            "Do not merge with unstamped Jungle Pikachu or other early Pikachu promos.",
+            "For a trade, ask for close photos of the W stamp, the card number/set area, the full front, the back, and surface/edge condition."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Duelist copy provenance",
+            "other Pikachu equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A magazine mark on the mascot",
+        "why_it_matters": "This is the cleanest W Promotional story: everyone recognizes Jungle Pikachu, but the little gold W changes the job of the card. It stops being only a set card and starts being a record of how early English Pokemon reached hobby readers. The whole trick is not to let the mascot swallow the stamp.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-fossil-50",
+      "type": "card",
+      "context": {
+        "name_en": "Kabuto",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-fossil-50",
+        "catalog_row_id": "wp-fossil-50"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-fossil-50",
+          "title": "Local English supplemental WotC catalog row: W Promotional Kabuto",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Kabuto as the stamped card derived from Fossil number 50.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Top Deck Magazine, December 1999, as the distribution note for W Promotional Kabuto.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Kabuto is a quieter W Promotional row, which is useful: it shows the stamp program was not only chase mascots, but ordinary set memory passing through magazine distribution.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_kabuto_fossil_50_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Kabuto, Top Deck Kabuto, Fossil Kabuto W, or W Promotional Kabuto.",
+          "summary": "Confirm Fossil Kabuto 50 and the gold W stamp before treating the card as W Promotional Kabuto.",
+          "steps": [
+            "Confirm the underlying card is English Fossil Kabuto number 50.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Top Deck Magazine December 1999 as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Fossil Kabuto.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Top Deck copy provenance",
+            "unstamped Fossil equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A quiet fossil with a loud route",
+        "why_it_matters": "Kabuto is not the glamorous reason people open a W Promotional search, and that is why it is revealing. The stamp did not just chase mascots. It touched the ordinary Fossil binder row too, turning a humble fossil card into a magazine-route artifact.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-base-set-2-63",
+      "type": "card",
+      "context": {
+        "name_en": "Wartortle",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-base-set-2-63",
+        "catalog_row_id": "wp-base-set-2-63"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-base-set-2-63",
+          "title": "Local English supplemental WotC catalog row: W Promotional Wartortle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Wartortle as the stamped card derived from Base Set 2 number 63.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Top Deck Magazine, March 2000, as the distribution note for W Promotional Wartortle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Wartortle makes the W stamp feel like a second life for familiar printed material: Base Set 2 already recomposed earlier memory, and the magazine stamp adds another route on top.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_wartortle_base_set_2_63_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Wartortle, Top Deck Wartortle, Base Set 2 Wartortle W, or W Promotional Wartortle.",
+          "summary": "Confirm Base Set 2 Wartortle 63 and the gold W stamp before treating the card as W Promotional Wartortle.",
+          "steps": [
+            "Confirm the underlying card is English Base Set 2 Wartortle number 63.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Top Deck Magazine March 2000 as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Base Set 2 Wartortle or earlier Wartortle printings.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Top Deck copy provenance",
+            "other Wartortle equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A reprint memory with another mark",
+        "why_it_matters": "Wartortle is a neat little stack of history. Base Set 2 already says Pokemon was re-circulating its early images for a widening audience; the W stamp says that same printed memory also moved through magazine promotion. For an agent, the row only makes sense if both layers stay visible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-team-rocket-19",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Arbok",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-team-rocket-19",
+        "catalog_row_id": "wp-team-rocket-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-team-rocket-19",
+          "title": "Local English supplemental WotC catalog row: W Promotional Dark Arbok",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Dark Arbok as the stamped card derived from Team Rocket number 19.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Hong Kong Pokemon League, February 2001, as the distribution note for W Promotional Dark Arbok.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Arbok is the W Promotional row where the villain-era card face meets a regional league route, making the stamp feel less like decoration and more like a passport mark.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_dark_arbok_team_rocket_19_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Dark Arbok, Hong Kong League Dark Arbok, Team Rocket Dark Arbok W, or W Promotional Dark Arbok.",
+          "summary": "Confirm Team Rocket Dark Arbok 19 and the gold W stamp before treating the card as W Promotional Dark Arbok.",
+          "steps": [
+            "Confirm the underlying card is English Team Rocket Dark Arbok number 19.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Hong Kong Pokemon League February 2001 as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Team Rocket Dark Arbok.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Hong Kong League provenance",
+            "unstamped Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A Rocket card with a travel mark",
+        "why_it_matters": "Dark Arbok already carries the Team Rocket mood, but the W stamp puts that mood into motion. The card becomes a small object from an English-language Pokemon world that was not only American or booster-pack shaped. The route matters as much as the snake.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-team-rocket-32",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charmeleon",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-team-rocket-32",
+        "catalog_row_id": "wp-team-rocket-32"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-team-rocket-32",
+          "title": "Local English supplemental WotC catalog row: W Promotional Dark Charmeleon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Dark Charmeleon as the stamped card derived from Team Rocket number 32.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Kraft Giveaway, Australia, as the distribution note for W Promotional Dark Charmeleon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Charmeleon gives the W Promotional family a brand-partner route, with a Team Rocket evolution card moving through the Australian Kraft giveaway note.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_dark_charmeleon_team_rocket_32_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Dark Charmeleon, Kraft Dark Charmeleon, Team Rocket Dark Charmeleon W, or W Promotional Dark Charmeleon.",
+          "summary": "Confirm Team Rocket Dark Charmeleon 32 and the gold W stamp before treating the card as W Promotional Dark Charmeleon.",
+          "steps": [
+            "Confirm the underlying card is English Team Rocket Dark Charmeleon number 32.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Kraft Giveaway Australia as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Team Rocket Dark Charmeleon or other Charmeleon rows.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Kraft giveaway provenance",
+            "other Charmeleon equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The giveaway dragonling",
+        "why_it_matters": "Dark Charmeleon is not Charizard, but collectors know why the line pulls attention. In W Promotional, that attention is useful only if it stays attached to the route: Team Rocket card, gold W stamp, Australian Kraft giveaway note. The route keeps the row honest.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-gym-heroes-54",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Psyduck",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-gym-heroes-54",
+        "catalog_row_id": "wp-gym-heroes-54"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-gym-heroes-54",
+          "title": "Local English supplemental WotC catalog row: W Promotional Misty's Psyduck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Misty's Psyduck as the stamped card derived from Gym Heroes number 54.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Top Deck Magazine, August 2000, as the distribution note for W Promotional Misty's Psyduck.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Psyduck shows the W stamp crossing into Gym-owner identity: the stamp is not only over a species, but over the character relationship that made Gym-era cards feel personal.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_mistys_psyduck_gym_heroes_54_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Misty's Psyduck, Top Deck Misty's Psyduck, Gym Heroes Misty's Psyduck W, or W Promotional Misty's Psyduck.",
+          "summary": "Confirm Gym Heroes Misty's Psyduck 54 and the gold W stamp before treating the card as W Promotional Misty's Psyduck.",
+          "steps": [
+            "Confirm the underlying card is English Gym Heroes Misty's Psyduck number 54.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Top Deck Magazine August 2000 as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Gym Heroes Misty's Psyduck or other Psyduck rows.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Top Deck copy provenance",
+            "other Psyduck equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty's card, magazine-routed",
+        "why_it_matters": "Misty's Psyduck has that Gym-era charm: not just Psyduck, but Misty's Psyduck. The W stamp layers a distribution route over that ownership grammar. It is a small card identity stack, and that stack is exactly what an agent has to preserve.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_w_promotional_19990901:wp-gym-challenge-37",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Vulpix",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_w_promotional_19990901",
+        "row_id": "en_wotc_w_promotional_19990901:wp-gym-challenge-37",
+        "catalog_row_id": "wp-gym-challenge-37"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json#row:en_wotc_w_promotional_19990901:wp-gym-challenge-37",
+          "title": "Local English supplemental WotC catalog row: W Promotional Brock's Vulpix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=W_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: W Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local W Promotional row identifies Brock's Vulpix as the stamped card derived from Gym Challenge number 37.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Top Deck Magazine, March 2001, as the distribution note for W Promotional Brock's Vulpix.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current supplemental W Promotional source row does not provide an illustrator credit for this stamped slice; the dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Brock's Vulpix closes the W Promotional run with Gym Challenge identity and Top Deck routing: a late W-stamped card where trainer ownership, fox appeal, and magazine contact all overlap.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "w_promotional_brocks_vulpix_gym_challenge_37_stamp_boundary_v0.1",
+          "trigger": "A user or listing says W stamp Brock's Vulpix, Top Deck Brock's Vulpix, Gym Challenge Brock's Vulpix W, or W Promotional Brock's Vulpix.",
+          "summary": "Confirm Gym Challenge Brock's Vulpix 37 and the gold W stamp before treating the card as W Promotional Brock's Vulpix.",
+          "steps": [
+            "Confirm the underlying card is English Gym Challenge Brock's Vulpix number 37.",
+            "Confirm a visible stylized gold W stamp on the card front.",
+            "Keep Top Deck Magazine March 2001 as a distribution note, not as physical provenance by itself.",
+            "Do not merge with unstamped Gym Challenge Brock's Vulpix or other Vulpix rows.",
+            "For a trade, ask for close photos of the W stamp, set/number area, full front, and back."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "Top Deck copy provenance",
+            "other Vulpix equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A little fox at the end of the trail",
+        "why_it_matters": "Brock's Vulpix is the softest-looking card in the W Promotional group, and maybe the best reminder that the stamp is doing serious catalog work. Without it, this is a Gym Challenge card. With it, it is also a late Top Deck route marker from the English W era.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "stamp authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

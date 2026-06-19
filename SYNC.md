@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fortieth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/w_promotional_v0_1.json`. English WotC
+  W Promotional is now a complete hand-authored seven-card stamped-promo
+  dossier: Pikachu / Jungle 60, Kabuto / Fossil 50, Wartortle / Base Set 2
+  63, Dark Arbok / Team Rocket 19, Dark Charmeleon / Team Rocket 32,
+  Misty's Psyduck / Gym Heroes 54, and Brock's Vulpix / Gym Challenge 37.
+  The pass treats the stylized gold foil W stamp as a first-class
+  `special_identification_instructions` rail: agents must preserve the
+  underlying source-card identity, the visible W stamp, and any supplied
+  distribution route separately before using the row. Added no-overclaim
+  language on every row that the catalog can guide what to inspect but does
+  not prove stamp authenticity, seller possession, condition, price, or
+  physical provenance. Artists remain intentionally unset because the
+  supplemental W Promotional source rows do not provide illustrator authority;
+  no unstamped source-set artist credits were imported. Sources: local English
+  supplemental WotC W Promotional catalog, local English supplemental WotC
+  manifest, and Bulbapedia raw W Promotional wikitext. Generated gap moved
+  from 168 releases / 4,228 cards to 167 releases / 4,221 cards. Current
+  catalog-history corpus: 22,796 claims, 5,550 sources, 617 dossiers with
+  special identification instructions, corpus hash
+  `05af7e903c1ae2f9d0202b4c62b28d44c5bd4f98feed23f9057154abd4e2523f`;
+  index hash `00acaf4501693f2fd93fea481e2507099edb9706a0c1a01ed19bc06c978c6c56`;
+  queue hash `66feb6cfad8b4de9f1d23b5d87485dbed6afb516a3142608e20307c209a6b544`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-ninth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/sample_set_new_york_v0_1.json`.
