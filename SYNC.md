@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundredth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/secret_super_battle_1999_regional_trainers_v0_1.json`.
+  The 1999 Secret Super Battle regional podium rows now have hand-authored
+  release and card coverage for No.1 Trainer row 113, No.2 Trainer row 114,
+  and No.3 Trainer row 115. The pass treats these as Challenge Road '99
+  SUMMER / Secret Super Battle senior-division trophy routes rather than
+  generic recurring Trainer titles: source indices 113-115, regional
+  first/second/third place ranks, Mewtwo-silhouette visual identity,
+  secret-final invitation texture, and Hideki Kazama source-reference art
+  context remain legible without claiming official copy counts, possession,
+  authenticity, condition, price, image rights, or spendability. Added bespoke
+  `special_identification_instructions` on each release and card dossier so
+  agents must preserve route, rank, source index, senior-division Secret Super
+  Battle context, Mewtwo-silhouette identity, and non-equivalence with Tropical
+  Mega Battle, Kamex Mega Battle, World Challenge Secret Super Battle, Best in
+  Japan, Neo Road, Battle Road, and Worlds trophy memories before accepting a
+  match. Sources: local Japanese unnumbered promo release files, Bulbapedia raw
+  unnumbered-promo rows, Bulbapedia No.1 Trainer page, Pokumon Challenge Road
+  1999 SUMMER/AUTUMN reference, and Heritage's Secret Super Battle No.1 Trainer
+  collector description. Generated gap moved from 92 releases / 3,918 cards to
+  89 releases / 3,915 cards. Current catalog-history corpus:
+  `75b697ed3439b13291290d82127c889269e9acb432236495414377e2053b324a`;
+  index: `d5a0ca98bb6cb6ecca4cefdb90f78cfc65faa26d0b24cb9dce912cc47251ca7d`;
+  queue: `5a8b073042ceca399cf7e0d8ff212ea4d9608835f6dc83e1650c2d8506a62659`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-ninth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/tropical_mega_battle_1999_regional_trainers_v0_1.json`.
