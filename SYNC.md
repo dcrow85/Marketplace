@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/fan_club_get_point_prize_ladder_v0_1.json`.
+  The Pokemon Card Fan Club GET point prize ladder now has hand-authored
+  coverage for three point-redemption rows: 500 GET Eevee row 160, 600 GET
+  Shining Magikarp row 235, and 700 GET Porygon row 161. The pass frames the
+  cards as club-ledger objects: participation points, campaign logos,
+  rarity-symbol absence, and print-route boundaries do the identity work before
+  any seller evidence can become useful. Added bespoke
+  `special_identification_instructions` requiring agents to preserve exact GET
+  threshold, row identity, Japanese/romaji names (`イーブイ` / Eievui,
+  `ひかるコイキング` / Hikaru Koiking, `ポリゴン` / Porygon), artist context
+  (Toshinao Aoki, Ken Sugimori, Tomoaki Imakuni), and non-equivalence with JR
+  East Eevee, English Wizards / League Eevee, Neo Revelation / Awakening
+  Legends Shining Magikarp, Cool Porygon, Base/Gift Pack Porygon, and later
+  character memories before accepting a match. Sources: local Japanese
+  unnumbered promo release files, Bulbapedia raw unnumbered promotional rows
+  160/161/235, and Bulbapedia card pages for Eevee Wizards Promo 11, Shining
+  Magikarp Neo Revelation 66, and Porygon Fan Club promo as bounded database
+  references. Generated gap moved from 118 releases / 3,934 cards to 115
+  releases / 3,931 cards. Current catalog-history corpus:
+  `a718fb758573c85b7023d79172c6abc82ae326a7a2dac8a8c5b759924c57ec56`;
+  index: `9db47fa93778b504e12cbda23f3d71a2733acd40ad11fa0d93bde57a370ce0ab`;
+  queue: `ad3aa4a50fca861327ad89b41438f127cac770a8b86910171e6fb15d6e372c1e`.
+  Audit counts: 23,265 claims, 6,099 sources, 94 hand-authored release
+  dossiers, 618 hand-authored card dossiers, and 865 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/fan_club_get_point_prize_ladder_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/jr_stamp_rally_2000_west_east_prizes_v0_1.json`.
