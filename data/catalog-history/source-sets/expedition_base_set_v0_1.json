@@ -1,0 +1,991 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Expedition Base Set and five rows that expose the e-Card transition.",
+    "in_scope": [
+      "Expedition Base Set release dossier",
+      "Blastoise 4",
+      "Charizard 6",
+      "Charizard 39",
+      "Mew 19",
+      "Tyranitar 29"
+    ],
+    "not_claiming": [
+      "complete Expedition scholarship",
+      "complete e-Reader technical documentation",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_expedition_base_set_20020915",
+      "type": "release",
+      "context": {
+        "name_en": "Expedition Base Set",
+        "name_ja": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "release_date": "2002-09-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json",
+          "title": "Local English WoC release catalog: Expedition Base Set",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard1",
+          "title": "Pokémon TCG API v2 set record: Expedition Base Set",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete design history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Expedition_Base_Set_(TCG)",
+          "title": "Bulbapedia: Expedition Base Set (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API model Expedition Base Set with a September 15, 2002 English release date; Bulbapedia also states the English expansion was released on September 15, 2002.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokémon TCG API both model 165 Expedition Base Set rows for set id ecard1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Expedition Base Set as the first main English expansion of the e-Card Series and says the Japanese counterpart was Base Expansion Pack, the first expansion of the Pokémon Card Game e-Card Era.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Expedition Base Set introduced Technical Machine cards, split Pokémon Power into Poké-Power and Poké-Body, and redesigned the card frame with enlarged left and bottom borders for Nintendo e-Reader Dot Code technology.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says the e-Reader could show Pokédex data, play minigames or tunes, and activate hidden attacks, while hidden attacks were not legal for tournament play.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows for Expedition include Mew, Mewtwo, Raichu, Tyranitar, Venusaur, Blastoise, Charizard, Dragonite, Feraligatr, Gengar, and the three Kanto final evolutions across holo and non-holo rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Expedition are led by Atsuko Nishida, Hajime Kusajima, Kagemaru Himeno, Kyoko Umemoto, Tomokazu Komiya, and Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Expedition matters because the card stops being only a printed game object and becomes an interface: it still carries chase monsters and artist memory, but the border itself now stores machine-readable contact with a Game Boy Advance accessory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_ereader_dot_code_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader strip readability from catalog data"
+          ],
+          "steps": [
+            "Confirm the set id ecard1 and row number before importing Expedition context.",
+            "Preserve holo, non-holo, and reverse-holo status separately; many chase Pokémon have more than one Expedition row.",
+            "If a buyer cares about the e-Reader feature, ask for clear images of the left and bottom Dot Code borders rather than assuming scanability from catalog identity.",
+            "Do not treat hidden e-Reader attacks as tournament-legal gameplay without an explicit legality source."
+          ],
+          "summary": "Expedition identification is row plus interface: the e-Reader border is part of the card's identity, but catalog data does not prove a seller's strip is readable.",
+          "trigger": "Identifying Expedition Base Set cards or comparing holo/non-holo e-Card rows."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When the border became a machine",
+        "why_it_matters": "Expedition is a beautiful hinge. The old Wizards chase language is still there: Charizard, Blastoise, Mew, Tyranitar, Venusaur. But the card frame has changed its job. The fat left and bottom borders are not just design; they are an attempt to make cardboard speak to hardware. For a catalog about assembly, Expedition is where the object admits it wants to be read by more than human eyes.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-4",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-4",
+        "catalog_row_id": "ecard1-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-4",
+          "title": "Local Expedition row: Blastoise 4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-4",
+          "title": "Pokémon TCG API v2 card record: Blastoise ecard1-4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Expedition_4)",
+          "title": "Bulbapedia: Blastoise (Expedition 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Blastoise 4 as a Rare Holo Expedition Stage 2 Pokémon row illustrated by Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Blastoise 4 with the Poké-Power Jet Stream and the attack Energy Cannon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Blastoise holo print has e-Reader card ID B-77 and the non-holo print has card ID B-77-#, with the species, height, and weight present on the holo print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blastoise 4 is an ideal Expedition specimen because the same character memory now depends on row, finish, Poké-Power text, and e-Reader strip context rather than name alone.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_blastoise_4_holo_strip_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader strip readability"
+          ],
+          "steps": [
+            "Confirm row 4 rather than row 37 before applying holo-print context.",
+            "Check whether the seller's card is holo, non-holo, or reverse holo; do not assume from the name Blastoise.",
+            "Ask for clear left/bottom border images if e-Reader strip condition matters.",
+            "Keep Kimiya Masago credit as catalog metadata, not physical-card proof."
+          ],
+          "summary": "Expedition Blastoise needs finish and row clarity because the holo/non-holo e-Reader identities are close but not interchangeable.",
+          "trigger": "A buyer or seller references Expedition Blastoise."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The cannon turtle in machine-readable dress",
+        "why_it_matters": "Expedition Blastoise still has the blunt old appeal of a Kanto final evolution. What changes is the wrapper: Poké-Power, e-Reader IDs, border codes, holo/non-holo identity. The card teaches an agent to look at the apparatus around the monster.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-6",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-6",
+        "catalog_row_id": "ecard1-6"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-6",
+          "title": "Local Expedition row: Charizard 6",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-6",
+          "title": "Pokémon TCG API v2 card record: Charizard ecard1-6",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Charizard 6 as a Rare Holo Expedition Stage 2 Pokémon row illustrated by Hiromichi Sugiyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Charizard 6 with the Poké-Power Burning Energy and the attack Scorching Whirlwind.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local catalog also contains Expedition Charizard rows 39 and 40, so Charizard 6 should not be treated as the only Expedition Charizard identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Charizard 6 keeps the familiar chase-monster gravity while Expedition changes the grammar around it: a Poké-Power, an e-Card frame, and a separate non-holo row mean the agent has to preserve row-level identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_charizard_6_vs_39_40_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Expedition Charizard rows are the same card"
+          ],
+          "steps": [
+            "Confirm whether the listing is row 6, 39, or 40 before importing art, attack, or value context.",
+            "For row 6, preserve Rare Holo status, Hiromichi Sugiyama credit, Burning Energy, and Scorching Whirlwind.",
+            "Ask for images of the row number and e-Reader borders if the seller only says Expedition Charizard.",
+            "Do not let Charizard's character gravity erase the row distinction."
+          ],
+          "summary": "Expedition Charizard is a row-identity trap: row 6, row 39, and row 40 carry different card contexts.",
+          "trigger": "A buyer or seller says Expedition Charizard without row number or image clarity."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The familiar fire with new machinery",
+        "why_it_matters": "Charizard makes every set louder, but Expedition asks for more discipline than awe. Row 6 is not just 'the Expedition Charizard'; it is the holo Poké-Power version, sitting beside other Charizard rows in a machine-readable frame.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-39",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-39",
+        "catalog_row_id": "ecard1-39"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-39",
+          "title": "Local Expedition row: Charizard 39",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-39",
+          "title": "Pokémon TCG API v2 card record: Charizard ecard1-39",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Expedition_39)",
+          "title": "Bulbapedia: Charizard (Expedition 39)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Charizard 39 as a Rare Expedition Stage 2 Pokémon row illustrated by Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Charizard 39 with Tail Smash and Flamethrower rather than the Burning Energy / Scorching Whirlwind package on Charizard 6 and 40.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the English Charizard 39 print mistakenly says 'Put Charizard on the Basic Pokémon' instead of Stage 1 Pokémon.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Charizard 39 has two prints: the non-holo print has card ID A-12-#, while the holofoil print has card ID A-12.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard 39 is the variant trap inside the chase: it is a Charizard, but its artist, attacks, error text, and e-Reader ID context differ from the other Expedition Charizard rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_charizard_39_error_text_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all English copies have identical visible condition",
+            "catalog error note proves a seller image"
+          ],
+          "steps": [
+            "Confirm row 39 and look for Tail Smash / Flamethrower before applying the documented error-text context.",
+            "Do not import Burning Energy / Scorching Whirlwind from Charizard 6 or 40 onto row 39.",
+            "Ask for a clear image of the evolution text area if the error matters to the buyer.",
+            "Keep the Atsuko Nishida credit separate from the Hiromichi Sugiyama Charizard rows."
+          ],
+          "summary": "Charizard 39 is not just another Expedition Charizard; its attack package, artist credit, and documented English evolution-text error need row-specific handling.",
+          "trigger": "A listing references Expedition Charizard 39, error text, or a non-holo Charizard without clear row evidence."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The Charizard that punishes shortcuts",
+        "why_it_matters": "This is the card an overconfident agent would flatten. It says Charizard, but the real story is in the row: Atsuko Nishida, Tail Smash, Flamethrower, e-Reader ID, and a famous little evolution-text mistake. The name is loud; the evidence is quiet.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-19",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-19",
+        "catalog_row_id": "ecard1-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-19",
+          "title": "Local Expedition row: Mew 19",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-19",
+          "title": "Pokémon TCG API v2 card record: Mew ecard1-19",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mew_(Expedition_19)",
+          "title": "Bulbapedia: Mew (Expedition 19)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Mew 19 as a Rare Holo Expedition Basic Pokémon row illustrated by Hajime Kusajima.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Mew 19 with the attack Super Psywave.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the holofoil Expedition Mew print has card ID B-85, while the non-holo Expedition print and P Promotional print have card ID B-85-#.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the non-holo Expedition Mew print and P Promotional print include short-strip information about Pokédex data, a brief card summary, and long-strip content; the species, height, and weight are present on the holofoil Expedition print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mew 19 turns Expedition's interface story into a chase-card problem: the mythic Pokémon is still the draw, but the holo/non-holo/P Promo e-Reader data distinctions become part of what the card is.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_mew_19_55_promo_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Mew 19, Mew 55, and P Promotional Mew are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Expedition row 19, Expedition row 55, or a P Promotional print before using the e-Reader ID context.",
+            "Preserve holofoil status for row 19 and do not assume it from the name Mew.",
+            "Ask for clear strip and row-number images if the buyer cares about e-Reader data or print identity.",
+            "Treat long-strip/hidden-content references as catalog context, not proof that a seller's physical card scans."
+          ],
+          "summary": "Expedition Mew requires row, finish, and e-Reader data context; the name alone is much too broad.",
+          "trigger": "A buyer or seller says Expedition Mew, Mew 19, Mew 55, or P Promotional Mew."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The myth in the strip",
+        "why_it_matters": "Mew is already a perfect collector creature: rare, soft, a little impossible. Expedition adds another layer of impossibility by making the card carry machine-readable data. The wonder is no longer only in the art window; it is in the strip beside it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-29",
+      "type": "card",
+      "context": {
+        "name_en": "Tyranitar",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-29",
+        "catalog_row_id": "ecard1-29"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-29",
+          "title": "Local Expedition row: Tyranitar 29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-29",
+          "title": "Pokémon TCG API v2 card record: Tyranitar ecard1-29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tyranitar_(Expedition_29)",
+          "title": "Bulbapedia: Tyranitar (Expedition 29)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Tyranitar 29 as a Rare Holo Expedition Stage 2 Darkness Pokémon row illustrated by Kimiya Masago.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Tyranitar 29 with the Poké-Body Dark Aura and the attack Stamp.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Tyranitar 29 was included as holofoil and non-holofoil in Expedition and that a reverse-holo jumbo print was released as a box topper in English booster boxes.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the holofoil and box-topper Tyranitar prints have card ID B-95, while the non-holo print has card ID B-95-#.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Tyranitar 29 is Expedition's heavy Johto presence: the card brings Darkness typing, Poké-Body vocabulary, and a box-topper branch into one row family.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_tyranitar_box_topper_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "standard-size holo and jumbo box topper are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is standard-size row 29, standard-size row 66, or the reverse-holo jumbo box topper.",
+            "Preserve Dark Aura / Stamp context for the Tyranitar 29 family.",
+            "Ask for scale or surrounding-object evidence if a seller image could be jumbo or standard-size.",
+            "Do not treat e-Reader card ID B-95 alone as enough to distinguish standard holo from box topper without size/format evidence."
+          ],
+          "summary": "Expedition Tyranitar has standard and box-topper branches; size, row, finish, and e-Reader ID all matter.",
+          "trigger": "A listing references Expedition Tyranitar, a box topper, jumbo print, or card ID B-95."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mountain-breaker gets a second format",
+        "why_it_matters": "Tyranitar is already built like a warning sign. Expedition makes that warning multi-format: holo, non-holo, and jumbo box topper orbit the same heavy Johto identity. For an agent, the fun is also the danger: one monster, several physical meanings.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

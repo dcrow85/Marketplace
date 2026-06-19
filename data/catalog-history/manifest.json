@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22945,
-    "corpus_hash": "0ec101102b0bf36e85d3f2f0848d0988678813932cc9fa99fd2b682a1c038bd7",
-    "generated_card_dossier_count": 4533,
-    "generated_release_dossier_count": 204,
+    "claim_count": 22944,
+    "corpus_hash": "7039d035e634b48654e5542776e3ba7de5fff00d1d94eb981facd0e9d0141658",
+    "generated_card_dossier_count": 4528,
+    "generated_release_dossier_count": 203,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 4793
+    "source_count": 4804
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "d77381336e290adaab7127b22181e246cd60d73e2ae3b665c45ee67c1c21e5e8",
+    "queue_hash": "f2b331f971fba3d423188425070699042d3226596aabd636bf52071b9ec93383",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T01:28:14Z",
+  "generated_at": "2026-06-19T01:35:31Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "ee4912d0858396b5f6a929f50faba4cb4f43cd508577e59f75ea205398f1d364",
+    "index_hash": "a9b68ba38d42e5a81fe0489597b904924e1374c61a5c324de4d7007a1a2572cc",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -41,6 +41,7 @@
   ],
   "schema": "marketplace.catalog_history_manifest.v0.1",
   "source_sets": [
+    "data/catalog-history/source-sets/expedition_base_set_v0_1.json",
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/team_rocket_v0_1.json",

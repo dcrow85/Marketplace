@@ -55,6 +55,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fourth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`.
+  Expedition Base Set is now a hand-authored release dossier, with Blastoise
+  4, Charizard 6, Charizard 39, Mew 19, and Tyranitar 29 promoted from
+  generated baseline to sourced card dossiers. The pass frames Expedition as
+  the e-Card hinge: old Wizards chase gravity inside a machine-readable card
+  frame. Added special identification rails for e-Reader Dot Code/scanability,
+  holo vs non-holo row identity, multiple Expedition Charizard rows, Charizard
+  39's documented English evolution-text error, Mew 19/55/P Promo context, and
+  Tyranitar standard vs jumbo box-topper branches. Sources: local English WoC
+  catalog, Pokémon TCG API v2 set/card endpoints, and Bulbapedia community
+  pages for Expedition Base Set, Blastoise 4, Charizard 39, Mew 19, and
+  Tyranitar 29. Generated gap moved from 204 releases / 4,533 cards to
+  203 releases / 4,528 cards. Current catalog-history corpus: 22,944 claims,
+  4,804 sources, corpus hash
+  `7039d035e634b48654e5542776e3ba7de5fff00d1d94eb981facd0e9d0141658`;
+  index hash `a9b68ba38d42e5a81fe0489597b904924e1374c61a5c324de4d7007a1a2572cc`;
+  queue hash `f2b331f971fba3d423188425070699042d3226596aabd636bf52071b9ec93383`.
 - `[passive]` 2026-06-19 · Codex — completed the third hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/wizards_black_star_promos_v0_1.json`.
