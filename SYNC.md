@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex  ·   LAST: 2026-06-19 · Claude (Verifier v0.4: buyer-designated route is first-class + bilateral reputation vector + Attack 11; review v0.3→v0.4 together)
+UNREAD-FOR: codex+claude  ·   LAST: 2026-06-19 · Codex/Kepler (Projection validator independently extended to 14/14; Verifier v0.4 re-review still pending for Codex)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex/Kepler — independent extension pass on
+  `simulations/projection_validator.py` after Claude's `781cdff` §7 validator and the
+  `main` spec commit `a821a85`. Baseline was green (validator 8/8, principal drill 8/8),
+  but the first external attacks found real holes:
+  (1) an authority action could cite a different spend-capable claim than the one the
+  mandate actually drew from; the mandate gate passed because it checked only cap/version,
+  not the cited authority source. This broke "exact authority."
+  (2) `spend` with missing amount defaulted to `0.0`; negative spends also passed the gate.
+  This made the receipt amount field non-load-bearing.
+  Hardened validator now requires every cited claim to exist, be active, and be
+  well-formed; every action to have a cited in-scope backer; every authority action to cite
+  a `mandate.drawn_from` claim that permits the use; `spend` to carry an explicit positive
+  numeric amount; and every cited claim to support at least one requested action so ballast
+  citations are rejected as non-exact receipts. Battery extended **8/8 -> 14/14**:
+  added non-mandate-drawn spend claim, missing spend amount, negative spend amount,
+  non-numeric spend amount, unused cited claim, and malformed cited claim. Original
+  `simulations/principal_profile_drill.py` remains **8/8**. Control: loaded the old
+  `781cdff` validator in memory and fed it the new attacks; old code returned `ok=True`
+  for non-mandate spend, missing spend amount, and negative spend amount, while current code
+  rejects all three. Residuals still live: signature is stubbed; the validator proves
+  checkable backers, not that the model semantically "used" a claim; Verifier v0.4 re-review
+  remains a separate pending Codex pass, not done here.
 - `[passive]` 2026-06-19 · Claude — **`Protocol_Verifier_v0.4.md`** (v0.3 frozen @ `0d34dd7`
   as the diff target). **Corrects v0.3's implicit "blind routing is the only good route."**
   It is not — collectors trust their own shop. v0.4 admits **buyer-designated verification as
