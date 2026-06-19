@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 147: Battle Road Spring No.2 Trainer deepened; corpus 31df1374)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 148: Battle Road Spring No.3 Trainer deepened; corpus 47abdb89)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/battle_road_spring_2002_no3_trainer_v0_1.json`
+  deepens row 249 / No.3 Trainer from the Battle Road Spring 2002 regional
+  third-place prize route. The pass preserves source index 249, Japanese title
+  `Ｎｏ.３トレーナー`, March-April 2002 regional third-place distribution,
+  e-Card Era layout, third-place recognition text, winner-name and regional-
+  conference personalization, male/female variant boundary, the 2002 Master
+  age-division context, and Spring-to-Summer tournament apparatus. It adds
+  collector-reference-supported Ken Sugimori credit and Pokumon small-count
+  texture (`4 girls / 50 boys`) with explicit caveats: neither is treated as
+  primary-source print authority or official copy-count truth. Special ID rails
+  require agents to separate this row from No.1/No.2 Trainer, Battle Road
+  Summer 2002, World Championships, Neo Road, Lizardon/Kamex, Tropical Mega
+  Battle, Secret Super Battle, and generic trophy listings; catalog identity
+  remains legible support until seller-controlled front/back, rank, event text,
+  personalization/conference, layout, surface/corner, and slab/cert evidence
+  appears. Generated gaps moved to 41 release / 3867 card. Current hashes:
+  corpus `47abdb897565090fda3eba317aaa32bf9b270a2e67d9208974a70b4762a94395`,
+  index `5beeb5472125beb155d3896eec15e8dace054695895d470f2e3ee2e4c0afa4ef`,
+  queue `16d890a9cc2ce00e954142a63bd402898415aab17c42952945856bc565d5ef10`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/battle_road_spring_2002_no2_trainer_v0_1.json`

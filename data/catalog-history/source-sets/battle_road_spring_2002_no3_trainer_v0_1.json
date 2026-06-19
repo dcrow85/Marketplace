@@ -1,0 +1,659 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for No.3 Trainer, the Battle Road Spring 2002 regional third place prize, emphasizing third-place trophy identity, e-Card Era layout, personalized winner-name and regional-conference fields, male/female variants, collector-estimated distribution by gender, Ken Sugimori collector-reference credit, and traps against No.1/No.2 Trainer, Battle Road Summer 2002, Neo Road, Worlds, and generic trophy-card listings.",
+    "in_scope": [
+      "Battle Road Spring 2002 regional third place release dossier",
+      "No.3 Trainer unnumbered promotional row 249",
+      "Battle Road Spring 2002 third-place recognition text",
+      "e-Card Era trophy-card context",
+      "winner name / regional conference / male-female variant identity",
+      "collector-estimated boy/girl distribution counts",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Battle Road Spring 2002 tournament archive",
+      "official winner ledger",
+      "official copy count",
+      "primary-source exact artist proof",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize",
+        "name_en": "Battle Road Spring 2002 regional third place prize",
+        "featured_card_name_ja": "Ｎｏ.３トレーナー",
+        "release_date": "2002-03/2002-04",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Battle Road Spring 2002 regional third-place lane",
+          "No.3 Trainer podium trophy identity",
+          "e-Card Era trophy layout",
+          "personalized winner name / regional conference",
+          "male and female variant boundary",
+          "collector-estimated gender split"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize:249",
+            "name": "No.3 Trainer",
+            "why": "This is a chase because third place is still a named podium coordinate, not an afterthought. It records the wider edge of recognition: more winners, more variants, and a broader picture of who stood inside the Battle Road Spring 2002 circuit.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "No.3 Trainer [Battle Road Spring 2002]"
+            ],
+            "why": "Collector references pin Ken Sugimori to this Battle Road Spring 2002 No.3 Trainer row, while Bulbapedia's Sugimori page supplies the broader art lineage. The credit is useful for matching, but the authority remains collector-reference tier until stronger row-level print proof is attached.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c7",
+              "c9"
+            ],
+            "not_claiming": [
+              "primary-source exact artist proof",
+              "complete Ken Sugimori bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Battle Road Spring 2002 regional third place prize as one unnumbered promotional source row containing No.3 Trainer at source index 249.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the 2002 No.3 Trainer Battle Road Spring print was awarded to third-place winners of each regional Battle Road Spring 2002 tournament, held between March and April 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia says the Battle Road 2002 series was the first to introduce the Master age division for players 18 and over, in addition to Junior and Senior divisions.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the 2002 No.3 Trainer versions were the last to include the winner's name and regional conference on the card itself and the last to feature male and female variants.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives the Battle Road Spring 2002 No.3 Trainer text as recognizing and praising the third place winner of the Pokémon Card Game Official Tournament 'Battle Road Spring 2002'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Battle Road Spring 2002 tournaments did not feature a Best in Japan final; top ranking players instead earned byes in Battle Road Summer 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon's exact Battle Road Spring 2002 No.3 Trainer page lists Ken Sugimori as illustrator; this is useful collector-reference support, not primary-source print authority.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Pokumon's Battle Road 2002 research reconstructs Spring 2002 No.3 Trainer distribution as 4 girls and 50 boys from Trainers Magazine winner data; this is a collector estimate, not an official copy count.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Ken Sugimori page says there are many Pokémon TCG cards illustrated by Sugimori, though most include reused artwork from games, and indexes his broad official artwork role in the franchise.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "As judged collector texture, this No.3 Trainer matters because third place widens the record: the card preserves the broader podium, not only the champion myth, and gives agents another rank-specific route to keep exact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c8"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve No.3 rank, Battle Road Spring 2002 regional third-place route, source index 249, e-Card Era layout, winner name and regional conference fields, male/female variant boundary, Spring-vs-Summer distinction, and non-equivalence with No.1/No.2 Trainer or other No.3 Trainer eras before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Battle Road Spring 2002 No.3 Trainer: the edge of the podium still speaks",
+        "why_it_matters": "No.3 Trainer is where the trophy story becomes more humane. First place is mythic, second place is tense, but third place shows the apparatus trying to remember more people. This row is still personal: name, conference, variant, rank, and region all matter. It tells an agent that recognition in Pokémon was not only a single summit; it was a structured field of placements, and every placement has its own evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "battle_road_spring_2002_no3_trainer_regional_third_place_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says No.3 Trainer, Ｎｏ.３トレーナー, Battle Road Spring 2002, regional third place, podium, e-Card Era trophy, winner name, regional conference, male variant, female variant, Ken Sugimori, Battle Road Summer 2002, No.1 Trainer, No.2 Trainer, World Championships, Neo Spring Road, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle.",
+          "summary": "Identify this row by No.3 Trainer / Ｎｏ.３トレーナー third-place rank plus Battle Road Spring 2002 regional podium route, personalized winner/conference text, e-Card Era layout, and male/female variant boundary before trusting the famous trophy name.",
+          "steps": [
+            "Confirm the rank is No.3 Trainer / third place, not No.1 or No.2 Trainer.",
+            "Confirm the route is Battle Road Spring 2002 regional third place prize, source index 249, held March-April 2002.",
+            "Look for Battle Road Spring 2002 third-place recognition text rather than Battle Road Summer 2002, Neo Road, World Championships, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle wording.",
+            "Preserve the e-Card Era layout clue, but do not use layout alone as proof of route.",
+            "Check whether winner name and regional conference are present; their presence is route support and also means exact-name privacy/provenance should be handled carefully.",
+            "Check male/female variant evidence and do not collapse those variants into one generic No.3 Trainer identity.",
+            "Treat Ken Sugimori as collector-reference-supported for this row unless stronger physical-card or primary-source evidence is supplied.",
+            "Before spending or trade gating, request seller-controlled front/back photos, title/rank close-up, event-text close-up, personalization/conference close-up with privacy-aware handling, e-Card layout evidence, surface/corner evidence, and slab label/cert if graded."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist proof",
+            "No.1 Trainer equivalence",
+            "No.2 Trainer equivalence",
+            "Battle Road Summer 2002 equivalence",
+            "World Championships equivalence",
+            "Neo Road equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize.json#row:jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize:249",
+          "title": "Local Japanese unnumbered promotional source-slice row 249",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.3_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)",
+          "title": "Bulbapedia: No.3 Trainer (Pokémon Card Game Official Tournament promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Spring 2002 archive",
+            "complete winner ledger",
+            "primary-source exact artist proof for this row",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokeboon.com/no3trainer-brspring2002-promo/",
+          "title": "PokeBoon: No.3 Trainer [BRSpring2002] Promo (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "primary-source print authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "exact Battle Road Spring 2002 No.3 Trainer print authority",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize:249",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize:249",
+        "release_family_id": "jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize",
+        "name_en": "No.3 Trainer",
+        "name_ja": "Ｎｏ.３トレーナー",
+        "source_index": "249",
+        "release_date": "2002-03/2002-04"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "No.3 Trainer",
+        "name_ja": "Ｎｏ.３トレーナー",
+        "romaji": "No.3 Torenaa",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / regional third place trophy",
+        "artist": "Ken Sugimori (collector-reference-supported)",
+        "release": "Battle Road Spring 2002 regional third place prize"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the broader card as No.3 Trainer, Japanese Ｎｏ.３トレーナー, translated No.3 Trainer, while the local source row pins this dossier to the Battle Road Spring 2002 regional third place prize at source index 249.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Battle Road Spring 2002 No.3 Trainer print was awarded to third-place winners of each regional tournament held between March and April 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records the Battle Road Spring 2002 print text as recognizing and praising the third place winner of the Pokémon Card Game Official Tournament 'Battle Road Spring 2002'.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the 2002 versions were the last No.3 Trainer versions to include the winner's name and regional conference on the card and the last to feature male and female variants.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "PokeBoon lists Ken Sugimori as illustrator for No.3 Trainer [BRSpring2002]; this card dossier keeps that as collector-reference-supported rather than primary-source exact print authority.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Pokumon separates Battle Road 2002 trophy cards into boy and girl No.3 Trainer variants and reports a Spring 2002 reconstruction of 4 girls and 50 boys for No.3 Trainer.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, No.3 Trainer matters because it records the broadest podium edge in the Spring 2002 trophy trio: third place still has rank, name, region, variant, and route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "complete winner ledger",
+            "primary-source exact artist proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "A Battle Road Spring 2002 No.3 Trainer match should preserve third-place rank, Spring 2002 regional route, source index 249, e-Card Era layout, personalization/conference fields, male/female variant evidence, Spring-vs-Summer distinction, and non-equivalence with other trophy ranks or eras before a physical object is accepted.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "No.3 Trainer, Spring 2002: the full podium becomes visible",
+        "why_it_matters": "The third-place card makes the system feel less like a single grail and more like a real tournament. It tells us there were enough people, enough regions, enough divisions, enough named winners that the apparatus needed a broader language of recognition. That is why No.3 Trainer deserves care. It is not just below No.1 and No.2; it completes the shape of the podium.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Spring 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "no3_trainer_battle_road_spring_2002_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says No.3 Trainer, Ｎｏ.３トレーナー, Battle Road Spring 2002, regional third place, podium, winner name, regional conference, male variant, female variant, e-Card, Ken Sugimori, Battle Road Summer, No.1 Trainer, No.2 Trainer, World Championships, Neo Road, Lizardon, Kamex, Tropical Mega Battle, or Secret Super Battle.",
+          "summary": "Treat this No.3 Trainer as a specific Spring 2002 regional third-place object, not a generic trophy-card name: rank, event text, personalization, conference, variant, and era all need to line up.",
+          "steps": [
+            "Confirm the title/rank is No.3 Trainer / Ｎｏ.３トレーナー and third place.",
+            "Confirm Battle Road Spring 2002 third-place event text, not Battle Road Summer 2002, Neo Spring Road, Neo Summer Road, World Championships, Lizardon Mega Battle, Kamex Mega Battle, Tropical Mega Battle, or Secret Super Battle.",
+            "Confirm the local route: regional third place prize, source index 249, March-April 2002 tournament window.",
+            "Inspect winner name and regional conference fields; preserve them as identity evidence while handling privacy/provenance carefully.",
+            "Inspect male/female variant evidence and do not collapse variants into a single generic No.3 Trainer object.",
+            "Treat Ken Sugimori as collector-reference-supported unless stronger physical-card or primary-source evidence is supplied.",
+            "Before spending or trade gating, require seller-controlled front/back photos, title/rank close-up, event text close-up, personalization/conference close-up, e-Card layout evidence, surface/corner evidence, and slab label/cert if graded."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist proof",
+            "No.1 Trainer equivalence",
+            "No.2 Trainer equivalence",
+            "Battle Road Summer 2002 equivalence",
+            "World Championships equivalence",
+            "Neo Road equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize.json#row:jp_promo_unnumbered_wotc_249_battle_road_spring_2002_regional_third_place_prize:249",
+          "title": "Local Japanese unnumbered promotional source-slice row 249",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/No.3_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)",
+          "title": "Bulbapedia: No.3 Trainer (Pokémon Card Game Official Tournament promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Spring 2002 archive",
+            "complete winner ledger",
+            "primary-source exact artist proof for this row",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokeboon.com/no3trainer-brspring2002-promo/",
+          "title": "PokeBoon: No.3 Trainer [BRSpring2002] Promo (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "primary-source print authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}
