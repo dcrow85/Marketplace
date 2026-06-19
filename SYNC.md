@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-fifth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/trade_please_campaign_v0_1.json`.
+  Trade Please Campaign source slice now has complete four-row hand-authored
+  coverage for Venusaur row 033, Charizard row 034, Blastoise row 035, and
+  Trade Please! row 036. The pass frames the release as mail-in exchange made
+  collectible: participants used the Suzukisan CD flyer route, mailed any two
+  Pokemon cards plus a return envelope to MediaFactory, selected A/B/C course,
+  and received Charizard/Blastoise/Venusaur plus Trade Please! according to the
+  course. Added `special_identification_instructions` requiring agents to
+  preserve exact 1998 Trade Please campaign route, course pairing, row 033-036
+  identity, CD/flyer/mail-in mechanics, starter prize route, Imakuni? authorship,
+  and Trade Please! special-back/companion-card identity before accepting a
+  match. Agents must not collapse this source slice into CD Promo, Base, No
+  Rarity, Song Best Collection, later 20th Anniversary Trade Please revivals,
+  Imakuni?, Dance! Neo Imakuni?, or generic Kanto starter memories without
+  explicit route evidence. Sources: local Japanese pre-English release file,
+  local selected-lines snapshot for Bulbapedia + Pokumon Trade Please campaign,
+  Bulbapedia Trade Please! card page, and Pokumon collector context as low-tier
+  texture. Generated gap moved from 133 releases / 3,968 cards to 132 releases /
+  3,964 cards. Current catalog-history corpus:
+  `b525c56b08fd1c157f02d2f4b3711a24977977416dd2e8d0365129659c8674f8`;
+  index: `8e2083bba04b191f3d950b28c0e89fb925ad86ee3de9387b7dd8c85f1502e48c`;
+  queue: `373ccbbfaa763ded067fa8eed86977d74fd09ff0ea516821e8f0b6d305f46bd0`.
+  Audit counts: 23,231 claims, 5,991 sources, 77 hand-authored release dossiers,
+  585 hand-authored card dossiers, and 845 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/trade_please_campaign_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-fourth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/champion_road_2000_participation_prize_v0_1.json`.
