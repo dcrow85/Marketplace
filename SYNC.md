@@ -55,6 +55,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-fourth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/premium_file_2_v0_1.json`. Japanese
+  unnumbered promo Premium File 2 is now a complete hand-authored eight-row
+  dossier for the modeled 1998-11-13 source group: Entei 185, Pichu 186,
+  Espeon 187, Unown E 188, Unown N 189, Unown O 190, Umbreon 191, and
+  Eevee 192. The pass frames Premium File 2 as Johto widening Pokemon's
+  grammar: myth, baby-era signal, Eevee branching, and Unown letters arranged
+  as a file object. Added `special_identification_instructions` requiring
+  agents to preserve the Premium File 2 route, source indices 185-192, and
+  exact card name together; to avoid silently absorbing adjacent source row
+  184 / Neo Era Premium File 2 / Charizard; and to avoid merging these rows
+  with Neo Discovery, Neo Genesis, later Eevee-family, Unown, or legendary-
+  beast printings without route evidence. Artists remain intentionally unset
+  because the local Premium File 2 source rows do not provide illustrator
+  authority; each card records that as unknown, not as no artist. Sources:
+  local Japanese unnumbered promo Premium File 2 group, adjacent local Neo Era
+  Premium File 2 singleton, and Bulbapedia raw unnumbered promo wikitext.
+  Generated gap moved from 164 releases / 4,194 cards to 163 releases /
+  4,186 cards. Current catalog-history corpus: 22,759 claims, 5,586 sources,
+  621 dossiers with special identification instructions, corpus hash
+  `cbb4a1e0f6b2633340b818622d1e9ab9b9f50c9836b309ab5117ff53946fe3ce`;
+  index hash `c23b777cb6a57ef0f08b768d1d72842e224628757e0bec8e66df80038809b066`;
+  queue hash `7f7aadf78d02cb48666aa9b667b1e6c1082871594bbeb22067d32db908794353`.
 - `[passive]` 2026-06-19 · Codex — completed the forty-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/premium_file_v0_1.json`. Japanese
