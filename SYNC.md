@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 138: ANA Get in a Jet! 2000 phase 2 Togepi deepened; corpus 180c723e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 139: Trainers Vol. 8 Unown J deepened; corpus 5e3d04f3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/trainers_vol8_unown_j_v0_1.json`
+  deepens row 208 / Unown J from the Pokémon Card Trainers Vol. 8 insert route.
+  The pass preserves September 1 2000 magazine/specialist-periodical
+  distribution, Japanese unnumbered promo status, Hideki Kazama art credit, and
+  the wonderfully literal J/O/I/N rule-memory where Unown J wants Unown O,
+  Unown I, and Unown N beside it. Special ID rails require agents to keep source
+  index 208, Trainers Vol. 8, Japanese language/unnumbered promo context, and
+  seller-controlled photos attached before treating a card as this row; it must
+  not collapse into English Wizards Black Star Promo 38, Spell of the Unown
+  VHS/DVD copies, Unown R, Neo expansion Unown rows, other Japanese Unown promos,
+  or name-only Unown listings. Generated gaps moved to 50 release / 3876 card.
+  Current hashes: corpus
+  `5e3d04f323982bd27cc72e3fbd2e33cd3d22cd6ced0e413953e895c1b6c11624`, index
+  `1bf60098e4bd0fe86ca537a75f4388d6a581eb48d8c9b539f9f87345d6facf36`, queue
+  `29b2bfd4392978dabe9b530ae314c15ccdef9022e34e6a248e8b9b79337f35f3`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/ana_get_in_a_jet_2000_phase2_togepi_v0_1.json`
