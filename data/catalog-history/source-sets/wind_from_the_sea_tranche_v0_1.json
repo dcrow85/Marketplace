@@ -1,0 +1,3044 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Wind from the Sea / 海からの風 within the catalog-history deepening pass.",
+    "in_scope": [
+      "Wind from the Sea release dossier",
+      "selected rare/holo pair, secret-row, and coastline identity-teaching card dossiers",
+      "special identification rails for exact Japanese E3 row identity"
+    ],
+    "not_claiming": [
+      "complete 90-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524",
+      "type": "release",
+      "context": {
+        "name_en": "Wind from the Sea",
+        "name_ja": "海からの風",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "release_date": "2002-05-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Wind from the Sea / 海からの風 with a May 24, 2002 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 90 total rows for Wind from the Sea, with 87 official rows and three late-number rows, and no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Wind from the Sea is modeled as a Japanese main expansion in the ポケモンカードe series, using TCGdex set id E3.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Wind from the Sea matters because it turns e-Card identity into coastline and weather: paired rare/holo rows, water bodies, electric signals, steel mass, and late-number secrets make the set feel like a shore with coordinates.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "This tranche hand-authors high-gravity paired rows and secrets: Vileplume, Victreebel, Exeggutor, Ninetales rough-name row, Entei, Tentacruel, Kingdra, Ampharos, Sudowoodo, Tyranitar, Steelix, Scizor, Nidoking secret, Kingdra secret, and Lugia secret.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, card number, local id, rough source-row text, normalized collector label, duplicate-name row context, and late-number status before treating a famous species or English Aquapolis match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_release_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Lugia, Kingdra, Entei, Tyranitar, Scizor, Steelix, or late-number secret rows.",
+          "summary": "Keep Wind from the Sea as Japanese E3 / 海からの風 with duplicate-name and late-number row identity; do not collapse rare/holo pairs, secret rows, or English Aquapolis rows.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release.",
+            "Preserve card number and local id for each row; rough local source names are not clean translation authority.",
+            "Preserve duplicate-name rows such as Vileplume 003/004, Kingdra 041/042/089, Scizor 074/075, and other rare/holo pairs until number and rarity evidence are checked.",
+            "Treat late-number Nidoking 088, Kingdra 089, and Lugia 090 as map-edge secret rows, not interchangeable species memories.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-row equivalence",
+            "secret-row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Wind from the Sea — when the shore gets coordinates",
+        "why_it_matters": "Wind from the Sea feels like the e-Card coast learning to keep records. The set title gives the emotional weather, but the cards teach discipline: Vileplume can be rare or holo, Kingdra can be holo or secret, Lugia can sit at the edge like a wave you only notice if the number is still visible. It is beautiful because it is breezy and strict at once.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 90-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-003",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume rare",
+        "name_ja": "vileplume -003/090",
+        "normalized_label": "Vileplume rare",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-003",
+        "card_number": "003"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Vileplume rare as Wind from the Sea / 海からの風 row E3-003, card number 003, with rough source-row name vileplume.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Rare for E3-003; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Vileplume baseline row before the holo weather arrives; useful because the same species appears twice and the number does the identity work. This row shares a rough source name with 004, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Vileplume rare helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-003, card number 003, rough source-row name vileplume, rarity signal Rare, and duplicate-name context before accepting this as Vileplume rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_003_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Vileplume rare, vileplume, card 003, or E3-003.",
+          "summary": "Keep Vileplume rare pinned to Japanese E3 row E3-003; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-003 and card number 003; do not accept species name alone as row identity.",
+            "Keep rough source-row name vileplume visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 004; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Vileplume rare — E3-003",
+        "why_it_matters": "Vileplume baseline row before the holo weather arrives; useful because the same species appears twice and the number does the identity work.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-004",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume holo",
+        "name_ja": "vileplume -004/090",
+        "normalized_label": "Vileplume holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-004",
+        "card_number": "004"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Vileplume holo as Wind from the Sea / 海からの風 row E3-004, card number 004, with rough source-row name vileplume.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-004; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "A flower-card that becomes a chase lesson: the collector must not let the famous name overwrite the holo coordinate. This row shares a rough source name with 003, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Vileplume holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-004, card number 004, rough source-row name vileplume, rarity signal Holo Rare, and duplicate-name context before accepting this as Vileplume holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_004_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Vileplume holo, vileplume, card 004, or E3-004.",
+          "summary": "Keep Vileplume holo pinned to Japanese E3 row E3-004; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-004 and card number 004; do not accept species name alone as row identity.",
+            "Keep rough source-row name vileplume visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 003; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Vileplume holo — E3-004",
+        "why_it_matters": "A flower-card that becomes a chase lesson: the collector must not let the famous name overwrite the holo coordinate.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-011",
+      "type": "card",
+      "context": {
+        "name_en": "Victreebel holo",
+        "name_ja": "Victreebel -011/090",
+        "normalized_label": "Victreebel holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-011",
+        "card_number": "011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Victreebel holo as Wind from the Sea / 海からの風 row E3-011, card number 011, with rough source-row name Victreebel.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-011; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "A carnivorous-plant holo on a sea-wind set is wonderfully odd; it makes the coastline feel humid, strange, and alive. This row shares a rough source name with 010, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Victreebel holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-011, card number 011, rough source-row name Victreebel, rarity signal Holo Rare, and duplicate-name context before accepting this as Victreebel holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_011_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Victreebel holo, Victreebel, card 011, or E3-011.",
+          "summary": "Keep Victreebel holo pinned to Japanese E3 row E3-011; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-011 and card number 011; do not accept species name alone as row identity.",
+            "Keep rough source-row name Victreebel visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 010; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Victreebel holo — E3-011",
+        "why_it_matters": "A carnivorous-plant holo on a sea-wind set is wonderfully odd; it makes the coastline feel humid, strange, and alive.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-014",
+      "type": "card",
+      "context": {
+        "name_en": "Exeggutor holo",
+        "name_ja": "exeggutor -014/090",
+        "normalized_label": "Exeggutor holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-014",
+        "card_number": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Exeggutor holo as Wind from the Sea / 海からの風 row E3-014, card number 014, with rough source-row name exeggutor.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-014; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Exeggutor turns the set toward island memory: not just a species row, but a tropical signal inside the e-Card shore. This row shares a rough source name with 013, 051, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Exeggutor holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-014, card number 014, rough source-row name exeggutor, rarity signal Holo Rare, and duplicate-name context before accepting this as Exeggutor holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_014_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Exeggutor holo, exeggutor, card 014, or E3-014.",
+          "summary": "Keep Exeggutor holo pinned to Japanese E3 row E3-014; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-014 and card number 014; do not accept species name alone as row identity.",
+            "Keep rough source-row name exeggutor visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 013, 051; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Exeggutor holo — E3-014",
+        "why_it_matters": "Exeggutor turns the set toward island memory: not just a species row, but a tropical signal inside the e-Card shore.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-023",
+      "type": "card",
+      "context": {
+        "name_en": "Ninetales holo rough-name row",
+        "name_ja": "ニネタール -023/090",
+        "normalized_label": "Ninetales holo rough-name row",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-023",
+        "card_number": "023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Ninetales holo rough-name row as Wind from the Sea / 海からの風 row E3-023, card number 023, with rough source-row name ニネタール.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-023; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "The rough local source says ニネタール; the dossier keeps that roughness visible so an agent does not silently translate it into certainty. This row shares a rough source name with 022, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Ninetales holo rough-name row helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-023, card number 023, rough source-row name ニネタール, rarity signal Holo Rare, and duplicate-name context before accepting this as Ninetales holo rough-name row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_023_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Ninetales holo rough-name row, ニネタール, card 023, or E3-023.",
+          "summary": "Keep Ninetales holo rough-name row pinned to Japanese E3 row E3-023; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-023 and card number 023; do not accept species name alone as row identity.",
+            "Keep rough source-row name ニネタール visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 022; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ninetales holo rough-name row — E3-023",
+        "why_it_matters": "The rough local source says ニネタール; the dossier keeps that roughness visible so an agent does not silently translate it into certainty.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-027",
+      "type": "card",
+      "context": {
+        "name_en": "Entei holo",
+        "name_ja": "entei -027/090",
+        "normalized_label": "Entei holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-027",
+        "card_number": "027"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Entei holo as Wind from the Sea / 海からの風 row E3-027, card number 027, with rough source-row name entei.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-027; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Entei is the elemental interruption: fire moving through a set named for sea wind, a headline species that must still be pinned by E3-027. This row shares a rough source name with 026, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Entei holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-027, card number 027, rough source-row name entei, rarity signal Holo Rare, and duplicate-name context before accepting this as Entei holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_027_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Entei holo, entei, card 027, or E3-027.",
+          "summary": "Keep Entei holo pinned to Japanese E3 row E3-027; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-027 and card number 027; do not accept species name alone as row identity.",
+            "Keep rough source-row name entei visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 026; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Entei holo — E3-027",
+        "why_it_matters": "Entei is the elemental interruption: fire moving through a set named for sea wind, a headline species that must still be pinned by E3-027.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-030",
+      "type": "card",
+      "context": {
+        "name_en": "Tentacruel holo",
+        "name_ja": "テンタクルエル -030/090",
+        "normalized_label": "Tentacruel holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-030",
+        "card_number": "030"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Tentacruel holo as Wind from the Sea / 海からの風 row E3-030, card number 030, with rough source-row name テンタクルエル.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-030; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Tentacruel is the most literal sea-body chase here, turning the set title into a creature rather than a slogan. This row shares a rough source name with 029, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Tentacruel holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-030, card number 030, rough source-row name テンタクルエル, rarity signal Holo Rare, and duplicate-name context before accepting this as Tentacruel holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_030_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Tentacruel holo, テンタクルエル, card 030, or E3-030.",
+          "summary": "Keep Tentacruel holo pinned to Japanese E3 row E3-030; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-030 and card number 030; do not accept species name alone as row identity.",
+            "Keep rough source-row name テンタクルエル visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 029; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Tentacruel holo — E3-030",
+        "why_it_matters": "Tentacruel is the most literal sea-body chase here, turning the set title into a creature rather than a slogan.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-042",
+      "type": "card",
+      "context": {
+        "name_en": "Kingdra holo",
+        "name_ja": "キングドラ -042/090",
+        "normalized_label": "Kingdra holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-042",
+        "card_number": "042"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Kingdra holo as Wind from the Sea / 海からの風 row E3-042, card number 042, with rough source-row name キングドラ.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-042; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Kingdra makes the sea royal and dangerous; later the secret Kingdra row proves that the same name can return at the map edge. This row shares a rough source name with 041, 089, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Kingdra holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-042, card number 042, rough source-row name キングドラ, rarity signal Holo Rare, and duplicate-name context before accepting this as Kingdra holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_042_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Kingdra holo, キングドラ, card 042, or E3-042.",
+          "summary": "Keep Kingdra holo pinned to Japanese E3 row E3-042; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-042 and card number 042; do not accept species name alone as row identity.",
+            "Keep rough source-row name キングドラ visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 041, 089; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Kingdra holo — E3-042",
+        "why_it_matters": "Kingdra makes the sea royal and dangerous; later the secret Kingdra row proves that the same name can return at the map edge.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-049",
+      "type": "card",
+      "context": {
+        "name_en": "Ampharos holo",
+        "name_ja": "アンファロス -049/090",
+        "normalized_label": "Ampharos holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-049",
+        "card_number": "049"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Ampharos holo as Wind from the Sea / 海からの風 row E3-049, card number 049, with rough source-row name アンファロス.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-049; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Ampharos reads like a lighthouse card in spirit: an electric signal over water, exactly the kind of infrastructure collectors remember after the big names. This row shares a rough source name with 048, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Ampharos holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-049, card number 049, rough source-row name アンファロス, rarity signal Holo Rare, and duplicate-name context before accepting this as Ampharos holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_049_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Ampharos holo, アンファロス, card 049, or E3-049.",
+          "summary": "Keep Ampharos holo pinned to Japanese E3 row E3-049; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-049 and card number 049; do not accept species name alone as row identity.",
+            "Keep rough source-row name アンファロス visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 048; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ampharos holo — E3-049",
+        "why_it_matters": "Ampharos reads like a lighthouse card in spirit: an electric signal over water, exactly the kind of infrastructure collectors remember after the big names.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-058",
+      "type": "card",
+      "context": {
+        "name_en": "Sudowoodo holo",
+        "name_ja": "sudowoodo -058/090",
+        "normalized_label": "Sudowoodo holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-058",
+        "card_number": "058"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Sudowoodo holo as Wind from the Sea / 海からの風 row E3-058, card number 058, with rough source-row name sudowoodo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-058; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Sudowoodo is the trickster shore-marker: a false tree that teaches the same rule as the protocol, resemblance is not identity. This row shares a rough source name with 057, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Sudowoodo holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-058, card number 058, rough source-row name sudowoodo, rarity signal Holo Rare, and duplicate-name context before accepting this as Sudowoodo holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_058_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Sudowoodo holo, sudowoodo, card 058, or E3-058.",
+          "summary": "Keep Sudowoodo holo pinned to Japanese E3 row E3-058; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-058 and card number 058; do not accept species name alone as row identity.",
+            "Keep rough source-row name sudowoodo visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 057; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Sudowoodo holo — E3-058",
+        "why_it_matters": "Sudowoodo is the trickster shore-marker: a false tree that teaches the same rule as the protocol, resemblance is not identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-071",
+      "type": "card",
+      "context": {
+        "name_en": "Tyranitar holo",
+        "name_ja": "タイラニター -071/090",
+        "normalized_label": "Tyranitar holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-071",
+        "card_number": "071"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Tyranitar holo as Wind from the Sea / 海からの風 row E3-071, card number 071, with rough source-row name タイラニター.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-071; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Tyranitar gives the set its storm-wall mass; it is a famous species, but the row number is still the anchor. This row shares a rough source name with 070, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Tyranitar holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-071, card number 071, rough source-row name タイラニター, rarity signal Holo Rare, and duplicate-name context before accepting this as Tyranitar holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_071_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Tyranitar holo, タイラニター, card 071, or E3-071.",
+          "summary": "Keep Tyranitar holo pinned to Japanese E3 row E3-071; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-071 and card number 071; do not accept species name alone as row identity.",
+            "Keep rough source-row name タイラニター visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 070; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Tyranitar holo — E3-071",
+        "why_it_matters": "Tyranitar gives the set its storm-wall mass; it is a famous species, but the row number is still the anchor.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-073",
+      "type": "card",
+      "context": {
+        "name_en": "Steelix holo",
+        "name_ja": "Steelix -073/090",
+        "normalized_label": "Steelix holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-073",
+        "card_number": "073"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Steelix holo as Wind from the Sea / 海からの風 row E3-073, card number 073, with rough source-row name Steelix.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-073; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Steelix brings industrial weight to the coastline, making Wind from the Sea feel built as much as natural. This row shares a rough source name with 072, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Steelix holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-073, card number 073, rough source-row name Steelix, rarity signal Holo Rare, and duplicate-name context before accepting this as Steelix holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_073_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Steelix holo, Steelix, card 073, or E3-073.",
+          "summary": "Keep Steelix holo pinned to Japanese E3 row E3-073; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-073 and card number 073; do not accept species name alone as row identity.",
+            "Keep rough source-row name Steelix visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 072; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Steelix holo — E3-073",
+        "why_it_matters": "Steelix brings industrial weight to the coastline, making Wind from the Sea feel built as much as natural.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-075",
+      "type": "card",
+      "context": {
+        "name_en": "Scizor holo",
+        "name_ja": "Scizor -075/090",
+        "normalized_label": "Scizor holo",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-075",
+        "card_number": "075"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Scizor holo as Wind from the Sea / 海からの風 row E3-075, card number 075, with rough source-row name Scizor.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Holo Rare for E3-075; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Scizor adds sharp red machine-energy to the release and belongs in the tranche because collectors chase the visual punch as much as the name. This row shares a rough source name with 074, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Scizor holo helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-075, card number 075, rough source-row name Scizor, rarity signal Holo Rare, and duplicate-name context before accepting this as Scizor holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_075_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Scizor holo, Scizor, card 075, or E3-075.",
+          "summary": "Keep Scizor holo pinned to Japanese E3 row E3-075; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-075 and card number 075; do not accept species name alone as row identity.",
+            "Keep rough source-row name Scizor visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Holo Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 074; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Scizor holo — E3-075",
+        "why_it_matters": "Scizor adds sharp red machine-energy to the release and belongs in the tranche because collectors chase the visual punch as much as the name.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-088",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoking secret rare",
+        "name_ja": "ニドキング -088/090",
+        "normalized_label": "Nidoking secret rare",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-088",
+        "card_number": "088"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Nidoking secret rare as Wind from the Sea / 海からの風 row E3-088, card number 088, with rough source-row name ニドキング.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Secret Rare for E3-088; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "A late-number secret row; the agent should treat it as map-edge evidence, not as just another Nidoking memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Nidoking secret rare helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-088, card number 088, rough source-row name ニドキング, rarity signal Secret Rare, and duplicate-name context before accepting this as Nidoking secret rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_088_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Nidoking secret rare, ニドキング, card 088, or E3-088.",
+          "summary": "Keep Nidoking secret rare pinned to Japanese E3 row E3-088; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-088 and card number 088; do not accept species name alone as row identity.",
+            "Keep rough source-row name ニドキング visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Secret Rare before treating the row as the chase version.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Nidoking secret rare — E3-088",
+        "why_it_matters": "A late-number secret row; the agent should treat it as map-edge evidence, not as just another Nidoking memory.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-089",
+      "type": "card",
+      "context": {
+        "name_en": "Kingdra secret rare",
+        "name_ja": "キングドラ -089/090",
+        "normalized_label": "Kingdra secret rare",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-089",
+        "card_number": "089"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Kingdra secret rare as Wind from the Sea / 海からの風 row E3-089, card number 089, with rough source-row name キングドラ.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Secret Rare for E3-089; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "The secret Kingdra row is the cleanest duplicate-name trap in the tranche: Kingdra can be 042 holo or 089 secret, and those are not interchangeable. This row shares a rough source name with 041, 042, so number and rarity must remain visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Kingdra secret rare helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-089, card number 089, rough source-row name キングドラ, rarity signal Secret Rare, and duplicate-name context before accepting this as Kingdra secret rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_089_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Kingdra secret rare, キングドラ, card 089, or E3-089.",
+          "summary": "Keep Kingdra secret rare pinned to Japanese E3 row E3-089; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-089 and card number 089; do not accept species name alone as row identity.",
+            "Keep rough source-row name キングドラ visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Secret Rare before treating the row as the chase version.",
+            "This rough source name also appears at card number(s) 041, 042; keep those rows separate until number and rarity evidence are checked.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Kingdra secret rare — E3-089",
+        "why_it_matters": "The secret Kingdra row is the cleanest duplicate-name trap in the tranche: Kingdra can be 042 holo or 089 secret, and those are not interchangeable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_wind_from_the_sea_20020524:E3-090",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia secret rare",
+        "name_ja": "ルギア -090/090",
+        "normalized_label": "Lugia secret rare",
+        "release_family_id": "jp_tcg_wind_from_the_sea_20020524",
+        "local_id": "E3-090",
+        "card_number": "090"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_wind_from_the_sea_20020524.json",
+          "title": "Local Japanese classic catalog: Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E3",
+          "title": "TCGdex Japanese set endpoint: E3 / Wind from the Sea",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog models Lugia secret rare as Wind from the Sea / 海からの風 row E3-090, card number 090, with rough source-row name ルギア.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Secret Rare for E3-090; this is catalog metadata, not physical-card verification.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lugia is the sea-wind grail at the edge of the file: a species famous enough to overwhelm weak cataloging unless E3-090 stays visible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Within this tranche, Lugia secret rare helps teach Wind from the Sea as a release where coastline, weather, duplicate species rows, and late-number secrets make coordinates part of collector meaning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 海からの風, TCGdex set id E3, local id E3-090, card number 090, rough source-row name ルギア, rarity signal Secret Rare, and duplicate-name context before accepting this as Lugia secret rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so artist coverage remains unresolved rather than inferred from other printings or English databases.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "wind_from_the_sea_090_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Wind from the Sea, 海からの風, Aquapolis, E3, Lugia secret rare, ルギア, card 090, or E3-090.",
+          "summary": "Keep Lugia secret rare pinned to Japanese E3 row E3-090; name resemblance is not row identity.",
+          "steps": [
+            "Require Japanese title 海からの風 or TCGdex set id E3 before naming this exact release row.",
+            "Require local id E3-090 and card number 090; do not accept species name alone as row identity.",
+            "Keep rough source-row name ルギア visible and do not silently normalize it into clean translation authority.",
+            "Check rarity signal Secret Rare before treating the row as the chase version.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name row equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lugia secret rare — E3-090",
+        "why_it_matters": "Lugia is the sea-wind grail at the edge of the file: a species famous enough to overwhelm weak cataloging unless E3-090 stays visible.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete artist authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

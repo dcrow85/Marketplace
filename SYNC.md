@@ -55,6 +55,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/wind_from_the_sea_tranche_v0_1.json`.
+  Japanese Wind from the Sea / 海からの風 now has a hand-authored release dossier
+  plus sixteen high-gravity / identity-teaching card dossiers: Vileplume rare
+  003, Vileplume holo 004, Victreebel holo 011, Exeggutor holo 014, Ninetales
+  rough-name holo row 023, Entei holo 027, Tentacruel holo 030, Kingdra holo
+  042, Ampharos holo 049, Sudowoodo holo 058, Tyranitar holo 071, Steelix holo
+  073, Scizor holo 075, Nidoking secret rare 088, Kingdra secret rare 089, and
+  Lugia secret rare 090. The pass frames the release as the e-Card coast
+  learning to keep records: breezy weather and strict coordinates at once. Added
+  `special_identification_instructions` requiring agents to preserve Japanese
+  title 海からの風, TCGdex set id `E3`, local id, card number, rough source-row
+  name, rarity signal, duplicate-name row context, and late-number status before
+  accepting famous-species or English Aquapolis matches. Duplicate-name rows such
+  as Vileplume 003/004, Kingdra 041/042/089, Scizor 074/075, and other rare/holo
+  pairs are explicitly separate until number and rarity evidence are checked;
+  Nidoking 088, Kingdra 089, and Lugia 090 are treated as map-edge secret rows.
+  The tranche deliberately keeps rough local source text and normalized labels
+  separate; clean translated-name authority is not claimed. This is a bounded
+  high-gravity tranche, not complete 90-card hand-authored coverage; 74 Wind from
+  the Sea rows remain generated follow-up work. Artists remain intentionally
+  unset because the local Japanese classic rows do not provide illustrator
+  authority. Sources: local Japanese classic Wind from the Sea release file and
+  TCGdex Japanese set/card payload references. Generated gap moved from 151
+  releases / 4,058 cards to 150 releases / 4,042 cards. Current catalog-history
+  corpus:
+  `6bae620699b6ae75ecb520c8a46d3c35365b5d8b464cfe4f575126a7964e0d24`; index:
+  `ff033f32f3ba40097043fbf04ef492ebe8c84173205707b99da8225e4b7c2a7e`; queue:
+  `2ee4f484925f6628a909267cbaefe4d93f0a6a56ff3d9cf577aa14b0c84495b3`. Audit
+  counts: 23,064 claims, 5,709 sources, 59 hand-authored release dossiers, 507
+  hand-authored card dossiers, and 770 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/wind_from_the_sea_tranche_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-sixth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/town_on_no_map_tranche_v0_1.json`.
