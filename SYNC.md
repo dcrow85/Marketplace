@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-first
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/rocket_gang_v0_1.json`.
+  Japanese Rocket Gang is now a hand-authored release dossier, with Dark
+  Charizard 017, Dark Blastoise 024, Dark Gyarados 025, Dark Dragonite
+  053, Rocket's Sneak Attack 061, Here Comes Team Rocket! 062, and Rainbow
+  Energy 065 promoted from generated baseline to sourced card dossiers.
+  The pass frames Rocket Gang as the set where ownership becomes visible:
+  familiar Kanto bodies are returned under Team Rocket's darker frame,
+  trainer holos put the villains themselves on stage, and Rainbow Energy
+  shows the apparatus reaching into the resource layer. Added special
+  identification rails for the 65-row Japanese booster boundary, Japanese
+  Rocket Gang versus English Team Rocket row numbering, not importing Dark
+  Raichu / 83-over-82 English secret-card logic into Japanese Rocket Gang,
+  Rocket Gang versus Team Rocket Gift Pack separation, with-rarity-symbol
+  status, language/row checks for major Dark Pokemon, English error/promo
+  context separation for Dark Dragonite / Dark Gyarados, and preservation of
+  local common-plus-holo or rare-plus-holo nuances on trainer / energy rows.
+  Sources: local Japanese pre-English Rocket Gang catalog, Pokellector
+  Rocket Gang, TCGdex PMCG4 set snapshot, Bulbapedia Team Rocket / Rocket
+  Gang, Bulbapedia card pages for the promoted rows, local pre-English
+  symbol-status matrix, and the Japanese pre-English release map. Generated
+  gap moved from 187 releases / 4,433 cards to 186 releases / 4,426 cards.
+  Current catalog-history corpus: 22,858 claims, 5,064 sources, corpus hash
+  `0c10b5265b31de2fd2b4fa08687e2a80614464e51b8331a92e80f0c1d23d274d`;
+  index hash `93b5dc8d0e96c14ecd7fdbbfdfb5bb4d8a678f98666eea673d26cbd7955f1608`;
+  queue hash `fbfada756bd95abe6b657f5b8a033c0392eb977313b49a6c51e84dc59de691fb`.
 - `[passive]` 2026-06-19 · Codex — completed the twentieth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/quick_starter_red_deck_v0_1.json`.

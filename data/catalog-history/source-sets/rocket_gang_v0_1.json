@@ -1,0 +1,1382 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Rocket Gang and seven rows that carry the set's dark-variant, trainer, and energy structure.",
+    "in_scope": [
+      "Rocket Gang release dossier",
+      "Dark Charizard",
+      "Dark Blastoise",
+      "Dark Gyarados",
+      "Dark Dragonite",
+      "Rocket's Sneak Attack",
+      "Here Comes Team Rocket!",
+      "Rainbow Energy"
+    ],
+    "not_claiming": [
+      "complete Rocket Gang scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "English Team Rocket equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_rocket_gang_19971121",
+      "type": "release",
+      "context": {
+        "name_en": "Rocket Gang",
+        "name_ja": "ロケット団",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "release_date": "1997-11-21"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json",
+          "title": "Local Japanese pre-English catalog: Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG4",
+          "title": "TCGdex API set record: PMCG4 Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket_(TCG)",
+          "title": "Bulbapedia: Team Rocket (TCG) / Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models Rocket Gang as released on November 21, 1997.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog, Pokellector, TCGdex snapshot, and Bulbapedia all support a 65-card Japanese Rocket Gang checklist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia identifies Rocket Gang as the fourth main Japanese Pokemon Card Game expansion and the Japanese counterpart named on the English Team Rocket page.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia describes Team Rocket / Rocket Gang as introducing Dark Pokemon as a card type with a distinct visual treatment and different HP/attack character from normal Pokemon cards.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix records Rocket Gang as printing with rarity symbols, so Rocket Gang is not a Base No Rarity source.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "The local catalog models Japanese Rocket Gang as 65 rows; English Team Rocket has a different row count and includes English-only secret-number logic that must not be imported into this Japanese release dossier.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.chase_structure",
+          "text": "The local Rocket Gang attention rows include Dark Charizard, Dark Blastoise, Dark Gyarados, Dark Dragonite, Rocket's Sneak Attack, Here Comes Team Rocket!, and Rainbow Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "The local Rocket Gang artist clusters are led by Kagemaru Himeno, Mitsuhiro Arita, Ken Sugimori, Sumiyoshi Kizuki, Atsuko Nishida, and several smaller contributor clusters.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Rocket Gang matters because it makes ownership visible as a design language: familiar Kanto Pokemon return under a darker frame, while trainer and energy holos make the villain theme feel like a whole apparatus rather than a few mascot cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_65_row_japanese_boundary_v0.1",
+          "trigger": "A listing, want, slab label, or agent search says Rocket Gang, Japanese Team Rocket, PMCG4, Dark Pokemon, Dark Charizard, or Team Rocket secret card.",
+          "summary": "Rocket Gang is the 65-row Japanese release; keep it separate from English Team Rocket and from the later Team Rocket Gift Pack deck-component context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_rocket_gang_19971121 for the Japanese booster release.",
+            "Do not import English Team Rocket row numbers, English-only secret-card framing, or Dark Raichu 83/82 logic into Japanese Rocket Gang.",
+            "Do not collapse Rocket Gang into Team Rocket Gift Pack; the gift product is a separate release context built from Rocket Gang material.",
+            "Do not treat Rocket Gang as a Base No Rarity source; the symbol-status matrix marks this release as printing with rarity symbols.",
+            "When a card is described only as Dark Charizard, Dark Blastoise, or another Dark Pokemon, ask for language, set, row number, and image evidence before resolving the exact release."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence",
+            "Team Rocket Gift Pack sealed-unit contents"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When the binder learns who owns the Pokemon",
+        "why_it_matters": "Rocket Gang is the set where the card game lets the story darken without leaving the table. The Pokemon are still Kanto bodies a collector recognizes, but the frame changes the relationship: these are creatures seen through Team Rocket's hands. That is why the set feels bigger than a villain logo. It teaches the catalog to track ownership, mood, numbering, and release language before trusting the familiar silhouette.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Rocket Gang history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:017",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charizard",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:017",
+          "title": "Local Rocket Gang row: Dark Charizard 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Charizard_(Team_Rocket_4)",
+          "title": "Bulbapedia card page: Dark Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 017 as Dark Charizard in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Dark Charizard 017 as a Rare with holo-source signal in Rocket Gang.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Dark Charizard 017 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Charizard matters because Charizard already carries early Pokemon gravity, and Rocket Gang reframes that gravity as a darker ownership story.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_dark_charizard_017_language_and_row_boundary_v0.1",
+          "trigger": "A listing or want says Dark Charizard, Japanese Team Rocket Charizard, Rocket Gang Charizard, PMCG4 Charizard, or old-back Dark Charizard.",
+          "summary": "Dark Charizard 017 is the Japanese Rocket Gang row; do not flatten it into English Team Rocket or generic Charizard demand.",
+          "steps": [
+            "Preserve row 017 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before comparing to English Team Rocket Dark Charizard listings.",
+            "Do not import English 4/82 numbering into the Japanese Rocket Gang row.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The famous silhouette under worse weather",
+        "why_it_matters": "Dark Charizard is the obvious gravity well, which is exactly why the dossier has to stay sober. The card is not important only because Charizard is famous; it is important because Rocket Gang changes the moral lighting around the most familiar fire silhouette in the room. The agent should feel the pull, then ask for the row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:024",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:024",
+        "catalog_row_id": "024"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:024",
+          "title": "Local Rocket Gang row: Dark Blastoise 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Blastoise_(Team_Rocket_3)",
+          "title": "Bulbapedia card page: Dark Blastoise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 024 as Dark Blastoise in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Dark Blastoise 024 as a Rare with holo-source signal in Rocket Gang.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Dark Blastoise 024 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Blastoise matters because Rocket Gang turns a starter-final silhouette into a heavy, weaponized emblem of the set's Dark Pokemon idea.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_dark_blastoise_024_language_and_row_boundary_v0.1",
+          "trigger": "A listing or want says Dark Blastoise, Japanese Team Rocket Blastoise, Rocket Gang Blastoise, or old-back Dark Blastoise.",
+          "summary": "Dark Blastoise 024 is the Japanese Rocket Gang row; preserve the Japanese row rather than importing English numbering.",
+          "steps": [
+            "Preserve row 024 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before comparing to English Team Rocket Dark Blastoise listings.",
+            "Do not import English 3/82 or 20/82 numbering into the Japanese Rocket Gang row.",
+            "Record Mitsuhiro Arita as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The heavy starter turned toward Rocket",
+        "why_it_matters": "Dark Blastoise is Rocket Gang's weight. The cannons are already there in the collector's memory, but Arita's row lets the set point that weight in a more suspicious direction. It is familiar enough to trust at a glance and altered enough that the glance should not be trusted.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:025",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Gyarados",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:025",
+        "catalog_row_id": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:025",
+          "title": "Local Rocket Gang row: Dark Gyarados 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Gyarados_(Team_Rocket_8)",
+          "title": "Bulbapedia card page: Dark Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 025 as Dark Gyarados in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Dark Gyarados 025 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row records Dark Gyarados as a Stage 1 Water Pokemon with a Pokemon Power named Final Beam in the source metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Gyarados matters because the card makes the Dark frame feel volatile: the row is not only a fan-favorite monster, but a monster with a last-lash mechanic in the local metadata.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_dark_gyarados_025_language_and_row_boundary_v0.1",
+          "trigger": "A listing or want says Dark Gyarados, Rocket Gang Gyarados, Japanese Team Rocket Gyarados, prerelease Gyarados, or old-back Dark Gyarados.",
+          "summary": "Dark Gyarados 025 is the Japanese Rocket Gang row; separate it from English promo/prerelease and English Team Rocket contexts.",
+          "steps": [
+            "Preserve row 025 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before comparing to English Team Rocket or prerelease Dark Gyarados references.",
+            "Do not treat a Dark Gyarados name match as enough to resolve release context.",
+            "Record Kagemaru Himeno as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English promo equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The monster with a last spark",
+        "why_it_matters": "Dark Gyarados is where Rocket Gang feels less like a costume and more like temperament. Himeno's row carries the familiar sea-serpent dread, but the local metadata's Final Beam idea gives it a spiteful little afterimage. It is not just darker in color; it behaves like something mishandled.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:053",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Dragonite",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:053",
+        "catalog_row_id": "053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:053",
+          "title": "Local Rocket Gang row: Dark Dragonite 053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Dragonite_(Team_Rocket_5)",
+          "title": "Bulbapedia card page: Dark Dragonite",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 053 as Dark Dragonite in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Dark Dragonite 053 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row records Dark Dragonite as a Stage 2 Colorless Pokemon with a Pokemon Power named Summon Minions in the source metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dark Dragonite matters because Rocket Gang turns one of Pokemon's friendliest large silhouettes into an organizer of minions, making the villain theme visible in both art context and play text.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_dark_dragonite_053_language_and_error_boundary_v0.1",
+          "trigger": "A listing or want says Dark Dragonite, Rocket Gang Dragonite, Japanese Team Rocket Dragonite, missing holo Dark Dragonite, or old-back Dark Dragonite.",
+          "summary": "Dark Dragonite 053 is the Japanese Rocket Gang row; separate it from English Team Rocket and English error-card discussions.",
+          "steps": [
+            "Preserve row 053 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before importing English Team Rocket Dark Dragonite numbering or missing-holo error context.",
+            "Do not treat the English missing-holo error discussion as a Japanese Rocket Gang row fact.",
+            "Record Mitsuhiro Arita as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English error-card equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The friendly giant made managerial",
+        "why_it_matters": "Dark Dragonite is quietly weird in the best way. Dragonite usually reads as gentle mass, mail-route kindness, rounded power. Rocket Gang gives it a minion-summoning role, and Arita's credit keeps that shift attached to one of the strongest early visual hands in the game. The card is lovable, but the set makes it organized.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:061",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Sneak Attack",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:061",
+        "catalog_row_id": "061"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:061",
+          "title": "Local Rocket Gang row: Rocket's Sneak Attack 061",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Sneak_Attack_(Team_Rocket_16)",
+          "title": "Bulbapedia card page: Rocket's Sneak Attack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket_(TCG)",
+          "title": "Bulbapedia: Team Rocket (TCG) / Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 061 as Rocket's Sneak Attack in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Rocket's Sneak Attack 061 as a Rare with holo-source signal in Rocket Gang.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Rocket's Sneak Attack 061 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Sneak Attack matters because Rocket Gang makes the villains themselves holo-stage actors, not just owners implied by Dark Pokemon names.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_rockets_sneak_attack_061_trainer_holo_boundary_v0.1",
+          "trigger": "A listing or want says Rocket's Sneak Attack, Japanese Team Rocket trainer, Rocket Gang trainer holo, or old-back Rocket trainer.",
+          "summary": "Rocket's Sneak Attack 061 is a Japanese Rocket Gang trainer holo row; preserve language and row context.",
+          "steps": [
+            "Preserve row 061 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before comparing to English Team Rocket trainer rows.",
+            "Do not treat trainer-holo status as physical-card authenticity or condition proof.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The villains step onto the holo stage",
+        "why_it_matters": "Rocket's Sneak Attack is the moment the set stops only darkening Pokemon and lets Team Rocket act directly. Sugimori's credit makes it feel like a piece of franchise staging: a trainer card with the same theatrical charge as the monsters around it. The apparatus has people in it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:062",
+      "type": "card",
+      "context": {
+        "name_en": "Here Comes Team Rocket!",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:062",
+        "catalog_row_id": "062"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:062",
+          "title": "Local Rocket Gang row: Here Comes Team Rocket! 062",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Here_Comes_Team_Rocket!_(Team_Rocket_15)",
+          "title": "Bulbapedia card page: Here Comes Team Rocket!",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket_(TCG)",
+          "title": "Bulbapedia: Team Rocket (TCG) / Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 062 as Here Comes Team Rocket! in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Here Comes Team Rocket! 062 as Common with holo-source signal in Rocket Gang.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Here Comes Team Rocket! 062 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Here Comes Team Rocket! matters because the local row shows a common-rarity trainer with holo-source signal, making the set's theatrical villain entrance a structural card rather than only flavor text.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_here_comes_team_rocket_062_common_holo_boundary_v0.1",
+          "trigger": "A listing or want says Here Comes Team Rocket, Japanese Team Rocket trainer, common holo, Rocket Gang trainer, or old-back Rocket trainer.",
+          "summary": "Here Comes Team Rocket! 062 carries a common-rarity plus holo-source nuance in the local Japanese row; preserve both fields.",
+          "steps": [
+            "Preserve row 062 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Record both the local Common rarity source and the holo-source signal instead of flattening the row into a generic holo trainer.",
+            "Confirm language and row number before comparing to English Team Rocket trainer rows.",
+            "Do not use holo-source signal as physical-card authenticity or condition proof."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The announcement card",
+        "why_it_matters": "Here Comes Team Rocket! is wonderfully blunt. It does not hide the theme behind a Dark prefix; it opens the door and says the villains are here. The local common-plus-holo nuance makes it a good agent test: preserve the weirdness, do not smooth it into a generic rare-looking trainer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_rocket_gang_19971121:065",
+      "type": "card",
+      "context": {
+        "name_en": "Rainbow Energy",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_rocket_gang_19971121",
+        "row_id": "jp_tcg_rocket_gang_19971121:065",
+        "catalog_row_id": "065"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:065",
+          "title": "Local Rocket Gang row: Rainbow Energy 065",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Rocket-Gang-Expansion/",
+          "title": "Pokellector: Rocket Gang expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rainbow_Energy_(Team_Rocket_17)",
+          "title": "Bulbapedia card page: Rainbow Energy",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket_(TCG)",
+          "title": "Bulbapedia: Team Rocket (TCG) / Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 065 as Rainbow Energy in Rocket Gang.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Rainbow Energy 065 as a Rare with holo-source signal in Rocket Gang.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, via Bulbapedia caption metadata, credits Rainbow Energy 065 to Takumi Akabane.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rainbow Energy matters because Rocket Gang makes energy itself part of the rare-holo apparatus, showing that the set's impact is mechanical as well as character-driven.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rocket_gang_rainbow_energy_065_holo_energy_boundary_v0.1",
+          "trigger": "A listing or want says Rainbow Energy, Japanese Team Rocket energy, Rocket Gang energy holo, or old-back Rainbow Energy.",
+          "summary": "Rainbow Energy 065 is the Japanese Rocket Gang energy row; preserve set, language, and rare/holo-source context.",
+          "steps": [
+            "Preserve row 065 and release_family_id jp_tcg_rocket_gang_19971121.",
+            "Confirm language and row number before comparing to English Team Rocket Rainbow Energy rows.",
+            "Do not treat energy type, holo-source signal, or artist credit as physical-card authenticity proof.",
+            "Record Takumi Akabane as the local illustrator credit, but do not use artist credit alone as physical-card identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Team Rocket equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The set's machine has color in it",
+        "why_it_matters": "Rainbow Energy is the reminder that Rocket Gang is not only about darkened creatures. The set reaches into the resource layer: the thing that pays for action becomes collectible, shiny, and weirdly central. Akabane's credit makes this feel less like a background utility and more like a small machine part worth cataloging carefully.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
