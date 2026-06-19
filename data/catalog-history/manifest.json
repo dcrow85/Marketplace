@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22933,
-    "corpus_hash": "b07c3f38c21eff8aa947676ea7eb5ec2e5b64f799389f09c44dba1312f74b5bd",
-    "generated_card_dossier_count": 4096,
-    "generated_release_dossier_count": 154,
+    "claim_count": 22963,
+    "corpus_hash": "a67daf27826869de9a11ed96cef8a93ed48f23c7c33f9b2cf0381d9585568252",
+    "generated_card_dossier_count": 4084,
+    "generated_release_dossier_count": 153,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5651
+    "source_count": 5664
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "f69675b83a876245d0558d3f0066868049a827393c8edf55ae905904ba650865",
+    "queue_hash": "81dc1104721bd9f0233c0f23ac35c26ae1f89c2d053d37da91f59c9d09f547ae",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T08:33:21Z",
+  "generated_at": "2026-06-19T08:39:06Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "37cb64373b7be7ed429017b661d46271c9dee7cb12104ef1713e839b6970beb7",
+    "index_hash": "53365779ee52e3f2176d85e4791ab1d229bacbf0c35f556780f13d2d130d1d21",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -76,6 +76,7 @@
     "data/catalog-history/source-sets/p_promotional_tranche_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json",
+    "data/catalog-history/source-sets/pokemon_card_web_tranche_v0_1.json",
     "data/catalog-history/source-sets/pokemon_jungle_v0_1.json",
     "data/catalog-history/source-sets/pokemon_song_best_collection_v0_1.json",
     "data/catalog-history/source-sets/premium_file_2_v0_1.json",

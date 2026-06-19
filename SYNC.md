@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-fourth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/pokemon_card_web_tranche_v0_1.json`.
+  Japanese Pokemon Card web / ポケモンカード★web now has a hand-authored release
+  dossier plus twelve high-gravity / identity-teaching card dossiers: Surfing
+  Pikachu 025, Nidoking 033, Raichu 036, Dark Alakazam 037, Dragonite 038,
+  Dark Venusaur 041, Dark Charizard 042, Moltres 043, Dark Blastoise 044,
+  Articuno 045, Zapdos 046, and Gengar 047. The pass frames web as old card
+  memory routed through a new apparatus: nostalgic species and Dark/Rocket
+  vocabulary feel familiar, but the web route, set id, row number, and source
+  gap are part of the object. Added `special_identification_instructions`
+  requiring agents to preserve Japanese title ポケモンカード★web, TCGdex set id
+  `web1`, card number, local id, rough source-row text, normalized collector
+  label, and the explicit missing local number `039` source gap before
+  accepting old-set, promo, famous-species, or English-equivalent matches.
+  Dark rows keep the Dark prefix and web route together; Surfing Pikachu is
+  route-sensitive novelty, not a generic promo row. The tranche deliberately
+  keeps rough local source text and normalized labels separate; clean
+  translated-name authority is not claimed. This is a bounded high-gravity
+  tranche, not complete 48-card hand-authored coverage; 35 modeled Pokemon
+  Card web rows remain generated follow-up work and local number 039 remains a
+  disclosed source gap. Artists remain intentionally unset because the local
+  Japanese classic rows do not provide illustrator authority. Sources: local
+  Japanese classic Pokemon Card web release file and TCGdex Japanese set/card
+  payload references. Generated gap moved from 154 releases / 4,096 cards to
+  153 releases / 4,084 cards. Current catalog-history corpus: 22,963 claims,
+  5,664 sources, 725 dossiers with special identification instructions,
+  corpus hash
+  `a67daf27826869de9a11ed96cef8a93ed48f23c7c33f9b2cf0381d9585568252`;
+  index hash `53365779ee52e3f2176d85e4791ab1d229bacbf0c35f556780f13d2d130d1d21`;
+  queue hash `81dc1104721bd9f0233c0f23ac35c26ae1f89c2d053d37da91f59c9d09f547ae`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json`.
