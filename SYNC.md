@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_chugoku_shikoku_lucky_stadium_v0_1.json`
+  deepens row 169 / Lucky Stadium `[Gyarados] [Chūgoku/Shikoku]` from the World Challenge
+  Summer participation-prize route. The pass follows Bulbapedia's August 2, 2000 Hiroshima
+  Sun Plaza event listing and treats PokeBoon's Chugoku shorthand as useful identity support,
+  not complete region-name authority. Gyarados, Chūgoku/Shikoku, Itsukushima Shrine,
+  Hatsukaichi, the floating torii, Yousuke Hirata, CR CG gangs, and the eight-region Lucky
+  Stadium structure are now legible. Special ID rails separate it from other World Challenge
+  Summer regional prints, Tropical Mega Battle bilingual Lucky Stadium, Neo Destiny, Intro
+  Pack Neo, Pokemon Center New York, and generic Lucky Stadium rows. Generated gaps moved to
+  73 release / 3899 card. Current hashes: corpus
+  `75969c5573ace4fa6b6b2270f9c8fba828348e6090d18c063ca335b38f23b03e`, index
+  `c3469b5eac2b3101197f7c115223f06b24055d7d9ab5c8877cd9060668a4acc4`, queue
+  `a56fbffdd53e88556f763be76f99ff53eb0ddb9249b52e7cdaa4b677e7e17644`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_kansai_lucky_stadium_v0_1.json`
