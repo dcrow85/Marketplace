@@ -1,0 +1,2695 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Pokemon Card VS / ポケモンカード★VS within the catalog-history deepening pass.",
+    "in_scope": [
+      "Pokemon Card VS release dossier",
+      "selected trainer-owner / Rocket / Champion / late-energy identity-teaching card dossiers",
+      "special identification rails for exact Japanese VS1 row identity"
+    ],
+    "not_claiming": [
+      "complete 143-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card VS",
+        "name_ja": "ポケモンカード★VS",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "release_date": "2001-07-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json",
+          "title": "Local Japanese classic catalog: Pokemon Card VS",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/VS1",
+          "title": "TCGdex Japanese set endpoint: VS1 / Pokemon Card VS",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Pokemon Card VS / ポケモンカード★VS with a July 19, 2001 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 143 total rows for Pokemon Card VS, while the same metadata records 141 official rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Pokemon Card VS is modeled as a Japanese main expansion in the VS series, using TCGdex set id VS1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Pokemon Card VS matters because it makes trainer ownership the release grammar: Falkner, Bugsy, Jasmine, Clair, Karen, Rocket, and Lance change what familiar species mean before any transaction evidence appears.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Falkner’s Skarmory, Bugsy’s Scizor, Karen’s Tyranitar, Karen’s Umbreon, Rocket’s Wobbuffet, and Rocket’s Raikou; this tranche also hand-authors Jasmine’s Steelix, Clair’s Gyarados, Clair’s Dragonite, Will’s Espeon, Lance’s Charizard, Lance’s Dragonite, and Rainbow Energy because they teach owner identity and row-map edges.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, trainer-owner name, species name, card number, local id, rough source-row text, normalized collector label, and official-count / total-count context before treating a famous species or trainer match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_vs_release_trainer_owner_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Card VS, ポケモンカード★VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or any VS Technical Machine.",
+          "summary": "Keep Pokemon Card VS as Japanese VS1 / ポケモンカード★VS with trainer-owner and row-number identity; do not collapse owner rows into species-only searches.",
+          "steps": [
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact release.",
+            "Preserve trainer-owner name, species name, card number, and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Treat Technical Machines and energy tail rows as part of the VS apparatus, not as unrelated fillers.",
+            "Preserve the 141 official / 143 total row distinction when discussing late-number rows.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Card VS — when ownership becomes encounter design",
+        "why_it_matters": "Pokemon Card VS turns the binder into a battle route. The card is no longer just Skarmory or Umbreon or Charizard; it is Falkner’s, Karen’s, Lance’s, Rocket’s. That owner label changes the desire, the memory, and the agent’s matching rules.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 143-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-007",
+      "type": "card",
+      "context": {
+        "name_en": "Falkner's Skarmory",
+        "name_ja": "フォークナーのスカルモリー",
+        "normalized_label": "Falkner's Skarmory",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-007",
+        "card_number": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-007",
+          "title": "Local Japanese classic catalog row: Falkner's Skarmory / Pokemon Card VS #007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-007",
+          "title": "TCGdex Japanese card endpoint: VS1-007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-007 as Pokemon Card VS / ポケモンカード★VS card #007, with rough source-row text 'フォークナーのスカルモリー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Falkner's Skarmory\" as a normalized collector label while preserving the rough local source-row text 'フォークナーのスカルモリー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-007 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Falkner's Skarmory matters in this tranche because it makes the first Johto gym leader feel aerodynamic and metallic; Skarmory is not generic here, it is Falkner’s answer to flight.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Falkner's Skarmory, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #007, local id VS1-007, rough source-row text 'フォークナーのスカルモリー', and normalized label \"Falkner's Skarmory\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Falkner's Skarmory is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-007_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Falkner's Skarmory, フォークナーのスカルモリー, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 007.",
+          "summary": "Preserve Falkner's Skarmory as Pokemon Card VS / ポケモンカード★VS #007, local id VS1-007, source-row text 'フォークナーのスカルモリー'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-007 and local id VS1-007.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 007, rough source-row text 'フォークナーのスカルモリー', and normalized collector label \"Falkner's Skarmory\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Falkner's Skarmory — Pokemon Card VS #007",
+        "why_it_matters": "Falkner's Skarmory shows why VS is not just another checklist: it makes the first Johto gym leader feel aerodynamic and metallic; Skarmory is not generic here, it is Falkner’s answer to flight. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-013",
+      "type": "card",
+      "context": {
+        "name_en": "Bugsy's Scizor",
+        "name_ja": "Bugsy's Scizor",
+        "normalized_label": "Bugsy's Scizor",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-013",
+        "card_number": "013"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-013",
+          "title": "Local Japanese classic catalog row: Bugsy's Scizor / Pokemon Card VS #013",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-013",
+          "title": "TCGdex Japanese card endpoint: VS1-013",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-013 as Pokemon Card VS / ポケモンカード★VS card #013, with rough source-row text \"Bugsy's Scizor\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Bugsy's Scizor\" as a normalized collector label while preserving the rough local source-row text \"Bugsy's Scizor\"; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-013 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bugsy's Scizor matters in this tranche because it turns Bugsy from early-game bug trainer into a sharp steel-bug identity, one of the cleanest examples of VS making a trainer feel cooler than the game memory alone.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Bugsy's Scizor, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #013, local id VS1-013, rough source-row text \"Bugsy's Scizor\", and normalized label \"Bugsy's Scizor\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Bugsy's Scizor is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-013_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Bugsy's Scizor, Bugsy's Scizor, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 013.",
+          "summary": "Preserve Bugsy's Scizor as Pokemon Card VS / ポケモンカード★VS #013, local id VS1-013, source-row text \"Bugsy's Scizor\"; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-013 and local id VS1-013.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 013, rough source-row text \"Bugsy's Scizor\", and normalized collector label \"Bugsy's Scizor\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Bugsy's Scizor — Pokemon Card VS #013",
+        "why_it_matters": "Bugsy's Scizor shows why VS is not just another checklist: it turns Bugsy from early-game bug trainer into a sharp steel-bug identity, one of the cleanest examples of VS making a trainer feel cooler than the game memory alone. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-032",
+      "type": "card",
+      "context": {
+        "name_en": "Jasmine's Steelix",
+        "name_ja": "JasmineのSteelix",
+        "normalized_label": "Jasmine's Steelix",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-032",
+        "card_number": "032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-032",
+          "title": "Local Japanese classic catalog row: Jasmine's Steelix / Pokemon Card VS #032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-032",
+          "title": "TCGdex Japanese card endpoint: VS1-032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-032 as Pokemon Card VS / ポケモンカード★VS card #032, with rough source-row text 'JasmineのSteelix'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Jasmine's Steelix\" as a normalized collector label while preserving the rough local source-row text 'JasmineのSteelix'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-032 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Jasmine's Steelix matters in this tranche because it anchors Jasmine’s whole steel grammar: gentle trainer, massive metal partner, and an ownership label that matters as much as the species.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Jasmine's Steelix, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #032, local id VS1-032, rough source-row text 'JasmineのSteelix', and normalized label \"Jasmine's Steelix\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Jasmine's Steelix is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-032_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Jasmine's Steelix, JasmineのSteelix, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 032.",
+          "summary": "Preserve Jasmine's Steelix as Pokemon Card VS / ポケモンカード★VS #032, local id VS1-032, source-row text 'JasmineのSteelix'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-032 and local id VS1-032.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 032, rough source-row text 'JasmineのSteelix', and normalized collector label \"Jasmine's Steelix\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Jasmine's Steelix — Pokemon Card VS #032",
+        "why_it_matters": "Jasmine's Steelix shows why VS is not just another checklist: it anchors Jasmine’s whole steel grammar: gentle trainer, massive metal partner, and an ownership label that matters as much as the species. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-048",
+      "type": "card",
+      "context": {
+        "name_en": "Clair's Gyarados",
+        "name_ja": "クレアのギャラドス",
+        "normalized_label": "Clair's Gyarados",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-048",
+        "card_number": "048"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-048",
+          "title": "Local Japanese classic catalog row: Clair's Gyarados / Pokemon Card VS #048",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-048",
+          "title": "TCGdex Japanese card endpoint: VS1-048",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-048 as Pokemon Card VS / ポケモンカード★VS card #048, with rough source-row text 'クレアのギャラドス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Clair's Gyarados\" as a normalized collector label while preserving the rough local source-row text 'クレアのギャラドス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-048 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Clair's Gyarados matters in this tranche because it gives Clair water violence before dragon grandeur, a reminder that trainer identity can bend a familiar monster into a character beat.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Clair's Gyarados, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #048, local id VS1-048, rough source-row text 'クレアのギャラドス', and normalized label \"Clair's Gyarados\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Clair's Gyarados is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-048_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Clair's Gyarados, クレアのギャラドス, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 048.",
+          "summary": "Preserve Clair's Gyarados as Pokemon Card VS / ポケモンカード★VS #048, local id VS1-048, source-row text 'クレアのギャラドス'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-048 and local id VS1-048.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 048, rough source-row text 'クレアのギャラドス', and normalized collector label \"Clair's Gyarados\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Clair's Gyarados — Pokemon Card VS #048",
+        "why_it_matters": "Clair's Gyarados shows why VS is not just another checklist: it gives Clair water violence before dragon grandeur, a reminder that trainer identity can bend a familiar monster into a character beat. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-049",
+      "type": "card",
+      "context": {
+        "name_en": "Clair's Dragonite",
+        "name_ja": "クレアのドラゴナイト",
+        "normalized_label": "Clair's Dragonite",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-049",
+        "card_number": "049"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-049",
+          "title": "Local Japanese classic catalog row: Clair's Dragonite / Pokemon Card VS #049",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-049",
+          "title": "TCGdex Japanese card endpoint: VS1-049",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-049 as Pokemon Card VS / ポケモンカード★VS card #049, with rough source-row text 'クレアのドラゴナイト'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Clair's Dragonite\" as a normalized collector label while preserving the rough local source-row text 'クレアのドラゴナイト'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-049 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Clair's Dragonite matters in this tranche because it is the dragon-master thesis card: same Dragonite gravity, but now bound to Clair’s authority and gym mythology.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Clair's Dragonite, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #049, local id VS1-049, rough source-row text 'クレアのドラゴナイト', and normalized label \"Clair's Dragonite\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Clair's Dragonite is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-049_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Clair's Dragonite, クレアのドラゴナイト, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 049.",
+          "summary": "Preserve Clair's Dragonite as Pokemon Card VS / ポケモンカード★VS #049, local id VS1-049, source-row text 'クレアのドラゴナイト'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-049 and local id VS1-049.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 049, rough source-row text 'クレアのドラゴナイト', and normalized collector label \"Clair's Dragonite\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Clair's Dragonite — Pokemon Card VS #049",
+        "why_it_matters": "Clair's Dragonite shows why VS is not just another checklist: it is the dragon-master thesis card: same Dragonite gravity, but now bound to Clair’s authority and gym mythology. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-076",
+      "type": "card",
+      "context": {
+        "name_en": "Will's Espeon",
+        "name_ja": "ウィルのエスペオン",
+        "normalized_label": "Will's Espeon",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-076",
+        "card_number": "076"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-076",
+          "title": "Local Japanese classic catalog row: Will's Espeon / Pokemon Card VS #076",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-076",
+          "title": "TCGdex Japanese card endpoint: VS1-076",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-076 as Pokemon Card VS / ポケモンカード★VS card #076, with rough source-row text 'ウィルのエスペオン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Will's Espeon\" as a normalized collector label while preserving the rough local source-row text 'ウィルのエスペオン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-076 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Will's Espeon matters in this tranche because it makes Espeon psychic and personal, a card that reads through Will before it reads through Eevee fandom.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Will's Espeon, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #076, local id VS1-076, rough source-row text 'ウィルのエスペオン', and normalized label \"Will's Espeon\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Will's Espeon is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-076_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Will's Espeon, ウィルのエスペオン, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 076.",
+          "summary": "Preserve Will's Espeon as Pokemon Card VS / ポケモンカード★VS #076, local id VS1-076, source-row text 'ウィルのエスペオン'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-076 and local id VS1-076.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 076, rough source-row text 'ウィルのエスペオン', and normalized collector label \"Will's Espeon\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Will's Espeon — Pokemon Card VS #076",
+        "why_it_matters": "Will's Espeon shows why VS is not just another checklist: it makes Espeon psychic and personal, a card that reads through Will before it reads through Eevee fandom. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-090",
+      "type": "card",
+      "context": {
+        "name_en": "Karen's Tyranitar",
+        "name_ja": "カレンのタイラニター",
+        "normalized_label": "Karen's Tyranitar",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-090",
+        "card_number": "090"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-090",
+          "title": "Local Japanese classic catalog row: Karen's Tyranitar / Pokemon Card VS #090",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-090",
+          "title": "TCGdex Japanese card endpoint: VS1-090",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-090 as Pokemon Card VS / ポケモンカード★VS card #090, with rough source-row text 'カレンのタイラニター'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Karen's Tyranitar\" as a normalized collector label while preserving the rough local source-row text 'カレンのタイラニター'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-090 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Karen's Tyranitar matters in this tranche because it is the heavy dark-end of the trainer-owner system: Karen turns Tyranitar into attitude, taste, and threat.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Karen's Tyranitar, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #090, local id VS1-090, rough source-row text 'カレンのタイラニター', and normalized label \"Karen's Tyranitar\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Karen's Tyranitar is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-090_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Karen's Tyranitar, カレンのタイラニター, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 090.",
+          "summary": "Preserve Karen's Tyranitar as Pokemon Card VS / ポケモンカード★VS #090, local id VS1-090, source-row text 'カレンのタイラニター'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-090 and local id VS1-090.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 090, rough source-row text 'カレンのタイラニター', and normalized collector label \"Karen's Tyranitar\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Karen's Tyranitar — Pokemon Card VS #090",
+        "why_it_matters": "Karen's Tyranitar shows why VS is not just another checklist: it is the heavy dark-end of the trainer-owner system: Karen turns Tyranitar into attitude, taste, and threat. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-091",
+      "type": "card",
+      "context": {
+        "name_en": "Karen's Umbreon",
+        "name_ja": "カレンのウンブレオン",
+        "normalized_label": "Karen's Umbreon",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-091",
+        "card_number": "091"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-091",
+          "title": "Local Japanese classic catalog row: Karen's Umbreon / Pokemon Card VS #091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-091",
+          "title": "TCGdex Japanese card endpoint: VS1-091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-091 as Pokemon Card VS / ポケモンカード★VS card #091, with rough source-row text 'カレンのウンブレオン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Karen's Umbreon\" as a normalized collector label while preserving the rough local source-row text 'カレンのウンブレオン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-091 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Karen's Umbreon matters in this tranche because it is one of the set’s most elegant desire objects because the Umbreon chase is inseparable from Karen’s dark-type persona.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Karen's Umbreon, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #091, local id VS1-091, rough source-row text 'カレンのウンブレオン', and normalized label \"Karen's Umbreon\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Karen's Umbreon is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-091_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Karen's Umbreon, カレンのウンブレオン, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 091.",
+          "summary": "Preserve Karen's Umbreon as Pokemon Card VS / ポケモンカード★VS #091, local id VS1-091, source-row text 'カレンのウンブレオン'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-091 and local id VS1-091.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 091, rough source-row text 'カレンのウンブレオン', and normalized collector label \"Karen's Umbreon\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Karen's Umbreon — Pokemon Card VS #091",
+        "why_it_matters": "Karen's Umbreon shows why VS is not just another checklist: it is one of the set’s most elegant desire objects because the Umbreon chase is inseparable from Karen’s dark-type persona. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-093",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Wobbuffet",
+        "name_ja": "ロケットのウォブバッフェット",
+        "normalized_label": "Rocket's Wobbuffet",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-093",
+        "card_number": "093"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-093",
+          "title": "Local Japanese classic catalog row: Rocket's Wobbuffet / Pokemon Card VS #093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-093",
+          "title": "TCGdex Japanese card endpoint: VS1-093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-093 as Pokemon Card VS / ポケモンカード★VS card #093, with rough source-row text 'ロケットのウォブバッフェット'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Rocket's Wobbuffet\" as a normalized collector label while preserving the rough local source-row text 'ロケットのウォブバッフェット'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-093 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Wobbuffet matters in this tranche because it lets Team Rocket’s weirdness into the VS system, making comic timing and menace share the same ownership rail.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Rocket's Wobbuffet, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #093, local id VS1-093, rough source-row text 'ロケットのウォブバッフェット', and normalized label \"Rocket's Wobbuffet\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Rocket's Wobbuffet is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-093_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Wobbuffet, ロケットのウォブバッフェット, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 093.",
+          "summary": "Preserve Rocket's Wobbuffet as Pokemon Card VS / ポケモンカード★VS #093, local id VS1-093, source-row text 'ロケットのウォブバッフェット'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-093 and local id VS1-093.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 093, rough source-row text 'ロケットのウォブバッフェット', and normalized collector label \"Rocket's Wobbuffet\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Rocket's Wobbuffet — Pokemon Card VS #093",
+        "why_it_matters": "Rocket's Wobbuffet shows why VS is not just another checklist: it lets Team Rocket’s weirdness into the VS system, making comic timing and menace share the same ownership rail. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-094",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Raikou",
+        "name_ja": "ロケットのライコウ",
+        "normalized_label": "Rocket's Raikou",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-094",
+        "card_number": "094"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-094",
+          "title": "Local Japanese classic catalog row: Rocket's Raikou / Pokemon Card VS #094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-094",
+          "title": "TCGdex Japanese card endpoint: VS1-094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-094 as Pokemon Card VS / ポケモンカード★VS card #094, with rough source-row text 'ロケットのライコウ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Rocket's Raikou\" as a normalized collector label while preserving the rough local source-row text 'ロケットのライコウ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-094 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Raikou matters in this tranche because it is the shock of the release: a legendary beast reframed through Rocket, so possession becomes almost the whole story.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Rocket's Raikou, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #094, local id VS1-094, rough source-row text 'ロケットのライコウ', and normalized label \"Rocket's Raikou\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Rocket's Raikou is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-094_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Raikou, ロケットのライコウ, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 094.",
+          "summary": "Preserve Rocket's Raikou as Pokemon Card VS / ポケモンカード★VS #094, local id VS1-094, source-row text 'ロケットのライコウ'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-094 and local id VS1-094.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 094, rough source-row text 'ロケットのライコウ', and normalized collector label \"Rocket's Raikou\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Rocket's Raikou — Pokemon Card VS #094",
+        "why_it_matters": "Rocket's Raikou shows why VS is not just another checklist: it is the shock of the release: a legendary beast reframed through Rocket, so possession becomes almost the whole story. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-097",
+      "type": "card",
+      "context": {
+        "name_en": "Lance's Charizard",
+        "name_ja": "ランスのカリザード",
+        "normalized_label": "Lance's Charizard",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-097",
+        "card_number": "097"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-097",
+          "title": "Local Japanese classic catalog row: Lance's Charizard / Pokemon Card VS #097",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-097",
+          "title": "TCGdex Japanese card endpoint: VS1-097",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-097 as Pokemon Card VS / ポケモンカード★VS card #097, with rough source-row text 'ランスのカリザード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Lance's Charizard\" as a normalized collector label while preserving the rough local source-row text 'ランスのカリザード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-097 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Lance's Charizard matters in this tranche because it gives the franchise’s most famous dragon-shaped fire icon a Champion owner, which changes the object even before condition or rarity enters.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Lance's Charizard, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #097, local id VS1-097, rough source-row text 'ランスのカリザード', and normalized label \"Lance's Charizard\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Lance's Charizard is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-097_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Lance's Charizard, ランスのカリザード, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 097.",
+          "summary": "Preserve Lance's Charizard as Pokemon Card VS / ポケモンカード★VS #097, local id VS1-097, source-row text 'ランスのカリザード'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-097 and local id VS1-097.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 097, rough source-row text 'ランスのカリザード', and normalized collector label \"Lance's Charizard\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lance's Charizard — Pokemon Card VS #097",
+        "why_it_matters": "Lance's Charizard shows why VS is not just another checklist: it gives the franchise’s most famous dragon-shaped fire icon a Champion owner, which changes the object even before condition or rarity enters. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-100",
+      "type": "card",
+      "context": {
+        "name_en": "Lance's Dragonite",
+        "name_ja": "ランスのドラゴナイト",
+        "normalized_label": "Lance's Dragonite",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-100",
+        "card_number": "100"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-100",
+          "title": "Local Japanese classic catalog row: Lance's Dragonite / Pokemon Card VS #100",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-100",
+          "title": "TCGdex Japanese card endpoint: VS1-100",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-100 as Pokemon Card VS / ポケモンカード★VS card #100, with rough source-row text 'ランスのドラゴナイト'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses \"Lance's Dragonite\" as a normalized collector label while preserving the rough local source-row text 'ランスのドラゴナイト'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-100 include 'Common'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Lance's Dragonite matters in this tranche because it is Lance’s purest identity card here: Champion, dragon, and partner all locked into one row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Lance's Dragonite, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #100, local id VS1-100, rough source-row text 'ランスのドラゴナイト', and normalized label \"Lance's Dragonite\".",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Lance's Dragonite is a trainer-owner identity row: its market and story meaning depends on the owner label traveling with the species name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-100_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Lance's Dragonite, ランスのドラゴナイト, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 100.",
+          "summary": "Preserve Lance's Dragonite as Pokemon Card VS / ポケモンカード★VS #100, local id VS1-100, source-row text 'ランスのドラゴナイト'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-100 and local id VS1-100.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 100, rough source-row text 'ランスのドラゴナイト', and normalized collector label \"Lance's Dragonite\" separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lance's Dragonite — Pokemon Card VS #100",
+        "why_it_matters": "Lance's Dragonite shows why VS is not just another checklist: it is Lance’s purest identity card here: Champion, dragon, and partner all locked into one row. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_vs_20010719:VS1-151",
+      "type": "card",
+      "context": {
+        "name_en": "Rainbow Energy late-number row",
+        "name_ja": "レインボーエネルギー",
+        "normalized_label": "Rainbow Energy late-number row",
+        "release_family_id": "jp_tcg_pokemon_card_vs_20010719",
+        "local_id": "VS1-151",
+        "card_number": "151"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_vs_20010719.json#row:jp_tcg_pokemon_card_vs_20010719:VS1-151",
+          "title": "Local Japanese classic catalog row: Rainbow Energy late-number row / Pokemon Card VS #151",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/VS1-151",
+          "title": "TCGdex Japanese card endpoint: VS1-151",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_vs_20010719:VS1-151 as Pokemon Card VS / ポケモンカード★VS card #151, with rough source-row text 'レインボーエネルギー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Rainbow Energy late-number row' as a normalized collector label while preserving the rough local source-row text 'レインボーエネルギー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_vs_20010719:VS1-151 include 'None'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rainbow Energy late-number row matters in this tranche because it sits beyond the normal visible map and teaches agents that VS row identity includes the strange energy tail, not just owner Pokemon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Rainbow Energy late-number row, preserve Japanese title ポケモンカード★VS, TCGdex set id VS1, card #151, local id VS1-151, rough source-row text 'レインボーエネルギー', and normalized label 'Rainbow Energy late-number row'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Rainbow Energy late-number row sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 141 and total count 143, so agents must preserve the number rail instead of treating it as an ordinary row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_vs_20010719_VS1-151_vs_trainer_owner_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Rainbow Energy late-number row, レインボーエネルギー, Pokemon Card VS, VS1, trainer-owned Pokemon, Karen, Lance, Rocket, Falkner, Bugsy, Jasmine, Clair, or row 151.",
+          "summary": "Preserve Rainbow Energy late-number row as Pokemon Card VS / ポケモンカード★VS #151, local id VS1-151, source-row text 'レインボーエネルギー'; do not accept species-only, trainer-only, or English-equivalent matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_vs_20010719:VS1-151 and local id VS1-151.",
+            "Require Japanese title ポケモンカード★VS or TCGdex set id VS1 before naming this exact catalog row.",
+            "Preserve card number 151, rough source-row text 'レインボーエネルギー', and normalized collector label 'Rainbow Energy late-number row' separately.",
+            "Treat trainer-owner naming as part of object identity: Karen’s Umbreon is not generic Umbreon, and Lance’s Charizard is not generic Charizard.",
+            "If the row number is outside the ordinary official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "species-only equivalence",
+            "trainer-only equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Rainbow Energy late-number row — Pokemon Card VS #151",
+        "why_it_matters": "Rainbow Energy late-number row shows why VS is not just another checklist: it sits beyond the normal visible map and teaches agents that VS row identity includes the strange energy tail, not just owner Pokemon. The agent must hold trainer, species, set, and number together before it lets the card become actionable.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

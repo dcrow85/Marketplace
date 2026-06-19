@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json`.
+  Japanese Pokemon Card VS / ポケモンカード★VS now has a hand-authored release
+  dossier plus thirteen high-gravity / identity-teaching card dossiers:
+  Falkner's Skarmory 007, Bugsy's Scizor 013, Jasmine's Steelix 032,
+  Clair's Gyarados 048, Clair's Dragonite 049, Will's Espeon 076, Karen's
+  Tyranitar 090, Karen's Umbreon 091, Rocket's Wobbuffet 093, Rocket's Raikou
+  094, Lance's Charizard 097, Lance's Dragonite 100, and Rainbow Energy
+  late-number row 151. The pass frames VS as encounter design: the card is not
+  just Umbreon, Charizard, Skarmory, or Raikou; the owner label changes the
+  object before any transaction evidence appears. Added
+  `special_identification_instructions` requiring agents to preserve Japanese
+  title ポケモンカード★VS, TCGdex set id `VS1`, trainer-owner name, species name,
+  card number, local id, rough source-row text, normalized collector label,
+  and the 141 official / 143 total row distinction before accepting
+  species-only, trainer-only, or English-equivalent matches. Technical
+  Machines and energy tail rows are treated as part of the VS apparatus, not
+  unrelated filler. The tranche deliberately keeps rough local source text and
+  normalized labels separate; clean translated-name authority is not claimed.
+  This is a bounded high-gravity tranche, not complete 143-card hand-authored
+  coverage; 130 Pokemon Card VS rows remain generated follow-up work. Artists
+  remain intentionally unset because the local Japanese classic rows do not
+  provide illustrator authority. Sources: local Japanese classic Pokemon Card
+  VS release file and TCGdex Japanese set/card payload references. Generated
+  gap moved from 155 releases / 4,109 cards to 154 releases / 4,096 cards.
+  Current catalog-history corpus: 22,933 claims, 5,651 sources, 712 dossiers
+  with special identification instructions, corpus hash
+  `b07c3f38c21eff8aa947676ea7eb5ec2e5b64f799389f09c44dba1312f74b5bd`;
+  index hash `37cb64373b7be7ed429017b661d46271c9dee7cb12104ef1713e839b6970beb7`;
+  queue hash `f69675b83a876245d0558d3f0066868049a827393c8edf55ae905904ba650865`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/mysterious_mountains_tranche_v0_1.json`.
