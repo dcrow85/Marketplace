@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-fifth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/tamamushi_city_gym_erika_v0_1.json`.
+  Tamamushi City Gym / Erika is now a hand-authored Gym standard-deck dossier,
+  with 11 rows promoted from generated baseline to sourced card dossiers:
+  Erika's Oddish 001, Erika's Oddish 002, Erika's Vileplume 004, Erika's
+  Victreebel 008, Erika's Dratini 013, Erika 016, Erika's Maids 017, Erika's
+  Perfume 018, Celadon City Gym 021, Good Manners 027, and Double Colorless
+  Energy 028. The pass frames the release as a garden becoming a deck: a
+  64-card product context with 28 unique catalog rows where Grass evolutions,
+  maids, perfume, charity, manners, city, and resources all make Erika's
+  identity feel cultivated rather than merely typed. Added special
+  identification rails for the Gym deck missing-symbol lane not being Base No
+  Rarity, 64-card product vs 28-row catalog surface, Oddish 001 Atsuko Nishida
+  vs Oddish 002 Ken Sugimori, English Gym Heroes / Gym Challenge comparison
+  boundaries, Erika's Dratini deck-vs-Unnumbered-Promotional route separation,
+  Celadon City Gym place-card identity, Good Manners as a deck trainer row, and
+  Double Colorless Energy not collapsing into Base / Starter / Gift Pack /
+  Kuchiba / English energy lanes. Sources: local Tamamushi City Gym catalog,
+  PokéCardex TCGYM, Bulbapedia Tamamushi City Gym, Japanese Pre-English Release
+  Map, local Unnumbered Promotional source slice, and local English Gym Heroes /
+  Gym Challenge catalogs for comparison boundaries. Generated gap moved from
+  173 releases / 4,270 cards to 172 releases / 4,259 cards. Current
+  catalog-history corpus: 22,841 claims, 5,517 sources, corpus hash
+  `c435459c70fa62566d8736b505f2083a77b7d4bb3a320ce852b56a672065e749`;
+  index hash `5371103c5b8b03109d791a1ff0280efe22919d66c3d9a5d83e994a241fcf9b53`;
+  queue hash `5892a6abbecc882645c42440b989ab5b12710416c64272183168946c39bab856`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-fourth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/kuchiba_city_gym_lt_surge_v0_1.json`.
