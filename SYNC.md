@@ -59,6 +59,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_april_2000_english_jumbo_charizard_v0_1.json`
+  deepens row 159 / Charizard `[English Jumbo]` from the CoroCoro Comic April 2000 issue
+  insert route (March 15, 2000). The pass treats it as a three-part identity: English Base Set
+  4/102 face, jumbo physical body, Japanese CoroCoro distribution. Mitsuhiro Arita artwork,
+  Base Set lineage, magazine route, size evidence, and jumbo condition path are now legible.
+  Special ID rails separate it from standard-size Base Set, Japanese Expansion Pack / No Rarity,
+  Trade Please, Song Best, Premium File 2, Base Set 2, Legendary Collection, Celebrations, metal
+  cards, and modern Charizard reprints. Generated gaps moved to 80 release / 3906 card. Current
+  hashes: corpus `76bb63c1b4db781128fba39360938660711846910a86df29b116dd1cb1eaa238`, index
+  `472b194f407b752a9cd31b5fab4cabe8b3cf97642251eb2c8290ad8a228cb455`, queue
+  `6913161f8d969bd796ffe444b0b37cdf73c708bdfa8cbaedab73671bdb69d033`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/trainers_vol5_steelix_v0_1.json`

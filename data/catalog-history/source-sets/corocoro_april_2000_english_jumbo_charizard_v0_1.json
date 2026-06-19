@@ -1,0 +1,680 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the English Jumbo Charizard inserted in CoroCoro Comic April 2000, emphasizing the strange assembly of an English Base Set 4/102 face distributed through a Japanese magazine, Mitsuhiro Arita's Base Set artwork, jumbo physical format, Charizard gravity, and traps against ordinary Base Set, Japanese Expansion Pack, Song Best, Trade Please, Premium File 2, and other Charizard rows.",
+    "in_scope": [
+      "CoroCoro Comic April 2000 issue insert release dossier",
+      "English Jumbo Charizard unnumbered promotional row 159",
+      "Mitsuhiro Arita Base Set artwork context",
+      "CoroCoro jumbo-card physical format",
+      "English-face/Japanese-route identification rails"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000",
+        "name_en": "CoroCoro Comic April 2000 issue insert (March 15, 2000)",
+        "release_date": "2000-03-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro Comic magazine insert",
+          "English Jumbo in Japanese distribution",
+          "Base Set 4/102 Charizard face",
+          "Mitsuhiro Arita artwork",
+          "oversized physical format",
+          "Charizard variant-collapse hazard"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000:159",
+            "name": "Charizard [English Jumbo]",
+            "why": "This is a chase because it takes the most famous Base Set image and moves it sideways: same English Charizard face, much larger body, Japanese CoroCoro delivery.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Mitsuhiro Arita",
+            "row_count": 1,
+            "examples": [
+              "Charizard [English Jumbo]"
+            ],
+            "why": "Arita matters here because this row is almost pure artwork gravity: his Base Set Charizard image is the reason a Japanese magazine could turn an English oversized insert into an object collectors still chase.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete Mitsuhiro Arita bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Charizard art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic April 2000 issue insert as a one-row unnumbered promotional source group containing Charizard [English Jumbo] at source index 159.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Charizard Base Set 4 page says a Jumbo English version of the Base Set print was released in Japan as an insert in the April 2000 CoroCoro magazine, released in March 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Pokeboon identifies the card as Charizard [English Jumbo] and describes the route as CoroCoro Comic April 2000 insert, magazine-inserted jumbo card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "An Elite Fourum collector thread shows active modern collector attention around finding the April 2000 CoroCoro issue with the Jumbo Charizard still intact, which is useful texture but not source authority for the original distribution.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Base Set Charizard artwork to Mitsuhiro Arita.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Pokeboon and eBay product metadata also credit the CoroCoro Jumbo Charizard illustration to Mitsuhiro Arita.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Pokemon.com describes Mitsuhiro Arita as one of the most prolific illustrators in Pokemon TCG history.",
+          "sources": [
+            "s7"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.identity",
+          "text": "The row is specifically an English Jumbo presentation of Base Set Charizard 4/102 rather than a standard-size Japanese Expansion Pack, English Base Set, Trade Please, Song Best, Premium File 2, or modern reprint card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve English language face, jumbo format, Base Set 4/102 identity, CoroCoro Comic April 2000 insert route, Mitsuhiro Arita credit, and non-equivalence with ordinary Charizard rows before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "This row matters because it shows Charizard's image becoming portable across language, size, and distribution channel: an English Base Set face made into a Japanese magazine object.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_2000_english_jumbo_charizard_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Charizard, CoroCoro April 2000, English Jumbo, jumbo Charizard, oversized Base Set, 4/102, Mitsuhiro Arita, Japanese promo Charizard, Base Set Charizard, Song Best Charizard, Trade Please Charizard, Premium File 2 Charizard, or CoroCoro Jumbo.",
+          "summary": "Identify this row as the English Jumbo Base Set Charizard inserted through CoroCoro April 2000; do not let Charizard fame collapse language, size, or route.",
+          "steps": [
+            "Confirm the physical object is jumbo / oversized, not a standard-size TCG card.",
+            "Confirm the card face is English Base Set Charizard 4/102, with English text and Base Set numbering.",
+            "Confirm the distribution route is CoroCoro Comic April 2000 issue insert, released March 2000 / March 15, 2000 in the local row.",
+            "Preserve Mitsuhiro Arita as the Base Set artwork illustrator.",
+            "Check for jumbo-card edges, proportions, and back-side format using seller photos; jumbo condition is its own evidence path.",
+            "Separate Japanese Expansion Pack Charizard, No Rarity Charizard, English Base Set Charizard, Trade Please Charizard, Song Best Charizard, Premium File 2 Charizard, Base Set 2, Legendary Collection, Celebrations, metal cards, and modern classic reprints unless route and size evidence prove this exact row.",
+            "Request front/back photos with a size reference and any intact-magazine or tear-out provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "standard-size Base Set equivalence",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Trade Please equivalence",
+            "Song Best equivalence",
+            "Premium File 2 equivalence",
+            "modern reprint equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Charizard: the English dragon folded into CoroCoro",
+        "why_it_matters": "This is Charizard doing what Charizard does: bending the catalog around itself. But the interesting part is not merely fame. It is the assembly. Arita's English Base Set dragon, already the furnace at the center of the hobby, gets enlarged and mailed into Japanese childhood through CoroCoro. The result is a strange object: English face, Japanese route, jumbo body. An agent has to hold all three at once, because desire will try to flatten it into 'Charizard.' The card is more precise, and more wonderful, than that.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c8",
+          "c10"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue contents",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic April 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_%28Base_Set_4%29",
+          "title": "Bulbapedia: Charizard (Base Set 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/charizard-english-jumbo-promo/",
+          "title": "PokeBoon: Charizard [English Jumbo] promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.ebay.com/p/23043383454",
+          "title": "eBay product page: Charizard (CoroCoro Promo) 004/102 Jumbo Cards",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "stable market price",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/help-me-find-corocoro-comics-april-2000-jumbo-charizard/48690",
+          "title": "Elite Fourum: Help me find CoroCoro Comics April 2000 / Jumbo Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete collector consensus",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pokemon.com/us/pokemon-news/pokemon-creator-profile-mitsuhiro-arita",
+          "title": "Pokemon.com: Pokemon Creator Profile: Mitsuhiro Arita",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000:159",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000",
+        "row_id": "jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000:159",
+        "name_en": "Charizard [English Jumbo]",
+        "name_ja": "Charizard",
+        "source_index": "159",
+        "release_date": "2000-03-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 159 as Charizard [English Jumbo], Fire type, Base Set source-expansion name, and CoroCoro Comic April 2000 insert route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia says the underlying Base Set Charizard is card 4/102 with artwork by Mitsuhiro Arita; the CoroCoro row is a Jumbo English version of that Base Set print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "artist.credit",
+          "text": "Bulbapedia, Pokeboon, and eBay product metadata all point to Mitsuhiro Arita for the CoroCoro Jumbo/Base Set Charizard artwork.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "card.play_or_collecting_context",
+          "text": "TCGplayer's product page for Charizard 4/102 CoroCoro Promo lists the English Base Set Energy Burn Pokémon Power and Fire Spin attack text, reflecting the English face of the jumbo card.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k5",
+          "field": "history.lineage",
+          "text": "This row belongs to the Base Set Charizard image lineage but has a different physical and distribution identity because it is jumbo and Japanese CoroCoro-distributed.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k1",
+            "k2"
+          ]
+        },
+        {
+          "id": "k6",
+          "field": "card.art",
+          "text": "The art matters because Arita's Base Set Charizard image is the object being enlarged; the card's appeal comes from that familiar image being made physically oversized and rerouted through CoroCoro.",
+          "sources": [
+            "s3",
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k2",
+            "k3"
+          ]
+        },
+        {
+          "id": "k7",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as an English Jumbo Base Set Charizard 4/102 with CoroCoro April 2000 route; neither English language nor Base Set art alone proves this row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_april_2000_english_jumbo_charizard_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies Charizard as English Jumbo, CoroCoro, April 2000, Base Set 4/102, oversized, Mitsuhiro Arita, Japanese promo, or source index 159.",
+          "summary": "Match row 159 by English Base Set Charizard face plus jumbo format plus CoroCoro April 2000 route; the Charizard image alone is not enough.",
+          "steps": [
+            "Confirm the card is physically jumbo / oversized with appropriate proportions and not a standard-size Base Set card.",
+            "Confirm the front is English Charizard 4/102 with Base Set layout, English text, and Arita art.",
+            "Confirm the release route is CoroCoro Comic April 2000 issue insert, released March 2000 / March 15, 2000 in the local catalog.",
+            "Preserve this as English Jumbo, not Japanese standard-size Expansion Pack / No Rarity Charizard.",
+            "Ask for front/back photos with a size reference; jumbo cards can show edge, bend, storage, and surface issues differently from standard cards.",
+            "Separate Trade Please, Song Best, Premium File 2, Base Set 2, Legendary Collection, Celebrations, metal cards, and any other Charizard reprint unless route, size, and face evidence all match.",
+            "Treat grading-label language such as Japanese Promo, CoroCoro English, Jumbo, or #4 as clues, not proof without image and route evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "standard-size Base Set equivalence",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Trade Please equivalence",
+            "Song Best equivalence",
+            "Premium File 2 equivalence",
+            "modern reprint equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Charizard [English Jumbo]: the image gets too big for the binder",
+        "why_it_matters": "This row is a little absurd in the best collector way. It is the English Base Set Charizard, the card image everyone already knows, blown up and sent through a Japanese CoroCoro issue. That makes it a perfect test of agent discipline. A lazy system sees Charizard and collapses. A good one sees English face, jumbo body, Japanese magazine route, Arita image, and a whole different evidence path for storage and condition. The card is famous, yes, but the assembly is the point.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k5",
+          "k7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_159_corocoro_comic_april_2000_issue_insert_march_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic April 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_%28Base_Set_4%29",
+          "title": "Bulbapedia: Charizard (Base Set 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/charizard-english-jumbo-promo/",
+          "title": "PokeBoon: Charizard [English Jumbo] promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.ebay.com/p/23043383454",
+          "title": "eBay product page: Charizard (CoroCoro Promo) 004/102 Jumbo Cards",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "stable market price",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/help-me-find-corocoro-comics-april-2000-jumbo-charizard/48690",
+          "title": "Elite Fourum: Help me find CoroCoro Comics April 2000 / Jumbo Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete collector consensus",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pokemon.com/us/pokemon-news/pokemon-creator-profile-mitsuhiro-arita",
+          "title": "Pokemon.com: Pokemon Creator Profile: Mitsuhiro Arita",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "web",
+          "ref": "https://www.tcgplayer.com/product/179079/pokemon-jumbo-cards-charizard-4-102-corocoro-promo",
+          "title": "TCGplayer: Charizard 4/102 CoroCoro Promo Jumbo Cards",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "stable market price",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ]
+    }
+  ]
+}
