@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-fifth catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/trainers_vol4_murkrow_darkness_energy_v0_1.json`.
+  Pokemon Card Trainers Vol. 4 insert now has complete two-row hand-authored
+  coverage for Murkrow row 135 and Darkness Energy row 136. The pass frames the
+  release as a December 1 1999 magazine route where Johto/Darkness vocabulary
+  enters binders through Pokemon Card Trainers rather than normal booster logic:
+  Murkrow as the new Darkness-type creature, Darkness Energy as the Special
+  Energy/rules object, Gold/Silver/New World symbol context, and Trainers Vol.
+  4 bonus-card border text. Added `special_identification_instructions`
+  requiring agents to preserve Vol. 4 route, row 135/136 identity,
+  `ヤミカラス` / Yamikarasu and `悪エネルギー` / Aku Energy name context,
+  Ken Sugimori and Milky Isobe credits, Darkness Energy as Special Energy /
+  non-basic Energy, paired Murkrow/Darkness Energy relationship, and
+  non-equivalence with Neo Genesis, Gold Silver New World, Intro Pack Neo,
+  Pokemon VS, Expedition, Aquapolis, EX, Diamond & Pearl, and later Darkness
+  Energy memories before accepting a match. Sources: local Japanese unnumbered
+  promo release file, Bulbapedia raw unnumbered promotional rows 135-136, and
+  Bulbapedia card pages for Murkrow Pokemon Card Trainers promo and Darkness
+  Energy Neo Genesis 104 as bounded database references. Generated gap moved
+  from 123 releases / 3,941 cards to 122 releases / 3,939 cards. Current
+  catalog-history corpus:
+  `492920793bad64f06705ac1c8e25d8c2ea7e1d2788cdcbd2505a1a7c8b7cb018`;
+  index: `46eef0ed266afcd958ff1c6d042a371f1487fe26f2e6876efc6085af515eec26`;
+  queue: `f851a4442686f4e79ec8c493eb88ee226e8cae0b0cb2920647f7a7296bfc4201`.
+  Audit counts: 23,254 claims, 6,066 sources, 87 hand-authored release
+  dossiers, 610 hand-authored card dossiers, and 858 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/trainers_vol4_murkrow_darkness_energy_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-fourth catalog-history
   deepening pass in
   `data/catalog-history/source-sets/ana_everyones_happy_phase2_v0_1.json`.

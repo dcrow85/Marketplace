@@ -1,0 +1,733 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the Pokemon Card Trainers Vol. 4 insert source slice, emphasizing Murkrow and Darkness Energy as a December 1, 1999 magazine route into Johto/Darkness-type play, Gold/Silver/New World symbol context, magazine-border text, Ken Sugimori and Milky Isobe credits, and route traps against Neo Genesis, Gold Silver New World, Intro Pack Neo, VS/e-Card, EX, DP, and later Darkness Energy memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Murkrow row 135",
+      "Darkness Energy row 136",
+      "Pokemon Card Trainers Vol. 4 magazine route",
+      "Gold/Silver/New World symbol context",
+      "Darkness-type / Special Energy rule memory",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers Vol. 4 archive",
+      "complete magazine-object ledger",
+      "official copy count",
+      "complete Murkrow/Darkness Energy print census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999",
+        "name_en": "Pokemon Card Trainers Vol. 4 insert (December 1, 1999)",
+        "release_date": "1999-12-01",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "magazine insert as Johto/Darkness bridge",
+          "Pokemon Card Trainers Vol. 4 route",
+          "Gold/Silver/New World symbol context",
+          "Darkness-type Pokemon entering promotional memory",
+          "Special Energy as rules lore",
+          "Neo and later Darkness Energy route traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:135",
+            "name": "Murkrow",
+            "why": "Murkrow is the character face of the insert: a new Johto Darkness-type Pokemon carried by the official magazine right as Gold/Silver-era vocabulary was becoming collectible.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:136",
+            "name": "Darkness Energy",
+            "why": "Darkness Energy is the rules object that gives the insert teeth: not a basic Energy, but a Special Energy that makes the new type feel like a cost, a power, and a drawback.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Murkrow"
+            ],
+            "why": "Sugimori gives the insert its character grammar: Murkrow is recognizable as new Johto creature language, not merely an anonymous promo row.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Murkrow print authority"
+            ]
+          },
+          {
+            "name": "Milky Isobe",
+            "row_count": 1,
+            "examples": [
+              "Darkness Energy"
+            ],
+            "why": "Isobe's Darkness Energy art is not flashy in the creature sense, but it is foundational rules iconography: the new Darkness type is made collectible as an object.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Darkness Energy print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Pokemon Card Trainers Vol. 4 archive",
+          "complete magazine-object ledger",
+          "official copy count",
+          "complete Murkrow/Darkness Energy print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two Pokemon Card Trainers Vol. 4 insert rows: Murkrow row 135 and Darkness Energy row 136.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local source rows derive from Bulbapedia raw wikitext rows 135-136, both carrying the promotion note Pokemon Card Trainers Vol. 4 insert (December 1, 1999).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia's Murkrow page says Murkrow was included alongside Darkness Energy in Volume 4 of Pokemon Card Trainers magazine, released on December 1, 1999.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's Murkrow page says the card features the Gold, Silver, to a New World... symbol and bottom-border text identifying it as a Pokemon Card Official Magazine Trainers Vol. 4 bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Murkrow to Ken Sugimori and Darkness Energy to Milky Isobe.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia describes Darkness Energy as a Special Energy card first released in Neo Genesis / Gold, Silver, to a New World..., and says a Japanese print was included in Pokemon Card Trainers Vol. 4 in December 1999.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This source group matters because Pokemon Card Trainers Vol. 4 turns the new Johto Darkness grammar into a magazine object: Murkrow supplies the creature, while Darkness Energy supplies the rules cost and power.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pokemon Card Trainers Vol. 4 route, December 1 1999 date, rows 135-136 pair identity, Murkrow / Darkness Energy relationship, Gold/Silver/New World symbol context, Trainers Vol. 4 border-text clue, Sugimori and Isobe credits, Darkness Energy as Special Energy rather than basic Energy, and non-equivalence with Neo Genesis, Gold Silver New World, Intro Pack Neo, VS/e-Card, EX, DP, and later Darkness Energy reprints before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Pokemon Card Trainers Vol. 4 — Darkness arrives as magazine grammar",
+        "why_it_matters": "This insert has a wonderfully specific hinge feeling. It is December 1999, the Johto world is still fresh, and Pokemon Card Trainers is not just reporting on the game; it is carrying the new vocabulary into binders. Murkrow gives the release a creature with night, omen, and Darkness-type identity. Darkness Energy gives it the rules object that makes the type playable and strange: extra power, a drawback, and not a basic Energy. The two together feel like a lesson slipped into a magazine. For agents, the important thing is not to flatten that lesson into a generic Neo Genesis memory. The magazine route, bonus-card border, and unnumbered promo context are the spine.",
+        "not_claiming": [
+          "complete release history",
+          "complete Pokemon Card Trainers Vol. 4 archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Trainers Vol. 4 insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 135-136",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete magazine archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Murkrow (Pokemon Card Trainers promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Murkrow_(Pok%C3%A9mon_Card_Trainers_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Darkness Energy (Neo Genesis 104)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Darkness_Energy_(Neo_Genesis_104)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol4_darkness_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Card Trainers Vol. 4, December 1 1999, Murkrow, ヤミカラス, Yamikarasu, Darkness Energy, 悪エネルギー, Aku Energy, Special Evil Energy, Gold Silver New World symbol, bonus card border text, Ken Sugimori, Milky Isobe, or rows 135/136.",
+          "summary": "Do not accept a generic Murkrow or Darkness Energy match. Preserve the Pokemon Card Trainers Vol. 4 magazine route, row 135/136 pair, Gold/Silver/New World symbol context, and Special Energy/non-basic boundary first.",
+          "steps": [
+            "Confirm Pokemon Card Trainers Vol. 4 insert route and December 1, 1999 date.",
+            "Confirm the two-card source group: Murkrow row 135 and Darkness Energy row 136.",
+            "Preserve the Gold, Silver, to a New World... symbol context and Trainers Vol. 4 bonus-card border clue for Murkrow.",
+            "Preserve Darkness Energy as a Special Energy / non-basic Energy object; do not collapse it into generic Darkness basic Energy or later energy reprints.",
+            "Check against Neo Genesis, Gold Silver New World, Intro Pack Neo, Pokemon VS, Expedition, Aquapolis, EX, Diamond & Pearl, and later Darkness Energy memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete magazine archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:135",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:135",
+        "source_index": "135",
+        "name_en": "Murkrow",
+        "name_ja": "ヤミカラス",
+        "romaji": "Yamikarasu",
+        "release_route": "Pokemon Card Trainers Vol. 4 insert",
+        "artist": "Ken Sugimori"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "new Johto Darkness-type character",
+          "magazine bonus card",
+          "Gold/Silver/New World symbol",
+          "border-text identity clue"
+        ],
+        "collector_texture_note": "Murkrow is the creature face of this insert: a new Johto Darkness-type Pokemon carried by Trainers Vol. 4 rather than opened from a normal booster.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 135 as Murkrow in the Pokemon Card Trainers Vol. 4 insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Murkrow, Japanese ヤミカラス Yamikarasu, a Darkness-type Basic Pokemon card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Murkrow to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card features the Gold, Silver, to a New World... symbol and bottom-border text naming it as a Pokemon Card Official Magazine Trainers Vol. 4 bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Murkrow matters in this tranche because it is the new Johto Darkness-type creature attached to the magazine insert route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Murkrow match, agents should preserve row 135, Pokemon Card Trainers Vol. 4 route, ヤミカラス / Yamikarasu name context, Ken Sugimori credit, Gold/Silver/New World symbol, Trainers Vol. 4 border-text clue, paired Darkness Energy relationship, and non-equivalence with generic Murkrow or Neo-era pack memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Murkrow — Johto's omen bird in the magazine margin",
+        "why_it_matters": "Murkrow is a perfect little 1999 signal: a new Johto Pokemon, a Darkness type, and a Sugimori creature design arriving through a magazine insert instead of a pack. The card's own border gives the route away, naming Trainers Vol. 4 as the bonus-card context. That makes it useful to an agent in a very specific way: the name and art are not enough. The route, symbol, and border text are what keep this from becoming any Murkrow memory with a dark bird on it.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Trainers Vol. 4 insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 135",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Murkrow (Pokemon Card Trainers promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Murkrow_(Pok%C3%A9mon_Card_Trainers_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol4_135_murkrow_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Murkrow, ヤミカラス, Yamikarasu, Pokemon Card Trainers Vol. 4, December 1 1999, Gold Silver New World symbol, bonus card border text, Ken Sugimori, Darkness Energy, or row 135.",
+          "summary": "Murkrow must stay bound to row 135 and the Pokemon Card Trainers Vol. 4 magazine route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 135 and Pokemon Card Trainers Vol. 4 insert context.",
+            "Record Japanese name `ヤミカラス` and romaji `Yamikarasu`; do not silently replace with an English-only Murkrow memory.",
+            "Preserve Ken Sugimori as the card artist.",
+            "Check for the Gold, Silver, to a New World... symbol and Trainers Vol. 4 bonus-card border clue when image evidence is present.",
+            "Keep the paired Darkness Energy row in view, but do not treat generic Darkness-type context as proof of this exact magazine insert row."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:136",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999:136",
+        "source_index": "136",
+        "name_en": "Darkness Energy",
+        "name_ja": "悪エネルギー",
+        "romaji": "Aku Energy",
+        "release_route": "Pokemon Card Trainers Vol. 4 insert",
+        "artist": "Milky Isobe"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Milky Isobe",
+        "assembly_themes": [
+          "Special Energy as worldbuilding",
+          "Darkness type cost and bonus",
+          "magazine bonus route",
+          "non-basic Energy trap"
+        ],
+        "collector_texture_note": "Darkness Energy is the rules heart of the insert: it is not a basic Energy, and the magazine route makes this particular copy different from ordinary Neo or later reprints.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 136 as Darkness Energy in the Pokemon Card Trainers Vol. 4 insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Darkness Energy as a Special Energy card; earlier Japanese naming used 悪エネルギー / Aku Energy before later naming changes.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the original Darkness Energy artwork to Milky Isobe.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Darkness Energy first released in Neo Genesis / Gold, Silver, to a New World..., provides Darkness Energy, does not count as a basic Energy card, and had a Japanese print included in Pokemon Card Trainers Vol. 4 in December 1999.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Darkness Energy matters in this tranche because it turns the new Dark-type world into rules: extra damage, drawback, and non-basic Energy identity all sit inside a magazine-insert route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Darkness Energy match, agents should preserve row 136, Pokemon Card Trainers Vol. 4 route, 悪エネルギー / Aku Energy historical-name context, Milky Isobe credit, Special Energy / non-basic boundary, paired Murkrow relationship, and non-equivalence with Neo Genesis, Gold Silver New World, Intro Pack Neo, VS/e-Card, EX, DP, and later Darkness Energy reprints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Darkness Energy — the new type becomes a cost",
+        "why_it_matters": "Darkness Energy is easy to underestimate because it is not a creature. But it may be the more important half of the insert. It tells a player what the Johto dark world costs: power comes with a wound unless the Pokemon belongs to that darkness. Milky Isobe's art becomes part of a rules object that travels through Neo, e-Card, EX, and later eras, so the agent has to keep the magazine copy from dissolving into the general Darkness Energy lineage. This is exactly why the catalogue cares about assembly. The same rules memory can have many bodies.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Trainers Vol. 4 insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_135_pok_mon_card_trainers_vol_4_insert_december_1_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 136",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Darkness Energy (Neo Genesis 104)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Darkness_Energy_(Neo_Genesis_104)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol4_136_darkness_energy_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Darkness Energy, 悪エネルギー, Aku Energy, Special Evil Energy, Pokemon Card Trainers Vol. 4, December 1 1999, Milky Isobe, Special Energy, Neo Genesis, Gold Silver New World, Intro Pack Neo, or row 136.",
+          "summary": "Darkness Energy must stay bound to row 136 and the Pokemon Card Trainers Vol. 4 magazine route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 136 and Pokemon Card Trainers Vol. 4 insert context.",
+            "Record historical Japanese name context `悪エネルギー` / `Aku Energy` while allowing the normalized collector label Darkness Energy.",
+            "Preserve Milky Isobe as the artwork credit for this lineage.",
+            "Preserve Special Energy / non-basic Energy status; do not collapse this into basic Darkness Energy or a later-era print.",
+            "Check against Neo Genesis, Gold Silver New World, Intro Pack Neo, Pokemon VS, Expedition, Aquapolis, EX, Diamond & Pearl, and later Darkness Energy reprints before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
