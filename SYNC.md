@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-fifth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_ssb_regional_no2_trainer_v0_1.json`
+  deepens row 178 / No.2 Trainer from the World Challenge Secret Super Battle regional
+  second-place route. The pass treats No.2 Trainer as a reusable trophy title that must be
+  identified by exact route: World Challenge Summer 2000 senior-track Secret Super Battle
+  runner-up, personalized winner name and regional conference, non-holo male/female base
+  versions, Ken Sugimori artwork, and separation from the Tropical Mega Battle Hawaii path and
+  Secret Super Battle Best in Japan photo-trophy reports. Special ID rails now preserve the Girl
+  SSB No.2 unused/leftover-print caveat, separate official winner-card claims from unpersonalized
+  surfaced examples, and keep Challenge Road, Lizardon/Kamex Mega Battle, Neo Road, Battle Road,
+  World Championships, and name-only No.2 Trainer claims out of the route. Generated gaps moved
+  to 64 release / 3890 card. Current hashes: corpus
+  `50eb63d4a276faea04f20cd68a1aa03d93fba30476470c01d71cdb9c3fba69ce`, index
+  `173683696b51d9074018bf99a6209ce27f6c34f02d7a93e994a5bcc8fee8aacf`, queue
+  `ba8e56863605944936f6f7d339b06d1db8b1c12a894a44979ddfec3eff47baa5`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-fourth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_ssb_regional_no1_trainer_v0_1.json`
