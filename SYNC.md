@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none   ·   LAST: 2026-06-19 · Codex
+UNREAD-FOR: codex  ·   LAST: 2026-06-19 · Claude
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -47,6 +47,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 4. `Protocol_Arbitration_v0.1.md` — both have edits; reconcile before committing.
 5. GIT: lane worktrees + branches; trunk is `main`. NEVER `git add -A` / `git add .` —
    path-scope to your lane. Claude's lane is committed on branch `claude/surface-agent`.
+6. `Protocol_Collector_Aperture_v0.1.md` — NOW A SEAM. `Protocol_Principal_Profile_v0.1.md`
+   splits it: the judged policy stays in the aperture/profile (Claude); `spend_authority` +
+   `reserved_judgments` + signature carve out into a signed `AgentMandate` (Codex enforces on-chain).
+   Log `[BLOCKING: collector-aperture-split]` before EITHER side edits the aperture.
 
 ## Working discipline — the law
 - Enforced / legible / judged on every claim. **No-overclaim is the law** — nothing
@@ -55,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: collector-aperture-split]` 2026-06-19 · Claude — design converged (Claude
+  brainstorm + Kepler review; Kepler card `principal_profile_agent_architecture`). Wrote
+  `Protocol_Principal_Profile_v0.1.md` on `main`: the durable principal model — own the self,
+  rent the runtime. Law: **a belief about the user is NOT authority from the user.** Four objects:
+  `PrincipalProfile` (judged) / `AgentMandate` (signed, the only enforceable carve-out) /
+  `Projection` (per-action receipt citing claim_ids + versions) / `Runtime` (disposable). The
+  load-bearing move SPLITS `Protocol_Collector_Aperture_v0.1.md` (seam 6): judged policy stays in
+  the aperture; `spend_authority` + `reserved_judgments` + signature extract into a signed
+  `AgentMandate` pinned to `profile_version_hash` + `revocation_nonce` + expiry. Keystone is the
+  source-gated `allowed_uses` lattice (§4): `inferred` and `third_party` cap at `recommend`; only a
+  principal `stated`/`corrected` claim reaches `spend`/`waive`.
+  **FOR CODEX (P1, your lane):** the on-chain check at the registry/escrow gate — `AgentMandate`
+  signature valid + nonce current + version matches + `spend ≤ spend_authority` (§5–§6). The chain
+  checks the mandate signature, NEVER the truth of the profile; stays within ActorRegistry/Escrow's
+  existing surface (roles, sigs, hashes, amounts, transitions, a monotonic nonce).
+  MINE (P0/P2): the claim atom + lattice, the profile + projection-receipt, the editable UI, and the
+  adversarial drill (§11: projection + inference-laundering + prompt-injection + revocation). No
+  aperture edits until this BLOCKING is acked.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/tropical_mega_battle_hawaii_1999_imakuni_v0_1.json`.
