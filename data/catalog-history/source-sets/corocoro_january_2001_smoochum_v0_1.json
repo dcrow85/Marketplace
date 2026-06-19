@@ -1,0 +1,550 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Smoochum, the CoroCoro Comic January 2001 issue insert released December 15, 2000, emphasizing CoroCoro magazine distribution, Sumiyoshi Kizuki art, Baby Pokemon attack-prevention text, Blown Kiss, Awakening Legends symbol and bonus-card border text, and the gentle but trap-prone Johto baby-Pokemon lane.",
+    "in_scope": [
+      "CoroCoro Comic January 2001 issue insert release dossier",
+      "Smoochum unnumbered promotional row 220",
+      "CoroCoro magazine distribution",
+      "Sumiyoshi Kizuki illustrator context",
+      "Baby Pokemon text and Blown Kiss card identity",
+      "Awakening Legends symbol and CoroCoro bonus-card border text",
+      "Smoochum baby-Pokemon / Jynx-line collector texture"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete Smoochum print census",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000",
+        "name_en": "CoroCoro Comic January 2001 issue insert (December 15, 2000)",
+        "release_date": "2000-12-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro magazine distribution",
+          "single-card Johto baby promo route",
+          "Sumiyoshi Kizuki art",
+          "Awakening Legends border-symbol identity",
+          "Baby Pokemon rule text",
+          "Smoochum / Jynx-line texture"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000:220",
+            "name": "Smoochum [CoroCoro Comic January 2001]",
+            "why": "This is a chase because it is a soft little magazine-route Johto baby card with unusually explicit identification rails: Awakening Legends symbol, CoroCoro bonus-card border text, Baby Pokemon protection text, and a single Blown Kiss attack.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Sumiyoshi Kizuki",
+            "row_count": 1,
+            "examples": [
+              "Smoochum [CoroCoro Comic January 2001]"
+            ],
+            "why": "Kizuki matters here because the card's identity is all softness and small gesture: a baby Pokemon, a kiss-themed attack, and a magazine bonus object that still needs exact route discipline.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Smoochum print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic January 2001 issue insert source group as one row containing Smoochum at source index 220.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia places the Japanese Smoochum print in Unnumbered Promotional cards and identifies its release as a CoroCoro Comic January 2001 issue insert on December 15, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese promo as ムチュール Smoochum, a Water-type Baby Pokemon card with 30 HP and the Blown Kiss attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Smoochum artwork to Sumiyoshi Kizuki.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the Japanese print includes the Awakening Legends symbol and border text identifying it as a CoroCoro Comic January issue bonus card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Sumiyoshi Kizuki category lists multiple Pokemon card illustrations, making the credit useful as a sourced art trace but not a substitute for route evidence.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Bulbapedia's Smoochum species page describes Smoochum as a baby Pokemon introduced in Generation II that evolves into Jynx and uses its sensitive lips to examine objects.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, CoroCoro January 2001 Smoochum matters because the card is tiny and playful, but its identity is surprisingly technical: baby-rule text, Awakening Legends symbol, CoroCoro border text, and a magazine insert route all need to stay attached.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro archive",
+            "complete Smoochum print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro January 2001 Smoochum: a baby card with strict edges",
+        "why_it_matters": "Smoochum looks like the easy part of the binder: small, sweet, a baby Pokemon with Blown Kiss. But the assembly is wonderfully fussy. It is a CoroCoro January issue bonus card, not just any Smoochum; it carries Awakening Legends identity traces, baby-rule text, and a route that only holds if the magazine context stays visible. That is the charm: a soft card that forces the catalog to be precise.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Smoochum print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_january_2001_smoochum_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Smoochum, ムチュール, CoroCoro Comic January 2001, December 15 2000, Awakening Legends, Neo Revelation, Sumiyoshi Kizuki, Baby Pokemon, or Blown Kiss.",
+          "summary": "Identify Smoochum by CoroCoro Comic January 2001 insert route, source index 220, Japanese unnumbered promo status, Awakening Legends symbol, and CoroCoro bonus-card border text before trusting generic Smoochum memory.",
+          "steps": [
+            "Confirm the card is Smoochum / ムチュール.",
+            "Preserve the source route: CoroCoro Comic January 2001 issue insert, December 15, 2000, local source index 220.",
+            "Check that the object is being treated as a Japanese Unnumbered Promotional card, not as English Neo Revelation or a generic Awakening Legends row.",
+            "Look for Awakening Legends symbol and CoroCoro Comic January issue bonus-card border text on the Japanese print when image evidence is available.",
+            "Use Baby Pokemon text, Blown Kiss, and Sumiyoshi Kizuki credit as contextual support, not as substitutes for route proof.",
+            "Separate this row from English Neo Revelation Smoochum, Japanese Awakening Legends booster memories, later Smoochum prints, Jynx-line listings, and name-only Smoochum listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, border text, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete CoroCoro archive",
+            "complete Smoochum print census",
+            "English Neo Revelation equivalence",
+            "Awakening Legends booster equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic January 2001 Smoochum",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smoochum_(CoroCoro_promo)",
+          "title": "Smoochum (CoroCoro promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro issue archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smoochum_(Pok%C3%A9mon)",
+          "title": "Smoochum (Pokemon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "complete species history",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Sumiyoshi_Kizuki",
+          "title": "Category: Illus. by Sumiyoshi Kizuki - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000:220",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000:220",
+        "release_family_id": "jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000",
+        "name_en": "Smoochum [CoroCoro Comic January 2001]",
+        "name_ja": "ムチュール",
+        "card_number": "None",
+        "rarity_signal": "CoroCoro unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 220 as Smoochum from the CoroCoro Comic January 2001 issue insert source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese card as ムチュール Smoochum, a Water-type Baby Pokemon card with 30 HP.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese Smoochum in Unnumbered Promotional cards, while the local row models it with no printed number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Smoochum artwork to Sumiyoshi Kizuki.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says the card has Baby Pokemon attack-prevention text and the Blown Kiss attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This row must be separated from English Neo Revelation Smoochum, Japanese Awakening Legends booster memories, later Smoochum prints, Jynx-line listings, and name-only Smoochum listings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Smoochum matters here because it is a gentle Johto baby card whose soft surface can hide a surprisingly specific CoroCoro / Awakening Legends identification path.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Smoochum: the baby card with a sharp little route",
+        "why_it_matters": "Smoochum is tiny, but the row is not vague. It asks the catalog to hold CoroCoro January 2001, Japanese unnumbered promo status, Awakening Legends traces, Baby Pokemon text, Blown Kiss, and Sumiyoshi Kizuki all at once. That is the whole point of the dossier layer: the cute card still deserves exact assembly.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro archive",
+          "complete Smoochum print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_january_2001_smoochum_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says Smoochum, ムチュール, CoroCoro Comic January 2001, December 15 2000, Awakening Legends, Neo Revelation, Sumiyoshi Kizuki, Baby Pokemon, Blown Kiss, Jynx, or baby Pokemon promo.",
+          "summary": "Match this card by exact Smoochum identity plus CoroCoro January 2001 insert route, Japanese unnumbered promo status, Awakening Legends symbol, and CoroCoro bonus-card border text before accepting it as row 220.",
+          "steps": [
+            "Confirm the card title is Smoochum / ムチュール.",
+            "Confirm the source route is CoroCoro Comic January 2001 issue insert, December 15, 2000.",
+            "Preserve local source index 220 and no printed number.",
+            "Look for Awakening Legends symbol and CoroCoro Comic January issue bonus-card border text on the Japanese print when image evidence is available.",
+            "Use Baby Pokemon text, Blown Kiss, and Sumiyoshi Kizuki credit as support, not as substitutes for row identity.",
+            "Separate this print from English Neo Revelation Smoochum, Japanese Awakening Legends booster memories, later Smoochum prints, Jynx-line listings, and name-only Smoochum listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, border text, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "English Neo Revelation equivalence",
+            "Awakening Legends booster equivalence",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_220_corocoro_comic_january_2001_issue_insert_december_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic January 2001 Smoochum",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smoochum_(CoroCoro_promo)",
+          "title": "Smoochum (CoroCoro promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete CoroCoro issue archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Smoochum_(Pok%C3%A9mon)",
+          "title": "Smoochum (Pokemon) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "TCG print authority",
+            "complete species history",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Sumiyoshi_Kizuki",
+          "title": "Category: Illus. by Sumiyoshi Kizuki - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}

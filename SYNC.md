@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 141: Trainers Vol. 9 Misdreavus deepened; corpus 4125f624)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 142: CoroCoro Smoochum deepened; corpus 37afb2fb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-second
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_january_2001_smoochum_v0_1.json`
+  deepens row 220 / Smoochum from the CoroCoro Comic January 2001 issue insert
+  route. The pass preserves December 15 2000 magazine distribution, Japanese
+  unnumbered promo status, Sumiyoshi Kizuki art credit, Baby Pokemon
+  attack-prevention text, Blown Kiss, Awakening Legends symbol, and CoroCoro
+  January issue bonus-card border text. The texture is deliberately soft but
+  exact: a Johto baby / Jynx-line card whose sweetness hides a strict
+  identification path. Special ID rails require agents to keep source index 220,
+  CoroCoro route, Japanese language/unnumbered promo context, Awakening Legends
+  border evidence, and seller-controlled photos attached before treating a card
+  as this row; it must not collapse into English Neo Revelation Smoochum,
+  Japanese Awakening Legends booster memories, later Smoochum prints, Jynx-line
+  listings, or name-only Smoochum listings. Generated gaps moved to 47 release /
+  3873 card. Current hashes: corpus
+  `37afb2fb225f73d1a612b3463bfc28d22b5d600e7c5a17a5caf7c682c296c17e`, index
+  `8c1caaa58203367af78576e7e40a52a95ebb9584606d3d7c56c4caeaba27594e`, queue
+  `60ba1c7effca7da4dc4797c0332d4924cb31081496ed53f1c81ce5c23c1f7354`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-first
   catalog-history pass:
   `data/catalog-history/source-sets/trainers_vol9_misdreavus_v0_1.json`

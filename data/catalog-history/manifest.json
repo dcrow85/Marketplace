@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23558,
-    "corpus_hash": "4125f624923eb3836f46c590115d9ef0cb05925c2248f0a0fd573b2e19b7ce7f",
-    "generated_card_dossier_count": 3874,
-    "generated_release_dossier_count": 48,
+    "claim_count": 23562,
+    "corpus_hash": "37afb2fb225f73d1a612b3463bfc28d22b5d600e7c5a17a5caf7c682c296c17e",
+    "generated_card_dossier_count": 3873,
+    "generated_release_dossier_count": 47,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6556
+    "source_count": 6562
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "9920d94f8a8ec9c122a505061fcc7f0f0d6d34ef7311bcd4169d33ded9a37fe2",
-    "release_queue_count": 48,
+    "queue_hash": "60ba1c7effca7da4dc4797c0332d4924cb31081496ed53f1c81ce5c23c1f7354",
+    "release_queue_count": 47,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T20:37:36Z",
+  "generated_at": "2026-06-19T20:45:23Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "7ef883c54c73950007c17985406afd4e2d5a542eb52b98cbbe938efd619d7f72",
+    "index_hash": "8c1caaa58203367af78576e7e40a52a95ebb9584606d3d7c56c4caeaba27594e",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -72,6 +72,7 @@
     "data/catalog-history/source-sets/corocoro_first_1996_glossy_promos_v0_1.json",
     "data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_january_2000_wooper_v0_1.json",
+    "data/catalog-history/source-sets/corocoro_january_2001_smoochum_v0_1.json",
     "data/catalog-history/source-sets/corocoro_july_1999_marill_v0_1.json",
     "data/catalog-history/source-sets/corocoro_july_2000_scizor_v0_1.json",
     "data/catalog-history/source-sets/corocoro_june_1999_togepi_v0_1.json",
