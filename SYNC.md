@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-nineteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_hokushinetsu_lucky_stadium_v0_1.json`
+  deepens row 172 / Lucky Stadium `[Mew] [Hokushin'etsu]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's July 26, 2000 Niigata City
+  Industrial Promotion Center, Niigata listing and preserves PokeBoon's May 14 date as a visible
+  secondary-source conflict rather than flattening it. Mew, Hokushin'etsu, Japanese Alps,
+  "Big Mama" Tagawa, CR CG gangs, and the eight-region Lucky Stadium structure are now legible.
+  Special ID rails separate it from other World Challenge Summer regional prints, Tropical Mega
+  Battle bilingual Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New York, and
+  generic Lucky Stadium rows. Generated gaps moved to 70 release / 3896 card. Current hashes:
+  corpus `f8dc6157ec568e6ef363cae5819fc88cdf7e6b8569e9784bcad97ca072e108a3`, index
+  `09cb400149627f70239db8e0621ab604796cfe79bc6a8d916810473b2cb7252c`, queue
+  `e798f5384ed9ae121b8fdbf5e79bbf736d969b78bcf9bcb6b3cfcc055b2d2b20`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-eighteenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_tohoku_lucky_stadium_v0_1.json`
