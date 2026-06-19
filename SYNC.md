@@ -59,6 +59,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/trainers_vol5_steelix_v0_1.json`
+  deepens row 158 / Steelix from the Pokemon Card Trainers Vol. 5 insert route
+  (March 1, 2000). The pass frames it as a magazine-born Johto Metal showcase:
+  Benimaru Itoh art, Metal-type Stage 1 from Onix, HP 100, Metal Crash / Rumble text,
+  Gold/Silver symbol, and Trainers Vol. 5 bonus-card border text are now legible.
+  Special ID rails separate it from Japanese Gold/Silver/Neo Steelix, English Neo Genesis,
+  Jasmine's Steelix, Shining Steelix, later e-Card Steelix rows, and modern Steelix cards.
+  Generated gaps moved to 81 release / 3907 card. Current hashes: corpus
+  `6a89693ccb314fa561e620e6732fe67513a9eb19275d7f38363d8e3d05cc531f`, index
+  `8e4685407a3be89390b2633b12d923b4395a0a3b0fda6cc7caab64cb5990d342`, queue
+  `bcdd3bf561f713dd64f2784d3df058ccd9cedcab0f8e56e0a28bcc11d03dff55`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_february_2000_cleffa_v0_1.json`

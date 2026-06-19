@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23318,
-    "corpus_hash": "cfd479bedd6c2ae2a93ece09b3a2f5b5a9eff7d62706ee7840d37e191236f084",
-    "generated_card_dossier_count": 3908,
-    "generated_release_dossier_count": 82,
+    "claim_count": 23325,
+    "corpus_hash": "6a89693ccb314fa561e620e6732fe67513a9eb19275d7f38363d8e3d05cc531f",
+    "generated_card_dossier_count": 3907,
+    "generated_release_dossier_count": 81,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6265
+    "source_count": 6279
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "289bee2cba899394a71cd6b6648fa2d773d41e6a3f7d2e9752f3ced7203cd9e4",
-    "release_queue_count": 82,
+    "queue_hash": "bcdd3bf561f713dd64f2784d3df058ccd9cedcab0f8e56e0a28bcc11d03dff55",
+    "release_queue_count": 81,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T16:06:53Z",
+  "generated_at": "2026-06-19T16:15:27Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "d9101ae65092de5bd7fc453f8d053d7c716ea92bb084bdeee0eb39b21ac01b78",
+    "index_hash": "8e4685407a3be89390b2633b12d923b4395a0a3b0fda6cc7caab64cb5990d342",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -140,6 +140,7 @@
     "data/catalog-history/source-sets/trainers_vol1_pikachu_v0_1.json",
     "data/catalog-history/source-sets/trainers_vol3_bilingual_exeggutor_v0_1.json",
     "data/catalog-history/source-sets/trainers_vol4_murkrow_darkness_energy_v0_1.json",
+    "data/catalog-history/source-sets/trainers_vol5_steelix_v0_1.json",
     "data/catalog-history/source-sets/tropical_mega_battle_1999_regional_trainers_v0_1.json",
     "data/catalog-history/source-sets/tropical_mega_battle_dugtrio_team_battle_v0_1.json",
     "data/catalog-history/source-sets/tropical_mega_battle_finals_participation_prize_v0_1.json",
