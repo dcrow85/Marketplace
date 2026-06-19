@@ -1,0 +1,668 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Elite Four Trainer, the Battle Road Summer 2002 Best in Japan top-four prize, emphasizing the Master Trainers League / Four Heavenly Kings lane, Tokyo finals route, real-player photograph construction, likely four-copy uncertainty, regional-vs-final distinction, and traps against No.1/No.2/No.3 Trainer, Worlds, Neo Road, and generic Elite Four listings.",
+    "in_scope": [
+      "Battle Road Summer 2002 Best in Japan top-four release dossier",
+      "Elite Four Trainer unnumbered promotional row 256",
+      "Master Trainers League Elite Four recognition text",
+      "top-four player photograph identity",
+      "regional-to-final tournament apparatus",
+      "estimated copy-count caveat",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Battle Road Summer 2002 tournament archive",
+      "official winner ledger",
+      "official copy count",
+      "primary-source exact artist or designer proof",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize",
+        "name_en": "Battle Road Summer 2002 Best in Japan top 4 prize",
+        "featured_card_name_ja": "四天王トレーナー",
+        "release_date": "2002-08-17",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Battle Road Summer 2002 Best in Japan finals",
+          "Master Trainers League top-four lane",
+          "Elite Four / Four Heavenly Kings identity",
+          "real-player photographs as card identity",
+          "regional-to-final apparatus",
+          "likely four-copy uncertainty",
+          "photo-card boundary against numbered Trainer trophies"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize:256",
+            "name": "Elite Four Trainer",
+            "why": "This is a chase because it is the rare top-four lane where Pokémon borrowed the in-game Elite Four idea and pinned it to real tournament players. The card is not just a rank: it is the Master League finalist apparatus made visible through photographs.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "top-four player photographs / unpromoted production design",
+            "row_count": 1,
+            "examples": [
+              "Elite Four Trainer [Battle Road Summer 2002 Best in Japan]"
+            ],
+            "why": "Bulbapedia marks the card as having unknown illustrator status while identifying the real-player photographs as the card's key visual feature. TCGCollector surfaces split illustrator metadata across listed variants, so this tranche does not promote a named artist.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c8"
+            ],
+            "not_claiming": [
+              "primary-source exact artist proof",
+              "complete production credit",
+              "official photographer credit",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Summer 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist or designer proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Battle Road Summer 2002 Best in Japan top 4 prize as one unnumbered promotional source row containing Elite Four Trainer at source index 256.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Elite Four Trainer was awarded to the top four ranking players of the Battle Road Summer 2002 Best in Japan Deciding Match finals held in Tokyo on August 17, 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives the card text as recognizing the Pokémon Card Game Official Tournament Battle Road Summer 2002 Master Trainers League Elite Four.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.art",
+          "text": "Bulbapedia says Elite Four Trainer features photographs of the top four players and is one of only a handful of Pokémon cards to feature images of real-life people.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.date",
+          "text": "Bulbapedia lists the qualifying regional Battle Road Summer 2002 events from July 20 through August 11, with finals in Tokyo on August 17.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Pokumon says the top four winners of the Grand Master League were crowned as the Four Heavenly Kings, known in English as the Elite Four, and that 2002 was the only year this Grand Master League structure was held.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says the exact number of Elite Four Trainer cards in existence is unknown, though one copy for each winner is likely, and Pokumon lists estimated copies as 4; this is not treated as an official copy count.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.credit",
+          "text": "Bulbapedia categorizes the card with unknown illustrators, and the attached variant references do not provide a stable row-level production credit; this tranche therefore keeps the art lane as top-four player photographs / unpromoted production design.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, Elite Four Trainer matters because it translates the in-game Elite Four idea into the tournament apparatus: four real Master League players become a tiny, photograph-bearing card lineage.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "official winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Elite Four Trainer / 四天王トレーナー identity, source index 256, Battle Road Summer 2002 Best in Japan top-four route, Master Trainers League context, real-player photo construction, and non-equivalence with No.1/No.2/No.3 Trainer, Worlds / World Championships, Neo Road, or generic Elite Four listings before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Battle Road Summer 2002 Elite Four Trainer: four real players become the myth",
+        "why_it_matters": "This card is wonderfully strange. Pokémon takes one of its deepest game structures, the Elite Four, and lets four real Master League players wear it for a moment. The photographs matter because they make the myth local and bodily: four people, one finals route, one top-four card family, and a tiny uncertain population that collectors can talk around but should not overstate.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Summer 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist or designer proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "battle_road_summer_2002_best_in_japan_elite_four_trainer_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Elite Four Trainer, 四天王トレーナー, The Big Four Trainer, Battle Road Summer 2002, Best in Japan, top four, Master Trainers League, Grand Master League, Four Heavenly Kings, real-life people, player photograph, Tokyo, August 17 2002, No.1 Trainer, No.2 Trainer, No.3 Trainer, Worlds, World Championships, Neo Road, Tropical Mega Battle, or Secret Super Battle.",
+          "summary": "Identify this row by Elite Four Trainer / 四天王トレーナー plus Battle Road Summer 2002 Best in Japan top-four Master League route and real-player photograph construction, not by Elite Four wording alone.",
+          "steps": [
+            "Confirm the title is Elite Four Trainer / 四天王トレーナー, not No.1, No.2, or No.3 Trainer.",
+            "Confirm the catalog route is Battle Road Summer 2002 Best in Japan top 4 prize at source index 256.",
+            "Check for the Master Trainers League / Grand Master League top-four context, not a regional podium route.",
+            "Look for the August 17, 2002 Tokyo finals context after the July-August regional circuit.",
+            "Check that the card construction features top-four real-player photographs; treat the photograph lane as core identity evidence.",
+            "Do not promote a named illustrator unless stronger row-level source evidence appears; record the art lane as player photographs / unpromoted production design.",
+            "Separate this row from Best in Japan No.1/No.2/No.3, regional Battle Road Summer trophies, Worlds / World Championships Elite Four language, Neo Road photo cards, Tropical Mega Battle, Secret Super Battle, Lizardon Mega Battle, and Kamex Mega Battle.",
+            "If winner identity, photo match, certificate, paperwork, slab label, or provenance story is offered, treat it as evidence to inspect and hash, not automatic authenticity.",
+            "Before any trade gate or spendability decision, require seller-controlled front/back images plus close-ups of title, event text, photo area, surface/corners, and slab/cert/provenance evidence if claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist or designer proof"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize.json#row:jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize:256",
+          "title": "Local Japanese unnumbered promotional source-slice row 256",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Elite_Four_Trainer_(Battle_Road_Summer_2002_finals_promo)",
+          "title": "Bulbapedia: Elite Four Trainer (Battle Road Summer 2002 finals promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Summer 2002 archive",
+            "complete winner ledger",
+            "official copy count",
+            "primary-source exact artist or designer proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/card/elite-four-trainer-battle-road-2002-unnumbered/",
+          "title": "Pokumon: Elite Four Trainer (Battle Road 2002) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "external_reference",
+          "ref": "https://www.tcgcollector.com/cards/66922/elite-four-trainer-miscellaneous-promos-no-217",
+          "title": "TCGCollector: Elite Four Trainer Miscellaneous Promos No. 217",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant list",
+            "primary-source exact artist or designer proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "external_reference",
+          "ref": "https://www.tcgcollector.com/cards/66923/elite-four-trainer-miscellaneous-promos-no-218",
+          "title": "TCGCollector: Elite Four Trainer Miscellaneous Promos No. 218",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant list",
+            "primary-source exact artist or designer proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize:256",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize",
+        "source_index": "256",
+        "name_en": "Elite Four Trainer",
+        "name_ja": "四天王トレーナー",
+        "release_date": "2002-08-17"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Elite Four Trainer",
+        "name_ja": "四天王トレーナー",
+        "romaji": "Shitennou Torenaa",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / Best in Japan top-four trophy",
+        "artist": "top-four player photographs / unpromoted production design",
+        "release": "Battle Road Summer 2002 Best in Japan top 4 prize"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies source index 256 as Elite Four Trainer from the Battle Road Summer 2002 Best in Japan top 4 prize route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives the card text as recognition for the Battle Road Summer 2002 Master Trainers League Elite Four.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.art",
+          "text": "Bulbapedia says the card features photographs of the top four players and is one of only a handful of Pokémon cards to feature real-life people.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.date",
+          "text": "Bulbapedia places the Battle Road Summer 2002 finals in Tokyo on August 17, 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The attached sources do not provide stable primary-source row-level artist credit; the art lane is recorded as top-four player photographs / unpromoted production design.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says the exact number of Elite Four Trainer cards is unknown while likely one per winner, and Pokumon lists estimated copies as 4; this remains a collector estimate, not official copy-count truth.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Elite Four Trainer matters because it binds Master League top-four status, real-player photographs, and the in-game Elite Four idea into a tiny finals artifact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should check Elite Four Trainer / 四天王トレーナー title, Battle Road Summer 2002 Best in Japan top-four route, source index 256, Master Trainers League context, August 17 2002 finals, player photographs, and distinction from No.1/No.2/No.3 Trainer, Worlds / World Championships, Neo Road, and generic Elite Four language before treating a scan or listing as this row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Elite Four Trainer, Summer 2002: the game myth made local",
+        "why_it_matters": "The phrase Elite Four is enormous in Pokémon memory, but this card makes it local and human. Four Master League players become a card-shaped echo of the game structure. That is why the evidence has to stay exact: title, finals route, photographs, and top-four context have to assemble before the myth-word can spend any trust.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Battle Road Summer 2002 archive",
+          "official winner ledger",
+          "primary-source exact artist or designer proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "elite_four_trainer_battle_road_summer_2002_best_in_japan_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Elite Four Trainer, 四天王トレーナー, The Big Four Trainer, Battle Road Summer 2002, Best in Japan, top four, Master Trainers League, Grand Master League, Four Heavenly Kings, player photographs, source index 256, No.1 Trainer, No.2 Trainer, No.3 Trainer, Worlds, World Championships, or Neo Road.",
+          "summary": "For this card, Elite Four title, Master League top-four route, August 17 finals context, and real-player photographs must travel together; Elite Four wording alone is too broad.",
+          "steps": [
+            "Confirm the title is Elite Four Trainer / 四天王トレーナー.",
+            "Confirm the catalog route is Battle Road Summer 2002 Best in Japan top 4 prize at source index 256.",
+            "Check for Master Trainers League or Grand Master League top-four context rather than numbered Trainer podium rank.",
+            "Check August 17, 2002 Tokyo finals context after the July-August regional circuit.",
+            "Check real-player photograph construction as a core identity clue.",
+            "Do not promote a named illustrator unless stronger row-level source evidence is attached.",
+            "Separate this row from No.1 Trainer, No.2 Trainer, No.3 Trainer, regional Battle Road Summer trophies, Worlds, Neo Road, Tropical Mega Battle, Secret Super Battle, Lizardon Mega Battle, and Kamex Mega Battle.",
+            "If winner identity, photo match, certificate, paperwork, or slab label is offered, treat it as evidence to inspect and hash, not automatic authenticity.",
+            "Before any trade gate or spendability decision, require seller-controlled front/back images, close-ups of title, event text, photo area, surface/corners, and slab/cert/provenance evidence if claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "official winner ledger",
+            "primary-source exact artist or designer proof"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize.json#row:jp_promo_unnumbered_wotc_256_battle_road_summer_2002_best_in_japan_top_4_prize:256",
+          "title": "Local Japanese unnumbered promotional source-slice row 256",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Elite_Four_Trainer_(Battle_Road_Summer_2002_finals_promo)",
+          "title": "Bulbapedia: Elite Four Trainer (Battle Road Summer 2002 finals promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Battle Road Summer 2002 archive",
+            "complete winner ledger",
+            "official copy count",
+            "primary-source exact artist or designer proof",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/battle-road-2002/",
+          "title": "Pokumon: Battle Road 2002",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/card/elite-four-trainer-battle-road-2002-unnumbered/",
+          "title": "Pokumon: Elite Four Trainer (Battle Road 2002) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ]
+    }
+  ]
+}
