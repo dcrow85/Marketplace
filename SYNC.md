@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventh hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_destiny_v0_1.json`.
+  Neo Destiny is now a hand-authored release dossier, with Dark Espeon 4,
+  Dark Tyranitar 11, Shining Charizard 107, Shining Mewtwo 109, Shining
+  Raichu 111, and Shining Tyranitar 113 promoted from generated baseline
+  to sourced card dossiers. The pass frames Neo Destiny as the late-Neo
+  Light / Dark / Shining fork: the set where moral vocabulary, Team Rocket
+  pressure, and secret-style rarity become part of card assembly. Added
+  special identification rails for the 105 printed / 113 total API-row
+  boundary, Dark Espeon / Eeveelution context, Dark Tyranitar versus
+  Shining Tyranitar row separation, Shining Charizard's secret-row and
+  five-Energy context, Shining Mewtwo's blue-shiny context, Shining
+  Raichu's Lightning / Water attack context, and Shining Tyranitar's
+  Pokedex spelling-error / final-row boundary. Sources: local English WoC
+  catalog, Pokemon TCG API v2 set/card endpoints, and Bulbapedia community
+  pages for Neo Destiny, Dark Espeon, Dark Tyranitar, Shining Charizard,
+  Shining Mewtwo, Shining Raichu, and Shining Tyranitar. Generated gap
+  moved from 201 releases / 4,518 cards to 200 releases / 4,512 cards.
+  Current catalog-history corpus: 22,935 claims, 4,841 sources, corpus
+  hash `20b60cc79b9f5ffe35f409c960375ecff2c0005de718f2fe267a559a7a2687fa`;
+  index hash `af2c9f79794f98c825d4669bc020e177836680ab6871bd9c77b2aa12cf6daa8d`;
+  queue hash `8c47b2c89d63106a64123228d946b9683c1d7c72a184bc29ae8166c0e1d09445`.
 - `[passive]` 2026-06-19 · Codex — completed the sixth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/gym_heroes_v0_1.json`.
