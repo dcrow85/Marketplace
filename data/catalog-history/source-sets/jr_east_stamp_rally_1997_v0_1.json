@@ -1,0 +1,724 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row tranche for Japanese JR East Pokemon Stamp Rally source slice.",
+    "in_scope": [
+      "JR East Pokemon Stamp Rally source-slice release dossier",
+      "both modeled rows: Surfing Pikachu 014 and Mew 015",
+      "travel/campaign distribution, booklet-prize, matte-format, source-row-mode, and artist-credit identification rails"
+    ],
+    "not_claiming": [
+      "complete event source",
+      "complete booklet-object source",
+      "official surviving copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "Base No Rarity proof",
+      "complete artist biography"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_jr_east_stamp_rally_199708",
+      "type": "release",
+      "context": {
+        "name_en": "JR East Pokemon Stamp Rally source slice",
+        "name_ja": "JR東日本ポケモンスタンプラリー プロモ",
+        "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "release_date": "1997-08-09/1997-08-17"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_jr_east_stamp_rally_199708.json",
+          "title": "Local Japanese pre-English catalog: JR East Pokemon Stamp Rally source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete booklet-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: JR East Stamp Rally 1997",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese pre-English catalog models the JR East Pokemon Stamp Rally source slice with an August 9-17, 1997 event/release window.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The source slice models two expected booklet cards, Surfing Pikachu 014 and Mew 015, with source gap count zero inside the bounded child slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected source lines describe a JR East Stamp Rally based around 30 Tokyo Yamanote-line stations, a July 27-August 8 preorder-ticket window, 100,000 preorder tickets sold out, an August 9-17 event window, and a booklet prize containing Surfing Pikachu and Mew for participants who completed the stamp books.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Selected source lines describe the booklet cards as matte texture instead of glossy, and note that the Surfing Pikachu artwork includes Mt. Fuji and a Japan Rail train.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This source slice matters because it turns transportation into collection architecture: stations, tickets, stamps, route completion, and a two-card booklet all become part of Pokemon card identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The symbol-status matrix marks the JR East Stamp Rally family as prints_without_rarity_symbol: yes with medium-high confidence, while warning this is unnumbered promo context and not a Base No Rarity Expansion Pack claim.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local rows credit Surfing Pikachu to Toshinao Aoki and Mew to Ken Sugimori, scoped as selected/provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve JR East Stamp Rally context, August 9-17, 1997 event window, 30-station route, booklet-prize format, matte/JR-train Surfing Pikachu distinction, source-row mode, and unnumbered-promo symbol caveat before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_1997_route_booklet_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says JR East Stamp Rally, JR Train Rally 1997, Surfing Pikachu, Mew, matte booklet, Mt. Fuji train artwork, stamp rally, or August 1997 travel promo.",
+          "summary": "Keep JR East as a travel-campaign booklet source slice; route completion, matte format, and row source mode are identity rails, not transaction proof.",
+          "steps": [
+            "Require JR East Pokemon Stamp Rally / JR Train Rally 1997 context before naming this exact source slice.",
+            "Preserve August 9-17, 1997 event window, 30-station Yamanote-line stamp route, and two-card booklet prize context as legible distribution facts.",
+            "Preserve the variant note: booklet cards are described as matte rather than glossy, and Surfing Pikachu includes Mt. Fuji and a Japan Rail train in the artwork.",
+            "Preserve row source mode: Surfing Pikachu 014 is a parent aggregate row; Mew 015 is a manual provider-path gap row, not a parent aggregate decrypted row.",
+            "Preserve symbol-status caveat: unnumbered promo prints_without_rarity_symbol yes does not equal Base No Rarity proof.",
+            "Use seller photos and provenance evidence to verify physical format, booklet context, condition, and identity before any trade action."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy count",
+            "complete event source",
+            "complete booklet-object variant catalog",
+            "Base No Rarity proof",
+            "image rights approval",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "JR East Stamp Rally — when the route became the card",
+        "why_it_matters": "This is one of those places where Pokemon escapes the binder and moves through a city. The cards are the prize, yes, but the real assembly is route, station, ticket, stamp book, booklet, matte paper, train, mountain, and memory. For an agent, the romance is also the warning: the route context is legible, not proof that a seller has the right object.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "spendability",
+          "official copy count",
+          "complete event source",
+          "complete booklet-object source",
+          "complete artist biography"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_jr_east_stamp_rally_199708:014",
+      "type": "card",
+      "context": {
+        "name_en": "Surfing Pikachu",
+        "name_ja": "なみのりピカチュウ",
+        "normalized_label": "Surfing Pikachu",
+        "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "local_id": "014",
+        "card_number": "014",
+        "artist": "Toshinao Aoki",
+        "source_row_mode": "parent_aggregate_row"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_jr_east_stamp_rally_199708.json",
+          "title": "Local Japanese pre-English catalog: JR East Pokemon Stamp Rally source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete booklet-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: JR East Stamp Rally 1997",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Surfing Pikachu as JR East Pokemon Stamp Rally row 014, Japanese name なみのりピカチュウ, with source-row mode parent_aggregate_row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Surfing Pikachu belongs to the JR East Stamp Rally two-card booklet prize source slice for the August 9-17, 1997 event window.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The row is part of the matte JR East Stamp Rally booklet context; parent aggregate source row inherited from the UPC aggregate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Surfing Pikachu to Toshinao Aoki, scoped as selected/provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The local row credits Toshinao Aoki on Surfing Pikachu; this tranche does not assert broader Aoki biography beyond the JR East row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Surfing Pikachu is the kinetic heart of the rally: not just Pikachu with a board, but a travel-campaign image where Mt. Fuji, a Japan Rail train, matte texture, and a stamp-book route all try to stay attached to the card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 014, Japanese name なみのりピカチュウ, JR East booklet-prize context, matte format, source-row mode parent_aggregate_row, artist credit Toshinao Aoki, and unnumbered-promo-not-Base-No-Rarity caveat before accepting this as Surfing Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_014_route_booklet_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Surfing Pikachu, なみのりピカチュウ, JR East Stamp Rally, JR Train Rally, matte booklet, row 014, or Toshinao Aoki.",
+          "summary": "Keep Surfing Pikachu pinned to JR East Stamp Rally row 014; campaign route and source-row mode are part of identity.",
+          "steps": [
+            "Require JR East Stamp Rally / JR Train Rally 1997 context and row 014 before naming this exact row.",
+            "Preserve August 9-17, 1997 booklet-prize context and matte texture note.",
+            "Preserve source-row mode: parent aggregate source row inherited from the UPC aggregate.",
+            "Check that the artwork includes the JR train / Mt. Fuji distinction when using images as comparison aids.",
+            "Preserve artist credit Toshinao Aoki as source-scoped catalog metadata, not physical-card proof.",
+            "Preserve symbol-status caveat: unnumbered promo missing-symbol context is not Base No Rarity proof.",
+            "Use seller photos, booklet/provenance evidence, and condition evidence before any trade action."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy count",
+            "complete event source",
+            "complete booklet-object variant catalog",
+            "Base No Rarity proof",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Surfing Pikachu — JR East Stamp Rally row 014",
+        "why_it_matters": "Surfing Pikachu is the kinetic heart of the rally: not just Pikachu with a board, but a travel-campaign image where Mt. Fuji, a Japan Rail train, matte texture, and a stamp-book route all try to stay attached to the card.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_jr_east_stamp_rally_199708:015",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "ミュウ",
+        "normalized_label": "Mew",
+        "release_family_id": "jp_promo_jr_east_stamp_rally_199708",
+        "local_id": "015",
+        "card_number": "015",
+        "artist": "Ken Sugimori",
+        "source_row_mode": "manual_provider_path_gap_row"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_jr_east_stamp_rally_199708.json",
+          "title": "Local Japanese pre-English catalog: JR East Pokemon Stamp Rally source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "complete source object",
+            "complete event source",
+            "complete booklet-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_jr_east_stamp_rally_1997_selected_lines.json",
+          "title": "Selected Pokumon rendered lines: JR East Stamp Rally 1997",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official surviving copy counts",
+            "complete booklet-object variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "Base No Rarity proof"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Mew as JR East Pokemon Stamp Rally row 015, Japanese name ミュウ, with source-row mode manual_provider_path_gap_row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Mew belongs to the JR East Stamp Rally two-card booklet prize source slice for the August 9-17, 1997 event window.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The row is part of the matte JR East Stamp Rally booklet context; manual provider-path gap row for the expected booklet counterpart; not a parent aggregate decrypted row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Mew to Ken Sugimori, scoped as selected/provider metadata and not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Local examples connect Ken Sugimori to many early design-line memories; within this tranche the sourced JR East row is Mew, while other local catalog examples such as Aquapolis or classic rows are not used as same-print proof.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Mew is the quiet prize beside Surfing Pikachu, and the catalog has to be especially honest about it: the expected booklet card is modeled through selected source lines plus a manual provider-path witness, not a parent aggregate decrypted row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 015, Japanese name ミュウ, JR East booklet-prize context, matte format, source-row mode manual_provider_path_gap_row, artist credit Ken Sugimori, and unnumbered-promo-not-Base-No-Rarity caveat before accepting this as Mew.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_015_route_booklet_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Mew, ミュウ, JR East Stamp Rally, JR Train Rally, matte booklet, row 015, or Ken Sugimori.",
+          "summary": "Keep Mew pinned to JR East Stamp Rally row 015; campaign route and source-row mode are part of identity.",
+          "steps": [
+            "Require JR East Stamp Rally / JR Train Rally 1997 context and row 015 before naming this exact row.",
+            "Preserve August 9-17, 1997 booklet-prize context and matte texture note.",
+            "Preserve source-row mode: manual provider-path gap row for the expected booklet counterpart; not a parent aggregate decrypted row.",
+            "Keep the manual provider-path status visible; do not promote this row to a parent aggregate decrypted row.",
+            "Preserve artist credit Ken Sugimori as source-scoped catalog metadata, not physical-card proof.",
+            "Preserve symbol-status caveat: unnumbered promo missing-symbol context is not Base No Rarity proof.",
+            "Use seller photos, booklet/provenance evidence, and condition evidence before any trade action."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official surviving copy count",
+            "complete event source",
+            "complete booklet-object variant catalog",
+            "Base No Rarity proof",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mew — JR East Stamp Rally row 015",
+        "why_it_matters": "Mew is the quiet prize beside Surfing Pikachu, and the catalog has to be especially honest about it: the expected booklet card is modeled through selected source lines plus a manual provider-path witness, not a parent aggregate decrypted row.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

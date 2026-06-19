@@ -55,6 +55,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/jr_east_stamp_rally_1997_v0_1.json`.
+  Japanese JR East Pokemon Stamp Rally source slice now has complete two-row
+  hand-authored coverage for Surfing Pikachu / なみのりピカチュウ row 014 and Mew /
+  ミュウ row 015. The pass frames the release as travel becoming card memory:
+  30 Yamanote-line stations, preorder tickets, stamp books, route completion,
+  a two-card booklet prize, matte texture, and Surfing Pikachu's Mt. Fuji /
+  Japan Rail train artwork distinction all become legible catalog context. Added
+  `special_identification_instructions` requiring agents to preserve JR East /
+  JR Train Rally 1997 context, August 9-17, 1997 event window, booklet-prize
+  format, matte-format note, source-row mode, artist credit, and unnumbered-promo
+  symbol caveat before accepting a match. Surfing Pikachu 014 is preserved as a
+  parent aggregate source row; Mew 015 is preserved as a manual provider-path gap
+  row for the expected booklet counterpart, not a parent aggregate decrypted row.
+  The symbol-status matrix is cited as `prints_without_rarity_symbol = yes`,
+  medium-high confidence, with the caveat that this is unnumbered promo context,
+  not Base No Rarity proof. Artist credits remain source-scoped: Toshinao Aoki
+  for Surfing Pikachu, Ken Sugimori for Mew. Sources: local Japanese pre-English
+  release file, selected Pokumon rendered-line snapshot, local symbol-status
+  matrix, and local catalog artist examples. Generated gap moved from 146
+  releases / 4,017 cards to 145 releases / 4,015 cards. Current catalog-history
+  corpus:
+  `ee756b25f302b1a830eae2ccbc098c6c0f7a7e8c85f7bfdcdf18abb1cdabe8b4`; index:
+  `50e0a4b6295a656ed699da57bee42067e8c97dfc319087f2c2ebb0de5979e0ad`; queue:
+  `3edc7fedbf9b0a09cbbe5c6f5c1315eb8376cbee96a6cdda11ee0ad5163b705a`. Audit
+  counts: 23,124 claims, 5,783 sources, 64 hand-authored release dossiers, 534
+  hand-authored card dossiers, and 793 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/jr_east_stamp_rally_1997_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/expansion_sheet_1_blue_tranche_v0_1.json`.
