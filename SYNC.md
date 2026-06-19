@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 152: Battle Road Summer Best in Japan No.1 Trainer deepened; corpus 35e9b0e4)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 153: Battle Road Summer Best in Japan No.2 Trainer deepened; corpus 64d937c8)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/battle_road_summer_2002_best_in_japan_no2_trainer_v0_1.json`
+  deepens row 254 / No.2 Trainer from the Battle Road Summer 2002 Best in
+  Japan second-place finals route. The pass preserves source index 254,
+  Japanese title `Ｎｏ.２トレーナー`, August 17 2002 Tokyo finals context,
+  regional-to-final apparatus, Junior/Senior/Master division context, Tropical
+  Mega Battle adjacency, and the finals photo-card construction: a top-ranking
+  player photograph with the Battle Road Summer 2002 competition logo. It does
+  not promote a named illustrator; the art lane stays winner photograph /
+  unpromoted production design until stronger row-level production-credit
+  evidence appears. Special ID rails require agents to separate this row from
+  Battle Road Summer regional No.2 Trainer, Best in Japan No.1/No.3, Elite Four
+  Trainer, Worlds, Neo Road, Lizardon/Kamex, Tropical Mega Battle, Secret Super
+  Battle, and generic No.2 Trainer trophy listings; catalog identity remains
+  legible support until seller-controlled front/back, rank, event text,
+  photo/logo area, surface/corner, and slab/cert/provenance evidence appears.
+  Generated gaps moved to 36 release / 3862 card. Current hashes: corpus
+  `64d937c89c72f0e3e2293c099e9e4f05f9eba0bf31a0b9eb780b4c6ac2dd2fee`, index
+  `3c9e9a393d0eae0ef41dd622b356371e1a6019fca453cb4b60e075a9f634bbc5`, queue
+  `590bb3bef4896575e8cb08c5a5f51dd356222698a1c6752017a583a6de25a8be`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-second
   catalog-history pass:
   `data/catalog-history/source-sets/battle_road_summer_2002_best_in_japan_no1_trainer_v0_1.json`
