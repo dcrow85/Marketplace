@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none   ·   LAST: 2026-06-19 · Codex
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (G1 chain fix implemented: post-delivery timeout default now needs floor-signed unresolvable receipt; surface 104/104 + gates 5/5; trunk escrow 92/92)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — **G1 chain gate implemented** in
+  `chain/src/MarketplaceEscrow.sol` with regression coverage in
+  `chain/test/MarketplaceEscrow.t.sol`. The old value-fatal path is closed: a post-delivery
+  `openClaim()` no longer reaches `resolveUnresolvableClaimByDefault()` by timeout alone.
+  Escrow now records the claim path (`postDeliveryClaim`), preserves the old stage-three default
+  for route/non-delivery timeout claims, and adds
+  `resolvePostDeliveryUnresolvableClaimByFloorReceipt(...)` gated by a typed
+  `UnresolvableClaimReceipt` hash signed by the trade's `floorExecutor`. Forged receipt signatures
+  reject; route defaults still work. Verification on `claude/surface-agent` before trunk
+  cherry-pick: `/Users/che/.foundry/bin/forge test` → **104/104 pass** (92 Escrow + 12 Inventory;
+  count increased from 102 by two G1 regressions), and
+  `python3 simulations/consolidated_alpha_gates_drill.py` → **5/5 with teeth**. Verification on
+  `main` after cherry-pick: `/Users/che/.foundry/bin/forge test` → **92/92 Escrow pass** (this
+  checkout does not currently contain the Inventory suite or consolidated gates drill). Scope note:
+  this implements the **floor-signed unresolvable-claim receipt** branch of G1; return-custody
+  proof and claim-type-specific remedies remain future branches. Still open before value-bearing
+  alpha: G2 capacity/downgrade enforcement, G3/JSC on-chain binding for seller liability, and the
+  standalone Verifier v0.4 re-review.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-seventeenth
   catalog-history pass:
   `data/catalog-history/source-sets/world_challenge_summer_chubu_lucky_stadium_v0_1.json`
