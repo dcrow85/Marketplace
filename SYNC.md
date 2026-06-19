@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-sixth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/ana_get_in_a_jet_campaign_v0_1.json`.
+  ANA Get in a Jet! Double Chance Campaign source slice now has complete
+  two-row hand-authored coverage for Flying Pikachu row 051 and Dragonite row
+  052. The pass frames the release as airline travel made collectible: All
+  Nippon Airways / All Nippon Airlines campaign memory where Flying Pikachu
+  makes flight literal and Dragonite gives the route a gentle carrier logic.
+  Added `special_identification_instructions` as a first-class field requiring
+  agents to preserve exact ANA/Get in a Jet route, row 051/052 identity,
+  source-date wording caveat, Toshinao Aoki source/provider credit, and
+  airline-campaign boundary before accepting a match. Agents must not collapse
+  Flying Pikachu into CoroCoro November 1997, English Wizards promo, Surfing
+  Pikachu, or later Flying Pikachu variants; nor collapse Dragonite into Game
+  Boy, Mystery of the Fossils, Rocket/Gift Pack, Pokemon Card web, VS, or
+  generic Dragonite memories without explicit route evidence. Sources: local
+  Japanese pre-English release file, local selected-lines snapshot for Pokumon +
+  Bulbapedia ANA Get in a Jet 1998, and Pokumon collector context as low-tier
+  texture. Generated gap moved from 132 releases / 3,964 cards to 131 releases /
+  3,962 cards. Current catalog-history corpus:
+  `f97367dc5d6865b2caf024a99b21a6f2e35b4ed5b68ee3a6c09cd32cff100a64`;
+  index: `8af8523e27402c617243f182ee5711d84e71c514d8acffd859f9ee002a9bc556`;
+  queue: `4272bb91700e357dd821d470881fe6a8cae6b1de50002f6d68523a2db189412e`.
+  Audit counts: 23,230 claims, 5,998 sources, 78 hand-authored release dossiers,
+  587 hand-authored card dossiers, and 848 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/ana_get_in_a_jet_campaign_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-fifth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/trade_please_campaign_v0_1.json`.
