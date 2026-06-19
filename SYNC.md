@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eightieth catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/fan_club_vol3_dark_persian_v0_1.json`.
+  Pokemon Card Fan Club Vol. 3 Dark Persian now has complete one-row
+  hand-authored coverage for Dark Persian row 024. The pass frames the release
+  as a magazine route becoming a card object: Pokemon Card Fan Club Vol. 3,
+  November 18 1997, an exclusive non-holo Dark Persian promo, Ken Sugimori /
+  Giovanni artwork, and Rocket Gang-symbol pressure before ordinary Rocket
+  memories can swallow the route. Added `special_identification_instructions`
+  requiring agents to preserve Fan Club Vol. 3 magazine route, row 024 identity,
+  Japanese/romaji name context (`わるいペルシアン` / Bad Persian), Ken Sugimori
+  promo artwork with Giovanni, Rocket Gang symbol as promotional-addition
+  context, and non-equivalence with Rocket Gang, Team Rocket, Wizards Black
+  Star, Nintendo Power, Legendary Collection, and TCG GB2 prints before
+  accepting a match. Artist handling explicitly separates Ken Sugimori for the
+  Fan Club promo from Shin-ichi Yoshida as ordinary Rocket Gang / Team Rocket
+  comparison context; both are source-page metadata rather than seller-card
+  proof. Sources: local Japanese pre-English Fan Club Vol. 3 release row,
+  selected Pokumon rendered-line snapshot for Pokemon Card Fan Club magazine,
+  and Bulbapedia Dark Persian (Team Rocket 42) as a bounded database reference.
+  Generated gap moved from 128 releases / 3,950 cards to 127 releases / 3,949
+  cards. Current catalog-history corpus:
+  `f2dabb880133f018ee58d21ae419e6c8cf1cd9fc10bcad2eaefe6f7bc552fca6`;
+  index: `d6f32701c6f61fd59af80fac69a326ccab490c394d5977e4c772e930a3c8871c`;
+  queue: `ff936bc26ee324f83efb85edc928b65451843c79d4184e3e950fffd0c2ffb8c5`.
+  Audit counts: 23,238 claims, 6,031 sources, 82 hand-authored release dossiers,
+  600 hand-authored card dossiers, and 853 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/fan_club_vol3_dark_persian_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/communication_evolution_campaign_v0_1.json`.

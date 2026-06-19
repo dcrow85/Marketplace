@@ -1,0 +1,532 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Pokemon Card Fan Club Vol. 3 Dark Persian, emphasizing magazine-insert route, November 18 1997 timing, Ken Sugimori Giovanni artwork, non-holo unnumbered promo identity, Rocket Gang symbol confusion, and traps against Rocket Gang/Team Rocket, Wizards Black Star, Nintendo Power, Legendary Collection, TCG GB2, and generic Dark Persian memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Dark Persian row 024",
+      "Pokemon Card Fan Club Vol. 3 magazine route",
+      "Ken Sugimori unnumbered promotional artwork context",
+      "Rocket Gang symbol promotional-addition context",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete magazine archive",
+      "complete sealed-magazine object ledger",
+      "official copy count",
+      "complete Dark Persian print census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_fan_club_vol3_19971118",
+      "context": {
+        "release_family_id": "jp_promo_fan_club_vol3_19971118",
+        "name_en": "Pokemon Card Fan Club Vol. 3 Dark Persian source slice",
+        "release_date": "1997-11-18",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "magazine insert as distribution route",
+          "Pokemon Card Fan Club as collector infrastructure",
+          "Dark Persian before Rocket Gang release context",
+          "Giovanni artwork as identity pressure",
+          "Rocket Gang symbol on an unnumbered promotional card",
+          "same-character reprint traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_fan_club_vol3_19971118:024",
+            "name": "Dark Persian",
+            "why": "The whole source slice is one card: a Fan Club magazine object where Giovanni's Persian became a promo before the Rocket Gang expansion memory could swallow it.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Dark Persian"
+            ],
+            "why": "Sugimori's unnumbered promotional artwork is the collector hinge here because Bulbapedia separates it from Shin-ichi Yoshida's Rocket Gang/Team Rocket print and notes that the promo features Giovanni in the illustration.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Dark Persian print authority"
+            ]
+          },
+          {
+            "name": "Shin-ichi Yoshida",
+            "row_count": 0,
+            "examples": [
+              "Rocket Gang / Team Rocket Dark Persian comparison context"
+            ],
+            "why": "Yoshida matters here as the near-miss memory: the ordinary Rocket Gang/Team Rocket Dark Persian line is his artwork, so artist credit is part of the route boundary.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "credit for this Fan Club promo row",
+              "complete biography",
+              "seller-card proof"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete magazine archive",
+          "complete sealed-magazine object ledger",
+          "official copy count",
+          "complete Dark Persian print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Pokemon Card Fan Club Vol. 3 row: Dark Persian row 024.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected Pokumon snapshot says Pokemon Card Fan Club Vol. 3 was released on November 18, 1997 and included an exclusive non-holo Dark Persian promotion card with different artwork than the Team Rocket/Rocket Gang copy.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia says the unnumbered promotional print with different Ken Sugimori artwork was available as an insert with the third volume of Pokemon Card Fan Club, released on November 18, 1997.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia separates the ordinary Rocket Gang/Team Rocket print credited to Shin-ichi Yoshida from the unnumbered promotional print credited to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Japanese unnumbered promotional print features the Rocket Gang symbol, indicating that it is a promotional addition to the expansion.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This release matters because it shows Pokemon Card Fan Club acting as collector infrastructure: a magazine issue was not merely talking about Team Rocket, it carried a route-specific Dark Persian object into readers' hands.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pokemon Card Fan Club Vol. 3 route, November 18 1997 timing, row 024 identity, Ken Sugimori promo artwork, Rocket Gang symbol promotional-addition context, and non-equivalence with Rocket Gang/Team Rocket, Wizards Black Star, Nintendo Power, Legendary Collection, and TCG GB2 memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Pokemon Card Fan Club Vol. 3 — Dark Persian slips out before the Rocket crowd arrives",
+        "why_it_matters": "Dark Persian is easy to misremember as a Team Rocket card because that is where the character energy lives. The Fan Club Vol. 3 promo is more interesting than that shortcut. It sits in the apparatus around the cards: Pokemon Card Fan Club magazine, a November 1997 reader object, and a Ken Sugimori Giovanni image that distinguishes the promo from Shin-ichi Yoshida's ordinary Rocket Gang line. The promo arrives just ahead of Rocket Gang's November 21, 1997 expansion context in the local source notes, so it feels like a magazine-doorway into the Rocket era. This is the kind of release that makes the catalog useful to agents: the name is not enough, the villain theme is not enough, and even the Rocket Gang symbol is not enough unless the route survives.",
+        "not_claiming": [
+          "complete release history",
+          "complete magazine archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English Fan Club Vol. 3 release row",
+          "ref": "data/japanese-pre-english/releases/jp_promo_fan_club_vol3_19971118.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "title": "Pokumon selected rendered lines for Pokemon Card Fan Club Vol. 3",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_fan_club_vol3_dark_persian_1997_selected_lines.json",
+          "source_page_url": "https://pokumon.com/pokemon-card-fan-club-magazine/",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete magazine archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia Dark Persian (Team Rocket 42)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Persian_(Team_Rocket_42)",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Dark_Persian_(Team_Rocket_42)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete magazine archive"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_vol3_dark_persian_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Persian, わるいペルシアン, Bad Persian, Pokemon Card Fan Club Vol. 3, November 18 1997, Ken Sugimori, Giovanni, Rocket Gang symbol, unnumbered promo, Wizards Black Star 17, Nintendo Power, Team Rocket, Rocket Gang, Legendary Collection, or row 024.",
+          "summary": "Preserve the Pokemon Card Fan Club Vol. 3 magazine-insert route and Ken Sugimori/Giovanni promo artwork before accepting this as row 024.",
+          "steps": [
+            "Confirm Pokemon Card Fan Club Vol. 3 magazine route and November 18, 1997 context.",
+            "Preserve row 024 and source-slice identity: jp_promo_fan_club_vol3_19971118:024.",
+            "Preserve the Japanese/romaji name context from Bulbapedia: わるいペルシアン / Bad Persian.",
+            "Require the unnumbered promotional Ken Sugimori artwork with Giovanni in the illustration; do not accept Shin-ichi Yoshida Rocket Gang/Team Rocket artwork as this promo.",
+            "Preserve the Rocket Gang symbol as promotional-addition context, but do not collapse the card into ordinary Rocket Gang, Team Rocket, or Legendary Collection memories.",
+            "Separate this Japanese Fan Club route from later Wizards Black Star / Nintendo Power routes, including the known Nintendo Power no-HP error note.",
+            "Use seller photos for physical format, card face/back, stock, gloss, symbol area, HP line, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete magazine archive",
+            "complete sealed-magazine object ledger",
+            "official copy count",
+            "complete Dark Persian print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_fan_club_vol3_19971118:024",
+      "context": {
+        "release_family_id": "jp_promo_fan_club_vol3_19971118",
+        "name_en": "Dark Persian",
+        "name_ja": "わるいペルシアン",
+        "romaji": "Bad Persian",
+        "local_id": "024",
+        "card_type": "Colorless Pokemon",
+        "rarity_or_signal": "Unnumbered Promotional / non-holo magazine promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Ken Sugimori",
+        "why_it_matters": "This is the Dark Persian that needs a route before a name: Fan Club Vol. 3, Ken Sugimori, Giovanni, and unnumbered Japanese promo identity all have to line up.",
+        "collector_signals": [
+          "exclusive non-holo Fan Club Vol. 3 promo",
+          "different artwork than Rocket Gang / Team Rocket",
+          "Giovanni appears in the illustration",
+          "Rocket Gang symbol on a promotional addition",
+          "later Wizards Black Star / Nintendo Power confusion pressure"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Persian as row jp_promo_fan_club_vol3_19971118:024 in the Pokemon Card Fan Club Vol. 3 Dark Persian source slice.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Dark Persian's Japanese name as わるいペルシアン and gives Bad Persian as the romanized/translated name.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The Fan Club Vol. 3 unnumbered promotional print is credited to Ken Sugimori, while the Rocket Gang/Team Rocket print is credited to Shin-ichi Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.art",
+          "text": "Bulbapedia says the unnumbered promotional print features Giovanni in the illustration.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The selected Pokumon snapshot describes this Fan Club Vol. 3 card as an exclusive non-holo Dark Persian with different artwork than the newly released Team Rocket expansion copy.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia's release information connects the same Ken Sugimori artwork lineage to later Wizards Black Star / Nintendo Power distribution, while also noting that unknown quantities of the Nintendo Power print were erroneously printed without HP.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Dark Persian is a strong agent test because the name, Rocket theme, and symbol can all point in the right emotional direction while still landing on the wrong route unless the magazine-insert provenance is preserved.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a match, require Fan Club Vol. 3 magazine route, row 024 identity, Ken Sugimori/Giovanni artwork, Rocket Gang symbol promotional-addition context, and separation from Rocket Gang, Team Rocket, Wizards Black Star, Nintendo Power, Legendary Collection, and TCG GB2 prints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Dark Persian — Giovanni's shadow in a Fan Club magazine",
+        "why_it_matters": "Dark Persian is deliciously slippery. It belongs emotionally to Team Rocket, mechanically to the Dark Pokemon era, and visually to Giovanni's orbit. But this Fan Club Vol. 3 copy is its own thing: an unnumbered Japanese promo carried by a magazine, credited to Ken Sugimori, and distinct from the Shin-ichi Yoshida Rocket Gang card. The Rocket Gang symbol is part of the identity, but not a license to collapse it into an ordinary Rocket Gang pack card. For an agent, it is a lesson in not letting theme become provenance. The card wants you to recognize the cat, the boss, and the Rocket symbol, then still ask: which route put this exact object into the world?",
+        "not_claiming": [
+          "complete release history",
+          "complete magazine archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English Fan Club Vol. 3 Dark Persian row",
+          "ref": "data/japanese-pre-english/releases/jp_promo_fan_club_vol3_19971118.json#row:jp_promo_fan_club_vol3_19971118:024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "title": "Pokumon selected rendered lines for Pokemon Card Fan Club Vol. 3",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_fan_club_vol3_dark_persian_1997_selected_lines.json",
+          "source_page_url": "https://pokumon.com/pokemon-card-fan-club-magazine/",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete magazine archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia Dark Persian (Team Rocket 42)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Persian_(Team_Rocket_42)",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Dark_Persian_(Team_Rocket_42)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete magazine archive"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_vol3_024_dark_persian_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Persian, わるいペルシアン, Bad Persian, Ken Sugimori, Shin-ichi Yoshida, Giovanni, Rocket Gang symbol, Pokemon Card Fan Club Vol. 3, November 18 1997, unnumbered promo, Wizards Black Star 17, Nintendo Power, Team Rocket, Rocket Gang, Legendary Collection, TCG GB2, or row 024.",
+          "summary": "Keep Dark Persian row 024 pinned to the Fan Club Vol. 3 magazine-insert route and Ken Sugimori/Giovanni promo artwork.",
+          "steps": [
+            "Require Pokemon Card Fan Club Vol. 3 magazine context and row 024 identity.",
+            "Preserve Japanese/romaji name context: わるいペルシアン / Bad Persian.",
+            "Confirm the unnumbered promotional Ken Sugimori artwork with Giovanni; reject ordinary Shin-ichi Yoshida Rocket Gang/Team Rocket artwork as this row.",
+            "Preserve Rocket Gang symbol as promotional-addition evidence, not as sufficient proof of ordinary Rocket Gang pack origin.",
+            "Separate the Japanese Fan Club promo from Wizards Black Star 17, Nintendo Power magazine insert, the Nintendo Power no-HP error, Legendary Collection, and TCG GB2 sprites.",
+            "Use seller photos for physical format, card face/back, stock, gloss, symbol area, HP line, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete magazine archive",
+            "complete sealed-magazine object ledger",
+            "official copy count",
+            "complete Dark Persian print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
