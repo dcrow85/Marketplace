@@ -42,7 +42,7 @@ function applyAgentFilter(cards, f, setById) {
   return out
 }
 
-function Card({ c, store, setStance, showSet, setLabel, pick }) {
+function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = have ? (e.extra ? 's-extra' : 's-have') : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -53,19 +53,118 @@ function Card({ c, store, setStance, showSet, setLabel, pick }) {
         <button className={'seg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
         <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
       </div>
-      <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')}>
+      <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>
         {c.image && <img src={c.image} alt={nm(c)} loading="lazy" decoding="async" />}
         {c.holo ? <span className="holodot" title="holo" /> : null}
         {provBadge(c)}
       </div>
-      <div className="caption">
+      <div className="caption" onClick={() => onOpen && onOpen(c.uid)}>
         {showSet && <div className="cset">{setLabel}</div>}
         <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{nm(c)}</span></div>
         <div className="cap-sub">
           <span className="crom">{c.romaji || c.name_en || ''}{c.name_is_en && <span className="enmark">EN</span>}</span>
           <span className={'cmeta ' + meta.cls}>{meta.t}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const COND_OPTS = [
+  ['any', 'Any condition'],
+  ['nm', 'Near Mint or better'],
+  ['lp', 'Light Play or better'],
+  ['played', 'Played is fine'],
+]
+const PROV_LABEL = {
+  exact_source: 'Exact source image',
+  provider_path: 'Provider-path reference image',
+  no_rarity_reference: 'No Rarity reference image',
+}
+const mpill = (t, i) => t ? <span className="mpill" key={i}>{t}</span> : null
+
+function Frow({ label, children }) {
+  return <label className="frow"><span className="flabel">{label}</span><span className="fbody">{children}</span></label>
+}
+
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onClose])
+  const c = byUid(data, uid)
+  if (!c || !c.set_id) return null
+  const e = effStance(c, store)
+  const s = setById[c.set_id] || {}
+  const u = store[c.uid] || {}
+  const types = (c.types || []).join(' / ')
+  const active = wantActive(c, store)
+  const condVal = u.want_cond !== undefined ? u.want_cond : (c.want_cond || 'any')
+  const maxVal = u.want_max !== undefined ? u.want_max : (c.want_max || '')
+  const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
+  return (
+    <div className="modal" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
+      <div className="sheet" role="dialog" aria-modal="true">
+        <button className="mx" onClick={onClose} aria-label="close">✕</button>
+        <div className="mcols">
+          <div className="mleft">
+            <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
+              {c.image
+                ? <img src={c.image} className={e.stance !== 'have' ? 'grey' : ''} alt={nm(c)} />
+                : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
+              {c.holo ? <span className="holodot" title="holo" /> : null}
+              {provBadge(c)}
+            </div>
+          </div>
+          <div className="mright">
+            <div className="m-set mono">{[s.label, s.code, s.date].filter(Boolean).join('  ·  ')}</div>
+            <h2 className="m-name">{nm(c)}</h2>
+            <div className="m-sub">
+              <span className="cnum mono">#{c.num}</span>
+              {(c.romaji || c.name_en) && nm(c) !== (c.romaji || c.name_en) ? <span> · {c.romaji || c.name_en}</span> : null}
+              {c.name_is_en && <span className="enmark">EN</span>}
+            </div>
+            <div className="m-attrs">
+              {[c.category, types, c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'value-tier ' + c.band_rank : '']
+                .map((t, i) => mpill(t, i))}
+            </div>
+            <div className="m-stance">
+              <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
+              <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
+            </div>
+            <div className="m-fields">
+              {e.stance === 'have' && <>
+                <Frow label="Condition"><input className="ti" placeholder="raw NM · PSA 9 · …" value={u.cond || ''} onChange={(ev) => setField(c.uid, 'cond', ev.target.value)} /></Frow>
+                <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
+                <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+              </>}
+              {e.stance === 'want' && <>
+                <Frow label="Condition"><select className="ti" value={condVal} onChange={(ev) => setField(c.uid, 'want_cond', ev.target.value)}>{COND_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></Frow>
+                <Frow label="Max price"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="—" value={maxVal} onChange={(ev) => setField(c.uid, 'want_max', ev.target.value)} /></Frow>
+                <Frow label="Notes"><textarea className="ti" rows={2} placeholder="why you want it, deal terms…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+                <div className="fnote">{active
+                  ? <><b>Active hunt.</b> {agentName} flags matches that meet your condition and budget.</>
+                  : <><b>On your wishlist.</b> Set a condition or budget to make it an active hunt.</>}</div>
+              </>}
+              {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b>. Have records condition + custody; Want sets the terms your agent hunts to.</div>}
+            </div>
+            <div className="provbox">
+              <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
+              <div className="pb">
+                <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
+                {c.image_status === 'no_rarity_reference'
+                  ? 'Source-labeled No Rarity reference.'
+                  : c.image
+                    ? 'External reference witness — not seller evidence, authentication, or proof of a specific physical card.'
+                    : 'No reference image has been sourced for this print yet.'}
+                {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
+              </div>
+            </div>
+            <div className="m-cite mono">catalog {(c.catalog_hash || '—').slice(0, 12)}{c.catalog_hash ? '…' : ''} · row {c.row_id ?? '—'}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -132,6 +231,7 @@ export default function Binder({ accountId, agentName }) {
   const [holoOnly, setHoloOnly] = useState(false)
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
+  const [selected, setSelected] = useState(null)
   const storeKey = accountId ? `cairn-cards:${accountId}` : 'cairn-cards'
 
   useEffect(() => { fetch('/catalog-sample.json').then((r) => r.json()).then(setData).catch((e) => setErr(String(e))) }, [])
@@ -151,6 +251,14 @@ export default function Binder({ accountId, agentName }) {
       return next
     })
   }, [data, storeKey])
+
+  const setField = useCallback((uid, key, value) => {
+    setStore((prev) => {
+      const next = { ...prev, [uid]: { ...(prev[uid] || {}), [key]: value } }
+      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      return next
+    })
+  }, [storeKey])
 
   const askAgent = useCallback(async (call) => {
     setAgentBusy(true)
@@ -205,7 +313,7 @@ export default function Binder({ accountId, agentName }) {
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} />
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
 
@@ -245,6 +353,7 @@ export default function Binder({ accountId, agentName }) {
           <div className="grid">{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
+      {selected && <CardModal uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
     </>
   )
 }
