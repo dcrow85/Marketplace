@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-fourth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/kuchiba_city_gym_lt_surge_v0_1.json`.
+  Kuchiba City Gym / Lt. Surge is now a hand-authored Gym standard-deck
+  dossier, with 11 rows promoted from generated baseline to sourced card
+  dossiers: Lt. Surge's Pikachu 001, Lt. Surge's Pikachu 002, Lt. Surge's
+  Raichu 003, Lt. Surge's Magneton 006, Lt. Surge's Electrode 009, Lt.
+  Surge's Electabuzz 010, Vermilion City Gym 016, Secret Mission 017, Lt.
+  Surge 022, Lt. Surge's Treaty 023, and Double Colorless Energy 025. The
+  pass frames the release as electricity becoming command structure: a
+  64-card product context with 25 unique catalog rows where the owner-name,
+  place, trainer, treaty, and resource rows matter as much as the familiar
+  mascot. Added special identification rails for the Gym deck missing-symbol
+  lane not being Base No Rarity, 64-card product vs 25-row catalog surface,
+  row 001 Ken Sugimori Pikachu vs row 002 Atsuko Nishida Pikachu, English Gym
+  Heroes / Gym Challenge comparison boundaries, Electabuzz CoroCoro/promo
+  route separation, Secret Mission vs English Secret Plan naming, Vermilion
+  City Gym place-card identity, and Double Colorless Energy not collapsing
+  into Base / Starter / Gift Pack energy lanes. Sources: local Kuchiba City
+  Gym catalog, PokéCardex KCGYM, Bulbapedia Kuchiba City Gym, Japanese
+  Pre-English Release Map, and local English Gym Heroes / Gym Challenge
+  catalogs for comparison boundaries. Generated gap moved from 174 releases /
+  4,281 cards to 173 releases / 4,270 cards. Current catalog-history corpus:
+  22,850 claims, 5,504 sources, corpus hash
+  `f5172e002ae6f496f0320f0b363b3d4038c9b1434e00a1d598176b7cbc65b2b8`;
+  index hash `dce3ea7dd07f086b6f7b086786198e110b344dc1cb1f0ea93f37797fcbaa174b`;
+  queue hash `ac25662881938c5a3bb5e3e795ef0ab4c0547d007061c4086971b6b65a3e4631`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-third
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_early_1997_v0_1.json`.
