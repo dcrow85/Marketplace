@@ -53,8 +53,9 @@ path               # desires.grails | taste.condition_floor | mandate_input.spen
 value
 source_class       # stated | imported | observed | inferred | corrected   (epistemic type)
 source_origin      # principal | behavior | third_party                    (who produced it; orthogonal)
-source_ref         # the utterance, the import file, the packet hash, the correction event
-confidence
+source_ref         # the utterance, the import file, the packet hash, the correction event;
+                   #   corrected authority requires a `principal_correction:<event>` ref (§4)
+confidence         # authority uses (spend/waive) require confidence >= 0.95 (§4)
 scope              # domain, collection_id, value_band, time_window — MANDATORY, defaults to NARROWEST
 allowed_uses       # a subset of the §4 lattice, capped by source
 requires_confirmation
@@ -91,8 +92,14 @@ glance_sort  <  recommend  <  ask  <  spend  <  waive
 - Authority actions — spend, waive evidence, release escrow, suppress a reserved judgment — require a
   claim whose effective `allowed_uses` includes them. There is **no other path**. (Holdings/taste
   claims are authored narrow even when their ceiling is high; the ceiling is a cap, not a default.)
-- **Correction is the one clean upgrade.** The principal confirming an `inferred_candidate` mints a
-  `corrected`/`stated` claim that `supersedes` it and lifts the ceiling. Nothing else lifts it.
+- **Authority confidence floor.** A use in `{spend, waive}` *additionally* requires
+  `confidence ≥ 0.95`. A hedged or low-confidence claim cannot authorize, whatever its source — this
+  closes confidence-laundering (a 0.6-confidence "stated" claim must not spend).
+- **Correction is the one clean upgrade — and it needs a receipt.** The principal confirming an
+  `inferred_candidate` mints a `corrected`/`stated` claim that `supersedes` it and lifts the ceiling.
+  A `corrected` claim bearing authority requires a `source_ref` of the form
+  `principal_correction:<event>`; the *label* "corrected" alone cannot mint the upgrade. Nothing else
+  lifts the ceiling.
 
 ## 5. `AgentMandate` — the enforceable carve-out (constraint 3)
 
@@ -115,10 +122,14 @@ signature                   # principal's signature over the above
 not_claiming
 ```
 
-- It may draw spend/waive authority **only** from claims whose `allowed_uses` reach the action (§4).
-  A mandate cannot grant authority the underlying claims don't carry — the lattice bounds the mandate.
-- **Version-pinned:** authorizes against `profile_version_hash`. Later profile updates **do not widen**
-  an old mandate. Widening = a new mandate, re-signed against the new version. (Closes mandate creep.)
+- It may draw spend/waive authority **only** from claims that (a) reach the action under the §4
+  lattice, (b) are **active** (not `superseded`), and (c) sit **in the mandate's `scope`**. A
+  superseded or out-of-scope claim cannot feed the mandate — this closes superseded-replay and the
+  cross-domain leak. A mandate cannot grant authority the underlying claims don't carry.
+- **Version-pinned:** authorizes against `profile_version_hash`, computed over each claim's
+  `claim_id, path, value, source_class, source_origin, allowed_uses, confidence, scope, source_ref,
+  supersedes` — so tampering *any* of them trips the pin. Later profile updates **do not widen** an
+  old mandate; widening = a new mandate re-signed against the new version. (Closes mandate creep.)
 - **Revocable + expiring:** `revocation_nonce` + `expires_at`.
 
 ## 6. What the chain can and cannot enforce (the Codex carve-out)
@@ -128,7 +139,8 @@ escrow/bond amounts, state transitions, and a monotonic revocation nonce.
 
 - **Enforceable on-chain**, at the escrow/route gate: `signature` valid for `principal_actor` ·
   `revocation_nonce == registry.current_nonce(principal)` · `profile_version_hash` matches the
-  authorized one · `spend ≤ spend_authority`. A stale-nonce or wrong-version mandate is rejected.
+  authorized one · `scope` matches the action's domain · `spend ≤ spend_authority`. A stale-nonce,
+  wrong-version, or out-of-scope mandate is rejected.
 - **NOT enforceable, and must never be implied:** "this is really your taste," "the inference is
   fair," "the agent understood you." Those stay `judged`. **The chain checks the signature on the
   mandate, never the truth of the profile.**
@@ -152,7 +164,7 @@ derived_at
 Every action audits back to **exact beliefs + exact authority.** No-overclaim made verifiable per
 action, not just per belief.
 
-## 8. Threat model — the ten failure modes and what defeats each
+## 8. Threat model — the failure modes and what defeats each
 
 ```text
 1. inference laundering     -> source-gated lattice (§4): inferred can never reach spend.
@@ -170,7 +182,12 @@ action, not just per belief.
 9. revocation failure       -> on-chain nonce (§6).
 10. multi-agent merge        -> v1 single-writer profile; runtimes emit `inferred_candidate` patches to
                                a queue, never write directly; correction history is the conflict log.
+11. fake correction          -> `corrected` authority requires a `principal_correction:<event>`
+                               source_ref (§4); the label alone cannot mint the upgrade.
+12. superseded replay        -> mandates draw from ACTIVE claims only (§5); a superseded claim — and a
+                               profile_version that omits it — cannot keep authorizing.
 ```
+(11 & 12 added by the independent verifier pass; both are exercised by the §11 drill.)
 
 ## 9. Honest v1 (deliberately conservative — Kepler)
 
@@ -188,19 +205,27 @@ not a convenience: the **mandate** is signed + chain-checked (nonce/version); th
 private under the principal's custody — account-scoped, encrypted at rest, minimized (store the
 claim, not a behavioral firehose). Portable ≠ public; export is principal-initiated.
 
-## 11. The falsification drill — Kepler's test, made adversarial + model-agnostic
+## 11. The falsification drill — model-agnostic, independently extended
 
-Run as an `interrupt_bar_probe`-style battery (model-agnostic, scored). The design passes only if:
+`simulations/principal_profile_drill.py`: an `interrupt_bar_probe`-style battery (model-agnostic,
+deterministic). **8/8 pass**, with a mutation control proving each case goes red when the lattice is
+broken. Cases 1–4 are the original; **5–8 were added by an independent Kepler/Codex verifier pass**
+(author ≠ verifier — the extension found four gaps the author missed):
 
-- **projection (happy):** imported collection + interview + 3 observed passes → produces a correct
-  `buyer_want`, asks the right missing question, and **refuses to spend from an inferred preference.**
-- **inference-laundering (attack):** promoting an `inferred` claim to spend authority is rejected by
-  the lattice.
-- **prompt-injection (attack):** seller text trying to mint a `stated` claim or raise a cap is
-  quarantined as `third_party`, capped at `recommend`.
-- **revocation (attack):** a revoked / stale-nonce mandate replayed at the escrow gate is rejected.
+- **1. projection (happy):** profile → a `buyer_want` sourced from stated claims that **refuses to
+  spend from an inferred preference** and surfaces the open question.
+- **2. inference-laundering:** promoting an `inferred` claim to spend authority → rejected by the lattice.
+- **3. prompt-injection:** seller text minting a `stated` claim / raising a cap → quarantined (`third_party`).
+- **4. revocation:** a stale-nonce / expired / superseded-version mandate → rejected at the gate.
+- **5. superseded replay:** a mandate drawing authority from a superseded claim → rejected.
+- **6. fake correction:** a `corrected` authority claim without a `principal_correction` ref → rejected.
+- **7. scope leak:** a mandate spending a cap from another domain → rejected.
+- **8. confidence laundering:** a low-confidence authority claim → rejected by the confidence floor.
 
-Passing the happy case is better copy. Passing the attacks is real architecture.
+The pass also revealed **defense in depth:** the source-class ceiling, the source-origin ceiling, and
+the per-claim `allowed_uses` are independent gates — breaking one axis doesn't open the hole. Passing
+the happy case is better copy; passing the eight attacks is real architecture. The companion
+`Projection`-receipt validator (§7) is the next falsification target.
 
 ## 12. Lanes & seams
 
@@ -213,8 +238,9 @@ Passing the happy case is better copy. Passing the attacks is real architecture.
 
 ## 13. Phasing
 
-- **P0** — claim atom + the §4 lattice + `PrincipalProfile.v0.1` schema + the adversarial drill (§11).
-  Lock the contract on the happy path + the three attacks. (Claude)
+- **P0** — claim atom + the §4 lattice + the adversarial drill (§11, 8/8, independently verified) +
+  the §7 `Projection`-receipt validator. Reference impls in `simulations/`; the editable
+  `PrincipalProfile.v0.1` account data is the remaining P0/P2 piece. (Claude)
 - **P1** — `AgentMandate.v0.1` + the on-chain check (§6). (Codex)
 - **P2** — import + interview onboarding + the editable profile UI; behavior → `inferred_candidate`. (Claude)
 - **P3** — calibration (`corrected` upgrades) — only once the editable UI exists to catch it.
