@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23337,
-    "corpus_hash": "58d7d78d472fdc29b391a74df0803a2506cf81aeff78eccbbc03bba6f4ebf28b",
-    "generated_card_dossier_count": 3905,
-    "generated_release_dossier_count": 79,
+    "claim_count": 23341,
+    "corpus_hash": "f1eb2d35f63a7e5d62e38080aaa8b958746cf8db92a5cfc2cd871876b5cd58ad",
+    "generated_card_dossier_count": 3904,
+    "generated_release_dossier_count": 78,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6306
+    "source_count": 6313
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "e7d69bea5ad029944a823170c85a1f7f9793609d74fa3b024e65049067e1ab5a",
-    "release_queue_count": 79,
+    "queue_hash": "dfdf1e8efaf05a18ef3f003dbac63769726a2cb2efd8776f0984145cd2f8fbeb",
+    "release_queue_count": 78,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T16:33:44Z",
+  "generated_at": "2026-06-19T16:42:51Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "3cce77994a7d87c51b19ad557ce4455bd24178745fd62ae743a4dbf6c85f5893",
+    "index_hash": "007d5c7b5f186c85eb4bbf3bb631c4f4337c04fd0ad19374accb370cac220ae9",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -69,6 +69,7 @@
     "data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_january_2000_wooper_v0_1.json",
     "data/catalog-history/source-sets/corocoro_july_1999_marill_v0_1.json",
+    "data/catalog-history/source-sets/corocoro_july_2000_scizor_v0_1.json",
     "data/catalog-history/source-sets/corocoro_june_1999_togepi_v0_1.json",
     "data/catalog-history/source-sets/corocoro_march_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_march_1999_insert_v0_1.json",

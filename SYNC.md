@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-eleventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_july_2000_scizor_v0_1.json`
+  deepens row 163 / Scizor from the CoroCoro Comic July 2000 issue insert route
+  (June 15, 2000). The pass treats it as a Japanese unnumbered CoroCoro contact object
+  with a later English Wizards Black Star Promo 33 relationship, not as a generic Scizor
+  match. Hironobu Yoshida, ハッサム / Hassam, Leer, Metal Pincer, Neo-era Metal-type texture,
+  Crossing the Ruins symbol, and CoroCoro bottom-border bonus-card text are now legible.
+  Special ID rails separate it from English Black Star Promo 33, Neo Discovery / Crossing
+  the Ruins set copies, and later Scizor rows. Generated gaps moved to 78 release / 3904
+  card. Current hashes: corpus
+  `f1eb2d35f63a7e5d62e38080aaa8b958746cf8db92a5cfc2cd871876b5cd58ad`, index
+  `007d5c7b5f186c85eb4bbf3bb631c4f4337c04fd0ad19374accb370cac220ae9`, queue
+  `dfdf1e8efaf05a18ef3f003dbac63769726a2cb2efd8776f0984145cd2f8fbeb`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-tenth
   catalog-history pass:
   `data/catalog-history/source-sets/gotta_comic_may_2000_glossy_mew_v0_1.json`
