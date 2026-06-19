@@ -64,6 +64,7 @@ contract MarketplaceEscrow {
         uint256 routeCommittedAt;
         uint256 deliveredAt;
         uint256 claimOpenedAt;
+        bool postDeliveryClaim;
         State state;
         bytes32 intentHash;
         bytes32 termsHash;
@@ -146,6 +147,8 @@ contract MarketplaceEscrow {
     );
     error JudgmentSupplyRequired();
     error FloorResolutionTimeoutOpen(uint256 availableAt);
+    error PostDeliveryDefaultRequiresFloorReceipt();
+    error PostDeliveryClaimRequired();
     error SpendabilityRequired();
     error SpendabilityAlreadyConsumed(bytes32 spendabilityHash);
     error SpendabilityDigestMismatch(
@@ -189,6 +192,9 @@ contract MarketplaceEscrow {
     );
     bytes32 public constant FLOOR_RULING_TYPEHASH = keccak256(
         "FloorRuling(address escrow,uint256 chainId,uint256 tradeId,bytes32 rulingHash,bytes32 jscHash,address floorExecutor,uint16 buyerRefundBps,uint16 sellerBondPenaltyBps,bool returnDisputeBondToBuyer)"
+    );
+    bytes32 public constant UNRESOLVABLE_CLAIM_RECEIPT_TYPEHASH = keccak256(
+        "UnresolvableClaimReceipt(address escrow,uint256 chainId,uint256 tradeId,bytes32 rulingHash,bytes32 receiptHash,bytes32 jscHash,address floorExecutor)"
     );
     bytes32 public constant ROUTE_ASSEMBLY_WITNESS_TYPEHASH = keccak256(
         "RouteAssemblyWitness(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 routeSpendabilityHash,bytes32 wallBundleHash,bytes32 assemblyHistoryHash,bytes32 itemFingerprintHash,bytes32 inventoryLockHash,bytes32 gateHash)"
@@ -461,6 +467,7 @@ contract MarketplaceEscrow {
             routeCommittedAt: 0,
             deliveredAt: 0,
             claimOpenedAt: 0,
+            postDeliveryClaim: false,
             state: State.EscrowFunded,
             intentHash: intentHash,
             termsHash: termsHash,
@@ -1063,6 +1070,7 @@ contract MarketplaceEscrow {
 
         trade.disputeBondLocked = msg.value;
         trade.claimOpenedAt = block.timestamp;
+        trade.postDeliveryClaim = true;
         trade.state = State.ClaimOrDisputePending;
 
         emit ClaimOpened(tradeId, claimHash, msg.value);
@@ -1087,6 +1095,7 @@ contract MarketplaceEscrow {
 
         trade.disputeBondLocked = msg.value;
         trade.claimOpenedAt = block.timestamp;
+        trade.postDeliveryClaim = false;
         trade.state = State.ClaimOrDisputePending;
 
         emit RouteClaimOpened(tradeId, claimHash, msg.value);
@@ -1160,6 +1169,30 @@ contract MarketplaceEscrow {
         uint256 availableAt =
             trade.claimOpenedAt + ARBITER_REPLACEMENT_TIMEOUT + FLOOR_RESOLUTION_TIMEOUT;
         if (block.timestamp <= availableAt) revert FloorResolutionTimeoutOpen(availableAt);
+        if (trade.postDeliveryClaim) revert PostDeliveryDefaultRequiresFloorReceipt();
+
+        _resolveClaim(tradeId, rulingHash, 10_000, 0, true, 2);
+    }
+
+    function resolvePostDeliveryUnresolvableClaimByFloorReceipt(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 receiptHash,
+        bytes calldata floorSignature
+    ) external inState(tradeId, State.ClaimOrDisputePending) {
+        Trade storage trade = trades[tradeId];
+        if (rulingHash == bytes32(0) || receiptHash == bytes32(0)) revert BadHash();
+        uint256 availableAt =
+            trade.claimOpenedAt + ARBITER_REPLACEMENT_TIMEOUT + FLOOR_RESOLUTION_TIMEOUT;
+        if (block.timestamp <= availableAt) revert FloorResolutionTimeoutOpen(availableAt);
+        if (!trade.postDeliveryClaim) revert PostDeliveryClaimRequired();
+
+        _requireSignature(
+            trade.floorExecutor,
+            unresolvableClaimReceiptHash(tradeId, rulingHash, receiptHash),
+            floorSignature
+        );
+        _anchorPacketHash(tradeId, receiptHash);
 
         _resolveClaim(tradeId, rulingHash, 10_000, 0, true, 2);
     }
@@ -1464,6 +1497,26 @@ contract MarketplaceEscrow {
                 buyerRefundBps,
                 sellerBondPenaltyBps,
                 returnDisputeBondToBuyer
+            )
+        );
+    }
+
+    function unresolvableClaimReceiptHash(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 receiptHash
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                UNRESOLVABLE_CLAIM_RECEIPT_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                rulingHash,
+                receiptHash,
+                trade.jscHash,
+                trade.floorExecutor
             )
         );
     }

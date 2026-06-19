@@ -1886,8 +1886,18 @@ contract MarketplaceEscrowTest {
     }
 
     function testAuditD6DefaultRemedyFiresOnlyAfterFloorWindowExpires() public {
-        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        uint256 tradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 routeHash = _h("route:audit-d6-default-nonship");
+        _commitRoute(tradeId, routeHash, false, true, 1 ether);
         registry.revokeArbiter(arbiter);
+
+        vm.warp(block.timestamp + escrow.ROUTE_CLAIM_TIMEOUT() + 1);
+        bytes32 claimHash = _h("claim:audit-d6-default-nonship");
+        vm.prank(buyer);
+        escrow.openRouteClaimAfterTimeout{ value: 0.01 ether }(
+            tradeId, claimHash, _sig(buyerKey, claimHash)
+        );
 
         bytes32 defaultRulingHash = _h("default-ruling:audit-d6-floor-not-exercised");
         vm.warp(block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT() + 1);
@@ -1908,6 +1918,59 @@ contract MarketplaceEscrowTest {
             buyer.balance - buyerBefore,
             1.01 ether,
             "stage-three default refunds escrow plus dispute bond"
+        );
+    }
+
+    function testAuditD6PostDeliveryDefaultRequiresFloorReceipt() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+        registry.revokeArbiter(arbiter);
+
+        bytes32 defaultRulingHash = _h("default-ruling:audit-d6-post-delivery");
+        vm.warp(
+            block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT()
+                + escrow.FLOOR_RESOLUTION_TIMEOUT() + 1
+        );
+
+        vm.expectRevert(MarketplaceEscrow.PostDeliveryDefaultRequiresFloorReceipt.selector);
+        escrow.resolveUnresolvableClaimByDefault(tradeId, defaultRulingHash);
+
+        bytes32 receiptHash = _h("floor-receipt:audit-d6-post-delivery-unresolvable");
+        uint256 buyerBefore = buyer.balance;
+        escrow.resolvePostDeliveryUnresolvableClaimByFloorReceipt(
+            tradeId,
+            defaultRulingHash,
+            receiptHash,
+            _unresolvableClaimReceiptSignature(tradeId, defaultRulingHash, receiptHash)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(
+            buyer.balance - buyerBefore,
+            1.01 ether,
+            "floor receipt gates post-delivery default refund"
+        );
+    }
+
+    function testAuditD6PostDeliveryDefaultRejectsForgedFloorReceipt() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 defaultRulingHash = _h("default-ruling:audit-d6-forged-receipt");
+        bytes32 receiptHash = _h("floor-receipt:audit-d6-forged-receipt");
+        bytes32 receiptBinding =
+            escrow.unresolvableClaimReceiptHash(tradeId, defaultRulingHash, receiptHash);
+
+        vm.warp(
+            block.timestamp + escrow.ARBITER_REPLACEMENT_TIMEOUT()
+                + escrow.FLOOR_RESOLUTION_TIMEOUT() + 1
+        );
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadSignature.selector, replacementArbiter, receiptBinding
+            )
+        );
+        escrow.resolvePostDeliveryUnresolvableClaimByFloorReceipt(
+            tradeId, defaultRulingHash, receiptHash, _sig(arbiterKey, receiptBinding)
         );
     }
 
@@ -2141,6 +2204,17 @@ contract MarketplaceEscrowTest {
                 sellerBondPenaltyBps,
                 returnDisputeBondToBuyer
             )
+        );
+    }
+
+    function _unresolvableClaimReceiptSignature(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 receiptHash
+    ) internal returns (bytes memory) {
+        return _sig(
+            replacementArbiterKey,
+            escrow.unresolvableClaimReceiptHash(tradeId, rulingHash, receiptHash)
         );
     }
 
