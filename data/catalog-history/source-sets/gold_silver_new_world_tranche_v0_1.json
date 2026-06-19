@@ -1,0 +1,2209 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... within the catalog-history deepening pass.",
+    "in_scope": [
+      "Gold, Silver, to a New World... release dossier",
+      "selected Johto starter / baby / metal / mythic / energy identity-teaching card dossiers",
+      "special identification rails for exact Japanese neo1 row identity"
+    ],
+    "not_claiming": [
+      "complete 96-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204",
+      "type": "release",
+      "context": {
+        "name_en": "Gold, Silver, to a New World...",
+        "name_ja": "金、銀、新世界へ...",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "release_date": "2000-02-04"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json",
+          "title": "Local Japanese classic catalog: Gold, Silver, to a New World...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/neo1",
+          "title": "TCGdex Japanese set endpoint: neo1 / Gold, Silver, to a New World...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Gold, Silver, to a New World... / 金、銀、新世界へ... with a February 4, 2000 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 96 card rows for Gold, Silver, to a New World..., with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Gold, Silver, to a New World... is modeled as a Japanese main expansion in the ポケモンカード★neo series, using TCGdex set id neo1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Gold, Silver, to a New World... matters because it opens Generation II in card form: new starters, baby Pokemon, Lugia, Steel/Metal grammar, Darkness Energy, and Johto-specific creature texture all arrive as one apparatus.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Meganium, Bellossom, Jumpluff, Heracross, Typhlosion, and Feraligatr; this tranche also hand-authors Pichu, Donphan, Steelix, Skarmory, Lugia, Darkness Energy, and Metal Energy because they teach the release’s new-world grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card number, local id, rough source-row text, and normalized collector label before treating a famous species or English Neo Genesis match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gold_silver_new_world_release_exact_set_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Gold Silver New World, 金、銀、新世界へ, Neo Genesis, neo1, Lugia, Pichu, Johto starter, Metal Energy, or Darkness Energy.",
+          "summary": "Keep Gold, Silver, to a New World... as Japanese neo1 / 金、銀、新世界へ... with row-number identity; do not collapse it into English Neo Genesis or same-character rows.",
+          "steps": [
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Preserve Energy rows as worldbuilding/mechanics rows rather than character cards.",
+            "Separate this release from English Neo Genesis and later same-character reprints unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Gold, Silver, to a New World... — when Johto becomes playable memory",
+        "why_it_matters": "Gold, Silver, to a New World... is the card-game doorway into Generation II: not just new names, but new ways for Pokemon to be young, metallic, dark, legendary, local, and mechanically different. It is one of the cleanest sets for teaching an agent that a card market is built from world grammar, not only famous characters.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 96-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-014",
+      "type": "card",
+      "context": {
+        "name_en": "Meganium",
+        "name_ja": "ミーガニウム",
+        "normalized_label": "Meganium",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-014",
+        "card_number": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-014",
+          "title": "Local Japanese classic catalog row: Meganium / Gold, Silver, to a New World... #014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-014",
+          "title": "TCGdex Japanese card endpoint: neo1-014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-014 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #014, with rough source-row text 'ミーガニウム'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Meganium' as a normalized collector label while preserving the rough local source-row text 'ミーガニウム'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-014 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Meganium matters in this tranche because the Grass starter final form announces Johto as a gentler new ecosystem rather than just more power piled onto Kanto.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Meganium, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #014, local id neo1-014, rough source-row text 'ミーガニウム', and normalized label 'Meganium'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Meganium is one of the Johto starter final forms in this tranche; its importance is not just species fame, but its role in opening the second generation as a playable and collectible world.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-014_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Meganium, ミーガニウム, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Meganium as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #014, local id neo1-014, source-row text 'ミーガニウム'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-014 and local id neo1-014.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 014, rough source-row text 'ミーガニウム', and normalized collector label 'Meganium' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Meganium — Gold, Silver, to a New World #014",
+        "why_it_matters": "Meganium helps the set feel like a true second beginning: the Grass starter final form announces Johto as a gentler new ecosystem rather than just more power piled onto Kanto. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-017",
+      "type": "card",
+      "context": {
+        "name_en": "Heracross",
+        "name_ja": "ヘラクロス",
+        "normalized_label": "Heracross",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-017",
+        "card_number": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-017",
+          "title": "Local Japanese classic catalog row: Heracross / Gold, Silver, to a New World... #017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-017",
+          "title": "TCGdex Japanese card endpoint: neo1-017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-017 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #017, with rough source-row text 'ヘラクロス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Heracross' as a normalized collector label while preserving the rough local source-row text 'ヘラクロス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-017 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Heracross matters in this tranche because it makes the new region feel specific: a beetle with immediate character gravity, not merely a checklist addition.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Heracross, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #017, local id neo1-017, rough source-row text 'ヘラクロス', and normalized label 'Heracross'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-017_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Heracross, ヘラクロス, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Heracross as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #017, local id neo1-017, source-row text 'ヘラクロス'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-017 and local id neo1-017.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 017, rough source-row text 'ヘラクロス', and normalized collector label 'Heracross' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Heracross — Gold, Silver, to a New World #017",
+        "why_it_matters": "Heracross helps the set feel like a true second beginning: it makes the new region feel specific: a beetle with immediate character gravity, not merely a checklist addition. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-021",
+      "type": "card",
+      "context": {
+        "name_en": "Typhlosion",
+        "name_ja": "染色",
+        "normalized_label": "Typhlosion",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-021",
+        "card_number": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-021",
+          "title": "Local Japanese classic catalog row: Typhlosion / Gold, Silver, to a New World... #021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-021",
+          "title": "TCGdex Japanese card endpoint: neo1-021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-021 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #021, with rough source-row text '染色'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Typhlosion' as a normalized collector label while preserving the rough local source-row text '染色'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-021 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Typhlosion matters in this tranche because the Fire starter final form carries the set’s new-world excitement into a beloved line that would become one of Johto’s emotional anchors.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Typhlosion, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #021, local id neo1-021, rough source-row text '染色', and normalized label 'Typhlosion'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Typhlosion is one of the Johto starter final forms in this tranche; its importance is not just species fame, but its role in opening the second generation as a playable and collectible world.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-021_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Typhlosion, 染色, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Typhlosion as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #021, local id neo1-021, source-row text '染色'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-021 and local id neo1-021.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 021, rough source-row text '染色', and normalized collector label 'Typhlosion' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Typhlosion — Gold, Silver, to a New World #021",
+        "why_it_matters": "Typhlosion helps the set feel like a true second beginning: the Fire starter final form carries the set’s new-world excitement into a beloved line that would become one of Johto’s emotional anchors. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-033",
+      "type": "card",
+      "context": {
+        "name_en": "Feraligatr",
+        "name_ja": "feraligatr",
+        "normalized_label": "Feraligatr",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-033",
+        "card_number": "033"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-033",
+          "title": "Local Japanese classic catalog row: Feraligatr / Gold, Silver, to a New World... #033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-033",
+          "title": "TCGdex Japanese card endpoint: neo1-033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-033 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #033, with rough source-row text 'feraligatr'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Feraligatr' as a normalized collector label while preserving the rough local source-row text 'feraligatr'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-033 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Feraligatr matters in this tranche because it gives the Water starter final form a heavy, toothy presence and completes the starter-trio doorway.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Feraligatr, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #033, local id neo1-033, rough source-row text 'feraligatr', and normalized label 'Feraligatr'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Feraligatr is one of the Johto starter final forms in this tranche; its importance is not just species fame, but its role in opening the second generation as a playable and collectible world.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-033_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Feraligatr, feraligatr, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Feraligatr as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #033, local id neo1-033, source-row text 'feraligatr'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-033 and local id neo1-033.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 033, rough source-row text 'feraligatr', and normalized collector label 'Feraligatr' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Feraligatr — Gold, Silver, to a New World #033",
+        "why_it_matters": "Feraligatr helps the set feel like a true second beginning: it gives the Water starter final form a heavy, toothy presence and completes the starter-trio doorway. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-042",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu",
+        "name_ja": "ピチュ",
+        "normalized_label": "Pichu",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-042",
+        "card_number": "042"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-042",
+          "title": "Local Japanese classic catalog row: Pichu / Gold, Silver, to a New World... #042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-042",
+          "title": "TCGdex Japanese card endpoint: neo1-042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-042 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #042, with rough source-row text 'ピチュ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Pichu' as a normalized collector label while preserving the rough local source-row text 'ピチュ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-042 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pichu matters in this tranche because baby Pokemon change what evolution means: the line can move backward into tenderness, not only forward into strength.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Pichu, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #042, local id neo1-042, rough source-row text 'ピチュ', and normalized label 'Pichu'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-042_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pichu, ピチュ, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Pichu as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #042, local id neo1-042, source-row text 'ピチュ'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-042 and local id neo1-042.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 042, rough source-row text 'ピチュ', and normalized collector label 'Pichu' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pichu — Gold, Silver, to a New World #042",
+        "why_it_matters": "Pichu helps the set feel like a true second beginning: baby Pokemon change what evolution means: the line can move backward into tenderness, not only forward into strength. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-054",
+      "type": "card",
+      "context": {
+        "name_en": "Donphan",
+        "name_ja": "ドンファン",
+        "normalized_label": "Donphan",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-054",
+        "card_number": "054"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-054",
+          "title": "Local Japanese classic catalog row: Donphan / Gold, Silver, to a New World... #054",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-054",
+          "title": "TCGdex Japanese card endpoint: neo1-054",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-054 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #054, with rough source-row text 'ドンファン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Donphan' as a normalized collector label while preserving the rough local source-row text 'ドンファン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-054 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Donphan matters in this tranche because it gives Johto a compact tank of a Pokemon, the kind of creature collectors remember because it feels built for motion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Donphan, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #054, local id neo1-054, rough source-row text 'ドンファン', and normalized label 'Donphan'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-054_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Donphan, ドンファン, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Donphan as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #054, local id neo1-054, source-row text 'ドンファン'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-054 and local id neo1-054.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 054, rough source-row text 'ドンファン', and normalized collector label 'Donphan' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Donphan — Gold, Silver, to a New World #054",
+        "why_it_matters": "Donphan helps the set feel like a true second beginning: it gives Johto a compact tank of a Pokemon, the kind of creature collectors remember because it feels built for motion. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-057",
+      "type": "card",
+      "context": {
+        "name_en": "Steelix",
+        "name_ja": "Steelix",
+        "normalized_label": "Steelix",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-057",
+        "card_number": "057"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-057",
+          "title": "Local Japanese classic catalog row: Steelix / Gold, Silver, to a New World... #057",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-057",
+          "title": "TCGdex Japanese card endpoint: neo1-057",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-057 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #057, with rough source-row text 'Steelix'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Steelix' as a normalized collector label while preserving the rough local source-row text 'Steelix'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-057 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Steelix matters in this tranche because it makes Metal feel like an identity, not just a type; Onix becomes industrial, heavier, and newly possible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Steelix, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #057, local id neo1-057, rough source-row text 'Steelix', and normalized label 'Steelix'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-057_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Steelix, Steelix, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Steelix as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #057, local id neo1-057, source-row text 'Steelix'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-057 and local id neo1-057.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 057, rough source-row text 'Steelix', and normalized collector label 'Steelix' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Steelix — Gold, Silver, to a New World #057",
+        "why_it_matters": "Steelix helps the set feel like a true second beginning: it makes Metal feel like an identity, not just a type; Onix becomes industrial, heavier, and newly possible. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-058",
+      "type": "card",
+      "context": {
+        "name_en": "Skarmory",
+        "name_ja": "スカルモリー",
+        "normalized_label": "Skarmory",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-058",
+        "card_number": "058"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-058",
+          "title": "Local Japanese classic catalog row: Skarmory / Gold, Silver, to a New World... #058",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-058",
+          "title": "TCGdex Japanese card endpoint: neo1-058",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-058 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #058, with rough source-row text 'スカルモリー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Skarmory' as a normalized collector label while preserving the rough local source-row text 'スカルモリー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-058 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Skarmory matters in this tranche because it is one of the cleanest signals that Johto has its own metallic wildlife and its own visual edge.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Skarmory, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #058, local id neo1-058, rough source-row text 'スカルモリー', and normalized label 'Skarmory'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-058_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Skarmory, スカルモリー, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Skarmory as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #058, local id neo1-058, source-row text 'スカルモリー'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-058 and local id neo1-058.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 058, rough source-row text 'スカルモリー', and normalized collector label 'Skarmory' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Skarmory — Gold, Silver, to a New World #058",
+        "why_it_matters": "Skarmory helps the set feel like a true second beginning: it is one of the cleanest signals that Johto has its own metallic wildlife and its own visual edge. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-072",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "ルギア",
+        "normalized_label": "Lugia",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-072",
+        "card_number": "072"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-072",
+          "title": "Local Japanese classic catalog row: Lugia / Gold, Silver, to a New World... #072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-072",
+          "title": "TCGdex Japanese card endpoint: neo1-072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-072 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #072, with rough source-row text 'ルギア'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Lugia' as a normalized collector label while preserving the rough local source-row text 'ルギア'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-072 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Lugia matters in this tranche because the set’s mythic capstone: the new region gets a guardian shape big enough to organize a whole generation of memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Lugia, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #072, local id neo1-072, rough source-row text 'ルギア', and normalized label 'Lugia'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Lugia is the mythic capstone row in this tranche: an agent should treat the name as high-gravity but still require Japanese neo1 row evidence before accepting an exact match.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-072_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Lugia, ルギア, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Lugia as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #072, local id neo1-072, source-row text 'ルギア'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-072 and local id neo1-072.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 072, rough source-row text 'ルギア', and normalized collector label 'Lugia' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lugia — Gold, Silver, to a New World #072",
+        "why_it_matters": "Lugia helps the set feel like a true second beginning: the set’s mythic capstone: the new region gets a guardian shape big enough to organize a whole generation of memory. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-094",
+      "type": "card",
+      "context": {
+        "name_en": "Darkness Energy",
+        "name_ja": "闇のエネルギー",
+        "normalized_label": "Darkness Energy",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-094",
+        "card_number": "094"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-094",
+          "title": "Local Japanese classic catalog row: Darkness Energy / Gold, Silver, to a New World... #094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-094",
+          "title": "TCGdex Japanese card endpoint: neo1-094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-094 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #094, with rough source-row text '闇のエネルギー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Darkness Energy' as a normalized collector label while preserving the rough local source-row text '闇のエネルギー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-094 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Darkness Energy matters in this tranche because a rules object that becomes lore: the card teaches that the new world has new costs and new alignments.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Darkness Energy, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #094, local id neo1-094, rough source-row text '闇のエネルギー', and normalized label 'Darkness Energy'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Darkness Energy is treated as a rules-and-worldbuilding row: it teaches the agent that the new world changes mechanics as well as characters.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-094_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Darkness Energy, 闇のエネルギー, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Darkness Energy as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #094, local id neo1-094, source-row text '闇のエネルギー'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-094 and local id neo1-094.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 094, rough source-row text '闇のエネルギー', and normalized collector label 'Darkness Energy' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Darkness Energy — Gold, Silver, to a New World #094",
+        "why_it_matters": "Darkness Energy helps the set feel like a true second beginning: a rules object that becomes lore: the card teaches that the new world has new costs and new alignments. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gold_silver_new_world_20000204:neo1-095",
+      "type": "card",
+      "context": {
+        "name_en": "Metal Energy",
+        "name_ja": "金属エネルギー",
+        "normalized_label": "Metal Energy",
+        "release_family_id": "jp_tcg_gold_silver_new_world_20000204",
+        "local_id": "neo1-095",
+        "card_number": "095"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_gold_silver_new_world_20000204.json#row:jp_tcg_gold_silver_new_world_20000204:neo1-095",
+          "title": "Local Japanese classic catalog row: Metal Energy / Gold, Silver, to a New World... #095",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo1-095",
+          "title": "TCGdex Japanese card endpoint: neo1-095",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_gold_silver_new_world_20000204:neo1-095 as Gold, Silver, to a New World... / 金、銀、新世界へ... card #095, with rough source-row text '金属エネルギー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Metal Energy' as a normalized collector label while preserving the rough local source-row text '金属エネルギー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_gold_silver_new_world_20000204:neo1-095 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Metal Energy matters in this tranche because a rules object that makes Steelix and Skarmory feel structurally new; metal enters as infrastructure, not decoration.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Metal Energy, preserve Japanese title 金、銀、新世界へ..., TCGdex set id neo1, card #095, local id neo1-095, rough source-row text '金属エネルギー', and normalized label 'Metal Energy'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Metal Energy is treated as a rules-and-worldbuilding row: it teaches the agent that the new world changes mechanics as well as characters.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_gold_silver_new_world_20000204_neo1-095_neo1_new_world_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Metal Energy, 金属エネルギー, Gold Silver New World, Neo Genesis, neo1, Johto starter, baby Pokemon, Lugia, Darkness Energy, or Metal Energy.",
+          "summary": "Preserve Metal Energy as Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... #095, local id neo1-095, source-row text '金属エネルギー'; do not accept famous-name or English Neo Genesis matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_gold_silver_new_world_20000204:neo1-095 and local id neo1-095.",
+            "Require Japanese title 金、銀、新世界へ... or TCGdex set id neo1 before naming this exact catalog row.",
+            "Preserve card number 095, rough source-row text '金属エネルギー', and normalized collector label 'Metal Energy' separately.",
+            "Treat Johto starter, baby Pokemon, Lugia, Darkness Energy, and Metal Energy context as identity help, not proof of this exact row by itself.",
+            "Separate this row from English Neo Genesis, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Genesis equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Metal Energy — Gold, Silver, to a New World #095",
+        "why_it_matters": "Metal Energy helps the set feel like a true second beginning: a rules object that makes Steelix and Skarmory feel structurally new; metal enters as infrastructure, not decoration. For agents, the important move is to keep the Japanese neo1 row attached while letting the collector story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

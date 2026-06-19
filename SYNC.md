@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/gold_silver_new_world_tranche_v0_1.json`.
+  Japanese Gold, Silver, to a New World... / 金、銀、新世界へ... now has a
+  hand-authored release dossier plus eleven high-gravity / identity-teaching
+  card dossiers: Meganium 014, Heracross 017, Typhlosion 021, Feraligatr 033,
+  Pichu 042, Donphan 054, Steelix 057, Skarmory 058, Lugia 072, Darkness
+  Energy 094, and Metal Energy 095. The pass frames the release as the
+  card-game doorway into Generation II: new starters, baby Pokemon, Lugia,
+  metallic bodies, Darkness/Metal energy rails, and Johto-specific creature
+  texture arrive as one new-world grammar rather than a simple roster update.
+  Added `special_identification_instructions` requiring agents to preserve
+  Japanese title 金、銀、新世界へ..., TCGdex set id `neo1`, card number, local id,
+  rough source-row text, and normalized collector label before accepting
+  famous-species or English Neo Genesis matches. Energy rows are explicitly
+  treated as rules-and-worldbuilding rows rather than character cards. The
+  tranche deliberately keeps rough local source text and normalized labels
+  separate; clean translated-name authority is not claimed. English Neo
+  Genesis, later reprints, and same-character rows are explicitly not
+  equivalent without set/number evidence. This is a bounded high-gravity
+  tranche, not complete 96-card hand-authored coverage; 85 Gold, Silver, to a
+  New World rows remain generated follow-up work. Artists remain intentionally
+  unset because the local Japanese classic rows do not provide illustrator
+  authority. Sources: local Japanese classic Gold, Silver, to a New World
+  release file and TCGdex Japanese set/card payload references. Generated gap
+  moved from 157 releases / 4,132 cards to 156 releases / 4,121 cards. Current
+  catalog-history corpus: 22,865 claims, 5,624 sources, 685 dossiers with
+  special identification instructions, corpus hash
+  `1d745aee264035eee3d7b27104ee4879a58d03a883f73b0ba99f509eaee855a4`;
+  index hash `2cf890ac0fd2ee858f47c81ed7a1d82538733da1c671964fc348d57dd1ee4d46`;
+  queue hash `da9004f9cdf52fed528e4999978dc323efbb41e8fdd9df7f3d1aa0f69351131f`.
 - `[passive]` 2026-06-19 · Codex — completed the fiftieth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/darkness_and_to_light_tranche_v0_1.json`.
