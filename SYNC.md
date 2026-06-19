@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninetieth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`.
+  The Neo Summer Road / Neo Battle Road 2001 trophy tranche now has
+  hand-authored release coverage for six one-card prize routes: regional
+  No.1/No.2/No.3 Trainer rows 238-240 and Best in Japan No.1/No.2/No.3
+  Trainer rows 242-244. This completes the paired Spring/Summer 2001 trophy
+  wall at release-route level: season, placement, regional-versus-finals route,
+  artist lane, foil treatment, and collector-estimated copy count now stay
+  legible before any broad "No. Trainer" matching. Added bespoke
+  `special_identification_instructions` requiring agents to preserve exact row,
+  Summer/Neo Battle Road 2001 context, regional versus Best in Japan wording,
+  placement title, Ken Sugimori/non-holo regional context, Takumi Akabane/Cosmos
+  finals context, and non-equivalence with the adjacent placement, Neo Spring
+  Road, and other No.1/No.2/No.3 Trainer trophy eras. Copy counts are explicitly
+  held as collector/database estimates, not official copy-count truth. Sources:
+  local Japanese unnumbered promo release files, Bulbapedia raw unnumbered
+  promotional rows 238-240 and 242-244, and Pokumon collector database pages for
+  the six Neo Summer Road / Neo Battle Road 2001 trophy cards. Generated gap
+  moved from 109 releases / 3,931 cards to 103 releases / 3,931 cards; this pass
+  is release-route hardening, with card-level generated dossiers still queued
+  for later deep card essays. Current catalog-history corpus:
+  `50fb4d6871378884e0d2a735e2fcbd2f85f75b66ae236a23a367c06a8d8053a5`;
+  index: `f9152d301a38eacaad2a08aa454ad4097e79b04b7f45b41cc59db3df5aecad52`;
+  queue: `ef2c05f6d1c26761cd77b030111e28bf4098a4eb8420e6d4755c76232765cae6`.
+  Audit counts: 23,253 claims, 6,123 sources, 106 hand-authored release
+  dossiers, 618 hand-authored card dossiers, and 877 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-ninth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`.
