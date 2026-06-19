@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-eighteenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_challenge_summer_tohoku_lucky_stadium_v0_1.json`
+  deepens row 171 / Lucky Stadium `[Diglett] [Tōhoku]` from the World Challenge Summer
+  participation-prize route. The pass follows Bulbapedia's August 6, 2000 Sendai Wasse,
+  Sendai listing and preserves PokeBoon's April 29 date as a visible secondary-source conflict
+  rather than flattening it. Diglett, Tōhoku, Godaido Shrine, Matsushima, Yuichi Sawayama,
+  Benimaru Itoh, and the eight-region Lucky Stadium structure are now legible. Special ID rails
+  separate it from other World Challenge Summer regional prints, Tropical Mega Battle bilingual
+  Lucky Stadium, Neo Destiny, Intro Pack Neo, Pokemon Center New York, and generic Lucky Stadium
+  rows. Generated gaps moved to 71 release / 3897 card. Current hashes: corpus
+  `4b6b381dae8ca0af124480ee4ca2feaca16d1fbe0ede483d0aef81f14d7b3969`, index
+  `aaa4741053ff88f90c729ef00e0898b4337839f09b093cb8234a0e48e8f40f96`, queue
+  `ea5c06e60da82f760e5fdc893b2f87ef6c89c56afd969daea7ac5c7f385e6c9c`.
 - `[passive]` 2026-06-19 · Codex — **G1 chain gate implemented** in
   `chain/src/MarketplaceEscrow.sol` with regression coverage in
   `chain/test/MarketplaceEscrow.t.sol`. The old value-fatal path is closed: a post-delivery
