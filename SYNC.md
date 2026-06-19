@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-sixth catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/champion_road_2000_3man_berries_v0_1.json`.
+  Champion Road 2000: 3-Man Tournament Corner now has complete two-row
+  hand-authored coverage for Berry row 154 and Miracle Berry row 155. The pass
+  frames the release as tournament-prize smallness: Gen II held-item memory
+  translated into Pokemon Tool cards, Champion Road route as the real collector
+  identity, Berry as a quiet healing Tool, Miracle Berry as a status-clearing
+  Tool with later Lum Berry echo, and shared CR CG gangs / Yousuke Hirata art
+  context. Added `special_identification_instructions` requiring agents to
+  preserve exact 3-Man Tournament Corner route, row 154/155 identity,
+  `きのみ` / Berry and `きせきのみ` / Marvel Berry name context, Pokemon Tool
+  status, Champion Road adjacency to but non-equivalence with Johto starter
+  participation-prize rows 151-153, and non-equivalence with Neo Genesis, Gold
+  Silver New World, Intro Pack Neo, Oran Berry, Lum Berry, and later Berry /
+  Miracle Berry memories before accepting a match. Pokumon event/card pages are
+  used as collector database context only, not official copy count or spendable
+  proof. Sources: local Japanese unnumbered promo release file, Bulbapedia raw
+  unnumbered promotional rows 154-155, Bulbapedia card pages for Berry Neo
+  Genesis 99 and Miracle Berry Neo Genesis 94, and Pokumon Champion Road pages
+  as bounded collector references. Generated gap moved from 122 releases /
+  3,939 cards to 121 releases / 3,937 cards. Current catalog-history corpus:
+  `bcf9826b3b9f5a0abcb41f5b425ad510e7a475417f797edef8b1590e057d4d5c`;
+  index: `bd28b55f1b741dee83a6abb206133e13aa064ef62c2608cd69f579861d1680a4`;
+  queue: `d70a26e1c92c52390b05885e3a6cb037535429bdaf23b1d5d50536d1f834e809`.
+  Audit counts: 23,259 claims, 6,075 sources, 88 hand-authored release
+  dossiers, 612 hand-authored card dossiers, and 859 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/champion_road_2000_3man_berries_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-fifth catalog-history
   deepening pass in
   `data/catalog-history/source-sets/trainers_vol4_murkrow_darkness_energy_v0_1.json`.

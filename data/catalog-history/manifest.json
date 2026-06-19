@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23254,
-    "corpus_hash": "492920793bad64f06705ac1c8e25d8c2ea7e1d2788cdcbd2505a1a7c8b7cb018",
-    "generated_card_dossier_count": 3939,
-    "generated_release_dossier_count": 122,
+    "claim_count": 23259,
+    "corpus_hash": "bcf9826b3b9f5a0abcb41f5b425ad510e7a475417f797edef8b1590e057d4d5c",
+    "generated_card_dossier_count": 3937,
+    "generated_release_dossier_count": 121,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6066
+    "source_count": 6075
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "f851a4442686f4e79ec8c493eb88ee226e8cae0b0cb2920647f7a7296bfc4201",
+    "queue_hash": "d70a26e1c92c52390b05885e3a6cb037535429bdaf23b1d5d50536d1f834e809",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T12:39:30Z",
+  "generated_at": "2026-06-19T12:47:37Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "46eef0ed266afcd958ff1c6d042a371f1487fe26f2e6876efc6085af515eec26",
+    "index_hash": "bd28b55f1b741dee83a6abb206133e13aa064ef62c2608cd69f579861d1680a4",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -52,6 +52,7 @@
     "data/catalog-history/source-sets/base_set_2_v0_1.json",
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
     "data/catalog-history/source-sets/challenge_from_darkness_tranche_v0_1.json",
+    "data/catalog-history/source-sets/champion_road_2000_3man_berries_v0_1.json",
     "data/catalog-history/source-sets/champion_road_2000_participation_prize_v0_1.json",
     "data/catalog-history/source-sets/communication_evolution_campaign_v0_1.json",
     "data/catalog-history/source-sets/corocoro_april_1998_insert_v0_1.json",
