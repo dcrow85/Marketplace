@@ -1,0 +1,553 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the CoroCoro Comic February 1999 issue insert Meowth row, emphasizing CoroCoro magazine distribution, Meowth as mascot-mischief rather than raw power, source-page route conflict between CoroCoro/GB/Wizards Promo memories, and special identification rails for avoiding Meowth name-only laundering.",
+    "in_scope": [
+      "CoroCoro Comic February 1999 issue insert release/source-slice dossier",
+      "Meowth unnumbered promotional row 081",
+      "CoroCoro magazine insert route",
+      "Meowth media-character collector texture",
+      "GB / Wizards Promo / CoroCoro named-page comparison surfaces",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete CoroCoro February 1999 issue archive",
+      "complete Meowth print census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999",
+        "name_en": "CoroCoro Comic February 1999 issue insert",
+        "name_ja": "月刊コロコロコミック1999年2月号付録",
+        "release_date": "1999-01-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro as promo pipe",
+          "single-card magazine insert",
+          "Meowth as media mischief",
+          "route conflict discipline",
+          "GB / CoroCoro / Wizards comparison trap",
+          "unresolved artist credit"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999:081",
+            "name": "Meowth",
+            "why": "The whole source slice is one Meowth, and its gravity is not raw rarity language but the media route: CoroCoro using a familiar troublemaker to keep the card game moving through magazines.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "complete Meowth print census"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "unknown in current local source row",
+            "row_count": 1,
+            "examples": [
+              "Meowth"
+            ],
+            "why": "The current local source row does not provide an illustrator, and public Meowth route pages create enough nearby memory that this tranche treats artist credit as unresolved instead of importing a guess.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "final-card illustrator truth",
+              "seller-card proof"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Meowth print census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic February 1999 issue insert as a one-row unnumbered promotional source group containing Meowth at source index 081.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records January 15, 1999 as the date attached to the CoroCoro Comic February 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as a CoroCoro Comic February 1999 issue insert, not a booster, deck, Fan Club prize, or ordinary set card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "The source row names Meowth as the card in this one-row CoroCoro Comic February 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's named Meowth pages expose nearby route risk: one Meowth page is tied to a Wizards Promo / Japanese GB promotional lineage, while another CoroCoro promo page points to a different CoroCoro route. This dossier therefore treats exact source index and distribution note as required identity rails.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The current local source row does not provide an illustrator for this Meowth row; artist credit remains unresolved in this tranche.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This Meowth matters because CoroCoro did not need only dragons and trophies to sell the TCG world; it could push the apparatus forward with a comic mascot whose appeal was mischief, familiarity, and media presence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve CoroCoro Comic February 1999 issue insert route, January 15 1999 date, source index 081, Meowth identity, unresolved illustrator credit, and non-equivalence with GB, Wizards Promo, and other CoroCoro Meowth route memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro February 1999 Meowth: mischief through the magazine pipe",
+        "why_it_matters": "This is a small card-route with a loud little personality. Meowth is not here because it is majestic. Meowth is here because CoroCoro understood that Pokémon culture was held together by jokes, mascots, anime noise, and the monthly habit of opening a magazine to see what fell out. That makes the route matter. There are enough Meowth memories nearby — GB, Wizards Promo, other CoroCoro references — that an agent has to hold the exact source index and February 1999 insert route before turning a familiar name into a candidate match.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Meowth print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: CoroCoro Comic February 1999 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 081",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(Wizards_Promo_10)",
+          "title": "Bulbapedia: Meowth (Wizards Promo 10)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to this source row"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(CoroCoro_promo)",
+          "title": "Bulbapedia: Meowth (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to this source row"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_february_1999_meowth_route_conflict_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Meowth, CoroCoro Meowth, CoroCoro Comic February 1999, January 15 1999, GB promo, Wizards Promo 10, Cat Punch, CoroCoro promo 99, or Japanese unnumbered promo row 081.",
+          "summary": "Identify this Meowth by source index 081 and the CoroCoro Comic February 1999 issue insert route before relying on Meowth name or generic CoroCoro promo memory.",
+          "steps": [
+            "Preserve the exact local route: CoroCoro Comic February 1999 issue insert, dated January 15, 1999.",
+            "Preserve source index 081 and Meowth identity together.",
+            "Do not accept Meowth name alone; compare against GB/Wizards Promo, other CoroCoro Meowth, Base/Expansion Pack, Jungle, Rocket, and later Meowth print lanes.",
+            "Treat artist credit as unresolved unless a row-specific source is supplied.",
+            "If a source says Cat Punch, Wizards Promo 10, or another named Meowth route, hold it as comparison evidence rather than automatically merging it into this row.",
+            "Ask for seller front/back photos and any magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Meowth print census",
+            "GB route equivalence",
+            "Wizards Promo 10 equivalence",
+            "other CoroCoro Meowth equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999:081",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999:081",
+        "name_en": "Meowth",
+        "name_ja": "ニャース",
+        "romaji": "Nyarth",
+        "release_family_id": "jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999",
+        "catalog_row_id": "081"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "081",
+        "rarity_signal": "CoroCoro Comic February 1999 issue insert / unnumbered promo",
+        "artist": "",
+        "assembly_themes": [
+          "magazine-insert route",
+          "Meowth media familiarity",
+          "comic mascot instead of chase monster",
+          "route-conflict trap",
+          "unresolved illustrator"
+        ],
+        "collector_texture_note": "This Meowth is a route problem in the best way. A familiar character name pulls hard, but the actual collector meaning lives in the magazine issue, date, source index, and nearby CoroCoro/GB/Wizards route confusion.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete Meowth print census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Meowth, source index 081, within the CoroCoro Comic February 1999 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese name ニャース is commonly romanized as Nyarth; use it as a Japanese-language search aid, not as sufficient row identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is CoroCoro Comic February 1999 issue insert / unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current local source row provides no illustrator for this Meowth row; artist credit remains unresolved.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Named public Meowth pages expose nearby comparison routes, so this row should not be identified by Meowth name, Cat Punch memory, GB memory, Wizards Promo memory, or CoroCoro memory alone.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This Meowth matters because it captures CoroCoro using a character famous for personality and mischief to carry the card game through monthly media distribution.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "For this Meowth, agents should preserve source index 081, CoroCoro Comic February 1999 issue route, January 15 1999 date, unresolved artist status, and non-equivalence with GB/Wizards/other CoroCoro Meowth routes before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Meowth 081: the familiar troublemaker needs a route",
+        "why_it_matters": "Meowth is dangerous for an agent because the character feels obvious. Everyone knows the cat, the coin, the attitude. But this row is not 'a Meowth' in the abstract. It is row 081, a CoroCoro Comic February 1999 issue insert, sitting in a tangle of GB, Wizards, and other CoroCoro Meowth memories. The pleasure is in the mess: Pokémon culture was moving through magazines, games, anime personality, and promo cards all at once. The route is what keeps that energy from becoming mush.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Meowth print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999.json#row:jp_promo_unnumbered_wotc_081_corocoro_comic_february_1999_issue_insert_january_15_1999:081",
+          "title": "Local Japanese unnumbered promo catalog row: Meowth 081",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 081",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(Wizards_Promo_10)",
+          "title": "Bulbapedia: Meowth (Wizards Promo 10)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to this source row"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(CoroCoro_promo)",
+          "title": "Bulbapedia: Meowth (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to this source row"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "meowth_081_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Meowth, Nyarth, ニャース, CoroCoro Meowth, CoroCoro Comic February 1999, January 15 1999, GB promo, Wizards Promo 10, Cat Punch, or Japanese unnumbered promo row 081.",
+          "summary": "Match this Meowth by source index 081 and CoroCoro February 1999 route before trusting character name, move text, or other Meowth promo memory.",
+          "steps": [
+            "Start with route: CoroCoro Comic February 1999 issue insert, dated January 15, 1999.",
+            "Preserve row identity as Japanese unnumbered promotional source index 081.",
+            "Use ニャース / Nyarth as Japanese-language search help, not as sufficient identity.",
+            "Separate GB, Wizards Promo 10, Cat Punch, other CoroCoro, Base/Expansion Pack, Jungle, Rocket, and later Meowth rows unless source evidence proves equivalence.",
+            "Keep artist credit unresolved unless a row-specific source is supplied.",
+            "Request seller front/back photos and magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Meowth print census",
+            "GB route equivalence",
+            "Wizards Promo 10 equivalence",
+            "other CoroCoro Meowth equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

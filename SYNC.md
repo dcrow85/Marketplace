@@ -55,6 +55,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-fourth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_february_1999_meowth_v0_1.json`.
+  The CoroCoro Comic February 1999 issue insert source slice now has
+  hand-authored release and card coverage for Meowth row 081. The pass frames
+  the card as magazine-route mischief rather than a name-only Meowth: CoroCoro
+  February 1999 issue route, January 15 1999 date, source index 081, Meowth /
+  Nyarth search aid, unresolved illustrator status, and nearby GB / Wizards
+  Promo / other CoroCoro Meowth route confusion all remain legible. Added
+  bespoke `special_identification_instructions` requiring agents to preserve
+  source index 081 and the exact CoroCoro February 1999 route before accepting
+  any Meowth, Cat Punch, GB promo, Wizards Promo 10, or generic CoroCoro
+  memory as a match. Sources: local Japanese unnumbered promo release file,
+  Bulbapedia raw unnumbered-promo row, Bulbapedia Meowth (Wizards Promo 10),
+  and Bulbapedia Meowth (CoroCoro promo) as comparison surfaces. Generated gap
+  moved from 100 releases / 3,926 cards to 99 releases / 3,925 cards. Current
+  catalog-history corpus:
+  `369bfc1941e19a364c3431ef7db9c6df65eb43471ffaad56b3f86b6436a769fb`;
+  index: `a97a609fdd0bb349659fa57f68109c48d395f02d11f8a431c508d2b38e287ad9`;
+  queue: `d495663e0e8e79030b9816dafbcbd786f569adc4cf5e235540432f851eabd994`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-third
   catalog-history deepening pass in
   `data/catalog-history/source-sets/fan_club_january_1999_tropical_present_v0_1.json`.
