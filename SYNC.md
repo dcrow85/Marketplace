@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the seventy-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/communication_evolution_campaign_v0_1.json`.
+  Communication Evolution Campaign now has complete five-row hand-authored
+  coverage for Omastar row 088, Alakazam row 089, Gengar row 090, Golem row
+  091, and Machamp row 092. The pass frames the release as the Pokemon trade
+  evolution mechanic made physical: Bill's PC / Masaki, a mailed pre-evolution,
+  Media Factory, and a returned holo. Added `special_identification_instructions`
+  requiring agents to preserve Communication Evolution / Masaki route, Bill's PC
+  requirement, the correct mailed input card, row 088-092 identity, date caveat,
+  regular-stock campaign distinction, and later Pokemon Web / Wizards route
+  pressure before accepting a match. Artist coverage is now explicit: Yukiko
+  Baba for Omastar, Shin-ichi Yoshida for Alakazam, Hironobu Yoshida for Gengar,
+  Nobuyuki Habu for Golem, and Tomokazu Komiya for Machamp, all treated as
+  source-page metadata rather than seller-card proof. Agents must not collapse
+  these cards into ordinary Fossil/Base/Gym/Vending memories, Pokemon Card web,
+  Wizards Black Star, or generic trade-evolution nostalgia without explicit
+  campaign-route evidence. Sources: local Japanese unnumbered promo release
+  file, Bulbapedia raw unnumbered promotional rows 088-092, and Bulbapedia card
+  pages for Omastar, Alakazam, Gengar, Golem, and Machamp as bounded database
+  references. Generated gap moved from 130 releases / 3,960 cards to 129
+  releases / 3,955 cards. Current catalog-history corpus:
+  `9ef69e0b2961e7e9331f9a634af2e941ef502ec3a724d16ff6a73afecea5fc98`;
+  index: `489b9df2c3483a94c2e8fa701ba63079e9b19f318718fa78c60a79f3bb7e87b4`;
+  queue: `a22777ec948e3c00b5be714992273835c3258e672422447d1f66c99eadd1cb69`.
+  Audit counts: 23,235 claims, 6,016 sources, 80 hand-authored release dossiers,
+  594 hand-authored card dossiers, and 850 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/communication_evolution_campaign_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the seventy-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_march_1999_insert_v0_1.json`.
