@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/corocoro_crystal_tower_entei_jumbo_v0_1.json`
+  deepens row 193 / Crystal Tower's Entei from the CoroCoro Comic August 2000 jumbo insert
+  route. The pass treats the card as an oversized movie-location object: CoroCoro magazine
+  distribution, July 15 2000 insert timing, Emperor of the Crystal Tower: Entei / Spell of the
+  Unown apparatus, CR CG gangs illustration, and a Crystal Tower title that makes place part of
+  identity. Special ID rails now require agents to preserve jumbo scale, top-left Theater
+  version Pocket Monsters 2000 border text, bottom CoroCoro August issue supplement text,
+  CoroCoro/Pikachu the Movie 2000 logos, the CoroCoro dragon mascot in place of an expansion
+  symbol, and separation from normal-size Entei, Premium File 2, Awakening Legends, Wind from
+  the Sea, and theatrical-release Hitmontop/Igglybuff promos before treating a listing as this
+  exact print. Generated gaps moved to 60 release / 3886 card. Current hashes: corpus
+  `3b861672f9a2437c8b30f61600e2abf8b981961fff92abcf30af38b8a2784777`, index
+  `64b5ef732c28ec2cfd57708367182e4657f1a010ebac9a7d68d73feb4d601224`, queue
+  `f1aa1a0f4e9d95d980a317e5648f1bdf7fba106bb12fd26fe453c0c451530bce`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/bessatsu_corocoro_pikachu_pichu_jumbo_v0_1.json`

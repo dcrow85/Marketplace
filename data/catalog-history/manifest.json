@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23466,
-    "corpus_hash": "1b3e2525cb7cffdd2713ba86011572d182b0b177771359d42cf44f2b335cef2f",
-    "generated_card_dossier_count": 3887,
-    "generated_release_dossier_count": 61,
+    "claim_count": 23473,
+    "corpus_hash": "3b861672f9a2437c8b30f61600e2abf8b981961fff92abcf30af38b8a2784777",
+    "generated_card_dossier_count": 3886,
+    "generated_release_dossier_count": 60,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6448
+    "source_count": 6456
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "71aebc34b13d1fb21ac6512806de04ad013a118194020c3b67f22431441ff2e6",
-    "release_queue_count": 61,
+    "queue_hash": "f1aa1a0f4e9d95d980a317e5648f1bdf7fba106bb12fd26fe453c0c451530bce",
+    "release_queue_count": 60,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T18:47:59Z",
+  "generated_at": "2026-06-19T18:56:46Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "366d094d7fe0d1cdf2aaf0b0c71696db89381a6a67cb03959956f9d0c6e43b5f",
+    "index_hash": "64b5ef732c28ec2cfd57708367182e4657f1a010ebac9a7d68d73feb4d601224",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -62,6 +62,7 @@
     "data/catalog-history/source-sets/corocoro_april_2000_english_jumbo_charizard_v0_1.json",
     "data/catalog-history/source-sets/corocoro_august_1999_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_best_photo_contest_v0_1.json",
+    "data/catalog-history/source-sets/corocoro_crystal_tower_entei_jumbo_v0_1.json",
     "data/catalog-history/source-sets/corocoro_december_1998_insert_v0_1.json",
     "data/catalog-history/source-sets/corocoro_early_1997_v0_1.json",
     "data/catalog-history/source-sets/corocoro_february_1999_meowth_v0_1.json",
