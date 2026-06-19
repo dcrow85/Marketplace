@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the tenth hand-researched
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/legendary_collection_v0_1.json`.
+  Legendary Collection is now a hand-authored release dossier, with
+  Charizard 3, Dark Blastoise 4, Dark Raichu 7, Gyarados 12, and Mewtwo
+  29 promoted from generated baseline to sourced card dossiers. The pass
+  frames Legendary Collection as a memory/remix set: Base/Jungle/Fossil/
+  Team Rocket reprints, fireworks Reverse Holofoil, Box Topper/theme-deck
+  exceptions, and nostalgia as a distinct assembly rather than a generic
+  copy of older rows. Added special identification rails for original-set
+  versus Legendary Collection reprints, regular holo versus fireworks
+  reverse holo, Lava/Turmoil non-holo theme-deck branches, Dark Raichu's
+  corrected-text boundary, Gyarados's Pokemon Snap photo-contest branch,
+  and Mewtwo's Christopher Rush artist-line boundary. Sources: local
+  English WoC catalog, Pokemon TCG API v2 set/card endpoints, and
+  Bulbapedia community pages for Legendary Collection, Reverse Holofoil,
+  Charizard, Dark Blastoise, Dark Raichu, Gyarados, and Mewtwo. Generated
+  gap moved from 198 releases / 4,501 cards to 197 releases / 4,496
+  cards. Current catalog-history corpus: 22,925 claims, 4,889 sources,
+  corpus hash
+  `48775a2a10e633ba89ec4d01c0854cc43b8e150550daf48b58640738c8f25414`;
+  index hash `729b21c2c0144be1a88d442692416dc994271be11e8ef9da56b80c358c7bd53f`;
+  queue hash `39810e1d740985ddcfde56cdbff4372e2654fb02e5cffef4436efd0c67aa08af`.
 - `[passive]` 2026-06-19 · Codex — completed the ninth hand-researched
   catalog-history deepening pass in
   `data/catalog-history/source-sets/aquapolis_v0_1.json`.
