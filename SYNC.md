@@ -59,6 +59,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifth
+  catalog-history pass: `data/catalog-history/source-sets/corocoro_january_2000_wooper_v0_1.json`
+  deepens row 146 / Wooper from the CoroCoro Comic January 2000 issue insert route
+  (December 15, 1999). The pass frames Wooper as an early Johto magazine-bonus card landing
+  less than a month after Pokemon Gold/Silver's Japanese launch, with Ken Sugimori credit,
+  glossy unnumbered promo context, Gold/Silver symbol, and CoroCoro January-issue bonus-card
+  border text kept as special ID rails. Generated gaps moved to 84 release / 3910 card.
+  Current hashes: corpus `64511ab8665f8abcaf09c369c26766cf4cd54dcb8450f3185b3c3d90c1e76572`,
+  index `170778ea896d0d08984e75fe23feeba2175c89b2e1dedf3e34e1fcd3d794df01`, queue
+  `70642a7eb0fcc236dd420350919256048739832b23a0170f94d6699b3b6bb871`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fourth
   catalog-history pass: `data/catalog-history/source-sets/trainers_vol3_bilingual_exeggutor_v0_1.json`
   deepens row 132 / Exeggutor `[Bilingual] [Glossy]` from the Pokemon Card Trainers Vol. 3
