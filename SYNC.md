@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 155: Battle Road Summer Elite Four Trainer deepened; corpus e9052d8c)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 156: Battle Road Spring 2003 Victory Ring deepened; corpus 29454cb0)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/battle_road_spring_2003_victory_ring_v0_1.json`
+  deepens row 257 / Victory Ring from the Battle Road Spring 2003
+  winner-prize route. The pass preserves source index 257, Japanese title
+  `勝利のリング`, the March 23-April 6 2003 regional schedule,
+  top-three-per-age-division distribution, winner-only Prize-card exchange
+  text, framed certificate / winner-name / region / age-division context,
+  Takumi Akabane as both illustrator and TCG apparatus figure (Creatures R&D,
+  credited TCG co-creation with Tsunekazu Ishihara and Kouichi Ooyama, creative
+  director 2001-2008), 2003-2004 print continuity, the 2005-2006 Pikachu
+  Victory Ring boundary, and the broad 189-copy estimate caveated as not an
+  official Spring 2003 copy count. Special ID rails separate Victory Orb,
+  Victory Medal, later Pikachu Victory Ring, Autumn/Spring later copies,
+  Champion's League, and generic trophy listings; catalog identity remains
+  legible until seller-controlled front/back, title, artwork, layout,
+  surface/corner, slab/cert, and framed-certificate evidence appears.
+  Generated gaps moved to 33 release / 3859 card. Current hashes: corpus
+  `29454cb06b897cf1ac4c205aade13b8e03377a9b07bed55ee3d11469833b0992`,
+  index `429045f557a1c527507d217abf65d0cf37a06d334f8c67003b10d7b6b3bc820f`,
+  queue `386291b23d4f7734cefdc56ff8aae999c1a8d670649589ed9ef5a8e84027a255`.
+
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/battle_road_summer_2002_best_in_japan_elite_four_trainer_v0_1.json`
