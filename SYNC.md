@@ -55,6 +55,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-first catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/hyper_corocoro_spring_1999_insert_v0_1.json`.
+  Hyper CoroCoro Spring 1999 issue insert now has complete two-row hand-authored
+  coverage for Pikachu row 086 and Jigglypuff row 087. The pass frames the
+  release as English Wizards Promo cards moving through a Japanese magazine
+  route: Hyper CoroCoro Spring 1999, March 1 1999, English w/Gray Star source
+  notes, gray-star/yellow-PROMO symbol context, and the quiet importance of the
+  Pikachu/Jigglypuff pair. Added `special_identification_instructions` requiring
+  agents to preserve Hyper CoroCoro route, row 086/087 identity, English
+  w/Gray Star variant context, symbol context, pair relationship, and
+  non-equivalence with ordinary English Wizards Black Star distribution,
+  CoroCoro October 1996 glossy Pikachu/Jigglypuff, Base/Jungle, Song Best,
+  ANA/Flying Pikachu, and later mascot memories before accepting a match.
+  Artist handling is explicit: Keiji Kinebuchi is treated as corrected Pikachu
+  illustrator context with Mitsuhiro Arita preserved as miscredit/memory
+  pressure; Kagemaru Himeno is treated as Jigglypuff's source-page credit. All
+  artist facts are catalog/source metadata, not seller-card proof. Sources:
+  local Japanese unnumbered promo release file, Bulbapedia raw unnumbered
+  promotional rows 086-087, and Bulbapedia card pages for Pikachu Wizards Promo
+  1 and Jigglypuff Wizards Promo 7 as bounded database references. Generated
+  gap moved from 127 releases / 3,949 cards to 126 releases / 3,947 cards.
+  Current catalog-history corpus:
+  `b35f960f5c82fb3f50949c11b209a764667114f09d548078d3bb3fe0ab349e00`;
+  index: `97c337f02514ae77ba779cbab874b292e3c0af70a82233edf3153ed770bf5892`;
+  queue: `399afd0d3f26ce339c7aeecba9f3227ae57288dffd2c4f926d9afc17fcad3bd3`.
+  Audit counts: 23,237 claims, 6,038 sources, 83 hand-authored release dossiers,
+  602 hand-authored card dossiers, and 854 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/hyper_corocoro_spring_1999_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eightieth catalog-history
   deepening pass in
   `data/catalog-history/source-sets/fan_club_vol3_dark_persian_v0_1.json`.
