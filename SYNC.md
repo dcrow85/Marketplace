@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 157: Nintendo 64 W Double Get Campaign deepened; corpus 8e7ab6f2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 158: World Hobby Fair 2000 Johto starter trio deepened; corpus 839eb7ed)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/world_hobby_fair_2000_commemoration_trio_v0_1.json`
+  deepens the World Hobby Fair 2000 commemoration source group and its three
+  modeled rows: Chikorita 148, Cyndaquil 149, and Totodile 150. The pass
+  corrects the human-facing context away from the inherited mixed-source local
+  date and toward the PokeBoon card-page witness: No. WHF, World Hobby Fair
+  2000 commemoration card, Distribution Date January 9 2000. It adds
+  Japanese/romaji identity rails (`チコリータ` / Chicorita, `ヒノアラシ` /
+  Hinoarashi, `ワニノコ` / Waninoko), card-specific artist texture (Naoyo
+  Kimura, Shin-ichi Yoshida, Hironobu Yoshida), and route boundaries against
+  Champion Road rows 151-153, regular Neo Genesis / Gold, Silver, to a New
+  World..., Neo Era Premium File, jumbo first-partner cards, and generic Johto
+  starter nostalgia. Special ID rails keep WHF route evidence, seller proof,
+  sealed/event stories, authenticity, condition, price, and spendability
+  separate. Generated gaps moved to 31 release / 3854 card. Current hashes:
+  corpus `839eb7ed0eda8fe3a3ab2cdce73f373b6cd0d138ed886a93ec7819162059d48f`,
+  index `70a33ab261bd3178d0312db81a4a4dc24b836e96c812777599614d07c1aad8c9`,
+  queue `365443282b65bdc50917681e5a6c7a01b1d3f07468fb963de1116a62eb7981b4`.
+
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/n64_w_double_get_campaign_v0_1.json`

@@ -1,0 +1,986 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Four-dossier deepening tranche for the World Hobby Fair 2000 commemoration card source group, emphasizing the Johto first-partner trio as a WHF route distinct from Champion Road, Premium File, regular Neo Genesis, and later jumbo / nostalgia starter printings.",
+    "in_scope": [
+      "World Hobby Fair 2000 commemoration card release/source-group dossier",
+      "Chikorita row 148",
+      "Cyndaquil row 149",
+      "Totodile row 150",
+      "January 9, 2000 PokeBoon distribution-date witness",
+      "PokeBoon illustrator credits",
+      "Bulbapedia raw unnumbered promotional source rows",
+      "Champion Road 2000 boundary",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "official product-boundary proof",
+      "complete World Hobby Fair archive",
+      "complete venue schedule",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card",
+        "name_en": "World Hobby Fair 2000 commemoration card",
+        "release_date": "2000-01-09",
+        "date_precision": "PokeBoon card-page distribution date; local source group carries mixed-source inherited date",
+        "expected_row_count": 3,
+        "source_indices": [
+          "148",
+          "149",
+          "150"
+        ],
+        "source_indices_contiguous": true,
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "11th Next Generation World Hobby Fair / WHF 2000 commemoration route",
+          "Johto first-partner trio",
+          "Pokemon Gold and Silver launch-era gravity",
+          "PokeBoon January 9, 2000 distribution-date witness",
+          "PokeBoon artist-credit witness",
+          "Champion Road 2000 lookalike boundary",
+          "Neo Genesis / Premium File / jumbo starter boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:148",
+            "name": "Chikorita",
+            "why": "The Grass first partner gives the trio its gentle opening and is the cleanest way to see WHF 2000 as Johto launch-era public memory rather than just another Chikorita print.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:149",
+            "name": "Cyndaquil",
+            "why": "The Fire starter is the emotional spark of the WHF trio; it needs route discipline because Champion Road and regular Neo Genesis memories sit so close.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:150",
+            "name": "Totodile",
+            "why": "The Water starter completes the public-facing Johto trio and is especially vulnerable to being flattened into ordinary Totodile nostalgia unless the WHF route is preserved.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 1,
+            "examples": [
+              "Chikorita"
+            ],
+            "why": "Kimura's Chikorita credit gives the WHF set its soft first note: an approachable Johto starter carrying event-route memory.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Shin-ichi Yoshida",
+            "row_count": 1,
+            "examples": [
+              "Cyndaquil"
+            ],
+            "why": "Yoshida's Cyndaquil credit keeps the fire starter's early TCG personality attached to this specific WHF print lane.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Hironobu Yoshida",
+            "row_count": 1,
+            "examples": [
+              "Totodile"
+            ],
+            "why": "Yoshida's Totodile credit gives the trio its kinetic final bite: a Water starter print that should stay pinned to WHF rather than generic starter nostalgia.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official product-boundary proof",
+          "complete World Hobby Fair archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local release groups Bulbapedia raw source rows 148-150 under the promotion note World Hobby Fair 2000 commemoration card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The modeled group contains the three Johto first partners Chikorita, Cyndaquil, and Totodile as contiguous rows 148-150; it should not silently absorb Champion Road rows 151-153 or adjacent Berry / Miracle Berry rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.date",
+          "text": "PokeBoon's card pages for Chikorita, Cyndaquil, and Totodile each list Distribution Date: January 9, 2000 for the World Hobby Fair 2000 commemoration card.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "PokeBoon credits the WHF trio to Naoyo Kimura for Chikorita, Shin-ichi Yoshida for Cyndaquil, and Hironobu Yoshida for Totodile.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This source group matters because it turns the three Johto first partners into public event-memory at the start of the Gold/Silver era, where a familiar starter trio needs tiny route markers to remain historically legible.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source rows 148-150, WHF 2000 commemoration route, PokeBoon distribution-date witness, card-specific artist credits, and non-equivalence with Champion Road, regular Neo Genesis, Premium File, jumbo first-partner cards, or generic Johto-starter listings before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "World Hobby Fair 2000 — Johto's first partners step into public",
+        "why_it_matters": "This trio is small but culturally loud. Chikorita, Cyndaquil, and Totodile are the first partners of a new region, and here they show up as a World Hobby Fair memory right as Gold and Silver were turning Pokemon into a second-generation machine. The cards are not rare because the characters are obscure; they matter because the route is so easy to blur. WHF, Champion Road, Neo Genesis, Premium File: all of them can look like Johto nostalgia until an agent keeps the assembly straight.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official product-boundary proof",
+          "complete World Hobby Fair archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card.json",
+          "title": "Local release catalog: World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-chikorita-promo/",
+          "title": "PokeBoon: Chikorita Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-cyndaquil-promo/",
+          "title": "PokeBoon: Cyndaquil Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-totodile-promo/",
+          "title": "PokeBoon: Totodile Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_2000_commemoration_trio_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says World Hobby Fair 2000, WHF 2000, 11th Next Generation World Hobby Fair, Chikorita, Cyndaquil, Totodile, Johto starter trio, Neo Genesis, Premium File, Champion Road, gold foil mark, Johto First Partner Pack, jumbo, or rows 148-150.",
+          "summary": "Keep the WHF 2000 commemoration trio pinned to rows 148-150 and separate it from Champion Road, regular Neo Genesis, Premium File, and jumbo starter memories.",
+          "steps": [
+            "Confirm the claimed route is World Hobby Fair 2000 commemoration card, not Champion Road 2000 participation prize.",
+            "Confirm the modeled trio is Chikorita row 148, Cyndaquil row 149, and Totodile row 150.",
+            "Check PokeBoon's January 9, 2000 distribution-date witness as route support, not as an official copy-count claim.",
+            "Separate WHF rows 148-150 from Champion Road rows 151-153 even though both use the Johto first-partner trio.",
+            "Separate this group from regular Neo Genesis / Gold, Silver, to a New World..., Neo Era Premium File, and later Johto first-partner jumbo cards.",
+            "Preserve the card-specific artist credits, but do not treat artist credit as event-route proof.",
+            "Treat any sealed-pack, attendee, venue, or distribution story as provenance evidence to inspect and hash separately.",
+            "Before trade/spendability, require seller-controlled front/back images, close-ups of title/name area, bottom/copyright/layout area, artwork, surface/corners, and any slab/cert/event provenance claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete venue schedule",
+            "official attendee distribution ledger"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:148",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card",
+        "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:148",
+        "source_index": "148",
+        "name_en": "Chikorita",
+        "name_ja": "チコリータ",
+        "romaji": "Chicorita",
+        "release_date": "2000-01-09"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Chikorita",
+        "name_ja": "チコリータ",
+        "romaji": "Chicorita",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / World Hobby Fair 2000 commemoration card",
+        "artist": "Naoyo Kimura",
+        "release": "World Hobby Fair 2000 commemoration card"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "WHF 2000 commemoration route",
+          "Johto first partner",
+          "Naoyo Kimura credit",
+          "Champion Road / Neo Genesis boundary"
+        ],
+        "collector_texture_note": "Chikorita is the gentle face of the WHF trio; the danger is that gentleness makes it easy to treat as just another Neo-era Chikorita unless the WHF route is visible.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Chikorita as World Hobby Fair 2000 commemoration source row 148.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The card is identified here as Chikorita / チコリータ / Chicorita.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "PokeBoon credits the WHF Chikorita page to Naoyo Kimura.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "PokeBoon lists the card as No. WHF with Info: World Hobby Fair 2000 commemoration card and Distribution Date: January 9, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Chikorita matters in this trio because it is the quiet starter face of Johto's public launch-era memory: familiar enough to invite confusion, specific enough to need WHF route proof.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep Chikorita row 148 separate from Champion Road row 151, regular Neo Genesis Chikorita, Neo Era Premium File Chikorita, and later jumbo first-partner Chikorita cards.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Chikorita — the quiet WHF opening",
+        "why_it_matters": "Chikorita is the soft beginning of the trio, and that is exactly why the route matters. A familiar Grass starter can disappear into Neo-era background noise, but row 148 is a World Hobby Fair memory: a public little marker of Johto arriving in the world.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card.json",
+          "title": "Local row: WHF 2000 Chikorita 148",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Neo_Genesis_53)",
+          "title": "Bulbapedia: Chikorita (Neo Genesis 53)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "WHF route proof for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-chikorita-promo/",
+          "title": "PokeBoon: Chikorita Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_2000_chikorita_row_148_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Chikorita, Chicorita, チコリータ, WHF, World Hobby Fair 2000, Neo Genesis, Premium File, Champion Road, Johto starter, jumbo, or row 148.",
+          "summary": "Treat this as WHF Chikorita only when row 148 and World Hobby Fair route support are present.",
+          "steps": [
+            "Confirm the subject is Chikorita / チコリータ / Chicorita.",
+            "Confirm the claimed route is World Hobby Fair 2000 commemoration card, not Champion Road 2000.",
+            "Preserve source row 148 and PokeBoon's No. WHF / January 9, 2000 witness as route support.",
+            "Separate from Champion Road Chikorita row 151.",
+            "Separate from regular Neo Genesis, Neo Era Premium File, and later Johto first-partner jumbo Chikorita prints.",
+            "Preserve Naoyo Kimura as artist context, but do not treat artist credit as route proof.",
+            "Treat sealed/event/attendee stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of name, artwork, bottom/copyright/layout, surface/corners, and any slab/cert/event provenance claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:149",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card",
+        "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:149",
+        "source_index": "149",
+        "name_en": "Cyndaquil",
+        "name_ja": "ヒノアラシ",
+        "romaji": "Hinoarashi",
+        "release_date": "2000-01-09"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Cyndaquil",
+        "name_ja": "ヒノアラシ",
+        "romaji": "Hinoarashi",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / World Hobby Fair 2000 commemoration card",
+        "artist": "Shin-ichi Yoshida",
+        "release": "World Hobby Fair 2000 commemoration card"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "WHF 2000 commemoration route",
+          "Johto first partner",
+          "Shin-ichi Yoshida credit",
+          "Champion Road / Neo Genesis boundary"
+        ],
+        "collector_texture_note": "Cyndaquil is the spark of the WHF trio, but it is also route-dangerous: the name alone can pull an agent into Champion Road or regular Neo Genesis unless the WHF marks stay visible.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Cyndaquil as World Hobby Fair 2000 commemoration source row 149.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The card is identified here as Cyndaquil / ヒノアラシ / Hinoarashi.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "PokeBoon credits the WHF Cyndaquil page to Shin-ichi Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "PokeBoon lists the card as No. WHF with Info: World Hobby Fair 2000 commemoration card and Distribution Date: January 9, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Cyndaquil matters in this trio because it gives the WHF starter group its little ignition point: a tiny Fire-type character carrying public-event memory at the Gold/Silver threshold.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep Cyndaquil row 149 separate from Champion Road row 152, regular Neo Genesis Cyndaquil, Neo-era Premium File adjacency, and later Cyndaquil prints.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Cyndaquil — the WHF spark",
+        "why_it_matters": "Cyndaquil is the little flash in the middle of the trio. It is small, tense, and memorable, which makes it perfect for a public Johto-era handout. But the catalog has to keep its nerve: WHF row 149 is not Champion Road row 152 and not just another Neo Genesis Cyndaquil.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card.json",
+          "title": "Local row: WHF 2000 Cyndaquil 149",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Cyndaquil_(Neo_Genesis_57)",
+          "title": "Bulbapedia: Cyndaquil (Neo Genesis 57)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "WHF route proof for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-cyndaquil-promo/",
+          "title": "PokeBoon: Cyndaquil Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_2000_cyndaquil_row_149_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Cyndaquil, Hinoarashi, ヒノアラシ, WHF, World Hobby Fair 2000, Neo Genesis, Premium File, Champion Road, Johto starter, jumbo, or row 149.",
+          "summary": "Treat this as WHF Cyndaquil only when row 149 and World Hobby Fair route support are present.",
+          "steps": [
+            "Confirm the subject is Cyndaquil / ヒノアラシ / Hinoarashi.",
+            "Confirm the claimed route is World Hobby Fair 2000 commemoration card, not Champion Road 2000.",
+            "Preserve source row 149 and PokeBoon's No. WHF / January 9, 2000 witness as route support.",
+            "Separate from Champion Road Cyndaquil row 152.",
+            "Separate from regular Neo Genesis, Neo-era adjacent, and later Cyndaquil prints.",
+            "Preserve Shin-ichi Yoshida as artist context, but do not treat artist credit as route proof.",
+            "Treat sealed/event/attendee stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of name, artwork, bottom/copyright/layout, surface/corners, and any slab/cert/event provenance claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:150",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card",
+        "row_id": "jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card:150",
+        "source_index": "150",
+        "name_en": "Totodile",
+        "name_ja": "ワニノコ",
+        "romaji": "Waninoko",
+        "release_date": "2000-01-09"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Totodile",
+        "name_ja": "ワニノコ",
+        "romaji": "Waninoko",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / World Hobby Fair 2000 commemoration card",
+        "artist": "Hironobu Yoshida",
+        "release": "World Hobby Fair 2000 commemoration card"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "WHF 2000 commemoration route",
+          "Johto first partner",
+          "Hironobu Yoshida credit",
+          "Champion Road / Neo Genesis boundary"
+        ],
+        "collector_texture_note": "Totodile is the bite at the end of the WHF trio: kinetic, recognizable, and exactly the kind of card that needs route protection because the character is so easy to love generically.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Totodile as World Hobby Fair 2000 commemoration source row 150.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The card is identified here as Totodile / ワニノコ / Waninoko.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "PokeBoon credits the WHF Totodile page to Hironobu Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "PokeBoon lists the card as No. WHF with Info: World Hobby Fair 2000 commemoration card and Distribution Date: January 9, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Totodile matters in this trio because it completes the public Johto first-partner set with the most unruly energy, making the WHF route feel like a lived fan event rather than a checklist note.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep Totodile row 150 separate from Champion Road row 153, regular Neo Genesis Totodile, Neo-era adjacent prints, and later Totodile or jumbo first-partner cards.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Totodile — the bite in the WHF trio",
+        "why_it_matters": "Totodile gives the set its grin. In a binder it can look like simple starter affection, but this row is doing harder work: it anchors the Water member of the WHF 2000 trio and keeps the public event route from getting swallowed by ordinary Neo nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_148_world_hobby_fair_2000_commemoration_card.json",
+          "title": "Local row: WHF 2000 Totodile 150",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Totodile_(Neo_Genesis_81)",
+          "title": "Bulbapedia: Totodile (Neo Genesis 81)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "WHF route proof for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/whf-totodile-promo/",
+          "title": "PokeBoon: Totodile Promo World Hobby Fair 2000 commemoration card",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_2000_totodile_row_150_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Totodile, Waninoko, ワニノコ, WHF, World Hobby Fair 2000, Neo Genesis, Premium File, Champion Road, Johto starter, jumbo, or row 150.",
+          "summary": "Treat this as WHF Totodile only when row 150 and World Hobby Fair route support are present.",
+          "steps": [
+            "Confirm the subject is Totodile / ワニノコ / Waninoko.",
+            "Confirm the claimed route is World Hobby Fair 2000 commemoration card, not Champion Road 2000.",
+            "Preserve source row 150 and PokeBoon's No. WHF / January 9, 2000 witness as route support.",
+            "Separate from Champion Road Totodile row 153.",
+            "Separate from regular Neo Genesis, Neo-era adjacent, and later Totodile prints.",
+            "Preserve Hironobu Yoshida as artist context, but do not treat artist credit as route proof.",
+            "Treat sealed/event/attendee stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of name, artwork, bottom/copyright/layout, surface/corners, and any slab/cert/event provenance claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    }
+  ]
+}
