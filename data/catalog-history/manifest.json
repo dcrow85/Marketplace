@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23480,
-    "corpus_hash": "a3885be142d043966c52e8adeff6c53f5915bbaa06f157b8d09ac53a20caf1d7",
-    "generated_card_dossier_count": 3885,
-    "generated_release_dossier_count": 59,
+    "claim_count": 23486,
+    "corpus_hash": "e87215e0ca7ca9f7890a6fca026fd55dc3fef65db49c83e6468c2d8054b1d6da",
+    "generated_card_dossier_count": 3884,
+    "generated_release_dossier_count": 58,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6466
+    "source_count": 6474
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "c147c74e300608a29ecc08f5aee19afca90da5d735c6156ff28d71860bcbec3a",
-    "release_queue_count": 59,
+    "queue_hash": "d76b8567ebb449f77c9e0ef8602c2c0a8826646fea4057ac6190d19f39d82799",
+    "release_queue_count": 58,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T19:05:52Z",
+  "generated_at": "2026-06-19T19:13:30Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "3725d083ca8cc825d639e4c21ff56f2a5994d321a3ad005325d46fa5a7e5dd1d",
+    "index_hash": "cf598a6aae03ab0c30d56687aa44530906941b0caf4858edd51165f789882401",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -45,6 +45,7 @@
     "data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json",
     "data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json",
     "data/catalog-history/source-sets/ana_everyones_happy_phase2_v0_1.json",
+    "data/catalog-history/source-sets/ana_get_in_a_jet_2000_phase1_marill_v0_1.json",
     "data/catalog-history/source-sets/ana_get_in_a_jet_campaign_v0_1.json",
     "data/catalog-history/source-sets/aquapolis_v0_1.json",
     "data/catalog-history/source-sets/awakening_legends_tranche_v0_1.json",

@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirty-first
+  catalog-history pass:
+  `data/catalog-history/source-sets/ana_get_in_a_jet_2000_phase1_marill_v0_1.json`
+  deepens row 195 / Marill from the All Nippon Airlines / All Nippon Airways Get in a Jet!
+  2000 phase 1 route. The pass treats the card as airline-travel evidence made collectible:
+  July 1-August 31 2000 domestic ANA flight window, two boarding-pass stubs, special postcard,
+  Media Factory September 7 2000 mailing deadline, ANA special 2000 border text, Ryuta Kusumi /
+  CR CG gangs art context, and Marill as a soft Johto-era travel mascot. Special ID rails now
+  require agents to preserve exact ANA phase 1 route, campaign text, domestic boarding-pass
+  redemption mechanics, and separation from 1998 ANA Get in a Jet, Everyone's Happy Campaign,
+  phase 2 Suicune, Southern Islands, Team Rocket, Pokemon Web, English Wizards Black Star, and
+  generic Marill claims before treating a listing as this exact print. Generated gaps moved to
+  58 release / 3884 card. Current hashes: corpus
+  `e87215e0ca7ca9f7890a6fca026fd55dc3fef65db49c83e6468c2d8054b1d6da`, index
+  `cf598a6aae03ab0c30d56687aa44530906941b0caf4858edd51165f789882401`, queue
+  `d76b8567ebb449f77c9e0ef8602c2c0a8826646fea4057ac6190d19f39d82799`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-thirtieth
   catalog-history pass:
   `data/catalog-history/source-sets/fan_club_summer_2000_new_century_present_v0_1.json`
