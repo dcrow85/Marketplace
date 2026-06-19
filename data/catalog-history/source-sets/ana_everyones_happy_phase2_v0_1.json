@@ -1,0 +1,724 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for All Nippon Airlines / All Nippon Airways Everyone's Happy Campaign phase 2, emphasizing the August 1-September 30 1999 airline-redemption route, two domestic boarding-pass stubs, special postcards mailed to Media Factory, Moltres and Zapdos source rows 121-122, Toshinao Aoki's connected legendary-bird art, and route traps against phase 1, ANA Get in a Jet, Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the Frontier, and later legendary-bird memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Moltres row 121",
+      "Zapdos row 122",
+      "ANA Everyone's Happy Campaign phase 2 route",
+      "boarding-pass stub redemption mechanics",
+      "Media Factory postcard route",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete ANA campaign archive",
+      "complete postcard ledger",
+      "complete passenger redemption ledger",
+      "official copy count",
+      "complete airline-promo census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s",
+        "name_en": "All Nippon Airlines \"Everyone's Happy Campaign\" phase 2 (August 1-September 30, 1999)",
+        "release_date": "1999-08-01",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "airline route as collectible identity",
+          "second ANA domestic-flight redemption window",
+          "two domestic boarding-pass stubs",
+          "special postcards mailed to Media Factory",
+          "Moltres and Zapdos completing the legendary-bird sky route",
+          "Toshinao Aoki connected-bird art",
+          "Wizards/ANA/Web/DP-era route traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:122",
+            "name": "Zapdos",
+            "why": "Zapdos gives the second ANA phase its sharpest visual signal: the electric legendary bird belongs to the airline route, but its name and art memory drift through English Wizards, Pokemon Web, and later DP-era prints.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:121",
+            "name": "Moltres",
+            "why": "Moltres carries the fire side of the ANA bird pair and turns phase 2 into a completion gesture after Articuno appeared in phase 1.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Toshinao Aoki",
+            "row_count": 2,
+            "examples": [
+              "Moltres",
+              "Zapdos"
+            ],
+            "why": "Aoki is the phase 2 visual thread. Bulbapedia credits the Japanese ANA Moltres and Zapdos prints to Aoki, and those credits help keep the airline route distinct from English and later reprint paths.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all ANA promo print authority"
+            ]
+          },
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 0,
+            "examples": [
+              "English Moltres/Zapdos Wizards Promo comparison context"
+            ],
+            "why": "Kimura matters as a route-boundary marker: Bulbapedia notes early English Wizards prints first carried an Aoki credit before later prints corrected the illustration credit to Kimura. That history is a useful warning not to import English promo assumptions into the Japanese ANA rows.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "credit for the Japanese ANA rows",
+              "seller-card proof",
+              "complete biography"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete ANA campaign archive",
+          "complete postcard ledger",
+          "complete passenger redemption ledger",
+          "official copy count",
+          "complete airline-promo census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two ANA Everyone's Happy Campaign phase 2 rows: Moltres row 121 and Zapdos row 122.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Moltres and Zapdos card pages say the second ANA Everyone's Happy Campaign phase ran between August 1 and September 30, 1999, and passengers could redeem two domestic boarding-pass stubs for the two-card set.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia describes the same postcard-to-Media Factory redemption route for this phase: eligible domestic boarding-pass stubs were affixed to special postcards and mailed to Media Factory.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese ANA Moltres and Zapdos artwork to Toshinao Aoki.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that early English Wizards Promo Moltres and Zapdos cards credited Toshinao Aoki, while a later English print corrected the artist credit to Naoyo Kimura. That credit history is English-route context, not a reason to overwrite the Japanese ANA Aoki credit.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This source group matters because phase 2 turns the ANA campaign into a legendary-bird route: after phase 1's Articuno, the second campaign window supplies Moltres and Zapdos through the same flight-evidence redemption mechanics.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve ANA Everyone's Happy Campaign phase 2 route, August 1-September 30 1999 date window, rows 121-122 pair identity, two domestic boarding-pass stub redemption, special postcard / Media Factory mechanics, Toshinao Aoki Japanese-art context, English Aoki/Kimura credit boundary, and non-equivalence with ANA phase 1, ANA Get in a Jet, Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the Frontier, and later legendary-bird memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "ANA Everyone's Happy Campaign phase 2 — the bird route completes its flight",
+        "why_it_matters": "Phase 2 is where the ANA campaign starts to feel like a collector's flight path instead of a one-off novelty. Articuno had already made phase 1 feel airborne; Moltres and Zapdos arrive through the second campaign window and make the legendary-bird assembly whole. The identity is not just 'Japanese promo bird.' It is August and September 1999, two domestic boarding-pass stubs, a postcard, Media Factory, and Aoki's connected sky imagery. That route matters because these birds keep slipping into nearby memories: English Wizards promos, Pokemon Web, Supreme Victors, Beat of the Frontier, and later legendary-bird nostalgia. The agent has to keep the flight record attached.",
+        "not_claiming": [
+          "complete release history",
+          "complete ANA campaign archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: ANA Everyone's Happy Campaign phase 2",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete ANA campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 121-122",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete ANA campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Moltres (Wizards Promo 21)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Moltres_(Wizards_Promo_21)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Zapdos (Wizards Promo 23)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Zapdos_(Wizards_Promo_23)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase2_airline_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says ANA, All Nippon Airlines, All Nippon Airways, Everyone's Happy Campaign, August 1-September 30 1999, boarding pass stubs, special postcard, Media Factory, Moltres, Zapdos, Toshinao Aoki, Naoyo Kimura, airline promo, or rows 121/122.",
+          "summary": "Do not accept a generic Moltres/Zapdos promo match. Preserve ANA phase 2 route, the August-September 1999 campaign window, two boarding-pass stubs, postcard-to-Media-Factory redemption, and the Aoki/Kimura English-credit boundary before treating the source group as identified.",
+          "steps": [
+            "Confirm ANA / All Nippon Airlines / All Nippon Airways Everyone's Happy Campaign phase 2 route and August 1-September 30, 1999 window.",
+            "Confirm the two-card source group: Moltres row 121 and Zapdos row 122.",
+            "Preserve the physical redemption route: two domestic boarding-pass stubs affixed to special postcards and mailed to Media Factory.",
+            "Record Toshinao Aoki as Japanese ANA art context, while keeping Naoyo Kimura as English Wizards promo comparison context only.",
+            "Reject matches that collapse the group into phase 1, ANA Get in a Jet, English Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the Frontier, or later legendary-bird memories without explicit route evidence."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete ANA campaign archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:121",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s",
+        "row_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:121",
+        "source_index": "121",
+        "name_en": "Moltres",
+        "name_ja": "ファイヤー",
+        "romaji": "Fire",
+        "release_route": "ANA Everyone's Happy Campaign phase 2",
+        "artist": "Toshinao Aoki"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Toshinao Aoki",
+        "assembly_themes": [
+          "legendary-bird airline route",
+          "phase 2 ANA redemption",
+          "Aoki connected-bird art",
+          "English credit trap"
+        ],
+        "collector_texture_note": "Moltres is not just a generic bird promo here. The interesting part is the flight provenance: phase 2 ANA boarding-pass redemption makes the route part of the card's identity.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 121 as Moltres in the ANA Everyone's Happy Campaign phase 2 source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Moltres' Japanese TCG name is ファイヤー, rendered here as Fire in the catalogue's literal romaji style.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese ANA Moltres artwork to Toshinao Aoki.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that English Wizards Promo Moltres first carried an Aoki credit and later corrected that English print credit to Naoyo Kimura; this is an English-route boundary, not a Japanese ANA credit override.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Moltres matters in this tranche because it turns the second ANA campaign window into the fire leg of the legendary-bird route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Moltres match, agents should preserve row 121, ANA phase 2 route, ファイヤー / Fire name context, Toshinao Aoki Japanese-art credit, the English Aoki/Kimura credit caveat, the paired Zapdos relationship, and non-equivalence with English Wizards, Pokemon Web, Supreme Victors, Beat of the Frontier, and later Moltres memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Moltres — the fire bird on an airline route",
+        "why_it_matters": "Moltres is the warmer half of phase 2's ANA bird pair. What makes it sing is not only the legendary name, but the strange physical path: passengers flew domestic routes, saved boarding-pass stubs, sent postcards to Media Factory, and received a card whose whole identity is now inseparable from flight. For an agent, the danger is obvious. Moltres appears again and again in Wizards, Pokemon Web, Supreme Victors, Beat of the Frontier, and later legendary-bird memory. The ANA route has to stay attached.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: ANA Everyone's Happy Campaign phase 2",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 121",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Moltres (Wizards Promo 21)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Moltres_(Wizards_Promo_21)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase2_121_moltres_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Moltres, ファイヤー, Fire, ANA, Everyone's Happy Campaign, boarding pass stubs, Media Factory postcard, Toshinao Aoki, Naoyo Kimura, Wizards Promo 21, Pokemon Web, Supreme Victors, Beat of the Frontier, or row 121.",
+          "summary": "Moltres must stay bound to row 121 and ANA phase 2 route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 121 and ANA Everyone's Happy Campaign phase 2 context.",
+            "Record Japanese name `ファイヤー` and literal romaji `Fire`; do not silently replace with an English-only Moltres memory.",
+            "Preserve Toshinao Aoki as Japanese ANA artwork context.",
+            "Preserve the English Wizards Aoki-to-Naoyo-Kimura credit caveat as a route-boundary note, not as a Japanese-row credit replacement.",
+            "Check against English Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the Frontier, ANA phase 1, ANA Get in a Jet, and later Moltres memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:122",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s",
+        "row_id": "jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s:122",
+        "source_index": "122",
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "romaji": "Thunder",
+        "release_route": "ANA Everyone's Happy Campaign phase 2",
+        "artist": "Toshinao Aoki"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Toshinao Aoki",
+        "assembly_themes": [
+          "legendary-bird airline route",
+          "phase 2 ANA redemption",
+          "Aoki connected-bird art",
+          "English credit trap"
+        ],
+        "collector_texture_note": "Zapdos is the electric point of the ANA phase 2 pair: a legendary bird card whose route is literally proven by flight participation records, not just by the printed name.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 122 as Zapdos in the ANA Everyone's Happy Campaign phase 2 source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Zapdos' Japanese TCG name is サンダー, rendered here as Thunder in the catalogue's literal romaji style.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese ANA Zapdos artwork to Toshinao Aoki.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that English Wizards Promo Zapdos first carried an Aoki credit and later corrected that English print credit to Naoyo Kimura; this is an English-route boundary, not a Japanese ANA credit override.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Zapdos matters in this tranche because it gives the ANA phase 2 pair its electric legendary-bird center and completes the sky trio relationship opened by Articuno.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Zapdos match, agents should preserve row 122, ANA phase 2 route, サンダー / Thunder name context, Toshinao Aoki Japanese-art credit, the English Aoki/Kimura credit caveat, the paired Moltres relationship, and non-equivalence with English Wizards, Pokemon Web, Supreme Victors, Beat of the Frontier, and later Zapdos memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Zapdos — the electric bird with a flight record",
+        "why_it_matters": "Zapdos is the card that makes phase 2 crackle. It is a legendary bird, yes, but in this catalogue the why is stranger and better: the owner once had to pass through an airline campaign route, with boarding-pass stubs and a postcard standing between ordinary travel and a Pokemon card. For agents, the beauty and the risk are the same. Zapdos is famous enough to attract lazy matches. The ANA phase, Aoki credit, Japanese name, and English-credit caveat keep the card from being smeared into generic legendary-bird memory.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: ANA Everyone's Happy Campaign phase 2",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_121_all_nippon_airlines_everyone_s_happy_campaign_phase_2_august_1_s.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 122",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Zapdos (Wizards Promo 23)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Zapdos_(Wizards_Promo_23)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase2_122_zapdos_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos, サンダー, Thunder, ANA, Everyone's Happy Campaign, boarding pass stubs, Media Factory postcard, Toshinao Aoki, Naoyo Kimura, Wizards Promo 23, Pokemon Web, Supreme Victors, Beat of the Frontier, or row 122.",
+          "summary": "Zapdos must stay bound to row 122 and ANA phase 2 route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 122 and ANA Everyone's Happy Campaign phase 2 context.",
+            "Record Japanese name `サンダー` and literal romaji `Thunder`; do not silently replace with an English-only Zapdos memory.",
+            "Preserve Toshinao Aoki as Japanese ANA artwork context.",
+            "Preserve the English Wizards Aoki-to-Naoyo-Kimura credit caveat as a route-boundary note, not as a Japanese-row credit replacement.",
+            "Check against English Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the Frontier, ANA phase 1, ANA Get in a Jet, and later Zapdos memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

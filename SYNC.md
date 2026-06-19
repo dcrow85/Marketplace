@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-fourth catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/ana_everyones_happy_phase2_v0_1.json`.
+  ANA Everyone's Happy Campaign phase 2 now has complete two-row hand-authored
+  coverage for Moltres row 121 and Zapdos row 122. The pass frames the release
+  as the second airline-redemption window: August 1-September 30 1999, two
+  domestic boarding-pass stubs, special postcards mailed to Media Factory,
+  Moltres and Zapdos as the phase 2 bird pair, Articuno phase 1 as adjacent
+  sky-trio memory, and Toshinao Aoki as shared Japanese ANA artist context.
+  Added `special_identification_instructions` requiring agents to preserve ANA
+  / All Nippon Airlines / All Nippon Airways phase 2 route, row 121/122
+  identity, `ファイヤー` / Fire and `サンダー` / Thunder name context,
+  boarding-pass postcard redemption, Media Factory, Aoki art context, English
+  Wizards Aoki-to-Naoyo-Kimura credit caveat as a route-boundary note, pair
+  relationship, and non-equivalence with ANA phase 1, ANA Get in a Jet,
+  English Wizards Black Star, Pokemon Web, Supreme Victors, Beat of the
+  Frontier, and later legendary-bird memories before accepting a match. Sources:
+  local Japanese unnumbered promo release file, Bulbapedia raw unnumbered
+  promotional rows 121-122, and Bulbapedia card pages for Moltres Wizards Promo
+  21 and Zapdos Wizards Promo 23 as bounded database references. Generated gap
+  moved from 124 releases / 3,943 cards to 123 releases / 3,941 cards. Current
+  catalog-history corpus:
+  `d5cbd038fd701b7829cbdd0310800bf438ea237f24c01dd409187f64a9327208`;
+  index: `37b785909c0bb3ee0f90514968f28adc2250746eff7f892104c503cc536abe41`;
+  queue: `152a136fd706c6bfdd7f6ed2ff544f52f7fd82c112fe6ca5f4f36ce3594aed4a`.
+  Audit counts: 23,250 claims, 6,059 sources, 86 hand-authored release
+  dossiers, 608 hand-authored card dossiers, and 857 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/ana_everyones_happy_phase2_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-third catalog-history
   deepening pass in
   `data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json`.
