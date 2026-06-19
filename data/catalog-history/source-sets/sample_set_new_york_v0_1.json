@@ -1,0 +1,1613 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the English Sample Set - New York Press Conference, emphasizing the August 2002 e-Reader / Expedition demonstration context, Sample-stamp identity, Japanese-card construction/backing signals, sample numbering, and the need to keep press-conference samples separate from ordinary Expedition Base Set cards.",
+    "not_claiming": [
+      "official copy counts",
+      "complete press-conference attendee ledger",
+      "complete distribution ledger",
+      "stamp authenticity",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "ordinary Expedition equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801",
+      "type": "release",
+      "context": {
+        "name_en": "Sample Set - New York Press Conference",
+        "name_ja": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "release_date": "2002-08-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json",
+          "title": "Local English supplemental WotC catalog: Sample Set - New York Press Conference",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete press-conference ledger"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Sample_Set_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: Sample Set (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_research",
+          "ref": "https://www.elitefourum.com/t/wotc-e-reader-sample-cards/27108",
+          "title": "Elite Fourum: WOTC e-Reader sample card discussion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://api.tcgdex.net/v2/en/sets/sample",
+          "title": "TCGdex English Sample Set metadata endpoint",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level source refs",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json",
+          "title": "Local English WotC catalog: Expedition Base Set comparison boundary",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Sample Set authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and TCGdex metadata date the English Sample Set to August 1, 2002, while the local comparison boundary places the later Expedition Base Set release after the sample context.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The local catalog classifies Sample Set - New York Press Conference as a sample_press_conference supplemental WotC-era product, not a standard expansion release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog and Bulbapedia raw setlist model 10 English New York Press Conference sample rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The source rows and community discussion frame these cards as English sample cards from the New York press-conference / e-Reader demonstration context, with a Sample stamp taking the place of a regular set logo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "The local identification packets require the Sample stamp and sample-set numbering to remain separate from later Expedition Base Set release identity, even when the Pokemon name and art lineage look familiar.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The supplemental source rows do not provide illustrator names for this slice. The dossier intentionally leaves artist authority unset rather than importing Expedition artist memory into a press-conference sample row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Sample Set matters because it catches Pokemon at a technical threshold: cards are becoming scannable interfaces, not just printed game pieces. These rows are small contact fossils from a press room where WotC-era English Pokemon was showing how Expedition and e-Reader play would touch machines.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_new_york_press_conference_stamp_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Sample Set, New York Press Conference sample, e-Reader sample, Sample stamp, or Expedition sample.",
+          "summary": "Confirm the Sample stamp, sample-set numbering, and press-conference sample route before treating a card as this release.",
+          "steps": [
+            "Confirm the card is presented as an English New York Press Conference / e-Reader sample, not a normal Expedition Base Set card.",
+            "Check that the Sample stamp appears in place of the regular set logo.",
+            "Preserve the sample-set number exactly as printed in the Sample Set row.",
+            "Do not infer copy count, stamp authenticity, or physical authenticity from the catalog row.",
+            "Ask for close photos of the Sample stamp, card number, back, borders, and e-Reader strip area if the row is used transactionally."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "copy count truth",
+            "ordinary Expedition equivalence"
+          ]
+        }
+      ],
+      "release_highlights": {
+        "assembly_themes": [
+          "supplemental physical format",
+          "press-conference distribution",
+          "e-card/scannable interface",
+          "Sample stamp boundary",
+          "identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "en_wotc_sample_set_new_york_20020801:sp-016-093",
+            "name": "Pikachu",
+            "number": "016/093"
+          },
+          {
+            "row_id": "en_wotc_sample_set_new_york_20020801:sp-048-093",
+            "name": "Chansey",
+            "number": "048/093"
+          },
+          {
+            "row_id": "en_wotc_sample_set_new_york_20020801:sp-074-093",
+            "name": "Rapidash",
+            "number": "074/093"
+          },
+          {
+            "row_id": "en_wotc_sample_set_new_york_20020801:sp-083-093",
+            "name": "Pichu",
+            "number": "083/093"
+          },
+          {
+            "row_id": "en_wotc_sample_set_new_york_20020801:sp-088-093",
+            "name": "Machamp",
+            "number": "088/093"
+          }
+        ],
+        "key_artists": [],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Sample Set - New York Press Conference: cards becoming interface",
+        "why_it_matters": "The Sample Set is a little ghost of a future interface. Ten cards, a Sample stamp, and the press-room feeling of Pokemon showing that the card could now talk to a machine. The row names are familiar, almost too familiar, which is why the agent must look for the stamp and the sample number before the art or Pokemon name starts telling the wrong story.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete Sample Set history",
+          "official copy counts",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-016-093",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-016-093",
+        "catalog_row_id": "016/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-016-093",
+          "title": "Local catalog row: Pikachu Sample Set 016/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Sample_Set_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: Sample Set Pikachu row",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as Sample Set row 016/093.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Pikachu as a Common Lightning card in the English Sample Set source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "identification.special_instructions",
+          "text": "The local row carries Sample Set identification instructions requiring Sample stamp and sample-set numbering to remain separate from ordinary Expedition identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu 016/093 is the obvious attention row because the mascot makes the sample format approachable. It is also the easiest trap: a famous face can make an agent forget to ask whether the Sample stamp is actually present.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_pikachu_016_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Pikachu, e-Reader sample Pikachu, Expedition Pikachu, or 016/093.",
+          "summary": "Confirm Sample stamp and 016/093 sample-set number before treating a Pikachu as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 016/093 sample number.",
+            "Do not merge with ordinary Expedition Pikachu or other Pikachu promos.",
+            "Ask for close photos of the stamp, number, e-Reader strip area, and back before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Pikachu equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "016/093",
+        "rarity_signal": "Common; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "character gravity",
+          "identity trap"
+        ],
+        "collector_texture_note": "The mascot is a decoy and a doorway; the Sample stamp is the actual key.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 016/093: the mascot as demo object",
+        "why_it_matters": "Sample Pikachu is perfect because it tempts you to look too quickly. The face is familiar, the card-shaped memory is familiar, and then the stamp changes the whole object. This is Pikachu as interface ambassador.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-048-093",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-048-093",
+        "catalog_row_id": "048/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-048-093",
+          "title": "Local catalog row: Chansey Sample Set 048/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Chansey as Sample Set row 048/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Chansey as an Uncommon Colorless card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Chansey 048/093 gives the sample sheet a softer, older franchise memory. It is not the loudest row, but it makes the demo feel like a real cross-section of the coming Expedition world rather than only mascot marketing.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_chansey_048_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Chansey, Expedition Chansey sample, or 048/093.",
+          "summary": "Confirm Sample stamp and 048/093 sample-set number before treating a Chansey as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 048/093 sample number.",
+            "Do not merge with ordinary Expedition Chansey or earlier Chansey rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Chansey equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "048/093",
+        "rarity_signal": "Uncommon; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "character memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Chansey turns the demo from tech object into creature-world object.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Chansey 048/093: gentleness in the demo sheet",
+        "why_it_matters": "Chansey is not the obvious headline, and that is why it helps. A demo set with only chase faces would feel like a brochure; Chansey makes it feel like a slice of an actual card world being shown to the press.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-074-093",
+      "type": "card",
+      "context": {
+        "name_en": "Rapidash",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-074-093",
+        "catalog_row_id": "074/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-074-093",
+          "title": "Local catalog row: Rapidash Sample Set 074/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Rapidash as Sample Set row 074/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Rapidash as a Rare Fire card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Rapidash 074/093 is the rare row that keeps the Sample Set from being only cute or instructional. Fire, speed, and rarity give the demo sheet a little drama.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_rapidash_074_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Rapidash, Expedition Rapidash sample, or 074/093.",
+          "summary": "Confirm Sample stamp and 074/093 sample-set number before treating a Rapidash as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 074/093 sample number.",
+            "Do not merge with ordinary Expedition Rapidash or other Rapidash rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Rapidash equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "074/093",
+        "rarity_signal": "Rare; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "rarity attention",
+          "identity trap"
+        ],
+        "collector_texture_note": "Rapidash gives the press sample a rare-card spark without making it a normal Expedition chase.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rapidash 074/093: the sample sheet catches fire",
+        "why_it_matters": "Rapidash makes the Sample Set feel alive. In a release about interface and demonstration, this row adds motion: a rare Fire card carrying the Sample stamp into the e-Reader threshold.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-083-093",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-083-093",
+        "catalog_row_id": "083/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-083-093",
+          "title": "Local catalog row: Pichu Sample Set 083/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pichu as Sample Set row 083/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Pichu as a Rare Lightning card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Pichu 083/093 makes the sample context feel generational: the baby Pokemon arrives in the same object family that is trying to introduce a new scanning interface.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_pichu_083_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Pichu, Expedition Pichu sample, or 083/093.",
+          "summary": "Confirm Sample stamp and 083/093 sample-set number before treating a Pichu as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 083/093 sample number.",
+            "Do not merge with ordinary Expedition Pichu or other Pichu promos.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Pichu equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "083/093",
+        "rarity_signal": "Rare; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "johto/generation shift",
+          "identity trap"
+        ],
+        "collector_texture_note": "Pichu makes the interface future feel young on purpose.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pichu 083/093: the new generation scans in",
+        "why_it_matters": "Pichu is tiny, but here it carries a big hinge. The Sample Set is showing a new technical interface, and Pichu is already a symbol of the franchise refreshing itself. Small card, large transition.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-088-093",
+      "type": "card",
+      "context": {
+        "name_en": "Machamp",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-088-093",
+        "catalog_row_id": "088/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-088-093",
+          "title": "Local catalog row: Machamp Sample Set 088/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Machamp as Sample Set row 088/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Machamp as a Rare Fighting card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Machamp 088/093 closes the sample sheet with a familiar early-power body. It is a good reminder that interface history still needed old cardboard strength to feel like Pokemon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_machamp_088_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Machamp, Expedition Machamp sample, or 088/093.",
+          "summary": "Confirm Sample stamp and 088/093 sample-set number before treating a Machamp as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 088/093 sample number.",
+            "Do not merge with ordinary Expedition Machamp or other Machamp rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Machamp equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "088/093",
+        "rarity_signal": "Rare; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "rarity attention",
+          "identity trap"
+        ],
+        "collector_texture_note": "Machamp gives the sample sheet an old-school power anchor.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Machamp 088/093: old strength in a new interface",
+        "why_it_matters": "Machamp makes the Sample Set feel less abstract. The e-Reader future is arriving, but it arrives carrying one of the franchise's oldest power silhouettes. The stamp does the technical work; Machamp supplies the muscle memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-002-093",
+      "type": "card",
+      "context": {
+        "name_en": "Hoppip",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-002-093",
+        "catalog_row_id": "002/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-002-093",
+          "title": "Local catalog row: Hoppip Sample Set 002/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Hoppip as Sample Set row 002/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Hoppip as a Common Grass card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Hoppip 002/093 is the first modeled row and gives the sample sheet a light, low-stakes opening. That matters because a demo set has to show ordinary card flow, not only headline faces.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_hoppip_002_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Hoppip, Expedition Hoppip sample, or 002/093.",
+          "summary": "Confirm Sample stamp and 002/093 sample-set number before treating a Hoppip as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 002/093 sample number.",
+            "Do not merge with ordinary Expedition Hoppip or other Hoppip rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Hoppip equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "002/093",
+        "rarity_signal": "Common; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "ordinary-flow memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Hoppip lets the sample sheet begin with a gentle common, which is part of why it feels like a set.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Hoppip 002/093: the demo begins softly",
+        "why_it_matters": "Hoppip is not here to impress anyone with market gravity. It is here because a press sample needs ordinary texture: the little Grass common that makes the interface future feel like a real set, not just a showcase.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-004-093",
+      "type": "card",
+      "context": {
+        "name_en": "Koffing",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-004-093",
+        "catalog_row_id": "004/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-004-093",
+          "title": "Local catalog row: Koffing Sample Set 004/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Koffing as Sample Set row 004/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Koffing as a Common Grass card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Koffing 004/093 gives the sample sheet a little mischief and poison-era type weirdness. The demo object is technical, but it still needs Pokemon's strange early personality.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_koffing_004_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Koffing, Expedition Koffing sample, or 004/093.",
+          "summary": "Confirm Sample stamp and 004/093 sample-set number before treating a Koffing as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 004/093 sample number.",
+            "Do not merge with ordinary Expedition Koffing or other Koffing rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Koffing equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "004/093",
+        "rarity_signal": "Common; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "odd-character texture",
+          "identity trap"
+        ],
+        "collector_texture_note": "Koffing keeps the sample sheet from becoming too clean; Pokemon is still odd here.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Koffing 004/093: the demo gets weird early",
+        "why_it_matters": "Koffing is a lovely reminder that technical history should not become sterile. The e-Reader future is being shown off, and one of the first sample rows is still this floating, strange little poison creature.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-019-093",
+      "type": "card",
+      "context": {
+        "name_en": "Gastly",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-019-093",
+        "catalog_row_id": "019/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-019-093",
+          "title": "Local catalog row: Gastly Sample Set 019/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Gastly as Sample Set row 019/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Gastly as a Common Psychic card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Gastly 019/093 gives the sample sheet an old haunted frequency. A scanning interface is new, but the card world it carries still includes the ghost-line weirdness that made early Pokemon feel deep.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_gastly_019_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Gastly, Expedition Gastly sample, or 019/093.",
+          "summary": "Confirm Sample stamp and 019/093 sample-set number before treating a Gastly as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 019/093 sample number.",
+            "Do not merge with ordinary Expedition Gastly or other Gastly rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Gastly equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "019/093",
+        "rarity_signal": "Common; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "ghost-line memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Gastly lets the sample sheet keep a little haunted air.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Gastly 019/093: old ghosts in the new machine",
+        "why_it_matters": "Gastly makes the Sample Set feel like Pokemon, not just technology. The card can be scanned, but the world behind it still has fog, ghosts, and strange little childhood unease.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-021-093",
+      "type": "card",
+      "context": {
+        "name_en": "Machop",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-021-093",
+        "catalog_row_id": "021/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-021-093",
+          "title": "Local catalog row: Machop Sample Set 021/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Machop as Sample Set row 021/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Machop as a Common Fighting card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Machop 021/093 starts the Fighting ladder inside the sample sheet. It helps the demonstration feel playable and evolutionary, not just collectible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_machop_021_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Machop, Expedition Machop sample, or 021/093.",
+          "summary": "Confirm Sample stamp and 021/093 sample-set number before treating a Machop as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 021/093 sample number.",
+            "Do not merge with ordinary Expedition Machop or other Machop rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Machop equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "021/093",
+        "rarity_signal": "Common; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "evolution-line memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Machop makes the demo feel like the beginning of a line, not an isolated specimen.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Machop 021/093: the Fighting line begins",
+        "why_it_matters": "Machop matters because it points forward. The sample sheet is about a technical future, and Machop quietly gives it evolutionary structure: this is how a line starts before Machoke and Machamp make it heavy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_sample_set_new_york_20020801:sp-042-093",
+      "type": "card",
+      "context": {
+        "name_en": "Machoke",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_sample_set_new_york_20020801",
+        "row_id": "en_wotc_sample_set_new_york_20020801:sp-042-093",
+        "catalog_row_id": "042/093",
+        "release_name": "Sample Set - New York Press Conference"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json#row:en_wotc_sample_set_new_york_20020801:sp-042-093",
+          "title": "Local catalog row: Machoke Sample Set 042/093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "stamp authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Machoke as Sample Set row 042/093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row preserves Machoke as an Uncommon Fighting card in the English Sample Set source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Machoke 042/093 is the middle of the sample sheet's Fighting line. It is a structural row: not the headline, but the hinge that makes Machamp feel like an arrival.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "sample_set_machoke_042_093_stamp_boundary_v0.1",
+          "trigger": "A user says Sample Machoke, Expedition Machoke sample, or 042/093.",
+          "summary": "Confirm Sample stamp and 042/093 sample-set number before treating a Machoke as this press-conference sample.",
+          "steps": [
+            "Confirm the Sample stamp appears where the normal set logo would be.",
+            "Read the printed 042/093 sample number.",
+            "Do not merge with ordinary Expedition Machoke or other Machoke rows.",
+            "Ask for close photos of the stamp and number before transactional use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "stamp authenticity",
+            "ordinary Expedition equivalence",
+            "other Machoke equivalence"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "042/093",
+        "rarity_signal": "Uncommon; Sample stamp row",
+        "artist": "",
+        "assembly_themes": [
+          "Sample stamp boundary",
+          "e-card/scannable interface",
+          "evolution-line memory",
+          "identity trap"
+        ],
+        "collector_texture_note": "Machoke is the hinge row; the sample line gets weight before Machamp lands.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Machoke 042/093: the middle makes the line",
+        "why_it_matters": "Machoke is a middle evolution doing middle-evolution work. In a sample set, that matters: it proves the demonstration was not just scattered faces, but a little playable ecology with weight and sequence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

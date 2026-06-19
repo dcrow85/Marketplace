@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-ninth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/sample_set_new_york_v0_1.json`.
+  English Sample Set - New York Press Conference is now a complete
+  hand-authored supplemental WotC-era dossier, with all 10 modeled rows promoted
+  from generated baseline to sourced card dossiers: Hoppip 002/093, Koffing
+  004/093, Pikachu 016/093, Gastly 019/093, Machop 021/093, Machoke 042/093,
+  Chansey 048/093, Rapidash 074/093, Pichu 083/093, and Machamp 088/093. The
+  pass frames the August 2002 sample cards as Pokemon becoming interface:
+  press-conference / e-Reader demonstration objects where the familiar card
+  names must stay subordinate to the Sample stamp, sample-set numbering, and
+  Expedition-boundary evidence. Added special identification rails for every
+  row requiring Sample stamp and sample number checks, close photos of the
+  stamp/number/e-Reader strip/back when used transactionally, and explicit
+  separation from ordinary Expedition Base Set or other species rows. Artists
+  remain intentionally unset because the supplemental source rows do not
+  provide illustrator authority. Sources: local English supplemental WotC
+  Sample Set catalog, Bulbapedia raw Sample Set wikitext, Elite Fourum WotC
+  e-Reader sample discussion, TCGdex Sample Set metadata endpoint, and local
+  English Expedition Base Set comparison boundary. Generated gap moved from
+  169 releases / 4,238 cards to 168 releases / 4,228 cards. Current
+  catalog-history corpus: 22,802 claims, 5,541 sources, corpus hash
+  `052bbe72f1e2539f01903f88e5b0b62030b95c0d305f3ed2d16dbbdd8f8b25bb`;
+  index hash `d828d82d5e4c193fc084f6e3ecaa0f23cc48d9f45e64ab5939b8e5ba4a841254`;
+  queue hash `634d1af29536238bb85562a27aaf2219a3d0ec255dd37b356bfcfac95fcf07ad`.
 - `[passive]` 2026-06-19 · Codex — completed the thirty-eighth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/kamex_mega_battle_v0_1.json`.
