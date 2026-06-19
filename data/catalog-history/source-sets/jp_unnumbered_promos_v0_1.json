@@ -1,0 +1,1120 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the Japanese pre-English Unnumbered Promotional source slice and six rows that show promo provenance as contact history: CoroCoro inserts, JR Stamp Rally, illustration contests, Trade Please campaign, and birthday/calendar routes.",
+    "in_scope": [
+      "Unnumbered Promotional Pre-English Source Slice release dossier",
+      "Pikachu 001",
+      "Mew 005",
+      "Surfing Pikachu 014",
+      "Pokémon Illustrator 032",
+      "Trade Please! 036",
+      "_____'s Pikachu 053"
+    ],
+    "not_claiming": [
+      "complete Unnumbered Promotional scholarship",
+      "single-product release identity",
+      "complete distribution list",
+      "official copy counts unless explicitly sourced",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+      "type": "release",
+      "context": {
+        "name_en": "Unnumbered Promotional Pre-English Source Slice",
+        "name_ja": "プロモーションカード（英語版以前・出典抽出）",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "release_date": "1996-10-15/1999-01-31"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "title": "Local Japanese pre-English release catalog: Unnumbered Promotional Pre-English Source Slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete pre-English promo catalog"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/UPC",
+          "title": "PokéCardex: Japanese Unnumbered Promotional source list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete row-level distribution proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete row-level distribution proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.boundary",
+          "text": "The local catalog models this as an aggregate filtered source slice, not a strict single product: 55 rows from PokéCardex Unnumbered Promotional rows whose source comments or release map place the distribution before English Base Set.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local catalog gives the slice a mixed date range of 1996-10-15/1999-01-31 and marks date precision as source_slice_mixed_range_crosses_cutoff.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog models 55 unique catalog rows in this filtered pre-English source slice; PokéCardex is the source list, not an official print-run statement.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia describes Japanese Unnumbered Promotional cards as cards with no collection number, often standalone Japanese promo prints released alongside events in other parts of the Pokémon franchise.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.distribution",
+          "text": "Bulbapedia's 1996-2005 Unnumbered Promotional page includes distribution routes such as CoroCoro Comic inserts, illustration contests, Trade Please campaign, JR Stamp Rally, CD/tie-in campaigns, and Pokémon Center birthday distribution.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Pikachu, Mew, Mewtwo, Surfing Pikachu, Flying Pikachu, No.1/No.2/No.3 Trainer, Pokémon Illustrator, Trade Please!, _____'s Pikachu, and several starter or gym-owner promo rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for this source slice are led by Ken Sugimori, Mitsuhiro Arita, Toshinao Aoki, Atsuko Nishida, Miki Tanaka, Keiji Kinebuchi, Sumiyoshi Kizuki, Benimaru Itoh, Takumi Akabane, Hiromichi Sugiyama, Imakuni?, Tomokazu Komiya, Nobuyuki Habu, and Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "This source slice matters because it makes early Japanese Pokémon visible as public contact rather than sealed-set order: magazine inserts, contests, rail campaigns, CDs, calendars, and birthdays all became card distribution before English Base Set arrived.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_promo_aggregate_source_slice_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "single product membership",
+            "Base No Rarity proof",
+            "complete distribution taxonomy"
+          ],
+          "steps": [
+            "Treat this release family as an aggregate source slice, not as one sealed product, one release day, or one distribution channel.",
+            "Preserve source-row order, row id, card name, illustrator, and any known distribution note before routing a want or seller offer.",
+            "Treat the local/PokéCardex 'Sans rareté' signal as a source-rarity/no-rarity-display label for these promo rows, not as a Japanese Base Set No Rarity claim.",
+            "Because symbol_status is mixed, ask for row-level evidence before using missing-symbol language in a human-facing summary.",
+            "Do not collapse CoroCoro inserts, JR Stamp Rally, illustration contests, Trade Please, All Card Calendar, Pokémon Center birthday, or trophy/prize distributions into generic 'Japanese promo'."
+          ],
+          "summary": "This is a pre-English promo contact map; row-level distribution route matters more than a single set name.",
+          "trigger": "A listing, want, or binder import references Japanese unnumbered promos, old-back promos, CoroCoro promos, Sans rareté, or pre-English Japanese promo cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Before the set, the contact map",
+        "why_it_matters": "These promos are Pokémon leaking into the world through every available door. A magazine page, a train stamp rally, a CD campaign, an illustration contest, a birthday counter: each one left a card behind. The slice is messy because the history was alive before it was orderly, and that mess is exactly what makes it valuable to an agent.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "single-product release identity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "ミュウ",
+        "romaji": "Mew",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+        "catalog_row_id": "005"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+          "title": "Local Japanese pre-English promo row: Mew 005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_47)",
+          "title": "Bulbapedia: Mew (Wizards Promo 47)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 005 as Mew in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Ken Sugimori illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Japanese Unnumbered Promotional Mew print was first available on an insert in the February 1997 issue of CoroCoro Comic, released January 15, 1997, and that another regular-stock print was later released through the JR East Pokémon Stamp Rally in August 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits this Mew row to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew 005 matters because it shows early promo Pokémon as a media-contact object: mythical species, magazine insert, and later railway campaign all sit near the same card identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_mew_005_glossy_stamp_rally_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "which physical stock a seller has"
+          ],
+          "steps": [
+            "Confirm source-slice row 005 and Mew name before routing this as the pre-English unnumbered promo row.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone to distinguish stock or distribution route.",
+            "Ask whether the copy is the glossy CoroCoro insert route or the later JR East Pokémon Stamp Rally regular-stock route when that distinction matters.",
+            "Do not collapse this row into English Wizards Promo 47, Ancient Mew, Shining Mew, or later Japanese Mew promo rows.",
+            "Treat 'Sans rareté' as source-row rarity display, not as Base No Rarity evidence."
+          ],
+          "summary": "Mew 005 needs route/stock questions: CoroCoro glossy and JR Stamp Rally regular-stock context should stay legible.",
+          "trigger": "A listing, want, or binder import says Japanese promo Mew, glossy Mew, CoroCoro Mew, JR Stamp Rally Mew, or unnumbered Mew."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mythical card enters through paper and rail",
+        "why_it_matters": "Mew 005 is perfect early-Pokémon weirdness. The mythical Pokémon does not just arrive in a set; it slips through CoroCoro as an insert, then reappears through a train-stamp campaign. That is exactly the kind of contact history a collector's agent needs to preserve.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+      "type": "card",
+      "context": {
+        "name_en": "Surfing Pikachu",
+        "name_ja": "なみのりピカチュウ",
+        "romaji": "Naminori Pikachu",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "catalog_row_id": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+          "title": "Local Japanese pre-English promo row: Surfing Pikachu 014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Surfing_Pikachu_(Wizards_Promo_28)",
+          "title": "Bulbapedia: Surfing Pikachu (Wizards Promo 28)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 014 as Surfing Pikachu in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Toshinao Aoki illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that Surfing Pikachu was first available in Japan as an Unnumbered Promotional card on a two-card insert with Imakuni? in the September 1997 issue of CoroCoro Comic, released August 15, 1997, and that another Japanese copy was offered through a later CoroCoro mail-in prize draw.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Surfing Pikachu 014 to Toshinao Aoki.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Surfing Pikachu 014 matters because it shows Pikachu becoming a gag, mini-myth, and promo mascot before English promo culture had fully caught up.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_surfing_pikachu_014_vs_016_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "steps": [
+            "Confirm source-slice row 014 and Surfing Pikachu name before routing this row.",
+            "Record Toshinao Aoki as the local illustrator credit.",
+            "Separate row 014 from row 016, which is another Surfing Pikachu row in the same aggregate source slice.",
+            "Ask for distribution evidence if a seller claims CoroCoro insert, two-card insert with Imakuni?, or later mail-in prize draw provenance.",
+            "Do not collapse Surfing Pikachu into ordinary Pikachu, Flying Pikachu, English Wizards Promo 28, or later Surfing Pikachu reprints."
+          ],
+          "summary": "Surfing Pikachu has repeated promo routes and multiple local rows; row 014 should not merge with row 016 or ordinary Pikachu.",
+          "trigger": "A listing, want, or binder import says Surfing Pikachu, Japanese Surfing Pikachu, CoroCoro Surfing Pikachu, or unnumbered Surfing Pikachu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu catches a wave before the world arrives",
+        "why_it_matters": "Surfing Pikachu feels like Pokémon discovering that promos can be playful folklore. It is not just Pikachu with different attacks; it is Pikachu as a little summer story, passed through CoroCoro and remembered because the joke was good enough to become permanent.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:032",
+      "type": "card",
+      "context": {
+        "name_en": "Pokémon Illustrator",
+        "name_ja": "ポケモンイラストレーター",
+        "romaji": "Pokemon Illustrator",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:032",
+        "catalog_row_id": "032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:032",
+          "title": "Local Japanese pre-English promo row: Pokémon Illustrator 032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Illustrator_(CoroCoro_promo)",
+          "title": "Bulbapedia: Pokémon Illustrator (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Shogakukan source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 032 as Pokémon Illustrator in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Atsuko Nishida illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.variant",
+          "text": "Bulbapedia says Pokémon Illustrator was awarded to selected winning entrants across three illustration contests publicized in CoroCoro Comic, with the first contest announced in the November 1997 issue released October 15, 1997.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Bulbapedia credit Pokémon Illustrator to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pokémon Illustrator matters because it makes the act of drawing Pokémon itself into a card credential: the contest winner becomes officially recognized inside the TCG object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_pokemon_illustrator_contest_trophy_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete copy-count proof"
+          ],
+          "steps": [
+            "Confirm source-slice row 032 and Pokémon Illustrator name before routing this as the contest trophy row.",
+            "Record Atsuko Nishida as illustrator and preserve CoroCoro illustration-contest distribution context.",
+            "Do not collapse Pokémon Illustrator into Pikachu, ____'s Pikachu, No.1 Trainer, or ordinary promo Trainer rows.",
+            "If a seller claims contest provenance or copy count, require external evidence; this catalog row is not a possession or authenticity proof.",
+            "Treat pen-symbol / Illustrator-title discussion as evidence-request context, not as a catalog guarantee about a submitted physical card."
+          ],
+          "summary": "Pokémon Illustrator is a contest-award credential row; provenance claims require stronger evidence than catalog membership.",
+          "trigger": "A listing, want, or binder import says Pokémon Illustrator, Pikachu Illustrator, CoroCoro Illustrator, contest trophy, or row 032."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The card that crowns drawing itself",
+        "why_it_matters": "Pokémon Illustrator is not just rare-card lore; it is the franchise looking back at the children and artists making Pokémon visible. Atsuko Nishida drew the credential, CoroCoro carried the contest, and the prize tells the winner: your illustration belongs inside this world now.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
+      "type": "card",
+      "context": {
+        "name_en": "Trade Please!",
+        "name_ja": "とりかえっこプリーズ！",
+        "romaji": "Torikaekko Please!",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
+        "catalog_row_id": "036"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:036",
+          "title": "Local Japanese pre-English promo row: Trade Please! 036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 036 as Trade Please! in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Imakuni? illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.variant",
+          "text": "Bulbapedia identifies Trade Please! as a Japanese Unnumbered Promotional card tied to the Trade Please campaign; Bulbapedia's 1996-2005 page lists the campaign window as February 10-July 31, 1998.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Trade Please! to Imakuni?.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Trade Please! matters because it is literally a card about exchange, emerging from a campaign that turned trading behavior into promo provenance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_trade_please_campaign_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "campaign participation proof"
+          ],
+          "steps": [
+            "Confirm source-slice row 036 and Trade Please! name before routing this as the campaign promo row.",
+            "Record Imakuni? as the local illustrator credit and preserve the Trade Please campaign context.",
+            "Do not collapse this row into Imakuni?, Dance! Neo Imakuni?, or generic Trainer promo rows.",
+            "If a seller claims original campaign mail-in provenance or associated CD/flyer provenance, request separate evidence.",
+            "Treat campaign context as historical route information, not as proof that a submitted physical card came from that route."
+          ],
+          "summary": "Trade Please! is a campaign artifact; route claims need evidence beyond catalog row membership.",
+          "trigger": "A listing, want, or binder import says Trade Please!, Torikaekko Please, Imakuni, campaign promo, or row 036."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A promo about the act of trading",
+        "why_it_matters": "Trade Please! is almost too perfect for this project. It is a card born from a campaign about exchange, carrying Imakuni?'s strange performance energy, and it turns the social behavior around cards into a card itself. The market is already inside the object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+      "type": "card",
+      "context": {
+        "name_en": "_____'s Pikachu",
+        "name_ja": "＿＿＿のピカチュウ",
+        "romaji": "____ no Pikachu",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+        "catalog_row_id": "053"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:053",
+          "title": "Local Japanese pre-English promo row: _____'s Pikachu 053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/%27s_Pikachu_(Wizards_Promo_24)",
+          "title": "Bulbapedia: _____'s Pikachu (Wizards Promo 24)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/%27s_Pikachu_(Pok%C3%A9mon_Center_promo)",
+          "title": "Bulbapedia: _____'s Pikachu (Pokémon Center promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Pokémon Center source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 053 as _____'s Pikachu in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Kagemaru Himeno illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that _____'s Pikachu was first released in Japan as an Unnumbered Promotional card with Kagemaru Himeno artwork, included in copies of the All Card Calendar released November 5, 1998.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia separately documents a Pokémon Center promo version of _____'s Pikachu distributed to birthday visitors at the Tokyo Pokémon Center, which creates an important branch not to merge into the All Card Calendar row.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog and Bulbapedia's Wizards Promo 24 page credit the All Card Calendar lineage of _____'s Pikachu to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "_____'s Pikachu matters because it makes ownership and birthday ritual visible on the card face; the blank name is a social field, not just a title.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_birthday_pikachu_calendar_vs_center_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "birthday distribution proof"
+          ],
+          "steps": [
+            "Confirm source-slice row 053 and _____'s Pikachu name before routing this as the All Card Calendar lineage row.",
+            "Record Kagemaru Himeno as the local illustrator credit for this row.",
+            "Separate the All Card Calendar lineage from the Tokyo Pokémon Center birthday visitor promo branch.",
+            "Do not collapse this row into ordinary Pikachu, Surfing Pikachu, Flying Pikachu, or English Wizards Promo 24 without preserving language/distribution context.",
+            "If a seller claims Pokémon Center birthday distribution or original calendar provenance, request separate evidence."
+          ],
+          "summary": "_____'s Pikachu carries owner/birthday ritual, but calendar and Pokémon Center branches must stay separate.",
+          "trigger": "A listing, want, or binder import says Birthday Pikachu, _____'s Pikachu, owner's Pikachu, All Card Calendar, or Pokémon Center birthday promo."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The blank where a person enters",
+        "why_it_matters": "_____'s Pikachu is one of the clearest early signs that Pokémon cards were becoming social objects. The blank name makes room for a person, a birthday, a calendar, a visit. It is a Pikachu card, but it is also a tiny form waiting for a human life to touch it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
+        "row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json#row:jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
+          "title": "Local Japanese pre-English promo row: Pikachu 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(TCG)",
+          "title": "Bulbapedia: Pikachu (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level promo distribution proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 001 as Pikachu in the pre-English Unnumbered Promotional source slice, with a Sans rareté rarity signal and Ken Sugimori illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Pikachu TCG page documents Pikachu as a long-running TCG subject with many card appearances; this supports treating a generic Pikachu query as insufficiently specific without row, language, and distribution context.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pikachu 001 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu 001 matters less as a single settled provenance claim and more as the search trap every agent must learn: the mascot name is powerful, but not specific enough to buy or sell safely.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_unnumbered_pikachu_001_generic_name_trap_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Pikachu variant separation"
+          ],
+          "steps": [
+            "Confirm source-slice row 001 before routing this as the local pre-English unnumbered Pikachu row.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use that credit alone to distinguish among early Pikachu rows.",
+            "Do not collapse this row into Surfing Pikachu, Flying Pikachu, _____'s Pikachu, glossy Pikachu, W-stamped Pikachu, English Base Pikachu, or later promo Pikachu rows.",
+            "If a listing says only 'Japanese promo Pikachu,' ask for image, source row, distribution claim, and whether the card is a named variant.",
+            "Treat 'Sans rareté' as a source-row signal, not Base No Rarity proof."
+          ],
+          "summary": "Pikachu 001 is a mascot-name trap: row, language, and distribution route must be explicit before an agent acts.",
+          "trigger": "A listing, want, or binder import says Japanese promo Pikachu, unnumbered Pikachu, old-back Pikachu, or row 001."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot name is not enough",
+        "why_it_matters": "Pikachu 001 is humble compared with Illustrator or Birthday Pikachu, but it teaches the most important agent lesson in the slice. 'Pikachu' is a magnet, not an identity. The catalog has to slow the human and the agent down until route, row, and variant come back into focus.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

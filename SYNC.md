@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifteenth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json`.
+  Japanese pre-English unnumbered promotional source slice is now a
+  hand-authored release dossier, with Mew 005, Surfing Pikachu 014,
+  Pokemon Illustrator 032, Trade Please! 036, _____'s Pikachu 053, and
+  Pikachu 001 promoted from generated baseline to sourced card dossiers.
+  The pass frames the slice as a contact-history map before English Base:
+  CoroCoro inserts and contests, JR Stamp Rally, Trade Please, Pokemon
+  Center birthday context, CD/tie-in routes, and magazine campaign logic
+  without pretending the aggregate is one sealed product or one release day.
+  Added special identification rails for aggregate-source-slice boundaries,
+  local/PokeCardex "Sans rarete" not being Japanese Base No Rarity proof,
+  Mew glossy versus Stamp Rally route context, Surfing Pikachu 014 versus
+  016, Pokemon Illustrator contest-prize trophy boundaries, Trade Please
+  campaign context, Birthday Pikachu calendar versus Pokemon Center branch,
+  and generic Pikachu name traps. Sources: local Japanese pre-English promo
+  slice, PokeCardex UPC, Bulbapedia unnumbered promotional card pages, and
+  Bulbapedia community pages for Mew, Surfing Pikachu, Pokemon Illustrator,
+  Trade Please!, _____'s Pikachu, and Pikachu. Generated gap moved from
+  193 releases / 4,471 cards to 192 releases / 4,465 cards. Current
+  catalog-history corpus: 22,899 claims, 4,967 sources, corpus hash
+  `b2cb939c8446f8379dbb78330c21a2094d58d6fa8d81bcf61f828bc6f6b272cd`;
+  index hash `69f5b4afd817244a6b0c70aa98f67fd50f37b02c46f10703dcd4aaa401b70f8e`;
+  queue hash `946f3e4749dbb882fb7fec9b7f326f80fa291a8aa30172a7820cf78d1b4f3101`.
 - `[passive]` 2026-06-19 · Codex — completed the fourteenth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/skyridge_v0_1.json`.
