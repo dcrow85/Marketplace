@@ -55,6 +55,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-ninth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/expansion_sheet_2_red_tranche_v0_1.json`.
+  Expansion Sheet Series 2 Red now has a hand-authored release dossier plus
+  ten high-gravity anchor card dossiers: Koffing 003, Moltres 005, Lapras 010,
+  Articuno 012, Raichu 013, Zapdos 018, Aerodactyl 029, Ditto 032,
+  Master Ball 034, and Guard Spec 036. The pass frames Red as glossy
+  vending-sheet assembly where common-rarity surface carries legendary birds,
+  beloved Kanto anchors, Trainer/object rows, and a wide early artist bench.
+  Added `special_identification_instructions` requiring agents to preserve
+  Expansion Sheet Series 2 Red / 拡張シート 第2弾 赤版, June 17 1998 date,
+  row numbers, glossy vending-sheet physical format, Common rarity signal,
+  source-scoped artist credits, and symbol-status no/not-Base-No-Rarity
+  boundary before accepting a match. This is intentionally a bounded tranche,
+  not complete 36-row hand-authored coverage. Sources: local Japanese
+  pre-English release file, Pokellector source page, Bulbapedia Vending Machine
+  artist-caption metadata, and the local pre-English symbol-status matrix.
+  Generated gap moved from 139 releases / 4,001 cards to 138 releases / 3,991
+  cards. Current catalog-history corpus:
+  `d6473d7f90878b4b1c9c18dd10f863e8c12bf2fd6ac594187fc2062db4dba736`; index:
+  `aa0e1bf1dcd41fad342eee9786968b33ef28a3ae3accb7ce2df1117e48f6530b`; queue:
+  `2decae0cacb9f5c1aa06cb8fe04aecec08770f586f3b6dbd121c739feebf819a`.
+  Audit counts: 23,191 claims, 5,880 sources, 71 hand-authored release dossiers,
+  558 hand-authored card dossiers, and 821 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/expansion_sheet_2_red_tranche_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-eighth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/garura_parent_child_1998_v0_1.json`.
