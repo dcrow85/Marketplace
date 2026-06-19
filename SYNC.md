@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirty-first
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/pokemon_jungle_v0_1.json`. Japanese
+  Pokemon Jungle is now a hand-authored release dossier, with 17 rows
+  promoted from generated baseline to sourced card dossiers: Nidoqueen
+  013, Vileplume 014, Venomoth 015, Victreebel 016, Scyther 017, Pinsir
+  018, Flareon 020, Vaporeon 023, Pikachu 024, Jolteon 026, Eevee 037,
+  Pidgeot 043, Clefable 044, Wigglytuff 045, Kangaskhan 046, Snorlax 047,
+  and Poke Ball 048. The pass frames Pokemon Jungle as the first Japanese
+  sequel forest before the English mirrors: 48 cards, with-rarity-symbol
+  release context, Eevee splitting three ways, Scyther and Snorlax carrying
+  chase gravity, Pikachu proving common does not mean minor, and Poke Ball
+  closing the checklist as apparatus. Added special identification rails for
+  Japanese product name `ポケモンジャングル`, release family
+  `jp_tcg_jungle_19970305`, PMCG2 / 48-row Japanese booster context,
+  all-with-rarity-symbol status, no English holo/non-holo duplicate numbering,
+  and separation from English Jungle, Base Set 2, Legendary Collection,
+  Quick Starter / Vending Scyther memory, and No Rarity / no-symbol folklore.
+  Sources: local Japanese pre-English Pokemon Jungle catalog, Pokellector
+  Pokemon Jungle, TCGdex PMCG2, Bulbapedia Jungle, Bulbapedia Japanese
+  expansions list, local pre-English symbol-status matrix, Japanese
+  Pre-English Release Map, and the local English Jungle history dossier for
+  comparison boundary only. Generated gap moved from 177 releases / 4,323
+  cards to 176 releases / 4,306 cards. Current catalog-history corpus:
+  22,853 claims, 5,391 sources, corpus hash
+  `0ba896391a23d1d52151c831e42faf5f85bd2d083c36fd52d83e75e722eacfcc`;
+  index hash `907312bba9e42dc931725aa35c645be7b16dde33937190e85e2d85866821efa1`;
+  queue hash `58b49c89004a2045de7c3bc0a6a0db6152b322582fdaa3f2637a9ba37800bc9a`.
 - `[passive]` 2026-06-19 · Codex — completed the thirtieth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/gift_pack_v0_1.json`. Japanese Gift
