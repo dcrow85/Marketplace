@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 143: CoroCoro Shining Mew deepened; corpus ee90e4b1)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 144: Fan Club Tropical Present Summer 2001 deepened; corpus aad656f3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-fourth
+  catalog-history pass:
+  `data/catalog-history/source-sets/fan_club_summer_2001_tropical_present_v0_1.json`
+  deepens row 236 / Tropical Present from the Pokemon Card Fan Club Summer
+  2001 route. The pass preserves the same-title print boundary against the
+  early 1999 Atsuko Nishida print and the July/Summer 1999 Naoyo Kimura /
+  Southern Islands Sea-scene print; for the 2001 row it preserves source index
+  236, Japanese title `トロピカルプレゼント`, postcard / Jumbo / Special Card
+  object status, GET Points account function, 200 GET Points threshold,
+  `2001/Summer` e-card-stock marking, Fan Club logo treatment, and Hiromi Ito
+  art credit. The texture is deliberately social: a card-shaped club thank-you,
+  not a normal tournament-legal card. Special ID rails require agents to keep
+  Fan Club route, size/format, logo/marking, artist, and seller-controlled
+  front/back plus marking/size evidence attached before treating a physical
+  object as this row; it must not collapse into Southern Islands cards,
+  Tropical Mega Battle / Tropical Wind material, ordinary Trainer cards, or
+  generic tropical-themed listings. Generated gaps moved to 45 release / 3871
+  card. Current hashes: corpus
+  `aad656f36ef236016abfe6307c3727aa37a9744309f14a09eaf20ce841b5fa48`, index
+  `66b32fe0d9f898b24883ab11ee38e91ae1397dce8817ecd09cacbba63b1d49d4`, queue
+  `02584f682e8bb9cbddd139b81547616177c6e89ddac8c63f2fa5e5f8c9423637`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-forty-third
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_may_2001_shining_mew_v0_1.json`
