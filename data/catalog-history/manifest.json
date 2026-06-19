@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22782,
-    "corpus_hash": "963865879ab1f9ed5e31596a7e1835c28d3e8680711723d26e4c589e7df61558",
-    "generated_card_dossier_count": 4151,
-    "generated_release_dossier_count": 159,
+    "claim_count": 22802,
+    "corpus_hash": "970b2776918c233e3765181d4e2465df8b92948ed3af8ae5219d28ffd29dd77d",
+    "generated_card_dossier_count": 4143,
+    "generated_release_dossier_count": 158,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5591
+    "source_count": 5600
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "fbeebf9b086dacfbf081ac1f327f63f02a8ef123256ff2c1bf07441443a58293",
+    "queue_hash": "cba335486fad3f75b08be34858f36a8cd34eabf758b349b83c861653a4a6ff8e",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T08:02:07Z",
+  "generated_at": "2026-06-19T08:12:12Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "4d61798845c0334a7995e9cf53ff3a2d97ebb622f9572cd726b397c587b1f684",
+    "index_hash": "c77215765151f35faeced097c226d0b647ee69f5c147a1fc41bd0cd2e586a137",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -50,6 +50,7 @@
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
     "data/catalog-history/source-sets/challenge_from_darkness_tranche_v0_1.json",
     "data/catalog-history/source-sets/corocoro_early_1997_v0_1.json",
+    "data/catalog-history/source-sets/crossing_the_ruins_tranche_v0_1.json",
     "data/catalog-history/source-sets/expedition_base_set_v0_1.json",
     "data/catalog-history/source-sets/fossil_v0_1.json",
     "data/catalog-history/source-sets/gift_pack_v0_1.json",

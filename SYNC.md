@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the forty-ninth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/crossing_the_ruins_tranche_v0_1.json`.
+  Japanese Crossing the Ruins... / 遺跡をこえて... now has a hand-authored
+  release dossier plus eight high-gravity / identity-teaching card dossiers:
+  Butterfree 009, Beedrill 010, Yanma 011, Houndour holo 012, Kabutops 018,
+  Dark Raichu secret rare 021, Espeon 029, and Umbreon 040. The pass frames
+  the release as Johto archaeology: bugs, fossils, dark sparks, secret-number
+  pressure, and Eevee branches all feel discovered rather than merely opened.
+  Added `special_identification_instructions` requiring agents to preserve
+  Japanese title 遺跡をこえて..., TCGdex set id `neo2`, card number, local id,
+  rough source-row text, and normalized collector label before accepting
+  famous-species or English Neo Discovery matches. The tranche deliberately
+  keeps rough local source text and normalized labels separate because several
+  rows have messy translated text; clean translated-name authority is not
+  claimed. English Neo Discovery, later reprints, and same-character rows are
+  explicitly not equivalent without set/number evidence. This is a bounded
+  high-gravity tranche, not complete 57-card hand-authored coverage; 49
+  Crossing the Ruins rows remain generated follow-up work. Artists remain
+  intentionally unset because the local Japanese classic rows do not provide
+  illustrator authority. Sources: local Japanese classic Crossing the Ruins
+  release file and TCGdex Japanese set/card payload references. Generated gap
+  moved from 159 releases / 4,151 cards to 158 releases / 4,143 cards. Current
+  catalog-history corpus: 22,802 claims, 5,600 sources, 661 dossiers with
+  special identification instructions, corpus hash
+  `970b2776918c233e3765181d4e2465df8b92948ed3af8ae5219d28ffd29dd77d`;
+  index hash `c77215765151f35faeced097c226d0b647ee69f5c147a1fc41bd0cd2e586a137`;
+  queue hash `cba335486fad3f75b08be34858f36a8cd34eabf758b349b83c861653a4a6ff8e`.
 - `[passive]` 2026-06-19 · Codex — patched
   `Protocol_Card_Dossier_v0.1.md` to make
   `special_identification_instructions` a first-class dossier field and
