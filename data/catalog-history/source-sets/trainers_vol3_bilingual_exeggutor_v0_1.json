@@ -1,0 +1,620 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the Pokemon Card Trainers Vol. 3 glossy Bilingual Exeggutor insert, emphasizing the October 1 1999 magazine/book route, Dr. Ooyama's bilingual joke-card design, the glossy reprint relationship to the rarer non-glossy 1999 Tropical Mega Battle participation version, and image-level identification traps including the Dr. Ooyama tie/crop difference.",
+    "in_scope": [
+      "Pokemon Card Trainers Vol. 3 insert release dossier",
+      "Exeggutor unnumbered promotional row 132",
+      "Bilingual / Glossy variant identity",
+      "Dr. Ooyama illustrator context",
+      "Trainer Magazine versus Tropical Mega Battle distinction",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers Vol. 3 contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999",
+        "name_en": "Pokemon Card Trainers Vol. 3 insert (October 1, 1999)",
+        "release_date": "1999-10-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Trainers magazine/book insert",
+          "Bilingual Exeggutor reprint route",
+          "glossy stock variant",
+          "Dr. Ooyama joke-card authorship",
+          "Tropical Mega Battle participation-card trap",
+          "image-level tie/crop identification"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999:132",
+            "name": "Exeggutor [Bilingual] [Glossy]",
+            "why": "The Trainer Magazine copy is the accessible shadow of one of the great early international prize cards: same bilingual concept, magazine route, glossy finish, and enough image-level differences to make careless matching dangerous.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Dr. Ooyama / Kouichi Ooyama",
+            "row_count": 1,
+            "examples": [
+              "Exeggutor [Bilingual] [Glossy]"
+            ],
+            "why": "Bulbapedia and PokeBoon credit the print to Dr. Ooyama. That matters twice: as the card's playful bilingual authorship, and as a visible identification feature because the Dr. Ooyama figure/crop differs between Trainer Magazine and Tropical Mega Battle versions.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Bilingual Exeggutor print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Trainer Magazine archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Trainers Vol. 3 insert as a one-row unnumbered promotional source group containing Exeggutor at source index 132.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list identifies source row 132 as Exeggutor [Bilingual] [Glossy], Grass, distributed through Pokemon Card Trainers Vol. 3 insert on October 1, 1999.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "PokeBoon identifies the same print as Exeggutor [Bilingual] [Glossy], Pokemon Card Trainers Vol. 3, distribution date October 1, 1999, and marks it as a book/unpeeled object.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit the Exeggutor promotional print to Dr. Ooyama.",
+          "sources": [
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia notes that this Exeggutor is one of only two cards with Japanese text and English translations below it, giving rise to the Bilingual Exeggutor collector name.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Elite Fourum documents that the Trainer Magazine glossy print can be separated from the Tropical Mega Battle non-glossy print by image details around Dr. Ooyama, especially the tie/crop, not only by gloss and color.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The release matters because it made a scarce international-event idea available through a magazine route, while leaving enough variant detail that agents must respect both access and provenance.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pokemon Card Trainers Vol. 3 route, source index 132, Bilingual / Glossy signal, Dr. Ooyama credit, magazine/book insert identity, and non-equivalence with the non-glossy Tropical Mega Battle participation print before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol3_bilingual_exeggutor_glossy_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Bilingual Exeggutor, Exeggutor, Pokemon Card Trainers Vol. 3, Trainer Magazine, glossy, unpeeled, Dr. Ooyama, Tropical Mega Battle, non-glossy, participation card, tie difference, image crop, Evolutions, or card number 103.",
+          "summary": "Identify the Trainer Magazine Vol. 3 Exeggutor by glossy magazine-insert route and Dr. Ooyama/crop details before trusting the Bilingual Exeggutor name.",
+          "steps": [
+            "Confirm release route: Pokemon Card Trainers Vol. 3 insert, October 1, 1999.",
+            "Preserve row identity as source index 132 and card name Exeggutor [Bilingual] [Glossy].",
+            "Confirm glossy / magazine insert / book-unpeeled context where seller evidence allows.",
+            "Check Dr. Ooyama credit and compare the Dr. Ooyama figure/crop/tie area when distinguishing from the Tropical Mega Battle print.",
+            "Separate the non-glossy Tropical Mega Battle participation version unless provenance and image details support that route.",
+            "Separate Evolutions / CP6, standard Exeggutor, Wind from the Sea Exeggutor, and other Exeggutor rows by number, set, stock, and route.",
+            "Request front/back photos, stock/gloss evidence, and if sealed/unpeeled, magazine/book context separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Tropical Mega Battle equivalence",
+            "non-glossy participation-card proof",
+            "Evolutions equivalence",
+            "ordinary Exeggutor equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Trainer Magazine Vol. 3 Exeggutor: the bilingual trophy idea comes home in gloss",
+        "why_it_matters": "This card is a beautiful little fork in the archive. The non-glossy Tropical Mega Battle version belongs to the Hawaii table, where Japanese and American children met across language. The glossy Trainer Magazine version carries that same bilingual joke-card idea into a reader object. It is more available, but not less meaningful: it shows Media Factory re-circulating tournament magic through the magazine apparatus, and it teaches agents that access route, finish, and even the tiny Dr. Ooyama tie/crop detail can matter as much as the name Exeggutor.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "complete Trainer Magazine archive",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: Pokemon Card Trainers Vol. 3 Exeggutor row 132",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 132",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Exeggutor_(Tropical_Mega_Battle_Promo)",
+          "title": "Bulbapedia: Exeggutor (Tropical Mega Battle Promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://www.elitefourum.com/t/distinguishing-trainer-magazine-and-tropical-mega-battle-bilingual-exeggutor/29431",
+          "title": "Elite Fourum: Distinguishing Trainer Magazine and Tropical Mega Battle Bilingual Exeggutor",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete variant census"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_reference",
+          "ref": "https://pokeboon.com/trainers_exeggutor-bilingual-glossy_promo/",
+          "title": "PokeBoon: Exeggutor [Bilingual] [Glossy] Promo, Pokemon Card Trainers Vol. 3",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999:132",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999",
+        "row_id": "jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999:132",
+        "name_en": "Exeggutor",
+        "variant_label": "Bilingual / Glossy",
+        "source_index": "132"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Bilingual Japanese/English text",
+          "glossy Trainer Magazine print",
+          "Dr. Ooyama artwork",
+          "Tropical Mega Battle variant trap",
+          "image-level crop/tie distinction",
+          "Exeggutor name collision"
+        ],
+        "artist": "Dr. Ooyama / Kouichi Ooyama",
+        "collector_texture_note": "Exeggutor row 132 is the glossy Pokemon Card Trainers Vol. 3 print. The name Bilingual Exeggutor is not enough; stock, route, and Dr. Ooyama image details matter.",
+        "signals": [
+          "132",
+          "Exeggutor",
+          "Bilingual",
+          "Glossy",
+          "Pokemon Card Trainers Vol. 3",
+          "Dr. Ooyama",
+          "Trainer Magazine",
+          "Tropical Mega Battle variant trap"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "official print run"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Exeggutor, source index 132, with Bilingual / Glossy variant signal in the Pokemon Card Trainers Vol. 3 insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is unnumbered promotional Pokemon Card Trainers Vol. 3 insert with Bilingual / Glossy variant label, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit the Exeggutor promotional print to Dr. Ooyama.",
+          "sources": [
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.art",
+          "text": "Elite Fourum identifies the Dr. Ooyama figure, especially tie/crop differences, as a way to distinguish Trainer Magazine glossy copies from Tropical Mega Battle non-glossy copies in images.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says the card is known as Bilingual Exeggutor because Japanese text is printed with English translations below it.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Trainer Magazine Vol. 3 row is the glossy magazine/book route, while the Tropical Mega Battle participation print is the rarer non-glossy event route.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The card matters because its bilingual layout turns the 1999 international Pokemon moment into visible card text, then the Trainer Magazine route circulates that memory beyond the original Hawaii event.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "For row 132, agents should preserve Pokemon Card Trainers Vol. 3 route, Bilingual / Glossy signal, Dr. Ooyama credit, glossy magazine/book stock, and non-equivalence with the non-glossy Tropical Mega Battle participation print before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "exeggutor_132_trainers_vol3_bilingual_glossy_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Bilingual Exeggutor, Exeggutor, Pokemon Card Trainers Vol. 3, Trainer Magazine, glossy, Dr. Ooyama, Ooyama tie, crop difference, Tropical Mega Battle, non-glossy, participation card, Evolutions, CP6, Wind from the Sea, or source index 132.",
+          "summary": "Match Exeggutor row 132 by Trainer Magazine Vol. 3 glossy route and Dr. Ooyama variant details before trusting the Bilingual Exeggutor name.",
+          "steps": [
+            "Start with row identity: source index 132, Exeggutor [Bilingual] [Glossy].",
+            "Confirm Pokemon Card Trainers Vol. 3 insert route and October 1, 1999 date.",
+            "Confirm glossy stock / magazine-book insert context where seller evidence permits.",
+            "Check Dr. Ooyama credit and the Dr. Ooyama figure/crop/tie area before distinguishing it from the Tropical Mega Battle non-glossy print.",
+            "Separate the non-glossy Tropical Mega Battle participation version unless provenance and image details support that route.",
+            "Separate Evolutions/CP6, Wind from the Sea Exeggutor, standard Exeggutor, and unrelated Exeggutor rows by set/number/stock/route.",
+            "Request front/back photos and stock/gloss evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Tropical Mega Battle equivalence",
+            "non-glossy participation-card proof",
+            "Evolutions equivalence",
+            "ordinary Exeggutor equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Bilingual Exeggutor 132: the glossy copy with a route of its own",
+        "why_it_matters": "Collectors chase the Hawaii story, but this magazine print has its own kind of magic. It is a reader-accessible echo of the international table: Japanese and English stacked together, Dr. Ooyama grinning from the art, and a glossy finish that says this object came through Pokemon Card Trainers rather than straight from the Tropical Mega Battle floor. The agent has to care about that distinction because the romance is close enough to mislead you.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_132_pok_mon_card_trainers_vol_3_insert_october_1_1999.json",
+          "title": "Local Japanese unnumbered promo catalog row: Exeggutor 132",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 132",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Exeggutor_(Tropical_Mega_Battle_Promo)",
+          "title": "Bulbapedia: Exeggutor (Tropical Mega Battle Promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://www.elitefourum.com/t/distinguishing-trainer-magazine-and-tropical-mega-battle-bilingual-exeggutor/29431",
+          "title": "Elite Fourum: Distinguishing Trainer Magazine and Tropical Mega Battle Bilingual Exeggutor",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete variant census"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_reference",
+          "ref": "https://pokeboon.com/trainers_exeggutor-bilingual-glossy_promo/",
+          "title": "PokeBoon: Exeggutor [Bilingual] [Glossy] Promo, Pokemon Card Trainers Vol. 3",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

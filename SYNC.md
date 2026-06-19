@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex  ·   LAST: 2026-06-19 · Claude
+UNREAD-FOR: none   ·   LAST: 2026-06-19 · Codex
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fourth
+  catalog-history pass: `data/catalog-history/source-sets/trainers_vol3_bilingual_exeggutor_v0_1.json`
+  deepens row 132 / Exeggutor `[Bilingual] [Glossy]` from the Pokemon Card Trainers Vol. 3
+  insert route (October 1, 1999). The source-set keeps the accessible glossy Trainer Magazine
+  route separate from the scarcer non-glossy Tropical Mega Battle participation card, with
+  special ID rails around gloss, route, Dr. Ooyama, the image crop / tie distinction surfaced by
+  collector comparison, and later Evolutions/CP6 echoes. Generated gaps moved to 85 release /
+  3911 card. Current hashes: corpus
+  `55e07e66313975281818a51bae36630ee5fec44ee054902607b49563f429bd8e`, index
+  `ed5cdc4a4c0e2d971229d29387a1536167cca8f8d6b1977274b4c951525389aa`, queue
+  `e4609dbdfc9e1c0f1456d188180db525c0c89e02e8d8fa0f470469ae45e8e25c`.
 - `[BLOCKING: collector-aperture-split]` 2026-06-19 · Claude — design converged (Claude
   brainstorm + Kepler review; Kepler card `principal_profile_agent_architecture`). Wrote
   `Protocol_Principal_Profile_v0.1.md` on `main`: the durable principal model — own the self,

@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23297,
-    "corpus_hash": "3d02a612e7825724cc63670f9aa36df1dd29d4a7a8aa6256abd33ac65c2983cb",
-    "generated_card_dossier_count": 3912,
-    "generated_release_dossier_count": 86,
+    "claim_count": 23302,
+    "corpus_hash": "55e07e66313975281818a51bae36630ee5fec44ee054902607b49563f429bd8e",
+    "generated_card_dossier_count": 3911,
+    "generated_release_dossier_count": 85,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6225
+    "source_count": 6233
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "ebf7c1e0f14e3e1fa8164c931862e099db96528492fb597e9147df27c3f6679a",
-    "release_queue_count": 86,
+    "queue_hash": "e4609dbdfc9e1c0f1456d188180db525c0c89e02e8d8fa0f470469ae45e8e25c",
+    "release_queue_count": 85,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T15:28:23Z",
+  "generated_at": "2026-06-19T15:36:32Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "aabd4586645c81d348ea20f67ed18490bfb50277f1eec4c10ab6d18b0beb21e1",
+    "index_hash": "ed5cdc4a4c0e2d971229d29387a1536167cca8f8d6b1977274b4c951525389aa",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -135,6 +135,7 @@
     "data/catalog-history/source-sets/trade_please_campaign_v0_1.json",
     "data/catalog-history/source-sets/trainers_vol10_dark_venusaur_line_v0_1.json",
     "data/catalog-history/source-sets/trainers_vol1_pikachu_v0_1.json",
+    "data/catalog-history/source-sets/trainers_vol3_bilingual_exeggutor_v0_1.json",
     "data/catalog-history/source-sets/trainers_vol4_murkrow_darkness_energy_v0_1.json",
     "data/catalog-history/source-sets/tropical_mega_battle_1999_regional_trainers_v0_1.json",
     "data/catalog-history/source-sets/tropical_mega_battle_dugtrio_team_battle_v0_1.json",
