@@ -55,6 +55,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_best_photo_contest_v0_1.json`.
+  Japanese CoroCoro Best Photo Contest now has complete five-row hand-authored
+  coverage for source indices 096-100: Bulbasaur 096, Gyarados 097, Magikarp
+  098, Poliwag 099, and Pikachu 100. The pass frames the group as fan media
+  becoming card memory: CoroCoro as an aperture where magazine participation,
+  familiar Pokemon faces, and unnumbered promo source rows become collectible
+  provenance. Added `special_identification_instructions` requiring agents to
+  preserve the CoroCoro Best Photo Contest distribution/source-group note, source
+  index, parent Japanese unnumbered WotC promo continuation slice, absence of a
+  printed set number, and absence of row-level Japanese name authority before
+  accepting a match. Because the source rows are unnumbered, source index and
+  distribution note are the audit handles. The campaign boundary remains
+  source-derived, not official product-boundary proof beyond the promotion note.
+  Artists remain intentionally unset because the primary source rows do not
+  provide illustrator authority. Sources: local Japanese unnumbered WotC promo
+  release file and Bulbapedia raw wikitext reference captured by the catalog.
+  Generated gap moved from 150 releases / 4,042 cards to 149 releases / 4,037
+  cards. Current catalog-history corpus:
+  `c7a5712fba7329c82c9362c2a795e03ee2905404d386cbc487f0f3495b2ad7cb`; index:
+  `508ed90a488008ba63b2cb3d84b55c5464a191c8fcbc659b8730c8076c63ba11`; queue:
+  `b96ce2217ad0802fc5b0e0ef9fbc7d2dcb1038397c6bdf408d083b6409f09309`. Audit
+  counts: 23,076 claims, 5,715 sources, 60 hand-authored release dossiers, 512
+  hand-authored card dossiers, and 771 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_best_photo_contest_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/wind_from_the_sea_tranche_v0_1.json`.
