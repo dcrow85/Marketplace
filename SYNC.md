@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-sixth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/trainers_vol1_pikachu_v0_1.json`. The
+  Pokemon Card Trainers Vol. 1 insert source slice now has hand-authored release
+  and card coverage for Pikachu row 094. The pass frames the card as a
+  specialist-magazine / camera-marked mascot object rather than generic Pikachu:
+  Trainers Vol. 1 route, May 28 1999 date, source index 094, glossy Japanese
+  print context, lower-right camera graphic, Gakuji Nomoto source-reference
+  credit, and Wizards Promo 26 / Snap / ANA / CoroCoro / No Rarity comparison
+  traps all remain legible. Added bespoke `special_identification_instructions`
+  requiring agents to preserve route, source index, glossy surface, camera tell,
+  and non-equivalence with English Wizards Promo 26, Pokemon Snap shorthand, ANA
+  Pikachu, CoroCoro Pikachu, Base/No Rarity Pikachu, and later Pikachu rows
+  before accepting a match. Sources: local Japanese unnumbered promo release
+  file, Bulbapedia raw unnumbered-promo row, Bulbapedia Pikachu (Wizards Promo
+  26), and Pokumon first-design promo visual reference. Generated gap moved from
+  98 releases / 3,924 cards to 97 releases / 3,923 cards. Current
+  catalog-history corpus:
+  `0cb33e241827619b388378e2fb461dc85b25bd401777b86492546f97d2aee423`;
+  index: `ac29f5a8903a93fda1dcbbd81a282950941e7a488183c6d565a128d519af0e3c`;
+  queue: `5cc7bb7e5643f792f7fecf7b4f4f642342a338bdf9ada959fb558eea1c401508`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-fifth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_june_1999_togepi_v0_1.json`.
