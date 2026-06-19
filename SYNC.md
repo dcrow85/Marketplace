@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 159: How-to-Play 1996 non-glossy pair deepened; corpus 3dd7c258)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 160: Latest How-to-Play Asobikata pair deepened; corpus 65cbbc61)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixtieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json`
+  deepens the November 13 1998 Easily Understand How to Play Pokemon Cards:
+  Latest Edition / Asobikata pair: Diglett 054 and Dugtrio 055. The pass frames
+  the pair as a second how-to-play book route: less mascot sparkle than the
+  1996 Pikachu/Jigglypuff book, more apparatus, with a small evolutionary line
+  teaching the game and later resurfacing through Pokemon Web / e-Card memory.
+  It preserves the Japanese names and romaji, Miki Tanaka paired illustrator
+  credit, Asobikata collector nickname, and book-route context. Special ID
+  rails separate the 1998 Latest Edition book from the 1996 How-to-Play
+  Pikachu/Jigglypuff route, original Asobikata prints from Pokemon Web/e-Card
+  reprints, ordinary Diglett/Dugtrio rows, and Dugtrio Team Battle / phone-card
+  / event objects; book, sealed, slab, and cert stories remain provenance
+  evidence, not possession, authenticity, completeness, price truth, or
+  spendability. Generated gaps moved to 29 release / 3850 card. Current hashes:
+  corpus
+  `65cbbc61e5eefc6fbeea31a0a82d97f1b83f0219cdc051d534e1a67975105925`,
+  index `6a90c5b6881820975bb0929bf5f951857f746bebdb16cc53ab9e61e86cacfd21`,
+  queue `236075fd1f529cfc36cccbc06cb70eba226fdac99fd7890b39d94bddb5833cc9`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/how_to_play_book_1996_promos_v0_1.json`
