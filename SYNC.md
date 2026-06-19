@@ -2369,6 +2369,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `np`. Output: 18 release catalogs / 1,789 card rows, with source hashes, bounded
   external image witnesses, non-claims, manifest, and audit. Japanese post-1999 through
   2003 is still open.
+- `[passive]` 2026-06-19 · Codex — completed the seventy-ninth catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/sixty_four_mario_stadium_best_photo_contest_v0_1.json`.
+  64 Mario Stadium Best Photo Contest now has complete five-row hand-authored coverage
+  for Koffing row 101, Charmander row 102, Articuno row 103, Squirtle row 104, and
+  Chansey row 105. The pass frames the release as Pokemon Snap player vision made
+  card-shaped: TV Tokyo / 64 Mario Stadium, Sticker Station postcards, save-data
+  verification, and tiny winner-distribution prize cards where the photograph replaces
+  the usual studio illustration. Added `special_identification_instructions` requiring
+  agents to preserve 64 Mario Stadium route, Pokemon Snap photo-credit identity,
+  camera-symbol print, bottom-right Best Photo Contest Winners Prize Card text where
+  applicable, row 101-105 identity, 15-copy/20-copy source tension where present, and
+  Base/Fossil/phone-card/CoroCoro/reprint non-equivalence before accepting a match.
+  Photo-credit coverage is explicit: Natsu Sato for Koffing, Tsukasa Hosono for
+  Charmander, Yui Tanaka for Articuno, Miyuki Ogino for Squirtle, and Kaori Samoya for
+  Chansey, all treated as source-page metadata rather than seller-card proof. Sources:
+  local Japanese unnumbered promo release file, Bulbapedia Illustration contests page,
+  and Bulbapedia card pages for Koffing, Charmander, Articuno, Squirtle, and Chansey as
+  bounded database references. Generated gap moved from 129 releases / 3,955 cards to
+  128 releases / 3,950 cards. Current catalog-history corpus:
+  `30f145305929d3729af948437971a04cbaa2cb1caf8f2c7e8270693d3be2177a`; index:
+  `3afe62466a9cad61abb36bc6058408395f8de04a5fc42e62d38848a2051b831a`; queue:
+  `caa60d648fdaedff04224021ff6b3b2a5658e36a86c2cb5f14dbb789daa57827`. Audit counts:
+  23,235 claims, 6,027 sources, 81 hand-authored release dossiers, 599 hand-authored
+  card dossiers, and 851 dossiers with special identification instructions. Validation
+  passed: `python3 -m json.tool
+  data/catalog-history/source-sets/sixty_four_mario_stadium_best_photo_contest_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-18 · Codex — added a row-level
   `special_identification_instructions` rail for conflict-heavy catalog rows, starting
   with the first CoroCoro glossy Pikachu. The parent UPC source-slice row and child
