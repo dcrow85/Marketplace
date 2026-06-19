@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the fifty-fifth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/split_earth_tranche_v0_1.json`.
+  Japanese Split Earth / 裂けた大地 now has a hand-authored release dossier
+  plus thirteen high-gravity / identity-teaching card dossiers: Ledian holo
+  007, Crobat holo 009, Flareon holo 017, Raikou holo 039, Alakazam holo 043,
+  Aerodactyl 059, Umbreon rare 071, Umbreon holo 072, Underground Expedition
+  080, Crystal Shard 081, Golem late-number row 089, Kabutops late-number row
+  090, and Ho-Oh secret rare 091. The pass frames Split Earth as fracture made
+  collectible: underground routes, fossil returns, duplicate Umbreon desire,
+  artifact cards, and a Ho-Oh at the map edge all make terrain, number, and
+  row boundary part of the story. Added `special_identification_instructions`
+  requiring agents to preserve Japanese title 裂けた大地, TCGdex set id `E4`,
+  card number, local id, rough source-row text, normalized collector label,
+  duplicate-name row context, and the 88 official / 91 total row distinction
+  before accepting famous-species or English Aquapolis matches. Umbreon
+  071/072 are explicitly separate rows until number and rarity evidence are
+  checked; late-number Golem, Kabutops, and Ho-Oh keep their map-edge status
+  visible. The tranche deliberately keeps rough local source text and
+  normalized labels separate; clean translated-name authority is not claimed.
+  This is a bounded high-gravity tranche, not complete 91-card hand-authored
+  coverage; 78 Split Earth rows remain generated follow-up work. Artists
+  remain intentionally unset because the local Japanese classic rows do not
+  provide illustrator authority. Sources: local Japanese classic Split Earth
+  release file and TCGdex Japanese set/card payload references. Generated gap
+  moved from 153 releases / 4,084 cards to 152 releases / 4,071 cards. Current
+  catalog-history corpus: 22,995 claims, 5,678 sources, 739 dossiers with
+  special identification instructions, corpus hash
+  `cda612b2feb2cd1dabc6966775f5160fffc0a9deb87c927a9f807e45386994ad`;
+  index hash `a218d4cb8907e6e1cab2fc4f3e6379b6c840118be8d57c667113dc3177517822`;
+  queue hash `6de8160dd45cd0c08d227d57bd3765ce7da0dd4504d8deff0b193b3f2197266f`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-fourth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/pokemon_card_web_tranche_v0_1.json`.

@@ -1,0 +1,2553 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Split Earth / 裂けた大地 within the catalog-history deepening pass.",
+    "in_scope": [
+      "Split Earth release dossier",
+      "selected fracture / duplicate-name / artifact / late-number identity-teaching card dossiers",
+      "special identification rails for exact Japanese E4 row identity"
+    ],
+    "not_claiming": [
+      "complete 91-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_split_earth_20020823",
+      "type": "release",
+      "context": {
+        "name_en": "Split Earth",
+        "name_ja": "裂けた大地",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "release_date": "2002-08-23"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json",
+          "title": "Local Japanese classic catalog: Split Earth",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E4",
+          "title": "TCGdex Japanese set endpoint: E4 / Split Earth",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Split Earth / 裂けた大地 with an August 23, 2002 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 91 total rows for Split Earth, while the same metadata records 88 official rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Split Earth is modeled as a Japanese main expansion in the ポケモンカードe series, using TCGdex set id E4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Split Earth matters because the e-Card frame turns rupture into collection grammar: underground movement, fossil return, duplicate-name Eevee rows, and a mythic late-number Ho-Oh all make the set feel physically split.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Umbreon 071, Umbreon 072, Ho-Oh 091, Ledian 007, Crobat 009, and Flareon 017; this tranche also hand-authors Raikou, Alakazam, Aerodactyl, Underground Expedition, Crystal Shard, Golem, and Kabutops because they teach duplicate-name, terrain, artifact, and map-edge identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 裂けた大地, TCGdex set id E4, card number, local id, rough source-row text, normalized collector label, duplicate-name row context, and the 88 official / 91 total row distinction before treating a famous species or English Aquapolis match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "split_earth_release_exact_set_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Split Earth, 裂けた大地, Aquapolis, E4, Umbreon, Ho-Oh, underground, crystal shard, or late-number row.",
+          "summary": "Keep Split Earth as Japanese E4 / 裂けた大地 with duplicate-name and row-map identity; do not collapse it into English Aquapolis or same-character rows.",
+          "steps": [
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Preserve duplicate-name rows such as Umbreon 071/072 as distinct until number and rarity evidence are checked.",
+            "Preserve the 88 official / 91 total row distinction when discussing late-number rows.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Split Earth — when fracture becomes collection grammar",
+        "why_it_matters": "Split Earth makes the e-Card landscape feel unstable in the best way: underground routes, fossil returns, duplicated Umbreon desire, artifact cards, and a Ho-Oh at the map edge. It is a set where the agent must learn that terrain, number, and row boundary are part of the story.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 91-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-007",
+      "type": "card",
+      "context": {
+        "name_en": "Ledian holo",
+        "name_ja": "レディアン",
+        "normalized_label": "Ledian holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-007",
+        "card_number": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-007",
+          "title": "Local Japanese classic catalog row: Ledian holo / Split Earth #007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-007",
+          "title": "TCGdex Japanese card endpoint: E4-007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-007 as Split Earth / 裂けた大地 card #007, with rough source-row text 'レディアン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Ledian holo' as a normalized collector label while preserving the rough local source-row text 'レディアン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-007 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Ledian holo matters in this tranche because it opens the set’s high-gravity bug/lightness lane: a fragile sky creature inside a release named for broken ground.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Ledian holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #007, local id E4-007, rough source-row text 'レディアン', and normalized label 'Ledian holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-007_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Ledian holo, レディアン, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 007.",
+          "summary": "Preserve Ledian holo as Japanese Split Earth / 裂けた大地 #007, local id E4-007, source-row text 'レディアン'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-007 and local id E4-007.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 007, rough source-row text 'レディアン', and normalized collector label 'Ledian holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ledian holo — Split Earth #007",
+        "why_it_matters": "Ledian holo helps Split Earth feel like fracture made collectible: it opens the set’s high-gravity bug/lightness lane: a fragile sky creature inside a release named for broken ground. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-009",
+      "type": "card",
+      "context": {
+        "name_en": "Crobat holo",
+        "name_ja": "クロバット",
+        "normalized_label": "Crobat holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-009",
+        "card_number": "009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-009",
+          "title": "Local Japanese classic catalog row: Crobat holo / Split Earth #009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-009",
+          "title": "TCGdex Japanese card endpoint: E4-009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-009 as Split Earth / 裂けた大地 card #009, with rough source-row text 'クロバット'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Crobat holo' as a normalized collector label while preserving the rough local source-row text 'クロバット'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-009 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Crobat holo matters in this tranche because it gives the split landscape a cave-and-speed feeling, a Johto evolution that reads like motion through fracture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Crobat holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #009, local id E4-009, rough source-row text 'クロバット', and normalized label 'Crobat holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-009_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Crobat holo, クロバット, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 009.",
+          "summary": "Preserve Crobat holo as Japanese Split Earth / 裂けた大地 #009, local id E4-009, source-row text 'クロバット'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-009 and local id E4-009.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 009, rough source-row text 'クロバット', and normalized collector label 'Crobat holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Crobat holo — Split Earth #009",
+        "why_it_matters": "Crobat holo helps Split Earth feel like fracture made collectible: it gives the split landscape a cave-and-speed feeling, a Johto evolution that reads like motion through fracture. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-017",
+      "type": "card",
+      "context": {
+        "name_en": "Flareon holo",
+        "name_ja": "フレアロン",
+        "normalized_label": "Flareon holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-017",
+        "card_number": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-017",
+          "title": "Local Japanese classic catalog row: Flareon holo / Split Earth #017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-017",
+          "title": "TCGdex Japanese card endpoint: E4-017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-017 as Split Earth / 裂けた大地 card #017, with rough source-row text 'フレアロン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Flareon holo' as a normalized collector label while preserving the rough local source-row text 'フレアロン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-017 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Flareon holo matters in this tranche because it brings Eevee warmth into a harsh terrain set and helps make the duplicate Eevee-family rows matter.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Flareon holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #017, local id E4-017, rough source-row text 'フレアロン', and normalized label 'Flareon holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-017_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Flareon holo, フレアロン, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 017.",
+          "summary": "Preserve Flareon holo as Japanese Split Earth / 裂けた大地 #017, local id E4-017, source-row text 'フレアロン'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-017 and local id E4-017.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 017, rough source-row text 'フレアロン', and normalized collector label 'Flareon holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Flareon holo — Split Earth #017",
+        "why_it_matters": "Flareon holo helps Split Earth feel like fracture made collectible: it brings Eevee warmth into a harsh terrain set and helps make the duplicate Eevee-family rows matter. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-039",
+      "type": "card",
+      "context": {
+        "name_en": "Raikou holo",
+        "name_ja": "ライコウ",
+        "normalized_label": "Raikou holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-039",
+        "card_number": "039"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-039",
+          "title": "Local Japanese classic catalog row: Raikou holo / Split Earth #039",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-039",
+          "title": "TCGdex Japanese card endpoint: E4-039",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-039 as Split Earth / 裂けた大地 card #039, with rough source-row text 'ライコウ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Raikou holo' as a normalized collector label while preserving the rough local source-row text 'ライコウ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-039 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Raikou holo matters in this tranche because it adds storm pressure to the broken-earth theme, turning terrain into weather and electricity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Raikou holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #039, local id E4-039, rough source-row text 'ライコウ', and normalized label 'Raikou holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-039_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Raikou holo, ライコウ, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 039.",
+          "summary": "Preserve Raikou holo as Japanese Split Earth / 裂けた大地 #039, local id E4-039, source-row text 'ライコウ'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-039 and local id E4-039.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 039, rough source-row text 'ライコウ', and normalized collector label 'Raikou holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Raikou holo — Split Earth #039",
+        "why_it_matters": "Raikou holo helps Split Earth feel like fracture made collectible: it adds storm pressure to the broken-earth theme, turning terrain into weather and electricity. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-043",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam holo",
+        "name_ja": "アラカザム",
+        "normalized_label": "Alakazam holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-043",
+        "card_number": "043"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-043",
+          "title": "Local Japanese classic catalog row: Alakazam holo / Split Earth #043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-043",
+          "title": "TCGdex Japanese card endpoint: E4-043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-043 as Split Earth / 裂けた大地 card #043, with rough source-row text 'アラカザム'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Alakazam holo' as a normalized collector label while preserving the rough local source-row text 'アラカザム'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-043 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Alakazam holo matters in this tranche because it gives the set old psychic authority, one of those Kanto minds resurfacing inside the e-Card landscape.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Alakazam holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #043, local id E4-043, rough source-row text 'アラカザム', and normalized label 'Alakazam holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-043_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Alakazam holo, アラカザム, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 043.",
+          "summary": "Preserve Alakazam holo as Japanese Split Earth / 裂けた大地 #043, local id E4-043, source-row text 'アラカザム'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-043 and local id E4-043.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 043, rough source-row text 'アラカザム', and normalized collector label 'Alakazam holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Alakazam holo — Split Earth #043",
+        "why_it_matters": "Alakazam holo helps Split Earth feel like fracture made collectible: it gives the set old psychic authority, one of those Kanto minds resurfacing inside the e-Card landscape. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-059",
+      "type": "card",
+      "context": {
+        "name_en": "Aerodactyl",
+        "name_ja": "アエロダクチル",
+        "normalized_label": "Aerodactyl",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-059",
+        "card_number": "059"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-059",
+          "title": "Local Japanese classic catalog row: Aerodactyl / Split Earth #059",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-059",
+          "title": "TCGdex Japanese card endpoint: E4-059",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-059 as Split Earth / 裂けた大地 card #059, with rough source-row text 'アエロダクチル'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Aerodactyl' as a normalized collector label while preserving the rough local source-row text 'アエロダクチル'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-059 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Aerodactyl matters in this tranche because it makes fossil memory airborne, the perfect creature for a release about earth opening and old things returning.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Aerodactyl, preserve Japanese title 裂けた大地, TCGdex set id E4, card #059, local id E4-059, rough source-row text 'アエロダクチル', and normalized label 'Aerodactyl'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-059_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aerodactyl, アエロダクチル, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 059.",
+          "summary": "Preserve Aerodactyl as Japanese Split Earth / 裂けた大地 #059, local id E4-059, source-row text 'アエロダクチル'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-059 and local id E4-059.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 059, rough source-row text 'アエロダクチル', and normalized collector label 'Aerodactyl' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Aerodactyl — Split Earth #059",
+        "why_it_matters": "Aerodactyl helps Split Earth feel like fracture made collectible: it makes fossil memory airborne, the perfect creature for a release about earth opening and old things returning. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-071",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon rare",
+        "name_ja": "Umbreon",
+        "normalized_label": "Umbreon rare",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-071",
+        "card_number": "071"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-071",
+          "title": "Local Japanese classic catalog row: Umbreon rare / Split Earth #071",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-071",
+          "title": "TCGdex Japanese card endpoint: E4-071",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-071 as Split Earth / 裂けた大地 card #071, with rough source-row text 'Umbreon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Umbreon rare' as a normalized collector label while preserving the rough local source-row text 'Umbreon'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-071 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon rare matters in this tranche because it is the first of two Umbreon rows and teaches the agent that same name is not same card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Umbreon rare, preserve Japanese title 裂けた大地, TCGdex set id E4, card #071, local id E4-071, rough source-row text 'Umbreon', and normalized label 'Umbreon rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Umbreon rare is part of the two-row Umbreon split in this release; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-071_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Umbreon rare, Umbreon, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 071.",
+          "summary": "Preserve Umbreon rare as Japanese Split Earth / 裂けた大地 #071, local id E4-071, source-row text 'Umbreon'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-071 and local id E4-071.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 071, rough source-row text 'Umbreon', and normalized collector label 'Umbreon rare' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Umbreon rare — Split Earth #071",
+        "why_it_matters": "Umbreon rare helps Split Earth feel like fracture made collectible: it is the first of two Umbreon rows and teaches the agent that same name is not same card. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-072",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon holo",
+        "name_ja": "Umbreon",
+        "normalized_label": "Umbreon holo",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-072",
+        "card_number": "072"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-072",
+          "title": "Local Japanese classic catalog row: Umbreon holo / Split Earth #072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-072",
+          "title": "TCGdex Japanese card endpoint: E4-072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-072 as Split Earth / 裂けた大地 card #072, with rough source-row text 'Umbreon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Umbreon holo' as a normalized collector label while preserving the rough local source-row text 'Umbreon'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-072 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon holo matters in this tranche because it is the higher-attention Umbreon row, but its identity depends on number and rarity signal, not just the name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Umbreon holo, preserve Japanese title 裂けた大地, TCGdex set id E4, card #072, local id E4-072, rough source-row text 'Umbreon', and normalized label 'Umbreon holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Umbreon holo is part of the two-row Umbreon split in this release; number and rarity signal must stay attached because same name is not same row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-072_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Umbreon holo, Umbreon, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 072.",
+          "summary": "Preserve Umbreon holo as Japanese Split Earth / 裂けた大地 #072, local id E4-072, source-row text 'Umbreon'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-072 and local id E4-072.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 072, rough source-row text 'Umbreon', and normalized collector label 'Umbreon holo' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Umbreon holo — Split Earth #072",
+        "why_it_matters": "Umbreon holo helps Split Earth feel like fracture made collectible: it is the higher-attention Umbreon row, but its identity depends on number and rarity signal, not just the name. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-080",
+      "type": "card",
+      "context": {
+        "name_en": "Underground Expedition",
+        "name_ja": "地下遠征",
+        "normalized_label": "Underground Expedition",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-080",
+        "card_number": "080"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-080",
+          "title": "Local Japanese classic catalog row: Underground Expedition / Split Earth #080",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-080",
+          "title": "TCGdex Japanese card endpoint: E4-080",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-080 as Split Earth / 裂けた大地 card #080, with rough source-row text '地下遠征'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Underground Expedition' as a normalized collector label while preserving the rough local source-row text '地下遠征'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-080 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Underground Expedition matters in this tranche because it names the set’s movement directly: going below the surface is a play action and a collector metaphor.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Underground Expedition, preserve Japanese title 裂けた大地, TCGdex set id E4, card #080, local id E4-080, rough source-row text '地下遠征', and normalized label 'Underground Expedition'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-080_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Underground Expedition, 地下遠征, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 080.",
+          "summary": "Preserve Underground Expedition as Japanese Split Earth / 裂けた大地 #080, local id E4-080, source-row text '地下遠征'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-080 and local id E4-080.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 080, rough source-row text '地下遠征', and normalized collector label 'Underground Expedition' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Underground Expedition — Split Earth #080",
+        "why_it_matters": "Underground Expedition helps Split Earth feel like fracture made collectible: it names the set’s movement directly: going below the surface is a play action and a collector metaphor. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-081",
+      "type": "card",
+      "context": {
+        "name_en": "Crystal Shard",
+        "name_ja": "クリスタルシャード",
+        "normalized_label": "Crystal Shard",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-081",
+        "card_number": "081"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-081",
+          "title": "Local Japanese classic catalog row: Crystal Shard / Split Earth #081",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-081",
+          "title": "TCGdex Japanese card endpoint: E4-081",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-081 as Split Earth / 裂けた大地 card #081, with rough source-row text 'クリスタルシャード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Crystal Shard' as a normalized collector label while preserving the rough local source-row text 'クリスタルシャード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-081 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Crystal Shard matters in this tranche because it is the interface-object version of the split-earth fantasy, a small artifact that makes terrain feel collectible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Crystal Shard, preserve Japanese title 裂けた大地, TCGdex set id E4, card #081, local id E4-081, rough source-row text 'クリスタルシャード', and normalized label 'Crystal Shard'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-081_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Crystal Shard, クリスタルシャード, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 081.",
+          "summary": "Preserve Crystal Shard as Japanese Split Earth / 裂けた大地 #081, local id E4-081, source-row text 'クリスタルシャード'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-081 and local id E4-081.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 081, rough source-row text 'クリスタルシャード', and normalized collector label 'Crystal Shard' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Crystal Shard — Split Earth #081",
+        "why_it_matters": "Crystal Shard helps Split Earth feel like fracture made collectible: it is the interface-object version of the split-earth fantasy, a small artifact that makes terrain feel collectible. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-089",
+      "type": "card",
+      "context": {
+        "name_en": "Golem late-number row",
+        "name_ja": "ゴーレム",
+        "normalized_label": "Golem late-number row",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-089",
+        "card_number": "089"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-089",
+          "title": "Local Japanese classic catalog row: Golem late-number row / Split Earth #089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-089",
+          "title": "TCGdex Japanese card endpoint: E4-089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-089 as Split Earth / 裂けた大地 card #089, with rough source-row text 'ゴーレム'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Golem late-number row' as a normalized collector label while preserving the rough local source-row text 'ゴーレム'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-089 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Golem late-number row matters in this tranche because it is a literal mountain body at the row-map edge, a rock creature that also teaches official/total count caution.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Golem late-number row, preserve Japanese title 裂けた大地, TCGdex set id E4, card #089, local id E4-089, rough source-row text 'ゴーレム', and normalized label 'Golem late-number row'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Golem late-number row sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 88 and total count 91, so agents must preserve the number rail instead of treating it as an ordinary row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-089_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Golem late-number row, ゴーレム, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 089.",
+          "summary": "Preserve Golem late-number row as Japanese Split Earth / 裂けた大地 #089, local id E4-089, source-row text 'ゴーレム'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-089 and local id E4-089.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 089, rough source-row text 'ゴーレム', and normalized collector label 'Golem late-number row' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Golem late-number row — Split Earth #089",
+        "why_it_matters": "Golem late-number row helps Split Earth feel like fracture made collectible: it is a literal mountain body at the row-map edge, a rock creature that also teaches official/total count caution. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-090",
+      "type": "card",
+      "context": {
+        "name_en": "Kabutops late-number row",
+        "name_ja": "カブトップス",
+        "normalized_label": "Kabutops late-number row",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-090",
+        "card_number": "090"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-090",
+          "title": "Local Japanese classic catalog row: Kabutops late-number row / Split Earth #090",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-090",
+          "title": "TCGdex Japanese card endpoint: E4-090",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-090 as Split Earth / 裂けた大地 card #090, with rough source-row text 'カブトップス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Kabutops late-number row' as a normalized collector label while preserving the rough local source-row text 'カブトップス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-090 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Kabutops late-number row matters in this tranche because it lets fossil violence sit beyond the normal official-count boundary, making exact number preservation essential.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Kabutops late-number row, preserve Japanese title 裂けた大地, TCGdex set id E4, card #090, local id E4-090, rough source-row text 'カブトップス', and normalized label 'Kabutops late-number row'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Kabutops late-number row sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 88 and total count 91, so agents must preserve the number rail instead of treating it as an ordinary row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-090_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kabutops late-number row, カブトップス, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 090.",
+          "summary": "Preserve Kabutops late-number row as Japanese Split Earth / 裂けた大地 #090, local id E4-090, source-row text 'カブトップス'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-090 and local id E4-090.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 090, rough source-row text 'カブトップス', and normalized collector label 'Kabutops late-number row' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Kabutops late-number row — Split Earth #090",
+        "why_it_matters": "Kabutops late-number row helps Split Earth feel like fracture made collectible: it lets fossil violence sit beyond the normal official-count boundary, making exact number preservation essential. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_split_earth_20020823:E4-091",
+      "type": "card",
+      "context": {
+        "name_en": "Ho-Oh secret rare",
+        "name_ja": "ho-oh",
+        "normalized_label": "Ho-Oh secret rare",
+        "release_family_id": "jp_tcg_split_earth_20020823",
+        "local_id": "E4-091",
+        "card_number": "091"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_split_earth_20020823.json#row:jp_tcg_split_earth_20020823:E4-091",
+          "title": "Local Japanese classic catalog row: Ho-Oh secret rare / Split Earth #091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E4-091",
+          "title": "TCGdex Japanese card endpoint: E4-091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_split_earth_20020823:E4-091 as Split Earth / 裂けた大地 card #091, with rough source-row text 'ho-oh'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Ho-Oh secret rare' as a normalized collector label while preserving the rough local source-row text 'ho-oh'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_split_earth_20020823:E4-091 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Ho-Oh secret rare matters in this tranche because it is the mythic capstone beyond the ordinary map: a legendary bird rising over fractured terrain.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Ho-Oh secret rare, preserve Japanese title 裂けた大地, TCGdex set id E4, card #091, local id E4-091, rough source-row text 'ho-oh', and normalized label 'Ho-Oh secret rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Ho-Oh secret rare sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 88 and total count 91, so agents must preserve the number rail instead of treating it as an ordinary row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_split_earth_20020823_E4-091_e4_split_earth_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Ho-Oh secret rare, ho-oh, Split Earth, 裂けた大地, Aquapolis, e-Card, E4, Umbreon, Ho-Oh, or card 091.",
+          "summary": "Preserve Ho-Oh secret rare as Japanese Split Earth / 裂けた大地 #091, local id E4-091, source-row text 'ho-oh'; do not accept famous-name, English Aquapolis, or duplicate-name matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_split_earth_20020823:E4-091 and local id E4-091.",
+            "Require Japanese title 裂けた大地 or TCGdex set id E4 before naming this exact catalog row.",
+            "Preserve card number 091, rough source-row text 'ho-oh', and normalized collector label 'Ho-Oh secret rare' separately.",
+            "For duplicate-name rows such as Umbreon 071/072, preserve number and rarity signal before treating them as the same card.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Aquapolis equivalence",
+            "duplicate-name equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ho-Oh secret rare — Split Earth #091",
+        "why_it_matters": "Ho-Oh secret rare helps Split Earth feel like fracture made collectible: it is the mythic capstone beyond the ordinary map: a legendary bird rising over fractured terrain. The agent should keep the Japanese E4 row identity attached before letting the desire story run.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
