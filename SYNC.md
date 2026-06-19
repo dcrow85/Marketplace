@@ -55,6 +55,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the thirtieth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/gift_pack_v0_1.json`. Japanese Gift
+  Pack is now a hand-authored release dossier, with 12 component rows
+  promoted from generated baseline to sourced card dossiers: Venusaur
+  starter_a-011, Charizard starter_a-021, Blastoise starter_a-032, Gyarados
+  starter_a-034, Raichu starter_a-038, Zapdos starter_a-042, Mewtwo
+  starter_a-050, Pidgeotto starter_a-066, Super Energy Removal
+  starter_a-088, Charizard starter_b-021, Blastoise starter_b-032, and
+  Super Energy Removal starter_b-088. The pass frames Gift Pack as the
+  first game night in a box: two starter paths, playmat, counters, poison
+  markers, instructions, and unresolved special-card slots around the
+  launch-card grammar. Added special identification rails for the
+  product-component context, starter_a / starter_b lane preservation,
+  the 122-card product claim, two Series 1 Starter Pack components,
+  two unresolved special-card slots, unverified mixed missing-symbol risk,
+  no fixed deck-list inference, and no sealed-unit contents inference.
+  Sources: local Gift Pack component catalog, local PokemonWiki selected
+  rendered-lines snapshot, PokemonWiki Gift Pack, Bulbapedia Original TCG
+  Era merchandise, Japanese Pre-English Release Map, and local Series 1
+  Starter Pack possible-content pool. Generated gap moved from 178
+  releases / 4,335 cards to 177 releases / 4,323 cards. Current
+  catalog-history corpus: 22,852 claims, 5,316 sources, corpus hash
+  `fd78c2c6e20fcbbbba7088b0a2f219f18a441fe2ea573fd3c63e344091070bd4`;
+  index hash `8a84c068f2dc28d43605d16608c6a3498a725945b09bc7f1a6cc571411be3526`;
+  queue hash `39da67e437562f75e48b2cbea4bd2b6486f190108cefb0864955fa7b787ea9b4`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-ninth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/jungle_v0_1.json`. English Jungle is

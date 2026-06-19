@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 22851,
-    "corpus_hash": "4efa22f3f7232ba3eeeeff14f00d9ae5b6f93cbd2accbabefabf18207b2be43d",
-    "generated_card_dossier_count": 4335,
-    "generated_release_dossier_count": 178,
+    "claim_count": 22852,
+    "corpus_hash": "fd78c2c6e20fcbbbba7088b0a2f219f18a441fe2ea573fd3c63e344091070bd4",
+    "generated_card_dossier_count": 4323,
+    "generated_release_dossier_count": 177,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 5263
+    "source_count": 5316
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "277fc7eb24d743bf8eacccab7532774f0765e0dbd61408e14ecf03938defaf3d",
+    "queue_hash": "39da67e437562f75e48b2cbea4bd2b6486f190108cefb0864955fa7b787ea9b4",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T05:27:10Z",
+  "generated_at": "2026-06-19T05:34:55Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "5186ca830832c0e189ac197c8ad601f279fb48fa0e37eb6e0258ea6ecd00c55f",
+    "index_hash": "8a84c068f2dc28d43605d16608c6a3498a725945b09bc7f1a6cc571411be3526",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -47,6 +47,7 @@
     "data/catalog-history/source-sets/best_of_game_v0_1.json",
     "data/catalog-history/source-sets/expedition_base_set_v0_1.json",
     "data/catalog-history/source-sets/fossil_v0_1.json",
+    "data/catalog-history/source-sets/gift_pack_v0_1.json",
     "data/catalog-history/source-sets/gym_challenge_v0_1.json",
     "data/catalog-history/source-sets/gym_heroes_v0_1.json",
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
