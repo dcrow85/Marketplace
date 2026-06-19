@@ -31,6 +31,33 @@
         "set": "第1弾 拡張パック / No Rarity Base",
         "number": "PMCG1-021"
       },
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "source_refs": [
+            {
+              "source": "Local No Rarity release row",
+              "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:021"
+            }
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Charizard / PMCG1-021.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with later Japanese rarity-symbol Expansion Pack Charizard or English Base Set Charizard."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; absence is a catalog identification cue, not physical-card proof.",
+          "trigger": "Identifying a claimed Japanese No Rarity Charizard."
+        }
+      ],
       "claims": [
         {
           "id": "c1",
@@ -143,6 +170,33 @@
         "set": "第1弾 拡張パック / No Rarity Base",
         "number": "PMCG1-035"
       },
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "source_refs": [
+            {
+              "source": "Local No Rarity release row",
+              "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:035"
+            }
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Pikachu / PMCG1-035.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with glossy CoroCoro Pikachu, How-to-Play Pikachu, Game Boy Pikachu, or English Base Set Pikachu."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; keep it separate from the many early Pikachu promo rows.",
+          "trigger": "Identifying a claimed Japanese No Rarity Pikachu."
+        }
+      ],
       "claims": [
         {
           "id": "c1",
@@ -255,6 +309,37 @@
         "set": "月刊コロコロコミック1996年11月号プロモ",
         "number": "001"
       },
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "glossy_pikachu_illustrator_conflict_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card inspection",
+            "provider metadata is false in all contexts"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia selected source snapshot",
+              "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json"
+            },
+            {
+              "source": "Local CoroCoro glossy Pikachu row",
+              "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json#row:jp_promo_corocoro_first_19961015:001"
+            }
+          ],
+          "steps": [
+            "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
+            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert.",
+            "Preserve PokéCardex's Keiji Kinebuchi value as conflicting provider metadata rather than silently overwriting the conflict.",
+            "Do not merge this with non-glossy, How-to-Play, Game Boy, No Rarity, or other early Pikachu rows."
+          ],
+          "summary": "Identify this as the first CoroCoro glossy Pikachu and keep the illustrator conflict explicit: preferred source credit Ken Sugimori, conflicting provider value Keiji Kinebuchi.",
+          "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
+        }
+      ],
       "claims": [
         {
           "id": "c1",

@@ -88,6 +88,22 @@ def validate_dossier(dossier: dict[str, Any], row_ids: set[str]) -> None:
     if not isinstance(card, dict) or not card.get("name_en"):
         raise ValueError(f"{uid}: card context is required")
 
+    special_instructions = dossier.get("special_identification_instructions")
+    if not isinstance(special_instructions, list):
+        raise ValueError(f"{uid}: special_identification_instructions must be a list")
+    for index, instruction in enumerate(special_instructions):
+        if not isinstance(instruction, dict):
+            raise ValueError(f"{uid}: special_identification_instructions[{index}] must be an object")
+        for key in ("id", "authority_label", "trigger", "summary", "steps", "not_claiming"):
+            if key not in instruction:
+                raise ValueError(f"{uid}: special_identification_instructions[{index}] missing {key}")
+        if instruction["authority_label"] != "legible":
+            raise ValueError(f"{uid}: special_identification_instructions[{index}] must be legible")
+        if not isinstance(instruction["steps"], list) or not instruction["steps"]:
+            raise ValueError(f"{uid}: special_identification_instructions[{index}].steps must be a non-empty list")
+        if not isinstance(instruction["not_claiming"], list) or not instruction["not_claiming"]:
+            raise ValueError(f"{uid}: special_identification_instructions[{index}].not_claiming must be a non-empty list")
+
     sources = dossier.get("sources")
     if not isinstance(sources, list) or not sources:
         raise ValueError(f"{uid}: at least one source is required")
@@ -173,6 +189,9 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
         "dossier_count": len(dossiers),
         "claim_count": claim_count,
         "source_count": source_count,
+        "special_identification_instruction_dossiers": sum(
+            1 for dossier in dossiers if dossier.get("special_identification_instructions")
+        ),
         "coverage_by_dimension": {
             dim: {tier: sum(1 for d in dossiers if d["coverage"].get(dim) == tier) for tier in sorted(COVERAGE_VALUES)}
             for dim in ("art", "release", "history")
