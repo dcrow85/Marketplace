@@ -1,0 +1,1330 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Three-release deepening tranche for the 2000 Japan Rail stamp-rally prize rows: JR West Meowth row 196, JR East silver-course Mewtwo row 197, and JR East gold-course Eevee row 198. The tranche emphasizes rail-network participation, course-specific prize identity, English Wizards Black Star prints released in Japan, non-holo route variants, and traps against CoroCoro/Game Boy/League/Fan Club/Legendary Collection memories.",
+    "in_scope": [
+      "JR West Pokemon Stamp Rally 2000 prize source-slice dossier",
+      "JR East Pokemon Stamp Rally 2000 silver course source-slice dossier",
+      "JR East Pokemon Stamp Rally 2000 gold course source-slice dossier",
+      "Meowth row 196",
+      "Mewtwo row 197",
+      "Eevee row 198",
+      "rail stamp-rally route boundaries",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete JR Stamp Rally archive",
+      "complete station map",
+      "complete stamp booklet ledger",
+      "official copy count",
+      "complete sealed-pack census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p",
+        "name_en": "JR West Pokemon Stamp Rally 2000 prize",
+        "release_date": "2000-07-20/2000-08-27",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "rail stamp-rally participation",
+          "JR West route as card identity",
+          "English Wizards print released in Japan",
+          "non-holo route variant",
+          "Game Boy / CoroCoro / Wizards memory trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p:196",
+            "name": "Meowth",
+            "why": "Meowth is the JR West participation face: an English Wizards #10 print made into a Japanese rail-rally object, where the train route matters more than the familiar cat.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Kagemaru Himeno",
+            "row_count": 1,
+            "examples": [
+              "Meowth"
+            ],
+            "why": "Himeno's Meowth art starts in the Game Boy/Wizards Black Star path, then becomes a JR West rail-rally prize. That movement is the whole assembly story.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Meowth print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete JR West rally archive",
+          "official copy count",
+          "complete station/stamp ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one JR West Pokemon Stamp Rally 2000 prize row: Meowth row 196.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says a non-holo version of the English Meowth print was released in Japan as a promotional card and awarded to passengers for completing the JR West Pokemon Stamp Rally 2000, held on Saturdays, Sundays, and public holidays between July 20 and August 27, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies Meowth Wizards Promo 10 as illustrated by Kagemaru Himeno.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the JR West Japanese promotional copy as a non-holo version of the English print, separate from the earlier Japanese CoroCoro print and the Game Boy Color / Wizards paths.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because rail participation becomes provenance: a familiar English Meowth print entered the Japanese promo catalog through JR West stamp-rally completion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve JR West route, July 20-August 27 2000 weekend/holiday rally window, row 196 identity, English Wizards Promo 10 / non-holo-in-Japan context, Kagemaru Himeno credit, and non-equivalence with CoroCoro Meowth, TCG GB / Wizards holo Meowth, Team Rocket's Meowth, JR East Mewtwo/Eevee courses, and later Meowth memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "JR West Stamp Rally 2000 — Meowth rides the rail network",
+        "why_it_matters": "This is a perfect assembly object. Meowth was already a Game Boy and Wizards memory, but the JR West prize turns the same familiar cat into proof of movement through a railway event. A passenger had to participate in the stamp rally; the prize was not born from a booster pack or ordinary league kit. That makes the route the identity. A good agent should see the English card number, the non-holo Japanese release, the Kagemaru Himeno art, and the JR West map all at once.",
+        "not_claiming": [
+          "complete release history",
+          "complete JR West rally archive",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR West Pokemon Stamp Rally 2000 prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete rally archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 196",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Meowth (Wizards Promo 10)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(Wizards_Promo_10)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_west_stamp_rally_2000_meowth_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says JR West, West Japan Railway Company, Pokemon Stamp Rally 2000, Meowth, ニャース, Nyarth, Wizards Promo 10, GB symbol, non-holo, Kagemaru Himeno, row 196, JR East, Mewtwo, or Eevee.",
+          "summary": "Do not accept a generic Meowth or Wizards #10 match. Preserve JR West Stamp Rally 2000 route and non-holo Japanese promo context first.",
+          "steps": [
+            "Confirm row 196 and JR West Pokemon Stamp Rally 2000 prize route.",
+            "Preserve the July 20-August 27, 2000 weekend/holiday JR West rally window where available.",
+            "Record the card as the English Wizards Promo 10 print released in Japan as a non-holo promotional prize.",
+            "Preserve Kagemaru Himeno art context and the GB-symbol / Game Boy lineage without collapsing into the Game Boy pack-in or CoroCoro print.",
+            "Check against CoroCoro Meowth, Team Rocket's Meowth, English Wizards holo Meowth, JR East Mewtwo/Eevee courses, and later Meowth memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete rally archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s",
+        "name_en": "JR East Pokemon Stamp Rally 2000 silver course prize",
+        "release_date": "2000-08-01/2000-08-20",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "JR East rail stamp-rally course",
+          "silver-course prize boundary",
+          "English Wizards print released in Japan",
+          "Nintendo Power / Christopher Rush route memory",
+          "Ken Sugimori Japanese-print trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s:197",
+            "name": "Mewtwo",
+            "why": "Mewtwo gives the silver course real gravity: a Christopher Rush English Wizards print crossing into a Japanese rail-rally prize lane.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Christopher Rush",
+            "row_count": 1,
+            "examples": [
+              "Mewtwo"
+            ],
+            "why": "Rush, known outside Pokemon through Magic: The Gathering, makes this Mewtwo route feel unusually cross-TCG: English Wizards art becomes a Japanese rail-rally prize.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "credit for the separate Japanese Sugimori Mewtwo print"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete JR East rally archive",
+          "official copy count",
+          "complete station/stamp ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one JR East Pokemon Stamp Rally 2000 silver course prize row: Mewtwo row 197.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the English Mewtwo Wizards Promo 12 print was released in Japan as a promotional card and awarded to passengers for completing the JR East Pokemon Stamp Rally 2000 silver course, held on the network between August 1 and 20, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the English Wizards Promo 12 Mewtwo print to Christopher Rush, while separately showing a Japanese Unnumbered Promotional print with Ken Sugimori art.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the English Mewtwo print was released through Nintendo Power in April 2000 before also being awarded in Japan through JR East's silver course, and later appeared in Legendary Collection.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because Mewtwo's English Wizards route, Nintendo Power memory, Christopher Rush art, and Japanese JR East silver-course prize route all meet in one catalogue identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve JR East silver course route, August 1-20 2000 window, row 197 identity, English Wizards Promo 12 context, Christopher Rush art, Nintendo Power / Legendary Collection boundaries, and non-equivalence with the Ken Sugimori Japanese Mewtwo prints, JR West Meowth, JR East gold-course Eevee, Movie Promo Mewtwo, and later Mewtwo memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "JR East silver course — Mewtwo as rail-rally prize",
+        "why_it_matters": "This Mewtwo is a crossroads. It carries an English Wizards Black Star body, Christopher Rush art, a Nintendo Power memory, and then a Japanese railway prize route. That is exactly the kind of thing a normal checklist makes flat and an agent has to unflatten. The silver course is not decoration. It is the reason this Mewtwo belongs in the Japanese unnumbered promo map at all.",
+        "not_claiming": [
+          "complete release history",
+          "complete JR East rally archive",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR East Pokemon Stamp Rally 2000 silver course prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete rally archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 197",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Mewtwo (Wizards Promo 12)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_2000_mewtwo_silver_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says JR East, East Japan Railway Company, silver course, Pokemon Stamp Rally 2000, Mewtwo, ミュウツー, Wizards Promo 12, Christopher Rush, Nintendo Power, Legendary Collection, Ken Sugimori, row 197, JR West, or Eevee.",
+          "summary": "Do not accept a generic Mewtwo or Wizards #12 match. Preserve JR East silver-course route and English-print-in-Japan context first.",
+          "steps": [
+            "Confirm row 197 and JR East Pokemon Stamp Rally 2000 silver course prize route.",
+            "Preserve the August 1-20, 2000 JR East rally window where available.",
+            "Record the card as English Wizards Promo 12 released in Japan as a silver-course prize.",
+            "Preserve Christopher Rush as the English print artist, and keep Ken Sugimori as separate Japanese-print comparison context only.",
+            "Check against Nintendo Power, Legendary Collection, Japanese Sugimori Mewtwo prints, Movie Promo Mewtwo, JR West Meowth, JR East gold-course Eevee, and later Mewtwo memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete rally archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g",
+        "name_en": "JR East Pokemon Stamp Rally 2000 gold course prize",
+        "release_date": "2000-08-01/2000-08-20",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "JR East rail stamp-rally course",
+          "gold-course prize boundary",
+          "English Wizards print released in Japan",
+          "Fan Club / Pokemon League / rail-route trap",
+          "Aoki/Himeno art boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g:198",
+            "name": "Eevee",
+            "why": "Eevee is the gold-course prize: a beloved evolution Pokemon whose many promo paths make course identity the load-bearing fact.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Kagemaru Himeno",
+            "row_count": 1,
+            "examples": [
+              "Eevee"
+            ],
+            "why": "Himeno's English Wizards Eevee art becomes the JR East gold-course prize body, while Aoki remains the separate Fan Club Japanese print boundary.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "credit for the separate Fan Club Aoki print"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete JR East rally archive",
+          "official copy count",
+          "complete station/stamp ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one JR East Pokemon Stamp Rally 2000 gold course prize row: Eevee row 198.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says a non-holo version of the English Eevee Wizards Promo 11 print was released in Japan as a promotional card and awarded to passengers for completing the JR East Pokemon Stamp Rally 2000 gold course, held on the network between August 1 and 20, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the English Wizards Promo 11 Eevee print to Kagemaru Himeno, while the separate Japanese Fan Club print uses Toshinao Aoki art.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Japanese Fan Club Eevee was available for 500 GET Points, the English Wizards print was available through Pokemon League in June 2000, and the non-holo English print was later awarded through JR East's gold course.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because Eevee's route is unusually easy to launder: Fan Club, Pokemon League, English Wizards, and JR East gold course all orbit the same character but do not mean the same object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve JR East gold course route, August 1-20 2000 window, row 198 identity, English Wizards Promo 11 context, Kagemaru Himeno art, Fan Club / Toshinao Aoki and Pokemon League route boundaries, and non-equivalence with JR West Meowth, JR East silver-course Mewtwo, Fan Club Eevee, Pokemon League Eevee, and later Eevee memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "JR East gold course — Eevee with a course boundary",
+        "why_it_matters": "Eevee is dangerous in the best way for a catalogue: beloved, repeated, reprinted, and route-rich. This row is not just Eevee. It is the gold-course rail prize, a non-holo English Wizards print released in Japan after Fan Club and League paths had already given the same character other bodies. The agent has to feel the character pull, then refuse to let it erase the course boundary.",
+        "not_claiming": [
+          "complete release history",
+          "complete JR East rally archive",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR East Pokemon Stamp Rally 2000 gold course prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete rally archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 198",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Eevee (Wizards Promo 11)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Eevee_(Wizards_Promo_11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_2000_eevee_gold_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says JR East, East Japan Railway Company, gold course, Pokemon Stamp Rally 2000, Eevee, イーブイ, Eievui, Wizards Promo 11, Kagemaru Himeno, Toshinao Aoki, Fan Club, GET Points, Pokemon League, row 198, JR West, or Mewtwo.",
+          "summary": "Do not accept a generic Eevee or Wizards #11 match. Preserve JR East gold-course route and English-print-in-Japan context first.",
+          "steps": [
+            "Confirm row 198 and JR East Pokemon Stamp Rally 2000 gold course prize route.",
+            "Preserve the August 1-20, 2000 JR East rally window where available.",
+            "Record the card as English Wizards Promo 11 released in Japan as a gold-course prize.",
+            "Preserve Kagemaru Himeno as English-print artist; keep Toshinao Aoki as separate Fan Club Japanese-print context only.",
+            "Check against Fan Club Eevee, Pokemon League Eevee, JR East silver-course Mewtwo, JR West Meowth, and later Eevee memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete rally archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p:196",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p",
+        "row_id": "jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p:196",
+        "source_index": "196",
+        "name_en": "Meowth",
+        "name_ja": "ニャース",
+        "romaji": "Nyarth",
+        "release_route": "JR West Pokemon Stamp Rally 2000 prize",
+        "artist": "Kagemaru Himeno"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Kagemaru Himeno",
+        "assembly_themes": [
+          "JR West rail-rally prize",
+          "English Wizards print released in Japan",
+          "non-holo route variant",
+          "GB symbol and Game Boy lineage"
+        ],
+        "collector_texture_note": "Meowth is the participation-cat of the JR West route: familiar art, strange distribution, and a physical rail event doing the identity work.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 196 as Meowth in the JR West Pokemon Stamp Rally 2000 prize source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Meowth Wizards Promo 10 as ニャース Nyarth, a Colorless-type Basic Pokemon card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Meowth Wizards Promo 10 to Kagemaru Himeno.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the JR West prize was a non-holo version of the English print, awarded for completing the JR West Pokemon Stamp Rally 2000.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Meowth matters in this tranche because the card's ordinary charm is transformed by rail-route provenance and GB/Wizards print lineage.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Meowth match, agents should preserve row 196, JR West route, ニャース / Nyarth context, English Wizards Promo 10 non-holo-in-Japan context, Kagemaru Himeno credit, GB-symbol lineage, and non-equivalence with CoroCoro Meowth, Team Rocket's Meowth, English holo pack-in, JR East Mewtwo/Eevee, and later Meowth memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Meowth — the rail-rally cat",
+        "why_it_matters": "Meowth is so easy to recognize that it becomes easy to misread. This row asks the agent to slow down: this is the English Wizards #10 body, non-holo, released in Japan through JR West rail-rally completion. The card is still funny and familiar, but the identity is not just the cat. It is the rail route, the GB symbol lineage, the non-holo Japanese prize body, and Himeno's art all assembled together.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR West Pokemon Stamp Rally 2000 prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_196_wp_west_japan_railway_company_jr_west_pok_mon_stamp_rally_2000_p.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 196",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Meowth (Wizards Promo 10)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth_(Wizards_Promo_10)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_west_stamp_rally_2000_196_meowth_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Meowth, ニャース, Nyarth, JR West, West Japan Railway Company, Stamp Rally 2000, Wizards Promo 10, non-holo, GB symbol, Kagemaru Himeno, or row 196.",
+          "summary": "Meowth must stay bound to row 196 and JR West Stamp Rally 2000 prize route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 196 and JR West Pokemon Stamp Rally 2000 prize context.",
+            "Record Japanese name `ニャース` and romaji `Nyarth`; do not silently replace with a generic Meowth memory.",
+            "Preserve English Wizards Promo 10 non-holo-in-Japan context.",
+            "Preserve Kagemaru Himeno credit and GB-symbol lineage as context, not proof of this exact rail prize by themselves.",
+            "Check against CoroCoro Meowth, Game Boy pack-in / English holo Meowth, Team Rocket's Meowth, JR East Mewtwo/Eevee, and later Meowth memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s:197",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s",
+        "row_id": "jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s:197",
+        "source_index": "197",
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Mewtwo",
+        "release_route": "JR East Pokemon Stamp Rally 2000 silver course prize",
+        "artist": "Christopher Rush"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Christopher Rush",
+        "assembly_themes": [
+          "JR East silver-course prize",
+          "English Wizards print released in Japan",
+          "Nintendo Power route memory",
+          "Magic illustrator crossover"
+        ],
+        "collector_texture_note": "Mewtwo is the silver-course gravity card: an English Wizards/Nintendo Power print with Christopher Rush art, translated into a Japanese railway prize.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 197 as Mewtwo in the JR East Pokemon Stamp Rally 2000 silver course prize source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Mewtwo Wizards Promo 12 as ミュウツー Mewtwo, a Psychic-type Basic Pokemon card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the English Wizards Promo 12 print to Christopher Rush and says he provided new artwork for the English release.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the English Mewtwo print was also released in Japan as a JR East silver-course prize and later reprinted in Legendary Collection.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo matters here because an English Wizards/Nintendo Power body with Magic-adjacent artwork becomes a Japanese rail-rally prize object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Mewtwo match, agents should preserve row 197, JR East silver course route, ミュウツー / Mewtwo name context, Christopher Rush English-print credit, Nintendo Power and Legendary Collection boundaries, and non-equivalence with Ken Sugimori Japanese Mewtwo prints, JR West Meowth, JR East gold-course Eevee, Movie Promo Mewtwo, and later Mewtwo memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Mewtwo — the silver-course crossover",
+        "why_it_matters": "Mewtwo already pulls attention by being Mewtwo. But this row gets more interesting when the route is kept intact: Christopher Rush artwork, English Wizards Promo 12, Nintendo Power memory, and then a JR East silver-course prize in Japan. It is a card where international TCG history and railway participation touch. That is the assembly, and it should not be reduced to the species name.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR East Pokemon Stamp Rally 2000 silver course prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_197_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_s.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 197",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Mewtwo (Wizards Promo 12)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_12)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_2000_197_mewtwo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Mewtwo, ミュウツー, JR East, East Japan Railway Company, silver course, Stamp Rally 2000, Wizards Promo 12, Christopher Rush, Nintendo Power, Legendary Collection, Ken Sugimori, or row 197.",
+          "summary": "Mewtwo must stay bound to row 197 and JR East silver-course route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 197 and JR East Pokemon Stamp Rally 2000 silver course context.",
+            "Record Japanese name `ミュウツー` and romaji `Mewtwo`; do not silently replace with a generic Mewtwo memory.",
+            "Preserve English Wizards Promo 12 / Nintendo Power / Christopher Rush context.",
+            "Keep Ken Sugimori Japanese Mewtwo prints separate unless source evidence points there.",
+            "Check against Legendary Collection, Movie Promo Mewtwo, JR West Meowth, JR East gold-course Eevee, and later Mewtwo memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g:198",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g",
+        "row_id": "jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g:198",
+        "source_index": "198",
+        "name_en": "Eevee",
+        "name_ja": "イーブイ",
+        "romaji": "Eievui",
+        "release_route": "JR East Pokemon Stamp Rally 2000 gold course prize",
+        "artist": "Kagemaru Himeno"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Kagemaru Himeno",
+        "assembly_themes": [
+          "JR East gold-course prize",
+          "English Wizards print released in Japan",
+          "Fan Club and League route trap",
+          "Eevee evolution gravity"
+        ],
+        "collector_texture_note": "Eevee is the gold-course prize and the route trap: the character is loved enough that the agent has to work harder to keep the course identity intact.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 198 as Eevee in the JR East Pokemon Stamp Rally 2000 gold course prize source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Eevee Wizards Promo 11 as イーブイ Eievui, a Colorless-type Basic Pokemon card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the English Wizards Promo 11 Eevee print to Kagemaru Himeno and distinguishes it from the Japanese Fan Club print with Toshinao Aoki artwork.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says a non-holo version of the English Eevee print was released in Japan as a JR East gold-course prize after the Fan Club and Pokemon League routes.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Eevee matters here because character popularity makes route discipline harder: Fan Club, League, and JR East gold-course copies are adjacent memories, not interchangeable proofs.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting an Eevee match, agents should preserve row 198, JR East gold course route, イーブイ / Eievui name context, Kagemaru Himeno English-print credit, Fan Club / Toshinao Aoki and Pokemon League route boundaries, and non-equivalence with JR West Meowth, JR East silver-course Mewtwo, Fan Club Eevee, Pokemon League Eevee, and later Eevee memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Eevee — the gold-course route trap",
+        "why_it_matters": "Eevee is exactly the kind of card people remember before they remember the route. That is the danger and the charm. This one is not just an Eevee promo; it is the JR East gold-course prize, built from the English Wizards print and released in Japan through a rail stamp rally. The same species also has Fan Club, League, and later promo lives. The catalogue has to love the character without letting affection dissolve provenance.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: JR East Pokemon Stamp Rally 2000 gold course prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_198_wp_east_japan_railway_company_jr_east_pok_mon_stamp_rally_2000_g.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 198",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Eevee (Wizards Promo 11)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Eevee_(Wizards_Promo_11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jr_east_stamp_rally_2000_198_eevee_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Eevee, イーブイ, Eievui, JR East, East Japan Railway Company, gold course, Stamp Rally 2000, Wizards Promo 11, Kagemaru Himeno, Toshinao Aoki, Fan Club, Pokemon League, or row 198.",
+          "summary": "Eevee must stay bound to row 198 and JR East gold-course route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 198 and JR East Pokemon Stamp Rally 2000 gold course context.",
+            "Record Japanese name `イーブイ` and romaji `Eievui`; do not silently replace with a generic Eevee memory.",
+            "Preserve English Wizards Promo 11 / Kagemaru Himeno context.",
+            "Keep Toshinao Aoki Fan Club Eevee and Pokemon League Eevee as separate route memories unless source evidence points there.",
+            "Check against Fan Club Eevee, Pokemon League Eevee, JR East silver-course Mewtwo, JR West Meowth, and later Eevee memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

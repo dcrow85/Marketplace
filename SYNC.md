@@ -55,6 +55,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/jr_stamp_rally_2000_west_east_prizes_v0_1.json`.
+  The 2000 rail stamp-rally tranche now has hand-authored coverage for three
+  course-specific prize rows: JR West Meowth row 196, JR East silver-course
+  Mewtwo row 197, and JR East gold-course Eevee row 198. The pass frames the
+  cards as rail-route objects: familiar English Wizards Black Star bodies
+  released in Japan through stamp-rally completion, with JR West / JR East and
+  silver / gold course boundaries doing the identity work. Added
+  `special_identification_instructions` requiring agents to preserve exact rail
+  company/course route, row identity, `ニャース` / Nyarth, `ミュウツー` /
+  Mewtwo, and `イーブイ` / Eievui name context, non-holo English-print-in-Japan
+  context where applicable, Kagemaru Himeno credit for Meowth/Eevee,
+  Christopher Rush credit for the English Mewtwo print, and non-equivalence with
+  CoroCoro Meowth, Team Rocket's Meowth, Game Boy / pack-in Meowth, Fan Club
+  Eevee, Pokemon League Eevee, Ken Sugimori Japanese Mewtwo prints, Movie Promo
+  Mewtwo, Legendary Collection, and later character memories before accepting a
+  match. Sources: local Japanese unnumbered promo release files, Bulbapedia raw
+  unnumbered promotional rows 196-198, and Bulbapedia card pages for Meowth
+  Wizards Promo 10, Mewtwo Wizards Promo 12, and Eevee Wizards Promo 11 as
+  bounded database references. Generated gap moved from 121 releases / 3,937
+  cards to 118 releases / 3,934 cards. Current catalog-history corpus:
+  `c455c405c03b6e8ba8a5e1f32e39b618948b098b5190e36a65214afb55523335`;
+  index: `b7184ae8250312548c7ccc2a4749e8f79406a174d5be8b2e3968bdb6e1df4f1b`;
+  queue: `ba655ffe4b3517ebd11261d84633d9b5e274c39505306fb77a18d4806878ac12`.
+  Audit counts: 23,262 claims, 6,087 sources, 91 hand-authored release
+  dossiers, 615 hand-authored card dossiers, and 862 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/jr_stamp_rally_2000_west_east_prizes_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-sixth catalog-history
   deepening pass in
   `data/catalog-history/source-sets/champion_road_2000_3man_berries_v0_1.json`.
