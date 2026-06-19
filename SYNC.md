@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_july_1999_marill_v0_1.json`.
+  The CoroCoro Comic July 1999 issue insert source slice now has hand-authored
+  release and card coverage for Marill row 108. The pass frames the card as
+  pre-Neo / Pikablu-era anticipation rather than generic Marill: CoroCoro July
+  1999 issue route, June 15 1999 date, source index 108, Japanese Maril /
+  マリル search aid, Ken Sugimori source-reference credit, Japanese Original
+  Series layout, and English Wizards Promo / Neo / ANA comparison traps all
+  remain legible. Added bespoke `special_identification_instructions` requiring
+  agents to preserve source index 108, CoroCoro route, Japanese Original Series
+  layout, and non-equivalence with English Wizards Promo 29, ANA Marill, Neo
+  Genesis / Gold Silver to a New World Marill, and later Marill rows before
+  accepting a match. Sources: local Japanese unnumbered promo release file,
+  Bulbapedia raw unnumbered-promo row, Bulbapedia Marill (Wizards Promo 29),
+  and Pokumon first-design promo visual reference. Generated gap moved from 97
+  releases / 3,923 cards to 96 releases / 3,922 cards. Current catalog-history
+  corpus:
+  `3abf48d829e53f3cde71b1434f17ed61be8854c9b02fd24174b787fb8eed47ec`;
+  index: `01381962bd9ddb6f502bbc5e204e6070f12b8b52e0dfb8a9c606ecc25bc0eee4`;
+  queue: `ec90b81525ba847798567402bcdec2c5e6bf79b545e4f736fb1ba655f907e523`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-sixth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/trainers_vol1_pikachu_v0_1.json`. The
