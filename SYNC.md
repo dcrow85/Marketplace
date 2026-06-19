@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-third
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/tropical_mega_battle_hawaii_1999_imakuni_v0_1.json`.
+  The Tropical Mega Battle Hawaii Games participation-prize row now has
+  hand-authored release and card coverage for Imakuni? source index 130. The
+  pass treats the row as the 1999 Hawaii regular card-stock / non-glossy
+  Imakuni? route rather than generic Imakuni? memory: first Tropical Mega
+  Battle / Hilton Hawaiian Village context, August 25 1999 source note, Photo.
+  Takumi Akabane credit, real-person card image, possible in-costume Confusion
+  Deck handout story, and the Trainer-card Confusion joke remain legible without
+  claiming official copy count, possession, authenticity, condition, price,
+  image rights, or spendability. Added bespoke `special_identification_instructions`
+  so agents must preserve row 130, Hawaii participation route, Non-Glossy /
+  regular-stock signal, Photo. credit, and non-equivalence with the 1997 glossy
+  CoroCoro print, Bessatsu mounted-card prize sheets, Card GB IDs, EX Battle
+  Boost, Generations, BREAK Starter Pack, and later Supporter reprints before
+  accepting a match. Sources: local Japanese unnumbered promo release file,
+  Bulbapedia unnumbered promo row, Bulbapedia Imakuni? page, and Pokumon
+  collector reference. Generated gap moved from 87 releases / 3,913 cards to 86
+  releases / 3,912 cards. Current catalog-history corpus:
+  `3d02a612e7825724cc63670f9aa36df1dd29d4a7a8aa6256abd33ac65c2983cb`;
+  index: `aabd4586645c81d348ea20f67ed18490bfb50277f1eec4c10ab6d18b0beb21e1`;
+  queue: `ebf7c1e0f14e3e1fa8164c931862e099db96528492fb597e9147df27c3f6679a`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-second
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_september_1999_hamachan_slowking_v0_1.json`.
