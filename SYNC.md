@@ -55,6 +55,42 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-first
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/expansion_sheet_1_blue_tranche_v0_1.json`.
+  Japanese Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 now has a
+  hand-authored release dossier plus thirteen high-gravity / artist-and-format
+  anchor card dossiers: Bulbasaur 001, Caterpie 002, Kakuna 005, Nidoran♀ 006,
+  Charmander 013, Squirtle 015, Pikachu 019, Mewtwo 022, Chansey 031, Eevee 032,
+  Snorlax 034, Moon Stone 035, and Fossil Excavation 036. The pass frames the
+  release as glossy vending memory, not pack memory: familiar Kanto names, common
+  rarity signals, row-number discipline, and a crowded artist bench assembled in
+  a vending-sheet body. Added `special_identification_instructions` requiring
+  agents to preserve Japanese title 拡張シート 第1弾 青版, Expansion Sheet Series 1
+  Blue / Vending Series Blue identity, release date, row number, glossy physical
+  format, common rarity signal, artist-caption source, and symbol-status matrix
+  boundary before accepting a match. The symbol-status matrix is now cited in the
+  tranche: `prints_without_rarity_symbol = no`, high confidence, trap consequence
+  "Vending cards are glossy and not the Base No Rarity lane." Artist texture is
+  source-scoped: Nishida, Kusube, Arita, Himeno, Kizuki, Komiya, Turvey,
+  Kinebuchi, and other local credits are catalog/provider metadata, not direct
+  physical-card proof or complete biographies. This is a bounded high-gravity
+  tranche, not complete 36-card hand-authored coverage; 23 Series 1 Blue rows
+  remain generated follow-up work. Sources: local Japanese pre-English release
+  file, local pre-English symbol-status matrix, and local English WotC Aquapolis /
+  Neo Genesis examples for selected artist-footprint context. Generated gap moved
+  from 147 releases / 4,030 cards to 146 releases / 4,017 cards. Current
+  catalog-history corpus:
+  `eaa5c2a5dcde009fdbcc72e36d18e8266b2f7a483ecd6e13bec688d260f4fc9f`; index:
+  `aa3873a29c621ed13a6bc22e3a01b7368246ee8e5db5ecde742475eb9677c23e`; queue:
+  `cdad2463d1fc6f525000195809b535c7777c6bf120f0510099cecbf345d70916`. Audit
+  counts: 23,119 claims, 5,774 sources, 63 hand-authored release dossiers, 532
+  hand-authored card dossiers, and 790 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/expansion_sheet_1_blue_tranche_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixtieth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_december_1998_insert_v0_1.json`.

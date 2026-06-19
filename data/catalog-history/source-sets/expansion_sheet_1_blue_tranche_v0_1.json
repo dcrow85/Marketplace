@@ -1,0 +1,3121 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版.",
+    "in_scope": [
+      "Expansion Sheet Series 1 Blue release dossier",
+      "selected chase, starter, object, and artist-anchor rows",
+      "special identification rails for glossy vending-sheet / non-No-Rarity identity"
+    ],
+    "not_claiming": [
+      "complete 36-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "Base No Rarity proof",
+      "complete artist biography"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323",
+      "type": "release",
+      "context": {
+        "name_en": "Expansion Sheet Series 1 Blue",
+        "name_ja": "拡張シート 第1弾 青版",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "release_date": "1998-03-23"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese pre-English catalog models Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 with a March 23, 1998 release date.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local release file models 36 strict-member rows for Expansion Sheet Series 1 Blue.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local release identifies the product as glossy Vending/Expansion Sheet cards, with Pokellector as the primary source and Bulbapedia card-page caption metadata used for artist-credit texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The pre-English symbol-status matrix marks Expansion Sheet Series 1 Blue as prints_without_rarity_symbol: no, high confidence, with trap consequence that vending cards are glossy and not the Base No Rarity lane.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Series 1 Blue matters because it is Pokemon memory in a vending-sheet body: familiar Kanto faces, common rarity signals, glossy physical format, and a dense artist roster make distribution form part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local file surfaces a dense artist roster including Atsuko Nishida, Aya Kusube, Mitsuhiro Arita, Kagemaru Himeno, Sumiyoshi Kizuki, Tomokazu Komiya, Ken Sugimori, Ai Kurihara, Yuuki Kawamura, Kasumi Matsuda, Craig Turvey, and Keiji Kinebuchi, with credits scoped to catalog/provider metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.chase_structure",
+          "text": "This tranche hand-authors the queue chases Pikachu 019, Mewtwo 022, and Chansey 031, plus starter/object/artist-anchor rows that teach vending-sheet identity across the release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 拡張シート 第1弾 青版, Expansion Sheet Series 1 Blue, release date, row number, glossy vending-sheet format, artist-credit source, and symbol-status no/not-Base-No-Rarity boundary before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_release_vending_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Expansion Sheet, Vending Series Blue, 拡張シート 第1弾 青版, glossy vending, Pikachu, Mewtwo, Chansey, or No Rarity comparison.",
+          "summary": "Keep Series 1 Blue as glossy vending-sheet identity; it is not a Base No Rarity lane and not ordinary pack-set identity.",
+          "steps": [
+            "Require Expansion Sheet Series 1 Blue, Vending Series Blue, or Japanese title 拡張シート 第1弾 青版 before naming this exact release.",
+            "Preserve row number and local id; the cards are common-rarity vending-sheet rows, not ordinary Base/Jungle/Fossil rows.",
+            "Preserve glossy vending/Expansion Sheet physical-format context and treat it as identity-relevant.",
+            "Preserve symbol-status matrix result: prints_without_rarity_symbol = no, high confidence; do not use this release as Base No Rarity evidence.",
+            "Treat reference images and artist captions as catalog comparison aids, not seller evidence, authentication, condition proof, or image-rights approval."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Expansion Sheet Series 1 Blue — glossy vending memory, not pack memory",
+        "why_it_matters": "Series 1 Blue is where early Pokemon feels like it came out of a machine with a shine on it. The names are familiar, but the assembly is different: vending sheet, glossy stock, common rarity, row-number discipline, and a crowded artist bench. It is beautiful because it refuses the easy shortcut from famous character to familiar set.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete 36-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "spendability",
+          "Base No Rarity proof",
+          "complete artist biography"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:001",
+      "type": "card",
+      "context": {
+        "name_en": "Bulbasaur",
+        "name_ja": "フシギダネ",
+        "normalized_label": "Bulbasaur",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "001",
+        "card_number": "001",
+        "artist": "Sumiyoshi Kizuki"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Bulbasaur as Expansion Sheet Series 1 Blue row 001, with Japanese name フシギダネ and row id jp_tcg_expansion_sheet_1_blue_19980323:001.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Bulbasaur; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbasaur belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Bulbasaur to Sumiyoshi Kizuki, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Sumiyoshi Kizuki through Bulbasaur, Porygon, and Fossil Excavation, connecting creature and trainer/object rows in one sheet.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Bulbasaur is the sheet opener and a Kizuki anchor: the familiar starter is not Base Set here, but glossy vending-sheet memory with row 001 doing the identity work.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 001, glossy vending-sheet format, Common rarity signal, Japanese name フシギダネ, artist credit Sumiyoshi Kizuki, and No Rarity non-equivalence before accepting this as Bulbasaur.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_001_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Bulbasaur, フシギダネ, Expansion Sheet, Vending Series Blue, glossy vending, row 001, or No Rarity comparison.",
+          "summary": "Keep Bulbasaur pinned to glossy Expansion Sheet Series 1 Blue row 001; famous species/name is not enough.",
+          "steps": [
+            "Require row 001 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Sumiyoshi Kizuki as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Bulbasaur — Expansion Sheet Series 1 Blue row 001",
+        "why_it_matters": "Bulbasaur is the sheet opener and a Kizuki anchor: the familiar starter is not Base Set here, but glossy vending-sheet memory with row 001 doing the identity work.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:002",
+      "type": "card",
+      "context": {
+        "name_en": "Caterpie",
+        "name_ja": "キャタピー",
+        "normalized_label": "Caterpie",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "002",
+        "card_number": "002",
+        "artist": "Aya Kusube"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Caterpie as Expansion Sheet Series 1 Blue row 002, with Japanese name キャタピー and row id jp_tcg_expansion_sheet_1_blue_19980323:002.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Caterpie; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Caterpie belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Caterpie to Aya Kusube, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Aya Kusube through Caterpie, Metapod, Zubat, Abra, and Pidgey, giving the sheet a quiet small-creature texture without claiming a complete biography.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Caterpie makes the sheet feel hand-held and modest; Kusube starts a small-creature thread that matters because vending sheets were as much tactile ephemera as chase inventory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 002, glossy vending-sheet format, Common rarity signal, Japanese name キャタピー, artist credit Aya Kusube, and No Rarity non-equivalence before accepting this as Caterpie.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_002_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Caterpie, キャタピー, Expansion Sheet, Vending Series Blue, glossy vending, row 002, or No Rarity comparison.",
+          "summary": "Keep Caterpie pinned to glossy Expansion Sheet Series 1 Blue row 002; famous species/name is not enough.",
+          "steps": [
+            "Require row 002 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Aya Kusube as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Caterpie — Expansion Sheet Series 1 Blue row 002",
+        "why_it_matters": "Caterpie makes the sheet feel hand-held and modest; Kusube starts a small-creature thread that matters because vending sheets were as much tactile ephemera as chase inventory.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:005",
+      "type": "card",
+      "context": {
+        "name_en": "Kakuna",
+        "name_ja": "コクーン",
+        "normalized_label": "Kakuna",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "005",
+        "card_number": "005",
+        "artist": "Mitsuhiro Arita"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Kakuna as Expansion Sheet Series 1 Blue row 005, with Japanese name コクーン and row id jp_tcg_expansion_sheet_1_blue_19980323:005.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Kakuna; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Kakuna belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Kakuna to Mitsuhiro Arita, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Mitsuhiro Arita through Kakuna, Nidoran male, Golbat, Paras, and Eevee; the claim is local catalog footprint, not a full artist biography.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kakuna gives Arita a compact, early-sheet foothold: not a headline chase, but a row that shows how major artists also built the quiet connective tissue.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 005, glossy vending-sheet format, Common rarity signal, Japanese name コクーン, artist credit Mitsuhiro Arita, and No Rarity non-equivalence before accepting this as Kakuna.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_005_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kakuna, コクーン, Expansion Sheet, Vending Series Blue, glossy vending, row 005, or No Rarity comparison.",
+          "summary": "Keep Kakuna pinned to glossy Expansion Sheet Series 1 Blue row 005; famous species/name is not enough.",
+          "steps": [
+            "Require row 005 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Mitsuhiro Arita as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Kakuna — Expansion Sheet Series 1 Blue row 005",
+        "why_it_matters": "Kakuna gives Arita a compact, early-sheet foothold: not a headline chase, but a row that shows how major artists also built the quiet connective tissue.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:006",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoran♀",
+        "name_ja": "",
+        "normalized_label": "Nidoran♀",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "006",
+        "card_number": "006",
+        "artist": "Kagemaru Himeno"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Nidoran♀ as Expansion Sheet Series 1 Blue row 006, with Japanese name not supplied in this row and row id jp_tcg_expansion_sheet_1_blue_19980323:006.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Nidoran♀; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Nidoran♀ belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Nidoran♀ to Kagemaru Himeno, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Kagemaru Himeno through Nidoran female, Squirtle, Rattata, and Lickitung, a soft creature line inside the vending-sheet texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Nidoran female keeps Himeno in the sheet map, a soft early creature row where gender symbol, row number, and sheet family all matter for identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 006, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist credit Kagemaru Himeno, and No Rarity non-equivalence before accepting this as Nidoran♀.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_006_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Nidoran♀, , Expansion Sheet, Vending Series Blue, glossy vending, row 006, or No Rarity comparison.",
+          "summary": "Keep Nidoran♀ pinned to glossy Expansion Sheet Series 1 Blue row 006; famous species/name is not enough.",
+          "steps": [
+            "Require row 006 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Kagemaru Himeno as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Nidoran♀ — Expansion Sheet Series 1 Blue row 006",
+        "why_it_matters": "Nidoran female keeps Himeno in the sheet map, a soft early creature row where gender symbol, row number, and sheet family all matter for identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:013",
+      "type": "card",
+      "context": {
+        "name_en": "Charmander",
+        "name_ja": "ヒトカゲ",
+        "normalized_label": "Charmander",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "013",
+        "card_number": "013",
+        "artist": "Atsuko Nishida"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Charmander as Expansion Sheet Series 1 Blue row 013, with Japanese name ヒトカゲ and row id jp_tcg_expansion_sheet_1_blue_19980323:013.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Charmander; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Charmander belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Charmander to Atsuko Nishida, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Local examples include Aquapolis Entei, Kingdra, and Suicune rows plus the Blue Sheet concentration of Charmander, Rapidash, Poliwag, Poliwhirl, Pikachu, Mewtwo, Clefairy, and Wigglytuff; this shows breadth in the catalog without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Charmander is the fire-starter hinge of the sheet: Nishida turns a familiar Kanto face into vending-sheet texture, and the row has to stay sheet-blue rather than becoming generic starter memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 013, glossy vending-sheet format, Common rarity signal, Japanese name ヒトカゲ, artist credit Atsuko Nishida, and No Rarity non-equivalence before accepting this as Charmander.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_013_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Charmander, ヒトカゲ, Expansion Sheet, Vending Series Blue, glossy vending, row 013, or No Rarity comparison.",
+          "summary": "Keep Charmander pinned to glossy Expansion Sheet Series 1 Blue row 013; famous species/name is not enough.",
+          "steps": [
+            "Require row 013 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Atsuko Nishida as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Charmander — Expansion Sheet Series 1 Blue row 013",
+        "why_it_matters": "Charmander is the fire-starter hinge of the sheet: Nishida turns a familiar Kanto face into vending-sheet texture, and the row has to stay sheet-blue rather than becoming generic starter memory.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:015",
+      "type": "card",
+      "context": {
+        "name_en": "Squirtle",
+        "name_ja": "ゼニガメ",
+        "normalized_label": "Squirtle",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "015",
+        "card_number": "015",
+        "artist": "Kagemaru Himeno"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Squirtle as Expansion Sheet Series 1 Blue row 015, with Japanese name ゼニガメ and row id jp_tcg_expansion_sheet_1_blue_19980323:015.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Squirtle; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Squirtle belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Squirtle to Kagemaru Himeno, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Kagemaru Himeno through Nidoran female, Squirtle, Rattata, and Lickitung, a soft creature line inside the vending-sheet texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Squirtle gives Himeno a starter anchor, and it teaches the same lesson as Bulbasaur and Charmander: beloved species are not enough without the sheet coordinate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 015, glossy vending-sheet format, Common rarity signal, Japanese name ゼニガメ, artist credit Kagemaru Himeno, and No Rarity non-equivalence before accepting this as Squirtle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_015_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Squirtle, ゼニガメ, Expansion Sheet, Vending Series Blue, glossy vending, row 015, or No Rarity comparison.",
+          "summary": "Keep Squirtle pinned to glossy Expansion Sheet Series 1 Blue row 015; famous species/name is not enough.",
+          "steps": [
+            "Require row 015 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Kagemaru Himeno as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Squirtle — Expansion Sheet Series 1 Blue row 015",
+        "why_it_matters": "Squirtle gives Himeno a starter anchor, and it teaches the same lesson as Bulbasaur and Charmander: beloved species are not enough without the sheet coordinate.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:019",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "normalized_label": "Pikachu",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "019",
+        "card_number": "019",
+        "artist": "Atsuko Nishida"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Pikachu as Expansion Sheet Series 1 Blue row 019, with Japanese name ピカチュウ and row id jp_tcg_expansion_sheet_1_blue_19980323:019.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Pikachu; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Pikachu belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Pikachu to Atsuko Nishida, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Local examples include Aquapolis Entei, Kingdra, and Suicune rows plus the Blue Sheet concentration of Charmander, Rapidash, Poliwag, Poliwhirl, Pikachu, Mewtwo, Clefairy, and Wigglytuff; this shows breadth in the catalog without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pikachu is the obvious attention magnet, but in this release the important thing is restraint: Pikachu plus Blue Sheet row 019, glossy vending context, and Nishida credit, not just mascot gravity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 019, glossy vending-sheet format, Common rarity signal, Japanese name ピカチュウ, artist credit Atsuko Nishida, and No Rarity non-equivalence before accepting this as Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_019_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pikachu, ピカチュウ, Expansion Sheet, Vending Series Blue, glossy vending, row 019, or No Rarity comparison.",
+          "summary": "Keep Pikachu pinned to glossy Expansion Sheet Series 1 Blue row 019; famous species/name is not enough.",
+          "steps": [
+            "Require row 019 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Atsuko Nishida as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pikachu — Expansion Sheet Series 1 Blue row 019",
+        "why_it_matters": "Pikachu is the obvious attention magnet, but in this release the important thing is restraint: Pikachu plus Blue Sheet row 019, glossy vending context, and Nishida credit, not just mascot gravity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:022",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "normalized_label": "Mewtwo",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "022",
+        "card_number": "022",
+        "artist": "Atsuko Nishida"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Mewtwo as Expansion Sheet Series 1 Blue row 022, with Japanese name ミュウツー and row id jp_tcg_expansion_sheet_1_blue_19980323:022.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Mewtwo; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Mewtwo belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Mewtwo to Atsuko Nishida, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Local examples include Aquapolis Entei, Kingdra, and Suicune rows plus the Blue Sheet concentration of Charmander, Rapidash, Poliwag, Poliwhirl, Pikachu, Mewtwo, Clefairy, and Wigglytuff; this shows breadth in the catalog without claiming a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Mewtwo gives the sheet mythic weight without rare/holo machinery. Its power here is that a common-rarity vending row can still become a chase because the distribution form is the story.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 022, glossy vending-sheet format, Common rarity signal, Japanese name ミュウツー, artist credit Atsuko Nishida, and No Rarity non-equivalence before accepting this as Mewtwo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_022_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Mewtwo, ミュウツー, Expansion Sheet, Vending Series Blue, glossy vending, row 022, or No Rarity comparison.",
+          "summary": "Keep Mewtwo pinned to glossy Expansion Sheet Series 1 Blue row 022; famous species/name is not enough.",
+          "steps": [
+            "Require row 022 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Atsuko Nishida as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mewtwo — Expansion Sheet Series 1 Blue row 022",
+        "why_it_matters": "Mewtwo gives the sheet mythic weight without rare/holo machinery. Its power here is that a common-rarity vending row can still become a chase because the distribution form is the story.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:031",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey",
+        "name_ja": "ラッキー",
+        "normalized_label": "Chansey",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "031",
+        "card_number": "031",
+        "artist": "Tomokazu Komiya"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Chansey as Expansion Sheet Series 1 Blue row 031, with Japanese name ラッキー and row id jp_tcg_expansion_sheet_1_blue_19980323:031.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Chansey; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Chansey belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Chansey to Tomokazu Komiya, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Local examples include the Blue Sheet Weedle, Doduo, and Chansey rows plus Aquapolis fighting-line rows and Neo Genesis Slowpoke/Trainer rows; this is a local-catalog example set, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Chansey is the Komiya-highlighted oddball chase: soft, strange, and deeply collectible because the artist voice and vending sheet lane make it more than a common row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 031, glossy vending-sheet format, Common rarity signal, Japanese name ラッキー, artist credit Tomokazu Komiya, and No Rarity non-equivalence before accepting this as Chansey.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_031_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Chansey, ラッキー, Expansion Sheet, Vending Series Blue, glossy vending, row 031, or No Rarity comparison.",
+          "summary": "Keep Chansey pinned to glossy Expansion Sheet Series 1 Blue row 031; famous species/name is not enough.",
+          "steps": [
+            "Require row 031 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Tomokazu Komiya as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Chansey — Expansion Sheet Series 1 Blue row 031",
+        "why_it_matters": "Chansey is the Komiya-highlighted oddball chase: soft, strange, and deeply collectible because the artist voice and vending sheet lane make it more than a common row.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:032",
+      "type": "card",
+      "context": {
+        "name_en": "Eevee",
+        "name_ja": "イーブイ",
+        "normalized_label": "Eevee",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "032",
+        "card_number": "032",
+        "artist": "Mitsuhiro Arita"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Eevee as Expansion Sheet Series 1 Blue row 032, with Japanese name イーブイ and row id jp_tcg_expansion_sheet_1_blue_19980323:032.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Eevee; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Eevee belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Eevee to Mitsuhiro Arita, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Mitsuhiro Arita through Kakuna, Nidoran male, Golbat, Paras, and Eevee; the claim is local catalog footprint, not a full artist biography.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Eevee sits at the collector-pressure point before Eeveelution obsession fully takes over. Arita credit plus row 032 keeps it exact instead of letting modern Eevee gravity blur the source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 032, glossy vending-sheet format, Common rarity signal, Japanese name イーブイ, artist credit Mitsuhiro Arita, and No Rarity non-equivalence before accepting this as Eevee.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_032_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Eevee, イーブイ, Expansion Sheet, Vending Series Blue, glossy vending, row 032, or No Rarity comparison.",
+          "summary": "Keep Eevee pinned to glossy Expansion Sheet Series 1 Blue row 032; famous species/name is not enough.",
+          "steps": [
+            "Require row 032 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Mitsuhiro Arita as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Eevee — Expansion Sheet Series 1 Blue row 032",
+        "why_it_matters": "Eevee sits at the collector-pressure point before Eeveelution obsession fully takes over. Arita credit plus row 032 keeps it exact instead of letting modern Eevee gravity blur the source.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:034",
+      "type": "card",
+      "context": {
+        "name_en": "Snorlax",
+        "name_ja": "カビゴン",
+        "normalized_label": "Snorlax",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "034",
+        "card_number": "034",
+        "artist": "Craig Turvey"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Snorlax as Expansion Sheet Series 1 Blue row 034, with Japanese name カビゴン and row id jp_tcg_expansion_sheet_1_blue_19980323:034.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Snorlax; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Snorlax belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Snorlax to Craig Turvey, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The local row credits Craig Turvey on Snorlax, and the card-page caption points through a Wizards Black Star Promotional print context; no broader biography is claimed here.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Snorlax brings a big-body endpoint to the sheet, with Craig Turvey credited locally and a card-page caption that points through Wizards Promo context; this row needs boundary discipline.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 034, glossy vending-sheet format, Common rarity signal, Japanese name カビゴン, artist credit Craig Turvey, and No Rarity non-equivalence before accepting this as Snorlax.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_034_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Snorlax, カビゴン, Expansion Sheet, Vending Series Blue, glossy vending, row 034, or No Rarity comparison.",
+          "summary": "Keep Snorlax pinned to glossy Expansion Sheet Series 1 Blue row 034; famous species/name is not enough.",
+          "steps": [
+            "Require row 034 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Craig Turvey as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Snorlax — Expansion Sheet Series 1 Blue row 034",
+        "why_it_matters": "Snorlax brings a big-body endpoint to the sheet, with Craig Turvey credited locally and a card-page caption that points through Wizards Promo context; this row needs boundary discipline.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:035",
+      "type": "card",
+      "context": {
+        "name_en": "Moon Stone",
+        "name_ja": "",
+        "normalized_label": "Moon Stone",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "035",
+        "card_number": "035",
+        "artist": "Keiji Kinebuchi"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Moon Stone as Expansion Sheet Series 1 Blue row 035, with Japanese name not supplied in this row and row id jp_tcg_expansion_sheet_1_blue_19980323:035.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Moon Stone; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Moon Stone belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Moon Stone to Keiji Kinebuchi, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The local row credits Keiji Kinebuchi on Moon Stone, a trainer/object row that helps the sheet feel like a vending artifact rather than only a Pokemon lineup.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Moon Stone is the object row that proves the sheet is not just species nostalgia. Kinebuchi turns an evolution item into catalog texture, and that matters for agents reading the whole object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 035, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist credit Keiji Kinebuchi, and No Rarity non-equivalence before accepting this as Moon Stone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_035_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Moon Stone, , Expansion Sheet, Vending Series Blue, glossy vending, row 035, or No Rarity comparison.",
+          "summary": "Keep Moon Stone pinned to glossy Expansion Sheet Series 1 Blue row 035; famous species/name is not enough.",
+          "steps": [
+            "Require row 035 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Keiji Kinebuchi as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Moon Stone — Expansion Sheet Series 1 Blue row 035",
+        "why_it_matters": "Moon Stone is the object row that proves the sheet is not just species nostalgia. Kinebuchi turns an evolution item into catalog texture, and that matters for agents reading the whole object.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_sheet_1_blue_19980323:036",
+      "type": "card",
+      "context": {
+        "name_en": "Fossil Excavation",
+        "name_ja": "",
+        "normalized_label": "Fossil Excavation",
+        "release_family_id": "jp_tcg_expansion_sheet_1_blue_19980323",
+        "local_id": "036",
+        "card_number": "036",
+        "artist": "Sumiyoshi Kizuki"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_1_blue_19980323.json",
+          "title": "Local Japanese pre-English catalog: Expansion Sheet Series 1 Blue",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist biography",
+            "row-level physical truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Pre-English symbol status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "title": "Local English WotC catalog: artist examples from Aquapolis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WotC catalog: artist examples from Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "Japanese print authority",
+            "same-art equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Fossil Excavation as Expansion Sheet Series 1 Blue row 036, with Japanese name not supplied in this row and row id jp_tcg_expansion_sheet_1_blue_19980323:036.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Fossil Excavation; in this release common rarity does not erase collector relevance because the glossy vending-sheet format is part of identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Fossil Excavation belongs to the glossy Vending/Expansion Sheet Series 1 Blue release, not a standard booster-pack release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Fossil Excavation to Sumiyoshi Kizuki, with illustrator authority scoped to Bulbapedia card-page caption metadata and catalog texture rather than direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "The Blue Sheet itself provides local examples for Sumiyoshi Kizuki through Bulbasaur, Porygon, and Fossil Excavation, connecting creature and trainer/object rows in one sheet.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Fossil Excavation closes the sheet as apparatus: not a Pokemon face, but a tool for digging the archive, with Kizuki connecting trainer/object memory back to the creature rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 1 Blue, row 036, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist credit Sumiyoshi Kizuki, and No Rarity non-equivalence before accepting this as Fossil Excavation.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_1_blue_036_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Fossil Excavation, , Expansion Sheet, Vending Series Blue, glossy vending, row 036, or No Rarity comparison.",
+          "summary": "Keep Fossil Excavation pinned to glossy Expansion Sheet Series 1 Blue row 036; famous species/name is not enough.",
+          "steps": [
+            "Require row 036 and Expansion Sheet Series 1 Blue / 拡張シート 第1弾 青版 before naming this exact row.",
+            "Preserve glossy vending-sheet physical format and common rarity signal as catalog identity fields.",
+            "Preserve artist credit Sumiyoshi Kizuki as source-scoped catalog metadata, not direct physical-card print proof.",
+            "Do not collapse this row into Base, Jungle, Fossil, English promo, or No Rarity lanes without separate source evidence.",
+            "Use seller photos and provenance evidence to check physical format, condition, and card identity before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, complete artist biography, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "ordinary pack-set equivalence",
+            "English release equivalence",
+            "same-art equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Fossil Excavation — Expansion Sheet Series 1 Blue row 036",
+        "why_it_matters": "Fossil Excavation closes the sheet as apparatus: not a Pokemon face, but a tool for digging the archive, with Kizuki connecting trainer/object memory back to the creature rows.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "complete artist biography",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
