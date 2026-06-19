@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/bessatsu_corocoro_pikachu_pichu_jumbo_v0_1.json`
+  deepens row 181 / Pichu and Pikachu from the Bessatsu CoroCoro Comic Special August 2000
+  jumbo insert route. The pass treats the card as a paper movie-premiere artifact: jumbo
+  physical format, Bessatsu CoroCoro magazine distribution, July 6 2000 release two days
+  before the Pikachu & Pichu short's July 8 Japanese theatrical debut, Naoyo Kimura art, and
+  Pichu Brothers / Johto media context. Special ID rails now require agents to preserve jumbo
+  scale, top-right Theater version Pocket Monsters 2000 border text, bottom Bessatsu CoroCoro
+  August issue supplement text, Pikachu the Movie 2000 and Bessatsu CoroCoro logos, the
+  CoroCoro dragon mascot in place of an expansion symbol, and separation from normal-size
+  Pichu/Pikachu cards before treating a listing as this exact print. Generated gaps moved to
+  61 release / 3887 card. Current hashes: corpus
+  `1b3e2525cb7cffdd2713ba86011572d182b0b177771359d42cf44f2b335cef2f`, index
+  `366d094d7fe0d1cdf2aaf0b0c71696db89381a6a67cb03959956f9d0c6e43b5f`, queue
+  `71aebc34b13d1fb21ac6512806de04ad013a118194020c3b67f22431441ff2e6`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-twenty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/trainers_vol7_smeargle_v0_1.json` deepens row 180 /
