@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the ninety-eighth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/bessatsu_corocoro_august_1999_pokemon_valley_v0_1.json`.
+  The Bessatsu CoroCoro Comic Special August 1999 issue insert source slice now
+  has hand-authored release and card coverage for Pokemon Valley row 109. The
+  pass frames the card as a jumbo Stadium/place object rather than a normal
+  promo or ordinary Stadium: Bessatsu CoroCoro route, June 30 1999 date, source
+  index 109, Jumbo physical format, Trainer / Stadium type, Pokemon no Tani /
+  ポケモンの谷 title help, Naoyo Kimura source-reference credit, and
+  regular-size / movie-promo / ordinary Stadium comparison traps all remain
+  legible. Added bespoke `special_identification_instructions` requiring agents
+  to preserve Bessatsu route, source index, jumbo scale, Stadium/place-card
+  identity, Kimura credit, and non-equivalence with regular-size promos,
+  ordinary Stadium cards, English/movie promo memories, later place cards, and
+  generic Pikachu's Vacation references before accepting a match. Sources:
+  local Japanese unnumbered promo release file, Bulbapedia raw unnumbered-promo
+  row, Bulbapedia Pokemon Valley (CoroCoro promo), and Pokumon first-design
+  promo visual reference. Generated gap moved from 96 releases / 3,922 cards to
+  95 releases / 3,921 cards. Current catalog-history corpus:
+  `f17873f6a11ff597b531b83c631a50bdbaf2bbccac441f024ef6c5eec9243d5a`;
+  index: `6c1e5d5a627a35e593c03e3e15dce4b8396fb332b9591dc1700ed581ea405dcb`;
+  queue: `db471ae479956c6dc4a0ced7485ef9c6d52ec0b7e4aaf9890c0f7409c0435215`.
 - `[passive]` 2026-06-19 · Codex — completed the ninety-seventh
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_july_1999_marill_v0_1.json`.

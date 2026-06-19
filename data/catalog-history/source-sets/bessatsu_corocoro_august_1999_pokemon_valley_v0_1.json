@@ -1,0 +1,562 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the Bessatsu CoroCoro Comic Special August 1999 Pokemon Valley jumbo Stadium insert, emphasizing separate-issue CoroCoro distribution, jumbo physical format, Stadium/place-card identity, Naoyo Kimura art credit, movie-era/Pikachu's Vacation valley memory, and traps against ordinary Stadium cards, regular-size promos, English/movie promos, and later place cards.",
+    "in_scope": [
+      "Bessatsu CoroCoro Comic Special August 1999 issue insert release/source-slice dossier",
+      "Pokemon Valley jumbo Stadium unnumbered promotional row 109",
+      "Bessatsu CoroCoro route",
+      "jumbo physical-format identity",
+      "Naoyo Kimura source-reference art context",
+      "Stadium / place-card / movie-era valley texture",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Bessatsu CoroCoro August 1999 issue archive",
+      "complete Pokemon Valley print census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30",
+        "name_en": "Bessatsu CoroCoro Comic Special August 1999 issue insert",
+        "name_ja": "別冊コロコロコミックSpecial 1999年8月号付録",
+        "release_date": "1999-06-30",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Bessatsu CoroCoro as side-channel distribution",
+          "jumbo physical format",
+          "Stadium / place-card identity",
+          "movie-era Pokemon landscape memory",
+          "Naoyo Kimura environmental art",
+          "regular-card assumption trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30:109",
+            "name": "Pokemon Valley",
+            "why": "The whole source slice is one jumbo Stadium card: not a species chase, but a place-object where CoroCoro turns a Pokemon landscape into something large enough to feel like a poster.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "complete Pokemon Valley print census"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 1,
+            "examples": [
+              "Pokemon Valley"
+            ],
+            "why": "Bulbapedia and Pokumon references credit Pokemon Valley to Naoyo Kimura, which fits the card's role as an environmental scene rather than a single-character portrait.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Pokemon Valley print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Bessatsu CoroCoro issue archive",
+          "complete Pokemon Valley print census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Bessatsu CoroCoro Comic Special August 1999 issue insert as a one-row unnumbered promotional source group containing Pokemon Valley at source index 109.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records June 30, 1999 as the date attached to the Bessatsu CoroCoro Comic Special August 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as a Bessatsu CoroCoro Comic Special August 1999 issue insert, preserving the separate/special CoroCoro route rather than ordinary monthly CoroCoro shorthand.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "The source row names Pokemon Valley as a Jumbo Trainer Stadium card in this one-row Bessatsu CoroCoro source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit Pokemon Valley to Naoyo Kimura.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia's Pokemon Valley reference presents the card as a jumbo promotional Stadium card and connects its distribution to Bessatsu CoroCoro Comic Special rather than to a standard booster or regular-size Stadium release.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Pokemon Valley matters because it turns a Pokemon place into a jumbo magazine object: a landscape-memory card that asks the collector to preserve format and route before treating it like a normal Stadium.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Bessatsu CoroCoro Comic Special August 1999 route, June 30 1999 date, source index 109, Pokemon Valley name, jumbo physical format, Trainer Stadium card type, Naoyo Kimura source-reference credit, and non-equivalence with ordinary Stadium, regular-size promo, English/movie, and later place-card memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokemon Valley: when the card becomes a place",
+        "why_it_matters": "Pokemon Valley is a beautiful little refusal of the usual chase-card logic. There is no Charizard, no mascot close-up, no little attack math to obsess over. Instead, Bessatsu CoroCoro hands the reader a jumbo Stadium: a Pokemon place large enough to feel like a poster, a magazine insert that says the world itself is collectible. Naoyo Kimura matters here because the card is environmental. The agent has to keep that physical and narrative scale intact: jumbo, Stadium, Bessatsu route, source index 109, and valley-as-place before the word 'promo' flattens it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Bessatsu CoroCoro issue archive",
+          "complete Pokemon Valley print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30.json",
+          "title": "Local Japanese unnumbered promo catalog: Bessatsu CoroCoro Comic Special August 1999 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Bessatsu CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 109",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Valley_(CoroCoro_promo)",
+          "title": "Bulbapedia: Pokemon Valley (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "bessatsu_corocoro_pokemon_valley_jumbo_stadium_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Pokemon Valley, Pokémon Valley, Bessatsu CoroCoro, CoroCoro Special August 1999, June 30 1999, Jumbo, Stadium, Trainer, Naoyo Kimura, Pikachu's Vacation, movie promo, or unnumbered promo row 109.",
+          "summary": "Identify Pokemon Valley by Bessatsu CoroCoro route, source index 109, jumbo physical format, and Stadium/place-card identity before trusting ordinary Stadium or movie-promo memory.",
+          "steps": [
+            "Preserve the exact local route: Bessatsu CoroCoro Comic Special August 1999 issue insert, dated June 30, 1999.",
+            "Preserve source index 109 and Pokemon Valley identity together.",
+            "Confirm jumbo physical format before treating a scan or listing as this row; regular-size assumptions are a mismatch until proven otherwise.",
+            "Preserve Trainer / Stadium card type and place-card identity; do not identify by Pokemon species alone.",
+            "Preserve Naoyo Kimura as the source-reference artist credit, but do not use artist alone as a match.",
+            "Separate this row from ordinary Stadium cards, regular-size promos, English/movie promo memories, later place cards, and generic Pikachu's Vacation references unless source evidence proves equivalence.",
+            "Ask for seller front/back photos with scale reference and any Bessatsu CoroCoro insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Bessatsu CoroCoro issue archive",
+            "complete Pokemon Valley print census",
+            "ordinary Stadium equivalence",
+            "regular-size card equivalence",
+            "movie promo equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30:109",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30:109",
+        "name_en": "Pokemon Valley",
+        "name_ja": "ポケモンの谷",
+        "romaji": "Pokemon no Tani",
+        "release_family_id": "jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30",
+        "catalog_row_id": "109"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "109",
+        "rarity_signal": "Jumbo Trainer Stadium / Bessatsu CoroCoro Comic Special August 1999 issue insert",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "jumbo magazine insert",
+          "Stadium / place-card identity",
+          "environmental art",
+          "movie-era landscape memory",
+          "physical-format trap"
+        ],
+        "collector_texture_note": "Pokemon Valley is a place-card with scale. It asks an agent to look for format, route, and scene before falling into ordinary promo-card assumptions.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete Pokemon Valley print census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Pokemon Valley, source index 109, within the Bessatsu CoroCoro Comic Special August 1999 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese title ポケモンの谷 can be read as Pokemon no Tani, or Pokemon Valley; use the Japanese title as search help, not as sufficient physical-card identification.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is Jumbo Trainer Stadium / Bessatsu CoroCoro Comic Special August 1999 issue insert, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit Pokemon Valley to Naoyo Kimura.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Pokemon Valley is modeled here as a jumbo Stadium promotional row, so physical scale and Stadium/place-card identity are required before matching a seller scan.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pokemon Valley matters because it makes the world collectible as a place: not a creature portrait, but a jumbo landscape/card-object distributed through Bessatsu CoroCoro.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "For Pokemon Valley, agents should preserve source index 109, Bessatsu CoroCoro Comic Special August 1999 route, June 30 1999 date, jumbo physical format, Trainer Stadium type, Naoyo Kimura source-reference credit, and non-equivalence with ordinary Stadium, regular-size promo, English/movie, and later place-card memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokemon Valley 109: a landscape too large for the pocket",
+        "why_it_matters": "Pokemon Valley feels like a card stretching toward a poster. It is a Stadium, but also a scene; a promo, but also a place; a magazine insert, but also a tiny map of the world Pokémon was building around its creatures. That is why the jumbo format matters. If an agent sees only the name, it misses the whole object. The scale, Bessatsu route, Stadium identity, and Kimura environmental art are what make this row breathe.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete Bessatsu CoroCoro issue archive",
+          "complete Pokemon Valley print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30.json#row:jp_promo_unnumbered_wotc_109_bessatsu_corocoro_comic_special_august_1999_issue_insert_june_30:109",
+          "title": "Local Japanese unnumbered promo catalog row: Pokemon Valley 109",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Bessatsu CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 109",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Valley_(CoroCoro_promo)",
+          "title": "Bulbapedia: Pokemon Valley (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_valley_109_jumbo_stadium_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Pokemon Valley, Pokémon Valley, ポケモンの谷, Pokemon no Tani, Bessatsu CoroCoro, CoroCoro Special August 1999, June 30 1999, Jumbo, Stadium, Naoyo Kimura, Pikachu's Vacation, movie promo, or Japanese unnumbered promo row 109.",
+          "summary": "Match Pokemon Valley by source index 109, Bessatsu CoroCoro route, jumbo physical format, and Stadium/place-card identity before trusting place-name or movie-promo memory.",
+          "steps": [
+            "Start with route: Bessatsu CoroCoro Comic Special August 1999 issue insert, dated June 30, 1999.",
+            "Preserve row identity as Japanese unnumbered promotional source index 109.",
+            "Use ポケモンの谷 / Pokemon no Tani as Japanese-language search help, not as sufficient identity.",
+            "Confirm jumbo physical format with a scale reference before treating a seller scan as this row.",
+            "Preserve Trainer / Stadium card type and place-card identity; do not route from Pokemon species or movie keywords alone.",
+            "Separate ordinary Stadium cards, regular-size promos, English/movie promos, later place cards, and generic Pikachu's Vacation references unless source evidence proves equivalence.",
+            "Request seller front/back photos and Bessatsu CoroCoro provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Bessatsu CoroCoro issue archive",
+            "complete Pokemon Valley print census",
+            "ordinary Stadium equivalence",
+            "regular-size card equivalence",
+            "movie promo equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
