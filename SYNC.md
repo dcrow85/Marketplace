@@ -55,6 +55,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixtieth
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_december_1998_insert_v0_1.json`.
+  Japanese CoroCoro Comic December 1998 issue insert (November 15, 1998) now has
+  complete four-row hand-authored coverage for Brock's Mankey 063, Erika's
+  Bulbasaur 064, Misty's Tentacool 065, and Lt. Surge's Jolteon 066. The pass
+  frames the source group as Gym ownership moving through magazine distribution:
+  the trainer prefix is not flavor, it is identity. Added
+  `special_identification_instructions` requiring agents to preserve the
+  CoroCoro December 1998 distribution/source-group note, source indices 063-066,
+  owner-prefixed card names, parent Japanese unnumbered WotC promo continuation
+  slice, absence of a printed set number, and absence of row-level Japanese name
+  authority before accepting a match. Brock's, Erika's, Misty's, and Lt. Surge's
+  must travel with the species; plain Mankey, Bulbasaur, Tentacool, or Jolteon is
+  not enough. The campaign boundary remains source-derived, not official
+  product-boundary proof beyond the promotion note. Artists remain intentionally
+  unset because the primary source rows do not provide illustrator authority.
+  Sources: local Japanese unnumbered WotC promo release file and Bulbapedia raw
+  wikitext reference captured by the catalog. Generated gap moved from 148
+  releases / 4,034 cards to 147 releases / 4,030 cards. Current catalog-history
+  corpus:
+  `05a91e51f86f7ef3042e7ccad4985753674bf9cac3d1fa58d12ab1fab884496b`; index:
+  `fec41da86add773f4cd01485bd465b7988e0e90c177ab00e952752b6f853877c`; queue:
+  `b55108ab296be5dde1ad099213f96791de66d559dd8d507b855ac7e874c9454d`. Audit
+  counts: 23,092 claims, 5,732 sources, 62 hand-authored release dossiers, 519
+  hand-authored card dossiers, and 776 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_december_1998_insert_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the fifty-ninth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_april_1998_insert_v0_1.json`.
