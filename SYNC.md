@@ -55,6 +55,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the sixty-seventh
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_first_1996_glossy_promos_v0_1.json`.
+  First CoroCoro glossy promo source slice now has a hand-authored release
+  dossier plus Jigglypuff [Glossy] row 002 coverage; Pikachu [Glossy] row 001
+  remains covered by the earlier pilot dossier and is referenced rather than
+  duplicated. The pass frames the release as the shiny paper doorway at the edge
+  of the TCG launch: October 15, 1996 CoroCoro Comic November issue insert,
+  glossy Pikachu/Jigglypuff pair, magazine route, and source-row modes are
+  identity. Added/kept `special_identification_instructions` requiring agents to
+  preserve CoroCoro November 1996 issue route, glossy stock, row 001/002
+  identity, Pikachu Ken Sugimori selected-source illustrator resolution,
+  conflicting provider metadata, Jigglypuff Keiji Kinebuchi credit,
+  manual-provider-path mode, and non-glossy How-to-Play non-equivalence before
+  accepting a match. Sources: local Japanese pre-English release file,
+  Bulbapedia early-1996 selected rendered-lines snapshot, and Bulbapedia card
+  lineage pages. Generated gap moved from 141 releases / 4,004 cards to 140
+  releases / 4,003 cards. Current catalog-history corpus:
+  `5cd7246eff772646672adddadb48b2455b839d7819050628cefb7ac2b1152a89`; index:
+  `43b17d5f814c823930d41308855023b1ab5d7bf1b4e83f79488d24b89ca9d815`; queue:
+  `780275bafe1488797fb625d4052abf02ffabefa8d9facf567a0bf58276bbf34b`.
+  Audit counts: 23,162 claims, 5,832 sources, 69 hand-authored release dossiers,
+  546 hand-authored card dossiers, and 807 dossiers with special identification
+  instructions. Validation passed:
+  `python3 -m json.tool data/catalog-history/source-sets/corocoro_first_1996_glossy_promos_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the sixty-sixth
   catalog-history deepening pass in
   `data/catalog-history/source-sets/corocoro_january_1998_insert_v0_1.json`.
