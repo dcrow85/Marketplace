@@ -1,0 +1,2076 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Base Set 2 and twelve rows that carry its reprint-memory, launch-icon, Jungle-blend, trainer-tool, and resource-floor structure.",
+    "in_scope": [
+      "Base Set 2 release dossier",
+      "Charizard",
+      "Blastoise",
+      "Venusaur",
+      "Mewtwo",
+      "Gyarados",
+      "Raichu",
+      "Scyther",
+      "Wigglytuff",
+      "Snorlax",
+      "Pikachu",
+      "Full Heal",
+      "Water Energy"
+    ],
+    "not_claiming": [
+      "complete Base Set 2 scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "Base Set equivalence",
+      "Jungle equivalence",
+      "Shadowless status",
+      "First Edition status"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_base_set_2_20000224",
+      "type": "release",
+      "context": {
+        "name_en": "Base Set 2",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "release_date": "2000-02-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json",
+          "title": "Local English WoC catalog: Base Set 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Base Set 2 as released on February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API support a 130-row Base Set 2 checklist.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Base Set 2 as composed of reprints from Base Set and Jungle rather than a normal new-mechanics expansion.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local catalog preserves Base Set 2 as set id base4 and release_family_id en_wotc_base_set_2_20000224, separate from Base Set, Jungle, Shadowless, and First Edition branches.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local attention rows include Charizard, Blastoise, Venusaur, Mewtwo, Gyarados, Raichu, Scyther, Wigglytuff, Snorlax, Pikachu, Wartortle, and energy / trainer rows that show the compiled set apparatus.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local Base Set 2 artist clusters are led by Ken Sugimori, Keiji Kinebuchi, Mitsuhiro Arita, and Kagemaru Himeno, reflecting the early visual memory being reassembled rather than newly introduced.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Base Set 2 matters because it shows Pokemon history beginning to curate itself: the launch grammar and Jungle memory are repackaged into one English set, making nostalgia, accessibility, and collector confusion part of the same object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_base4_reprint_memory_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Charizard, Blastoise, Venusaur, Base Set art, Jungle art, Shadowless, First Edition, or same artwork.",
+          "summary": "Base Set 2 is a 130-row English reprint/compilation release. Preserve set id base4, row number, and Base Set 2 symbol before comparing to Base Set, Jungle, Shadowless, or First Edition copies.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and Pokemon TCG API set id base4.",
+            "Do not treat shared artwork as proof of Base Set, Jungle, Shadowless, First Edition, or original-print identity.",
+            "Require the seller scan or graded label to show Base Set 2 symbol / set attribution before carrying a Base Set 2 row into transaction logic.",
+            "For price, condition, edition, or authenticity claims, use seller evidence and market evidence; do not infer from catalog memory.",
+            "For energy and trainer rows, preserve Base Set 2 row identity even when the name is generic and reused across early sets."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first nostalgia machine",
+        "why_it_matters": "Base Set 2 is strange in a useful way. It is not the first spark, and it is not trying to be. It is the early English game learning to package its own memory: Base Set icons, Jungle favorites, familiar trainer tools, and the energy floor gathered into a new object with a new symbol. For a collector, that can feel less pure than a first print. For an agent, it is a perfect lesson: resemblance is not provenance. Same art, different assembly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-4",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-4",
+        "catalog_row_id": "base4-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-4",
+          "title": "Local Base Set 2 row: Charizard base4-4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-4",
+          "title": "Pokemon TCG API v2 card record: Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-4 as Charizard.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Charizard base4-4 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Charizard base4-4 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Base Set 2 Charizard is the same mythic shape arriving in a different assembly. Arita’s image still carries the room, but the row is not a Base Set or Shadowless claim. It is nostalgia with a new set symbol, and that distinction is exactly what an agent has to defend.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Charizard base4-4 is Base Set 2, not Base Set, Shadowless, or First Edition; same artwork is not provenance.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_charizard_4_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Charizard, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Charizard base4-4 is Base Set 2, not Base Set, Shadowless, or First Edition; same artwork is not provenance.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-4.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard after the first fire",
+        "why_it_matters": "Base Set 2 Charizard is the same mythic shape arriving in a different assembly. Arita’s image still carries the room, but the row is not a Base Set or Shadowless claim. It is nostalgia with a new set symbol, and that distinction is exactly what an agent has to defend.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-2",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-2",
+        "catalog_row_id": "base4-2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-2",
+          "title": "Local Base Set 2 row: Blastoise base4-2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-2",
+          "title": "Pokemon TCG API v2 card record: Blastoise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-2 as Blastoise.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Blastoise base4-2 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Blastoise base4-2 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blastoise gives Base Set 2 the other half of launch gravity. Sugimori’s image is familiar enough that memory wants to skip the label, but the protocol cannot. This is base4-2, a reassembled English WoC row with its own symbol and date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Blastoise base4-2 must preserve Base Set 2 symbol/set id before comparison to Base Set Blastoise.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_blastoise_2_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Blastoise, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Blastoise base4-2 must preserve Base Set 2 symbol/set id before comparison to Base Set Blastoise.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-2.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The turtle anchor returns",
+        "why_it_matters": "Blastoise gives Base Set 2 the other half of launch gravity. Sugimori’s image is familiar enough that memory wants to skip the label, but the protocol cannot. This is base4-2, a reassembled English WoC row with its own symbol and date.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-18",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-18",
+        "catalog_row_id": "base4-18"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-18",
+          "title": "Local Base Set 2 row: Venusaur base4-18",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-18",
+          "title": "Pokemon TCG API v2 card record: Venusaur",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-18 as Venusaur.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Venusaur base4-18 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Venusaur base4-18 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Venusaur turns Base Set 2 into a full starter memory loop. Arita’s flowered weight is still there, but the set’s meaning is different: not first arrival, but deliberate recirculation of the launch trio.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Venusaur base4-18 is a Base Set 2 Rare Holo row; do not infer original Base Set edition.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_venusaur_18_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Venusaur, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Venusaur base4-18 is a Base Set 2 Rare Holo row; do not infer original Base Set edition.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-18.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur in the memory machine",
+        "why_it_matters": "Venusaur turns Base Set 2 into a full starter memory loop. Arita’s flowered weight is still there, but the set’s meaning is different: not first arrival, but deliberate recirculation of the launch trio.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-10",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-10",
+        "catalog_row_id": "base4-10"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-10",
+          "title": "Local Base Set 2 row: Mewtwo base4-10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-10",
+          "title": "Pokemon TCG API v2 card record: Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-10 as Mewtwo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Mewtwo base4-10 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mewtwo base4-10 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo keeps the set from feeling merely friendly. In Base Set 2, it is one of the launch-era psychic anchors pulled back into circulation, a reminder that the early game’s drama was already strong enough to be curated.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Mewtwo base4-10 is Base Set 2; preserve base4 row identity before comparing to Base Set Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_mewtwo_10_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Mewtwo, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Mewtwo base4-10 is Base Set 2; preserve base4 row identity before comparing to Base Set Mewtwo.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-10.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo as familiar pressure",
+        "why_it_matters": "Mewtwo keeps the set from feeling merely friendly. In Base Set 2, it is one of the launch-era psychic anchors pulled back into circulation, a reminder that the early game’s drama was already strong enough to be curated.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-7",
+      "type": "card",
+      "context": {
+        "name_en": "Gyarados",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-7",
+        "catalog_row_id": "base4-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-7",
+          "title": "Local Base Set 2 row: Gyarados base4-7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-7",
+          "title": "Pokemon TCG API v2 card record: Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-7 as Gyarados.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Gyarados base4-7 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gyarados base4-7 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gyarados is the kind of image Base Set 2 needs: instantly legible, loud, and binder-bright. Arita’s sea monster helps the reprint set feel alive rather than archival.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Gyarados base4-7 is Base Set 2; same art memory does not establish original print identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_gyarados_7_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Gyarados, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Gyarados base4-7 is Base Set 2; same art memory does not establish original print identity.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-7.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Gyarados keeps the water loud",
+        "why_it_matters": "Gyarados is the kind of image Base Set 2 needs: instantly legible, loud, and binder-bright. Arita’s sea monster helps the reprint set feel alive rather than archival.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-16",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-16",
+        "catalog_row_id": "base4-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-16",
+          "title": "Local Base Set 2 row: Raichu base4-16",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-16",
+          "title": "Pokemon TCG API v2 card record: Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-16 as Raichu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Raichu base4-16 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Raichu base4-16 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Raichu is one of the early electric icons that makes Base Set 2 feel like a return to the first binder language. The point is not that it is new; the point is that the old grammar is now being deliberately replayed.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Raichu base4-16 is a Base Set 2 Rare Holo row, distinct from Base/Jungle/Fossil memories.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_raichu_16_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Raichu, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Raichu base4-16 is a Base Set 2 Rare Holo row, distinct from Base/Jungle/Fossil memories.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-16.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Raichu keeps the electric thread",
+        "why_it_matters": "Raichu is one of the early electric icons that makes Base Set 2 feel like a return to the first binder language. The point is not that it is new; the point is that the old grammar is now being deliberately replayed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-17",
+      "type": "card",
+      "context": {
+        "name_en": "Scyther",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-17",
+        "catalog_row_id": "base4-17"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-17",
+          "title": "Local Base Set 2 row: Scyther base4-17",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-17",
+          "title": "Pokemon TCG API v2 card record: Scyther",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-17 as Scyther.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Scyther base4-17 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Scyther base4-17 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Scyther is one of the tells that Base Set 2 is not simply Base Set again. Jungle enters the compilation, giving the set a sharper green edge and proving the assembly is a curated blend.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Scyther base4-17 is Base Set 2; do not collapse it into Jungle Scyther without naming the release change.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_scyther_17_jungle_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Scyther, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Scyther base4-17 is Base Set 2; do not collapse it into Jungle Scyther without naming the release change.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-17.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Jungle cuts into the Base memory",
+        "why_it_matters": "Scyther is one of the tells that Base Set 2 is not simply Base Set again. Jungle enters the compilation, giving the set a sharper green edge and proving the assembly is a curated blend.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-19",
+      "type": "card",
+      "context": {
+        "name_en": "Wigglytuff",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-19",
+        "catalog_row_id": "base4-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-19",
+          "title": "Local Base Set 2 row: Wigglytuff base4-19",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-19",
+          "title": "Pokemon TCG API v2 card record: Wigglytuff",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-19 as Wigglytuff.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Wigglytuff base4-19 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Wigglytuff base4-19 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Wigglytuff gives the compilation its soft Jungle memory. Arita’s credit keeps the card in the early art bloodstream, but the set symbol is what tells the truth of this copy.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Wigglytuff base4-19 is Base Set 2; preserve row and symbol before Jungle comparison.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_wigglytuff_19_jungle_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Wigglytuff, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Wigglytuff base4-19 is Base Set 2; preserve row and symbol before Jungle comparison.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-19.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Wigglytuff brings the Jungle softness",
+        "why_it_matters": "Wigglytuff gives the compilation its soft Jungle memory. Arita’s credit keeps the card in the early art bloodstream, but the set symbol is what tells the truth of this copy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-30",
+      "type": "card",
+      "context": {
+        "name_en": "Snorlax",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-30",
+        "catalog_row_id": "base4-30"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-30",
+          "title": "Local Base Set 2 row: Snorlax base4-30",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-30",
+          "title": "Pokemon TCG API v2 card record: Snorlax",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-30 as Snorlax.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Snorlax base4-30 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Snorlax base4-30 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Snorlax is not a holo here, but it carries enormous character gravity. In Base Set 2 it behaves like a memory weight: familiar, beloved, and easy to mis-file if the agent only follows species affection.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Snorlax base4-30 is Base Set 2 Rare; do not infer Jungle identity from character/art memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_snorlax_30_jungle_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Snorlax, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Snorlax base4-30 is Base Set 2 Rare; do not infer Jungle identity from character/art memory.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-30.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The sleepy mass in the archive",
+        "why_it_matters": "Snorlax is not a holo here, but it carries enormous character gravity. In Base Set 2 it behaves like a memory weight: familiar, beloved, and easy to mis-file if the agent only follows species affection.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-87",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-87",
+        "catalog_row_id": "base4-87"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-87",
+          "title": "Local Base Set 2 row: Pikachu base4-87",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-87",
+          "title": "Pokemon TCG API v2 card record: Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-87 as Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Pikachu base4-87 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pikachu base4-87 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu is common in rarity and huge in attention. That mismatch is exactly why the row deserves a rail: mascot gravity can make agents over-speak. Base4-87 is a Base Set 2 common, not a generic early Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Pikachu base4-87 is a Common Base Set 2 row; mascot demand does not change rarity or release identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_pikachu_87_mascot_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Pikachu, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Pikachu base4-87 is a Common Base Set 2 row; mascot demand does not change rarity or release identity.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-87.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu as a common memory flare",
+        "why_it_matters": "Pikachu is common in rarity and huge in attention. That mismatch is exactly why the row deserves a rail: mascot gravity can make agents over-speak. Base4-87 is a Base Set 2 common, not a generic early Pikachu.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-111",
+      "type": "card",
+      "context": {
+        "name_en": "Full Heal",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-111",
+        "catalog_row_id": "base4-111"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-111",
+          "title": "Local Base Set 2 row: Full Heal base4-111",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-111",
+          "title": "Pokemon TCG API v2 card record: Full Heal",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-111 as Full Heal.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Full Heal base4-111 as Uncommon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Full Heal base4-111 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Full Heal shows that Base Set 2 is not only icons. Kinebuchi’s trainer-tool layer returns as part of the apparatus: the game reprints not just beloved creatures, but the little operational pieces that made early play feel like early play.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Full Heal base4-111 is a Base Set 2 trainer/tool row; preserve row identity across reused trainer names.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_full_heal_111_tool_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Full Heal, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Full Heal base4-111 is a Base Set 2 trainer/tool row; preserve row identity across reused trainer names.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-111.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The tools come back too",
+        "why_it_matters": "Full Heal shows that Base Set 2 is not only icons. Kinebuchi’s trainer-tool layer returns as part of the apparatus: the game reprints not just beloved creatures, but the little operational pieces that made early play feel like early play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-130",
+      "type": "card",
+      "context": {
+        "name_en": "Water Energy",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-130",
+        "catalog_row_id": "base4-130"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-130",
+          "title": "Local Base Set 2 row: Water Energy base4-130",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-130",
+          "title": "Pokemon TCG API v2 card record: Water Energy",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Base Set 2 row base4-130 as Water Energy.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Water Energy base4-130 as not provided.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Water Energy base4-130 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Water Energy is the floor. It is not a chase card, but it proves the set is an apparatus, not only a wall of mascots. The energy rows are the quiet substrate that make the reassembled memory playable.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Water Energy base4-130 is a Base Set 2 energy row; generic name cannot substitute for row/release evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_water_energy_130_resource_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set 2, base4, Water Energy, same art, Shadowless, First Edition, Base Set, or Jungle.",
+          "summary": "Water Energy base4-130 is a Base Set 2 energy row; generic name cannot substitute for row/release evidence.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224 and local row id base4-130.",
+            "Require Base Set 2 symbol / set attribution from seller scan or graded label before using this row in transaction logic.",
+            "Do not infer Base Set, Jungle, Shadowless, First Edition, condition, price, or authenticity from shared art or species memory.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set equivalence",
+            "Jungle equivalence",
+            "Shadowless status",
+            "First Edition status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The water under the whole set",
+        "why_it_matters": "Water Energy is the floor. It is not a chase card, but it proves the set is an apparatus, not only a wall of mascots. The energy rows are the quiet substrate that make the reassembled memory playable.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

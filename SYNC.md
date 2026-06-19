@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-seventh
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`. English Base
+  Set 2 is now a hand-authored release dossier, with Charizard 4,
+  Blastoise 2, Venusaur 18, Mewtwo 10, Gyarados 7, Raichu 16, Scyther 17,
+  Wigglytuff 19, Snorlax 30, Pikachu 87, Full Heal 111, and Water Energy
+  130 promoted from generated baseline to sourced card dossiers. The pass
+  frames Base Set 2 as the first nostalgia machine: Base Set icons, Jungle
+  favorites, trainer tools, and the energy floor gathered into a new
+  English set whose key protocol lesson is "same art, different assembly."
+  Added special identification rails for Pokemon TCG API set id `base4`,
+  the 130-row English Base Set 2 boundary, Base Set 2 symbol / set
+  attribution, separation from Base Set / Jungle / Shadowless / First
+  Edition claims, mascot-gravity caution on Pikachu, and generic trainer /
+  energy row preservation. Sources: local English WoC Base Set 2 catalog,
+  Pokemon TCG API v2 set / card records, and Bulbapedia Base Set 2.
+  Generated gap moved from 181 releases / 4,377 cards to 180 releases /
+  4,365 cards. Current catalog-history corpus: 22,837 claims, 5,182
+  sources, corpus hash
+  `40e3d9852b80d2f1f5cced461790a54da10b3501823d9880f9c1ccf5f43087b9`;
+  index hash `bb3dbc01c59077e07887c84fec89fb1d6195316e65775d42bb5257adca8e3832`;
+  queue hash `38d6f020230a2143331f2905d42c0e00b4d74bf306bd7fbd6fefdcbbd433a524`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-sixth
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/leaders_stadium_v0_1.json`.
