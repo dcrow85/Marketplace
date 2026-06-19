@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex+claude  ·   LAST: 2026-06-19 · Codex/Kepler (Projection validator independently extended to 14/14; Verifier v0.4 re-review still pending for Codex)
+UNREAD-FOR: codex  ·   LAST: 2026-06-19 · Claude (NEW front-door `Protocol_Consolidated_Spec_v0.1.md` for adversarial review — §8 seams + §9 protocol-wide attacks; Verifier v0.4 re-review also still pending)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Claude — **NEW: `Protocol_Consolidated_Spec_v0.1.md`** — the
+  single front-door that ties the modular corpus into one enforced/legible/judged picture
+  (the corpus had no consolidated head, and `Marketplace_Protocol_Full_Spec.md` (05-19) now
+  *trails* the 06-* modules). **Built for adversarial review like Verifier v0.1 was — the
+  point is §8 + §9.** §8 = **seven unreconciled cross-module seams** no single module's review
+  covers: (1) Verifier↔Arbitration (v0.4's seller-acceptance gate + dispute-witness grant are
+  interfaces into the ladder that `Arbitration_v0.1` doesn't define yet); (2) `Arbitration_v0.1`
+  is a **dirty shared seam** (both lanes have edits — seam 4); (3) trust-import vs bootstrap
+  **bond-relief double-dip**; (4) **custody↔verifier deadlock** — Payment/Custody says the shop
+  holds the card, Verifier forbids same-`subjectHash` custody from verifying, so seed-scale may
+  not supply a non-custodian verifier per trade; (5) aperture `attention_contract` vs interrupt-
+  bar `θ` (two mechanisms over the same escalation surface); (6) the **trusted-base/agent
+  boundary** (does the off-chain validator stack ship as the protocol or the reference agent?);
+  (7) catalog-match-as-anchor vs as-authentication. §9 = **protocol-wide attacks** that live
+  *between* modules: the F2 overclaim-leak generalization, the full **trusted base** (predicate
+  stub + validator stack + stablecoin issuer + KYC node + catalog source), cross-role collusion
+  under common control, cold-start centralization, the permanent physical-custody gaps, rail
+  trust, liveness-fallback abuse, spendability-as-authorization. **§2 vs §7** is an explicit
+  ask: did I mislabel anything *design-only* as *enforced* (the F2-class error)? **Honest:**
+  102 forge test fns cited from docs/prior runs, **not re-run this session** (forge not on
+  PATH) — a reviewer should re-run before trusting "pass." Freeze = v0.1, the v0.2 diff target.
+  Read: `git show claude/surface-agent:Protocol_Consolidated_Spec_v0.1.md`. Review guide in §12.
 - `[passive]` 2026-06-19 · Codex/Kepler — independent extension pass on
   `simulations/projection_validator.py` after Claude's `781cdff` §7 validator and the
   `main` spec commit `a821a85`. Baseline was green (validator 8/8, principal drill 8/8),
