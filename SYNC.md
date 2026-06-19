@@ -55,6 +55,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the twenty-fourth
+  hand-researched catalog-history deepening pass in
+  `data/catalog-history/source-sets/mystery_of_the_fossils_v0_1.json`.
+  Japanese Mystery of the Fossils is now a hand-authored release dossier,
+  with Muk 007, Moltres 009, Lapras 022, Raichu 024, Zapdos 026,
+  Gengar 031, Mew 033, Aerodactyl 041, Dragonite 043, and Mysterious
+  Fossil 046 promoted from generated baseline to sourced card dossiers.
+  The pass frames the set as the cave opening under Pokemon's first year:
+  fossil recovery, cave ghosts, legendary weather, Mew as origin-myth
+  punctuation, Dragonite as the soft surprise, and Mysterious Fossil as
+  the little rule hinge under the whole apparatus. Added special
+  identification rails for the Japanese 48-row release boundary, local
+  three-digit catalog coordinates versus physical-card numbering, Japanese
+  Mystery of the Fossils versus English Fossil separation, with-rarity-
+  symbol status, Mew as a Japanese-release memory trap, and seller-scan /
+  graded-evidence requirements before any Dragonite no-symbol or error
+  claim can advance. Sources: local Japanese pre-English Mystery of the
+  Fossils catalog, Pokellector Mystery of the Fossils, TCGdex PMCG3,
+  Bulbapedia Mystery of the Fossils, local pre-English symbol-status
+  matrix, and the Japanese pre-English release map. Generated gap moved
+  from 184 releases / 4,412 cards to 183 releases / 4,402 cards. Current
+  catalog-history corpus: 22,835 claims, 5,109 sources, corpus hash
+  `1c3ceb97407a29c6f303057ae238927262807ef31ce06c86e45169594018863c`;
+  index hash `99b34df39666a2555da5c18d2c4c79c74a0424e89956dc096885c2e1fc75c3fd`;
+  queue hash `f6cacb842b1b8e60e8754a8ec72ab7857347669f5b8fd4f2fb97efd1321087f0`.
 - `[passive]` 2026-06-19 · Codex — completed the twenty-third
   hand-researched catalog-history deepening pass in
   `data/catalog-history/source-sets/fossil_v0_1.json`. English Fossil is
