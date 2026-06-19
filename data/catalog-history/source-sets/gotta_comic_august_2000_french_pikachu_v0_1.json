@@ -1,0 +1,567 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Pikachu [French], the glossy French Wizards Promo 4 variant inserted in Gotta Comic August 2000, emphasizing the strange language-route assembly of a French-language Pikachu through a Japanese magazine, Ken Sugimori's globally portable Pikachu image, and traps against English Kids' WB stamped Promo 4, Japanese Expansion Sheet / Quick Starter Pikachu, Dutch Pikachu World Collection, VHS/DVD Dutch releases, and generic Pikachu rows.",
+    "in_scope": [
+      "Gotta Comic August 2000 issue insert release dossier",
+      "Pikachu [French] unnumbered promotional row 165",
+      "French Wizards Promo 4 glossy-stock variant context",
+      "Ken Sugimori illustration credit",
+      "French-language/Japanese-magazine identification rails"
+    ],
+    "not_claiming": [
+      "complete Gotta Comic issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000",
+        "name_en": "Gotta Comic August 2000 issue insert (June 30, 2000)",
+        "release_date": "2000-06-30",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Gotta Comic magazine insert",
+          "French Wizards Black Star Promo in Japanese distribution",
+          "glossy card stock variant",
+          "Ken Sugimori Pikachu art",
+          "language-route identity trap",
+          "Pikachu as global mascot object"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000:165",
+            "name": "Pikachu [French]",
+            "why": "This is a chase because it bends the normal map: a French-language Wizards Promo 4 Pikachu, glossy like a Japanese magazine insert, entering the hobby through Gotta Comic rather than through the English movie-ticket route.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Pikachu [French]"
+            ],
+            "why": "Sugimori matters here because this row proves how portable Pikachu had become by 2000: the same official mascot image could survive language, stock, market, and magazine-route changes while still reading instantly as Pokemon.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Ken Sugimori bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Pikachu art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Gotta Comic issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Gotta Comic August 2000 issue insert as a one-row unnumbered promotional source group containing Pikachu [French] at source index 165.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Pikachu Wizards Promo 4 page says a French version of the Wizards Black Star Promo, printed on glossy card stock, was included as an insert in the August 2000 issue of Gotta Comic in Japan, released June 30, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies Pikachu [French] as a Gotta Comic August 2000 magazine-inserted, unpeeled promo with a distribution date of June 30, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's Unnumbered Promotional cards list places Pikachu [French] in the 2000 unnumbered promo sequence between the Can You Name All the Pokemon Neo? CD insert and the World Challenge Summer Lucky Stadium prizes.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Wizards Promo 4 Pikachu artwork to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits the Gotta Comic Pikachu [French] promo illustration to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the broader Promo 4 family by route and language: the English print was a Mewtwo Strikes Back ticket promo with a Kids' WB gold foil stamp, while the French, German, Italian, and Spanish prints lack that stamp; the French glossy Gotta Comic print is a separate Japanese magazine insertion.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, this row matters because it is not a normal Japanese-language Pikachu promo: it is a French-language mascot card routed through a Japanese magazine, showing how Pokemon's card objects were already moving across language markets in charming, messy, very collectible ways.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4",
+            "c7"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu [French]: the mascot takes a strange little route",
+        "why_it_matters": "This is the kind of row that makes a catalog feel alive. It is Pikachu, yes, but not just Pikachu: French text, glossy stock, a Japanese Gotta Comic insertion, and the same Sugimori mascot image carrying all of it without breaking. The card is a tiny proof that Pokemon was already bigger than any one language market by mid-2000, and the exact route is what keeps the object from collapsing into generic Pikachu noise.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Gotta Comic issue contents",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "gotta_comic_august_2000_french_pikachu_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A seller, collector, or agent identifies a Pikachu as the Gotta Comic August 2000 French glossy promo or conflates it with another Wizards Promo 4 variant.",
+          "summary": "Do not identify this row from Pikachu name or Wizards Promo 4 family alone. The legible target is French-language + glossy stock + Gotta Comic August 2000 Japanese magazine route.",
+          "steps": [
+            "Confirm the card language is French; English, German, Italian, Spanish, Japanese, or Dutch copies route elsewhere unless the seller supplies stronger variant evidence.",
+            "Confirm the card is the Wizards Black Star Promo 4 family, while keeping this Gotta Comic row separate from the English Kids' WB stamped movie-ticket promo.",
+            "Ask for surface/finish evidence; Bulbapedia describes the Gotta Comic French version as printed on glossy card stock.",
+            "Ask whether the card is unpeeled or still attached to its magazine-insert context; PokeBoon's listing treats the item as magazine-inserted and unpeeled, but the seller must prove their own copy's state.",
+            "Screen against Pikachu World Collection Dutch, VHS/DVD Dutch, Japanese Expansion Sheet, Quick Starter Gift Set, gray-star Hyper CoroCoro, Song Best, ANA, and modern Pikachu rows before publishing a confident row match.",
+            "Do not promote a language/route match into authenticity, possession, condition, or price truth."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000.json",
+          "title": "Local release catalog: Gotta Comic August 2000 issue insert (June 30, 2000)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete issue contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Wizards_Promo_4%29",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/gotta-pikachu-french-promo/",
+          "title": "PokeBoon: Pikachu [French] Promo: Gotta Comic August 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "reference",
+          "ref": "https://www.artofpkm.com/illustrators/3/artwork",
+          "title": "Art of Pokemon: Ken Sugimori artwork",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official primary artist archive",
+            "complete illustrator bibliography",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000:165",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000:165",
+        "release_family_id": "jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000",
+        "name_en": "Pikachu [French]",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_date": "2000-06-30"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_profile": {
+        "authority_label": "local_catalog_fact_and_reference_fact",
+        "identity": "Pikachu [French], Wizards Black Star Promo 4 family, glossy Gotta Comic August 2000 insertion",
+        "artist": "Ken Sugimori",
+        "mechanical_texture": [
+          "Lightning-type Basic Pokemon",
+          "Mouse Pokemon / No. 025",
+          "Recharge",
+          "Thunderbolt",
+          "French-language promo route",
+          "glossy stock"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors row 165 as Pikachu [French] in the Gotta Comic August 2000 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Pikachu Wizards Promo 4 as a Lightning-type Basic Pokemon card and gives the Japanese name ピカチュウ Pikachu.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Recharge and Thunderbolt as this card's attacks and describes the Pokedex entry as coming from Pokemon Red and Blue with slight rewording.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both credit the Pikachu Wizards Promo 4 / Gotta Comic French promo artwork to Ken Sugimori.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "As judged art texture, Sugimori's Pikachu here is less about a rare new pose than about transmission: the image is mascot-standard enough to hold together a French-language print, Japanese magazine route, and WotC promo-family identity.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ],
+          "not_claiming": [
+            "official art interpretation",
+            "all Sugimori work",
+            "authentication",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The French Gotta Comic print is a variant boundary problem: Bulbapedia describes it as French, glossy, and inserted through a Japanese magazine, while also distinguishing other Promo 4 routes including English movie-ticket distribution, Japanese Expansion Sheet / Quick Starter history, and Dutch Pikachu World Collection and VHS/DVD releases.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, this card matters because a Pikachu row is usually dangerously broad; this one becomes interesting only when the agent preserves the exact assembly of language, stock, route, and promo-family lineage.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c6"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu [French]: familiar face, improbable passport",
+        "why_it_matters": "The joy here is that the card looks simple until you ask where it has been. Pikachu is the most obvious Pokemon in the room, but this copy has a little passport: French text, glossy stock, Japanese Gotta Comic route, Wizards Promo 4 family. That makes it a perfect test for an agent catalogue, because the name alone tells you almost nothing and the assembly tells you almost everything.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official art interpretation",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "gotta_comic_august_2000_french_pikachu_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A card-level Pikachu match is being prepared for a want, sale, dossier, or agent comparison.",
+          "summary": "Treat this row as a precise variant, not as generic Pikachu. The minimum legible shape is French-language Wizards Promo 4, glossy card stock, and Gotta Comic August 2000 route.",
+          "steps": [
+            "Confirm the visible language is French and the card belongs to the Wizards Black Star Promo 4 family.",
+            "Check for absence of the English Kids' WB gold movie stamp; Bulbapedia notes the non-English prints lack that stamp, while the English theatrical print uses it as a major identity signal.",
+            "Ask for angled light or close surface evidence to support the glossy-stock claim.",
+            "Ask for any magazine insert, unpeeled, or provenance evidence if the user claims a Gotta Comic copy rather than just a loose French Promo 4.",
+            "Screen against Dutch Pikachu World Collection, Dutch VHS/DVD, Japanese Expansion Sheet, Quick Starter Gift Set, gray-star Hyper CoroCoro, Song Best, ANA Flying Pikachu, and modern Pikachu before finalizing row state.",
+            "If only a cropped front image is available, mark row identity provisional and request back, surface, and route evidence before publishing or using in a transaction."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000.json#row:jp_promo_unnumbered_wotc_165_gotta_comic_august_2000_issue_insert_june_30_2000:165",
+          "title": "Local catalog row: Pikachu [French] / Gotta Comic August 2000 issue insert (June 30, 2000)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete issue contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Wizards_Promo_4%29",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/gotta-pikachu-french-promo/",
+          "title": "PokeBoon: Pikachu [French] Promo: Gotta Comic August 2000",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "reference",
+          "ref": "https://www.artofpkm.com/illustrators/3/artwork",
+          "title": "Art of Pokemon: Ken Sugimori artwork",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official primary artist archive",
+            "complete illustrator bibliography",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

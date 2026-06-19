@@ -59,6 +59,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-twelfth
+  catalog-history pass:
+  `data/catalog-history/source-sets/gotta_comic_august_2000_french_pikachu_v0_1.json`
+  deepens row 165 / Pikachu `[French]` from the Gotta Comic August 2000 issue insert
+  route (June 30, 2000). The pass treats it as a French-language Wizards Black Star Promo
+  4 family card on glossy stock traveling through a Japanese magazine route, not as generic
+  Pikachu. Ken Sugimori, ピカチュウ / Pikachu, Recharge, Thunderbolt, French-language route,
+  glossy stock, and the missing Kids' WB stamp distinction are now legible. Special ID rails
+  separate it from English movie-stamp Promo 4, Dutch Pikachu World Collection, Dutch VHS/DVD,
+  Japanese Expansion Sheet, Quick Starter Gift Set, gray-star Hyper CoroCoro, Song Best, ANA
+  Flying Pikachu, and modern Pikachu rows. Generated gaps moved to 77 release / 3903 card.
+  Current hashes: corpus
+  `44b2d0bcb72561e462fc9fac75d58412b1d5ddd69668380ff3063fac50995311`, index
+  `2a57437660306c7926b116e5b900928ca0bbb12ded28f982dbc6a35aecaa5484`, queue
+  `9d8c056f02dfabcce80df0411e6c2021ad8835c0687a5f1261ba90a7c58659f8`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-eleventh
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_july_2000_scizor_v0_1.json`
