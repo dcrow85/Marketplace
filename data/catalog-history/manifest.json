@@ -1,0 +1,29 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "corpus": {
+    "card_dossier_count": 4,
+    "claim_count": 30,
+    "corpus_hash": "bd32888847d4ea11407c3e229bb59bd89f3c5e398c87e5bbf4f9442a1a627be2",
+    "hash_scope": "canonical corpus excluding generated_at",
+    "path": "data/catalog-history/dossiers.json",
+    "release_dossier_count": 2,
+    "schema": "marketplace.catalog_history_corpus.v0.1",
+    "source_count": 12
+  },
+  "generated_at": "2026-06-19T00:43:51Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "complete deep-history coverage",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "official copy counts unless explicitly sourced",
+    "approved image display rights",
+    "spendability"
+  ],
+  "schema": "marketplace.catalog_history_manifest.v0.1",
+  "source_sets": [
+    "data/catalog-history/source-sets/pilot_v0_1.json"
+  ]
+}

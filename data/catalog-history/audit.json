@@ -1,0 +1,63 @@
+{
+  "corpus_hash": "bd32888847d4ea11407c3e229bb59bd89f3c5e398c87e5bbf4f9442a1a627be2",
+  "counts": {
+    "card_dossier_count": 4,
+    "claim_count": 30,
+    "coverage_by_dimension": {
+      "art": {
+        "A": 0,
+        "B": 3,
+        "C": 1,
+        "none": 2
+      },
+      "history": {
+        "A": 0,
+        "B": 6,
+        "C": 0,
+        "none": 0
+      },
+      "identification": {
+        "A": 1,
+        "B": 5,
+        "C": 0,
+        "none": 0
+      },
+      "release": {
+        "A": 1,
+        "B": 5,
+        "C": 0,
+        "none": 0
+      }
+    },
+    "modeled_catalog_releases": 209,
+    "modeled_catalog_rows": 4549,
+    "not_complete": {
+      "card_dossiers_remaining_minimum": 4545,
+      "note": "Pilot proves schema and sourcing rails only; it does not satisfy full-corpus deep history coverage.",
+      "release_dossiers_remaining_minimum": 207
+    },
+    "release_dossier_count": 2,
+    "source_count": 12,
+    "special_identification_instruction_dossiers": 4,
+    "status": "pilot_in_progress",
+    "uids": [
+      "jp_promo_corocoro_first_19961015:001",
+      "jp_tcg_expansion_pack_19961020:001",
+      "jp_tcg_expansion_pack_19961020:021",
+      "jp_tcg_expansion_pack_19961020:035",
+      "en_wotc_base_set_19990109",
+      "jp_tcg_expansion_pack_19961020"
+    ]
+  },
+  "generated_at": "2026-06-19T00:43:51Z",
+  "passed": true,
+  "residuals": [
+    {
+      "description": "The requested end state is deep history for every modeled release and card. This pilot only establishes schema, validation, and first high-signal dossiers.",
+      "id": "catalog_history_full_corpus_incomplete_v0.1",
+      "severity": "expected_pilot_gap"
+    }
+  ],
+  "schema": "marketplace.catalog_history_audit.v0.1",
+  "status": "pilot_in_progress"
+}

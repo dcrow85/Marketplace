@@ -1,0 +1,857 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Pilot for the catalog-wide history and collector-texture dossier layer. It proves release-level and card-level shape before scaling to every modeled release and card.",
+    "in_scope": [
+      "Japanese First Expansion Pack / No Rarity launch-family rows",
+      "first CoroCoro glossy Pikachu promo",
+      "English Base Set as a later crosswalk/reference release"
+    ],
+    "not_claiming": [
+      "complete deep-history coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts unless explicitly sourced",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_expansion_pack_19961020",
+      "type": "release",
+      "context": {
+        "name_en": "Expansion Pack / No Rarity Lab",
+        "name_ja": "第1弾 拡張パック",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "release_date": "1996-10-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json",
+          "title": "Local Japanese pre-English release catalog: First Expansion Pack / No Rarity lab",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and product-count synthesis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog records October 20, 1996 as the release date for the Japanese First Expansion Pack / No Rarity lab release family.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local release model carries 102 launch-family rows while explicitly marking the strict booster product count as 96 and the six basic Energy cards as broader Starter Pack caveats.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "The research synthesis frames the Expansion Pack as the first full Pokémon TCG set while noting that earlier non-TCG Pokémon card objects and the first glossy CoroCoro promos predate or sit beside it.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The research synthesis treats the blank lower-right corner as the collector-facing No Rarity marker, while warning that the official confirmation trail is thinner than market confidence can make it sound.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local release rows identify Charizard, Blastoise, Venusaur, Chansey, Mewtwo, Zapdos, Raichu, and other holos as high-attention early chase anchors by rarity, image provenance, and collector texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This release matters because it is where the catalog stops being only a list and starts becoming a market memory: product boundaries, rarity grammar, artists, child retail, and later collector proof all collide in one launch-family object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "release_no_rarity_boundary_v0.1",
+          "not_claiming": [
+            "physical-card No Rarity truth",
+            "seller possession",
+            "authenticity",
+            "complete official print-run proof"
+          ],
+          "steps": [
+            "Separate the strict 96-card booster checklist from the 102-row launch-family lab model.",
+            "For non-Energy No Rarity claims, inspect the lower-right rarity-symbol region row by row.",
+            "For basic Energy rows, preserve the Starter Pack caveat rather than treating them as strict booster pulls.",
+            "Do not use the release dossier alone as proof that a seller's physical card is a No Rarity copy."
+          ],
+          "summary": "Keep the 96-vs-102 boundary and the lower-right No Rarity marker visible; this release dossier explains context, not physical-card truth.",
+          "trigger": "Explaining or identifying the Japanese First Expansion Pack / No Rarity launch-family model."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first binder page that became a market",
+        "why_it_matters": "This is where Pokémon stops being only screen memory and becomes cardboard ritual: a pack, a corner mark, a missing corner mark, a child opening ten cards, and decades later an agent trying to decide what that little blank space should cost in evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109",
+      "type": "release",
+      "context": {
+        "name_en": "Base",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "release_date": "1999-01-09"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json",
+          "title": "Local English WoC release catalog: Base Set",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base1",
+          "title": "Pokémon TCG API v2 set record: Base",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards product-history essay",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local English WoC catalog records January 9, 1999 as the Base Set release date.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The Pokémon TCG API Base Set record returns printedTotal 102 and total 102 for set id base1.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local corpus treats English Base Set as a later English reference/crosswalk surface for many Japanese launch-family cards, especially artist and card-identity metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "For this project, English Base is useful less as an endpoint and more as a familiar mirror: it helps agents explain why a Japanese PMCG1 row feels known while still preserving the older Japanese print boundary.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mirror most collectors learned first",
+        "why_it_matters": "English Base is the doorway a lot of collectors remember walking through. In this catalog it becomes a translation surface: useful, beloved, and dangerous if it makes the agent forget that Japanese launch cards have their own product boundary.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "English Base is the same object as Japanese Expansion Pack",
+          "direct Japanese print authority",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:001",
+      "type": "card",
+      "context": {
+        "name_en": "Bulbasaur",
+        "name_ja": "フシギダネ",
+        "romaji": "Fushigidane",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:001",
+        "catalog_row_id": "PMCG1-001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:001",
+          "title": "Local No Rarity launch-family row: Bulbasaur",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-44",
+          "title": "Pokémon TCG API English Base Set Bulbasaur card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Bulbasaur as Japanese Expansion Pack / No Rarity lab row PMCG1-001.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row models Bulbasaur as a Common, Basic Grass Pokémon with National Pokédex number 1.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Bulbasaur matters in this pilot because it is the opening row: the first catalog position turns a modest common into a test of whether the agent can care about more than grails.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Inside the pilot, Arita's credit appears across Bulbasaur, Pikachu, and Charizard, which makes him a connective artist for the launch-family story rather than a one-card footnote.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small first row",
+        "why_it_matters": "Bulbasaur is not the loudest card in the room, which is exactly why it belongs in the first pilot. If the catalog can make PMCG1-001 feel alive without inflating it into a chase myth, the voice is learning restraint.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:021",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Rizaadon",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:021",
+        "catalog_row_id": "PMCG1-021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:021",
+          "title": "Local No Rarity launch-family row: Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-4",
+          "title": "Pokémon TCG API English Base Set Charizard card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Charizard as Japanese Expansion Pack / No Rarity lab row PMCG1-021.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Charizard as a Holo Rare, Fire-type, Stage 2 Pokémon with National Pokédex number 6.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The local collector texture already marks Charizard as the hype magnet and says the evidence has to be colder than the hype.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard is the pilot's pressure card: it forces the agent to be passionate without becoming promotional, because this row carries the most temptation to convert collector feeling into unsupported certainty.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Charizard / PMCG1-021.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with later Japanese rarity-symbol Expansion Pack Charizard or English Base Set Charizard."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; absence is a catalog identification cue, not physical-card proof.",
+          "trigger": "Identifying a claimed Japanese No Rarity Charizard."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The card that makes restraint necessary",
+        "why_it_matters": "Charizard is already glowing before the agent opens its mouth. The dossier's job is not to add more fire; it is to keep the fire in view while making every claim earn its place.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:035",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachuu",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:035",
+        "catalog_row_id": "PMCG1-035"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:035",
+          "title": "Local No Rarity launch-family row: Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-58",
+          "title": "Pokémon TCG API English Base Set Pikachu card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as Japanese Expansion Pack / No Rarity lab row PMCG1-035.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Pikachu as a Common, Lightning-type, Basic Pokémon with National Pokédex number 25.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The local collector texture says Pikachu's mascot gravity works before price enters the room.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pikachu is a perfect agent test because a common can still be emotionally central; the agent must not confuse cultural charge with rarity or price.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Pikachu / PMCG1-035.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with glossy CoroCoro Pikachu, How-to-Play Pikachu, Game Boy Pikachu, or English Base Set Pikachu."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; keep it separate from the many early Pikachu promo rows.",
+          "trigger": "Identifying a claimed Japanese No Rarity Pikachu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The common with gravity",
+        "why_it_matters": "Pikachu is where the catalog has to admit that rarity is only one kind of importance. A common can be a cultural center of mass, and the agent needs language for that without turning it into a price claim.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_first_19961015:001",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_corocoro_first_19961015",
+        "row_id": "jp_promo_corocoro_first_19961015:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "source_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Selected source lines for early 1996 unnumbered promotional cards",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json#row:jp_promo_corocoro_first_19961015:001",
+          "title": "Local Japanese pre-English release row: first CoroCoro glossy Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "The selected source snapshot lists Pikachu [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The selected source snapshot gives October 15, 1996 as the date for the CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The selected source snapshot lists Ken Sugimori immediately under Pikachu [Glossy].",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row preserves Keiji Kinebuchi from provider metadata as a conflict artifact while preferring the selected source snapshot's Ken Sugimori credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because it sits five days before the First Expansion Pack release date in the local corpus, making it a sharp reminder that Pokémon card culture assembled through magazines and promos as well as booster products.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "glossy_pikachu_illustrator_conflict_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card inspection",
+            "provider metadata is false in all contexts"
+          ],
+          "steps": [
+            "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
+            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert.",
+            "Preserve PokéCardex's Keiji Kinebuchi value as conflicting provider metadata rather than silently overwriting the conflict.",
+            "Do not merge this with non-glossy, How-to-Play, Game Boy, No Rarity, or other early Pikachu rows."
+          ],
+          "summary": "Identify this as the first CoroCoro glossy Pikachu and keep the illustrator conflict explicit: preferred source credit Ken Sugimori, conflicting provider value Keiji Kinebuchi.",
+          "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The magazine insert before the pack",
+        "why_it_matters": "This is the kind of card that makes the project worth doing. It is not just Pikachu; it is CoroCoro, timing, glossy paper, source conflict, and the messy way a culture becomes collectible before the tidy checklist arrives.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "A",
+        "art": "C",
+        "history": "B",
+        "identification": "A"
+      }
+    }
+  ]
+}
