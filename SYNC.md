@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-second
+  catalog-history deepening pass in
+  `data/catalog-history/source-sets/corocoro_september_1999_hamachan_slowking_v0_1.json`.
+  The CoroCoro Comic September 1999 issue insert row now has hand-authored
+  release and card coverage for Hama-chan's Slowking source index 128. The
+  pass treats the card as a CoroCoro / The Power of One / Masatoshi Hamada
+  media-crossover object rather than an ordinary Slowking promo: August 15 1999
+  issue-insert route, Hama-chan / Masatoshi Hamada voice-and-illustrator
+  context, spoof-card attack text, Gold/Silver promotional symbol, and
+  bottom-border bonus-card identity remain legible without claiming official
+  print run, possession, authenticity, condition, price, image rights, or
+  spendability. Added bespoke `special_identification_instructions` so agents
+  must separate Hama-chan's Slowking from ordinary Slowking, Ancient Mew,
+  Lawrence III, Southern Islands, movie legendary birds, and generic glossy
+  CoroCoro promos before accepting a match. Sources: local Japanese unnumbered
+  promo release file, Bulbapedia unnumbered promo row, Bulbapedia Hama-chan's
+  Slowking page, Bulbapedia Masatoshi Hamada illustrator category, Pokumon, and
+  PokeBoon collector references. Generated gap moved from 88 releases / 3,914
+  cards to 87 releases / 3,913 cards. Current catalog-history corpus:
+  `c72132d833e7d8aaec1dbcc1972611712755fd7e6943d38376dc67a4b822ccad`;
+  index: `2447b67348f972d0795d2ee2be0fd1d89467735eb2bb5e80fea070dec09727c1`;
+  queue: `2ac89ea048661be65c739e46644bbcadcd930607dee85c0294afa249c949e459`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-first
   catalog-history deepening pass in
   `data/catalog-history/source-sets/fan_club_july_1999_tropical_present_v0_1.json`.
