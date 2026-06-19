@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — enriched generated catalog-history
+  dossiers with local-catalog assembly profiles and added a prioritized
+  research queue at `data/catalog-history/deepening-queue.json`. Generated
+  release dossiers now carry assembly themes, an assembly note, chase-card
+  heuristics, and key artist clusters; generated card dossiers now carry
+  card-level assembly themes and an assembly note grounded in row identity,
+  rarity signal, artist trace, collector texture, and special-ID rails. The
+  new queue ranks the top 100 generated releases and top 100 generated cards
+  for hand-researched deepening; it is explicitly a research work-order, not
+  a market ranking. Current corpus: 209 release dossiers, 4,549 card dossiers,
+  22,947 claims, 4,764 sources. Corpus hash
+  `e24ba1c77525e9f73490e1da69274ab746db5dd85274dac8d509057e6d114320`;
+  index hash `5f9b16ad4782f9cfad8c1013b77f22bdcc769e66e2cdf23cf318de8acd301069`;
+  queue hash `4fbfcb6f96b084206b61277772a40d1b28869dda73792c83454e119f8474cec6`.
 - `[passive]` 2026-06-19 · Codex — widened the catalog-history dossier
   layer from pilot-only to full baseline corpus. `scripts/build_catalog_history_dossiers.py`
   now keeps hand-authored source-set dossiers as overrides, then synthesizes

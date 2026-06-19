@@ -2,8 +2,8 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 18195,
-    "corpus_hash": "1f65c6c6043d751eae187bf2d10699693f6a8dd97678f3e54c5f31cefa1e80d1",
+    "claim_count": 22947,
+    "corpus_hash": "e24ba1c77525e9f73490e1da69274ab746db5dd85274dac8d509057e6d114320",
     "generated_card_dossier_count": 4545,
     "generated_release_dossier_count": 207,
     "hash_scope": "canonical corpus excluding generated_at",
@@ -12,12 +12,20 @@
     "schema": "marketplace.catalog_history_corpus.v0.1",
     "source_count": 4764
   },
-  "generated_at": "2026-06-19T00:52:40Z",
+  "deepening_queue": {
+    "card_queue_count": 100,
+    "hash_scope": "canonical deepening queue",
+    "path": "data/catalog-history/deepening-queue.json",
+    "queue_hash": "4fbfcb6f96b084206b61277772a40d1b28869dda73792c83454e119f8474cec6",
+    "release_queue_count": 100,
+    "schema": "marketplace.catalog_history_deepening_queue.v0.1"
+  },
+  "generated_at": "2026-06-19T00:59:57Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "f1685e7417f4732a6e67188542e0f57d566245438ca4e02a995677367b482b51",
+    "index_hash": "5f9b16ad4782f9cfad8c1013b77f22bdcc769e66e2cdf23cf318de8acd301069",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },

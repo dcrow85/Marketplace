@@ -21,6 +21,7 @@ DATA_DIR = ROOT / "data" / "catalog-history"
 SOURCE_DIR = DATA_DIR / "source-sets"
 OUT_PATH = DATA_DIR / "dossiers.json"
 INDEX_PATH = DATA_DIR / "index.json"
+QUEUE_PATH = DATA_DIR / "deepening-queue.json"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 AUDIT_PATH = DATA_DIR / "audit.json"
 
@@ -228,6 +229,97 @@ def source_contacts_for_release(data: dict[str, Any]) -> list[str]:
     return contacts[:5]
 
 
+def assembly_themes_for_release(release: dict[str, Any], cards: list[dict[str, Any]]) -> list[str]:
+    release_name_text = " ".join([clean_text(release.get("name_en")), clean_text(release.get("name_ja"))]).lower()
+    release_context_text = " ".join(
+        [
+            release_name_text,
+            clean_text(release.get("release_type")),
+            clean_text(release.get("series")),
+        ]
+    ).lower()
+    card_text = " ".join(display_card_name(card) for card in cards[:30]).lower()
+    themes: list[str] = []
+    if any(needle in release_name_text for needle in ["base", "expansion pack", "no rarity", "starter"]):
+        themes.append("launch grammar")
+    if any(needle in release_name_text for needle in ["fossil"]):
+        themes.append("fossil memory")
+    if "jungle" in release_name_text:
+        themes.append("forest and first sequel energy")
+    if any(needle in f"{release_context_text} {card_text}" for needle in ["rocket", "dark ", "team gr"]):
+        themes.append("villain/team identity")
+    if any(needle in f"{release_context_text} {card_text}" for needle in ["gym", "brock", "misty", "blaine", "sabrina", "lt. surge", "erika", "giovanni"]):
+        themes.append("gym-leader ownership")
+    if any(needle in f"{release_context_text} {card_text}" for needle in ["neo", "genesis", "discovery", "revelation", "destiny", "lugia", "ho-oh"]):
+        themes.append("johto/generation shift")
+    if any(needle in release_context_text for needle in ["e-card", "expedition", "aquapolis", "skyridge", "web"]):
+        themes.append("e-card/scannable interface")
+    if any(
+        needle in release_context_text
+        for needle in ["tournament", "battle road", "mega battle", "world challenge", "tropical", "best in japan", "participation prize", "prize"]
+    ):
+        themes.append("tournament/prize culture")
+    if any(needle in release_context_text for needle in ["corocoro", "comic", "magazine", "fan club", "trainers"]):
+        themes.append("magazine/media distribution")
+    if any(needle in release_context_text for needle in ["ana", "all nippon", "jet", "stamp rally"]):
+        themes.append("travel/campaign distribution")
+    if any(needle in release_context_text for needle in ["jumbo", "sample", "w promotional", "stamp"]):
+        themes.append("supplemental physical format")
+    if any(needle in f"{release_context_text} {card_text}" for needle in ["adv", "ruby", "sapphire", "kyogre", "groudon"]):
+        themes.append("ruby/sapphire edge")
+    return themes[:5] or ["cataloged release memory"]
+
+
+def assembly_themes_for_card(card: dict[str, Any], release: dict[str, Any]) -> list[str]:
+    text = " ".join(
+        [
+            display_card_name(card),
+            clean_text(card.get("category")),
+            clean_text(card_rarity(card)),
+            clean_text(release.get("name_en")),
+            clean_text(release.get("release_type")),
+            " ".join(str(signal) for signal in card.get("collector_texture", {}).get("signals", [])),
+        ]
+    ).lower()
+    themes: list[str] = []
+    if "holo" in text:
+        themes.append("holo surface")
+    if "promo" in text:
+        themes.append("promo distribution")
+    if "rare" in text:
+        themes.append("rarity attention")
+    if "trainer" in text or "supporter" in text:
+        themes.append("play-system memory")
+    if any(word in text for word in ["charizard", "blastoise", "venusaur", "pikachu", "mewtwo", "mew", "lugia", "ho-oh", "umbreon", "espeon"]):
+        themes.append("character gravity")
+    if "dark " in text or "rocket" in text:
+        themes.append("villain reframing")
+    if card.get("special_identification_instructions"):
+        themes.append("identity trap")
+    if illustrator_name(card):
+        themes.append("artist trace")
+    return themes[:5] or ["catalog row memory"]
+
+
+def release_assembly_sentence(name: str, themes: list[str], chase_cards: list[dict[str, Any]], key_artists: list[dict[str, Any]]) -> str:
+    theme_text = ", ".join(themes[:3])
+    chase_text = ", ".join(card["name"] for card in chase_cards[:3]) if chase_cards else "its source-visible rows"
+    artist_text = ", ".join(artist["name"] for artist in key_artists[:2]) if key_artists else "artists not yet surfaced by the source"
+    return (
+        f"{name} currently reads through {theme_text}: {chase_text} pull collector attention, while {artist_text} "
+        "show how the visual memory is assembled in the local catalog."
+    )
+
+
+def card_assembly_sentence(name: str, release_name: str, rarity: str, artist: str, themes: list[str]) -> str:
+    theme_text = ", ".join(themes[:3])
+    artist_text = f" and the local artist trace points to {artist}" if artist else ""
+    return (
+        f"{name} sits in {release_name} as {rarity}; its current assembly themes are {theme_text}{artist_text}. "
+        "That is enough to orient an agent, not enough to settle a physical-card claim."
+    )
+
+
 def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> dict[str, Any]:
     release = data.get("release", {})
     cards = data.get("cards", [])
@@ -239,6 +331,8 @@ def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> d
     chase_cards = release_chase_cards(cards)
     key_artists = release_key_artists(cards)
     source_contacts = source_contacts_for_release(data)
+    assembly_themes = assembly_themes_for_release(release, cards)
+    assembly_note = release_assembly_sentence(name, assembly_themes, chase_cards, key_artists)
     claims = [
         {
             "id": "g1",
@@ -305,6 +399,18 @@ def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> d
             }
         )
         basis_claims.append("g6")
+    claims.append(
+        {
+            "id": "g7",
+            "field": "history.significance",
+            "text": f"Generated assembly note: {assembly_note}",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "judged_texture",
+            "basis_claims": basis_claims.copy(),
+        }
+    )
+    basis_claims.append("g7")
     return {
         "uid": release_id,
         "type": "release",
@@ -335,6 +441,8 @@ def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> d
             "chase_cards": chase_cards,
             "key_artists": key_artists,
             "source_contacts": source_contacts,
+            "assembly_themes": assembly_themes,
+            "assembly_note": assembly_note,
             "authority_label": "local_catalog_fact_with_interpretive_chase_heuristic",
             "not_claiming": ["price ranking", "complete artist biography", "market liquidity", "physical-card truth"],
         },
@@ -342,7 +450,7 @@ def make_release_dossier(release_id: str, path: Path, data: dict[str, Any]) -> d
         "narrative": {
             "authority_label": "judged_texture",
             "human_title": f"{name}: first-pass assembly note",
-            "why_it_matters": f"{name} is now in the history layer instead of sitting as a silent checklist. This baseline tells an agent when it appeared, what kind of release it is, which rows carry obvious collector attention, and which artists surface in the local catalog, while reserving deeper lore for researched upgrades.",
+            "why_it_matters": f"{name} is now in the history layer instead of sitting as a silent checklist. {assembly_note} Deeper lore still needs researched upgrades, but the set already has a visible shape.",
             "basis_claims": basis_claims,
             "not_claiming": ["complete deep history", "official emotional history", "price truth", "physical-card authenticity"],
         },
@@ -363,6 +471,8 @@ def make_card_dossier(release_id: str, path: Path, release_data: dict[str, Any],
     number = card_number(card)
     rarity = card_rarity(card)
     artist = illustrator_name(card)
+    assembly_themes = assembly_themes_for_card(card, release)
+    assembly_note = card_assembly_sentence(name, release_name, rarity, artist, assembly_themes)
     texture = card.get("collector_texture", {}) if isinstance(card.get("collector_texture"), dict) else {}
     texture_note = clean_text(texture.get("note"), f"{name} is cataloged in {release_name}.")
     claims = [
@@ -419,6 +529,18 @@ def make_card_dossier(release_id: str, path: Path, release_data: dict[str, Any],
             }
         )
         basis_claims.append("g5")
+    claims.append(
+        {
+            "id": "g6",
+            "field": "history.significance",
+            "text": f"Generated assembly note: {assembly_note}",
+            "sources": ["s1"],
+            "tier": "B",
+            "authority_label": "judged_texture",
+            "basis_claims": basis_claims.copy(),
+        }
+    )
+    basis_claims.append("g6")
     return {
         "uid": row_id,
         "type": "card",
@@ -449,6 +571,8 @@ def make_card_dossier(release_id: str, path: Path, release_data: dict[str, Any],
             "number": number,
             "rarity_signal": rarity,
             "artist": artist,
+            "assembly_themes": assembly_themes,
+            "assembly_note": assembly_note,
             "collector_texture_note": texture_note,
             "signals": texture.get("signals", []),
             "authority_label": "local_catalog_fact_and_judged_texture",
@@ -458,7 +582,7 @@ def make_card_dossier(release_id: str, path: Path, release_data: dict[str, Any],
         "narrative": {
             "authority_label": "judged_texture",
             "human_title": f"{name}: first-pass card note",
-            "why_it_matters": f"{name} now has a card-level history foothold: identity, rarity signal, artist when known, and the local collector texture are all available to an agent before any trade evidence appears.",
+            "why_it_matters": f"{assembly_note} The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears.",
             "basis_claims": basis_claims,
             "not_claiming": ["complete deep history", "price truth", "condition truth", "physical-card authenticity"],
         },
@@ -648,12 +772,14 @@ def build_index(dossiers: list[dict[str, Any]]) -> dict[str, Any]:
                 {"name": artist.get("name"), "row_count": artist.get("row_count")}
                 for artist in highlights.get("key_artists", [])[:6]
             ]
+            entry["assembly_themes"] = highlights.get("assembly_themes", [])
         if "card_highlights" in dossier:
             highlights = dossier["card_highlights"]
             entry["card"] = {
                 "number": highlights.get("number", ""),
                 "rarity_signal": highlights.get("rarity_signal", ""),
                 "artist": highlights.get("artist", ""),
+                "assembly_themes": highlights.get("assembly_themes", []),
             }
         entries.append(entry)
     return {
@@ -665,7 +791,105 @@ def build_index(dossiers: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+def deepening_score(dossier: dict[str, Any]) -> tuple[int, list[str]]:
+    if not dossier.get("generated"):
+        return 0, []
+    score = 0
+    reasons: list[str] = []
+    if dossier["type"] == "release":
+        highlights = dossier.get("release_highlights", {})
+        chase_count = len(highlights.get("chase_cards", []))
+        artist_count = len(highlights.get("key_artists", []))
+        special_theme = len(highlights.get("assembly_themes", []))
+        score += chase_count * 8 + artist_count * 5 + special_theme * 4
+        if chase_count:
+            reasons.append(f"{chase_count} local chase/attention rows")
+        if artist_count:
+            reasons.append(f"{artist_count} surfaced artist clusters")
+        if special_theme:
+            reasons.append(f"{special_theme} assembly themes")
+        if any("tournament" in theme or "magazine" in theme or "travel" in theme for theme in highlights.get("assembly_themes", [])):
+            score += 20
+            reasons.append("distribution story likely richer than a checklist")
+    else:
+        highlights = dossier.get("card_highlights", {})
+        rarity = clean_text(highlights.get("rarity_signal")).lower()
+        themes = highlights.get("assembly_themes", [])
+        if "holo" in rarity:
+            score += 30
+            reasons.append("holo/surface card")
+        if "rare" in rarity:
+            score += 20
+            reasons.append("rare signal")
+        if "promo" in rarity or "promo distribution" in themes:
+            score += 18
+            reasons.append("promo/distribution context")
+        if highlights.get("artist"):
+            score += 10
+            reasons.append(f"artist trace: {highlights.get('artist')}")
+        if dossier.get("special_identification_instructions"):
+            score += 35
+            reasons.append("special identification trap")
+        if "character gravity" in themes:
+            score += 25
+            reasons.append("character gravity")
+        if "identity trap" in themes:
+            score += 25
+            reasons.append("identity trap")
+    return score, reasons
+
+
+def build_deepening_queue(dossiers: list[dict[str, Any]], limit_per_type: int = 100) -> dict[str, Any]:
+    release_items: list[dict[str, Any]] = []
+    card_items: list[dict[str, Any]] = []
+    for dossier in dossiers:
+        score, reasons = deepening_score(dossier)
+        if score <= 0:
+            continue
+        narrative = dossier.get("narrative", {})
+        item = {
+            "uid": dossier["uid"],
+            "type": dossier["type"],
+            "priority_score": score,
+            "reasons": reasons,
+            "human_title": narrative.get("human_title", ""),
+            "why_it_matters": narrative.get("why_it_matters", ""),
+            "next_research_tasks": [
+                "Find at least one external source beyond the local catalog.",
+                "Add one artist-context claim if an artist is known.",
+                "Replace or supplement the generated assembly note with sourced historical texture.",
+                "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced.",
+            ],
+            "not_claiming": ["complete source coverage", "market ranking", "price truth", "physical-card authenticity"],
+        }
+        if dossier["type"] == "release":
+            item["chase_cards"] = dossier.get("release_highlights", {}).get("chase_cards", [])[:6]
+            item["key_artists"] = dossier.get("release_highlights", {}).get("key_artists", [])[:6]
+            item["assembly_themes"] = dossier.get("release_highlights", {}).get("assembly_themes", [])
+            release_items.append(item)
+        else:
+            item["card_highlights"] = dossier.get("card_highlights", {})
+            card_items.append(item)
+    release_items.sort(key=lambda item: (-item["priority_score"], item["uid"]))
+    card_items.sort(key=lambda item: (-item["priority_score"], item["uid"]))
+    return {
+        "schema": "marketplace.catalog_history_deepening_queue.v0.1",
+        "canonicalization": CANONICALIZATION,
+        "hash_algorithm": HASH_ALGORITHM,
+        "description": "Prioritized generated dossiers for the next hand-researched deep history pass.",
+        "not_claiming": ["market ranking", "price truth", "complete importance ranking", "physical-card authenticity"],
+        "release_queue": release_items[:limit_per_type],
+        "card_queue": card_items[:limit_per_type],
+        "coverage": {
+            "generated_release_candidates_considered": sum(1 for dossier in dossiers if dossier.get("generated") and dossier["type"] == "release"),
+            "generated_card_candidates_considered": sum(1 for dossier in dossiers if dossier.get("generated") and dossier["type"] == "card"),
+            "release_queue_count": min(len(release_items), limit_per_type),
+            "card_queue_count": min(len(card_items), limit_per_type),
+        },
+    }
+
+
+def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
     catalog_releases = load_catalog_releases()
     release_ids, row_ids = load_catalog_ids()
     source_sets = load_source_sets()
@@ -748,9 +972,11 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, A
         "dossiers": dossiers,
     }
     index = build_index(dossiers)
+    deepening_queue = build_deepening_queue(dossiers)
     hash_preimage = {key: value for key, value in corpus.items() if key != "generated_at"}
     corpus_hash = canonical_hash(hash_preimage)
     index_hash = canonical_hash(index)
+    queue_hash = canonical_hash(deepening_queue)
     manifest = {
         "schema": MANIFEST_SCHEMA,
         "generated_at": generated_at,
@@ -775,6 +1001,14 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, A
             "index_hash": index_hash,
             "hash_scope": "canonical index",
         },
+        "deepening_queue": {
+            "path": QUEUE_PATH.relative_to(ROOT).as_posix(),
+            "schema": deepening_queue["schema"],
+            "release_queue_count": deepening_queue["coverage"]["release_queue_count"],
+            "card_queue_count": deepening_queue["coverage"]["card_queue_count"],
+            "queue_hash": queue_hash,
+            "hash_scope": "canonical deepening queue",
+        },
         "source_sets": source_paths,
         "not_claiming": NOT_CLAIMING,
     }
@@ -785,6 +1019,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, A
         "status": "baseline_full_corpus_with_deep_research_gap",
         "corpus_hash": corpus_hash,
         "index_hash": index_hash,
+        "queue_hash": queue_hash,
         "counts": coverage,
         "residuals": [
             {
@@ -794,7 +1029,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, A
             }
         ],
     }
-    return corpus, index, manifest, audit
+    return corpus, index, deepening_queue, manifest, audit
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -806,7 +1041,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build catalog-history dossiers.")
     parser.add_argument("--check", action="store_true", help="validate and report without writing")
     args = parser.parse_args()
-    corpus, index, manifest, audit = build()
+    corpus, index, deepening_queue, manifest, audit = build()
     existing_manifest_ok = None
     if args.check and MANIFEST_PATH.exists():
         existing = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
@@ -814,6 +1049,7 @@ def main() -> None:
     if not args.check:
         write_json(OUT_PATH, corpus)
         write_json(INDEX_PATH, index)
+        write_json(QUEUE_PATH, deepening_queue)
         write_json(MANIFEST_PATH, manifest)
         write_json(AUDIT_PATH, audit)
     print(
@@ -825,6 +1061,8 @@ def main() -> None:
                 "generated_card_dossiers": manifest["corpus"]["generated_card_dossier_count"],
                 "claims": manifest["corpus"]["claim_count"],
                 "sources": manifest["corpus"]["source_count"],
+                "release_queue": manifest["deepening_queue"]["release_queue_count"],
+                "card_queue": manifest["deepening_queue"]["card_queue_count"],
                 "corpus_hash": manifest["corpus"]["corpus_hash"],
                 "existing_manifest_ok": existing_manifest_ok,
                 "status": audit["status"],
@@ -833,6 +1071,7 @@ def main() -> None:
                 else [
                     manifest["corpus"]["path"],
                     manifest["index"]["path"],
+                    manifest["deepening_queue"]["path"],
                     MANIFEST_PATH.relative_to(ROOT).as_posix(),
                     AUDIT_PATH.relative_to(ROOT).as_posix(),
                 ],
