@@ -59,6 +59,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-tenth
+  catalog-history pass:
+  `data/catalog-history/source-sets/gotta_comic_may_2000_glossy_mew_v0_1.json`
+  deepens row 162 / Mew `[English] [Glossy]` from the Gotta Comic May 2000 issue
+  insert route (May 1, 2000). The pass treats it as an English Wizards Black Star
+  Promo #8 face traveling through a Japanese magazine route, with glossy/Japanese-stock
+  finish as the key contact evidence. Ken Sugimori artwork, Psywave / Devolution Beam,
+  Mew's mirage quality, and the Gotta Comic insertion route are now legible. Special ID
+  rails separate it from ordinary matte Promo 8, holo Promo 9, CoroCoro/JR Mew 005,
+  Ancient Mew, Song Best Mew, Shining Mew, World Challenge Mew-themed Lucky Stadium,
+  and modern Mew rows. Generated gaps moved to 79 release / 3905 card. Current hashes:
+  corpus `58d7d78d472fdc29b391a74df0803a2506cf81aeff78eccbbc03bba6f4ebf28b`, index
+  `3cce77994a7d87c51b19ad557ce4455bd24178745fd62ae743a4dbf6c85f5893`, queue
+  `e7d69bea5ad029944a823170c85a1f7f9793609d74fa3b024e65049067e1ab5a`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/corocoro_april_2000_english_jumbo_charizard_v0_1.json`
