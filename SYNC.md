@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 156: Battle Road Spring 2003 Victory Ring deepened; corpus 29454cb0)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 157: Nintendo 64 W Double Get Campaign deepened; corpus 8e7ab6f2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/n64_w_double_get_campaign_v0_1.json`
+  deepens the Nintendo 64 W Double Get Campaign source slice and its two
+  modeled rows, Cool Porygon 028 and Hungry Snorlax 029. The pass preserves
+  the December 10 1997-January 31 1998 purchase-campaign window, Nintendo 64
+  buyer route, Singing Pokemon Encyclopedia music CD, sealed booklet context,
+  Hungry Snorlax Food counters, later Pokemon Song Best Collection identical
+  reprint boundary, and the English Wizards Black Star Cool Porygon trap.
+  Card dossiers add Japanese/romaji support from the richer Song Best witness:
+  `かっこいいポリゴン` / Kakkoii Porygon and `くいしんぼカビゴン` /
+  Kuishinbo Kabigon. Artist texture is held as legible catalog support:
+  Hiromichi Sugiyama for Cool Porygon, Sumiyoshi Kizuki for Hungry Snorlax.
+  Special ID rails keep campaign route, Song Best route, English Cool Porygon,
+  ordinary Porygon/Snorlax prints, CD/booklet objects, and Food-counter claims
+  from laundering into seller possession, authenticity, completeness, or
+  spendability. Generated gaps moved to 32 release / 3857 card. Current
+  hashes: corpus
+  `8e7ab6f266a25c241a107719715a85878c97cc7926ea9d22cee435bc850ac655`,
+  index `b9ef2240045aa21a01400f636ffe1a6b016ba16d01253ef8880d68e0f44a374b`,
+  queue `6d325da2830616fe49f6fc016e09f72db069b43fa845bcca0e58b709f024b948`.
+
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-fifty-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/battle_road_spring_2003_victory_ring_v0_1.json`
