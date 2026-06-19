@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23243,
-    "corpus_hash": "8e53aa74f54f4381c17868907d1e40fe835d926ca8d20ec12dfbfd06688e6693",
-    "generated_card_dossier_count": 3945,
-    "generated_release_dossier_count": 125,
+    "claim_count": 23247,
+    "corpus_hash": "ccdf761793bbd27fb7c34af4464600aa65b2f5057fca29e386633cc79a780221",
+    "generated_card_dossier_count": 3943,
+    "generated_release_dossier_count": 124,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6045
+    "source_count": 6052
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "28e9a38d06fc1589924cfa45eacfeb4b793db4feb86939fe4772c1618dc1ce65",
+    "queue_hash": "bacaa79a1320d8cb86b9af62c6a7ed59cd2545280959a542e405f82c17ff4294",
     "release_queue_count": 100,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-19T12:08:43Z",
+  "generated_at": "2026-06-19T12:17:44Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "265c64519676ef8f2c8ee806ceba7abd4d6a434f70bdbed9d673fcfeda93d0ff",
+    "index_hash": "18584c9a01c3836eff0d01d4a7874bfb96b8881f38dfc2c464aba3da3a477e7f",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -43,6 +43,7 @@
   "source_sets": [
     "data/catalog-history/source-sets/adv_expansion_pack_v0_1.json",
     "data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json",
+    "data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json",
     "data/catalog-history/source-sets/ana_get_in_a_jet_campaign_v0_1.json",
     "data/catalog-history/source-sets/aquapolis_v0_1.json",
     "data/catalog-history/source-sets/awakening_legends_tranche_v0_1.json",

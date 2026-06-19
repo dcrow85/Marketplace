@@ -55,6 +55,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the eighty-third catalog-history
+  deepening pass in
+  `data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json`.
+  ANA Everyone's Happy Campaign phase 1 now has complete two-row hand-authored
+  coverage for Articuno row 106 and Flying Pikachu row 107. The pass frames the
+  release as airline travel becoming card provenance: June 1-July 31 1999,
+  two domestic boarding-pass stubs, special postcards mailed to Media Factory,
+  Articuno and Flying Pikachu as the sky pair, and Toshinao Aoki as shared
+  artist context. Added `special_identification_instructions` requiring agents
+  to preserve ANA / All Nippon Airlines / All Nippon Airways phase 1 route,
+  row 106/107 identity, `フリーザー` / Freezer and
+  `そらをとぶピカチュウ` / Sora wo Tobu Pikachu name context, boarding-pass
+  postcard redemption, Media Factory, Aoki art context, Articuno
+  combined-bird/second-comma caveats, Flying Pikachu cannot-evolve-into-Raichu
+  clause, pair relationship, and non-equivalence with ANA Get in a Jet, ANA
+  phase 2, ANA 2000, CoroCoro Flying Pikachu, Wizards Black Star, Pokemon Web,
+  Supreme Victors, Rising Rivals, Pikachu World Collection, and later
+  air-travel Pikachu memories before accepting a match. Sources: local Japanese
+  unnumbered promo release file, Bulbapedia raw unnumbered promotional rows
+  106-107, and Bulbapedia card pages for Articuno Wizards Promo 22 and Flying
+  Pikachu Wizards Promo 25 as bounded database references. Generated gap moved
+  from 125 releases / 3,945 cards to 124 releases / 3,943 cards. Current
+  catalog-history corpus:
+  `ccdf761793bbd27fb7c34af4464600aa65b2f5057fca29e386633cc79a780221`;
+  index: `18584c9a01c3836eff0d01d4a7874bfb96b8881f38dfc2c464aba3da3a477e7f`;
+  queue: `bacaa79a1320d8cb86b9af62c6a7ed59cd2545280959a542e405f82c17ff4294`.
+  Audit counts: 23,247 claims, 6,052 sources, 85 hand-authored release
+  dossiers, 606 hand-authored card dossiers, and 856 dossiers with special
+  identification instructions. Validation passed: `python3 -m json.tool
+  data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`, and
+  `python3 scripts/build_catalog_completion_audit.py --check`.
 - `[passive]` 2026-06-19 · Codex — completed the eighty-second catalog-history
   deepening pass in
   `data/catalog-history/source-sets/trainers_vol10_dark_venusaur_line_v0_1.json`.

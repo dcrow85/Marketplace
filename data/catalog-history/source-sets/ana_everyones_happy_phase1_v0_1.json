@@ -1,0 +1,771 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for All Nippon Airlines / All Nippon Airways Everyone's Happy Campaign phase 1, emphasizing airline travel distribution, two domestic boarding-pass stubs, special postcards mailed to Media Factory, Articuno and Flying Pikachu source rows 106-107, Toshinao Aoki art, and route traps against ANA Get in a Jet, CoroCoro Flying Pikachu, Wizards Black Star, Pokemon Web, Supreme Victors, Rising Rivals, and later air-travel Pikachu memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Articuno row 106",
+      "Flying Pikachu row 107",
+      "ANA Everyone's Happy Campaign phase 1 route",
+      "boarding-pass stub redemption mechanics",
+      "Media Factory postcard route",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete ANA campaign archive",
+      "complete postcard ledger",
+      "complete passenger redemption ledger",
+      "official copy count",
+      "complete airline-promo census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul",
+        "name_en": "All Nippon Airlines \"Everyone's Happy Campaign\" phase 1 (June 1-July 31, 1999)",
+        "release_date": "1999-06-01",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "airline route as collectible identity",
+          "two domestic boarding-pass stubs",
+          "special postcards mailed to Media Factory",
+          "Articuno and Flying Pikachu as sky pair",
+          "Toshinao Aoki air-travel art",
+          "CoroCoro/Wizards/ANA route traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:107",
+            "name": "Flying Pikachu",
+            "why": "The campaign mascot logic is almost too perfect: Pikachu literally learns the sky while the buyer's route is an airline boarding-pass redemption.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:106",
+            "name": "Articuno",
+            "why": "Articuno gives the campaign a legendary-bird spine and later combined-illustration pressure across Moltres and Zapdos memories.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Toshinao Aoki",
+            "row_count": 2,
+            "examples": [
+              "Articuno",
+              "Flying Pikachu"
+            ],
+            "why": "Aoki is the shared visual thread for this airline route; Bulbapedia credits the Japanese ANA prints to Aoki, and those credits help separate campaign identity from later English and retro reprints.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all ANA promo print authority"
+            ]
+          },
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 0,
+            "examples": [
+              "English Articuno Wizards Promo comparison context"
+            ],
+            "why": "Kimura matters as a route-boundary marker for English Articuno memory; the Japanese ANA Articuno uses Aoki artwork while the English Wizards promo carries different artwork.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "credit for the Japanese ANA Articuno row",
+              "seller-card proof",
+              "complete biography"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete ANA campaign archive",
+          "complete postcard ledger",
+          "complete passenger redemption ledger",
+          "official copy count",
+          "complete airline-promo census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two ANA Everyone's Happy Campaign phase 1 rows: Articuno row 106 and Flying Pikachu row 107.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Articuno and Flying Pikachu card pages say the campaign ran between June 1 and July 31, 1999, and passengers could redeem two domestic boarding-pass stubs for a two-card set that included Articuno and Flying Pikachu.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Articuno page says the boarding-pass stubs had to be affixed to special postcards and mailed to Media Factory.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese ANA Articuno artwork to Toshinao Aoki, and the Flying Pikachu page credits Flying Pikachu to Toshinao Aoki.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This source group matters because airline travel is not background flavor: the cards were acquired through flight evidence, postcards, and Media Factory, so route is part of identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve ANA Everyone's Happy Campaign phase 1 route, June 1-July 31 1999 date window, rows 106-107 pair identity, two domestic boarding-pass stub redemption, special postcard / Media Factory mechanics, Toshinao Aoki art context, and non-equivalence with ANA Get in a Jet, CoroCoro Flying Pikachu, Wizards Black Star, Pokemon Web, Supreme Victors, Rising Rivals, and later air-travel Pikachu memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "ANA Everyone's Happy Campaign phase 1 — boarding passes become card provenance",
+        "why_it_matters": "This is one of the cleanest examples of why the catalog has to care about assembly. The cards are not only Articuno and Flying Pikachu. They are a flight, two domestic boarding-pass stubs, a special postcard, Media Factory, and the little thrill of Pokemon leaving the binder for an airport counter. Flying Pikachu makes the route literal; Articuno gives it legendary sky weight. The result is beautiful and fragile for agents: the same names and artwork drift through CoroCoro, Wizards, Pokemon Web, Supreme Victors, Rising Rivals, and later air-travel Pikachu projects. The airline route is the spine.",
+        "not_claiming": [
+          "complete release history",
+          "complete ANA campaign archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: ANA Everyone's Happy Campaign phase 1",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete ANA campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 106-107",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete ANA campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Articuno (Wizards Promo 22)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Articuno_(Wizards_Promo_22)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Flying Pikachu (Wizards Promo 25)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase1_airline_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says ANA, All Nippon Airlines, All Nippon Airways, Everyone's Happy Campaign, June 1-July 31 1999, boarding pass stubs, special postcard, Media Factory, Articuno, Flying Pikachu, Toshinao Aoki, airline promo, or rows 106/107.",
+          "summary": "Preserve the ANA Everyone's Happy Campaign phase 1 airline route before accepting Articuno or Flying Pikachu as this source slice.",
+          "steps": [
+            "Confirm ANA / All Nippon Airlines / All Nippon Airways Everyone's Happy Campaign phase 1 route and June 1-July 31, 1999 window.",
+            "Preserve the pair relationship: Articuno row 106 and Flying Pikachu row 107 were the two-card redemption set.",
+            "Preserve redemption mechanics: two domestic boarding-pass stubs, special postcards, and mailing to Media Factory.",
+            "Preserve Toshinao Aoki as source-page artist context for the Japanese ANA prints.",
+            "Separate this phase from ANA Get in a Jet 1998, ANA Everyone's Happy phase 2, ANA 2000 campaigns, CoroCoro Flying Pikachu, Wizards Black Star, Pokemon Web, Supreme Victors, Rising Rivals, and later air-travel Pikachu memories.",
+            "Use seller photos for physical format, card face/back, stock/gloss, route markings, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete ANA campaign archive",
+            "complete postcard ledger",
+            "complete passenger redemption ledger",
+            "official copy count",
+            "complete airline-promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:106",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul",
+        "name_en": "Articuno",
+        "name_ja": "フリーザー",
+        "romaji": "Freezer",
+        "local_id": "106",
+        "card_type": "Water Pokemon",
+        "rarity_or_signal": "Unnumbered Promotional / ANA phase 1"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Toshinao Aoki",
+        "why_it_matters": "Articuno gives the airline campaign legendary-bird weight; its Aoki artwork later pulls toward Pokemon Web and Supreme Victors memory, so the ANA route has to stay visible.",
+        "collector_signals": [
+          "ANA Everyone's Happy phase 1 route",
+          "two domestic boarding-pass stubs",
+          "special postcard / Media Factory redemption",
+          "paired with Flying Pikachu row 107",
+          "combined legendary-bird illustration context"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Articuno as ANA Everyone's Happy Campaign phase 1 row 106.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia's Articuno page gives Articuno's Japanese name as フリーザー.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia says the Japanese ANA Articuno print uses artwork by Toshinao Aoki.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Japanese ANA Articuno artwork is part of a combined illustration that includes Moltres and Zapdos.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says this Japanese print omits the second comma from the attack effect.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Articuno matters here because the card is a legendary bird acquired through human flight evidence; the distribution route and the subject rhyme.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Articuno row 106, フリーザー / Freezer identity, ANA Everyone's Happy phase 1 route, boarding-pass postcard redemption, Toshinao Aoki artwork, combined legendary-bird illustration context, second-comma caveat, and non-equivalence with Wizards Black Star, Pokemon Web, Supreme Victors, and phase 2 Moltres/Zapdos memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Articuno — a legendary bird earned by flying",
+        "why_it_matters": "Articuno is almost too elegant for this campaign. A legendary bird, obtained through airline travel, with boarding-pass stubs becoming the evidence that let the card enter your life. Toshinao Aoki's art later echoes through other prints, and the combined legendary-bird illustration makes the card feel bigger than a single promo. That is exactly why the route has to stay attached: ANA phase 1, two-card set, postcard to Media Factory, row 106.",
+        "not_claiming": [
+          "complete release history",
+          "complete ANA campaign archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: ANA Everyone's Happy phase 1 Articuno 106",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul.json#row:jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:106",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete ANA campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 106",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete ANA campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Articuno (Wizards Promo 22)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Articuno_(Wizards_Promo_22)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase1_106_articuno_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Articuno, フリーザー, Freezer, ANA, Everyone's Happy Campaign, boarding pass stubs, Media Factory postcard, Toshinao Aoki, Wizards Promo 22, Pokemon Web, Supreme Victors, Moltres, Zapdos, or row 106.",
+          "summary": "Keep Articuno row 106 pinned to ANA Everyone's Happy phase 1 and its boarding-pass postcard route.",
+          "steps": [
+            "Require row 106 and ANA Everyone's Happy Campaign phase 1 context.",
+            "Preserve Japanese/romaji name context: フリーザー / Freezer.",
+            "Confirm the phase 1 pair relationship with Flying Pikachu row 107.",
+            "Preserve redemption mechanics: two domestic boarding-pass stubs affixed to special postcards and mailed to Media Factory.",
+            "Preserve Toshinao Aoki and combined legendary-bird illustration context without treating Pokemon Web, Supreme Victors, or Wizards Black Star memory as enough.",
+            "Use seller photos for physical format, card face/back, stock/gloss, route markings, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete ANA campaign archive",
+            "complete postcard ledger",
+            "complete passenger redemption ledger",
+            "official copy count",
+            "complete Articuno print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:107",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul",
+        "name_en": "Flying Pikachu",
+        "name_ja": "そらをとぶピカチュウ",
+        "romaji": "Sora wo Tobu Pikachu",
+        "local_id": "107",
+        "card_type": "Lightning Pokemon",
+        "rarity_or_signal": "Unnumbered Promotional / ANA promo 99"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Toshinao Aoki",
+        "why_it_matters": "Flying Pikachu makes the ANA campaign legible in a glance: the card is about flight, and the route required a real flight record.",
+        "collector_signals": [
+          "ANA promo 99 source note",
+          "Everyone's Happy Campaign phase 1 route",
+          "two domestic boarding-pass stubs",
+          "paired with Articuno row 106",
+          "cannot evolve into Raichu clause"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Flying Pikachu as ANA Everyone's Happy Campaign phase 1 row 107 with source expansion number 99.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Flying Pikachu's Japanese name as そらをとぶピカチュウ.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Flying Pikachu to Toshinao Aoki.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the two Japanese Unnumbered Promotional Flying Pikachu prints have clauses under the card name stating that the card cannot evolve into Raichu.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia separates the ANA Flying Pikachu route from earlier CoroCoro, Wizards Black Star, TCG GB, Pikachu World Collection, Rising Rivals, and later reprint contexts.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Flying Pikachu matters here because the route and subject reinforce each other: a flying Pikachu acquired by documenting human flight.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Flying Pikachu row 107, そらをとぶピカチュウ / Sora wo Tobu Pikachu identity, ANA Everyone's Happy phase 1 route, source number 99, boarding-pass postcard redemption, Aoki art, cannot-evolve-into-Raichu clause, and non-equivalence with CoroCoro, Wizards Black Star, TCG GB, Rising Rivals, Pikachu World Collection, ANA Get in a Jet, and later Flying Pikachu memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Flying Pikachu — the flight record becomes the joke and the proof",
+        "why_it_matters": "Flying Pikachu is charming because it is so literal. The card is Pikachu in the sky, and the campaign asked for proof that you had been in the sky too. Two boarding-pass stubs, a postcard, Media Factory, and then this tiny impossible Pikachu. That simplicity is also the trap: Flying Pikachu has many routes, from CoroCoro to Wizards to Game Boy sprites to later retro prints. The ANA phase 1 card is not just a Pikachu with balloons. It is the airline version, row 107, paired with Articuno.",
+        "not_claiming": [
+          "complete release history",
+          "complete ANA campaign archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: ANA Everyone's Happy phase 1 Flying Pikachu 107",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul.json#row:jp_promo_unnumbered_wotc_106_all_nippon_airlines_everyone_s_happy_campaign_phase_1_june_1_jul:107",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete ANA campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 107",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete ANA campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Flying Pikachu (Wizards Promo 25)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Flying_Pikachu_(Wizards_Promo_25)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_everyones_happy_phase1_107_flying_pikachu_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Flying Pikachu, そらをとぶピカチュウ, Sora wo Tobu Pikachu, ANA promo 99, Everyone's Happy Campaign, boarding pass stubs, Media Factory postcard, Toshinao Aoki, CoroCoro Flying Pikachu, Wizards Promo 25, TCG GB, Rising Rivals, or row 107.",
+          "summary": "Keep Flying Pikachu row 107 pinned to ANA Everyone's Happy phase 1 and its boarding-pass postcard route.",
+          "steps": [
+            "Require row 107, source number 99, and ANA Everyone's Happy Campaign phase 1 context.",
+            "Preserve Japanese/romaji name context: そらをとぶピカチュウ / Sora wo Tobu Pikachu.",
+            "Confirm the phase 1 pair relationship with Articuno row 106.",
+            "Preserve redemption mechanics: two domestic boarding-pass stubs affixed to special postcards and mailed to Media Factory.",
+            "Preserve Toshinao Aoki and the cannot-evolve-into-Raichu Japanese promotional clause context.",
+            "Separate from CoroCoro Flying Pikachu, Wizards Black Star 25, TCG GB sprites, Pikachu World Collection, Rising Rivals, ANA Get in a Jet, and later Flying Pikachu memories unless the route evidence explicitly supports those lanes.",
+            "Use seller photos for physical format, card face/back, stock/gloss, route markings, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete ANA campaign archive",
+            "complete postcard ledger",
+            "complete passenger redemption ledger",
+            "official copy count",
+            "complete Flying Pikachu print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
