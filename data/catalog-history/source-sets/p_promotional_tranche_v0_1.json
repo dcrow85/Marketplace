@@ -244,6 +244,228 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-001-p",
+      "type": "card",
+      "context": {
+        "name_en": "Kecleon",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-001-p",
+        "catalog_row_id": "001/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-001-p",
+          "title": "Local Japanese promo WotC catalog row: Kecleon 001/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Kecleon as P Promotional card number 001/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Celebi: a Timeless Encounter theatrical release as the distribution note for Kecleon 001/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Kecleon 001/P as a Colorless Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Kecleon 001/P, so this dossier leaves the artist unset rather than importing artist memory from another Kecleon print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Kecleon 001/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kecleon 001/P matters because it opens the numbered P Promotional spine through a movie-theater route: the first modeled NNN/P number is not a pack pull but a theatrical assembly point tied to Celebi: a Timeless Encounter.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Kecleon and printed 001/P, preserve the Celebi: a Timeless Encounter theatrical-release route as distribution context only, and avoid importing Miracle of the Desert Kecleon, later Kecleon rows, or artist/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_kecleon_001_movie_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Kecleon P promo, movie Kecleon, Celebi theatrical Kecleon, 001/P, Japanese Kecleon promo, or early numbered P Promotional card.",
+          "summary": "Confirm Kecleon and printed 001/P before treating the card as this Celebi: a Timeless Encounter theatrical-release P Promotional row.",
+          "steps": [
+            "Confirm the card name is Kecleon.",
+            "Read the printed promo number as 001/P and keep it inside the numbered P Promotional spine.",
+            "Keep the Celebi: a Timeless Encounter theatrical-release note legible but separate from physical provenance.",
+            "Do not merge this card with Miracle of the Desert Kecleon 043/053, later Kecleon promos, English Kecleon rows, or main-set Kecleon cards without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for theatrical-release provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "theatrical-release copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "Miracle of the Desert Kecleon equivalence",
+            "later Kecleon equivalence",
+            "main-set Kecleon equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "001/P",
+        "rarity_signal": "Celebi: a Timeless Encounter theatrical release",
+        "artist": "",
+        "assembly_themes": [
+          "movie-theater route",
+          "numbered P spine",
+          "early 2000s promo distribution",
+          "identity trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "001/P",
+          "Kecleon",
+          "Colorless",
+          "Celebi: a Timeless Encounter theatrical release",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Kecleon 001/P is the numbered P spine opening in a movie-theater route: the important fact is not only the Pokemon, but the printed 001/P and the Celebi theatrical-release assembly."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kecleon 001/P: the P spine starts at the movies",
+        "why_it_matters": "Kecleon is a perfect little door into P Promotional. It is not the loudest chase card in the file, but it carries the first number: 001/P. That matters because P Promotional is a social map, and this first row begins in the dark of a movie theater, attached to Celebi: a Timeless Encounter. The agent should treat the row like a route marker: Kecleon, Colorless, 001/P, theatrical release, no artist imported from another Kecleon, no physical-card truth until evidence arrives.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "theatrical-release copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
       "type": "card",
       "context": {

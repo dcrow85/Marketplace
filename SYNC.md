@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 214: ADV-P Armaldo ex 013 deepened; corpus 80df9df3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 215: P Promo Kecleon 001 deepened; corpus 4456a8a7)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-001-p`
+  Kecleon 001/P is now hand-authored rather than generator memory. The pass
+  opens the numbered P Promotional card deepening lane with the Celebi: a
+  Timeless Encounter theatrical-release route, Colorless-row identity, absent
+  promoted Japanese name, absent artist credit, and absent row-specific image
+  witness. The special identification packet is explicit and first-class:
+  agents must confirm Kecleon, printed `001/P`, and the numbered P
+  Promotional spine; keep the theatrical-release note separate from physical
+  provenance; and avoid merging this row with Miracle of the Desert Kecleon
+  `043/053`, later Kecleon promos, English Kecleon rows, main-set Kecleon, or
+  absent art/attack/Japanese-name details. Boundaries remain explicit: catalog
+  legibility is not seller possession, authenticity, condition, price,
+  theatrical-release copy provenance, image availability, illustrator credit,
+  Japanese-name certainty, attack text, Miracle of the Desert Kecleon
+  equivalence, later Kecleon equivalence, main-set Kecleon equivalence,
+  complete Japanese promo universe, or spendability. The focused assertion also
+  confirmed the row does not import Kagemaru Himeno from the later Miracle of
+  the Desert Kecleon. Generated gaps remain bounded at 100. Validation passed:
+  JSON; catalog dossier build + `--check`; card dossier `--check`; completion
+  audit `--check`; focused assertion for the new special-identification
+  packet. Hashes: corpus
+  `4456a8a7017defd4fd1d72c9f7be810b73004f61cecc7b1695b83d1d3495ea9e`;
+  index `5a45579029879e89caedea5649186f8e6465aca3fef40e9d139134dfc491fa9f`;
+  queue `5783539de8a07074c7df8f152d9fc415eeb1a8967318c90be856f68ce14833ca`;
+  audit `50093efbd4a6026929ca8a03ce2035588262637978524301b426c57214dc07b2`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fourteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
