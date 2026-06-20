@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 213: ADV-P Groudon ex 012 deepened; corpus 4ac9e102)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 214: ADV-P Armaldo ex 013 deepened; corpus 80df9df3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fourteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
+  `jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p`
+  Armaldo ex 013/ADV-P is now hand-authored rather than generator memory. The
+  pass records the May 2003 CoroCoro Comic / April 2003 note, Fighting-row
+  identity, early ex-era fossil context, absent promoted Japanese name, absent
+  artist credit, and absent row-specific image witness. The special
+  identification packet is explicit and first-class: agents must confirm
+  Armaldo ex, printed `013/ADV-P`, and the bounded `001-014` pre-edge slice;
+  keep the CoroCoro note separate from physical provenance; and avoid merging
+  this row with later ADV-P Armaldo rows, main-set Armaldo ex, English EX-era
+  Armaldo ex, broad fossil-card memory, or absent art/attack/ex-rules/Japanese
+  name details. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, price, CoroCoro copy provenance, image
+  availability, illustrator credit, Japanese-name certainty, attack text, ex
+  rules text, later ADV-P equivalence, main-set Armaldo ex equivalence,
+  fossil-card equivalence, complete ADV-P coverage, or spendability. Generated
+  gaps remain bounded at 100. Validation passed: JSON; catalog dossier build
+  + `--check`; card dossier `--check`; completion audit `--check`; focused
+  assertion for the new special-identification packet. Hashes: corpus
+  `80df9df3f31e6411c1fc72c2e80dcbc09ff77b8ee2c4ec3db94525e505fee59c`;
+  index `1d500e042b50e45f838350a32973421701518a3beec945e51f5d6003c2ce4f58`;
+  queue `17ec85e1bbace3332a0fc724d1432e4f49ff6fd0d73a2bb9ce68cc426b06a123`;
+  audit `9645a43b2c45bf0b48e4f13d902bf4fd1aeadf44d5cb67d72e0a2f9fce40b557`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
