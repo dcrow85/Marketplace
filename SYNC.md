@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 196: English Base Set + Mewtwo 10 deepened; corpus 12b941c9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 197: English Base Set Venusaur 15 deepened; corpus c3238222)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-seventh
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-15` Venusaur / Base Set #15 is now
+  hand-authored rather than generator memory. The pass records Mitsuhiro Arita
+  credit, Rare Holo status, HP 100 Level 67 Grass Stage 2 profile, Ivysaur
+  evolution line, Energy Trans Pokemon Power, Solarbeam, Fire weakness, retreat
+  cost 2, and the launch-binder texture of Venusaur as a living engine rather
+  than only a starter trophy. The special identification packet is explicit and
+  first-class: agents must separate English Base Venusaur from Japanese
+  Expansion Pack / No Rarity Venusaur, Base Set 2 Venusaur, Legendary
+  Collection Venusaur, Expedition Venusaur, CD/promo Venusaur rows, later
+  Venusaur ex/GX/V memory, and all edition/Shadowless claims without seller
+  evidence. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, First Edition status, Shadowless status,
+  Unlimited status, holo-surface condition, graded-cert truth, price, or
+  spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `c3238222952ccf7b8e81575fa1ba8e695b1dfcb5aeb033c37b73af64433e3518`,
+  index `937a3cf8d5369de8484f36f7d1f5e51d339000ea98f681341899227fc56e332e`,
+  queue `4cf17e9af1913ae6813e9f031fb36c3a4c776df0701e4384a6642e370ec4eb7c`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-sixth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   the English Base Set release dossier and

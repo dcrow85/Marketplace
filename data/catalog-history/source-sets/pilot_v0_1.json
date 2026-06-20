@@ -610,6 +610,246 @@
       }
     },
     {
+      "uid": "en_wotc_base_set_19990109:base1-15",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-15",
+        "catalog_row_id": "15",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-15",
+          "title": "Local English WotC catalog row: Venusaur base1-15",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-15",
+          "title": "Pokemon TCG API v2 card record: Venusaur base1-15",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+          "title": "Bulbapedia: Venusaur (Base Set 15)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Venusaur as English Base Set row base1-15 / printed number 15.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Venusaur base1-15 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Mitsuhiro Arita as the illustrator for Venusaur base1-15.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Venusaur base1-15 as a Level 67 Grass Stage 2 Pokemon evolving from Ivysaur, with HP 100, Fire weakness, retreat cost 2, the Pokemon Power Energy Trans, and the attack Solarbeam.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur base1-15 matters because it made the English launch binder feel like an ecosystem, not only a monster parade: Arita's full-bodied plant-beast image and Energy Trans made the Grass starter line feel infrastructural, moving energy through the board while carrying holo starter prestige.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Venusaur base1-15 from Japanese Expansion Pack / No Rarity Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memories; the English Base row number, set id base1, Rare Holo status, Mitsuhiro Arita credit, Energy Trans text, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_venusaur_15_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Venusaur, original Venusaur holo, base1-15, Venusaur #15, Shadowless Venusaur, First Edition Venusaur, Unlimited Venusaur, Arita Venusaur, or Energy Trans Venusaur.",
+          "summary": "Venusaur base1-15 is the English Base Set Rare Holo row. Preserve set id base1, printed number 15, and edition/Shadowless evidence before comparing to other Venusaur prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 15 before using this dossier.",
+            "Check the card is the Rare Holo Venusaur with Mitsuhiro Arita credit, Energy Trans, Solarbeam, HP 100, Fire weakness, and retreat cost 2.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memories.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, and edition as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Venusaur equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "15",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "starter-line gravity",
+          "energy movement",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Venusaur",
+          "15",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Trans",
+          "Solarbeam",
+          "HP 100",
+          "Level 67",
+          "Fire weakness",
+          "retreat cost 2"
+        ],
+        "collector_texture_note": "Base Set Venusaur is the English launch holo where Arita's starter-line art meets a real game engine: Energy Trans makes the big plant feel like infrastructure, not just a trophy.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur #15: the launch binder's living engine",
+        "why_it_matters": "Base Set Venusaur is easy to undersell if the room is only talking about Charizard. But Venusaur is one of the cards that makes the first English set feel alive. Arita gives it weight and bloom; Energy Trans gives it a job. It is the starter holo that turns Grass energy into motion across the board, which is exactly the kind of assembly this catalog is trying to preserve: art, character, game text, and collector memory all braided into one object. For an agent, the order matters: base1-15 first, edition evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_tcg_expansion_pack_19961020:001",
       "type": "card",
       "context": {
