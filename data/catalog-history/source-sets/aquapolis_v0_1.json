@@ -7239,6 +7239,332 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H3",
+      "type": "card",
+      "context": {
+        "name_en": "Ariados",
+        "name_ja": "アリアドス",
+        "romaji": "Ariados",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H3",
+        "catalog_row_id": "ecard2-H3",
+        "card_number": "H3",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-3",
+        "japanese_lineage_card_number": "The Town on No Map 009/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H3",
+          "title": "Local English WoC card row: Ariados H3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H3",
+          "title": "Pokemon TCG API v2 card record: Ariados ecard2-H3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ariados_(Aquapolis_H3)",
+          "title": "Bulbapedia: Ariados (Aquapolis H3)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-3",
+          "title": "Pokemon TCG API v2 card record: Ariados ecard2-3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ariados as Aquapolis H3, a Rare Holo Stage 1 Grass Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Ariados's Japanese name as アリアドス / Ariados and connects the Holofoil print to Japanese The Town on No Map card 009/092, while the non-Holofoil Aquapolis print appears as English 3/147.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Ariados H3 with 70 HP, evolvesFrom Spinarak, Grass type, Fire weakness, zero retreat cost, the Poke-Body Gluey Slime, and the attack Spider Force.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Ariados H3 to Shin-ichi Yoshida; the local and API rows also credit Shin-ichi Yoshida on the non-Holo Aquapolis Ariados #3 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Ariados as H3/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Ariados at #3 with the same Shin-ichi Yoshida credit, Gluey Slime, and Spider Force; agents must keep H3 and #3 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Ariados H3 page records card ID C-62 for the Holofoil print and C-62-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information and a brief card summary, that there is no long strip for this card, and that the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia identifies Ariados as the Long Leg Pokemon, says Ariados H3's e-Reader Pokedex entry comes from Pokemon Crystal, and notes that the Holofoil print reads \"defending Pokemon\" where it should read \"Defending Pokemon\" while the Non Holofoil print does not feature this error.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Ariados H3 matters because Aquapolis turns a spider evolution into a constraint machine: Gluey Slime taxes retreat, Spider Force threatens paralysis, and the Holofoil text error gives the H-number copy a tiny printed fingerprint beyond surface shine.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_ariados_h3_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Ariados, アリアドス, Ariados H3, H3/H32, Rare Holo, ecard2-H3, Shin-ichi Yoshida, Gluey Slime, Spider Force, C-62, C-62-#, The Town on No Map, 009/092, Aquapolis #3, 3/147, lowercase defending Pokemon error, or reverse holo Ariados.",
+          "summary": "Identify Ariados H3 by the Aquapolis H-number Rare Holo lane: English ecard2-H3 / H3/H32 and The Town on No Map 009/092 lineage, not the non-Holo #3 / 3/147 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H3 / printed number H3 before accepting this as the H-number holo row.",
+            "Preserve H3/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Ariados #3 row even though #3 shares Shin-ichi Yoshida, Gluey Slime, and Spider Force.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 009/092 while the English non-Holofoil counterpart appears as Aquapolis 3/147.",
+            "Use Shin-ichi Yoshida credit, Stage 1 Grass profile, Spinarak evolution line, Fire weakness, zero retreat cost, Gluey Slime, Spider Force, C-62 Holofoil e-Reader ID, and C-62-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Treat the Holofoil lowercase \"defending Pokemon\" text error as a useful print-specific clue, not as proof of authenticity or condition.",
+            "Keep reverse-holo listings, generic Ariados wants, Grass deck references, and seller-card image claims separate until set, number, rarity, attack text, power text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Long Leg Pokemon species label, Pokemon Crystal Pokedex source, text-error context, and no-long-strip boundary as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, attack-text closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "text error proves authenticity",
+            "long-strip data presence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H3"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Ariados_(Aquapolis_H3)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H3",
+        "artist": "Shin-ichi Yoshida",
+        "rarity_signal": "Rare Holo; H3/H32 H-number holo sequence, separate from non-Holo #3 / 3/147 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Shin-ichi Yoshida art trace",
+          "Stage 1 spider evolution",
+          "Gluey Slime retreat tax",
+          "Spider Force paralysis pressure",
+          "Holofoil text-error fingerprint",
+          "C-62 e-Reader object",
+          "no-long-strip boundary"
+        ],
+        "collector_texture_note": "Ariados H3 is a sticky little Aquapolis machine: retreat gets taxed, paralysis is waiting, and the Holofoil text error gives the H-number print one more reason not to collapse it into #3."
+      },
+      "narrative": {
+        "human_title": "Ariados H3 — the web that taxes escape",
+        "why_it_matters": "Ariados H3 is Aquapolis turning menace into procedure. Shin-ichi Yoshida's spider evolution does not just sit on a holo sheet; it makes retreat more expensive, flips for paralysis, carries C-62 as e-Reader memory, and even has a tiny Holofoil-only wording error for agents and collectors to notice.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "text error proves authenticity",
+          "long-strip data presence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {

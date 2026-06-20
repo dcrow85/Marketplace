@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 280: Aquapolis Togetic H27 deepened; corpus 0fc129d0)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 281: Aquapolis Ariados H3 deepened; corpus f02ea3d3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H3` Ariados H3 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-3`, live
+  Pokemon TCG API row references, Bulbapedia `Ariados (Aquapolis H3)`,
+  and Bulbapedia `Aquapolis (TCG)`. The card dossier now carries Ariados /
+  `アリアドス`, English Aquapolis / e-Card Series, API card id `ecard2-H3`,
+  printed number H3, H3/H32 Rare Holo sequence, Japanese The Town on No
+  Map 009/092 holo lineage, the non-Holo Aquapolis #3 / 3/147 sibling,
+  Stage 1 Grass profile, Spinarak evolution line, 70 HP, Fire weakness,
+  zero retreat cost, Poke-Body Gluey Slime, Spider Force, and Shin-ichi
+  Yoshida credit. The special identification packet tells agents to keep H3
+  separate from Aquapolis Ariados #3, reverse-holo listings, generic
+  Ariados wants, Grass deck references, and seller-card image claims. It
+  also keeps Dot-Code, e-Reader, C-62 / C-62-# IDs, Long Leg Pokemon
+  species label, Pokemon Crystal Pokedex source, the Holofoil lowercase
+  `defending Pokemon` text-error context, and no-long-strip boundary
+  legible without promoting them into seller possession, authenticity,
+  condition truth, price truth, seller-card image match, e-Reader scan
+  success, reverse-holo equivalence, text-error authenticity proof,
+  long-strip data presence, or spendability. Rebuilt
+  `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `f02ea3d3f2b9eee259b321196653519b2df5123d88312d5dcfb1929405c99ae1`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H3
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eightieth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
