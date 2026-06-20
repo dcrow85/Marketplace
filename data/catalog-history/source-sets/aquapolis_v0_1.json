@@ -8245,6 +8245,346 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H6",
+      "type": "card",
+      "context": {
+        "name_en": "Blissey",
+        "name_ja": "ハピナス",
+        "romaji": "Happinas",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H6",
+        "catalog_row_id": "ecard2-H6",
+        "card_number": "H6",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-6",
+        "japanese_lineage_card_number": "The Town on No Map 066/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H6",
+          "title": "Local English WoC card row: Blissey H6",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H6",
+          "title": "Pokemon TCG API v2 card record: Blissey ecard2-H6",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blissey_(Aquapolis_H6)",
+          "title": "Bulbapedia: Blissey (Aquapolis H6)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-6",
+          "title": "Pokemon TCG API v2 card record: Blissey ecard2-6",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_japanese_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#rows:E2-066,E2-065",
+          "title": "Local Japanese classic rows: Blissey / The Town on No Map 066 and 065",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Blissey as Aquapolis H6, a Rare Holo Stage 1 Colorless Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Blissey's Japanese name as ハピナス / Happinas and connects the Holofoil print to Japanese The Town on No Map card 066/092, while the non-Holofoil Aquapolis print appears as English 6/147 and Japanese 065/092.",
+          "sources": [
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Blissey H6 with 120 HP, evolvesFrom Chansey, Colorless type, Fighting weakness, two-Colorless retreat, the Poke-Power Happy Healing, and Smash Bomber for 50 damage with a tails-fail coin flip.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Blissey H6 to Naoyo Kimura; the local and API rows also credit Naoyo Kimura on the non-Holo Aquapolis Blissey #6 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Blissey as H6/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Blissey at #6 with the same Naoyo Kimura credit, Happy Healing, and Smash Bomber; agents must keep H6 and #6 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Blissey H6 page records card ID C-73 for the Holofoil print and C-73-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Blissey H6's e-Reader Pokedex entry comes from Pokemon Crystal and that the long strip contains music data for the Construction: Melody Box application.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Blissey H6 matters because Aquapolis makes care into machinery: Happy Healing converts Blissey's attached Energy into damage-counter removal, Smash Bomber adds coin-flip risk, and the e-Reader layer turns the Happiness Pokemon into a C-73 object carrying Melody Box music data.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_blissey_h6_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Blissey, ハピナス, Happinas, Blissey H6, H6/H32, Rare Holo, ecard2-H6, Naoyo Kimura, Happy Healing, Smash Bomber, C-73, C-73-#, The Town on No Map, 066/092, Aquapolis #6, 6/147, or reverse holo Blissey.",
+          "summary": "Identify Blissey / ハピナス / Happinas H6 by the Aquapolis H-number Rare Holo lane: English ecard2-H6 / H6/H32 and The Town on No Map 066/092 lineage, not the non-Holo #6 / 6/147 / 065/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H6 / printed number H6 before accepting this as the H-number holo row.",
+            "Preserve H6/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Blissey #6 row even though #6 shares Naoyo Kimura, Happy Healing, and Smash Bomber.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 066/092 while the non-Holofoil counterpart maps to The Town on No Map 065/092 and English Aquapolis 6/147.",
+            "Use Naoyo Kimura credit, Stage 1 Colorless profile, Chansey evolution line, Fighting weakness, two-retreat cost, Happy Healing, Smash Bomber, C-73 Holofoil e-Reader ID, and C-73-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Blissey wants, Chansey-line collection goals, Colorless deck references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Happiness Pokemon species label, Pokemon Crystal Pokedex source, egg-joy Pokedex text, and Construction: Melody Box music-data context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "long-strip data readability",
+            "Construction: Melody Box data readability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H6"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Blissey_(Aquapolis_H6)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H6",
+        "artist": "Naoyo Kimura",
+        "rarity_signal": "Rare Holo; H6/H32 H-number holo sequence, separate from non-Holo #6 / 6/147 / 065/092 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Naoyo Kimura art trace",
+          "Stage 1 happiness evolution",
+          "Happy Healing bench-care engine",
+          "Smash Bomber coin-flip risk",
+          "Construction: Melody Box music data",
+          "C-73 e-Reader object"
+        ],
+        "collector_texture_note": "Blissey H6 is Aquapolis turning comfort into apparatus: Happy Healing counts Energy to remove damage, Smash Bomber asks the coin to cooperate, and C-73 carries Melody Box music data under the holo surface."
+      },
+      "narrative": {
+        "human_title": "Blissey H6 — happiness with a music payload",
+        "why_it_matters": "Blissey H6 is the set being tender and technical at the same time. Naoyo Kimura's Happiness Pokemon heals from the Bench by counting attached Energy, risks everything on Smash Bomber's coin flip, and then hides Construction: Melody Box music data in the e-Reader strip. Aquapolis keeps doing this beautiful thing: it turns a character trait into machinery you can scan.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "long-strip data readability",
+          "Construction: Melody Box data readability",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {

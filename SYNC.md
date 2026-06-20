@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 285: Aquapolis Bellossom H5 deepened; corpus 1f64e819)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 286: Aquapolis Blissey H6 deepened; corpus d38b08cc)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H6` Blissey H6 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-6`, local
+  Japanese The Town on No Map rows for E2-066 / E2-065, Bulbapedia
+  `Blissey (Aquapolis H6)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Blissey / `ハピナス` / Happinas, English Aquapolis
+  / e-Card Series, API card id `ecard2-H6`, printed number H6, H6/H32
+  Rare Holo sequence, Japanese The Town on No Map 066/092 holo lineage,
+  the non-Holo Aquapolis #6 / 6/147 / The Town on No Map 065/092
+  sibling, Stage 1 Colorless profile, Chansey evolution line, 120 HP,
+  Fighting weakness, two-retreat cost, Poke-Power Happy Healing, Smash
+  Bomber, and Naoyo Kimura credit. The special identification packet
+  tells agents to keep H6 separate from Aquapolis Blissey #6,
+  reverse-holo listings, generic Blissey wants, Chansey-line collection
+  goals, Colorless deck references, and seller-card image claims. It
+  also keeps C-73 / C-73-# IDs, Happiness Pokemon species label, Pokemon
+  Crystal Pokedex source, egg-joy Pokedex text, Construction: Melody Box
+  music data, seller possession, authenticity, condition, price, image
+  rights, seller-card match, e-Reader scan success, reverse-holo
+  equivalence, and spendability explicitly out of the catalog claim.
+  Rebuilt generated corpus artifacts; new corpus hash
+  `d38b08ccd8368a5fd5057dde30b4dbe2d25893ba6c6f8f87e8d68a6308e97521`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
