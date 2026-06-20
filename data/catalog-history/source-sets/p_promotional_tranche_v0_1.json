@@ -4666,6 +4666,240 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-022-p",
+      "type": "card",
+      "context": {
+        "name_en": "Wooper",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-022-p",
+        "catalog_row_id": "022/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-022-p",
+          "title": "Local Japanese promo WotC catalog row: Wooper 022/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row and Bulbapedia raw Setlist row identify Wooper as P Promotional card number 022/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local catalog row records the distribution context as a McDonald's promotion held on Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Wooper 022/P as a Water Pokemon row, but does not provide HP, attacks, stage, Japanese name, illustrator credit, or a row-specific image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "No illustrator is promoted for Wooper 022/P because the primary source row used by this catalog slice does not provide one.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "No row-specific image witness is promoted for Wooper 022/P in this catalog slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Wooper 022/P matters because after mascot Pikachu 021/P, the McDonald's branch spreads into quieter Johto side-character memory; fast-food weekends and public holidays make the route ordinary and childlike, while identity lives in the date window and printed number rather than character alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Wooper 022/P from Pikachu 021/P, other McDonald's P Promotional rows, ordinary Wooper expansion cards, later Wooper promos, English Wooper rows, and generic fast-food promo memory; the printed 022/P number and the January 26-February 24, 2002 McDonald's date window are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_wooper_022_mcdonalds_date_window_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Wooper P promo, McDonald's Wooper, 022/P, Japanese Wooper promo, McDonald's 2002 promo, or early numbered P Promotional card.",
+          "summary": "Confirm Wooper and printed 022/P before treating the card as this McDonald's January 26-February 24, 2002 P Promotional row.",
+          "steps": [
+            "Confirm the card name is Wooper.",
+            "Read the printed promo number as 022/P and keep it inside the numbered P Promotional spine.",
+            "Keep the McDonald's promotion date window legible: Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+            "Do not merge this card with Pikachu 021/P, other McDonald's P Promotional rows, ordinary Wooper expansion cards, later Wooper promos, English Wooper rows, or generic fast-food promo memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for McDonald's wrapper, packet, store, or campaign provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "date-window participation proof",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "Pikachu 021/P equivalence",
+            "other McDonald's promo equivalence",
+            "ordinary Wooper equivalence",
+            "later Wooper equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "022/P",
+        "rarity_signal": "McDonald's promotion (January 26-February 24, 2002 weekends/public holidays)",
+        "artist": "",
+        "assembly_themes": [
+          "McDonald's route",
+          "date-window boundary",
+          "numbered P spine",
+          "Water-type Johto side character",
+          "fast-food childhood route",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "022/P",
+          "Wooper",
+          "Water",
+          "McDonald's promotion",
+          "January 26-February 24, 2002",
+          "Saturdays/Sundays/public holidays",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Wooper 022/P is the soft edge of the McDonald's branch: not the mascot headline of Pikachu 021/P, but the kind of small Water-type friend that makes a fast-food promo sheet feel lived in.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete McDonald's campaign proof",
+          "wrapper or packet provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Wooper 022/P: the small friend in the McDonald's window",
+        "why_it_matters": "After Pikachu 021/P, Wooper makes the McDonald's route feel less like mascot marketing and more like a child's weekend pull. The date window is exact, the place-memory is ordinary, and the card itself is modest: a Water Pokemon row with no promoted artist, Japanese name, attacks, or image witness in this slice. That is useful honesty. The catalog preserves the route; a seller still has to prove the card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete McDonald's campaign provenance",
+          "wrapper or packet provenance",
+          "illustrator credit",
+          "image witness",
+          "Japanese name certainty"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
       "type": "card",
       "context": {

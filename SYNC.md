@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 228: P Promo Pokemon Center Osaka 020 deepened; corpus aab929b2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 229: P Promo Wooper 022 deepened; corpus a32048bb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-022-p`
+  Wooper 022/P is now hand-authored rather than generator memory. The pass
+  records the McDonald's promotion date window as Saturdays, Sundays, and
+  public holidays from January 26 through February 24, 2002; keeps Wooper as a
+  Water Pokemon row; and preserves the absences that matter: no promoted
+  Japanese name, no illustrator credit, no HP/attacks/stage, and no
+  row-specific image witness in this source slice. The special identification
+  packet is explicit and first-class: agents must confirm Wooper, printed
+  `022/P`, and the McDonald's date window; keep the row separate from Pikachu
+  021/P, other McDonald's P Promotional cards, ordinary Wooper expansion
+  cards, later Wooper promos, English Wooper rows, and generic fast-food promo
+  memory; and avoid importing provenance claims absent from the seller's own
+  evidence. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, price, McDonald's campaign copy
+  provenance, wrapper or packet provenance, store provenance, date-window
+  participation proof, image availability, illustrator credit, Japanese-name
+  certainty, attack text, ordinary Wooper equivalence, later Wooper
+  equivalence, other McDonald's promo equivalence, complete Japanese promo
+  coverage, or spendability. Validation passed:
+  `python3 -m json.tool ...`, `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Wooper assertion. Hashes: corpus
+  `a32048bb0087792d860105b7ba96f8742a893c5410e7ecea26f410af091dcd6a`, index
+  `963280b71538e623f564be3ab3a46ade9ae6ae4d7588638126a4454ef976260f`, queue
+  `3e7e79857c0060f219b6aec5ac830f8b1598e88a5de24a8fd42fed567026106d`, audit
+  `dab33d66aa853dad9db0b8aeb2c84c8ebaf5525f6a380bef08da5e2f3fb1b081`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
