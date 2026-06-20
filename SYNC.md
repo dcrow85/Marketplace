@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 186: Pokemon Card Information Vol. 2 Bellossom deepened; corpus 39551798)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 187: Pokemon Card Information Vol. 3 Pryce's Lapras deepened; corpus 8849012b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/pokemon_card_information_vol3_pryces_lapras_v0_1.json`
+  deepens the Pokemon Card Information Vol. 3 insert and its single modeled
+  row, Pryce's Lapras / ヤナギのラプラス / Yanagi no Laplace source index 237.
+  The pass frames Vol. 3 as the Information Pack route at the Japanese VS
+  threshold: free participating-store distribution from July 19, 2001, after
+  Vol. 2 Bellossom and before Vol. 4 Ponyta. It records Mitsuhiro Arita /
+  有田満弘 as the expected illustrator, Sing / うたう, Tsunami / つなみ, LV.31,
+  HP 60, Water Basic, Metal weakness, one retreat cost, and the critical
+  identity wall that the Information Pack promo lacks the 1st Edition symbol
+  while the Japanese VS 041/141 reprint carries it. Special identification
+  packets now separate this row from Japanese VS 1st Edition Pryce's Lapras,
+  generic Lapras cards, other Pryce/Yanagi cards, Pokemon Card Information
+  Vol. 1, Vol. 2, or Vol. 4 promos, and any unopened-packet claim where the
+  card is not separately visible or disclosed. Boundaries remain against seller
+  possession, authenticity, condition, price, complete sealed-packet state,
+  official print run, and spendability. Generated gaps are now release queue 2
+  and card queue 100. Hashes: corpus
+  `8849012b4538f03e48013437b87772774450292be47b74c11e0b66f2a6dd4e06`,
+  index `68209f2f6652c2800d5f79e695d30594e01e85a3a3d6ba8f26e8b9a064073f13`,
+  queue `5cad05143d3292ec65919e6c615ab7c154592b51d12c9c5a5eea7868f0b4869f`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/pokemon_card_information_vol2_bellossom_v0_1.json`

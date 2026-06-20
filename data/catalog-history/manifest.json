@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23855,
-    "corpus_hash": "39551798bf85f14af95a05c95b13da559cd5b13fe0545f6ce744135326e0ce2e",
-    "generated_card_dossier_count": 3804,
-    "generated_release_dossier_count": 3,
+    "claim_count": 23860,
+    "corpus_hash": "8849012b4538f03e48013437b87772774450292be47b74c11e0b66f2a6dd4e06",
+    "generated_card_dossier_count": 3803,
+    "generated_release_dossier_count": 2,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6910
+    "source_count": 6918
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "fdf37487e35249f0253d971e7826e110c1d00faa02dc52564e8879ca3bd14e15",
-    "release_queue_count": 3,
+    "queue_hash": "5cad05143d3292ec65919e6c615ab7c154592b51d12c9c5a5eea7868f0b4869f",
+    "release_queue_count": 2,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T03:48:15Z",
+  "generated_at": "2026-06-20T03:55:10Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "043b2db3d06a333ca58e2401ac66881f864cff30d3766b22c12ee5909c48a702",
+    "index_hash": "68209f2f6652c2800d5f79e695d30594e01e85a3a3d6ba8f26e8b9a064073f13",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -162,6 +162,7 @@
     "data/catalog-history/source-sets/pokemon_card_gb2_team_gr_mewtwo_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_information_vol1_dunsparce_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_information_vol2_bellossom_v0_1.json",
+    "data/catalog-history/source-sets/pokemon_card_information_vol3_pryces_lapras_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_web_tranche_v0_1.json",
     "data/catalog-history/source-sets/pokemon_jungle_v0_1.json",
