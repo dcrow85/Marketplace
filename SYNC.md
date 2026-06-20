@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 174: How I Became a Pokemon Card Vol. 2 Psyduck deepened; corpus 4d76eae2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 175: Meowth's Party Team Rocket's Meowth deepened; corpus 49a1862d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-fifth
+  catalog-history pass:
+  `data/catalog-history/source-sets/meowths_party_cd_team_rockets_meowth_v0_1.json`
+  deepens the October 27, 1999 Meowth's Party CD insert source slice and its
+  single modeled row, Team Rocket's Meowth source index 133. The pass frames
+  the object as a music / anime / card contact point: a Pikachu Records mini CD
+  where the original-series ending theme, Inuko Inuyama's Meowth performance,
+  Akihito Toda lyrics, Hirokazu Tanaka composition, and Kunihiko Yuyama /
+  湯山邦彦 card illustration all converge on one talking-cat promo. It preserves
+  CD route details, catalogue number ZMDP-1027, EP117 ending-theme context,
+  3-D computer graphics ending sequence, Team Rocket / Rocket Gang's Nyarth
+  identity, Miraculous Comeback / だいぎゃくてん? attack text, the Pikachu
+  Records logo in the symbol area, the Japanese no-evolve-into-Persian clause,
+  and the boundary against Wizards Black Star Promo 18, Pokemon Web 039/048,
+  generic Meowth or Team Rocket rows, and CD-only lots without card evidence.
+  Special identification packets now give agents explicit Meowth's Party
+  CD-route and card-level visible-tell rails. Boundaries remain against sealed
+  CD status, complete insert state, seller possession,
+  authenticity/condition/price, complete Team Rocket's Meowth variant census,
+  and spendability. Generated gaps moved to 14 release / 3815 card. Current
+  hashes: corpus
+  `49a1862d9b269a0cf6a0c662027b1073284723822587e0974dc0e0438382beaa`,
+  index `ad6a1c7cbc137243c36cacf5de0e01d847778845ac9d856fe77825c70a3c93fe`,
+  queue `a76d9ab428382b2c743734652538d4d3d70a697c628fa0a5ae3b72db4f2b34aa`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-fourth
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol2_psyduck_v0_1.json`
