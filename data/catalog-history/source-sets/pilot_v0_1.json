@@ -4,6 +4,7 @@
     "description": "Pilot for the catalog-wide history and collector-texture dossier layer. It proves release-level and card-level shape before scaling to every modeled release and card.",
     "in_scope": [
       "Japanese First Expansion Pack / No Rarity launch-family rows",
+      "Japanese Expansion Pack / No Rarity Venusaur",
       "first CoroCoro glossy Pikachu promo",
       "English Base Set as a later crosswalk/reference release",
       "English Base Set Mewtwo #10"
@@ -174,6 +175,217 @@
       "coverage": {
         "release": "B",
         "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:011",
+        "catalog_row_id": "011",
+        "release_name": "Expansion Pack / No Rarity Lab"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:011",
+          "title": "Local Japanese pre-English catalog row: Venusaur / PMCG1-011",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "direct Japanese illustrator authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and identification synthesis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Venusaur as Japanese Expansion Pack / No Rarity Lab row jp_tcg_expansion_pack_19961020:011, with local signal PMCG1-011 and Japanese name フシギバナ / Fushigibana.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's visible rarity or collector signal for Venusaur PMCG1-011 is Holo Rare and marks it as an active No Rarity target.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row carries Mitsuhiro Arita as artist metadata through an English Base Set crosswalk and explicitly caveats that this is useful catalog texture, not direct Japanese-print illustrator authority if the Illus. line becomes dispute-relevant.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance describes a source-labeled No Rarity reference image with an expected empty lower-right rarity-symbol field, while preserving that the reference image is not seller evidence, authentication proof, or condition proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur PMCG1-011 matters because it makes the No Rarity problem feel beautiful and dangerous at once: a launch holo, an Arita-linked garden-beast image, and a blank lower-right corner that can orient a search but cannot carry a transaction by itself.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Japanese Expansion Pack / No Rarity Venusaur PMCG1-011 from English Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur rows, and Series 1 Starter Pack source ambiguity; the lower-right blank corner is necessary for a No Rarity claim but not sufficient for possession, authenticity, or condition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_expansion_pack_venusaur_011_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No Rarity Venusaur, Japanese Base Venusaur, Expansion Pack Venusaur, PMCG1-011, Fushigibana, フシギバナ, blank corner Venusaur, or Venusaur no symbol.",
+          "summary": "Japanese Expansion Pack Venusaur PMCG1-011 is a launch-family No Rarity target. Preserve Japanese row identity, lower-right symbol evidence, and source-family ambiguity before comparing to other Venusaur prints.",
+          "steps": [
+            "Confirm the row as Japanese Expansion Pack / No Rarity Lab PMCG1-011 with Japanese name フシギバナ / Fushigibana.",
+            "Inspect the lower-right rarity-symbol region; a No Rarity claim needs the expected blank corner visible, not merely the name Venusaur.",
+            "Treat the source-labeled No Rarity reference image as a comparison witness only; it is not seller possession, seller card match, authentication, or condition evidence.",
+            "Preserve the Mitsuhiro Arita artist signal as crosswalk catalog metadata unless the exact Japanese Illus. line is visible in seller evidence.",
+            "Separate this row from English Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur, Series 1 Starter Pack source ambiguity, and later Venusaur ex/GX/V memory.",
+            "For transaction use, ask for seller-controlled front/back scans, angled holo-surface images, lower-right corner close-up, edge/corner photos, and any slab/cert evidence before treating the physical card as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "holo surface condition",
+            "direct Japanese illustrator authority",
+            "Series 1 Starter Pack equivalence",
+            "English Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "Erika's Venusaur equivalence",
+            "CD promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "011",
+        "rarity_signal": "Holo Rare",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "No Rarity target",
+          "launch holo",
+          "blank-corner evidence",
+          "starter finale",
+          "artist crosswalk"
+        ],
+        "signals": [
+          "PMCG1-011",
+          "Expansion Pack / No Rarity Lab",
+          "Venusaur",
+          "フシギバナ",
+          "Fushigibana",
+          "Holo Rare",
+          "Mitsuhiro Arita",
+          "Grass",
+          "Stage2",
+          "National Pokedex 3",
+          "expected empty lower-right rarity-symbol field"
+        ],
+        "collector_texture_note": "Venusaur is the garden becoming a tank, but on a No Rarity claim the poetry lives or dies in the corner: the huge flower, the holo surface, and the blank lower-right field all need to be seen."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur PMCG1-011: the garden and the blank corner",
+        "why_it_matters": "No Rarity Venusaur is quieter than Charizard and somehow more protocol-shaped. It is a launch holo with all the first-set gravity, but the thing that makes the market lean forward is a tiny absence in the lower-right corner. That is why this row is useful for agents: it teaches that absence can be evidence, but only when it is placed. Name, row, image, corner, source, seller proof, then judgment. The garden does not get to spend until the assembly is real.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "seller card match",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "physical-card No Rarity truth",
+          "holo surface condition"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
         "history": "B",
         "identification": "B"
       }

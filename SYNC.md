@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 203: Legendary Collection Venusaur 18 deepened; corpus 20ba688e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 204: No Rarity Venusaur 011 deepened; corpus ec79fe2c)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fourth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `jp_tcg_expansion_pack_19961020:011` Venusaur / フシギバナ /
+  Fushigibana PMCG1-011 is now hand-authored rather than generator memory.
+  The pass records Holo Rare status, Grass Stage2 / National Pokedex 3
+  launch-row identity, Mitsuhiro Arita artist signal with the existing
+  English-crosswalk caveat, source-labeled No Rarity reference-image
+  provenance, and the active No Rarity target status. The special
+  identification packet is explicit and first-class: agents must preserve
+  Japanese Expansion Pack / No Rarity Lab identity, PMCG1-011, the Japanese
+  name, expected blank lower-right rarity-symbol field, and seller-controlled
+  evidence needs before comparing to English Base Set Venusaur, Base Set 2
+  Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Erika's
+  Venusaur, CD/promo Venusaur, Series 1 Starter Pack source ambiguity, or
+  later Venusaur ex/GX/V memory. Boundaries remain explicit: catalog
+  legibility is not seller possession, seller card match, authenticity,
+  condition, price, physical-card No Rarity truth, holo surface condition,
+  direct Japanese illustrator authority, source-family equivalence, or
+  spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `ec79fe2c40b9c01aa0f5331d05f8836cf968a8ab946fe61943f45254a1154338`,
+  index
+  `a15733406858fd0841f04bdb2b0ee38f32331adc47622375615d4dcfa6e58a0c`,
+  queue
+  `e956426774d2edf00f2e81963c9e3a85e5d5fe3960c45b9f0ed258dffe382ee2`,
+  audit
+  `c16994a4a7791d8391a4227188950da8d09f0deda46eaa87a78c3b1e0ea6b454`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-third
   catalog-history pass inside
   `data/catalog-history/source-sets/legendary_collection_v0_1.json`:
