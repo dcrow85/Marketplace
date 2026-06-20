@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 175: Meowth's Party Team Rocket's Meowth deepened; corpus 49a1862d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 176: Grand Party Trainer Certification Card deepened; corpus 1994e1b0)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/grand_party_trainer_certification_card_v0_1.json`
+  deepens the Grand Party 1999-2000 campaign source slice and its single
+  modeled row, Trainer Certification Card / カードトレーナー認定証 source index
+  134. The pass frames the object as a Passport Challenge / organized-play
+  credential: participation becomes collectible after 50 recorded opponents,
+  the holder is recognized as an Official Pokemon Card Certified Trainer, and
+  the Challenge Road '99 Summer / Autumn Battle Road 1999 / Spring Battle Road
+  2000 route leads to both the card reward and Champion Road 2000 lottery-entry
+  context rather than a lottery-only-card mistranslation. It preserves rare-holo
+  / double-star hype context, Grand Party nickname boundaries, Ken Sugimori /
+  杉森建 artist credit, Pocket Monsters Trading Card Game logo context, and the
+  local date caveat that the row inherits aggregate continuation-slice baggage
+  while the card-specific route is Grand Party 1999-2000 / Passport Challenge.
+  Special identification packets now give agents explicit route-boundary and
+  card-level visible-tell rails. Boundaries remain against generic Fan Club,
+  trophy, event-passport, Champion Road invite, Birthday Pikachu-style hype, or
+  passport/document lots without seller-controlled card evidence; the catalog
+  does not prove seller possession, authenticity, condition, price, passport
+  ownership, complete event packet/census, official copy count, Champion Road
+  lottery status, or spendability. Generated gaps remain release queue 13 and
+  card queue 100. Hashes: corpus
+  `1994e1b0542889589b84e75bbd361f615a8745a0556372b70d485945ad61cb57`,
+  index `8674261239f48f81ab18e7c07e7d9fe43527c138c2e58f0b06630cb306cdd8eb`,
+  queue `e39f901519da31f818d15dfdee91d5b744fd14467f9d17d23fa0f69a05400ad4`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/meowths_party_cd_team_rockets_meowth_v0_1.json`

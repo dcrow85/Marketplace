@@ -1,0 +1,589 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Grand Party 1999-2000 Trainer Certification Card",
+    "release_family_id": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign",
+    "notes": [
+      "Deepens the Grand Party 1999-2000 campaign source slice.",
+      "Covers the single modeled source-pinned row: Trainer Certification Card source index 134.",
+      "Preserves the local date caveat: the source row inherits aggregate continuation-slice date baggage, while the card-specific route belongs to the 1999-2000 Grand Party / Passport Challenge campaign."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign",
+      "type": "release",
+      "context": {
+        "name_en": "Grand Party 1999-2000 campaign",
+        "name_ja": "グランドパーティ 1999-2000",
+        "release_family_id": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign",
+        "release_date": "1999-2000",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Grand Party 1999-2000 campaign",
+          "Passport Challenge participation route",
+          "Trainer Certification Card source index 134",
+          "50 recorded opponents / certified trainer threshold",
+          "Challenge Road 1999 / Autumn Battle Road 1999 / Spring Battle Road 2000 continuity",
+          "Ken Sugimori TCG / franchise-art authority",
+          "double-star rarity hype and mistranslation boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign:134",
+            "name": "Trainer Certification Card",
+            "number": "134",
+            "why": "Trainer Certification Card is the chase because it is a credential, not a creature. It says the player crossed a social threshold: record fifty challenges in a passport, become recognized as an official certified trainer, and turn participation itself into a collectible card.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "name_ja": "杉森建",
+            "row_count": 1,
+            "examples": [
+              "Trainer Certification Card"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete event-packaging census",
+          "official copy count",
+          "complete Passport Challenge document census"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign.json",
+          "title": "Local Japanese unnumbered WotC catalog: Grand Party 1999-2000 campaign",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact card-specific date authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trainer_Certification_Card_(Fan_Club_promo)",
+          "title": "Bulbapedia: Trainer Certification Card (Fan Club promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "Bulbapedia ties Trainer Certification Card to the Grand Party 1999-2000 Passport Challenge; the local row's 1998-11-13 date is aggregate continuation-slice baggage and should not be used as the campaign's card-specific date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the Passport Challenge was introduced to attendees of Challenge Road '99 Summer between July and August 1999 and covered battle records during Grand Party 1999-2000 events including Challenge Road 1999, Autumn Battle Road 1999, and Spring Battle Road 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Trainer Certification Card source index 134.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia says participants used a challenge passport to record battle details; after recording challenges against 50 opponents they could claim Trainer Certification Card as the reward.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia transcribes the card text as proof that the holder recorded challenges against 50 opponents in their passport and is now recognized as an Official Pokemon Card Certified Trainer, making the card a credential for participation rather than a normal play card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card is commonly known as Grand Party, references the words displayed in the illustration, and lists it as a rare / rare holo unnumbered promotional Trainer card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Bulbapedia says earlier belief that completion entered participants into a lottery for the card was a mistranslation; the reward was both the card and entrance into a lottery for Champion Road 2000 invites.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Trainer Certification Card illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Sugimori profile identifies him as the illustrator of the original artwork for the Pokemon games and the original artwork for all 151 Generation I Pokemon, as well as a TCG and merchandise illustrator.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "release.boundary",
+          "text": "Agents should keep this Grand Party / Passport Challenge credential route separate from ordinary Fan Club promos, tournament trophy cards, Champion Road invite claims, Birthday Pikachu-style hype claims, and any passport/event-lot evidence not tied to the exact Trainer Certification Card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c7"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Trainer Certification Card plus Grand Party / Passport Challenge route plus 50-opponent credential text and rare-holo/double-star visual context; catalog facts do not prove possession, authenticity, condition, price, passport ownership, Champion Road lottery status, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c4",
+            "c6",
+            "c10"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "grand_party_1999_2000_trainer_certification_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, slab, event lot, passport, or agent memory says Grand Party, Trainer Certification Card, Card Trainer Certification, カードトレーナー認定証, Passport Challenge, Challenge Road 1999, Battle Road 1999/2000, Champion Road 2000, double star, or source index 134.",
+          "summary": "Confirm the Passport Challenge credential route and the exact Trainer Certification Card before allowing Grand Party claims to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Grand Party, Passport Challenge, Challenge Road '99 Summer, Autumn Battle Road 1999, Spring Battle Road 2000, Champion Road 2000, Fan Club, or generic trainer certificate.",
+            "Confirm the offered card is Trainer Certification Card / カードトレーナー認定証 and not an ordinary Fan Club trainer, trophy trainer, event pass, or passport document.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Inspect the card text or close-up crop for the 50-opponent passport / Official Pokemon Card Certified Trainer credential language.",
+            "Inspect the illustration/rarity area for the Grand Party wording, rare-holo / double-star context, and official Pocket Monsters Trading Card Game logo if visible.",
+            "If passport or event provenance is claimed, request passport pages, stamps, event paperwork, envelope, or campaign-lot evidence separately; provenance paperwork does not prove the card is present unless the card is shown.",
+            "Keep price, grade, authenticity, condition, official copy count, passport ownership, Champion Road lottery status, complete event packet state, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "passport ownership",
+            "Champion Road lottery status",
+            "complete event packet census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Grand Party 1999-2000: participation becomes a card",
+        "why_it_matters": "Grand Party is powerful because the card is almost administrative and still magical. It is proof of fifty recorded encounters, a passport made collectible, a credential that says the player moved through the living TCG world and was seen by it. The old hype around rarity matters less than the real poetry: Pokemon turned organized play memory into a card.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c11"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "passport ownership",
+          "Champion Road lottery status",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign:134",
+      "type": "card",
+      "context": {
+        "name_en": "Trainer Certification Card",
+        "name_ja": "カードトレーナー認定証",
+        "row_id": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign:134",
+        "release_family_id": "jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign",
+        "source_index": "134"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Trainer Certification Card matters because it literalizes a collector's favorite feeling: I was there; I played; someone recorded it. It is a card about becoming legible to the organized-play apparatus.",
+        "identity": {
+          "name_en": "Trainer Certification Card",
+          "name_ja": "カードトレーナー認定証",
+          "number": "134",
+          "category": "Trainer",
+          "rarity_signal": "Unnumbered Promotional / rare and rare holo context",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Ken Sugimori",
+          "name_ja": "杉森建",
+          "why": "Sugimori's credit gives this bureaucratic-looking credential franchise gravity. The same hand associated with the original public face of Generation I is attached to a card certifying participation in the early TCG social world.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Grand Party wording in the illustration",
+          "50-opponent Passport Challenge proof text",
+          "rare-holo / double-star hype context",
+          "official Pocket Monsters Trading Card Game logo context",
+          "mistranslation boundary: card reward plus lottery entry, not lottery-only card"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_134_grand_party_1999_2000_campaign.json",
+          "title": "Local Japanese unnumbered WotC catalog: Grand Party 1999-2000 Trainer Certification Card row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trainer_Certification_Card_(Fan_Club_promo)",
+          "title": "Bulbapedia: Trainer Certification Card (Fan Club promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia identify source index 134 as Trainer Certification Card, Japanese カードトレーナー認定証.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the card was the reward for completing the Passport Challenge during the Grand Party 1999-2000 campaign.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia transcribes the card effect as proof that the holder recorded challenges against 50 opponents in a passport and is recognized as an Official Pokemon Card Certified Trainer.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia lists the card as an unnumbered promotional Trainer card with rare and rare holo context, and says the Grand Party words in the illustration are why the card is commonly known as Grand Party.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia clarifies the old lottery misunderstanding: Passport Challenge completion awarded the card and lottery entry for Champion Road 2000 invites, not a lottery chance to win the card itself.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Ken Sugimori page identifies him as the illustrator of the original artwork for all 151 Generation I Pokemon and a designer/illustrator whose work shaped how the designs were perceived publicly.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Trainer Certification Card is a strong catalog object because it records a transition from play to credential: the card is not proof of battle by itself, but its text and route make the Passport Challenge legible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "release.boundary",
+          "text": "Agents should not match by Grand Party nickname, double-star hype, or certification language alone; the row requires Trainer Certification Card identity plus Passport Challenge / 50-opponent evidence and seller-controlled card images.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the route and visible-tell checklist legible, but it does not prove the seller owns the card, that a shown card is authentic, that passport or event paperwork belongs with it, that condition is true, that price is fair, or that the row is spendable.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "grand_party_1999_2000_trainer_certification_134_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A candidate card, image crop, binder page, want, seller response, passport lot, event lot, or slab says Trainer Certification Card, Grand Party, カードトレーナー認定証, Passport Challenge, 50 opponents, double star, or source index 134.",
+          "summary": "Treat the Passport Challenge credential text and exact Trainer Certification identity as required checks before elevating a candidate beyond a generic Grand Party claim.",
+          "steps": [
+            "Confirm the name line reads Trainer Certification Card / カードトレーナー認定証; do not match by Grand Party nickname or double-star hype alone.",
+            "Confirm the card is a Trainer card and preserve source index 134 only as catalog routing, not as a printed number.",
+            "Check the card text for the 50-opponent passport / Official Pokemon Card Certified Trainer wording; unreadable text is missing evidence, not pass.",
+            "Check for Grand Party wording in the illustration and record whether rare-holo / double-star visual context is visible.",
+            "If passport or event provenance is offered, verify that the card itself is shown; a passport, flyer, or Champion Road mention is provenance evidence, not card possession proof.",
+            "If a loose card is offered, request seller-controlled front/back photos and, for sale-grade use, fresh possession proof before treating it as more than a catalog match.",
+            "Keep price, grade, authenticity, condition, passport ownership, Champion Road lottery status, complete event packet state, and spendability separate from this identification packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "passport ownership",
+            "Champion Road lottery status",
+            "complete event packet state",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Trainer Certification Card 134: the passport becomes collectible",
+        "why_it_matters": "Trainer Certification Card is a perfect early organized-play artifact. It is not flashy because it attacks; it is flashy because it remembers. Fifty opponents, a passport, a campaign, a misunderstood lottery story, and Sugimori's authority all gather into one credential. The card is participation made legible.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "passport ownership",
+          "Champion Road lottery status",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}
