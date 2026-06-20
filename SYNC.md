@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 300: Base Set Machamp #8 deepened; corpus fb94f2f9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 301: Base Set Magneton #9 deepened; corpus 7ff448d0)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-9` Magneton #9 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Magneton (Base Set 9)` and `Base Set (TCG)` as bounded community
+  references, and the local Japanese pre-English Expansion Pack / No Rarity
+  row `jp_tcg_expansion_pack_19961020:039`. The dossier now carries Magneton /
+  `レアコイル` / Reakoiru, Base Set #9/102, Rare Holo, Stage 1 Lightning,
+  Level 28, 60 HP, Magnemite evolution line, Thunder Wave paralysis chance,
+  Selfdestruct symmetrical damage, Keiji Kinebuchi credit, and Japanese
+  Expansion Pack / PMCG1-039 lineage. Its special identification packet tells
+  agents to keep English Base Set #9 separate from Magnemite equivalence /
+  mechanical-holo premium shortcuts, Japanese Expansion Pack / No Rarity
+  PMCG1-039, later Magneton printings / Fossil / promo memory, Base Set 2 /
+  Legendary Collection / reprint memory, and English First Edition /
+  Shadowless / Unlimited / 4th-print states unless seller evidence proves the
+  specific lane. Validation passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Magneton downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundredth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
