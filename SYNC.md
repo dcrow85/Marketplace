@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 291: Base Set Nidoking #11 deepened; corpus 20eccdd9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 292: Base Set Ninetales #12 deepened; corpus 824965a8)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-12` Ninetales #12 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. This pass
+  used the local English WoC Base Set row, Pokemon TCG API card and set
+  records, Bulbapedia `Ninetales (Base Set 12)` and `Base Set (TCG)` as
+  bounded community references, and the local Japanese pre-English Expansion
+  Pack / No Rarity row `jp_tcg_expansion_pack_19961020:022`. The dossier now
+  carries Ninetales / `キュウコン` / Kyuukon, Base Set #12/102, Rare Holo,
+  Stage 1 Fire, Level 32, 80 HP, Vulpix evolution line, Lure, Fire Blast,
+  Ken Sugimori credit, and Japanese Expansion Pack / PMCG1-022 lineage. Its
+  special identification packet tells agents to keep English Base Set #12
+  separate from Japanese Expansion Pack / No Rarity PMCG1-022, Base Set 2 /
+  reprint memory, and English First Edition / Shadowless / Unlimited /
+  4th-print states unless seller evidence proves the specific lane. Validation
+  passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Ninetales downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-first
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:

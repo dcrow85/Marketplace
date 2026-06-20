@@ -654,6 +654,301 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-12",
+      "type": "card",
+      "context": {
+        "name_en": "Ninetales",
+        "name_ja": "キュウコン",
+        "romaji": "Kyuukon",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-12",
+        "catalog_row_id": "base1-12",
+        "card_number": "12/102",
+        "release_name": "Base Set",
+        "japanese_lineage": "Japanese Expansion Pack / PMCG1-022",
+        "related_japanese_no_rarity_row": "jp_tcg_expansion_pack_19961020:022"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-12",
+          "title": "Local English WoC catalog: Ninetales base1-12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-12",
+          "title": "Pokemon TCG API v2 card record: Ninetales base1-12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base1",
+          "title": "Pokemon TCG API v2 set record: Base Set",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ninetales_(Base_Set_12)",
+          "title": "Bulbapedia: Ninetales (Base Set 12)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_(TCG)",
+          "title": "Bulbapedia: Base Set (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:022",
+          "title": "Local Japanese pre-English catalog: Ninetales / PMCG1-022",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local English WoC catalog and Pokemon TCG API identify base1-12 as Ninetales, Base Set card 12/102, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Ninetales as a Stage 1 Fire Pokemon, Level 32, 80 HP, evolving from Vulpix, with Water weakness and a one-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks are Lure, which pulls an opposing Benched Pokemon into the Active spot, and Fire Blast, an 80-damage attack that discards a Fire Energy attached to Ninetales.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Ninetales base1-12 to Ken Sugimori; the related Japanese pre-English row carries the same local illustrator crosswalk but does not itself become direct Japanese-print authority.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "The local Japanese pre-English catalog carries the related Ninetales row as PMCG1-022 / Holo Rare / active No Rarity target, giving the English Base Set row a Japanese Expansion Pack lineage lane without proving any seller's card is No Rarity.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place Ninetales inside English Base Set, the 102-card Wizards release dated January 9, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set Ninetales #12/102 must be kept separate from Japanese Expansion Pack / No Rarity PMCG1-022, Base Set 2 reprint memory, and English print states such as First Edition, Shadowless, Unlimited, and 4th print.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Ninetales is one of Base Set's most atmospheric holos: a graceful Fire Stage 1 whose Lure and Fire Blast text pairs elegance with danger, while the holo surface makes condition and surface evidence especially important to collectors.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_ninetales_12_print_run_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Ninetales, Base Set, base1-12, 12/102, Lure, Fire Blast, Ken Sugimori, Kyuukon, キュウコン, Expansion Pack, PMCG1-022, No Rarity, First Edition, Shadowless, Unlimited, 4th print, Base Set 2, or same artwork.",
+          "summary": "Identify English Base Set Ninetales #12/102 as base1-12, then keep it separate from Japanese Expansion Pack / No Rarity PMCG1-022 and English print-run states unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_19990109, local row id base1-12, printed number 12/102, Rare Holo, Ken Sugimori credit, Lure, and Fire Blast.",
+            "Do not infer First Edition, Shadowless, Unlimited, 4th print, copyright-line state, condition, price, or authenticity from the catalog row or reference image.",
+            "Do not collapse the English Base Set row into Japanese Expansion Pack / No Rarity PMCG1-022; No Rarity requires its own Japanese-card visual evidence and human or verifier confirmation.",
+            "Do not collapse the row into Base Set 2 or other reprint memory even when the name, art, or attack memory overlaps.",
+            "For transaction use, request seller front, back, holo surface, set/number, copyright line, edition stamp or absence, artwork-window shadow, lower-right rarity area for Japanese copies, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Japanese No Rarity proof",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Base Set 2 equivalence",
+            "Japanese Expansion Pack equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "12/102",
+        "rarity_signal": "Rare Holo; Base Set #12/102, separate from Japanese Expansion Pack / No Rarity PMCG1-022 and English print-run states.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set atmospheric holo",
+          "Japanese Expansion Pack lineage",
+          "Ken Sugimori launch-era elegance",
+          "Vulpix evolution line",
+          "Lure board-position texture",
+          "Fire Blast energy discard",
+          "holo surface condition sensitivity",
+          "print-run boundary",
+          "No Rarity boundary"
+        ],
+        "collector_texture_note": "Ninetales is the quiet fire in Base Set: elegant, dangerous, and absolutely dependent on the holo surface telling the truth. Scratches in that firelight matter."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Firelight in the launch binder",
+        "why_it_matters": "Ninetales is where Base Set stops feeling only like monsters and starts feeling like atmosphere. It evolves from Vulpix into something graceful, a Fire holo that can pull a target forward with Lure and then spend four Fire Energy on a huge Fire Blast. Sugimori's art gives it poise instead of noise, which is why condition matters so much: the holo is part of the feeling, not just a rarity marker. The Japanese Expansion Pack ancestor, PMCG1-022, also makes it a clean agent lesson. A Ninetales memory can be English Base Set, Japanese No Rarity, Base Set 2, or a print-state question. Beauty is not provenance; the scan has to speak.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "No Rarity proof",
+          "First Edition status",
+          "Shadowless status",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
