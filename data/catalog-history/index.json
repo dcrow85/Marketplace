@@ -45421,33 +45421,37 @@
       "card": {
         "artist": "",
         "assembly_themes": [
-          "promo distribution",
-          "identity trap"
+          "CoroCoro ticket exchange",
+          "promo numbering",
+          "Hoenn legendary",
+          "ex-era signal",
+          "bounded ADV-P slice",
+          "no image witness"
         ],
         "number": "011/ADV-P",
         "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset"
       },
-      "claim_count": 5,
+      "claim_count": 7,
       "coverage": {
         "art": "none",
-        "history": "C",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Kyogre ex: first-pass card note",
+      "generated": false,
+      "human_title": "Kyogre ex 011/ADV-P: the sea returns by ticket",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_adv_p_promo_bounded_number_v0.1",
-          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
-          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+          "id": "adv_p_kyogre_ex_011_ticket_exchange_number_boundary_v0.1",
+          "summary": "Confirm Kyogre ex and printed 011/ADV-P before treating the card as this February 2003 CoroCoro Comic ticket-exchange ADV-P row.",
+          "trigger": "A listing, want, scan, or agent memory says Kyogre ex ADV-P, ticket-exchange Kyogre, CoroCoro Kyogre ex, 011/ADV-P, Japanese Kyogre ex promo, or early Hoenn ex promo."
         }
       ],
       "type": "card",
       "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
-      "why_it_matters": "Kyogre ex sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "Kyogre already opens this bounded ADV-P world at 001/ADV-P, but 011/ADV-P has a different feeling. This is not simply the sea arriving; it is the sea being chased through CoroCoro's ticket-exchange machinery. That is the assembly we care about: magazine reader, ticket route, early ex-era legendary, and a printed number that tells the agent which Kyogre this is. The source gives us the route and the row, not the physical copy in front of a buyer."
     },
     {
       "card": {

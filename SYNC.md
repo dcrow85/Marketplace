@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 211: ADV-P Marshtomp 010 deepened; corpus 69e748b9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 212: ADV-P Kyogre ex 011 deepened; corpus a8f84c00)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twelfth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
+  `jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p`
+  Kyogre ex 011/ADV-P is now hand-authored rather than generator memory. The
+  pass records the February 2003 CoroCoro Comic ticket-exchange route,
+  Water-row identity, early ex-era legendary context, absent promoted Japanese
+  name, absent artist credit, and absent row-specific image witness. The
+  special identification packet is explicit and first-class: agents must
+  confirm Kyogre ex, printed `011/ADV-P`, and the bounded `001-014` pre-edge
+  slice; keep the CoroCoro ticket-exchange note separate from physical
+  provenance; and avoid merging this row with Kyogre ex `001/ADV-P`, later
+  ADV-P Kyogre rows, main-set Kyogre ex, English EX-era Kyogre ex, Groudon ex
+  companion memory, or absent art/attack/ex-rules/Japanese-name details.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, CoroCoro ticket-exchange provenance, image
+  availability, illustrator credit, Japanese-name certainty, attack text, ex
+  rules text, Kyogre ex `001/ADV-P` equivalence, later ADV-P equivalence,
+  main-set Kyogre ex equivalence, complete ADV-P coverage, or spendability.
+  Generated gaps remain bounded at 100. Validation passed: JSON; catalog
+  dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the new special-identification packet.
+  Hashes: corpus
+  `a8f84c00885975c233c1099b25cd83857796366f0403a9ed54ed1866bcf79707`;
+  index `a4ba999c49fc8148677fc2f4634e3380f8a7d421bc47a27c2cfad1213e84c5b6`;
+  queue `c2bb8bcc24fcdb56473a81fea705fb58b57fce9bd969b5795bc42665397cb9c8`;
+  audit `0d6ad5a56f9726ada8f167b9bdcce6d1f6212393e1aaaa71aa3163c6b9a202bc`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eleventh
   catalog-history pass inside
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
