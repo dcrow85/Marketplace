@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 286: Aquapolis Blissey H6 deepened; corpus d38b08cc)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 287: Aquapolis Electrode H7 deepened; corpus dac03f8e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H7` Electrode H7 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived non-Holo sibling row for
+  `ecard2-8`, local Japanese The Town on No Map rows for E2-036 /
+  E2-035, Bulbapedia `Electrode (Aquapolis H7)`, and Bulbapedia
+  `Aquapolis (TCG)`. The card dossier now carries Electrode /
+  `マルマイン` / Marumine with a source-text caveat because the observed
+  Bulbapedia raw infobox jname line read `サンダー` while the page/category
+  context points to Electrode/Marumine. It also carries English Aquapolis
+  / e-Card Series, API card id `ecard2-H7`, printed number H7, H7/H32
+  Rare Holo sequence, Japanese The Town on No Map 036/092 holo lineage,
+  the non-Holo Aquapolis #8 / 8/147 / The Town on No Map 035/092
+  sibling, the explicit guard that Aquapolis #7 is Donphan rather than
+  Electrode, Stage 1 Lightning profile, Voltorb evolution line, 70 HP,
+  Fighting weakness, one-retreat cost, Poke-Power Super Dynamo, Swift,
+  and Shin-ichi Yoshida credit. The special identification packet tells
+  agents to keep H7 separate from Aquapolis Electrode #8, unrelated
+  Donphan #7, reverse-holo listings, generic Electrode wants, Voltorb-line
+  collection goals, Lightning deck references, and seller-card image
+  claims. It also keeps C-67 / C-67-# IDs, Ball Pokemon species label,
+  Pokemon Crystal Pokedex source, explosion-risk Pokedex text,
+  Construction: Melody Box music data, seller possession, authenticity,
+  condition, price, image rights, seller-card match, e-Reader scan
+  success, reverse-holo equivalence, and spendability explicitly out of
+  the catalog claim. Rebuilt generated corpus artifacts; new corpus hash
+  `dac03f8e36a96e6b2e90eb3340a57f8f4d8fc868cc4a42e71dd32bab1a0969ab`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

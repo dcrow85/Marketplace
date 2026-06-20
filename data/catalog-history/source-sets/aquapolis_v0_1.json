@@ -8585,6 +8585,353 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H7",
+      "type": "card",
+      "context": {
+        "name_en": "Electrode",
+        "name_ja": "マルマイン",
+        "romaji": "Marumine",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H7",
+        "catalog_row_id": "ecard2-H7",
+        "card_number": "H7",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-8",
+        "japanese_lineage_card_number": "The Town on No Map 036/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H7",
+          "title": "Local English WoC card row: Electrode H7",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H7",
+          "title": "Pokemon TCG API v2 card record: Electrode ecard2-H7",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Electrode_(Aquapolis_H7)",
+          "title": "Bulbapedia: Electrode (Aquapolis H7)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean Japanese-name authority"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-8",
+          "title": "Pokemon TCG API v2 card record: Electrode ecard2-8",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_japanese_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#rows:E2-036,E2-035",
+          "title": "Local Japanese classic rows: Electrode / The Town on No Map 036 and 035",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Electrode as Aquapolis H7, a Rare Holo Stage 1 Lightning Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia connects the Holofoil print to Japanese The Town on No Map card 036/092 and the non-Holofoil print to English Aquapolis 8/147 and Japanese 035/092; the page title and Japanese interlanguage category point to Electrode / マルマイン / Marumine even though the raw infobox jname line observed during this pass reads サンダー, so agents must treat the Japanese-name field as caveated rather than using サンダー as an identity shortcut.",
+          "sources": [
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Electrode H7 with 70 HP, evolvesFrom Voltorb, Lightning type, Fighting weakness, one-Colorless retreat, the Poke-Power Super Dynamo, and Swift for 30 damage that ignores Weakness, Resistance, Poke-Powers, Poke-Bodies, and other effects on the Defending Pokemon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Electrode H7 to Shin-ichi Yoshida; the local and API rows also credit Shin-ichi Yoshida on the non-Holo Aquapolis Electrode #8 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Electrode as H7/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Electrode at #8, not #7; agents must keep H7, #8, and the unrelated Donphan #7 row separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Electrode H7 page records card ID C-67 for the Holofoil print and C-67-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Electrode H7's e-Reader Pokedex entry comes from Pokemon Crystal and that the long strip contains music data for the Construction: Melody Box application; the Pokedex text frames stored energy as speed that also makes Electrode more likely to explode.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Electrode H7 matters because Aquapolis makes volatility into infrastructure: Super Dynamo pulls Lightning Energy from discard, Swift cuts through defensive effects, and the e-Reader layer turns the Ball Pokemon into a C-67 object carrying Melody Box music data.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_electrode_h7_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Electrode, マルマイン, Marumine, サンダー, Electrode H7, H7/H32, Rare Holo, ecard2-H7, Shin-ichi Yoshida, Super Dynamo, Swift, C-67, C-67-#, The Town on No Map, 036/092, Aquapolis #8, 8/147, Aquapolis #7, Donphan #7, or reverse holo Electrode.",
+          "summary": "Identify Electrode / マルマイン / Marumine H7 by the Aquapolis H-number Rare Holo lane: English ecard2-H7 / H7/H32 and The Town on No Map 036/092 lineage, not the non-Holo #8 / 8/147 / 035/092 sibling and not unrelated Aquapolis #7 Donphan.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H7 / printed number H7 before accepting this as the H-number holo row.",
+            "Preserve H7/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Electrode #8 row even though #8 shares Shin-ichi Yoshida, Super Dynamo, and Swift.",
+            "Do not use Aquapolis #7 as the Electrode non-holo sibling; local API data identifies #7 as Donphan, while Electrode's non-Holofoil counterpart is #8 / 8/147.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 036/092 while the non-Holofoil counterpart maps to The Town on No Map 035/092 and English Aquapolis 8/147.",
+            "Treat the observed Bulbapedia raw jname inconsistency carefully: Electrode is マルマイン / Marumine in the page/category context, while サンダー normally points to Zapdos; never promote サンダー alone into an Electrode match.",
+            "Use Shin-ichi Yoshida credit, Stage 1 Lightning profile, Voltorb evolution line, Fighting weakness, one-retreat cost, Super Dynamo, Swift, C-67 Holofoil e-Reader ID, and C-67-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Electrode wants, Voltorb-line collection goals, Lightning deck references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Ball Pokemon species label, Pokemon Crystal Pokedex source, explosion-risk Pokedex text, and Construction: Melody Box music-data context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "clean Japanese-name authority from the observed raw infobox",
+            "long-strip data readability",
+            "Construction: Melody Box data readability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H7"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Electrode_(Aquapolis_H7)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H7",
+        "artist": "Shin-ichi Yoshida",
+        "rarity_signal": "Rare Holo; H7/H32 H-number holo sequence, separate from non-Holo #8 / 8/147 / 035/092, unrelated Donphan #7, and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Shin-ichi Yoshida art trace",
+          "Stage 1 lightning evolution",
+          "Super Dynamo discard-energy engine",
+          "Swift effect bypass",
+          "Construction: Melody Box music data",
+          "C-67 e-Reader object",
+          "Japanese-name caveat"
+        ],
+        "collector_texture_note": "Electrode H7 is Aquapolis making volatility useful: Super Dynamo turns discard into Lightning acceleration, Swift cuts through effects, and C-67 carries Melody Box music data. The row also teaches a real catalog discipline: H7's non-holo sibling is #8, not #7."
+      },
+      "narrative": {
+        "human_title": "Electrode H7 — stored energy, useful danger",
+        "why_it_matters": "Electrode H7 is all charged-up contradiction. Shin-ichi Yoshida's Ball Pokemon is cute only from a distance: Super Dynamo recovers Lightning Energy, Swift ignores the usual defenses, and the Pokedex text says the more energy it stores, the faster and more explosive it becomes. Then Aquapolis adds the extra little miracle: C-67 carries Construction: Melody Box music data, turning volatility into something playable by the machine.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "clean Japanese-name authority from the observed raw infobox",
+          "long-strip data readability",
+          "Construction: Melody Box data readability",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {
