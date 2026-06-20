@@ -1,10 +1,11 @@
 {
   "schema": "marketplace.catalog_history_source_set.v0.1",
   "scope": {
-    "description": "Hand-researched deepening pass for English Gym Challenge and five rows that show trainer ownership, Rocket pressure, and localization boundaries.",
+    "description": "Hand-researched deepening pass for English Gym Challenge and six rows that show trainer ownership, Rocket pressure, and localization boundaries.",
     "in_scope": [
       "Gym Challenge release dossier",
       "Blaine's Charizard",
+      "Erika's Venusaur",
       "Misty's Gyarados",
       "Rocket's Mewtwo",
       "Rocket's Zapdos",
@@ -336,6 +337,200 @@
         "authority_label": "judged_texture",
         "human_title": "Charizard under a teacher's hand",
         "why_it_matters": "Blaine's Charizard is not just another Charizard tax on a set. It has a handler, an attitude, and a mechanical appetite: Roaring Flames burns through energy because that is what this relationship feels like. Then the attack-symbol note adds the little print-history hook collectors love to argue over.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-4",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-4",
+        "catalog_row_id": "gym2-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-4",
+          "title": "Local Gym Challenge row: Erika's Venusaur 4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-4",
+          "title": "Pokemon TCG API v2 card record: Erika's Venusaur gym2-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Erika%27s_Venusaur_(Gym_Challenge_4)",
+          "title": "Bulbapedia: Erika's Venusaur (Gym Challenge 4)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Erika's Venusaur as Gym Challenge number 4, a Rare Holo Stage 2 Grass Pokemon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Erika's Venusaur as HP 90, Level 45, evolving from Erika's Ivysaur, with Fire weakness, two Colorless retreat cost, and the attacks Growth and Wide Solarbeam.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Venusaur matters because the owner prefix changes the Venusaur comparison problem: this is not Base Set Venusaur, Expedition Venusaur, or a Japanese launch Venusaur, but a Gym Challenge card where the species is bound to Erika's cultivated trainer identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Special identification work should preserve the owner-prefixed name, Gym Challenge set id gym2, printed number 4, Rare Holo finish label, Ken Sugimori credit, Growth, and Wide Solarbeam before importing ordinary Venusaur history or price comparisons.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_erikas_venusaur_4_owner_prefix_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Erika deck equivalence",
+            "ordinary Venusaur equivalence",
+            "Base Set equivalence",
+            "Expedition equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm English Gym Challenge / set id gym2 printed number 4 before importing this row's history.",
+            "Confirm the owner-prefixed name Erika's Venusaur; plain Venusaur is not enough.",
+            "Check Rare Holo, Ken Sugimori, Growth, Wide Solarbeam, HP 90, Level 45, Erika's Ivysaur, Fire weakness, and two Colorless retreat cost as row-alignment signals.",
+            "Do not infer First Edition, Unlimited, holo condition, graded-cert truth, seller possession, or authenticity from the catalog row.",
+            "Separate this card from Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Japanese Expansion Pack / No Rarity Venusaur, CD or promo Venusaur rows, Tamamushi City Gym / Japanese Erika deck rows, and later Venusaur ex/GX/V memory.",
+            "If edition, finish, condition, slab, or variant context matters, ask for seller scans, label/cert evidence, and current physical-card proof."
+          ],
+          "summary": "Erika's Venusaur gym2-4 is the English Gym Challenge Rare Holo owner-prefixed row. Preserve owner prefix, set id, printed number, and seller evidence needs before comparing it to ordinary Venusaur prints.",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Venusaur, Gym Challenge Venusaur, gym2-4, Venusaur #4, owner Venusaur, Growth Venusaur, Wide Solarbeam Venusaur, or Erika."
+        }
+      ],
+      "card_highlights": {
+        "number": "4",
+        "rarity_signal": "Rare Holo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Gym owner grammar",
+          "holo surface",
+          "trainer relationship",
+          "Grass cultivation",
+          "identity trap"
+        ],
+        "signals": [
+          "Gym Challenge",
+          "gym2",
+          "Erika's Venusaur",
+          "4",
+          "Rare Holo",
+          "Ken Sugimori",
+          "Erika's Ivysaur",
+          "Growth",
+          "Wide Solarbeam",
+          "HP 90",
+          "Level 45",
+          "Fire weakness",
+          "retreat cost 2"
+        ],
+        "collector_texture_note": "The owner prefix changes the card: a Venusaur under Erika's cultivated hand, not Base, Expedition, or No Rarity Venusaur wearing a familiar species name."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Erika's Venusaur #4: the garden chooses its owner",
+        "why_it_matters": "Base Venusaur is engine, Expedition Venusaur is interface, and Erika's Venusaur is relationship. The apostrophe matters. It turns the species into a card with a trainer's hand on it: Growth feels cultivated, Wide Solarbeam feels controlled, and the whole object asks the agent to slow down before saying simply Venusaur.",
         "basis_claims": [
           "c1",
           "c2",

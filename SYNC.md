@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 201: Expedition Base Set Venusaur 30 deepened; corpus 2ad9b39b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 202: Gym Challenge Erika's Venusaur 4 deepened; corpus 987f704f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
+  `en_wotc_gym_challenge_20001016:gym2-4` Erika's Venusaur / Gym Challenge
+  #4 is now hand-authored rather than generator memory. The pass records Ken
+  Sugimori credit, Rare Holo status, HP 90 Level 45 Grass Stage 2 profile,
+  Erika's Ivysaur evolution line, Growth, Wide Solarbeam, Fire weakness,
+  retreat cost 2, and the owner-prefix grammar that makes this a Gym
+  Challenge relationship card rather than ordinary Venusaur memory. The
+  special identification packet is explicit and first-class: agents must
+  preserve the owner-prefixed name, set id `gym2`, printed number 4, and row
+  signals before comparing to Base Set Venusaur, Base Set 2 Venusaur,
+  Legendary Collection Venusaur, Expedition Venusaur, Japanese Expansion Pack
+  / No Rarity Venusaur, CD/promo Venusaur, Tamamushi City Gym / Japanese Erika
+  deck rows, or later Venusaur ex/GX/V memory. Boundaries remain explicit:
+  catalog legibility is not seller possession, authenticity, condition, First
+  Edition status, Unlimited status, holo surface condition, graded-cert truth,
+  price, Japanese Erika deck equivalence, ordinary Venusaur equivalence, or
+  spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `987f704f68b0ae34e49ceb12a164f5042f3a6214b3b900057f6f46189c2153dc`,
+  index
+  `2ce82cbe44ab4ee9455014ec3be2c26e405d45fe4b62014a1c277165a272145b`,
+  queue
+  `adfcefa25112e1837540480f9721a587d08b9d73e9165c1596ff356a0432fdde`,
+  audit
+  `efc08887b77dc4c24c77b56f4af2ccb901067ff2f6932599b91f8f9083c4f0e9`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-first
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
