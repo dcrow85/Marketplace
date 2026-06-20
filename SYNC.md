@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 242: P Promo Scizor 037 deepened; corpus f1bca05f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 243: P Promo Crystal Energy 039 deepened; corpus 6d0601f1)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-039-p`
+  Crystal Energy 039/P is now hand-authored rather than generator memory. This
+  pass found and used the row-specific Bulbapedia redirect from `Crystal Energy
+  (P Promo 39)` to `Crystal Energy (Aquapolis 146)`, so the row now carries the
+  deeper card assembly: Crystal Energy / `クリスタルエネルギー` / Crystal Energy,
+  Rainbow Special Energy, Colorless-or-Rainbow behavior based on attached basic
+  Energy, Kai Ishikawa P Promotional artwork credit, Shin-ichi Yoshikawa
+  Aquapolis/Wind from the Sea artwork credit, Aquapolis 146/147, Wind from the
+  Sea 085/087, P Promotional 039/P, e-Reader `D-53` versus `D-53-#`, short-strip
+  context, and later 25th Anniversary Creatures Deck context with back text
+  about Creatures, Nintendo, Olympus, and e-Reader development. Important route
+  correction: this row is a gift card awarded during the 2002 Summer Battle
+  Roads, not part of the May-June McDonald's weekend run. The special
+  identification packet tells agents to confirm Crystal Energy /
+  `クリスタルエネルギー`, printed `039/P`, Rainbow Special Energy type, Kai
+  Ishikawa P Promotional art, `D-53`, and Summer Battle Roads route; do not
+  merge with Aquapolis 146/147, Wind from the Sea 085/087, the later Creatures
+  Deck inclusion, other Crystal Energy rows, other Special Energy cards, or
+  generic e-Reader memory without printed-number and artwork-route evidence.
+  No-overclaim boundaries remain explicit: seller possession, authenticity,
+  condition, price, event provenance, sealed-packet state, e-Reader
+  readability, Creatures Deck/25th stamp status, and spendability remain
+  outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `6d0601f1ac15b9d21804ebb47a670366a33a1cde9f05147b4f8453e9b35649b9`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
