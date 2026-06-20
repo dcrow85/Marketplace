@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23756,
-    "corpus_hash": "b04104c348fd702ef107aea1f211d650dbaf769d9104c546009e6bb930b5a3ea",
-    "generated_card_dossier_count": 3817,
-    "generated_release_dossier_count": 16,
+    "claim_count": 23766,
+    "corpus_hash": "4d76eae2e9570fc67f0524843a29dea6e0973b9140efc408bdf0c03e090b75cc",
+    "generated_card_dossier_count": 3816,
+    "generated_release_dossier_count": 15,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6806
+    "source_count": 6818
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "9d73ae548eafec8ab8b681d907fa37fa61bd1ffeadb27be6f2c198cc8c40fe6b",
-    "release_queue_count": 16,
+    "queue_hash": "899da5780a050d9410936add93b86f4290f399f2caee6cf847775650075eac90",
+    "release_queue_count": 15,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T01:42:24Z",
+  "generated_at": "2026-06-20T01:55:16Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "9e296f7cf481e1b3c3d5f62e59de60d49de801d2e0c2a67c3c349f1b582c4494",
+    "index_hash": "78c66ce89bbd70a27a6c661a4d99767e39f6448528bec5ea72bc71ee0394f3b7",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -121,6 +121,7 @@
     "data/catalog-history/source-sets/gym_heroes_v0_1.json",
     "data/catalog-history/source-sets/hanada_city_gym_misty_v0_1.json",
     "data/catalog-history/source-sets/how_i_became_card_vol1_mankey_v0_1.json",
+    "data/catalog-history/source-sets/how_i_became_card_vol2_psyduck_v0_1.json",
     "data/catalog-history/source-sets/how_to_play_book_1996_promos_v0_1.json",
     "data/catalog-history/source-sets/hyper_corocoro_spring_1999_insert_v0_1.json",
     "data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json",

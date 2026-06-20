@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 173: Riding on Lapras Misty's Treatment deepened; corpus b04104c3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 174: How I Became a Pokemon Card Vol. 2 Psyduck deepened; corpus 4d76eae2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-fourth
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol2_psyduck_v0_1.json`
+  deepens the September 22, 1999 How I Became a Pokemon Card Vol. 2 insert
+  source slice and its single modeled row, Psyduck source index 131. The pass
+  frames the object as a manga/book route by 姫野かげまる / Kagemaru Himeno:
+  the card is not just collected, but explained by the Natta Wake story machine.
+  It preserves Kadokawa-Media Factory / ISBN 4889917284 context, Vol. 2 chapter
+  range PW08-PW14, the "Troubled Pokemon, Psyduck" story clue, Psyduck's
+  Headache / Fury Swipes card identity, Himeno's creator-and-illustrator role,
+  the open-book-with-trading-card symbol, the bottom-border Pokemon Card Books
+  "How I Became a Pokemon Card" bonus-card footer, Natta Wake Psyduck nickname,
+  and the boundary against Wizards Black Star Promo 20 "? Psyduck", Fossil 53,
+  Mystery of the Fossils, TCG GB references, and later Psyduck rows. Special
+  identification packets now give agents explicit Vol. 2 book-route and
+  card-level visible-tell rails. Boundaries remain against generic Natta Wake
+  lots, book-only listings without card evidence, sealed book status, complete
+  insert state, seller possession, authenticity/condition/price, complete
+  Psyduck variant census, and spendability. Generated gaps moved to 15 release
+  / 3816 card. Current hashes: corpus
+  `4d76eae2e9570fc67f0524843a29dea6e0973b9140efc408bdf0c03e090b75cc`,
+  index `78c66ce89bbd70a27a6c661a4d99767e39f6448528bec5ea72bc71ee0394f3b7`,
+  queue `899da5780a050d9410936add93b86f4290f399f2caee6cf847775650075eac90`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-third
   catalog-history pass:
   `data/catalog-history/source-sets/riding_on_lapras_cd_mistys_treatment_v0_1.json`
