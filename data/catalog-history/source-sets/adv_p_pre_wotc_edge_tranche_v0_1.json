@@ -5,7 +5,7 @@
     "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
     "notes": [
       "Japanese numbered ADV-P promo bounded source slice.",
-      "This pass deepens the release plus the first Hoenn-contact tranche: Kyogre ex, Groudon ex, the January 2003 McDonald's starters and Eon duo, and Jirachi."
+      "This pass deepens the release plus the first Hoenn-contact tranche: Kyogre ex, Groudon ex, the January 2003 McDonald's starters and Eon duo, the Shogakukan starter-evolution magazine lane, and Jirachi."
     ]
   },
   "dossiers": [
@@ -1152,6 +1152,227 @@
           "authenticity",
           "condition truth",
           "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Grovyle",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-008-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Grovyle 008/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Grovyle as ADV-P promo number 008/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Shogakukan Elementary School magazines, March-April 2003, as the distribution note for Grovyle 008/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Grovyle 008/ADV-P as a Grass Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Grovyle 008/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Grovyle 008/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Grovyle 008/ADV-P matters because the ADV-P slice shifts from McDonald's public starter sampling into Shogakukan magazine circulation: the Hoenn starters are no longer only first partners, they are evolving through kid-media routes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Grovyle and printed 008/ADV-P, preserve the Shogakukan Elementary School magazine route as distribution context only, and avoid importing later Grovyle promos, main-set Grovyle rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_grovyle_008_shogakukan_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Grovyle ADV-P, Shogakukan Grovyle, Elementary School magazine Grovyle, 008/ADV-P, Japanese Grovyle promo, or early Hoenn promo.",
+          "summary": "Confirm Grovyle and printed 008/ADV-P before treating the card as this Shogakukan Elementary School magazine ADV-P row.",
+          "steps": [
+            "Confirm the card name is Grovyle.",
+            "Read the printed promo number as 008/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the Shogakukan Elementary School magazines March-April 2003 note legible but separate from physical provenance.",
+            "Do not import later ADV-P rows, main-set Grovyle cards, English EX-era Grovyle rows, or Treecko/Torchic/Marshtomp starter-family memory into this row without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for magazine/package provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Shogakukan copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "later ADV-P equivalence",
+            "main-set Grovyle equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "008/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "Shogakukan magazine route",
+          "promo numbering",
+          "Hoenn evolution",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "008/ADV-P",
+          "Grovyle",
+          "Grass",
+          "Shogakukan Elementary School magazines",
+          "March-April 2003",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Grovyle 008/ADV-P is Hoenn growing up through a magazine route: a Grass evolution row whose most important facts are the printed promo number and the Shogakukan distribution lane."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Grovyle 008/ADV-P: Hoenn starts to evolve",
+        "why_it_matters": "Grovyle is where the early ADV-P slice stops feeling like only arrival and starts feeling like growth. Treecko came through the McDonald's route as a first partner; Grovyle arrives through Shogakukan Elementary School magazines, a kid-media lane with a different texture. The row is modest, but the assembly is rich: printed number, school-magazine route, Grass evolution, and a bounded corpus edge that tells the agent exactly how much it knows.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Shogakukan copy provenance",
+          "illustrator credit",
+          "image witness"
         ]
       },
       "coverage": {

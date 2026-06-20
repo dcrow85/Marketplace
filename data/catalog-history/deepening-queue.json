@@ -4,57 +4,6 @@
     {
       "card_highlights": {
         "artist": "",
-        "assembly_note": "Grovyle sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
-        "assembly_themes": [
-          "promo distribution",
-          "identity trap"
-        ],
-        "authority_label": "local_catalog_fact_and_judged_texture",
-        "collector_texture_note": "Grovyle is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 008/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
-        "not_claiming": [
-          "price truth",
-          "condition truth",
-          "seller possession",
-          "authenticity"
-        ],
-        "number": "008/ADV-P",
-        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
-        "signals": [
-          "ADV-P Promotional cards - pre-WoC-edge subset",
-          "2003-01-01",
-          "008/ADV-P",
-          "Grass",
-          "",
-          "Shogakukan Elementary School magazines (March-April 2003)",
-          ""
-        ]
-      },
-      "human_title": "Grovyle: first-pass card note",
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 78,
-      "reasons": [
-        "promo/distribution context",
-        "special identification trap",
-        "identity trap"
-      ],
-      "type": "card",
-      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
-      "why_it_matters": "Grovyle sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
-    },
-    {
-      "card_highlights": {
-        "artist": "",
         "assembly_note": "Combusken sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
         "assembly_themes": [
           "promo distribution",
@@ -5121,11 +5070,62 @@
       "type": "card",
       "uid": "en_wotc_base_set_2_20000224:base4-3",
       "why_it_matters": "Chansey sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+    },
+    {
+      "card_highlights": {
+        "artist": "Mitsuhiro Arita",
+        "assembly_note": "Clefable sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Mitsuhiro Arita. That is enough to orient an agent, not enough to settle a physical-card claim.",
+        "assembly_themes": [
+          "holo surface",
+          "rarity attention",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Clefable is cataloged as Base Set 2 #5. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ],
+        "number": "5",
+        "rarity_signal": "Rare Holo",
+        "signals": [
+          "Base Set 2",
+          "2000/02/24",
+          "5",
+          "Rare Holo",
+          "Pokémon",
+          "Stage 1"
+        ]
+      },
+      "human_title": "Clefable: first-pass card note",
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 60,
+      "reasons": [
+        "holo/surface card",
+        "rare signal",
+        "artist trace: Mitsuhiro Arita"
+      ],
+      "type": "card",
+      "uid": "en_wotc_base_set_2_20000224:base4-5",
+      "why_it_matters": "Clefable sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Mitsuhiro Arita. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
     }
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3782,
+    "generated_card_candidates_considered": 3781,
     "generated_release_candidates_considered": 0,
     "release_queue_count": 0
   },

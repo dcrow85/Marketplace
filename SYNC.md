@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 208: Gift Pack starter_b Mewtwo 050 deepened; corpus 553fbefa)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 209: ADV-P Grovyle 008 deepened; corpus b87cc6f4)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
+  `jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p`
+  Grovyle 008/ADV-P is now hand-authored rather than generator memory. The
+  pass records the Shogakukan Elementary School magazine March-April 2003
+  route, Grass-row identity, absent promoted Japanese name, absent artist
+  credit, and absent row-specific image witness. The new special
+  identification packet is explicit and first-class: agents must confirm
+  Grovyle, printed `008/ADV-P`, and the bounded `001-014` pre-edge slice;
+  keep the Shogakukan magazine note separate from physical provenance; and
+  avoid importing later ADV-P rows, main-set Grovyle, English EX-era Grovyle,
+  or absent art/attack/Japanese-name details. Boundaries remain explicit:
+  catalog legibility is not seller possession, authenticity, condition, price,
+  Shogakukan copy provenance, image availability, illustrator credit,
+  Japanese-name certainty, attack text, later ADV-P equivalence, main-set
+  Grovyle equivalence, complete ADV-P coverage, or spendability. Generated
+  gaps remain bounded at 100. Validation passed: JSON; catalog dossier build
+  + `--check`; card dossier `--check`; completion audit `--check`; focused
+  assertion for the new special-identification packet. Hashes: corpus
+  `b87cc6f4009209dc33254c4addd566334d48adf1a2d2da0031fd81cd810bab3d`;
+  index `2c4bc9cfbd13794fdf5f0e3b82d44f06e2a3249f743dbf82e5c70382cc32e50d`;
+  queue `a50fc72556737bd3e8d9f404a5547837f7b2b583dc83333990f414d5e2a4670b`;
+  audit `9d19a142b48ffb63587605d6cf4d4d8e4e51bd78417a5c9a09e585cd60e87a08`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/gift_pack_v0_1.json`:
