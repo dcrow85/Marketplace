@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 259: Neo Summer Road Best in Japan No.2 row 243 deepened; corpus a3a4be29)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 260: Neo Summer Road Best in Japan No.3 row 244 deepened; corpus d0f3a8ca)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixtieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`:
+  `jp_promo_unnumbered_wotc_244_neo_summer_road_best_in_japan_third_place_prize:244`
+  No.3 Trainer row 244 is now hand-authored rather than generator memory.
+  This pass used the local unnumbered promo row, Bulbapedia raw `Unnumbered
+  Promotional cards` row 244, Bulbapedia raw `No.3 Trainer (Pokemon Card Game
+  Official Tournament promo)`, and Pokumon's `No.3 Trainer (Neo Summer Road
+  Best in Japan 2001) (Unnumbered)` page. The card dossier now carries No.3
+  Trainer / `Ｎｏ.３トレーナー` / No.3 Trainer, no printed number, Neo Summer
+  Road Best in Japan third-place finals route, the August 25 2001 national
+  finals, Battle Neo Summer Road Senior Tournament Best in Japan Deciding
+  Match third-place wording, Ho-Oh / Neo Summer branch context, and Takumi
+  Akabane / Cosmos holofoil as Pokumon collector-database context. The
+  estimated 1-copy language is preserved strictly as collector/database
+  estimate, not official copy-count truth. The special identification packet
+  tells agents not to match by `No.3 Trainer` alone and keeps row 244 separate
+  from Neo Summer Road regional No.3 row 240, Neo Spring Road Best in Japan
+  No.3 row 232, regional rows 238-239, finals rows 242-243, Battle Road 2002,
+  1997-1999 No.3 Trainer prints, and later World Championships cards.
+  Validation passed: `json.tool`, `build_catalog_history_dossiers.py`,
+  `--check`, `build_card_dossiers.py --check`,
+  `build_catalog_completion_audit.py --check`, plus a focused assertion for
+  the Japanese name, finals route, Akabane/Cosmos fields,
+  special-identification packet, and corpus propagation. New catalog-history
+  corpus hash: `d0f3a8caabb59971242bd9c13c000c4c2bb1c5a5c360e58a31e98d8ab2a20a2a`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`:
