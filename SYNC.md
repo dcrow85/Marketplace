@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 189: How I Became a Pokemon Card Vol. 6 _____'s Pikachu deepened; corpus 7cfc4ed5)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 190: P Promotional Venusaur 012/P deepened; corpus 46252fbe)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninetieth
+  catalog-history pass inside the existing
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json` tranche:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-012-p`
+  deepens Venusaur / フシギバナ / Fushigibana 012/P. The pass pins 012/P to the
+  Starter Triple Get Campaign Red Green Course, not generic Venusaur memory:
+  Atsuko Nishida illustration credit, Expedition Base Set / Japanese
+  Pokemon-e Starter Deck lineage, Cosmos Holofoil P Promotional print,
+  proof-of-purchase-seal postcard lottery, Kanto trio context with Blastoise
+  013/P and Charizard 014/P, Leech Seed / やどりぎのたね, Fury Strikes /
+  みだれうち, and e-Reader strip context are now surfaced. The special
+  identification packet separates 012/P from Expedition 67/165, Japanese
+  Pokemon-e Starter Deck 004/029, Base/No Rarity, Trade Please, CD Promo,
+  Song Best Collection, and generic Venusaur promo rows, while preserving the
+  usual no-overclaim boundary: route legibility is not seller possession,
+  authenticity, condition, complete campaign provenance, price, or
+  spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `46252fbef18b8b060c66010867c70d0644cb380e565c9ed73674fe1c03e626dc`,
+  index `972137e39f52319af83b5040ec93da5cbf211a0623dae2586048a2a6ff762853`,
+  queue `49ecbe3bc6dfcb368222ec192bb730e8a4caf6027516366b7e724f8e6cc6cf14`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol6_blank_pikachu_v0_1.json`

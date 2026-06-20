@@ -636,6 +636,242 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-012-p",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-012-p",
+        "catalog_row_id": "012/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Expedition Base Set / Pokemon-e Starter Deck / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-012-p",
+          "title": "Local catalog row: Venusaur 012/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Venusaur_(Expedition_67)&action=raw",
+          "title": "Bulbapedia raw wikitext: Venusaur (Expedition 67)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Venusaur as numbered P Promotional row 012/P in the Starter Triple Get Campaign Red Green Course.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the underlying card as Venusaur / フシギバナ Fushigibana, a Grass Stage 2 Pokemon with HP 100, Fire weakness, retreat cost 2, and Atsuko Nishida illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia places this card in a lineage that includes English Expedition Base Set, Japanese Pokemon-e Starter Deck 004/029, and Japanese P Promotional 012/P.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.rarity",
+          "text": "Bulbapedia describes the P Promotional 012/P print as a Cosmos Holofoil reprint available through the Starter Triple Get Campaign Red Green Course.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.distribution",
+          "text": "Bulbapedia describes the Starter Triple Get Campaign as a proof-of-purchase-seal postcard lottery: entrants collected three seals from Pokemon-e Starter Decks, and lottery drawings distributed Red Green Course sets containing Venusaur 012/P, Blastoise 013/P, and Charizard 014/P, alongside a separate Gold Silver Course for Johto starters.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Leech Seed / やどりぎのたね and Fury Strikes / みだれうち, plus e-Reader data; the e-Reader note separates the non-holo and holo card IDs and says there is no long strip for this card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "Atsuko Nishida's Venusaur matters here because her Expedition-era art is being moved through a Japanese promo redemption apparatus; the image is familiar, but the route is not a booster-pack route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Venusaur 012/P from Expedition Base Set 67/165, Japanese Pokemon-e Starter Deck 004/029, Base/No Rarity Venusaur, Trade Please Venusaur, and other Venusaur promos; the P number and Starter Triple Get route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_012_p_venusaur_starter_triple_get_boundary_v0.1",
+          "trigger": "A user says Venusaur P promo, Starter Triple Get Venusaur, Red Green Course, Expedition Venusaur promo, Pokemon-e Starter Deck Venusaur, or 012/P.",
+          "summary": "Confirm 012/P and Starter Triple Get Red Green Course route before treating a Venusaur listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 012/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve Starter Triple Get Campaign and Red Green Course as the distribution route.",
+            "Check the subject line as Venusaur / フシギバナ / Fushigibana, not merely a generic Grass starter family card.",
+            "Check that the profile matches the Expedition-era Venusaur line: Grass Stage 2, HP 100, Fire weakness, retreat cost 2.",
+            "Use Atsuko Nishida as the card-art credit for this underlying Venusaur card, while remembering that artist credit is not physical-card authentication.",
+            "Distinguish the P Promotional Cosmos Holofoil route from Expedition Base Set 67/165 and Japanese Pokemon-e Starter Deck 004/029.",
+            "Keep the Kanto Red Green Course trio together only as campaign context: Venusaur 012/P, Blastoise 013/P, and Charizard 014/P. Do not infer a seller has all three.",
+            "If a seller claims campaign provenance, ask for seller-controlled evidence of the card and any postcard, envelope, or campaign material separately.",
+            "Do not collapse this into Base Set, No Rarity, Trade Please, CD Promo, Song Best Collection, or generic Venusaur promo rows.",
+            "Treat lottery quantities, sealed-course state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Starter Triple Get campaign proof",
+            "complete Red Green Course set state",
+            "official copy count beyond cited source",
+            "other Venusaur equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "012/P",
+        "rarity_signal": "Starter Triple Get Campaign Red Green Course; Cosmos Holofoil P Promotional print",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "promo distribution",
+          "proof-of-purchase lottery",
+          "e-Reader era lineage",
+          "starter trio route",
+          "identity trap"
+        ],
+        "signals": [
+          "Venusaur",
+          "フシギバナ",
+          "Fushigibana",
+          "012/P",
+          "Starter Triple Get Campaign",
+          "Red Green Course",
+          "Cosmos Holofoil",
+          "Atsuko Nishida",
+          "Leech Seed",
+          "Fury Strikes",
+          "Pokemon-e Starter Deck",
+          "Expedition Base Set"
+        ],
+        "collector_texture_note": "Venusaur 012/P is the calm Kanto giant turned into a redemption target: three starter-deck seals, a postcard, a lottery, and then the Grass starter returns as a Cosmos holo.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete campaign provenance"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur 012/P: the garden behind the proof-of-purchase seals",
+        "why_it_matters": "This is a lovely protocol card because the desire is not only Venusaur. It is route. A kid bought Pokemon-e Starter Decks, saved seals, mailed a postcard, and hoped the lottery returned the Red Green Course. Nishida's Venusaur is the same big sun-warmed creature, but 012/P makes the social machinery visible around it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete Red Green Course set state"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
       "type": "card",
       "context": {
