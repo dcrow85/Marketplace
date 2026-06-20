@@ -1,0 +1,570 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Pokemon Card GB Official Guidebook Venusaur promo",
+    "release_family_id": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999",
+    "notes": [
+      "Deepens the January 28, 1999 Pokemon Card GB Official Guidebook insert source slice.",
+      "Covers the single modeled source-pinned row: Venusaur source index 082.",
+      "Frames Venusaur as a guidebook/strategy-text insert that extends the Pokemon Card GB software route without duplicating the Dragonite pack-in route."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card GB Official Guidebook insert",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999",
+        "release_date": "1999-01-28",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card GB Official Guidebook",
+          "strategy guide as card route",
+          "Venusaur source index 082",
+          "GB symbol as contact evidence",
+          "Ken Sugimori illustrator lane",
+          "Wizards Promo 13 English afterlife",
+          "guidebook route versus game pack-in route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999:082",
+            "name": "Venusaur",
+            "number": "082",
+            "why": "Venusaur is the chase because it turns a strategy book into a card-bearing object. Dragonite came with the game; Venusaur came with the guide that taught the game, which makes the route feel instructional, almost scholastic, while still carrying starter-line gravity.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Venusaur"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete guidebook packaging census",
+          "official copy count"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Card GB Official Guidebook insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_GB_Official_Guidebook",
+          "title": "Bulbapedia: Pokemon Card GB Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Wizards_Promo_13)",
+          "title": "Bulbapedia: Venusaur (Wizards Promo 13)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print is identical to English Wizards Promo 13"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/guidebook_venusaur_promo/",
+          "title": "PokeBoon: Venusaur Promo - Pokemon Card GB Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Card GB Dragonite",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "same route as guidebook Venusaur",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row and Bulbapedia place the Pokemon Card GB Official Guidebook insert route on January 28, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia identifies the Pokemon Card GB Official Guidebook as a strategy guide for the Game Boy Color Pokemon Trading Card Game, with an overview of TCG rules and a Venusaur promo included.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.publisher",
+          "text": "Bulbapedia says the Official Guidebook was authored by Shusuke Motomiya and One Up under the supervision of Creatures, Inc.; this makes the route a guidebook/editorial apparatus as much as a card object.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Venusaur source index 082.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Venusaur page says the card was created for Pokemon Trading Card Game for Game Boy Color and later released physically, including Japanese guidebook and English Wizards Promo contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon and Bulbapedia's Venusaur page credit the guidebook/Venusaur promo art to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Venusaur matters because it shows a different Game Boy contact path from Dragonite: not the game pack-in, but the guidebook that helped players read and master the game.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should keep this guidebook Venusaur route separate from Pokemon Card GB Dragonite, Fossil/Base Venusaur memories, Japanese CD promo Venusaur, Intro Pack / Intro Deck Venusaur, English Wizards Promo 13, and later Venusaur V/VMAX products.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Venusaur plus Pokemon Card GB Official Guidebook route plus GB-symbol/guidebook evidence; catalog facts do not prove possession, authenticity, condition, price, complete guidebook packaging, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_official_guidebook_1999_venusaur_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent match mentions Venusaur, Pokemon Card GB, Official Guidebook, Game Boy promo, GB Venusaur, source index 082, or Wizards Promo 13.",
+          "summary": "Confirm the Pokemon Card GB Official Guidebook Venusaur route before allowing the match to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Pokemon Card GB Official Guidebook, Game Boy promo, GB Venusaur, guidebook insert, source index 082, or Wizards Promo 13.",
+            "Confirm the offered card is Venusaur / フシギバナ / Fushigibana and not Base Set Venusaur, CD promo Venusaur, Intro Pack Venusaur, English Wizards Promo 13, or a later Venusaur product.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Check the lower release-symbol area for the GB symbol and preserve any crop, blur, absent mark, or conflicting mark as named uncertainty.",
+            "If the listing claims guidebook provenance, request guidebook/back-cover/bag or insert-context evidence separately; the card alone does not prove complete guidebook packaging.",
+            "Separate this guidebook route from Pokemon Card GB Dragonite's game pack-in route and Pokemon Card GB2 guidebook Dark Fearow.",
+            "Keep price, grade, authenticity, condition, official copy count, possession, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete guidebook packaging census",
+            "English Wizards Promo 13 equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Venusaur in the book that taught the Game Boy cards",
+        "why_it_matters": "Pokemon Card GB Venusaur is wonderful because it makes a strategy guide feel like part of the card game machine. Dragonite says the cartridge can hand you a card; Venusaur says the book beside the cartridge can do it too. That is a different kind of assembly: Motomiya, One Up, Creatures supervision, Game Boy rules, Sugimori's starter-line authority, and a promo tucked into the learning apparatus. It is not just a famous dinosaur-plant. It is Pokemon teaching people how to read itself.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete guidebook packaging census",
+          "English Wizards Promo 13 equivalence",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999:082",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "number": "082",
+        "release_family_id": "jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999",
+        "release_name": "Pokemon Card GB Official Guidebook insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "082",
+        "rarity_signal": "unnumbered promotional guidebook route",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Venusaur / Fushigibana",
+          "Pokemon Card GB Official Guidebook",
+          "GB symbol",
+          "Ken Sugimori starter-line art",
+          "Wizards Promo 13 afterlife",
+          "guidebook provenance trap"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999.json#row:jp_promo_unnumbered_wotc_082_pok_mon_card_gb_official_guidebook_insert_january_28_1999:082",
+          "title": "Local Japanese unnumbered WotC catalog row: Venusaur source index 082",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Wizards_Promo_13)",
+          "title": "Bulbapedia: Venusaur (Wizards Promo 13)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print is identical to English Wizards Promo 13"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_GB_Official_Guidebook",
+          "title": "Bulbapedia: Pokemon Card GB Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/guidebook_venusaur_promo/",
+          "title": "PokeBoon: Venusaur Promo - Pokemon Card GB Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Venusaur as source index 082 in the Pokemon Card GB Official Guidebook insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The row is an unnumbered promotional guidebook route, not a booster-set rarity row.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit this Venusaur promo to Ken Sugimori.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's Venusaur page identifies the card as a Grass-type Stage 2 Pokemon created for the Game Boy Color TCG and later physically released.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "The card's collector afterlife includes English Wizards Promo 13, but the Japanese guidebook route should be kept distinct from English-language Black Star context in buyer/seller matching.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Sugimori's Venusaur matters because starter-line art carries early Pokemon's official visual grammar into a guidebook object: the image feels like the rulebook and the monster encyclopedia touching the same card.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A safe match requires Venusaur identity, Pokemon Card GB Official Guidebook route, GB-symbol / guidebook evidence, and separation from Base/CD/Intro/Wizards/later Venusaur rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_official_guidebook_1999_venusaur_082_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Venusaur / フシギバナ as Pokemon Card GB, GB promo, Official Guidebook, Game Boy promo, source index 082, or Wizards Promo 13.",
+          "summary": "Confirm Venusaur 082 as the Pokemon Card GB Official Guidebook insert and keep guidebook/package claims separate from card identity.",
+          "steps": [
+            "Capture the exact seller title and route terms: Venusaur, Pokemon Card GB Official Guidebook, GB promo, guidebook insert, Game Boy promo, source index 082, or Wizards Promo 13.",
+            "Ask for uncropped front and back images showing the name, HP, Pokemon Power / attack text area, lower release-symbol area, illustrator line, copyright block, corners, and holo surface.",
+            "Check that the card is Venusaur / フシギバナ / Fushigibana and that the visible route mark is consistent with the GB guidebook branch.",
+            "Separate this card from Base Set Venusaur, Japanese CD promo Venusaur, Intro Pack / Intro Deck Venusaur, English Wizards Promo 13, Venusaur V/VMAX, and other later Venusaur products.",
+            "If a listing claims guidebook provenance, request guidebook/back-cover/bag or insert-context evidence as its own branch.",
+            "Treat English Wizards Promo 13 references as lineage/comparison help, not proof that a Japanese guidebook copy is present.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete guidebook packaging census",
+            "English Wizards Promo 13 equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Venusaur 082: the guidebook plant",
+        "why_it_matters": "This Venusaur has that old Sugimori steadiness: not flashy, not coy, just the big final starter standing there like a piece of the franchise's foundation. The route gives it the charm. It comes through the Official Guidebook, so the card feels attached to learning: rules, deck play, Game Boy menus, and the slow pleasure of figuring the system out. For an agent, the beauty and the danger are the same. Venusaur is famous enough to blur; the guidebook route has to stay sharp.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete guidebook packaging census",
+          "English Wizards Promo 13 equivalence",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

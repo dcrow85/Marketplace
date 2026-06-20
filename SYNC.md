@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 168: unnumbered WotC Game Boy Dragonite bridge deepened; corpus d2439eda)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 169: Game Boy Official Guidebook Venusaur deepened; corpus a3c26999)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/gameboy_official_guidebook_venusaur_v0_1.json`
+  deepens the January 28, 1999 Pokemon Card GB Official Guidebook insert source
+  slice and its single modeled row, Venusaur source index 082. The pass frames
+  Venusaur as a guidebook / strategy-text contact object: not the game pack-in
+  route of Dragonite, but the book that taught the Game Boy card game carrying
+  its own promo. It preserves Shusuke Motomiya, One Up, Creatures supervision,
+  Ken Sugimori starter-line art, GB-symbol evidence, and English Wizards Promo
+  13 as lineage/comparison context rather than equivalence proof. Special ID
+  rails separate guidebook Venusaur from Base/CD/Intro/Wizards/later Venusaur
+  rows and keep guidebook/back-cover/bag/insert provenance as separate seller
+  evidence. Generated gaps moved to 20 release / 3821 card. Current hashes:
+  corpus `a3c26999c81057c4d2b5cdcbfcac8a1667169bd712b02ee824c7adfe3cdb822a`,
+  index `597e9cde3cb045e7cb1c2e00266bd35a720ba91952d45d773bc46bc82e0f9a1b`,
+  queue `f9046281adfa9d4493576d914d8873cd70221ece656173b23a1511dd3a0a9e20`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/unnumbered_wotc_gameboy_dragonite_bridge_v0_1.json`

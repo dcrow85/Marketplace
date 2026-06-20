@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23726,
-    "corpus_hash": "d2439eda08f910e998ea7ad7474c52cf0e0bcf89bc568e6a22a195a443e93fd6",
-    "generated_card_dossier_count": 3822,
-    "generated_release_dossier_count": 21,
+    "claim_count": 23731,
+    "corpus_hash": "a3c26999c81057c4d2b5cdcbfcac8a1667169bd712b02ee824c7adfe3cdb822a",
+    "generated_card_dossier_count": 3821,
+    "generated_release_dossier_count": 20,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6775
+    "source_count": 6782
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "94a2c7f429cd8b080a5d1cb7158bc1e39218d0640772882a9d5cc080fa8324a5",
-    "release_queue_count": 21,
+    "queue_hash": "f9046281adfa9d4493576d914d8873cd70221ece656173b23a1511dd3a0a9e20",
+    "release_queue_count": 20,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T00:59:25Z",
+  "generated_at": "2026-06-20T01:06:10Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "2dfc83036e99f29601da7a21c306fffdb14d4378e30eebe1a56b971a7b737dab",
+    "index_hash": "597e9cde3cb045e7cb1c2e00266bd35a720ba91952d45d773bc46bc82e0f9a1b",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -111,6 +111,7 @@
     "data/catalog-history/source-sets/fossil_v0_1.json",
     "data/catalog-history/source-sets/gameboy_card_gb2_lugia_v0_1.json",
     "data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json",
+    "data/catalog-history/source-sets/gameboy_official_guidebook_venusaur_v0_1.json",
     "data/catalog-history/source-sets/garura_parent_child_1998_v0_1.json",
     "data/catalog-history/source-sets/gift_pack_v0_1.json",
     "data/catalog-history/source-sets/gold_silver_new_world_tranche_v0_1.json",
