@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 230: P Promo Tyrogue 023 deepened; corpus 929d0dd9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 231: P Promo Zapdos 024 deepened; corpus b5c82d8e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,46 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-024-p`
+  Zapdos 024/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Zapdos (P Promo
+  24)` to `Zapdos (Aquapolis H32)`, so the row now carries the deeper card
+  assembly: Zapdos / `サンダー` / Thunder, Lightning Basic, HP 80, Lightning
+  weakness, Fighting resistance, retreat cost 2, Hajime Kusajima illustration
+  credit, Anti-Lightning / `アンチライトニング`, Plasma / `プラズマ`, Lightning
+  Storm / `いかづち`, Aquapolis holo H32/H32 and non-holo 44/147 identities,
+  The Town on No Map 038/092 and 037/092 identities, `C-68-#` P Promotional
+  e-Reader context, and the no-long-strip distinction. The McDonald's route
+  remains the transaction-facing identity wall: Saturdays, Sundays, and public
+  holidays from January 26 through February 24, 2002, printed `024/P`, inside
+  the numbered P Promotional spine. The special identification packet is
+  explicit: agents must confirm Zapdos / `サンダー` / Thunder, printed `024/P`,
+  McDonald's date window, Kusajima credit, Lightning Basic profile, card-text
+  markers, `C-68-#`, and no-long-strip context; keep the row separate from
+  Aquapolis H32/H32, Aquapolis 44/147, The Town on No Map 038/092 and 037/092,
+  Tyrogue 023/P, other McDonald's P Promotional cards, later Zapdos promos,
+  English Zapdos rows, and generic legendary-bird searches; and avoid importing
+  holo status, rarity, provenance, or e-Reader readability without separate
+  seller evidence. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, price, McDonald's campaign copy
+  provenance, wrapper or packet provenance, store provenance, date-window
+  participation proof, holofoil status, non-holofoil status, e-Reader
+  readability, long-strip presence, Aquapolis equivalence, The Town on No Map
+  equivalence, later Zapdos equivalence, English Zapdos equivalence,
+  legendary-bird collection equivalence, complete Japanese promo coverage, or
+  spendability. Validation passed: `python3 -m json.tool ...`,
+  `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Zapdos assertion. Hashes: corpus
+  `b5c82d8e8d981f95f373b854536b8cca1edbf6e1483a7c4a2f23d36ca3fd1c8b`, index
+  `62b879e51f6b5e46d9cfc95ad2fa9cd258705c6eaef3023c82b0e71c30fa4174`, queue
+  `f4df2ed0fafdb233f6c44f4084a11dbd6efa6674553ee3036c0fe1d84b745c83`, audit
+  `73b63afd52fe9d002a256ccaaa2328b80e27c1c3dd502ebbab2be987f16eac3a`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirtieth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

@@ -5194,6 +5194,308 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-024-p",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "romaji": "Thunder",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-024-p",
+        "catalog_row_id": "024/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis H32/H32 and 44/147 / The Town on No Map 038/092 and 037/092 / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-024-p",
+          "title": "Local Japanese promo WotC catalog row: Zapdos 024/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Zapdos_(P_Promo_24)&action=raw",
+          "title": "Bulbapedia raw redirect: Zapdos (P Promo 24)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Zapdos_(Aquapolis_H32)&action=raw",
+          "title": "Bulbapedia raw wikitext: Zapdos (Aquapolis H32 / P Promo 24)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Zapdos as P Promotional card number 024/P, and the row-specific Bulbapedia redirect points Zapdos (P Promo 24) to the Zapdos (Aquapolis H32) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Zapdos / サンダー / Thunder, a Lightning Basic Pokemon with HP 80, Lightning weakness, Fighting resistance, and retreat cost 2.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the P Promotional print of Zapdos 024/P to Hajime Kusajima.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the distribution context as a McDonald's promotion held on Saturdays, Sundays, and public holidays from January 26 through February 24, 2002; Bulbapedia's card page also says the Japanese P Promotional reprint was part of a McDonald's promotion that ran between January 26 and February 24, 2002.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Zapdos card across Aquapolis holo H32/H32, Aquapolis non-holo 44/147, Japanese The Town on No Map 038/092 and 037/092, and Japanese P Promotional 024/P contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Anti-Lightning / アンチライトニング, Plasma / プラズマ, and Lightning Storm / いかづち; Plasma first appeared on Rocket's Zapdos from Gym Challenge according to Bulbapedia's origin note.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia records three prints: the Holofoil Aquapolis print has card ID C-68, while the Non Holofoil Aquapolis print and P Promotional print use C-68-#; for the non-holo and P Promotional prints the short strip contains Pokedex information and a card summary, and there is no long strip.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Zapdos 024/P matters because the McDonald's branch suddenly carries legendary weight: a Kusajima Zapdos, split from Aquapolis holo/non-holo identities, stripped down to a P Promotional number and short e-Reader strip for a fast-food weekend route.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Zapdos 024/P from Aquapolis H32/H32, Aquapolis 44/147, The Town on No Map 038/092 and 037/092, other McDonald's P Promotional rows, other Zapdos promos, English Zapdos rows, and generic legendary-bird searches; the printed 024/P number, McDonald's date window, Kusajima credit, and C-68-# e-Reader ID are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_zapdos_024_mcdonalds_h32_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos P promo, McDonald's Zapdos, 024/P, Japanese Zapdos promo, Kusajima Zapdos, Aquapolis Zapdos, Aquapolis H32, The Town on No Map Zapdos, C-68-#, or early numbered P Promotional card.",
+          "summary": "Confirm Zapdos, printed 024/P, and the McDonald's January 26-February 24, 2002 route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Zapdos / サンダー / Thunder.",
+            "Read the printed promo number as 024/P and keep it inside the numbered P Promotional spine.",
+            "Keep the McDonald's promotion date window legible: Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+            "Use Hajime Kusajima as the credited illustrator for the P Promotional print while remembering that an artist credit does not authenticate a physical card.",
+            "Check the Lightning Basic profile, HP 80, Lightning weakness, Fighting resistance, and retreat cost 2 when comparing against the card page.",
+            "Check for Anti-Lightning / アンチライトニング, Plasma / プラズマ, and Lightning Storm / いかづち when card text is visible.",
+            "Use C-68-# and the no-long-strip note as P Promotional e-Reader context; do not import the Holofoil Aquapolis C-68 identity into a loose 024/P claim.",
+            "Do not merge this row with Aquapolis H32/H32, Aquapolis 44/147, The Town on No Map 038/092 or 037/092, Tyrogue 023/P, other McDonald's P Promotional cards, later Zapdos promos, English Zapdos rows, or generic legendary-bird searches without number evidence.",
+            "If a seller claims fast-food provenance, ask for seller-controlled evidence of the card and any wrapper, packet, store, or campaign material separately.",
+            "Treat holo status, non-holo status, rarity, price, sealed-packet state, e-Reader readability, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "date-window participation proof",
+            "holofoil status",
+            "non-holofoil status",
+            "e-Reader readability",
+            "long-strip presence",
+            "Aquapolis H32/H32 equivalence",
+            "Aquapolis 44/147 equivalence",
+            "The Town on No Map 038/092 equivalence",
+            "The Town on No Map 037/092 equivalence",
+            "other McDonald's promo equivalence",
+            "later Zapdos equivalence",
+            "English Zapdos equivalence",
+            "legendary-bird collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "024/P",
+        "rarity_signal": "McDonald's promotion (January 26-February 24, 2002 weekends/public holidays)",
+        "artist": "Hajime Kusajima",
+        "assembly_themes": [
+          "McDonald's route",
+          "date-window boundary",
+          "numbered P spine",
+          "Hajime Kusajima legendary bird",
+          "Aquapolis holo/non-holo split",
+          "e-Reader short-strip context"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "024/P",
+          "Zapdos",
+          "サンダー",
+          "Thunder",
+          "Lightning",
+          "Basic Pokemon",
+          "HP 80",
+          "Hajime Kusajima",
+          "McDonald's promotion",
+          "January 26-February 24, 2002",
+          "Saturdays/Sundays/public holidays",
+          "Anti-Lightning",
+          "アンチライトニング",
+          "Plasma",
+          "プラズマ",
+          "Lightning Storm",
+          "いかづち",
+          "C-68-#",
+          "no long strip",
+          "Aquapolis H32/H32",
+          "Aquapolis 44/147",
+          "The Town on No Map"
+        ],
+        "collector_texture_note": "Zapdos 024/P is where the McDonald's run gets stormy: Kusajima legendary-bird art, Aquapolis holo/non-holo baggage, and a P Promotional number that must stay sharper than the glamour around it.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete McDonald's campaign proof",
+          "wrapper or packet provenance",
+          "holofoil status",
+          "e-Reader readability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Zapdos 024/P: the storm card in the McDonald's window",
+        "why_it_matters": "Zapdos changes the emotional weight of the McDonald's branch. After the small-friend and baby-Pokémon rows, 024/P brings in a legendary bird with Hajime Kusajima's art and an Aquapolis identity that can easily pull an agent into the wrong lane. The magic is the compression: a storm god, a holo/non-holo lineage, C-68-# e-Reader data, and a fast-food weekend window all forced into one printed P number. That is exactly why the number matters. The catalog can explain the assembly; the seller still has to show the card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete McDonald's campaign provenance",
+          "wrapper or packet provenance",
+          "holofoil status",
+          "e-Reader readability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
       "type": "card",
       "context": {
