@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 182: Neo Era Premium File 3 Celebi deepened; corpus 22efc389)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 183: Pokemon Card Information Vol. 1 Dunsparce deepened; corpus 29156503)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/pokemon_card_information_vol1_dunsparce_v0_1.json`
+  deepens the Pokemon Card Information Vol. 1 insert and its single modeled row,
+  Dunsparce / ノコッチ / Nokocchi source index 221. The pass frames the route as
+  free participating-store information-packet distribution from January 1,
+  2001, where a quiet Johto oddball becomes part of the TCG's store-counter
+  paper ecosystem rather than a booster-pack or tournament object. It records
+  Atsuko Nishida / 西田敦子 as the expected illustrator, Paralyzing Gaze / にらむ,
+  Drill Tail / ドリルしっぽ, LV.14, HP 40, No. 206, Colorless type, the Pokemon
+  Silver Pokedex-text context, and the bottom-border clue "Information Pack
+  bonus card part 1." Special identification packets now separate this row from
+  Pokemon Card Information Vol. 2 Bellossom, Vol. 3 Pryce's Lapras, Vol. 4
+  Ponyta, Neo Discovery Dunsparce, Carddass/Zukan Dunsparce items, later
+  Dunsparce cards, and any unopened packet claim where the card is not
+  separately visible or disclosed. Boundaries remain against seller possession,
+  authenticity, condition, price, complete sealed-packet state, official print
+  run, and spendability. Generated gaps are now release queue 6 and card queue
+  100. Hashes: corpus
+  `2915650382695f1993467952b059d70aa96f3014961c5f6d5137306803099bc5`,
+  index `10cdca8e4fbbf615fcd3b20905ab6ff7f889acfd0200d655abe4a499499e0013`,
+  queue `a0cc2d8338df14e83a0a5266ab3d3e5b415ac946a1874133785ec44f7549f91e`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-second
   catalog-history pass:
   `data/catalog-history/source-sets/neo_era_premium_file_3_celebi_v0_1.json`

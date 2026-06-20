@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23833,
-    "corpus_hash": "22efc3897ad10a6220138280a0f9c07eaad6f8f1a31e4bca3bacfb219c3e5710",
-    "generated_card_dossier_count": 3808,
-    "generated_release_dossier_count": 7,
+    "claim_count": 23838,
+    "corpus_hash": "2915650382695f1993467952b059d70aa96f3014961c5f6d5137306803099bc5",
+    "generated_card_dossier_count": 3807,
+    "generated_release_dossier_count": 6,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6881
+    "source_count": 6890
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "ec6aebfcb6c473466ed56ed2554b5002beaae55f51cdb3c30ebe75fb01df849b",
-    "release_queue_count": 7,
+    "queue_hash": "a0cc2d8338df14e83a0a5266ab3d3e5b415ac946a1874133785ec44f7549f91e",
+    "release_queue_count": 6,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T03:19:34Z",
+  "generated_at": "2026-06-20T03:26:44Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "5c55add7e70933d57de34c9c305becb1f4d6e1a425d1ec480f59f36f5c066629",
+    "index_hash": "10cdca8e4fbbf615fcd3b20905ab6ff7f889acfd0200d655abe4a499499e0013",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -158,6 +158,7 @@
     "data/catalog-history/source-sets/nivi_city_gym_brock_v0_1.json",
     "data/catalog-history/source-sets/p_promotional_tranche_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
+    "data/catalog-history/source-sets/pokemon_card_information_vol1_dunsparce_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_web_tranche_v0_1.json",
     "data/catalog-history/source-sets/pokemon_jungle_v0_1.json",

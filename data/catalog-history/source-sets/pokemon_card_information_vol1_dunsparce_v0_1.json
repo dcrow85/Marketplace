@@ -1,0 +1,639 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "release_family_id": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001",
+    "description": "Deepens the Pokemon Card Information Vol. 1 Dunsparce insert route and its single local unnumbered-promo source row."
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card Information Vol. 1 insert",
+        "name_ja": "ポケモンカードインフォメーション その1",
+        "release_family_id": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001",
+        "release_date": "2001-01-01",
+        "modeled_count": 1,
+        "local_source_index_span": "221-221"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Information booklet route",
+          "free participating-store distribution",
+          "Information Pack bonus-card border text",
+          "2001 unnumbered promo continuity",
+          "quiet species as collector object",
+          "Atsuko Nishida creature-design lineage",
+          "Dunsparce / ノコッチ / Nokocchi source index 221",
+          "magazine/booklet insert versus expansion-pack pull"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001:221",
+            "name": "Dunsparce",
+            "name_ja": "ノコッチ",
+            "romaji": "Nokocchi",
+            "number": "221",
+            "why": "Dunsparce is not loud in the way Charizard or Celebi are loud, which is exactly why this route matters. The card turns a strange, shy Johto tunnel creature into a store-distributed information object: a little free promo that says the TCG was not only expanding through packs and tournaments, but through paper handouts, local stores, and kids picking up news.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Atsuko Nishida",
+            "name_ja": "西田敦子",
+            "row_count": 1,
+            "examples": [
+              "Dunsparce",
+              "Pikachu",
+              "Eevee and many Eeveelutions"
+            ],
+            "why": "Nishida's presence makes this tiny insert feel much bigger. She is tied to the franchise's cutest and most emotionally durable design language, including Pikachu and much of the Eevee family; on Dunsparce, that same eye for softness makes an oddball land snake feel collectible rather than disposable.",
+            "authority_label": "fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete sealed-booklet census",
+          "official print run",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Card Information Vol. 1 insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dunsparce_(Information_Pack_promo)",
+          "title": "Bulbapedia: Dunsparce (Information Pack promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/informationpack_dunsparce_promo/",
+          "title": "PokeBoon: Dunsparce Promo: Pokemon Card Information Vol. 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/dunsparce-pokemon-card-information-2001-unnumbered/",
+          "title": "Pokumon: Dunsparce (Pokemon Card Information 2001) (Unnumbered)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Atsuko_Nishida",
+          "title": "Bulbapedia: Atsuko Nishida",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "release.date",
+          "text": "The local catalog, Bulbapedia, and PokeBoon align on January 1, 2001 for Pokemon Card Information Vol. 1 / ポケモンカードインフォメーション その1 Dunsparce distribution.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "release.distribution",
+          "text": "Bulbapedia states the Dunsparce promo was available in Japan in the first volume of Pokemon Card Information and distributed for free at participating stores from January 1, 2001.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "release.product_count",
+          "text": "The local release family models one row: Dunsparce source index 221, with the promotion note Pokemon Card Information Vol. 1 insert.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "release.context",
+          "text": "Bulbapedia's 2001 unnumbered-promo table places Dunsparce before Neo Spring Road prizes and before later Pokemon Card Information Vol. 2 Bellossom and Vol. 3 Pryce's Lapras rows.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s3"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "history.significance",
+          "text": "Pokemon Card Information Vol. 1 is a useful route because it shows the TCG distributing memory through free information handouts, not only through booster products, tournaments, CDs, books, or manga volumes.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g3",
+            "g4"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "artist.impact",
+          "text": "Atsuko Nishida / 西田敦子 is documented by Bulbapedia as a long-running Pokemon franchise artist and designer, including work tied to Pikachu, Eevee/Eeveelutions, games, animation concepts, and many TCG illustrations.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s6"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "identification.special_instructions",
+          "text": "This release dossier carries a special identification packet for Pokemon Card Information Vol. 1 Dunsparce source index 221.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Card Information Vol. 1 — Dunsparce as store-counter memory",
+        "why_it_matters": "This is a humble object, and that is the charm. Pokemon Card Information Vol. 1 does not feel like a grand prize or a cinematic Premium File; it feels like a kid finding a free information packet at a participating shop and discovering that even Dunsparce, the shy land snake that vanishes into holes, has a place in the TCG's paper ecosystem. The route tells us how Pokemon kept assembling itself in public: through magazines, books, tournaments, store counters, and little inserts that made ordinary Pokemon feel worth saving.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete sealed-packet state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_information_vol1_dunsparce_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this route as Pokemon Card Information Vol. 1 Dunsparce source index 221, distributed through the first information volume, not as a generic Dunsparce or any later Information Pack promo.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Dunsparce, ノコッチ, Nokocchi, Pokemon Card Information Vol. 1, ポケモンカードインフォメーション その1, Information Pack, bonus card part 1, Atsuko Nishida, Paralyzing Gaze, Drill Tail, or source index 221.",
+          "steps": [
+            "Anchor the route to Pokemon Card Information Vol. 1 / ポケモンカードインフォメーション その1 and January 1, 2001.",
+            "Confirm the candidate is Dunsparce / ノコッチ / Nokocchi, not another Colorless unnumbered promo.",
+            "Use source index 221 as the local catalog audit handle.",
+            "Preserve the distribution route: first volume of Pokemon Card Information, free at participating stores.",
+            "Look for the bottom-border text clue: Information Pack bonus card part 1.",
+            "Use Atsuko Nishida / 西田敦子 as the expected illustrator credit.",
+            "Separate this release from Pokemon Card Information Vol. 2 Bellossom, Vol. 3 Pryce's Lapras, Vol. 4 Ponyta, and other Information Pack rows.",
+            "Separate this row from Neo Discovery or later Dunsparce cards, Carddass/Zukan items, non-TCG Dunsparce goods, and modern Dunsparce cards.",
+            "If a seller claims an unopened information packet, ask for packet-front, packet-back, insert visibility, and card-closeup evidence because packet route and card state are separate claims.",
+            "Before any funded trade, require seller-controlled evidence for the exact physical card or sealed packet being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dunsparce_(Information_Pack_promo)"
+            },
+            {
+              "source": "PokeBoon",
+              "ref": "https://pokeboon.com/informationpack_dunsparce_promo/"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete sealed-packet state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001:221",
+      "type": "card",
+      "context": {
+        "name_en": "Dunsparce",
+        "name_ja": "ノコッチ",
+        "romaji": "Nokocchi",
+        "release_name": "Pokemon Card Information Vol. 1 insert",
+        "release_family_id": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001",
+        "row_id": "jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001:221",
+        "catalog_row_id": "221",
+        "source_index": "221",
+        "pokedex_no": "206"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Atsuko Nishida",
+        "artist_ja": "西田敦子",
+        "rarity_signal": "unnumbered non-holo Information Pack promo context",
+        "number": "source index 221",
+        "assembly_themes": [
+          "Dunsparce as an oddball Johto species",
+          "Atsuko Nishida softness applied to a strange land snake",
+          "Information Pack bonus card part 1 border text",
+          "free participating-store promo",
+          "Paralyzing Gaze / にらむ",
+          "Drill Tail / ドリルしっぽ",
+          "Pokemon Silver Pokedex text",
+          "Vol. 1 route before Bellossom and Pryce's Lapras information inserts"
+        ],
+        "signals": [
+          "Dunsparce",
+          "ノコッチ",
+          "Nokocchi",
+          "LV.14",
+          "No. 206",
+          "Colorless",
+          "Basic",
+          "HP 40",
+          "Paralyzing Gaze",
+          "にらむ",
+          "Drill Tail",
+          "ドリルしっぽ",
+          "Atsuko Nishida",
+          "西田敦子",
+          "Information Pack bonus card part 1",
+          "Pokemon Card Information Vol. 1",
+          "source index 221"
+        ],
+        "collector_texture_note": "This is the kind of promo that rewards collectors who care about distribution texture: a tiny, non-holo, shop-counter Dunsparce that carries its own route in the border text.",
+        "assembly_note": "Dunsparce is a shy little tunnel creature, and this card feels appropriately tucked away in the TCG's information layer: free packet, January 2001, Atsuko Nishida art, and a border line that tells an agent where the object came from.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete sealed-packet state"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001.json#row:jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001:221",
+          "title": "Local Japanese unnumbered WotC catalog row: Dunsparce source index 221",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dunsparce_(Information_Pack_promo)",
+          "title": "Bulbapedia: Dunsparce (Information Pack promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/informationpack_dunsparce_promo/",
+          "title": "PokeBoon: Dunsparce Promo: Pokemon Card Information Vol. 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/dunsparce-pokemon-card-information-2001-unnumbered/",
+          "title": "Pokumon: Dunsparce (Pokemon Card Information 2001) (Unnumbered)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Atsuko_Nishida",
+          "title": "Bulbapedia: Atsuko Nishida",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dunsparce as source index 221 in the Pokemon Card Information Vol. 1 unnumbered-promo source row.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Dunsparce LV.14 / ノコッチ Nokocchi, a Colorless-type Basic Pokemon card with HP 40.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Paralyzing Gaze / にらむ and Drill Tail / ドリルしっぽ as the card's attacks, with Fighting weakness, Psychic resistance, and one retreat cost.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "artist.credit",
+          "text": "Bulbapedia, PokeBoon, and Pokumon identify Atsuko Nishida / 西田敦子 as the illustrator for the Dunsparce Information Pack promo.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "history.variant",
+          "text": "Bulbapedia records the bottom-border text as Information Pack bonus card part 1, making the route itself a visible card-detail clue.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "history.lineage",
+          "text": "Bulbapedia states the card's Pokedex entry comes from Pokemon Silver; on the card, the entry describes Dunsparce fleeing by digging with its tail when seen and floating slightly with its wings.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "artist.impact",
+          "text": "Atsuko Nishida's broader Pokemon role includes Pikachu, Eevee/Eeveelutions, early games, animation concepts, and many TCG illustrations, which makes this small Dunsparce row part of a much larger visual lineage.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s5"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "history.significance",
+          "text": "Dunsparce matters here because the card is almost anti-chase: quiet, non-holo, store-distributed, and full of route clues. That makes it ideal for an agentic catalog that values how Pokemon was assembled, not only which names dominate the market.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g4",
+            "g5",
+            "g6",
+            "g7"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ]
+        },
+        {
+          "id": "g9",
+          "field": "identification.special_instructions",
+          "text": "This card dossier carries a special identification packet for Pokemon Card Information Vol. 1 Dunsparce source index 221.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dunsparce — source index 221, the quiet shop-counter oddball",
+        "why_it_matters": "Dunsparce is the opposite of a market thunderclap, and that is why this card earns a real note. Atsuko Nishida, one of the hands behind Pikachu's softness and the Eevee family's emotional gravity, draws this strange little land snake for a free store information packet. The result is wonderfully modest: Paralyzing Gaze, Drill Tail, a Silver-era Pokedex line about vanishing underground, and a border that tells you exactly which paper route carried it into the world.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8",
+          "g9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete sealed-packet state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_information_vol1_dunsparce_221_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Pokemon Card Information Vol. 1 Dunsparce only when Dunsparce identity, source index 221, Information Pack route, part-1 border text, and Atsuko Nishida credit line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Dunsparce, ノコッチ, Nokocchi, Pokemon Card Information Vol. 1, Information Pack, bonus card part 1, Atsuko Nishida, LV.14, HP 40, Paralyzing Gaze, Drill Tail, or source index 221.",
+          "steps": [
+            "Confirm the card is Dunsparce / ノコッチ / Nokocchi, LV.14, Colorless type, Basic, HP 40, No. 206.",
+            "Confirm the Pokemon Card Information Vol. 1 / Information Pack route and source index 221 in this local unnumbered-promo catalog.",
+            "Look for the bottom-border text clue: Information Pack bonus card part 1.",
+            "Use Atsuko Nishida / 西田敦子 as the expected illustrator.",
+            "Use Paralyzing Gaze / にらむ and Drill Tail / ドリルしっぽ as row-detail clues.",
+            "Use Fighting weakness, Psychic resistance, and one retreat cost as secondary text-layout checks when seller photos are sharp.",
+            "Separate this row from Pokemon Card Information Vol. 2 Bellossom, Vol. 3 Pryce's Lapras, Vol. 4 Ponyta, Neo Discovery Dunsparce, Carddass/Zukan Dunsparce items, and later Dunsparce cards.",
+            "If the listing is for an unopened information packet, require both packet evidence and card-level visibility or disclosure; sealed-route and card-state claims are separate.",
+            "Keep seller possession, authenticity, condition, price, complete packet state, and spendability outside the catalog row until separate evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001.json#row:jp_promo_unnumbered_wotc_221_pok_mon_card_information_vol_1_insert_january_1_2001:221"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dunsparce_(Information_Pack_promo)"
+            },
+            {
+              "source": "PokeBoon",
+              "ref": "https://pokeboon.com/informationpack_dunsparce_promo/"
+            },
+            {
+              "source": "Pokumon",
+              "ref": "https://pokumon.com/card/dunsparce-pokemon-card-information-2001-unnumbered/"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete sealed-packet state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
