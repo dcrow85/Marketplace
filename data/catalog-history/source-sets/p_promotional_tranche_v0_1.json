@@ -8167,6 +8167,331 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-032-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu",
+        "name_ja": "ピチュー",
+        "romaji": "Pichu",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-032-p",
+        "catalog_row_id": "032/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Sample Set / Expedition Base Set / Base Expansion Pack / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-032-p",
+          "title": "Local Japanese promo WotC catalog row: Pichu 032/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pichu_(P_Promo_32)&action=raw",
+          "title": "Bulbapedia raw redirect: Pichu (P Promo 32)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pichu_(Expedition_22)&action=raw",
+          "title": "Bulbapedia raw wikitext: Pichu (Expedition 22 / P Promo 32)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Pichu as P Promotional card number 032/P, and the row-specific Bulbapedia redirect points Pichu (P Promo 32) to the Pichu (Expedition 22) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Pichu / ピチュー / Pichu, a Lightning Baby Pokemon with HP 30 and retreat cost 1.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits both the Expedition Base Set print and the P Promotional print of Pichu to Atsuko Nishida.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the route as a McDonald's promotion on Saturdays and Sundays from May 25 through June 16, 2002; Bulbapedia says the Japanese P Promotional reprint used new artwork by Atsuko Nishida as part of a McDonald's promotion running between those dates.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Pichu card in Sample Set, Expedition Base Set 22/165 and 58/165, Japanese Base Expansion Pack 114/128 and 082/128, and Japanese P Promotional 032/P contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Energy Patch / エネパッチ as the Expedition Base Set attack, moving a basic Energy card from one of the player's Pokemon to another.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Holofoil Expedition print uses e-Reader card ID B-83, while the standard Non Holofoil Expedition print and P Promotional print use B-83-#; the Sample non-holo print uses M-83-#.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia describes adjacent English demonstration contexts for this Pichu card family: a Sample Set for the New York Pokemon Center media pre-launch party, an E3 2002 booster-pack preview, and thicker glossy kiosk demonstration cards that were hole-punched for cable attachment.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Pichu 032/P matters because it sits where mascot lineage, Nishida's baby-Pokemon softness, McDonald's weekend distribution, and early e-Reader technology all touch without becoming the same object.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Pichu 032/P from Expedition 22/165, Expedition 58/165, Japanese Base Expansion Pack Pichu rows, Sample Set M-83-#, E3 preview prints, hole-punched kiosk demos, Pichu Bros. 028/P, and generic Atsuko Nishida or e-Reader Pichu memory; the printed 032/P number and McDonald's May 25-June 16, 2002 route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_pichu_032_mcdonalds_ereader_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pichu P promo, 032/P, McDonald's Pichu, Expedition Pichu, Base Expansion Pack Pichu, Sample Set Pichu, E3 Pichu, kiosk-demo Pichu, B-83-#, M-83-#, or Atsuko Nishida Pichu.",
+          "summary": "Confirm Pichu, printed 032/P, and the May 25-June 16, 2002 McDonald's weekend route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Pichu / ピチュー / Pichu.",
+            "Read the printed promo number as 032/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Lightning Baby Pokemon with HP 30 and retreat cost 1 when comparing against the shared card page.",
+            "Use Atsuko Nishida as the credited illustrator while remembering that artist credit does not authenticate a physical card.",
+            "Keep the McDonald's route legible: Saturdays and Sundays from May 25 through June 16, 2002.",
+            "Check Energy Patch / エネパッチ when card text is visible.",
+            "Use B-83-# as e-Reader context for the standard Non Holofoil Expedition and P Promotional prints; do not confuse it with B-83 holo context or M-83-# Sample context.",
+            "Keep Sample Set, E3 preview, and hole-punched kiosk-demo notes as adjacent family history, not as proof that a seller's 032/P card belongs to those routes.",
+            "Do not merge this row with Expedition 22/165, Expedition 58/165, Japanese Base Expansion Pack 114/128 or 082/128, Sample Set, E3 preview, kiosk demonstration, Pichu Bros. 028/P, later Pichu rows, other McDonald's P Promotional rows, or generic Nishida/e-Reader memory without printed-number evidence.",
+            "If a seller claims McDonald's provenance, Sample/E3/kiosk provenance, e-Reader readability, or special demo status, ask for seller-controlled evidence of the card, printed number, finish, back, hole-punch/cable marks, wrapper, packet, store, campaign material, or event/kiosk context separately.",
+            "Treat e-Reader readability, Sample status, E3 preview status, kiosk-demo status, hole-punch status, price, condition, sealed-packet state, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "sealed-packet state",
+            "Sample Set status",
+            "E3 preview status",
+            "kiosk demonstration status",
+            "hole-punch status",
+            "e-Reader readability",
+            "B-83 holo equivalence",
+            "M-83-# Sample equivalence",
+            "Expedition 22/165 equivalence",
+            "Expedition 58/165 equivalence",
+            "Base Expansion Pack 114/128 equivalence",
+            "Base Expansion Pack 082/128 equivalence",
+            "Pichu Bros. 028/P equivalence",
+            "later Pichu equivalence",
+            "other McDonald's promo equivalence",
+            "Atsuko Nishida collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "032/P",
+        "rarity_signal": "McDonald's promotion (Saturdays and Sundays from May 25-June 16, 2002)",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "McDonald's route",
+          "weekend date-window boundary",
+          "numbered P spine",
+          "Expedition lineage",
+          "Atsuko Nishida baby Pokemon",
+          "e-Reader short strip",
+          "demo-print adjacency"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "032/P",
+          "Pichu",
+          "ピチュー",
+          "Lightning",
+          "Baby",
+          "HP 30",
+          "Atsuko Nishida",
+          "McDonald's promotion",
+          "May 25-June 16, 2002",
+          "Saturdays and Sundays",
+          "Energy Patch",
+          "エネパッチ",
+          "B-83-#",
+          "B-83",
+          "M-83-#",
+          "Sample Set",
+          "Expedition 22/165",
+          "Expedition 58/165",
+          "Base Expansion Pack 114/128",
+          "Base Expansion Pack 082/128",
+          "E3 2002",
+          "kiosk demonstration"
+        ],
+        "collector_texture_note": "Pichu 032/P is a tiny live wire in the McDonald's run: Nishida baby-Pokemon charm, Expedition/e-Reader machinery, and a cluster of demo-print lookalikes that make the printed P number do serious work.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "McDonald's provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "Sample status",
+          "E3 status",
+          "kiosk-demo status"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pichu 032/P: the little spark in the e-Reader doorway",
+        "why_it_matters": "Pichu 032/P is small, but the assembly around it is lively. It carries Atsuko Nishida's baby-Pokemon softness into a McDonald's weekend promo, while the same card-family page points outward to Expedition, Japanese Base Expansion Pack, Sample, E3, and kiosk-demo history. That is exactly why the row needs a hard identification checklist: Pichu is cute, but the route is technical. The printed 032/P keeps the little spark from becoming every early e-Reader Pichu at once.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "McDonald's campaign provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "Sample status",
+          "E3 status",
+          "kiosk-demo status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
       "type": "card",
       "context": {

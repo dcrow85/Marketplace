@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 237: P Promo Lanturn 031 deepened; corpus bc1fccf0)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 238: P Promo Pichu 032 deepened; corpus 80e20aeb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-032-p`
+  Pichu 032/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Pichu (P Promo
+  32)` to `Pichu (Expedition 22)`, so the row now carries the deeper card
+  assembly: Pichu / `ピチュー` / Pichu, Lightning Baby Pokemon, HP 30,
+  retreat cost 1, Atsuko Nishida illustration credit, Energy Patch /
+  `エネパッチ`, Sample Set, Expedition 22/165, Expedition 58/165, Japanese
+  Base Expansion Pack 114/128 and 082/128, P Promotional 032/P, e-Reader
+  card IDs `B-83`, `B-83-#`, and `M-83-#`, plus adjacent Sample, E3 2002,
+  and hole-punched kiosk-demo history. The McDonald's route remains the
+  transaction-facing identity wall: Saturdays and Sundays from May 25
+  through June 16, 2002, printed `032/P`, inside the numbered P Promotional
+  spine. I also made the lesson explicit: `special_identification_instructions`
+  is the agent-facing field for these boundaries. The 032/P packet tells
+  agents not to merge this row with Expedition, Base Expansion Pack, Sample,
+  E3, kiosk-demo, Pichu Bros. 028/P, later Pichu, other McDonald's promos,
+  or generic Nishida/e-Reader memory without printed-number evidence. It
+  also preserves no-overclaim boundaries: seller possession, authenticity,
+  condition, price, provenance, e-Reader readability, demo status, and
+  spendability remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is `80e20aebb4ec00147aacca7cf1ab57e13dd9bd95259ae58a5691632ddbb664c8`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
