@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 275: Aquapolis Slowking H22 deepened; corpus db677b3a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 276: Aquapolis Steelix H23 deepened; corpus dcffb94a)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H23` Steelix H23 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H23`, live Pokemon
+  TCG API `cards/ecard2-35`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Steelix (Aquapolis H23)`, and Bulbapedia `Aquapolis (TCG)`.
+  The card dossier now carries Steelix / `ハガネール` / Haganeil, English
+  Aquapolis / e-Card Series, API card id `ecard2-H23`, printed number H23,
+  H23/H32 Rare Holo sequence, Japanese Wind from the Sea 073/087 holo
+  lineage, the non-Holo Aquapolis #35 / Wind from the Sea 072/087 sibling,
+  Stage 1 Metal profile, Onix evolution line, 100 HP, Fire weakness, Grass
+  resistance, four-retreat cost, Earth Rift / Iron Smash, and Hajime
+  Kusajima credit. The special identification packet tells agents to keep
+  H23 separate from Aquapolis Steelix #35, Wind from the Sea 072/087,
+  reverse-holo listings, generic Steelix wants, Metal deck references, and
+  seller-card image claims. It also keeps Dot-Code, e-Reader, D-70 /
+  D-70-# IDs, Pokemon Crystal Pokedex source, bright-metal-particle Pokedex
+  texture, and no-long-strip context legible without promoting them into
+  seller possession, authenticity, condition truth, price truth, e-Reader
+  scan success, reverse-holo equivalence, long-strip data presence, or
+  spendability. Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `dcffb94a14eac5e5d3c2c61e1482bd3c83e9a4fc9733417d3e0c1b17a0680aa6`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H23
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
