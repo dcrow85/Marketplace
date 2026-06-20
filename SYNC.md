@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 250: Neo Spring Road No.2 Trainer row 223 deepened; corpus cbedfbb1)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 251: Neo Spring Road No.3 Trainer row 224 deepened; corpus 29c83f98)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`:
+  `jp_promo_unnumbered_wotc_224_neo_spring_road_regional_third_place_prize:224`
+  No.3 Trainer row 224 is now hand-authored rather than generator memory.
+  This pass used the local unnumbered promo row, Bulbapedia raw `Unnumbered
+  Promotional cards` row 224, Bulbapedia raw `No.3 Trainer (Pokemon Card Game
+  Official Tournament promo)`, and Pokumon's `Boy Neo Spring No.3 Trainer
+  (Neo Battle Road 2001)` page. The card dossier now carries No.3 Trainer /
+  `Ｎｏ.３トレーナー` / No.3 Trainer, no printed number, Ken Sugimori as the
+  Neo Spring Road print illustrator, Battle Neo Spring Road / Neo Spring Road
+  regional third-place context, Junior/Senior regional tournament route in
+  February-March 2001, personalized winner-name/regional-conference treatment,
+  male/female variant possibility, and the six-Pokemon No.1 / four-Pokemon
+  No.2 / two-Pokemon No.3 rank-pattern clue. The special identification packet
+  tells agents not to match by `No.3 Trainer` alone: keep row 224 separate from
+  Neo Spring Road No.1 row 222, No.2 row 223, Neo Spring Road Best in Japan
+  photo-card rows 230-232, Neo Summer Road, Battle Road 2002, 1997-1999 trophy
+  prints, and later Worlds cards. Copy-count language is deliberately
+  caveated: Bulbapedia's broader estimate says 36 Neo Spring Road No.3 prints
+  with 35 male-trainer and 1 female-trainer examples, while Pokumon lists 35;
+  neither is official copy-count truth. No-overclaim boundaries remain
+  explicit: this catalogs identity/history/context only, not seller possession,
+  authenticity, condition, price, personalization match, or spendability.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fiftieth
   catalog-history pass inside
   `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`:
