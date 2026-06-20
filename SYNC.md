@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 274: Aquapolis Scizor H21 deepened; corpus 94b03841)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 275: Aquapolis Slowking H22 deepened; corpus db677b3a)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H22` Slowking H22 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H22`, live Pokemon
+  TCG API `cards/ecard2-34`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Slowking (Aquapolis H22)`, and Bulbapedia `Aquapolis (TCG)`.
+  The card dossier now carries Slowking / `ヤドキング` / Yadoking, English
+  Aquapolis / e-Card Series, API card id `ecard2-H22`, printed number H22,
+  H22/H32 Rare Holo sequence, Japanese Wind from the Sea 053/087 holo
+  lineage, the non-Holo Aquapolis #34 / Wind from the Sea 052/087 sibling,
+  Stage 1 Psychic profile, Slowpoke evolution line, 80 HP, Psychic weakness,
+  one-retreat cost, Bursting Hand / Shuffle Attack, and Aya Kusube credit.
+  The special identification packet tells agents to keep H22 separate from
+  Aquapolis Slowking #34, Wind from the Sea 052/087, reverse-holo listings,
+  generic Slowking wants, Psychic-control deck references, and seller-card
+  image claims. It also keeps Dot-Code, e-Reader, D-67 / D-67-# IDs, the
+  Pokemon Crystal vs Pokemon Gold Pokedex-source split, Shellder-poison
+  intelligence texture, calm-intellect Japanese-entry texture, and
+  no-long-strip context legible without promoting them into seller
+  possession, authenticity, condition truth, price truth, e-Reader scan
+  success, reverse-holo equivalence, long-strip data presence, or
+  spendability. Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `db677b3a4082c469d0c82188ebac3e69c1c35d59c30452e1fc4ea2caf42cf32d`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H22
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
