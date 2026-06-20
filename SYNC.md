@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 284: Aquapolis Azumarill H4 deepened; corpus f36ead19)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 285: Aquapolis Bellossom H5 deepened; corpus 1f64e819)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H5` Bellossom H5 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-5`, local
+  Japanese Wind from the Sea rows for E3-020 / E3-019, Bulbapedia
+  `Bellossom (Aquapolis H5)`, and Bulbapedia `Aquapolis (TCG)`. The
+  card dossier now carries Bellossom / `キレイハナ` / Kireihana, English
+  Aquapolis / e-Card Series, API card id `ecard2-H5`, printed number H5,
+  H5/H32 Rare Holo sequence, Japanese Wind from the Sea 020/087 holo
+  lineage, the non-Holo Aquapolis #5 / 5/147 / Wind from the Sea
+  019/087 sibling, Stage 2 Grass profile, Gloom evolution line, 90 HP,
+  Fire weakness, Water resistance, two-retreat cost, Poke-Power Flower
+  Supplement, Knife Leaf, and Sumiyoshi Kizuki credit. The special
+  identification packet tells agents to keep H5 separate from Aquapolis
+  Bellossom #5, reverse-holo listings, generic Bellossom wants,
+  Oddish/Gloom evolution-line collection goals, Grass deck references,
+  and seller-card image claims. It also keeps D-59 / D-59-# IDs, Flower
+  Pokemon species label, Pokemon Crystal Pokedex source, petal-sound
+  Pokedex text, no-long-strip boundary, seller possession, authenticity,
+  condition, price, image rights, seller-card match, e-Reader scan
+  success, reverse-holo equivalence, and spendability explicitly out of
+  the catalog claim. Rebuilt generated corpus artifacts; new corpus hash
+  `1f64e8195effee4603a3cdcb1522006a9134fe39cd0849041fbcbdab92186523`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
