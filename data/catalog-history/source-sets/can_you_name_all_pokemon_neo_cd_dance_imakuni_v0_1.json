@@ -1,0 +1,700 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Can You Name All the Pokemon Neo? CD Dance! Neo Imakuni?",
+    "release_family_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000",
+    "notes": [
+      "Deepens the June 28, 2000 Can You Name All the Pokemon Neo? CD insert source slice.",
+      "Covers the single modeled source-pinned row: Dance! Neo Imakuni? source index 164.",
+      "Frames this as a music/CD route where Imakuni performance culture becomes a spoof Trainer card."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000",
+      "type": "release",
+      "context": {
+        "name_en": "Can You Name All the Pokemon Neo? CD insert",
+        "name_ja": "ポケモン言えるかneo?",
+        "release_family_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000",
+        "release_date": "2000-06-28",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pikachu Records music-CD route",
+          "Pokemon Ieru Ka Neo? / Can You Name All the Pokemon Neo?",
+          "Johto naming-song culture",
+          "Suzukisan and Pokemon Kids performance context",
+          "Imakuni cover / performer identity",
+          "Dance! Neo Imakuni? source index 164",
+          "Pikachu Records logo in expansion-symbol area",
+          "spoof Trainer card / real-person card boundary",
+          "CD-only and resealed-CD trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164",
+            "name": "Dance! Neo Imakuni?",
+            "number": "164",
+            "why": "Dance! Neo Imakuni? is the chase because it turns a naming-song CD into a card that knows it is a joke. It is Imakuni as performer, illustrator, cover personality, fake-HP punchline, and promotional insert all at once.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Tomoaki Imakuni",
+            "name_ja": "イマクニ?",
+            "row_count": 1,
+            "examples": [
+              "Dance! Neo Imakuni?"
+            ],
+            "why": "Imakuni is not just the illustrator credit here. The CD cover, song/performance apparatus, and card persona all point at the same human-shaped Pokemon media weirdness.",
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete CD packaging census",
+          "official copy count",
+          "sealed-CD integrity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000.json",
+          "title": "Local Japanese unnumbered WotC catalog: Can You Name All the Pokemon Neo? CD insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Can_You_Name_All_the_Pok%C3%A9mon_Neo%3F_(single)",
+          "title": "Bulbapedia: Can You Name All the Pokemon Neo? (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CD packaging census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dance%21_Neo_Imakuni%3F_(CD_promo)",
+          "title": "Bulbapedia: Dance! Neo Imakuni? (CD promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tomoaki_Imakuni",
+          "title": "Bulbapedia: Tomoaki Imakuni",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/cd_danceneoimakuni_promo/",
+          "title": "PokeBoon: Dance! Neo Imakuni Promo: Can You Name All the Pokemon Neo? CD",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row, Bulbapedia, and PokeBoon place the Can You Name All the Pokemon Neo? / Pokemon Ieru Ka Neo? CD route on June 28, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.publisher",
+          "text": "Bulbapedia identifies the single as a Pikachu Records release with catalogue numbers ZMDP-1084 and ZMVP-1104.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia describes the album as a four-track single-style album sung by Suzukisan and the Pokemon Kids, with Imakuni on the cover; its trivia notes that the album came with a Dance! Neo Imakuni? card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Dance! Neo Imakuni? source index 164.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit Dance! Neo Imakuni? to Tomoaki Imakuni.",
+          "sources": [
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Bulbapedia identifies Tomoaki Imakuni as connected to Project Music and Project CharacterDex, and lists him across Pokemon music, TCG illustrator/personality cards, game credits, and TCG GB appearances.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This route matters because it makes a naming-song CD physically adjacent to a spoof Trainer card: the same Imakuni performance world appears in the album cover, the card identity, and the card's joke mechanics.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card features the Pikachu Records logo in place of an expansion symbol, is one of several Japanese-exclusive spoof cards, has border text naming the Can You Name All the Pokemon Neo? extra card, and has HP 2000 with an arrow pointing to it saying lie.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text says the player chooses Asleep, Confused, Paralyzed, or Poisoned for their Active Pokemon, and that Imakuni? cannot be played as a Pokemon.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "release.boundary",
+          "text": "Agents should keep this Dance! Neo Imakuni? CD route separate from the 1997 glossy CoroCoro Imakuni?, the 1999 Tropical Mega Battle non-glossy Imakuni?, Expansion Sheet 3 Imakuni? special rows, Trade Please!, Shining Imakuni?, later Supporter reprints, and CD-only listings where the card has been removed.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3",
+            "c4",
+            "c8"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the CD route, Pikachu Records symbol, spoof-card features, and Imakuni credit legible, but it does not prove seller possession, authenticity, condition, price, unopened CD integrity, card presence inside a CD lot, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c8",
+            "c10"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Can You Name All the Pokemon Neo? — when the song brings its own card",
+        "why_it_matters": "This is Pokemon media behaving like a pocket circus. The CD asks children to name the new Pokemon, Imakuni stares out from the cover, Pikachu Records stamps the card where an expansion symbol should be, and the insert card turns the whole thing into a joke Trainer with impossible HP and status-condition chaos. Dance! Neo Imakuni? is not important because it is tidy. It is important because it refuses to be tidy: music, performance, parody, and cardboard all arrive in the same little package.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "unopened CD integrity",
+          "card presence in any sealed CD lot",
+          "official copy count",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "can_you_name_all_pokemon_neo_cd_dance_imakuni_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat Dance! Neo Imakuni? as a specific Can You Name All the Pokemon Neo? CD insert route, not as a generic Imakuni?, CD, spoof Trainer, or Japanese unnumbered promo listing.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Dance! Neo Imakuni?, おどれ!neo★イマクニ?, Imakuni, Can You Name All the Pokemon Neo?, Pokemon Ieru Ka Neo?, Pikachu Records, CD promo, ZMDP-1084, ZMVP-1104, HP 2000, lie, or source index 164.",
+          "steps": [
+            "Anchor the route to Can You Name All the Pokemon Neo? / ポケモン言えるかneo? CD insert and June 28, 2000.",
+            "Confirm the candidate is Dance! Neo Imakuni? / おどれ!neo★イマクニ?, a Trainer/spoof card, source index 164 in this local catalog route.",
+            "Look for the Pikachu Records logo in place of an expansion symbol and border text tying the card to the Can You Name All the Pokemon Neo? CD extra card.",
+            "Look for the impossible HP 2000 gag with the arrow saying lie; this is a route feature, not real gameplay HP.",
+            "Use Tomoaki Imakuni / イマクニ? as the expected performer/illustrator/personality lane.",
+            "Separate this row from the 1997 glossy CoroCoro Imakuni?, the 1999 Tropical Mega Battle non-glossy Imakuni?, Expansion Sheet 3 Imakuni? special rows, Trade Please!, Shining Imakuni?, and later Imakuni Supporter reprints.",
+            "If a seller offers the CD, ask whether the card is visible, present, removed, sealed separately, or only assumed; CD possession is not card possession.",
+            "Treat sealed or unopened CD claims as separate evidence requiring packaging photos; do not infer card presence from title alone.",
+            "Before any funded trade, require seller-controlled photos of the actual card or of the exact sealed/CD package state being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Can_You_Name_All_the_Pok%C3%A9mon_Neo%3F_(single)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dance%21_Neo_Imakuni%3F_(CD_promo)"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "unopened CD integrity",
+            "card presence in any CD lot",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164",
+      "type": "card",
+      "context": {
+        "name_en": "Dance! Neo Imakuni?",
+        "name_ja": "おどれ!neo★イマクニ?",
+        "romaji": "Odore! neo Imakuni?",
+        "row_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164",
+        "release_family_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000",
+        "source_index": "164"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Dance! Neo Imakuni? is a tiny historical grin. It is a card that knows the singer, the CD, and the joke are all part of the same machine. The fake HP, the status-condition chaos, the Pikachu Records mark, and the real-person Imakuni image make it a perfect test of whether an agent can preserve playfulness without turning it into a sloppy match.",
+        "identity": {
+          "name_en": "Dance! Neo Imakuni?",
+          "name_ja": "おどれ!neo★イマクニ?",
+          "romaji": "Odore! neo Imakuni?",
+          "number": "source index 164",
+          "category": "Trainer / spoof card",
+          "rarity_signal": "Unnumbered Promotional / CD insert",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Tomoaki Imakuni",
+          "name_ja": "イマクニ?",
+          "why": "The credit is part of the joke and part of the history: Imakuni is performer, character, card subject, and illustrator credit in a route that begins as music.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Can You Name All the Pokemon Neo? / ポケモン言えるかneo? CD route",
+          "Dance! Neo Imakuni? / おどれ!neo★イマクニ? source index 164",
+          "Pikachu Records logo replacing expansion symbol",
+          "HP 2000 with arrow saying lie",
+          "status-condition choice text",
+          "Tomoaki Imakuni / イマクニ? performance-card authorship"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000.json",
+          "title": "Local Japanese unnumbered WotC catalog: Can You Name All the Pokemon Neo? Dance! Neo Imakuni? row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dance%21_Neo_Imakuni%3F_(CD_promo)",
+          "title": "Bulbapedia: Dance! Neo Imakuni? (CD promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Can_You_Name_All_the_Pok%C3%A9mon_Neo%3F_(single)",
+          "title": "Bulbapedia: Can You Name All the Pokemon Neo? (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CD packaging census"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tomoaki_Imakuni",
+          "title": "Bulbapedia: Tomoaki Imakuni",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/cd_danceneoimakuni_promo/",
+          "title": "PokeBoon: Dance! Neo Imakuni Promo: Can You Name All the Pokemon Neo? CD",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia identify source index 164 as Dance! Neo Imakuni?, Japanese おどれ!neo★イマクニ?.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the Can You Name All the Pokemon Neo? single was released June 28, 2000 and came with a Dance! Neo Imakuni? card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit Dance! Neo Imakuni? to Tomoaki Imakuni.",
+          "sources": [
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card features the Pikachu Records logo instead of an expansion symbol, has card-border text naming the Can You Name All the Pokemon Neo? extra card, and shows HP 2000 with an arrow saying lie.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text says Dance! Neo Imakuni? lets the player choose Asleep, Confused, Paralyzed, or Poisoned for the Active Pokemon, and says Imakuni? cannot be played as a Pokemon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Tomoaki Imakuni page places Imakuni across Pokemon music, TCG illustrator/personality cards, game credits, TCG GB appearances, and multiple Imakuni-related cards.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Dance! Neo Imakuni? matters because it is a real-person spoof Trainer card born from a music-CD route, where performer, cover subject, artist credit, and joke mechanics all point to Imakuni's Pokemon media persona.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should not match by Imakuni? name, CD promo, or spoof-card surface alone; this row requires the Can You Name All the Pokemon Neo? CD route and source index 164, and should be separated from other Imakuni? cards and CD-only listings.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The catalog can identify why a Dance! Neo Imakuni? candidate belongs near this CD route, but it cannot authenticate the card, prove possession, assign condition, price the copy, prove CD/card completeness, or promote the row into spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c8"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dance! Neo Imakuni? — the CD promo that refuses to behave",
+        "why_it_matters": "This card is a little performance artifact dressed as a Trainer card. HP 2000, except the card itself says that is a lie. Status chaos, except it is also a joke about Imakuni not being a Pokemon. Pikachu Records where a set symbol ought to be. It is exactly why the catalog cannot be only names and prices. The route is the meaning: a Johto naming song, a CD insert, a performer on the cover, and a card that turns all of that into cardboard.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CD/card completeness",
+          "official copy count",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "can_you_name_all_pokemon_neo_cd_dance_imakuni_164_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Dance! Neo Imakuni? source index 164 only when the CD route, Pikachu Records symbol, spoof text, and Imakuni identity line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Dance! Neo Imakuni?, おどれ!neo★イマクニ?, Imakuni, CD promo, Can You Name All the Pokemon Neo?, Pokemon Ieru Ka Neo?, Pikachu Records, HP 2000, lie, status condition, or source index 164.",
+          "steps": [
+            "Confirm card identity as Dance! Neo Imakuni? / おどれ!neo★イマクニ?, a Trainer/spoof card, not a Pokemon card despite the HP gag.",
+            "Confirm route identity as Can You Name All the Pokemon Neo? / ポケモン言えるかneo? CD insert, released June 28, 2000.",
+            "Confirm source index 164 in this local unnumbered-promo catalog route.",
+            "Look for Pikachu Records logo in place of the expansion symbol and the CD extra-card border text.",
+            "Look for HP 2000 with arrow saying lie; treat this as a spoof-card identity tell, not gameplay truth.",
+            "Use Tomoaki Imakuni / イマクニ? as the expected performer/illustrator lane.",
+            "Separate this print from glossy CoroCoro Imakuni?, Tropical Mega Battle non-glossy Imakuni?, Expansion Sheet 3 Imakuni? rows, Trade Please!, Shining Imakuni?, EX Battle Boost / Generations / BREAK Starter Pack Supporter prints, and generic Imakuni? listings.",
+            "If a seller offers the CD, ask whether the actual card is visible or separately shown; do not infer card presence from a CD title or sealed claim.",
+            "Keep price, condition, authenticity, CD/card completeness, and spendability outside the catalog row until separate seller-controlled evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000.json#row:jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dance%21_Neo_Imakuni%3F_(CD_promo)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Can_You_Name_All_the_Pok%C3%A9mon_Neo%3F_(single)"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "CD/card completeness",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

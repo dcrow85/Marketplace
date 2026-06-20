@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 178: How I Became a Pokemon Card Vol. 3 Jynx deepened; corpus acd4ed4b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 179: Can You Name All the Pokemon Neo Dance Imakuni deepened; corpus 04a82acd)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/can_you_name_all_pokemon_neo_cd_dance_imakuni_v0_1.json`
+  deepens the June 28, 2000 Can You Name All the Pokemon Neo? / ポケモン言えるかneo?
+  CD insert source slice and its single modeled row, Dance! Neo Imakuni? /
+  おどれ!neo★イマクニ? source index 164. The pass frames this as a Pikachu Records
+  music-CD route where Suzukisan, Pokemon Kids, CD catalogue numbers ZMDP-1084
+  / ZMVP-1104, Imakuni cover/personality context, and a spoof Trainer card all
+  become one assembly object. It preserves Tomoaki Imakuni / イマクニ? credit, the
+  Pikachu Records logo in the expansion-symbol area, border text naming the CD
+  extra card, HP 2000 with the arrow saying "lie", and the Asleep / Confused /
+  Paralyzed / Poisoned status-choice gag. Special identification packets now
+  separate this row from glossy CoroCoro Imakuni?, Tropical Mega Battle
+  non-glossy Imakuni?, Expansion Sheet 3 Imakuni? rows, Trade Please!, Shining
+  Imakuni?, later Supporter reprints, and CD-only lots where the card has been
+  removed or merely assumed. Boundaries remain against seller possession,
+  authenticity, condition, price, unopened CD integrity, card presence in a CD
+  lot, official copy count, and spendability. Generated gaps are now release
+  queue 10 and card queue 100. Hashes: corpus
+  `04a82acd849ba16baca9f48c40cbdf36a042847f43b64e21b3406f5fb3a6dcbf`,
+  index `fe39b6a14328aa22f4a73f979f412182538a0b9f4b42959014147dab8cbf1ccb`,
+  queue `af0e510ff68459e71a57e1c076e8c96eae15479741a4ca076e310cbcf5fc65a1`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol3_jynx_v0_1.json`

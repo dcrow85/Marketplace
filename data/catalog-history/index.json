@@ -52972,36 +52972,41 @@
     },
     {
       "card": {
-        "artist": "",
-        "assembly_themes": [
-          "promo distribution",
-          "play-system memory",
-          "identity trap"
-        ],
-        "number": "None",
-        "rarity_signal": "not provided"
+        "artist": {
+          "authority_label": "fact",
+          "name": "Tomoaki Imakuni",
+          "name_ja": "イマクニ?",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ],
+          "why": "The credit is part of the joke and part of the history: Imakuni is performer, character, card subject, and illustrator credit in a route that begins as music."
+        },
+        "assembly_themes": [],
+        "number": "",
+        "rarity_signal": ""
       },
-      "claim_count": 5,
+      "claim_count": 9,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Dance! Neo Imakuni?: first-pass card note",
+      "generated": false,
+      "human_title": "Dance! Neo Imakuni? — the CD promo that refuses to behave",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
-          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
-          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+          "id": "can_you_name_all_pokemon_neo_cd_dance_imakuni_164_checks_v0.1",
+          "summary": "Treat this as Dance! Neo Imakuni? source index 164 only when the CD route, Pikachu Records symbol, spoof text, and Imakuni identity line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Dance! Neo Imakuni?, おどれ!neo★イマクニ?, Imakuni, CD promo, Can You Name All the Pokemon Neo?, Pokemon Ieru Ka Neo?, Pikachu Records, HP 2000, lie, status condition, or source index 164."
         }
       ],
       "type": "card",
       "uid": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164",
-      "why_it_matters": "Dance! Neo Imakuni? sits in Can You Name All the Pokémon Neo? CD insert (June 28, 2000) as not provided; its current assembly themes are promo distribution, play-system memory, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "This card is a little performance artifact dressed as a Trainer card. HP 2000, except the card itself says that is a lie. Status chaos, except it is also a joke about Imakuni not being a Pokemon. Pikachu Records where a set symbol ought to be. It is exactly why the catalog cannot be only names and prices. The route is the meaning: a Johto naming song, a CD insert, a performer on the cover, and a card that turns all of that into cardboard."
     },
     {
       "claim_count": 7,
@@ -117029,30 +117034,44 @@
     },
     {
       "assembly_themes": [
-        "johto/generation shift"
+        "Pikachu Records music-CD route",
+        "Pokemon Ieru Ka Neo? / Can You Name All the Pokemon Neo?",
+        "Johto naming-song culture",
+        "Suzukisan and Pokemon Kids performance context",
+        "Imakuni cover / performer identity",
+        "Dance! Neo Imakuni? source index 164",
+        "Pikachu Records logo in expansion-symbol area",
+        "spoof Trainer card / real-person card boundary",
+        "CD-only and resealed-CD trap"
       ],
-      "chase_cards": [
-        {
-          "name": "Dance! Neo Imakuni?",
-          "number": "None",
-          "row_id": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000:164"
-        }
-      ],
-      "claim_count": 6,
+      "chase_cards": [],
+      "claim_count": 11,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Can You Name All the Pokémon Neo? CD insert (June 28, 2000): first-pass assembly note",
-      "key_artists": [],
-      "special_identification_instruction_count": 0,
-      "special_identification_instructions": [],
+      "generated": false,
+      "human_title": "Can You Name All the Pokemon Neo? — when the song brings its own card",
+      "key_artists": [
+        {
+          "name": "Tomoaki Imakuni",
+          "row_count": 1
+        }
+      ],
+      "special_identification_instruction_count": 1,
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "can_you_name_all_pokemon_neo_cd_dance_imakuni_route_boundary_v0.1",
+          "summary": "Treat Dance! Neo Imakuni? as a specific Can You Name All the Pokemon Neo? CD insert route, not as a generic Imakuni?, CD, spoof Trainer, or Japanese unnumbered promo listing.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Dance! Neo Imakuni?, おどれ!neo★イマクニ?, Imakuni, Can You Name All the Pokemon Neo?, Pokemon Ieru Ka Neo?, Pikachu Records, CD promo, ZMDP-1084, ZMVP-1104, HP 2000, lie, or source index 164."
+        }
+      ],
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_164_can_you_name_all_the_pok_mon_neo_cd_insert_june_28_2000",
-      "why_it_matters": "Can You Name All the Pokémon Neo? CD insert (June 28, 2000) is now in the history layer instead of sitting as a silent checklist. Can You Name All the Pokémon Neo? CD insert (June 28, 2000) currently reads through johto/generation shift: Dance! Neo Imakuni? pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
+      "why_it_matters": "This is Pokemon media behaving like a pocket circus. The CD asks children to name the new Pokemon, Imakuni stares out from the cover, Pikachu Records stamps the card where an expansion symbol should be, and the insert card turns the whole thing into a joke Trainer with impossible HP and status-condition chaos. Dance! Neo Imakuni? is not important because it is tidy. It is important because it refuses to be tidy: music, performance, parody, and cardboard all arrive in the same little package."
     },
     {
       "assembly_themes": [
