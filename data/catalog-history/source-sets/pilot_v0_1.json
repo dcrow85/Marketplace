@@ -6,6 +6,7 @@
       "Japanese First Expansion Pack / No Rarity launch-family rows",
       "Japanese Expansion Pack / No Rarity Venusaur",
       "Japanese Expansion Pack / No Rarity Blastoise",
+      "Japanese Expansion Pack / No Rarity Mewtwo",
       "first CoroCoro glossy Pikachu promo",
       "English Base Set as a later crosswalk/reference release",
       "English Base Set Mewtwo #10"
@@ -575,6 +576,217 @@
         "authority_label": "judged_texture",
         "human_title": "Blastoise PMCG1-032: cannons and the blank corner",
         "why_it_matters": "No Rarity Blastoise has a wonderful bluntness to it. Venusaur asks you to notice the garden; Blastoise asks you to feel the shell, the cannons, the weight. But the marketplace lesson is the same and maybe sharper because the card carries so much starter-holo gravity: a famous name is not enough, a reference image is not enough, and a blank corner is not spendable until a seller's actual card has been placed in the chain.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "seller card match",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "physical-card No Rarity truth",
+          "holo surface condition"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Myuutsuu",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:050",
+        "catalog_row_id": "050",
+        "release_name": "Expansion Pack / No Rarity Lab"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:050",
+          "title": "Local Japanese pre-English catalog row: Mewtwo / PMCG1-050",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "direct Japanese illustrator authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and identification synthesis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mewtwo as Japanese Expansion Pack / No Rarity Lab row jp_tcg_expansion_pack_19961020:050, with local signal PMCG1-050 and Japanese name ミュウツー / Myuutsuu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's visible rarity or collector signal for Mewtwo PMCG1-050 is Holo Rare and marks it as an active No Rarity target.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row carries Ken Sugimori as artist metadata through an English Base Set crosswalk and explicitly caveats that this is useful catalog texture, not direct Japanese-print illustrator authority if the Illus. line becomes dispute-relevant.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance describes a source-labeled No Rarity reference image with an expected empty lower-right rarity-symbol field, while preserving that the reference image is not seller evidence, authentication proof, or condition proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo PMCG1-050 matters because the launch holo carries myth before it carries price: laboratory origin, Psychic scarcity, Sugimori severity, and a No Rarity blank-corner claim that should make an agent ask for better evidence rather than speak louder.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Japanese Expansion Pack / No Rarity Mewtwo PMCG1-050 from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, and Series 1 Starter Pack source ambiguity; the lower-right blank corner is necessary for a No Rarity claim but not sufficient for possession, authenticity, or condition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_expansion_pack_mewtwo_050_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No Rarity Mewtwo, Japanese Base Mewtwo, Expansion Pack Mewtwo, PMCG1-050, Myuutsuu, ミュウツー, blank corner Mewtwo, Mewtwo no symbol, or vintage Japanese Mewtwo holo.",
+          "summary": "Japanese Expansion Pack Mewtwo PMCG1-050 is a launch-family No Rarity target. Preserve Japanese row identity, lower-right symbol evidence, and source-family ambiguity before comparing to other Mewtwo prints.",
+          "steps": [
+            "Confirm the row as Japanese Expansion Pack / No Rarity Lab PMCG1-050 with Japanese name ミュウツー / Myuutsuu.",
+            "Inspect the lower-right rarity-symbol region; a No Rarity claim needs the expected blank corner visible, not merely the name Mewtwo.",
+            "Treat the source-labeled No Rarity reference image as a comparison witness only; it is not seller possession, seller card match, authentication, or condition evidence.",
+            "Preserve the Ken Sugimori artist signal as crosswalk catalog metadata unless the exact Japanese Illus. line is visible in seller evidence.",
+            "Separate this row from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, Series 1 Starter Pack source ambiguity, and later Mewtwo ex/GX/V memory.",
+            "For transaction use, ask for seller-controlled front/back scans, angled holo-surface images, lower-right corner close-up, edge/corner photos, and any slab/cert evidence before treating the physical card as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "holo surface condition",
+            "direct Japanese illustrator authority",
+            "Series 1 Starter Pack equivalence",
+            "English Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "movie promo equivalence",
+            "P Promotional equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "050",
+        "rarity_signal": "Holo Rare",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "No Rarity target",
+          "launch holo",
+          "blank-corner evidence",
+          "laboratory myth",
+          "artist crosswalk"
+        ],
+        "signals": [
+          "PMCG1-050",
+          "Expansion Pack / No Rarity Lab",
+          "Mewtwo",
+          "ミュウツー",
+          "Myuutsuu",
+          "Holo Rare",
+          "Ken Sugimori",
+          "Psychic",
+          "Basic",
+          "National Pokedex 150",
+          "expected empty lower-right rarity-symbol field"
+        ],
+        "collector_texture_note": "Mewtwo arrives with myth already attached. On a No Rarity copy, the blank corner does not need drama; it needs placement, light, and proof."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo PMCG1-050: myth and the blank corner",
+        "why_it_matters": "No Rarity Mewtwo is almost too quiet for how much weight it carries. It is not a starter finale; it is the lab myth already waiting inside the first card game, a Psychic holo with Sugimori severity and a name that does half the work before the card is even inspected. That is exactly why the agent has to be stern. The myth can explain why the card matters, but only the row, the corner, the source, and seller evidence can make a claim usable.",
         "basis_claims": [
           "c1",
           "c2",

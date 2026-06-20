@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 205: No Rarity Blastoise 032 deepened; corpus 266ae044)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 206: No Rarity Mewtwo 050 deepened; corpus c80b24e6)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `jp_tcg_expansion_pack_19961020:050` Mewtwo / ミュウツー /
+  Myuutsuu PMCG1-050 is now hand-authored rather than generator memory. The
+  pass records Holo Rare status, Psychic Basic / National Pokedex 150
+  launch-row identity, Ken Sugimori artist signal with the existing
+  English-crosswalk caveat, source-labeled No Rarity reference-image
+  provenance, and active No Rarity target status. The special identification
+  packet is explicit and first-class: agents must preserve Japanese Expansion
+  Pack / No Rarity Lab identity, PMCG1-050, the Japanese name, expected blank
+  lower-right rarity-symbol field, and seller-controlled evidence needs
+  before comparing to English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary
+  Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, P
+  Promotional Mewtwo 046/P, Series 1 Starter Pack source ambiguity, or later
+  Mewtwo ex/GX/V memory. Boundaries remain explicit: catalog legibility is not
+  seller possession, seller card match, authenticity, condition, price,
+  physical-card No Rarity truth, holo surface condition, direct Japanese
+  illustrator authority, promo/source-family equivalence, or spendability.
+  Generated gaps remain release queue 0 and card queue 100. Hashes: corpus
+  `c80b24e69a0487fb10dd63faf8358c50cac9b8d043f140ac05a9a8d4e0f6d104`,
+  index
+  `74a7aa9b07920894785f3b203f8a7ce8c421c8ec435c86fa346c71b5b6767dc1`,
+  queue
+  `2c2e90af164ea280b376b4b9b528729baad98385250a9cfe47ef19ff1ce9366a`,
+  audit
+  `c4d252bdd9d4e24f4e54b614ad8bd3ca282ea60c62f76d3b1185743c1b9247aa`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `jp_tcg_expansion_pack_19961020:032` Blastoise / カメックス /
