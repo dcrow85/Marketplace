@@ -7,6 +7,7 @@
       "Ampharos H1",
       "Exeggutor H10",
       "Houndoom H11",
+      "Hypno H12",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -1196,6 +1197,356 @@
           "condition truth",
           "price truth",
           "e-Reader scan success"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H12",
+      "type": "card",
+      "context": {
+        "name_en": "Hypno",
+        "name_ja": "スリーパー",
+        "romaji": "Sleeper",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H12",
+        "catalog_row_id": "ecard2-H12",
+        "card_number": "H12",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-16",
+        "japanese_lineage_card_number": "The Town on No Map 042/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H12",
+          "title": "Local English WoC card row: Hypno H12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H12",
+          "title": "Pokemon TCG API v2 card record: Hypno ecard2-H12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hypno_(Aquapolis_H12)",
+          "title": "Bulbapedia: Hypno (Aquapolis H12)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-16",
+          "title": "Pokemon TCG API v2 card record: Hypno ecard2-16",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Hypno as Aquapolis H12, a Rare Holo Stage 1 Psychic Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Hypno's Japanese name as スリーパー / Sleeper and connects the Holofoil print to Japanese The Town on No Map card 042/092, while the non-Holofoil Aquapolis print corresponds to The Town on No Map 041/092.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Hypno H12 with 80 HP, evolvesFrom Drowzee, Psychic weakness, one-Colorless retreat, Poké-Power Sleep Pendulum, and attack Spiral Aura.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Hypno H12 to Mitsuhiro Arita; the local and API rows also credit Mitsuhiro Arita on the non-Holo Aquapolis Hypno #16 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Hypno as H12/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Hypno at #16 with the same Mitsuhiro Arita credit, Sleep Pendulum Poké-Power, and Spiral Aura attack; agents must keep H12 and #16 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Hypno H12 page records card ID C-69 for the Holofoil print and C-69-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and long-strip content information, and that the long strip contains data for the Dream Eater e-Reader mini-game requiring six other Aquapolis cards.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Hypno H12's e-Reader Pokedex entry comes from Pokemon Crystal, giving the card a Game Boy text lineage inside the e-Reader border.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Hypno H12 matters because Aquapolis turns an old hypnotic Kanto character into an interface object: Mitsuhiro Arita art, Sleep Pendulum as a Poké-Power, Spiral Aura as forced motion, C-69 e-Reader identity, and a Dream Eater mini-game hiding behind the strip.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H12 / H12/H32, Rare Holo, English ecard2-H12, スリーパー / Sleeper, Mitsuhiro Arita credit, Sleep Pendulum / Spiral Aura text, The Town on No Map 042/092 lineage, C-69 e-Reader ID, and non-equivalence with Aquapolis #16, The Town on No Map 041/092, older Hypno rows, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_hypno_h12_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Hypno, スリーパー, Sleeper, Hypno H12, H12/H32, Rare Holo, ecard2-H12, Mitsuhiro Arita, Sleep Pendulum, Spiral Aura, C-69, C-69-#, Dream Eater, The Town on No Map, 042/092, Aquapolis #16, or reverse holo Hypno.",
+          "summary": "Identify Hypno / スリーパー / Sleeper H12 by the Aquapolis H-number Rare Holo lane: English ecard2-H12 / H12/H32 and The Town on No Map 042/092 lineage, not the non-Holo #16 / 041/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H12 / printed number H12 before accepting this as the H-number holo row.",
+            "Preserve H12/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Hypno #16 row even though #16 shares Mitsuhiro Arita, Sleep Pendulum, and Spiral Aura.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 042/092 while the non-Holofoil #16 counterpart maps to 041/092.",
+            "Use Mitsuhiro Arita credit, Stage 1 Psychic profile, Drowzee evolution line, Sleep Pendulum, Spiral Aura, C-69 Holofoil e-Reader ID, and C-69-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep older Hypno rows, reverse-holo listings, generic Hypno wants, Dream Eater mini-game references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, and Dream Eater mini-game context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "Dream Eater mini-game playability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H12"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Hypno_(Aquapolis_H12)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H12",
+        "artist": "Mitsuhiro Arita",
+        "rarity_signal": "Rare Holo; Aquapolis H12/H32 H-number holo sequence, separate from non-Holo Hypno #16 / The Town on No Map 041/092",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Mitsuhiro Arita art trace",
+          "Psychic e-Reader interface",
+          "Sleep Pendulum Poké-Power",
+          "Dream Eater mini-game strip"
+        ],
+        "collector_texture_note": "Hypno H12 is Aquapolis doing what Hypno does best: it swings between card, interface, and little hidden machine. The catalog has to keep the H12 holo, the #16 non-holo, and the Dream Eater strip story in separate hands.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "Dream Eater mini-game playability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Hypno H12 — the pendulum becomes an interface",
+        "why_it_matters": "Hypno H12 is a perfect Aquapolis card because the old character gimmick becomes machinery. The pendulum is not just flavor; it is Sleep Pendulum, then Spiral Aura, then an e-Reader strip with Dream Eater waiting behind it. Mitsuhiro Arita gives the card the old TCG gravity, but the H12 identity still has to be held carefully, because the non-holo #16 is almost a mirror.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "Dream Eater mini-game playability"
         ]
       },
       "coverage": {

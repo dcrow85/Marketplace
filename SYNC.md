@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 263: Aquapolis Houndoom H11 deepened; corpus 0810b553)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 264: Aquapolis Hypno H12 deepened; corpus 25e3e575)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H12` Hypno H12 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H12`, live Pokemon TCG API
+  `cards/ecard2-16`, live Pokemon TCG API `sets/ecard2`, Bulbapedia `Hypno
+  (Aquapolis H12)`, and Bulbapedia `Aquapolis (TCG)`. The card dossier now
+  carries Hypno / `スリーパー` / Sleeper, English Aquapolis / e-Card Series,
+  API card id `ecard2-H12`, printed number H12, H12/H32 Rare Holo sequence,
+  Japanese The Town on No Map 042/092 holo lineage, the non-Holo Aquapolis
+  #16 / The Town on No Map 041/092 sibling, Stage 1 Psychic profile, Drowzee
+  evolution line, 80 HP, Sleep Pendulum / Spiral Aura, Mitsuhiro Arita credit,
+  and e-Reader / Dot-Code context including C-69 vs C-69-# card IDs and the
+  Dream Eater mini-game long-strip context. The special identification packet
+  tells agents to keep H12 separate from Aquapolis Hypno #16, The Town on No
+  Map 041/092, older Hypno rows, reverse-holo listings, generic Hypno wants,
+  Dream Eater mini-game references, and seller-card image claims. It also
+  keeps Dot-Code, e-Reader, and Dream Eater context legible only: not seller
+  possession, authenticity, condition truth, price truth, scan success,
+  mini-game playability, or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `スリーパー` / Sleeper, H12/H32, H12
+  vs #16 separation, 042/092 vs 041/092, Mitsuhiro Arita, Sleep Pendulum /
+  Spiral Aura, C-69 / C-69-# e-Reader caveats, Dream Eater caveats,
+  special-identification packet, and corpus propagation. New catalog-history
+  corpus hash:
+  `25e3e5752865c41eb151fb3c09ac1a26df310384358b17b422d6bf39d4ceec70`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
