@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 276: Aquapolis Steelix H23 deepened; corpus dcffb94a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 277: Aquapolis Sudowoodo H24 deepened; corpus a4b59569)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H24` Sudowoodo H24 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H24`, live Pokemon
+  TCG API `cards/ecard2-36`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Sudowoodo (Aquapolis H24)`, and Bulbapedia `Aquapolis
+  (TCG)`. The card dossier now carries Sudowoodo / `ウソッキー` /
+  Usokkie, English Aquapolis / e-Card Series, API card id `ecard2-H24`,
+  printed number H24, H24/H32 Rare Holo sequence, Japanese Wind from the
+  Sea 058/087 holo lineage, the non-Holo Aquapolis #36 / 36/147 sibling,
+  Basic Fighting profile, 60 HP, Water weakness, two-retreat cost, Copy,
+  Energy Draw, and Kagemaru Himeno credit. The special identification
+  packet tells agents to keep H24 separate from Aquapolis Sudowoodo #36,
+  reverse-holo listings, generic Sudowoodo wants, Fighting deck references,
+  and seller-card image claims. It also keeps Dot-Code, e-Reader, D-68 /
+  D-68-# IDs, Pokemon Crystal Pokedex source, Sneak and Snatch long-strip
+  data, and the four-other-cards mini-game requirement legible without
+  promoting them into seller possession, authenticity, condition truth,
+  price truth, seller-card image match, e-Reader scan success,
+  reverse-holo equivalence, mini-game data readability, or spendability.
+  Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `a4b5956956bf8d3474e7d643160592322ee27296c271d342fb4ec564ff0b78b4`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H24
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

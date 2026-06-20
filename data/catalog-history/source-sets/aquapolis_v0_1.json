@@ -5923,6 +5923,338 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H24",
+      "type": "card",
+      "context": {
+        "name_en": "Sudowoodo",
+        "name_ja": "ウソッキー",
+        "romaji": "Usokkie",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H24",
+        "catalog_row_id": "ecard2-H24",
+        "card_number": "H24",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-36",
+        "japanese_lineage_card_number": "Wind from the Sea 058/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H24",
+          "title": "Local English WoC card row: Sudowoodo H24",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H24",
+          "title": "Pokemon TCG API v2 card record: Sudowoodo ecard2-H24",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sudowoodo_(Aquapolis_H24)",
+          "title": "Bulbapedia: Sudowoodo (Aquapolis H24)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-36",
+          "title": "Pokemon TCG API v2 card record: Sudowoodo ecard2-36",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Sudowoodo as Aquapolis H24, a Rare Holo Basic Fighting Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Sudowoodo's Japanese name as ウソッキー / Usokkie and connects the Holofoil print to Japanese Wind from the Sea card 058/087, while the non-Holofoil Aquapolis print appears as English 36/147.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Sudowoodo H24 with 60 HP, Basic stage, Fighting type, Water weakness, two-Colorless retreat, and attacks Copy and Energy Draw.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Sudowoodo H24 to Kagemaru Himeno; the local and API rows also credit Kagemaru Himeno on the non-Holo Aquapolis Sudowoodo #36 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Sudowoodo as H24/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Sudowoodo at #36 with the same Kagemaru Himeno credit, Copy attack, and Energy Draw attack; agents must keep H24 and #36 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Sudowoodo H24 page records card ID D-68 for the Holofoil print and D-68-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says the long strip contains data for the Sneak and Snatch mini-game and that four other cards from Aquapolis are required to play it.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Bulbapedia says Sudowoodo H24's e-Reader Pokedex entry comes from Pokemon Crystal, and the Japanese text describes Sudowoodo as the thing you have found if you see a tree swaying when there is no wind, noting that it hides on rainy days.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Sudowoodo H24 matters because Aquapolis turns a prankster fake-tree Pokemon into an e-Reader object about copying, energy searching, and hidden machine data: the card is not only a holo row, it is a small interface for disguise, mimicry, and cartridge-era play.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9",
+            "c10"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_sudowoodo_h24_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Sudowoodo, ウソッキー, Usokkie, Sudowoodo H24, H24/H32, Rare Holo, ecard2-H24, Kagemaru Himeno, Copy, Energy Draw, D-68, D-68-#, Sneak and Snatch, Wind from the Sea, 058/087, Aquapolis #36, 36/147, or reverse holo Sudowoodo.",
+          "summary": "Identify Sudowoodo / ウソッキー / Usokkie H24 by the Aquapolis H-number Rare Holo lane: English ecard2-H24 / H24/H32 and Wind from the Sea 058/087 lineage, not the non-Holo #36 / 36/147 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H24 / printed number H24 before accepting this as the H-number holo row.",
+            "Preserve H24/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Sudowoodo #36 row even though #36 shares Kagemaru Himeno, Copy, and Energy Draw.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 058/087 while the English non-Holofoil counterpart appears as Aquapolis 36/147.",
+            "Use Kagemaru Himeno credit, Basic Fighting profile, Water weakness, two-retreat cost, Copy, Energy Draw, D-68 Holofoil e-Reader ID, and D-68-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Sudowoodo wants, Fighting deck references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Pokedex text, Sneak and Snatch long-strip data, and the four-other-cards mini-game requirement as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "mini-game data readability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H24"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Sudowoodo_(Aquapolis_H24)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H24",
+        "artist": "Kagemaru Himeno",
+        "rarity_signal": "Rare Holo; H24/H32 H-number holo sequence, separate from non-Holo #36 / 36/147 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Kagemaru Himeno art trace",
+          "fake-tree identity",
+          "Copy attack mimicry",
+          "Energy Draw interface",
+          "Sneak and Snatch long-strip mini-game",
+          "D-68 e-Reader object"
+        ],
+        "collector_texture_note": "Sudowoodo H24 is one of the funniest Aquapolis machines: a fake tree, on a holo card, carrying Copy, Energy Draw, and an e-Reader mini-game trace. The row asks the agent to enjoy the joke while keeping H24 separate from #36."
+      },
+      "narrative": {
+        "human_title": "Sudowoodo H24 — the fake tree that became an interface",
+        "why_it_matters": "Sudowoodo H24 is Aquapolis at its most charmingly strange: a Pokemon pretending to be scenery, drawn by Kagemaru Himeno, then turned into an e-Reader-era object with Copy, Energy Draw, D-68, and Sneak and Snatch data sitting behind the card face. It matters because the card is doing the same thing Sudowoodo does in the games: it looks simple until you notice the trick.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "mini-game data readability",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {
