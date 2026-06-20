@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 232: P Promo Suicune 026 deepened; corpus 1b9da753)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 233: P Promo Touch Generation Change 027 deepened; corpus 82af3356)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,50 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-027-p`
+  Touch Generation Change! 027/P is now hand-authored rather than generator
+  memory. This pass found and used the row-specific Bulbapedia redirect from
+  `Touch Generation Change! (P Promo 27)` to the New Garura Parent/Child promo
+  page, so the row now carries the actual social/rules apparatus: Touch
+  Generation Change! / `タッチ世代交代!`, Old Trainer identity, Tomokazu Komiya
+  illustration credit, simultaneous Unnumbered Promotional and P Promotional
+  release, New Garura Parent/Child Tournament participation-prize route,
+  February 2002 first distribution, later regional Battle Road Spring 2002
+  route, New Garura Rules exclusive-use context, 30 old-reverse cards plus 30
+  current-reverse cards plus two promotional partner-switch cards, the hand-
+  shuffle/partner-draw/tag-team card text, e-Reader card ID `Z-18-#`, short-
+  strip summary, and no-long-strip context. The special identification packet
+  is explicit: agents must confirm Touch Generation Change! /
+  `タッチ世代交代!`, printed `027/P`, Trainer / Old Trainer identity, Komiya
+  credit, New Garura Parent/Child route, Battle Road Spring 2002 reprint route,
+  Garura Rules deck-back structure, card-text markers, and `Z-18-#`; keep the
+  card separate from the simultaneous unnumbered promotional print, Touch
+  Change!, Touch Exchange!, Battle Road Tag Battle cards, other Garura/Parent-
+  Child rule cards, other P Promotional Trainer rows, and generic Komiya
+  collector searches; and avoid importing tournament attendance, rule-sheet,
+  deck-back, current-legality, mandatory-play, or e-Reader-readability claims
+  without separate evidence. Boundaries remain explicit: catalog legibility is
+  not seller possession, authenticity, condition, price, New Garura
+  Parent/Child Tournament attendance, Battle Road Spring 2002 attendance,
+  tournament packet provenance, rule-sheet provenance, deck-back provenance,
+  current rule legality, mandatory-play status for a seller's event, e-Reader
+  readability, long-strip presence, unnumbered-print equivalence, Touch
+  Change! equivalence, Touch Exchange! equivalence, other Garura Rules card
+  equivalence, other P Promotional Trainer equivalence, Komiya collection
+  equivalence, complete Japanese promo coverage, or spendability. Validation
+  passed: `python3 -m json.tool ...`,
+  `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Touch Generation Change! assertion. Hashes: corpus
+  `82af3356b93bb7b439a74617c9713ede792e8379f20afdbfcba73c04647ef231`, index
+  `7df3f658d6d38ccdc8ed5e29d83b0c8c403802fa439954e438aaeae28477c964`, queue
+  `2f05c0004c7fbf8ea4f8cc1380c0840689ab5b0c5516a4a52440d3b5975c23bb`, audit
+  `9c41dbf1a0e11b818aa9513afa0fbca62d30bb1dd2551a901a96643473574fc8`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
