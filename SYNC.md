@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 162: Southern Islands deepened; corpus 5c066cbf)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 163: unnumbered Asobikata bridge deepened; corpus 8a2b2fe9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/unnumbered_wotc_latest_how_to_play_asobikata_bridge_v0_1.json`
+  deepens the raw Bulbapedia/WotC-style unnumbered promo view of the 1998
+  Latest Edition / Asobikata Diglett-Dugtrio pair. This is deliberately a
+  bridge pass, not a claim of a new physical release: raw source indices 061/062
+  are aligned with the richer Japanese pre-English Asobikata evidence at rows
+  054/055. The pass preserves the authority split: the raw unnumbered rows name
+  Diglett/Dugtrio and the November 13 1998 Latest Edition route, but they do not
+  carry illustrator or Japanese print-name authority; the richer Asobikata slice
+  carries Miki Tanaka, ディグダ / Digda, ダグトリオ, and the Pokemon Web e-Card
+  reprint boundary. Special ID rails keep row number, book route, Pokemon Web,
+  ordinary Diglett/Dugtrio, 1996 How-to-Play, and Dugtrio Team Battle /
+  phone-card memories separate. Generated gaps moved to 26 release / 3828 card.
+  Current hashes: corpus
+  `8a2b2fe925e8152af7560fa02d36b4a4c27f755be42016e8a74351a112a9e50e`,
+  index `c952511e058fb7da4ccf3001e2e65bd1ac0b11ae046b803b0f23b1dbe6b80062`,
+  queue `b5895c6b3ea6c095f050fbafdab6a1fe275558cc49a84be0d87621e1e94bd872`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-second
   catalog-history pass:
   `data/catalog-history/source-sets/southern_islands_wotc_v0_1.json`
