@@ -11090,6 +11090,335 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-043-p",
+      "type": "card",
+      "context": {
+        "name_en": "Entei",
+        "name_ja": "エンテイ",
+        "romaji": "Entei",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-043-p",
+        "catalog_row_id": "043/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Pokemon Happy Adventure Rally 2002 / P Promotional cards / Tokotoko Truck mini-game"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-043-p",
+          "title": "Local Japanese promo WotC catalog row: Entei 043/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Entei_(P_Promo_43)&action=raw",
+          "title": "Bulbapedia raw wikitext: Entei (P Promo 43)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Entei_(Wizards_Promo_34)&action=raw",
+          "title": "Bulbapedia raw wikitext: Entei (Wizards Promo 34 / Premium File 2 context)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "043/P equivalence"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Entei_(Aquapolis_H8)&action=raw",
+          "title": "Bulbapedia raw wikitext: Entei (Aquapolis H8 / 10)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "043/P equivalence"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row and Bulbapedia identify Entei as P Promotional card number 043/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Entei 043/P as Entei / エンテイ / Entei, a Fire Basic Pokemon with HP 60, Water weakness, and retreat cost 1.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Entei 043/P to Midori Harada.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Entei 043/P was one of six cards available through Pokemon Happy Adventure Rally 2002, which ran on the JR East Yamanote Line from August 3 through August 18, 2002, and that Entei could be obtained at the booth at Ikebukuro Station.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Link Up / リンクアップ and Flamethrower / かえんほうしゃ as Entei 043/P's card text; Link Up increases Entei's maximum HP to 80 and retreat cost by one Colorless if the player has a Basic Pokemon named Lugia on the Bench.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says Entei 043/P uses e-Reader card ID Z-28-#, with a short strip containing Pokedex information, a brief card summary, and long-strip content information; the long strip contains Tokotoko Truck mini-game data and requires four other P Promotional cards to play.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Separate Bulbapedia Entei pages cover Wizards Black Star Promo 34 / Japanese Premium File 2 movie-context Entei with Ken Sugimori art and Aquapolis H8/H32 / 10/147 / Box Topper Entei with Atsuko Nishida art and D-61 or D-61-# e-Reader IDs; these are adjacent Entei contexts, not 043/P equivalence.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Entei 043/P matters because the rally set turns a volcanic legendary into a station-specific object: Midori Harada art, Ikebukuro Station booth distribution, Z-28-# scan data, Tokotoko Truck, and a Link Up text box that literally asks Lugia to be nearby.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Entei 043/P from Wizards Black Star Promo 34, Premium File 2 Entei, Neo Revelation / Awakening Legends Entei, Aquapolis H8/H32 and 10/147, Aquapolis Box Topper Entei, later Entei rows, generic Happy Adventure Rally cards, and generic Tokotoko Truck/e-Reader memory; the printed 043/P number, Midori Harada credit, Z-28-# context, Ikebukuro Station booth, and JR East Yamanote Line rally route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_entei_043_happy_adventure_rally_ikebukuro_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Entei P promo, 043/P, Happy Adventure Rally Entei, JR East Entei, Yamanote Line Entei, Ikebukuro Station Entei, Z-28-#, Tokotoko Truck, Midori Harada Entei, movie Entei, Premium File 2 Entei, Neo Revelation Entei, Aquapolis Entei, or Box Topper Entei.",
+          "summary": "Confirm Entei, printed 043/P, Midori Harada credit, Z-28-# context, and the Pokemon Happy Adventure Rally 2002 / Ikebukuro Station booth route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Entei / エンテイ / Entei.",
+            "Read the printed promo number as 043/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Fire Basic Pokemon with HP 60, Water weakness, and retreat cost 1 when comparing against the card page.",
+            "Use Midori Harada as the credited illustrator for 043/P; do not borrow Ken Sugimori from movie/Premium File/Neo contexts or Atsuko Nishida from Aquapolis contexts.",
+            "Keep the route legible as Pokemon Happy Adventure Rally 2002 on the JR East Yamanote Line from August 3 through August 18, 2002, with Entei obtained at the Ikebukuro Station booth.",
+            "Check Link Up / リンクアップ and Flamethrower / かえんほうしゃ when card text is visible.",
+            "Use Z-28-# as e-Reader context for Entei 043/P.",
+            "Treat Tokotoko Truck as long-strip mini-game context requiring four other P Promotional cards, not proof that a seller's scan is readable, complete, or functionally swipable.",
+            "Do not merge this row with Wizards Black Star Promo 34, Premium File 2 Entei, Neo Revelation 6/64, Awakening Legends Entei, Aquapolis H8/H32, Aquapolis 10/147, Aquapolis Box Topper 5/12, later Entei rows, other Happy Adventure Rally cards, or generic e-Reader Entei memory without printed-number and route evidence.",
+            "If a seller claims Happy Adventure Rally provenance, Ikebukuro Station booth provenance, JR East/Yamanote route material, e-Reader readability, Tokotoko Truck functionality, Lugia-linked rally context, or a complete six-card rally set, ask for seller-controlled evidence of the card, printed number, finish, packet, route material, event material, or scan output separately.",
+            "Treat e-Reader readability, Tokotoko Truck functionality, complete rally-set status, price, condition, packet state, and event provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Happy Adventure Rally copy provenance",
+            "Ikebukuro Station booth provenance",
+            "JR East route proof",
+            "Yamanote Line participation proof",
+            "packet provenance",
+            "complete rally-set status",
+            "e-Reader readability",
+            "Tokotoko Truck functionality",
+            "Wizards Black Star Promo 34 equivalence",
+            "Premium File 2 equivalence",
+            "Neo Revelation 6/64 equivalence",
+            "Awakening Legends equivalence",
+            "Aquapolis H8/H32 equivalence",
+            "Aquapolis 10/147 equivalence",
+            "Aquapolis Box Topper 5/12 equivalence",
+            "later Entei equivalence",
+            "other Happy Adventure Rally card equivalence",
+            "Ken Sugimori art equivalence",
+            "Atsuko Nishida art equivalence",
+            "Midori Harada collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "043/P",
+        "rarity_signal": "Pokemon Happy Adventure Rally 2002 booth card at Ikebukuro Station",
+        "artist": "Midori Harada",
+        "assembly_themes": [
+          "Happy Adventure Rally route",
+          "JR East Yamanote Line",
+          "Ikebukuro Station booth",
+          "numbered P spine",
+          "legendary beast gravity",
+          "Midori Harada Fire-type",
+          "e-Reader long strip",
+          "Tokotoko Truck mini-game",
+          "Lugia-linked text"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "043/P",
+          "Entei",
+          "エンテイ",
+          "Fire",
+          "Basic",
+          "HP 60",
+          "Midori Harada",
+          "Pokemon Happy Adventure Rally 2002",
+          "JR East Yamanote Line",
+          "August 3-August 18, 2002",
+          "Ikebukuro Station booth",
+          "Link Up",
+          "リンクアップ",
+          "Lugia Bench condition",
+          "Flamethrower",
+          "かえんほうしゃ",
+          "Z-28-#",
+          "Tokotoko Truck",
+          "four other P Promotional cards required",
+          "Wizards Black Star Promo 34 boundary",
+          "Premium File 2 boundary",
+          "Aquapolis H8/H32 boundary"
+        ],
+        "collector_texture_note": "Entei 043/P is volcanic force pinned to Ikebukuro Station: Midori Harada art, Z-28-# scan data, Tokotoko Truck, and Link Up asking Lugia to be on the Bench.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "Happy Adventure Rally provenance",
+          "Ikebukuro Station booth provenance",
+          "e-Reader readability",
+          "Tokotoko Truck functionality",
+          "complete rally-set status"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Entei 043/P: volcanic force at Ikebukuro Station",
+        "why_it_matters": "Entei 043/P makes a legendary beast feel local. The Pokédex text says volcanoes erupt when Entei barks, but this card's route is very human-scale: JR East, the Yamanote Line, Ikebukuro Station, August 2002, a booth, a packet, a scan strip. Even the card text is relational. Link Up makes Entei stronger when Lugia is on the Bench, so the rally's assembly logic shows up inside the rules box. It is a legendary card that only becomes fully legible when the route, the nearby Lugia, and the other rally promos are allowed to stand beside it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "Happy Adventure Rally provenance",
+          "Ikebukuro Station booth provenance",
+          "e-Reader readability",
+          "Tokotoko Truck functionality",
+          "complete rally-set status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
       "type": "card",
       "context": {

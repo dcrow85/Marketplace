@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 246: P Promo Celebi 042 deepened; corpus 8c26be92)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 247: P Promo Entei 043 deepened; corpus af05044d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-043-p`
+  Entei 043/P is now hand-authored rather than generator memory. This pass
+  used the exact Bulbapedia raw page `Entei (P Promo 43)`, plus Wizards Promo
+  34 / Premium File 2 and Aquapolis H8 pages as adjacent confusion sources.
+  The row now carries the deeper card assembly: Entei / `エンテイ` / Entei,
+  Fire Basic, HP 60, Water weakness, retreat cost 1, Midori Harada
+  illustration credit, Link Up / `リンクアップ`, Flamethrower /
+  `かえんほうしゃ`, Lugia Bench condition, P Promotional 043/P, e-Reader
+  `Z-28-#`, Tokotoko Truck long-strip mini-game context, and the note that four
+  other P Promotional cards are required to play it. Route is Pokemon Happy
+  Adventure Rally 2002: JR East Yamanote Line, August 3-August 18, 2002, with
+  Entei obtainable at the booth at Ikebukuro Station. The special
+  identification packet tells agents to confirm Entei / `エンテイ`, printed
+  `043/P`, Midori Harada credit, `Z-28-#`, and the Happy Adventure Rally /
+  Ikebukuro Station route; do not merge with Wizards Black Star Promo 34,
+  Premium File 2, Neo Revelation/Awakening Legends, Aquapolis H8/H32 or 10/147,
+  Aquapolis Box Topper 5/12, later Entei rows, other Happy Adventure Rally
+  cards, or generic e-Reader Entei memory without printed-number and route
+  evidence. No-overclaim boundaries remain explicit: seller possession,
+  authenticity, condition, price, event provenance, booth provenance,
+  JR East/Yamanote participation proof, e-Reader readability, Tokotoko Truck
+  functionality, complete rally-set status, and spendability remain outside
+  the catalog row. Validation passed: `build_catalog_history_dossiers.py`,
+  `--check`, `build_card_dossiers.py --check`,
+  `build_catalog_completion_audit.py --check`, plus a focused assertion that
+  the index surfaces one special instruction and the corpus hash is
+  `af05044dd6874b361031c6a6a8ef644676d3c5148b798d3cb381db4544e94ba8`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
