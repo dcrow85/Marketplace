@@ -4523,6 +4523,360 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-5",
+      "type": "card",
+      "context": {
+        "name_en": "Clefable",
+        "name_ja": "ピクシー",
+        "romaji": "Pikushii",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-5",
+        "catalog_row_id": "base4-5",
+        "card_number": "5/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Jungle Clefable lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-5",
+          "title": "Local English WoC catalog: Base Set 2 Clefable base4-5",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-5",
+          "title": "Pokemon TCG API v2 card record: Clefable base4-5",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Clefable_(Jungle_1)",
+          "title": "Bulbapedia: Clefable (Jungle 1)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 print authority"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-1",
+          "title": "Local English WoC catalog: Jungle Clefable holo base2-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-17",
+          "title": "Local English WoC catalog: Jungle Clefable non-holo base2-17",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:044",
+          "title": "Local Japanese pre-English catalog: Pokemon Jungle Clefable PMCG2-044",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "English print equivalence"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local English WoC catalog and Pokemon TCG API identify base4-5 as Clefable, Base Set 2 card 5/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models Base Set 2 Clefable as a Stage 1 Colorless Pokemon evolving from Clefairy, Level 34, 70 HP, with Fighting weakness, Psychic resistance, and a two-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks are Metronome, which copies one of the Defending Pokemon's attacks while ignoring Energy costs and other use requirements, and Minimize, which reduces attack damage to Clefable by 20 during the opponent's next turn.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Base Set 2 Clefable to Mitsuhiro Arita; the local Japanese Jungle row also carries Mitsuhiro Arita credit for the earlier Pokemon Jungle lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place Clefable inside Base Set 2, the 130-card Wizards release dated February 24, 2000; this is a reassembly of earlier Base/Jungle memory, not a No Rarity-era release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Base Set 2 Clefable carries Jungle lineage: local English Jungle rows model Clefable as holo #1 and non-holo #17, while the local Japanese Jungle row carries PMCG2-044 with-rarity-symbol memory. These are related catalog lanes, not automatic physical-card equivalences.",
+          "sources": [
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Clefable #5/130 must be kept separate from English Jungle Clefable #1/#17, Jungle Prerelease and no-symbol/error memory, Japanese Pokemon Jungle PMCG2-044, Legendary Collection, Expedition, and any seller-owned physical Clefable unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Clefable is one of the early TCG's gentle tricksters: Arita's fairy-lit Pokemon looks soft, but Metronome makes it a mirror for whatever stands across from it. In Base Set 2, that Jungle oddness becomes part of Wizards' memory cabinet.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_clefable_5_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Clefable, Pikushii, ピクシー, Base Set 2, base4-5, 5/130, Jungle, base2-1, base2-17, PMCG2-044, Metronome, Minimize, Mitsuhiro Arita, no symbol, Prerelease, No Rarity, Legendary Collection, Expedition, holo, non-holo, or same artwork.",
+          "summary": "Identify English Base Set 2 Clefable #5/130 as base4-5; keep it distinct from Jungle holo/non-holo, Japanese Pokemon Jungle PMCG2-044, no-symbol/prerelease language, later reprints, and seller-owned physical copies.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, set id base4, local row base4-5, and printed number 5/130.",
+            "Confirm the card name Clefable, Stage 1 Colorless profile, Level 34, 70 HP, Metronome, Minimize, Rare Holo signal, and Mitsuhiro Arita credit before attaching this dossier.",
+            "Treat Jungle Clefable #1/#17 and Japanese Pokemon Jungle PMCG2-044 as lineage comparators only; do not infer Base Set 2 identity from a Jungle set symbol or Jungle numbering.",
+            "Do not infer no-symbol error, Prerelease stamp, First Edition, Unlimited, Legendary Collection, Expedition, Japanese No Rarity, condition, price, authenticity, or seller possession from this catalog row.",
+            "Before any spendable action, require seller-side scans or packet evidence that binds the physical card to Base Set 2 #5/130 rather than to a nearby Clefable lane."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Jungle holo equivalence",
+            "Jungle non-holo equivalence",
+            "Japanese Pokemon Jungle equivalence",
+            "No Rarity status",
+            "no-symbol status",
+            "Prerelease status",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "5/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #5/130, separate from English Jungle #1/#17, Japanese Pokemon Jungle PMCG2-044, no-symbol/prerelease memory, Legendary Collection, and Expedition Clefable lanes.",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "Base Set 2 reprint holo",
+          "Jungle lineage",
+          "Mitsuhiro Arita fairy-lit character art",
+          "Metronome copy mechanic",
+          "Minimize prevention memory",
+          "holo surface sensitivity",
+          "no-symbol boundary",
+          "Prerelease boundary",
+          "reprint-symbol inspection"
+        ],
+        "signals": [
+          "Base Set 2",
+          "2000-02-24",
+          "5/130",
+          "Rare Holo",
+          "Stage 1 Colorless",
+          "Mitsuhiro Arita",
+          "Metronome",
+          "Minimize"
+        ],
+        "collector_texture_note": "Base Set 2 Clefable is the forest trickster filed into the nostalgia cabinet: soft art, strange rules, and a card identity that has to stay separate from Jungle's more famous branches.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "Jungle equivalence",
+          "No Rarity status"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The moonlit mirror in the archive",
+        "why_it_matters": "Base Set 2 Clefable is gentle until you read it. Arita draws the soft fairy shape, but Metronome gives it a mischievous old-TCG power: it can borrow the enemy's own attack without becoming the enemy. Minimize then turns the card into a small moonlit dodge. That is why Clefable matters in this catalog. It is not a Charizard-style roar; it is Pokemon learning that cute can be strange, tactical, and a little theatrical. Base Set 2 preserves that Jungle feeling inside a reprint set, which makes the protocol lesson just as important as the collector one: the same fairy, same artist memory, and same attack text can still belong to different physical lanes. The symbol and number have to speak before the agent spends.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "Jungle holo equivalence",
+          "Jungle non-holo equivalence",
+          "Japanese Pokemon Jungle equivalence",
+          "No Rarity status",
+          "no-symbol status",
+          "Prerelease status",
+          "Legendary Collection equivalence",
+          "Expedition equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }

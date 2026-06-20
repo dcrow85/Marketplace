@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 309: Base Set 2 Chansey #3 deepened; corpus 9fdaab19)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 310: Base Set 2 Clefable #5 deepened; corpus 46572d1b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-tenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-5` Clefable #5 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` and `Clefable (Jungle 1)` as bounded community
+  references, local English Jungle Clefable holo/non-holo rows as lineage
+  comparators, and the local Japanese Pokemon Jungle PMCG2-044 row as a
+  bounded pre-English lane. The dossier now carries Base Set 2 #5/130, Rare
+  Holo, Stage 1 Colorless, Level 34, 70 HP, Metronome, Minimize, Clefairy
+  evolution memory, Fighting weakness, Psychic resistance, two-Colorless
+  retreat, and Mitsuhiro Arita credit. Its special identification packet tells
+  agents to keep Base Set 2 Clefable separate from English Jungle #1/#17,
+  Japanese Pokemon Jungle PMCG2-044, no-symbol and Prerelease language,
+  Legendary Collection, Expedition, and seller-owned physical evidence unless
+  seller scans prove the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Clefable downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:
