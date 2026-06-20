@@ -1,0 +1,531 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Mewtwo Strikes Back VHS insert Mewtwo",
+    "release_family_id": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999",
+    "notes": [
+      "Deepens the February 12, 1999 Mewtwo Strikes Back VHS insert source slice.",
+      "Covers the single modeled source-pinned row: Mewtwo source index 083.",
+      "Treats this as the Japanese VHS / home-video route for the English Wizards Promo 3 image, not as ordinary US theatrical Mewtwo or the later VHS/DVD Mewtwo 14."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999",
+      "type": "release",
+      "context": {
+        "name_en": "Mewtwo Strikes Back VHS insert",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999",
+        "release_date": "1999-02-12",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Mewtwo Strikes Back VHS route",
+          "Kanzenban / home-video context",
+          "English Wizards Promo 3 image on Japanese stock",
+          "Ken Sugimori movie-promo artwork",
+          "source index 083",
+          "movie myth crossing into home media",
+          "Japanese-cardstock versus US-theatrical boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999:083",
+            "name": "Mewtwo",
+            "number": "083",
+            "why": "Mewtwo is the chase because this is the movie's central creature crossing from theater into home ritual. The VHS object matters: a film you could replay, a promo card tucked into that replay, and an English movie-promo image printed through a Japanese material route.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Mewtwo"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete VHS packaging census",
+          "official copy count",
+          "ordinary US theatrical print equivalence"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Mewtwo Strikes Back VHS insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+          "title": "Bulbapedia: Mewtwo (Wizards Promo 3)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/M01",
+          "title": "Bulbapedia: Mewtwo Strikes Back",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card distribution proof by itself",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/japanese-print-mewtwo-3-wizards-black-star-english-promo/",
+          "title": "Pokumon: Japanese Print Mewtwo (3/Wizards Black Star English Promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row and Bulbapedia place the Japanese Mewtwo Strikes Back VHS insert route on February 12, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The route is a Mewtwo Strikes Back VHS / home-video insert, not a booster, deck, tournament prize, or ordinary theatrical handout.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia's Mewtwo Strikes Back page distinguishes the Japanese theatrical VHS release on February 12, 1999 from later Kanzenban / full-version home video treatments and other international releases.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Mewtwo source index 083.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the original English Wizards Promo 3 print on Japanese card stock was available in the Japanese VHS release of Mewtwo Strikes Back from February 12, 1999.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the original Mewtwo Wizards Promo 3 artwork to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "PokeBoon characterizes this Japanese VHS print as the English Mewtwo 3 image printed with Japanese cardstock and inks, with material differences from the American card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should keep this Japanese VHS Mewtwo route separate from the US theatrical Wizards Promo 3, stamp-error variants, the later Benimaru Itoh VHS/DVD Mewtwo 14, Fan Book Mewtwo, CoroCoro Mewtwo, JR Rally Mewtwo 12, and generic movie-promo Mewtwo listings.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Mewtwo plus Japanese Mewtwo Strikes Back VHS route plus Wizards Promo 3 / English-image-on-Japanese-stock material branch; catalog facts do not prove possession, authenticity, condition, price, sealed VHS state, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "mewtwo_strikes_back_vhs_1999_mewtwo_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent match mentions Mewtwo, Wizards Promo 3, Mewtwo Strikes Back VHS, Japanese VHS, Kanzenban, English promo on Japanese stock, or source index 083.",
+          "summary": "Confirm the Japanese Mewtwo Strikes Back VHS insert route before treating a Wizards Promo 3 Mewtwo as this row.",
+          "steps": [
+            "Record the seller's exact route language: Japanese VHS, Mewtwo Strikes Back VHS, Kanzenban, Wizards Promo 3, English promo, source index 083, or movie promo.",
+            "Confirm the offered card is Mewtwo / Wizards Promo 3 image and not Mewtwo 14, Mewtwo 12, Fan Book Mewtwo, CoroCoro Mewtwo, or another movie-promo Mewtwo.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "If the claim is Japanese VHS lineage, request material/print evidence where possible: Japanese cardstock/back comparison, finish/ink clues, insert/VHS packaging, or provenance photos.",
+            "If the claim is sealed VHS provenance, require sealed tape/wrap/sticker/package evidence separately; the loose card does not prove sealed home-video origin.",
+            "Separate Japanese VHS February 12, 1999 context from US theatrical November 12, 1999 handout context and US VHS/DVD March 21, 2000 Mewtwo 14 context.",
+            "Keep price, grade, authenticity, condition, official copy count, possession, sealed status, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "sealed VHS status",
+            "ordinary US theatrical print equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mewtwo comes home on tape",
+        "why_it_matters": "This row is deliciously late-nineties: Mewtwo, already the franchise's genetic myth and movie antagonist, arrives inside a VHS route. The object is not only a card. It is a tape case, a home-viewing ritual, a Japanese material print of an English movie-promo image, and the strange moment when Pokemon learned that cinema could leave cardboard behind. For agents, the romance has to be handled carefully: English-looking Mewtwo is not enough. The home-video route has to be assembled.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed VHS status",
+          "ordinary US theatrical print equivalence",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999:083",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Mewtwo",
+        "number": "083",
+        "release_family_id": "jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999",
+        "release_name": "Mewtwo Strikes Back VHS insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "083",
+        "rarity_signal": "Wizards Promo 3 / Japanese VHS route",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Mewtwo / Genetic Pokemon",
+          "Energy Absorption / Psyburn",
+          "English Wizards Promo 3 image",
+          "Japanese cardstock and inks",
+          "Mewtwo Strikes Back VHS route",
+          "movie-promo variant trap"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999.json#row:jp_promo_unnumbered_wotc_083_mewtwo_strikes_back_vhs_insert_february_12_1999:083",
+          "title": "Local Japanese unnumbered WotC catalog row: Mewtwo source index 083",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+          "title": "Bulbapedia: Mewtwo (Wizards Promo 3)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/japanese-print-mewtwo-3-wizards-black-star-english-promo/",
+          "title": "Pokumon: Japanese Print Mewtwo (3/Wizards Black Star English Promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Mewtwo as source index 083 in the Mewtwo Strikes Back VHS insert source group and marks the source expansion as Wizards Promo 3 with English variant note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The row is an unnumbered promotional VHS route, not a booster-set rarity row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the original Mewtwo Wizards Promo 3 artwork to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists the card with Energy Absorption and Psyburn, and its Pokedex text names Mewtwo as the Genetic Pokemon created through genetic experiments.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "PokeBoon notes that the Japanese VHS print uses Japanese cardstock and inks, with slightly different matte texture, coloration, and light behavior compared with the American card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "As judged collector texture, this Mewtwo matters because the movie's central genetic creature becomes a home-video insert, turning a VHS tape into a card-carrying artifact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A safe match requires Mewtwo identity, Wizards Promo 3 image, Japanese VHS route, and Japanese-material branch evidence; ordinary US theatrical or later VHS/DVD Mewtwo references are insufficient.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "mewtwo_strikes_back_vhs_1999_mewtwo_083_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Mewtwo as Wizards Promo 3, Japanese VHS insert, Mewtwo Strikes Back VHS, Kanzenban, English promo on Japanese stock, or source index 083.",
+          "summary": "Confirm Mewtwo 083 as the Japanese Mewtwo Strikes Back VHS insert branch, not ordinary US movie promo Mewtwo.",
+          "steps": [
+            "Capture the exact seller title and route terms: Mewtwo, Wizards Promo 3, Japanese VHS, Mewtwo Strikes Back VHS, Kanzenban, English promo on Japanese stock, source index 083, or movie promo.",
+            "Ask for uncropped front and back images showing the name, Wizards Promo star/number area, gold stamp area if present, copyright block, corners, surface, and card back.",
+            "Check whether the card is the Ken Sugimori Wizards Promo 3 image rather than the Benimaru Itoh Mewtwo 14 VHS/DVD image or Christopher Rush Mewtwo 12 image.",
+            "For Japanese VHS claims, request material-route evidence: Japanese card stock/back comparison, finish/ink clues, insert sheet, VHS packaging, or provenance photos.",
+            "Separate Japanese VHS February 12, 1999 context from US theatrical November 12, 1999 handout context and US VHS/DVD March 21, 2000 Mewtwo 14 context.",
+            "Treat missing/opposite-corner stamp claims, sealed-VHS claims, and Japanese-stock claims as separate evidence branches, not automatic identity facts.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "sealed VHS status",
+            "ordinary US theatrical print equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mewtwo 083: the VHS genetic ghost",
+        "why_it_matters": "Mewtwo is already a laboratory story, and this print adds another layer of apparatus: an English movie-promo image, Japanese material stock, a VHS case, and the home-video life of the first Pokemon movie. It is the kind of card where the physical surface matters because the picture alone lies by omission. The agent has to care about the route, the paper, the stamp, the tape, and the myth all at once.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed VHS status",
+          "ordinary US theatrical print equivalence",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

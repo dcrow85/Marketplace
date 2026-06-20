@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 169: Game Boy Official Guidebook Venusaur deepened; corpus a3c26999)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 170: Mewtwo Strikes Back VHS Mewtwo deepened; corpus c1aa40c2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/mewtwo_strikes_back_vhs_mewtwo_v0_1.json`
+  deepens the February 12, 1999 Mewtwo Strikes Back VHS insert source slice and
+  its single modeled row, Mewtwo source index 083. The pass frames the card as a
+  home-video / material-variant object: English Wizards Promo 3 image,
+  Japanese cardstock/ink route, Ken Sugimori artwork, and Mewtwo's movie myth
+  entering the VHS apparatus. Special ID rails separate Japanese VHS context
+  from US theatrical Wizards Promo 3, later US VHS/DVD Mewtwo 14, Christopher
+  Rush Mewtwo 12, Fan Book/CoroCoro/JR Rally Mewtwo rows, sealed-VHS claims,
+  and ordinary US theatrical print equivalence. Seller controlled front/back
+  images, material/stock evidence, VHS/insert provenance, sealed status, and
+  fresh possession proof remain outside catalog authority until supplied.
+  Generated gaps moved to 19 release / 3820 card. Current hashes: corpus
+  `c1aa40c2bb78e562f32ec3db5e1ff6584758071f99f5ea222a6a61b708fb4bf6`,
+  index `c688ac3c3f1c222f1e65f250626e8c196d34df1e17472e6c3686bf5e7b5e7162`,
+  queue `748bdb313a92371142115818ce12ce6e0a4cb2dee043f6017ec1c60b02ab7ccf`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/gameboy_official_guidebook_venusaur_v0_1.json`
