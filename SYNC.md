@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 165: All Card Calendar Pikachu deepened; corpus c096d4a2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history index pass: special identification instruction previews exposed; index b96498d2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — exposed
+  `special_identification_instructions` directly in
+  `data/catalog-history/index.json` entries. The full step packets remain in the
+  dossiers; the index now carries a lightweight agent preview for each packet:
+  `id`, `authority_label`, `trigger`, and `summary`. This makes the field
+  first-class for browse/search agents without promoting it beyond legible
+  catalog guidance. Direct assertion confirms 986 indexed instruction packets
+  match their dossier sources exactly, all with `authority_label: legible`.
+  Standard checks passed. Current hashes: corpus
+  `c096d4a2efdb77614b7e18dad9e484f2b2f5f2a94a1024295e7b6db57b4e506e`,
+  index `b96498d2d214b58d8026f0b29b49475a1665fca0f230ef45d01d0f496507945b`,
+  queue `bab1815d5bbc5afb067c19f117f130b4bb48fcb3c1e82f3ba71f9c9e0d34fb4f`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/all_card_calendar_birthday_pikachu_v0_1.json`

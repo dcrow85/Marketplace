@@ -752,6 +752,15 @@ def build_index(dossiers: list[dict[str, Any]]) -> dict[str, Any]:
     entries: list[dict[str, Any]] = []
     for dossier in dossiers:
         narrative = dossier.get("narrative", {})
+        special_instructions = [
+            {
+                "id": instruction.get("id", ""),
+                "authority_label": instruction.get("authority_label", ""),
+                "trigger": instruction.get("trigger", ""),
+                "summary": instruction.get("summary", ""),
+            }
+            for instruction in dossier.get("special_identification_instructions", [])
+        ]
         entry = {
             "uid": dossier["uid"],
             "type": dossier["type"],
@@ -761,6 +770,7 @@ def build_index(dossiers: list[dict[str, Any]]) -> dict[str, Any]:
             "coverage": dossier.get("coverage", {}),
             "claim_count": len(dossier.get("claims", [])),
             "special_identification_instruction_count": len(dossier.get("special_identification_instructions", [])),
+            "special_identification_instructions": special_instructions,
         }
         if "release_highlights" in dossier:
             highlights = dossier["release_highlights"]
