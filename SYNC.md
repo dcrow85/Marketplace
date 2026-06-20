@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 294: Base Set Raichu #14 deepened; corpus 7253219d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 295: Base Set Zapdos #16 deepened; corpus b67ef30f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-16` Zapdos #16 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Zapdos (Base Set 16)` and `Base Set (TCG)` as bounded community
+  references, and the local Japanese pre-English Expansion Pack / No Rarity
+  row `jp_tcg_expansion_pack_19961020:042`. The dossier now carries Zapdos /
+  `サンダー` / Sandaa, Base Set #16/102, Rare Holo, Basic Lightning, Level 64,
+  90 HP, Fighting resistance, Thunder self-damage risk, Thunderbolt
+  all-energy discard, Ken Sugimori credit, and Japanese Expansion Pack /
+  PMCG1-042 lineage. Its special identification packet tells agents to keep
+  English Base Set #16 separate from generic legendary-bird premium claims,
+  Japanese Expansion Pack / No Rarity PMCG1-042, later Zapdos printings /
+  promo memory, Base Set 2 / Legendary Collection / reprint memory, and
+  English First Edition / Shadowless / Unlimited / 4th-print states unless
+  seller evidence proves the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Zapdos downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
