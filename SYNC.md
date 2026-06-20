@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 222: P Promo Rapidash 011 deepened; corpus 2ef81712)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 223: P Promo Meganium 015 deepened; corpus 8992b1fd)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-015-p`
+  Meganium 015/P is now hand-authored rather than generator memory. The pass
+  records the Starter Triple Get Campaign Gold Silver Course route, Grass-row
+  identity, Johto starter final-evolution/campaign-lane collector texture,
+  absent promoted Japanese name, absent artist credit, and absent row-specific
+  image witness. The special identification packet is explicit and
+  first-class: agents must confirm Meganium, printed `015/P`, and the numbered
+  P Promotional spine; keep the Starter Triple Get Campaign and Gold Silver
+  Course wording legible together rather than flattening the route to a
+  generic starter promo; and avoid merging this row with ordinary Meganium
+  expansion cards, later Meganium promos, English Meganium rows, other
+  Johto-starter campaign cards, or absent art/attack/Japanese-name details.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, Starter Triple Get campaign copy provenance,
+  Gold Silver Course set completeness, image availability, illustrator credit,
+  Japanese-name certainty, attack text, ordinary Meganium equivalence, later
+  Meganium equivalence, other Johto-starter campaign equivalence, complete
+  Japanese promo universe, or spendability. Generated gaps remain bounded at
+  100. Validation passed: JSON; catalog dossier build + `--check`; card
+  dossier `--check`; completion audit `--check`; focused assertion for the
+  campaign-course special-identification packet. Hashes: corpus
+  `8992b1fd630caa2b9beb85ae9dc57009963eb0c85ae505df614485e3ad1751dc`;
+  index `c7dfe543ddc4ebb01fae92765e349ce8bef07e93975ca9b31a5f05cb1109c5ac`;
+  queue `a78795f938ea0ed74b70e6d84faa2a6e85f9ca24d6e255c5e638f23f8d53f913`;
+  audit `2426454e908d66c7e51ffa0f453081a7f4be6612d0033e94a59535e66497fbe9`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
