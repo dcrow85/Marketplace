@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 281: Aquapolis Ariados H3 deepened; corpus f02ea3d3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 282: Aquapolis Victreebel H30 deepened; corpus a5945ccf)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H30` Victreebel H30 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-42`, live
+  Pokemon TCG API row references, Bulbapedia `Victreebel (Aquapolis H30)`,
+  and Bulbapedia `Aquapolis (TCG)`. The card dossier now carries
+  Victreebel / `ウツボット` / Utsubot, English Aquapolis / e-Card Series,
+  API card id `ecard2-H30`, printed number H30, H30/H32 Rare Holo
+  sequence, Japanese Wind from the Sea 011/087 holo lineage, the non-Holo
+  Aquapolis #42 / 42/147 sibling, Stage 2 Grass profile, Weepinbell
+  evolution line, 90 HP, Fire weakness, two-retreat cost, Poke-Power
+  Fragrance Trap, Corrosive Acid, and Miki Tanaka credit. The special
+  identification packet tells agents to keep H30 separate from Aquapolis
+  Victreebel #42, reverse-holo listings, generic Victreebel wants, Grass
+  deck references, and seller-card image claims. It also keeps Dot-Code,
+  e-Reader, D-57 / D-57-# IDs, Flycatcher Pokemon species label, Pokemon
+  Crystal Pokedex source, digestive-acid Pokedex text, and no-long-strip
+  boundary legible without promoting them into seller possession,
+  authenticity, condition truth, price truth, seller-card image match,
+  e-Reader scan success, reverse-holo equivalence, long-strip data
+  presence, or spendability. Rebuilt `data/catalog-history/dossiers.json`,
+  `index.json`, `deepening-queue.json`, `manifest.json`, and `audit.json`;
+  corpus hash is
+  `a5945ccf13ce024622613affb66073c63508db7ef64d0b164d69a8da40b33e36`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H30
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

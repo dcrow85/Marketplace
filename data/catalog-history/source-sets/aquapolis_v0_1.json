@@ -7865,6 +7865,329 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H30",
+      "type": "card",
+      "context": {
+        "name_en": "Victreebel",
+        "name_ja": "ウツボット",
+        "romaji": "Utsubot",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H30",
+        "catalog_row_id": "ecard2-H30",
+        "card_number": "H30",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-42",
+        "japanese_lineage_card_number": "Wind from the Sea 011/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H30",
+          "title": "Local English WoC card row: Victreebel H30",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H30",
+          "title": "Pokemon TCG API v2 card record: Victreebel ecard2-H30",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Victreebel_(Aquapolis_H30)",
+          "title": "Bulbapedia: Victreebel (Aquapolis H30)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-42",
+          "title": "Pokemon TCG API v2 card record: Victreebel ecard2-42",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Victreebel as Aquapolis H30, a Rare Holo Stage 2 Grass Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Victreebel's Japanese name as ウツボット / Utsubot and connects the Holofoil print to Japanese Wind from the Sea card 011/087, while the non-Holofoil Aquapolis print appears as English 42/147.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Victreebel H30 with 90 HP, evolvesFrom Weepinbell, Grass type, Fire weakness, two-Colorless retreat, the Poke-Power Fragrance Trap, and the attack Corrosive Acid.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Victreebel H30 to Miki Tanaka; the local and API rows also credit Miki Tanaka on the non-Holo Aquapolis Victreebel #42 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Victreebel as H30/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Victreebel at #42 with the same Miki Tanaka credit, Fragrance Trap, and Corrosive Acid; agents must keep H30 and #42 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Victreebel H30 page records card ID D-57 for the Holofoil print and D-57-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information and a brief card summary, that there is no long strip for this card, and that the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia identifies Victreebel as the Flycatcher Pokemon, says Victreebel H30's e-Reader Pokedex entry comes from Pokemon Crystal, and shows Pokedex text saying an object taken into Victreebel's body will be dissolved without a trace by digestive acid.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Victreebel H30 matters because Aquapolis turns the carnivorous-plant line into a lure-and-dissolve machine: Fragrance Trap pulls a target forward, Corrosive Acid threatens burn, and the Pokedex text makes the card's body feel like a dangerous apparatus.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_victreebel_h30_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Victreebel, ウツボット, Utsubot, Victreebel H30, H30/H32, Rare Holo, ecard2-H30, Miki Tanaka, Fragrance Trap, Corrosive Acid, D-57, D-57-#, Wind from the Sea, 011/087, Aquapolis #42, 42/147, or reverse holo Victreebel.",
+          "summary": "Identify Victreebel / ウツボット / Utsubot H30 by the Aquapolis H-number Rare Holo lane: English ecard2-H30 / H30/H32 and Wind from the Sea 011/087 lineage, not the non-Holo #42 / 42/147 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H30 / printed number H30 before accepting this as the H-number holo row.",
+            "Preserve H30/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Victreebel #42 row even though #42 shares Miki Tanaka, Fragrance Trap, and Corrosive Acid.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 011/087 while the English non-Holofoil counterpart appears as Aquapolis 42/147.",
+            "Use Miki Tanaka credit, Stage 2 Grass profile, Weepinbell evolution line, Fire weakness, two-retreat cost, Fragrance Trap, Corrosive Acid, D-57 Holofoil e-Reader ID, and D-57-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Victreebel wants, Grass deck references, and seller-card image claims separate until set, number, rarity, attack text, power text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Flycatcher Pokemon species label, Pokemon Crystal Pokedex source, digestive-acid Pokedex text, and no-long-strip boundary as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "long-strip data presence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H30"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Victreebel_(Aquapolis_H30)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H30",
+        "artist": "Miki Tanaka",
+        "rarity_signal": "Rare Holo; H30/H32 H-number holo sequence, separate from non-Holo #42 / 42/147 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Miki Tanaka art trace",
+          "Stage 2 carnivorous plant",
+          "Fragrance Trap bench-pull interface",
+          "Corrosive Acid burn pressure",
+          "Flycatcher Pokedex texture",
+          "D-57 e-Reader object",
+          "no-long-strip boundary"
+        ],
+        "collector_texture_note": "Victreebel H30 is Aquapolis as a lure: sweet fragrance, forced movement, acid, burn, and a D-57 identity that must stay separate from the #42 non-holo sibling."
+      },
+      "narrative": {
+        "human_title": "Victreebel H30 — the lure that dissolves",
+        "why_it_matters": "Victreebel H30 is deliciously mean Aquapolis: Miki Tanaka's Stage 2 plant is a holo trap, using Fragrance Trap to drag a target forward and Corrosive Acid to make contact hurt. The e-Reader layer gives the card a D-57 memory, while the Pokedex text makes the whole thing feel less like a plant and more like a hungry apparatus.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "long-strip data presence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H9",
       "type": "card",
       "context": {
