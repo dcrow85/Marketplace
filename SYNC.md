@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 277: Aquapolis Sudowoodo H24 deepened; corpus a4b59569)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 278: Aquapolis Suicune H25 deepened; corpus f603639b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H25` Suicune H25 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-37`, live
+  Pokemon TCG API row references, Bulbapedia `Suicune (Aquapolis H25)`,
+  and Bulbapedia `Aquapolis (TCG)`. The card dossier now carries Suicune /
+  `スイクン`, English Aquapolis / e-Card Series, API card id `ecard2-H25`,
+  printed number H25, H25/H32 Rare Holo sequence, Japanese The Town on No
+  Map 031/092 holo lineage, the non-Holo Aquapolis #37 / 37/147 sibling,
+  Basic Water profile, 70 HP, Lightning weakness, one-retreat cost,
+  Poke-Body Pure Body, Hypno Wave, and Atsuko Nishida credit. The special
+  identification packet tells agents to keep H25 separate from Aquapolis
+  Suicune #37, Box Topper, Wizards Black Star Promotional, Nintendo Black
+  Star / P Promotional, jumbo, reverse-holo listings, generic Suicune
+  wants, legendary-beast notes, and seller-card image claims. It also keeps
+  Dot-Code, e-Reader, C-66 / C-66-# / Z-14-# IDs, Pokemon Crystal / Gold
+  Pokedex source split, long-strip presence, and the Wizards promotional
+  license hinge legible without promoting them into seller possession,
+  authenticity, condition truth, price truth, seller-card image match,
+  e-Reader scan success, promo equivalence, Box Topper equivalence,
+  reverse-holo equivalence, long-strip data readability, or spendability.
+  Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `f603639b8ea9509fb49b5b9e925c7fa5daa94370dc3df61b8ccf95a9b4bef511`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H25
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
