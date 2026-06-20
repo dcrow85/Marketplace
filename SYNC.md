@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 241: P Promo Sneasel 036 deepened; corpus 7a5b127c)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 242: P Promo Scizor 037 deepened; corpus f1bca05f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-037-p`
+  Scizor 037/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Scizor (P Promo
+  37)` to `Scizor (Aquapolis H21)`, so the row now carries the deeper card
+  assembly: Scizor / `ハッサム` / Hassam, Metal Stage 1 evolving from Scyther,
+  HP 80, Fire weakness, retreat cost 2, Hisao Nakamura illustration credit,
+  Poison Resistance / `どくていこう`, Snatch / `ねらってつかむ`, Heavy Metal /
+  `ヘビーメタル`, Aquapolis H21/H32, Aquapolis 32/147, Wind from the Sea
+  075/087 and 074/087, P Promotional 037/P, Aquapolis Box Topper 7/12,
+  e-Reader `D-71` versus `D-71-#` split, short-strip context, and no-long-strip
+  context. The McDonald's route remains the transaction-facing identity wall:
+  Saturdays and Sundays from May 25 through June 16, 2002, printed `037/P`,
+  inside the numbered P Promotional spine. The special identification packet
+  tells agents to confirm Scizor / `ハッサム` / Hassam, printed `037/P`, Metal
+  Stage 1 profile, Nakamura credit, McDonald's weekend route, attacks, and
+  `D-71-#`; do not merge with Aquapolis H21/H32, Aquapolis 32/147, Wind from
+  the Sea holo/non-holo rows, Aquapolis Box Topper 7/12, ordinary Scizor rows,
+  later Scizor promos, other McDonald's promos, or generic Nakamura/e-Reader
+  memory without printed-number evidence. No-overclaim boundaries remain
+  explicit: seller possession, authenticity, condition, price, provenance,
+  sealed-packet state, e-Reader readability, holo status, Box Topper/Jumbo
+  status, and spendability remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `f1bca05f3c29c0e43fd82e3c81daf454f411778fa10f68da4064bd27ce4cc488`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

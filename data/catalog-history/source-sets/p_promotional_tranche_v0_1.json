@@ -9520,6 +9520,334 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-037-p",
+      "type": "card",
+      "context": {
+        "name_en": "Scizor",
+        "name_ja": "ハッサム",
+        "romaji": "Hassam",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-037-p",
+        "catalog_row_id": "037/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis / Wind from the Sea / P Promotional cards / Aquapolis Box Topper"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-037-p",
+          "title": "Local Japanese promo WotC catalog row: Scizor 037/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Scizor_(P_Promo_37)&action=raw",
+          "title": "Bulbapedia raw redirect: Scizor (P Promo 37)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Scizor_(Aquapolis_H21)&action=raw",
+          "title": "Bulbapedia raw wikitext: Scizor (Aquapolis H21 / P Promo 37)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Scizor as P Promotional card number 037/P, and the row-specific Bulbapedia redirect points Scizor (P Promo 37) to the Scizor (Aquapolis H21) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Scizor / ハッサム / Hassam, a Metal Stage 1 Pokemon evolving from Scyther, with HP 80, Fire weakness, and retreat cost 2.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Aquapolis and P Promotional prints of Scizor to Hisao Nakamura, and says the P Promotional reprint used artwork by the same artist.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the route as a McDonald's promotion on Saturdays and Sundays from May 25 through June 16, 2002; Bulbapedia says the Japanese P Promotional reprint was available as part of a McDonald's promotion running between those dates.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Scizor card in Aquapolis H21/H32, Aquapolis 32/147, Japanese Wind from the Sea 075/087 and 074/087, Japanese P Promotional 037/P, and Aquapolis Box Topper 7/12 contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Poison Resistance / どくていこう, Snatch / ねらってつかむ, and Heavy Metal / ヘビーメタル as the card text; Snatch can switch in an undamaged Benched Pokemon before damage, and Heavy Metal scales with Metal Energy coin flips.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says this card has four prints: the Holofoil Aquapolis and Box Topper prints use e-Reader card ID D-71, while the Non Holofoil Aquapolis print and P Promotional print use D-71-#; for the Non Holofoil Aquapolis and P Promotional prints, the short strip contains Pokedex information and a brief card summary, and there is no long strip.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Aquapolis booster boxes also had a Reverse Holofoil Jumbo Box Topper print, and the trivia distinguishes the card's Snatch and Heavy Metal names from later video-game move or Ability terminology.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Scizor 037/P matters because a sharp Metal-era fan favorite sits at a busy fork: Wind from the Sea holo and non-holo, English Aquapolis, a jumbo Box Topper, and a McDonald's P promo all share the page, while D-71 versus D-71-# keeps the physical print identities from blurring.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Scizor 037/P from Aquapolis H21/H32, Aquapolis 32/147, Wind from the Sea 075/087 and 074/087, Aquapolis Box Topper 7/12, other Scizor rows, later Scizor promos, other McDonald's P Promotional rows, and generic Hisao Nakamura or e-Reader Scizor memory; the printed 037/P number, D-71-# context, and May 25-June 16, 2002 McDonald's weekend route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_scizor_037_mcdonalds_d71_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Scizor P promo, 037/P, McDonald's Scizor, Aquapolis Scizor, Wind from the Sea Scizor, Aquapolis H21, Aquapolis 32, Box Topper Scizor, Hisao Nakamura Scizor, D-71, D-71-#, or e-Reader Scizor.",
+          "summary": "Confirm Scizor, printed 037/P, D-71-# context, and the May 25-June 16, 2002 McDonald's weekend route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Scizor / ハッサム / Hassam.",
+            "Read the printed promo number as 037/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Metal Stage 1 Pokemon evolving from Scyther with HP 80, Fire weakness, and retreat cost 2 when comparing against the card page.",
+            "Use Hisao Nakamura as the credited illustrator while remembering that artist credit does not authenticate a physical card.",
+            "Keep the McDonald's route legible: Saturdays and Sundays from May 25 through June 16, 2002.",
+            "Check Poison Resistance / どくていこう, Snatch / ねらってつかむ, and Heavy Metal / ヘビーメタル when card text is visible.",
+            "Use D-71-# as e-Reader context for the Non Holofoil Aquapolis and P Promotional prints; do not confuse it with D-71 holo or Box Topper context.",
+            "Treat the no-long-strip note as print-context information, not proof that a seller's scan is complete or readable.",
+            "Do not merge this row with Aquapolis H21/H32, Aquapolis 32/147, Wind from the Sea 075/087, Wind from the Sea 074/087, Aquapolis Box Topper 7/12, ordinary Scizor rows, later Scizor promos, other McDonald's P Promotional rows, or generic Nakamura/e-Reader memory without printed-number evidence.",
+            "If a seller claims McDonald's provenance, holo status, Box Topper status, e-Reader readability, or a special distribution state, ask for seller-controlled evidence of the card, printed number, finish, size, wrapper, packet, store, campaign material, or scan output separately.",
+            "Treat e-Reader readability, holo status, Box Topper/Jumbo status, price, condition, sealed-packet state, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "sealed-packet state",
+            "e-Reader readability",
+            "holo status",
+            "Box Topper status",
+            "Jumbo card status",
+            "long-strip absence proof from seller scan",
+            "Aquapolis H21/H32 equivalence",
+            "Aquapolis 32/147 equivalence",
+            "Wind from the Sea 075/087 equivalence",
+            "Wind from the Sea 074/087 equivalence",
+            "Aquapolis Box Topper 7/12 equivalence",
+            "ordinary Scizor equivalence",
+            "later Scizor equivalence",
+            "other McDonald's promo equivalence",
+            "Hisao Nakamura collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "037/P",
+        "rarity_signal": "McDonald's promotion (Saturdays and Sundays from May 25-June 16, 2002)",
+        "artist": "Hisao Nakamura",
+        "assembly_themes": [
+          "McDonald's route",
+          "weekend date-window boundary",
+          "numbered P spine",
+          "Wind from the Sea lineage",
+          "Hisao Nakamura Metal-type",
+          "e-Reader short strip",
+          "holo/non-holo identity split",
+          "Box Topper adjacency"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "037/P",
+          "Scizor",
+          "ハッサム",
+          "Hassam",
+          "Metal",
+          "Stage 1",
+          "Scyther",
+          "HP 80",
+          "Fire weakness",
+          "Hisao Nakamura",
+          "McDonald's promotion",
+          "May 25-June 16, 2002",
+          "Saturdays and Sundays",
+          "Poison Resistance",
+          "どくていこう",
+          "Snatch",
+          "ねらってつかむ",
+          "Heavy Metal",
+          "ヘビーメタル",
+          "D-71",
+          "D-71-#",
+          "Aquapolis H21/H32",
+          "Aquapolis 32/147",
+          "Wind from the Sea 075/087",
+          "Wind from the Sea 074/087",
+          "Aquapolis Box Topper 7/12"
+        ],
+        "collector_texture_note": "Scizor 037/P is the sharp Metal fork in the McDonald's run: Nakamura art, Wind from the Sea lineage, D-71-# non-holo identity, and a nearby holo/Box Topper cluster that must stay separate.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "McDonald's provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "holo status",
+          "Box Topper status"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scizor 037/P: the sharp fork in the Metal page",
+        "why_it_matters": "Scizor 037/P is all edges. It has the character gravity of a Metal favorite, Hisao Nakamura's clean force, and a card page crowded with almost-same objects: Wind from the Sea holo and non-holo, Aquapolis H21 and 32, a Box Topper, and the McDonald's P promo. That crowd is the point. The printed 037/P and D-71-# context keep the promo from becoming a halo of nearby Scizors. For an agent, this is a perfect little lesson in assembly: resemblance is loud, provenance is sharper.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "McDonald's campaign provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "holo status",
+          "Box Topper status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
       "type": "card",
       "context": {
