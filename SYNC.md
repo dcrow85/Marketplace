@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 185: Pokemon Card GB2 guidebook Dark Fearow deepened; corpus b2a31984)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 186: Pokemon Card Information Vol. 2 Bellossom deepened; corpus 39551798)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/pokemon_card_information_vol2_bellossom_v0_1.json`
+  deepens the Pokemon Card Information Vol. 2 insert and its single modeled
+  row, Bellossom / キレイハナ / Kireihana source index 233. The pass frames Vol.
+  2 as the soft middle of the Information Pack shop-counter sequence: free
+  participating-store distribution from April 1, 2001, following Vol. 1
+  Dunsparce and before Vol. 3 Pryce's Lapras. It records Naoyo Kimura /
+  木村直代 as the expected illustrator, Floral Spin / フローラルスピン, LV.38, HP
+  80, No. 182, Grass Stage 2 from Gloom, the Pokemon Silver Pokedex text about
+  dancing petals making pleasant sounds, the bottom-border "Information Pack
+  bonus card part 2" clue, and later TCG Pocket reuse as a reuse signal, not
+  original-route proof. Special identification packets now separate this row
+  from Vol. 1 Dunsparce, Vol. 3 Pryce's Lapras, Vol. 4 Ponyta, Neo Genesis
+  Bellossom, later Bellossom cards, TCG Pocket cards reusing the illustration,
+  and any unopened-packet claim where Bellossom is not separately visible or
+  disclosed. Boundaries remain against seller possession, authenticity,
+  condition, price, complete sealed-packet state, official print run, and
+  spendability. Generated gaps are now release queue 3 and card queue 100.
+  Hashes: corpus
+  `39551798bf85f14af95a05c95b13da559cd5b13fe0545f6ce744135326e0ce2e`,
+  index `043b2db3d06a333ca58e2401ac66881f864cff30d3766b22c12ee5909c48a702`,
+  queue `fdf37487e35249f0253d971e7826e110c1d00faa02dc52564e8879ca3bd14e15`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-fifth
   catalog-history pass:
   `data/catalog-history/source-sets/pokemon_card_gb2_guidebook_dark_fearow_v0_1.json`
