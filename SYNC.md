@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 287: Aquapolis Electrode H7 deepened; corpus dac03f8e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 288: Aquapolis Entei H8 deepened; corpus da191271)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H8` Entei H8 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived non-Holo sibling row for
+  `ecard2-10`, local Japanese Wind from the Sea rows for E3-027 /
+  E3-026, Bulbapedia `Entei (Aquapolis H8)`, and Bulbapedia `Aquapolis
+  (TCG)`. The card dossier now carries Entei / `エンテイ`, English
+  Aquapolis / e-Card Series, API card id `ecard2-H8`, printed number H8,
+  H8/H32 Rare Holo sequence, Japanese Wind from the Sea 027/087 holo
+  lineage, the non-Holo Aquapolis #10 / 10/147 / Wind from the Sea
+  026/087 sibling, the Reverse Holo Jumbo Box Topper 5/12 lane, Basic
+  Fire profile, 70 HP, Water weakness, one-retreat cost, Poke-Body Pure
+  Body, Burning Fang, and Atsuko Nishida credit. The special
+  identification packet tells agents to keep H8 separate from Aquapolis
+  Entei #10, Box Topper/Jumbo claims, reverse-holo listings, generic
+  Entei wants, legendary-beast collection goals, Fire deck references,
+  and seller-card image claims. It also keeps D-61 / D-61-# IDs, Volcano
+  Pokemon species label, Pokemon Crystal Pokedex source, magma-flame
+  Pokedex text, Construction: Action map data, seller possession,
+  authenticity, condition, price, image rights, seller-card match,
+  e-Reader scan success, reverse-holo/Jumbo equivalence, and
+  spendability explicitly out of the catalog claim. Rebuilt generated
+  corpus artifacts; new corpus hash
+  `da1912714445f9078fdf04101146f97cf085d99082fa333162cb699b4cc0891d`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
