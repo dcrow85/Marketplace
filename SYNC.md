@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 183: Pokemon Card Information Vol. 1 Dunsparce deepened; corpus 29156503)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 184: Pokemon Card GB2 Team GR's Mewtwo deepened; corpus eb093b88)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-fourth
+  catalog-history pass:
+  `data/catalog-history/source-sets/pokemon_card_gb2_team_gr_mewtwo_v0_1.json`
+  deepens the Pokemon Trading Card Game 2: The Invasion of Team GR insert and
+  its single modeled row, Team GR's Mewtwo / GR団のミュウツー / GR-dan no Myuutsuu
+  source index 227. The pass frames the route as a Japan-only Game Boy Color
+  sequel pack-in object from March 28, 2001, where a physical old-back card is
+  tied to Team Great Rocket, GR Island, stolen Legendary Cards, and the digital
+  TCG sequel. It records Shin-ichi Yoshida / 吉田振一 as the expected illustrator,
+  Dark Wave / わるいはどう, Dark Amplification / わるいぞうふく, LV.35, HP 70, No.
+  150, Psychic type, the GB symbol route clue, and the official-tournament-use
+  restriction. Lugia is preserved as the paired game-box promo, while Dark
+  Fearow is explicitly separated as the adjacent official-guidebook route.
+  Special identification packets now separate this row from Rocket's Mewtwo,
+  English Gym Challenge Rocket's Mewtwo, standard Mewtwo prints, later Mewtwo
+  promos, modern classic reprints, Lugia, Dark Fearow, and any complete-game
+  claim where the pack-in cards are not separately shown or disclosed.
+  Boundaries remain against seller possession, authenticity, condition, price,
+  complete boxed-game state, official print run, and spendability. Generated
+  gaps are now release queue 5 and card queue 100. Hashes: corpus
+  `eb093b88ae79c36b495b0f41b0ae3ed2fe3dbaeba5cafbc365e34cfb436b1849`,
+  index `904111d5ce052bbfdfab17a62403fd84fdb75efb2deae7c0d8b52fe4fc0998a1`,
+  queue `093d8157d6a98dd07f6f8856f5e4ec5c1798dc6eaa390dffb1644255835ceb22`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-third
   catalog-history pass:
   `data/catalog-history/source-sets/pokemon_card_information_vol1_dunsparce_v0_1.json`
