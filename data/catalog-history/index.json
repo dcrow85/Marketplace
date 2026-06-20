@@ -45386,33 +45386,36 @@
       "card": {
         "artist": "",
         "assembly_themes": [
-          "promo distribution",
-          "identity trap"
+          "Shogakukan magazine route",
+          "promo numbering",
+          "Hoenn evolution",
+          "bounded ADV-P slice",
+          "no image witness"
         ],
         "number": "010/ADV-P",
         "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset"
       },
-      "claim_count": 5,
+      "claim_count": 7,
       "coverage": {
         "art": "none",
-        "history": "C",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Marshtomp: first-pass card note",
+      "generated": false,
+      "human_title": "Marshtomp 010/ADV-P: the third starter grows too",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_adv_p_promo_bounded_number_v0.1",
-          "summary": "Confirm the printed promo number uses the NNN/ADV-P format and stays within the bounded 001-014 pre-edge slice.",
-          "trigger": "Identifying a Japanese ADV-P Promotional card in the pre-WoC-edge subset."
+          "id": "adv_p_marshtomp_010_shogakukan_number_boundary_v0.1",
+          "summary": "Confirm Marshtomp and printed 010/ADV-P before treating the card as this Shogakukan Elementary School magazine ADV-P row.",
+          "trigger": "A listing, want, scan, or agent memory says Marshtomp ADV-P, Shogakukan Marshtomp, Elementary School magazine Marshtomp, 010/ADV-P, Japanese Marshtomp promo, or early Hoenn promo."
         }
       ],
       "type": "card",
       "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
-      "why_it_matters": "Marshtomp sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "Marshtomp makes the Shogakukan lane feel intentional rather than accidental. Grovyle, Combusken, and Marshtomp together turn the early ADV-P slice into a tiny coming-of-age map for Hoenn: the starters were not just introduced, they were followed. The source does not give us art, attacks, or a scan to lean on, so the agent's job is beautifully narrow: hold the printed number, the Water identity, and the February 2003 magazine route without pretending those are physical-card proof."
     },
     {
       "card": {

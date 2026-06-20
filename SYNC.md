@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 210: ADV-P Combusken 009 deepened; corpus d7b7987f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 211: ADV-P Marshtomp 010 deepened; corpus 69e748b9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eleventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
+  `jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p`
+  Marshtomp 010/ADV-P is now hand-authored rather than generator memory. The
+  pass completes the Shogakukan middle-evolution starter trio in this slice,
+  recording the Elementary School magazine February 2003 route, Water-row
+  identity, absent promoted Japanese name, absent artist credit, and absent
+  row-specific image witness. The special identification packet is explicit
+  and first-class: agents must confirm Marshtomp, printed `010/ADV-P`, and the
+  bounded `001-014` pre-edge slice; keep the Shogakukan magazine note separate
+  from physical provenance; and avoid importing later ADV-P rows, main-set
+  Marshtomp, English EX-era Marshtomp, starter-family memory, or absent
+  art/attack/Japanese-name details. Boundaries remain explicit: catalog
+  legibility is not seller possession, authenticity, condition, price,
+  Shogakukan copy provenance, image availability, illustrator credit,
+  Japanese-name certainty, attack text, later ADV-P equivalence, main-set
+  Marshtomp equivalence, complete ADV-P coverage, or spendability. Generated
+  gaps remain bounded at 100. Validation passed: JSON; catalog dossier build
+  + `--check`; card dossier `--check`; completion audit `--check`; focused
+  assertion for the new special-identification packet. Hashes: corpus
+  `69e748b9407392af699e9845d110077db27a8b85c381b4f7dbe6ba06f458c047`;
+  index `d093be2b1d0eea4607db84370dc596d0e8b7f68427cff8d643135bf8862f1a6e`;
+  queue `22d2dd42185f6c41dd948081c3b24a6db46dff7f6f999d43f2072f843ee342c3`;
+  audit `df3f6c81642df578c710cbb23b1d281340efaf77695cd5d664d5501e4a4c9ada`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-tenth
   catalog-history pass inside
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
