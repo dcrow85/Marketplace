@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 299: Base Set Hitmonchan #7 deepened; corpus c2ece939)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 300: Base Set Machamp #8 deepened; corpus fb94f2f9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundredth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-8` Machamp #8 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Machamp (Base Set 8)` and `Base Set (TCG)` as bounded community
+  references, and the local Japanese pre-English Expansion Pack / No Rarity
+  row `jp_tcg_expansion_pack_19961020:057`. The dossier now carries Machamp /
+  `カイリキー` / Kairikii, Base Set #8/102, Rare Holo, Stage 2 Fighting,
+  Level 67, 100 HP, Machoke evolution line, Strikes Back contact consequence,
+  Seismic Toss, Ken Sugimori credit, and Japanese Expansion Pack / PMCG1-057
+  lineage. Its special identification packet tells agents to keep English Base
+  Set #8 separate from starter-deck / First Edition memory, Japanese Expansion
+  Pack / No Rarity PMCG1-057, later Machamp printings / promo memory, Base Set
+  2 / Legendary Collection / reprint memory, and English Shadowless /
+  Unlimited / 4th-print states unless seller evidence proves the specific lane.
+  Validation passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Machamp downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
