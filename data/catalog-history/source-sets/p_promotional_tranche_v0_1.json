@@ -6335,6 +6335,319 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-026-p",
+      "type": "card",
+      "context": {
+        "name_en": "Suicune",
+        "name_ja": "スイクン",
+        "romaji": "Suicune",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-026-p",
+        "catalog_row_id": "026/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis H25/H32 and 37/147 / The Town on No Map 031/092 and 030/092 / Box Topper 8/12 / Wizards Black Star Promo 53 / P Promotional cards / Nintendo Black Star Promo 030"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-026-p",
+          "title": "Local Japanese promo WotC catalog row: Suicune 026/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Suicune_(P_Promo_26)&action=raw",
+          "title": "Bulbapedia raw redirect: Suicune (P Promo 26)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Suicune_(Aquapolis_H25)&action=raw",
+          "title": "Bulbapedia raw wikitext: Suicune (Aquapolis H25 / P Promo 26)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Suicune as P Promotional card number 026/P, and the row-specific Bulbapedia redirect points Suicune (P Promo 26) to the Suicune (Aquapolis H25) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Suicune / スイクン, a Water Basic Pokemon with HP 70, Lightning weakness, and retreat cost 1.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the promotional Suicune print associated with P Promotional 026/P to Atsuko Nishida.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the distribution context as the Celebi: a Timeless Encounter VHS/DVD release; Bulbapedia says both Japanese and English versions of the promotional card were included in the DVD and VHS releases of Celebi: The Voice of the Forest.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Suicune card across Aquapolis holo H25/H32, Aquapolis non-holo 37/147, Japanese The Town on No Map 031/092 and 030/092, Box Topper 8/12, Wizards Black Star Promo 53 with Japanese P Promotional 026/P, and Nintendo Black Star Promo 030 contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "The Aquapolis-era card text includes Pure Body / ピュアボディー and Hypno Wave / ヒプノウェーブ, while Bulbapedia's e-Reader section records distinct card IDs across prints: C-66, C-66-#, and Z-14-#.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Wizards Black Star Promotional print has a long strip containing music data for Construction: Melody Box, and separately notes that this was the last promotional card released by Wizards of the Coast before it lost the Pokemon TCG license.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Suicune 026/P matters because it makes the P Promotional spine touch home media, e-Reader music data, movie-era myth, and the Wizards license handoff all at once: a legendary beast as a receipt for watching Pokemon at home during a transition in who carried the game.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Suicune 026/P from Aquapolis H25/H32, Aquapolis 37/147, The Town on No Map 031/092 and 030/092, Box Topper 8/12, Wizards Black Star Promo 53, Nintendo Black Star Promo 030, other Suicune promos, English Pokemon 4Ever-logo copies, and generic movie-promo memory; the printed 026/P number and Celebi VHS/DVD route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_suicune_026_celebi_vhs_dvd_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Suicune P promo, 026/P, Celebi VHS Suicune, Celebi DVD Suicune, Timeless Encounter Suicune, Voice of the Forest Suicune, Wizards Black Star 53, Pokemon 4Ever Suicune, Aquapolis Suicune, or Atsuko Nishida Suicune.",
+          "summary": "Confirm Suicune, printed 026/P, and the Celebi VHS/DVD route before treating the card as this Japanese P Promotional row.",
+          "steps": [
+            "Confirm the card name is Suicune / スイクン.",
+            "Read the printed promo number as 026/P and keep it inside the numbered P Promotional spine.",
+            "Keep the distribution route legible as the Celebi: a Timeless Encounter VHS/DVD release, cross-checked against the Celebi: The Voice of the Forest home-media note on the card page.",
+            "Use Atsuko Nishida as the credited illustrator for the promotional print while remembering that an artist credit does not authenticate a physical card.",
+            "Check the Water Basic profile, HP 70, Lightning weakness, and retreat cost 1 when comparing against the card page.",
+            "Check for Pure Body / ピュアボディー and Hypno Wave / ヒプノウェーブ when card text is visible.",
+            "Use C-66, C-66-#, and Z-14-# as print-specific e-Reader context; do not move a card ID from one print onto another without visible print evidence.",
+            "Treat the Construction: Melody Box long-strip note as Wizards Black Star Promotional context, not automatic proof that a Japanese 026/P scan has readable music data.",
+            "Keep the Wizards license-transition note as historical context, not as a market or authenticity claim.",
+            "Do not merge this row with Aquapolis H25/H32, Aquapolis 37/147, The Town on No Map 031/092 or 030/092, Box Topper 8/12, Wizards Black Star Promo 53, Nintendo Black Star Promo 030, English Pokemon 4Ever-logo copies, later Suicune promos, or generic movie-promo memory without number evidence.",
+            "If a seller claims VHS/DVD provenance, ask for seller-controlled evidence of the card and any disc, tape, insert, packaging, logo placement, or campaign material separately.",
+            "Treat holo status, reverse-holo/jumbo status, logo state, sealed-media state, e-Reader readability, price, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "VHS provenance",
+            "DVD provenance",
+            "sealed-media state",
+            "insert provenance",
+            "Pokemon 4Ever logo state",
+            "holofoil status",
+            "reverse-holo status",
+            "jumbo status",
+            "e-Reader readability",
+            "Construction: Melody Box functionality",
+            "Wizards Black Star Promo 53 equivalence",
+            "Nintendo Black Star Promo 030 equivalence",
+            "Aquapolis H25/H32 equivalence",
+            "Aquapolis 37/147 equivalence",
+            "The Town on No Map 031/092 equivalence",
+            "The Town on No Map 030/092 equivalence",
+            "Box Topper 8/12 equivalence",
+            "English Pokemon 4Ever copy equivalence",
+            "later Suicune equivalence",
+            "movie-promo equivalence",
+            "Wizards license-transition premium",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "026/P",
+        "rarity_signal": "Celebi: a Timeless Encounter VHS/DVD release",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "home-media distribution",
+          "movie-era Pokemon",
+          "numbered P spine",
+          "Atsuko Nishida legendary beast",
+          "Wizards license transition",
+          "e-Reader music context"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "026/P",
+          "Suicune",
+          "スイクン",
+          "Water",
+          "Basic Pokemon",
+          "HP 70",
+          "Atsuko Nishida",
+          "Celebi: a Timeless Encounter",
+          "Celebi: The Voice of the Forest",
+          "VHS/DVD release",
+          "Pure Body",
+          "ピュアボディー",
+          "Hypno Wave",
+          "ヒプノウェーブ",
+          "C-66",
+          "C-66-#",
+          "Z-14-#",
+          "Construction: Melody Box",
+          "last Wizards promotional card note",
+          "Aquapolis H25/H32",
+          "Aquapolis 37/147",
+          "Wizards Black Star Promo 53",
+          "Nintendo Black Star Promo 030"
+        ],
+        "collector_texture_note": "Suicune 026/P is where the numbered P spine touches the living room: Nishida art, a Celebi VHS/DVD route, e-Reader music data in adjacent print context, and the final Wizards promo note all orbiting one calm legendary beast.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "VHS provenance",
+          "DVD provenance",
+          "sealed-media state",
+          "e-Reader readability",
+          "Wizards license-transition premium"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Suicune 026/P: a legendary beast in the VHS case",
+        "why_it_matters": "Suicune 026/P is not just a Water promo. It is Pokemon leaving the table and entering the living room: a legendary beast slipped into the home-media route around Celebi, with Atsuko Nishida art, Aquapolis baggage, e-Reader print distinctions, and the quiet historical sting that Bulbapedia names it as the last Wizards promotional card before the license changed hands. That is assembly in miniature: movie, card, media case, publisher transition, and a collector years later trying to know which print is actually in front of them.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "VHS provenance",
+          "DVD provenance",
+          "sealed-media state",
+          "e-Reader readability",
+          "Wizards license-transition premium"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
       "type": "card",
       "context": {

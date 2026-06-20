@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 231: P Promo Zapdos 024 deepened; corpus b5c82d8e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 232: P Promo Suicune 026 deepened; corpus 1b9da753)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,50 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-026-p`
+  Suicune 026/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Suicune (P Promo
+  26)` to `Suicune (Aquapolis H25)`, so the row now carries the deeper card
+  assembly: Suicune / `スイクン`, Water Basic, HP 70, Lightning weakness, retreat
+  cost 1, Atsuko Nishida illustration credit, Pure Body / `ピュアボディー`, Hypno
+  Wave / `ヒプノウェーブ`, Aquapolis holo H25/H32 and non-holo 37/147 identities,
+  The Town on No Map 031/092 and 030/092 identities, Box Topper 8/12, Wizards
+  Black Star Promo 53 with Japanese P Promotional 026/P, Nintendo Black Star
+  Promo 030, e-Reader IDs `C-66`, `C-66-#`, and `Z-14-#`, Construction: Melody
+  Box context for the Wizards print, and Bulbapedia's note that this was the
+  last Wizards promotional card before the Pokemon TCG license changed hands.
+  The home-media route remains the transaction-facing identity wall:
+  `Celebi: a Timeless Encounter` VHS/DVD release, cross-checked against the
+  `Celebi: The Voice of the Forest` DVD/VHS inclusion note, printed `026/P`,
+  inside the numbered P Promotional spine. The special identification packet is
+  explicit: agents must confirm Suicune / `スイクン`, printed `026/P`, Celebi
+  VHS/DVD route, Nishida credit, Water Basic profile, Pure Body / Hypno Wave,
+  and print-specific e-Reader IDs; keep the row separate from Aquapolis
+  H25/H32, Aquapolis 37/147, The Town on No Map 031/092 and 030/092, Box Topper
+  8/12, Wizards Black Star Promo 53, Nintendo Black Star Promo 030, English
+  Pokemon 4Ever-logo copies, later Suicune promos, and generic movie-promo
+  memory; and avoid importing sealed-media, logo-state, e-Reader-readability,
+  or license-transition-premium claims without separate evidence. Boundaries
+  remain explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, VHS provenance, DVD provenance, sealed-media state, insert
+  provenance, Pokemon 4Ever logo state, holofoil status, reverse-holo status,
+  jumbo status, e-Reader readability, Construction: Melody Box functionality,
+  Wizards/Nintendo/Aquapolis/The Town on No Map/Box Topper equivalence, English
+  Pokemon 4Ever copy equivalence, later Suicune equivalence, movie-promo
+  equivalence, Wizards license-transition premium, complete Japanese promo
+  coverage, or spendability. Validation passed: `python3 -m json.tool ...`,
+  `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Suicune assertion. Hashes: corpus
+  `1b9da753c2e5dd801e265ddabc0697a0d6f1e052116a4adf1e47e31e9c69d034`, index
+  `a30bf043e69d8cc0eacefa61773cfeb3bcaf8d80be4afd589f950c91d9bc2330`, queue
+  `796469ef90f816b9f72ee66af90fa1dc71de25aad55a1500b790cbdd8f1866be`, audit
+  `8693dd70e1f3daa7dd78e6bf6d47e0577538a7c6b8fc8cb03ccaf383abb3718c`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
