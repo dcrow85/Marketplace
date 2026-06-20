@@ -3,57 +3,6 @@
   "card_queue": [
     {
       "card_highlights": {
-        "artist": "Yuka Morii",
-        "assembly_note": "Lanturn sits in Aquapolis as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Yuka Morii. That is enough to orient an agent, not enough to settle a physical-card claim.",
-        "assembly_themes": [
-          "holo surface",
-          "rarity attention",
-          "artist trace"
-        ],
-        "authority_label": "local_catalog_fact_and_judged_texture",
-        "collector_texture_note": "Lanturn is cataloged as Aquapolis #H15. Treat this as a reference row, then ask for seller evidence before any trade.",
-        "not_claiming": [
-          "price truth",
-          "condition truth",
-          "seller possession",
-          "authenticity"
-        ],
-        "number": "H15",
-        "rarity_signal": "Rare Holo",
-        "signals": [
-          "Aquapolis",
-          "2003/01/15",
-          "H15",
-          "Rare Holo",
-          "Pokémon",
-          "Stage 1"
-        ]
-      },
-      "human_title": "Lanturn: first-pass card note",
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 60,
-      "reasons": [
-        "holo/surface card",
-        "rare signal",
-        "artist trace: Yuka Morii"
-      ],
-      "type": "card",
-      "uid": "en_wotc_aquapolis_20030115:ecard2-H15",
-      "why_it_matters": "Lanturn sits in Aquapolis as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Yuka Morii. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
-    },
-    {
-      "card_highlights": {
         "artist": "Hikaru Koike",
         "assembly_note": "Magneton sits in Aquapolis as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Hikaru Koike. That is enough to orient an agent, not enough to settle a physical-card claim.",
         "assembly_themes": [
@@ -5102,11 +5051,62 @@
       "type": "card",
       "uid": "en_wotc_gym_heroes_20000814:gym1-16",
       "why_it_matters": "Erika sits in Gym Heroes as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+    },
+    {
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Lt. Surge sits in Gym Heroes as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim.",
+        "assembly_themes": [
+          "holo surface",
+          "rarity attention",
+          "play-system memory",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Lt. Surge is cataloged as Gym Heroes #17. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ],
+        "number": "17",
+        "rarity_signal": "Rare Holo",
+        "signals": [
+          "Gym Heroes",
+          "2000/08/14",
+          "17",
+          "Rare Holo",
+          "Trainer"
+        ]
+      },
+      "human_title": "Lt. Surge: first-pass card note",
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 60,
+      "reasons": [
+        "holo/surface card",
+        "rare signal",
+        "artist trace: Ken Sugimori"
+      ],
+      "type": "card",
+      "uid": "en_wotc_gym_heroes_20000814:gym1-17",
+      "why_it_matters": "Lt. Surge sits in Gym Heroes as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
     }
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3724,
+    "generated_card_candidates_considered": 3723,
     "generated_release_candidates_considered": 0,
     "release_queue_count": 0
   },

@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 266: Aquapolis Kingdra H14 deepened; corpus 31f8f4b7)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 267: Aquapolis Lanturn H15 deepened; corpus 71ddefd2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,39 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H15` Lanturn H15 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H15`, live Pokemon TCG API
+  `cards/ecard2-21`, live Pokemon TCG API `cards/ecard2-20`, live Pokemon TCG
+  API `sets/ecard2`, Bulbapedia `Lanturn (Aquapolis H15)`, Bulbapedia
+  `Lanturn (Aquapolis 20)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Lanturn / `ランターン` / Lantern, English Aquapolis /
+  e-Card Series, API card id `ecard2-H15`, printed number H15, H15/H32 Rare
+  Holo sequence, Japanese Wind from the Sea 045/087 holo lineage, the
+  non-Holo Aquapolis #21 / Wind from the Sea 044/087 sibling, the same-set
+  Water-type Lanturn #20 / Wind from the Sea 037/087 false friend, Stage 1
+  Lightning profile, Chinchou evolution line, 80 HP, Ion Coating / Electric
+  Tackle, Yuka Morii credit, and e-Reader / Dot-Code context including D-65
+  vs D-65-# card IDs. The special identification packet tells agents to keep
+  H15 separate from Aquapolis Lanturn #21, Aquapolis Lanturn #20, Wind from
+  the Sea 044/087 and 037/087, reverse-holo listings, generic Lanturn wants,
+  #20 wants, and seller-card image claims. It also keeps Dot-Code and
+  e-Reader context legible only: not seller possession, authenticity,
+  condition truth, price truth, scan success, #20 equivalence, or
+  spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `ランターン` / Lantern, H15/H32, H15
+  vs #21 separation, #20 false-friend separation, 045/087 vs 044/087 vs
+  037/087, Yuka Morii, Mitsuhiro Arita, Ion Coating / Electric Tackle,
+  Lightning Ball / Conduction, D-65 / D-65-# e-Reader caveats,
+  special-identification packet, and corpus propagation. New catalog-history
+  corpus hash:
+  `71ddefd2a2d07f629d9d0051b366de07de33a7a6a6aba3aa22f43ef6c848b681`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
