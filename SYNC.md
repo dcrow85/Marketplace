@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 297: Base Set Clefairy #5 deepened; corpus 8061c8d6)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 298: Base Set Gyarados #6 deepened; corpus 71fb491e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-6` Gyarados #6 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Gyarados (Base Set 6)` and `Base Set (TCG)` as bounded community
+  references, and the local Japanese pre-English Expansion Pack / No Rarity
+  row `jp_tcg_expansion_pack_19961020:034`. The dossier now carries Gyarados /
+  `ギャラドス` / Gyaradosu, Base Set #6/102, Rare Holo, Stage 1 Water, Level 41,
+  100 HP, Magikarp evolution line, Fighting resistance, Dragon Rage,
+  Bubblebeam paralysis chance, Mitsuhiro Arita credit, and Japanese Expansion
+  Pack / PMCG1-034 lineage. Its special identification packet tells agents to
+  keep English Base Set #6 separate from Magikarp equivalence / transformation
+  lore premium shortcuts, Japanese Expansion Pack / No Rarity PMCG1-034, later
+  Gyarados printings / promo memory, Base Set 2 / Legendary Collection /
+  reprint memory, and English First Edition / Shadowless / Unlimited /
+  4th-print states unless seller evidence proves the specific lane. Validation
+  passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Gyarados downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
