@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 167: Game Boy Card GB2 Lugia deepened; corpus 1c3efa70)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 168: unnumbered WotC Game Boy Dragonite bridge deepened; corpus d2439eda)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/unnumbered_wotc_gameboy_dragonite_bridge_v0_1.json`
+  deepens the raw unnumbered WotC source-index view of Pokemon Card GB
+  Dragonite and its single modeled row, Dragonite source index 067. The pass is
+  intentionally a bridge, not a duplicate-object story: source index 067 now
+  routes agents into the richer `jp_tcg_gameboy_card_gb_19981218:060` Pokemon
+  Card GB Dragonite dossier. It preserves the source-date caveat: November 13,
+  1998 as aggregate-source baggage versus December 18, 1998 as the card-specific
+  Pokemon Card GB route date. Special ID rails require the agent to keep raw
+  source index, product-family row, Dragonite/Kairyu identity, GB-symbol
+  evidence, seller controlled images, and no-second-physical-release boundaries
+  separate. Generated gaps moved to 21 release / 3822 card. Current hashes:
+  corpus `d2439eda08f910e998ea7ad7474c52cf0e0bcf89bc568e6a22a195a443e93fd6`,
+  index `2dfc83036e99f29601da7a21c306fffdb14d4378e30eebe1a56b971a7b737dab`,
+  queue `94a2c7f429cd8b080a5d1cb7158bc1e39218d0640772882a9d5cc080fa8324a5`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/gameboy_card_gb2_lugia_v0_1.json`

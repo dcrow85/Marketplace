@@ -1,0 +1,484 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Unnumbered WotC source-index bridge for Pokemon Card GB Dragonite",
+    "release_family_id": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert",
+    "notes": [
+      "Deepens the raw unnumbered WotC source-group view of Pokemon Card GB Dragonite.",
+      "Covers the single modeled source-pinned row: Dragonite source index 067.",
+      "Treats this as a bridge into the richer Pokemon Card GB product-family dossier, not as a second physical Dragonite object."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Trading Card Game insert",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert",
+        "release_date": "1998-12-18",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "unnumbered promo source index 067",
+          "Pokemon Trading Card Game insert",
+          "Pokemon Card GB bridge",
+          "Dragonite / Kairyu route reconciliation",
+          "GB symbol as contact evidence",
+          "Ken Sugimori credit inherited from product-family dossier"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert:067",
+            "name": "Dragonite",
+            "number": "067",
+            "why": "The chase here is not a separate card; it is the audit handle. Source index 067 is the old unnumbered-promo map pin that lets an agent reconcile a loose Dragonite listing with the richer Pokemon Card GB product-family dossier.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Dragonite"
+            ],
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "artist credit supplied by this raw source row",
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "second physical release",
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete packaging variant census",
+          "official copy count"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Trading Card Game insert source-group row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "artist credit authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gameboy_card_gb_19981218.json",
+          "title": "Local Japanese pre-English catalog: Pokemon Card GB Dragonite product-family row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "same source schema as unnumbered WotC aggregate",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dragonite_(Pok%C3%A9mon_Card_GB_promo)",
+          "title": "Bulbapedia: Dragonite (Pokemon Card GB promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Card GB Dragonite",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "independent external source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "The local unnumbered WotC row groups source index 067 under the promotion/distribution note Pokemon Trading Card Game insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local unnumbered WotC aggregate slice carries November 13, 1998, while the richer Pokemon Card GB product-family slice and Bulbapedia route place the game/card context on December 18, 1998; agents should treat the earlier date as aggregate-source baggage for this bridge row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "This source-group dossier reconciles source index 067 with the richer Pokemon Card GB product-family row jp_tcg_gameboy_card_gb_19981218:060; it should not be promoted as evidence for a second physical Dragonite release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia identifies the physical card as the Dragonite Pokemon Card GB promo and describes the GB symbol as occupying the normal expansion-symbol location.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The raw unnumbered WotC source row does not provide illustrator credit; the product-family row and Bulbapedia support Ken Sugimori for the reconciled Dragonite identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "A safe source-index-067 match should route the agent into the Pokemon Card GB Dragonite checks: Dragonite identity, GB symbol, seller-controlled front/back evidence, and no collapse into Fossil, English Wizards, GB2 Lugia, or guidebook Venusaur branches.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "unnumbered_wotc_067_gameboy_dragonite_bridge_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent result says Dragonite, Pokemon Trading Card Game insert, Pokemon Card GB, unnumbered promo, source index 067, or raw WotC unnumbered row.",
+          "summary": "Treat source index 067 as a bridge into the Pokemon Card GB Dragonite dossier, not a standalone second-object proof.",
+          "steps": [
+            "Record whether the evidence came from the raw unnumbered WotC source index 067 view or the richer Pokemon Card GB product-family row.",
+            "If the row is source index 067, link it to jp_tcg_gameboy_card_gb_19981218:060 before making any buyer/seller recommendation.",
+            "Preserve the date caveat: November 13, 1998 is aggregate-source baggage here; December 18, 1998 is the card-specific Pokemon Card GB route date supported by the product-family slice.",
+            "Ask for seller-controlled front and back images before using catalog images or community references as anything beyond comparison.",
+            "Check Dragonite / カイリュー identity, the GB symbol, and the lower symbol area; keep blur, crop, absent mark, or conflicting symbol as named uncertainty.",
+            "Separate the card from Fossil Dragonite, English Wizards language context, Pokemon Card GB2 Lugia, Official Guidebook Venusaur, Carddass, and generic Dragonite collectibles.",
+            "Keep possession, authenticity, condition, official copy count, price, complete packaging, and spendability outside this source-index bridge."
+          ],
+          "not_claiming": [
+            "second physical release",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete packaging variant census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "The map pin behind Game Boy Dragonite",
+        "why_it_matters": "This dossier is deliberately less romantic than the Dragonite card itself, and that is why it matters. Source index 067 is the map pin: a raw unnumbered-promo handle that keeps old lists, database rows, and agent memories from drifting apart. The poetry lives in the GB Dragonite dossier; the discipline lives here. It tells the agent: yes, this is probably the same doorway, but walk through the richer product-family route before you spend attention or money.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "not_claiming": [
+          "second physical release",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete packaging variant census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert:067",
+      "type": "card",
+      "context": {
+        "name_en": "Dragonite",
+        "name_ja": "カイリュー",
+        "romaji": "Kairyu",
+        "number": "067",
+        "release_family_id": "jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert",
+        "release_name": "Pokemon Trading Card Game insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "067",
+        "rarity_signal": "unnumbered promotional source index",
+        "artist": "Ken Sugimori via reconciled Pokemon Card GB dossier",
+        "assembly_themes": [
+          "source index 067",
+          "Pokemon Card GB route bridge",
+          "Dragonite / Kairyu",
+          "GB symbol",
+          "duplicate-object prevention"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert.json#row:jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert:067",
+          "title": "Local Japanese unnumbered WotC catalog row: Dragonite source index 067",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gameboy_card_gb_19981218.json#row:jp_tcg_gameboy_card_gb_19981218:060",
+          "title": "Local Japanese pre-English catalog row: Pokemon Card GB Dragonite 060",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "same source schema as unnumbered WotC aggregate",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dragonite_(Pok%C3%A9mon_Card_GB_promo)",
+          "title": "Bulbapedia: Dragonite (Pokemon Card GB promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Card GB Dragonite",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "independent external source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered WotC row identifies Dragonite as source index 067 in the Pokemon Trading Card Game insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "The row's Pokemon Card GB / Pokemon Trading Card Game insert language reconciles with the product-family Dragonite 060 dossier rather than creating a separate physical card object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "This raw row itself does not provide illustrator credit; Ken Sugimori should be carried only through the reconciled Pokemon Card GB product-family dossier and Bulbapedia reference.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "A source-index-067 match should trigger the GB Dragonite check packet: Dragonite identity, GB symbol, seller-controlled images, and separation from Fossil, English Wizards, GB2 Lugia, and guidebook Venusaur branches.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "unnumbered_wotc_067_gameboy_dragonite_card_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Dragonite as source index 067, Pokemon Trading Card Game insert, Pokemon Card GB, GB promo, or unnumbered WotC promo.",
+          "summary": "Use this row as an audit bridge into Pokemon Card GB Dragonite 060; do not treat source index 067 as enough by itself.",
+          "steps": [
+            "Record source index 067 as the raw aggregate handle and Pokemon Card GB Dragonite 060 as the richer product-family target.",
+            "Ask for uncropped seller-controlled front and back images before relying on any reference page.",
+            "Check Dragonite / カイリュー / Kairyu identity and GB-symbol route evidence.",
+            "If illustrator credit matters, cite the product-family row or Bulbapedia, not the raw source-index row alone.",
+            "Separate from Fossil Dragonite, English Wizards language context, Pokemon Card GB2 Lugia, Official Guidebook Venusaur, Carddass, and generic Dragonite collectibles.",
+            "If packaging is claimed, require game/manual/insert evidence as a separate branch.",
+            "Require fresh possession evidence for trade use; this bridge only improves catalog legibility."
+          ],
+          "not_claiming": [
+            "second physical release",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete packaging variant census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dragonite 067: the audit handle, not the whole story",
+        "why_it_matters": "This row is not the thunderclap. It is the little filing tab that prevents the thunderclap from being misfiled. Dragonite source index 067 matters because unnumbered promos are easy to flatten: one famous name, several memories, no printed set number to save you. The correct move is humble and powerful: use 067 to find the GB Dragonite assembly, then demand the actual card evidence.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "second physical release",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete packaging variant census",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}
