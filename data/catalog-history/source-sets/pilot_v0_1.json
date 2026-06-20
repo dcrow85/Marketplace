@@ -1090,6 +1090,250 @@
       }
     },
     {
+      "uid": "en_wotc_base_set_19990109:base1-4",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-4",
+        "catalog_row_id": "4",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-4",
+          "title": "Local English WotC catalog row: Charizard base1-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-4",
+          "title": "Pokemon TCG API v2 card record: Charizard base1-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+          "title": "Bulbapedia: Charizard (Base Set 4)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Charizard as English Base Set row base1-4 / printed number 4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Charizard base1-4 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Mitsuhiro Arita as the illustrator for Charizard base1-4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Charizard base1-4 as a Level 76 Fire Stage 2 Pokemon evolving from Charmeleon, with HP 120, Water weakness, Fighting resistance, retreat cost 3, the Pokemon Power Energy Burn, and the attack Fire Spin.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard base1-4 matters because it became the English launch set's most famous pressure point: Arita's airborne fire-dragon image, 120 HP, Energy Burn, and Fire Spin made the card feel oversized before market culture made it mythic.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Charizard base1-4 from Japanese Expansion Pack / No Rarity Charizard, Base Set 2 Charizard, Legendary Collection Charizard, Expedition Charizard rows, CD/promo Charizard rows, Dark Charizard, Blaine's Charizard, Shining Charizard, and later Charizard ex/GX/V memory; the English Base row number, set id base1, Rare Holo status, Mitsuhiro Arita credit, Energy Burn text, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_charizard_4_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Charizard, original Charizard holo, base1-4, Charizard #4, Shadowless Charizard, First Edition Charizard, Unlimited Charizard, Arita Charizard, Energy Burn Charizard, or Fire Spin Charizard.",
+          "summary": "Charizard base1-4 is the English Base Set Rare Holo row. Preserve set id base1, printed number 4, and edition/Shadowless evidence before comparing to other Charizard prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 4 before using this dossier.",
+            "Check the card is the Rare Holo Charizard with Mitsuhiro Arita credit, Energy Burn, Fire Spin, HP 120, Water weakness, Fighting resistance, and retreat cost 3.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Charizard, Base Set 2 Charizard, Legendary Collection Charizard, Expedition Charizard rows, CD/promo Charizard rows, Dark Charizard, Blaine's Charizard, Shining Charizard, and later Charizard ex/GX/V memories.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, stage line, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, edition, and grail claims as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "grail valuation",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Charizard equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "4",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "starter-line gravity",
+          "grail pressure",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Charizard",
+          "4",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Burn",
+          "Fire Spin",
+          "HP 120",
+          "Level 76",
+          "Water weakness",
+          "Fighting resistance",
+          "retreat cost 3"
+        ],
+        "collector_texture_note": "Base Set Charizard is the English launch holo where Arita's image, Fire-type spectacle, and later grail culture all meet. The catalog must preserve that gravity without turning it into price or variant truth.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "grail valuation",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard #4: the launch binder's gravity well",
+        "why_it_matters": "Base Set Charizard is the card that can distort the whole room. It is Arita's dragon in flight, 120 HP, Energy Burn, Fire Spin, the childhood memory, the auction headline, the card everyone thinks they know. That is exactly why the catalog has to be disciplined. The feeling matters; the assembly matters more. This row is English Base Set base1-4 first, edition evidence second, condition and authenticity only after seller proof. Let the grail glow, but do not let the glow become provenance.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "grail valuation",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_tcg_expansion_pack_19961020:001",
       "type": "card",
       "context": {

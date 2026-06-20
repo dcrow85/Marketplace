@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 198: English Base Set Blastoise 2 deepened; corpus 60fbb563)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 199: English Base Set Charizard 4 deepened; corpus aa025d72)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-ninth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-4` Charizard / Base Set #4 is now
+  hand-authored rather than generator memory. The pass records Mitsuhiro Arita
+  credit, Rare Holo status, HP 120 Level 76 Fire Stage 2 profile, Charmeleon
+  evolution line, Energy Burn Pokemon Power, Fire Spin, Water weakness,
+  Fighting resistance, retreat cost 3, and the launch-binder texture of
+  Charizard as the card that can distort the whole room. The special
+  identification packet is explicit and first-class: agents must separate
+  English Base Charizard from Japanese Expansion Pack / No Rarity Charizard,
+  Base Set 2 Charizard, Legendary Collection Charizard, Expedition Charizard
+  rows, CD/promo Charizard rows, Dark Charizard, Blaine's Charizard, Shining
+  Charizard, later Charizard ex/GX/V memory, and all edition/Shadowless claims
+  without seller evidence. Boundaries remain explicit: catalog legibility is
+  not seller possession, authenticity, condition, grail valuation, First
+  Edition status, Shadowless status, Unlimited status, holo-surface condition,
+  graded-cert truth, price, or spendability. Generated gaps remain release
+  queue 0 and card queue 100. Hashes: corpus
+  `aa025d72c429ff37a782c067e39e9d35193f354054483f8903f1296c4b23406e`,
+  index `ef8f8ff3b3d06d3a1d7342ef0c14620984be2acef04f107875934fba54622f05`,
+  queue `daa34f2e57936144f004d58cb2e3232a3ccbe81944deaa2144ef1e91e624f8f8`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-eighth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `en_wotc_base_set_19990109:base1-2` Blastoise / Base Set #2 is now
