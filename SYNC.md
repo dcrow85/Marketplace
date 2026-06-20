@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 247: P Promo Entei 043 deepened; corpus af05044d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 248: P Promo Pichu 045 deepened; corpus 1fcc0817)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-045-p`
+  Pichu 045/P is now hand-authored rather than generator memory. This pass
+  used the exact Bulbapedia raw page `Pichu (P Promo 45)`, plus `Pichu
+  (Expedition 22)`, `Pichu Bros. (P Promo 28)`, and `Pichu (Wizards Promo
+  35)` as adjacent confusion sources. The row now carries Pichu /
+  `ピチュー` / Pichu, Lightning Baby, HP 30, Midori Harada illustration
+  credit, Heal Link / `ヒールリンク`, the Celebi Bench condition, printed
+  `045/P`, e-Reader `Z-29-#`, and the Tokotoko Truck long-strip context
+  requiring four other P Promotional cards. Route is Pokemon Happy Adventure
+  Rally 2002: JR East Yamanote Line, August 3-August 18, 2002, with Pichu
+  obtainable at the booth at Shinjuku Station. The special identification
+  packet tells agents to confirm Pichu / `ピチュー`, printed `045/P`, Midori
+  Harada credit, `Z-29-#`, the Happy Adventure Rally / Shinjuku Station route,
+  and the Celebi-dependent attack text; do not merge with Pichu 032/P,
+  Pichu Bros. 028/P, Wizards Black Star Promo 35, Premium File 2,
+  Sample/Expedition/Base Expansion/McDonald's Pichu, Pokemon Heroes / Camp
+  Pikachu Pichu Bros., later Pichu, or generic e-Reader Pichu. No-overclaim
+  boundaries remain explicit: this catalogs identity/history/context only,
+  not seller possession, authenticity, condition, price, provenance, or
+  spendability.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
