@@ -248,6 +248,291 @@
       ]
     },
     {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_238_neo_summer_road_regional_first_place_prize:238",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_238_neo_summer_road_regional_first_place_prize",
+        "row_id": "jp_promo_unnumbered_wotc_238_neo_summer_road_regional_first_place_prize:238",
+        "catalog_row_id": "238",
+        "name_en": "No.1 Trainer",
+        "name_ja": "Ｎｏ.１トレーナー",
+        "romaji": "No.1 Trainer",
+        "card_number": "None",
+        "release_name": "Neo Summer Road regional first place prize",
+        "source_expansion_lineage": "Unnumbered Promotional cards / Neo Summer Road / Neo Battle Road 2001 regional first-place prize",
+        "rank": "Regional first place",
+        "variant_lane": "Boy Neo Summer"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Summer Road regional first place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_238_neo_summer_road_regional_first_place_prize.json#row:jp_promo_unnumbered_wotc_238_neo_summer_road_regional_first_place_prize:238",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 238",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: No.1 Trainer (Pokemon Card Game Official Tournament promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=No.1_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)&action=raw",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Boy Neo Summer No.1 Trainer (Neo Battle Road 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/boy-neo-summer-no-1-trainer-neo-battle-road-2001-unnumbered/",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia unnumbered promo row align row 238 with the Neo Summer Road regional first-place No.1 Trainer, with no printed card number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese display name as Ｎｏ.１トレーナー, translated directly as No.1 Trainer.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says No.1 Trainer versions were awarded to champions of each regional Neo Summer Road tournament held between July and August 2001; those regional versions include the winner name and regional conference and came in male and female variants.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the regional Neo Summer Road print from the Best in Japan Deciding Match print: the regional print recognizes a Battle Neo Summer Road champion, while the finals print recognizes a Battle Neo Summer Road Senior Tournament Best in Japan Deciding Match champion.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia frames the 2001 Neo Spring Road and Neo Summer Road trophy lines as name-and-regional-conference cards with male/female variants, and says the Neo Summer Road branch features Ho-Oh while the Spring branch features Lugia.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Pokumon lists Ken Sugimori as the artist and Non-holo as the treatment for Boy Neo Summer No.1 Trainer (Neo Battle Road 2001); this is collector-database context, not physical proof of any submitted card.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "card.rarity",
+          "text": "Pokumon lists the card as Japanese, Tournament Winner, Neo Battle Road, Boy Neo Summer No.1 Trainer, with estimated 14 copies; that estimated 14-copy language is collector/database estimate only, not official copy-count truth.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Row 238 is a regional champion object, not the Neo Summer Road Best in Japan row 242 finals object and not the Neo Spring Road row 222 regional object. Its collector identity sits in the Neo Summer regional route, Boy Neo Summer lane, regional champion wording, name/conference card tradition, Ho-Oh Summer branch, Ken Sugimori credit, Non-holo treatment, and 14-copy collector estimate.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must keep row 238 pinned to No.1 Trainer, Neo Summer Road regional first-place route, Battle Neo Summer Road champion wording, Boy Neo Summer / Neo Battle Road 2001 context, Ken Sugimori / Non-holo collector context, and separation from Neo Spring Road regional row 222, Neo Summer Road Best in Japan row 242, rows 239-240, rows 243-244, Battle Road 2002, 1997-1999, and later World Championships trophy cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_summer_road_regional_no1_card_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No.1 Trainer, Ｎｏ.１トレーナー, Neo Summer Road, Neo Battle Road 2001, Boy Neo Summer, Battle Neo Summer Road, regional first place, regional champion, Ken Sugimori, Non-holo, estimated 14 copies, Ho-Oh, male variant, or row 238.",
+          "summary": "Identify row 238 by the regional assembly: No.1 rank, Neo Summer Road regional first-place route, Boy Neo Summer lane, Sugimori/Non-holo collector context, and Ho-Oh Summer branch.",
+          "steps": [
+            "Confirm the title No.1 Trainer / Ｎｏ.１トレーナー and do not match by title alone; No.1 Trainer is reused across trophy eras.",
+            "Confirm Neo Summer Road regional first place prize / Battle Neo Summer Road champion context, not the Battle Neo Summer Road Senior Tournament Best in Japan Deciding Match finals branch.",
+            "Preserve the regional route: Neo Summer Road tournaments were held between July and August 2001, before the August 25, 2001 Best in Japan finals.",
+            "Treat Boy Neo Summer as a load-bearing variant clue and preserve the broader male/female regional-variant context from Bulbapedia.",
+            "Use Ho-Oh / Neo Summer Road competition-logo context as a Summer branch clue, and keep it separate from Lugia / Neo Spring Road.",
+            "Record Ken Sugimori and Non-holo as Pokumon collector-database context, not official physical-card proof.",
+            "Treat estimated 14-copy language as collector/database estimate only unless a stronger official tournament ledger is supplied.",
+            "Keep this card separate from Neo Spring Road regional No.1 row 222, Neo Summer Road Best in Japan No.1 row 242, Neo Summer Road regional No.2/No.3 rows 239-240, Neo Summer Road Best in Japan No.2/No.3 rows 243-244, Battle Road 2002, 1997-1999 No.1 Trainer prints, and later World Championships No.1 Trainer cards.",
+            "For transaction use, request seller photos/provenance/cert evidence and expert review before promoting this catalog identity into any claim about a physical card."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "complete tournament archive",
+            "seller-card photograph match",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=No.1_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)&action=raw"
+            },
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw"
+            },
+            {
+              "source": "Pokumon",
+              "source_page_url": "https://pokumon.com/card/boy-neo-summer-no-1-trainer-neo-battle-road-2001-unnumbered/"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "None",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Neo Summer Road regional first-place route; estimated 14-copy language is collector/database context, not official copy-count truth",
+        "assembly_themes": [
+          "regional first-place trophy",
+          "Boy Neo Summer lane",
+          "Neo Battle Road 2001",
+          "Ken Sugimori regional art",
+          "Non-holo trophy route",
+          "Ho-Oh Summer branch"
+        ],
+        "collector_texture_note": "This is the champion card before the national-final narrowing. The important thing is not only the No.1 label but the regional Summer route: Boy Neo Summer, Ho-Oh rather than Lugia, Sugimori rather than the finals Akabane lane, and a fourteen-copy estimate that should stay a collector estimate.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "human_title": "No.1 Trainer row 238: a Summer regional champion before the finals",
+        "why_it_matters": "Row 238 is where a regional win becomes a card-object. It is not the Best in Japan apex yet; it is the road that leads there, marked by Boy Neo Summer, a regional champion route, Ho-Oh instead of Lugia, and the Sugimori/Non-holo lane. A good agent should feel that this card is a local victory made portable, not just another No.1 Trainer title.",
+        "not_claiming": [
+          "complete Neo Summer Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_239_neo_summer_road_regional_second_place_prize",
       "context": {
