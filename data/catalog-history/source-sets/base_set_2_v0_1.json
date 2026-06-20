@@ -3877,6 +3877,322 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-20",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "romaji": "Sandaa",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-20",
+        "catalog_row_id": "base4-20",
+        "card_number": "20/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Zapdos / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-20",
+          "title": "Local Base Set 2 row: Zapdos base4-20",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-20",
+          "title": "Pokemon TCG API v2 card record: Zapdos base4-20",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-16",
+          "title": "Local English WoC catalog: original Base Set Zapdos base1-16",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:042",
+          "title": "Local Japanese pre-English catalog: Zapdos / PMCG1-042",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-20 as Zapdos, Base Set 2 card 20/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Zapdos as a Basic Lightning Pokemon, Level 64, 90 HP, with Fighting resistance and a three-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card attacks are Thunder, a 60-damage attack that can recoil 30 damage on tails, and Thunderbolt, a 100-damage attack that discards all Energy attached to Zapdos.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Zapdos base4-20 to Ken Sugimori; the related original Base Set and Japanese pre-English lanes carry the same launch-era art memory without proving a seller card belongs to those lanes.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The original English Base Set row base1-16 and Japanese Expansion Pack row PMCG1-042 carry the related Zapdos / Thunder / Thunderbolt memory, while Base Set 2 base4-20 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Zapdos #20/130 must be kept separate from original Base Set #16/102, Japanese Expansion Pack / No Rarity PMCG1-042, Quick Starter Gift Set, Fossil Zapdos, Black Star Promo Zapdos, Aquapolis Zapdos, Pokemon Card web, phone-card/event Zapdos objects, Lucky Stadium [Zapdos], and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Zapdos matters as reassembled launch lightning: a legendary bird with huge self-cost attacks returns, but the catalog has to keep the crackle from jumping across every other Zapdos-shaped object in the market.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_zapdos_20_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos, Sandaa, サンダー, Base Set 2, base4-20, 20/130, Thunder, Thunderbolt, Ken Sugimori, Base Set, base1-16, 16/102, Japanese Expansion Pack, PMCG1-042, No Rarity, Quick Starter Gift Set, Fossil, Black Star Promo, Aquapolis, Pokemon Card web, phone card, Tropical Mega Battle, Lucky Stadium, or legendary bird.",
+          "summary": "Identify English Base Set 2 Zapdos #20/130 as base4-20, then keep it separate from original Base Set #16/102, Japanese Expansion Pack / No Rarity PMCG1-042, Quick Starter, Fossil, Black Star, Aquapolis, web, phone-card/event, and Lucky Stadium Zapdos lanes unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-20, printed number 20/130, Rare Holo, Ken Sugimori credit, Thunder, Thunderbolt, Basic Lightning, and Level 64.",
+            "Do not infer original Base Set, First Edition, Shadowless, Unlimited, 4th print, Japanese No Rarity, Quick Starter Gift Set, Fossil, Black Star Promo, Aquapolis, Pokemon Card web, phone-card/event, Lucky Stadium, condition, price, or authenticity from shared Zapdos identity or legendary-bird appeal.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to base1-16 and PMCG1-042 is lineage, not equivalence.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, edition/source claim if present, lower-right rarity area for Japanese copies, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "original Base Set equivalence",
+            "Japanese No Rarity proof",
+            "Japanese Expansion Pack equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Quick Starter equivalence",
+            "Fossil equivalence",
+            "Black Star Promo equivalence",
+            "Aquapolis equivalence",
+            "Pokemon Card web equivalence",
+            "phone-card/event equivalence",
+            "Lucky Stadium equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "20/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #20/130, separate from original Base Set #16/102, Japanese Expansion Pack / No Rarity PMCG1-042, Fossil, Black Star, Aquapolis, web, phone-card/event, and Lucky Stadium Zapdos rows.",
+        "artist": "Ken Sugimori",
+        "themes": [
+          "Base Set 2 reprint holo",
+          "launch lightning memory",
+          "Japanese Expansion Pack lineage",
+          "Ken Sugimori legendary bird art",
+          "Thunder recoil risk",
+          "Thunderbolt all-energy discard",
+          "legendary bird market gravity",
+          "No Rarity boundary",
+          "event-object boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 Zapdos keeps the jagged launch-bird voltage, but the market is full of other Zapdos storms. The symbol has to ground the lightning."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The lightning grounded in a symbol",
+        "why_it_matters": "Base Set 2 Zapdos is a legendary bird with old-card danger still intact. Thunder can punish itself. Thunderbolt hits for 100 and burns every Energy attached. It is a card built like a storm: huge, costly, a little reckless. That is exactly why the agent has to be disciplined. Zapdos appears all over the early Pokemon assembly: Base Set, Japanese No Rarity, Quick Starter, Fossil, Black Star, Aquapolis, web, phone cards, Lucky Stadium, movie-era objects. Base Set 2 does not erase that electricity; it cages it in a 2000 compilation row. The feeling is thunder. The proof is set, number, symbol, and seller evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price",
+          "condition",
+          "authenticity",
+          "seller possession",
+          "original Base Set equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "Japanese No Rarity proof",
+          "Quick Starter equivalence",
+          "Fossil equivalence",
+          "Black Star Promo equivalence",
+          "Aquapolis equivalence",
+          "Pokemon Card web equivalence",
+          "phone-card/event equivalence",
+          "Lucky Stadium equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
