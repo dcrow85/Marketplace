@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 180: Neo Era Premium File 2 Charizard singleton deepened; corpus 6b6a9fdc)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 181: How I Became a Pokemon Card Vol. 4 Sunkern deepened; corpus 4d514a69)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-first
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol4_sunkern_v0_1.json`
+  deepens the August 23, 2000 How I Became a Pokemon Card Vol. 4 insert and
+  its single modeled row, Sunkern / ヒマナッツ / Himanuts source index 206. The
+  pass frames the card as a Kagemaru Himeno / 姫野かげまる manga-book route where
+  a small seed Pokemon gains story meaning because the book explains why the
+  card image exists, not merely because the card is old or scarce. It preserves
+  ISBN 4889917578, Kadokawa-Media Factory publication context, the Natta Wake
+  Sunkern nickname, Pokemon Card Books bonus-card border text, and the Sunkern
+  plus Spearow illustration context. Special identification packets now separate
+  this row from Neo Genesis Sunkern, Neo Destiny Sunkern, modern Sunkern cards,
+  Sunflora-line listings, generic Natta Wake lots, and the other How I Became a
+  Pokemon Card volume promos such as Vol. 1 Mankey, Vol. 2 Psyduck, Vol. 3
+  Jynx, Vol. 5 Hoppip, and Vol. 6 _____'s Pikachu. Boundaries remain against
+  seller possession, authenticity, condition, price, complete book/insert state,
+  official copy count, and spendability. Generated gaps are now release queue 8
+  and card queue 100. Hashes: corpus
+  `4d514a69eeb36ecec917ce4d36a75cb3dd5cc353411f29eb26de6fcbcb7e3459`,
+  index `011837ec748fed74b52920f93ee65ca4e05f40514dc617afffe058303cf2a2ee`,
+  queue `9a2b15f305858e2ffd720c2bd8d8657beb98c9bc3240c77e8c11d1c66a90a8ce`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eightieth
   catalog-history pass:
   `data/catalog-history/source-sets/neo_era_premium_file_2_charizard_v0_1.json`
