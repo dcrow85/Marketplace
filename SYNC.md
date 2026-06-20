@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 170: Mewtwo Strikes Back VHS Mewtwo deepened; corpus c1aa40c2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 171: How I Became a Pokemon Card Vol. 1 Mankey deepened; corpus c331e32e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-first
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol1_mankey_v0_1.json`
+  deepens the May 22, 1999 How I Became a Pokemon Card Vol. 1 insert source
+  slice and its single modeled row, Mankey source index 095. The pass frames the
+  row as a manga/book route by Kagemaru Himeno: the card image is not only
+  collected, but explained by the Natta Wake story apparatus. It preserves
+  Kadokawa-Media Factory / ISBN context, Himeno authorship and illustration,
+  the open-book-with-card symbol, glossy unnumbered promo identity, and
+  boundaries against Jungle Mankey, Brock's Mankey, generic Natta Wake lots, and
+  the other volume inserts. Seller controlled front/back images, open-book
+  symbol visibility, book/obi/bag/insert provenance, complete book state, and
+  fresh possession proof remain outside catalog authority until supplied.
+  Generated gaps moved to 18 release / 3819 card. Current hashes: corpus
+  `c331e32e43d3c6ac796f1732bb4eb4c6266c926f2cba1096a048bcc06317a4f9`,
+  index `9a2035797d3179d5b1db63fe7f4358bbb3657c4647ea56c0d666f88e281594ac`,
+  queue `0007c20acd342f72794090192bbeb86ee96389189a91fff39b932055deaad8c4`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventieth
   catalog-history pass:
   `data/catalog-history/source-sets/mewtwo_strikes_back_vhs_mewtwo_v0_1.json`
