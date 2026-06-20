@@ -2209,6 +2209,232 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-011-p",
+      "type": "card",
+      "context": {
+        "name_en": "Rapidash",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-011-p",
+        "catalog_row_id": "011/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-011-p",
+          "title": "Local Japanese promo WotC catalog row: Rapidash 011/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Rapidash as P Promotional card number 011/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records January 2002 CoroCoro Comic, with a December 2001 note, as the distribution context for Rapidash 011/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Rapidash 011/P as a Fire Pokemon row, but does not provide HP, attacks, stage text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Rapidash 011/P, so this dossier leaves the artist unset rather than importing artist memory from another Rapidash print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Rapidash 011/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Rapidash 011/P matters because it keeps the numbered P spine in CoroCoro's ordinary-magazine rhythm: a Fire-type Kanto favorite carried through a January 2002 issue notation with a December 2001 timing cue.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Rapidash and printed 011/P, preserve the January 2002 CoroCoro Comic / December 2001 note as distribution context only, and avoid importing ordinary Rapidash rows, later Rapidash promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_rapidash_011_corocoro_date_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Rapidash P promo, CoroCoro Rapidash, January 2002 CoroCoro Rapidash, December 2001 Rapidash, 011/P, Japanese Rapidash promo, or early numbered P Promotional card.",
+          "summary": "Confirm Rapidash and printed 011/P before treating the card as this January 2002 CoroCoro Comic / December 2001-note P Promotional row.",
+          "steps": [
+            "Confirm the card name is Rapidash.",
+            "Read the printed promo number as 011/P and keep it inside the numbered P Promotional spine.",
+            "Keep the January 2002 CoroCoro Comic and December 2001 timing note legible together; do not collapse the date cue into a single unqualified date.",
+            "Do not merge this card with ordinary Rapidash expansion cards, later Rapidash promos, English Rapidash rows, or other CoroCoro promo memories without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for CoroCoro issue provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro issue copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ordinary Rapidash equivalence",
+            "later Rapidash equivalence",
+            "single-date certainty beyond source wording",
+            "magazine-object provenance",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "011/P",
+        "rarity_signal": "January 2002 CoroCoro Comic (December 2001)",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro route",
+          "issue-date boundary",
+          "numbered P spine",
+          "Fire-type Kanto favorite",
+          "magazine-reader route",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "011/P",
+          "Rapidash",
+          "Fire",
+          "January 2002 CoroCoro Comic",
+          "December 2001 note",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Rapidash 011/P is a date-discipline card: a familiar Fire Pokemon, but the collector work lives in preserving the January 2002 CoroCoro / December 2001 wording instead of sanding it smooth."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rapidash 011/P: the date cue matters",
+        "why_it_matters": "Rapidash gives this stretch of the P spine a little heat after the legends and tournament air. The row is charming because it is humble: a magazine route, a printed number, a Fire-type favorite, and a date phrase that refuses to be made too simple. For an agent, that is the lesson. Preserve the exact assembly first; let the seller prove the physical card later.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro issue copy provenance",
+          "illustrator credit",
+          "image witness",
+          "single-date certainty beyond source wording"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-012-p",
       "type": "card",
       "context": {
