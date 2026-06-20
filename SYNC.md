@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 302: Base Set 2 Alakazam #1 deepened; corpus b38089e5)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 303: Base Set 2 Nidoking #11 deepened; corpus f3cbec1f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-11` Nidoking #11 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` as a bounded community reference, and the
+  original English Base Set Nidoking row as a local lineage comparator. The
+  dossier now carries Base Set 2 #11/130, Rare Holo, Stage 2 Grass, Level 23,
+  90 HP, Nidorino evolution line, Thrash, Toxic, Ken Sugimori credit, and the
+  reassembled boss-monster memory distinction from original Base Set #11/102.
+  Its special identification packet tells agents to keep Base Set 2 Nidoking
+  separate from original Base Set / First Edition / Shadowless memory,
+  Japanese Expansion Pack / No Rarity claims, and seller-owned physical
+  evidence unless seller scans prove the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Nidoking downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-second
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:

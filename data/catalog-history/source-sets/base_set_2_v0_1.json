@@ -2352,6 +2352,286 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-11",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoking",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-11",
+        "catalog_row_id": "base4-11",
+        "card_number": "11/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Nidoking / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-11",
+          "title": "Local Base Set 2 row: Nidoking base4-11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-11",
+          "title": "Pokemon TCG API v2 card record: Nidoking base4-11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-11",
+          "title": "Local English WoC catalog: original Base Set Nidoking base1-11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-11 as Nidoking, Base Set 2 card 11/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Nidoking as a Stage 2 Grass Pokemon, Level 23, 90 HP, evolving from Nidorino, with Psychic weakness and a three-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks are Thrash, a 30+ coin-flip attack that can recoil 10 damage onto Nidoking, and Toxic, which poisons for 20 damage after each player's turn instead of 10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Nidoking base4-11 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The original English Base Set row base1-11 carries the same Nidoking / Thrash / Toxic memory, but Base Set 2 base4-11 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Nidoking #11/130 must be kept separate from original Base Set #11/102, Japanese Expansion Pack / No Rarity Nidoking, Shadowless / First Edition memory, and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Nidoking matters as reassembled boss-monster memory: the same spiked, poisonous Sugimori holo returns, but now the card teaches that collector feeling can be preserved while provenance, symbol, and release context change.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_nidoking_11_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Nidoking, Base Set 2, base4-11, 11/130, Thrash, Toxic, Ken Sugimori, Base Set, base1-11, 11/102, Shadowless, First Edition, Japanese Expansion Pack, No Rarity, or same artwork.",
+          "summary": "Identify English Base Set 2 Nidoking #11/130 as base4-11, then keep it separate from original Base Set #11/102, Japanese Expansion Pack / No Rarity, and English print-run states unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-11, printed number 11/130, Rare Holo, Ken Sugimori credit, Thrash, and Toxic.",
+            "Do not infer original Base Set, First Edition, Shadowless, Unlimited, 4th print, Japanese No Rarity, condition, price, or authenticity from the shared Nidoking art or game text.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to base1-11 is lineage, not equivalence.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "original Base Set equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Japanese No Rarity proof",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "11/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #11/130, separate from original Base Set #11/102, Japanese Expansion Pack / No Rarity, and English print-run states.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set 2 reprint holo",
+          "boss-monster memory",
+          "Ken Sugimori launch art recontextualized",
+          "Thrash recoil continuity",
+          "Toxic pressure continuity",
+          "Base Set boundary",
+          "No Rarity boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 Nidoking keeps the spikes and poison, but the symbol changes the object. It is the boss memory refiled into a new binder chapter."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The boss monster refiled",
+        "why_it_matters": "Base Set 2 Nidoking still has the old force: Thrash can bite back, Toxic makes poison nastier, and Sugimori's Nidoking still feels like a spiked boss in the holo row. But this is not the launch copy wearing a new sentence. It is a 2000 compilation object, part of Pokemon learning to carry its own early memory forward. That makes it useful to collectors and agents at the same time. The feeling can be continuous; the provenance cannot be assumed. The set symbol, number, and seller evidence have to do the work.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "original Base Set equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "No Rarity proof",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
