@@ -1253,6 +1253,248 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
+        "catalog_row_id": "021/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Sample Set / Expedition Base Set / Base Expansion Pack / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
+          "title": "Local catalog row: Pikachu 021/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pikachu_(Expedition_124)&action=raw",
+          "title": "Bulbapedia raw wikitext: Pikachu (Expedition 124)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as numbered P Promotional row 021/P in the McDonald's promotion held on Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the underlying card as Pikachu / ピカチュウ, a Lightning Basic Pokemon with HP 50, Fighting weakness, retreat cost 1, and Atsuko Nishida illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia places this card in a lineage that includes the Sample Set, English Expedition Base Set 124/165, Japanese Base Expansion Pack 016/128, and Japanese P Promotional 021/P.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the P Promotional print used new artwork by Atsuko Nishida and was released through a McDonald's promotion running between January 26 and February 24, 2002.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Lightning Tail / でんきしっぽ and Tackle / たいあたり, and its e-Reader long strip contains sound data for the Construction: Melody Box application.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia separates three print contexts: standard Expedition and P Promotional prints with card ID B-16-#, and a Sample version with card ID M-16-# used to demonstrate Dot Code technology before Expedition's release.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Pikachu 021/P matters because it moves the mascot through an ordinary weekend ritual: a McDonald's promotion, public holidays, e-Reader sound data, and a numbered P-promo spine all wrapped around a new Nishida Pikachu image.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Pikachu 021/P from Expedition Base Set 124/165, Japanese Base Expansion Pack 016/128, Sample Set Pikachu, other McDonald's Pikachu cards, ANA Pikachu 004/P, Festa Pikachu 038/P, Happy Adventure Rally Pikachu 044/P, and generic Pikachu promos; the P number and McDonald's date window are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_021_p_pikachu_mcdonalds_boundary_v0.1",
+          "trigger": "A user says Pikachu P promo, McDonald's Pikachu, Expedition Pikachu promo, e-Reader Pikachu, 021/P, or January-February 2002 McDonald's promotion.",
+          "summary": "Confirm 021/P and the January 26-February 24, 2002 McDonald's weekend/public-holiday route before treating a Pikachu listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 021/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve the McDonald's promotion route and date window: Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+            "Check the subject line as Pikachu / ピカチュウ, not merely a generic mascot promo.",
+            "Check that the profile matches the Expedition-era Pikachu line: Lightning Basic, HP 50, Fighting weakness, retreat cost 1.",
+            "Use Atsuko Nishida as the card-art credit for this underlying Pikachu card, while remembering that artist credit is not physical-card authentication.",
+            "Distinguish the P Promotional print with new artwork from Expedition Base Set 124/165 and Japanese Base Expansion Pack 016/128.",
+            "Keep the Sample Set / Dot Code demonstration branch separate. Sample Set rarity or pre-release context does not automatically attach to a 021/P McDonald's card.",
+            "Check for Lightning Tail / でんきしっぽ and Tackle / たいあたり when comparing card text.",
+            "Use the Construction: Melody Box long-strip note as e-Reader context, not as proof that a seller's scan is readable or functional.",
+            "Separate this from ANA Pikachu 004/P, Pokemon Festa Pikachu 038/P, Happy Adventure Rally Pikachu 044/P, other McDonald's Pikachu cards, and generic P Promotional Pikachu listings.",
+            "If a seller claims fast-food provenance, ask for seller-controlled evidence of the card and any wrapper, packet, store, or campaign material separately.",
+            "Treat price, scarcity, sealed-packet state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete McDonald's campaign proof",
+            "sealed-packet state",
+            "Sample Set equivalence",
+            "other Pikachu equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "021/P",
+        "rarity_signal": "McDonald's promotion, Saturdays/Sundays/public holidays January 26-February 24, 2002",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "promo distribution",
+          "food/campaign distribution",
+          "e-Reader era lineage",
+          "mascot gravity",
+          "identity trap"
+        ],
+        "signals": [
+          "Pikachu",
+          "ピカチュウ",
+          "021/P",
+          "McDonald's promotion",
+          "January 26-February 24, 2002",
+          "Atsuko Nishida",
+          "Lightning Tail",
+          "でんきしっぽ",
+          "Tackle",
+          "たいあたり",
+          "Construction: Melody Box",
+          "Sample Set",
+          "Expedition Base Set"
+        ],
+        "collector_texture_note": "Pikachu 021/P is a mascot card with a lunch-counter route: Nishida art, e-Reader sound data, and a Japanese McDonald's promotion that only ran on weekends and public holidays.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete campaign provenance",
+          "Sample Set equivalence"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 021/P: the mascot at the weekend counter",
+        "why_it_matters": "This is the kind of card that makes the P Promotional spine feel alive. Pikachu is already everywhere, but 021/P gives it a very specific room: a Japanese McDonald's counter on a weekend or public holiday in early 2002, with Atsuko Nishida drawing a new version for an e-Reader-era object. The protocol lesson is the same as the collector joy: route makes the mascot real.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "sealed-packet state",
+          "Sample Set equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
       "type": "card",
       "context": {

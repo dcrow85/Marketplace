@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 191: P Promotional Blastoise 013/P deepened; corpus b7909d74)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 192: P Promotional McDonald's Pikachu 021/P deepened; corpus 90526107)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p`
+  deepens Pikachu / ピカチュウ 021/P. The pass pins 021/P to the Japanese
+  McDonald's promotion held on Saturdays, Sundays, and public holidays from
+  January 26 through February 24, 2002, not generic mascot promo memory. It
+  records Atsuko Nishida illustration credit, Sample Set / Expedition Base Set
+  / Japanese Base Expansion Pack / P Promotional lineage, new P-promo artwork,
+  Lightning Tail / でんきしっぽ, Tackle / たいあたり, e-Reader Construction:
+  Melody Box sound-data context, and the Sample Set / Dot Code demonstration
+  branch as context that must not be inherited by the McDonald's card. The
+  special identification packet separates 021/P from Expedition 124/165,
+  Japanese Base Expansion Pack 016/128, Sample Set Pikachu, ANA Pikachu 004/P,
+  Pokemon Festa Pikachu 038/P, Happy Adventure Rally Pikachu 044/P, other
+  McDonald's Pikachu cards, and generic P Promotional Pikachu rows. Boundaries
+  remain explicit: route legibility is not seller possession, authenticity,
+  condition, complete McDonald's campaign proof, sealed-packet state, Sample
+  Set equivalence, price, or spendability. Generated gaps remain release queue
+  0 and card queue 100. Hashes: corpus
+  `905261079a70fbbd588d2ab5fe6e80dd1c14b03526cbe0d0f4de38d00eaf080b`,
+  index `a1e826b88cb743efecc4b0cbe77f7522ac6e3f68ea7336c38fe2aa43bd461406`,
+  queue `a9326203275755e06bbed71341e7d03877f75d851e64168f8a2a2d0724f86608`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-first
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
