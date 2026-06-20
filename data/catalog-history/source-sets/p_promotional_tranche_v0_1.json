@@ -3733,6 +3733,233 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-018-p",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Imakuni?",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-018-p",
+        "catalog_row_id": "018/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-018-p",
+          "title": "Local Japanese promo WotC catalog row: Shining Imakuni? 018/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Shining Imakuni? as P Promotional card number 018/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokemon Fan Club new membership giveaway as the distribution context for Shining Imakuni? 018/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Shining Imakuni? 018/P as a Trainer row, but does not provide card text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Shining Imakuni? 018/P, so this dossier leaves the artist unset rather than importing artist memory from another Imakuni print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Shining Imakuni? 018/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Shining Imakuni? 018/P matters because the P Promotional spine makes room for Pokemon's club-culture weirdness: a human-performer/character Trainer row routed through new Fan Club membership rather than a booster pack or standard set.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Shining Imakuni?, printed 018/P, Trainer row identity, and the Pokemon Fan Club new membership giveaway route; avoid importing other Imakuni cards, performer history, card text, Japanese name, or image details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_shining_imakuni_018_fan_club_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Shining Imakuni?, Imakuni P promo, Fan Club Imakuni, Pokemon Fan Club membership giveaway, 018/P, Japanese Imakuni promo, or early numbered P Promotional Trainer card.",
+          "summary": "Confirm Shining Imakuni?, printed 018/P, and the Pokemon Fan Club new membership giveaway route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Shining Imakuni?, including the question mark.",
+            "Read the printed promo number as 018/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the row is a Trainer card, not a Pokemon character row.",
+            "Keep the Pokemon Fan Club new membership giveaway route legible; do not flatten it to a generic Fan Club promo or generic Imakuni card.",
+            "Do not merge this card with other Imakuni cards, other Fan Club promos, English Imakuni rows, or performer/character lore without number evidence.",
+            "Do not infer illustrator, card text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and title/type area; ask for Fan Club membership provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Pokemon Fan Club membership provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "card text",
+            "other Imakuni card equivalence",
+            "generic Fan Club promo equivalence",
+            "performer biography",
+            "membership-object provenance",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "018/P",
+        "rarity_signal": "Pokemon Fan Club new membership giveaway",
+        "artist": "",
+        "assembly_themes": [
+          "Pokemon Fan Club route",
+          "new membership giveaway",
+          "numbered P spine",
+          "Trainer identity",
+          "Imakuni oddball culture",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "018/P",
+          "Shining Imakuni?",
+          "Trainer",
+          "Pokemon Fan Club new membership giveaway",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Shining Imakuni? 018/P is where the P Promotional spine lets the hobby's stranger human culture into the binder: a Trainer row, a Fan Club membership route, and a question mark that matters."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Shining Imakuni? 018/P: the club door opens",
+        "why_it_matters": "After the Johto starter course, Shining Imakuni? feels like someone left the side door open and the whole weird living culture of Pokemon walked in. This is not a monster card. It is a Trainer, a Fan Club new-membership giveaway, a numbered promo with a question mark in its name. That is the assembly to preserve: membership, performance aura, printed 018/P, and a catalog that refuses to turn all oddball Imakuni memory into one blob.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Pokemon Fan Club membership provenance",
+          "illustrator credit",
+          "image witness",
+          "card text",
+          "performer biography"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
       "type": "card",
       "context": {

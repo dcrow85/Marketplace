@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 225: P Promo Typhlosion 017 deepened; corpus a132c390)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 226: P Promo Shining Imakuni 018 deepened; corpus 284cc905)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-018-p`
+  Shining Imakuni? 018/P is now hand-authored rather than generator memory. The
+  pass records the Pokemon Fan Club new membership giveaway route, Trainer-row
+  identity, Imakuni/club-culture collector texture, absent promoted Japanese
+  name, absent artist credit, absent card text, and absent row-specific image
+  witness. The special identification packet is explicit and first-class:
+  agents must confirm Shining Imakuni? including the question mark, printed
+  `018/P`, Trainer identity, and the Fan Club new membership giveaway route;
+  keep that route separate from generic Fan Club or generic Imakuni memory; and
+  avoid importing other Imakuni cards, performer biography, English Imakuni
+  rows, card text, Japanese name, or image details absent from this source row.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, Pokemon Fan Club membership provenance, image
+  availability, illustrator credit, Japanese-name certainty, card text, other
+  Imakuni card equivalence, generic Fan Club promo equivalence, performer
+  biography, membership-object provenance, complete Japanese promo universe, or
+  spendability. Generated gaps remain bounded at 100. Validation passed: JSON;
+  catalog dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the Fan Club/Imakuni
+  special-identification packet. Hashes: corpus
+  `284cc905fc47ef845edf966f6ab60009a6fd7b267522afd347993ab1a5be5e90`;
+  index `ff7912fd05db905231a3e46ed62695a28c8007cc33753362c9af0c491f7c1f1e`;
+  queue `90366559f814a9d480deed620ee9d8dc22887fccccb8ddb7f05976fd7fee599f`;
+  audit `cb7792a602b2a812f08dffc7ddaa54922e810c81061df0b68d86a892d884d776`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
