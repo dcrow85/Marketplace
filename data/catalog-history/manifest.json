@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23864,
-    "corpus_hash": "8fd58ddcf5f848bdc778a02d05c41aaf5ebfcb5b728c4b5393a7ad59de78b5fe",
-    "generated_card_dossier_count": 3802,
-    "generated_release_dossier_count": 1,
+    "claim_count": 23869,
+    "corpus_hash": "7cfc4ed5fcdadc488831a96c86e8197f18ada519c4a9c5dd602198368afb2eff",
+    "generated_card_dossier_count": 3801,
+    "generated_release_dossier_count": 0,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6927
+    "source_count": 6933
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "0487802e27c40a900c4d1a316ff3927b23fbb1eabbd2504e513b34fe501341b3",
-    "release_queue_count": 1,
+    "queue_hash": "330cab67fb57df899d0cdb28ee1ab1feea696b9586a884e07ae3d40a84b3330f",
+    "release_queue_count": 0,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T04:03:42Z",
+  "generated_at": "2026-06-20T04:20:37Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "4f70ef165053ac0443cf200bbf76b6f270dac870d96f0b993a730f52356eac90",
+    "index_hash": "3c4df4414f8441351d8192b8eb55fea161c6f2775bcb07feefa9dc7b8dd42c97",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -127,6 +127,7 @@
     "data/catalog-history/source-sets/how_i_became_card_vol3_jynx_v0_1.json",
     "data/catalog-history/source-sets/how_i_became_card_vol4_sunkern_v0_1.json",
     "data/catalog-history/source-sets/how_i_became_card_vol5_hoppip_v0_1.json",
+    "data/catalog-history/source-sets/how_i_became_card_vol6_blank_pikachu_v0_1.json",
     "data/catalog-history/source-sets/how_to_play_book_1996_promos_v0_1.json",
     "data/catalog-history/source-sets/hyper_corocoro_spring_1999_insert_v0_1.json",
     "data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json",

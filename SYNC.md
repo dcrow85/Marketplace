@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 188: How I Became a Pokemon Card Vol. 5 Hoppip deepened; corpus 8fd58ddc)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 189: How I Became a Pokemon Card Vol. 6 _____'s Pikachu deepened; corpus 7cfc4ed5)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-ninth
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol6_blank_pikachu_v0_1.json`
+  deepens How I Became a Pokemon Card Vol. 6 /
+  ポケモンカードになったワケ 6 and its _____'s Pikachu /
+  _____のピカチュウ / _____ no Pikachu source-index-245 insert. The pass frames
+  the September 23, 2001 promo-row route while preserving Bulbapedia's
+  September 22, 2001 first-edition book publication date as a legible
+  book/card date boundary, not a contradiction to smooth away. It records
+  ISBN 4840104026, Kagemaru Himeno / 姫野かげまる as both manga creator and card
+  illustrator, the final-volume context, Akari and Pikachu's Birthday, Birthday
+  Surprise / おたんじょうび, LV.17, HP 50, No.25, Lightning Basic, Fighting
+  weakness, retreat cost 1, the blank-owner name line, the birthdate prompt,
+  the official-tournament-use boundary, and the Natta Wake Birthday Pikachu
+  nickname. Special identification packets now separate this row from the 1998
+  Japanese All Card Calendar print, English Wizards Black Star Promo 24,
+  Pikachu World Collection 2000, Celebrations Classic Collection, Japanese
+  Promo Card Pack 25th Anniversary Edition, generic Happy Birthday Pikachu
+  listings, and Vol. 1-5 Natta Wake inserts. The packets keep book-origin,
+  route identity, seller-controlled evidence, and physical-card state separate:
+  legible catalog memory, not seller possession, authenticity, condition, price,
+  sealed-book completeness, official print run, or spendability. Generated gaps
+  are now release queue 0 and card queue 100. Hashes: corpus
+  `7cfc4ed5fcdadc488831a96c86e8197f18ada519c4a9c5dd602198368afb2eff`,
+  index `3c4df4414f8441351d8192b8eb55fea161c6f2775bcb07feefa9dc7b8dd42c97`,
+  queue `330cab67fb57df899d0cdb28ee1ab1feea696b9586a884e07ae3d40a84b3330f`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-eighth
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol5_hoppip_v0_1.json`
