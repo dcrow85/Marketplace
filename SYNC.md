@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 236: P Promo Growlithe 030 deepened; corpus b5c2f4f3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 237: P Promo Lanturn 031 deepened; corpus bc1fccf0)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,48 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-031-p`
+  Lanturn 031/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Lanturn (P Promo
+  31)` to `Lanturn (Aquapolis 20)`, so the row now carries the deeper card
+  assembly: Lanturn / `ランターン` / Lantern, Water Stage 1 evolving from
+  Chinchou, HP 80, Grass weakness, retreat cost 1, Mitsuhiro Arita
+  illustration credit, Lightning Ball / `ピッカリだま`, Conduction /
+  `スプラッシュボルト`, Aquapolis 20/147, Wind from the Sea 037/087, P
+  Promotional 031/P, e-Reader card ID `D-41-#`, no-long-strip context, and the
+  adjacent Aquapolis reverse-holo Poke-Body-icon/right-bracket oddity. The
+  McDonald's route remains the transaction-facing identity wall: Saturdays and
+  Sundays from May 25 through June 16, 2002, printed `031/P`, inside the
+  numbered P Promotional spine. The special identification packet is explicit:
+  agents must confirm Lanturn / `ランターン` / Lantern, printed `031/P`, Water
+  Stage 1 profile, Arita credit, McDonald's weekend date window, Lightning Ball
+  / Conduction, `D-41-#`, and no-long-strip context; keep the Aquapolis
+  reverse-holo oddity as adjacent Aquapolis-print context rather than automatic
+  P Promotional truth; keep the row separate from Aquapolis 20/147, Wind from
+  the Sea 037/087, ordinary Lanturn rows, later Lanturn promos, other
+  McDonald's P Promotional rows, and generic Arita/e-Reader memory; and avoid
+  importing reverse-holo, icon/bracket oddity, e-Reader-readability, or
+  provenance claims without separate evidence. Boundaries remain explicit:
+  catalog legibility is not seller possession, authenticity, condition, price,
+  McDonald's campaign copy provenance, wrapper or packet provenance, store
+  provenance, sealed-packet state, e-Reader readability, long-strip absence
+  proof from a seller scan, reverse-holo status, Poke-Body icon oddity,
+  right-bracket oddity, Aquapolis equivalence, Wind from the Sea equivalence,
+  ordinary Lanturn equivalence, later Lanturn equivalence, other McDonald's
+  promo equivalence, Mitsuhiro Arita collection equivalence, complete Japanese
+  promo coverage, or spendability. Validation passed:
+  `python3 -m json.tool ...`, `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Lanturn assertion. Hashes: corpus
+  `bc1fccf057819b2ee93767e4cfc090dc761ef88585950b7cfb92393e34c337ce`, index
+  `4856318b43f0c4d0b28a76a8cd2dfc495e8db10b428e35986444b95ded8272e3`, queue
+  `b047d227881590d135e7afbda8480bb54d3ea1b4016e490557d07bbd013ce090`, audit
+  `b42d80aefe54d5d5bb07e1889d46986820bb4307a940ad6501f345e531514e41`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

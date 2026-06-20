@@ -7849,6 +7849,324 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-031-p",
+      "type": "card",
+      "context": {
+        "name_en": "Lanturn",
+        "name_ja": "ランターン",
+        "romaji": "Lantern",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-031-p",
+        "catalog_row_id": "031/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis 20/147 / Wind from the Sea 037/087 / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-031-p",
+          "title": "Local Japanese promo WotC catalog row: Lanturn 031/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Lanturn_(P_Promo_31)&action=raw",
+          "title": "Bulbapedia raw redirect: Lanturn (P Promo 31)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Lanturn_(Aquapolis_20)&action=raw",
+          "title": "Bulbapedia raw wikitext: Lanturn (Aquapolis 20 / P Promo 31)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Lanturn as P Promotional card number 031/P, and the row-specific Bulbapedia redirect points Lanturn (P Promo 31) to the Lanturn (Aquapolis 20) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Lanturn / ランターン / Lantern, a Water Stage 1 Pokemon evolving from Chinchou, with HP 80, Grass weakness, and retreat cost 1.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits both the Aquapolis print and P Promotional print of Lanturn to Mitsuhiro Arita.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the route as a McDonald's promotion on Saturdays and Sundays from May 25 through June 16, 2002; Bulbapedia says the Japanese P Promotional reprint used artwork by the same artist as part of a McDonald's promotion running between those dates.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Lanturn card in Aquapolis 20/147, Japanese Wind from the Sea 037/087, and Japanese P Promotional 031/P contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Lightning Ball / ピッカリだま and Conduction / スプラッシュボルト as the attacks; Conduction discards all Lightning Energy attached to Lanturn and flips one coin per discarded Lightning Energy to add 40 damage for each heads.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia records two prints with card ID D-41-#, says the short strip contains Pokedex information and a brief card summary, and says there is no long strip for this card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Reverse Holofoil version of the Aquapolis print has a Poke-Body icon and right bracket above the top attack for no apparent reason.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Lanturn 031/P matters because the McDonald's weekend branch carries a deep-water light: Arita art, Wind from the Sea lineage, Lightning-energy mechanics inside a Water card, and an e-Reader short-strip identity that has to stay separate from the stranger Aquapolis reverse-holo oddity.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Lanturn 031/P from Aquapolis 20/147, Wind from the Sea 037/087, Aquapolis reverse-holo oddity references, ordinary Lanturn rows, later Lanturn promos, other McDonald's P Promotional rows, and generic Arita or e-Reader references; the printed 031/P number and May 25-June 16, 2002 McDonald's weekend route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_lanturn_031_mcdonalds_arita_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lanturn P promo, 031/P, McDonald's Lanturn, Aquapolis Lanturn, Wind from the Sea Lanturn, Arita Lanturn, D-41-#, reverse holo bracket error, or e-Reader Lanturn.",
+          "summary": "Confirm Lanturn, printed 031/P, and the May 25-June 16, 2002 McDonald's weekend route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Lanturn / ランターン / Lantern.",
+            "Read the printed promo number as 031/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Water Stage 1 Pokemon evolving from Chinchou with HP 80, Grass weakness, and retreat cost 1 when comparing against the card page.",
+            "Use Mitsuhiro Arita as the credited illustrator while remembering that artist credit does not authenticate a physical card.",
+            "Keep the McDonald's route legible: Saturdays and Sundays from May 25 through June 16, 2002.",
+            "Check Lightning Ball / ピッカリだま and Conduction / スプラッシュボルト when card text is visible.",
+            "Use D-41-# as e-Reader context for the Aquapolis and P Promotional prints.",
+            "Treat the no-long-strip note as print-context information, not proof that a seller's scan is complete or readable.",
+            "Keep the Aquapolis reverse-holo Poke-Body icon/right-bracket oddity as adjacent Aquapolis-print context; do not attach it to a 031/P claim without visible reverse-holo Aquapolis evidence.",
+            "Do not merge this row with Aquapolis 20/147, Wind from the Sea 037/087, ordinary Lanturn rows, later Lanturn promos, other McDonald's P Promotional rows, or generic Arita/e-Reader memory without printed-number evidence.",
+            "If a seller claims McDonald's provenance or a reverse-holo/error attribute, ask for seller-controlled evidence of the card, printed number, finish, surface, wrapper, packet, store, or campaign material separately.",
+            "Treat e-Reader readability, reverse-holo status, bracket/icon oddity, price, condition, sealed-packet state, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "sealed-packet state",
+            "e-Reader readability",
+            "long-strip absence proof from seller scan",
+            "reverse-holo status",
+            "Poke-Body icon oddity",
+            "right-bracket oddity",
+            "Aquapolis 20/147 equivalence",
+            "Wind from the Sea 037/087 equivalence",
+            "ordinary Lanturn equivalence",
+            "later Lanturn equivalence",
+            "other McDonald's promo equivalence",
+            "Mitsuhiro Arita collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "031/P",
+        "rarity_signal": "McDonald's promotion (Saturdays and Sundays from May 25-June 16, 2002)",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "McDonald's route",
+          "weekend date-window boundary",
+          "numbered P spine",
+          "Wind from the Sea lineage",
+          "Mitsuhiro Arita Water-type",
+          "e-Reader short strip"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "031/P",
+          "Lanturn",
+          "ランターン",
+          "Lantern",
+          "Water",
+          "Stage 1",
+          "Chinchou",
+          "HP 80",
+          "Mitsuhiro Arita",
+          "McDonald's promotion",
+          "May 25-June 16, 2002",
+          "Saturdays and Sundays",
+          "Lightning Ball",
+          "ピッカリだま",
+          "Conduction",
+          "スプラッシュボルト",
+          "D-41-#",
+          "no long strip",
+          "Aquapolis 20/147",
+          "Wind from the Sea 037/087",
+          "Aquapolis reverse-holo bracket oddity"
+        ],
+        "collector_texture_note": "Lanturn 031/P is a little beacon in the McDonald's run: Arita's deep-water light, Wind from the Sea lineage, and a D-41-# e-Reader identity that must not be confused with Aquapolis reverse-holo oddities.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "McDonald's provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "reverse-holo status",
+          "bracket oddity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lanturn 031/P: a little light under the weekend surface",
+        "why_it_matters": "Lanturn 031/P is a quiet pleasure in the P spine. It is not the loudest McDonald's card, but it has that Arita depth: a Water Pokemon that spends Lightning Energy, a Wind from the Sea lineage, and an e-Reader identity with no long strip, all grounded by a May-June weekend food route. Even the adjacent Aquapolis reverse-holo oddity is a reminder that the same named card can fork into strange physical states. The printed P number is the lantern here; it keeps the route visible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "McDonald's campaign provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "reverse-holo status",
+          "bracket oddity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
       "type": "card",
       "context": {
