@@ -5,6 +5,7 @@
     "in_scope": [
       "Aquapolis release dossier",
       "Ampharos H1",
+      "Exeggutor H10",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -512,6 +513,311 @@
           "c6",
           "c7",
           "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H10",
+      "type": "card",
+      "context": {
+        "name_en": "Exeggutor",
+        "name_ja": "ナッシー",
+        "romaji": "Nassy",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H10",
+        "catalog_row_id": "ecard2-H10",
+        "card_number": "H10",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-12",
+        "japanese_lineage_card_number": "Wind from the Sea 014/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H10",
+          "title": "Local English WoC card row: Exeggutor H10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H10",
+          "title": "Pokemon TCG API v2 card record: Exeggutor ecard2-H10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Exeggutor_(Aquapolis_H10)",
+          "title": "Bulbapedia: Exeggutor (Aquapolis H10)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Exeggutor as Aquapolis H10, a Rare Holo Stage 1 Grass Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Exeggutor's Japanese name as ナッシー / Nassy and connects the Holofoil print to Japanese Wind from the Sea card 014/087, while the non-Holofoil Aquapolis print corresponds to Wind from the Sea 013/087.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Exeggutor H10 with 80 HP, evolvesFrom Exeggcute, Fire weakness, one-Colorless retreat, and attacks Super Eggsplosion and Called Shot.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Exeggutor H10 to Yukiko Baba; the same local Aquapolis source row also credits Yukiko Baba on the non-Holo Exeggutor #12 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Exeggutor as H10/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog also has a non-Holo Aquapolis Exeggutor at card #12; agents must keep H10 and #12 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Exeggutor page further records different e-Reader card IDs for Holofoil and Non Holofoil prints.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Exeggutor H10 matters because it makes the Aquapolis Holo lane feel weird and tactical at once: a many-headed Grass Pokemon, a coin-flip Energy-discard attack, a called-shot Bench attack, Yukiko Baba art, and an e-Reader identity split between Holofoil and Non Holofoil prints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H10 / H10/H32, Rare Holo, English ecard2-H10, Yukiko Baba credit, Super Eggsplosion / Called Shot text, Wind from the Sea 014/087 lineage, and non-equivalence with Aquapolis #12, Japanese Wind from the Sea 013/087, Jungle/Fossil/Base-era Exeggutor rows, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_exeggutor_h10_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Exeggutor, ナッシー, Nassy, Exeggutor H10, H10/H32, Rare Holo, ecard2-H10, Yukiko Baba, Super Eggsplosion, Called Shot, Wind from the Sea, 014/087, Aquapolis #12, Jungle Exeggutor, or reverse holo Exeggutor.",
+          "summary": "Identify Exeggutor / ナッシー / Nassy H10 by the Aquapolis H-number Rare Holo lane: English ecard2-H10 / H10/H32 and Wind from the Sea 014/087 lineage, not the non-Holo #12 / 013/087 row.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H10 / printed number H10 before accepting this as the H-number holo row.",
+            "Preserve H10/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Exeggutor #12 row.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 014/087 while the non-Holofoil counterpart maps to 013/087.",
+            "Use Yukiko Baba credit, Stage 1 Grass profile, Super Eggsplosion, and Called Shot as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep Jungle/Base-era Exeggutor rows, Japanese Wind from the Sea non-holo 013/087, reverse-holo listings, and generic Exeggutor wants separate until set, number, rarity, and image evidence align.",
+            "Treat e-Reader and Dot-Code strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H10"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Exeggutor_(Aquapolis_H10)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H10",
+        "artist": "Yukiko Baba",
+        "rarity_signal": "Rare Holo; Aquapolis H10/H32 H-number holo sequence, separate from non-Holo Exeggutor #12 / Wind from the Sea 013/087",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "e-Reader interface frame",
+          "Yukiko Baba art trace",
+          "Super Eggsplosion coin-flip texture",
+          "Called Shot bench-pressure text"
+        ],
+        "collector_texture_note": "Exeggutor H10 is Aquapolis being playful and technical at the same time: many heads, many coin flips, one narrow H-number holo identity, and a Dot-Code-era split from its non-holo twin.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Exeggutor H10 — Aquapolis lets the heads gamble",
+        "why_it_matters": "Exeggutor H10 is not one of the obvious Aquapolis monsters, and that is part of the fun. It makes the set feel inhabited: a strange Grass holo in a coastal machine, drawn by Yukiko Baba, asking you to throw Energy away and count heads like the card itself is laughing. The agent's job is to keep that charm pinned to the exact H10 holo object, because the non-holo #12 is nearby and dangerously easy to blur.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
         ],
         "not_claiming": [
           "official emotional history",

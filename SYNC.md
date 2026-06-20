@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 261: Aquapolis Ampharos H1 deepened; corpus f7dddec4)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 262: Aquapolis Exeggutor H10 deepened; corpus 3cb73ec3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H10` Exeggutor H10 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H10`, live Pokemon TCG
+  API `sets/ecard2`, Bulbapedia `Exeggutor (Aquapolis H10)`, and Bulbapedia
+  `Aquapolis (TCG)`. The card dossier now carries Exeggutor / `ナッシー` /
+  Nassy, English Aquapolis / e-Card Series, API card id `ecard2-H10`, printed
+  number H10, H10/H32 Rare Holo sequence, Japanese Wind from the Sea 014/087
+  holo lineage, the non-Holo Aquapolis #12 / Wind from the Sea 013/087
+  separation, Stage 1 Grass profile, Exeggcute evolution line, 80 HP, Super
+  Eggsplosion / Called Shot, Yukiko Baba credit, and e-Reader / Dot-Code
+  context including the Holofoil vs Non Holofoil card-ID split. The special
+  identification packet tells agents to keep H10 separate from Aquapolis
+  Exeggutor #12, Japanese Wind from the Sea 013/087, Jungle/Base-era
+  Exeggutor rows, reverse-holo listings, generic Exeggutor wants, and
+  seller-card image claims. It also keeps Dot-Code and e-Reader scan context
+  legible only: not seller possession, authenticity, condition truth, price
+  truth, scan success, or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `ナッシー` / Nassy, H10/H32, H10 vs
+  #12 separation, Wind from the Sea 014/087 vs 013/087, Yukiko Baba, Super
+  Eggsplosion / Called Shot, Dot-Code / e-Reader caveats,
+  special-identification packet, and corpus propagation. New catalog-history
+  corpus hash:
+  `3cb73ec3def71a732912d40d49a37ce9d59dc91258b45efab1727290f5a8c1ab`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
