@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 243: P Promo Crystal Energy 039 deepened; corpus 6d0601f1)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 244: P Promo Boost Energy 040 deepened; corpus 8e5d3d7d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-040-p`
+  Boost Energy 040/P is now hand-authored rather than generator memory. This
+  pass found and used the row-specific Bulbapedia redirect from `Boost Energy
+  (P Promo 40)` to `Boost Energy (Aquapolis 145)`, so the row now carries the
+  deeper card assembly: Boost Energy / `ブーストエネルギー` / Boost Energy,
+  Colorless Special Energy, three-Colorless temporary attachment behavior,
+  Kai Ishikawa P Promotional artwork credit, Shin-ichi Yoshikawa
+  Aquapolis/Wind from the Sea and EX Deoxys artwork credit, Aquapolis 145/147,
+  Wind from the Sea 086/087, P Promotional 040/P, PLAY 016/PLAY, EX Deoxys
+  93/107, Clash of the Blue Sky 082/082, EX Unseen Forces 98/115, Feraligatr
+  Constructed Starter Deck 016/016, EX Dragon Frontiers 87/101, Shockwave!
+  Tyranitar ex Constructed Standard Deck 024/024, POP Series 5 8/17, and
+  e-Reader `D-54` versus `D-54-#`. Route stays Summer Battle Roads: the P
+  Promotional print was awarded as a gift card during the 2002 Summer Battle
+  Roads. The special identification packet tells agents to confirm Boost
+  Energy / `ブーストエネルギー`, printed `040/P`, Colorless Special Energy type,
+  Kai Ishikawa P Promotional art, `D-54`, and Summer Battle Roads route; do
+  not merge with Aquapolis, Wind from the Sea, PLAY, EX, deck, POP, other
+  Boost Energy, other Special Energy, or generic e-Reader memory without
+  printed-number and artwork-route evidence. No-overclaim boundaries remain
+  explicit: seller possession, authenticity, condition, price, event
+  provenance, sealed-packet state, e-Reader readability, PLAY/EX/POP identity,
+  and spendability remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `8e5d3d7db5eb27d05739f0908b5d7eb9d4313e9d2b9f2baf2461e807138424be`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

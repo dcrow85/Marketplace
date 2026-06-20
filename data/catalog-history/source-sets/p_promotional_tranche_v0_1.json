@@ -10148,6 +10148,315 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-040-p",
+      "type": "card",
+      "context": {
+        "name_en": "Boost Energy",
+        "name_ja": "ブーストエネルギー",
+        "romaji": "Boost Energy",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-040-p",
+        "catalog_row_id": "040/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis / Wind from the Sea / P Promotional cards / PLAY Promotional cards / EX era reprints"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-040-p",
+          "title": "Local Japanese promo WotC catalog row: Boost Energy 040/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Boost_Energy_(P_Promo_40)&action=raw",
+          "title": "Bulbapedia raw redirect: Boost Energy (P Promo 40)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Boost_Energy_(Aquapolis_145)&action=raw",
+          "title": "Bulbapedia raw wikitext: Boost Energy (Aquapolis 145 / P Promo 40)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Boost Energy as P Promotional card number 040/P, and the row-specific Bulbapedia redirect points Boost Energy (P Promo 40) to the Boost Energy (Aquapolis 145) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Boost Energy / ブーストエネルギー / Boost Energy as a Colorless Special Energy card that provides three Colorless Energy, can be attached only to an Evolved Pokemon, is discarded at the end of the turn it was attached, and prevents retreat while attached.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Aquapolis and EX Deoxys prints of Boost Energy to Shin-ichi Yoshikawa and the P Promotional print to Kai Ishikawa.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the P Promotional print of Boost Energy used new artwork by Kai Ishikawa and was awarded as a gift card during the 2002 Summer Battle Roads.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Boost Energy card in Aquapolis 145/147, Japanese Wind from the Sea 086/087, Japanese P Promotional 040/P, PLAY Promotional 016/PLAY, EX Deoxys 93/107, Japanese Clash of the Blue Sky 082/082, EX Unseen Forces 98/115, Japanese Feraligatr Constructed Starter Deck 016/016, EX Dragon Frontiers 87/101, Japanese Shockwave! Tyranitar ex Constructed Standard Deck 024/024, and POP Series 5 8/17 contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says this card has two e-Card Series prints: the Aquapolis print uses card ID D-54-#, while the P Promotional print uses D-54; the Aquapolis print includes a short Dot Code strip and has no long strip.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says a full-frame view of the Wind from the Sea print became PLAY Promotional 016/PLAY in Player's Club Continuation Kits for second-straight-season subscribers in 2004, and that later English/Japanese reprints carried Boost Energy through the EX era and POP Series 5.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Boost Energy 040/P matters because its mechanics and distribution both feel temporary and high-pressure: three Colorless Energy for an evolved Pokemon, discarded at turn end, riding a Summer Battle Roads gift route and then echoing forward through PLAY, EX, deck, and POP reprint channels.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Boost Energy 040/P from Aquapolis 145/147, Wind from the Sea 086/087, PLAY 016/PLAY, EX Deoxys, EX Unseen Forces, EX Dragon Frontiers, POP Series 5, other Boost Energy rows, and generic Special Energy memory; the printed 040/P number, Kai Ishikawa P Promotional art, D-54 context, and Summer Battle Roads route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_boost_energy_040_summer_battle_roads_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Boost Energy P promo, 040/P, Summer Battle Roads Boost Energy, Aquapolis Boost Energy, Wind from the Sea Boost Energy, PLAY Boost Energy, EX Deoxys Boost Energy, EX-era Boost Energy, Kai Ishikawa, Shin-ichi Yoshikawa, D-54, D-54-#, or Special Energy.",
+          "summary": "Confirm Boost Energy, printed 040/P, Kai Ishikawa P Promotional art, D-54 context, and the 2002 Summer Battle Roads route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Boost Energy / ブーストエネルギー / Boost Energy.",
+            "Read the printed promo number as 040/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Colorless Special Energy card, not a Pokemon card, Trainer card, or ordinary basic Energy.",
+            "Use Kai Ishikawa as the credited illustrator for the P Promotional print; keep Shin-ichi Yoshikawa attached to the Aquapolis/Wind from the Sea and EX Deoxys artwork.",
+            "Keep the route legible as a gift card awarded during the 2002 Summer Battle Roads.",
+            "Check the text behavior: attach only to an Evolved Pokemon, provide three Colorless Energy, discard at turn end, and prevent retreat while attached.",
+            "Use D-54 as e-Reader context for the P Promotional print; do not confuse it with D-54-# for the Aquapolis print.",
+            "Keep PLAY 016/PLAY, EX Deoxys, EX Unseen Forces, EX Dragon Frontiers, deck, and POP Series 5 references as adjacent reprint-tail context, not proof about a seller's 040/P card.",
+            "Do not merge this row with Aquapolis 145/147, Wind from the Sea 086/087, PLAY 016/PLAY, EX Deoxys 93/107, Clash of the Blue Sky 082/082, EX Unseen Forces 98/115, Feraligatr Constructed Starter Deck 016/016, EX Dragon Frontiers 87/101, Shockwave! Tyranitar ex Constructed Standard Deck 024/024, POP Series 5 8/17, other Boost Energy rows, or generic Special Energy memory without printed-number and artwork-route evidence.",
+            "If a seller claims Summer Battle Roads provenance, e-Reader readability, PLAY/EX/POP equivalence, or a special distribution state, ask for seller-controlled evidence of the card, printed number, finish, back, packet, event material, or scan output separately.",
+            "Treat e-Reader readability, PLAY/EX/POP identity, price, condition, sealed-packet state, and event provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Summer Battle Roads copy provenance",
+            "event participation proof",
+            "wrapper or packet provenance",
+            "sealed-packet state",
+            "e-Reader readability",
+            "Aquapolis 145/147 equivalence",
+            "Wind from the Sea 086/087 equivalence",
+            "PLAY 016/PLAY equivalence",
+            "EX Deoxys 93/107 equivalence",
+            "Clash of the Blue Sky 082/082 equivalence",
+            "EX Unseen Forces 98/115 equivalence",
+            "Feraligatr Constructed Starter Deck 016/016 equivalence",
+            "EX Dragon Frontiers 87/101 equivalence",
+            "Shockwave! Tyranitar ex Constructed Standard Deck 024/024 equivalence",
+            "POP Series 5 8/17 equivalence",
+            "other Boost Energy equivalence",
+            "other Special Energy equivalence",
+            "Shin-ichi Yoshikawa art equivalence",
+            "Kai Ishikawa collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "040/P",
+        "rarity_signal": "Gift card awarded during the 2002 Summer Battle Roads",
+        "artist": "Kai Ishikawa",
+        "assembly_themes": [
+          "Summer Battle Roads route",
+          "numbered P spine",
+          "Special Energy",
+          "artist-credit split",
+          "Wind from the Sea lineage",
+          "e-Reader short strip",
+          "PLAY continuation kit",
+          "EX-era reprint tail"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "040/P",
+          "Boost Energy",
+          "ブーストエネルギー",
+          "Colorless",
+          "Special Energy",
+          "Kai Ishikawa",
+          "Shin-ichi Yoshikawa",
+          "2002 Summer Battle Roads",
+          "D-54",
+          "D-54-#",
+          "Aquapolis 145/147",
+          "Wind from the Sea 086/087",
+          "PLAY 016/PLAY",
+          "Player's Club Continuation Kits",
+          "EX Deoxys 93/107",
+          "Clash of the Blue Sky 082/082",
+          "EX Unseen Forces 98/115",
+          "Feraligatr Constructed Starter Deck 016/016",
+          "EX Dragon Frontiers 87/101",
+          "Shockwave! Tyranitar ex Constructed Standard Deck 024/024",
+          "POP Series 5 8/17"
+        ],
+        "collector_texture_note": "Boost Energy 040/P is pressure in card form: Kai Ishikawa promo art, a Summer Battle Roads route, three temporary Colorless Energy, and a long reprint tail that makes the printed P number matter.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "Summer Battle Roads provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "PLAY/EX/POP equivalence"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Boost Energy 040/P: speed that leaves a trail",
+        "why_it_matters": "Boost Energy 040/P feels like tempo made physical. The card gives an evolved Pokemon three Colorless Energy and then disappears at the end of the turn, which is exactly the kind of short-burst design the e-Reader era loved to wrap in careful machinery. Its assembly is busy: Kai Ishikawa for the P promo, Shin-ichi Yoshikawa for the surrounding Aquapolis/EX art, D-54 versus D-54-#, Summer Battle Roads, PLAY continuation kits, and a long EX/POP tail. The printed 040/P is the brake that keeps all that speed from sliding into one generic Boost Energy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "Summer Battle Roads provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "PLAY/EX/POP equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-047-p",
       "type": "card",
       "context": {
