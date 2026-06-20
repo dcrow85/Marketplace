@@ -5,6 +5,7 @@
     "in_scope": [
       "Aquapolis release dossier",
       "Ampharos H1",
+      "Arcanine H2",
       "Exeggutor H10",
       "Houndoom H11",
       "Hypno H12",
@@ -530,6 +531,359 @@
           "condition truth",
           "price truth",
           "e-Reader scan success"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H2",
+      "type": "card",
+      "context": {
+        "name_en": "Arcanine",
+        "name_ja": "ウインディ",
+        "romaji": "Windie",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H2",
+        "catalog_row_id": "ecard2-H2",
+        "card_number": "H2",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-2",
+        "japanese_lineage_card_number": "The Town on No Map 017/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H2",
+          "title": "Local English WoC card row: Arcanine H2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H2",
+          "title": "Pokemon TCG API v2 card record: Arcanine ecard2-H2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Aquapolis_H2)",
+          "title": "Bulbapedia: Arcanine (Aquapolis H2)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-2",
+          "title": "Pokemon TCG API v2 card record: Arcanine ecard2-2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Arcanine as Aquapolis H2, a Rare Holo Stage 1 Fire Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Arcanine's Japanese name as ウインディ / Windie and connects the Holofoil print to Japanese The Town on No Map card 017/092, while the non-Holofoil Aquapolis print corresponds to The Town on No Map 016/092.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Arcanine H2 with 90 HP, evolvesFrom Growlithe, Water weakness, three-Colorless retreat, Poké-Body Extreme Speed, and attack Fire Blow.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Arcanine H2 to Kyoko Umemoto; the local and API rows also credit Kyoko Umemoto on the non-Holo Aquapolis Arcanine #2 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Arcanine as H2/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Arcanine at #2 with the same Kyoko Umemoto credit, Extreme Speed Poké-Body, and Fire Blow attack; agents must keep H2 and #2 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Arcanine H2 page records card ID C-64 for the Holofoil print and C-64-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the long strip contains map data for the Construction: Action e-Reader application.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Arcanine H2's e-Reader Pokedex entry comes from Pokemon Crystal, and the entry describes an ancient picture scroll showing people drawn to Arcanine as it ran through prairies.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Arcanine H2 matters because Aquapolis takes one of Kanto's cleanest heroic silhouettes and makes speed into machinery: Kyoko Umemoto art, Extreme Speed reducing retreat by attached Energy, Fire Blow turning Fire Energy into coin-flip force, and C-64 Dot-Code identity with Construction: Action map data behind the strip.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H2 / H2/H32, Rare Holo, English ecard2-H2, ウインディ / Windie, Kyoko Umemoto credit, Extreme Speed / Fire Blow text, The Town on No Map 017/092 lineage, C-64 e-Reader ID, and non-equivalence with Aquapolis #2, The Town on No Map 016/092, reverse-holo listings, generic Arcanine rows, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_arcanine_h2_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Arcanine, ウインディ, Windie, Arcanine H2, H2/H32, Rare Holo, ecard2-H2, Kyoko Umemoto, Extreme Speed, Fire Blow, C-64, C-64-#, Construction: Action, The Town on No Map, 017/092, Aquapolis #2, 016/092, or reverse holo Arcanine.",
+          "summary": "Identify Arcanine / ウインディ / Windie H2 by the Aquapolis H-number Rare Holo lane: English ecard2-H2 / H2/H32 and The Town on No Map 017/092 lineage, not the non-Holo #2 / 016/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H2 / printed number H2 before accepting this as the H-number holo row.",
+            "Preserve H2/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Arcanine #2 row even though #2 shares Kyoko Umemoto, Extreme Speed, and Fire Blow.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 017/092 while the non-Holofoil #2 counterpart maps to The Town on No Map 016/092.",
+            "Use Kyoko Umemoto credit, Stage 1 Fire profile, Growlithe evolution line, Extreme Speed, Fire Blow, C-64 Holofoil e-Reader ID, and C-64-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Arcanine wants, Construction: Action references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, ancient-picture-scroll Pokedex texture, Pokemon Crystal source note, and Construction: Action map-data context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "Construction: Action application playability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H2"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Aquapolis_H2)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H2",
+        "artist": "Kyoko Umemoto",
+        "rarity_signal": "Rare Holo; Aquapolis H2/H32 H-number holo sequence, separate from non-Holo Arcanine #2 / The Town on No Map 016/092 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Kyoko Umemoto art trace",
+          "Fire e-Reader interface",
+          "Extreme Speed retreat math",
+          "Construction: Action map-data context"
+        ],
+        "collector_texture_note": "Arcanine H2 is speed made collectible: a famous Kanto silhouette, a three-retreat body that tries to outrun its own cost, Fire Energy cashed into Fire Blow, and a C-64 e-Reader identity that must not blur into #2.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "Construction: Action application playability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Arcanine H2 — speed with a strip of code",
+        "why_it_matters": "Arcanine H2 feels like a perfect Aquapolis subject because it is already a legend of motion. The Pokedex texture says people were captivated by it racing through prairies; the card turns that movement into Extreme Speed, retreat math, and Fire Blow gambling stored Fire Energy into damage. Then the e-Reader strip quietly makes the heroic dog into a mapped interface object too. That is the assembly we care about: myth, artist, rules text, and machine-readable edge all meeting in one row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "Construction: Action application playability"
         ]
       },
       "coverage": {

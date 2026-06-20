@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 271: Aquapolis Ninetales H19 deepened; corpus 7ebb8677)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 272: Aquapolis Arcanine H2 deepened; corpus 64787f31)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H2` Arcanine H2 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H2`, live Pokemon TCG API
+  `cards/ecard2-2`, live Pokemon TCG API `sets/ecard2`, Bulbapedia
+  `Arcanine (Aquapolis H2)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Arcanine / `ウインディ` / Windie, English Aquapolis /
+  e-Card Series, API card id `ecard2-H2`, printed number H2, H2/H32 Rare
+  Holo sequence, Japanese The Town on No Map 017/092 holo lineage, the
+  non-Holo Aquapolis #2 / The Town on No Map 016/092 sibling, Stage 1 Fire
+  profile, Growlithe evolution line, 90 HP, Water weakness, three-retreat
+  cost, Extreme Speed / Fire Blow, and Kyoko Umemoto credit. The special
+  identification packet tells agents to keep H2 separate from Aquapolis
+  Arcanine #2, The Town on No Map 016/092, reverse-holo listings, generic
+  Arcanine wants, Construction: Action references, and seller-card image
+  claims. It also keeps Dot-Code, e-Reader, C-64 / C-64-# IDs,
+  ancient-picture-scroll Pokedex texture, Pokemon Crystal source note, and
+  Construction: Action map-data context legible without promoting them into
+  seller possession, authenticity, condition truth, price truth, e-Reader
+  scan success, reverse-holo equivalence, Construction: Action application
+  playability, or spendability. Rebuilt `data/catalog-history/dossiers.json`,
+  `index.json`, `deepening-queue.json`, `manifest.json`, and `audit.json`;
+  corpus hash is
+  `64787f31e24990343a3ead39a1bf7339f5b27d5c11a154b282048fa1fbe2d2d4`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H2
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-first
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
