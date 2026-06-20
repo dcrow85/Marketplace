@@ -1062,6 +1062,241 @@
       }
     },
     {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-30",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-30",
+        "catalog_row_id": "ecard1-30",
+        "release_name": "Expedition Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-30",
+          "title": "Local Expedition row: Venusaur 30",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-30",
+          "title": "Pokemon TCG API v2 card record: Venusaur ecard1-30",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Expedition_30)",
+          "title": "Bulbapedia: Venusaur (Expedition 30)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Venusaur as English Expedition Base Set row ecard1-30 / printed number 30.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Venusaur ecard1-30 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Shin-ichi Yoshikawa as the illustrator for Venusaur ecard1-30.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Venusaur ecard1-30 as a Grass Stage 2 Pokemon evolving from Ivysaur, with HP 100, Fire weakness, retreat cost 2, the Poke-Power Harvest Bounty, and the attack Body Slam.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur ecard1-30 matters because Expedition translates the old Grass-engine feeling into the e-Reader era: Energy Trans is gone, Harvest Bounty and Poke-Power vocabulary arrive, and the starter icon now lives inside a border built for machine contact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Venusaur ecard1-30 from Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Japanese Expansion Pack / No Rarity Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memory; the Expedition row number, set id ecard1, Rare Holo status, Shin-ichi Yoshikawa credit, Harvest Bounty text, and e-Reader border condition are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_venusaur_30_ereader_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holo surface condition",
+            "reverse-holo status",
+            "e-Reader strip readability",
+            "Base Set equivalence",
+            "other Venusaur equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm the row as Expedition Base Set / ecard1 printed number 30 before using this dossier.",
+            "Check the card is the Rare Holo Venusaur with Shin-ichi Yoshikawa credit, Harvest Bounty, Body Slam, HP 100, Fire weakness, and retreat cost 2.",
+            "Preserve Expedition's e-Reader frame as identity context, but do not infer that a seller's physical card scans or has readable Dot Code borders.",
+            "Keep holofoil and reverse-holo status separate; ask for clear front/angle images if finish matters.",
+            "Separate this row from Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Japanese Expansion Pack / No Rarity Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memories.",
+            "Treat price, condition, authenticity, finish, e-Reader readability, and slab status as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "summary": "Venusaur ecard1-30 is the Expedition Base Set Rare Holo row. Preserve set id, row number, finish, Poke-Power text, and e-Reader-border evidence before comparing to other Venusaur prints.",
+          "trigger": "A buyer or seller says Expedition Venusaur, e-Reader Venusaur, Venusaur 30, ecard1-30, reverse-holo Venusaur, Shin-ichi Yoshikawa Venusaur, or Harvest Bounty Venusaur."
+        }
+      ],
+      "card_highlights": {
+        "number": "30",
+        "rarity_signal": "Rare Holo",
+        "artist": "Shin-ichi Yoshikawa",
+        "assembly_themes": [
+          "e-Reader interface",
+          "holo surface",
+          "starter-line gravity",
+          "Poke-Power vocabulary",
+          "finish trap"
+        ],
+        "signals": [
+          "Expedition Base Set",
+          "ecard1",
+          "Venusaur",
+          "30",
+          "Rare Holo",
+          "Shin-ichi Yoshikawa",
+          "Harvest Bounty",
+          "Body Slam",
+          "HP 100",
+          "Fire weakness",
+          "retreat cost 2",
+          "e-Reader border"
+        ],
+        "collector_texture_note": "Expedition Venusaur is the old Grass starter engine translated into e-Reader grammar: Yoshikawa art, Harvest Bounty, Body Slam, and a border that asks to be checked as interface.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "holo surface condition",
+          "reverse-holo status",
+          "e-Reader strip readability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur 30: the garden learns the scanner",
+        "why_it_matters": "Expedition Venusaur is a quiet but beautiful hinge. The Base Set Venusaur moved energy through the board with Energy Trans; this one carries the same broad starter memory into a new language: Harvest Bounty, Poke-Power, Yoshikawa art, and the e-Reader frame. The plant is still an engine, but now the card itself also behaves like an interface. For an agent, that means ecard1-30 first, finish and strip evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "holo surface condition",
+          "reverse-holo status",
+          "e-Reader strip readability",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_expedition_base_set_20020915:ecard1-29",
       "type": "card",
       "context": {

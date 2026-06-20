@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 200: Expedition Base Set Mewtwo 20 deepened; corpus ed27aeb9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 201: Expedition Base Set Venusaur 30 deepened; corpus 2ad9b39b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-30` Venusaur / Expedition
+  Base Set #30 is now hand-authored rather than generator memory. The pass
+  records Shin-ichi Yoshikawa credit, Rare Holo status, HP 100 Grass Stage 2
+  profile, Ivysaur evolution line, Harvest Bounty Poke-Power, Body Slam, Fire
+  weakness, retreat cost 2, and the e-Reader-era texture of Venusaur as the
+  old Grass engine translated into scanner grammar. The special identification
+  packet is explicit and first-class: agents must separate Expedition Venusaur
+  from Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur,
+  Japanese Expansion Pack / No Rarity Venusaur, CD/promo Venusaur rows, later
+  Venusaur ex/GX/V memory, reverse-holo finish claims, and e-Reader strip
+  readability claims without seller evidence. Boundaries remain explicit:
+  catalog legibility is not seller possession, authenticity, condition,
+  holo-surface condition, reverse-holo status, e-Reader strip readability,
+  price, or spendability. Generated gaps remain release queue 0 and card queue
+  100. Hashes: corpus
+  `2ad9b39b4e3b80dc7895f2e3c2bdc5620ca9d743121863ffbaed76f503913fe1`,
+  index `8c979a1fe689038adac612f6b69f8caafa8b6879c1db1054a0cf9291b76a79ee`,
+  queue `f89faa6f7df29851c8981f995e4c8fe9595fbd77748997395fc2940b9c8ed913`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundredth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
