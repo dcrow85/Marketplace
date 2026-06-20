@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 290: Base Set Alakazam #1 deepened; corpus acfcd02b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 291: Base Set Nidoking #11 deepened; corpus 20eccdd9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-11` Nidoking #11 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Nidoking (Base Set 11)` and `Base Set (TCG)` as bounded
+  community references, and the local Japanese pre-English Expansion Pack /
+  No Rarity row `jp_tcg_expansion_pack_19961020:013`. The dossier now
+  carries Nidoking / `ニドキング` / Nidokingu, Base Set #11/102, Rare Holo,
+  Stage 2 Grass, Level 23, 90 HP, Nidorino evolution line, Thrash recoil
+  texture, Toxic poison-pressure text, Ken Sugimori credit, and Japanese
+  Expansion Pack / PMCG1-013 lineage. Its special identification packet tells
+  agents to keep English Base Set #11 separate from Japanese Expansion Pack /
+  No Rarity PMCG1-013, Base Set 2 / reprint memory, and English First Edition
+  / Shadowless / Unlimited / 4th-print states unless seller evidence proves
+  the specific lane. Validation passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Nidoking downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninetieth
   catalog-history pass by creating
   `data/catalog-history/source-sets/base_set_v0_1.json` and deepening
