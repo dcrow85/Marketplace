@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 273: Aquapolis Octillery H20 deepened; corpus ffa32306)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 274: Aquapolis Scizor H21 deepened; corpus 94b03841)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H21` Scizor H21 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H21`, live Pokemon TCG API
+  `cards/ecard2-32`, live Pokemon TCG API `sets/ecard2`, Bulbapedia
+  `Scizor (Aquapolis H21)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Scizor / `ハッサム` / Hassam, English Aquapolis /
+  e-Card Series, API card id `ecard2-H21`, printed number H21, H21/H32 Rare
+  Holo sequence, Japanese Wind from the Sea 075/087 holo lineage, the
+  non-Holo Aquapolis #32 / Wind from the Sea 074/087 sibling, Japanese P
+  Promotional cards 037/P, Aquapolis Box Topper Jumbo 7/12, Stage 1 Metal
+  profile, Scyther evolution line, 80 HP, Fire weakness, two-retreat cost,
+  Poison Resistance / Snatch / Heavy Metal, and Hisao Nakamura credit. The
+  special identification packet tells agents to keep H21 separate from
+  Aquapolis Scizor #32, Wind from the Sea 074/087, P Promotional 037/P,
+  Box Topper/Jumbo wants, reverse-holo listings, generic Scizor wants, and
+  seller-card image claims. It also keeps Dot-Code, e-Reader, D-71 /
+  D-71-# IDs, Pokemon Crystal Pokedex source, the English Scyther-entry
+  error, and no-long-strip context legible without promoting them into
+  seller possession, authenticity, condition truth, price truth, e-Reader
+  scan success, reverse-holo equivalence, P Promotional equivalence,
+  Box Topper equivalence, Jumbo equivalence, long-strip data presence, or
+  spendability. Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `94b038419c6f35388ff475bf9006ff4885200e0ccd0018b653255458e0ab2116`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H21
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-third
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

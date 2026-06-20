@@ -17,6 +17,7 @@
       "Nidoking H18",
       "Ninetales H19",
       "Octillery H20",
+      "Scizor H21",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -4823,6 +4824,384 @@
           "price truth",
           "e-Reader scan success",
           "reverse-holo equivalence",
+          "long-strip data presence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H21",
+      "type": "card",
+      "context": {
+        "name_en": "Scizor",
+        "name_ja": "ハッサム",
+        "romaji": "Hassam",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H21",
+        "catalog_row_id": "ecard2-H21",
+        "card_number": "H21",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-32",
+        "japanese_lineage_card_number": "Wind from the Sea 075/087",
+        "related_promo_print": "Japanese P Promotional cards 037/P",
+        "related_box_topper_print": "Aquapolis Box Topper Jumbo 7/12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H21",
+          "title": "Local English WoC card row: Scizor H21",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H21",
+          "title": "Pokemon TCG API v2 card record: Scizor ecard2-H21",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Scizor_(Aquapolis_H21)",
+          "title": "Bulbapedia: Scizor (Aquapolis H21)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-32",
+          "title": "Pokemon TCG API v2 card record: Scizor ecard2-32",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Scizor as Aquapolis H21, a Rare Holo Stage 1 Metal Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Scizor's Japanese name as ハッサム / Hassam and connects the Holofoil print to Japanese Wind from the Sea card 075/087, while the non-Holofoil Aquapolis print corresponds to Wind from the Sea 074/087.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Scizor H21 with 80 HP, evolvesFrom Scyther, Fire weakness, two-Colorless retreat, Poké-Body Poison Resistance, and attacks Snatch and Heavy Metal.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Scizor H21 to Hisao Nakamura; the local and API rows also credit Hisao Nakamura on the non-Holo Aquapolis Scizor #32 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Scizor as H21/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Scizor at #32 with the same Hisao Nakamura credit, Poison Resistance Poké-Body, Snatch attack, and Heavy Metal attack; agents must keep H21 and #32 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says this Scizor card has four prints: Aquapolis Holofoil H21/H32, Aquapolis Non Holofoil 32/147, Japanese P Promotional 037/P from a McDonald's promotion, and an Aquapolis Box Topper Jumbo 7/12.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Scizor H21 page records card ID D-71 for the Holofoil Aquapolis and Box Topper prints and D-71-# for the Non Holofoil Aquapolis and P Promotional prints.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil Aquapolis and P Promotional prints have short-strip Pokedex and card-summary data, no long strip, and that species, height, and weight are present on the Holofoil Aquapolis and Box Topper prints.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Bulbapedia says Scizor H21's Japanese e-Reader Pokedex entry comes from Pokemon Crystal, while the English entry mistakenly uses Scyther's Pokemon Crystal Pokedex entry.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Scizor H21 matters because Aquapolis turns a sharp Johto Metal icon into an identity maze: Hisao Nakamura art, Poison Resistance, Snatch repositioning the opponent, Heavy Metal scaling with Metal Energy, and D-71 shared across holo and Box Topper surfaces that must not be treated as the same physical product.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9",
+            "c10"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H21 / H21/H32, Rare Holo, English ecard2-H21, ハッサム / Hassam, Hisao Nakamura credit, Poison Resistance / Snatch / Heavy Metal text, Wind from the Sea 075/087 lineage, D-71 e-Reader ID, and non-equivalence with Aquapolis #32, Wind from the Sea 074/087, Japanese P Promotional 037/P, Aquapolis Box Topper Jumbo 7/12, reverse-holo listings, generic Scizor rows, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_scizor_h21_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Scizor, ハッサム, Hassam, Scizor H21, H21/H32, Rare Holo, ecard2-H21, Hisao Nakamura, Poison Resistance, Snatch, Target Seize, Heavy Metal, D-71, D-71-#, Wind from the Sea, 075/087, Aquapolis #32, 074/087, P Promotional 037/P, McDonald's promotion, Box Topper, Jumbo, 7/12, reverse holo Scizor, or English Pokedex error.",
+          "summary": "Identify Scizor / ハッサム / Hassam H21 by the Aquapolis H-number Rare Holo lane: English ecard2-H21 / H21/H32 and Wind from the Sea 075/087 lineage, not the non-Holo #32 / 074/087 sibling, P Promotional 037/P, or Box Topper Jumbo 7/12.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H21 / printed number H21 before accepting this as the H-number holo row.",
+            "Preserve H21/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Scizor #32 row even though #32 shares Hisao Nakamura, Poison Resistance, Snatch, and Heavy Metal.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 075/087 while the non-Holofoil #32 counterpart maps to Wind from the Sea 074/087.",
+            "Keep related print routes separate: Japanese P Promotional cards 037/P and Aquapolis Box Topper Jumbo 7/12 are related Scizor print surfaces, not substitutes for English Aquapolis H21.",
+            "Use Hisao Nakamura credit, Stage 1 Metal profile, Scyther evolution line, Poison Resistance, Snatch, Heavy Metal, D-71 Holofoil / Box Topper e-Reader ID, and D-71-# Non Holofoil / P Promotional e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Scizor wants, Box Topper/Jumbo wants, P Promotional wants, and seller-card image claims separate until set, number, rarity, attack text, size, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, Pokemon Crystal Pokedex source, English Scyther-entry error, and no-long-strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, size/format evidence if a Box Topper/Jumbo is mentioned, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "P Promotional equivalence",
+            "Box Topper equivalence",
+            "Jumbo equivalence",
+            "long-strip data presence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H21"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Scizor_(Aquapolis_H21)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H21",
+        "artist": "Hisao Nakamura",
+        "rarity_signal": "Rare Holo; Aquapolis H21/H32 H-number holo sequence, separate from non-Holo Scizor #32 / Wind from the Sea 074/087, P Promotional 037/P, Box Topper Jumbo 7/12, and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Hisao Nakamura art trace",
+          "Metal e-Reader interface",
+          "P Promotional false-friend boundary",
+          "Box Topper/Jumbo false-friend boundary",
+          "English Pokedex-entry error"
+        ],
+        "collector_texture_note": "Scizor H21 is a sharp card with a messy print ecology. The same art and D-71 neighborhood run through holo, non-holo, promo, and Box Topper surfaces, so the collector value starts with keeping the route honest.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "P Promotional equivalence",
+          "Box Topper equivalence",
+          "Jumbo equivalence",
+          "long-strip data presence"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scizor H21 — steel, speed, and mistaken memory",
+        "why_it_matters": "Scizor H21 is where Aquapolis gets wonderfully dangerous for an agent. The card itself is clean and sharp: Metal typing, Poison Resistance, Snatch, Heavy Metal, Hisao Nakamura. But the print history sprawls: Wind from the Sea holo and non-holo, a McDonald's P Promotional route, a Box Topper Jumbo, shared D-71 identifiers, and even an English Pokédex entry that mistakenly points through Scyther. This is exactly why the catalog needs special instructions: the beauty is real, but so is the boundary work.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "P Promotional equivalence",
+          "Box Topper equivalence",
+          "Jumbo equivalence",
           "long-strip data presence"
         ]
       },
