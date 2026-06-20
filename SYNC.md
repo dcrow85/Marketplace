@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 245: P Promo Warp Energy 041 deepened; corpus 88fc0f6a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 246: P Promo Celebi 042 deepened; corpus 8c26be92)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-042-p`
+  Celebi 042/P is now hand-authored rather than generator memory. This pass
+  found and used the exact Bulbapedia raw page `Celebi (P Promo 42)`, plus the
+  older `Celebi (Wizards Promo 50)` / P Promo 006 page as an adjacent confusion
+  source. The row now carries the deeper card assembly: Celebi / `セレビィ` /
+  Celebi, Grass Basic, HP 50, Fire weakness, retreat cost 1, Midori Harada
+  illustration credit, Supersonic / `ちょうおんぱ`, Para-Link / `パラリンク`,
+  Pikachu Bench condition, P Promotional 042/P, e-Reader `Z-27-#`, Tokotoko
+  Truck long-strip mini-game context, and the note that four other P
+  Promotional cards are required to play it. Route is Pokemon Happy Adventure
+  Rally 2002: JR East Yamanote Line, August 3-August 18, 2002, with Celebi
+  obtainable at the booth at Pokemon Center Tokyo. The special identification
+  packet tells agents to confirm Celebi / `セレビィ`, printed `042/P`, Midori
+  Harada credit, `Z-27-#`, and the Happy Adventure Rally / Pokemon Center Tokyo
+  route; do not merge with Celebi 006/P, Wizards Black Star Promo 50, Nintendo
+  Black Star Promo 029, Space World guidebook Celebi, movie-ticket Celebi,
+  Pokemon Card Trainers magazine Celebi, later Celebi rows, other Happy
+  Adventure Rally cards, or generic e-Reader Celebi memory without
+  printed-number and route evidence. No-overclaim boundaries remain explicit:
+  seller possession, authenticity, condition, price, event provenance, booth
+  provenance, JR East/Yamanote participation proof, e-Reader readability,
+  Tokotoko Truck functionality, complete rally-set status, and spendability
+  remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `8c26be922ff41974ee0654310b568f517f4a74a553a3c4193693861e4a356b8c`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
