@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 238: P Promo Pichu 032 deepened; corpus 80e20aeb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 239: P Promo Donphan 034 deepened; corpus 2855bbf2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-034-p`
+  Donphan 034/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Donphan (P Promo
+  34)` to `Donphan (Aquapolis 7)`, so the row now carries the deeper card
+  assembly: Donphan / `ドンファン` / Donfan, Fighting Stage 1 evolving from
+  Phanpy, HP 80, Grass weakness, Lightning resistance, retreat cost 2,
+  Mitsuhiro Arita illustration credit, Earthquake / `じしん`, Double Stab /
+  `にどづき`, Aquapolis 7/147, The Town on No Map 054/092, P Promotional
+  034/P, e-Reader card ID `C-41-#`, short-strip context, and no-long-strip
+  context. The McDonald's route remains the transaction-facing identity wall:
+  Saturdays and Sundays from May 25 through June 16, 2002, printed `034/P`,
+  inside the numbered P Promotional spine. The special identification packet
+  tells agents to confirm Donphan / `ドンファン` / Donfan, printed `034/P`,
+  Fighting Stage 1 profile, Arita credit, McDonald's weekend route, attacks,
+  `C-41-#`, and no-long-strip context; do not merge with Aquapolis 7/147, The
+  Town on No Map 054/092, ordinary Donphan rows, later Donphan promos, other
+  McDonald's promos, or generic Arita/e-Reader memory without printed-number
+  evidence. No-overclaim boundaries remain explicit: seller possession,
+  authenticity, condition, price, provenance, sealed-packet state, e-Reader
+  readability, and spendability remain outside the catalog row. Validation
+  passed: `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `2855bbf202701c74debea22b84909ac82f1b2ec26daebd7ce2fbfebef78614bc`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
