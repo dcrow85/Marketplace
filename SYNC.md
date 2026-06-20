@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 288: Aquapolis Entei H8 deepened; corpus da191271)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 289: Aquapolis Espeon H9 upgraded; corpus 153fabaf)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H9` Espeon H9 was already
+  hand-authored, but is now upgraded to the current dossier standard.
+  This pass used the local English WoC row, local API-derived non-Holo
+  sibling row for `ecard2-11`, local Japanese The Town on No Map rows
+  for E2-046 / E2-045, Bulbapedia `Espeon (Aquapolis H9)`, and
+  Bulbapedia `Aquapolis (TCG)`. The card dossier now carries Espeon /
+  `エーフィ` / Eifie, English Aquapolis / e-Card Series, API card id
+  `ecard2-H9`, printed number H9, H9/H32 Rare Holo sequence, Japanese
+  The Town on No Map 046/092 holo lineage, the non-Holo Aquapolis #11 /
+  11/147 / The Town on No Map 045/092 sibling, the Reverse Holofoil
+  Jumbo Box Topper 6/12 lane, Stage 1 Psychic profile, Eevee evolution
+  line, 80 HP, Psychic weakness, Poke-Power Energy Return, Damage Blast,
+  and Kyoko Umemoto credit. The special identification packet tells
+  agents to keep H9 separate from Aquapolis Espeon #11, Box Topper/Jumbo
+  claims, reverse-holo listings, generic Espeon wants, Eeveelution
+  collection goals, Psychic deck references, Dream Eater mini-game
+  references, and seller-card image claims. It also keeps C-70 / C-70-#
+  IDs, Sun Pokemon species label, Pokemon Crystal Pokedex source,
+  predictive-tail Pokedex text, Dream Eater multi-card mini-game data,
+  seller possession, authenticity, condition, price, image rights,
+  seller-card match, e-Reader scan success, reverse-holo/Jumbo
+  equivalence, single-card Dream Eater playability, and spendability
+  explicitly out of the catalog claim. Rebuilt generated corpus artifacts;
+  new corpus hash
+  `153fabaff69edad86b912d5aecb5cb96c06f3a5732aa37a6726a1aa7e9a081e2`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

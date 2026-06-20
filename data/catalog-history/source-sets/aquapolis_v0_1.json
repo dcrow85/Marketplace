@@ -10233,7 +10233,13 @@
         "romaji": "Eifie",
         "release_family_id": "en_wotc_aquapolis_20030115",
         "row_id": "en_wotc_aquapolis_20030115:ecard2-H9",
-        "catalog_row_id": "ecard2-H9"
+        "catalog_row_id": "ecard2-H9",
+        "card_number": "H9",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-11",
+        "japanese_lineage_card_number": "The Town on No Map 046/092"
       },
       "sources": [
         {
@@ -10241,9 +10247,40 @@
           "type": "local_catalog",
           "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H9",
           "title": "Local English WoC card row: Espeon H9",
-          "retrieved": "2026-06-19",
+          "retrieved": "2026-06-20",
           "tier": "B",
           "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H9",
+          "title": "Pokemon TCG API v2 card record: Espeon ecard2-H9",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
             "seller possession",
             "authenticity",
             "condition",
@@ -10251,30 +10288,63 @@
           ]
         },
         {
-          "id": "s2",
-          "type": "api_reference",
-          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H9",
-          "title": "Pokemon TCG API v2 card record: Espeon H9",
-          "retrieved": "2026-06-19",
-          "tier": "B",
-          "not_claiming": [
-            "seller possession",
-            "authenticity",
-            "condition"
-          ]
-        },
-        {
-          "id": "s3",
+          "id": "s4",
           "type": "community_reference",
           "ref": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Aquapolis_H9)",
           "title": "Bulbapedia: Espeon (Aquapolis H9)",
-          "retrieved": "2026-06-19",
+          "retrieved": "2026-06-20",
           "tier": "B",
           "not_claiming": [
             "primary Wizards source",
             "seller possession",
             "authenticity",
-            "condition"
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-11",
+          "title": "Pokemon TCG API v2 card record: Espeon ecard2-11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_japanese_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#rows:E2-046,E2-045",
+          "title": "Local Japanese classic rows: Espeon / The Town on No Map 046 and 045",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
           ]
         }
       ],
@@ -10282,89 +10352,215 @@
         {
           "id": "c1",
           "field": "card.identity",
-          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Espeon as Aquapolis H9/H32, a Rare Holo Stage 1 Psychic row credited to Kyoko Umemoto.",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Espeon as Aquapolis H9, a Rare Holo Stage 1 Psychic Pokemon in the English e-Card Series.",
           "sources": [
             "s1",
             "s2",
-            "s3"
+            "s4"
           ],
           "tier": "B",
           "authority_label": "fact"
         },
         {
           "id": "c2",
-          "field": "identification.special_instructions",
-          "text": "Bulbapedia records Espeon as H9/H32 for the Holofoil print, 11/147 for the Non Holofoil print, and 6/12 for the English Reverse Holofoil Jumbo Box Topper.",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Espeon's Japanese name as エーフィ / Eifie and connects the Holofoil print to Japanese The Town on No Map card 046/092, while the non-Holofoil Aquapolis print appears as English 11/147 and Japanese 045/092.",
           "sources": [
-            "s3"
+            "s4",
+            "s7"
           ],
           "tier": "B",
           "authority_label": "fact"
         },
         {
           "id": "c3",
-          "field": "identification.special_instructions",
-          "text": "Bulbapedia says the Holofoil and Box Topper prints use card ID C-70, while the Non Holofoil print uses C-70-#.",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Espeon H9 with 80 HP, evolvesFrom Eevee, Psychic type, Psychic weakness, the Poke-Power Energy Return, and Damage Blast for 30 plus 10 more damage for each heads after flipping coins equal to the Defending Pokemon's damage counters.",
           "sources": [
-            "s3"
+            "s1",
+            "s2"
           ],
           "tier": "B",
           "authority_label": "fact"
         },
         {
           "id": "c4",
-          "field": "history.significance",
-          "text": "Aquapolis Espeon matters because the same art-context family fans chase can exist as H-number holo, non-holo, and jumbo Box Topper branches, making the row a perfect test of agent-side identity discipline.",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Espeon H9 to Kyoko Umemoto; the local and API rows also credit Kyoko Umemoto on the non-Holo Aquapolis Espeon #11 counterpart.",
           "sources": [
             "s1",
             "s2",
-            "s3"
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Espeon as H9/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Espeon at #11; Bulbapedia also records a Reverse Holofoil Jumbo Box Topper print numbered 6/12, so agents must keep the H9 holo, #11 non-holo, and Box Topper/Jumbo lanes separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Espeon H9 page records card ID C-70 for the Holofoil and Box Topper prints and C-70-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the Holofoil and Box Topper prints carry species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Espeon H9's e-Reader Pokedex entry comes from Pokemon Crystal and that the long strip contains data for the Dream Eater e-Reader mini-game, which requires six other Aquapolis cards to play; the Pokedex text centers Espeon's forked tail quivering when it predicts an opponent's next move.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Espeon H9 matters because Aquapolis makes prediction into both card text and machine text: Energy Return lets the player pick up attached Energy again and again, Damage Blast scales with existing damage, and the e-Reader layer turns the Sun Pokemon into a C-70 object tied to the multi-card Dream Eater mini-game.",
+          "sources": [
+            "s2",
+            "s4"
           ],
           "tier": "B",
           "authority_label": "judged_texture",
           "basis_claims": [
             "c1",
-            "c2",
-            "c3"
+            "c3",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
           ]
         }
       ],
       "special_identification_instructions": [
         {
+          "id": "aquapolis_espeon_h9_holo_boundary_v0.2",
           "authority_label": "legible",
-          "id": "aquapolis_espeon_h9_nonholo_box_topper_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Espeon, エーフィ, Eifie, Espeon H9, H9/H32, Rare Holo, ecard2-H9, Kyoko Umemoto, Energy Return, Damage Blast, C-70, C-70-#, The Town on No Map, 046/092, Aquapolis #11, 11/147, Box Topper, Jumbo, 6/12, Dream Eater, or reverse holo Espeon.",
+          "summary": "Identify Espeon / エーフィ / Eifie H9 by the Aquapolis H-number Rare Holo lane: English ecard2-H9 / H9/H32 and The Town on No Map 046/092 lineage, not the non-Holo #11 / 11/147 / 045/092 sibling and not the Reverse Holofoil Jumbo Box Topper 6/12 lane.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H9 / printed number H9 before accepting this as the H-number holo row.",
+            "Preserve H9/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Espeon #11 row even though #11 shares Kyoko Umemoto, Energy Return, and Damage Blast.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 046/092 while the non-Holofoil counterpart maps to The Town on No Map 045/092 and English Aquapolis 11/147.",
+            "Separate the Reverse Holofoil Jumbo Box Topper 6/12 lane from ordinary H9 and #11 listings; the Box Topper shares C-70 identity language but is a different physical format and collecting lane.",
+            "Use Kyoko Umemoto credit, Stage 1 Psychic profile, Eevee evolution line, Psychic weakness, Energy Return, Damage Blast, C-70 Holofoil/Box Topper e-Reader ID, and C-70-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number, set identity, and format.",
+            "Keep reverse-holo listings, generic Espeon wants, Eeveelution collection goals, Psychic deck references, Jumbo/Box Topper claims, Dream Eater mini-game references, and seller-card image claims separate until set, number, rarity, format, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Sun Pokemon species label, Pokemon Crystal Pokedex source, predictive-tail Pokedex text, and Dream Eater mini-game context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo or reverse-holo surface photos, card-number/format closeup, size evidence when Jumbo is claimed, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
           "not_claiming": [
             "seller possession",
             "authenticity",
-            "condition",
+            "condition truth",
             "price truth",
-            "box topper and standard card are interchangeable"
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "Jumbo equivalence",
+            "Dream Eater playability from a single card",
+            "long-strip data readability",
+            "spendability"
           ],
-          "steps": [
-            "Separate Espeon H9/H32, Espeon 11/147, and the English Box Topper 6/12 before comparing images or value.",
-            "Record whether a listing claims standard Holofoil, Non Holofoil, or Reverse Holofoil Jumbo Box Topper context.",
-            "Keep C-70 / C-70-# card ID context as catalog legibility, not physical verification.",
-            "Ask for size/context evidence if a listing may be a jumbo Box Topper rather than a standard card."
-          ],
-          "summary": "Aquapolis Espeon is a high-confusion row: H holo, non-holo, and jumbo Box Topper branches must stay separate.",
-          "trigger": "A listing or want references Aquapolis Espeon, H9, 11/147, Box Topper, C-70, or C-70-#."
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H9"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Aquapolis_H9)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
         }
       ],
+      "card_highlights": {
+        "number": "H9",
+        "artist": "Kyoko Umemoto",
+        "rarity_signal": "Rare Holo; H9/H32 H-number holo sequence, separate from non-Holo #11 / 11/147 / 045/092, Reverse Holofoil Jumbo Box Topper 6/12, and generic reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Kyoko Umemoto art trace",
+          "Eeveelution chase texture",
+          "Energy Return hand-loop interface",
+          "Damage Blast prediction pressure",
+          "Dream Eater multi-card mini-game data",
+          "C-70 e-Reader object",
+          "Box Topper format boundary"
+        ],
+        "collector_texture_note": "Espeon H9 is one of Aquapolis's elegant traps: a chased Eeveelution, a standard H-number holo, a non-holo #11, a Jumbo Box Topper 6/12, and a C-70 Dream Eater data object all close enough to blur if the agent gets lazy."
+      },
       "narrative": {
+        "human_title": "Espeon H9 — prediction with paperwork",
+        "why_it_matters": "Espeon H9 is gorgeous because it behaves exactly like an Espeon should: it reads the table, returns Energy to hand, and turns existing damage into a forecast. Kyoko Umemoto's Sun Pokemon also carries the strangest Aquapolis lesson, though: the chased Eeveelution is not one object but a small branching system of H9 holo, #11 non-holo, Jumbo Box Topper, C-70 identity, and Dream Eater mini-game data. Elegance, in this set, has paperwork.",
         "authority_label": "judged_texture",
-        "human_title": "The psychic branch with a jumbo shadow",
-        "why_it_matters": "Espeon H9 is an elegant card, but the real Aquapolis lesson is that elegance has paperwork. Holo, non-holo, and Box Topper branches sit close enough to confuse a casual search and far enough apart to matter. It is a beautiful Eeveelution and an identity drill at the same time.",
         "basis_claims": [
           "c1",
-          "c2",
           "c3",
-          "c4"
+          "c4",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
         ],
         "not_claiming": [
-          "official emotional history",
-          "price truth",
+          "seller possession",
+          "authenticity",
           "condition truth",
-          "physical-card authenticity"
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "Jumbo equivalence",
+          "Dream Eater playability from a single card",
+          "long-strip data readability",
+          "spendability"
         ]
       },
       "coverage": {
