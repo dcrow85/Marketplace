@@ -1972,6 +1972,241 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-046-p",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Mewtwo",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-046-p",
+        "catalog_row_id": "046/P",
+        "release_name": "P Promotional cards",
+        "campaign_route": "Pokemon Happy Adventure Rally 2002; JR East Yamanote Line / Shinagawa Station route"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-046-p",
+          "title": "Local catalog row: Mewtwo 046/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Mewtwo_(P_Promo_46)&action=raw",
+          "title": "Bulbapedia raw wikitext: Mewtwo (P Promo 46)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mewtwo as numbered P Promotional row 046/P, distributed through Pokemon Happy Adventure Rally 2002.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Mewtwo 046/P as Mewtwo / ミュウツー, a Psychic Basic Pokemon with HP 60, Psychic weakness, retreat cost 1, and Hajime Kusajima illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Mewtwo 046/P was one of six cards available through Pokemon Happy Adventure Rally 2002, which ran on the JR East Yamanote Line between August 3 and August 18, 2002; the card could be obtained at the booth at Shinagawa Station.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Link Charge / リンクチャージ, an attack that references Super Smash Bros. Melee through its Entei Bench condition.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia records card ID Z-30-# for Mewtwo 046/P and describes the e-Reader content as a self-contained mini-game for entering the Happy Adventure Rally password.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Mewtwo 046/P matters because it makes the Happy Adventure Rally feel like a system, not a souvenir table: a station-specific booth, a Smash-linked attack, and an e-Reader password activity all point to Pokemon as public infrastructure in summer 2002.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Mewtwo 046/P from Base Set Mewtwo, Rocket's Mewtwo, Expedition Mewtwo, JR Happy Adventure Rally sibling cards, and generic P Promotional Mewtwo references; the 046/P number, Shinagawa Station route, Hajime Kusajima credit, Link Charge text, and Z-30-# e-Reader ID are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_046_p_mewtwo_happy_adventure_rally_boundary_v0.1",
+          "trigger": "A user says Mewtwo P promo, Happy Adventure Rally Mewtwo, Yamanote Line Mewtwo, Shinagawa Station Mewtwo, Link Charge Mewtwo, 046/P, or Z-30-#.",
+          "summary": "Confirm 046/P and the Pokemon Happy Adventure Rally 2002 Shinagawa Station route before treating a Mewtwo listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 046/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve the Pokemon Happy Adventure Rally 2002 route: JR East Yamanote Line, August 3-August 18, 2002, and Shinagawa Station booth.",
+            "Check the subject line as Mewtwo / ミュウツー, not merely a generic Psychic promo.",
+            "Check that the card profile matches the 046/P line: Psychic Basic, HP 60, Psychic weakness, retreat cost 1.",
+            "Use Hajime Kusajima as the card-art credit for this row, while remembering that artist credit is not physical-card authentication.",
+            "Check for Link Charge / リンクチャージ and the Entei Bench condition when comparing card text.",
+            "Use Z-30-# and the Happy Adventure Rally password mini-game as 046/P e-Reader context.",
+            "Separate this row from Happy Adventure Rally Pikachu 044/P, Lugia 047/P, and other rally cards; the shared route does not make them interchangeable.",
+            "Separate this from Base Set Mewtwo, Rocket's Mewtwo, Expedition Mewtwo, Nintendo Black Star / movie-era Mewtwo memory, and generic Mewtwo promo listings.",
+            "If a seller claims rally provenance, ask for seller-controlled evidence of the card and any station/rally/stamp material separately.",
+            "Treat mini-game readability, rally attendance, sealed state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Happy Adventure Rally provenance",
+            "station or rally material possession",
+            "mini-game functionality",
+            "Entei card possession",
+            "other Mewtwo equivalence",
+            "other rally-card equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "046/P",
+        "rarity_signal": "Pokemon Happy Adventure Rally 2002; JR East Yamanote Line / Shinagawa Station route",
+        "artist": "Hajime Kusajima",
+        "assembly_themes": [
+          "promo distribution",
+          "travel/rally distribution",
+          "e-Reader mini-game",
+          "legendary gravity",
+          "identity trap"
+        ],
+        "signals": [
+          "Mewtwo",
+          "ミュウツー",
+          "046/P",
+          "Pokemon Happy Adventure Rally 2002",
+          "JR East Yamanote Line",
+          "Shinagawa Station",
+          "Hajime Kusajima",
+          "Link Charge",
+          "リンクチャージ",
+          "Entei Bench condition",
+          "Z-30-#",
+          "Happy Adventure Rally password mini-game"
+        ],
+        "collector_texture_note": "Mewtwo 046/P is a station-rally Mewtwo: Shinagawa Station route, Kusajima art, Link Charge, and an e-Reader password activity all locked to a single numbered P Promotional row.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete rally provenance",
+          "mini-game functionality",
+          "Entei card possession"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo 046/P: the legendary at Shinagawa Station",
+        "why_it_matters": "Mewtwo usually enters binders as force: Base Set gravity, movie memory, laboratory myth. This print is stranger and more local. It places that force on the Yamanote Line, at Shinagawa Station, inside a summer rally where the card text points sideways to Entei and Melee while the e-Reader strip points to a password game. The result is not just a Mewtwo promo; it is a contact point between rail travel, event play, handheld scanning, and one of Pokemon's first great legends.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete Happy Adventure Rally attendance proof",
+          "station material possession",
+          "mini-game functionality",
+          "Entei card possession"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
       "type": "card",
       "context": {

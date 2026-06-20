@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 194: P Promotional Happy Adventure Rally Pikachu 044/P deepened; corpus 34f8823e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 195: P Promotional Happy Adventure Rally Mewtwo 046/P deepened; corpus 0e09ca16)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-046-p`
+  deepens Mewtwo / ミュウツー 046/P. The pass pins 046/P to the Pokemon
+  Happy Adventure Rally 2002 route: JR East Yamanote Line, August 3-August
+  18, 2002, and the Shinagawa Station booth are preserved as the source route
+  rather than smoothed into generic P Promotional Mewtwo memory. It records
+  Hajime Kusajima illustration credit, HP 60 Psychic Basic profile, Link
+  Charge / リンクチャージ, the Entei Bench condition as a Super Smash Bros.
+  Melee reference, e-Reader ID Z-30-#, and the self-contained Happy Adventure
+  Rally password mini-game branch. The special identification packet is
+  explicit and first-class: agents must separate 046/P from Base Set Mewtwo,
+  Rocket's Mewtwo, Expedition Mewtwo, Happy Adventure Rally Pikachu 044/P,
+  Lugia 047/P, generic P Promotional Mewtwo, and loose station-provenance
+  claims. Boundaries remain explicit: route legibility is not seller
+  possession, authenticity, condition, Happy Adventure Rally attendance proof,
+  station/stamp material possession, mini-game functionality, Entei-card
+  possession, other-Mewtwo equivalence, price, or spendability. Generated gaps
+  remain release queue 0 and card queue 100. Hashes: corpus
+  `0e09ca1633a6a0de30aa7280e644e55d5278dd8c8c9ca5db116cd69273291923`,
+  index `99f79a073924f019699527ecef90889cd611cd3f6239c069b4255c7b163edf42`,
+  queue `882a1b10b310ad192e923ae0e90fdeb901926d751e385f65c9f64e0237fe0504`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
