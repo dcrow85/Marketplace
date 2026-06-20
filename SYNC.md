@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 260: Neo Summer Road Best in Japan No.3 row 244 deepened; corpus d0f3a8ca)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 261: Aquapolis Ampharos H1 deepened; corpus f7dddec4)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H1` Ampharos H1 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H1`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Ampharos (Aquapolis H1)`, and Bulbapedia `Aquapolis (TCG)`.
+  The card dossier now carries Aquapolis / English e-Card Series / card id
+  `ecard2-H1`, printed number H1, H1/H32 Rare Holo sequence, Stage 2
+  Lightning profile, Flaaffy evolution line, Thundershock / Reflect Energy,
+  Shin-ichi Yoshida credit, and the set-level e-Reader / Dot-Code / Crystal
+  Pokemon context. The special identification packet tells agents to keep H1
+  separate from non-Holo Aquapolis Ampharos #1, Japanese Wind from the Sea
+  Ampharos holo E3-049, Expedition Base Set Ampharos, Neo Genesis Ampharos,
+  Neo Revelation Ampharos, Dark Ampharos, reverse-holo listings, and any
+  generic Ampharos want. It also keeps e-Reader scan context legible only:
+  not seller possession, authenticity, condition truth, or scan success.
+  Validation passed: `json.tool`, `build_catalog_history_dossiers.py`,
+  `--check`, `build_card_dossiers.py --check`,
+  `build_catalog_completion_audit.py --check`, plus a focused assertion for
+  H1/H32, H1 vs #1 separation, Shin-ichi Yoshida, Thundershock / Reflect
+  Energy, Dot-Code / e-Reader caveats, special-identification packet, and
+  corpus propagation. New catalog-history corpus hash:
+  `f7dddec499fa7c08109fe0a508abcaa15f5c8ff695c265dfa824eea3bf9bcf45`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixtieth
   catalog-history pass inside
   `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`:

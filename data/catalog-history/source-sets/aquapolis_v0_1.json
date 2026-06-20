@@ -4,6 +4,7 @@
     "description": "Hand-researched deepening pass for English Aquapolis and six rows that show the e-Reader interface, H-number identity, Crystal Pokemon, and late-Wizards chase gravity.",
     "in_scope": [
       "Aquapolis release dossier",
+      "Ampharos H1",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -228,6 +229,297 @@
           "price truth",
           "condition truth",
           "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H1",
+      "type": "card",
+      "context": {
+        "name_en": "Ampharos",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H1",
+        "catalog_row_id": "ecard2-H1",
+        "card_number": "H1",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H1",
+          "title": "Local English WoC card row: Ampharos H1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H1",
+          "title": "Pokemon TCG API v2 card record: Ampharos ecard2-H1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Aquapolis_H1)",
+          "title": "Bulbapedia: Ampharos (Aquapolis H1)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ampharos as Aquapolis H1, a Rare Holo Stage 2 Lightning Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ampharos H1 with 100 HP, evolvesFrom Flaaffy, Fighting weakness, two-Colorless retreat, and attacks Thundershock and Reflect Energy.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Ampharos H1 to Shin-ichi Yoshida; the local Aquapolis row set also contains multiple Yoshida credits, including Ampharos #1, Ampharos H1, Ariados #3/H3, Electrode #8/H7, Flaaffy #47, Magnemite #52, and Ponyta #102.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English second main e-Card expansion drawing from the Japanese The Town on No Map and Wind from the Sea materials.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Ampharos as H1/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog also has a non-Holo Aquapolis Ampharos at card #1; agents must keep H1 and #1 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis introduced Crystal Pokemon and used e-Reader-era Dot-Code strips, including lettered variants with different strip data; those interface features are catalog identity context, not proof that a seller's physical card scans or is authentic.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Ampharos H1 matters because it opens the Aquapolis H-number holo sequence with a lighthouse-coded Johto Pokemon inside the e-Reader coastal-city apparatus: an electric signal over water, a Shin-ichi Yoshida image, and a card frame built to carry machine-readable contact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H1 / H1/H32, Rare Holo, English ecard2-H1, Shin-ichi Yoshida credit, Thundershock / Reflect Energy text, and non-equivalence with Aquapolis #1, Japanese Wind from the Sea Ampharos holo E3-049, Expedition / Neo Ampharos rows, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_ampharos_h1_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Ampharos, Ampharos H1, H1/H32, Rare Holo, ecard2-H1, Shin-ichi Yoshida, Thundershock, Reflect Energy, Wind from the Sea, E3-049, Aquapolis #1, Expedition Ampharos, Neo Ampharos, or reverse holo Ampharos.",
+          "summary": "Identify Ampharos H1 by the Aquapolis H-number Rare Holo lane: English ecard2-H1 / H1/H32, not the non-Holo #1 row and not the Japanese E3-049 row.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H1 / printed number H1 before accepting this as the H-number holo row.",
+            "Preserve H1/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Ampharos #1 row.",
+            "Use Shin-ichi Yoshida credit, Stage 2 Lightning profile, Thundershock, and Reflect Energy as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep the Japanese Wind from the Sea Ampharos holo E3-049 adjacent but separate; shared species and Japanese lineage do not make the English H1 row identical to a seller's Japanese card.",
+            "Keep Expedition Base Set Ampharos, Neo Genesis Ampharos, Neo Revelation Ampharos, Dark Ampharos, reverse-holo listings, and generic Ampharos wants separate until set, number, rarity, and image evidence align.",
+            "Treat e-Reader and Dot-Code strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H1"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Aquapolis_H1)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H1",
+        "artist": "Shin-ichi Yoshida",
+        "rarity_signal": "Rare Holo; first card in Aquapolis's H-number H1/H32 holo sequence, separate from non-Holo Ampharos #1",
+        "assembly_themes": [
+          "Aquapolis H-number holo opener",
+          "e-Reader interface frame",
+          "Lightning lighthouse species",
+          "Shin-ichi Yoshida art trace",
+          "Thundershock and Reflect Energy",
+          "Wind from the Sea adjacency"
+        ],
+        "collector_texture_note": "Ampharos H1 is an unusually gentle opener for a strange set: a lighthouse-line Pokemon at the mouth of the H-number holos, carrying electricity through a card frame that wanted to talk to hardware.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ampharos H1 — Aquapolis opens the holo city with a signal",
+        "why_it_matters": "Aquapolis could have opened its holo lane with a dragon or a legend. Instead H1 is Ampharos: Johto's lighthouse Pokemon, quiet and useful, standing at the edge of a set built like a coastal machine. The charm is exactly there. Shin-ichi Yoshida's Ampharos is not the loudest chase in Aquapolis, but it is the right first light for a set where cardboard, data, water, and electricity all start talking to each other.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success"
         ]
       },
       "coverage": {
