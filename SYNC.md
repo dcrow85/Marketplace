@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 171: How I Became a Pokemon Card Vol. 1 Mankey deepened; corpus c331e32e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 172: Lugia Explosive Birth Ancient Mew deepened; corpus 57829ff3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-second
+  catalog-history pass:
+  `data/catalog-history/source-sets/lugia_explosive_birth_ancient_mew_v0_1.json`
+  deepens the Mirage Pokemon: Lugia's Explosive Birth / The Power of One movie
+  pamphlet source slice and its single modeled row, Ancient Mew source index
+  116. The pass treats Ancient Mew as three things at once without collapsing
+  them: a July 17, 1999 Japanese movie pamphlet route, an in-universe Lawrence
+  III relic, and a physical promo with branch-sensitive print tells. It
+  preserves the local aggregate-date caveat around the row's `1998-11-13`
+  source baggage, the Japanese pamphlet route, Germanic-rune and Mayan-glyph
+  reading discipline, the Birth / Enthronement / Right of Succession / Death
+  glyph story, Nintedo / corrected Nintendo / Cosmos / speckle branch risks,
+  and unknown-illustrator status while keeping Kouichi Ooyama only as CoroCoro
+  / Dr. Mason lexicon context, not an illustrator claim. Special identification
+  packets now give agents explicit rails for route-boundary checks and
+  card-level Ancient Mew branch checks. Boundaries remain against international
+  Ancient Mew theater distributions, the 2019 Mewtwo Strikes Back Evolution
+  pamphlet reprint, the 2020 Korean print, ordinary Mew promos, Shining Mew,
+  slab labels that hide Nintedo/corrected/Cosmos distinctions, sealed pamphlet
+  status, a complete Ancient Mew print census, seller possession,
+  authenticity/condition/price, and spendability. Generated gaps moved to 17
+  release / 3818 card. Current hashes: corpus
+  `57829ff3926bdb1c3afc00802bb3c498032325a1029ad9809a77361c36767335`,
+  index `e418b8cb36d393f66165ae00c1cd608aa679454a22e91cc10c00965b9fe49f08`,
+  queue `ef05455a74f8b715357ceae6dac31d984be31e52afb7ac9c393fa73b21b06407`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-first
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol1_mankey_v0_1.json`
