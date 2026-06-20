@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 181: How I Became a Pokemon Card Vol. 4 Sunkern deepened; corpus 4d514a69)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 182: Neo Era Premium File 3 Celebi deepened; corpus 22efc389)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-second
+  catalog-history pass:
+  `data/catalog-history/source-sets/neo_era_premium_file_3_celebi_v0_1.json`
+  deepens the Neo Era Premium File 3 Celebi source-row slice and its single
+  modeled row, Celebi / セレビィ / Serebii source index 210. The pass keeps the
+  local UID honest as a one-row unnumbered-promo route while preserving the
+  broader nine-card Premium File 3 product context: November 23, 2000 release,
+  Awakening Legends precursor, all-type page object, and a legendary/mythical
+  concentration around Celebi, Entei, Suicune, Raikou, Lugia, Sudowoodo,
+  Skarmory, Sneasel, and Ho-Oh. It records Sumiyoshi Kizuki / 木月すみよし as the
+  expected Celebi artist, Psychic Leaf, No. 251, HP 50, the Awakening Legends
+  symbol context, and the connected illustration with Sudowoodo and Sneasel;
+  Naoyo Kimura / 木村直代 is preserved only as broader product context for the
+  legendary-beast connected-art group, not as a modeled row under this UID.
+  Special identification packets now separate this row from Neo Revelation /
+  Awakening Legends booster rows, later Celebi promos, Shining Celebi,
+  movie-related Celebi cards, modern classic reprints, and any complete-file
+  claim where Celebi is not separately shown. Boundaries remain against seller
+  possession, authenticity, condition, price, complete file state, official
+  print run, and spendability. Generated gaps are now release queue 7 and card
+  queue 100. Hashes: corpus
+  `22efc3897ad10a6220138280a0f9c07eaad6f8f1a31e4bca3bacfb219c3e5710`,
+  index `5c55add7e70933d57de34c9c305becb1f4d6e1a425d1ec480f59f36f5c066629`,
+  queue `ec6aebfcb6c473466ed56ed2554b5002beaae55f51cdb3c30ebe75fb01df849b`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-first
   catalog-history pass:
   `data/catalog-history/source-sets/how_i_became_card_vol4_sunkern_v0_1.json`

@@ -54109,35 +54109,40 @@
     },
     {
       "card": {
-        "artist": "",
+        "artist": "Sumiyoshi Kizuki",
         "assembly_themes": [
-          "promo distribution",
-          "identity trap"
+          "Celebi TCG debut context",
+          "time-travel myth entering the Neo card world",
+          "Psychic Leaf attack",
+          "Awakening Legends symbol on Japanese print",
+          "connected-art clue with Sudowoodo and Sneasel",
+          "soft crayon-like Sumiyoshi Kizuki style",
+          "file-object route rather than pack-pull route"
         ],
-        "number": "None",
-        "rarity_signal": "not provided"
+        "number": "source index 210",
+        "rarity_signal": "unnumbered Premium File 3 promo context; no printed set number supplied by local source row"
       },
-      "claim_count": 5,
+      "claim_count": 8,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Celebi: first-pass card note",
+      "generated": false,
+      "human_title": "Celebi — source index 210, the little time traveler in the file",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
-          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
-          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+          "id": "neo_era_premium_file_3_celebi_210_checks_v0.1",
+          "summary": "Treat this as Premium File 3 Celebi only when Celebi identity, source index 210, Premium File 3 route, Awakening Legends symbol context, and Sumiyoshi Kizuki connected-art clues line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Celebi, セレビィ, Serebii, Premium File 3, プレミアムファイル3, Psychic Leaf, No. 251, HP 50, Awakening Legends, Sumiyoshi Kizuki, Sudowoodo, Sneasel, or source index 210."
         }
       ],
       "type": "card",
       "uid": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210",
-      "why_it_matters": "Celebi sits in Neo Era Premium File 3 as not provided; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "This Celebi is easy to flatten into a name and a price, but that misses the card. It is a file-born Celebi, a small mythical Pokemon carried into the TCG through the Neo era's page logic: all types represented, legends orbiting it, Awakening Legends just ahead, and Sumiyoshi Kizuki's soft connected illustration making Celebi feel less like a trophy and more like a quiet visitor in a forest with Sudowoodo and Sneasel nearby."
     },
     {
       "claim_count": 4,
@@ -118616,30 +118621,48 @@
     },
     {
       "assembly_themes": [
-        "johto/generation shift"
+        "Neo Era Premium File 3 source-row boundary",
+        "Awakening Legends precursor",
+        "nine-card type panorama",
+        "Legendary Pokemon concentration",
+        "Celebi TCG debut context",
+        "combined illustration across Celebi / Sudowoodo / Sneasel",
+        "Sumiyoshi Kizuki soft crayon-like visual lane",
+        "Premium File object versus expansion-pack pull",
+        "source index 210 as local audit handle"
       ],
-      "chase_cards": [
-        {
-          "name": "Celebi",
-          "number": "None",
-          "row_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210"
-        }
-      ],
-      "claim_count": 6,
+      "chase_cards": [],
+      "claim_count": 8,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Neo Era Premium File 3: first-pass assembly note",
-      "key_artists": [],
-      "special_identification_instruction_count": 0,
-      "special_identification_instructions": [],
+      "generated": false,
+      "human_title": "Premium File 3 Celebi — the time traveler in a nine-card Neo page",
+      "key_artists": [
+        {
+          "name": "Sumiyoshi Kizuki",
+          "row_count": 1
+        },
+        {
+          "name": "Naoyo Kimura",
+          "row_count": 0
+        }
+      ],
+      "special_identification_instruction_count": 1,
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_era_premium_file_3_celebi_source_row_boundary_v0.1",
+          "summary": "Treat this local release UID as the Premium File 3 Celebi source-row route, not as proof that all nine Premium File 3 cards are present or modeled under the UID.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Celebi, セレビィ, Serebii, Premium File 3, プレミアムファイル3, Awakening Legends, Neo Revelation, Psychic Leaf, Sumiyoshi Kizuki, Sudowoodo, Sneasel, or source index 210."
+        }
+      ],
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3",
-      "why_it_matters": "Neo Era Premium File 3 is now in the history layer instead of sitting as a silent checklist. Neo Era Premium File 3 currently reads through johto/generation shift: Celebi pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
+      "why_it_matters": "Premium File 3 is where the Neo era starts arranging itself like a little museum page. Celebi is the card our local unnumbered-promo slice can actually model, but the emotional charge comes from the surrounding object: nine special cards, every TCG type represented, legends stacked around a new mythical time traveler, and connected artwork that lets a collector see the file as one composed scene rather than nine loose rectangles. That is the assembly worth preserving."
     },
     {
       "claim_count": 7,
