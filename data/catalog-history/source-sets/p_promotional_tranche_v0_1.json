@@ -7555,6 +7555,300 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-030-p",
+      "type": "card",
+      "context": {
+        "name_en": "Growlithe",
+        "name_ja": "ガーディ",
+        "romaji": "Gardie",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-030-p",
+        "catalog_row_id": "030/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis 51/147 / The Town on No Map 015/092 / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-030-p",
+          "title": "Local Japanese promo WotC catalog row: Growlithe 030/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Growlithe_(P_Promo_30)&action=raw",
+          "title": "Bulbapedia raw redirect: Growlithe (P Promo 30)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Growlithe_(Aquapolis_51)&action=raw",
+          "title": "Bulbapedia raw wikitext: Growlithe (Aquapolis 51 / P Promo 30)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Growlithe as P Promotional card number 030/P, and the row-specific Bulbapedia redirect points Growlithe (P Promo 30) to the Growlithe (Aquapolis 51) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Growlithe / ガーディ / Gardie, a Fire Basic Pokemon with HP 60, Water weakness, and retreat cost 1.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits both the Aquapolis print and P Promotional print of Growlithe to Kyoko Umemoto.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the route as a McDonald's promotion on Saturdays and Sundays from May 25 through June 16, 2002; Bulbapedia says the Japanese P Promotional reprint used artwork by the same artist as part of a McDonald's promotion running between those dates.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Growlithe card in Aquapolis 51/147, Japanese The Town on No Map 015/092, and Japanese P Promotional 030/P contexts.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Ember / ひのこ as the attack, doing 30 damage and discarding a Fire Energy attached to Growlithe.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia records two prints with card ID C-09-#, with a short strip containing Pokedex information, a brief card summary, and information on the long strip; the long strip contains sound data for Construction: Melody Box.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Growlithe 030/P matters because the May-June McDonald's branch pairs an ordinary weekend food route with a loyal Fire-type drawn by Kyoko Umemoto, Aquapolis lineage, and e-Reader sound data: a small warm card sitting inside a technical launch era.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Growlithe 030/P from Aquapolis 51/147, The Town on No Map 015/092, ordinary Growlithe rows, later Growlithe promos, other McDonald's P Promotional rows, and generic e-Reader or Construction: Melody Box references; the printed 030/P number and May 25-June 16, 2002 McDonald's weekend route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_growlithe_030_mcdonalds_melody_box_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Growlithe P promo, 030/P, McDonald's Growlithe, Aquapolis Growlithe, The Town on No Map Growlithe, Kyoko Umemoto Growlithe, e-Reader Growlithe, Construction: Melody Box Growlithe, or C-09-#.",
+          "summary": "Confirm Growlithe, printed 030/P, and the May 25-June 16, 2002 McDonald's weekend route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Growlithe / ガーディ / Gardie.",
+            "Read the printed promo number as 030/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Fire Basic Pokemon with HP 60, Water weakness, and retreat cost 1 when comparing against the card page.",
+            "Use Kyoko Umemoto as the credited illustrator while remembering that artist credit does not authenticate a physical card.",
+            "Keep the McDonald's route legible: Saturdays and Sundays from May 25 through June 16, 2002.",
+            "Check Ember / ひのこ when card text is visible.",
+            "Use C-09-# as e-Reader context for the Aquapolis and P Promotional prints.",
+            "Treat Construction: Melody Box as long-strip sound-data context, not proof that a seller's strip is readable or functional.",
+            "Do not merge this row with Aquapolis 51/147, The Town on No Map 015/092, ordinary Growlithe rows, later Growlithe promos, other McDonald's P Promotional rows, or generic e-Reader/Melody Box memory without printed-number evidence.",
+            "If a seller claims McDonald's provenance, ask for seller-controlled evidence of the card and any wrapper, packet, store, or campaign material separately.",
+            "Treat e-Reader readability, Melody Box functionality, price, condition, sealed-packet state, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "sealed-packet state",
+            "e-Reader readability",
+            "Construction: Melody Box functionality",
+            "Aquapolis 51/147 equivalence",
+            "The Town on No Map 015/092 equivalence",
+            "ordinary Growlithe equivalence",
+            "later Growlithe equivalence",
+            "other McDonald's promo equivalence",
+            "Kyoko Umemoto collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "030/P",
+        "rarity_signal": "McDonald's promotion (Saturdays and Sundays from May 25-June 16, 2002)",
+        "artist": "Kyoko Umemoto",
+        "assembly_themes": [
+          "McDonald's route",
+          "weekend date-window boundary",
+          "numbered P spine",
+          "Aquapolis lineage",
+          "Kyoko Umemoto Fire-type",
+          "Construction: Melody Box"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "030/P",
+          "Growlithe",
+          "ガーディ",
+          "Gardie",
+          "Fire",
+          "Basic Pokemon",
+          "HP 60",
+          "Kyoko Umemoto",
+          "McDonald's promotion",
+          "May 25-June 16, 2002",
+          "Saturdays and Sundays",
+          "Ember",
+          "ひのこ",
+          "C-09-#",
+          "Construction: Melody Box",
+          "Aquapolis 51/147",
+          "The Town on No Map 015/092"
+        ],
+        "collector_texture_note": "Growlithe 030/P is a warm little McDonald's-window card: Umemoto's loyal Fire-type, an Aquapolis spine, and Melody Box sound data all held in place by one printed P number.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "McDonald's provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "Melody Box functionality"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Growlithe 030/P: the loyal card in the weekend window",
+        "why_it_matters": "Growlithe 030/P has the quiet appeal of a familiar companion carried through a very specific route. It is not a headline card, and that is part of the charm: Kyoko Umemoto's Fire-type, an Aquapolis/The Town on No Map lineage, a McDonald's weekend window in late spring 2002, and e-Reader sound data pointing to Construction: Melody Box. The card feels like a small warm signal from the technical edge of the e-Reader era.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "McDonald's campaign provenance",
+          "sealed-packet state",
+          "e-Reader readability",
+          "Melody Box functionality"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
       "type": "card",
       "context": {

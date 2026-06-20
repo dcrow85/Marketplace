@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 235: P Promo Hoppip 029 deepened; corpus b14d188e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 236: P Promo Growlithe 030 deepened; corpus b5c2f4f3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,44 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-030-p`
+  Growlithe 030/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Growlithe (P Promo
+  30)` to `Growlithe (Aquapolis 51)`, so the row now carries the deeper card
+  assembly: Growlithe / `ガーディ` / Gardie, Fire Basic, HP 60, Water weakness,
+  retreat cost 1, Kyoko Umemoto illustration credit, Ember / `ひのこ`,
+  Aquapolis 51/147, The Town on No Map 015/092, P Promotional 030/P, e-Reader
+  card ID `C-09-#`, and Construction: Melody Box long-strip sound-data context.
+  The McDonald's route remains the transaction-facing identity wall: Saturdays
+  and Sundays from May 25 through June 16, 2002, printed `030/P`, inside the
+  numbered P Promotional spine. The special identification packet is explicit:
+  agents must confirm Growlithe / `ガーディ` / Gardie, printed `030/P`, Fire
+  Basic profile, Umemoto credit, McDonald's weekend date window, Ember,
+  `C-09-#`, and Melody Box context; keep the row separate from Aquapolis
+  51/147, The Town on No Map 015/092, ordinary Growlithe rows, later Growlithe
+  promos, other McDonald's P Promotional rows, and generic e-Reader/Melody Box
+  memory; and avoid importing McDonald's provenance, sealed-packet,
+  e-Reader-readability, or Melody Box functionality claims without separate
+  seller evidence. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, price, McDonald's campaign copy
+  provenance, wrapper or packet provenance, store provenance, sealed-packet
+  state, e-Reader readability, Construction: Melody Box functionality,
+  Aquapolis equivalence, The Town on No Map equivalence, ordinary Growlithe
+  equivalence, later Growlithe equivalence, other McDonald's promo equivalence,
+  Kyoko Umemoto collection equivalence, complete Japanese promo coverage, or
+  spendability. Validation passed: `python3 -m json.tool ...`,
+  `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Growlithe assertion. Hashes: corpus
+  `b5c2f4f3ae36d3d14d186d013a2e2e28c7c52ccfccb86b3c0116e337517b2e13`, index
+  `a279fc4f885df0af4c57ba350e2f6f8d01614871dd8976b57ce75906a2301843`, queue
+  `2d33bf3d68a06706ed51f271a313330bbddde6d76be1a7b7adee3638c75fbce2`, audit
+  `ad07a62aacf5475bbee15ed8aa14924d364bf818fddb2d9ef8ed714e6937c47c`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
