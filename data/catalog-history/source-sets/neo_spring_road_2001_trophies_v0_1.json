@@ -2325,6 +2325,289 @@
       ]
     },
     {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize:231",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize",
+        "row_id": "jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize:231",
+        "catalog_row_id": "231",
+        "name_en": "No.2 Trainer",
+        "name_ja": "Ｎｏ.２トレーナー",
+        "romaji": "No.2 Trainer",
+        "card_number": "None",
+        "release_name": "Neo Spring Road Best in Japan second place prize",
+        "source_expansion_lineage": "Unnumbered Promotional cards / Neo Spring Road finals / Neo Spring Road Best in Japan 2001 second-place prize",
+        "rank": "Best in Japan second place"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Neo Spring Road Best in Japan second place prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize.json#row:jp_promo_unnumbered_wotc_231_neo_spring_road_best_in_japan_second_place_prize:231",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official tournament ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 231",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: No.2 Trainer (Pokemon Card Game Official Tournament promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=No.2_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)&action=raw",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_database_reference",
+          "title": "Pokumon: No.2 Trainer (Neo Spring Road Best in Japan 2001) (Unnumbered)",
+          "ref": "https://pokumon.com/card/no-2-trainer-neo-spring-road-best-in-japan-2001-unnumbered/",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia unnumbered promo row align row 231 with the Neo Spring Road Best in Japan second-place No.2 Trainer, with no printed card number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese display name as Ｎｏ.２トレーナー, translated directly as No.2 Trainer.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says top ranking regional Neo Spring Road players were eligible for Best in Japan finals held March 31, 2001, and that senior runners-up at those finals were awarded a new No.2 Trainer bearing their photograph superimposed on the competition logo.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the regional No.2 Trainer text from the finals text: the regional Neo Spring Road print recognizes a Battle Neo Spring Road second-place winner, while the Best in Japan print recognizes a Battle Neo Spring Road Senior Tournament Best in Japan Deciding Match second-place winner.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia describes the Neo Spring Road No.2 Trainer line as a recipient photograph and competition-logo branch, with the Neo Spring Road print featuring Lugia; it also preserves uncertainty over whether junior champions were awarded comparable cards, so the unknown-junior-award caveat must travel with the identification.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Pokumon lists Takumi Akabane as the artist and Cosmos holofoil as the treatment for the No.2 Trainer (Neo Spring Road Best in Japan 2001) page; this is collector-database context, not physical proof of any submitted card.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "card.rarity",
+          "text": "Pokumon lists the card as Japanese, Tournament Winner, Neo Spring Road Best in Japan 2001, with estimated 1 copy; that estimated 1-copy language is collector/database estimate only, not official copy-count truth.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Row 231 is the national-finals runner-up object, not the regional row 223 No.2 Trainer. Its collector identity sits in the finals route, senior runner-up wording, recipient photograph branch, Lugia competition-logo context, Takumi Akabane credit, Cosmos treatment, and the one-copy collector estimate.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must keep row 231 pinned to No.2 Trainer, the Best in Japan second-place finals route, Battle Neo Spring Road Senior Tournament wording, recipient-photo branch, Takumi Akabane/Cosmos collector context, and separation from regional No.2 row 223, Best in Japan No.1 row 230, No.3 row 232, Neo Summer Road, Battle Road 2002, 1997-1999, and later World Championships trophy cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_spring_road_best_in_japan_no2_card_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No.2 Trainer, Ｎｏ.２トレーナー, Neo Spring Road Best in Japan, Neo Spring Road finals, Battle Neo Spring Road Senior Tournament, March 31 2001, senior runner-up, national runner-up, recipient photograph, Takumi Akabane, Cosmos holofoil, estimated 1 copy, or row 231.",
+          "summary": "Identify row 231 by the finals assembly: No.2 rank, Neo Spring Road Best in Japan second place route, recipient-photo branch, and Akabane/Cosmos collector context.",
+          "steps": [
+            "Confirm the title No.2 Trainer / Ｎｏ.２トレーナー and do not match by title alone; No.2 Trainer is reused across trophy eras.",
+            "Confirm Neo Spring Road Best in Japan second place prize / Neo Spring Road finals / Battle Neo Spring Road Senior Tournament Best in Japan Deciding Match context, not the regional Battle Neo Spring Road runner-up branch.",
+            "Preserve the finals date and route: Best in Japan finals held on March 31, 2001 after top ranking regional Neo Spring Road players qualified.",
+            "Treat the recipient photograph superimposed on the competition logo as a load-bearing finals clue; regional No.2 row 223 is the personalized regional-runner-up card, not this photo-card finals branch.",
+            "Record Takumi Akabane and Cosmos holofoil as Pokumon collector-database context, not official physical-card proof.",
+            "Use Lugia / Neo Spring Road competition-logo context as a finals clue from Bulbapedia, while preserving the unknown-junior-award caveat.",
+            "Treat estimated 1-copy language as collector/database estimate only unless a stronger official tournament ledger is supplied.",
+            "Keep this card separate from Neo Spring Road regional No.2 row 223, Neo Spring Road Best in Japan No.1 row 230 and No.3 row 232, Neo Summer Road Best in Japan, Neo Summer Road regional trophies, Battle Road 2002, 1997-1999 No.2 Trainer prints, and later World Championships No.2 Trainer cards.",
+            "For transaction use, request seller photos/provenance/cert evidence and expert review before promoting this catalog identity into any claim about a physical card."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "complete tournament archive",
+            "seller-card photograph match",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=No.2_Trainer_(Pok%C3%A9mon_Card_Game_Official_Tournament_promo)&action=raw"
+            },
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw"
+            },
+            {
+              "source": "Pokumon",
+              "source_page_url": "https://pokumon.com/card/no-2-trainer-neo-spring-road-best-in-japan-2001-unnumbered/"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "None",
+        "artist": "Takumi Akabane",
+        "rarity_signal": "Neo Spring Road Best in Japan second place finals route; estimated 1-copy language is collector/database context, not official copy-count truth",
+        "assembly_themes": [
+          "Best in Japan second-place trophy",
+          "recipient-photo finals branch",
+          "Neo Spring Road 2001",
+          "Takumi Akabane finals lane",
+          "Cosmos holofoil collector context"
+        ],
+        "collector_texture_note": "This is not a consolation version of No.1. It is the exact runner-up trace at the national-final table: No.2 rank, the Best in Japan route, a recipient photograph, Lugia-linked Neo Spring Road finals context, and a one-copy estimate that must stay an estimate rather than hard proof.",
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "human_title": "No.2 Trainer row 231: the finals runner-up made personal",
+        "why_it_matters": "Second place at the Best in Japan table is not a lesser footnote. It is still a named finals result, made personal through the recipient-photo branch and held apart from the regional No.2 cards by its Battle Neo Spring Road Senior Tournament wording. For an agent, the beauty is the route: March 31, 2001, senior runner-up, Lugia finals context, Akabane/Cosmos collector lane, and all the uncertainty kept visible instead of flattened.",
+        "not_claiming": [
+          "complete Neo Spring Road history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize",
       "context": {
