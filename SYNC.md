@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 223: P Promo Meganium 015 deepened; corpus 8992b1fd)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 224: P Promo Feraligatr 016 deepened; corpus c96ab26e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-016-p`
+  Feraligatr 016/P is now hand-authored rather than generator memory. The pass
+  records the Starter Triple Get Campaign Gold Silver Course route, Water-row
+  identity, Johto starter final-evolution/course-member collector texture,
+  absent promoted Japanese name, absent artist credit, and absent row-specific
+  image witness. The special identification packet is explicit and
+  first-class: agents must confirm Feraligatr, printed `016/P`, and the
+  numbered P Promotional spine; keep the Starter Triple Get Campaign and Gold
+  Silver Course wording legible together rather than flattening the route to a
+  generic starter promo; and avoid merging this row with ordinary Feraligatr
+  expansion cards, later Feraligatr promos, English Feraligatr rows, Meganium
+  015/P, other Johto-starter campaign cards, or absent art/attack/Japanese-name
+  details. Boundaries remain explicit: catalog legibility is not seller
+  possession, authenticity, condition, price, Starter Triple Get campaign copy
+  provenance, Gold Silver Course set completeness, image availability,
+  illustrator credit, Japanese-name certainty, attack text, ordinary
+  Feraligatr equivalence, later Feraligatr equivalence, Meganium 015/P
+  equivalence, other Johto-starter campaign equivalence, complete Japanese
+  promo universe, or spendability. Generated gaps remain bounded at 100.
+  Validation passed: JSON; catalog dossier build + `--check`; card dossier
+  `--check`; completion audit `--check`; focused assertion for the
+  course-member special-identification packet. Hashes: corpus
+  `c96ab26e28e817ebe805fe0a3f3c43a75574d0d3d8820515a88dd07d68fc10c4`;
+  index `53a726fea912d085afd6f36b652982fcb2c16006bd210c01ee38ab68423432a6`;
+  queue `ad715dd6c683a15d20b93acabc3a0056e4b0b9c4346abb91f7bff9b9fc004946`;
+  audit `3ade55b79b460439c08e4746231cd233f3f3aeda0e414e0ee38639580dbe4e93`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
