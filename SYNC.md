@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 192: P Promotional McDonald's Pikachu 021/P deepened; corpus 90526107)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 193: P Promotional Battle Festa Pikachu 038/P deepened; corpus b8364b51)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p`
+  deepens Pikachu / ピカチュウ 038/P. The pass pins 038/P to the Pokemon Festa /
+  Battle Festa 2002 orienteering commemoration-prize route: venue movement,
+  three-stamp collection, Sapporo/Tokyo/Nagoya/Osaka/Fukuoka venues, and
+  partial overlap with Battle Road Summer 2002 are now visible. It records
+  Midori Harada illustration credit, HP 40 Lightning Basic profile, Smash Link
+  / スマッシュリンク, the Mewtwo Bench condition as a Super Smash Bros. Melee
+  reference, e-Reader ID Z-26-a, and the self-contained Pikachu mini-game
+  branch. The special identification packet separates 038/P from the paired
+  Happy Adventure Rally 044/P print, McDonald's Pikachu 021/P, ANA Pikachu
+  004/P, Sample Set / Expedition Pikachu, other P Promotional Pikachu rows, and
+  generic mascot promo claims. Boundaries remain explicit: route legibility is
+  not seller possession, authenticity, condition, Battle Festa attendance
+  proof, stamp-sheet possession, mini-game functionality, 044/P equivalence,
+  price, or spendability. Generated gaps remain release queue 0 and card queue
+  100. Hashes: corpus
+  `b8364b515c0c24afc34dc4b57282417ec344a92e9c919851b0d15ef071ea5eab`,
+  index `2e366fa0454a054a504d64767475ab45189d42f16a9acd223ede5884b8c8d889`,
+  queue `316039eebae9be93ca6924e3d24d6902a5cfc5629f3c84ae4aca26c8afb7dfac`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-second
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

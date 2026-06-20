@@ -1495,6 +1495,248 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
+        "catalog_row_id": "038/P",
+        "release_name": "P Promotional cards",
+        "paired_print": "044/P Happy Adventure Rally 2002 print"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
+          "title": "Local catalog row: Pikachu 038/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pikachu_(P_Promo_38)&action=raw",
+          "title": "Bulbapedia raw wikitext: Pikachu (P Promo 38)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as numbered P Promotional row 038/P, distributed as a Pokemon Festa 2002 orienteering commemoration prize.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Pikachu / ピカチュウ, a Lightning Basic Pokemon with HP 40, Fighting weakness, retreat cost 1, and Midori Harada illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the 038/P print was first available as an orienteering commemorative card at Battle Festa 2002 venues in Japan between July and August 2002; people who collected at least three stamps by visiting different events at each venue were given the card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia lists Battle Festa 2002 venues for this route: Sapporo Community Dome, Tokyo International Exhibition Center, Port Messe Nagoya, Intex Osaka, and West Japan General Exhibition Center in Fukuoka, with some coinciding with Battle Road Summer 2002 tournaments.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Smash Link / スマッシュリンク, an attack that references Super Smash Bros. Melee through its Mewtwo Bench condition.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia links 038/P and 044/P as two P Promotional prints with slightly different Midori Harada artwork: 038/P has card ID Z-26-a and a self-contained Pikachu mini-game in the long strip, while 044/P has card ID Z-26-b and a Tokotoko Truck mini-game requiring four other P Promotional cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Pikachu 038/P matters because it turns a card into a record of movement: walk the venue, collect stamps, touch multiple event points, and the mascot becomes a prize for having physically traversed the Pokemon Festa apparatus.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Pikachu 038/P from the paired 044/P Happy Adventure Rally print, McDonald's Pikachu 021/P, ANA Pikachu 004/P, other P Promotional Pikachu rows, and generic e-Reader Pikachu cards; the 038/P number, Battle Festa route, and Z-26-a e-Reader ID are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_038_p_pikachu_battle_festa_orienteering_boundary_v0.1",
+          "trigger": "A user says Pikachu P promo, Pokemon Festa 2002 Pikachu, Battle Festa 2002 Pikachu, Orienteering Pikachu, Smash Link Pikachu, 038/P, or Z-26-a.",
+          "summary": "Confirm 038/P and the Battle Festa 2002 orienteering route before treating a Pikachu listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 038/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve the Pokemon Festa / Battle Festa 2002 orienteering route: at least three stamps from different venue events earned the card.",
+            "Check the subject line as Pikachu / ピカチュウ, not merely a generic mascot promo.",
+            "Check that the profile matches this print: Lightning Basic, HP 40, Fighting weakness, retreat cost 1.",
+            "Use Midori Harada as the card-art credit for the 038/P and 044/P pair, while remembering that artist credit is not physical-card authentication.",
+            "Check for Smash Link / スマッシュリンク and the Mewtwo Bench condition when comparing card text.",
+            "Use Z-26-a and the self-contained Pikachu mini-game as 038/P e-Reader context; do not confuse it with 044/P's Z-26-b Tokotoko Truck branch.",
+            "Separate this row from Happy Adventure Rally Pikachu 044/P, even though they share the same card page and artist.",
+            "Separate this from McDonald's Pikachu 021/P, ANA Pikachu 004/P, Sample Set Pikachu, Expedition Pikachu, and generic P Promotional Pikachu listings.",
+            "If a seller claims event provenance, ask for seller-controlled evidence of the card and any stamp sheet, venue material, or event ephemera separately.",
+            "Treat mini-game readability, event attendance, sealed state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Battle Festa provenance",
+            "stamp-sheet possession",
+            "mini-game functionality",
+            "044/P equivalence",
+            "other Pikachu equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "038/P",
+        "rarity_signal": "Pokemon Festa 2002 / Battle Festa 2002 orienteering commemoration prize",
+        "artist": "Midori Harada",
+        "assembly_themes": [
+          "promo distribution",
+          "event movement",
+          "e-Reader mini-game",
+          "mascot gravity",
+          "identity trap"
+        ],
+        "signals": [
+          "Pikachu",
+          "ピカチュウ",
+          "038/P",
+          "Pokemon Festa 2002",
+          "Battle Festa 2002",
+          "orienteering commemoration prize",
+          "Midori Harada",
+          "Smash Link",
+          "スマッシュリンク",
+          "Mewtwo Bench condition",
+          "Z-26-a",
+          "Pikachu mini-game",
+          "044/P paired print"
+        ],
+        "collector_texture_note": "Pikachu 038/P is an event-walk card: the prize for moving through the Battle Festa space, collecting stamps, and turning the venue itself into part of the card's history.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete event provenance",
+          "mini-game functionality"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 038/P: the mascot you had to walk toward",
+        "why_it_matters": "This is exactly why the catalog has to care about routes. Pikachu 038/P is not just another Pikachu. It is a little map of bodies moving through Battle Festa 2002: stamps collected, booths visited, a card earned by contact with the event. Then the card itself points outward again, with Smash Link nodding to Melee and an e-Reader mini-game hiding in the strip. The object is a receipt for play before it is a market object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete Battle Festa attendance proof",
+          "mini-game functionality"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
       "type": "card",
       "context": {
