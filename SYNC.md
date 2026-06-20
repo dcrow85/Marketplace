@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 172: Lugia Explosive Birth Ancient Mew deepened; corpus 57829ff3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 173: Riding on Lapras Misty's Treatment deepened; corpus b04104c3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-third
+  catalog-history pass:
+  `data/catalog-history/source-sets/riding_on_lapras_cd_mistys_treatment_v0_1.json`
+  deepens the August 21, 1999 Riding on Lapras CD insert source slice and its
+  single modeled row, Misty's Treatment source index 129. The pass frames the
+  object as a music / anime / card contact point: a Pikachu Records CD single
+  where Misty's Japanese voice, Lapras as song subject, and a trainer card that
+  heals Lapras all meet. It preserves CD route details, catalogue number
+  ZMDP-1026, Mayumi Iizuka title-track performance, Toshinao Aoki illustration,
+  Aoki's Surfing Pikachu / Pokemon Tales context, the Pikachu Records logo in
+  the symbol area, blue Lapras effect text, the bottom-border Pokemon CD
+  "Riding on Lapras" bonus-card footer, unplayable promo status, and source
+  index 129 as a catalog route rather than printed number. Special
+  identification packets now give agents explicit CD-route and card-level
+  visible-tell rails. Boundaries remain against ordinary Misty Trainer cards,
+  Gym-series Misty cards, generic Lapras cards, Surfing Pikachu / JR Train
+  Rally Aoki rows, loose CD listings without card evidence, sealed CD status,
+  complete insert state, seller possession, authenticity/condition/price, and
+  spendability. Generated gaps moved to 16 release / 3817 card. Current hashes:
+  corpus `b04104c348fd702ef107aea1f211d650dbaf769d9104c546009e6bb930b5a3ea`,
+  index `9e296f7cf481e1b3c3d5f62e59de60d49de801d2e0c2a67c3c349f1b582c4494`,
+  queue `9d73ae548eafec8ab8b681d907fa37fa61bd1ffeadb27be6f2c198cc8c40fe6b`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-second
   catalog-history pass:
   `data/catalog-history/source-sets/lugia_explosive_birth_ancient_mew_v0_1.json`
