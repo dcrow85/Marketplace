@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 212: ADV-P Kyogre ex 011 deepened; corpus a8f84c00)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 213: ADV-P Groudon ex 012 deepened; corpus 4ac9e102)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:
+  `jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p`
+  Groudon ex 012/ADV-P is now hand-authored rather than generator memory. The
+  pass completes the February 2003 CoroCoro Comic ticket-exchange land/sea
+  pair with Kyogre ex 011/ADV-P, recording Fighting-row identity, early ex-era
+  legendary context, absent promoted Japanese name, absent artist credit, and
+  absent row-specific image witness. The special identification packet is
+  explicit and first-class: agents must confirm Groudon ex, printed
+  `012/ADV-P`, and the bounded `001-014` pre-edge slice; keep the CoroCoro
+  ticket-exchange note separate from physical provenance; and avoid merging
+  this row with Groudon ex `002/ADV-P`, later ADV-P Groudon rows, main-set
+  Groudon ex, English EX-era Groudon ex, Kyogre ex companion memory, or absent
+  art/attack/ex-rules/Japanese-name details. Boundaries remain explicit:
+  catalog legibility is not seller possession, authenticity, condition, price,
+  CoroCoro ticket-exchange provenance, image availability, illustrator credit,
+  Japanese-name certainty, attack text, ex rules text, Groudon ex
+  `002/ADV-P` equivalence, later ADV-P equivalence, main-set Groudon ex
+  equivalence, complete ADV-P coverage, or spendability. Generated gaps remain
+  bounded at 100. Validation passed: JSON; catalog dossier build + `--check`;
+  card dossier `--check`; completion audit `--check`; focused assertion for
+  the new special-identification packet. Hashes: corpus
+  `4ac9e102dd432bb6f465201aafd523a34afd059691292f60121372b11f4a6fc4`;
+  index `0cbdbe2f22b4a732d51e295790002a485f5ccf5bc654e4f3ad3eaccaeac2e589`;
+  queue `7caed25b24c19634691e9cdc1ad75c9d40d278e82e448f372c79fd24181da63f`;
+  audit `238ee4667b89d30be14b953f16e88bf3461a33e9f9323d14face79014a43c545`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twelfth
   catalog-history pass inside
   `data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json`:

@@ -4,57 +4,6 @@
     {
       "card_highlights": {
         "artist": "",
-        "assembly_note": "Groudon ex sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
-        "assembly_themes": [
-          "promo distribution",
-          "identity trap"
-        ],
-        "authority_label": "local_catalog_fact_and_judged_texture",
-        "collector_texture_note": "Groudon ex is cataloged as ADV-P Promotional cards - pre-WoC-edge subset 012/ADV-P. Treat this as a promo reference row, then ask for seller evidence before any trade.",
-        "not_claiming": [
-          "price truth",
-          "condition truth",
-          "seller possession",
-          "authenticity"
-        ],
-        "number": "012/ADV-P",
-        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
-        "signals": [
-          "ADV-P Promotional cards - pre-WoC-edge subset",
-          "2003-01-01",
-          "012/ADV-P",
-          "Fighting",
-          "",
-          "February 2003 CoroCoro Comic ticket exchange",
-          ""
-        ]
-      },
-      "human_title": "Groudon ex: first-pass card note",
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 78,
-      "reasons": [
-        "promo/distribution context",
-        "special identification trap",
-        "identity trap"
-      ],
-      "type": "card",
-      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
-      "why_it_matters": "Groudon ex sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
-    },
-    {
-      "card_highlights": {
-        "artist": "",
         "assembly_note": "Armaldo ex sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
         "assembly_themes": [
           "promo distribution",
@@ -5121,11 +5070,62 @@
       "type": "card",
       "uid": "en_wotc_base_set_2_20000224:base4-9",
       "why_it_matters": "Magneton sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Keiji Kinebuchi. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+    },
+    {
+      "card_highlights": {
+        "artist": "Hajime Kusajima",
+        "assembly_note": "Alakazam sits in Expedition Base Set as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Hajime Kusajima. That is enough to orient an agent, not enough to settle a physical-card claim.",
+        "assembly_themes": [
+          "holo surface",
+          "rarity attention",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Alakazam is cataloged as Expedition Base Set #1. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ],
+        "number": "1",
+        "rarity_signal": "Rare Holo",
+        "signals": [
+          "Expedition Base Set",
+          "2002/09/15",
+          "1",
+          "Rare Holo",
+          "Pokémon",
+          "Stage 2"
+        ]
+      },
+      "human_title": "Alakazam: first-pass card note",
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 60,
+      "reasons": [
+        "holo/surface card",
+        "rare signal",
+        "artist trace: Hajime Kusajima"
+      ],
+      "type": "card",
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-1",
+      "why_it_matters": "Alakazam sits in Expedition Base Set as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Hajime Kusajima. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
     }
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3778,
+    "generated_card_candidates_considered": 3777,
     "generated_release_candidates_considered": 0,
     "release_queue_count": 0
   },

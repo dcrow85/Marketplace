@@ -2048,6 +2048,229 @@
       }
     },
     {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Groudon ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-012-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Groudon ex 012/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Groudon ex as ADV-P promo number 012/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records February 2003 CoroCoro Comic ticket exchange as the distribution note for Groudon ex 012/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Groudon ex 012/ADV-P as a Fighting Pokemon row, but does not provide HP, attacks, stage text, ex rules text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Groudon ex 012/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Groudon ex 012/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Groudon ex 012/ADV-P matters because it completes the February 2003 ticket-exchange land-and-sea pair with Kyogre ex 011/ADV-P: Hoenn's weather mythology becomes a participation route, not only a set-list fact.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Groudon ex and printed 012/ADV-P, preserve the February 2003 CoroCoro Comic ticket-exchange route as distribution context only, and avoid merging this row with Groudon ex 002/ADV-P, later Groudon ex rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_groudon_ex_012_ticket_exchange_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Groudon ex ADV-P, ticket-exchange Groudon, CoroCoro Groudon ex, 012/ADV-P, Japanese Groudon ex promo, or early Hoenn ex promo.",
+          "summary": "Confirm Groudon ex and printed 012/ADV-P before treating the card as this February 2003 CoroCoro Comic ticket-exchange ADV-P row.",
+          "steps": [
+            "Confirm the card name is Groudon ex.",
+            "Read the printed promo number as 012/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the February 2003 CoroCoro Comic ticket-exchange note legible but separate from physical provenance.",
+            "Do not merge this card with Groudon ex 002/ADV-P, later ADV-P Groudon rows, main-set Groudon ex cards, English EX-era Groudon ex rows, or Kyogre ex companion memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, ex rules text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and ex header area; ask for ticket-exchange provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro ticket-exchange provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ex rules text",
+            "Groudon ex 002/ADV-P equivalence",
+            "later ADV-P equivalence",
+            "main-set Groudon ex equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "012/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro ticket exchange",
+          "promo numbering",
+          "Hoenn legendary",
+          "ex-era signal",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "012/ADV-P",
+          "Groudon ex",
+          "Fighting",
+          "February 2003 CoroCoro Comic ticket exchange",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Groudon ex 012/ADV-P is the land legendary as a ticket-exchange object: paired with Kyogre ex 011/ADV-P, but still its own numbered route and not a stand-in for 002/ADV-P."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Groudon ex 012/ADV-P: the land answers the ticket",
+        "why_it_matters": "Groudon ex 012/ADV-P is the other half of the ticket-exchange weather myth. If Kyogre is the sea being chased through CoroCoro, Groudon is the land answering back: same route, same early ex-era gravity, a different elemental promise. The agent should feel the pair, but not smear the numbers. This is 012/ADV-P, not 002/ADV-P, and the catalog row gives route and identity rather than proof of a seller's card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro ticket-exchange provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
       "type": "card",
       "context": {
