@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 244: P Promo Boost Energy 040 deepened; corpus 8e5d3d7d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 245: P Promo Warp Energy 041 deepened; corpus 88fc0f6a)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-041-p`
+  Warp Energy 041/P is now hand-authored rather than generator memory. This
+  pass found and used the row-specific Bulbapedia redirect from `Warp Energy
+  (P Promo 41)` to `Warp Energy (Aquapolis 147)`, so the row now carries the
+  deeper card assembly: Warp Energy / `ワープエネルギー` / Warp Energy,
+  Colorless Special Energy, active-to-bench switch behavior, Kai Ishikawa P
+  Promotional artwork credit, Shin-ichi Yoshikawa Aquapolis/Wind from the Sea
+  and EX Unseen Forces/EX Power Keepers lineage credit, Takumi Akabane
+  Stormfront credit, later unknown-illustrator Shining Legends/Crimson
+  Invasion credits, Aquapolis 147/147, Wind from the Sea 087/087, P
+  Promotional 041/P, PLAY 017/PLAY, EX Unseen Forces 100/115, Golden Sky
+  Silvery Ocean 106/106, Meganium Constructed Starter Deck 016/016, EX Power
+  Keepers 91/108, World Champions Pack 100/108, Stormfront 95/100, Intense
+  Fight in the Destroyed Sky 089/092, Shining Legends 70/73 and 072/072,
+  Crimson Invasion 123/111, Awakened Heroes 061/050, and e-Reader `D-55`
+  versus `D-55-#`. Route stays Summer Battle Roads: the P Promotional print
+  was awarded as a gift card during the 2002 Summer Battle Roads. The special
+  identification packet tells agents to confirm Warp Energy /
+  `ワープエネルギー`, printed `041/P`, Colorless Special Energy type, Kai
+  Ishikawa P Promotional art, `D-55`, and Summer Battle Roads route; do not
+  merge with Aquapolis, Wind from the Sea, PLAY, EX, deck, Stormfront, Shining
+  Legends, Crimson Invasion, Secret Rare, other Warp Energy, other Special
+  Energy, or generic e-Reader memory without printed-number and artwork-route
+  evidence. No-overclaim boundaries remain explicit: seller possession,
+  authenticity, condition, price, event provenance, sealed-packet state,
+  e-Reader readability, PLAY/EX/DP/SM identity, Secret Rare status, and
+  spendability remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `88fc0f6ab5bf629599f9236d763ed299cafc6e7384f3aa4a0ddb02331bb8ea20`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
