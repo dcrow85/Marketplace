@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 229: P Promo Wooper 022 deepened; corpus a32048bb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 230: P Promo Tyrogue 023 deepened; corpus 929d0dd9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirtieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-023-p`
+  Tyrogue 023/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Tyrogue (P Promo
+  23)` to `Tyrogue (Aquapolis 63)`, so the row now carries more than the local
+  setlist supplied: Tyrogue / `バルキー` / Balkie, Fighting Baby Pokemon, HP 30,
+  retreat cost 1, Tomokazu Komiya illustration credit, Energy Punch /
+  `エネパンチ`, Aquapolis / The Town on No Map lineage, card ID `C-27-#`, and
+  Punching Bags e-Reader mini-game context. The McDonald's route remains the
+  transaction-facing identity wall: Saturdays, Sundays, and public holidays
+  from January 26 through February 24, 2002, printed `023/P`, inside the
+  numbered P Promotional spine. The special identification packet is explicit:
+  agents must confirm Tyrogue / `バルキー` / Balkie, printed `023/P`, McDonald's
+  date window, Komiya credit, Fighting Baby profile, Energy Punch text, and
+  `C-27-#`; keep the card separate from Aquapolis 63/147, The Town on No Map
+  055/092, Wooper 022/P, Zapdos 024/P, other McDonald's P Promotional cards,
+  later Tyrogue promos, English Tyrogue cards, and generic Komiya collector
+  searches; and avoid importing any seller-proof or e-Reader-functionality
+  claim without separate evidence. Boundaries remain explicit: catalog
+  legibility is not seller possession, authenticity, condition, price,
+  McDonald's campaign copy provenance, wrapper or packet provenance, store
+  provenance, date-window participation proof, e-Reader functionality,
+  Punching Bags mini-game functionality, companion Aquapolis-card possession,
+  Aquapolis equivalence, The Town on No Map equivalence, later Tyrogue
+  equivalence, English Tyrogue equivalence, Komiya-collection equivalence,
+  complete Japanese promo coverage, or spendability. Validation passed:
+  `python3 -m json.tool ...`, `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Tyrogue assertion. Hashes: corpus
+  `929d0dd9065c912dc7bb306872964e332132230a82fa77a8c6c29fd41534caf3`, index
+  `1747b489d3fdea655da557fae77910929078be4e2b2a31eb148e5f1de727152f`, queue
+  `c52d603777b61b00fb1cc990b8f10efb4cd1821af7cc0c8c07d37dd6362e6c0f`, audit
+  `15bfc4575a69b1bcac49c850ec936c124a3e705a8b1d4df5d7cc6b0c639f892a`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

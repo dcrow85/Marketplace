@@ -4900,6 +4900,300 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-023-p",
+      "type": "card",
+      "context": {
+        "name_en": "Tyrogue",
+        "name_ja": "バルキー",
+        "romaji": "Balkie",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-023-p",
+        "catalog_row_id": "023/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Aquapolis / The Town on No Map / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-023-p",
+          "title": "Local Japanese promo WotC catalog row: Tyrogue 023/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Tyrogue_(P_Promo_23)&action=raw",
+          "title": "Bulbapedia raw redirect: Tyrogue (P Promo 23)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Tyrogue_(Aquapolis_63)&action=raw",
+          "title": "Bulbapedia raw wikitext: Tyrogue (Aquapolis 63 / P Promo 23)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies Tyrogue as P Promotional card number 023/P, and the row-specific Bulbapedia redirect points Tyrogue (P Promo 23) to the Tyrogue (Aquapolis 63) card page.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Tyrogue / バルキー / Balkie, a Fighting Baby Pokémon with HP 30 and retreat cost 1.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the P Promotional print of Tyrogue 023/P to Tomokazu Komiya.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the distribution context as a McDonald's promotion held on Saturdays, Sundays, and public holidays from January 26 through February 24, 2002; Bulbapedia's card page also says the Japanese reprint was part of a McDonald's promotion that ran between January 26 and February 24, 2002.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the underlying Tyrogue card in Aquapolis, Japanese The Town on No Map, and Japanese P Promotional contexts, with the P Promotional print numbered 023/P.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Energy Punch / エネパンチ, doing 10 damage and using a coin flip to discard a Special Energy from the Defending Pokémon on heads while doing nothing on tails.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia records two prints with card ID C-27-#, and says the long e-Reader strip contains data for the Punching Bags mini-game, which requires four other Aquapolis cards to play.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Tyrogue 023/P matters because the McDonald's branch does not only distribute mascots and legends; it hands a Komiya Baby Pokémon to a child-sized weekend route, then tucks an e-Reader mini-game and Aquapolis lineage behind a small Fighting-type scuffle.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Tyrogue 023/P from Aquapolis 63/147, The Town on No Map 055/092, other McDonald's P Promotional rows, later Tyrogue promos, English Tyrogue cards, and generic Baby Pokémon or Komiya collector searches; the printed 023/P number, McDonald's date window, Fighting Baby profile, Komiya credit, and C-27-# e-Reader ID are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_tyrogue_023_mcdonalds_komiya_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Tyrogue P promo, McDonald's Tyrogue, 023/P, Japanese Tyrogue promo, Komiya Tyrogue, Aquapolis Tyrogue, The Town on No Map Tyrogue, C-27-#, or early numbered P Promotional card.",
+          "summary": "Confirm Tyrogue, printed 023/P, and the McDonald's January 26-February 24, 2002 route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Tyrogue / バルキー / Balkie.",
+            "Read the printed promo number as 023/P and keep it inside the numbered P Promotional spine.",
+            "Keep the McDonald's promotion date window legible: Saturdays, Sundays, and public holidays from January 26 through February 24, 2002.",
+            "Use Tomokazu Komiya as the credited illustrator for the P Promotional print while remembering that an artist credit does not authenticate a physical card.",
+            "Check the Fighting Baby Pokemon profile, HP 30, and retreat cost 1 when comparing against the card page.",
+            "Check for Energy Punch / エネパンチ and the coin-flip Special Energy discard text when card text is visible.",
+            "Use C-27-# and the Punching Bags mini-game as e-Reader context, not as proof that a seller's strip is readable or that companion Aquapolis cards are present.",
+            "Do not merge this row with Aquapolis 63/147, The Town on No Map 055/092, Wooper 022/P, Zapdos 024/P, other McDonald's P Promotional cards, later Tyrogue promos, English Tyrogue cards, or generic Komiya collector searches without number evidence.",
+            "If a seller claims fast-food provenance, ask for seller-controlled evidence of the card and any wrapper, packet, store, or campaign material separately.",
+            "Treat price, scarcity, sealed-packet state, e-Reader functionality, companion-card possession, and provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "McDonald's campaign copy provenance",
+            "wrapper or packet provenance",
+            "store provenance",
+            "date-window participation proof",
+            "e-Reader functionality",
+            "Punching Bags mini-game functionality",
+            "companion Aquapolis card possession",
+            "Aquapolis 63/147 equivalence",
+            "The Town on No Map 055/092 equivalence",
+            "other McDonald's promo equivalence",
+            "later Tyrogue equivalence",
+            "English Tyrogue equivalence",
+            "Komiya collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "023/P",
+        "rarity_signal": "McDonald's promotion (January 26-February 24, 2002 weekends/public holidays)",
+        "artist": "Tomokazu Komiya",
+        "assembly_themes": [
+          "McDonald's route",
+          "date-window boundary",
+          "numbered P spine",
+          "Tomokazu Komiya Baby Pokemon",
+          "e-Reader mini-game",
+          "Aquapolis lineage"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "023/P",
+          "Tyrogue",
+          "バルキー",
+          "Balkie",
+          "Fighting",
+          "Baby Pokemon",
+          "HP 30",
+          "Tomokazu Komiya",
+          "McDonald's promotion",
+          "January 26-February 24, 2002",
+          "Saturdays/Sundays/public holidays",
+          "Energy Punch",
+          "エネパンチ",
+          "C-27-#",
+          "Punching Bags",
+          "Aquapolis",
+          "The Town on No Map"
+        ],
+        "collector_texture_note": "Tyrogue 023/P is the little scuffle in the McDonald's branch: a Komiya Baby Pokemon with Aquapolis/e-Reader machinery behind it, distributed through the same child-sized weekend window as the louder cards around it.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete McDonald's campaign proof",
+          "wrapper or packet provenance",
+          "e-Reader functionality",
+          "companion-card possession"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tyrogue 023/P: Komiya's little fighter at the counter",
+        "why_it_matters": "Tyrogue is easy to miss between mascot gravity and legendary flash, which is exactly why this row is lovely. The card brings Tomokazu Komiya's oddball warmth into a McDonald's weekend route, then quietly ties itself to the e-Reader era through C-27-# and Punching Bags. It is a small object, but the assembly is dense: Johto baby form, Aquapolis lineage, fast-food distribution, and a mini-game hiding in the strip. The catalog can name that contact; the seller still has to prove the card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete McDonald's campaign provenance",
+          "wrapper or packet provenance",
+          "e-Reader functionality",
+          "companion-card possession"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-038-p",
       "type": "card",
       "context": {
