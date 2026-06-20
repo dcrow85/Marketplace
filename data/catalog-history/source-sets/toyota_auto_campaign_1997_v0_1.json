@@ -1,0 +1,631 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Toyota Auto Campaign source slice",
+    "release_family_id": "jp_promo_toyota_auto_199710_199712",
+    "notes": [
+      "Deepens the October-December 1997 Toyota Auto dealership pamphlet promo lane.",
+      "Covers the two modeled source-pinned rows: Arcanine 018 and Pikachu 019.",
+      "Keeps dealership participation, pamphlet-object variants, copy counts, seller possession, authenticity, condition, and price truth outside row authority."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_toyota_auto_199710_199712",
+      "type": "release",
+      "context": {
+        "name_en": "Toyota Auto Campaign source slice",
+        "name_ja": "トヨタオートキャンペーン プロモ",
+        "release_family_id": "jp_promo_toyota_auto_199710_199712",
+        "release_date": "1997-10/1997-12"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_toyota_auto_199710_199712.json",
+          "title": "Local Japanese pre-English catalog: Toyota Auto Campaign source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete dealership participation ledger",
+            "complete pamphlet-object variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_toyota_auto_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign archive",
+            "complete dealership participation ledger",
+            "complete pamphlet-object variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "complete marketplace pricing"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/toyota-auto-campaign/",
+          "title": "Pokumon: Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Toyota source",
+            "complete dealership participation ledger",
+            "complete pamphlet-object variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "official Toyota source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/song_best_collection_cd_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Song Best Collection CD insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Toyota source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models Toyota Auto Campaign with an October-December 1997 source-month range.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local source slice models two source-pinned card identities for this campaign lane: Arcanine and Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The campaign is represented as a Toyota Auto dealership pamphlet / campaign route, not as a booster set, deck, or ordinary expansion release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "The local snapshot says the Toyota Pikachu is an alternate-art reprint related to the November 1996 CoroCoro Comic Pikachu lane, while Arcanine was later printed with the Pokemon Song Best Collection CD and is described there as identical to the Toyota pamphlet version.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The current local card rows carry provider metadata crediting Ken Sugimori on both modeled Toyota Auto Campaign rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "The Toyota Auto Campaign matters because it shows Pokemon cards leaving hobby/magazine channels and entering ordinary family errands: a car dealership pamphlet could become a card-memory route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Because this is a source-pinned two-card campaign slice with reuse paths on both cards, an agent must identify the Toyota route separately from the Pokemon Song Best Arcanine route, the CoroCoro Pikachu lane, and ordinary Base-style Arcanine/Pikachu rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "toyota_auto_1997_pamphlet_pair_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Toyota Auto Campaign, Toyota campaign 1997, Toyota pamphlet, dealership pamphlet, Arcanine Toyota, Pikachu Toyota, UPC 018, UPC 019, Song Best Arcanine, or CoroCoro Pikachu.",
+          "summary": "Confirm the Toyota Auto dealership pamphlet route before treating Arcanine or Pikachu as this two-card campaign slice.",
+          "steps": [
+            "Confirm the claimed route is Toyota Auto Campaign / Toyota dealership pamphlet, October-December 1997.",
+            "Confirm the row is one of the two modeled Toyota source-pinned identities: Arcanine 018 or Pikachu 019.",
+            "Keep the Toyota pamphlet route separate from ordinary Arcanine or Pikachu printings with similar art, name, type, or unnumbered-promo status.",
+            "For Arcanine, check whether the seller is actually showing the later Pokemon Song Best Collection CD route; the local snapshot says that version is identical to the Toyota pamphlet version, but the route story is still different provenance evidence.",
+            "For Pikachu, check whether the seller is actually showing the 1996 CoroCoro / Jigglypuff-associated Pikachu lane; the Toyota row is described as an alternate-art reprint related to that earlier lane, not the same route object.",
+            "Preserve the Ken Sugimori credit as provider/catalog artist metadata, not as authentication or seller-possession proof.",
+            "Treat Toyota pamphlet, booklet, dealership, sealed packet, slab label, or cert stories as provenance evidence requiring their own images or records, not as automatic proof of the card in hand.",
+            "Before any trade/spendability use, require seller-controlled front/back photos, source-route claim, title/name area, illustrator/copyright area, lower-right symbol/number area, corners/surface, and any pamphlet/CD/slab/cert evidence the seller wants to rely on."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete dealership participation ledger",
+            "complete pamphlet-object variant catalog",
+            "complete Song Best or CoroCoro variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Toyota Auto Campaign — the dealership pamphlet becomes a card route",
+        "why_it_matters": "Toyota Auto is one of those tiny distribution stories that makes early Pokemon feel alive. The cards were not only in packs, magazines, decks, and tournament envelopes; they could appear in a car dealership pamphlet, carried home by a family doing something completely outside the hobby. Arcanine and Pikachu make the route easy to love, but the deeper charm is the route itself: Pokemon learning to travel through ordinary Japanese retail life.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official Toyota marketing history",
+          "complete campaign archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_toyota_auto_199710_199712:018",
+      "type": "card",
+      "context": {
+        "name_en": "Arcanine",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_toyota_auto_199710_199712",
+        "release_name": "Toyota Auto Campaign source slice",
+        "row_id": "jp_promo_toyota_auto_199710_199712:018"
+      },
+      "card": {
+        "name_en": "Arcanine",
+        "name_ja": "",
+        "romaji": "",
+        "local_id": "018",
+        "row_id": "jp_promo_toyota_auto_199710_199712:018"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "number": "018",
+        "rarity": "Unnumbered Promotional / Toyota Auto Campaign source slice",
+        "artist": "Ken Sugimori",
+        "note": "Japanese print-name field is currently missing from the exact source payload; use seller scans for the physical name area."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_toyota_auto_199710_199712.json#row:jp_promo_toyota_auto_199710_199712:018",
+          "title": "Local catalog row: Arcanine / Toyota Auto Campaign source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_toyota_auto_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/song_best_collection_cd_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Song Best Collection CD insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Toyota Auto Campaign Arcanine as row jp_promo_toyota_auto_199710_199712:018 / local ID 018.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local row carries provider metadata crediting Illus. Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The Toyota snapshot says Arcanine was later printed with the Pokemon Song Best Collection CD and that the Song Best version is identical to the Toyota pamphlet version.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Arcanine is the muscular half of the Toyota pair: a beloved early Sugimori monster whose card memory crosses from dealership pamphlet to music-CD insert.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "A Toyota Arcanine claim must preserve the Toyota route while checking the Song Best route separately, because identical card presentation does not make the provenance route identical.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "toyota_auto_1997_arcanine_018_song_best_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Toyota Arcanine, Toyota campaign Arcanine, Pokemon Song Best Arcanine, Song Best CD, UPC 018, unnumbered Arcanine, or Ken Sugimori Arcanine.",
+          "summary": "Identify Arcanine 018 by route, not only by appearance, because Toyota and Song Best memory overlap.",
+          "steps": [
+            "Confirm the card identity as Arcanine, Toyota source-pinned local ID 018 / row jp_promo_toyota_auto_199710_199712:018.",
+            "Ask whether the seller is claiming Toyota pamphlet provenance, Song Best CD provenance, or card-only identity with no route object.",
+            "If Toyota provenance is claimed, ask for pamphlet/booklet/dealership-route evidence separately from the card scans.",
+            "If Song Best provenance is claimed, route the object through the Song Best CD insert boundary instead of treating it as Toyota by appearance alone.",
+            "Preserve Ken Sugimori as the current provider/catalog illustrator credit, not as proof that this physical card is genuine.",
+            "Because the exact local source payload lacks Japanese print-name authority, use seller-controlled card scans for the title/name area.",
+            "Check front/back, lower-right symbol/number area, copyright/illustrator area, stock/surface, corners, and any slab/cert/pamphlet/CD evidence before trade use.",
+            "Do not allow a provider image, catalog row, Song Best note, or dealership story to become spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "complete Song Best/Toyota variant census",
+            "official copy count",
+            "complete pamphlet-object variant catalog"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Toyota Arcanine — the same beast, two routes",
+        "why_it_matters": "Arcanine is the card that makes this little campaign feel bigger than a checklist. It is not only a Toyota pamphlet promo; the same presentation echoes into Song Best, where Pokemon music carried cards as physical souvenirs. For a collector, that means the card has two kinds of beauty: the monster on the cardboard, and the route by which that cardboard entered someone's life.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_toyota_auto_199710_199712:019",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_toyota_auto_199710_199712",
+        "release_name": "Toyota Auto Campaign source slice",
+        "row_id": "jp_promo_toyota_auto_199710_199712:019"
+      },
+      "card": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "local_id": "019",
+        "row_id": "jp_promo_toyota_auto_199710_199712:019"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "number": "019",
+        "rarity": "Unnumbered Promotional / Toyota Auto Campaign source slice",
+        "artist": "Ken Sugimori",
+        "note": "Japanese print-name field is currently missing from the exact source payload; use seller scans for the physical name area."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_toyota_auto_199710_199712.json#row:jp_promo_toyota_auto_199710_199712:019",
+          "title": "Local catalog row: Pikachu / Toyota Auto Campaign source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_toyota_auto_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Toyota Auto Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/how_to_play_book_1996_promos_v0_1.json",
+          "title": "Catalog-history source set: 1996 How-to-Play book non-glossy promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Toyota Auto Campaign Pikachu as row jp_promo_toyota_auto_199710_199712:019 / local ID 019.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local row carries provider metadata crediting Illus. Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The Toyota snapshot describes Pikachu as an alternate-art reprint related to the Pikachu card given away with Jigglypuff in the November 1996 CoroCoro Comic lane.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Toyota Pikachu matters because the mascot is doing distribution work: Pikachu pulls family attention into a dealership campaign while also pointing backward to the earlier CoroCoro/Jigglypuff promo memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "A Toyota Pikachu claim must separate Toyota campaign identity from the 1996 CoroCoro/Jigglypuff lane, ordinary Base-style Pikachu rows, and later mascot promos.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "toyota_auto_1997_pikachu_019_corocoro_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Toyota Pikachu, Toyota campaign Pikachu, CoroCoro Pikachu, Jigglypuff pair, 1996 CoroCoro, UPC 019, unnumbered Pikachu, or Ken Sugimori Pikachu.",
+          "summary": "Identify Pikachu 019 by campaign route and separate it from the earlier CoroCoro/Jigglypuff lane.",
+          "steps": [
+            "Confirm the card identity as Pikachu, Toyota source-pinned local ID 019 / row jp_promo_toyota_auto_199710_199712:019.",
+            "Ask whether the seller is claiming Toyota pamphlet provenance, 1996 CoroCoro/Jigglypuff provenance, or only card identity.",
+            "Do not treat a CoroCoro/Jigglypuff story as Toyota provenance unless the Toyota pamphlet route is separately evidenced.",
+            "Do not merge this row with ordinary Pikachu, English Wizards Black Star Pikachu, Toyota-unrelated mascot promos, or 1996 How-to-Play non-glossy rows by name alone.",
+            "Preserve Ken Sugimori as the current provider/catalog illustrator credit, not as proof that this physical card is genuine.",
+            "Because the exact local source payload lacks Japanese print-name authority, use seller-controlled card scans for the title/name area.",
+            "Check front/back, lower-right symbol/number area, copyright/illustrator area, stock/surface, corners, and any pamphlet/slab/cert evidence before trade use.",
+            "Do not allow a provider image, catalog row, mascot popularity, or pamphlet story to become spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "complete CoroCoro/Toyota/Pikachu variant census",
+            "official copy count",
+            "complete pamphlet-object variant catalog"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Toyota Pikachu — the mascot takes the family car route",
+        "why_it_matters": "Toyota Pikachu is charming because it makes perfect franchise sense. Pikachu was already becoming the friendly face that could cross from manga to rules sheets to errands with your parents. Here the mascot is not only collectible; it is a little ambassador, carrying Pokemon out of the hobby shop and into the showroom.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    }
+  ]
+}

@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 160: Latest How-to-Play Asobikata pair deepened; corpus 65cbbc61)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 161: Toyota Auto Campaign pair deepened; corpus 7b3f02d2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-first
+  catalog-history pass:
+  `data/catalog-history/source-sets/toyota_auto_campaign_1997_v0_1.json`
+  deepens the October-December 1997 Toyota Auto Campaign source slice: Arcanine
+  018 and Pikachu 019. The pass frames Toyota as a dealership-pamphlet route,
+  one of those early distribution seams where Pokemon cards leave the hobby
+  channel and enter ordinary family errands. It preserves the two-card
+  source-pinned slice, Ken Sugimori provider/catalog illustrator credit,
+  Arcanine's Song Best Collection CD reuse boundary, and Pikachu's CoroCoro /
+  Jigglypuff-adjacent alternate-art reprint boundary. Special ID rails separate
+  Toyota pamphlet provenance from Song Best CD provenance, 1996 CoroCoro /
+  Jigglypuff Pikachu, ordinary Arcanine/Pikachu rows, and later mascot promo
+  routes. Japanese print-name authority remains missing from the exact local
+  source payload for both rows, so seller-controlled scans must carry the
+  physical title/name area before trade use. Dealership, pamphlet, sealed, slab,
+  cert, and provider-image stories remain provenance evidence, not possession,
+  authenticity, condition truth, price truth, official copy count, complete
+  campaign coverage, or spendability. Generated gaps moved to 28 release / 3848
+  card. Current hashes: corpus
+  `7b3f02d277990a405eeea244823e030d3845ccbc965be7d236e4e0eed406ab59`,
+  index `7146d0856a78e4eaa7c1980a8ca4221ec33a28b8aafb6b2855ee772a7fe19c3d`,
+  queue `7600c555b4eb20c156cbc7d0514bbc6e6f3b13c81820dce6d5ace1cf1f348860`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixtieth
   catalog-history pass:
   `data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json`
