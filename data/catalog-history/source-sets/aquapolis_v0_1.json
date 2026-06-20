@@ -6,6 +6,7 @@
       "Aquapolis release dossier",
       "Ampharos H1",
       "Exeggutor H10",
+      "Houndoom H11",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -818,6 +819,375 @@
           "c7",
           "c8",
           "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H11",
+      "type": "card",
+      "context": {
+        "name_en": "Houndoom",
+        "name_ja": "ヘルガー",
+        "romaji": "Hellgar",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H11",
+        "catalog_row_id": "ecard2-H11",
+        "card_number": "H11",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-15",
+        "same_set_false_friend": "en_wotc_aquapolis_20030115:ecard2-14",
+        "japanese_lineage_card_number": "The Town on No Map 071/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H11",
+          "title": "Local English WoC card row: Houndoom H11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H11",
+          "title": "Pokemon TCG API v2 card record: Houndoom ecard2-H11",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Houndoom_(Aquapolis_H11)",
+          "title": "Bulbapedia: Houndoom (Aquapolis H11)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-15",
+          "title": "Pokemon TCG API v2 card record: Houndoom ecard2-15",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Houndoom_(Aquapolis_14)",
+          "title": "Bulbapedia: Houndoom (Aquapolis 14)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Houndoom as Aquapolis H11, a Rare Holo Stage 1 Darkness Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Houndoom's Japanese name as ヘルガー / Hellgar and connects the Holofoil print to Japanese The Town on No Map card 071/092, while the non-Holofoil Aquapolis print corresponds to The Town on No Map 070/092.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Houndoom H11 with 70 HP, evolvesFrom Houndour, Fighting weakness, Psychic resistance, one-Colorless retreat, and attacks Fireworks and Dark Impact.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Houndoom H11 to Hajime Kusajima; the local and API rows also credit Hajime Kusajima on the non-Holo Aquapolis Houndoom #15 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Houndoom as H11/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Houndoom at #15 with the same Hajime Kusajima credit and Fireworks / Dark Impact text; agents must keep H11 and #15 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Aquapolis also contains Houndoom #14, a Rare Fire-type Stage 1 by Naoyo Kimura with Smokescreen and Burn Up, tied by Bulbapedia to The Town on No Map 019/092; that row is a same-set false friend, not the H11 Darkness holo lineage.",
+          "sources": [
+            "s1",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Houndoom H11 page records card ID C-75 for the Holofoil print and C-75-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia notes that Fireworks first appeared on Vending Ponyta from Expansion Sheet 3 and that this card's English e-Reader Pokedex entry comes from Pokemon Crystal while the Japanese entry comes from Pokemon Gold, making Houndoom H11 a small bridge between vending-era attack language, Game Boy text, and the e-Reader frame.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Houndoom H11 matters because Aquapolis gives the Dark-type dog a machine-readable afterlife: Hajime Kusajima's sharp Houndoom art, a holo H-number lane, the Fireworks / Dark Impact attack pair, and a C-75 e-Reader identity that sits beside a deceptively similar non-holo #15.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H11 / H11/H32, Rare Holo, English ecard2-H11, ヘルガー / Hellgar, Hajime Kusajima credit, Fireworks / Dark Impact text, The Town on No Map 071/092 lineage, C-75 e-Reader ID, and non-equivalence with Aquapolis #15, Aquapolis #14, The Town on No Map 070/092 and 019/092, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_houndoom_h11_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Houndoom, ヘルガー, Hellgar, Houndoom H11, H11/H32, Rare Holo, ecard2-H11, Hajime Kusajima, Fireworks, Dark Impact, C-75, C-75-#, The Town on No Map, 071/092, Aquapolis #15, Aquapolis #14, Naoyo Kimura, Smokescreen, Burn Up, or reverse holo Houndoom.",
+          "summary": "Identify Houndoom / ヘルガー / Hellgar H11 by the Aquapolis H-number Rare Holo lane: English ecard2-H11 / H11/H32 and The Town on No Map 071/092 lineage, not the non-Holo #15 / 070/092 sibling or the Fire-type #14 / 019/092 false friend.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H11 / printed number H11 before accepting this as the H-number holo row.",
+            "Preserve H11/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Houndoom #15 row even though #15 shares Hajime Kusajima and the Fireworks / Dark Impact attack package.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 071/092 while the non-Holofoil #15 counterpart maps to 070/092.",
+            "Keep Aquapolis Houndoom #14 separate: it is a Fire-type Rare by Naoyo Kimura with Smokescreen / Burn Up and The Town on No Map 019/092 lineage, not the H11 Darkness holo.",
+            "Use Hajime Kusajima credit, Stage 1 Darkness profile, Houndour evolution line, Fireworks, Dark Impact, C-75 Holofoil e-Reader ID, and C-75-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Houndoom wants, Neo-era Houndoom rows, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader and Dot-Code strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H11"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Houndoom_(Aquapolis_H11)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Houndoom_(Aquapolis_14)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H11",
+        "artist": "Hajime Kusajima",
+        "rarity_signal": "Rare Holo; Aquapolis H11/H32 H-number holo sequence, separate from non-Holo Houndoom #15 / The Town on No Map 070/092 and Fire-type Houndoom #14 / 019/092",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Hajime Kusajima art trace",
+          "Darkness-type e-Reader frame",
+          "Fireworks attack inheritance",
+          "C-75 Dot-Code identity"
+        ],
+        "collector_texture_note": "Houndoom H11 is the sharp-edged Aquapolis dog: a Darkness holo with the same attack body as #15, a same-set Fire-type decoy at #14, and enough e-Reader metadata to make an agent slow down before it says, yes, this is the one.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Houndoom H11 — the dark dog with two shadows",
+        "why_it_matters": "Houndoom H11 is exactly why this catalog needs identification instructions. It looks clean at first: Aquapolis, H-number holo, Hajime Kusajima, Darkness type. Then the set folds back on itself. There is a non-holo #15 that shares the same artist and attack text, and a separate #14 Houndoom that belongs to a different Fire-type route. The pleasure is in the precision: the agent has to hold the card's menace and its paperwork at the same time.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
         ],
         "not_claiming": [
           "official emotional history",

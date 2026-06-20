@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 262: Aquapolis Exeggutor H10 deepened; corpus 3cb73ec3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 263: Aquapolis Houndoom H11 deepened; corpus 0810b553)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H11` Houndoom H11 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H11`, live Pokemon TCG
+  API `cards/ecard2-15`, live Pokemon TCG API `sets/ecard2`, Bulbapedia
+  `Houndoom (Aquapolis H11)`, Bulbapedia `Houndoom (Aquapolis 14)`, and
+  Bulbapedia `Aquapolis (TCG)`. The card dossier now carries Houndoom /
+  `ヘルガー` / Hellgar, English Aquapolis / e-Card Series, API card id
+  `ecard2-H11`, printed number H11, H11/H32 Rare Holo sequence, Japanese The
+  Town on No Map 071/092 holo lineage, the non-Holo Aquapolis #15 / The Town
+  on No Map 070/092 sibling, the same-set Fire-type #14 / 019/092 false
+  friend, Stage 1 Darkness profile, Houndour evolution line, 70 HP,
+  Fireworks / Dark Impact, Hajime Kusajima credit, and e-Reader / Dot-Code
+  context including C-75 vs C-75-# card IDs. The special identification
+  packet tells agents to keep H11 separate from Aquapolis Houndoom #15,
+  Aquapolis Houndoom #14, The Town on No Map 070/092 and 019/092, reverse-holo
+  listings, generic Houndoom wants, Neo-era Houndoom rows, and seller-card
+  image claims. It also keeps Dot-Code and e-Reader scan context legible only:
+  not seller possession, authenticity, condition truth, price truth, scan
+  success, or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `ヘルガー` / Hellgar, H11/H32, H11 vs
+  #15 separation, #14 false-friend separation, 071/092 vs 070/092 vs 019/092,
+  Hajime Kusajima, Naoyo Kimura, Fireworks / Dark Impact, Smokescreen / Burn
+  Up, C-75 / C-75-# e-Reader caveats, special-identification packet, and
+  corpus propagation. New catalog-history corpus hash:
+  `0810b5535be7c4ac39d6c48a813fd20054b47ef3f6fbf1e418a77b734b0391f5`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
