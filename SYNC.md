@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 292: Base Set Ninetales #12 deepened; corpus 824965a8)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 293: Base Set Poliwrath #13 deepened; corpus 2d1592ad)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-13` Poliwrath #13 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. This pass
+  used the local English WoC Base Set row, Pokemon TCG API card and set
+  records, Bulbapedia `Poliwrath (Base Set 13)` and `Base Set (TCG)` as
+  bounded community references, and the local Japanese pre-English Expansion
+  Pack / No Rarity row `jp_tcg_expansion_pack_19961020:033`. The dossier now
+  carries Poliwrath / `ニョロボン` / Nyorobon, Base Set #13/102, Rare Holo,
+  Stage 2 Water, Level 48, 90 HP, Poliwhirl evolution line, Water Gun energy
+  scaling, Whirlpool energy denial, Ken Sugimori credit, and Japanese
+  Expansion Pack / PMCG1-033 lineage. Its special identification packet tells
+  agents to keep English Base Set #13 separate from Japanese Expansion Pack /
+  No Rarity PMCG1-033, Base Set 2 / Legendary Collection / reprint memory, and
+  English First Edition / Shadowless / Unlimited / 4th-print states unless
+  seller evidence proves the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Poliwrath downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-second
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
