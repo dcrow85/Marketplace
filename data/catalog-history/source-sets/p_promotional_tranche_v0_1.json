@@ -6946,6 +6946,290 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-028-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu Bros.",
+        "name_ja": "ピチュー兄弟",
+        "romaji": "Pichu Brothers",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-028-p",
+        "catalog_row_id": "028/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "P Promotional cards / Pokemon Heroes: Latios & Latias advance ticket bonus / Camp Pikachu short"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-028-p",
+          "title": "Local Japanese promo WotC catalog row: Pichu Bros. 028/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pichu_Bros._(P_Promo_28)&action=raw",
+          "title": "Bulbapedia raw wikitext: Pichu Bros. (P Promo 28)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row and Bulbapedia identify Pichu Bros. as P Promotional card number 028/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Pichu Bros. / ピチュー兄弟 / Pichu Brothers, a Lightning Baby Pokémon card with HP 30 and retreat cost 1.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Pichu Bros. 028/P to Sayuri Ichiishi.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The local catalog row records the route as a Guardian Gods of the City of Water: Latias and Latios advance ticket bonus; Bulbapedia says the card was given to patrons who pre-booked advance tickets for Pokémon Heroes: Latios & Latias at participating cinemas, with advance tickets bookable from April 2002 until the day before the July 13, 2002 premiere.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Big Sparking Strategy / ビリビリだいさくせん as the attack, doing 10 damage with a two-coin condition that can Paralyze on double heads or do nothing on double tails.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia records e-Reader card ID Z-19-#, says the short strip contains Pokédex information and brief synopses of Pokémon Heroes: Latios & Latias and the Camp Pikachu short, and says there is no long strip for this card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Pichu Bros. 028/P matters because it ties a small sibling-character card to the cinema threshold itself: advance tickets, participating theaters, the Latias/Latios movie, the Camp Pikachu short, and an e-Reader synopsis all meet before the audience even reaches the seat.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.lineage",
+          "text": "Bulbapedia's origin note says the card is based on the Pichu Brothers from Pokémon anime specials.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Pichu Bros. 028/P from generic Pichu, Pikachu-line cards, Camp Pikachu materials, other Pokémon Heroes / Latias and Latios ticket bonuses, later Pichu promos, English Pichu Bros. references, and generic advance-ticket memory; the printed 028/P number, Pichu Bros. name, Sayuri Ichiishi credit, Z-19-# e-Reader ID, and advance-ticket route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_pichu_bros_028_movie_ticket_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pichu Bros., Pichu Brothers, ピチュー兄弟, 028/P, Pokémon Heroes ticket promo, Latias and Latios advance ticket bonus, Guardian Gods of the City of Water bonus, Camp Pikachu card, or Sayuri Ichiishi Pichu.",
+          "summary": "Confirm Pichu Bros., printed 028/P, and the Pokémon Heroes / Latias and Latios advance-ticket route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card name is Pichu Bros. / ピチュー兄弟 / Pichu Brothers.",
+            "Read the printed promo number as 028/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the card is a Lightning Baby Pokémon row with HP 30 and retreat cost 1 when comparing against the card page.",
+            "Use Sayuri Ichiishi as the credited illustrator while remembering that artist credit does not authenticate a physical card.",
+            "Keep the movie route legible: Guardian Gods of the City of Water: Latias and Latios / Pokémon Heroes: Latios & Latias advance-ticket bonus at participating cinemas.",
+            "Preserve the timing boundary: advance tickets could be booked from April 2002 until the day before the July 13, 2002 movie premiere.",
+            "Check Big Sparking Strategy / ビリビリだいさくせん when card text is visible.",
+            "Use Z-19-# and the no-long-strip note as P Promotional e-Reader context.",
+            "Keep the short-strip synopsis context legible: Pokémon Heroes: Latios & Latias plus the Camp Pikachu short.",
+            "Do not merge this row with generic Pichu, Pikachu-family cards, Camp Pikachu materials, other Pokémon Heroes / Latias and Latios ticket bonuses, later Pichu promos, English Pichu Bros. references, or generic advance-ticket memory without printed-number evidence.",
+            "If a seller claims theater or advance-ticket provenance, ask for seller-controlled evidence of the card and any ticket stub, preorder receipt, cinema packet, campaign material, or movie-related insert separately.",
+            "Treat ticket provenance, cinema participation, sealed packet state, e-Reader readability, price, and anime-special provenance as separately sourced claims; the catalog row only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "advance-ticket provenance",
+            "ticket-stub possession",
+            "preorder receipt provenance",
+            "cinema packet provenance",
+            "campaign material provenance",
+            "movie attendance",
+            "Camp Pikachu material possession",
+            "anime-special provenance",
+            "sealed-packet state",
+            "e-Reader readability",
+            "long-strip presence",
+            "generic Pichu equivalence",
+            "Pikachu-family equivalence",
+            "other movie-ticket bonus equivalence",
+            "later Pichu equivalence",
+            "English Pichu Bros. equivalence",
+            "Sayuri Ichiishi collection equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "028/P",
+        "rarity_signal": "Guardian Gods of the City of Water: Latias and Latios advance ticket bonus",
+        "artist": "Sayuri Ichiishi",
+        "assembly_themes": [
+          "movie advance-ticket route",
+          "cinema distribution",
+          "numbered P spine",
+          "Sayuri Ichiishi Pichu art",
+          "Camp Pikachu short",
+          "e-Reader synopsis"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "028/P",
+          "Pichu Bros.",
+          "ピチュー兄弟",
+          "Pichu Brothers",
+          "Lightning",
+          "Baby Pokemon",
+          "HP 30",
+          "Sayuri Ichiishi",
+          "Guardian Gods of the City of Water: Latias and Latios",
+          "Pokémon Heroes: Latios & Latias",
+          "advance ticket bonus",
+          "participating cinemas",
+          "April 2002",
+          "July 13, 2002",
+          "Camp Pikachu",
+          "Big Sparking Strategy",
+          "ビリビリだいさくせん",
+          "Z-19-#",
+          "no long strip",
+          "Pichu Brothers anime specials"
+        ],
+        "collector_texture_note": "Pichu Bros. 028/P is a cinema-threshold card: Ichiishi's sibling Pichu, an advance ticket, a Latias/Latios movie, Camp Pikachu in the e-Reader strip, and the little feeling of getting Pokemon before the film even starts.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "ticket provenance",
+          "cinema participation",
+          "sealed-packet state",
+          "e-Reader readability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pichu Bros. 028/P: the ticket before the movie",
+        "why_it_matters": "Pichu Bros. 028/P feels like a child clutching the bonus before the theater lights go down. The card is tiny in power but rich in contact: Sayuri Ichiishi drawing the sibling Pichu, the Latias and Latios movie waiting ahead, Camp Pikachu tucked into the e-Reader strip, and the advance-ticket ritual turning anticipation into cardboard. It is not just a Pichu card. It is the moment Pokemon sells the memory before the story begins.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "advance-ticket provenance",
+          "cinema participation",
+          "sealed-packet state",
+          "e-Reader readability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-033-p",
       "type": "card",
       "context": {

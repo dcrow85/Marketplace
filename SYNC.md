@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 233: P Promo Touch Generation Change 027 deepened; corpus 82af3356)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 234: P Promo Pichu Bros 028 deepened; corpus 35ba9877)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,50 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-028-p`
+  Pichu Bros. 028/P is now hand-authored rather than generator memory. This
+  pass used the exact Bulbapedia P Promo page, so the row now carries the
+  deeper movie-ticket assembly: Pichu Bros. / `ピチュー兄弟` / Pichu Brothers,
+  Lightning Baby Pokemon, HP 30, retreat cost 1, Sayuri Ichiishi illustration
+  credit, Big Sparking Strategy / `ビリビリだいさくせん`, e-Reader card ID
+  `Z-19-#`, short-strip synopses for `Pokémon Heroes: Latios & Latias` and
+  `Camp Pikachu`, no-long-strip context, and the Pichu Brothers anime-special
+  origin note. The advance-ticket route remains the transaction-facing identity
+  wall: `Guardian Gods of the City of Water: Latias and Latios` /
+  `Pokémon Heroes: Latios & Latias` advance-ticket bonus at participating
+  cinemas, with tickets bookable from April 2002 until the day before the
+  July 13, 2002 premiere, printed `028/P`, inside the numbered P Promotional
+  spine. The special identification packet is explicit: agents must confirm
+  Pichu Bros. / `ピチュー兄弟` / Pichu Brothers, printed `028/P`, Lightning Baby
+  profile, Ichiishi credit, movie advance-ticket route, April-to-premiere
+  timing, Big Sparking Strategy, `Z-19-#`, no-long-strip context, and Camp
+  Pikachu short-strip context; keep the row separate from generic Pichu,
+  Pikachu-family cards, Camp Pikachu materials, other Pokemon Heroes / Latias
+  and Latios ticket bonuses, later Pichu promos, English Pichu Bros.
+  references, and generic advance-ticket memory; and avoid importing
+  ticket-stub, preorder, cinema-packet, movie-attendance, anime-special,
+  sealed-packet, or e-Reader-readability claims without separate evidence.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, advance-ticket provenance, ticket-stub
+  possession, preorder receipt provenance, cinema packet provenance, campaign
+  material provenance, movie attendance, Camp Pikachu material possession,
+  anime-special provenance, sealed-packet state, e-Reader readability,
+  long-strip presence, generic Pichu equivalence, Pikachu-family equivalence,
+  other movie-ticket bonus equivalence, later Pichu equivalence, English Pichu
+  Bros. equivalence, Sayuri Ichiishi collection equivalence, complete Japanese
+  promo coverage, or spendability. Validation passed:
+  `python3 -m json.tool ...`, `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Pichu Bros. assertion. Hashes: corpus
+  `35ba987796983167e1b3b20662c7b73f834bbb75e796643ec0b95d86a010b3b2`, index
+  `92bf4e5936af7e28316fa16b455196b30497d0703d6a1dad9386d99124e5a20d`, queue
+  `30911bb4c9f795f898cabed96498e35d6ce48022ab10a4750b798daa3b193885`, audit
+  `9aa230a10e4d815f3eb91bd03669febac540dcfb076f03fb6421176805aaba46`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
