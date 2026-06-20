@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 282: Aquapolis Victreebel H30 deepened; corpus a5945ccf)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 283: Aquapolis Vileplume H31 deepened; corpus dec7c485)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H31` Vileplume H31 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-43`,
+  Bulbapedia `Vileplume (Aquapolis H31)`, and Bulbapedia `Aquapolis
+  (TCG)`. The card dossier now carries Vileplume / `ラフレシア` /
+  Ruffresia, English Aquapolis / e-Card Series, API card id `ecard2-H31`,
+  printed number H31, H31/H32 Rare Holo sequence, Japanese Wind from the
+  Sea 004/087 lineage, the non-Holo Aquapolis #43 / 43/147 sibling,
+  Stage 2 Grass profile, Gloom evolution line, 100 HP, Fire weakness,
+  two-retreat cost, Poison Scent, Addictive Pollen, and Kyoko Umemoto
+  credit. The special identification packet tells agents to keep H31
+  separate from Aquapolis Vileplume #43, reverse-holo listings, generic
+  Vileplume wants, Grass deck references, seller-card image claims, and
+  long-strip/e-Reader claims. It also keeps D-56 / D-56-# IDs, Flower
+  Pokemon species label, Pokemon Crystal / Gold Pokedex lineage,
+  Construction: Action long-strip map data, seller possession,
+  authenticity, condition, price, image rights, seller-card match,
+  e-Reader scan success, reverse-holo equivalence, and spendability
+  explicitly out of the catalog claim. Rebuilt generated corpus artifacts;
+  new corpus hash `dec7c485af4d364413f486c2993a4646ce5e10996c4c2d1c5e1a8584cb76f895`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
