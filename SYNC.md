@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 195: P Promotional Happy Adventure Rally Mewtwo 046/P deepened; corpus 0e09ca16)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 196: English Base Set + Mewtwo 10 deepened; corpus 12b941c9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-sixth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  the English Base Set release dossier and
+  `en_wotc_base_set_19990109:base1-10` Mewtwo / Base Set #10 are now
+  hand-authored rather than generator memory. The release pass reframes English
+  Base Set as the doorway many collectors learned first while preserving the
+  dangerous boundary: base1, 102 rows, no-expansion-symbol Base frame, and
+  First Edition / Shadowless / Unlimited status all require separate evidence.
+  The Mewtwo pass records Ken Sugimori credit, Rare Holo status, HP 60 Level
+  53 Psychic Basic profile, Psychic / Barrier attack identity, Psychic
+  weakness, retreat cost 3, and the laboratory-myth texture that made Mewtwo
+  feel colder than the launch starter icons. Special identification packets are
+  now explicit and first-class for both release and card: agents must separate
+  English Base Mewtwo from Japanese Expansion Pack / No Rarity Mewtwo, Base
+  Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards
+  promo Mewtwo, P Promotional Mewtwo 046/P, and all edition/Shadowless claims
+  without seller evidence. Boundaries remain explicit: catalog legibility is
+  not seller possession, authenticity, condition, First Edition status,
+  Shadowless status, Unlimited status, holo-surface condition, graded-cert
+  truth, price, or spendability. Generated gaps remain release queue 0 and
+  card queue 100. Hashes: corpus
+  `12b941c9c10f630c663d55b82c66b5bf8c4021bf5df69406978af77520110863`,
+  index `ee90b6935bc35e78fea05da124dc8d64b79c58bf8de1862279bbf717ea63538f`,
+  queue `ed342614b83d210a1a7a5ab82462955046a6221f31de3a8f1d8e886c862fd70e`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

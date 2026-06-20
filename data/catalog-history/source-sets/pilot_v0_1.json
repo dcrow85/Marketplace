@@ -5,7 +5,8 @@
     "in_scope": [
       "Japanese First Expansion Pack / No Rarity launch-family rows",
       "first CoroCoro glossy Pikachu promo",
-      "English Base Set as a later crosswalk/reference release"
+      "English Base Set as a later crosswalk/reference release",
+      "English Base Set Mewtwo #10"
     ],
     "not_claiming": [
       "complete deep-history coverage",
@@ -181,7 +182,7 @@
       "uid": "en_wotc_base_set_19990109",
       "type": "release",
       "context": {
-        "name_en": "Base",
+        "name_en": "Base Set",
         "release_family_id": "en_wotc_base_set_19990109",
         "release_date": "1999-01-09"
       },
@@ -212,6 +213,21 @@
             "seller possession",
             "authenticity",
             "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_(TCG)",
+          "title": "Bulbapedia: Base Set (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
           ]
         }
       ],
@@ -248,41 +264,347 @@
         },
         {
           "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia frames Base Set as the first main expansion outside Japan and as the English-language launch set built from the Japanese Expansion Pack / launch-card lineage.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows for English Base Set include the Kanto starter holos, Mewtwo, Chansey, Raichu, Gyarados, Zapdos, key trainer tools, and energy rows that made the early English game feel complete rather than merely collectible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local English Base artist cluster is dominated by Ken Sugimori and Mitsuhiro Arita, with Kagemaru Himeno, Keiji Kinebuchi, and early trainer/energy artists giving the launch binder its mixed character-art, monster-art, and tool-card grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
           "field": "history.significance",
-          "text": "For this project, English Base is useful less as an endpoint and more as a familiar mirror: it helps agents explain why a Japanese PMCG1 row feels known while still preserving the older Japanese print boundary.",
+          "text": "For this project, English Base is both the familiar doorway many collectors learned first and a dangerous resemblance machine: it makes the Japanese launch family emotionally legible while requiring agents to preserve English set, edition, Shadowless, Unlimited, and Japanese-print boundaries.",
           "sources": [
             "s1",
-            "s2"
+            "s2",
+            "s3"
           ],
           "tier": "B",
           "authority_label": "judged_texture",
           "basis_claims": [
             "c1",
             "c2",
-            "c3"
+            "c3",
+            "c4",
+            "c5",
+            "c6"
           ]
         }
       ],
-      "special_identification_instructions": [],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_set_base1_launch_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set, base1, English Base, original English Pokemon cards, Shadowless, First Edition, Unlimited, no expansion symbol, or same art as Japanese Expansion Pack.",
+          "summary": "English Base Set is the 102-row English launch expansion modeled as base1. Preserve set id, row number, language, and edition/Shadowless evidence before comparing it to Japanese launch cards or later reprints.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_19990109 and Pokemon TCG API set id base1.",
+            "Confirm the printed row number and no-expansion-symbol Base Set frame before using this release identity.",
+            "Do not treat shared artwork as proof of Japanese Expansion Pack, No Rarity, Base Set 2, Legendary Collection, or later reprint identity.",
+            "Keep First Edition, Shadowless, and Unlimited as seller-evidence claims; the release row alone does not determine which physical print variant a seller has.",
+            "For price, condition, edition, or authenticity claims, use seller-controlled images, graded-label/cert evidence when present, and market evidence; do not infer from catalog memory."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
       "narrative": {
         "authority_label": "judged_texture",
-        "human_title": "The mirror most collectors learned first",
-        "why_it_matters": "English Base is the doorway a lot of collectors remember walking through. In this catalog it becomes a translation surface: useful, beloved, and dangerous if it makes the agent forget that Japanese launch cards have their own product boundary.",
+        "human_title": "The doorway most collectors learned first",
+        "why_it_matters": "English Base is where a huge part of the English-speaking world learned the shape of Pokemon cards: the Charizard gravity, the starter trio, the trainers that taught the game, the energy floor, the Ken Sugimori and Mitsuhiro Arita visual grammar. In this catalog it is useful, beloved, and dangerous. It helps an agent explain why an older Japanese row feels familiar, but it must never let familiarity become provenance. English Base is a doorway, not a shortcut.",
         "basis_claims": [
           "c1",
           "c2",
           "c3",
-          "c4"
+          "c4",
+          "c5",
+          "c6",
+          "c7"
         ],
         "not_claiming": [
           "English Base is the same object as Japanese Expansion Pack",
           "direct Japanese print authority",
+          "First Edition status",
+          "Shadowless status",
           "physical-card authenticity"
         ]
       },
       "coverage": {
         "release": "B",
-        "art": "none",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-10",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-10",
+        "catalog_row_id": "10",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-10",
+          "title": "Local English WotC catalog row: Mewtwo base1-10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-10",
+          "title": "Pokemon TCG API v2 card record: Mewtwo base1-10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Base_Set_10)",
+          "title": "Bulbapedia: Mewtwo (Base Set 10)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Mewtwo as English Base Set row base1-10 / printed number 10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Mewtwo base1-10 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Ken Sugimori as the illustrator for Mewtwo base1-10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Mewtwo base1-10 as a Level 53 Psychic Basic Pokemon with HP 60, Psychic weakness, retreat cost 3, and the attacks Psychic and Barrier.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo base1-10 matters because it brought the franchise's laboratory myth into the English launch binder as a holo rather than a side-story: the flavor text, Barrier, and psychic type made the card feel dangerous even beside the starter icons.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Mewtwo base1-10 from Japanese Expansion Pack / No Rarity Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and Japanese P Promotional Mewtwo 046/P; the English Base row number, set id base1, Rare Holo status, Ken Sugimori credit, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_mewtwo_10_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Mewtwo, original Mewtwo holo, base1-10, Mewtwo #10, Shadowless Mewtwo, First Edition Mewtwo, Unlimited Mewtwo, or Ken Sugimori Mewtwo.",
+          "summary": "Mewtwo base1-10 is the English Base Set Rare Holo row. Preserve set id base1, printed number 10, and edition/Shadowless evidence before comparing to other Mewtwo prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 10 before using this dossier.",
+            "Check the card is the Rare Holo Mewtwo with Ken Sugimori credit, Psychic / Barrier attacks, HP 60, Psychic weakness, and retreat cost 3.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and P Promotional Mewtwo 046/P.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, and edition as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Mewtwo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "10",
+        "rarity_signal": "Rare Holo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "laboratory myth",
+          "artist trace",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Mewtwo",
+          "10",
+          "Rare Holo",
+          "Ken Sugimori",
+          "Psychic",
+          "Barrier",
+          "HP 60",
+          "Level 53",
+          "Psychic weakness",
+          "retreat cost 3"
+        ],
+        "collector_texture_note": "Base Set Mewtwo is the English launch holo that made the laboratory legend feel heavy in a binder: Sugimori image, Psychic/Barrier text, and holo surface all before any seller-specific variant claim.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo #10: the lab myth in the launch binder",
+        "why_it_matters": "Base Set Mewtwo does not need to be the loudest card in the room to change the room. Charizard is spectacle; Mewtwo is unease. Sugimori's image, the stark Psychic/Barrier play pattern, and the flavor of engineered power made the English launch binder feel like it contained something older and colder than a starter evolution. For an agent, that feeling is useful only if the rails stay visible: base1-10 first, edition evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
         "history": "B",
         "identification": "B"
       }
