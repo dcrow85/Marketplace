@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 268: Aquapolis Magneton H16 deepened; corpus fc14e67b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 269: Aquapolis Muk H17 deepened; corpus 1d46e26e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H17` Muk H17 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H17`, live Pokemon TCG API
+  `cards/ecard2-23`, live Pokemon TCG API `sets/ecard2`, Bulbapedia `Muk
+  (Aquapolis H17)`, and Bulbapedia `Aquapolis (TCG)`. The card dossier now
+  carries Muk / `ベトベトン` / Betbeton, English Aquapolis / e-Card Series,
+  API card id `ecard2-H17`, printed number H17, H17/H32 Rare Holo sequence,
+  Japanese The Town on No Map 005/092 holo lineage, the non-Holo Aquapolis
+  #23 / The Town on No Map 004/092 sibling, Stage 1 Grass profile, Grimer
+  evolution line, 70 HP, Heavyweight / Burning Sludge, Hajime Kusajima credit,
+  and e-Reader / Dot-Code context including C-61 vs C-61-# card IDs,
+  barren-ground Pokedex texture, and Construction: Action map-data long-strip
+  context. The special identification packet tells agents to keep H17
+  separate from Aquapolis Muk #23, The Town on No Map 004/092, older Muk rows,
+  reverse-holo listings, generic Muk wants, Construction: Action references,
+  and seller-card image claims. It also keeps Dot-Code, e-Reader,
+  barren-ground, and Construction: Action context legible only: not seller
+  possession, authenticity, condition truth, price truth, scan success,
+  application playability, or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `ベトベトン` / Betbeton, H17/H32,
+  H17 vs #23 separation, 005/092 vs 004/092, Hajime Kusajima, Heavyweight /
+  Burning Sludge, C-61 / C-61-# e-Reader caveats, Construction: Action
+  caveats, special-identification packet, and corpus propagation. New
+  catalog-history corpus hash:
+  `1d46e26ec6e8d842fa4db93787ca663fb193417a0354de01c57b980899765884`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
