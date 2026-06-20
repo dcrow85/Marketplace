@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 161: Toyota Auto Campaign pair deepened; corpus 7b3f02d2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 162: Southern Islands deepened; corpus 5c066cbf)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-second
+  catalog-history pass:
+  `data/catalog-history/source-sets/southern_islands_wotc_v0_1.json`
+  deepens English WotC Southern Islands as an 18-card scenic mini-set rather
+  than a silent API checklist. The pass covers the release plus every modeled
+  row, with one special-identification instruction each. It frames the set as a
+  postcard/panorama object: Mew as the collector anchor, Lapras and Slowking as
+  secondary character-gravity rows, Keiko Fukuyama carrying the first nine-card
+  Rainbow Island half, and Naoyo Kimura carrying the second nine-card Tropical
+  Island half. It also preserves the Tropical Present / Southern Islands art
+  reuse boundary, the English WotC `si1` route, and the image-rights rule:
+  Pokemon TCG API images are reference witnesses only, not seller evidence,
+  training rights, authenticity proof, or spendability. Generated gaps moved to
+  27 release / 3830 card. Current hashes: corpus
+  `5c066cbfb2e39c64d9aed05ece95c07af4152eec9f94d810209dd64ca92b316e`,
+  index `1e41373e2bce908c5865d4562898676b0b611c88408c6b86fa054e2a7c9b4605`,
+  queue `2d58372abf6579b46778e411512c0d41c40b196c3f50b4ba70a43896aefbab08`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-first
   catalog-history pass:
   `data/catalog-history/source-sets/toyota_auto_campaign_1997_v0_1.json`
