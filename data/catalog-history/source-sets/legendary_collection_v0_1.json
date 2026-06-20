@@ -1,13 +1,14 @@
 {
   "schema": "marketplace.catalog_history_source_set.v0.1",
   "scope": {
-    "description": "Hand-researched deepening pass for English Legendary Collection and five rows that show reprint memory, fireworks Reverse Holofoil, theme-deck exceptions, and late-Wizards nostalgia assembly.",
+    "description": "Hand-researched deepening pass for English Legendary Collection and six rows that show reprint memory, fireworks Reverse Holofoil, theme-deck exceptions, and late-Wizards nostalgia assembly.",
     "in_scope": [
       "Legendary Collection release dossier",
       "Charizard",
       "Dark Blastoise",
       "Dark Raichu",
       "Gyarados",
+      "Venusaur",
       "Mewtwo"
     ],
     "not_claiming": [
@@ -875,6 +876,244 @@
           "c2",
           "c3",
           "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-18",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-18",
+        "catalog_row_id": "base6-18"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-18",
+          "title": "Local English WoC card row: Legendary Collection Venusaur",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-18",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Venusaur",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+          "title": "Bulbapedia: Venusaur (Base Set 15)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Venusaur as Legendary Collection number 18, a Rare Holo Stage 2 Grass Pokemon credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records this Legendary Collection Venusaur with HP 100, Level 67, the Energy Trans Pokemon Power, Solarbeam, Fire weakness, and a two Colorless retreat cost.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Venusaur page treats the Legendary Collection print as part of the Base Set Venusaur card lineage, while the Legendary Collection page frames the expansion as reprints from Base Set, Jungle, Fossil, and Team Rocket rather than a new Japanese-equivalent expansion.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia's Legendary Collection page says the set introduced Reverse Holofoil prints with a fireworks-like pattern, so this Venusaur row needs regular-holo versus fireworks Reverse Holofoil treatment kept separate.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Legendary Collection Venusaur matters because it turns the Base-era Arita Grass engine into a late-Wizards nostalgia object: same old Energy Trans memory, but now under a new set mark and a possible fireworks reverse-holo surface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification work should preserve Legendary Collection set id base6, printed number 18, Mitsuhiro Arita credit, Energy Trans, Solarbeam, and claimed foil treatment before comparing to Base Set, Base Set 2, No Rarity, Expedition, Gym, CD, or later Venusaur rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_venusaur_reverse_base_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "regular holo status",
+            "fireworks Reverse Holofoil status",
+            "holo surface condition",
+            "Base Set equivalence",
+            "Base Set 2 equivalence",
+            "No Rarity equivalence",
+            "Expedition equivalence",
+            "Erika's Venusaur equivalence",
+            "CD promo equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm Legendary Collection / set id base6 printed number 18 before importing this row's history.",
+            "Confirm the row signals: Venusaur, Mitsuhiro Arita, HP 100, Level 67, Energy Trans, Solarbeam, Fire weakness, and two Colorless retreat cost.",
+            "Record whether the seller claims regular holo or fireworks Reverse Holofoil; do not infer either treatment from the catalog row alone.",
+            "Do not collapse this card into Base Set Venusaur, Base Set 2 Venusaur, Japanese Expansion Pack / No Rarity Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur, or later Venusaur ex/GX/V memory.",
+            "If foil treatment, edition, condition, slab, or variant context matters, ask for full-card scans showing set symbol, printed number, surface treatment, and any label/cert evidence."
+          ],
+          "summary": "Legendary Collection Venusaur base6-18 is Base-era Venusaur memory reassembled as a 2002 Legendary Collection row. Set mark, number, and foil treatment are load-bearing.",
+          "trigger": "A listing, want, scan, or agent memory says Legendary Collection Venusaur, base6-18, Venusaur #18, reverse holo Venusaur, fireworks Venusaur, Energy Trans Venusaur, or vintage Venusaur."
+        }
+      ],
+      "card_highlights": {
+        "number": "18",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "reprint memory",
+          "fireworks reverse holo",
+          "Base-era engine",
+          "late-Wizards nostalgia",
+          "foil treatment trap"
+        ],
+        "signals": [
+          "Legendary Collection",
+          "base6",
+          "Venusaur",
+          "18",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Trans",
+          "Solarbeam",
+          "HP 100",
+          "Level 67",
+          "Fire weakness",
+          "retreat cost 2",
+          "fireworks Reverse Holofoil context"
+        ],
+        "collector_texture_note": "This is not just Base Venusaur again. Legendary Collection changes the apparatus around the Arita image: new set mark, new number, and the fireworks reverse-holo question."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur under the fireworks skin",
+        "why_it_matters": "Legendary Collection Venusaur is the old garden engine made loud. Energy Trans still feels like the heart of Base-era Grass play, but the card now belongs to a 2002 memory machine where the surface can become fireworks and the set mark changes the object. For an agent, this is exactly the lesson: nostalgia is not identity until the assembly is placed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
         ],
         "not_claiming": [
           "official emotional history",

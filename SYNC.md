@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 202: Gym Challenge Erika's Venusaur 4 deepened; corpus 987f704f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 203: Legendary Collection Venusaur 18 deepened; corpus 20ba688e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/legendary_collection_v0_1.json`:
+  `en_wotc_legendary_collection_20020524:base6-18` Venusaur / Legendary
+  Collection #18 is now hand-authored rather than generator memory. The pass
+  records Mitsuhiro Arita credit, Rare Holo status, HP 100 Level 67 Grass
+  Stage 2 profile, Ivysaur evolution line, Energy Trans Pokemon Power,
+  Solarbeam, Fire weakness, retreat cost 2, and the late-Wizards reprint
+  apparatus that turns Base-era Venusaur memory into a Legendary Collection
+  object. The special identification packet is explicit and first-class:
+  agents must preserve set id `base6`, printed number 18, regular-holo versus
+  fireworks Reverse Holofoil claims, set symbol, and seller evidence needs
+  before comparing to Base Set Venusaur, Base Set 2 Venusaur, Japanese
+  Expansion Pack / No Rarity Venusaur, Expedition Venusaur, Erika's Venusaur,
+  CD/promo Venusaur, or later Venusaur ex/GX/V memory. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, regular holo status, fireworks Reverse Holofoil status,
+  holo surface condition, Base Set equivalence, No Rarity equivalence,
+  Expedition equivalence, or spendability. Generated gaps remain release queue
+  0 and card queue 100. Hashes: corpus
+  `20ba688e79222aa1f362e1089c79653d9c9d4fb643fc3fd9c1129079bb64f1b0`,
+  index
+  `fb76f373899ef15dbfdb78125c16b6a47443823e6a5df32602eb793d7a27557a`,
+  queue
+  `5db23c640887a98a5bb1f3974c9da0c0d694f866785abf589e73f9ab49e40246`,
+  audit
+  `466ddc4ac6a5d2fed176552758b15a58eaacfee56e4cf19f83a04a5ce54fbbf0`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-second
   catalog-history pass inside
   `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
