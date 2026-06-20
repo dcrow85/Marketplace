@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 264: Aquapolis Hypno H12 deepened; corpus 25e3e575)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 265: Aquapolis Jumpluff H13 deepened; corpus cff8c5bb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H13` Jumpluff H13 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H13`, live Pokemon TCG API
+  `cards/ecard2-17`, live Pokemon TCG API `sets/ecard2`, Bulbapedia
+  `Jumpluff (Aquapolis H13)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Jumpluff / `ワタッコ` / Watacco, English Aquapolis /
+  e-Card Series, API card id `ecard2-H13`, printed number H13, H13/H32 Rare
+  Holo sequence, Japanese The Town on No Map 013/092 holo lineage, the
+  non-Holo Aquapolis #17 / The Town on No Map 012/092 sibling, Stage 2 Grass
+  profile, Skiploom evolution line, 70 HP, Fluff / Cotton Punch, Yuka Morii
+  credit, and e-Reader / Dot-Code context including C-63 vs C-63-# card IDs
+  and Construction: Action map-data long-strip context. The special
+  identification packet tells agents to keep H13 separate from Aquapolis
+  Jumpluff #17, The Town on No Map 012/092, older Jumpluff rows,
+  reverse-holo listings, generic Jumpluff wants, Construction: Action
+  references, and seller-card image claims. It also keeps Dot-Code, e-Reader,
+  and Construction: Action context legible only: not seller possession,
+  authenticity, condition truth, price truth, scan success, application
+  playability, or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `ワタッコ` / Watacco, H13/H32, H13
+  vs #17 separation, 013/092 vs 012/092, Yuka Morii, Fluff / Cotton Punch,
+  C-63 / C-63-# e-Reader caveats, Construction: Action caveats,
+  special-identification packet, and corpus propagation. New catalog-history
+  corpus hash:
+  `cff8c5bbc88e59267ff9aefb49f7d454c0d6cac18570a07f1777a0ae95c243a7`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

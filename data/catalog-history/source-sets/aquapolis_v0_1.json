@@ -8,6 +8,7 @@
       "Exeggutor H10",
       "Houndoom H11",
       "Hypno H12",
+      "Jumpluff H13",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -1547,6 +1548,356 @@
           "price truth",
           "e-Reader scan success",
           "Dream Eater mini-game playability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H13",
+      "type": "card",
+      "context": {
+        "name_en": "Jumpluff",
+        "name_ja": "ワタッコ",
+        "romaji": "Watacco",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H13",
+        "catalog_row_id": "ecard2-H13",
+        "card_number": "H13",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-17",
+        "japanese_lineage_card_number": "The Town on No Map 013/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H13",
+          "title": "Local English WoC card row: Jumpluff H13",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H13",
+          "title": "Pokemon TCG API v2 card record: Jumpluff ecard2-H13",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jumpluff_(Aquapolis_H13)",
+          "title": "Bulbapedia: Jumpluff (Aquapolis H13)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-17",
+          "title": "Pokemon TCG API v2 card record: Jumpluff ecard2-17",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Jumpluff as Aquapolis H13, a Rare Holo Stage 2 Grass Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Jumpluff's Japanese name as ワタッコ / Watacco and connects the Holofoil print to Japanese The Town on No Map card 013/092, while the non-Holofoil Aquapolis print corresponds to The Town on No Map 012/092.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Jumpluff H13 with 70 HP, evolvesFrom Skiploom, Fire weakness, Water resistance, no listed retreat cost, Poké-Body Fluff, and attack Cotton Punch.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Jumpluff H13 to Yuka Morii; the local and API rows also credit Yuka Morii on the non-Holo Aquapolis Jumpluff #17 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Jumpluff as H13/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Jumpluff at #17 with the same Yuka Morii credit, Fluff Poké-Body, and Cotton Punch attack; agents must keep H13 and #17 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Jumpluff H13 page records card ID C-63 for the Holofoil print and C-63-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and long-strip content information, and that the long strip contains map data for the Construction: Action e-Reader application.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Jumpluff H13's e-Reader Pokedex entry comes from Pokemon Crystal, tying the card's Cottonweed flavor to Game Boy text inside the e-Reader frame.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Jumpluff H13 matters because it turns Yuka Morii's soft, tactile Pokemon language into an e-Reader object: a fragile Stage 2 Grass holo, Fluff as a protective coin flip, Cotton Punch as drifting chance, and C-63 data that points past the card into Construction: Action.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H13 / H13/H32, Rare Holo, English ecard2-H13, ワタッコ / Watacco, Yuka Morii credit, Fluff / Cotton Punch text, The Town on No Map 013/092 lineage, C-63 e-Reader ID, and non-equivalence with Aquapolis #17, The Town on No Map 012/092, older Jumpluff rows, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_jumpluff_h13_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Jumpluff, ワタッコ, Watacco, Jumpluff H13, H13/H32, Rare Holo, ecard2-H13, Yuka Morii, Fluff, Cotton Punch, C-63, C-63-#, Construction: Action, The Town on No Map, 013/092, Aquapolis #17, or reverse holo Jumpluff.",
+          "summary": "Identify Jumpluff / ワタッコ / Watacco H13 by the Aquapolis H-number Rare Holo lane: English ecard2-H13 / H13/H32 and The Town on No Map 013/092 lineage, not the non-Holo #17 / 012/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H13 / printed number H13 before accepting this as the H-number holo row.",
+            "Preserve H13/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Jumpluff #17 row even though #17 shares Yuka Morii, Fluff, and Cotton Punch.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 013/092 while the non-Holofoil #17 counterpart maps to 012/092.",
+            "Use Yuka Morii credit, Stage 2 Grass profile, Skiploom evolution line, Fluff, Cotton Punch, C-63 Holofoil e-Reader ID, and C-63-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep older Jumpluff rows, reverse-holo listings, generic Jumpluff wants, Construction: Action references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, and Construction: Action map-data context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "Construction: Action application playability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H13"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Jumpluff_(Aquapolis_H13)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H13",
+        "artist": "Yuka Morii",
+        "rarity_signal": "Rare Holo; Aquapolis H13/H32 H-number holo sequence, separate from non-Holo Jumpluff #17 / The Town on No Map 012/092",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Yuka Morii art trace",
+          "Grass e-Reader interface",
+          "Fluff Poké-Body",
+          "Construction: Action map-data strip"
+        ],
+        "collector_texture_note": "Jumpluff H13 is gentle until the catalog work starts: Yuka Morii softness, a holo lane beside an almost identical #17, and a tiny C-63 e-Reader path into Construction: Action.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "Construction: Action application playability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Jumpluff H13 — soft material, hard boundary",
+        "why_it_matters": "Jumpluff H13 is a lovely test of what this catalog is trying to do. The card feels light: Yuka Morii, fluff, cotton, a Pokemon that rides the wind. But the identification work is not light at all. The agent has to hold H13 as the holo object, #17 as the non-holo sibling, and the C-63 e-Reader strip as a tiny doorway into Construction: Action without pretending any of it proves the seller's card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "Construction: Action application playability"
         ]
       },
       "coverage": {
