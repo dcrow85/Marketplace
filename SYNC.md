@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 289: Aquapolis Espeon H9 upgraded; corpus 153fabaf)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 290: Base Set Alakazam #1 deepened; corpus acfcd02b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninetieth
+  catalog-history pass by creating
+  `data/catalog-history/source-sets/base_set_v0_1.json` and deepening
+  `en_wotc_base_set_19990109:base1-1` Alakazam #1. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Alakazam (Base Set 1)`, Bulbapedia `Base Set (TCG)`, and
+  the local Japanese pre-English Expansion Pack / No Rarity row
+  `jp_tcg_expansion_pack_19961020:049`. The dossier now carries Alakazam /
+  `フーディン` / Foodin, Base Set #1/102, Rare Holo, Stage 2 Psychic,
+  Level 42, 80 HP, Kadabra evolution line, Damage Swap, Confuse Ray, Ken
+  Sugimori credit, Japanese Expansion Pack / PMCG1-049 lineage, Red/Blue
+  and Red/Green Pokedex texture, and the Confuse Ray video-game movepool
+  mismatch. Its special identification packet tells agents to keep English
+  Base Set #1 separate from Japanese Expansion Pack / No Rarity PMCG1-049,
+  Base Set 2 #1, Legendary Collection #1, Game Boy records, and English
+  First Edition / Shadowless / Unlimited / 4th-print states unless seller
+  evidence proves the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`, `build_catalog_history_dossiers.py
+  --check`, `build_card_dossiers.py --check`,
+  `build_catalog_completion_audit.py --check`, plus a focused Alakazam
+  downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

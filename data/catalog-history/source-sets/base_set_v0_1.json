@@ -1,0 +1,364 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Focused hand-researched deepening pass for English Base Set, beginning with Alakazam #1 as a launch-holo, Japanese Expansion Pack lineage, artist-credit, play-memory, and print-boundary test case.",
+    "in_scope": [
+      "Alakazam #1"
+    ],
+    "not_claiming": [
+      "complete Base Set scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "Japanese No Rarity proof",
+      "First Edition status",
+      "Shadowless status",
+      "Unlimited status",
+      "4th print status",
+      "Base Set 2 equivalence",
+      "Legendary Collection equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_base_set_19990109:base1-1",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam",
+        "name_ja": "フーディン",
+        "romaji": "Foodin",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-1",
+        "catalog_row_id": "base1-1",
+        "card_number": "1/102",
+        "release_name": "Base Set",
+        "japanese_lineage": "Japanese Expansion Pack / PMCG1-049",
+        "related_japanese_no_rarity_row": "jp_tcg_expansion_pack_19961020:049"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-1",
+          "title": "Local English WoC catalog: Alakazam base1-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-1",
+          "title": "Pokemon TCG API v2 card record: Alakazam base1-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base1",
+          "title": "Pokemon TCG API v2 set record: Base Set",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Base_Set_1)",
+          "title": "Bulbapedia: Alakazam (Base Set 1)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_(TCG)",
+          "title": "Bulbapedia: Base Set (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:049",
+          "title": "Local Japanese pre-English catalog: Alakazam / PMCG1-049",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local English WoC catalog and Pokemon TCG API identify base1-1 as Alakazam, Base Set card 1/102, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row and Bulbapedia model this Alakazam as a Stage 2 Psychic Pokemon, Level 42, 80 HP, evolving from Kadabra, with Psychic weakness and three-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's Pokemon Power is Damage Swap, which moves damage counters among the player's Pokemon without knocking one out, and its attack is Confuse Ray for 30 damage with a coin-flip chance to Confuse.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local English row, Pokemon TCG API, and Bulbapedia credit Alakazam base1-1 to Ken Sugimori; the related Japanese pre-English row carries a local illustrator crosswalk to Ken Sugimori but does not itself become direct Japanese-print authority.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Bulbapedia and the local catalog place English Base Set on January 9, 1999, with Japanese Expansion Pack lineage from October 20, 1996; Bulbapedia describes Base Set as the first main English expansion and tied to Red/Blue and Red/Green launch-era Pokemon.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia lists Alakazam as first released in Japanese Expansion Pack, and the local Japanese pre-English catalog carries the related Alakazam row as PMCG1-049 / Holo Rare / active No Rarity target.",
+          "sources": [
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set Alakazam #1/102 must be kept separate from Japanese Expansion Pack / No Rarity PMCG1-049, Base Set 2 #1/130, Legendary Collection #1/110, Game Boy records, and English print states such as First Edition, Shadowless, Unlimited, and 4th print.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia describes early English Base Set print differences such as First Edition, Shadowless, thinner text, missing artwork-window shadows, and a later 1999-2000 copyright line, but a catalog row alone does not identify which print state a seller's card occupies.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia ties the English Pokedex text to Red/Blue and the Japanese text to Red/Green; the English entry leans on Alakazam's supercomputer-level brain and IQ lore, while the Japanese entry emphasizes extrasensory power over physical attacks.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia notes that Confuse Ray is a move in the Pokemon games that Alakazam cannot learn, making this card a small reminder that early TCG mechanics and video-game movepools were related but not identical systems.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Alakazam opens English Base Set's holo numbering with a control-engine idea instead of brute force: Damage Swap made the board feel rearrangeable, while Sugimori's calm psychic pose made the first card in the set feel like a mind holding the table together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9",
+            "c10"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_alakazam_1_print_run_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Alakazam, Base Set, base1-1, 1/102, Damage Swap, Confuse Ray, Ken Sugimori, Foodin, フーディン, Expansion Pack, PMCG1-049, No Rarity, First Edition, Shadowless, Unlimited, 4th print, Base Set 2, Legendary Collection, Game Boy, or same artwork.",
+          "summary": "Identify English Base Set Alakazam #1/102 as base1-1, then keep it separate from Japanese Expansion Pack / No Rarity PMCG1-049, Base Set 2 #1, Legendary Collection #1, Game Boy records, and English print-run states unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_19990109, local row id base1-1, printed number 1/102, Rare Holo, Ken Sugimori credit, Damage Swap, and Confuse Ray.",
+            "Do not infer First Edition, Shadowless, Unlimited, 4th print, copyright-line state, condition, price, or authenticity from the catalog row or reference image.",
+            "Do not collapse the English Base Set row into Japanese Expansion Pack / No Rarity PMCG1-049; No Rarity requires its own Japanese-card visual evidence and human or verifier confirmation.",
+            "Do not collapse the row into Base Set 2 #1/130, Legendary Collection #1/110, or Game Boy records even when the name, art, or attack memory overlaps.",
+            "For transaction use, request seller front, back, holo surface, set/number, copyright line, edition stamp or absence, artwork-window shadow, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Japanese No Rarity proof",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence",
+            "Japanese Expansion Pack equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "1/102",
+        "rarity_signal": "Rare Holo; Base Set #1/102, separate from Japanese Expansion Pack / No Rarity PMCG1-049, Base Set 2 #1/130, Legendary Collection #1/110, and English print-run states.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set opening holo",
+          "Japanese Expansion Pack lineage",
+          "Ken Sugimori launch-era art",
+          "Kadabra evolution line",
+          "Damage Swap control engine",
+          "Confuse Ray / early movepool mismatch",
+          "psychic intelligence lore",
+          "print-run boundary",
+          "No Rarity boundary"
+        ],
+        "collector_texture_note": "Base Set starts at #1 with Alakazam, not Charizard. That makes the binder opening feel quieter and stranger: the first holo is the psychic one that moves damage around and asks the table to think."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The brain at the front of Base Set",
+        "why_it_matters": "Alakazam is a beautiful first row because it does not win by roaring. It sits at the front of English Base Set as a holo mind: Ken Sugimori's psychic silhouette, Damage Swap bending the whole board, Confuse Ray carrying early TCG weirdness, and a Japanese Expansion Pack ancestor sitting behind it. For a collector agent, this card is also a boundary lesson. Same name and similar memory can point toward No Rarity, Shadowless, Base Set 2, Legendary Collection, or a Game Boy record. None of those are granted by resemblance. The row tells you where to look; the seller evidence has to tell you what is actually in hand.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "No Rarity proof",
+          "First Edition status",
+          "Shadowless status",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}
