@@ -77769,28 +77769,36 @@
       "card": {
         "artist": "Mitsuhiro Arita",
         "assembly_themes": [
-          "holo surface",
-          "rarity attention",
-          "character gravity",
-          "artist trace"
+          "Gift Pack component lane",
+          "possible-content ambiguity",
+          "launch holo inheritance",
+          "two-player apparatus",
+          "inherited reference image"
         ],
         "number": "starter_b-011",
         "rarity_signal": "Holo Rare"
       },
-      "claim_count": 5,
+      "claim_count": 6,
       "coverage": {
         "art": "B",
-        "history": "C",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Venusaur: first-pass card note",
-      "special_identification_instruction_count": 0,
-      "special_identification_instructions": [],
+      "generated": false,
+      "human_title": "Venusaur starter_b-011: the second lane of the table",
+      "special_identification_instruction_count": 1,
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_011_component_boundary_v0.1",
+          "summary": "Preserve starter_b-011 lane identity; do not merge it with starter_a-011, Expansion Pack PMCG1-011, or a physical No Rarity claim without evidence.",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Venusaur, starter_b-011, starter_b, Starter Pack, Expansion Pack, PMCG1-011, No Rarity, missing symbol, sealed Gift Pack, or launch holo."
+        }
+      ],
       "type": "card",
       "uid": "jp_tcg_gift_pack_19961212:starter_b-011",
-      "why_it_matters": "Venusaur sits in Gift Pack product-component context as Holo Rare; its current assembly themes are holo surface, rarity attention, character gravity and the local artist trace points to Mitsuhiro Arita. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "The beautiful thing about Gift Pack Venusaur is also the dangerous thing. It feels like the same launch boss walking into a box built for two players, but the route matters more than the feeling. starter_b-011 is a component-lane memory: it tells an agent where the card can sit in the product model, not what a sealed box contains and not what a seller has in hand. That is the exact kind of boring distinction that makes a market safer."
     },
     {
       "card": {

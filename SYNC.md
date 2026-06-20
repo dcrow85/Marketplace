@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 206: No Rarity Mewtwo 050 deepened; corpus c80b24e6)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 207: Gift Pack starter_b Venusaur 011 deepened; corpus 8018b441)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gift_pack_v0_1.json`:
+  `jp_tcg_gift_pack_19961212:starter_b-011` Venusaur / フシギバナ /
+  Fushigibana is now hand-authored rather than generator memory. The pass
+  records Gift Pack product-component context, `starter_b` lane identity,
+  Holo Rare status, Mitsuhiro Arita crosswalk artist signal, inherited Series
+  1 Starter Pack possible-content lineage, PMCG1-011 launch-card memory, and
+  inherited No Rarity reference-image provenance. The special identification
+  packet is explicit and first-class: agents must preserve `starter_b-011`
+  lane identity separately from `starter_a-011`, Series 1 Starter Pack
+  possible-content rows, Expansion Pack / No Rarity PMCG1-011, and physical
+  No Rarity claims. Boundaries remain explicit: catalog legibility is not
+  seller possession, seller card match, authenticity, condition, price, fixed
+  deck list, sealed Gift Pack contents, special-card identity, missing-symbol
+  status, physical-card No Rarity truth, direct Gift Pack image evidence,
+  component-lane equivalence, or spendability. Generated gaps remain release
+  queue 0 and card queue 100. Hashes: corpus
+  `8018b4416ad8e7da15510ab1679813b9f4a96e496a25731a6a144e6cd833bd34`,
+  index
+  `57aa596de5923a19ef018f44cd40d1cfa3c662c27bd816c695abb6106e601044`,
+  queue
+  `cc17d636ff3727140868977d387a35b9b43734eca74f12b4969c182739628ed3`,
+  audit
+  `bcc9449d5ab652fca9a12adf5ca5673f1740ecec28defd162ab142f0c0eb1c9d`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `jp_tcg_expansion_pack_19961020:050` Mewtwo / ミュウツー /

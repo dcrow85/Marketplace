@@ -13,6 +13,7 @@
       "Mewtwo starter_a-050",
       "Pidgeotto starter_a-066",
       "Super Energy Removal starter_a-088",
+      "Venusaur starter_b-011",
       "Charizard starter_b-021",
       "Blastoise starter_b-032",
       "Super Energy Removal starter_b-088"
@@ -2176,6 +2177,268 @@
           "physical-card authenticity",
           "sealed-unit contents",
           "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-011",
+        "catalog_row_id": "starter_b-011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-011",
+          "title": "Local Gift Pack component row: Venusaur starter_b-011",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-011 as Venusaur, inherited from the Series 1 Starter Pack possible-content pool and ultimately tied to PMCG1-011 launch-card memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Venusaur starter_b-011 as Holo Rare and marks it as an active No Rarity target through inherited component-row metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Venusaur starter_b-011 to Mitsuhiro Arita through English Base Set crosswalk metadata, while preserving that this is not direct Japanese-print illustrator authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance says the reference image is inherited through Gift Pack component rollup from a Starter Pack possible-content row and source-row Expansion Pack / No Rarity image; it is not direct Gift Pack image evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur starter_b-011 matters because it exposes the Gift Pack problem in miniature: a beloved launch holo can be historically relevant to a two-player product context while still failing to prove fixed deck inclusion, sealed-unit contents, or physical No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-011 lane identity; do not merge with starter_a-011, Expansion Pack PMCG1-011, Series 1 Starter Pack possible-content rows, or No Rarity claims without seller-controlled evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_011_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Venusaur, starter_b-011, starter_b, Starter Pack, Expansion Pack, PMCG1-011, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_b-011 lane identity; do not merge it with starter_a-011, Expansion Pack PMCG1-011, or a physical No Rarity claim without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-011.",
+            "Keep starter_b lane identity separate from starter_a-011, Series 1 Starter Pack possible-content rows, and Expansion Pack / No Rarity PMCG1-011.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "Treat inherited No Rarity reference imagery as lineage/comparison only; it is not direct Gift Pack image evidence, seller possession, authentication, condition, or fixed inclusion proof.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against Starter Pack / Expansion Pack lanes.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, sealed-unit contents, or physical No Rarity status from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status",
+            "physical-card No Rarity truth",
+            "starter_a-011 equivalence",
+            "Expansion Pack PMCG1-011 equivalence",
+            "direct Gift Pack image evidence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "starter_b-011",
+        "rarity_signal": "Holo Rare",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "Gift Pack component lane",
+          "possible-content ambiguity",
+          "launch holo inheritance",
+          "two-player apparatus",
+          "inherited reference image"
+        ],
+        "signals": [
+          "Gift Pack product-component context",
+          "starter_b",
+          "starter_b-011",
+          "Series 1 Starter Pack possible-content pool",
+          "PMCG1-011",
+          "Venusaur",
+          "フシギバナ",
+          "Fushigibana",
+          "Holo Rare",
+          "Mitsuhiro Arita",
+          "inherited No Rarity reference image"
+        ],
+        "collector_texture_note": "Gift Pack starter_b Venusaur is not a louder Venusaur claim; it is a route claim. The interesting part is the product lane, the inherited image lineage, and the proof it still cannot supply by itself."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur starter_b-011: the second lane of the table",
+        "why_it_matters": "The beautiful thing about Gift Pack Venusaur is also the dangerous thing. It feels like the same launch boss walking into a box built for two players, but the route matters more than the feeling. starter_b-011 is a component-lane memory: it tells an agent where the card can sit in the product model, not what a sealed box contains and not what a seller has in hand. That is the exact kind of boring distinction that makes a market safer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "fixed deck list",
+          "No Rarity status",
+          "seller possession"
         ]
       },
       "coverage": {
