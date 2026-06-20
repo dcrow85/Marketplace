@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 204: No Rarity Venusaur 011 deepened; corpus ec79fe2c)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 205: No Rarity Blastoise 032 deepened; corpus 266ae044)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `jp_tcg_expansion_pack_19961020:032` Blastoise / カメックス /
+  Kamekkusu PMCG1-032 is now hand-authored rather than generator memory. The
+  pass records Holo Rare status, Water Stage2 / National Pokedex 9 launch-row
+  identity, Ken Sugimori artist signal with the existing English-crosswalk
+  caveat, source-labeled No Rarity reference-image provenance, and active No
+  Rarity target status. The special identification packet is explicit and
+  first-class: agents must preserve Japanese Expansion Pack / No Rarity Lab
+  identity, PMCG1-032, the Japanese name, expected blank lower-right
+  rarity-symbol field, and seller-controlled evidence needs before comparing
+  to English Base Set Blastoise, Base Set 2 Blastoise, Legendary Collection
+  Dark Blastoise, Expedition Blastoise, CD/promo Blastoise, Series 1 Starter
+  Pack source ambiguity, or later Blastoise ex/GX/V memory. Boundaries remain
+  explicit: catalog legibility is not seller possession, seller card match,
+  authenticity, condition, price, physical-card No Rarity truth, holo surface
+  condition, direct Japanese illustrator authority, source-family equivalence,
+  or spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `266ae0445f2e64a9781d9892316f119cd6252940d3944b0ff4894aab1d5d352d`,
+  index
+  `50d7712817a5477032b42cf88c50faf409bdcc22826ac3b967029b45e65b23f3`,
+  queue
+  `06a96e52b02933a5c6cb10e0074b6ba946c0807eca17f50f2785229e9eb39464`,
+  audit
+  `8f22d6a1f40ed7e054a8e50c9bc8f5309853539da06b1e0bebb801931f944ff3`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fourth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `jp_tcg_expansion_pack_19961020:011` Venusaur / フシギバナ /
