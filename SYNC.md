@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 283: Aquapolis Vileplume H31 deepened; corpus dec7c485)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 284: Aquapolis Azumarill H4 deepened; corpus f36ead19)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H4` Azumarill H4 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-4`, local
+  Japanese Town on No Map rows for E2-026 / E2-025, Bulbapedia
+  `Azumarill (Aquapolis H4)`, and Bulbapedia `Aquapolis (TCG)`. The
+  card dossier now carries Azumarill / `マリルリ` / Marilli, English
+  Aquapolis / e-Card Series, API card id `ecard2-H4`, printed number H4,
+  H4/H32 Rare Holo sequence, Japanese The Town on No Map 026/092 holo
+  lineage, the non-Holo Aquapolis #4 / 4/147 / Town on No Map 025/092
+  sibling, Stage 1 Water profile, Marill evolution line, 70 HP,
+  Lightning weakness, one-retreat cost, Poke-Power Bubble Turn, Aqua
+  Sonic, and Kagemaru Himeno credit. The special identification packet
+  tells agents to keep H4 separate from Aquapolis Azumarill #4,
+  reverse-holo listings, generic Azumarill wants, Marill-line collection
+  goals, Water deck references, and seller-card image claims. It also
+  keeps C-65 / C-65-# IDs, Aquarabbit species label, Pokemon Crystal
+  Pokedex source, camouflage-belly Pokedex text, no-long-strip boundary,
+  seller possession, authenticity, condition, price, image rights,
+  seller-card match, e-Reader scan success, reverse-holo equivalence,
+  and spendability explicitly out of the catalog claim. Rebuilt
+  generated corpus artifacts; new corpus hash
+  `f36ead192d1e8c9543c09a5ed0c9d4295034289b50506bbf65762dd7be08d172`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

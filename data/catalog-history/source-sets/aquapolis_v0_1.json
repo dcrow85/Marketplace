@@ -7565,6 +7565,346 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H4",
+      "type": "card",
+      "context": {
+        "name_en": "Azumarill",
+        "name_ja": "マリルリ",
+        "romaji": "Marilli",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H4",
+        "catalog_row_id": "ecard2-H4",
+        "card_number": "H4",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-4",
+        "japanese_lineage_card_number": "The Town on No Map 026/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H4",
+          "title": "Local English WoC card row: Azumarill H4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H4",
+          "title": "Pokemon TCG API v2 card record: Azumarill ecard2-H4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Azumarill_(Aquapolis_H4)",
+          "title": "Bulbapedia: Azumarill (Aquapolis H4)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-4",
+          "title": "Pokemon TCG API v2 card record: Azumarill ecard2-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_japanese_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_town_on_no_map_20020308.json#rows:E2-026,E2-025",
+          "title": "Local Japanese classic rows: Azumarill / The Town on No Map 026 and 025",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Azumarill as Aquapolis H4, a Rare Holo Stage 1 Water Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Azumarill's Japanese name as マリルリ / Marilli and connects the Holofoil print to Japanese The Town on No Map card 026/092, while the non-Holofoil Aquapolis print appears as English 4/147 and Japanese 025/092.",
+          "sources": [
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Azumarill H4 with 70 HP, evolvesFrom Marill, Water type, Lightning weakness, one-Colorless retreat, the Poke-Power Bubble Turn, and Aqua Sonic for 40 damage without applying Resistance.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Azumarill H4 to Kagemaru Himeno; the local and API rows also credit Kagemaru Himeno on the non-Holo Aquapolis Azumarill #4 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Azumarill as H4/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Azumarill at #4 with the same Kagemaru Himeno credit, Bubble Turn, and Aqua Sonic; agents must keep H4 and #4 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Azumarill H4 page records card ID C-65 for the Holofoil print and C-65-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information and a brief card summary, that there is no long strip for Azumarill, and that the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Azumarill H4's e-Reader Pokedex entry comes from Pokemon Crystal; the entry emphasizes the bubble-like belly pattern that camouflages Azumarill in water.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Azumarill H4 matters because it is a soft-looking Aquapolis holo that behaves like a little escape mechanism: Bubble Turn can pull the whole package back to hand, Aqua Sonic ignores Resistance, and the e-Reader layer makes the card a compact identity object rather than just a cute water rabbit.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_azumarill_h4_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Azumarill, マリルリ, Marilli, Azumarill H4, H4/H32, Rare Holo, ecard2-H4, Kagemaru Himeno, Bubble Turn, Aqua Sonic, C-65, C-65-#, The Town on No Map, 026/092, Aquapolis #4, 4/147, or reverse holo Azumarill.",
+          "summary": "Identify Azumarill / マリルリ / Marilli H4 by the Aquapolis H-number Rare Holo lane: English ecard2-H4 / H4/H32 and The Town on No Map 026/092 lineage, not the non-Holo #4 / 4/147 / 025/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H4 / printed number H4 before accepting this as the H-number holo row.",
+            "Preserve H4/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Azumarill #4 row even though #4 shares Kagemaru Himeno, Bubble Turn, and Aqua Sonic.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 026/092 while the non-Holofoil counterpart maps to The Town on No Map 025/092 and English Aquapolis 4/147.",
+            "Use Kagemaru Himeno credit, Stage 1 Water profile, Marill evolution line, Lightning weakness, one-retreat cost, Bubble Turn, Aqua Sonic, C-65 Holofoil e-Reader ID, and C-65-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Azumarill wants, Marill-line collection goals, Water deck references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Aquarabbit species label, Pokemon Crystal Pokedex source, camouflage-belly Pokedex text, and no-long-strip note as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "long-strip data presence",
+            "long-strip data readability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H4"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Azumarill_(Aquapolis_H4)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H4",
+        "artist": "Kagemaru Himeno",
+        "rarity_signal": "Rare Holo; H4/H32 H-number holo sequence, separate from non-Holo #4 / 4/147 / 025/092 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Kagemaru Himeno art trace",
+          "Stage 1 water evolution",
+          "Bubble Turn escape mechanism",
+          "Aqua Sonic resistance bypass",
+          "C-65 e-Reader object",
+          "no-long-strip boundary"
+        ],
+        "collector_texture_note": "Azumarill H4 is Aquapolis being gentle and mechanical at once: soft Kagemaru Himeno Water energy, Bubble Turn as a vanishing act, Aqua Sonic cutting through Resistance, and a C-65 e-Reader identity that must not be blurred with #4."
+      },
+      "narrative": {
+        "human_title": "Azumarill H4 — the soft machine that slips away",
+        "why_it_matters": "Azumarill H4 looks like the friendly middle of Aquapolis, but the card is all motion control. Kagemaru Himeno gives the water rabbit a soft surface, Bubble Turn lets it pick up its whole little world and leave, Aqua Sonic ignores Resistance, and the e-Reader layer pins the object as C-65 with no long strip. It is cute, yes, but it is also a tiny escape apparatus.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "long-strip data presence",
+          "long-strip data readability",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {
