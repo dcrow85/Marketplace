@@ -1737,6 +1737,241 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-044-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-044-p",
+        "catalog_row_id": "044/P",
+        "release_name": "P Promotional cards",
+        "paired_print": "038/P Battle Festa 2002 orienteering print"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-044-p",
+          "title": "Local catalog row: Pikachu 044/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Pikachu_(P_Promo_38)&action=raw",
+          "title": "Bulbapedia raw wikitext: Pikachu (P Promo 38 / 44)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as numbered P Promotional row 044/P, distributed through Pokemon Happy Adventure Rally 2002.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the shared 038/P and 044/P card as Pikachu / ピカチュウ, a Lightning Basic Pokemon with HP 40, Fighting weakness, retreat cost 1, and Midori Harada illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says 044/P was one of six cards available through Pokemon Happy Adventure Rally 2002, which ran on the JR East Yamanote Line between August 3 and August 18, 2002; the card could be obtained at the booth at Tokyo Station.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Smash Link / スマッシュリンク, an attack that references Super Smash Bros. Melee through its Mewtwo Bench condition.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia links 038/P and 044/P as two P Promotional prints with slightly different Midori Harada artwork: 038/P has card ID Z-26-a and a self-contained Pikachu mini-game, while 044/P has card ID Z-26-b and a Tokotoko Truck mini-game requiring four other P Promotional cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pikachu 044/P matters because it turns transit into collection memory: the Yamanote Line, Tokyo Station, rally movement, and a linked e-Reader mini-game all become part of the route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Pikachu 044/P from the paired 038/P Battle Festa print, McDonald's Pikachu 021/P, ANA Pikachu 004/P, other P Promotional Pikachu rows, and generic e-Reader Pikachu cards; the 044/P number, Happy Adventure Rally route, and Z-26-b e-Reader ID are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_044_p_pikachu_happy_adventure_rally_boundary_v0.1",
+          "trigger": "A user says Pikachu P promo, Happy Adventure Rally Pikachu, Yamanote Line Pikachu, Tokyo Station Pikachu, Tokotoko Truck Pikachu, Smash Link Pikachu, 044/P, or Z-26-b.",
+          "summary": "Confirm 044/P and the Pokemon Happy Adventure Rally 2002 Yamanote Line / Tokyo Station route before treating a Pikachu listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 044/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve the Pokemon Happy Adventure Rally 2002 route: JR East Yamanote Line, August 3-August 18, 2002, and Tokyo Station booth.",
+            "Check the subject line as Pikachu / ピカチュウ, not merely a generic mascot promo.",
+            "Check that the profile matches the paired 038/P and 044/P card line: Lightning Basic, HP 40, Fighting weakness, retreat cost 1.",
+            "Use Midori Harada as the card-art credit for the 038/P and 044/P pair, while remembering that artist credit is not physical-card authentication.",
+            "Check for Smash Link / スマッシュリンク and the Mewtwo Bench condition when comparing card text.",
+            "Use Z-26-b and Tokotoko Truck as 044/P e-Reader context; do not confuse it with 038/P's Z-26-a self-contained Pikachu mini-game.",
+            "Remember that Tokotoko Truck requires four other P Promotional cards to play; do not infer those companion cards are present with a loose 044/P.",
+            "Separate this row from Battle Festa orienteering Pikachu 038/P, even though they share the same card page and artist.",
+            "Separate this from McDonald's Pikachu 021/P, ANA Pikachu 004/P, Sample Set Pikachu, Expedition Pikachu, and generic P Promotional Pikachu listings.",
+            "If a seller claims rally provenance, ask for seller-controlled evidence of the card and any station/rally/stamp material separately.",
+            "Treat mini-game readability, rally attendance, sealed state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Happy Adventure Rally provenance",
+            "station or rally material possession",
+            "mini-game functionality",
+            "companion-card possession",
+            "038/P equivalence",
+            "other Pikachu equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "044/P",
+        "rarity_signal": "Pokemon Happy Adventure Rally 2002; JR East Yamanote Line / Tokyo Station route",
+        "artist": "Midori Harada",
+        "assembly_themes": [
+          "promo distribution",
+          "travel/rally distribution",
+          "e-Reader mini-game",
+          "mascot gravity",
+          "identity trap"
+        ],
+        "signals": [
+          "Pikachu",
+          "ピカチュウ",
+          "044/P",
+          "Pokemon Happy Adventure Rally 2002",
+          "JR East Yamanote Line",
+          "Tokyo Station",
+          "Midori Harada",
+          "Smash Link",
+          "スマッシュリンク",
+          "Mewtwo Bench condition",
+          "Z-26-b",
+          "Tokotoko Truck",
+          "038/P paired print"
+        ],
+        "collector_texture_note": "Pikachu 044/P is a rail-line card: a mascot souvenir from a Yamanote Line rally, with Tokyo Station as the collection point and Tokotoko Truck tucked into the e-Reader strip.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete rally provenance",
+          "mini-game functionality",
+          "companion-card possession"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 044/P: the mascot riding the Yamanote Line",
+        "why_it_matters": "If 038/P is a card for walking a venue, 044/P is a card for moving through the city. The route is almost charmingly physical: Yamanote Line, Tokyo Station, a rally booth, and then a Pikachu card whose e-Reader strip points to Tokotoko Truck. The card is a small piece of urban Pokemon choreography, not just another yellow face in the binder.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete Happy Adventure Rally attendance proof",
+          "station material possession",
+          "mini-game functionality",
+          "companion-card possession"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-025-p",
       "type": "card",
       "context": {
