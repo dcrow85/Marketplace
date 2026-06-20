@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 251: Neo Spring Road No.3 Trainer row 224 deepened; corpus 29c83f98)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 252: Neo Spring Road Best in Japan No.1 row 230 deepened; corpus 00d6b980)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`:
+  `jp_promo_unnumbered_wotc_230_neo_spring_road_best_in_japan_first_place_prize:230`
+  No.1 Trainer row 230 is now hand-authored rather than generator memory.
+  This pass used the local unnumbered promo row, Bulbapedia raw `Unnumbered
+  Promotional cards` row 230, Bulbapedia raw `No.1 Trainer (Pokemon Card Game
+  Official Tournament promo)`, and Pokumon's `No.1 Trainer (Neo Spring Road
+  Best in Japan 2001)` page. The card dossier now carries No.1 Trainer /
+  `Ｎｏ.１トレーナー` / No.1 Trainer, no printed number, Neo Spring Road Best
+  in Japan finals route, March 31 2001 final context, senior champion wording,
+  recipient photograph superimposed on the competition-logo branch, Lugia /
+  Neo Spring Road finals context, and Takumi Akabane / Cosmos holofoil as
+  Pokumon collector-database context. The special identification packet tells
+  agents not to match by `No.1 Trainer` alone and not to reuse the regional
+  row 222 frame: keep row 230 separate from regional No.1 row 222, Best in
+  Japan No.2/No.3 rows 231-232, Neo Summer Road finals, Neo Summer Road
+  regional trophies, Battle Road 2002, 1997-1999 No.1 Trainer prints, and
+  later Worlds cards. Estimated 1-copy language is recorded only as
+  collector/database estimate, not official copy-count truth. No-overclaim
+  boundaries remain explicit: this catalogs identity/history/context only, not
+  seller possession, authenticity, condition, price, photograph match, or
+  spendability.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json`:
