@@ -827,6 +827,241 @@
       }
     },
     {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-20",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-20",
+        "catalog_row_id": "ecard1-20",
+        "release_name": "Expedition Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-20",
+          "title": "Local Expedition row: Mewtwo 20",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-20",
+          "title": "Pokemon TCG API v2 card record: Mewtwo ecard1-20",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Expedition_20)",
+          "title": "Bulbapedia: Mewtwo (Expedition 20)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Mewtwo as English Expedition Base Set row ecard1-20 / printed number 20.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Mewtwo ecard1-20 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Kimiya Masago as the illustrator for Mewtwo ecard1-20.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Mewtwo ecard1-20 as a Psychic Basic Pokemon with HP 70, Psychic weakness, retreat cost 2, and the attacks Hypnosis and Psychic.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo ecard1-20 matters because Expedition moves the laboratory legend into the e-Reader interface era: the card is still a holo chase, but the expanded border, row identity, and reverse-holo possibility make the physical edge part of the evidence story.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Mewtwo ecard1-20 from Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Japanese Expansion Pack / No Rarity Mewtwo, P Promotional Mewtwo 046/P, and later Mewtwo ex/GX/V memory; the Expedition row number, set id ecard1, Rare Holo status, Kimiya Masago credit, Hypnosis/Psychic text, and e-Reader border condition are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_mewtwo_20_ereader_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holo surface condition",
+            "reverse-holo status",
+            "e-Reader strip readability",
+            "Base Set equivalence",
+            "other Mewtwo equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm the row as Expedition Base Set / ecard1 printed number 20 before using this dossier.",
+            "Check the card is the Rare Holo Mewtwo with Kimiya Masago credit, Hypnosis, Psychic, HP 70, Psychic weakness, and retreat cost 2.",
+            "Preserve Expedition's e-Reader frame as identity context, but do not infer that a seller's physical card scans or has readable Dot Code borders.",
+            "Keep holofoil and reverse-holo status separate; ask for clear front/angle images if finish matters.",
+            "Separate this row from Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Japanese Expansion Pack / No Rarity Mewtwo, P Promotional Mewtwo 046/P, and later Mewtwo ex/GX/V memories.",
+            "Treat price, condition, authenticity, finish, e-Reader readability, and slab status as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "summary": "Mewtwo ecard1-20 is the Expedition Base Set Rare Holo row. Preserve set id, row number, finish, and e-Reader-border evidence before comparing to other Mewtwo prints.",
+          "trigger": "A buyer or seller says Expedition Mewtwo, e-Reader Mewtwo, Mewtwo 20, ecard1-20, reverse-holo Mewtwo, or Kimiya Masago Mewtwo."
+        }
+      ],
+      "card_highlights": {
+        "number": "20",
+        "rarity_signal": "Rare Holo",
+        "artist": "Kimiya Masago",
+        "assembly_themes": [
+          "e-Reader interface",
+          "holo surface",
+          "laboratory myth",
+          "finish trap",
+          "artist trace"
+        ],
+        "signals": [
+          "Expedition Base Set",
+          "ecard1",
+          "Mewtwo",
+          "20",
+          "Rare Holo",
+          "Kimiya Masago",
+          "Hypnosis",
+          "Psychic",
+          "HP 70",
+          "Psychic weakness",
+          "retreat cost 2",
+          "e-Reader border"
+        ],
+        "collector_texture_note": "Expedition Mewtwo is the lab legend moving through the e-Reader frame: Masago art, holo finish, Hypnosis/Psychic text, and a border that asks to be read as interface.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "holo surface condition",
+          "reverse-holo status",
+          "e-Reader strip readability"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo 20: the lab myth at the edge of the scanner",
+        "why_it_matters": "Expedition Mewtwo feels like the character crossing a threshold. Base Mewtwo is the launch binder's unease; P Promo Mewtwo is a rail-station contact object; Expedition Mewtwo is the same myth pressed into a card frame that wants a machine to read it. Kimiya Masago's credit, Hypnosis, Psychic, holo finish, and the e-Reader border all matter because the card is no longer only image and text. It is an interface object. For an agent, that means ecard1-20 first, finish and strip evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "holo surface condition",
+          "reverse-holo status",
+          "e-Reader strip readability",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_expedition_base_set_20020915:ecard1-29",
       "type": "card",
       "context": {

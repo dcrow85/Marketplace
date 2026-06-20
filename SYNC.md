@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 199: English Base Set Charizard 4 deepened; corpus aa025d72)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 200: Expedition Base Set Mewtwo 20 deepened; corpus ed27aeb9)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundredth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-20` Mewtwo / Expedition
+  Base Set #20 is now hand-authored rather than generator memory. The pass
+  records Kimiya Masago credit, Rare Holo status, HP 70 Psychic Basic profile,
+  Hypnosis, Psychic, Psychic weakness, retreat cost 2, and the e-Reader-era
+  texture of Mewtwo as the lab myth pushed to the edge of a scanner. The
+  special identification packet is explicit and first-class: agents must
+  separate Expedition Mewtwo from Base Set Mewtwo, Base Set 2 Mewtwo,
+  Legendary Collection Mewtwo, Japanese Expansion Pack / No Rarity Mewtwo, P
+  Promotional Mewtwo 046/P, later Mewtwo ex/GX/V memory, reverse-holo finish
+  claims, and e-Reader strip readability claims without seller evidence.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, holo-surface condition, reverse-holo status,
+  e-Reader strip readability, price, or spendability. Generated gaps remain
+  release queue 0 and card queue 100. Hashes: corpus
+  `ed27aeb9869156478e9b918520cb5d06a624a9f92d57adb2fc55cdd3ef63eb69`,
+  index `fd472461cb17ff86585edd5cb491a97c0524b9f826f51d3550ae2059b06a6a9d`,
+  queue `dc779fb9c1b686d7af1577f1d81a50825492f5fe7251d7c7f5653b2584b3b9bd`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-ninth
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `en_wotc_base_set_19990109:base1-4` Charizard / Base Set #4 is now
