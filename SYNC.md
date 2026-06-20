@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 219: P Promo Celebi 006 deepened; corpus 9fbdcd52)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 220: P Promo Celebi 007 deepened; corpus 0f37228a)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twentieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-007-p`
+  Celebi 007/P is now hand-authored rather than generator memory. The pass
+  records the Pokemon Card Trainers Vol. 13, September 2001, route;
+  Grass-row identity; paired-Celebi collector texture against 006/P; absent
+  promoted Japanese name; absent artist credit; and absent row-specific image
+  witness. The special identification packet is explicit and first-class:
+  agents must confirm Celebi, printed `007/P`, and the numbered P Promotional
+  spine; keep the Pokemon Card Trainers Vol. 13 note separate from physical
+  provenance; and avoid merging this row with Celebi 006/P, ordinary Celebi
+  expansion cards, later Celebi promos, English Celebi rows, magazine/event
+  memory, or absent art/attack/Japanese-name details. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, Pokemon Card Trainers copy provenance, image availability,
+  illustrator credit, Japanese-name certainty, attack text, Celebi 006/P
+  equivalence, ordinary Celebi equivalence, later Celebi equivalence,
+  magazine-object provenance, complete Japanese promo universe, or
+  spendability. Generated gaps remain bounded at 100. Validation passed: JSON;
+  catalog dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the paired-Celebi
+  special-identification packet. Hashes: corpus
+  `0f37228acbb7cf799e540bd2175bd559da725fbde0778846cdaaaf89829325b0`;
+  index `0ba312c9a7237e11652b4f43afc51af0f4799a096d75ac6b7eaf43ceae1d40ac`;
+  queue `5d7e009d9f8e53f00e008b5afab5b1f6b3a4e1971bea23e5cde6c9333c60be1a`;
+  audit `7552b2aa9084bf255381bb2a93640c5309aafdc9d80130d97f94b76720f77f83`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-nineteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

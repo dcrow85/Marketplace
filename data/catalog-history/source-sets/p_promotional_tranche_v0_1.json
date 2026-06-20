@@ -1503,6 +1503,231 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-007-p",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-007-p",
+        "catalog_row_id": "007/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-007-p",
+          "title": "Local Japanese promo WotC catalog row: Celebi 007/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Celebi as P Promotional card number 007/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokemon Card Trainers Vol. 13, September 2001, as the distribution context for Celebi 007/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Celebi 007/P as a Grass Pokemon row, but does not provide HP, attacks, stage text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Celebi 007/P, so this dossier leaves the artist unset rather than copying the credit from another Celebi print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Celebi 007/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Celebi 007/P matters because it sits immediately beside the Spaceworld-guidebook Celebi while moving through a different magazine route: Pokemon Card Trainers Vol. 13, September 2001. Same Pokemon memory, different assembly.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Celebi and printed 007/P, preserve the Pokemon Card Trainers Vol. 13 route as distribution context only, and avoid merging this row with Celebi 006/P, other Celebi promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_celebi_007_trainers_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Celebi P promo, Trainers Vol. 13 Celebi, Pokemon Card Trainers Celebi, 007/P, Japanese Celebi promo, or early numbered P Promotional card.",
+          "summary": "Confirm Celebi and printed 007/P before treating the card as this Pokemon Card Trainers Vol. 13 P Promotional row.",
+          "steps": [
+            "Confirm the card name is Celebi.",
+            "Read the printed promo number as 007/P and keep it inside the numbered P Promotional spine.",
+            "Keep the Pokemon Card Trainers Vol. 13, September 2001, note legible but separate from physical provenance.",
+            "Do not merge this card with Celebi 006/P, ordinary Celebi expansion cards, later Celebi promos, English Celebi rows, or other magazine/Event memories without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for Pokemon Card Trainers provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Pokemon Card Trainers copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "Celebi 006/P equivalence",
+            "ordinary Celebi equivalence",
+            "later Celebi equivalence",
+            "magazine-object provenance",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "007/P",
+        "rarity_signal": "Pokemon Card Trainers Vol. 13",
+        "artist": "",
+        "assembly_themes": [
+          "Pokemon Card Trainers route",
+          "magazine-reader route",
+          "numbered P spine",
+          "paired Celebi identity trap",
+          "Johto myth Pokemon",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "007/P",
+          "Celebi",
+          "Grass",
+          "Pokemon Card Trainers Vol. 13",
+          "September 2001",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Celebi 007/P is the twin that makes the catalog earn its keep: another Celebi, another adjacent number, but a different route through Pokemon Card Trainers Vol. 13."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Celebi 007/P: the magazine twin",
+        "why_it_matters": "This is the fun trap. A person says 'the Celebi P promo,' and the catalog has to ask back: which assembly? The Spaceworld-guidebook 006/P and the Pokemon Card Trainers Vol. 13 007/P sit next to each other like a tiny lesson in provenance. The character is the same, the aura is similar, but the route is not interchangeable. That is the whole point of making the catalog agent-readable.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Pokemon Card Trainers copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
       "type": "card",
       "context": {
