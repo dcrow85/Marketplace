@@ -1055,6 +1055,230 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-005-p",
+      "type": "card",
+      "context": {
+        "name_en": "Larvitar",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-005-p",
+        "catalog_row_id": "005/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-005-p",
+          "title": "Local Japanese promo WotC catalog row: Larvitar 005/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Larvitar as P Promotional card number 005/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign, July-September 2001, as the distribution note for Larvitar 005/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Larvitar 005/P as a Fighting Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Larvitar 005/P, so this dossier leaves the artist unset rather than importing artist memory from another Larvitar print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Larvitar 005/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Larvitar 005/P matters because the ANA Special '01 route is not only a Pikachu souvenir lane: it also carries a quieter Johto evolution-line card into travel-campaign memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Larvitar and printed 005/P, preserve the ANA Special '01 campaign route as distribution context only, and avoid importing ordinary Larvitar rows, later Larvitar promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_larvitar_005_ana_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Larvitar P promo, ANA Larvitar, Pokemon Card e ANA Special '01 Larvitar, 005/P, Japanese Larvitar promo, or early numbered P Promotional card.",
+          "summary": "Confirm Larvitar and printed 005/P before treating the card as this ANA Special '01 Version Campaign P Promotional row.",
+          "steps": [
+            "Confirm the card name is Larvitar.",
+            "Read the printed promo number as 005/P and keep it inside the numbered P Promotional spine.",
+            "Keep the All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign July-September 2001 note legible but separate from physical provenance.",
+            "Do not merge this card with ordinary Larvitar expansion cards, later Larvitar promos, English Larvitar rows, or Tyranitar-line memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for ANA campaign provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "ANA campaign copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ordinary Larvitar equivalence",
+            "later Larvitar equivalence",
+            "Tyranitar-line equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "005/P",
+        "rarity_signal": "All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign",
+        "artist": "",
+        "assembly_themes": [
+          "ANA travel campaign",
+          "numbered P spine",
+          "Johto evolution line",
+          "campaign distribution",
+          "identity trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "005/P",
+          "Larvitar",
+          "Fighting",
+          "All Nippon Airways Pokemon Card e ANA Special '01 Version Campaign",
+          "July-September 2001",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Larvitar 005/P is the quiet ANA companion: not the mascot spotlight of Pikachu 004/P, but a Johto evolution-line card carried through the same travel-campaign machinery."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Larvitar 005/P: the quiet passenger",
+        "why_it_matters": "Larvitar makes the ANA Special '01 route feel like more than a Pikachu postcard. It is a small, rocky Johto creature tucked into an airline campaign, and that is exactly the kind of assembly detail this catalog should preserve. The route is charming because it is ordinary and strange at once: air travel, promo numbering, a Fighting-type Larvitar, and a future Tyranitar shadow that the agent may notice but must not overclaim.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "ANA campaign copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
       "type": "card",
       "context": {

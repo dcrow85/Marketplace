@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 217: P Promo Rocket's Sneasel 003 deepened; corpus d240f5c1)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 218: P Promo Larvitar 005 deepened; corpus aa514fd4)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-005-p`
+  Larvitar 005/P is now hand-authored rather than generator memory. The pass
+  records the All Nippon Airways Pokemon Card e ANA Special '01 Version
+  Campaign July-September 2001 route, Fighting-row identity, Johto
+  evolution-line context, absent promoted Japanese name, absent artist credit,
+  and absent row-specific image witness. The special identification packet is
+  explicit and first-class: agents must confirm Larvitar, printed `005/P`, and
+  the numbered P Promotional spine; keep the ANA campaign note separate from
+  physical provenance; and avoid merging this row with ordinary Larvitar
+  expansion cards, later Larvitar promos, English Larvitar rows, Tyranitar-line
+  memory, or absent art/attack/Japanese-name details. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, ANA campaign copy provenance, image availability,
+  illustrator credit, Japanese-name certainty, attack text, ordinary Larvitar
+  equivalence, later Larvitar equivalence, Tyranitar-line equivalence, complete
+  Japanese promo universe, or spendability. Generated gaps remain bounded at
+  100. Validation passed: JSON; catalog dossier build + `--check`; card dossier
+  `--check`; completion audit `--check`; focused assertion for the new
+  special-identification packet. Hashes: corpus
+  `aa514fd4aba10a7c1df957aff2b3ab134bd5a1b0aed34a7ba838398395a8e019`;
+  index `1dd7dd9bb20c43b719af0a5c4a5df2c9a9053c382324aa86ff78a774ae6b7b70`;
+  queue `6f1ee11fb0fdf4bfdac10490bf5d3ba91fcac6169bae685a9ddc63c9f756e252`;
+  audit `072d2286d49e93b88975f696ca1994b71f484c2b0c76e2970f6c96ffeb46ad6b`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventeenth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
