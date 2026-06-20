@@ -2632,6 +2632,304 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-12",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoqueen",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-12",
+        "catalog_row_id": "base4-12",
+        "card_number": "12/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Jungle Nidoqueen lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-12",
+          "title": "Local Base Set 2 row: Nidoqueen base4-12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-12",
+          "title": "Pokemon TCG API v2 card record: Nidoqueen base4-12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-7",
+          "title": "Local English WoC catalog: Jungle holo Nidoqueen base2-7",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-23",
+          "title": "Local English WoC catalog: Jungle non-holo Nidoqueen base2-23",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-12 as Nidoqueen, Base Set 2 card 12/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Nidoqueen as a Stage 2 Grass Pokemon, Level 43, 90 HP, evolving from Nidorina, with Psychic weakness and a three-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card attacks are Boyfriends, a 20+ attack that adds 20 more damage for each Nidoking in play, and Mega Punch for 50 damage.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Nidoqueen base4-12 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The Jungle holo row base2-7 and Jungle non-holo row base2-23 carry the same Nidoqueen / Boyfriends / Mega Punch memory, while Base Set 2 base4-12 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Nidoqueen #12/130 must be kept separate from Jungle holo #7/64, Jungle non-holo #23/64, Legendary Collection Nidoqueen, Skyridge Nidoqueen, and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Nidoqueen matters as reassembled Jungle-family memory: the card keeps the royal, protective pair logic of Boyfriends and the Sugimori queen silhouette, but changes the collector object around it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_nidoqueen_12_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Nidoqueen, Base Set 2, base4-12, 12/130, Boyfriends, Mega Punch, Ken Sugimori, Jungle, base2-7, base2-23, 7/64, 23/64, Legendary Collection, Skyridge, same artwork, holo, non-holo, or queen/pair text.",
+          "summary": "Identify English Base Set 2 Nidoqueen #12/130 as base4-12, then keep it separate from Jungle holo #7/64, Jungle non-holo #23/64, Legendary Collection, Skyridge, and seller-owned physical cards unless evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-12, printed number 12/130, Rare Holo, Ken Sugimori credit, Boyfriends, and Mega Punch.",
+            "Do not infer Jungle holo, Jungle non-holo, Legendary Collection, Skyridge, condition, price, or authenticity from the shared Nidoqueen art, name, or game text.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to Jungle base2-7/base2-23 is lineage, not equivalence.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Jungle holo equivalence",
+            "Jungle non-holo equivalence",
+            "Legendary Collection equivalence",
+            "Skyridge equivalence",
+            "Japanese provenance",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "12/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #12/130, separate from Jungle holo #7/64, Jungle non-holo #23/64, Legendary Collection, and later Skyridge Nidoqueen rows.",
+        "artist": "Ken Sugimori",
+        "themes": [
+          "Base Set 2 reprint holo",
+          "Jungle-family memory",
+          "Ken Sugimori launch-era art recontextualized",
+          "Boyfriends pair mechanic",
+          "Mega Punch continuity",
+          "holo/non-holo boundary",
+          "Base Set 2 boundary",
+          "Jungle boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 Nidoqueen keeps the royal Jungle posture, but the symbol changes the object. It is the queen brought into a new cabinet, not the same card changing rooms."
+      },
+      "narrative": {
+        "human_title": "The queen brought into the cabinet",
+        "why_it_matters": "Base Set 2 Nidoqueen is one of those cards that shows how early Pokemon memory was assembled, not merely repeated. The card still has the odd, charming Boyfriends attack, still asks you to think about Nidoking on the bench, and still carries Sugimori's sturdy queen design. But the collector object has moved. Jungle gave Nidoqueen a holo and non-holo pair; Base Set 2 pulls that memory into a 2000 compilation set and gives agents a useful lesson: the artwork can feel familiar while the card in front of you belongs to a different lane. The symbol, number, and evidence decide which one it is.",
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price",
+          "condition",
+          "authenticity",
+          "seller possession",
+          "Jungle holo equivalence",
+          "Jungle non-holo equivalence",
+          "Legendary Collection equivalence",
+          "Skyridge equivalence",
+          "spendability"
+        ],
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
