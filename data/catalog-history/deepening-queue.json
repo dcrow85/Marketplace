@@ -4,58 +4,6 @@
     {
       "card_highlights": {
         "artist": "",
-        "assembly_note": "No.3 Trainer sits in Neo Spring Road Best in Japan third place prize as not provided; its current assembly themes are promo distribution, play-system memory, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
-        "assembly_themes": [
-          "promo distribution",
-          "play-system memory",
-          "identity trap"
-        ],
-        "authority_label": "local_catalog_fact_and_judged_texture",
-        "collector_texture_note": "No.3 Trainer appears in the unnumbered promotional source slice at row 232. Treat this as a reference identity, then ask for seller evidence before any trade.",
-        "not_claiming": [
-          "price truth",
-          "condition truth",
-          "seller possession",
-          "authenticity"
-        ],
-        "number": "None",
-        "rarity_signal": "not provided",
-        "signals": [
-          "232",
-          "Neo Spring Road finals",
-          "No.3 Trainer",
-          "",
-          "No.3 Trainer",
-          "",
-          "Neo Spring Road Best in Japan third place prize"
-        ]
-      },
-      "human_title": "No.3 Trainer: first-pass card note",
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 78,
-      "reasons": [
-        "promo/distribution context",
-        "special identification trap",
-        "identity trap"
-      ],
-      "type": "card",
-      "uid": "jp_promo_unnumbered_wotc_232_neo_spring_road_best_in_japan_third_place_prize:232",
-      "why_it_matters": "No.3 Trainer sits in Neo Spring Road Best in Japan third place prize as not provided; its current assembly themes are promo distribution, play-system memory, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
-    },
-    {
-      "card_highlights": {
-        "artist": "",
         "assembly_note": "No.1 Trainer sits in Neo Summer Road regional first place prize as not provided; its current assembly themes are promo distribution, play-system memory, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
         "assembly_themes": [
           "promo distribution",
@@ -5107,11 +5055,62 @@
       "type": "card",
       "uid": "en_wotc_gym_challenge_20001016:gym2-18",
       "why_it_matters": "Giovanni sits in Gym Challenge as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+    },
+    {
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Koga sits in Gym Challenge as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim.",
+        "assembly_themes": [
+          "holo surface",
+          "rarity attention",
+          "play-system memory",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Koga is cataloged as Gym Challenge #19. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ],
+        "number": "19",
+        "rarity_signal": "Rare Holo",
+        "signals": [
+          "Gym Challenge",
+          "2000/10/16",
+          "19",
+          "Rare Holo",
+          "Trainer"
+        ]
+      },
+      "human_title": "Koga: first-pass card note",
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 60,
+      "reasons": [
+        "holo/surface card",
+        "rare signal",
+        "artist trace: Ken Sugimori"
+      ],
+      "type": "card",
+      "uid": "en_wotc_gym_challenge_20001016:gym2-19",
+      "why_it_matters": "Koga sits in Gym Challenge as Rare Holo; its current assembly themes are holo surface, rarity attention, play-system memory and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
     }
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3737,
+    "generated_card_candidates_considered": 3736,
     "generated_release_candidates_considered": 0,
     "release_queue_count": 0
   },
