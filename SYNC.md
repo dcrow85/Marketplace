@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 227: P Promo Pokemon Center Tokyo 019 deepened; corpus d35532cb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 228: P Promo Pokemon Center Osaka 020 deepened; corpus aab929b2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-020-p`
+  Pokémon Center Osaka 020/P is now hand-authored rather than generator memory.
+  The pass records the New York Pokémon Center opening commemoration route,
+  January 2002 timing, Trainer-row identity, paired store-geography collector
+  texture against Pokémon Center Tokyo 019/P, absent promoted Japanese name,
+  absent artist credit, absent card text, and absent row-specific image witness.
+  The special identification packet is explicit and first-class: agents must
+  confirm Pokémon Center Osaka, printed `020/P`, Trainer identity, and the full
+  Pokémon Center Osaka: New York Pokémon Center opening commemoration route;
+  keep the title separate from physical Osaka-store, New York-store, or
+  store-opening provenance; and avoid importing Pokémon Center Tokyo 019/P,
+  other Pokémon Center promos, store-opening cards, English Pokémon Center rows,
+  card text, Japanese name, or image details absent from this source row.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, Osaka store provenance, New York store
+  provenance, store-opening attendance, store-opening object provenance, image
+  availability, illustrator credit, Japanese-name certainty, card text, Pokémon
+  Center Tokyo 019/P equivalence, other Pokémon Center promo equivalence,
+  generic store-opening promo equivalence, complete Japanese promo universe, or
+  spendability. Generated gaps remain bounded at 100. Validation passed: JSON;
+  catalog dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the paired-store
+  special-identification packet. Hashes: corpus
+  `aab929b2a914ff0bf4ced9509edc56e73e0b03104b01aebc5a1a95baf9ef93bd`;
+  index `48d94821122214354224ee41735dccc4296fb70fb0d913e5f15128ebe898bce8`;
+  queue `2434cdc9a12788c4384f39d0c8d700f7461bebbad5ba65a765ab654564bdf5b0`;
+  audit `bc1bf8f3262dc928d4ebc224096a05bfac0b0aec022bcfbb7341f684302f7e65`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

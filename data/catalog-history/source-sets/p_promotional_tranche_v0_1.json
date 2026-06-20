@@ -4191,6 +4191,239 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-020-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pokémon Center Osaka",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-020-p",
+        "catalog_row_id": "020/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-020-p",
+          "title": "Local Japanese promo WotC catalog row: Pokémon Center Osaka 020/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Pokémon Center Osaka as P Promotional card number 020/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokémon Center Osaka: New York Pokémon Center opening commemoration, January 2002, as the distribution context for Pokémon Center Osaka 020/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Pokémon Center Osaka 020/P as a Trainer row, but does not provide card text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Pokémon Center Osaka 020/P, so this dossier leaves the artist unset rather than importing artist memory from another Pokémon Center print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Pokémon Center Osaka 020/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pokémon Center Osaka 020/P matters because it pairs with Pokémon Center Tokyo 019/P as store-geography memory from the same New York opening commemoration route, while remaining its own printed-number card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Pokémon Center Osaka, printed 020/P, Trainer row identity, and the New York Pokémon Center opening commemoration route; avoid treating the card title as proof of Osaka-store provenance, New York-store provenance, card text, Japanese name, image details, or seller-held event material.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_pokemon_center_osaka_020_new_york_opening_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokémon Center Osaka, Pokemon Center Osaka P promo, New York Pokémon Center opening, 020/P, Japanese Pokémon Center promo, or early numbered P Promotional Trainer card.",
+          "summary": "Confirm Pokémon Center Osaka, printed 020/P, and the New York Pokémon Center opening commemoration route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card title is Pokémon Center Osaka.",
+            "Read the printed promo number as 020/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the row is a Trainer card, not a Pokémon character row.",
+            "Keep the full distribution phrase legible: Pokémon Center Osaka: New York Pokémon Center opening commemoration, January 2002.",
+            "Do not treat the Pokémon Center Osaka title as proof that a seller's copy came from Osaka, New York, a store opening, or any physical event object.",
+            "Do not merge this card with Pokémon Center Tokyo 019/P, other Pokémon Center promos, other store-opening cards, English Pokémon Center rows, or generic Pokémon Center memorabilia without number evidence.",
+            "Do not infer illustrator, card text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and title/type area; ask for store-opening provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Osaka store provenance",
+            "New York store provenance",
+            "store-opening attendance",
+            "store-opening object provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "card text",
+            "Pokémon Center Tokyo 019/P equivalence",
+            "other Pokémon Center promo equivalence",
+            "generic store-opening promo equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "020/P",
+        "rarity_signal": "Pokémon Center Osaka: New York Pokémon Center opening commemoration",
+        "artist": "",
+        "assembly_themes": [
+          "Pokémon Center route",
+          "New York opening commemoration",
+          "numbered P spine",
+          "Trainer identity",
+          "store geography",
+          "paired store-title trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "020/P",
+          "Pokémon Center Osaka",
+          "Trainer",
+          "New York Pokémon Center opening commemoration",
+          "January 2002",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Pokémon Center Osaka 020/P is the Osaka half of the store-geography pair: same New York-opening route pressure as Tokyo 019/P, but a different title and printed number."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokémon Center Osaka 020/P: the other city in the pair",
+        "why_it_matters": "If Pokémon Center Tokyo 019/P makes the geography feel poetic, Pokémon Center Osaka 020/P makes it feel systematic. The P spine is not just remembering one store title; it is pairing Japanese Pokémon Center identities around a New York opening commemoration. Osaka, New York, 020/P, Trainer card. That specificity is the charm, and also the guardrail.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Osaka store provenance",
+          "New York store provenance",
+          "store-opening attendance",
+          "illustrator credit",
+          "image witness",
+          "card text"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
       "type": "card",
       "context": {
