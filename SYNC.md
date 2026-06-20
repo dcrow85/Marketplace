@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 270: Aquapolis Nidoking H18 deepened; corpus c9e39bc4)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 271: Aquapolis Ninetales H19 deepened; corpus 7ebb8677)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H19` Ninetales H19 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H19`, live Pokemon
+  TCG API `cards/ecard2-25`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Ninetales (Aquapolis H19)`, and Bulbapedia `Aquapolis
+  (TCG)`. The card dossier now carries Ninetales / `キュウコン` / Kyukon,
+  English Aquapolis / e-Card Series, API card id `ecard2-H19`, printed
+  number H19, H19/H32 Rare Holo sequence, Japanese Wind from the Sea
+  023/087 holo lineage, the non-Holo Aquapolis #25 / Wind from the Sea
+  022/087 sibling, Stage 1 Fire profile, Vulpix evolution line, 80 HP,
+  Water weakness, one-retreat cost, Miracle Tail / Roasting Heat, and
+  Kagemaru Himeno credit. The special identification packet tells agents to
+  keep H19 separate from Aquapolis Ninetales #25, Wind from the Sea
+  022/087, reverse-holo listings, generic Ninetales wants, Special
+  Condition deck references, and seller-card image claims. It also keeps
+  Dot-Code, e-Reader, D-60 / D-60-# IDs, thousand-year / supernatural-tail
+  Pokedex texture, and the Pokemon Crystal vs Pokemon Gold Pokedex-source
+  split legible without promoting them into seller possession, authenticity,
+  condition truth, price truth, e-Reader scan success, reverse-holo
+  equivalence, or spendability. Rebuilt `data/catalog-history/dossiers.json`,
+  `index.json`, `deepening-queue.json`, `manifest.json`, and `audit.json`;
+  corpus hash is
+  `7ebb86770cbf23582169775e7926324402c68dfaf48e5daf8f9d3febee270a4d`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H19
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventieth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

@@ -14,6 +14,7 @@
       "Magneton H16",
       "Muk H17",
       "Nidoking H18",
+      "Ninetales H19",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -3764,6 +3765,356 @@
           "price truth",
           "e-Reader scan success",
           "Crystal Nidoking equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H19",
+      "type": "card",
+      "context": {
+        "name_en": "Ninetales",
+        "name_ja": "キュウコン",
+        "romaji": "Kyukon",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H19",
+        "catalog_row_id": "ecard2-H19",
+        "card_number": "H19",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-25",
+        "japanese_lineage_card_number": "Wind from the Sea 023/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H19",
+          "title": "Local English WoC card row: Ninetales H19",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H19",
+          "title": "Pokemon TCG API v2 card record: Ninetales ecard2-H19",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ninetales_(Aquapolis_H19)",
+          "title": "Bulbapedia: Ninetales (Aquapolis H19)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-25",
+          "title": "Pokemon TCG API v2 card record: Ninetales ecard2-25",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ninetales as Aquapolis H19, a Rare Holo Stage 1 Fire Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Ninetales's Japanese name as キュウコン / Kyukon and connects the Holofoil print to Japanese Wind from the Sea card 023/087, while the non-Holofoil Aquapolis print corresponds to Wind from the Sea 022/087.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ninetales H19 with 80 HP, evolvesFrom Vulpix, Water weakness, one-Colorless retreat, attack Miracle Tail, and attack Roasting Heat.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Ninetales H19 to Kagemaru Himeno; the local and API rows also credit Kagemaru Himeno on the non-Holo Aquapolis Ninetales #25 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Ninetales as H19/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Ninetales at #25 with the same Kagemaru Himeno credit, Miracle Tail attack, and Roasting Heat attack; agents must keep H19 and #25 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Ninetales H19 page records card ID D-60 for the Holofoil print and D-60-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information and a brief card summary, with no long strip for this card; the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Ninetales H19's English e-Reader Pokedex entry comes from Pokemon Crystal, while the Japanese entry comes from Pokemon Gold; the Pokedex texture emphasizes a thousand-year lifespan and supernatural power in each tail.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Ninetales H19 matters because Aquapolis turns a folklore-heavy Kanto Pokemon into a small e-Reader instrument: Kagemaru Himeno art, Miracle Tail rolling any Special Condition into play, Roasting Heat caring specifically about Burned status, and a D-60 identity that must stay separate from the quieter non-Holo #25.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H19 / H19/H32, Rare Holo, English ecard2-H19, キュウコン / Kyukon, Kagemaru Himeno credit, Miracle Tail / Roasting Heat text, Wind from the Sea 023/087 lineage, D-60 e-Reader ID, and non-equivalence with Aquapolis #25, Wind from the Sea 022/087, reverse-holo listings, generic Ninetales rows, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_ninetales_h19_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Ninetales, キュウコン, Kyukon, Ninetales H19, H19/H32, Rare Holo, ecard2-H19, Kagemaru Himeno, Miracle Tail, Roasting Heat, D-60, D-60-#, Wind from the Sea, 023/087, Aquapolis #25, 022/087, reverse holo Ninetales, or Special Condition Ninetales.",
+          "summary": "Identify Ninetales / キュウコン / Kyukon H19 by the Aquapolis H-number Rare Holo lane: English ecard2-H19 / H19/H32 and Wind from the Sea 023/087 lineage, not the non-Holo #25 / 022/087 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H19 / printed number H19 before accepting this as the H-number holo row.",
+            "Preserve H19/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Ninetales #25 row even though #25 shares Kagemaru Himeno, Miracle Tail, and Roasting Heat.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 023/087 while the non-Holofoil #25 counterpart maps to Wind from the Sea 022/087.",
+            "Use Kagemaru Himeno credit, Stage 1 Fire profile, Vulpix evolution line, Miracle Tail, Roasting Heat, D-60 Holofoil e-Reader ID, and D-60-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Ninetales wants, Special Condition deck references, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, thousand-year / supernatural-tail Pokedex texture, and the Pokemon Crystal vs Pokemon Gold Pokedex-source note as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H19"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Ninetales_(Aquapolis_H19)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H19",
+        "artist": "Kagemaru Himeno",
+        "rarity_signal": "Rare Holo; Aquapolis H19/H32 H-number holo sequence, separate from non-Holo Ninetales #25 / Wind from the Sea 022/087 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Kagemaru Himeno art trace",
+          "Fire e-Reader interface",
+          "Special Condition roulette",
+          "Burned-status pressure"
+        ],
+        "collector_texture_note": "Ninetales H19 is the folklore card doing rules work. The nine-tailed myth sits inside a strict e-Reader row: H19, D-60, Miracle Tail, Roasting Heat, and a holo/non-holo boundary that has to stay clean.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ninetales H19 — folklore under glass",
+        "why_it_matters": "Ninetales H19 is Aquapolis at its most storybook and mechanical at once. The creature carries the old fox-spirit charge, the Pokedex promise of a thousand years and supernatural tails, but the card turns that aura into exact little switches: Miracle Tail chooses a condition, Roasting Heat rewards Burned, and D-60 pins the object into the e-Reader era. It is beautiful because the magic still has a row number.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "reverse-holo equivalence"
         ]
       },
       "coverage": {
