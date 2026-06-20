@@ -4193,6 +4193,336 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-3",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey",
+        "name_ja": "ラッキー",
+        "romaji": "Rakkii",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-3",
+        "catalog_row_id": "base4-3",
+        "card_number": "3/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Chansey / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-3",
+          "title": "Local Base Set 2 row: Chansey base4-3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-3",
+          "title": "Pokemon TCG API v2 card record: Chansey base4-3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-3",
+          "title": "Local English WoC catalog: original Base Set Chansey base1-3",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:068",
+          "title": "Local Japanese pre-English catalog: Chansey / PMCG1-068",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_green_deck_19981204:023",
+          "title": "Local Japanese pre-English catalog: Quick Starter Green Deck Chansey 023",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "ordinary Base Chansey equivalence"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-3 as Chansey, Base Set 2 card 3/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Chansey as a Basic Colorless Pokemon, Level 55, 120 HP, with Fighting weakness, Psychic resistance, a one-Colorless retreat cost, and Blissey as a later evolution target in the API row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card attacks are Scrunch, a coin-flip prevention effect for damage on the next opposing turn, and Double-edge, an 80-damage attack that also deals 80 damage to Chansey.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Chansey base4-3 to Ken Sugimori; separate Quick Starter Chansey lanes can carry different artist texture and must not be merged into this row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The original English Base Set row base1-3 and Japanese Expansion Pack row PMCG1-068 carry the related Chansey / Scrunch / Double-edge memory, while Base Set 2 base4-3 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Chansey #3/130 must be kept separate from original Base Set #3/102, Japanese Expansion Pack / No Rarity PMCG1-068, Starter/Gift Pack source ambiguity, Quick Starter Green Deck Chansey, Vending, Blissey evolution rows, and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Chansey matters as reassembled soft-tank memory: the card looks gentle, carries enormous HP for the era, and turns care into a strange rules bargain where defense, self-harm, and holo fragility all sit together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_chansey_3_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Chansey, Rakkii, ラッキー, Base Set 2, base4-3, 3/130, Scrunch, Double-edge, Ken Sugimori, Base Set, base1-3, 3/102, Japanese Expansion Pack, PMCG1-068, No Rarity, Starter Pack, Gift Pack, Quick Starter Green Deck, Vending, Blissey, or soft/tank holo.",
+          "summary": "Identify English Base Set 2 Chansey #3/130 as base4-3, then keep it separate from original Base Set #3/102, Japanese Expansion Pack / No Rarity PMCG1-068, product-source ambiguity, Quick Starter Green Deck Chansey, Vending, Blissey rows, and seller-owned physical cards unless evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-3, printed number 3/130, Rare Holo, Ken Sugimori credit, Scrunch, Double-edge, Basic Colorless, Level 55, and 120 HP.",
+            "Do not infer original Base Set, First Edition, Shadowless, Unlimited, 4th print, Japanese No Rarity, Starter/Gift Pack source, Quick Starter Green Deck, Vending, Blissey, condition, price, or authenticity from shared Chansey identity, HP, or attack text.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to base1-3 and PMCG1-068 is lineage, not equivalence; Quick Starter Chansey is a separate child-lane object.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, edition/source claim if present, lower-right rarity area for Japanese copies, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "original Base Set equivalence",
+            "Japanese No Rarity proof",
+            "Japanese Expansion Pack equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Starter Pack source proof",
+            "Gift Pack source proof",
+            "Quick Starter Green Deck equivalence",
+            "Vending equivalence",
+            "Blissey equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "3/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #3/130, separate from original Base Set #3/102, Japanese Expansion Pack / No Rarity PMCG1-068, product-source ambiguity, Quick Starter Green Deck, Vending, and Blissey rows.",
+        "artist": "Ken Sugimori",
+        "themes": [
+          "Base Set 2 reprint holo",
+          "soft-tank launch memory",
+          "Japanese Expansion Pack lineage",
+          "Ken Sugimori early character art",
+          "120 HP wall",
+          "Scrunch prevention coin flip",
+          "Double-edge self-damage bargain",
+          "holo surface condition sensitivity",
+          "No Rarity boundary",
+          "Quick Starter child-lane boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 Chansey is soft, huge, and dangerous to itself. It is one of those old holos where kindness and recoil live on the same card."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The soft wall with a cost",
+        "why_it_matters": "Base Set 2 Chansey is easy to underestimate because it looks gentle. Then the numbers arrive: 120 HP in an old holo row, Scrunch trying to make the next turn bounce off, Double-edge hitting for 80 and hurting itself just as hard. It is a lovely early Pokemon contradiction: care, luck, bulk, and recoil all in one pink body. For collectors, that softness makes surface condition matter; for agents, the danger is identity softness. Base Set, Japanese No Rarity, Starter and Gift inheritance, Quick Starter Green Deck, Vending, Blissey. Chansey is friendly, but the catalog cannot be casual. The symbol, number, and seller evidence decide which Chansey is real enough to spend against.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price",
+          "condition",
+          "authenticity",
+          "seller possession",
+          "original Base Set equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "Japanese No Rarity proof",
+          "Starter Pack source proof",
+          "Gift Pack source proof",
+          "Quick Starter Green Deck equivalence",
+          "Vending equivalence",
+          "Blissey equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }

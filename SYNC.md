@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 308: Base Set 2 Zapdos #20 deepened; corpus e76365d5)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 309: Base Set 2 Chansey #3 deepened; corpus 9fdaab19)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-3` Chansey #3 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` as a bounded community reference, the original
+  English Base Set Chansey row as a local lineage comparator, the local
+  Japanese Expansion Pack / No Rarity PMCG1-068 row, and the Quick Starter
+  Green Deck Chansey row as a separate child-lane boundary. The dossier now
+  carries Base Set 2 #3/130, Rare Holo, Basic Colorless, Level 55, 120 HP,
+  Scrunch, Double-edge, Fighting weakness, Psychic resistance, one Colorless
+  retreat, Blissey later evolution memory, Ken Sugimori credit, and the
+  soft-tank / self-damage launch memory. Its special identification packet
+  tells agents to keep Base Set 2 Chansey separate from original Base Set /
+  First Edition / Shadowless memory, Japanese Expansion Pack / No Rarity
+  PMCG1-068, Starter Pack and Gift Pack source ambiguity, Quick Starter Green
+  Deck, Vending, Blissey rows, and seller-owned physical evidence unless seller
+  scans prove the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Chansey downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:
