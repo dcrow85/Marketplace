@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 176: Grand Party Trainer Certification Card deepened; corpus 1994e1b0)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 177: Neo Era Premium File Chikorita deepened; corpus 8d68dedd)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/neo_era_premium_file_chikorita_v0_1.json`
+  deepens the Neo Era Premium File source slice and its single modeled row,
+  Chikorita / チコリータ / Chicorita source index 137. The pass frames the file
+  as a Gold/Silver launch-threshold object: nine Generation II first-partner
+  family cards plus a card book, released December 10, 1999, where Johto arrives
+  as something a collector can page through. It preserves the local date caveat
+  that the source row inherits aggregate continuation-slice baggage, while the
+  Premium File itself is sourced to December 10, 1999. It also records Ken
+  Sugimori / 杉森建 as the expected Chikorita artist credit, the Gold and Silver
+  to a New World expansion-symbol context, and the emotional route texture of
+  Chikorita as the quiet first leaf of the Neo era. Special identification
+  packets now separate Premium File Chikorita from WHF row 148, Champion Road
+  row 151, ordinary English Neo Genesis #54, later 25th Anniversary jumbo
+  first-partner cards, and sealed Premium File lots that do not show the exact
+  card or card state being claimed. Boundaries remain against seller possession,
+  authenticity, condition, price, sealed-product completeness, official print
+  run, and spendability. Generated gaps are now release queue 12 and card queue
+  100. Hashes: corpus
+  `8d68deddfb8c16d67a17a53bbdc52d39fd55cff5c35adb36bda474be5c11de5e`,
+  index `876f0e37649de2f50c9cbbec2343906bd01fb13ff77dcd65d04754b3de18f16f`,
+  queue `99bf1bde5ccd7b8eb4939d9a8c07eed5ea1801be6d338584bc0b85a3fdfd3347`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/grand_party_trainer_certification_card_v0_1.json`

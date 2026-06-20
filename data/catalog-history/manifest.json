@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23788,
-    "corpus_hash": "1994e1b0542889589b84e75bbd361f615a8745a0556372b70d485945ad61cb57",
-    "generated_card_dossier_count": 3814,
-    "generated_release_dossier_count": 13,
+    "claim_count": 23794,
+    "corpus_hash": "8d68deddfb8c16d67a17a53bbdc52d39fd55cff5c35adb36bda474be5c11de5e",
+    "generated_card_dossier_count": 3813,
+    "generated_release_dossier_count": 12,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6834
+    "source_count": 6840
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "e39f901519da31f818d15dfdee91d5b744fd14467f9d17d23fa0f69a05400ad4",
-    "release_queue_count": 13,
+    "queue_hash": "99bf1bde5ccd7b8eb4939d9a8c07eed5ea1801be6d338584bc0b85a3fdfd3347",
+    "release_queue_count": 12,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T02:18:47Z",
+  "generated_at": "2026-06-20T02:30:29Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "8674261239f48f81ab18e7c07e7d9fe43527c138c2e58f0b06630cb306cdd8eb",
+    "index_hash": "876f0e37649de2f50c9cbbec2343906bd01fb13ff77dcd65d04754b3de18f16f",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -144,6 +144,7 @@
     "data/catalog-history/source-sets/n64_w_double_get_campaign_v0_1.json",
     "data/catalog-history/source-sets/neo_destiny_v0_1.json",
     "data/catalog-history/source-sets/neo_discovery_v0_1.json",
+    "data/catalog-history/source-sets/neo_era_premium_file_chikorita_v0_1.json",
     "data/catalog-history/source-sets/neo_genesis_v0_1.json",
     "data/catalog-history/source-sets/neo_revelation_v0_1.json",
     "data/catalog-history/source-sets/neo_spring_road_2001_trophies_v0_1.json",

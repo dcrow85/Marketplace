@@ -52208,35 +52208,41 @@
     },
     {
       "card": {
-        "artist": "",
-        "assembly_themes": [
-          "promo distribution",
-          "identity trap"
-        ],
-        "number": "None",
-        "rarity_signal": "not provided"
+        "artist": {
+          "authority_label": "fact",
+          "name": "Ken Sugimori",
+          "name_ja": "杉森建",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ],
+          "why": "Sugimori's line here matters because it lets a starter feel official before it feels rare. Chikorita is not performing spectacle; it is carrying official design trust into the new region."
+        },
+        "assembly_themes": [],
+        "number": "",
+        "rarity_signal": ""
       },
-      "claim_count": 5,
+      "claim_count": 8,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Chikorita: first-pass card note",
+      "generated": false,
+      "human_title": "Chikorita — the little leaf at the Neo threshold",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
-          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
-          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+          "id": "neo_era_premium_file_chikorita_137_checks_v0.1",
+          "summary": "Treat this as Premium File Chikorita only when the Chikorita identity, Japanese Premium File route, source index 137, and Gold/Silver-to-a-New-World symbol context line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Chikorita, チコリータ, Chicorita, Premium File, Neo Premium File, Neo Genesis 54, Gold/Silver, Johto starter, or source index 137."
         }
       ],
       "type": "card",
       "uid": "jp_promo_unnumbered_wotc_137_neo_era_premium_file:137",
-      "why_it_matters": "Chikorita sits in Neo Era Premium File as not provided; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "This is the kind of card a big-price list can make look small. But if the catalog is trying to teach an agent how Pokemon was assembled, Chikorita in the first Premium File is beautiful: the new Grass starter placed into a nine-card Gold/Silver object, gentle official art carrying the promise that there is a whole new region now. It is a card about arrival. Not a trophy, not a battle prize, not the loudest holo in the room. A leaf on the first page."
     },
     {
       "claim_count": 4,
@@ -116397,30 +116403,43 @@
     },
     {
       "assembly_themes": [
-        "johto/generation shift"
+        "Pokemon Gold and Silver launch celebration",
+        "Neo era first Premium File",
+        "Generation II first-partner family sheet",
+        "nine-card starter-evolution product",
+        "card book / binder-object presentation",
+        "Ken Sugimori Chikorita print",
+        "Gold and Silver to a New World expansion-symbol boundary",
+        "WHF / Champion Road Chikorita route boundary"
       ],
-      "chase_cards": [
-        {
-          "name": "Chikorita",
-          "number": "None",
-          "row_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file:137"
-        }
-      ],
-      "claim_count": 6,
+      "chase_cards": [],
+      "claim_count": 9,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Neo Era Premium File: first-pass assembly note",
-      "key_artists": [],
-      "special_identification_instruction_count": 0,
-      "special_identification_instructions": [],
+      "generated": false,
+      "human_title": "Neo Era Premium File — Johto arrives as a thing you can page through",
+      "key_artists": [
+        {
+          "name": "Ken Sugimori",
+          "row_count": 1
+        }
+      ],
+      "special_identification_instruction_count": 1,
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_era_premium_file_chikorita_route_boundary_v0.1",
+          "summary": "Treat Premium File Chikorita as a specific Gold/Silver launch-file route, not as a generic Chikorita, Neo Genesis, WHF, Champion Road, or jumbo first-partner listing.",
+          "trigger": "A listing, want, scan, seller memory, or agent note says Chikorita, チコリータ, Chicorita, Premium File, Neo Premium File, Gold/Silver, Neo Genesis 54, Johto starter, starter file, or unnumbered Japanese promo."
+        }
+      ],
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_137_neo_era_premium_file",
-      "why_it_matters": "Neo Era Premium File is now in the history layer instead of sitting as a silent checklist. Neo Era Premium File currently reads through johto/generation shift: Chikorita pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
+      "why_it_matters": "The Premium File is not just a small stack of starter cards. It is Pokemon turning the page from Kanto into Johto, literally: nine special starter-family prints and a card book released on the Gold/Silver threshold. Chikorita gives that file its soft opening. The card is quiet, but the object around it is loud: a new region, a new generation, and an early lesson that Pokemon history often lives in packaging, routes, and how children were invited to hold the future before the booster era caught up."
     },
     {
       "claim_count": 7,
