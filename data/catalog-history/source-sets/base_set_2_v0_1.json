@@ -5239,6 +5239,392 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-8",
+      "type": "card",
+      "context": {
+        "name_en": "Hitmonchan",
+        "name_ja": "エビワラー",
+        "romaji": "Ebiwaraa",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-8",
+        "catalog_row_id": "base4-8",
+        "card_number": "8/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Hitmonchan / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-8",
+          "title": "Local English WoC catalog: Base Set 2 Hitmonchan base4-8",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-8",
+          "title": "Pokemon TCG API v2 card record: Hitmonchan base4-8",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/base_set_v0_1.json#uid:en_wotc_base_set_19990109:base1-7",
+          "title": "Hand-authored catalog-history dossier: Base Set Hitmonchan base1-7",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hitmonchan_(Base_Set_7)",
+          "title": "Bulbapedia: Hitmonchan (Base Set 7)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 print authority"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:058",
+          "title": "Local Japanese pre-English catalog: Hitmonchan / PMCG1-058",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_2_red_19980617.json#row:jp_tcg_expansion_sheet_2_red_19980617:027",
+          "title": "Local Japanese pre-English catalog: Vending Series 2 Hitmonchan boundary row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_red_deck_19981204.json#row:jp_tcg_quick_starter_gift_set_red_deck_19981204:022",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set Red Deck Hitmonchan boundary row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local English WoC catalog and Pokemon TCG API identify base4-8 as Hitmonchan, Base Set 2 card 8/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models Base Set 2 Hitmonchan as a Basic Fighting Pokemon, Level 33, 70 HP, with Psychic weakness and a two-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks are Jab for one Fighting Energy and 20 damage, and Special Punch for Fighting/Fighting/Colorless and 40 damage.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Base Set 2 Hitmonchan to Ken Sugimori; the related Base Set and Japanese Expansion Pack lanes carry the same launch-era fighting-pose memory without proving seller-card identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place Hitmonchan inside Base Set 2, the 130-card Wizards release dated February 24, 2000; this row is a reprint/compilation object rather than the original Base Set or Japanese Expansion Pack card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Base Set 2 Hitmonchan traces to the English Base Set Hitmonchan #7/102 lane and the Japanese Expansion Pack PMCG1-058 / No Rarity target lane, but those references are lineage comparators only, not automatic physical-card equivalences.",
+          "sources": [
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Hitmonchan #8/130 must be kept separate from Base Set #7/102, Japanese Expansion Pack / No Rarity PMCG1-058, Vending, Quick Starter Gift Set, Best of Game, Rocket's Hitmonchan, Legendary Collection, promo and later Hitmonchan printings, play-archetype memory, and seller-owned physical cards unless evidence proves the lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6",
+            "s7",
+            "s8",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Hitmonchan gives Base Set 2 a practical Fighting holo: a cheap Jab, a clean Special Punch, and old player memory that can make the card feel used as well as collected. The agent must respect that love without treating play nostalgia as provenance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_hitmonchan_8_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Hitmonchan, Ebiwaraa, エビワラー, Base Set 2, base4-8, 8/130, Jab, Special Punch, Ken Sugimori, Base Set, base1-7, 7/102, Japanese Expansion Pack, PMCG1-058, No Rarity, First Edition, Shadowless, Unlimited, 4th print, Haymaker, Vending, Quick Starter, Best of Game, Rocket's Hitmonchan, Legendary Collection, promo, or same artwork.",
+          "summary": "Identify English Base Set 2 Hitmonchan #8/130 as base4-8; keep it distinct from original Base Set #7/102, Japanese Expansion Pack / No Rarity PMCG1-058, player-archetype memory, Vending, Quick Starter, Best of Game, Rocket's Hitmonchan, Legendary Collection, promos, and print-run states unless seller evidence proves the lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, set id base4, local row base4-8, printed number 8/130, Rare Holo signal, Basic Fighting profile, Ken Sugimori credit, Jab, Special Punch, and Psychic weakness.",
+            "Treat Base Set Hitmonchan #7/102 and Japanese Expansion Pack PMCG1-058 as lineage comparators only; do not infer First Edition, Shadowless, Unlimited, 4th print, or Japanese No Rarity status from the Base Set 2 row.",
+            "Do not treat old-player memory, Fighting deck memory, or Haymaker-style talk as proof of exact set, number, print state, price, condition, or seller evidence.",
+            "Keep Vending Series 2, Quick Starter Gift Set, Best of Game, Rocket's Hitmonchan, Legendary Collection, promos, and later Hitmonchan rows separate even when the species, attacks, or player memory overlap.",
+            "Before any spendable action, require seller front, back, holo surface, set symbol, printed number, copyright/edition details, graded label if present, and provenance that binds the physical card to Base Set 2 #8/130."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Base Set equivalence",
+            "Japanese No Rarity proof",
+            "Japanese Expansion Pack equivalence",
+            "Haymaker deck authority",
+            "playability premium truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Vending equivalence",
+            "Quick Starter equivalence",
+            "Best of Game equivalence",
+            "Rocket's Hitmonchan equivalence",
+            "Legendary Collection equivalence",
+            "promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "8/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #8/130, separate from Base Set #7/102, Japanese Expansion Pack / No Rarity PMCG1-058, Vending, Quick Starter, Best of Game, Rocket's Hitmonchan, Legendary Collection, promos, and play-archetype memory.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set 2 reprint holo",
+          "Base Set practical holo lineage",
+          "Japanese Expansion Pack No Rarity boundary",
+          "Ken Sugimori launch-era fighting pose",
+          "Basic Fighting identity",
+          "Jab efficiency",
+          "Special Punch clean damage",
+          "Haymaker/player-memory boundary",
+          "Vending boundary",
+          "Quick Starter boundary",
+          "holo surface inspection",
+          "print-run boundary"
+        ],
+        "signals": [
+          "Base Set 2",
+          "2000-02-24",
+          "8/130",
+          "Rare Holo",
+          "Basic Fighting",
+          "Ken Sugimori",
+          "Jab",
+          "Special Punch"
+        ],
+        "collector_texture_note": "Base Set 2 Hitmonchan keeps the old practical-hit feeling: not flashy, just squared up, punching cleanly, and carrying enough player memory to need careful provenance work.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "Base Set equivalence",
+          "No Rarity proof",
+          "Haymaker deck authority"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The working holo punches back",
+        "why_it_matters": "Base Set 2 Hitmonchan is the kind of holo that feels physical before it feels mythical. Jab is right there for one Fighting Energy; Special Punch is blunt, clean, and easy to understand. Sugimori's boxer pose gives the card a squared-up honesty, and old player memory gives it a different warmth than the dragons and legends. This is a card people remember using, not only admiring. That is exactly why the catalog has to stay awake: play nostalgia, Haymaker talk, and practical-deck affection can point toward the row, but they cannot identify the physical card. Base Set 2 #8/130 has to stay separate from Base Set #7/102, Japanese No Rarity PMCG1-058, Vending, Quick Starter, Best of Game, Rocket's Hitmonchan, and every later punch thrown under the same name.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "Base Set equivalence",
+          "Japanese No Rarity proof",
+          "Japanese Expansion Pack equivalence",
+          "Haymaker deck authority",
+          "playability premium truth",
+          "Vending equivalence",
+          "Quick Starter equivalence",
+          "Best of Game equivalence",
+          "Rocket's Hitmonchan equivalence",
+          "Legendary Collection equivalence",
+          "promo equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
