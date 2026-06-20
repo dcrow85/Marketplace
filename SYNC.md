@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 304: Base Set 2 Nidoqueen #12 deepened; corpus 7425c2fa)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 305: Base Set 2 Ninetales #13 deepened; corpus 089dcb42)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-13` Ninetales #13 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` as a bounded community reference, the original
+  English Base Set Ninetales row as a local lineage comparator, and the local
+  Japanese pre-English PMCG1-022 row as a bounded lineage lane. The dossier now
+  carries Base Set 2 #13/130, Rare Holo, Stage 1 Fire, Level 32, 80 HP, Vulpix
+  evolution line, Lure, Fire Blast, Ken Sugimori credit, and the launch
+  firelight distinction from original Base Set #12/102 and Japanese Expansion
+  Pack / No Rarity memory. Its special identification packet tells agents to
+  keep Base Set 2 Ninetales separate from original Base Set / First Edition /
+  Shadowless memory, Japanese Expansion Pack / No Rarity PMCG1-022, Legendary
+  Collection, Gym-era Ninetales rows, Aquapolis, and seller-owned physical
+  evidence unless seller scans prove the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Ninetales downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:

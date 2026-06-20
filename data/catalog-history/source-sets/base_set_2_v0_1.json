@@ -2930,6 +2930,316 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-13",
+      "type": "card",
+      "context": {
+        "name_en": "Ninetales",
+        "name_ja": "キュウコン",
+        "romaji": "Kyuukon",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-13",
+        "catalog_row_id": "base4-13",
+        "card_number": "13/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Ninetales / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-13",
+          "title": "Local Base Set 2 row: Ninetales base4-13",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-13",
+          "title": "Pokemon TCG API v2 card record: Ninetales base4-13",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-12",
+          "title": "Local English WoC catalog: original Base Set Ninetales base1-12",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:022",
+          "title": "Local Japanese pre-English catalog: Ninetales / PMCG1-022",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-13 as Ninetales, Base Set 2 card 13/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Ninetales as a Stage 1 Fire Pokemon, Level 32, 80 HP, evolving from Vulpix, with Water weakness and a one-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card attacks are Lure, which pulls an opposing Benched Pokemon into the Active spot, and Fire Blast, an 80-damage attack that discards a Fire Energy attached to Ninetales.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Ninetales base4-13 to Ken Sugimori; the related original Base Set and Japanese pre-English lanes carry the same launch-era art memory without proving a seller card belongs to those lanes.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The original English Base Set row base1-12 and Japanese Expansion Pack row PMCG1-022 carry the related Ninetales / Lure / Fire Blast memory, while Base Set 2 base4-13 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Ninetales #13/130 must be kept separate from original Base Set #12/102, Japanese Expansion Pack / No Rarity PMCG1-022, English print-run states, Legendary Collection, Gym-era Ninetales rows, Aquapolis, and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Ninetales matters as reassembled launch firelight: the same elegant Sugimori holo memory returns, but the collector has to let the symbol, number, and evidence tell which fire they are actually holding.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_ninetales_13_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Ninetales, Kyuukon, キュウコン, Base Set 2, base4-13, 13/130, Lure, Fire Blast, Ken Sugimori, Base Set, base1-12, 12/102, Japanese Expansion Pack, PMCG1-022, No Rarity, First Edition, Shadowless, Unlimited, 4th print, Legendary Collection, Gym Heroes, Brock's Ninetales, Aquapolis, or same artwork.",
+          "summary": "Identify English Base Set 2 Ninetales #13/130 as base4-13, then keep it separate from original Base Set #12/102, Japanese Expansion Pack / No Rarity PMCG1-022, English print states, and later Ninetales rows unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-13, printed number 13/130, Rare Holo, Ken Sugimori credit, Lure, and Fire Blast.",
+            "Do not infer original Base Set, First Edition, Shadowless, Unlimited, 4th print, Japanese No Rarity, Legendary Collection, Gym-era, Aquapolis, condition, price, or authenticity from shared Ninetales art or game text.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to base1-12 and PMCG1-022 is lineage, not equivalence.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, edition stamp or absence if claimed, lower-right rarity area for Japanese copies, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "original Base Set equivalence",
+            "Japanese No Rarity proof",
+            "Japanese Expansion Pack equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Legendary Collection equivalence",
+            "Gym-era equivalence",
+            "Aquapolis equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "13/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #13/130, separate from original Base Set #12/102, Japanese Expansion Pack / No Rarity PMCG1-022, English print-run states, and later Ninetales rows.",
+        "artist": "Ken Sugimori",
+        "themes": [
+          "Base Set 2 reprint holo",
+          "launch firelight memory",
+          "Japanese Expansion Pack lineage",
+          "Ken Sugimori launch-era elegance",
+          "Vulpix evolution line",
+          "Lure board-position texture",
+          "Fire Blast energy discard",
+          "holo surface condition sensitivity",
+          "No Rarity boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 Ninetales keeps the quiet fire, but the symbol changes the flame you are cataloging. It is familiar light in a different binder chamber."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The firelight moved rooms",
+        "why_it_matters": "Base Set 2 Ninetales is beautiful for the same reason the original Base Set card is beautiful: it is not loud. Lure draws something forward, Fire Blast spends a pile of Fire Energy, and Sugimori lets the fox hold the room with poise. But this copy is a 2000 compilation object. That matters. For collectors and agents, Base Set 2 Ninetales teaches the best kind of caution: the feeling can be real while the provenance is different. The holo may carry the same firelight, but the set symbol, number, copyright line, and seller evidence decide what card is actually in front of you.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price",
+          "condition",
+          "authenticity",
+          "seller possession",
+          "original Base Set equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "Japanese No Rarity proof",
+          "Legendary Collection equivalence",
+          "Gym-era equivalence",
+          "Aquapolis equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
