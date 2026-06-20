@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 305: Base Set 2 Ninetales #13 deepened; corpus 089dcb42)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 306: Base Set 2 Pidgeot #14 deepened; corpus 6ddcfd60)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-14` Pidgeot #14 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` as a bounded community reference, Jungle holo
+  and non-holo Pidgeot rows as local lineage comparators, and Base Set
+  Pidgeotto as an evolution-line confusion boundary. The dossier now carries
+  Base Set 2 #14/130, Rare Holo, Stage 2 Colorless, Level 40, 80 HP, Pidgeotto
+  evolution line, Wing Attack, Hurricane, Kagemaru Himeno credit, and the
+  Jungle-family memory distinction from Jungle holo #8/64 and non-holo #24/64.
+  Its special identification packet tells agents to keep Base Set 2 Pidgeot
+  separate from Jungle holo, Jungle non-holo, Base Set Pidgeotto, Japanese
+  Expansion Pack / No Rarity Pidgeotto, Legendary Collection, Southern Islands,
+  and seller-owned physical evidence unless seller scans prove the specific
+  lane. Validation passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Pidgeot downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:
