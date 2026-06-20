@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 279: Aquapolis Tentacruel H26 deepened; corpus 31bae97d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 280: Aquapolis Togetic H27 deepened; corpus 0fc129d0)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eightieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H27` Togetic H27 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-39`, live
+  Pokemon TCG API row references, Bulbapedia `Togetic (Aquapolis H27)`,
+  and Bulbapedia `Aquapolis (TCG)`. The card dossier now carries Togetic /
+  `トゲチック` / Togechick, English Aquapolis / e-Card Series, API card id
+  `ecard2-H27`, printed number H27, H27/H32 Rare Holo sequence, Japanese
+  The Town on No Map 062/092 holo lineage, the non-Holo Aquapolis #39 /
+  39/147 sibling, Stage 1 Colorless profile, Togepi evolution line, 60 HP,
+  Lightning weakness, Fighting resistance, one-retreat cost, Poke-Power
+  Miracle Shift, Mini-Metronome, and Kagemaru Himeno credit. The special
+  identification packet tells agents to keep H27 separate from Aquapolis
+  Togetic #39, reverse-holo listings, generic Togetic wants, Togepi-line
+  collection notes, Colorless deck references, and seller-card image
+  claims. It also keeps Dot-Code, e-Reader, C-72 / C-72-# IDs, Happiness
+  Pokemon species label, Pokemon Crystal Pokedex source, floating-after-
+  trainer Pokedex text, and no-long-strip boundary legible without
+  promoting them into seller possession, authenticity, condition truth,
+  price truth, seller-card image match, e-Reader scan success,
+  reverse-holo equivalence, long-strip data presence, or spendability.
+  Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `0fc129d0d6a319c3ebd9945027e6374989b42e1cb4dc220db563390e546c5b0a`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H27
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
