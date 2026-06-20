@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 187: Pokemon Card Information Vol. 3 Pryce's Lapras deepened; corpus 8849012b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 188: How I Became a Pokemon Card Vol. 5 Hoppip deepened; corpus 8fd58ddc)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol5_hoppip_v0_1.json`
+  deepens How I Became a Pokemon Card Vol. 5 /
+  ポケモンカードになったワケ 5 and its Hoppip / ハネッコ / Hanecco
+  source-index-241 insert. The pass frames the July 23, 2001 book route with
+  ISBN-10 4889917918 and ISBN-13 9784889917918, Kagemaru Himeno /
+  姫野かげまる as both manga creator and card illustrator, the Hoppip + Gengar
+  chapter illustration context, the open-book expansion-symbol replacement,
+  the bottom-border `Pokemon Card Books How I Became a Pokemon Card bonus card`
+  text, Rolling Tackle / ころがりタックル, LV.8, HP 30, No.187, Grass Basic,
+  Fire weakness, Fighting resistance, no retreat, and the Pokemon Silver
+  Pokedex flavor about Hoppip planting its feet so it will not be blown away.
+  Special identification packets separate this row from Neo Discovery /
+  Crossing the Ruins Hoppip, modern Hoppip cards, and the other Natta Wake
+  inserts already modeled or queued: Vol. 1 Mankey, Vol. 2 Psyduck, Vol. 3
+  Jynx, Vol. 4 Sunkern, and Vol. 6 _____'s Pikachu. The packets keep the
+  book-card state boundaries explicit and remain legible instructions, not
+  seller possession, authenticity, condition, price, sealed-book completeness,
+  official print-run, or spendability claims. Generated gaps are now release
+  queue 1 and card queue 100. Hashes: corpus
+  `8fd58ddcf5f848bdc778a02d05c41aaf5ebfcb5b728c4b5393a7ad59de78b5fe`,
+  index `4f70ef165053ac0443cf200bbf76b6f270dac870d96f0b993a730f52356eac90`,
+  queue `0487802e27c40a900c4d1a316ff3927b23fbb1eabbd2504e513b34fe501341b3`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/pokemon_card_information_vol3_pryces_lapras_v0_1.json`
