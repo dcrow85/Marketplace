@@ -52774,35 +52774,41 @@
     },
     {
       "card": {
-        "artist": "",
-        "assembly_themes": [
-          "promo distribution",
-          "identity trap"
-        ],
-        "number": "None",
-        "rarity_signal": "not provided"
+        "artist": {
+          "authority_label": "fact",
+          "name": "Kagemaru Himeno",
+          "name_ja": "姫野かげまる",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ],
+          "why": "Himeno is not incidental here. She created the manga and drew the card lane, so the card and book become one authored assembly rather than a card plus unrelated packaging."
+        },
+        "assembly_themes": [],
+        "number": "",
+        "rarity_signal": ""
       },
-      "claim_count": 5,
+      "claim_count": 8,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "Jynx: first-pass card note",
+      "generated": false,
+      "human_title": "Jynx — Singing Jynx, Natta Wake Jynx, the card inside the book",
       "special_identification_instruction_count": 1,
       "special_identification_instructions": [
         {
           "authority_label": "legible",
-          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
-          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
-          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+          "id": "how_i_became_card_vol3_jynx_157_checks_v0.1",
+          "summary": "Treat this as Vol. 3 Jynx only when the Jynx identity, How I Became a Pokemon Card book route, source index 157, and open-book symbol context line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Jynx, ルージュラ, Rougela, Singing Jynx, Natta Wake Jynx, How I Became a Pokemon Card Vol. 3, Kagemaru Himeno, open-book symbol, or source index 157."
         }
       ],
       "type": "card",
       "uid": "jp_promo_unnumbered_wotc_157_how_i_became_a_pok_mon_card_vol_3_insert_january_22_2000:157",
-      "why_it_matters": "Jynx sits in How I Became a Pokémon Card Vol. 3 insert (January 22, 2000) as not provided; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+      "why_it_matters": "This Jynx print is wonderfully self-aware. A manga about how Pokemon became cards includes a Jynx card whose symbol is an open book with a card inside it. That is almost too perfect for this project: the route tells you how to read the object. Keep the name, the song, the book mark, and Himeno together, and the card stops being a stray Jynx and becomes a tiny artifact of how Pokemon explained its own pictures."
     },
     {
       "claim_count": 7,
@@ -116733,30 +116739,43 @@
     },
     {
       "assembly_themes": [
-        "cataloged release memory"
+        "How I Became a Pokemon Card manga route",
+        "Pokemon Card ni Natta Wake Vol. 3",
+        "Jynx source index 157",
+        "Kagemaru Himeno manga and card authorship",
+        "Twilight Jynx chapter context",
+        "Singing Jynx / Natta Wake Jynx nickname context",
+        "open book with trading card symbol",
+        "Expansion Sheet 2 glossy / Quick Starter non-glossy Jynx boundary"
       ],
-      "chase_cards": [
-        {
-          "name": "Jynx",
-          "number": "None",
-          "row_id": "jp_promo_unnumbered_wotc_157_how_i_became_a_pok_mon_card_vol_3_insert_january_22_2000:157"
-        }
-      ],
-      "claim_count": 6,
+      "chase_cards": [],
+      "claim_count": 11,
       "coverage": {
-        "art": "none",
-        "history": "C",
+        "art": "B",
+        "history": "B",
         "identification": "B",
         "release": "B"
       },
-      "generated": true,
-      "human_title": "How I Became a Pokémon Card Vol. 3 insert (January 22, 2000): first-pass assembly note",
-      "key_artists": [],
-      "special_identification_instruction_count": 0,
-      "special_identification_instructions": [],
+      "generated": false,
+      "human_title": "How I Became a Pokemon Card Vol. 3 — the card explains itself",
+      "key_artists": [
+        {
+          "name": "Kagemaru Himeno",
+          "row_count": 1
+        }
+      ],
+      "special_identification_instruction_count": 1,
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "how_i_became_card_vol3_jynx_route_boundary_v0.1",
+          "summary": "Treat Vol. 3 Jynx as a manga/book insert route with a specific open-book symbol and Himeno story apparatus, not as a generic Jynx or generic Natta Wake listing.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Jynx, ルージュラ, Rougela, Singing Jynx, Natta Wake Jynx, How I Became a Pokemon Card, Pokemon Card ni Natta Wake, Kagemaru Himeno, open-book symbol, Vol. 3, or source index 157."
+        }
+      ],
       "type": "release",
       "uid": "jp_promo_unnumbered_wotc_157_how_i_became_a_pok_mon_card_vol_3_insert_january_22_2000",
-      "why_it_matters": "How I Became a Pokémon Card Vol. 3 insert (January 22, 2000) is now in the history layer instead of sitting as a silent checklist. How I Became a Pokémon Card Vol. 3 insert (January 22, 2000) currently reads through cataloged release memory: Jynx pull collector attention, while artists not yet surfaced by the source show how the visual memory is assembled in the local catalog. Deeper lore still needs researched upgrades, but the set already has a visible shape."
+      "why_it_matters": "This manga lane is one of the project’s clearest examples of assembly history. The card is not merely bundled with a book; the book is a machine for making the card image make sense. Volume 3 gives that apparatus to Jynx: chapter list, promo insert, Himeno authorship, and a symbol that is literally an open book with a card inside it. For an agent, that is the whole clue. The right match is not just a Jynx. It is Jynx as a story-object from Pokemon Card ni Natta Wake."
     },
     {
       "assembly_themes": [

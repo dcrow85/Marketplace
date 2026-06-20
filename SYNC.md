@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 177: Neo Era Premium File Chikorita deepened; corpus 8d68dedd)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 178: How I Became a Pokemon Card Vol. 3 Jynx deepened; corpus acd4ed4b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-eighth
+  catalog-history pass:
+  `data/catalog-history/source-sets/how_i_became_card_vol3_jynx_v0_1.json`
+  deepens the January 22, 2000 How I Became a Pokemon Card Vol. 3 insert
+  source slice and its single modeled row, Jynx / ルージュラ / Rougela source
+  index 157. The pass frames this as a Kagemaru Himeno / 姫野かげまる manga-book
+  assembly object: the book is not incidental packaging but the apparatus that
+  explains why the card picture exists. It preserves Vol. 3 / ポケモンカードになったワケ
+  3 route identity, ISBN/publication-date context, Twilight Jynx chapter
+  context, Singing Jynx / Natta Wake Jynx nickname context, and the color
+  open-book-with-trading-card symbol as the key route tell. Special
+  identification packets now separate this row from CoroCoro April 1998 Jynx
+  row 039, Expansion Sheet 2 glossy Jynx, Quick Starter non-glossy Jynx,
+  Base/Expansion Pack Jynx, later Smoochum/Jynx-line listings, and the other
+  How I Became a Pokemon Card volume inserts. Boundaries remain against seller
+  possession, authenticity, condition, price, complete book/insert state,
+  official copy count, and spendability. Generated gaps are now release queue
+  11 and card queue 100. Hashes: corpus
+  `acd4ed4bd49cd76bdd48d63b87ce8a3d6439612dde82407a12c66bb5b27ae1cb`,
+  index `92eeb96deb61226eb1e1254775bb5d691562ed33994911eb77913e9ae18fa77e`,
+  queue `5cd594c2b50c5128ee7ed94a79a46433e4822b5e60bbb5396bc742a373491990`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-seventh
   catalog-history pass:
   `data/catalog-history/source-sets/neo_era_premium_file_chikorita_v0_1.json`
