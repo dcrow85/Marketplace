@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 267: Aquapolis Lanturn H15 deepened; corpus 71ddefd2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 268: Aquapolis Magneton H16 deepened; corpus fc14e67b)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H16` Magneton H16 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H16`, live Pokemon TCG API
+  `cards/ecard2-22`, live Pokemon TCG API `sets/ecard2`, Bulbapedia
+  `Magneton (Aquapolis H16)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Magneton / `レアコイル` / Rarecoil, English Aquapolis /
+  e-Card Series, API card id `ecard2-H16`, printed number H16, H16/H32 Rare
+  Holo sequence, Japanese The Town on No Map 074/092 holo lineage, the
+  non-Holo Aquapolis #22 / The Town on No Map 073/092 sibling, Stage 1 Metal
+  profile, Magnemite evolution line, 70 HP, Magnetic Flow / Steel Wave,
+  Hikaru Koike credit, and e-Reader / Dot-Code context including C-76 vs
+  C-76-# card IDs and the magnetic-storm Pokedex texture. The special
+  identification packet tells agents to keep H16 separate from Aquapolis
+  Magneton #22, The Town on No Map 073/092, older Magneton rows, reverse-holo
+  listings, generic Magneton wants, and seller-card image claims. It also
+  keeps Dot-Code, e-Reader, and magnetic-storm context legible only: not
+  seller possession, authenticity, condition truth, price truth, scan success,
+  or spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `レアコイル` / Rarecoil, H16/H32,
+  H16 vs #22 separation, 074/092 vs 073/092, Hikaru Koike, Magnetic Flow /
+  Steel Wave, C-76 / C-76-# e-Reader caveats, special-identification packet,
+  and corpus propagation. New catalog-history corpus hash:
+  `fc14e67b3f78691a5bbabfc4e99d63290836d985c5efe602829c41e5668bbc3f`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

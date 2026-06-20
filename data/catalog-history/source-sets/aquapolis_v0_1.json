@@ -11,6 +11,7 @@
       "Jumpluff H13",
       "Kingdra H14",
       "Lanturn H15",
+      "Magneton H16",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -2684,6 +2685,341 @@
           "price truth",
           "e-Reader scan success",
           "Aquapolis #20 equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H16",
+      "type": "card",
+      "context": {
+        "name_en": "Magneton",
+        "name_ja": "レアコイル",
+        "romaji": "Rarecoil",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H16",
+        "catalog_row_id": "ecard2-H16",
+        "card_number": "H16",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese The Town on No Map lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-22",
+        "japanese_lineage_card_number": "The Town on No Map 074/092"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H16",
+          "title": "Local English WoC card row: Magneton H16",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H16",
+          "title": "Pokemon TCG API v2 card record: Magneton ecard2-H16",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magneton_(Aquapolis_H16)",
+          "title": "Bulbapedia: Magneton (Aquapolis H16)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-22",
+          "title": "Pokemon TCG API v2 card record: Magneton ecard2-22",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Magneton as Aquapolis H16, a Rare Holo Stage 1 Metal Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Magneton's Japanese name as レアコイル / Rarecoil and connects the Holofoil print to Japanese The Town on No Map card 074/092, while the non-Holofoil Aquapolis print corresponds to The Town on No Map 073/092.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Magneton H16 with 70 HP, evolvesFrom Magnemite, Fire weakness, Grass resistance, two-Colorless retreat, Poké-Power Magnetic Flow, and attack Steel Wave.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Magneton H16 to Hikaru Koike; the local and API rows also credit Hikaru Koike on the non-Holo Aquapolis Magneton #22 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Magneton as H16/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Magneton at #22 with the same Hikaru Koike credit, Magnetic Flow Poké-Power, and Steel Wave attack; agents must keep H16 and #22 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Magneton H16 page records card ID C-76 for the Holofoil print and C-76-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says Magneton H16's e-Reader Pokedex entry comes from Pokemon Crystal, and that the entry describes Magneton gatherings disrupting radio waves through magnetic storms.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Magneton H16 matters because it makes Aquapolis feel like circuitry: Hikaru Koike art, Metal typing, Magnetic Flow moving opponent Energy around, Steel Wave splashing same-color Benched Pokemon, and a C-76 e-Reader identity about interference and signal.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H16 / H16/H32, Rare Holo, English ecard2-H16, レアコイル / Rarecoil, Hikaru Koike credit, Magnetic Flow / Steel Wave text, The Town on No Map 074/092 lineage, C-76 e-Reader ID, and non-equivalence with Aquapolis #22, The Town on No Map 073/092, older Magneton rows, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_magneton_h16_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Magneton, レアコイル, Rarecoil, Magneton H16, H16/H32, Rare Holo, ecard2-H16, Hikaru Koike, Magnetic Flow, Steel Wave, C-76, C-76-#, The Town on No Map, 074/092, Aquapolis #22, or reverse holo Magneton.",
+          "summary": "Identify Magneton / レアコイル / Rarecoil H16 by the Aquapolis H-number Rare Holo lane: English ecard2-H16 / H16/H32 and The Town on No Map 074/092 lineage, not the non-Holo #22 / 073/092 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H16 / printed number H16 before accepting this as the H-number holo row.",
+            "Preserve H16/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Magneton #22 row even though #22 shares Hikaru Koike, Magnetic Flow, and Steel Wave.",
+            "Preserve the Japanese lineage split: Holofoil maps to The Town on No Map 074/092 while the non-Holofoil #22 counterpart maps to 073/092.",
+            "Use Hikaru Koike credit, Stage 1 Metal profile, Magnemite evolution line, Magnetic Flow, Steel Wave, C-76 Holofoil e-Reader ID, and C-76-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep older Magneton rows, reverse-holo listings, generic Magneton wants, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader, Dot-Code strip, and magnetic-storm Pokedex context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H16"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Magneton_(Aquapolis_H16)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H16",
+        "artist": "Hikaru Koike",
+        "rarity_signal": "Rare Holo; Aquapolis H16/H32 H-number holo sequence, separate from non-Holo Magneton #22 / The Town on No Map 073/092",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "The Town on No Map holo lineage",
+          "Hikaru Koike art trace",
+          "Metal e-Reader interface",
+          "Magnetic Flow energy switching",
+          "C-76 Dot-Code identity"
+        ],
+        "collector_texture_note": "Magneton H16 is Aquapolis as signal interference: a Metal holo whose rules move Energy like current and whose Pokedex texture talks about magnetic storms disturbing communication.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Magneton H16 — interference made collectible",
+        "why_it_matters": "Magneton H16 feels like Aquapolis speaking in its own dialect. It is not just a machine Pokemon on an e-Reader card; its rules are about moving energy, its attack spreads a wave across matching colors, and its Pokedex thread is literally about magnetic storms disrupting signals. The card makes the set's circuitry visible, as long as the agent keeps H16 separate from the almost mirrored #22.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success"
         ]
       },
       "coverage": {
