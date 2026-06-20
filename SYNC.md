@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 218: P Promo Larvitar 005 deepened; corpus aa514fd4)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 219: P Promo Celebi 006 deepened; corpus 9fbdcd52)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-nineteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-006-p`
+  Celebi 006/P is now hand-authored rather than generator memory. The pass
+  records the Nintendo Spaceworld 2001 Official Guidebook insert, August 2001,
+  route; Grass-row identity; Johto myth/Spaceworld-guidebook collector
+  texture; absent promoted Japanese name; absent artist credit; and absent
+  row-specific image witness. The special identification packet is explicit
+  and first-class: agents must confirm Celebi, printed `006/P`, and the
+  numbered P Promotional spine; keep the Spaceworld guidebook note separate
+  from physical provenance; and avoid merging this row with ordinary Celebi
+  expansion cards, later Celebi promos, English Celebi rows, other Spaceworld
+  memories, or absent art/attack/Japanese-name details. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, Spaceworld guidebook copy provenance, image availability,
+  illustrator credit, Japanese-name certainty, attack text, ordinary Celebi
+  equivalence, later Celebi equivalence, Spaceworld object provenance, complete
+  Japanese promo universe, or spendability. Generated gaps remain bounded at
+  100. Validation passed: JSON; catalog dossier build + `--check`; card dossier
+  `--check`; completion audit `--check`; focused assertion for the new
+  special-identification packet. Hashes: corpus
+  `9fbdcd52bfb099198ad6872941ea4e87a73254c57b4b62f0b714efb3a6a973f0`;
+  index `529d02bf13b8977b9bc91736151a358e602e86b29918fbb639ff8128e8f697b8`;
+  queue `a2417de35b55b32fedad431e4e143645433098fcdc9e64cb5c784e61dc9fb1d9`;
+  audit `547836e828f13aa166fab145dc8d792263e17a0e2ff2056bd31ee92c6bb9511f`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

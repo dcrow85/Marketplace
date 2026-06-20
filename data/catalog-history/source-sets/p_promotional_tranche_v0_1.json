@@ -1279,6 +1279,230 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-006-p",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-006-p",
+        "catalog_row_id": "006/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-006-p",
+          "title": "Local Japanese promo WotC catalog row: Celebi 006/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Celebi as P Promotional card number 006/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Nintendo Spaceworld 2001 Official Guidebook insert, August 2001, as the distribution context for Celebi 006/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Celebi 006/P as a Grass Pokemon row, but does not provide HP, attacks, stage text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Celebi 006/P, so this dossier leaves the artist unset rather than importing artist memory from another Celebi print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Celebi 006/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Celebi 006/P matters because it places a Johto myth Pokemon inside Nintendo Spaceworld 2001 guidebook circulation, a venue-and-publication route that should not be flattened into generic Celebi promo memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Celebi and printed 006/P, preserve the Nintendo Spaceworld 2001 Official Guidebook insert route as distribution context only, and avoid importing ordinary Celebi rows, later Celebi promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_celebi_006_spaceworld_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Celebi P promo, Spaceworld Celebi, Nintendo Spaceworld 2001 Official Guidebook Celebi, 006/P, Japanese Celebi promo, or early numbered P Promotional card.",
+          "summary": "Confirm Celebi and printed 006/P before treating the card as this Nintendo Spaceworld 2001 Official Guidebook P Promotional row.",
+          "steps": [
+            "Confirm the card name is Celebi.",
+            "Read the printed promo number as 006/P and keep it inside the numbered P Promotional spine.",
+            "Keep the Nintendo Spaceworld 2001 Official Guidebook insert, August 2001, note legible but separate from physical provenance.",
+            "Do not merge this card with ordinary Celebi expansion cards, later Celebi promos, English Celebi rows, or other Spaceworld memories without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for Spaceworld guidebook provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Spaceworld guidebook copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ordinary Celebi equivalence",
+            "later Celebi equivalence",
+            "Spaceworld object provenance",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "006/P",
+        "rarity_signal": "Nintendo Spaceworld 2001 Official Guidebook insert",
+        "artist": "",
+        "assembly_themes": [
+          "Nintendo Spaceworld route",
+          "guidebook insert",
+          "numbered P spine",
+          "Johto myth Pokemon",
+          "identity trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "006/P",
+          "Celebi",
+          "Grass",
+          "Nintendo Spaceworld 2001 Official Guidebook insert",
+          "August 2001",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Celebi 006/P is where the P spine feels like event ephemera: a time-travel Pokemon routed through a Spaceworld guidebook insert, with the number doing the hard identity work."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Celebi 006/P: the guidebook time capsule",
+        "why_it_matters": "Celebi is already a card about time, which makes this row unusually neat: the agent has to keep the mythic creature and the mundane route together. Not just Celebi. Not just a Japanese promo. Celebi 006/P, tied to the Nintendo Spaceworld 2001 Official Guidebook insert. The catalog can preserve that trail; a seller still has to show the card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Spaceworld guidebook copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-008-p",
       "type": "card",
       "context": {
