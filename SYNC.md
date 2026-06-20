@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 234: P Promo Pichu Bros 028 deepened; corpus 35ba9877)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 235: P Promo Hoppip 029 deepened; corpus b14d188e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,52 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-029-p`
+  Hoppip 029/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Hoppip (P Promo
+  29)` to `Hoppip (Expedition 112)`, so the row now carries the deeper
+  e-Reader-launch assembly: Hoppip / `ハネッコ` / Hanecco, Grass Basic, HP 40,
+  Fire weakness, Water resistance, retreat cost 1, Toshinao Aoki illustration
+  credit, Sleep Powder / `ねむりごな`, Sample Set 002/093, Expedition Base Set
+  112/165, Base Expansion Pack 002/128, P Promotional 029/P, e-Reader IDs
+  `B-02-#` and `M-02-#`, Hold Down Hoppip mini-game context, Expedition Pichu
+  22 companion requirement, Sample Set / New York Pokemon Center media
+  pre-launch party note, approximately 50-set print note, E3 2002 booster-pack
+  promo context, and glossy hole-punched kiosk-demo context. The McDonald's
+  route remains the transaction-facing identity wall: Saturdays and Sundays
+  from May 25 through June 16, 2002, printed `029/P`, inside the numbered P
+  Promotional spine. The special identification packet is explicit: agents must
+  confirm Hoppip / `ハネッコ` / Hanecco, printed `029/P`, Grass Basic profile,
+  Aoki credit, McDonald's weekend date window, Sleep Powder, `B-02-#` vs
+  `M-02-#`, Hold Down Hoppip, and the Expedition Pichu 22 companion context;
+  keep Sample Set, New York Pokemon Center media demo, approximately 50-set
+  note, E3 packs, glossy stock, English/Japanese back differences, and
+  hole-punched kiosk cards as adjacent history rather than automatic properties
+  of 029/P; and avoid importing Sample/E3/kiosk/mini-game/companion-card claims
+  without separate evidence. Boundaries remain explicit: catalog legibility is
+  not seller possession, authenticity, condition, price, McDonald's campaign
+  copy provenance, wrapper or packet provenance, Sample Set status,
+  approximately 50-set proof, New York Pokemon Center media-event provenance,
+  E3 provenance, kiosk-demo provenance, glossy stock status, hole-punched
+  status, tethered kiosk status, English-back status, Japanese-back status,
+  e-Reader readability, Hold Down Hoppip functionality, Expedition Pichu 22
+  possession, Sample Set equivalence, Expedition/Base Expansion Pack
+  equivalence, E3 early-print equivalence, kiosk-demo equivalence, ordinary
+  Hoppip equivalence, other McDonald's promo equivalence, Toshinao Aoki
+  collection equivalence, complete Japanese promo coverage, or spendability.
+  Validation passed: `python3 -m json.tool ...`,
+  `python3 scripts/build_catalog_history_dossiers.py`,
+  `python3 scripts/build_catalog_history_dossiers.py --check`,
+  `python3 scripts/build_card_dossiers.py --check`,
+  `python3 scripts/build_catalog_completion_audit.py --check`, and the focused
+  Hoppip assertion. Hashes: corpus
+  `b14d188e118123bd24b744a66ac7b23e71861c56ad118c810bb0e64f223cb258`, index
+  `2f1286eb308422eb62982b3ae6d7302373cd00015f42844689cb2956987af714`, queue
+  `78517f8b84eb9288ed241d15a5dc8f1b10b13b505dbbabf6c1abe336ce7a8e75`, audit
+  `26cbefb8bac8f989ebca188914e69e3e5d7960cfc6a51b54c1eb6db2bf4fc397`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
