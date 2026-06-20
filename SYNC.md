@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 190: P Promotional Venusaur 012/P deepened; corpus 46252fbe)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 191: P Promotional Blastoise 013/P deepened; corpus b7909d74)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-013-p`
+  deepens Blastoise / カメックス / Kamex 013/P. The pass pins 013/P to the
+  Starter Triple Get Campaign Red Green Course, not generic Blastoise memory:
+  Hiromichi Sugiyama illustration credit, Expedition Base Set 36/165 /
+  Japanese Pokemon-e Starter Deck 020/029 lineage, Cosmos Holofoil P
+  Promotional print, proof-of-purchase-seal postcard lottery, Kanto trio
+  context with Venusaur 012/P and Charizard 014/P, Bubble / あわ, Double Cannon
+  / ダブルキャノン, e-Reader strip context, and the separate For Position Only
+  test-card branch are now surfaced. The special identification packet
+  separates 013/P from Expedition 36/165, Pokemon-e Starter Deck 020/029,
+  Expedition holo Blastoise 4/165 or 37/165, Base/No Rarity, Trade Please, CD
+  Promo, Song Best Collection, and generic Blastoise promo rows. Boundaries
+  remain explicit: route legibility is not seller possession, authenticity,
+  condition, complete campaign provenance, test-card authenticity, price, or
+  spendability. Generated gaps remain release queue 0 and card queue 100.
+  Hashes: corpus
+  `b7909d7432dd15f70cfc019123d1c15a2f3216683005b621c81a8f257b7b0298`,
+  index `abc6b4cde0bab5b3b12aaf1dd753eeb037bc16cc838d82bf6df439c07b3d0a0b`,
+  queue `e2f1dc0c32793b5325e6eb928f18f9a7cdd699a80f6379c59bad9a3032adf14`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninetieth
   catalog-history pass inside the existing
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json` tranche:

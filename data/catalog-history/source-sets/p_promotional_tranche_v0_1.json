@@ -872,6 +872,260 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-013-p",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "romaji": "Kamex",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-013-p",
+        "catalog_row_id": "013/P",
+        "release_name": "P Promotional cards",
+        "source_expansion_lineage": "Expedition Base Set / Pokemon-e Starter Deck / P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-013-p",
+          "title": "Local catalog row: Blastoise 013/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Blastoise_(Expedition_36)&action=raw",
+          "title": "Bulbapedia raw wikitext: Blastoise (Expedition 36)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Blastoise as numbered P Promotional row 013/P in the Starter Triple Get Campaign Red Green Course.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the underlying card as Blastoise / カメックス Kamex, a Water Stage 2 Pokemon with HP 100, Lightning weakness, retreat cost 2, and Hiromichi Sugiyama illustration credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia places this card in a lineage that includes English Expedition Base Set 36/165, Japanese Pokemon-e Starter Deck 020/029, and Japanese P Promotional 013/P.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.rarity",
+          "text": "Bulbapedia describes the P Promotional 013/P print as a Cosmos Holofoil reprint available through the Starter Triple Get Campaign Red Green Course.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.distribution",
+          "text": "Bulbapedia describes the Starter Triple Get Campaign as a proof-of-purchase-seal postcard lottery: entrants collected three seals from Pokemon-e Starter Decks, and lottery drawings distributed Red Green Course sets containing Venusaur 012/P, Blastoise 013/P, and Charizard 014/P, alongside a separate Gold Silver Course for Johto starters.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "The card carries Bubble / あわ and Double Cannon / ダブルキャノン, plus e-Reader data; the e-Reader note separates the non-holo and holo card IDs and says there is no long strip for this card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that this Blastoise was one of seven Wizards of the Coast test cards made before Expedition's release, with For Position Only on the illustration, Medium beneath the e-Reader symbol, a long e-Reader strip, no ID: before the card ID, and Wizards copyright instead of Nintendo.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Hiromichi Sugiyama's Blastoise matters here because the heavy e-Reader-era tank is being moved through a Japanese promo redemption apparatus; the picture belongs to an Expedition lineage, but 013/P makes it a lottery-route object.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Blastoise 013/P from Expedition Base Set 36/165, Japanese Pokemon-e Starter Deck 020/029, Expedition holo Blastoise 4/165 or 37/165, Base/No Rarity Blastoise, Trade Please Blastoise, and other Blastoise promos; the P number and Starter Triple Get route are load-bearing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_013_p_blastoise_starter_triple_get_boundary_v0.1",
+          "trigger": "A user says Blastoise P promo, Starter Triple Get Blastoise, Red Green Course, Expedition Blastoise promo, Pokemon-e Starter Deck Blastoise, or 013/P.",
+          "summary": "Confirm 013/P and Starter Triple Get Red Green Course route before treating a Blastoise listing as this P Promotional row.",
+          "steps": [
+            "Read the printed 013/P number. Without the P number, do not treat the card as this promo route.",
+            "Preserve Starter Triple Get Campaign and Red Green Course as the distribution route.",
+            "Check the subject line as Blastoise / カメックス / Kamex, not merely a generic Water starter family card.",
+            "Check that the profile matches the Expedition-era Blastoise line: Water Stage 2, HP 100, Lightning weakness, retreat cost 2.",
+            "Use Hiromichi Sugiyama as the card-art credit for this underlying Blastoise card, while remembering that artist credit is not physical-card authentication.",
+            "Distinguish the P Promotional Cosmos Holofoil route from Expedition Base Set 36/165 and Japanese Pokemon-e Starter Deck 020/029.",
+            "Keep it separate from Expedition holo Blastoise 4/165 or 37/165, which is a different Kimiya Masago card line.",
+            "Keep the Kanto Red Green Course trio together only as campaign context: Venusaur 012/P, Blastoise 013/P, and Charizard 014/P. Do not infer a seller has all three.",
+            "If a seller claims campaign provenance, ask for seller-controlled evidence of the card and any postcard, envelope, or campaign material separately.",
+            "Do not collapse this into Base Set, No Rarity, Trade Please, CD Promo, Song Best Collection, or generic Blastoise promo rows.",
+            "Treat test-card language as a separate variant branch. A For Position Only test card is not the same claim as a normal 013/P campaign card.",
+            "Treat lottery quantities, sealed-course state, and provenance as separately sourced claims; the catalog row alone only makes the route legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete Starter Triple Get campaign proof",
+            "complete Red Green Course set state",
+            "test-card authenticity",
+            "official copy count beyond cited source",
+            "other Blastoise equivalence",
+            "price truth",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "013/P",
+        "rarity_signal": "Starter Triple Get Campaign Red Green Course; Cosmos Holofoil P Promotional print",
+        "artist": "Hiromichi Sugiyama",
+        "assembly_themes": [
+          "promo distribution",
+          "proof-of-purchase lottery",
+          "e-Reader era lineage",
+          "starter trio route",
+          "identity trap"
+        ],
+        "signals": [
+          "Blastoise",
+          "カメックス",
+          "Kamex",
+          "013/P",
+          "Starter Triple Get Campaign",
+          "Red Green Course",
+          "Cosmos Holofoil",
+          "Hiromichi Sugiyama",
+          "Bubble",
+          "Double Cannon",
+          "For Position Only test-card branch",
+          "Pokemon-e Starter Deck",
+          "Expedition Base Set"
+        ],
+        "collector_texture_note": "Blastoise 013/P is the Water half of the Red Green Course dream: save the seals, send the postcard, hope the lottery returns the cannon-backed starter as a Cosmos holo.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete campaign provenance",
+          "test-card authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blastoise 013/P: the cannon behind the postcard lottery",
+        "why_it_matters": "Blastoise 013/P gives the Red Green Course its weight. The card is not just an Expedition-era Blastoise; it is Hiromichi Sugiyama's cannon-backed turtle routed through proof-of-purchase seals, a postcard, and a lottery. That is the assembly: booster-era art, e-Reader machinery, and a child hoping the mail brings back the Water starter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller provenance",
+          "complete Red Green Course set state",
+          "test-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-014-p",
       "type": "card",
       "context": {
