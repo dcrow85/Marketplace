@@ -15,6 +15,7 @@
       "Super Energy Removal starter_a-088",
       "Venusaur starter_b-011",
       "Charizard starter_b-021",
+      "Mewtwo starter_b-050",
       "Blastoise starter_b-032",
       "Super Energy Removal starter_b-088"
     ],
@@ -2649,6 +2650,272 @@
           "physical-card authenticity",
           "sealed-unit contents",
           "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Myuutsuu",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-050",
+        "catalog_row_id": "starter_b-050"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-050",
+          "title": "Local Gift Pack component row: Mewtwo starter_b-050",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-050 as Mewtwo, inherited from the Series 1 Starter Pack possible-content pool and ultimately tied to PMCG1-050 launch-card memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Mewtwo starter_b-050 as Holo Rare and marks it as an active No Rarity target through inherited component-row metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mewtwo starter_b-050 to Ken Sugimori through English Base Set crosswalk metadata, while preserving that this is not direct Japanese-print illustrator authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance says the reference image is inherited through Gift Pack component rollup from a Starter Pack possible-content row and source-row Expansion Pack / No Rarity image; it is not direct Gift Pack image evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo starter_b-050 matters because it shows how even a myth-heavy launch holo becomes a humble route problem inside Gift Pack: the catalog can describe the component lane, but it cannot prove a sealed box, a special-card slot, or a seller's physical No Rarity card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-050 lane identity; do not merge with starter_a-050, Expansion Pack PMCG1-050, Series 1 Starter Pack possible-content rows, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, or No Rarity claims without seller-controlled evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_050_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Mewtwo, starter_b-050, starter_b, Starter Pack, Expansion Pack, PMCG1-050, No Rarity, missing symbol, sealed Gift Pack, movie promo Mewtwo, or launch holo.",
+          "summary": "Preserve starter_b-050 lane identity; do not merge it with starter_a-050, Expansion Pack PMCG1-050, promo Mewtwo branches, or a physical No Rarity claim without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-050.",
+            "Keep starter_b lane identity separate from starter_a-050, Series 1 Starter Pack possible-content rows, and Expansion Pack / No Rarity PMCG1-050.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "Treat inherited No Rarity reference imagery as lineage/comparison only; it is not direct Gift Pack image evidence, seller possession, authentication, condition, or fixed inclusion proof.",
+            "Separate this component row from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and P Promotional Mewtwo 046/P before making comparisons.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against Starter Pack / Expansion Pack lanes.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, sealed-unit contents, promo identity, or physical No Rarity status from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status",
+            "physical-card No Rarity truth",
+            "starter_a-050 equivalence",
+            "Expansion Pack PMCG1-050 equivalence",
+            "movie promo equivalence",
+            "P Promotional equivalence",
+            "direct Gift Pack image evidence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "starter_b-050",
+        "rarity_signal": "Holo Rare",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Gift Pack component lane",
+          "possible-content ambiguity",
+          "launch holo inheritance",
+          "laboratory myth",
+          "inherited reference image"
+        ],
+        "signals": [
+          "Gift Pack product-component context",
+          "starter_b",
+          "starter_b-050",
+          "Series 1 Starter Pack possible-content pool",
+          "PMCG1-050",
+          "Mewtwo",
+          "ミュウツー",
+          "Myuutsuu",
+          "Holo Rare",
+          "Ken Sugimori",
+          "inherited No Rarity reference image"
+        ],
+        "collector_texture_note": "Gift Pack starter_b Mewtwo is not a louder Mewtwo claim; it is a lane through which the launch myth might be modeled, with all the ambiguity still attached."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo starter_b-050: myth in a component lane",
+        "why_it_matters": "Gift Pack Mewtwo is a perfect humility test for the catalog. The name has gravity, the launch holo has gravity, the No Rarity memory has gravity, but starter_b-050 is still only a component-lane statement until seller evidence appears. The agent should feel the myth and then do the boring thing: preserve the route, ask for proof, and refuse to turn product context into physical truth.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "fixed deck list",
+          "No Rarity status",
+          "seller possession",
+          "promo identity"
         ]
       },
       "coverage": {

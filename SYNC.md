@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 207: Gift Pack starter_b Venusaur 011 deepened; corpus 8018b441)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 208: Gift Pack starter_b Mewtwo 050 deepened; corpus 553fbefa)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gift_pack_v0_1.json`:
+  `jp_tcg_gift_pack_19961212:starter_b-050` Mewtwo / ミュウツー /
+  Myuutsuu is now hand-authored rather than generator memory. The pass
+  records Gift Pack product-component context, `starter_b` lane identity,
+  Holo Rare status, Ken Sugimori crosswalk artist signal, inherited Series 1
+  Starter Pack possible-content lineage, PMCG1-050 launch-card memory, and
+  inherited No Rarity reference-image provenance. The special identification
+  packet is explicit and first-class: agents must preserve `starter_b-050`
+  lane identity separately from `starter_a-050`, Series 1 Starter Pack
+  possible-content rows, Expansion Pack / No Rarity PMCG1-050, English Base
+  Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition
+  Mewtwo, movie/Wizards promo Mewtwo, and P Promotional Mewtwo 046/P before
+  making comparisons. Boundaries remain explicit: catalog legibility is not
+  seller possession, seller card match, authenticity, condition, price, fixed
+  deck list, sealed Gift Pack contents, special-card identity, missing-symbol
+  status, physical-card No Rarity truth, direct Gift Pack image evidence,
+  promo/component-lane equivalence, or spendability. Generated gaps remain
+  release queue 0 and card queue 100. Hashes: corpus
+  `553fbefa4eb4b1e78b70f8969b0c2039efff86c7abeaaca4afbd83eccc93f0d7`,
+  index
+  `a6f505bbd60e1c7cff784a940ba337b8c3b31a5b64003c015dc20c5cc1846205`,
+  queue
+  `2db8496a0e26c5872dc58edda8eb49250e242b0e54da44081a3a22e43a3afc1a`,
+  audit
+  `0cbb67f46074324e62e9dacff38cb93103005146e5a5b845581eb5afc94837fd`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/gift_pack_v0_1.json`:

@@ -3,68 +3,6 @@
   "card_queue": [
     {
       "card_highlights": {
-        "artist": "Ken Sugimori",
-        "assembly_note": "Mewtwo sits in Gift Pack product-component context as Holo Rare; its current assembly themes are holo surface, rarity attention, character gravity and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim.",
-        "assembly_themes": [
-          "holo surface",
-          "rarity attention",
-          "character gravity",
-          "artist trace"
-        ],
-        "authority_label": "local_catalog_fact_and_judged_texture",
-        "collector_texture_note": "Mewtwo is cataloged here as a possible Gift Pack starter_b component row inherited from the Series 1 Starter Pack possible-content pool. The useful claim is product-context ambiguity; the physical card still needs seller evidence.",
-        "not_claiming": [
-          "price truth",
-          "condition truth",
-          "seller possession",
-          "authenticity"
-        ],
-        "number": "starter_b-050",
-        "rarity_signal": "Holo Rare",
-        "signals": [
-          "Gift Pack product-component context",
-          "starter_b",
-          "possible Gift Pack Starter Pack component",
-          "Series 1 Starter Pack possible-content pool",
-          "possible Starter Pack content",
-          "PMCG1-050",
-          "Pokemon",
-          "Holo Rare",
-          "holo surface",
-          "illustrator: Ken Sugimori",
-          "type: Psychic",
-          "stage: Basic",
-          "National Pokédex: 150",
-          "No Rarity reference source: PriceCharting",
-          "active No Rarity target"
-        ]
-      },
-      "human_title": "Mewtwo: first-pass card note",
-      "next_research_tasks": [
-        "Find at least one external source beyond the local catalog.",
-        "Add one artist-context claim if an artist is known.",
-        "Replace or supplement the generated assembly note with sourced historical texture.",
-        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
-      ],
-      "not_claiming": [
-        "complete source coverage",
-        "market ranking",
-        "price truth",
-        "physical-card authenticity"
-      ],
-      "priority_score": 85,
-      "reasons": [
-        "holo/surface card",
-        "rare signal",
-        "artist trace: Ken Sugimori",
-        "character gravity"
-      ],
-      "type": "card",
-      "uid": "jp_tcg_gift_pack_19961212:starter_b-050",
-      "why_it_matters": "Mewtwo sits in Gift Pack product-component context as Holo Rare; its current assembly themes are holo surface, rarity attention, character gravity and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
-    },
-    {
-      "card_highlights": {
         "artist": "",
         "assembly_note": "Grovyle sits in ADV-P Promotional cards - pre-WoC-edge subset as ADV-P Promotional cards - pre-WoC-edge subset; its current assembly themes are promo distribution, identity trap. That is enough to orient an agent, not enough to settle a physical-card claim.",
         "assembly_themes": [
@@ -5132,11 +5070,62 @@
       "type": "card",
       "uid": "en_wotc_base_set_2_20000224:base4-20",
       "why_it_matters": "Zapdos sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
+    },
+    {
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Chansey sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim.",
+        "assembly_themes": [
+          "holo surface",
+          "rarity attention",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Chansey is cataloged as Base Set 2 #3. Treat this as a reference row, then ask for seller evidence before any trade.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ],
+        "number": "3",
+        "rarity_signal": "Rare Holo",
+        "signals": [
+          "Base Set 2",
+          "2000/02/24",
+          "3",
+          "Rare Holo",
+          "Pokémon",
+          "Basic"
+        ]
+      },
+      "human_title": "Chansey: first-pass card note",
+      "next_research_tasks": [
+        "Find at least one external source beyond the local catalog.",
+        "Add one artist-context claim if an artist is known.",
+        "Replace or supplement the generated assembly note with sourced historical texture.",
+        "Keep price, condition, possession, and authenticity out of the history claim unless separately sourced."
+      ],
+      "not_claiming": [
+        "complete source coverage",
+        "market ranking",
+        "price truth",
+        "physical-card authenticity"
+      ],
+      "priority_score": 60,
+      "reasons": [
+        "holo/surface card",
+        "rare signal",
+        "artist trace: Ken Sugimori"
+      ],
+      "type": "card",
+      "uid": "en_wotc_base_set_2_20000224:base4-3",
+      "why_it_matters": "Chansey sits in Base Set 2 as Rare Holo; its current assembly themes are holo surface, rarity attention, artist trace and the local artist trace points to Ken Sugimori. That is enough to orient an agent, not enough to settle a physical-card claim. The card-level foothold now gives identity, rarity signal, artist when known, and local collector texture before any trade evidence appears."
     }
   ],
   "coverage": {
     "card_queue_count": 100,
-    "generated_card_candidates_considered": 3783,
+    "generated_card_candidates_considered": 3782,
     "generated_release_candidates_considered": 0,
     "release_queue_count": 0
   },
