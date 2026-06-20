@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 255: Neo Summer Road regional No.1 row 238 deepened; corpus 94f609d6)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 256: Neo Summer Road regional No.2 row 239 deepened; corpus 064dcd21)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`:
+  `jp_promo_unnumbered_wotc_239_neo_summer_road_regional_second_place_prize:239`
+  No.2 Trainer row 239 is now hand-authored rather than generator memory.
+  This pass used the local unnumbered promo row, Bulbapedia raw `Unnumbered
+  Promotional cards` row 239, Bulbapedia raw `No.2 Trainer (Pokemon Card Game
+  Official Tournament promo)`, and Pokumon's `Boy Neo Summer No.2 Trainer
+  (Neo Battle Road 2001)` page. The card dossier now carries No.2 Trainer /
+  `Ｎｏ.２トレーナー` / No.2 Trainer, no printed number, Neo Summer Road
+  regional second-place route, Battle Neo Summer Road second-place winner /
+  runner-up wording, July-August 2001 regional context, August 25 2001 finals
+  as the later boundary, Boy Neo Summer / male-variant lane, Ho-Oh / Neo Summer
+  branch context, and Ken Sugimori / Non-holo as Pokumon collector-database
+  context. The special identification packet tells agents not to match by
+  `No.2 Trainer` alone and not to reuse the Spring or finals frames: keep row
+  239 separate from Neo Spring Road regional No.2 row 223, Neo Summer Road Best
+  in Japan No.2 row 243, Neo Summer regional No.1/No.3 rows 238/240, Neo Summer
+  Best in Japan No.1/No.3 rows 242/244, Battle Road 2002, 1997-1999 No.2
+  Trainer prints, and later World Championships No.2 Trainer cards. Estimated
+  14-copy language is recorded only as a collector/database estimate, not
+  official copy-count truth; all catalog claims remain legible, not seller
+  possession, authenticity, condition, price, or spendability. Rebuilt
+  catalog-history outputs; corpus
+  `064dcd21b061a5f5a56ff1f154aafdc826009a4d7352d5e5db604fcdc986496f`;
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, and the focused
+  row-239 assertion all pass.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/neo_summer_road_2001_trophies_v0_1.json`:
