@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 301: Base Set Magneton #9 deepened; corpus 7ff448d0)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 302: Base Set 2 Alakazam #1 deepened; corpus b38089e5)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-1` Alakazam #1 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records,
+  Bulbapedia `Base Set 2 (TCG)` as a bounded community reference, and the
+  original English Base Set Alakazam row as a local lineage comparator. The
+  dossier now carries Base Set 2 #1/130, Rare Holo, Stage 2 Psychic, Level 42,
+  80 HP, Kadabra evolution line, Damage Swap, Confuse Ray, Ken Sugimori credit,
+  and the reprint-memory distinction from original Base Set #1/102. Its special
+  identification packet tells agents to keep Base Set 2 Alakazam separate from
+  original Base Set / First Edition / Shadowless memory, Japanese Expansion
+  Pack / No Rarity claims, Legendary Collection, and seller-owned physical
+  evidence unless seller scans prove the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Alakazam downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-first
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:

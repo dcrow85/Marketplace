@@ -2071,6 +2071,287 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-1",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam",
+        "name_ja": "",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-1",
+        "catalog_row_id": "base4-1",
+        "card_number": "1/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Alakazam / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-1",
+          "title": "Local Base Set 2 row: Alakazam base4-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-1",
+          "title": "Pokemon TCG API v2 card record: Alakazam base4-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-1",
+          "title": "Local English WoC catalog: original Base Set Alakazam base1-1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Base Set 2 equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Base Set 2 catalog and Pokemon TCG API identify base4-1 as Alakazam, Base Set 2 card 1/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models this Alakazam as a Stage 2 Psychic Pokemon, Level 42, 80 HP, evolving from Kadabra, with Psychic weakness and a three-Colorless retreat cost.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's Pokemon Power is Damage Swap, which moves damage counters among the player's Pokemon without knocking one out, and its attack is Confuse Ray for 30 damage with a coin-flip chance to Confuse.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Base Set 2 row and Pokemon TCG API credit Alakazam base4-1 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place this row inside Base Set 2, a 130-card English WoC release dated February 24, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The original English Base Set row base1-1 carries the same Alakazam / Damage Swap memory, but Base Set 2 base4-1 is a later compiled/reprint object with its own release id, set id, number, date, and symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Alakazam #1/130 must be kept separate from original Base Set #1/102, Japanese Expansion Pack / No Rarity Alakazam, Shadowless / First Edition memory, Legendary Collection, and any seller-owned physical card unless evidence proves the specific lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Base Set 2 Alakazam matters because it shows Pokemon beginning to package its own early memory: the psychic control engine returns as card #1 again, but now the object is nostalgia, access, and reprint assembly rather than launch-state provenance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_alakazam_1_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Alakazam, Base Set 2, base4-1, 1/130, Damage Swap, Confuse Ray, Ken Sugimori, Base Set, base1-1, 1/102, Shadowless, First Edition, Japanese Expansion Pack, No Rarity, Legendary Collection, or same artwork.",
+          "summary": "Identify English Base Set 2 Alakazam #1/130 as base4-1, then keep it separate from original Base Set #1/102, Japanese Expansion Pack / No Rarity, Legendary Collection, and English print-run states unless seller evidence proves the specific lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, Pokemon TCG API set id base4, local row id base4-1, printed number 1/130, Rare Holo, Ken Sugimori credit, Damage Swap, and Confuse Ray.",
+            "Do not infer original Base Set, First Edition, Shadowless, Unlimited, 4th print, Japanese No Rarity, Legendary Collection, condition, price, or authenticity from the shared Alakazam art or game text.",
+            "Treat Base Set 2 as a reprint/compilation object: similarity to base1-1 is lineage, not equivalence.",
+            "For transaction use, require seller front, back, holo surface, set symbol, printed number, copyright line, graded label if present, and provenance before letting a claim become spendable."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "original Base Set equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Japanese No Rarity proof",
+            "Legendary Collection equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "1/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #1/130, separate from original Base Set #1/102, Japanese Expansion Pack / No Rarity, Legendary Collection, and English print-run states.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set 2 opening holo",
+          "reprint memory",
+          "Ken Sugimori launch art recontextualized",
+          "Damage Swap control engine",
+          "Confuse Ray continuity",
+          "Base Set boundary",
+          "No Rarity boundary",
+          "reprint-symbol inspection"
+        ],
+        "collector_texture_note": "Base Set 2 starts with Alakazam too, but now the psychic control engine is a memory object: same spell, different assembly."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The same mind, reassembled",
+        "why_it_matters": "Base Set 2 Alakazam is useful precisely because it feels familiar. Damage Swap is still the old psychic engine, Confuse Ray is still the little coin-flip threat, and Sugimori's Alakazam still sits at the front of the checklist. But the assembly has changed. This is not the launch object or the No Rarity ancestor; it is the early game curating itself in 2000, making a familiar holo available inside a new 130-card compilation. For a collector agent, that distinction is the whole lesson. Memory can point; the set symbol and seller evidence have to carry the claim.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "original Base Set equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "No Rarity proof",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
