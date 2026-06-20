@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23811,
-    "corpus_hash": "04a82acd849ba16baca9f48c40cbdf36a042847f43b64e21b3406f5fb3a6dcbf",
-    "generated_card_dossier_count": 3811,
-    "generated_release_dossier_count": 10,
+    "claim_count": 23819,
+    "corpus_hash": "6b6a9fdc4e8fc70a019238f47da001db32bcdf2b3984c1911f5586dcafbc48ca",
+    "generated_card_dossier_count": 3810,
+    "generated_release_dossier_count": 9,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6857
+    "source_count": 6863
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "af0e510ff68459e71a57e1c076e8c96eae15479741a4ca076e310cbcf5fc65a1",
-    "release_queue_count": 10,
+    "queue_hash": "375b00aed0fe236437214529ed42bdaccae02e27f080d7eb8268bdefc8e0c48a",
+    "release_queue_count": 9,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T02:46:56Z",
+  "generated_at": "2026-06-20T02:56:22Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "fe39b6a14328aa22f4a73f979f412182538a0b9f4b42959014147dab8cbf1ccb",
+    "index_hash": "c4e7e62999fd6c9dda24e9a928eba889bd011a513155f9e4b8e724a4560a7c0c",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -146,6 +146,7 @@
     "data/catalog-history/source-sets/n64_w_double_get_campaign_v0_1.json",
     "data/catalog-history/source-sets/neo_destiny_v0_1.json",
     "data/catalog-history/source-sets/neo_discovery_v0_1.json",
+    "data/catalog-history/source-sets/neo_era_premium_file_2_charizard_v0_1.json",
     "data/catalog-history/source-sets/neo_era_premium_file_chikorita_v0_1.json",
     "data/catalog-history/source-sets/neo_genesis_v0_1.json",
     "data/catalog-history/source-sets/neo_revelation_v0_1.json",

@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 179: Can You Name All the Pokemon Neo Dance Imakuni deepened; corpus 04a82acd)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 180: Neo Era Premium File 2 Charizard singleton deepened; corpus 6b6a9fdc)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eightieth
+  catalog-history pass:
+  `data/catalog-history/source-sets/neo_era_premium_file_2_charizard_v0_1.json`
+  deepens the Neo Era Premium File 2 Charizard singleton source slice and its
+  single modeled row, Charizard / リザードン / Lizardon source index 184. The pass
+  keeps this row separate from the existing eight-row Premium File 2 source-set
+  at rows 185-192 while still preserving the broader Premium File 2 product
+  route. It corrects the local inherited continuation-slice date baggage with
+  the sourced route: first availability at participating cinemas showing Spell
+  of the Unown: Entei from July 8, 2000, then general release on August 5,
+  2000, alongside Crossing the Ruins / Neo-era Premium File 2 context. It
+  records Ken Sugimori / 杉森建, Cosmos Reverse Holofoil surface context, Fire
+  Raise, Fire Spin, HP 120, LV.78, No. 006, and the key warning that Fire Spin
+  echoes Base Set without creating Base Set or No Rarity provenance. Special
+  identification packets now separate this row from Japanese Expansion Pack /
+  No Rarity Charizard, English Base Set, Song Best, Trade Please, English jumbo
+  CoroCoro, Base Set 2, Legendary Collection, Celebrations, metal cards,
+  modern classic reprints, and any complete-file claim where Charizard is not
+  shown. Boundaries remain against seller possession, authenticity, condition,
+  price, sealed-file/card completeness, official print run, and spendability.
+  Generated gaps are now release queue 9 and card queue 100. Hashes: corpus
+  `6b6a9fdc4e8fc70a019238f47da001db32bcdf2b3984c1911f5586dcafbc48ca`,
+  index `c4e7e62999fd6c9dda24e9a928eba889bd011a513155f9e4b8e724a4560a7c0c`,
+  queue `375b00aed0fe236437214529ed42bdaccae02e27f080d7eb8268bdefc8e0c48a`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-seventy-ninth
   catalog-history pass:
   `data/catalog-history/source-sets/can_you_name_all_pokemon_neo_cd_dance_imakuni_v0_1.json`
