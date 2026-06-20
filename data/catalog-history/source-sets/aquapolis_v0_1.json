@@ -6592,6 +6592,329 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H26",
+      "type": "card",
+      "context": {
+        "name_en": "Tentacruel",
+        "name_ja": "ドククラゲ",
+        "romaji": "Dokukurage",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H26",
+        "catalog_row_id": "ecard2-H26",
+        "card_number": "H26",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-38",
+        "japanese_lineage_card_number": "Wind from the Sea 030/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H26",
+          "title": "Local English WoC card row: Tentacruel H26",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H26",
+          "title": "Pokemon TCG API v2 card record: Tentacruel ecard2-H26",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tentacruel_(Aquapolis_H26)",
+          "title": "Bulbapedia: Tentacruel (Aquapolis H26)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-38",
+          "title": "Pokemon TCG API v2 card record: Tentacruel ecard2-38",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Tentacruel as Aquapolis H26, a Rare Holo Stage 1 Water Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Tentacruel's Japanese name as ドククラゲ / Dokukurage and connects the Holofoil print to Japanese Wind from the Sea card 030/087, while the non-Holofoil Aquapolis print appears as English 38/147.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Tentacruel H26 with 70 HP, evolvesFrom Tentacool, Water type, Lightning weakness, zero retreat cost, the Poke-Power Strange Tentacles, and the attack Poison Sting.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Tentacruel H26 to Hajime Kusajima; the local and API rows also credit Hajime Kusajima on the non-Holo Aquapolis Tentacruel #38 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Tentacruel as H26/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Tentacruel at #38 with the same Hajime Kusajima credit, Strange Tentacles, and Poison Sting; agents must keep H26 and #38 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Tentacruel H26 page records card ID D-62 for the Holofoil print and D-62-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information and a brief card summary, that there is no long strip for this card, and that the Holofoil print carries species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Tentacruel H26's e-Reader Pokedex entry comes from Pokemon Crystal, and its trivia notes that Poison Sting is a move Tentacruel can learn in the Pokemon games.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Tentacruel H26 matters because Aquapolis turns a sea-creature evolution into a rule-machine: Strange Tentacles reaches into the opponent's discard pile, Poison Sting threatens status, and the e-Reader strip turns that tactical oddness into a cataloged object with its own D-62 memory.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_tentacruel_h26_holo_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Tentacruel, ドククラゲ, Dokukurage, Tentacruel H26, H26/H32, Rare Holo, ecard2-H26, Hajime Kusajima, Strange Tentacles, Poison Sting, D-62, D-62-#, Wind from the Sea, 030/087, Aquapolis #38, 38/147, or reverse holo Tentacruel.",
+          "summary": "Identify Tentacruel / ドククラゲ / Dokukurage H26 by the Aquapolis H-number Rare Holo lane: English ecard2-H26 / H26/H32 and Wind from the Sea 030/087 lineage, not the non-Holo #38 / 38/147 sibling.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H26 / printed number H26 before accepting this as the H-number holo row.",
+            "Preserve H26/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Tentacruel #38 row even though #38 shares Hajime Kusajima, Strange Tentacles, and Poison Sting.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 030/087 while the English non-Holofoil counterpart appears as Aquapolis 38/147.",
+            "Use Hajime Kusajima credit, Stage 1 Water profile, Tentacool evolution line, Lightning weakness, zero retreat cost, Strange Tentacles, Poison Sting, D-62 Holofoil e-Reader ID, and D-62-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Tentacruel wants, Water deck references, and seller-card image claims separate until set, number, rarity, attack text, power text, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Pokemon Crystal Pokedex source, Poison Sting game-move note, and no-long-strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "long-strip data presence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H26"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Tentacruel_(Aquapolis_H26)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "H26",
+        "artist": "Hajime Kusajima",
+        "rarity_signal": "Rare Holo; H26/H32 H-number holo sequence, separate from non-Holo #38 / 38/147 and reverse-holo listings",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Hajime Kusajima art trace",
+          "Stage 1 sea-creature evolution",
+          "Strange Tentacles discard-pile interface",
+          "Poison Sting status pressure",
+          "zero-retreat oddity",
+          "D-62 e-Reader object",
+          "no-long-strip boundary"
+        ],
+        "collector_texture_note": "Tentacruel H26 is not the loudest Aquapolis holo, but it is wonderfully mechanical: a zero-retreat Water evolution with a power that reaches into discard flow and an e-Reader identity that has to stay distinct from #38."
+      },
+      "narrative": {
+        "human_title": "Tentacruel H26 — strange reach in the machine water",
+        "why_it_matters": "Tentacruel H26 is Aquapolis doing what the e-Reader era did best: making a familiar evolution feel like an apparatus. Hajime Kusajima's card is not just a jellyfish holo; it is Strange Tentacles, Poison Sting, zero retreat, and D-62 all braided into one little machine for moving energy, status, and memory around the table.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "long-strip data presence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {

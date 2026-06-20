@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 278: Aquapolis Suicune H25 deepened; corpus f603639b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 279: Aquapolis Tentacruel H26 deepened; corpus 31bae97d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H26` Tentacruel H26 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, local API-derived sibling row for `ecard2-38`, live
+  Pokemon TCG API row references, Bulbapedia `Tentacruel (Aquapolis H26)`,
+  and Bulbapedia `Aquapolis (TCG)`. The card dossier now carries
+  Tentacruel / `ドククラゲ` / Dokukurage, English Aquapolis / e-Card
+  Series, API card id `ecard2-H26`, printed number H26, H26/H32 Rare Holo
+  sequence, Japanese Wind from the Sea 030/087 holo lineage, the non-Holo
+  Aquapolis #38 / 38/147 sibling, Stage 1 Water profile, Tentacool
+  evolution line, 70 HP, Lightning weakness, zero retreat cost,
+  Poke-Power Strange Tentacles, Poison Sting, and Hajime Kusajima credit.
+  The special identification packet tells agents to keep H26 separate from
+  Aquapolis Tentacruel #38, reverse-holo listings, generic Tentacruel
+  wants, Water deck references, and seller-card image claims. It also keeps
+  Dot-Code, e-Reader, D-62 / D-62-# IDs, Pokemon Crystal Pokedex source,
+  Poison Sting game-move context, and no-long-strip boundary legible
+  without promoting them into seller possession, authenticity, condition
+  truth, price truth, seller-card image match, e-Reader scan success,
+  reverse-holo equivalence, long-strip data presence, or spendability.
+  Rebuilt `data/catalog-history/dossiers.json`, `index.json`,
+  `deepening-queue.json`, `manifest.json`, and `audit.json`; corpus hash is
+  `31bae97d1558b08987697e535891aa8f7f7e5bbbf7031d039ca10d8fa2232a88`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H26
+  propagation assertion over the source dossier, generated corpus, index,
+  and special identification packet.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
