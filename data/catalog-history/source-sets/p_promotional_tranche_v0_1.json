@@ -3960,6 +3960,237 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-019-p",
+      "type": "card",
+      "context": {
+        "name_en": "Pokémon Center Tokyo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-019-p",
+        "catalog_row_id": "019/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-019-p",
+          "title": "Local Japanese promo WotC catalog row: Pokémon Center Tokyo 019/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Pokémon Center Tokyo as P Promotional card number 019/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokémon Center Tokyo: New York Pokémon Center opening commemoration, January 2002, as the distribution context for Pokémon Center Tokyo 019/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Pokémon Center Tokyo 019/P as a Trainer row, but does not provide card text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Pokémon Center Tokyo 019/P, so this dossier leaves the artist unset rather than importing artist memory from another Pokémon Center print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Pokémon Center Tokyo 019/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pokémon Center Tokyo 019/P matters because it turns store geography into card memory: a Tokyo-named Trainer row made legible through the New York Pokémon Center opening commemoration in January 2002.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Pokémon Center Tokyo, printed 019/P, Trainer row identity, and the New York Pokémon Center opening commemoration route; avoid treating the card title as proof of Tokyo-store provenance, New York-store provenance, card text, Japanese name, image details, or seller-held event material.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_pokemon_center_tokyo_019_new_york_opening_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokémon Center Tokyo, Pokemon Center Tokyo P promo, New York Pokémon Center opening, 019/P, Japanese Pokémon Center promo, or early numbered P Promotional Trainer card.",
+          "summary": "Confirm Pokémon Center Tokyo, printed 019/P, and the New York Pokémon Center opening commemoration route before treating the card as this P Promotional row.",
+          "steps": [
+            "Confirm the card title is Pokémon Center Tokyo.",
+            "Read the printed promo number as 019/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the row is a Trainer card, not a Pokémon character row.",
+            "Keep the full distribution phrase legible: Pokémon Center Tokyo: New York Pokémon Center opening commemoration, January 2002.",
+            "Do not treat the Pokémon Center Tokyo title as proof that a seller's copy came from Tokyo, New York, a store opening, or any physical event object.",
+            "Do not merge this card with other Pokémon Center promos, other store-opening cards, English Pokémon Center rows, or generic Pokémon Center memorabilia without number evidence.",
+            "Do not infer illustrator, card text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and title/type area; ask for store-opening provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Tokyo store provenance",
+            "New York store provenance",
+            "store-opening attendance",
+            "store-opening object provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "card text",
+            "other Pokémon Center promo equivalence",
+            "generic store-opening promo equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "019/P",
+        "rarity_signal": "Pokémon Center Tokyo: New York Pokémon Center opening commemoration",
+        "artist": "",
+        "assembly_themes": [
+          "Pokémon Center route",
+          "New York opening commemoration",
+          "numbered P spine",
+          "Trainer identity",
+          "store geography",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "019/P",
+          "Pokémon Center Tokyo",
+          "Trainer",
+          "New York Pokémon Center opening commemoration",
+          "January 2002",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Pokémon Center Tokyo 019/P is store culture in miniature: Tokyo in the title, New York in the route, and a numbered P promo holding the geography together."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokémon Center Tokyo 019/P: two cities in one promo",
+        "why_it_matters": "This is one of those rows where the assembly is more interesting than a simple title. Pokémon Center Tokyo is the card name, but the route points to the New York Pokémon Center opening commemoration in January 2002. Tokyo, New York, retail culture, Trainer-card identity, and the P spine all meet in one little catalog object. The agent's job is to keep that poetry honest: legible route, no assumed provenance.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Tokyo store provenance",
+          "New York store provenance",
+          "store-opening attendance",
+          "illustrator credit",
+          "image witness",
+          "card text"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
       "type": "card",
       "context": {
