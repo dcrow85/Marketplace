@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 293: Base Set Poliwrath #13 deepened; corpus 2d1592ad)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 294: Base Set Raichu #14 deepened; corpus 7253219d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-14` Raichu #14 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set row, Pokemon TCG API card and set records,
+  Bulbapedia `Raichu (Base Set 14)` and `Base Set (TCG)` as bounded community
+  references, and the local Japanese pre-English Expansion Pack / No Rarity
+  row `jp_tcg_expansion_pack_19961020:038`. The dossier now carries Raichu /
+  `ライチュウ` / Raichuu, Base Set #14/102, Rare Holo, Stage 1 Lightning,
+  Level 40, 80 HP, Pikachu evolution line, Agility, Thunder self-damage risk,
+  Ken Sugimori credit, and Japanese Expansion Pack / PMCG1-038 lineage. Its
+  special identification packet tells agents to keep English Base Set #14
+  separate from Pikachu rows / mascot memory, Japanese Expansion Pack / No
+  Rarity PMCG1-038, Base Set 2 / Legendary Collection / reprint memory, and
+  English First Edition / Shadowless / Unlimited / 4th-print states unless
+  seller evidence proves the specific lane. Validation passed:
+  `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused
+  Raichu downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-ninety-third
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_v0_1.json`:
