@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 310: Base Set 2 Clefable #5 deepened; corpus 46572d1b)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 311: Base Set 2 Clefairy #6 deepened; corpus 8503de11)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the three-hundred-eleventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/base_set_2_v0_1.json`:
+  `en_wotc_base_set_2_20000224:base4-6` Clefairy #6 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. This pass used the
+  local English WoC Base Set 2 row, Pokemon TCG API card and set records, the
+  hand-authored English Base Set Clefairy dossier as a lineage comparator,
+  Bulbapedia `Base Set 2 (TCG)` and `Clefairy (Base Set 5)` as bounded
+  community references, the local Japanese Expansion Pack / No Rarity
+  PMCG1-067 row, and the Clefairy Doll PMCG1-091 boundary row. The dossier now
+  carries Base Set 2 #6/130, Rare Holo, Basic Colorless, Level 14, 40 HP,
+  Sing, Metronome, Clefable evolution memory, Fighting weakness, Psychic
+  resistance, one-Colorless retreat, and Ken Sugimori credit. Its special
+  identification packet tells agents to keep Base Set 2 Clefairy separate from
+  original Base Set #5/102, Japanese Expansion Pack / No Rarity PMCG1-067,
+  Clefairy Doll, Clefable, English print-run states, Legendary Collection,
+  promos, and seller-owned physical evidence unless seller scans prove the
+  specific lane. Validation passed: `build_catalog_history_dossiers.py`,
+  `build_catalog_history_dossiers.py --check`, `build_card_dossiers.py
+  --check`, `build_catalog_completion_audit.py --check`, plus a focused Base
+  Set 2 Clefairy downstream assertion.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-tenth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:

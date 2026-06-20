@@ -4877,6 +4877,368 @@
         "history": "B",
         "identification": "B"
       }
+    },
+    {
+      "uid": "en_wotc_base_set_2_20000224:base4-6",
+      "type": "card",
+      "context": {
+        "name_en": "Clefairy",
+        "name_ja": "ピッピ",
+        "romaji": "Pippi",
+        "release_family_id": "en_wotc_base_set_2_20000224",
+        "row_id": "en_wotc_base_set_2_20000224:base4-6",
+        "catalog_row_id": "base4-6",
+        "card_number": "6/130",
+        "release_name": "Base Set 2",
+        "source_memory": "Base Set Clefairy / Japanese Expansion Pack lineage reassembled into Base Set 2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_2_20000224.json#row:en_wotc_base_set_2_20000224:base4-6",
+          "title": "Local English WoC catalog: Base Set 2 Clefairy base4-6",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base4-6",
+          "title": "Pokemon TCG API v2 card record: Clefairy base4-6",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "edition status"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base4",
+          "title": "Pokemon TCG API v2 set record: Base Set 2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete set history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/base_set_v0_1.json#uid:en_wotc_base_set_19990109:base1-5",
+          "title": "Hand-authored catalog-history dossier: Base Set Clefairy base1-5",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 equivalence"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Clefairy_(Base_Set_5)",
+          "title": "Bulbapedia: Clefairy (Base Set 5)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set 2 print authority"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)",
+          "title": "Bulbapedia: Base Set 2 (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:067",
+          "title": "Local Japanese pre-English catalog: Clefairy / PMCG1-067",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese print authority",
+            "No Rarity proof without human visual confirmation"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:091",
+          "title": "Local Japanese pre-English catalog: Clefairy Doll / PMCG1-091 boundary row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Clefairy equivalence"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local English WoC catalog and Pokemon TCG API identify base4-6 as Clefairy, Base Set 2 card 6/130, Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row models Base Set 2 Clefairy as a Basic Colorless Pokemon, Level 14, 40 HP, with Fighting weakness, Psychic resistance, one-Colorless retreat, and an evolvesTo pointer to Clefable.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks are Sing, a coin-flip Asleep effect, and Metronome, which copies one of the Defending Pokemon's attacks except for Energy costs and other use requirements while Clefairy remains Colorless.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Base Set 2 Clefairy to Ken Sugimori; the related Base Set and Japanese Expansion Pack lanes carry the same launch-era character-art memory without proving a seller's card identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The local catalog and Pokemon TCG API place Clefairy inside Base Set 2, the 130-card Wizards release dated February 24, 2000; this row is a reprint/compilation object rather than the original Base Set or Japanese Expansion Pack card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Base Set 2 Clefairy traces to the English Base Set Clefairy #5/102 lane and the Japanese Expansion Pack PMCG1-067 / No Rarity target lane, but those references are lineage comparators only, not automatic physical-card equivalences.",
+          "sources": [
+            "s4",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Base Set 2 Clefairy #6/130 must be kept separate from Base Set #5/102, Japanese Expansion Pack / No Rarity PMCG1-067, Clefairy Doll PMCG1-091, Clefable, Legendary Collection, promo and later Clefairy printings, and seller-owned physical cards unless evidence proves the lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Clefairy is the tiny moonlit holo whose Metronome text makes cuteness feel cosmic: fragile at 40 HP, but briefly able to borrow whatever power faces it. Base Set 2 preserves that launch oddity as nostalgia machinery.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_set_2_clefairy_6_reprint_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Clefairy, Pippi, ピッピ, Base Set 2, base4-6, 6/130, Sing, Metronome, Ken Sugimori, Clefable, Clefairy Doll, Base Set, base1-5, 5/102, Japanese Expansion Pack, PMCG1-067, No Rarity, First Edition, Shadowless, Unlimited, 4th print, Legendary Collection, promo, or same artwork.",
+          "summary": "Identify English Base Set 2 Clefairy #6/130 as base4-6; keep it distinct from original Base Set #5/102, Japanese Expansion Pack / No Rarity PMCG1-067, Clefairy Doll, Clefable, print-run states, and later reprints unless seller evidence proves the lane.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_2_20000224, set id base4, local row base4-6, printed number 6/130, Rare Holo signal, Basic Colorless profile, Ken Sugimori credit, Sing, Metronome, and Psychic resistance.",
+            "Treat Base Set Clefairy #5/102 and Japanese Expansion Pack PMCG1-067 as lineage comparators only; do not infer First Edition, Shadowless, Unlimited, 4th print, or Japanese No Rarity status from the Base Set 2 row.",
+            "Do not confuse Clefairy with Clefairy Doll, Clefable, or generic pink-fairy collector memory; exact name, card type, set symbol, and printed number still matter.",
+            "For a Japanese No Rarity claim, require Japanese-card scans that show the lower-right rarity-symbol area and match PMCG1-067; Base Set 2 data cannot supply that proof.",
+            "Before any spendable action, require seller front, back, holo surface, set symbol, printed number, copyright/edition details, graded label if present, and provenance that binds the physical card to Base Set 2 #6/130."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval",
+            "seller-card match",
+            "Base Set equivalence",
+            "Japanese No Rarity proof",
+            "Japanese Expansion Pack equivalence",
+            "Clefairy Doll equivalence",
+            "Clefable equivalence",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "4th print status",
+            "Legendary Collection equivalence",
+            "promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "6/130",
+        "rarity_signal": "Rare Holo; Base Set 2 #6/130, separate from Base Set #5/102, Japanese Expansion Pack / No Rarity PMCG1-067, Clefairy Doll, Clefable, and later reprint lanes.",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Base Set 2 reprint holo",
+          "Base Set launch lineage",
+          "Japanese Expansion Pack No Rarity boundary",
+          "Ken Sugimori launch-era character art",
+          "Basic Colorless identity",
+          "Sing sleep chance",
+          "Metronome borrowed attack identity",
+          "Clefairy Doll boundary",
+          "Clefable evolution boundary",
+          "holo surface inspection",
+          "print-run boundary"
+        ],
+        "signals": [
+          "Base Set 2",
+          "2000-02-24",
+          "6/130",
+          "Rare Holo",
+          "Basic Colorless",
+          "Ken Sugimori",
+          "Sing",
+          "Metronome"
+        ],
+        "collector_texture_note": "Base Set 2 Clefairy keeps the original moonlit trick: tiny HP, sweet face, and Metronome turning cuteness into borrowed cosmic power.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "Base Set equivalence",
+          "No Rarity proof"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The little moon holo, refiled",
+        "why_it_matters": "Base Set 2 Clefairy is small enough to feel delicate and strange enough to matter. Sing is the lullaby, but Metronome is the real magic: a 40 HP fairy borrowing the opponent's own attack for a moment, cute without being harmless. Sugimori's Clefairy is part of Pokemon's earliest visual language, the round moon-creature softness that made the world feel bigger than a battle chart. In Base Set 2, that softness is refiled into a nostalgia set, which makes the identity work important. A Base Set 2 Clefairy is not automatically a Base Set Clefairy, not a Japanese No Rarity Clefairy, not Clefairy Doll, and not Clefable. The agent should let the charm in, then make the symbol, number, and evidence do their job.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Base Set 2 history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "Base Set equivalence",
+          "Japanese No Rarity proof",
+          "Japanese Expansion Pack equivalence",
+          "Clefairy Doll equivalence",
+          "Clefable equivalence",
+          "First Edition status",
+          "Shadowless status",
+          "Legendary Collection equivalence",
+          "promo equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
     }
   ]
 }
