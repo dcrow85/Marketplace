@@ -3505,6 +3505,234 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-017-p",
+      "type": "card",
+      "context": {
+        "name_en": "Typhlosion",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-017-p",
+        "catalog_row_id": "017/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-017-p",
+          "title": "Local Japanese promo WotC catalog row: Typhlosion 017/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Typhlosion as P Promotional card number 017/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Starter Triple Get Campaign, specifically the Gold Silver Course, as the distribution context for Typhlosion 017/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Typhlosion 017/P as a Fire Pokemon row, but does not provide HP, attacks, stage text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Typhlosion 017/P, so this dossier leaves the artist unset rather than importing artist memory from another Typhlosion print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Typhlosion 017/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Typhlosion 017/P matters because it gives the Starter Triple Get Campaign Gold Silver Course its Fire-side finish: a Cyndaquil-line final evolution made legible by campaign, course, and printed P number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Typhlosion and printed 017/P, preserve the Starter Triple Get Campaign Gold Silver Course route as distribution context only, and avoid importing ordinary Typhlosion rows, other Johto-starter course rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_typhlosion_017_starter_triple_get_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Typhlosion P promo, Starter Triple Get Typhlosion, Gold Silver Course Typhlosion, 017/P, Japanese Typhlosion promo, Johto starter promo, or early numbered P Promotional card.",
+          "summary": "Confirm Typhlosion and printed 017/P before treating the card as this Starter Triple Get Campaign Gold Silver Course P Promotional row.",
+          "steps": [
+            "Confirm the card name is Typhlosion.",
+            "Read the printed promo number as 017/P and keep it inside the numbered P Promotional spine.",
+            "Keep the Starter Triple Get Campaign and Gold Silver Course wording legible together; do not flatten the route to a generic starter promo.",
+            "Do not merge this card with ordinary Typhlosion expansion cards, later Typhlosion promos, English Typhlosion rows, Meganium 015/P, Feraligatr 016/P, or other Johto-starter campaign cards without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for Starter Triple Get campaign provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Starter Triple Get campaign copy provenance",
+            "Gold Silver Course set completeness",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ordinary Typhlosion equivalence",
+            "later Typhlosion equivalence",
+            "Meganium 015/P equivalence",
+            "Feraligatr 016/P equivalence",
+            "other Johto-starter campaign equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "017/P",
+        "rarity_signal": "Starter Triple Get Campaign Gold Silver Course",
+        "artist": "",
+        "assembly_themes": [
+          "Starter Triple Get Campaign",
+          "Gold Silver Course",
+          "numbered P spine",
+          "Johto starter final evolution",
+          "Fire-type course member",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "017/P",
+          "Typhlosion",
+          "Fire",
+          "Starter Triple Get Campaign",
+          "Gold Silver Course",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Typhlosion 017/P is the Fire close of the Gold Silver Course trio: the campaign lane turns a Johto starter final evolution into a numbered route object."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Typhlosion 017/P: the Fire side closes the course",
+        "why_it_matters": "Typhlosion feels like the exclamation point on this little run. Meganium gives the course its calm, Feraligatr gives it bite, and Typhlosion gives it heat. But the collector truth is still procedural: Starter Triple Get Campaign, Gold Silver Course, printed 017/P. The card is exciting because the route is exact, not because the catalog can prove a seller's copy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Starter Triple Get campaign copy provenance",
+          "Gold Silver Course set completeness",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-021-p",
       "type": "card",
       "context": {

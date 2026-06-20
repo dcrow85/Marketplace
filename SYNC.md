@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 224: P Promo Feraligatr 016 deepened; corpus c96ab26e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 225: P Promo Typhlosion 017 deepened; corpus a132c390)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-017-p`
+  Typhlosion 017/P is now hand-authored rather than generator memory. The pass
+  records the Starter Triple Get Campaign Gold Silver Course route, Fire-row
+  identity, Johto starter final-evolution/trio-close collector texture, absent
+  promoted Japanese name, absent artist credit, and absent row-specific image
+  witness. The special identification packet is explicit and first-class:
+  agents must confirm Typhlosion, printed `017/P`, and the numbered P
+  Promotional spine; keep the Starter Triple Get Campaign and Gold Silver
+  Course wording legible together rather than flattening the route to a
+  generic starter promo; and avoid merging this row with ordinary Typhlosion
+  expansion cards, later Typhlosion promos, English Typhlosion rows, Meganium
+  015/P, Feraligatr 016/P, other Johto-starter campaign cards, or absent
+  art/attack/Japanese-name details. Boundaries remain explicit: catalog
+  legibility is not seller possession, authenticity, condition, price, Starter
+  Triple Get campaign copy provenance, Gold Silver Course set completeness,
+  image availability, illustrator credit, Japanese-name certainty, attack text,
+  ordinary Typhlosion equivalence, later Typhlosion equivalence, Meganium 015/P
+  equivalence, Feraligatr 016/P equivalence, other Johto-starter campaign
+  equivalence, complete Japanese promo universe, or spendability. Generated
+  gaps remain bounded at 100. Validation passed: JSON; catalog dossier build +
+  `--check`; card dossier `--check`; completion audit `--check`; focused
+  assertion for the trio-close special-identification packet. Hashes: corpus
+  `a132c39063c632ef1567b19af43cbeb23e1767ff64c13461efb725f03306bb5e`;
+  index `bfef14cb4df40a8a551c35dc2438bb6de6547cc92759bf779b0fdd4d2daa9717`;
+  queue `aa110371a1ed09b8847cbf8ab620aab226efc91874a46ef3929fcdaba5dfb7cd`;
+  audit `393db1633b0e5b88f82689ad888dc6fdf86b762104e866686ad6311a27dbf3f3`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
