@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 216: P Promo Rocket's Scizor 002 deepened; corpus 1149b6cb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 217: P Promo Rocket's Sneasel 003 deepened; corpus d240f5c1)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventeenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-003-p`
+  Rocket's Sneasel 003/P is now hand-authored rather than generator memory.
+  The pass records the August 2001 CoroCoro Comic / July 2001 note,
+  Darkness-row identity, Rocket branding, absent promoted Japanese name, absent
+  artist credit, and absent row-specific image witness. The special
+  identification packet is explicit and first-class: agents must confirm
+  Rocket's Sneasel rather than ordinary Sneasel, printed `003/P`, and the
+  numbered P Promotional spine; keep the CoroCoro note separate from physical
+  provenance; and avoid merging this row with ordinary Sneasel expansion cards,
+  later Sneasel promos, English Sneasel rows, other owner/Team Rocket cards, or
+  absent art/attack/Rocket-owner/Japanese-name details. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, price, CoroCoro copy provenance, image availability, illustrator
+  credit, Japanese-name certainty, attack text, Rocket-owner text, ordinary
+  Sneasel equivalence, later Sneasel equivalence, Team Rocket card equivalence,
+  complete Japanese promo universe, or spendability. Generated gaps remain
+  bounded at 100. Validation passed: JSON; catalog dossier build + `--check`;
+  card dossier `--check`; completion audit `--check`; focused assertion for
+  the new special-identification packet. Hashes: corpus
+  `d240f5c1db72d278f793438ac66088bd257117aee86eff370b2d08a3374a441d`;
+  index `36602a92bbd3e6afc7039ac5b6dc99ad94c3b82219c131c4806dab143289fbe0`;
+  queue `ed85028b0dd68e882a214b1cdf973f25de7becca5cd4b103f3f188c20b2ba3ae`;
+  audit `9ccc948a20d0a69ef3a9caab5b733ad7f3afe12c182103cd4a3894fb26d68e22`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:

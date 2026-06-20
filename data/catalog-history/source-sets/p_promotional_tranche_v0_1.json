@@ -691,6 +691,231 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-003-p",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Sneasel",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-003-p",
+        "catalog_row_id": "003/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-003-p",
+          "title": "Local Japanese promo WotC catalog row: Rocket's Sneasel 003/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Rocket's Sneasel as P Promotional card number 003/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records August 2001 CoroCoro Comic, with a July 2001 note, as the distribution context for Rocket's Sneasel 003/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Rocket's Sneasel 003/P as a Darkness Pokemon row, but does not provide HP, attacks, stage text, Rocket-owner text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Rocket's Sneasel 003/P, so this dossier leaves the artist unset rather than importing artist memory from another Sneasel print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Rocket's Sneasel 003/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Rocket's Sneasel 003/P matters because it keeps the early P spine in Rocket-owned territory while shifting the route to CoroCoro: Darkness type, magazine distribution, and numbered promo identity all have to stay together.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Rocket's Sneasel and printed 003/P, preserve the August 2001 CoroCoro Comic / July 2001 note as distribution context only, and avoid importing ordinary Sneasel rows, later Sneasel promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_rockets_sneasel_003_corocoro_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Sneasel P promo, CoroCoro Sneasel, 003/P, Japanese Rocket's Sneasel promo, Darkness Sneasel promo, or early numbered P Promotional card.",
+          "summary": "Confirm Rocket's Sneasel and printed 003/P before treating the card as this August 2001 CoroCoro Comic P Promotional row.",
+          "steps": [
+            "Confirm the card name is Rocket's Sneasel, not ordinary Sneasel.",
+            "Read the printed promo number as 003/P and keep it inside the numbered P Promotional spine.",
+            "Keep the August 2001 CoroCoro Comic / July 2001 note legible but separate from physical provenance.",
+            "Do not merge this card with ordinary Sneasel expansion cards, later Sneasel promos, English Sneasel rows, or other owner/Team Rocket cards without number evidence.",
+            "Do not infer illustrator, attacks, HP, Rocket-owner text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and name line; ask for CoroCoro provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "Rocket-owner text",
+            "ordinary Sneasel equivalence",
+            "later Sneasel equivalence",
+            "Team Rocket card equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "003/P",
+        "rarity_signal": "August 2001 CoroCoro Comic (July 2001)",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro magazine route",
+          "numbered P spine",
+          "Rocket branding",
+          "Darkness-type Sneasel",
+          "identity trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "003/P",
+          "Rocket's Sneasel",
+          "Darkness",
+          "August 2001 CoroCoro Comic",
+          "July 2001 note",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Rocket's Sneasel 003/P keeps early P Promotional sharp and shadowy: a CoroCoro-routed Darkness promo whose name line and printed number matter more than generic Sneasel memory."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Sneasel 003/P: CoroCoro keeps the shadows moving",
+        "why_it_matters": "Rocket's Sneasel follows Rocket's Scizor like a darker echo. The P spine is still young, and already it is learning different routes: movie theater, Trainers magazine, CoroCoro insert memory. Sneasel brings Darkness typing and Rocket flavor into that line, but the agent must keep the route crisp: 003/P, August 2001 CoroCoro Comic with a July note, Rocket's Sneasel, no borrowed artist, no borrowed attacks, no physical-card truth until evidence arrives.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
       "type": "card",
       "context": {
