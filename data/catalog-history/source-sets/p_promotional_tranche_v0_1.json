@@ -1854,6 +1854,234 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-009-p",
+      "type": "card",
+      "context": {
+        "name_en": "Bill",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-009-p",
+        "catalog_row_id": "009/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-009-p",
+          "title": "Local Japanese promo WotC catalog row: Bill 009/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Bill as P Promotional card number 009/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokemon Card Trainers Vol. 13, September 2001, as the distribution context for Bill 009/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Bill 009/P as a Trainer row with Supporter rarity/source signal, but does not provide card text, Japanese name, or illustrator in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Bill 009/P, so this dossier leaves the artist unset rather than importing artist memory from another Bill print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Bill 009/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Bill 009/P matters because Pokemon Card Trainers Vol. 13 did not only carry creature promos: it also placed a core human character and Supporter/Trainer identity into the numbered P spine.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Bill, the printed 009/P number, and the Trainer/Supporter row identity; preserve the Pokemon Card Trainers Vol. 13 route as distribution context only; and avoid importing game text, Japanese name, artist credit, or ordinary Bill cards absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_bill_009_trainers_supporter_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Bill P promo, Trainers Vol. 13 Bill, Pokemon Card Trainers Bill, 009/P, Japanese Bill promo, Supporter Bill, or early numbered P Promotional Trainer card.",
+          "summary": "Confirm Bill, printed 009/P, and Trainer/Supporter row identity before treating the card as this Pokemon Card Trainers Vol. 13 P Promotional row.",
+          "steps": [
+            "Confirm the card name is Bill.",
+            "Read the printed promo number as 009/P and keep it inside the numbered P Promotional spine.",
+            "Confirm the row is a Trainer card with Supporter signal, not a Pokemon character row.",
+            "Keep the Pokemon Card Trainers Vol. 13, September 2001, note legible but separate from physical provenance.",
+            "Do not merge this card with ordinary Bill trainer cards, other Bill promos, English Bill rows, or Pokemon Card Trainers Vol. 13 creature rows without number evidence.",
+            "Do not infer illustrator, card text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and title/type area; ask for Pokemon Card Trainers provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Pokemon Card Trainers copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "card text",
+            "ordinary Bill equivalence",
+            "other Bill promo equivalence",
+            "Pokemon Card Trainers Vol. 13 creature-row equivalence",
+            "magazine-object provenance",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "009/P",
+        "rarity_signal": "Pokemon Card Trainers Vol. 13",
+        "artist": "",
+        "assembly_themes": [
+          "Pokemon Card Trainers route",
+          "magazine-reader route",
+          "numbered P spine",
+          "Trainer/Supporter identity",
+          "human character card",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "009/P",
+          "Bill",
+          "Trainer",
+          "Supporter",
+          "Pokemon Card Trainers Vol. 13",
+          "September 2001",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Bill 009/P is the Vol. 13 pivot from mythic Celebi memory into human-character utility: a Supporter/Trainer row that still belongs to the same numbered P assembly."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Bill 009/P: the human in the promo spine",
+        "why_it_matters": "Bill is not the loud chase card in the room, which is exactly why this row is useful. It shows that the P Promotional file is not just a parade of mascots and legends; it is also the paper machinery of the game, the helpers, the magazine readers, the little human fixtures that made Pokemon feel lived-in. The agent should see the charm and the boundary at once: Bill, 009/P, Pokemon Card Trainers Vol. 13, Supporter/Trainer signal. Everything else still needs evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Pokemon Card Trainers copy provenance",
+          "illustrator credit",
+          "image witness",
+          "card text"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-010-p",
       "type": "card",
       "context": {

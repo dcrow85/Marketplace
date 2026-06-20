@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 220: P Promo Celebi 007 deepened; corpus 0f37228a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 221: P Promo Bill 009 deepened; corpus 992017ba)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-twenty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-009-p`
+  Bill 009/P is now hand-authored rather than generator memory. The pass
+  records the Pokemon Card Trainers Vol. 13, September 2001, route;
+  Trainer-row identity; Supporter signal; human-character/game-helper
+  collector texture; absent promoted Japanese name; absent artist credit; and
+  absent row-specific image witness. The special identification packet is
+  explicit and first-class: agents must confirm Bill, printed `009/P`, the
+  numbered P Promotional spine, and Trainer/Supporter row identity; keep the
+  Pokemon Card Trainers Vol. 13 note separate from physical provenance; and
+  avoid merging this row with ordinary Bill trainer cards, other Bill promos,
+  English Bill rows, Pokemon Card Trainers Vol. 13 creature rows, or absent
+  art/card-text/Japanese-name details. Boundaries remain explicit: catalog
+  legibility is not seller possession, authenticity, condition, price, Pokemon
+  Card Trainers copy provenance, image availability, illustrator credit,
+  Japanese-name certainty, card text, ordinary Bill equivalence, other Bill
+  promo equivalence, Pokemon Card Trainers Vol. 13 creature-row equivalence,
+  magazine-object provenance, complete Japanese promo universe, or
+  spendability. Generated gaps remain bounded at 100. Validation passed: JSON;
+  catalog dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the Trainer/Supporter
+  special-identification packet. Hashes: corpus
+  `992017baf0c96bed3e5232ea97d0c9a0fdee0aa596b710b3aa73884667518ce8`;
+  index `b1aa6e7ab7b90958b5ca7367f2f0d7b7cbc1e7973068ccd8abb2a3bf92397cf0`;
+  queue `0d6138433e5ad4582fbfe7dca5b1d7d18a20b7f4c46662e9eac867afffb23306`;
+  audit `ba0cc6217627ce8f15b501493213505509d6936ef8fc0586941132883080f4fb`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-twentieth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
