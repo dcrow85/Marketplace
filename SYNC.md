@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 269: Aquapolis Muk H17 deepened; corpus 1d46e26e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 270: Aquapolis Nidoking H18 deepened; corpus c9e39bc4)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H18` Nidoking H18 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H18`, live Pokemon TCG API
+  `cards/ecard2-24`, live Pokemon TCG API `cards/ecard2-150`, live Pokemon
+  TCG API `sets/ecard2`, Bulbapedia `Nidoking (Aquapolis H18)`, Bulbapedia
+  `Nidoking (Aquapolis 150)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Nidoking / `ニドキング` / Nidoking, English Aquapolis /
+  e-Card Series, API card id `ecard2-H18`, printed number H18, H18/H32 Rare
+  Holo sequence, Japanese The Town on No Map 049/092 holo lineage, the
+  non-Holo Aquapolis #24 / The Town on No Map 048/092 sibling, and the
+  same-set Crystal Nidoking #150 / Wind from the Sea 088/087 false friend.
+  It also carries the Stage 2 Fighting profile, Nidorino evolution line,
+  110 HP, Grass weakness, Lightning resistance, three-retreat cost, Earth
+  Rage / Giant Horn, Naoyo Kimura credit, Crystal Nidoking's separate
+  Hironobu Yoshida / Crystal Type / Poison Horn / Rolling Thunder profile,
+  and e-Reader / Dot-Code context including C-71 vs C-71-# card IDs. The
+  special identification packet tells agents to keep H18 separate from
+  Aquapolis Nidoking #24, The Town on No Map 048/092, Crystal Nidoking #150,
+  Wind from the Sea 088/087, reverse-holo listings, generic Nidoking wants,
+  and seller-card image claims. It also keeps Dot-Code, e-Reader, and
+  close-combat Pokedex texture legible without promoting them into seller
+  possession, authenticity, condition truth, price truth, e-Reader scan
+  success, Crystal Nidoking equivalence, or spendability. Rebuilt
+  `data/catalog-history/dossiers.json`, `index.json`, `deepening-queue.json`,
+  `manifest.json`, and `audit.json`; corpus hash is
+  `c9e39bc445e88b77f4836e35689260d2aeb736faf832a2c5919561858f8be21b`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H18
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
