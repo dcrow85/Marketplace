@@ -1,0 +1,558 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "All Card Calendar / Pokemon 2nd Anniversary Calendar _____'s Pikachu",
+    "release_family_id": "jp_promo_all_card_calendar_19981105",
+    "notes": [
+      "Deepens the November 5, 1998 All Card Calendar / Pokemon 2nd Anniversary Calendar source slice.",
+      "Covers the single modeled source-pinned row: _____'s Pikachu 053.",
+      "Keeps Birthday Pikachu as collector shorthand grounded in birthday-attack context, not as the formal source title."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_all_card_calendar_19981105",
+      "type": "release",
+      "context": {
+        "name_en": "All Card Calendar source slice",
+        "name_ja": "オールカードカレンダー プロモ",
+        "release_family_id": "jp_promo_all_card_calendar_19981105",
+        "release_date": "1998-11-05",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "All Card Calendar route",
+          "Pokemon 2nd Anniversary Calendar context",
+          "_____'s Pikachu blank-name ritual",
+          "Birthday Pikachu collector shorthand",
+          "Kagemaru Himeno illustrator lane",
+          "Pokemon Center birthday-visitor branch boundary",
+          "English Wizards Promo 24 boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_all_card_calendar_19981105:053",
+            "name": "_____'s Pikachu",
+            "number": "053",
+            "why": "_____'s Pikachu is a chase because the card makes room for the owner. The blank name and birthday attack turn a promo into a small social ritual rather than just another mascot card.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Kagemaru Himeno",
+            "row_count": 1,
+            "examples": [
+              "_____'s Pikachu"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth",
+          "complete Birthday Pikachu variant census"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_all_card_calendar_19981105.json",
+          "title": "Local Japanese pre-English catalog: All Card Calendar source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete calendar object provenance",
+            "sealed-calendar variant coverage",
+            "official copy count",
+            "complete Birthday Pikachu variant census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json",
+          "title": "Local selected-lines snapshot: All Card Calendar / Pokemon 2nd Anniversary Calendar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "full calendar source",
+            "complete accessory-object ledger",
+            "sealed-calendar variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/_____\\'s_Pikachu_(Wizards_Promo_24)",
+          "title": "Bulbapedia: _____'s Pikachu (Wizards Promo 24)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete calendar object provenance"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/_____-s-pikachu-pokemon-2nd-anniversary-calendar-1998-unnumbered/",
+          "title": "Pokumon: _____'s Pikachu (Pokemon 2nd Anniversary Calendar 1998)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official copy count",
+            "complete calendar object provenance",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json",
+          "title": "Catalog-history source set: Japanese Unnumbered Promotional cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "current row-specific seller evidence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and selected source snapshot place the All Card Calendar / Pokemon 2nd Anniversary Calendar source slice on November 5, 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local child slice models one source-pinned card identity for this calendar route: _____'s Pikachu 053.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The route is All Card Calendar / Pokemon 2nd Anniversary Calendar, a calendar/accessory object rather than a booster, deck, or tournament prize.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row and selected source lines credit Kagemaru Himeno for _____'s Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Birthday Pikachu is collector shorthand grounded in the birthday attack / おたんじょうび context and blank-name title; the selected snapshot explicitly warns it is not a quoted source title.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "_____'s Pikachu matters because it turns a card title into a human field: the blank belongs to a person, and the calendar route makes the card feel like birthday ritual rather than only mascot inventory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the All Card Calendar route, blank-name title, Kagemaru Himeno credit, Birthday Pikachu shorthand boundary, Pokemon Center birthday-visitor branch, and English Wizards Promo 24 boundary before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "all_card_calendar_1998_birthday_pikachu_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says All Card Calendar, Pokemon 2nd Anniversary Calendar, _____'s Pikachu, Birthday Pikachu, owner Pikachu, Kagemaru Himeno, Wizards Promo 24, Pokemon Center birthday promo, Tokyo Pokemon Center, blank name, row 053, or おたんじょうび.",
+          "summary": "Treat this as the All Card Calendar lineage only when the calendar route and blank-name card identity are supported.",
+          "steps": [
+            "Confirm the formal card identity is _____'s Pikachu, source-pinned row 053.",
+            "Confirm the claimed route is All Card Calendar / Pokemon 2nd Anniversary Calendar, released November 5, 1998.",
+            "Use Birthday Pikachu as collector shorthand only; do not replace the formal title with it in evidence packets.",
+            "Record Kagemaru Himeno as the catalog/source illustrator credit, not as physical-card authentication proof.",
+            "Separate the All Card Calendar lineage from the Tokyo Pokemon Center birthday-visitor promo branch.",
+            "Separate Japanese calendar-route copies from English Wizards Black Star Promo 24 and other later Birthday Pikachu memories.",
+            "Treat owner-written names, blank-name status, signatures, inscriptions, or altered writing fields as condition/provenance facts requiring their own evidence.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name blank area, attack text, illustrator/copyright area, lower-right symbol/number area, surface/corners, and any calendar/slab/cert evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete calendar-object ledger",
+            "sealed-calendar variant catalog",
+            "complete Birthday Pikachu variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "All Card Calendar — Pikachu leaves a blank for the human",
+        "why_it_matters": "This is one of the clearest early places where Pokemon cards stop being only creatures and become social forms. The blank in _____'s Pikachu is the magic: a card title waiting for a person, a birthday, a calendar, a little ritual of ownership. Kagemaru Himeno's softness matters because the card is not trying to roar. It is making space.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_all_card_calendar_19981105:053",
+      "type": "card",
+      "context": {
+        "name_en": "_____'s Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_all_card_calendar_19981105",
+        "release_name": "All Card Calendar source slice",
+        "row_id": "jp_promo_all_card_calendar_19981105:053"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "_____'s Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "number": "053",
+        "row_id": "jp_promo_all_card_calendar_19981105:053"
+      },
+      "card_highlights": {
+        "number": "053",
+        "rarity_signal": "Unnumbered Promotional / All Card Calendar source slice",
+        "artist": "Kagemaru Himeno",
+        "assembly_themes": [
+          "blank-name owner field",
+          "Birthday Pikachu shorthand",
+          "All Card Calendar route",
+          "Kagemaru Himeno softness",
+          "Pokemon Center birthday branch boundary",
+          "English Wizards Promo 24 boundary"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_all_card_calendar_19981105.json#row:jp_promo_all_card_calendar_19981105:053",
+          "title": "Local catalog row: _____'s Pikachu / All Card Calendar source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_all_card_calendar_1998_selected_lines.json",
+          "title": "Local selected-lines snapshot: All Card Calendar / _____'s Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "full calendar source",
+            "complete accessory-object ledger",
+            "sealed-calendar variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/_____\\'s_Pikachu_(Wizards_Promo_24)",
+          "title": "Bulbapedia: _____'s Pikachu (Wizards Promo 24)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete variant census"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/_____-s-pikachu-pokemon-2nd-anniversary-calendar-1998-unnumbered/",
+          "title": "Pokumon: _____'s Pikachu (Pokemon 2nd Anniversary Calendar 1998)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official copy count",
+            "complete calendar object provenance",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/jp_unnumbered_promos_v0_1.json",
+          "title": "Catalog-history source set: Japanese Unnumbered Promotional cards row 053 context",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "current row-specific seller evidence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors _____'s Pikachu as All Card Calendar source row 053.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row and selected source lines credit Kagemaru Himeno as illustrator for _____'s Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The selected snapshot preserves Birthday Pikachu as collector shorthand derived from birthday-attack context, while the formal source title remains _____'s Pikachu.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The blank-name field is the card's deepest mechanic: it lets a collector enter the title, making the card a birthday/social object as much as a Pikachu object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify row 053 by All Card Calendar route, blank-name title, Kagemaru Himeno credit, and birthday-attack context while separating Pokemon Center birthday promo and English Wizards Promo 24 branches.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "all_card_calendar_1998_birthday_pikachu_053_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says _____'s Pikachu, Birthday Pikachu, owner's Pikachu, row 053, All Card Calendar, Pokemon 2nd Anniversary Calendar, Wizards Promo 24, Pokemon Center birthday promo, Kagemaru Himeno, blank name, or おたんじょうび.",
+          "summary": "Match row 053 by calendar route, blank-name title, and evidence of the specific print branch before treating Birthday Pikachu shorthand as useful.",
+          "steps": [
+            "Confirm source row 053 and formal title _____'s Pikachu.",
+            "Confirm All Card Calendar / Pokemon 2nd Anniversary Calendar route rather than Pokemon Center birthday-visitor route or English Wizards Promo 24 route.",
+            "Use Birthday Pikachu as collector shorthand only; preserve the formal blank-name title in evidence packets.",
+            "Preserve Kagemaru Himeno as illustrator context while keeping artist credit separate from physical-card authenticity.",
+            "Inspect whether the blank-name field is blank, written in, signed, altered, or otherwise personalized, because that changes condition/provenance handling.",
+            "Ask for seller-controlled front/back photos, blank-name/title area, birthday attack text, artist/copyright area, lower-right symbol/number area, surface/corners, and any calendar/slab/cert evidence.",
+            "Do not treat a name written on the card as identity proof by itself; it is condition/provenance evidence requiring context.",
+            "Do not allow calendar story, mascot gravity, or Birthday Pikachu shorthand to become spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete calendar-object ledger",
+            "sealed-calendar variant catalog",
+            "complete Birthday Pikachu variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "_____'s Pikachu — the card with a place for you",
+        "why_it_matters": "A lot of Pikachu cards are famous because Pikachu is famous. This one is different. _____'s Pikachu is famous because the card asks for a human to complete it. The blank-name field is tender and dangerous at the same time: a birthday ritual, a condition question, a provenance mark, a personalization trap. That is exactly why the catalog has to care.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    }
+  ]
+}

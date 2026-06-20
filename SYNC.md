@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 164: Crystal Tower theatrical pair deepened; corpus 7a1dd273)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 165: All Card Calendar Pikachu deepened; corpus c096d4a2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-fifth
+  catalog-history pass:
+  `data/catalog-history/source-sets/all_card_calendar_birthday_pikachu_v0_1.json`
+  deepens the November 5, 1998 All Card Calendar / Pokemon 2nd Anniversary
+  Calendar source slice and its single modeled row, _____'s Pikachu 053. The
+  pass keeps the formal title distinct from collector shorthand: Birthday
+  Pikachu is useful because of the blank-name / おたんじょうび birthday context,
+  but evidence packets should preserve _____'s Pikachu as the card title. It
+  frames the blank as a human field: ritual, owner mark, condition question, and
+  provenance clue, never automatic authenticity. Kagemaru Himeno is preserved as
+  illustrator context. Special ID rails separate All Card Calendar lineage from
+  the Tokyo Pokemon Center birthday-visitor branch, English Wizards Black Star
+  Promo 24, later Birthday Pikachu memories, and generic mascot listings.
+  Written names, signatures, inscriptions, or altered blank fields are condition
+  / provenance facts requiring their own evidence. Generated gaps moved to 24
+  release / 3825 card. Current hashes: corpus
+  `c096d4a2efdb77614b7e18dad9e484f2b2f5f2a94a1024295e7b6db57b4e506e`,
+  index `90eb5a2ddd9f46b1e4152645ee7493edc3e4f5fd59f40e95e9e1b608df7e410d`,
+  queue `bab1815d5bbc5afb067c19f117f130b4bb48fcb3c1e82f3ba71f9c9e0d34fb4f`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-fourth
   catalog-history pass:
   `data/catalog-history/source-sets/crystal_tower_entei_theatrical_pair_v0_1.json`

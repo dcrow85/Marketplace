@@ -3,29 +3,29 @@
   "corpus": {
     "card_dossier_count": 4549,
     "claim_count": 23719,
-    "corpus_hash": "7a1dd2733882960eb7119306d004b84d85ba222d8368365210fd0fe9e4c0b790",
-    "generated_card_dossier_count": 3826,
-    "generated_release_dossier_count": 25,
+    "corpus_hash": "c096d4a2efdb77614b7e18dad9e484f2b2f5f2a94a1024295e7b6db57b4e506e",
+    "generated_card_dossier_count": 3825,
+    "generated_release_dossier_count": 24,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6750
+    "source_count": 6758
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "5271f1fa95bf9673170e51698de2fa5440dffd2dddeb91147217095bcb796662",
-    "release_queue_count": 25,
+    "queue_hash": "bab1815d5bbc5afb067c19f117f130b4bb48fcb3c1e82f3ba71f9c9e0d34fb4f",
+    "release_queue_count": 24,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T00:22:47Z",
+  "generated_at": "2026-06-20T00:30:33Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "fe2772a54bca6f7e2dc3ffe9a5208bc953365e91bea00c1ded38a25115e30231",
+    "index_hash": "90eb5a2ddd9f46b1e4152645ee7493edc3e4f5fd59f40e95e9e1b608df7e410d",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -43,6 +43,7 @@
   "source_sets": [
     "data/catalog-history/source-sets/adv_expansion_pack_v0_1.json",
     "data/catalog-history/source-sets/adv_p_pre_wotc_edge_tranche_v0_1.json",
+    "data/catalog-history/source-sets/all_card_calendar_birthday_pikachu_v0_1.json",
     "data/catalog-history/source-sets/ana_everyones_happy_phase1_v0_1.json",
     "data/catalog-history/source-sets/ana_everyones_happy_phase2_v0_1.json",
     "data/catalog-history/source-sets/ana_get_in_a_jet_2000_phase1_marill_v0_1.json",
