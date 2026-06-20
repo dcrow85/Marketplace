@@ -466,6 +466,231 @@
       }
     },
     {
+      "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-002-p",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Scizor",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+        "row_id": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-002-p",
+        "catalog_row_id": "002/P",
+        "release_name": "P Promotional cards"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json#row:jp_promo_p_promotional_20010701_20021231:numbered_p_promo-002-p",
+          "title": "Local Japanese promo WotC catalog row: Rocket's Scizor 002/P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Rocket's Scizor as P Promotional card number 002/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Pokemon Card Trainers Vol. 12, July 2001, as the distribution note for Rocket's Scizor 002/P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Rocket's Scizor 002/P as a Metal Pokemon row, but does not provide HP, attacks, stage text, Rocket-owner text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered P Promotional source row does not provide an illustrator credit for Rocket's Scizor 002/P, so this dossier leaves the artist unset rather than importing artist memory from another Scizor print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Rocket's Scizor 002/P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Rocket's Scizor 002/P matters because the numbered P spine immediately moves from movie-release Kecleon into magazine-reader depth: Pokemon Card Trainers carries a Rocket-branded Metal favorite into the promo file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Rocket's Scizor and printed 002/P, preserve the Pokemon Card Trainers Vol. 12 route as distribution context only, and avoid importing ordinary Scizor rows, later Scizor promos, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "p_promo_rockets_scizor_002_trainers_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Rocket's Scizor P promo, Trainers Vol. 12 Scizor, 002/P, Japanese Rocket's Scizor promo, Metal Scizor promo, or early numbered P Promotional card.",
+          "summary": "Confirm Rocket's Scizor and printed 002/P before treating the card as this Pokemon Card Trainers Vol. 12 P Promotional row.",
+          "steps": [
+            "Confirm the card name is Rocket's Scizor, not ordinary Scizor.",
+            "Read the printed promo number as 002/P and keep it inside the numbered P Promotional spine.",
+            "Keep the Pokemon Card Trainers Vol. 12 July 2001 note legible but separate from physical provenance.",
+            "Do not merge this card with ordinary Scizor expansion cards, later Scizor promos, English Scizor rows, or other owner/Team Rocket cards without number evidence.",
+            "Do not infer illustrator, attacks, HP, Rocket-owner text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and name line; ask for magazine provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Pokemon Card Trainers copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "Rocket-owner text",
+            "ordinary Scizor equivalence",
+            "later Scizor equivalence",
+            "Team Rocket card equivalence",
+            "complete Japanese promo universe",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "002/P",
+        "rarity_signal": "Pokemon Card Trainers Vol. 12 (July 2001)",
+        "artist": "",
+        "assembly_themes": [
+          "magazine-reader route",
+          "numbered P spine",
+          "Rocket branding",
+          "Metal-type Scizor",
+          "identity trap",
+          "no image witness"
+        ],
+        "signals": [
+          "P Promotional cards",
+          "002/P",
+          "Rocket's Scizor",
+          "Metal",
+          "Pokemon Card Trainers Vol. 12",
+          "July 2001",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Rocket's Scizor 002/P is early P Promotional getting sharp: a Metal Scizor with Rocket branding, anchored to Pokemon Card Trainers Vol. 12 rather than a pack or generic promo bucket."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket's Scizor 002/P: the magazine file gets teeth",
+        "why_it_matters": "After Kecleon's movie-door opening, Rocket's Scizor makes the P spine feel less ceremonial and more collector-weird. This is a fan-magazine route, a Metal-type fan favorite, and Rocket branding all in one early number. The assembly is the point: 002/P, Pokemon Card Trainers Vol. 12, July 2001, Rocket's Scizor. The row does not give us the artist, the scan, the attacks, or the seller's card; it gives an agent the exact trail to ask better questions.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Pokemon Card Trainers copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
       "type": "card",
       "context": {

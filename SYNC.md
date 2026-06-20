@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 215: P Promo Kecleon 001 deepened; corpus 4456a8a7)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 216: P Promo Rocket's Scizor 002 deepened; corpus 1149b6cb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-002-p`
+  Rocket's Scizor 002/P is now hand-authored rather than generator memory. The
+  pass records the Pokemon Card Trainers Vol. 12 July 2001 magazine route,
+  Metal-row identity, Rocket branding, absent promoted Japanese name, absent
+  artist credit, and absent row-specific image witness. The special
+  identification packet is explicit and first-class: agents must confirm
+  Rocket's Scizor rather than ordinary Scizor, printed `002/P`, and the
+  numbered P Promotional spine; keep the Trainers Vol. 12 note separate from
+  physical provenance; and avoid merging this row with ordinary Scizor
+  expansion cards, later Scizor promos, English Scizor rows, other owner/Team
+  Rocket cards, or absent art/attack/Rocket-owner/Japanese-name details.
+  Boundaries remain explicit: catalog legibility is not seller possession,
+  authenticity, condition, price, Pokemon Card Trainers copy provenance, image
+  availability, illustrator credit, Japanese-name certainty, attack text,
+  Rocket-owner text, ordinary Scizor equivalence, later Scizor equivalence,
+  Team Rocket card equivalence, complete Japanese promo universe, or
+  spendability. Generated gaps remain bounded at 100. Validation passed: JSON;
+  catalog dossier build + `--check`; card dossier `--check`; completion audit
+  `--check`; focused assertion for the new special-identification packet.
+  Hashes: corpus
+  `1149b6cb0ed552715a97e5d7e507af929eb811beabb159a609a9f432f15b1aab`;
+  index `60908b9b7d6e643d639f912802754fcdd949104e1b8771216de465488f1b5c8b`;
+  queue `21886c3ca5b37d089ce66e43e0bdd342dd79f57f269c7311437dbddfe25e7e62`;
+  audit `9b2919c8c1fc30e9002c19f51cb5071635ef3ed9308832e606dd5e556c08f52d`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fifteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
