@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 240: P Promo Togepi 035 deepened; corpus 99f4c887)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 241: P Promo Sneasel 036 deepened; corpus 7a5b127c)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-forty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-036-p`
+  Sneasel 036/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Sneasel (P Promo
+  36)` to `Sneasel (Aquapolis 110)`, so the row now carries the deeper card
+  assembly: Sneasel / `ニューラ` / Nyula, Darkness Basic, HP 60, Fighting
+  weakness, Psychic resistance, retreat cost 1, Midori Harada illustration
+  credit, Rob / `かすめとる`, Claw / `かぎづめ`, Aquapolis 110/147, Wind from
+  the Sea 069/087, P Promotional 036/P, e-Reader card ID `D-37-#`, short-strip
+  context, and long-strip hidden-attack context for Jump Slash /
+  `オーバースラッシュ`. The McDonald's route remains the transaction-facing
+  identity wall: Saturdays and Sundays from May 25 through June 16, 2002,
+  printed `036/P`, inside the numbered P Promotional spine. The special
+  identification packet tells agents to confirm Sneasel / `ニューラ` / Nyula,
+  printed `036/P`, Darkness Basic profile, Harada credit, McDonald's weekend
+  route, printed attacks, `D-37-#`, and Jump Slash context; do not merge with
+  Aquapolis 110/147, Wind from the Sea 069/087, ordinary Sneasel rows, later
+  Sneasel promos, other McDonald's promos, or generic Harada/e-Reader memory
+  without printed-number evidence. No-overclaim boundaries remain explicit:
+  seller possession, authenticity, condition, price, provenance, sealed-packet
+  state, e-Reader readability, hidden-attack functionality, and spendability
+  remain outside the catalog row. Validation passed:
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion that the index surfaces one special
+  instruction and the corpus hash is
+  `7a5b127c67f65e479d2c5ee9c78d823172497e7eb9673f0bedefa9449a28ddb9`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-fortieth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
