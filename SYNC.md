@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 272: Aquapolis Arcanine H2 deepened; corpus 64787f31)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 273: Aquapolis Octillery H20 deepened; corpus ffa32306)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H20` Octillery H20 is now
+  hand-authored rather than generator memory. This pass used the local
+  English WoC row, live Pokemon TCG API `cards/ecard2-H20`, live Pokemon
+  TCG API `cards/ecard2-26`, live Pokemon TCG API `sets/ecard2`,
+  Bulbapedia `Octillery (Aquapolis H20)`, and Bulbapedia `Aquapolis
+  (TCG)`. The card dossier now carries Octillery / `オクタン` / Okutank,
+  English Aquapolis / e-Card Series, API card id `ecard2-H20`, printed
+  number H20, H20/H32 Rare Holo sequence, Japanese Wind from the Sea
+  040/087 holo lineage, the non-Holo Aquapolis #26 / Wind from the Sea
+  039/087 sibling, Stage 1 Water profile, Remoraid evolution line, 80 HP,
+  Lightning weakness, two-retreat cost, Suction Cups / Smokescreen, and
+  Kouki Saitou credit. The special identification packet tells agents to
+  keep H20 separate from Aquapolis Octillery #26, Wind from the Sea 039/087,
+  reverse-holo listings, generic Octillery wants, Water-control deck
+  references, and seller-card image claims. It also keeps Dot-Code,
+  e-Reader, D-63 / D-63-# IDs, Pokemon Crystal Pokedex source, hole-stealing
+  Pokedex texture, and no-long-strip context legible without promoting them
+  into seller possession, authenticity, condition truth, price truth,
+  e-Reader scan success, reverse-holo equivalence, long-strip data presence,
+  or spendability. Rebuilt `data/catalog-history/dossiers.json`,
+  `index.json`, `deepening-queue.json`, `manifest.json`, and `audit.json`;
+  corpus hash is
+  `ffa323069c3e8f07bf62d40078cf3178bb7a8f49f36210585cfe816d29b9b661`.
+  Validation run: `python3 -m json.tool
+  data/catalog-history/source-sets/aquapolis_v0_1.json`, `python3
+  scripts/build_catalog_history_dossiers.py`, `python3
+  scripts/build_catalog_history_dossiers.py --check`, `python3
+  scripts/build_card_dossiers.py --check`, `python3
+  scripts/build_catalog_completion_audit.py --check`, plus a focused H20
+  propagation assertion over the source dossier, generated corpus, and index.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-seventy-second
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
