@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 265: Aquapolis Jumpluff H13 deepened; corpus cff8c5bb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 266: Aquapolis Kingdra H14 deepened; corpus 31f8f4b7)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-H14` Kingdra H14 is now hand-authored
+  rather than generator memory. This pass used the local English WoC row,
+  live Pokemon TCG API `cards/ecard2-H14`, live Pokemon TCG API
+  `cards/ecard2-19`, live Pokemon TCG API `cards/ecard2-148`, live Pokemon
+  TCG API `sets/ecard2`, Bulbapedia `Kingdra (Aquapolis H14)`, Bulbapedia
+  `Kingdra (Aquapolis 148)`, and Bulbapedia `Aquapolis (TCG)`. The card
+  dossier now carries Kingdra / `キングドラ`, English Aquapolis / e-Card
+  Series, API card id `ecard2-H14`, printed number H14, H14/H32 Rare Holo
+  sequence, Japanese Wind from the Sea 042/087 holo lineage, the non-Holo
+  Aquapolis #19 / Wind from the Sea 041/087 sibling, the same-set Crystal
+  Kingdra #148 / Wind from the Sea 089/087 false friend, Stage 2 Water
+  profile, Seadra evolution line, 120 HP, Water Cyclone / Rapids, Atsuko
+  Nishida credit, and e-Reader / Dot-Code context including D-64 vs D-64-#
+  card IDs. The special identification packet tells agents to keep H14
+  separate from Aquapolis Kingdra #19, Crystal Kingdra #148, Wind from the Sea
+  041/087 and 089/087, reverse-holo listings, generic Kingdra wants, Crystal
+  Kingdra wants, and seller-card image claims. It also keeps Dot-Code and
+  e-Reader context legible only: not seller possession, authenticity,
+  condition truth, price truth, scan success, Crystal Kingdra equivalence, or
+  spendability. Validation passed: `json.tool`,
+  `build_catalog_history_dossiers.py`, `--check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, plus a focused assertion for `キングドラ`, H14/H32, H14 vs #19
+  separation, Crystal #148 false-friend separation, 042/087 vs 041/087 vs
+  089/087, Atsuko Nishida, Mikio Menjo, Water Cyclone / Rapids, Crystal Type,
+  D-64 / D-64-# e-Reader caveats, special-identification packet, and corpus
+  propagation. New catalog-history corpus hash:
+  `31f8f4b72e6b3cba524840ae388b58bdbcc2f6f2f1720dab8b57ac39ef25d0a4`.
+
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-sixty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

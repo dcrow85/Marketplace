@@ -9,6 +9,7 @@
       "Houndoom H11",
       "Hypno H12",
       "Jumpluff H13",
+      "Kingdra H14",
       "Tyranitar H28",
       "Umbreon H29",
       "Espeon H9",
@@ -1898,6 +1899,398 @@
           "price truth",
           "e-Reader scan success",
           "Construction: Action application playability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-H14",
+      "type": "card",
+      "context": {
+        "name_en": "Kingdra",
+        "name_ja": "キングドラ",
+        "romaji": "Kingdra",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-H14",
+        "catalog_row_id": "ecard2-H14",
+        "card_number": "H14",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Rare Holo H-number sequence / Japanese Wind from the Sea lineage",
+        "variant_lane": "H-number Rare Holo",
+        "non_holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-19",
+        "same_set_crystal_false_friend": "en_wotc_aquapolis_20030115:ecard2-148",
+        "japanese_lineage_card_number": "Wind from the Sea 042/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-H14",
+          "title": "Local English WoC card row: Kingdra H14",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-H14",
+          "title": "Pokemon TCG API v2 card record: Kingdra ecard2-H14",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kingdra_(Aquapolis_H14)",
+          "title": "Bulbapedia: Kingdra (Aquapolis H14)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-19",
+          "title": "Pokemon TCG API v2 card record: Kingdra ecard2-19",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-148",
+          "title": "Pokemon TCG API v2 card record: Crystal Kingdra ecard2-148",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kingdra_(Aquapolis_148)",
+          "title": "Bulbapedia: Crystal Kingdra (Aquapolis 148)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Kingdra as Aquapolis H14, a Rare Holo Stage 2 Water Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives Kingdra's Japanese name as キングドラ / Kingdra and connects the Holofoil print to Japanese Wind from the Sea card 042/087, while the non-Holofoil Aquapolis print corresponds to Wind from the Sea 041/087.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Kingdra H14 with 120 HP, evolvesFrom Seadra, Lightning weakness, three-Colorless retreat, Poké-Power Water Cyclone, and attack Rapids.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Kingdra H14 to Atsuko Nishida; the local and API rows also credit Atsuko Nishida on the non-Holo Aquapolis Kingdra #19 counterpart.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia lists Kingdra as H14/H32 in Aquapolis's separate Rare Holo H-number sequence, while the local catalog and API also have a non-Holo Kingdra at #19 with the same Atsuko Nishida credit, Water Cyclone Poké-Power, and Rapids attack; agents must keep H14 and #19 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Aquapolis also contains Crystal Kingdra #148, a Secret Rare Colorless Crystal Pokemon by Mikio Menjo with Crystal Type, Aquabomb, and Dual Burn; Bulbapedia ties that Crystal print to Wind from the Sea 089/087, so it is a same-set chase-card false friend rather than the H14 Water holo.",
+          "sources": [
+            "s1",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Kingdra H14 page records card ID D-64 for the Holofoil print and D-64-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Rapids first appeared on Misty's Poliwhirl from Gym Heroes and that Kingdra H14's e-Reader Pokedex entry comes from Pokemon Crystal, tying this Aquapolis print to both older Gym-era attack language and Game Boy text.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Kingdra H14 matters because it is a quiet hinge in Aquapolis: Atsuko Nishida art, a heavy 120 HP Water Stage 2, Water Cyclone moving Energy through the board, and a Wind from the Sea identity that must not be swallowed by the brighter Crystal Kingdra #148 chase nearby.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis H14 / H14/H32, Rare Holo, English ecard2-H14, キングドラ / Kingdra, Atsuko Nishida credit, Water Cyclone / Rapids text, Wind from the Sea 042/087 lineage, D-64 e-Reader ID, and non-equivalence with Aquapolis #19, Wind from the Sea 041/087, Crystal Kingdra #148, Wind from the Sea 089/087, reverse-holo listings, and seller-card image claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_kingdra_h14_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Kingdra, キングドラ, Kingdra H14, H14/H32, Rare Holo, ecard2-H14, Atsuko Nishida, Water Cyclone, Rapids, D-64, D-64-#, Wind from the Sea, 042/087, Aquapolis #19, Crystal Kingdra, Aquapolis #148, Mikio Menjo, 089/087, or reverse holo Kingdra.",
+          "summary": "Identify Kingdra / キングドラ H14 by the Aquapolis H-number Rare Holo lane: English ecard2-H14 / H14/H32 and Wind from the Sea 042/087 lineage, not the non-Holo #19 / 041/087 sibling or the Crystal Kingdra #148 / 089/087 chase card.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-H14 / printed number H14 before accepting this as the H-number holo row.",
+            "Preserve H14/H32 and Rare Holo as load-bearing identifiers; do not collapse the card into the non-Holo Aquapolis Kingdra #19 row even though #19 shares Atsuko Nishida, Water Cyclone, and Rapids.",
+            "Preserve the Japanese lineage split: Holofoil maps to Wind from the Sea 042/087 while the non-Holofoil #19 counterpart maps to 041/087.",
+            "Keep Crystal Kingdra #148 separate: it is a Secret Rare / Crystal Pokemon by Mikio Menjo with Crystal Type and Wind from the Sea 089/087 lineage, not the H14 Water holo.",
+            "Use Atsuko Nishida credit, Stage 2 Water profile, Seadra evolution line, Water Cyclone, Rapids, D-64 Holofoil e-Reader ID, and D-64-# Non Holofoil e-Reader ID as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep reverse-holo listings, generic Kingdra wants, Crystal Kingdra wants, and seller-card image claims separate until set, number, rarity, attack text, and image evidence align.",
+            "Treat e-Reader and Dot-Code strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, holo surface photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "Crystal Kingdra equivalence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-H14"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Kingdra_(Aquapolis_H14)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Kingdra_(Aquapolis_148)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "H14",
+        "artist": "Atsuko Nishida",
+        "rarity_signal": "Rare Holo; Aquapolis H14/H32 H-number holo sequence, separate from non-Holo Kingdra #19 / Wind from the Sea 041/087 and Crystal Kingdra #148 / Wind from the Sea 089/087",
+        "assembly_themes": [
+          "Aquapolis H-number holo",
+          "Wind from the Sea holo lineage",
+          "Atsuko Nishida art trace",
+          "Water e-Reader interface",
+          "Water Cyclone board movement",
+          "Crystal Kingdra false-friend boundary"
+        ],
+        "collector_texture_note": "Kingdra H14 is the grounded Water holo next to a louder secret-rare shadow. The agent has to hold the quiet H14 identity without letting Crystal Kingdra #148 pull the want into the wrong lane.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "Crystal Kingdra equivalence"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kingdra H14 — the current under the chase",
+        "why_it_matters": "Kingdra H14 is easy to overlook because Aquapolis has a Crystal Kingdra shouting from the secret-rare edge. That is exactly why this card deserves care. H14 is the steady one: Atsuko Nishida, Wind from the Sea, 120 HP, Water Cyclone moving energy around the board like a current. The catalog has to let that quieter identity breathe while keeping #19 and #148 from stealing its name.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success",
+          "Crystal Kingdra equivalence"
         ]
       },
       "coverage": {
