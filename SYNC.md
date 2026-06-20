@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 197: English Base Set Venusaur 15 deepened; corpus c3238222)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 198: English Base Set Blastoise 2 deepened; corpus 60fbb563)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-eighth
+  catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
+  `en_wotc_base_set_19990109:base1-2` Blastoise / Base Set #2 is now
+  hand-authored rather than generator memory. The pass records Ken Sugimori
+  credit, Rare Holo status, HP 100 Level 52 Water Stage 2 profile, Wartortle
+  evolution line, Rain Dance Pokemon Power, Hydro Pump, Lightning weakness,
+  retreat cost 3, and the launch-binder texture of Blastoise as the early
+  game's pressure system rather than only the Water starter trophy. The special
+  identification packet is explicit and first-class: agents must separate
+  English Base Blastoise from Japanese Expansion Pack / No Rarity Blastoise,
+  Base Set 2 Blastoise, Legendary Collection Blastoise, Expedition Blastoise,
+  CD/promo Blastoise rows, Dark Blastoise, later Blastoise ex/GX/V memory, and
+  all edition/Shadowless claims without seller evidence. Boundaries remain
+  explicit: catalog legibility is not seller possession, authenticity,
+  condition, First Edition status, Shadowless status, Unlimited status,
+  holo-surface condition, graded-cert truth, price, or spendability. Generated
+  gaps remain release queue 0 and card queue 100. Hashes: corpus
+  `60fbb56327b3c151a2c7b710310d9899d48062c8ac8b9d2157c1d485004a4913`,
+  index `e4d18fd45fd8c5bf540703c5c819126aa7da892a97b4a81facf6af1aca0bf7f3`,
+  queue `feb1dfcfe2d45e7e99bae86d64e818e238f9fa24169d89115a1dfbbeed4f4829`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-ninety-seventh
   catalog-history pass inside `data/catalog-history/source-sets/pilot_v0_1.json`:
   `en_wotc_base_set_19990109:base1-15` Venusaur / Base Set #15 is now
