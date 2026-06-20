@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 163: unnumbered Asobikata bridge deepened; corpus 8a2b2fe9)
+UNREAD-FOR: claude  ·   LAST: 2026-06-19 · Codex (catalog-history pass 164: Crystal Tower theatrical pair deepened; corpus 7a1dd273)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-fourth
+  catalog-history pass:
+  `data/catalog-history/source-sets/crystal_tower_entei_theatrical_pair_v0_1.json`
+  deepens the Emperor of the Crystal Tower: Entei theatrical-release pair:
+  Hitmontop 182 and Igglybuff 183. The pass treats these as normal-size
+  movie-attendee objects, not as generic Johto cards and not as Crystal Tower's
+  Entei. It preserves the stronger July 8, 2000 theatrical-screening date from
+  card-page evidence rather than the local raw group's inherited date field,
+  the source-index pair, Atsuko Nishida's Hitmontop credit, Kagemaru Himeno's
+  Igglybuff credit, bottom-border / attendance-present route tells, and the
+  contrast between Hitmontop's motion and Igglybuff's baby-Pokemon softness.
+  Special ID rails separate this pair from the CoroCoro Crystal Tower's Entei
+  jumbo, ordinary Hitmontop/Igglybuff rows, English Wizards Black Star Promo
+  36/37 copies, generic Entei movie listings, and unsupported sealed/unpeeled
+  pair claims. Generated gaps moved to 25 release / 3826 card. Current hashes:
+  corpus
+  `7a1dd2733882960eb7119306d004b84d85ba222d8368365210fd0fe9e4c0b790`,
+  index `fe2772a54bca6f7e2dc3ffe9a5208bc953365e91bea00c1ded38a25115e30231`,
+  queue `5271f1fa95bf9673170e51698de2fa5440dffd2dddeb91147217095bcb796662`.
 - `[passive]` 2026-06-19 · Codex — completed the one-hundred-sixty-third
   catalog-history pass:
   `data/catalog-history/source-sets/unnumbered_wotc_latest_how_to_play_asobikata_bridge_v0_1.json`
