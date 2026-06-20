@@ -1,0 +1,514 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Pokemon Card GB Dragonite promo",
+    "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+    "notes": [
+      "Deepens the December 18, 1998 Pokemon Card GB / Pokemon Trading Card Game for Game Boy Color source slice.",
+      "Covers the single modeled source-pinned row: Dragonite 060.",
+      "Treats the card as a video-game insert / GB-symbol bridge, not as a booster-set member, Fossil Dragonite, Pokemon Card GB2 Lugia, or a generic unnumbered Dragonite listing."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_gameboy_card_gb_19981218",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Trading Card Game for Game Boy Color",
+        "name_ja": "ポケモンカードGB",
+        "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+        "release_date": "1998-12-18",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Trading Card Game for Game Boy Color",
+          "Pokemon Card GB",
+          "video-game insert route",
+          "GB symbol as contact evidence",
+          "Legendary Cards in-game myth",
+          "Dragonite 060 / source index 067 bridge",
+          "Ken Sugimori illustrator lane"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_tcg_gameboy_card_gb_19981218:060",
+            "name": "Dragonite",
+            "number": "060",
+            "why": "Dragonite is the chase because it makes the Game Boy cartridge feel porous. The card is not merely a Dragonite picture; it is a souvenir from the software's own card mythology, with the GB mark acting like a small passport stamp from the cartridge world back into the binder.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Dragonite"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete packaging variant census",
+          "official copy count"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gameboy_card_gb_19981218.json",
+          "title": "Local Japanese pre-English catalog: Pokemon Trading Card Game for Game Boy Color",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete packaging variant census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dragonite_(Pok%C3%A9mon_Card_GB_promo)",
+          "title": "Bulbapedia: Dragonite (Pokemon Card GB promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert.json",
+          "title": "Local unnumbered WotC source-group bridge: Pokemon Trading Card Game insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "richer than the pre-English slice",
+            "direct physical-card print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Card_(TCG_GB)",
+          "title": "Bulbapedia: Card (TCG GB)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "physical promo inclusion proof",
+            "complete in-game card-system analysis",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog places the Pokemon Trading Card Game for Game Boy Color / Pokemon Card GB source slice on December 18, 1998.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The modeled route is a Game Boy Color software insert / video-game promo row, not a booster expansion, deck list, or tournament-prize family.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local pre-English source slice models one product-family card row: Dragonite 060.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Bulbapedia describes Dragonite as one of the four Legendary Cards central to the plot of Pokemon Trading Card Game and its sequel, and as one of only three cards created for the first Game Boy TCG game that also received a physical release.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "The GB symbol is the release's most important contact mark: Bulbapedia states that the physical promo displays a GB symbol where an expansion symbol would normally sit, tying the card to the Game Boy Color title.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "The same Dragonite identity appears in the local unnumbered WotC source-group view as source index 067 with a Pokemon Trading Card Game insert note; this is a bridge to reconcile, not a second physical card claim.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local row credits Illus. Ken Sugimori, and Bulbapedia's Dragonite GB page also lists Ken Sugimori as illustrator.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's role matters here because this promo sits near a boundary between character design memory, card illustration credit, and game-object packaging; the card feels official in the old sense because Sugimori's line is part of Pokemon's earliest visual grammar.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should separate the Pokemon Card GB Dragonite route from Fossil Dragonite, English Wizards Promo language context, Pokemon Card GB2 Lugia, the Game Boy Official Guidebook Venusaur branch, and generic source-index 067 unnumbered-promo references before treating a listing as a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_card_gb_1998_dragonite_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent match mentions Game Boy, Pokemon Card GB, Pokemon Trading Card Game insert, GB promo, Dragonite No.149, or source index 067.",
+          "summary": "Confirm the card is the Pokemon Card GB Dragonite promo route before allowing the match to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact title and route language: Pokemon Card GB, Pokemon Trading Card Game for Game Boy Color, Game Boy promo, GB promo, or Pokemon Trading Card Game insert.",
+            "Check that the card being offered is Dragonite / カイリュー and not Fossil Dragonite, an English-language Dragonite, or a generic Dragonite collectible.",
+            "Ask for clear seller-controlled front and back images before using the reference image as anything beyond catalog comparison.",
+            "Look for the GB symbol / route mark where the release identifier should sit; absence, blur, crop, or replacement mark should stay as a named uncertainty.",
+            "Separate this 1998 Pokemon Card GB branch from Pokemon Card GB2 Lugia, the Game Boy Official Guidebook Venusaur branch, and raw unnumbered source index 067 bookkeeping.",
+            "If packaging is part of the claim, ask for game/manual/insert context separately; the card alone does not prove complete software packaging.",
+            "Keep price, grade, authenticity, condition, and possession outside catalog authority until seller-controlled evidence and any verifier/arbiter process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete packaging variant census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "The Game Boy's myth card, printed into the world",
+        "why_it_matters": "Pokemon Card GB Dragonite feels like a secret door. In the software, Dragonite belongs to the Legendary Cards myth; on paper, the GB symbol makes that software memory portable, something a kid could slide into a binder and say: this came from the game. That is the assembly worth preserving. It is cartridge, manual, insert, Sugimori line, old-back holo desire, and a tiny printed mark all meeting in one card. The agent's job is to keep that contact legible without pretending the catalog has touched the seller's actual copy.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c2",
+          "c4",
+          "c5",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete packaging variant census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_tcg_gameboy_card_gb_19981218:060",
+      "type": "card",
+      "context": {
+        "name_en": "Dragonite",
+        "name_ja": "カイリュー",
+        "romaji": "Kairyu",
+        "number": "060",
+        "release_family_id": "jp_tcg_gameboy_card_gb_19981218",
+        "release_name": "Pokemon Trading Card Game for Game Boy Color"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "060",
+        "rarity_signal": "Sans rarete / promotional route",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Dragonite as Legendary Card",
+          "GB symbol",
+          "Game Boy Color insert",
+          "Holo old-back collector pressure",
+          "Ken Sugimori illustrator credit"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gameboy_card_gb_19981218.json#row:jp_tcg_gameboy_card_gb_19981218:060",
+          "title": "Local Japanese pre-English catalog row: Dragonite 060",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dragonite_(Pok%C3%A9mon_Card_GB_promo)",
+          "title": "Bulbapedia: Dragonite (Pokemon Card GB promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert.json#row:jp_promo_unnumbered_wotc_067_pok_mon_trading_card_game_insert:067",
+          "title": "Local unnumbered WotC source-group row: Dragonite 067",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "richer than the pre-English slice",
+            "direct physical-card print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Dragonite / カイリュー / Kairyu as row 060 in the Pokemon Trading Card Game for Game Boy Color source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row carries the source signal 'Sans rarete' while the route itself is promotional / video-game insert rather than a booster rarity class.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The row credits Illus. Ken Sugimori, and Bulbapedia's Dragonite GB page also lists Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Healing Wind and Slam as the card's effects and describes Dragonite as a Colorless Stage 2 Pokemon card tied to the TCG GB games.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia frames Dragonite as one of the four Legendary Cards central to Pokemon Trading Card Game and its sequel; that makes the physical promo a rare case where an in-game myth object also has a cardboard route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes Card GB print and promotional print Pokedex text, so an agent should preserve which side a reference is describing instead of flattening every Dragonite image into one universal print fact.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "The GB symbol and Pokemon Card GB route are the main identification tells, but they remain reference tells until a seller supplies controlled images of the exact card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_card_gb_1998_dragonite_060_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Dragonite / カイリュー as Pokemon Card GB, GB promo, Game Boy promo, No.149, source 060, or source index 067.",
+          "summary": "Confirm the GB-symbol Dragonite identity and keep all physical-card claims seller-controlled.",
+          "steps": [
+            "Capture the exact card title and all seller language around Pokemon Card GB, Game Boy Color, GB promo, unnumbered promo, source 060, source index 067, or No.149.",
+            "Ask for uncropped front and back images with the lower symbol area, title/name line, HP, attacks, illustrator line, copyright block, corners, and holo surface visible.",
+            "Check for Dragonite / カイリュー / Kairyu identity and Ken Sugimori illustrator credit; if either is absent or obscured, keep the match uncertain.",
+            "Verify that the visible route mark is consistent with the GB promo branch rather than Fossil, English Wizards, Pokemon Card GB2 Lugia, Official Guidebook Venusaur, Carddass, or other Dragonite objects.",
+            "If the listing claims sealed or complete-game provenance, request the game box/manual/insert evidence as its own evidence branch; do not infer it from the card.",
+            "Treat swirls, holo placement, grade labels, and condition descriptions as buyer/seller judgment inputs, not catalog facts.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh nonce or possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete packaging variant census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dragonite with the GB passport stamp",
+        "why_it_matters": "This Dragonite has a strange kind of softness: Healing Wind, a sea-myth Pokedex mood, and Ken Sugimori's familiar early-Pokemon authority, all attached to a Game Boy route. Collectors chase it because it is both a card and a memory of finding cards inside a different machine. The GB mark is tiny, but it carries the whole path: cartridge, game story, insert, binder. That tiny mark is also why an agent must be strict. A picture that looks like Dragonite is not enough; the route has to be assembled.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete packaging variant census",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

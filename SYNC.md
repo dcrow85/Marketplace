@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history index pass: special identification instruction previews exposed; index b96498d2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 166: Game Boy Card GB Dragonite deepened; corpus 5327c035)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-sixth
+  catalog-history pass:
+  `data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json`
+  deepens the December 18, 1998 Pokemon Card GB / Pokemon Trading Card Game
+  for Game Boy Color slice and its single modeled row, Dragonite 060. The pass
+  frames Dragonite as a video-game-to-card bridge: one of the software's
+  Legendary Cards, carrying the GB symbol / insert route into a physical binder
+  object. Ken Sugimori is preserved as the illustrator lane. Special ID rails
+  separate the card from Fossil Dragonite, English Wizards language context,
+  Pokemon Card GB2 Lugia, Game Boy Official Guidebook Venusaur, generic
+  source-index-067 bookkeeping, and complete-game packaging claims. Seller
+  controlled front/back images, GB-symbol visibility, route language, packaging
+  evidence, and fresh possession proof remain outside catalog authority until
+  supplied; catalog reference does not grant spendability. Generated gaps moved
+  to 23 release / 3824 card. Current hashes: corpus
+  `5327c0351b39d34967293c70249a3befb8450944590b8311cbf06e985cdeab4a`,
+  index `edd39d6fe480961b712616ecb2924a27af226cb90a694660eaa6e199c1da4e51`,
+  queue `0d3d49b473372857c5f057a0f1380f4303fe894ef8fa0023ecfc6e673eff9d80`.
 - `[passive]` 2026-06-20 · Codex — exposed
   `special_identification_instructions` directly in
   `data/catalog-history/index.json` entries. The full step packets remain in the
