@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 166: Game Boy Card GB Dragonite deepened; corpus 5327c035)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 167: Game Boy Card GB2 Lugia deepened; corpus 1c3efa70)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-seventh
+  catalog-history pass:
+  `data/catalog-history/source-sets/gameboy_card_gb2_lugia_v0_1.json`
+  deepens the Pokemon Card GB2: Here Comes Team GR! insert source slice and its
+  single modeled row, Lugia source index 228. The pass treats Lugia as a
+  Japan-only Game Boy Color sequel contact object: GB2 route, GB symbol, Team
+  GR's Mewtwo sibling insert, Ken Sugimori credit, and Neo-era Lugia gravity in
+  one assembly. It preserves a source-date caveat instead of smoothing it away:
+  the local continuation slice carries an aggregate date while card-specific
+  secondary sources place the GB2 inclusion on March 28, 2001. Special ID rails
+  separate this row from Neo Genesis Lugia, Neo Revelation Lugia, Lucky Stadium
+  Lugia, Ancient Mew movie pamphlet context, Pokemon Card GB Dragonite, Team
+  GR's Mewtwo, GB2 guidebook Dark Fearow, and complete-game packaging claims.
+  Seller controlled front/back images, GB-symbol visibility, route language,
+  packaging evidence, and fresh possession proof remain outside catalog
+  authority until supplied; catalog reference does not grant spendability.
+  Generated gaps moved to 22 release / 3823 card. Current hashes: corpus
+  `1c3efa70944945559ff6c8bdee530b3bb989158767f4895e5b746c2c09496ce8`,
+  index `8a74042b484fd86502252dbed39282e5c66fc4b7930980d7adfcd2948414a30e`,
+  queue `dbff8f6e227e24bfe061552b72d9850d379af9b2c3d9813bda91757e3fa017fb`.
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-sixty-sixth
   catalog-history pass:
   `data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json`

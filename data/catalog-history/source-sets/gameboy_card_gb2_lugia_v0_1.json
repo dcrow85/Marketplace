@@ -1,0 +1,527 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Pokemon Card GB2 Here Comes Team GR Lugia promo",
+    "release_family_id": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert",
+    "notes": [
+      "Deepens the Pokemon Card GB2: Here Comes Team GR! insert source slice.",
+      "Covers the single modeled source-pinned row: Lugia source index 228.",
+      "Preserves the release-date tension: the local source-slice inherits an aggregate continuation date, while card-specific references place the GB2 game inclusion at March 28, 2001."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card GB2: Here Comes Team GR! insert",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert",
+        "release_date": "2001-03-28",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card GB2",
+          "Here Comes Team GR",
+          "Japan-only Game Boy Color sequel",
+          "Lugia and Team GR's Mewtwo paired inserts",
+          "GB symbol as contact evidence",
+          "Neo-era Lugia gravity",
+          "Ken Sugimori illustrator lane"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert:228",
+            "name": "Lugia",
+            "number": "228",
+            "why": "Lugia is the chase because it pulls the silver-era myth back through a Japan-only Game Boy Color sequel. The card is not just another Lugia; it is Lugia as a pack-in companion to Team GR's invasion of the TCG game world.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Lugia"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete game packaging census",
+          "official copy count"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Card GB2 Here Comes Team GR insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact date authority beyond the source row",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Pok%C3%A9mon_Card_GB2_promo)",
+          "title": "Bulbapedia: Lugia (Pokemon Card GB2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/timeline-neo-era/",
+          "title": "PokeBoon timeline: Neo Era",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "row-level physical-card verification",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_227_pok_mon_trading_card_game_2_the_invasion_of_team_gr_insert.json",
+          "title": "Local Japanese unnumbered WotC catalog: Team GR's Mewtwo sibling insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "Lugia card identity",
+            "complete GB2 insert census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/gameboy_card_gb_dragonite_v0_1.json",
+          "title": "Catalog-history source set: Pokemon Card GB Dragonite bridge",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "same release as GB2 Lugia",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "The local row identifies the route as Pokemon Card GB2: Here Comes Team GR! insert, a Game Boy Color software-inclusion context rather than a booster, deck, or tournament prize.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "Bulbapedia and PokeBoon place the game release and Lugia/Team GR's Mewtwo inclusion on March 28, 2001; the local aggregate row carries an older continuation-slice date and should not override the card-specific route date.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "This local child slice models one source-pinned Lugia row, while the GB2 game context is paired in external references and adjacent local data with Team GR's Mewtwo as a sibling insert.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "PokeBoon notes that Pokemon Card GB2: Here Comes Team GR! was a sequel to the Pokemon TCG Game Boy game and was not released overseas, making this Lugia route a Japan-only software/card contact point.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the card has a GB symbol in place of an expansion symbol, explicitly tying the physical card to the Game Boy title.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Lugia (Pokemon Card GB2 promo) to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.boundary",
+          "text": "Agents should separate this GB2 Lugia route from the earlier Pokemon Card GB Dragonite, Team GR's Mewtwo, the GB2 Official Guidebook Dark Fearow, Neo Genesis Lugia, Neo Revelation Lugia, Lucky Stadium Lugia, Ancient Mew movie pamphlet context, and generic Lugia promo references.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Lugia, Pokemon Card GB2: Here Comes Team GR! route, GB symbol, and source index 228 together; none of these catalog facts prove possession, authenticity, condition, or spendability.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c5",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_card_gb2_2001_lugia_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent match mentions Lugia, Pokemon Card GB2, Here Comes Team GR, GB2 promo, Game Boy Color insert, source index 228, or unnumbered Lugia promo.",
+          "summary": "Confirm the Japan-only Pokemon Card GB2 Lugia route before allowing the match to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Pokemon Card GB2, Here Comes Team GR, Game Boy Color insert, GB2 promo, source index 228, unnumbered promo, or simply Lugia.",
+            "Confirm the offered card is Lugia / ルギア and not Team GR's Mewtwo, Dark Fearow, Ancient Mew, Neo Genesis Lugia, Neo Revelation Lugia, Lucky Stadium Lugia, or another Lugia promo.",
+            "Ask for seller-controlled front and back images before using any catalog image or community page as more than reference comparison.",
+            "Check the lower release-symbol area for the GB symbol; crop, blur, absent mark, or a different symbol remains a named uncertainty.",
+            "If the listing claims complete game provenance, request software box/manual/insert evidence separately; the card alone does not prove complete packaging.",
+            "Preserve the March 28, 2001 GB2 route date as card-specific secondary-source context and the older local continuation date as an aggregate-source artifact.",
+            "Keep price, grade, authenticity, condition, official copy count, and possession outside catalog authority until seller evidence and any verifier process exist."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete game packaging census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lugia at the Team GR doorway",
+        "why_it_matters": "This Lugia feels like a sequel object in the best way. Dragonite gave the first Card GB a legendary myth inside the cartridge; GB2 gives Lugia a darker stage, paired with Team GR's Mewtwo and a game that stayed in Japan. The result is a card with a tiny GB symbol doing a lot of work: it marks software, villain-story, Gen II myth, and late-WotC promo memory all at once. That is why the assembly matters more than the name alone.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete game packaging census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert:228",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "ルギア",
+        "romaji": "Lugia",
+        "number": "228",
+        "release_family_id": "jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert",
+        "release_name": "Pokemon Card GB2: Here Comes Team GR! insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "228",
+        "rarity_signal": "unnumbered promotional route",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Lugia LV.55",
+          "Aeroblast",
+          "GB symbol",
+          "Pokemon Gold Pokedex text",
+          "Japan-only GB2 insert",
+          "unplayable / official-tournament restriction"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert.json#row:jp_promo_unnumbered_wotc_228_pok_mon_card_gb2_here_comes_team_gr_insert:228",
+          "title": "Local Japanese unnumbered WotC catalog row: Lugia source index 228",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Pok%C3%A9mon_Card_GB2_promo)",
+          "title": "Bulbapedia: Lugia (Pokemon Card GB2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/timeline-neo-era/",
+          "title": "PokeBoon timeline: Neo Era",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Lugia as source index 228 in the Pokemon Card GB2: Here Comes Team GR! insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The row is an unnumbered promotional source entry, not a booster-set rarity row; Bulbapedia lists the Japanese expansion as Unnumbered Promotional cards and the set as TCG GB2 Promotion Card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Lugia LV.55 to Ken Sugimori.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Lugia LV.55 as a Colorless Basic Pokemon with 100 HP and Aeroblast, and marks it as unusable in official tournaments.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia states the card was included with copies of Pokemon Trading Card Game 2: The Invasion of Team GR! on Game Boy Color and has a GB symbol replacing an expansion symbol.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "PokeBoon places Lugia beside Great Rocket's Mewtwo as the two promos released with the Japan-only Pokemon Card GB2 sequel on March 28, 2001.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A safe match needs the Lugia identity, Pokemon Card GB2 route, GB symbol, and source index 228 context together; a famous Lugia name or Neo-era date alone is insufficient.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gameboy_card_gb2_2001_lugia_228_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Lugia / ルギア as Pokemon Card GB2, GB2 promo, Here Comes Team GR, Game Boy Color insert, unnumbered promo, or source index 228.",
+          "summary": "Confirm Lugia 228 as the GB2 insert promo with GB symbol and keep all physical-card claims seller-controlled.",
+          "steps": [
+            "Capture the exact seller title and route terms: Lugia, Pokemon Card GB2, Here Comes Team GR, Game Boy Color, GB2 promo, unnumbered promo, or source index 228.",
+            "Ask for uncropped front and back images showing the name, HP, Aeroblast text area, lower release-symbol area, illustrator line, copyright block, corners, and holo surface.",
+            "Check that the card is Lugia / ルギア / LV.55 and that the visible route mark is consistent with the GB2 promotion branch.",
+            "Separate this card from Neo Genesis Lugia, Neo Revelation Lugia, Lucky Stadium Lugia, Ancient Mew movie pamphlet context, Pokemon Card GB Dragonite, Team GR's Mewtwo, and GB2 guidebook Dark Fearow.",
+            "If a listing claims complete-game provenance, request box/manual/insert evidence separately; do not infer complete packaging from the card.",
+            "Treat the official-tournament restriction, grade labels, holo comments, and condition language as interpretation inputs, not catalog-verified physical truth.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete game packaging census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lugia with the sequel's GB mark",
+        "why_it_matters": "Lugia already carries storm and ocean myth, but this print gives it a stranger job: it helps a Japan-only Game Boy sequel leave a cardboard trace. The GB symbol is small, almost modest, and yet it tells the whole story if an agent knows how to read it. This is not Neo Genesis thunder and not a movie pamphlet echo. It is Lugia as a software insert, paired against Team GR's Mewtwo, right where Pokemon was learning to let cards, games, villains, and collecting rituals talk to each other.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete game packaging census",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}
