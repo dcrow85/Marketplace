@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 184: Pokemon Card GB2 Team GR's Mewtwo deepened; corpus eb093b88)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 185: Pokemon Card GB2 guidebook Dark Fearow deepened; corpus b2a31984)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-fifth
+  catalog-history pass:
+  `data/catalog-history/source-sets/pokemon_card_gb2_guidebook_dark_fearow_v0_1.json`
+  deepens the Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert
+  and its single modeled row, Dark Fearow / わるいオニドリル / Warui Onidoriru
+  source index 229. The pass frames the route as the book-side GB2 object:
+  the official guidebook carrying a physical card that points back to the
+  digital Team GR sequel, distinct from the Team GR's Mewtwo and Lugia
+  game-box inserts. It records LV.25, HP 60, No. 022, Colorless Stage 1,
+  Fly High / たかくとぶ, Drill Dive / ドリルダイブ, the GB symbol route clue, the
+  bottom-border "Pokemon Card GB2 Official Guidebook" bonus-card clue, and the
+  official-tournament-use restriction. It also preserves a real illustrator
+  source conflict: Bulbapedia credits Sumiyoshi Kizuki / 木月すみよし while
+  PokeBoon credits Naoyo Kimura / 木村直代, so the generated special-ID packet
+  tells agents to read the physical card's printed illustrator line before
+  using artist credit as evidence. Special identification packets now separate
+  this row from Team GR's Mewtwo and Lugia game-box inserts, Rocket/Dark
+  Fearow-like cards, in-game-only Team Rocket's Ambition data, guidebook
+  listings without the card, and any complete-guidebook claim where Dark
+  Fearow is not separately shown or disclosed. Boundaries remain against seller
+  possession, authenticity, condition, price, complete guidebook/card state,
+  official print run, resolved illustrator authority, and spendability.
+  Generated gaps are now release queue 4 and card queue 100. Hashes: corpus
+  `b2a31984d8d7c7b8221e7c090154c1df9453df3a923404b4a856fe30909544b9`,
+  index `09f7e854e21b72ced9ffd4079e66009f7b379ca8068379ae53b6d7898d38b68d`,
+  queue `ddb82307ea941117ba3b3c8298d3d7f5d560bc92918ed76e8c391db6014314bb`.
+
 - `[passive]` 2026-06-20 · Codex — completed the one-hundred-eighty-fourth
   catalog-history pass:
   `data/catalog-history/source-sets/pokemon_card_gb2_team_gr_mewtwo_v0_1.json`

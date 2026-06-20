@@ -2,30 +2,30 @@
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "corpus": {
     "card_dossier_count": 4549,
-    "claim_count": 23844,
-    "corpus_hash": "eb093b88ae79c36b495b0f41b0ae3ed2fe3dbaeba5cafbc365e34cfb436b1849",
-    "generated_card_dossier_count": 3806,
-    "generated_release_dossier_count": 5,
+    "claim_count": 23849,
+    "corpus_hash": "b2a31984d8d7c7b8221e7c090154c1df9453df3a923404b4a856fe30909544b9",
+    "generated_card_dossier_count": 3805,
+    "generated_release_dossier_count": 4,
     "hash_scope": "canonical corpus excluding generated_at",
     "path": "data/catalog-history/dossiers.json",
     "release_dossier_count": 209,
     "schema": "marketplace.catalog_history_corpus.v0.1",
-    "source_count": 6898
+    "source_count": 6904
   },
   "deepening_queue": {
     "card_queue_count": 100,
     "hash_scope": "canonical deepening queue",
     "path": "data/catalog-history/deepening-queue.json",
-    "queue_hash": "093d8157d6a98dd07f6f8856f5e4ec5c1798dc6eaa390dffb1644255835ceb22",
-    "release_queue_count": 5,
+    "queue_hash": "ddb82307ea941117ba3b3c8298d3d7f5d560bc92918ed76e8c391db6014314bb",
+    "release_queue_count": 4,
     "schema": "marketplace.catalog_history_deepening_queue.v0.1"
   },
-  "generated_at": "2026-06-20T03:33:59Z",
+  "generated_at": "2026-06-20T03:41:09Z",
   "hash_algorithm": "sha256",
   "index": {
     "entry_count": 4758,
     "hash_scope": "canonical index",
-    "index_hash": "904111d5ce052bbfdfab17a62403fd84fdb75efb2deae7c0d8b52fe4fc0998a1",
+    "index_hash": "09f7e854e21b72ced9ffd4079e66009f7b379ca8068379ae53b6d7898d38b68d",
     "path": "data/catalog-history/index.json",
     "schema": "marketplace.catalog_history_index.v0.1"
   },
@@ -158,6 +158,7 @@
     "data/catalog-history/source-sets/nivi_city_gym_brock_v0_1.json",
     "data/catalog-history/source-sets/p_promotional_tranche_v0_1.json",
     "data/catalog-history/source-sets/pilot_v0_1.json",
+    "data/catalog-history/source-sets/pokemon_card_gb2_guidebook_dark_fearow_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_gb2_team_gr_mewtwo_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_information_vol1_dunsparce_v0_1.json",
     "data/catalog-history/source-sets/pokemon_card_vs_tranche_v0_1.json",

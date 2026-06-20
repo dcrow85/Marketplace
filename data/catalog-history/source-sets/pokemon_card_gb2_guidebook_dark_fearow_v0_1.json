@@ -1,0 +1,606 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "release_family_id": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap",
+    "description": "Deepens the Pokemon Card GB2: Here Comes Team GR! Official Guidebook Dark Fearow insert route and its single local source row, including the illustrator-source conflict as a legible identification warning."
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert",
+        "name_ja": "ポケモンカードGB2 GR団参上！ 公式ガイドブック",
+        "release_family_id": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap",
+        "release_date": "2001-04-12",
+        "modeled_count": 1,
+        "local_source_index_span": "229-229"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card GB2 official-guidebook route",
+          "book insert rather than game-box insert",
+          "Dark Fearow as guidebook-only GB promo",
+          "GB symbol route clue",
+          "official-tournament-use restriction",
+          "Team Rocket's Ambition in-game set context",
+          "illustrator-source conflict: Bulbapedia versus PokeBoon",
+          "source index 229 as local audit handle",
+          "adjacent but separate Team GR's Mewtwo / Lugia game insert route"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap:229",
+            "name": "Dark Fearow",
+            "name_ja": "わるいオニドリル",
+            "romaji": "Warui Onidoriru",
+            "number": "229",
+            "why": "Dark Fearow is the book-route bird at the edge of Pokemon Card GB2. It is not packed with the cartridge like Team GR's Mewtwo and Lugia; it comes through the official guidebook, which makes it a different kind of contact object: paper explaining software, carrying cardboard that points back to both.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Sumiyoshi Kizuki / Naoyo Kimura conflict",
+            "name_ja": "木月すみよし / 木村直代",
+            "row_count": 1,
+            "examples": [
+              "Dark Fearow"
+            ],
+            "why": "Bulbapedia credits Sumiyoshi Kizuki, while PokeBoon credits Naoyo Kimura. That conflict is useful, not embarrassing: it tells the agent this row needs a visible illustrator-line check before artist credit is used as evidence.",
+            "authority_label": "fact_and_judged_texture",
+            "not_claiming": [
+              "resolved illustrator authority",
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "resolved illustrator authority",
+          "complete sealed-guidebook census",
+          "official print run",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Card GB2 official guidebook Dark Fearow insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Fearow_(Pok%C3%A9mon_Card_GB2_promo)",
+          "title": "Bulbapedia: Dark Fearow (Pokemon Card GB2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/guidebook_darkfearow_promo/",
+          "title": "PokeBoon: Dark Fearow Promo: Pokemon Card GB2: Here Comes Team GR! Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_GB2:_Here_Comes_Team_GR!",
+          "title": "Bulbapedia: Pokemon Trading Card Game 2: The Invasion of Team GR!",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "release.date",
+          "text": "The local catalog and Bulbapedia align on April 12, 2001 for the Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert route; PokeBoon gives the guidebook release as 2001/04/13, so the catalog keeps April 12 as the row date and records the day-level discrepancy as a source caution.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "release.distribution",
+          "text": "Bulbapedia states Dark Fearow was available as an unnumbered promotional card in copies of the Pokemon Card GB2: Here Comes Team GR! Official Guidebook.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "release.product_count",
+          "text": "The local release family models one row: Dark Fearow source index 229, with the promotion note Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "release.context",
+          "text": "PokeBoon identifies the guidebook as a Media Factory book edited by the Pokemon Card Trainers Editorial Department, 207 pages, and related to the Great Rocket's Mewtwo and Lugia Pokemon Card GB2 insert promos.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s3"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "history.variant",
+          "text": "Bulbapedia states Dark Fearow has a GB symbol in place of an expansion symbol and that the bottom border reads \"Pokemon Card GB2 Official Guidebook\" bonus card.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Sumiyoshi Kizuki / 木月すみよし for Dark Fearow, while PokeBoon credits Naoyo Kimura / 木村直代; this source-set treats the illustrator as a source conflict requiring card-image confirmation.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "history.significance",
+          "text": "Dark Fearow matters because it is the guidebook leg of the Pokemon Card GB2 promo cluster: an explanatory book about a digital TCG sequel that carries its own old-back card, distinct from the game-box Team GR's Mewtwo and Lugia inserts.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g3",
+            "g4",
+            "g5",
+            "g6"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "identification.special_instructions",
+          "text": "This release dossier carries a special identification packet for the Pokemon Card GB2 official guidebook Dark Fearow route.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Card GB2 guidebook — Dark Fearow as the book-route bird",
+        "why_it_matters": "Dark Fearow is the quieter sibling to the cartridge pack-ins, and that is the interesting part. Team GR's Mewtwo and Lugia came with the game; Dark Fearow came with the guidebook, the paper object that taught players how to move through Team GR's digital world. It is a card about routes: software explained by a book, a book carrying a card, and a GB symbol tying the whole little circuit together.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete guidebook/card state",
+          "resolved illustrator authority"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_gb2_guidebook_dark_fearow_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this route as the Pokemon Card GB2 official-guidebook Dark Fearow insert, not as the Team GR's Mewtwo/Lugia game-box insert route or a generic Dark Fearow.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Dark Fearow, わるいオニドリル, Warui Onidoriru, Bad Onidrill, Pokemon Card GB2 Official Guidebook, GB symbol, Fly High, Drill Dive, Sumiyoshi Kizuki, Naoyo Kimura, or source index 229.",
+          "steps": [
+            "Anchor the route to Pokemon Card GB2: Here Comes Team GR! Official Guidebook / ポケモンカードGB2 GR団参上！公式ガイドブック and the April 2001 guidebook insert context.",
+            "Confirm the local row is Dark Fearow / わるいオニドリル / Warui Onidoriru, not Team GR's Mewtwo, Lugia, or another GB promo.",
+            "Use source index 229 as the local catalog audit handle.",
+            "Preserve the book route: this is an official-guidebook insert, not the game-box pack-in route.",
+            "Look for the GB symbol in place of an expansion symbol when seller images are sharp enough.",
+            "Look for the bottom-border text clue: Pokemon Card GB2 Official Guidebook bonus card.",
+            "Treat illustrator as unresolved until the actual printed card line is visible: Bulbapedia credits Sumiyoshi Kizuki, while PokeBoon credits Naoyo Kimura.",
+            "Separate this row from Team GR's Mewtwo and Lugia Pokemon Card GB2 game-box inserts, from Rocket/Dark Fearow-like cards, from in-game Team Rocket's Ambition data, and from non-card guidebook listings.",
+            "If the listing is for a guidebook, require explicit evidence for whether Dark Fearow is present, attached, removed, substituted, or separately photographed.",
+            "Before any funded trade, require seller-controlled evidence for the exact physical card, guidebook insert state, or complete guidebook state being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Fearow_(Pok%C3%A9mon_Card_GB2_promo)"
+            },
+            {
+              "source": "PokeBoon",
+              "ref": "https://pokeboon.com/guidebook_darkfearow_promo/"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete guidebook/card state",
+            "official print run",
+            "resolved illustrator authority",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap:229",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Fearow",
+        "name_ja": "わるいオニドリル",
+        "romaji": "Warui Onidoriru",
+        "release_name": "Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert",
+        "release_family_id": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap",
+        "row_id": "jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap:229",
+        "catalog_row_id": "229",
+        "source_index": "229",
+        "pokedex_no": "022"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Unresolved: Sumiyoshi Kizuki per Bulbapedia; Naoyo Kimura per PokeBoon",
+        "artist_ja": "木月すみよし / 木村直代",
+        "rarity_signal": "unnumbered Pokemon Card GB2 official-guidebook promo context",
+        "number": "source index 229",
+        "assembly_themes": [
+          "guidebook-born GB promo",
+          "Dark Pokemon route",
+          "GB symbol route clue",
+          "official-tournament-use restriction",
+          "Fly High / たかくとぶ",
+          "Drill Dive / ドリルダイブ",
+          "Fearow Pokedex text",
+          "illustrator-source conflict requiring card-image confirmation",
+          "book route distinct from Team GR's Mewtwo and Lugia game-box inserts"
+        ],
+        "signals": [
+          "Dark Fearow",
+          "わるいオニドリル",
+          "Warui Onidoriru",
+          "Bad Onidrill",
+          "LV.25",
+          "No. 022",
+          "Colorless",
+          "Stage 1",
+          "HP 60",
+          "Fly High",
+          "たかくとぶ",
+          "Drill Dive",
+          "ドリルダイブ",
+          "GB symbol",
+          "Pokemon Card GB2 Official Guidebook bonus card",
+          "Sumiyoshi Kizuki",
+          "Naoyo Kimura",
+          "source index 229"
+        ],
+        "collector_texture_note": "Dark Fearow is a deliciously specific GB-era bird: guidebook route, GB symbol, dark-card name, and even a source conflict on illustrator that rewards actually looking at the printed object.",
+        "assembly_note": "This card is the paper-guidebook side of Pokemon Card GB2. It should be handled as a physical insert with visible guidebook and border clues, not as a generic Dark Pokemon or a loose GB promo memory.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete guidebook/card state",
+          "resolved illustrator authority"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap.json#row:jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap:229",
+          "title": "Local Japanese unnumbered WotC catalog row: Dark Fearow source index 229",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Fearow_(Pok%C3%A9mon_Card_GB2_promo)",
+          "title": "Bulbapedia: Dark Fearow (Pokemon Card GB2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/guidebook_darkfearow_promo/",
+          "title": "PokeBoon: Dark Fearow Promo: Pokemon Card GB2: Here Comes Team GR! Official Guidebook",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_GB2:_Here_Comes_Team_GR!",
+          "title": "Bulbapedia: Pokemon Trading Card Game 2: The Invasion of Team GR!",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Fearow as source index 229 in the Pokemon Card GB2: Here Comes Team GR! Official Guidebook insert source row.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Dark Fearow / わるいオニドリル, a Colorless-type Stage 1 Pokemon card with HP 60, LV.25, No. 022, and an official-tournament-use restriction.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Fly High / たかくとぶ and Drill Dive / ドリルダイブ as the card's attacks, with Lightning weakness, Fighting resistance, and no retreat cost.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Sumiyoshi Kizuki for Dark Fearow, while PokeBoon credits Naoyo Kimura; this dossier treats the illustrator as unresolved until a seller image shows the printed line.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "history.variant",
+          "text": "Bulbapedia states Dark Fearow has a GB symbol in place of an expansion symbol and a bottom-border text reading \"Pokemon Card GB2 Official Guidebook\" bonus card.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "history.lineage",
+          "text": "Dark Fearow's route is the official-guidebook insert for Pokemon Card GB2, separate from the Team GR's Mewtwo and Lugia cards included with the game itself.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "history.significance",
+          "text": "Dark Fearow matters because it is a guidebook-card joint: a physical card carried by printed strategy infrastructure for a digital TCG sequel, with enough route marks to reward careful agent inspection.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g3",
+            "g4",
+            "g5",
+            "g6"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "identification.special_instructions",
+          "text": "This card dossier carries a special identification packet for Pokemon Card GB2 official guidebook Dark Fearow source index 229.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Fearow — source index 229, the GB guidebook bird",
+        "why_it_matters": "Dark Fearow is not the cartridge prize; it is the guidebook bird, and that makes it a different kind of artifact. It belongs to the moment when Pokemon Card GB2 needed paper maps, strategy pages, and a physical bonus card to complete the experience. Even the illustrator conflict becomes part of the charm for an agentic catalog: do not merely recite a name, look at the printed card and let the object settle the claim.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete guidebook/card state",
+          "resolved illustrator authority"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_gb2_guidebook_dark_fearow_229_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Dark Fearow only when Dark Fearow identity, source index 229, Pokemon Card GB2 official-guidebook route, GB symbol, and guidebook bonus-card border text line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Dark Fearow, わるいオニドリル, Warui Onidoriru, Bad Onidrill, Pokemon Card GB2 Official Guidebook, GB symbol, Fly High, Drill Dive, Sumiyoshi Kizuki, Naoyo Kimura, LV.25, HP 60, No. 022, or source index 229.",
+          "steps": [
+            "Confirm the card is Dark Fearow / わるいオニドリル / Warui Onidoriru, LV.25, Colorless type, Stage 1, HP 60, No. 022.",
+            "Confirm the Pokemon Card GB2: Here Comes Team GR! Official Guidebook route and source index 229 in this local unnumbered-promo catalog.",
+            "Look for the GB symbol in place of an expansion symbol when seller images are sharp enough.",
+            "Look for the bottom-border text clue: Pokemon Card GB2 Official Guidebook bonus card.",
+            "Treat illustrator as an unresolved catalog conflict until the physical card's printed illustrator line is visible: Bulbapedia says Sumiyoshi Kizuki, PokeBoon says Naoyo Kimura.",
+            "Use Fly High / たかくとぶ and Drill Dive / ドリルダイブ as row-detail clues.",
+            "Preserve the official-tournament-use restriction as a text clue; do not treat it as a condition or authenticity proof.",
+            "Separate this row from Team GR's Mewtwo and Lugia game-box inserts, Rocket/Dark Fearow-like cards, in-game-only Team Rocket's Ambition data, and guidebook listings without the card.",
+            "If the listing is for the guidebook, require explicit evidence for whether Dark Fearow is present, attached, removed, substituted, or separately photographed.",
+            "Keep seller possession, authenticity, condition, price, complete guidebook/card state, official print run, resolved illustrator authority, and spendability outside the catalog row until separate evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap.json#row:jp_promo_unnumbered_wotc_229_pok_mon_card_gb2_here_comes_team_gr_official_guidebook_insert_ap:229"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Fearow_(Pok%C3%A9mon_Card_GB2_promo)"
+            },
+            {
+              "source": "PokeBoon",
+              "ref": "https://pokeboon.com/guidebook_darkfearow_promo/"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete guidebook/card state",
+            "official print run",
+            "resolved illustrator authority",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}
