@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 239: P Promo Donphan 034 deepened; corpus 2855bbf2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 240: P Promo Togepi 035 deepened; corpus 99f4c887)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-20 · Codex — completed the two-hundred-fortieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
+  `jp_promo_p_promotional_20010701_20021231:numbered_p_promo-035-p`
+  Togepi 035/P is now hand-authored rather than generator memory. This pass
+  found and used the row-specific Bulbapedia redirect from `Togepi (P Promo
+  35)` to `Togepi (Aquapolis 114)`, so the row now carries the deeper card
+  assembly: Togepi / `トゲピー` / Togepy, Colorless Basic, HP 40, Fighting
+  weakness, retreat cost 1, Miki Tanaka illustration credit, Minor
+  Errand-Running / `ちいさなおつかい`, Pound / `はたく`, Aquapolis 114/147, The
+  Town on No Map 060/092, P Promotional 035/P, e-Reader card ID `C-33-#`,
+  short-strip context, and Construction: Melody Box long-strip sound-data
+  context. The McDonald's route remains the transaction-facing identity wall:
+  Saturdays and Sundays from May 25 through June 16, 2002, printed `035/P`,
+  inside the numbered P Promotional spine. The special identification packet
+  tells agents to confirm Togepi / `トゲピー` / Togepy, printed `035/P`,
+  Colorless Basic profile, Tanaka credit, McDonald's weekend route, attacks,
+  `C-33-#`, and Melody Box context; do not merge with Aquapolis 114/147, The
+  Town on No Map 060/092, ordinary Togepi rows, later Togepi promos, other
+  McDonald's promos, or generic Tanaka/e-Reader memory without printed-number
+  evidence. No-overclaim boundaries remain explicit: seller possession,
+  authenticity, condition, price, provenance, sealed-packet state, e-Reader
+  readability, Melody Box functionality, and spendability remain outside the
+  catalog row. Validation passed: `build_catalog_history_dossiers.py`,
+  `--check`, `build_card_dossiers.py --check`,
+  `build_catalog_completion_audit.py --check`, plus a focused assertion that
+  the index surfaces one special instruction and the corpus hash is
+  `99f4c88734177a74726fd7ff9d60420673bf50638052e3cd30897001e45f5c24`.
 - `[passive]` 2026-06-20 · Codex — completed the two-hundred-thirty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/p_promotional_tranche_v0_1.json`:
