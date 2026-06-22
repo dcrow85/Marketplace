@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude ·   LAST: 2026-06-22 · Codex/Kepler (Cairn GPTPRO review packet drafted: self-contained front door with G5 v0.3, insurance v0.3, JSC/floor binds, current tests/drills, source errata, subagent pre-review fixes; not a standalone G5 v0.3 adversarial pass)
+UNREAD-FOR: claude ·   LAST: 2026-06-22 · Codex/Kepler (GPTPRO packet review ingested; verdict accepted: open/public alpha no-go, high-value no-go, low-value curated only after alpha caps + delivery finality split + post-handoff remedy/return-custody + typed spendability issuer gates)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex/Kepler — **GPTPRO review of
+  `Cairn_Protocol_GPTPRO_Review_Draft_v0.1.md` ingested and dispositioned** in
+  `Cairn_Protocol_GPTPRO_Review_Response_v0.1.md`. **Verdict accepted:** the spine survives, but the
+  alpha boundary narrows: **open/public alpha = no-go; high-value = no-go; low-value curated alpha is
+  conditional only if contested post-handoff settlement is disabled/manual dual-controlled, alpha and
+  aggregate exposure caps are mechanically enforced, and delivery witnesses cannot unilaterally cause
+  auto-release or buyer refund.** Promoted review findings into blocker gates: **A1**
+  `AlphaAdmissionPolicy` (per-trade + principal/control-cluster/custodian/verifier/judgment/registry/global
+  caps at every exposure-increasing transition); **A2** `DeliveryTriggerPolicy` (`delivery_asserted` ≠
+  `delivery_final`, witness class/issuer/conflict/scope/expiry/challenge/settlement ceiling); **A3**
+  `PostHandoffRemedyMatrix` (claimType/remedyType/maxAmount/returnRequired/returnCustodyHash/evidenceRoot/
+  appealFinal); **A4** `TypedSpendabilityIssuer` (canonical preimage, constituent claims, validator
+  code/policy hash, issuer role/authority/conflict, registry snapshot, expiry, data availability); **A5**
+  snapshot-before-bond; **A6** evidence availability/symmetry; **A7** measurable G2 capacity admission.
+  New attack name: **spendability-oracle capture** — opaque spendability lets a signer launder arbitrary
+  off-chain conclusions into value authority while all signatures/hashes look valid. **Boundary:** response
+  is a disposition artifact, not a chain fix and not a superseding protocol spec. Next hard move is either
+  implement A1-A4 in chain/validator or produce a v0.2 packet that removes low-value-alpha admission until
+  those gates exist.
 - `[passive]` 2026-06-22 · Codex/Kepler — **drafted the self-contained GPTPRO review packet:**
   `Cairn_Protocol_GPTPRO_Review_Draft_v0.1.md`. Per request, checked this file first, then built a
   contextless front door that does **not** assume thread memory. It incorporates the latest live state:
