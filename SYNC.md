@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 316: Aquapolis Phanpy #100 deepened; corpus 509dd2bc)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 317: Aquapolis Pinsir #101 deepened; corpus e4c42946)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-seventeenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-101` Pinsir #101 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. The pass
+  uses the local English WoC Aquapolis row, Pokemon TCG API card and set
+  records, bounded Bulbapedia Pinsir / Aquapolis context, and local Jungle
+  Pinsir as an earlier bug-pressure comparator. The dossier carries
+  Aquapolis #101, Common, Basic Grass, 60 HP, Horn Grab, Super Slice, Fire
+  weakness, one-Colorless retreat, Toshinao Aoki credit, Wind from the Sea
+  lineage, normal/reverse-holo finish lane, D-11-# e-Reader identity, the
+  Sneak and Snatch mini-game route, and the Pokemon Crystal night-roosting
+  Pokedex texture. Its special identification packet tells agents to keep
+  Pinsir #101 separate from Jungle / Base Set 2 / Gym / Vending Pinsir rows,
+  Japanese Wind from the Sea 018/087, reverse-holo finish claims, e-Reader
+  strip claims, and seller-owned physical evidence unless seller scans prove
+  the lane. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Pinsir #101 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `e4c42946ea9eb1fadfe82fc81130a7884be1a3317d9294d6c15732abe7a25d17`;
+  generated card dossiers decreased to 3,674, hand-authored card dossiers
+  increased to 875.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-sixteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:
