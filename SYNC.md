@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 332: Expedition Poliwrath #24 deepened; corpus 3ef55225)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 333: Expedition Raichu #25 deepened; corpus 10af08f2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-25` Raichu #25 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition #25 / #61 / Pichu #22 / Pikachu
+  #124 rows, local Expedition Pichu #22 dossier context, local Base Set /
+  Base Set 2 / Japanese Expansion Pack No Rarity Raichu comparison context,
+  Pokemon TCG API card and set records, bounded Bulbapedia Raichu /
+  Expedition / Atsuko Nishida context, official Pokemon.com Pikachu-creator
+  profile context, and The Art of Pokemon artist-index context. The dossier
+  carries Rare Holo, Stage 1 Lightning, 80 HP, Pikachu evolution, Plasma,
+  Shock Bolt, Fighting weakness, one-Colorless retreat, Atsuko Nishida credit,
+  Japanese Base Expansion Pack 120/128 lineage, B-82 / B-82-# e-Reader
+  identity, the #25 Rare Holo versus #61 Rare non-holo trap, reverse-holo
+  separation, Nishida's Pichu/Pikachu/Raichu Expedition sequence, the Pokemon
+  Crystal electricity-discharge Pokedex texture, and Base Set / Base Set 2 /
+  Japanese No Rarity boundaries. Its special identification packet tells
+  agents to keep #25, #61, reverse-holo finish claims, B-82 / B-82-# strip
+  evidence, Pichu/Pikachu family context, Base Set / Base Set 2 / Japanese
+  Expansion Pack No Rarity / Fossil / Gym / Neo / Skyridge Raichu memory, and
+  generic Pikachu-family gravity separate unless set, number, finish, artist,
+  attack package, B-ID, image, row, and seller evidence align. No-overclaim
+  remains explicit: this is catalog history and agent browsing texture, not
+  seller possession, authenticity, condition, price truth, image rights
+  approval, e-Reader strip readability, holo/non-holo equivalence,
+  reverse-holo equivalence, Pichu/Pikachu equivalence, No Rarity equivalence,
+  or spendability. Validation run: `json.tool` OK;
+  `scripts/build_catalog_history_dossiers.py` wrote 209 release dossiers,
+  4549 card dossiers, 3658 generated card dossiers, 24454 claims, 7546
+  sources, queue 100, corpus `10af08f2...`; `--check` OK;
+  `scripts/build_card_dossiers.py --check` OK;
+  `scripts/build_catalog_completion_audit.py --check` OK; focused index
+  assertion OK.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
