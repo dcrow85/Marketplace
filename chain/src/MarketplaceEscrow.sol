@@ -95,6 +95,88 @@ contract MarketplaceEscrow {
         bytes32 panelMetadataHash;
     }
 
+    struct AlphaAdmissionPolicy {
+        bytes32 policyHash;
+        uint64 version;
+        uint64 effectiveBlock;
+        bytes32 routeClass;
+        uint256 maxTradeValue;
+        uint256 principalExposureAfter;
+        uint256 maxPrincipalExposure;
+        bytes32 controlClusterId;
+        uint256 controlClusterExposureAfter;
+        uint256 maxControlClusterExposure;
+        bytes32 custodianId;
+        uint256 custodianExposureAfter;
+        uint256 maxCustodianExposure;
+        address verifier;
+        uint256 verifierExposureAfter;
+        uint256 maxVerifierExposure;
+        address judgmentAuthority;
+        uint256 judgmentAuthorityExposureAfter;
+        uint256 maxJudgmentAuthorityExposure;
+        bytes32 registryVersionHash;
+        uint256 registryVersionExposureAfter;
+        uint256 maxRegistryVersionExposure;
+        uint64 epochId;
+        uint256 globalEpochLossAfter;
+        uint256 maxGlobalEpochLoss;
+        bytes32 deliveryMode;
+        bytes32 disputeBranch;
+        bool manualOverride;
+        address manualAuthority;
+        address manualSecondApprover;
+        bytes32 manualReasonHash;
+        uint256 manualOverrideLoss;
+        uint256 manualRemainingLossBudget;
+    }
+
+    struct DeliveryTriggerPolicy {
+        bytes32 policyHash;
+        bytes32 witnessClassHash;
+        address witnessIssuer;
+        bytes32 issuerConflictRef;
+        bytes32 scopeHash;
+        uint64 expiryBlock;
+        uint64 challengeDeadlineBlock;
+        uint256 settlementCeiling;
+        bool sellerAssociated;
+        uint8 independentWitnessCount;
+        bool missingWitnessCanEstablishNonDelivery;
+    }
+
+    struct PostHandoffRemedy {
+        bytes32 claimTypeHash;
+        bytes32 remedyTypeHash;
+        uint256 maxAmount;
+        bool returnRequired;
+        bytes32 returnCustodyHash;
+        bytes32 evidenceRoot;
+        bytes32 appealFinalStateHash;
+        bool nonReturnRemedyAllowed;
+    }
+
+    struct TypedSpendability {
+        address issuer;
+        bytes32 canonicalPreimageHash;
+        bytes32 constituentClaimsHash;
+        bytes32 sourceClaimsAvailabilityHash;
+        bytes32 validatorCodeHash;
+        bytes32 validatorPolicyHash;
+        bytes32 issuerRoleHash;
+        uint8 issuerAuthorityCeiling;
+        bytes32 issuerConflictRef;
+        bytes32 registrySnapshotHash;
+        uint64 expiryBlock;
+        bytes32 dataAvailabilityHash;
+        bytes32 preimageAvailabilityHash;
+        bytes32 notClaimingHash;
+        bytes32 sourceBasisHash;
+        address sourceClaimAuthor;
+        bool downgraded;
+        bool valueCapped;
+    }
+
     struct Trade {
         address buyer;
         address seller;
@@ -122,6 +204,13 @@ contract MarketplaceEscrow {
         uint64 floorAppealWindowSeconds;
         bytes32 floorAppealAuthorityHash;
         bytes32 floorPanelMetadataHash;
+        bytes32 alphaPolicySnapshotHash;
+        uint64 alphaPolicyVersion;
+        bytes32 alphaRouteClass;
+        bytes32 alphaDeliveryMode;
+        bytes32 alphaDisputeBranch;
+        bytes32 alphaRegistryVersionHash;
+        uint64 alphaEpochId;
         bytes32 jscVerifierRouteHash;
         VerifierRouteClass verifierRouteClass;
         VerifierAuthorityLevel verifierAuthorityLevel;
@@ -151,7 +240,15 @@ contract MarketplaceEscrow {
         bytes32 routeAssemblyWitnessHash;
         bytes32 deliveryHash;
         bytes32 deliveryWitnessHash;
+        bytes32 deliveryPolicyHash;
         bytes32 receiptHash;
+        bytes32 postHandoffRemedyHash;
+        uint256 postHandoffRemedyMaxAmount;
+        bool postHandoffReturnRequired;
+        bytes32 postHandoffReturnCustodyHash;
+        bytes32 postHandoffEvidenceRoot;
+        bytes32 postHandoffAppealFinalStateHash;
+        bool postHandoffNonReturnRemedyAllowed;
         uint256 proofCount;
         uint256 evidenceCount;
         uint256 verifierAttestationCount;
@@ -236,16 +333,36 @@ contract MarketplaceEscrow {
     error RouteAssemblyWitnessMismatch(bytes32 expectedWitnessHash, bytes32 providedWitnessHash);
     error DeliveryWitnessRequired();
     error DeliveryWitnessMismatch(bytes32 expectedDeliveryWitnessHash, bytes32 providedDeliveryWitnessHash);
+    error AlphaAdmissionPolicyRequired();
+    error AlphaAdmissionPolicyRejected(bytes32 policyHash);
+    error DeliveryPolicyRequired();
+    error DeliveryPolicyRejected(bytes32 policyHash);
+    error PostHandoffRemedyRequired();
+    error PostHandoffRemedyRejected(bytes32 remedyHash);
+    error TypedSpendabilityRequired();
+    error TypedSpendabilityRejected(bytes32 spendabilityHash);
 
     uint256 public nextTradeId = 1;
     IMarketplaceActorRegistry public immutable actorRegistry;
+    uint64 public constant ALPHA_POLICY_VERSION = 1;
     bytes32 public constant ROUTE_COMMITMENT_GATE = keccak256("marketplace.gate.route_commitment.v0.1");
     bytes32 public constant DELIVERY_CONFIRMATION_GATE = keccak256("marketplace.gate.delivery_confirmation.v0.1");
     bytes32 public constant ROUTE_COMMITMENT_LEG = keccak256("marketplace.leg.route_commitment.v0.1");
     bytes32 public constant DELIVERY_CONFIRMATION_LEG = keccak256("marketplace.leg.delivery_confirmation.v0.1");
     bytes32 public constant FINGERPRINT_SCOPE_SET_HASH = keccak256("marketplace.scope_set.item_fingerprint.v0.1");
+    bytes32 public constant APPEAL_FINAL_STATE_HASH = keccak256("marketplace.appeal_state.final.v0.1");
+    bytes32 public constant MODEL_OUTPUT_SOURCE_BASIS_HASH = keccak256("marketplace.source_basis.model_output.v0.1");
+    bytes32 public constant REPUTATION_SCORE_SOURCE_BASIS_HASH =
+        keccak256("marketplace.source_basis.reputation_score.v0.1");
+    bytes32 public constant SUMMARY_SOURCE_BASIS_HASH = keccak256("marketplace.source_basis.summary.v0.1");
+    bytes32 public constant ALPHA_ADMISSION_POLICY_TYPEHASH = keccak256(
+        "AlphaAdmissionPolicy(address escrow,uint256 chainId,uint256 tradeId,bytes32 policyHash,uint64 version,uint64 effectiveBlock,bytes32 routeClass,uint256 maxTradeValue,uint256 principalExposureAfter,uint256 maxPrincipalExposure,bytes32 controlClusterId,uint256 controlClusterExposureAfter,uint256 maxControlClusterExposure,bytes32 custodianId,uint256 custodianExposureAfter,uint256 maxCustodianExposure,address verifier,uint256 verifierExposureAfter,uint256 maxVerifierExposure,address judgmentAuthority,uint256 judgmentAuthorityExposureAfter,uint256 maxJudgmentAuthorityExposure,bytes32 registryVersionHash,uint256 registryVersionExposureAfter,uint256 maxRegistryVersionExposure,uint64 epochId,uint256 globalEpochLossAfter,uint256 maxGlobalEpochLoss,bytes32 deliveryMode,bytes32 disputeBranch,bool manualOverride,address manualAuthority,address manualSecondApprover,bytes32 manualReasonHash,uint256 manualOverrideLoss,uint256 manualRemainingLossBudget)"
+    );
     bytes32 public constant SPENDABILITY_DIGEST_TYPEHASH = keccak256(
         "SpendabilityDigest(address escrow,uint256 chainId,uint256 tradeId,bytes32 gateHash,bytes32 legHash,bytes32 boundArtifactsHash,address issuer)"
+    );
+    bytes32 public constant TYPED_SPENDABILITY_DIGEST_TYPEHASH = keccak256(
+        "TypedSpendabilityDigest(address escrow,uint256 chainId,uint256 tradeId,bytes32 gateHash,bytes32 legHash,bytes32 boundArtifactsHash,address issuer,bytes32 canonicalPreimageHash,bytes32 constituentClaimsHash,bytes32 sourceClaimsAvailabilityHash,bytes32 validatorCodeHash,bytes32 validatorPolicyHash,bytes32 issuerRoleHash,uint8 issuerAuthorityCeiling,bytes32 issuerConflictRef,bytes32 registrySnapshotHash,uint64 expiryBlock,bytes32 dataAvailabilityHash,bytes32 preimageAvailabilityHash,bytes32 notClaimingHash,bytes32 sourceBasisHash,address sourceClaimAuthor,bool downgraded,bool valueCapped)"
     );
     bytes32 public constant INVENTORY_LOCK_BINDING_TYPEHASH = keccak256(
         "InventoryLockBinding(address escrow,uint256 chainId,uint256 tradeId,bytes32 inventoryLockHash,bytes32 itemFingerprintHash)"
@@ -282,6 +399,12 @@ contract MarketplaceEscrow {
     );
     bytes32 public constant DELIVERY_WITNESS_TYPEHASH = keccak256(
         "DeliveryWitness(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 deliveryHash,bytes32 spendabilityHash,bytes32 gateHash)"
+    );
+    bytes32 public constant DELIVERY_TRIGGER_POLICY_TYPEHASH = keccak256(
+        "DeliveryTriggerPolicy(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 policyHash,bytes32 witnessClassHash,address witnessIssuer,bytes32 issuerConflictRef,bytes32 scopeHash,uint64 expiryBlock,uint64 challengeDeadlineBlock,uint256 settlementCeiling,bool sellerAssociated,uint8 independentWitnessCount,bool missingWitnessCanEstablishNonDelivery)"
+    );
+    bytes32 public constant POST_HANDOFF_REMEDY_TYPEHASH = keccak256(
+        "PostHandoffRemedy(address escrow,uint256 chainId,uint256 tradeId,bytes32 claimHash,bytes32 claimTypeHash,bytes32 remedyTypeHash,uint256 maxAmount,bool returnRequired,bytes32 returnCustodyHash,bytes32 evidenceRoot,bytes32 appealFinalStateHash,bool nonReturnRemedyAllowed)"
     );
 
     mapping(uint256 tradeId => Trade) public trades;
@@ -380,6 +503,11 @@ contract MarketplaceEscrow {
     event DeliveryWitnessCommitted(
         uint256 indexed tradeId, bytes32 indexed deliveryWitnessHash, bytes32 indexed spendabilityHash
     );
+    event AlphaAdmissionPolicyCommitted(
+        uint256 indexed tradeId, bytes32 indexed policyHash, uint64 version, bytes32 snapshotHash
+    );
+    event DeliveryPolicyCommitted(uint256 indexed tradeId, bytes32 indexed policyHash, bytes32 indexed scopeHash);
+    event PostHandoffRemedyCommitted(uint256 indexed tradeId, bytes32 indexed remedyHash, uint256 maxAmount);
     event InspectionOpened(
         uint256 indexed tradeId, bytes32 deliveryHash, uint256 deliveredAt, uint256 inspectionDeadline
     );
@@ -479,6 +607,22 @@ contract MarketplaceEscrow {
     }
 
     function createTrade(
+        address,
+        address,
+        uint256,
+        uint256,
+        uint256,
+        bytes32,
+        bytes32,
+        bytes32,
+        address,
+        bytes calldata,
+        bytes calldata
+    ) external payable returns (uint256) {
+        revert AlphaAdmissionPolicyRequired();
+    }
+
+    function createTrade(
         address seller,
         address arbiter,
         uint256 sellerBondRequired,
@@ -488,6 +632,7 @@ contract MarketplaceEscrow {
         bytes32 termsHash,
         bytes32 jscHash,
         address floorExecutor,
+        AlphaAdmissionPolicy calldata alphaPolicy,
         bytes calldata intentSignature,
         bytes calldata termsSignature
     ) external payable returns (uint256 tradeId) {
@@ -518,6 +663,8 @@ contract MarketplaceEscrow {
         _requireSignature(msg.sender, termsHash, termsSignature);
 
         tradeId = nextTradeId++;
+        bytes32 alphaPolicySnapshotHash = alphaAdmissionPolicyHash(tradeId, alphaPolicy);
+        _validateAlphaAdmissionPolicy(tradeId, msg.value, alphaPolicy, arbiter, floorExecutor);
         trades[tradeId] = Trade({
             buyer: msg.sender,
             seller: seller,
@@ -545,6 +692,13 @@ contract MarketplaceEscrow {
             floorAppealWindowSeconds: 0,
             floorAppealAuthorityHash: bytes32(0),
             floorPanelMetadataHash: bytes32(0),
+            alphaPolicySnapshotHash: alphaPolicySnapshotHash,
+            alphaPolicyVersion: alphaPolicy.version,
+            alphaRouteClass: alphaPolicy.routeClass,
+            alphaDeliveryMode: alphaPolicy.deliveryMode,
+            alphaDisputeBranch: alphaPolicy.disputeBranch,
+            alphaRegistryVersionHash: alphaPolicy.registryVersionHash,
+            alphaEpochId: alphaPolicy.epochId,
             jscVerifierRouteHash: bytes32(0),
             verifierRouteClass: VerifierRouteClass.None,
             verifierAuthorityLevel: VerifierAuthorityLevel.None,
@@ -574,7 +728,15 @@ contract MarketplaceEscrow {
             routeAssemblyWitnessHash: bytes32(0),
             deliveryHash: bytes32(0),
             deliveryWitnessHash: bytes32(0),
+            deliveryPolicyHash: bytes32(0),
             receiptHash: bytes32(0),
+            postHandoffRemedyHash: bytes32(0),
+            postHandoffRemedyMaxAmount: 0,
+            postHandoffReturnRequired: false,
+            postHandoffReturnCustodyHash: bytes32(0),
+            postHandoffEvidenceRoot: bytes32(0),
+            postHandoffAppealFinalStateHash: bytes32(0),
+            postHandoffNonReturnRemedyAllowed: false,
             proofCount: 0,
             evidenceCount: 0,
             verifierAttestationCount: 0,
@@ -585,6 +747,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, intentHash);
         _anchorPacketHash(tradeId, termsHash);
         _anchorPacketHash(tradeId, jscHash);
+        _anchorPacketHash(tradeId, alphaPolicySnapshotHash);
 
         emit TradeCreated(
             tradeId,
@@ -599,6 +762,7 @@ contract MarketplaceEscrow {
             jscHash,
             floorExecutor
         );
+        emit AlphaAdmissionPolicyCommitted(tradeId, alphaPolicy.policyHash, alphaPolicy.version, alphaPolicySnapshotHash);
     }
 
     function cancelBeforeSellerBond(uint256 tradeId, bytes32 reasonHash, bytes calldata reasonSignature)
@@ -1083,6 +1247,21 @@ contract MarketplaceEscrow {
     }
 
     function commitRoute(
+        uint256,
+        bytes32,
+        bytes32,
+        bytes32,
+        bytes32,
+        bytes32,
+        bool,
+        bool,
+        uint256,
+        bytes calldata
+    ) external pure {
+        revert TypedSpendabilityRequired();
+    }
+
+    function commitRoute(
         uint256 tradeId,
         bytes32 routeHash,
         bytes32 spendabilityHash,
@@ -1092,6 +1271,7 @@ contract MarketplaceEscrow {
         bool inPersonAllowed,
         bool insured,
         uint256 declaredInsurance,
+        TypedSpendability calldata typedSpendability,
         bytes calldata routeSignature
     ) external onlySeller(tradeId) inState(tradeId, State.EvidencePending) {
         if (routeHash == bytes32(0)) revert BadHash();
@@ -1109,10 +1289,11 @@ contract MarketplaceEscrow {
             revert FingerprintChallengeActive(trade.fingerprintChallengeHash);
         }
         bytes32 expectedSpendabilityHash =
-            routeSpendabilityHash(tradeId, routeHash, wallBundleHash, assemblyHistoryHash, msg.sender);
+            routeSpendabilityHash(tradeId, routeHash, wallBundleHash, assemblyHistoryHash, typedSpendability);
         if (spendabilityHash != expectedSpendabilityHash) {
             revert SpendabilityDigestMismatch(expectedSpendabilityHash, spendabilityHash);
         }
+        _validateTypedSpendability(trade, typedSpendability, msg.sender, 1, spendabilityHash);
         bytes32 expectedRouteAssemblyWitnessHash =
             routeAssemblyWitnessHash(tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash);
         if (routeAssemblyWitnessHash_ != expectedRouteAssemblyWitnessHash) {
@@ -1154,10 +1335,22 @@ contract MarketplaceEscrow {
     }
 
     function markDelivered(
+        uint256,
+        bytes32,
+        bytes32,
+        bytes32,
+        bytes calldata
+    ) external pure {
+        revert DeliveryPolicyRequired();
+    }
+
+    function markDelivered(
         uint256 tradeId,
         bytes32 deliveryHash,
         bytes32 spendabilityHash,
         bytes32 deliveryWitnessHash_,
+        DeliveryTriggerPolicy calldata deliveryPolicy,
+        TypedSpendability calldata typedSpendability,
         bytes calldata deliverySignature
     ) external {
         Trade storage trade = trades[tradeId];
@@ -1167,24 +1360,30 @@ contract MarketplaceEscrow {
         }
         if (deliveryHash == bytes32(0)) revert BadHash();
         if (deliveryWitnessHash_ == bytes32(0)) revert DeliveryWitnessRequired();
-        bytes32 expectedSpendabilityHash = deliverySpendabilityHash(tradeId, deliveryHash, msg.sender);
+        bytes32 expectedSpendabilityHash = deliverySpendabilityHash(tradeId, deliveryHash, typedSpendability);
         if (spendabilityHash != expectedSpendabilityHash) {
             revert SpendabilityDigestMismatch(expectedSpendabilityHash, spendabilityHash);
         }
+        _validateDeliveryTriggerPolicy(trade, deliveryPolicy, msg.sender);
+        _validateTypedSpendability(trade, typedSpendability, msg.sender, 1, spendabilityHash);
+        bytes32 deliveryPolicyHash_ = deliveryTriggerPolicyHash(tradeId, deliveryPolicy);
         bytes32 expectedDeliveryWitnessHash = deliveryWitnessHash(tradeId, deliveryHash, spendabilityHash);
         if (deliveryWitnessHash_ != expectedDeliveryWitnessHash) {
             revert DeliveryWitnessMismatch(expectedDeliveryWitnessHash, deliveryWitnessHash_);
         }
         _requireSignature(msg.sender, deliveryHash, deliverySignature);
         _consumeSpendability(tradeId, spendabilityHash, DELIVERY_CONFIRMATION_GATE);
+        _anchorPacketHash(tradeId, deliveryPolicyHash_);
         _anchorPacketHash(tradeId, deliveryHash);
 
         trade.deliveryHash = deliveryHash;
         trade.deliveryWitnessHash = deliveryWitnessHash_;
+        trade.deliveryPolicyHash = deliveryPolicyHash_;
         trade.deliveredAt = block.timestamp;
         trade.state = State.InspectionOpen;
 
         emit DeliveryWitnessCommitted(tradeId, deliveryWitnessHash_, spendabilityHash);
+        emit DeliveryPolicyCommitted(tradeId, deliveryPolicy.policyHash, deliveryPolicy.scopeHash);
         emit InspectionOpened(tradeId, deliveryHash, block.timestamp, block.timestamp + trade.inspectionSeconds);
     }
 
@@ -1269,6 +1468,32 @@ contract MarketplaceEscrow {
 
         emit RouteClaimOpened(tradeId, claimHash, msg.value);
         emit ClaimOpened(tradeId, claimHash, msg.value);
+    }
+
+    function commitPostHandoffRemedy(
+        uint256 tradeId,
+        PostHandoffRemedy calldata remedy,
+        bytes calldata remedySignature
+    ) external inState(tradeId, State.ClaimOrDisputePending) {
+        Trade storage trade = trades[tradeId];
+        if (msg.sender != trade.buyer) revert Unauthorized();
+        if (!trade.postDeliveryClaim) revert PostDeliveryClaimRequired();
+        if (trade.postHandoffRemedyHash != bytes32(0)) revert DuplicatePacket(trade.postHandoffRemedyHash);
+
+        bytes32 remedyHash = postHandoffRemedyHash(tradeId, remedy);
+        _validatePostHandoffRemedy(remedy, remedyHash);
+        _requireSignature(msg.sender, remedyHash, remedySignature);
+        _anchorPacketHash(tradeId, remedyHash);
+
+        trade.postHandoffRemedyHash = remedyHash;
+        trade.postHandoffRemedyMaxAmount = remedy.maxAmount;
+        trade.postHandoffReturnRequired = remedy.returnRequired;
+        trade.postHandoffReturnCustodyHash = remedy.returnCustodyHash;
+        trade.postHandoffEvidenceRoot = remedy.evidenceRoot;
+        trade.postHandoffAppealFinalStateHash = remedy.appealFinalStateHash;
+        trade.postHandoffNonReturnRemedyAllowed = remedy.nonReturnRemedyAllowed;
+
+        emit PostHandoffRemedyCommitted(tradeId, remedyHash, remedy.maxAmount);
     }
 
     function resolveClaim(
@@ -1484,6 +1709,54 @@ contract MarketplaceEscrow {
         return (trade.routeSpendabilityHash, trade.routeAssemblyHistoryHash, trade.routeAssemblyWitnessHash);
     }
 
+    function alphaAdmissionPolicyHash(uint256 tradeId, AlphaAdmissionPolicy calldata policy)
+        public
+        view
+        returns (bytes32)
+    {
+        return keccak256(
+            abi.encode(
+                ALPHA_ADMISSION_POLICY_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                policy.policyHash,
+                policy.version,
+                policy.effectiveBlock,
+                policy.routeClass,
+                policy.maxTradeValue,
+                policy.principalExposureAfter,
+                policy.maxPrincipalExposure,
+                policy.controlClusterId,
+                policy.controlClusterExposureAfter,
+                policy.maxControlClusterExposure,
+                policy.custodianId,
+                policy.custodianExposureAfter,
+                policy.maxCustodianExposure,
+                policy.verifier,
+                policy.verifierExposureAfter,
+                policy.maxVerifierExposure,
+                policy.judgmentAuthority,
+                policy.judgmentAuthorityExposureAfter,
+                policy.maxJudgmentAuthorityExposure,
+                policy.registryVersionHash,
+                policy.registryVersionExposureAfter,
+                policy.maxRegistryVersionExposure,
+                policy.epochId,
+                policy.globalEpochLossAfter,
+                policy.maxGlobalEpochLoss,
+                policy.deliveryMode,
+                policy.disputeBranch,
+                policy.manualOverride,
+                policy.manualAuthority,
+                policy.manualSecondApprover,
+                policy.manualReasonHash,
+                policy.manualOverrideLoss,
+                policy.manualRemainingLossBudget
+            )
+        );
+    }
+
     function routeAssemblyWitnessHash(
         uint256 tradeId,
         bytes32 routeHash,
@@ -1523,6 +1796,24 @@ contract MarketplaceEscrow {
             )
         );
         return _spendabilityDigest(tradeId, ROUTE_COMMITMENT_GATE, ROUTE_COMMITMENT_LEG, boundArtifactsHash, issuer);
+    }
+
+    function routeSpendabilityHash(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes32 wallBundleHash,
+        bytes32 assemblyHistoryHash,
+        TypedSpendability calldata typedSpendability
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        bytes32 boundArtifactsHash = keccak256(
+            abi.encode(
+                routeHash, wallBundleHash, assemblyHistoryHash, trade.itemFingerprintHash, trade.inventoryLockHash
+            )
+        );
+        return _typedSpendabilityDigest(
+            tradeId, ROUTE_COMMITMENT_GATE, ROUTE_COMMITMENT_LEG, boundArtifactsHash, typedSpendability
+        );
     }
 
     function inventoryLockBindingHash(uint256 tradeId, bytes32 inventoryLockHash, bytes32 itemFingerprintHash)
@@ -1574,6 +1865,72 @@ contract MarketplaceEscrow {
             _spendabilityDigest(
                 tradeId, DELIVERY_CONFIRMATION_GATE, DELIVERY_CONFIRMATION_LEG, boundArtifactsHash, issuer
             );
+    }
+
+    function deliverySpendabilityHash(
+        uint256 tradeId,
+        bytes32 deliveryHash,
+        TypedSpendability calldata typedSpendability
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        bytes32 boundArtifactsHash =
+            keccak256(abi.encode(trade.routeHash, deliveryHash, trade.routeAssemblyWitnessHash));
+        return _typedSpendabilityDigest(
+            tradeId, DELIVERY_CONFIRMATION_GATE, DELIVERY_CONFIRMATION_LEG, boundArtifactsHash, typedSpendability
+        );
+    }
+
+    function deliveryTriggerPolicyHash(uint256 tradeId, DeliveryTriggerPolicy calldata policy)
+        public
+        view
+        returns (bytes32)
+    {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                DELIVERY_TRIGGER_POLICY_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                trade.routeHash,
+                policy.policyHash,
+                policy.witnessClassHash,
+                policy.witnessIssuer,
+                policy.issuerConflictRef,
+                policy.scopeHash,
+                policy.expiryBlock,
+                policy.challengeDeadlineBlock,
+                policy.settlementCeiling,
+                policy.sellerAssociated,
+                policy.independentWitnessCount,
+                policy.missingWitnessCanEstablishNonDelivery
+            )
+        );
+    }
+
+    function postHandoffRemedyHash(uint256 tradeId, PostHandoffRemedy calldata remedy)
+        public
+        view
+        returns (bytes32)
+    {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                POST_HANDOFF_REMEDY_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                trade.claimHash,
+                remedy.claimTypeHash,
+                remedy.remedyTypeHash,
+                remedy.maxAmount,
+                remedy.returnRequired,
+                remedy.returnCustodyHash,
+                remedy.evidenceRoot,
+                remedy.appealFinalStateHash,
+                remedy.nonReturnRemedyAllowed
+            )
+        );
     }
 
     function verifierScopeApprovalHash(uint256 tradeId, address verifier, bytes32 scopeSetHash, bytes32 approvalHash)
@@ -1794,6 +2151,53 @@ contract MarketplaceEscrow {
         emit SellerBonded(tradeId, msg.value);
     }
 
+    function _validateAlphaAdmissionPolicy(
+        uint256 tradeId,
+        uint256 tradeValue,
+        AlphaAdmissionPolicy calldata policy,
+        address arbiter,
+        address floorExecutor
+    ) internal view {
+        bytes32 policySnapshotHash = alphaAdmissionPolicyHash(tradeId, policy);
+        if (policy.policyHash == bytes32(0) || policySnapshotHash == bytes32(0)) {
+            revert AlphaAdmissionPolicyRequired();
+        }
+        if (
+            policy.version != ALPHA_POLICY_VERSION || block.number < policy.effectiveBlock
+                || policy.routeClass == bytes32(0) || policy.deliveryMode == bytes32(0)
+                || policy.disputeBranch == bytes32(0) || policy.registryVersionHash == bytes32(0)
+        ) {
+            revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        }
+        if (
+            tradeValue > policy.maxTradeValue || policy.principalExposureAfter > policy.maxPrincipalExposure
+                || policy.controlClusterId == bytes32(0)
+                || policy.controlClusterExposureAfter > policy.maxControlClusterExposure
+                || policy.custodianId == bytes32(0) || policy.custodianExposureAfter > policy.maxCustodianExposure
+                || policy.verifierExposureAfter > policy.maxVerifierExposure
+                || policy.judgmentAuthorityExposureAfter > policy.maxJudgmentAuthorityExposure
+                || policy.registryVersionExposureAfter > policy.maxRegistryVersionExposure
+                || policy.globalEpochLossAfter > policy.maxGlobalEpochLoss
+        ) {
+            revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        }
+        if (
+            policy.judgmentAuthority == address(0)
+                || (policy.judgmentAuthority != arbiter && policy.judgmentAuthority != floorExecutor)
+        ) {
+            revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        }
+        if (policy.manualOverride) {
+            if (
+                policy.manualAuthority == address(0) || policy.manualSecondApprover == address(0)
+                    || policy.manualAuthority == policy.manualSecondApprover || policy.manualReasonHash == bytes32(0)
+                    || policy.manualOverrideLoss > policy.manualRemainingLossBudget
+            ) {
+                revert AlphaAdmissionPolicyRejected(policy.policyHash);
+            }
+        }
+    }
+
     function _validateJscVerifierRoute(uint256 tradeId, Trade storage trade, JscVerifierRoute calldata route)
         internal
         view
@@ -1837,6 +2241,101 @@ contract MarketplaceEscrow {
         }
         if (route.verifierBondRequired == 0 || route.verifierExposureCap == 0) {
             revert BadAmount();
+        }
+        if (trade.alphaPolicySnapshotHash == bytes32(0)) revert AlphaAdmissionPolicyRequired();
+        if (trade.alphaDisputeBranch == bytes32(0)) revert AlphaAdmissionPolicyRequired();
+    }
+
+    function _validateDeliveryTriggerPolicy(
+        Trade storage trade,
+        DeliveryTriggerPolicy calldata policy,
+        address witness
+    ) internal view {
+        if (policy.policyHash == bytes32(0)) revert DeliveryPolicyRequired();
+        if (
+            policy.witnessClassHash == bytes32(0) || policy.witnessIssuer != witness
+                || policy.issuerConflictRef == bytes32(0) || policy.scopeHash != trade.routeHash
+                || block.number > policy.expiryBlock || policy.challengeDeadlineBlock < block.number
+                || policy.challengeDeadlineBlock > policy.expiryBlock || policy.settlementCeiling < trade.escrowAmount
+                || policy.missingWitnessCanEstablishNonDelivery
+        ) {
+            revert DeliveryPolicyRejected(policy.policyHash);
+        }
+        if (policy.sellerAssociated && policy.independentWitnessCount == 0) {
+            revert DeliveryPolicyRejected(policy.policyHash);
+        }
+    }
+
+    function _validatePostHandoffRemedy(PostHandoffRemedy calldata remedy, bytes32 remedyHash) internal pure {
+        if (remedyHash == bytes32(0)) revert PostHandoffRemedyRequired();
+        if (
+            remedy.claimTypeHash == bytes32(0) || remedy.remedyTypeHash == bytes32(0) || remedy.maxAmount == 0
+                || remedy.evidenceRoot == bytes32(0) || remedy.appealFinalStateHash != APPEAL_FINAL_STATE_HASH
+        ) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+        if (remedy.returnRequired && remedy.returnCustodyHash == bytes32(0)) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+        if (!remedy.returnRequired && !remedy.nonReturnRemedyAllowed) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+    }
+
+    function _requirePostHandoffRemedy(Trade storage trade, uint256 buyerRefund) internal view {
+        bytes32 remedyHash = trade.postHandoffRemedyHash;
+        if (remedyHash == bytes32(0)) revert PostHandoffRemedyRequired();
+        if (
+            buyerRefund > trade.postHandoffRemedyMaxAmount
+                || trade.postHandoffEvidenceRoot == bytes32(0)
+                || trade.postHandoffAppealFinalStateHash != APPEAL_FINAL_STATE_HASH
+        ) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+        if (trade.postHandoffReturnRequired && trade.postHandoffReturnCustodyHash == bytes32(0)) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+        if (
+            buyerRefund == trade.escrowAmount && trade.postHandoffReturnCustodyHash == bytes32(0)
+                && !trade.postHandoffNonReturnRemedyAllowed
+        ) {
+            revert PostHandoffRemedyRejected(remedyHash);
+        }
+    }
+
+    function _validateTypedSpendability(
+        Trade storage trade,
+        TypedSpendability calldata spendability,
+        address issuer,
+        uint8 requiredAuthority,
+        bytes32 spendabilityHash
+    ) internal view {
+        if (spendabilityHash == bytes32(0)) revert TypedSpendabilityRequired();
+        if (
+            spendability.issuer != issuer || spendability.canonicalPreimageHash == bytes32(0)
+                || spendability.constituentClaimsHash == bytes32(0)
+                || spendability.sourceClaimsAvailabilityHash == bytes32(0)
+                || spendability.validatorCodeHash == bytes32(0) || spendability.validatorPolicyHash == bytes32(0)
+                || spendability.issuerRoleHash == bytes32(0)
+                || spendability.issuerAuthorityCeiling < requiredAuthority
+                || spendability.issuerConflictRef == bytes32(0)
+                || spendability.registrySnapshotHash != trade.alphaPolicySnapshotHash
+                || block.number > spendability.expiryBlock || spendability.dataAvailabilityHash == bytes32(0)
+                || spendability.preimageAvailabilityHash == bytes32(0) || spendability.notClaimingHash == bytes32(0)
+        ) {
+            revert TypedSpendabilityRejected(spendabilityHash);
+        }
+        if (
+            spendability.sourceBasisHash == MODEL_OUTPUT_SOURCE_BASIS_HASH
+                || spendability.sourceBasisHash == REPUTATION_SCORE_SOURCE_BASIS_HASH
+                || spendability.sourceBasisHash == SUMMARY_SOURCE_BASIS_HASH
+        ) {
+            revert TypedSpendabilityRejected(spendabilityHash);
+        }
+        if (
+            spendability.sourceClaimAuthor == issuer && (!spendability.downgraded || !spendability.valueCapped)
+        ) {
+            revert TypedSpendabilityRejected(spendabilityHash);
         }
     }
 
@@ -1955,6 +2454,44 @@ contract MarketplaceEscrow {
         );
     }
 
+    function _typedSpendabilityDigest(
+        uint256 tradeId,
+        bytes32 gateHash,
+        bytes32 legHash,
+        bytes32 boundArtifactsHash,
+        TypedSpendability calldata spendability
+    ) internal view returns (bytes32) {
+        return keccak256(
+            abi.encode(
+                TYPED_SPENDABILITY_DIGEST_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                gateHash,
+                legHash,
+                boundArtifactsHash,
+                spendability.issuer,
+                spendability.canonicalPreimageHash,
+                spendability.constituentClaimsHash,
+                spendability.sourceClaimsAvailabilityHash,
+                spendability.validatorCodeHash,
+                spendability.validatorPolicyHash,
+                spendability.issuerRoleHash,
+                spendability.issuerAuthorityCeiling,
+                spendability.issuerConflictRef,
+                spendability.registrySnapshotHash,
+                spendability.expiryBlock,
+                spendability.dataAvailabilityHash,
+                spendability.preimageAvailabilityHash,
+                spendability.notClaimingHash,
+                spendability.sourceBasisHash,
+                spendability.sourceClaimAuthor,
+                spendability.downgraded,
+                spendability.valueCapped
+            )
+        );
+    }
+
     function _anchorPacketHash(uint256 tradeId, bytes32 packetHash) internal {
         if (packetHash == bytes32(0)) revert BadHash();
         if (anchoredPacketHashes[tradeId][packetHash]) revert DuplicatePacket(packetHash);
@@ -1984,6 +2521,9 @@ contract MarketplaceEscrow {
         Trade storage trade = trades[tradeId];
         _anchorPacketHash(tradeId, rulingHash);
         uint256 buyerRefund = (trade.escrowAmount * buyerRefundBps) / 10_000;
+        if (trade.postDeliveryClaim && buyerRefund != 0) {
+            _requirePostHandoffRemedy(trade, buyerRefund);
+        }
         uint256 sellerEscrowPayout = trade.escrowAmount - buyerRefund;
         uint256 sellerBondPenalty = (trade.sellerBondLocked * sellerBondPenaltyBps) / 10_000;
         uint256 sellerBondReturn = trade.sellerBondLocked - sellerBondPenalty;
