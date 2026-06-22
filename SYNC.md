@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 325: Expedition Machamp #16 deepened; corpus 792abc36)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 326: Expedition Magby #17 deepened; corpus 89cdf206)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,37 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-17` Magby #17 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local Magby #52 / Magmar
+  #86 / Base Set Magmar / Neo Genesis Magby comparison rows, Pokemon TCG API
+  card and set records, bounded Bulbapedia Magby / Expedition / e-Reader ID
+  / Mitsuhiro Arita context, Arita's own biography page, and local Arita
+  memory context. The dossier carries Expedition #17, Rare Holo, Baby Fire,
+  30 HP, Energy Catch, the Baby Pokemon attack-interruption rule, one-Colorless
+  retreat, evolvesTo Magmar, Mitsuhiro Arita credit, Japanese Base Expansion
+  Pack 107/128 lineage, B-75 / B-75-# e-Reader identity, the #17 Rare Holo
+  versus #52 Rare non-holo trap, normal/reverse-holo finish separation, and
+  Magmar-line boundaries. Its special identification packet tells agents to
+  keep Expedition Magby #17 separate from Expedition #52, reverse-holo finish
+  claims, B-75-# non-holo context, Magmar #86 lineage context, Base Set
+  Magmar, Blaine's Magmar, Neo Genesis Magby, Japanese Base Expansion Pack
+  rows, and generic Baby Pokemon memory unless set, number, finish, image,
+  row, and seller evidence align. No-overclaim remains explicit: this is
+  catalog history and agent browsing texture, not seller possession,
+  authenticity, condition, price truth, image rights approval, e-Reader strip
+  readability, or spendability. Validation run: `json.tool` OK;
+  `build_catalog_history_dossiers.py` OK and `--check` OK;
+  `build_card_dossiers.py --check` OK; `build_catalog_completion_audit.py
+  --check` OK. Focused assertion passed for hand-authored status, title,
+  special identification packet, Arita credit, B-75 theme, #17/#52 trap,
+  Baby-rule theme, and Energy Catch theme. Counts: 209 release dossiers,
+  4,549 card dossiers, 3,665 generated card dossiers, 884 hand-authored card
+  dossiers, 24,393 claims, 7,459 sources; corpus hash
+  `89cdf206a89f31722b4446a4211fb9fd2b34a0d3056ab1c2b23a41ba8e015fae`.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:

@@ -1,7 +1,7 @@
 {
   "schema": "marketplace.catalog_history_source_set.v0.1",
   "scope": {
-    "description": "Hand-researched deepening pass for English Expedition Base Set and five rows that expose the e-Card transition.",
+    "description": "Hand-researched deepening pass for English Expedition Base Set and selected rows that expose the e-Card transition.",
     "in_scope": [
       "Expedition Base Set release dossier",
       "Alakazam 1",
@@ -15,6 +15,7 @@
       "Golem 14",
       "Kingler 15",
       "Machamp 16",
+      "Magby 17",
       "Mew 19",
       "Tyranitar 29"
     ],
@@ -3615,6 +3616,480 @@
           "B-88",
           "M-88-#",
           "Machop At Work"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-17",
+      "type": "card",
+      "context": {
+        "name_en": "Magby",
+        "name_ja": "ブビィ",
+        "romaji": "Buby",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-17",
+        "catalog_row_id": "ecard1-17",
+        "card_number": "17",
+        "release_name": "Expedition Base Set",
+        "source_expansion_lineage": "English Expedition Base Set / E-Card Series / Japanese Base Expansion Pack lineage",
+        "variant_lane": "Rare Holo with non-holo #52, reverse-holo, and B-75/B-75-# boundaries"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-17",
+          "title": "Local English WoC card row: Magby #17",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-52",
+          "title": "Local English WoC comparison row: Magby #52",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-86",
+          "title": "Local English WoC comparison row: Magmar #86",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-36",
+          "title": "Local English WoC comparison row: Base Set Magmar #36",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:Magby",
+          "title": "Local English WoC comparison row: Neo Genesis Magby",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-17",
+          "title": "Pokemon TCG API v2 card record: Magby ecard1-17",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard1",
+          "title": "Pokemon TCG API v2 set record: Expedition Base Set",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magby_(Expedition_17)",
+          "title": "Bulbapedia: Magby (Expedition 17)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "seller-card strip readability"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Expedition_Base_Set_(TCG)",
+          "title": "Bulbapedia: Expedition Base Set (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/List_of_TCG_cards_by_e-Reader_card_ID",
+          "title": "Bulbapedia: List of TCG cards by e-Reader card ID",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "seller-card strip readability"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mitsuhiro_Arita",
+          "title": "Bulbapedia: Mitsuhiro Arita",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "artist_reference",
+          "ref": "https://mitsuhiroarita.com/2017/02/16/biography/",
+          "title": "Mitsuhiro Arita biography: 30 Years of Pokemon TCG Art",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "local_comparison_dossier",
+          "ref": "data/catalog-history/source-sets/base_set_2_v0_1.json#Charizard-base4-4",
+          "title": "Local Base Set 2 Charizard dossier context for Arita memory",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Magby as Expedition Base Set card #17, a Rare Holo Baby Fire Pokemon credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s6",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Magby / ブビィ / Buby, English Expedition Base Set 17/165, first released in Japan through Base Expansion Pack as 107/128; the e-Reader card ID list separates the non-holo English #52 / Japanese 075/128 lane.",
+          "sources": [
+            "s8",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Expedition Magby #17 with 30 HP, Baby subtype, Fire type, one-Colorless retreat, evolvesTo Magmar, the Baby Pokemon attack-interruption rule, and the Energy Catch attack that can recover a basic Energy card from the discard pile on a successful coin flip.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Expedition Magby #17 to Mitsuhiro Arita; Bulbapedia identifies Arita as a Pokemon TCG illustrator since the game's inception, while Arita's own biography says Pokemon TCG was his first professional illustration project and that he designed the first seven Energy symbols.",
+          "sources": [
+            "s1",
+            "s6",
+            "s8",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Expedition Base Set as set id ecard1 in the E-Card Series with releaseDate 2002/09/15 and total 165; Bulbapedia describes Expedition Base Set as the first main English e-Card Series expansion and the English counterpart to Japan's Base Expansion Pack.",
+          "sources": [
+            "s6",
+            "s7",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Bulbapedia says Expedition Base Set introduced an e-Reader-oriented card frame, new attacks and game effects, Poké-Powers and Poké-Bodies, and the ability to swipe cards through a Nintendo e-Reader for Game Boy Advance interactions.",
+          "sources": [
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "The local catalog has Expedition Magby #17 as Rare Holo and Expedition Magby #52 as Rare non-holo; both share Mitsuhiro Arita, Energy Catch, Baby subtype, 30 HP, Fire type, evolvesTo Magmar, the Baby rule, and one retreat, so card number and finish lane carry the useful identity separation.",
+          "sources": [
+            "s1",
+            "s2",
+            "s8",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card ID of the Holofoil print of Magby #17 is B-75, while the Non Holofoil print is B-75-#; the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the long strip, while species, height, and weight are present on the Holofoil print.",
+          "sources": [
+            "s8",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.lineage",
+          "text": "The local Expedition row for Magmar #86 is a Miki Tanaka Uncommon Basic Fire Pokemon with Flaming Punch and Thrash, so it is useful as Magby's evolution-line context but not as Arita evidence and not as proof of Magby #17 identity.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.lineage",
+          "text": "The local Base Set row for Magmar #36 is an earlier Arita-credited Fire Pokemon memory, while Expedition Magby is a Baby Pokemon row from the e-Reader era; the shared Magmar line and Arita trace are useful for browsing, but they must not collapse set, generation, stage, or card-number identity.",
+          "sources": [
+            "s1",
+            "s4",
+            "s6",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c7",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Magby #17 matters because it turns Arita's founding TCG hand toward a tiny, rules-frictive Baby Pokemon: the card is only 30 HP, but the Baby rule makes an opponent's attack uncertain and Energy Catch turns a discard-pile basic Energy into a possible recovered resource.",
+          "sources": [
+            "s1",
+            "s6",
+            "s8",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c6",
+            "c8"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries holofoil and reverseHolofoil price lanes for Expedition Magby #17, while Bulbapedia and the e-Reader ID list separate #17, #52, B-75, and B-75-#; therefore finish, card number, e-Reader ID, Baby rule, Energy Catch, and seller scans must stay separate before comparing wants, images, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s8",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_magby_17_vs_52_b75_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader strip readability",
+            "holo/non-holo equivalence",
+            "reverse-holo equivalence",
+            "Magmar equivalence",
+            "Neo Genesis Magby equivalence"
+          ],
+          "steps": [
+            "Start with Expedition Base Set #17/165, set id ecard1, and row id ecard1-17 before importing Rare Holo context.",
+            "Keep Expedition Magby #17 separate from Expedition Magby #52 even though both share Mitsuhiro Arita, Energy Catch, Baby subtype, 30 HP, Fire type, evolvesTo Magmar, the Baby rule, and one retreat.",
+            "Preserve finish separately: holofoil #17, reverse holo #17, and non-holo #52 are not interchangeable evidence lanes.",
+            "Use B-75 and B-75-# as supporting e-Reader identifiers; do not infer that a seller's physical strip is readable without clear left/bottom border scans.",
+            "Use Expedition Magmar #86 as evolution-line context only; it is a Miki Tanaka row and does not prove Magby #17.",
+            "Keep Expedition Magby separate from Neo Genesis Magby, Base Set Magmar, Blaine's Magmar, Japanese Base Expansion Pack rows, and generic Baby Pokemon memories unless set, number, finish, image, and row evidence align."
+          ],
+          "summary": "Expedition Magby #17 is a small card with a fussy identity: #17 Rare Holo, #52 non-holo, reverse holo, B-75/B-75-#, Baby rule, and Magmar-line memory must remain distinct.",
+          "trigger": "A listing, want, scan, or agent memory says Expedition Magby, Magby #17, Magby #52, ecard1-17, ecard1-52, Mitsuhiro Arita, Energy Catch, Baby Pokemon, B-75, B-75-#, reverse holo, Magmar, Base Set Magmar, Blaine's Magmar, Neo Genesis Magby, or Japanese Base Expansion Pack Magby."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Magby #17 — the baby flame that asks for a coin",
+        "why_it_matters": "Expedition Magby #17 is small in exactly the way Expedition understands. It is only 30 HP, but the Baby rule makes attacking it uncertain, and Energy Catch turns a discard pile into a little hand-warmed resource. Arita is the artist collectors associate with huge founding images and the first Energy symbols, but here the same hand is doing something tiny and delicate: a baby Fire Pokemon with just enough rules friction to matter. The card also teaches lane discipline. #17 holo, #52 non-holo, reverse holo, B-75, B-75-#, Magmar #86, and older Magmar memories all orbit the same flame. The baby is cute; the assembly is precise.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller-card strip readability",
+          "holo/non-holo equivalence"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Mitsuhiro Arita",
+        "assembly_note": "Expedition Magby #17 is Arita's small fire inside the e-Reader frame: Baby-rule attack friction, Energy Catch resource recovery, B-75 identity, a deceptively close non-holo #52 lane, and Magmar-line memory that must not overrun the row.",
+        "assembly_themes": [
+          "Expedition Rare Holo row",
+          "Mitsuhiro Arita art trace",
+          "Arita founding TCG hand",
+          "Arita Energy-symbol context",
+          "Baby rule attack-friction",
+          "Energy Catch resource recovery",
+          "B-75 e-Reader identity",
+          "B-75-# non-holo boundary",
+          "Magby #17 vs #52 trap",
+          "Magmar #86 lineage contrast",
+          "Base Set Magmar memory boundary",
+          "normal vs reverse-holo finish lane"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Magby #17 is the tiny fire card that makes an agent slow down: Arita, Baby rule, Energy Catch, B-75, and a nearly identical #52 lane all fit in one small body.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "e-Reader strip readability"
+        ],
+        "number": "17",
+        "rarity_signal": "Rare Holo with non-holo #52, reverse-holo, and B-75/B-75-# boundaries",
+        "signals": [
+          "Expedition Base Set",
+          "2002/09/15",
+          "17",
+          "Rare Holo",
+          "Pokemon",
+          "Baby",
+          "Mitsuhiro Arita",
+          "B-75",
+          "Energy Catch"
         ]
       },
       "coverage": {
