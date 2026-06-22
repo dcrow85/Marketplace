@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-20 · Codex (catalog-history pass 313: Base Set 2 Magneton #9 deepened; corpus 1fd9532c)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 314: Aquapolis Ampharos #1 deepened; corpus af679a96)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-fourteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-1` Ampharos #1 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. The pass
+  uses the local English WoC Aquapolis row, Pokemon TCG API card and set
+  records, the hand-authored Ampharos H1 dossier as a local boundary
+  comparator, and bounded Bulbapedia Aquapolis / Ampharos reference context.
+  The dossier carries Aquapolis #1, Rare, Stage 2 Lightning, 100 HP,
+  Flaaffy evolution, Thundershock, Reflect Energy, Fighting weakness,
+  two-Colorless retreat, and Shin-ichi Yoshida credit. Its special
+  identification packet tells agents to keep numbered Ampharos #1 separate
+  from Ampharos H1/H32, reverse-holo finish claims, Japanese Wind from the
+  Sea E3-049, Expedition / Neo / Dark Ampharos rows, and seller-owned
+  physical evidence unless seller scans prove the lane. Validation passed:
+  `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Ampharos #1 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now `af679a969f86aeec2b4899a7701e391bdc5a8322a26557742b9acfff81894ec7`;
+  generated card dossiers decreased to 3,677, hand-authored card dossiers
+  increased to 872.
 - `[passive]` 2026-06-20 · Codex — completed the three-hundred-thirteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/base_set_2_v0_1.json`:

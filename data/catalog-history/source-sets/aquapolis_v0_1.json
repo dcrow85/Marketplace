@@ -545,6 +545,309 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-1",
+      "type": "card",
+      "context": {
+        "name_en": "Ampharos",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-1",
+        "catalog_row_id": "ecard2-1",
+        "card_number": "1",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / numbered Rare row",
+        "variant_lane": "numbered Rare non-Holo with reverse-holo market lane",
+        "holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-H1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-1",
+          "title": "Local English WoC card row: Ampharos #1",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-1",
+          "title": "Pokemon TCG API v2 card record: Ampharos ecard2-1",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Aquapolis_H1)",
+          "title": "Bulbapedia: Ampharos (Aquapolis H1)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Ampharos as Aquapolis card #1, a Rare Stage 2 Lightning Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ampharos #1 with 100 HP, evolvesFrom Flaaffy, Fighting weakness, two-Colorless retreat, and attacks Thundershock and Reflect Energy.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Aquapolis Ampharos #1 to Shin-ichi Yoshida, matching the artist credited on the adjacent Ampharos H1 row in the local hand-authored dossier.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; the local release dossier keeps the count-basis distinction visible because Bulbapedia's Aquapolis blurb uses a different 186-card convention.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "The local catalog has two Aquapolis Ampharos rows: card #1 as a numbered Rare row and H1 as the H-number Rare Holo row; agents must keep #1 and H1 separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries both normal and reverseHolofoil price lanes for Ampharos #1, so a listing described as reverse holo must be treated as a print/finish lane inside card #1, not as the H1 Rare Holo row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis introduced Crystal Pokemon and used e-Reader-era Dot-Code strips, including lettered variants with different strip data; those interface features are catalog identity context, not proof that a seller's physical card scans or is authentic.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Ampharos #1 matters because it is the quiet numbered doorway into Aquapolis: the same lighthouse-coded Pokemon and Reflect Energy text that appear beside the H1 halo, but here the lesson is lane discipline rather than chase gravity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis #1 / ecard2-1, Rare, non-Holo base row with possible reverse-holo finish lane, Shin-ichi Yoshida credit, Thundershock / Reflect Energy text, and non-equivalence with H1, Japanese Wind from the Sea E3-049, Expedition / Neo Ampharos rows, and seller-owned physical evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "aquapolis_ampharos_1_numbered_rare_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Ampharos, Ampharos #1, ecard2-1, reverse holo Ampharos, H1/H32, Ampharos H1, Shin-ichi Yoshida, Thundershock, Reflect Energy, Wind from the Sea, E3-049, Expedition Ampharos, Neo Ampharos, or Dark Ampharos.",
+          "summary": "Identify Ampharos #1 as the numbered Aquapolis Rare row, then keep it separate from the H1/H32 Rare Holo row and from reverse-holo finish claims until seller evidence proves the lane.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-1 / printed number 1 before accepting this as the numbered Rare row.",
+            "Record whether the seller is offering normal, reverse holo, or another finish; do not promote a reverse-holo price lane into H1/H32 identity.",
+            "Use Shin-ichi Yoshida credit, Stage 2 Lightning profile, Thundershock, and Reflect Energy as supporting row evidence, not as substitutes for card number and set identity.",
+            "Keep Ampharos H1/H32 adjacent but separate; shared species, art memory, artist, and attack text do not make #1 the H-number Rare Holo.",
+            "Keep Japanese Wind from the Sea Ampharos holo E3-049, Expedition Base Set Ampharos, Neo Genesis Ampharos, Neo Revelation Ampharos, Dark Ampharos, and generic Ampharos wants separate until set, number, rarity, finish, and image evidence align.",
+            "Treat e-Reader and Dot-Code strip context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, finish-angle photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-1"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Aquapolis_H1)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "1",
+        "artist": "Shin-ichi Yoshida",
+        "rarity_signal": "Rare; numbered Aquapolis #1 row, separate from Ampharos H1/H32 and from reverse-holo finish claims",
+        "assembly_themes": [
+          "Aquapolis numbered Rare opener",
+          "H-number boundary discipline",
+          "e-Reader interface frame",
+          "Lightning lighthouse species",
+          "Shin-ichi Yoshida art trace",
+          "Thundershock and Reflect Energy",
+          "normal vs reverse-holo finish lane"
+        ],
+        "collector_texture_note": "Ampharos #1 is the card that teaches the agent not to let chase gravity overwrite row identity: it shares the Aquapolis signal with H1, but its proof lives in the printed number and finish lane.",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ampharos #1 — the signal before the halo",
+        "why_it_matters": "Aquapolis Ampharos #1 is easy to underestimate because H1 carries the loud holo romance. But #1 is where the set teaches discipline. It is still Ampharos, still Shin-ichi Yoshida, still Thundershock and Reflect Energy, still a lighthouse species inside the e-Reader city. The difference is the lane: numbered Rare, with normal and reverse-holo finish paths, not the H-number Rare Holo. For a collector agent, this is exactly the kind of quiet card that keeps desire honest.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "e-Reader scan success"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H2",
       "type": "card",
       "context": {
