@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 315: Aquapolis Entei #10 deepened; corpus f099d8da)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 316: Aquapolis Phanpy #100 deepened; corpus 509dd2bc)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-sixteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-100` Phanpy #100 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. The pass
+  uses the local English WoC Aquapolis row, Pokemon TCG API card and set
+  records, bounded Bulbapedia Phanpy / Aquapolis context, and local Donphan
+  #7 as an evolution-line comparator. The dossier carries Aquapolis #100,
+  Common, Basic Fighting, 40 HP, Flail, Rollout, Grass weakness, Lightning
+  resistance, one-Colorless retreat, Naoyo Kimura credit, The Town on No Map
+  lineage, normal/reverse-holo finish lane, C-29-# e-Reader identity,
+  Pokemon Crystal / Pokemon Gold Pokedex sourcing, and the Punching Bags
+  mini-game route. Its special identification packet tells agents to keep
+  Phanpy #100 separate from Donphan #7, Neo / ADV / McDonald's Phanpy rows,
+  Japanese The Town on No Map 053/092, reverse-holo finish claims, and
+  seller-owned physical evidence unless seller scans prove the lane.
+  Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Phanpy #100 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now `509dd2bcd741aec6feed5a9cdde31470b460c8f2168f79f80c247d6b336c37bb`;
+  generated card dossiers decreased to 3,675, hand-authored card dossiers
+  increased to 874.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-fifteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

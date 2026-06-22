@@ -9928,6 +9928,347 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-100",
+      "type": "card",
+      "context": {
+        "name_en": "Phanpy",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-100",
+        "catalog_row_id": "ecard2-100",
+        "card_number": "100",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / Common row / Japanese The Town on No Map lineage",
+        "variant_lane": "numbered Common with normal and reverse-holo finish lanes",
+        "evolution_counterpart": "en_wotc_aquapolis_20030115:ecard2-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-100",
+          "title": "Local English WoC card row: Phanpy #100",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-100",
+          "title": "Pokemon TCG API v2 card record: Phanpy ecard2-100",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Phanpy_(Aquapolis_100)",
+          "title": "Bulbapedia: Phanpy (Aquapolis 100)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-7",
+          "title": "Local English WoC card row: Donphan #7",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Phanpy as Aquapolis card #100, a Common Basic Fighting Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia's Phanpy TCG page places Aquapolis Phanpy at English 100/147 and Japanese The Town on No Map 053/092, while the local catalog keeps this as the English Aquapolis row, not a Japanese print claim.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Phanpy #100 with 40 HP, Basic stage, Fighting type, Grass weakness, Lightning resistance, one-Colorless retreat, Flail for 10 times the number of damage counters on Phanpy, Rollout for 20 damage, and evolvesTo Donphan.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Aquapolis Phanpy #100 to Naoyo Kimura; the local catalog also contains multiple Naoyo Kimura rows across Southern Islands, Neo, Aquapolis, Skyridge, and Japanese ADV-era material, making the credit useful as an artist trace but not a seller-card proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Phanpy page records card ID C-29-#.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Bulbapedia says the short strip for Phanpy #100 contains Pokedex information, a brief card summary, and information on the long strip; the long strip contains data for the Punching Bags mini-game and requires four other Aquapolis cards to play it.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia says Phanpy #100's English e-Reader Pokedex entry comes from Pokemon Crystal while the Japanese entry comes from Pokemon Gold; the English text describes Phanpy coming ashore during deserted morning hours to shower with its trunk.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries both normal and reverseHolofoil price lanes for Phanpy #100, so a listing described as reverse holo must be treated as a finish lane inside card #100, not as a separate Phanpy identity and not as Donphan #7.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Phanpy #100 matters because it proves Aquapolis is not only its Crystal cards and H-number holos: even a common baby elephant can carry Flail/Rollout play texture, a Donphan evolution line, C-29-# e-Reader identity, and a Punching Bags mini-game route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis #100 / ecard2-100 / 100/147, Common, Basic Fighting, Naoyo Kimura credit, Flail / Rollout text, Donphan evolution line, C-29-# e-Reader identity, Punching Bags mini-game context, and non-equivalence with Donphan #7, Neo Phanpy rows, Japanese The Town on No Map 053/092, and seller-owned physical evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_phanpy_100_common_ereader_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Phanpy, Phanpy #100, 100/147, ecard2-100, reverse holo Phanpy, Naoyo Kimura, Flail, Rollout, C-29-#, Punching Bags, Donphan, Aquapolis #7, The Town on No Map 053/092, Neo Genesis Phanpy, Neo Destiny Phanpy, or Japanese Phanpy.",
+          "summary": "Identify Phanpy #100 as the English Aquapolis Common row, then keep normal/reverse-holo finish, Japanese lineage, Donphan evolution context, and seller-owned physical evidence separate until the scan proves the lane.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-100 / printed number 100 before accepting this as the Aquapolis Phanpy row.",
+            "Record whether the seller is offering normal or reverse holo; do not treat reverse-holo pricing or finish as a separate Phanpy identity.",
+            "Use Naoyo Kimura credit, Basic Fighting profile, 40 HP, Grass weakness, Lightning resistance, one-retreat cost, Flail, Rollout, Donphan evolution line, and C-29-# e-Reader ID as supporting row evidence, not substitutes for set, number, finish, and image evidence.",
+            "Keep Donphan #7 adjacent but separate; evolution-line continuity does not turn Phanpy #100 into the Stage 1 Rare row.",
+            "Keep Japanese The Town on No Map 053/092, Neo Genesis Phanpy, Neo Destiny Phanpy, ADV Phanpy, McDonald's Minimum Pack Phanpy, and generic Phanpy wants separate until set, number, language, and image evidence align.",
+            "Treat e-Reader, Dot-Code, Pokemon Crystal / Pokemon Gold Pokedex entry sourcing, and Punching Bags mini-game context as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, finish-angle photos, card-number closeup, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "mini-game data readability",
+            "reverse-holo equivalence",
+            "Japanese-print equivalence",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-100"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Phanpy_(Aquapolis_100)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "100",
+        "artist": "Naoyo Kimura",
+        "rarity_signal": "Common; numbered Aquapolis #100 row with normal and reverse-holo finish lanes",
+        "assembly_themes": [
+          "Aquapolis common row",
+          "The Town on No Map lineage",
+          "Naoyo Kimura art trace",
+          "small Pokemon as interface object",
+          "Flail damage-counter vulnerability",
+          "Rollout body motion",
+          "Donphan evolution line",
+          "C-29-# e-Reader object",
+          "Punching Bags mini-game route",
+          "normal vs reverse-holo finish lane"
+        ],
+        "collector_texture_note": "Phanpy #100 is Aquapolis at ground level: a little common that still carries damage-counter drama, a Donphan future, and enough e-Reader machinery to become a mini-game doorway."
+      },
+      "narrative": {
+        "human_title": "Phanpy #100 — the common that still opens a game",
+        "why_it_matters": "Aquapolis Phanpy #100 is exactly why this catalog cannot only chase holos. It is a common, small and round and easy to skip, but the assembly is wonderful: Naoyo Kimura's Phanpy takes damage into Flail, rolls forward into Donphan, resists Lightning, and carries C-29-# into the Punching Bags mini-game. The set's interface dream reaches all the way down to a baby elephant common.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "mini-game data readability",
+          "reverse-holo equivalence",
+          "Japanese-print equivalence",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {
