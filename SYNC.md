@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 324: Expedition Kingler #15 deepened; corpus ae57107f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 325: Expedition Machamp #16 deepened; corpus 792abc36)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-16` Machamp #16 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #51 / Machoke #85 /
+  Machop #117 comparison rows, Pokemon TCG API card and set records, bounded
+  Bulbapedia Machamp / Machoke / Expedition / Shin-ichi Yoshida context, The
+  Art of Pokemon artist-index context, and local Base Set plus Black Star
+  Machamp comparison context. The dossier carries Expedition #16, Rare Holo,
+  Stage 2 Fighting, 120 HP, Machoke evolution, Terraforming, Iron Fist,
+  Psychic weakness, two-Colorless retreat, Shin-ichi Yoshida credit, Japanese
+  Base Expansion Pack lineage, B-88 / B-88-# e-Reader identity, M-88-#
+  Sample Set identity, Machop At Work long-strip / e-Reader minigame context,
+  New York Pokemon Center Sample Set promotion context, the #16 Rare Holo
+  versus #51 Rare non-holo trap, and Yoshida Machop/Machoke/Machamp line
+  context. Its special identification packet tells agents to keep Expedition
+  Machamp #16 separate from Expedition #51, reverse-holo finish claims,
+  M-88-# Sample claims, Machop #117 / Machoke #85 lineage context, Base Set
+  Machamp, First Edition / shadowless / sealed-starter memory, Black Star
+  Machamp #43, Legendary Collection Machamp, Dark Machamp, Skyridge Machamp,
+  and seller-owned physical evidence unless set, number, finish, symbol,
+  sample mark, strip, and image evidence prove the lane; it explicitly does
+  not claim seller strip readability, Sample Set status, or Machop At Work
+  playability. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Machamp #16 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `792abc36cbba956e5823bf63f66cd72b3c6902f34468a03e881720461e447195`;
+  generated card dossiers decreased to 3,666, hand-authored card dossiers
+  increased to 883.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
