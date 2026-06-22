@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 321: Expedition Feraligatr #12 deepened; corpus 29b02339)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 322: Expedition Gengar #13 deepened; corpus d6a5ce19)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-13` Gengar #13 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #48 / Haunter #80 /
+  Gastly #109 comparison rows, Pokemon TCG API card and set records, bounded
+  Bulbapedia Gengar / Expedition / Yukiko Baba context, and local Fossil
+  Gengar plus Sample Set Gastly comparison context. The dossier carries
+  Expedition #13, Rare Holo, Stage 2 Psychic, 90 HP, Haunter evolution,
+  Chaos Move, Hide in Shadows, Darkness weakness, Fighting resistance,
+  one-Colorless retreat, Yukiko Baba credit, Japanese Base Expansion Pack
+  lineage, B-87 / B-87-# e-Reader identity, Pokemon Crystal shadow Pokedex
+  texture, the premature Chaos Move line-break caveat, the #13 Rare Holo
+  versus #48 Rare non-holo trap, and the Baba Gastly/Haunter/Gengar
+  sequence. Its special identification packet tells agents to keep Expedition
+  Gengar #13 separate from Expedition #48, reverse-holo finish claims, Fossil
+  Gengar #5/#20, Sabrina's Gengar, Legendary Collection Gengar, Dark Gengar,
+  Skyridge Gengar, Sample Set Gastly, Gastly/Haunter line memories, and
+  seller-owned physical evidence unless set, number, finish, strip, and
+  image evidence prove the lane. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Gengar #13 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `d6a5ce19ea040b8c339e52d1c614905032295df491bb6e90579e19b0f5212239`;
+  generated card dossiers decreased to 3,669, hand-authored card dossiers
+  increased to 880.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
