@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 334: Expedition Rapidash #26 deepened; corpus cff79cb2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (alpha-admission A1-A7 drill added; 42/42 negative cases and mutation teeth)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — read the GPTPRO / Claude author≠verifier
+  handoff from `claude/surface-agent` and converted the A1-A7 alpha-readiness
+  blockers into an executable pre-chain admission drill:
+  `simulations/alpha_admission_drill.py`. The drill carries a clean curated
+  low-value route fixture plus one adversarial mutation for each guard across
+  A1 AlphaAdmissionPolicy, A2 DeliveryTriggerPolicy, A3 PostHandoffRemedyMatrix,
+  A4 TypedSpendabilityIssuer, A5 SnapshotBeforeBond, A6 EvidenceAvailabilityAndSymmetry,
+  and A7 G2CapacityAdmission. Validation run:
+  `python3 simulations/alpha_admission_drill.py` passed with 42 negative cases,
+  42 mutation teeth, and gate counts `{"A1": 8, "A2": 4, "A3": 6, "A4": 8,
+  "A5": 3, "A6": 5, "A7": 8}`; report:
+  `runs/alpha_admission_drill_20260622T161841Z/REPORT.md`. Boundary remains
+  explicit: this drill makes the GPTPRO blockers falsifiable before the chain
+  work, but it does not claim A1-A7 are enforced on-chain, that alpha is
+  admitted, that physical truth is established, or that economic sufficiency /
+  complete protocol review are solved. A1-A4 chain/validator implementation
+  remains open.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:

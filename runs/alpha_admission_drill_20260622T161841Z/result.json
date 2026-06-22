@@ -1,0 +1,999 @@
+{
+  "clean_case": {
+    "admitted": true,
+    "error_count": 0,
+    "errors": [],
+    "errors_by_gate": {}
+  },
+  "gate_counts": {
+    "A1": 8,
+    "A2": 4,
+    "A3": 6,
+    "A4": 8,
+    "A5": 3,
+    "A6": 5,
+    "A7": 8
+  },
+  "generated_at": "2026-06-22T16:18:41.985354+00:00",
+  "mutation_teeth": [
+    {
+      "gate": "A1",
+      "guard_id": "A1.policy_snapshot_present",
+      "killed": true,
+      "mutation": "missing_policy_snapshot",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.known_policy_version",
+      "killed": true,
+      "mutation": "unknown_policy_version",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.route_class_match",
+      "killed": true,
+      "mutation": "wrong_route_class",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.trade_value_cap",
+      "killed": true,
+      "mutation": "trade_value_over_cap",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.aggregate_caps",
+      "killed": true,
+      "mutation": "aggregate_exposure_over_cap",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.allowed_delivery_mode",
+      "killed": true,
+      "mutation": "unadmitted_delivery_mode",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.allowed_dispute_branch",
+      "killed": true,
+      "mutation": "unadmitted_dispute_branch",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A1",
+      "guard_id": "A1.manual_override_bounded",
+      "killed": true,
+      "mutation": "weak_manual_override",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A2",
+      "guard_id": "A2.asserted_not_final",
+      "killed": true,
+      "mutation": "delivery_asserted_marked_final",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A2",
+      "guard_id": "A2.no_single_interested_witness",
+      "killed": true,
+      "mutation": "seller_witness_auto_release",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A2",
+      "guard_id": "A2.witness_scope_expiry_conflict",
+      "killed": true,
+      "mutation": "delivery_witness_unscoped",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A2",
+      "guard_id": "A2.no_missing_witness_auto_non_delivery",
+      "killed": true,
+      "mutation": "missing_witness_auto_refund",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.claim_type_bound",
+      "killed": true,
+      "mutation": "remedy_missing_claim_type",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.remedy_type_bound",
+      "killed": true,
+      "mutation": "remedy_missing_type",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.amount_ceiling",
+      "killed": true,
+      "mutation": "remedy_over_amount",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.return_custody_for_full_refund",
+      "killed": true,
+      "mutation": "full_refund_without_return",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.evidence_root_bound",
+      "killed": true,
+      "mutation": "remedy_missing_evidence_root",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A3",
+      "guard_id": "A3.appeal_final",
+      "killed": true,
+      "mutation": "remedy_appeal_not_final",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.canonical_preimage",
+      "killed": true,
+      "mutation": "spendability_missing_preimage",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.constituent_claims",
+      "killed": true,
+      "mutation": "spendability_missing_claims",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.validator_hashes",
+      "killed": true,
+      "mutation": "spendability_missing_validator_hash",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.issuer_authority",
+      "killed": true,
+      "mutation": "spendability_unbounded_issuer",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.registry_snapshot",
+      "killed": true,
+      "mutation": "spendability_missing_registry",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.availability_and_expiry",
+      "killed": true,
+      "mutation": "spendability_missing_da",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.no_model_or_reputation_authority",
+      "killed": true,
+      "mutation": "model_output_mints_spendability",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A4",
+      "guard_id": "A4.author_issuer_separation",
+      "killed": true,
+      "mutation": "same_author_and_issuer",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A5",
+      "guard_id": "A5.freeze_before_bond",
+      "killed": true,
+      "mutation": "snapshot_after_bond",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A5",
+      "guard_id": "A5.required_roots",
+      "killed": true,
+      "mutation": "snapshot_missing_roots",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A5",
+      "guard_id": "A5.no_retroactive_governance",
+      "killed": true,
+      "mutation": "retroactive_governance",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A6",
+      "guard_id": "A6.availability_receipts",
+      "killed": true,
+      "mutation": "evidence_missing_availability",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A6",
+      "guard_id": "A6.access_and_keys",
+      "killed": true,
+      "mutation": "evidence_missing_access_keys",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A6",
+      "guard_id": "A6.notice_and_equal_windows",
+      "killed": true,
+      "mutation": "evidence_asymmetric_deadline",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A6",
+      "guard_id": "A6.bundle_and_retention",
+      "killed": true,
+      "mutation": "evidence_missing_bundle",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A6",
+      "guard_id": "A6.theft_sensitive_policy",
+      "killed": true,
+      "mutation": "evidence_public_theft_data",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.min_clusters",
+      "killed": true,
+      "mutation": "capacity_too_few_clusters",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.remove_largest_resilience",
+      "killed": true,
+      "mutation": "capacity_largest_cluster_failure",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.peak_slots",
+      "killed": true,
+      "mutation": "capacity_under_peak",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.replay_sla",
+      "killed": true,
+      "mutation": "capacity_sla_low",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.no_conflicted_fallbacks",
+      "killed": true,
+      "mutation": "capacity_conflicted_fallback",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.no_silent_substitution",
+      "killed": true,
+      "mutation": "capacity_silent_substitution",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.assignment_shares",
+      "killed": true,
+      "mutation": "capacity_share_over_limit",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    },
+    {
+      "gate": "A7",
+      "guard_id": "A7.reserved_capacity",
+      "killed": true,
+      "mutation": "capacity_unreserved_exposure",
+      "original_blocked": true,
+      "residual_errors_when_weakened": [],
+      "weakened_admitted": true
+    }
+  ],
+  "mutation_tooth_count": 42,
+  "negative_case_count": 42,
+  "negative_cases": [
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.policy_snapshot_present",
+          "message": "missing policy snapshot"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.policy_snapshot_present",
+      "mutation": "missing_policy_snapshot",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.known_policy_version",
+          "message": "unknown policy version"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.known_policy_version",
+      "mutation": "unknown_policy_version",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.route_class_match",
+          "message": "route class not admitted"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.route_class_match",
+      "mutation": "wrong_route_class",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.trade_value_cap",
+          "message": "trade value exceeds policy cap"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.trade_value_cap",
+      "mutation": "trade_value_over_cap",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.aggregate_caps",
+          "message": "aggregate exposure cap exceeded"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.aggregate_caps",
+      "mutation": "aggregate_exposure_over_cap",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.allowed_delivery_mode",
+          "message": "delivery mode not admitted"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.allowed_delivery_mode",
+      "mutation": "unadmitted_delivery_mode",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.allowed_dispute_branch",
+          "message": "dispute branch not admitted"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.allowed_dispute_branch",
+      "mutation": "unadmitted_dispute_branch",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A1",
+          "guard_id": "A1.manual_override_bounded",
+          "message": "manual override is not bounded"
+        }
+      ],
+      "gate": "A1",
+      "guard_id": "A1.manual_override_bounded",
+      "mutation": "weak_manual_override",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A2",
+          "guard_id": "A2.asserted_not_final",
+          "message": "delivery assertion was promoted to finality"
+        }
+      ],
+      "gate": "A2",
+      "guard_id": "A2.asserted_not_final",
+      "mutation": "delivery_asserted_marked_final",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A2",
+          "guard_id": "A2.no_single_interested_witness",
+          "message": "interested delivery witness controls release"
+        }
+      ],
+      "gate": "A2",
+      "guard_id": "A2.no_single_interested_witness",
+      "mutation": "seller_witness_auto_release",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A2",
+          "guard_id": "A2.witness_scope_expiry_conflict",
+          "message": "delivery witness metadata incomplete"
+        }
+      ],
+      "gate": "A2",
+      "guard_id": "A2.witness_scope_expiry_conflict",
+      "mutation": "delivery_witness_unscoped",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A2",
+          "guard_id": "A2.no_missing_witness_auto_non_delivery",
+          "message": "missing witness became auto non-delivery"
+        }
+      ],
+      "gate": "A2",
+      "guard_id": "A2.no_missing_witness_auto_non_delivery",
+      "mutation": "missing_witness_auto_refund",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.claim_type_bound",
+          "message": "claim type missing"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.claim_type_bound",
+      "mutation": "remedy_missing_claim_type",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.remedy_type_bound",
+          "message": "remedy type missing"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.remedy_type_bound",
+      "mutation": "remedy_missing_type",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.amount_ceiling",
+          "message": "remedy exceeds trade value"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.amount_ceiling",
+      "mutation": "remedy_over_amount",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.return_custody_for_full_refund",
+          "message": "full refund lacks return custody or bounded non-return remedy"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.return_custody_for_full_refund",
+      "mutation": "full_refund_without_return",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.evidence_root_bound",
+          "message": "evidence root missing"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.evidence_root_bound",
+      "mutation": "remedy_missing_evidence_root",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A3",
+          "guard_id": "A3.appeal_final",
+          "message": "appeal is not final"
+        }
+      ],
+      "gate": "A3",
+      "guard_id": "A3.appeal_final",
+      "mutation": "remedy_appeal_not_final",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.canonical_preimage",
+          "message": "spendability preimage missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.canonical_preimage",
+      "mutation": "spendability_missing_preimage",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.constituent_claims",
+          "message": "constituent claims missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.constituent_claims",
+      "mutation": "spendability_missing_claims",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.validator_hashes",
+          "message": "validator hashes missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.validator_hashes",
+      "mutation": "spendability_missing_validator_hash",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.issuer_authority",
+          "message": "issuer authority missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.issuer_authority",
+      "mutation": "spendability_unbounded_issuer",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.registry_snapshot",
+          "message": "registry snapshot missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.registry_snapshot",
+      "mutation": "spendability_missing_registry",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.availability_and_expiry",
+          "message": "expiry or data availability missing"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.availability_and_expiry",
+      "mutation": "spendability_missing_da",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.no_model_or_reputation_authority",
+          "message": "model or reputation minted spendability"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.no_model_or_reputation_authority",
+      "mutation": "model_output_mints_spendability",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A4",
+          "guard_id": "A4.author_issuer_separation",
+          "message": "source author is final issuer without downgrade"
+        }
+      ],
+      "gate": "A4",
+      "guard_id": "A4.author_issuer_separation",
+      "mutation": "same_author_and_issuer",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A5",
+          "guard_id": "A5.freeze_before_bond",
+          "message": "snapshot freezes after seller bond"
+        }
+      ],
+      "gate": "A5",
+      "guard_id": "A5.freeze_before_bond",
+      "mutation": "snapshot_after_bond",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A5",
+          "guard_id": "A5.required_roots",
+          "message": "snapshot roots incomplete"
+        }
+      ],
+      "gate": "A5",
+      "guard_id": "A5.required_roots",
+      "mutation": "snapshot_missing_roots",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A5",
+          "guard_id": "A5.no_retroactive_governance",
+          "message": "later governance changes apply retroactively"
+        }
+      ],
+      "gate": "A5",
+      "guard_id": "A5.no_retroactive_governance",
+      "mutation": "retroactive_governance",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A6",
+          "guard_id": "A6.availability_receipts",
+          "message": "availability receipts missing"
+        }
+      ],
+      "gate": "A6",
+      "guard_id": "A6.availability_receipts",
+      "mutation": "evidence_missing_availability",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A6",
+          "guard_id": "A6.access_and_keys",
+          "message": "access logs or key commitments missing"
+        }
+      ],
+      "gate": "A6",
+      "guard_id": "A6.access_and_keys",
+      "mutation": "evidence_missing_access_keys",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A6",
+          "guard_id": "A6.notice_and_equal_windows",
+          "message": "notice or equal windows missing"
+        }
+      ],
+      "gate": "A6",
+      "guard_id": "A6.notice_and_equal_windows",
+      "mutation": "evidence_asymmetric_deadline",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A6",
+          "guard_id": "A6.bundle_and_retention",
+          "message": "bundle manifest or retention missing"
+        }
+      ],
+      "gate": "A6",
+      "guard_id": "A6.bundle_and_retention",
+      "mutation": "evidence_missing_bundle",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A6",
+          "guard_id": "A6.theft_sensitive_policy",
+          "message": "theft-sensitive data exposed"
+        }
+      ],
+      "gate": "A6",
+      "guard_id": "A6.theft_sensitive_policy",
+      "mutation": "evidence_public_theft_data",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.min_clusters",
+          "message": "too few eligible control clusters"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.min_clusters",
+      "mutation": "capacity_too_few_clusters",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.remove_largest_resilience",
+          "message": "largest-cluster removal leaves insufficient replacement"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.remove_largest_resilience",
+      "mutation": "capacity_largest_cluster_failure",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.peak_slots",
+          "message": "capacity below 1.5x peak"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.peak_slots",
+      "mutation": "capacity_under_peak",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.replay_sla",
+          "message": "30-day replay SLA below 99 percent"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.replay_sla",
+      "mutation": "capacity_sla_low",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.no_conflicted_fallbacks",
+          "message": "conflicted fallback present"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.no_conflicted_fallbacks",
+      "mutation": "capacity_conflicted_fallback",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.no_silent_substitution",
+          "message": "silent custodian substitution present"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.no_silent_substitution",
+      "mutation": "capacity_silent_substitution",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.assignment_shares",
+          "message": "assignment share over limit"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.assignment_shares",
+      "mutation": "capacity_share_over_limit",
+      "target_guard_hit": true
+    },
+    {
+      "blocked": true,
+      "errors": [
+        {
+          "gate": "A7",
+          "guard_id": "A7.reserved_capacity",
+          "message": "assigned exposure exceeds reserved capacity"
+        }
+      ],
+      "gate": "A7",
+      "guard_id": "A7.reserved_capacity",
+      "mutation": "capacity_unreserved_exposure",
+      "target_guard_hit": true
+    }
+  ],
+  "not_claiming": [
+    "chain_enforces_A1_A7",
+    "alpha_is_admitted",
+    "physical_card_truth",
+    "economic_sufficiency",
+    "complete_protocol_review"
+  ],
+  "passed": true,
+  "schema": "marketplace.alpha_admission_drill.v0.1"
+}
