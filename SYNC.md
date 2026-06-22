@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 330: Expedition Pichu #22 deepened; corpus 1f12a067)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 331: Expedition Pidgeot #23 deepened; corpus 00fe4975)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-23` Pidgeot #23 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition #23 / #59 / Pidgeotto #88 /
+  Pidgey #123 rows, local Jungle / Base Set 2 / Legendary Collection /
+  Southern Islands Pidgeot comparison context, Pokemon TCG API card and set
+  records, bounded Bulbapedia Pidgeot / Expedition / Tomokazu Komiya context,
+  The Art of Pokemon artist-index context, and the official PTCGIC 2024
+  Saitou/Komiya column as artist context. The dossier carries Rare Holo,
+  Stage 2 Colorless, 80 HP, Pidgeotto evolution, Beating Wings, Sharp Beak,
+  Lightning weakness, Fighting resistance, free retreat, Tomokazu Komiya
+  credit, Japanese Base Expansion Pack 123/128 lineage, B-92 / B-92-#
+  e-Reader identity, the #23 Rare Holo versus #59 Rare non-holo trap,
+  reverse-holo separation, Komiya's unified Pidgey/Pidgeotto/Pidgeot
+  Expedition sequence, the Pokemon Crystal 3300-feet / Magikarp Pokedex
+  texture, and POP Series 2 / PCG-P different-art boundaries. Its special
+  identification packet tells agents to keep #23, #59, reverse-holo finish
+  claims, B-92 / B-92-# strip evidence, Jungle / Base Set 2 / Legendary
+  Collection / Southern Islands / POP Series 2 / PCG-P Pidgeot memory, and
+  generic Pidgey-line browsing texture separate unless set, number, finish,
+  artist, attack package, B-ID, image, row, and seller evidence align.
+  No-overclaim remains explicit: this is catalog history and agent browsing
+  texture, not seller possession, authenticity, condition, price truth, image
+  rights approval, e-Reader strip readability, holo/non-holo equivalence,
+  reverse-holo equivalence, later-reprint equivalence, or spendability.
+  Validation run: `json.tool` OK;
+  `scripts/build_catalog_history_dossiers.py` wrote 209 release dossiers,
+  4549 card dossiers, 3660 generated card dossiers, 24438 claims, 7520
+  sources, queue 100, corpus `00fe4975...`; `--check` OK;
+  `scripts/build_card_dossiers.py --check` OK;
+  `scripts/build_catalog_completion_audit.py --check` OK; focused index
+  assertion OK.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirtieth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
