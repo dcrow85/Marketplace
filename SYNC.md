@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 326: Expedition Magby #17 deepened; corpus 89cdf206)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 327: Expedition Meganium #18 deepened; corpus fd178835)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-18` Meganium #18 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local Meganium #54 /
+  Meganium #53 / Bayleef #71 / Chikorita #99 / Chikorita #100 comparison rows,
+  Pokemon TCG API card and set records, bounded Bulbapedia Meganium /
+  Expedition / Hajime Kusajima context, The Art of Pokemon artist-index
+  context, and local Neo Genesis Meganium comparison context. The dossier
+  carries Expedition #18, Rare Holo, Stage 2 Grass, 100 HP, Bayleef evolution,
+  Soothing Aroma, Poisonpowder, Fire weakness, Water resistance,
+  two-Colorless retreat, Hajime Kusajima credit, Kusajima's first-English
+  Expedition context, Japanese Base Expansion Pack 102/128 lineage, B-66 /
+  B-66-# e-Reader identity, the #18 Rare Holo versus #54 Rare non-holo trap,
+  the separate #53 Kagemaru Himeno / Sleep Powder / Solarbeam Meganium lane,
+  normal/reverse-holo finish separation, and Chikorita/Bayleef lineage
+  boundaries. Its special identification packet tells agents to keep
+  Expedition Meganium #18 separate from #54, #53, reverse-holo finish claims,
+  B-66-# non-holo context, Chikorita/Bayleef lineage context, Neo Genesis
+  Meganium, Japanese Base Expansion Pack rows, and generic Johto starter
+  memory unless set, number, finish, artist, attack package, image, row, and
+  seller evidence align. No-overclaim remains explicit: this is catalog
+  history and agent browsing texture, not seller possession, authenticity,
+  condition, price truth, image rights approval, e-Reader strip readability,
+  or spendability. Validation run: `json.tool` OK;
+  `build_catalog_history_dossiers.py` OK and `--check` OK;
+  `build_card_dossiers.py --check` OK; `build_catalog_completion_audit.py
+  --check` OK. Focused assertion passed for hand-authored status, title,
+  special identification packet, Kusajima credit, B-66 theme, #18/#54 trap,
+  #53 boundary, Soothing Aroma theme, and Kusajima first-English Expedition
+  theme. Counts: 209 release dossiers, 4,549 card dossiers, 3,664 generated
+  card dossiers, 885 hand-authored card dossiers, 24,402 claims, 7,471
+  sources; corpus hash
+  `fd178835d9b2e601badd1bfa0ed7ce2928f998e925a2370b0fcc040bb132c92d`.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
