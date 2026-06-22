@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 323: Expedition Golem #14 deepened; corpus a0fe436f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 324: Expedition Kingler #15 deepened; corpus ae57107f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-15` Kingler #15 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #50 and Krabby #115
+  comparison rows, Pokemon TCG API card and set records, bounded Bulbapedia
+  Kingler / Expedition / Shin-ichi Yoshida / e-Reader ID / Kingler's Day
+  context, and a C-tier Serebii artist-index cross-check. The dossier
+  carries Expedition #15, Rare Holo, Stage 1 Water, 80 HP, Krabby evolution,
+  Bubble, Giant Claw, Lightning weakness, two-Colorless retreat,
+  Shin-ichi Yoshida credit, Japanese Base Expansion Pack lineage, B-79 /
+  B-79-# e-Reader identity, the #15 Rare Holo versus #50 Rare non-holo trap,
+  Krabby-line Yoshida context, and Kingler's Day long-strip / e-Reader
+  application context. Its special identification packet tells agents to
+  keep Expedition Kingler #15 separate from Expedition #50, reverse-holo
+  finish claims, Krabby #115 lineage context, Fossil Kingler, Legendary
+  Collection Kingler, EX-era delta Kingler, generic Kingler's Day memories,
+  and seller-owned physical evidence unless set, number, finish, strip, and
+  image evidence prove the lane; it explicitly does not claim seller strip
+  readability or Kingler's Day playability. Validation passed:
+  `python3 -m json.tool`, `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Kingler #15 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `ae57107f1500eed3461c512e329528c7e259ab3d6355e6f85bafb09586b9b30e`;
+  generated card dossiers decreased to 3,667, hand-authored card dossiers
+  increased to 882.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
