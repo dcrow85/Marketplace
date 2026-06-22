@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 317: Aquapolis Pinsir #101 deepened; corpus e4c42946)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 318: Expedition Alakazam #1 deepened; corpus 37916f25)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-eighteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-1` Alakazam #1 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass uses the local English WoC Expedition row, Pokemon TCG API card
+  and set records, bounded Bulbapedia Alakazam / Expedition / Hajime
+  Kusajima context, and local Base Set 2 Alakazam as an older psychic-memory
+  comparator. The dossier carries Expedition #1, Rare Holo, Stage 2 Psychic,
+  100 HP, Kadabra evolution, Psymimic, Syncroblast, Psychic weakness,
+  two-Colorless retreat, Hajime Kusajima credit, Japanese Base Expansion Pack
+  lineage, Kusajima's English Expedition debut-era trace, B-84 / B-84-#
+  e-Reader identity, reverse-holo Box Topper and Jumbo boundaries, test-print
+  caveats, and the Pokemon Crystal IQ-5000 Pokedex texture. Its special
+  identification packet tells agents to keep Expedition Alakazam #1 separate
+  from Base Set #1, Base Set 2 #1, Legendary Collection #1, Dark Alakazam,
+  Japanese Base Expansion Pack, Split Earth Alakazam, Box Topper, test-card,
+  and seller-owned physical evidence unless set, number, finish, size, strip,
+  and image evidence prove the lane. Validation passed:
+  `python3 -m json.tool`, `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Alakazam #1 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `37916f25b7df53a756407fa1e2d0bdbce1e81f9bfc31e36e1e379c600b13282d`;
+  generated card dossiers decreased to 3,673, hand-authored card dossiers
+  increased to 876.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-seventeenth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

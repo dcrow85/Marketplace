@@ -4,6 +4,7 @@
     "description": "Hand-researched deepening pass for English Expedition Base Set and five rows that expose the e-Card transition.",
     "in_scope": [
       "Expedition Base Set release dossier",
+      "Alakazam 1",
       "Blastoise 4",
       "Charizard 6",
       "Charizard 39",
@@ -211,6 +212,354 @@
           "price truth",
           "condition truth",
           "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-1",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam",
+        "name_ja": "フーディン",
+        "romaji": "Foodin",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-1",
+        "catalog_row_id": "ecard1-1",
+        "card_number": "1",
+        "release_name": "Expedition Base Set",
+        "source_expansion_lineage": "English Expedition Base Set / E-Card Series / Japanese Base Expansion Pack lineage",
+        "variant_lane": "Rare Holo with documented non-holo, reverse-holo Box Topper, and test-print caveats"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-1",
+          "title": "Local English WoC card row: Alakazam #1",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-1",
+          "title": "Pokemon TCG API v2 card record: Alakazam ecard1-1",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard1",
+          "title": "Pokemon TCG API v2 set record: Expedition Base Set",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Expedition_1)",
+          "title": "Bulbapedia: Alakazam (Expedition 1)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Expedition_Base_Set_(TCG)",
+          "title": "Bulbapedia: Expedition Base Set (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hajime_Kusajima",
+          "title": "Bulbapedia: Hajime Kusajima",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_comparison_dossier",
+          "ref": "data/catalog-history/source-sets/base_set_2_v0_1.json#en_wotc_base_set_2_20000224:base4-1",
+          "title": "Local hand-authored Base Set 2 Alakazam #1 dossier",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Alakazam as Expedition Base Set card #1, a Rare Holo Stage 2 Psychic Pokemon credited to Hajime Kusajima.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Alakazam / フーディン / Foodin, English Expedition Base Set 1/165, first released in Japan through Base Expansion Pack.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia record Alakazam #1 with 100 HP, Stage 2 evolution from Kadabra, Psychic type, Psychic weakness, two-Colorless retreat, the Poké-Power Psymimic, and Syncroblast for 80 that drops to 20 unless Alakazam and the Defending Pokemon have the same number of attached Energy cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Alakazam #1 to Hajime Kusajima; Bulbapedia's Kusajima page says his first English Pokemon TCG cards released in Expedition Base Set and describes his e-Card Series method as watercolor and ink with changing line weight and tone.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Expedition Base Set as set id ecard1 in the E-Card Series with releaseDate 2002/09/15 and total 165; Bulbapedia describes Expedition Base Set as the first main English e-Card Series expansion and the English counterpart to Japan's Base Expansion Pack.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Bulbapedia says Expedition Base Set introduced the e-Reader-oriented card frame, enlarged left and bottom borders for Dot Code technology, Technical Machine cards, and the Poké-Power / Poké-Body split.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card ID of the Holofoil and Box Topper prints is B-84, the Non Holofoil print is B-84-#, the Non Holofoil short strip contains Pokédex information and a brief card summary, and there is no long strip for this card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia records several Alakazam #1 caveats: it was included as Holofoil and Non Holofoil in Expedition, released as a Reverse Holo Jumbo Box Topper in English booster boxes, has an italicized Poké-Power text issue, spells out 'Psychic' instead of using the symbol in one place, and has a separate test-card print made by Wizards for reviewing layout changes.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Alakazam #1's e-Reader Pokédex entry comes from Pokemon Crystal and gives the IQ 5000 battle-calculation text, turning an old psychic-control character into a machine-readable Pokedex object.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries holofoil and reverseHolofoil price lanes for Expedition Alakazam #1, while Bulbapedia also documents Holofoil, Non Holofoil, Box Topper, and test-print contexts; agents must therefore treat finish, size, strip, and test-card language as separate evidence questions rather than one generic Alakazam #1 identity.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "The local Base Set 2 Alakazam dossier frames older Alakazam as the Damage Swap memory object; Expedition Alakazam #1 changes the psychic-control story into Psymimic, Syncroblast, Dot Code, Kusajima watercolor-and-ink texture, and B-84 e-Reader identity.",
+          "sources": [
+            "s1",
+            "s4",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c7",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_alakazam_1_b84_finish_and_test_print_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader strip readability",
+            "test-print status from ordinary catalog identity"
+          ],
+          "steps": [
+            "Start with Expedition Base Set #1/165, set id ecard1, and row id ecard1-1 before importing Alakazam lore.",
+            "Preserve Rare Holo, Holofoil, Non Holofoil, reverse-holo Box Topper, Jumbo Box Topper, and test-print language as separate lanes that require image evidence.",
+            "Use B-84 and B-84-# as supporting e-Reader identifiers; do not infer that a seller's physical strip is readable without clear border scans.",
+            "Keep Expedition Alakazam #1 separate from Base Set #1, Base Set 2 #1, Legendary Collection #1, Team Rocket Dark Alakazam, Japanese Base Expansion Pack, and Split Earth Alakazam unless set, number, finish, and image evidence align.",
+            "If a listing mentions the italicized Poké-Power text, spelled-out Psychic text, 'For Position Only', 'Medium', missing ID prefix, or Wizards copyright layout, route it to variant/test-print review instead of ordinary holo checkout."
+          ],
+          "summary": "Expedition Alakazam #1 is a finish-and-interface trap: the famous name is not enough; the agent must preserve set, number, finish, B-84/B-84-#, Box Topper, and test-print boundaries.",
+          "trigger": "A listing, want, scan, or agent memory says Expedition Alakazam, Alakazam #1, ecard1-1, Hajime Kusajima, Psymimic, Syncroblast, B-84, B-84-#, Box Topper, reverse holo, test card, For Position Only, Base Set, Base Set 2, Legendary Collection, or Dark Alakazam."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Alakazam #1 — the mind in the scanner",
+        "why_it_matters": "Expedition Alakazam #1 feels like a thesis card for the e-Reader era. It is still Alakazam, still the old psychic fantasy of calculation and control, but the old Damage Swap memory has been rebuilt as Psymimic: copy the opponent, pay the cost, make the other side's move pass through your own machine. Then the border starts talking too. B-84, B-84-#, Box Topper, test print, short strip, no long strip, Crystal Pokedex text, Kusajima watercolor and ink. The card is not just a holo at the front of a set; it is Pokemon learning to make a printed object behave like an interface.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller-card strip readability"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Hajime Kusajima",
+        "assembly_note": "Expedition Alakazam #1 sits at the front of the first English e-Card expansion: a Rare Holo Stage 2 Psychic row where Kusajima's e-Card watercolor-and-ink era meets Psymimic, Syncroblast, B-84, and the scanner border.",
+        "assembly_themes": [
+          "Expedition opener",
+          "Rare Holo psychic chase",
+          "Hajime Kusajima English debut era",
+          "watercolor-and-ink e-Card style",
+          "Psymimic copied-attack apparatus",
+          "Syncroblast energy-count mirror",
+          "B-84 e-Reader identity",
+          "B-84-# non-holo strip boundary",
+          "Box Topper / Jumbo boundary",
+          "test-print caveat",
+          "Pokemon Crystal Pokedex text",
+          "normal vs reverse-holo finish lane"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Expedition Alakazam #1 is the old psychic-control fantasy rebuilt as an interface card: the famous mind is there, but now the border, finish, and B-84 lane are part of the evidence.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "e-Reader strip readability"
+        ],
+        "number": "1",
+        "rarity_signal": "Rare Holo with documented Holofoil / Non Holofoil / Box Topper / test-print caveats",
+        "signals": [
+          "Expedition Base Set",
+          "2002/09/15",
+          "1",
+          "Rare Holo",
+          "Pokémon",
+          "Stage 2",
+          "Hajime Kusajima",
+          "B-84",
+          "Psymimic"
         ]
       },
       "coverage": {
