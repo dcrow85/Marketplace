@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 329: Expedition Ninetales #21 deepened; corpus 505d3228)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 330: Expedition Pichu #22 deepened; corpus 1f12a067)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,44 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirtieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-22` Pichu #22 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local Pichu #58 / Pikachu
+  #124 / Raichu #25 comparison rows, local Neo Genesis Pichu context, Pokemon
+  TCG API card and set records, bounded Bulbapedia Pichu / Expedition /
+  Atsuko Nishida context, official Pokemon.com Pikachu-creator profile
+  context, The Art of Pokemon artist-index context, and pichu.blog collector
+  route context treated as tier-C / not-primary evidence. The dossier carries
+  Expedition #22, Rare Holo, Baby Lightning, 30 HP, Energy Patch, the Baby
+  Pokemon attack-interruption rule, one-Colorless retreat, evolvesTo Pikachu,
+  Atsuko Nishida credit, Nishida Pikachu-family design-lineage context,
+  B-83 / B-83-# e-Reader identity, M-83-# Sample Set identity, the #22 Rare
+  Holo versus #58 Rare non-holo trap, dual reverse-holo lane problem, E3 2002
+  Pichu route, P Promotional route, hole-punched demo-card route, Hold Down
+  Hoppip e-Reader minigame context, and Pikachu/Raichu family-line boundaries.
+  Its special identification packet tells agents to keep Expedition Pichu #22
+  separate from #58, reverse-holo finish claims, B-83-# non-holo context,
+  M-83-# Sample context, Sample Set status, E3 status, P Promotional status,
+  hole-punched demo-card status, Hold Down Hoppip playability, Pikachu #124 /
+  Raichu #25 family context, Neo Genesis Pichu, McDonald's Pichu, Japanese Base
+  Expansion Pack rows, and generic Pikachu-family memory unless set, number,
+  finish, route, image, row, and seller evidence align. No-overclaim remains
+  explicit: this is catalog history and agent browsing texture, not seller
+  possession, authenticity, condition, price truth, image rights approval,
+  e-Reader strip readability, Sample/E3/P Promotional/demo status, minigame
+  playability, or spendability. Validation run: `json.tool` OK;
+  `build_catalog_history_dossiers.py` OK and `--check` OK;
+  `build_card_dossiers.py --check` OK; `build_catalog_completion_audit.py
+  --check` OK. Focused assertion passed for hand-authored status, title,
+  special identification packet, Nishida credit, B-83 theme, #22/#58 trap,
+  M-83-# Sample boundary, E3 boundary, Energy Patch theme, and Hold Down Hoppip
+  theme. Counts: 209 release dossiers, 4,549 card dossiers, 3,661 generated
+  card dossiers, 888 hand-authored card dossiers, 24,429 claims, 7,506
+  sources; corpus hash
+  `1f12a067439f4a102b3951eb96a4e94c3877c02f5e247c439cd94213b49fb621`.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
