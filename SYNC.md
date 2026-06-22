@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 320: Expedition Fearow #11 deepened; corpus ffb31c6d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 321: Expedition Feraligatr #12 deepened; corpus 29b02339)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-12` Feraligatr #12 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #47 / #46 / Totodile
+  #134 comparison rows, Pokemon TCG API card and set records, bounded
+  Bulbapedia Feraligatr / Expedition / Mitsuhiro Arita context, Pokemon.com
+  Arita profile context, and local Champion Road Johto-starter participation
+  context. The dossier carries Expedition #12, Rare Holo, Stage 2 Water,
+  120 HP, Croconaw evolution, Major Tsunami, Rending Jaws, Lightning
+  weakness, three-Colorless retreat, Mitsuhiro Arita credit, Japanese Base
+  Expansion Pack lineage, B-76 / B-76-# e-Reader identity, Pokemon Crystal
+  Pokedex texture, Box Topper context, the #12 Rare Holo versus #47 Rare
+  non-holo trap, and the separate #46 Feraligatr row boundary. Its special
+  identification packet tells agents to keep Expedition Feraligatr #12
+  separate from Expedition #47, Expedition #46, reverse-holo and Box Topper
+  format claims, Totodile/Croconaw rows, Neo Genesis Feraligatr, Japanese
+  Base Expansion Pack, Champion Road Totodile memories, and seller-owned
+  physical evidence unless set, number, finish, size, strip, and image
+  evidence prove the lane. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Feraligatr #12 hand-authored title, themes,
+  artist, and special-identification count. Corpus hash is now
+  `29b023397501c939b5b3bd055908ace2f30031fd1c8296efdd22b9fb9c2832e8`;
+  generated card dossiers decreased to 3,670, hand-authored card dossiers
+  increased to 879.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twentieth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
