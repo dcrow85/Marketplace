@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 328: Expedition Ampharos #2 deepened; corpus 69a9d710)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 329: Expedition Ninetales #21 deepened; corpus 505d3228)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-21` Ninetales #21 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local Ninetales #57 /
+  Vulpix #136 comparison rows, local Base Set / Base Set 2 / Legendary
+  Collection Ninetales context, local Leaders' Stadium Brock's Ninetales
+  context, Pokemon TCG API card and set records, bounded Bulbapedia Ninetales
+  / Expedition / Atsuko Nishida context, and The Art of Pokemon artist-index
+  context. The dossier carries Expedition #21, Rare Holo, Stage 1 Fire, 80 HP,
+  Vulpix evolution, Mislead, Ethereal Flame, Water weakness, one-Colorless
+  retreat, Atsuko Nishida credit, Japanese Base Expansion Pack 104/128
+  lineage, B-73 / B-73-# e-Reader identity, the #21 Rare Holo versus #57 Rare
+  non-holo trap, normal/reverse-holo finish separation, Pokemon Crystal
+  thousand-year/supernatural-tail Pokedex texture, Vulpix #136 lineage
+  boundary, Base Set / Base Set 2 / Legendary Collection Ninetales memory
+  boundaries, and Brock's Ninetales owner-Pokemon boundary. Its special
+  identification packet tells agents to keep Expedition Ninetales #21
+  separate from #57, reverse-holo finish claims, B-73-# non-holo context,
+  Vulpix #136 lineage context, Base Set Ninetales, Base Set 2 Ninetales,
+  Legendary Collection Ninetales, Brock's Ninetales, Wind from the Sea
+  Ninetales, Japanese Base Expansion Pack rows, and generic fox / nine-tail
+  lore unless set, number, finish, artist, attack package, B-ID, image, row,
+  and seller evidence align. No-overclaim remains explicit: this is catalog
+  history and agent browsing texture, not seller possession, authenticity,
+  condition, price truth, image rights approval, e-Reader strip readability,
+  holo/non-holo equivalence, or spendability. Validation run: `json.tool` OK;
+  `build_catalog_history_dossiers.py` OK and `--check` OK;
+  `build_card_dossiers.py --check` OK; `build_catalog_completion_audit.py
+  --check` OK. Focused assertion passed for hand-authored status, title,
+  special identification packet, Nishida credit, B-73 theme, #21/#57 trap,
+  Ethereal Flame theme, Base Set/Base Set 2 boundary, and Brock's Ninetales
+  owner-Pokemon boundary. Counts: 209 release dossiers, 4,549 card dossiers,
+  3,662 generated card dossiers, 887 hand-authored card dossiers, 24,419
+  claims, 7,494 sources; corpus hash
+  `505d3228acb327995212e56172f3ddec446cf64b7b7224e06dffdd2bcb725c2a`.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
