@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 333: Expedition Raichu #25 deepened; corpus 10af08f2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 334: Expedition Rapidash #26 deepened; corpus cff79cb2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-26` Rapidash #26 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition #26 / #62 / Ponyta #126 rows,
+  local Sample Set Rapidash 074/093, local P Promotional 011/P, local Jungle /
+  Aquapolis / Japanese Vending Series 1 Rapidash comparison context, Pokemon
+  TCG API card and set records, bounded Bulbapedia Rapidash / Expedition /
+  Kagemaru Himeno context, and The Art of Pokemon artist-index context. The
+  dossier carries Rare Holo, Stage 1 Fire, 70 HP, Ponyta evolution, Overrun,
+  Flame Tail, Water weakness, one-Colorless retreat, Kagemaru Himeno credit,
+  Japanese Base Expansion Pack 075/128 lineage, B-74 / B-74-# e-Reader
+  identity, M-74-# Sample Set identity, Make A Dash! long-strip animation
+  context, the #26 Rare Holo versus #62 Rare non-holo trap, reverse-holo
+  separation, Himeno's Ponyta/Rapidash Expedition sequence, Pokemon Crystal
+  150-mph Pokedex texture, and Jungle / Legendary Collection / Aquapolis /
+  Vending / P Promotional boundaries. Its special identification packet tells
+  agents to keep #26, #62, reverse-holo finish claims, B-74 / B-74-# strip
+  evidence, M-74-# Sample evidence, Make A Dash! playability, Ponyta context,
+  Jungle / Legendary Collection / Aquapolis / Vending / Quick Starter /
+  P Promotional / Dark Rapidash memory, and generic Fire-horse texture
+  separate unless set, number, finish, artist, attack package, B-ID/M-ID,
+  image, row, and seller evidence align. No-overclaim remains explicit: this
+  is catalog history and agent browsing texture, not seller possession,
+  authenticity, condition, price truth, image rights approval, e-Reader strip
+  readability, Make A Dash! playability, Sample Set status, holo/non-holo
+  equivalence, reverse-holo equivalence, other Rapidash route equivalence, or
+  spendability. Validation run: `json.tool` OK;
+  `scripts/build_catalog_history_dossiers.py` wrote 209 release dossiers,
+  4549 card dossiers, 3657 generated card dossiers, 24462 claims, 7559
+  sources, queue 100, corpus `cff79cb2...`; `--check` OK;
+  `scripts/build_card_dossiers.py --check` OK;
+  `scripts/build_catalog_completion_audit.py --check` OK; focused index
+  assertion OK.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
