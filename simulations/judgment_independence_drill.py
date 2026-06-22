@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Falsification drill for the §5 gates (G5.1–G5.10) of Protocol_Judgment_Independence_v0.2.md.
+"""Falsification drill for the §5 gates (G5.1–G5.10) of Protocol_Judgment_Independence_v0.3.md.
 Deterministic, model-free.
 
 PER-SUBGUARD TEETH: each compound gate is mutated ONE SUBCLAUSE at a time. For every
@@ -54,12 +54,12 @@ def g54(c, off=frozenset()):  # Non-sole-oracle + bound panel composition
         r.append("a panel member fails its own G5")
     if "mofn_sigs" not in off and c["valid_sigs"] < c["M"]:
         r.append("fewer than M valid member signatures")
-    if "pairwise_distance" not in off and not c["members_pairwise_independent"]:
-        r.append("panel members common-controlled (with each other or a party)")
+    if "registered_pairwise_conflict" not in off and c["members_registered_conflict"]:
+        r.append("panel members have a registered common-control conflict (registry ref)")
     return (not r, r)
 
 
-def g55(c, off=frozenset()):  # Appeal before finality + execution stay
+def g55(c, off=frozenset()):  # Appeal finality state machine (not just a stay)
     r = []
     if "appeal_window" not in off and c["value_moving"] and not c["appeal_window_present"]:
         r.append("value-moving ruling with no appeal window")
@@ -67,6 +67,12 @@ def g55(c, off=frozenset()):  # Appeal before finality + execution stay
         r.append("appeal authority is not independent")
     if "execution_stay" not in off and c["value_moving"] and c["value_moved_before_window_close"]:
         r.append("value moved before the appeal window closed (no execution stay)")
+    if "appeal_state_final" not in off and c["value_moving"] and c["finalizing"] and c["appeal_state"] != "final":
+        r.append("value finalized while appeal not in state 'final'")
+    if "appeal_bond" not in off and c["appeal_filed"] and not c["appeal_bond_posted"]:
+        r.append("appeal filed without an appeal bond (griefing)")
+    if "stay_bounded" not in off and c["value_moving"] and c["stay_elapsed"] > c["max_stay"]:
+        r.append("stay exceeds the bounded maximum (infinite-appeal griefing)")
     return (not r, r)
 
 
@@ -97,21 +103,36 @@ def g58(c, off=frozenset()):  # Independence downgrade ladder
     return (not r, r)
 
 
-def g59(c, off=frozenset()):  # Sparse-truth regime gate
+def g59(c, off=frozenset()):  # Sparse-truth anchor — structured (exposure/capital/tail/audit/slash/control)
     r = []
-    if "high_value_needs_anchor" not in off and c["value_tier"] >= 3 and not c["liability_anchor"]:
-        r.append("high-value resolution without a liability/underwriting/audit anchor")
+    high = c["value_tier"] >= 3
+    if "anchor_capital" not in off and high and c["capital"] < c["exposure"]:
+        r.append("anchor capital < exposure")
+    if "anchor_tail" not in off and high and not c["tail"]:
+        r.append("anchor has no tail (does not outlive settlement)")
+    if "anchor_audit" not in off and high and not c["audit_regime"]:
+        r.append("anchor has no audit regime")
+    if "anchor_slash" not in off and high and not c["slash_condition"]:
+        r.append("anchor has no slash condition")
+    if "anchor_control" not in off and high and not c["anchor_provider_independent"]:
+        r.append("anchor provider not independent")
     if "no_calibration_weight_underpowered" not in off and c["cell_underpowered"] and c["relies_on_calibration"]:
         r.append("underpowered cell leaning on calibration weight")
     return (not r, r)
 
 
-def g510(c, off=frozenset()):  # Registry / eligible-set integrity
+def g510(c, off=frozenset()):  # JudgmentEligibleSet integrity
     r = []
     if "committed_root" not in off and not c["member_in_committed_root"]:
         r.append("panel member not in the committed eligible-set root")
     if "non_party_selection" not in off and c["selection_shaped_by_party"]:
         r.append("panel selection seed/path shaped by a trade party")
+    if "member_g5_ref" not in off and not c["all_members_have_g5_ref"]:
+        r.append("an eligible-set member lacks a G5/registry ref")
+    if "governance_party_independent" not in off and not c["governance_party_independent"]:
+        r.append("eligible-set governance is a trade party")
+    if "set_versioned" not in off and not c["set_version_registered"]:
+        r.append("eligible-set version not registered")
     return (not r, r)
 
 
@@ -129,19 +150,24 @@ GATES = [
 
     ("G5.4", g54, {"resolver_count": 3, "M": 3, "value_tier": 3, "value_capped": False,
                    "members": ["a", "b", "c"], "member_g5_ok": [True, True, True], "valid_sigs": 3,
-                   "members_pairwise_independent": True},
+                   "members_registered_conflict": False},
      [("needs_panel_or_cap", {"value_tier": 1, "resolver_count": 1}),
       ("high_value_needs_panel", {"resolver_count": 1, "value_capped": True}),
       ("member_distinct", {"members": ["a", "a", "b"]}),
       ("per_member_g5", {"member_g5_ok": [True, False, True]}),
       ("mofn_sigs", {"valid_sigs": 2}),
-      ("pairwise_distance", {"members_pairwise_independent": False})]),
+      ("registered_pairwise_conflict", {"members_registered_conflict": True})]),
 
     ("G5.5", g55, {"value_moving": True, "appeal_window_present": True,
-                   "appeal_authority_independent": True, "value_moved_before_window_close": False},
+                   "appeal_authority_independent": True, "value_moved_before_window_close": False,
+                   "finalizing": True, "appeal_state": "final", "appeal_filed": False,
+                   "appeal_bond_posted": True, "stay_elapsed": 10, "max_stay": 100},
      [("appeal_window", {"appeal_window_present": False}),
       ("appeal_independent", {"appeal_authority_independent": False}),
-      ("execution_stay", {"value_moved_before_window_close": True})]),
+      ("execution_stay", {"value_moved_before_window_close": True}),
+      ("appeal_state_final", {"appeal_state": "pending"}),
+      ("appeal_bond", {"appeal_filed": True, "appeal_bond_posted": False}),
+      ("stay_bounded", {"stay_elapsed": 999})]),
 
     ("G5.6", g56, {"pair_count": 1, "pair_cap": 3},
      [("pairing_cap", {"pair_count": 3})]),
@@ -158,13 +184,24 @@ GATES = [
                           "downgrade_ladder": ["advisor_only", "manual_escrow"]}),
       ("captured_needs_cap", {"authority_party_adjacent": True})]),
 
-    ("G5.9", g59, {"value_tier": 3, "liability_anchor": True, "cell_underpowered": True, "relies_on_calibration": False},
-     [("high_value_needs_anchor", {"liability_anchor": False}),
+    ("G5.9", g59, {"value_tier": 3, "exposure": 100.0, "capital": 100.0, "tail": True,
+                   "audit_regime": True, "slash_condition": True, "anchor_provider_independent": True,
+                   "cell_underpowered": True, "relies_on_calibration": False},
+     [("anchor_capital", {"capital": 50.0}),
+      ("anchor_tail", {"tail": False}),
+      ("anchor_audit", {"audit_regime": False}),
+      ("anchor_slash", {"slash_condition": False}),
+      ("anchor_control", {"anchor_provider_independent": False}),
       ("no_calibration_weight_underpowered", {"relies_on_calibration": True})]),
 
-    ("G5.10", g510, {"member_in_committed_root": True, "selection_shaped_by_party": False},
+    ("G5.10", g510, {"member_in_committed_root": True, "selection_shaped_by_party": False,
+                     "all_members_have_g5_ref": True, "governance_party_independent": True,
+                     "set_version_registered": True},
      [("committed_root", {"member_in_committed_root": False}),
-      ("non_party_selection", {"selection_shaped_by_party": True})]),
+      ("non_party_selection", {"selection_shaped_by_party": True}),
+      ("member_g5_ref", {"all_members_have_g5_ref": False}),
+      ("governance_party_independent", {"governance_party_independent": False}),
+      ("set_versioned", {"set_version_registered": False})]),
 ]
 
 
