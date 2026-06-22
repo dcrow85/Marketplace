@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 319: Expedition Dugtrio #10 deepened; corpus 5d930edb)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 320: Expedition Fearow #11 deepened; corpus ffb31c6d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twentieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-11` Fearow #11 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #45 and Spearow #130
+  comparison rows, Pokemon TCG API card and set records, bounded Bulbapedia
+  Fearow / Expedition / Kyoko Umemoto context, local Aquapolis Kyoko Umemoto
+  e-Card context, and local Jungle Fearow as an older Spearow-line
+  comparator. The dossier carries Expedition #11, Rare Holo, Stage 1
+  Colorless, 70 HP, Spearow evolution, Clutch, Supersonic Flight, Lightning
+  weakness, Fighting resistance, zero retreat, Kyoko Umemoto credit,
+  Japanese Base Expansion Pack lineage, B-94 / B-94-# e-Reader identity,
+  Pokemon Crystal long-beak Pokedex texture, Supersonic Flight's Black Star
+  Dragonite move-name echo, and the #11 Rare Holo versus #45 Rare non-holo
+  trap. Its special identification packet tells agents to keep Expedition
+  Fearow #11 separate from Expedition #45, reverse-holo finish claims,
+  Spearow #130, Jungle / Base Set 2 / Legendary Collection Fearow, Lt.
+  Surge's Fearow, Dark Fearow guidebook material, and seller-owned physical
+  evidence unless set, number, finish, strip, and image evidence prove the
+  lane. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Fearow #11 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `ffb31c6d08d7776fdd4579bf88e4034ee891c7894a6981c1504235d1f1467497`;
+  generated card dossiers decreased to 3,671, hand-authored card dossiers
+  increased to 878.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-nineteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
