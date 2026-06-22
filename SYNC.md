@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 331: Expedition Pidgeot #23 deepened; corpus 00fe4975)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 332: Expedition Poliwrath #24 deepened; corpus 3ef55225)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-24` Poliwrath #24 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition #24 / #60 / Poliwhirl #89 /
+  Poliwag #125 rows, local Base Set / Base Set 2 / Japanese Expansion Pack
+  No Rarity Poliwrath comparison context, Pokemon TCG API card and set
+  records, bounded Bulbapedia Poliwrath / Expedition / Yuka Morii context,
+  and The Art of Pokemon artist-index context. The dossier carries Rare Holo,
+  Stage 2 Water, 100 HP, Poliwhirl evolution, Plunge, Water Punch, Lightning
+  weakness, two-Colorless retreat, Yuka Morii credit, Japanese Base Expansion
+  Pack 121/128 lineage, B-78 / B-78-# e-Reader identity, GO, Poliwrath!
+  short-strip application context, the #24 Rare Holo versus #60 Rare
+  non-holo trap, reverse-holo separation, Morii's unified
+  Poliwag/Poliwhirl/Poliwrath Expedition sequence, the Pokemon Crystal
+  swimmer Pokedex texture, and Base Set / Base Set 2 / Japanese No Rarity
+  boundaries. Its special identification packet tells agents to keep #24,
+  #60, reverse-holo finish claims, B-78 / B-78-# strip evidence, GO,
+  Poliwrath! playability, Base Set / Base Set 2 / Japanese Expansion Pack
+  No Rarity / Quick Starter / Gift Pack / Misty's / Neo Discovery / Skyridge
+  Poliwrath memory, and generic Poliwag-line browsing texture separate unless
+  set, number, finish, artist, attack package, B-ID, image, row, and seller
+  evidence align. No-overclaim remains explicit: this is catalog history and
+  agent browsing texture, not seller possession, authenticity, condition,
+  price truth, image rights approval, e-Reader strip readability, GO,
+  Poliwrath! playability, holo/non-holo equivalence, reverse-holo equivalence,
+  No Rarity equivalence, or spendability. Validation run: `json.tool` OK;
+  `scripts/build_catalog_history_dossiers.py` wrote 209 release dossiers,
+  4549 card dossiers, 3659 generated card dossiers, 24446 claims, 7532
+  sources, queue 100, corpus `3ef55225...`; `--check` OK;
+  `scripts/build_card_dossiers.py --check` OK;
+  `scripts/build_catalog_completion_audit.py --check` OK; focused index
+  assertion OK.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-thirty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
