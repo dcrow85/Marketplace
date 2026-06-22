@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 322: Expedition Gengar #13 deepened; corpus d6a5ce19)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 323: Expedition Golem #14 deepened; corpus a0fe436f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,36 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-14` Golem #14 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local #49 / Graveler #79 /
+  Geodude #110 comparison rows, Pokemon TCG API card and set records,
+  bounded Bulbapedia Golem / Expedition / Aya Kusube / e-Reader ID context,
+  and local Split Earth plus Nivi City Gym / Brock comparison context. The
+  dossier carries Expedition #14, Rare Holo, Stage 2 Fighting, 100 HP,
+  Graveler evolution, Rock Body, Rock Tumble, Water weakness,
+  four-Colorless retreat, Aya Kusube credit, Japanese Base Expansion Pack
+  lineage, B-89 / B-89-# e-Reader identity, Pokemon Crystal durability
+  Pokedex texture, the Kusube Geodude/Graveler/Golem sequence, and the #14
+  Rare Holo versus #49 Rare non-holo trap. Its special identification packet
+  tells agents to keep Expedition Golem #14 separate from Expedition #49,
+  reverse-holo finish claims, Geodude #110 / Graveler #79 lineage context,
+  Brock's Golem, Fossil Golem, Legendary Collection Golem, Skyridge Golem,
+  Split Earth Golem #089, and seller-owned physical evidence unless set,
+  number, finish, strip, and image evidence prove the lane. Validation
+  passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Golem #14 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `a0fe436f992565d71da3097a084b102bcb3ac607d1c32ca77a92103d6870acf0`;
+  generated card dossiers decreased to 3,668, hand-authored card dossiers
+  increased to 881.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
