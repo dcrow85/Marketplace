@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Falsification drill for the §7 enforceable gates (I1–I6) of Protocol_Insurance_v0.1.md.
+"""Falsification drill for the §12 enforceable gates (I1–I9) of Protocol_Insurance_v0.1.md.
 Deterministic, model-free.
 
 Each gate is a rule that MUST block a specific attack context, paired with a MUTATION
@@ -74,6 +74,30 @@ def i6_admit_relief(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
     return (not reasons, reasons)
 
 
+# I7 — subrogation recovery is bounded by the payout amount (no over-pursuit of the seller bond)
+def i7_admit_subrogation(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
+    reasons = []
+    if not disabled and c["subrogation_claim"] > c["payout"] + 1e-9:
+        reasons.append(f"subrogation claim {c['subrogation_claim']} exceeds payout {c['payout']}")
+    return (not reasons, reasons)
+
+
+# I8 — per-cohort exposure concentration cap not exceeded (one source cannot be the whole book)
+def i8_admit_cohort(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
+    reasons = []
+    if not disabled and c["cohort_exposure"] + c["new_payout"] > c["cohort_cap"]:
+        reasons.append(f"per-cohort exposure {c['cohort_exposure'] + c['new_payout']} exceeds cap {c['cohort_cap']}")
+    return (not reasons, reasons)
+
+
+# I9 — buyer retains a deductible >= floor (no 100% cover; moral-hazard / fake-claim brake)
+def i9_admit_deductible(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
+    reasons = []
+    if not disabled and c["deductible"] < c["deductible_floor"] - 1e-9:
+        reasons.append(f"deductible {c['deductible']} below floor {c['deductible_floor']} (full-cover moral hazard)")
+    return (not reasons, reasons)
+
+
 def run() -> int:
     cases = [
         ("I1 trigger is arbiter-ruled/mechanical, not insurer-discretion", i1_admit_trigger,
@@ -99,9 +123,21 @@ def run() -> int:
         ("I6 coverage bond relief is non-additive + solvency-gated", i6_admit_relief,
          {"import_relief": 0.30, "coverage_relief": 0.30, "applied_relief": 0.30, "cap": 0.50, "reserve_locked": True},
          {"import_relief": 0.30, "coverage_relief": 0.30, "applied_relief": 0.60, "cap": 0.50, "reserve_locked": True}),
+
+        ("I7 subrogation recovery bounded by payout", i7_admit_subrogation,
+         {"subrogation_claim": 100.0, "payout": 100.0},
+         {"subrogation_claim": 150.0, "payout": 100.0}),
+
+        ("I8 per-cohort exposure concentration cap", i8_admit_cohort,
+         {"cohort_exposure": 600.0, "new_payout": 200.0, "cohort_cap": 1000.0},
+         {"cohort_exposure": 900.0, "new_payout": 200.0, "cohort_cap": 1000.0}),
+
+        ("I9 buyer retains a deductible >= floor", i9_admit_deductible,
+         {"deductible": 0.10, "deductible_floor": 0.05},
+         {"deductible": 0.00, "deductible_floor": 0.05}),
     ]
 
-    print("§7 insurance gates — falsification drill\n" + "-" * 60)
+    print("§12 insurance gates — falsification drill\n" + "-" * 60)
     passed = 0
     for name, fn, clean, attack in cases:
         ok_clean, _ = fn(clean)
