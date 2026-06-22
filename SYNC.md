@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 314: Aquapolis Ampharos #1 deepened; corpus af679a96)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 315: Aquapolis Entei #10 deepened; corpus f099d8da)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-fifteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/aquapolis_v0_1.json`:
+  `en_wotc_aquapolis_20030115:ecard2-10` Entei #10 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. The pass
+  uses the local English WoC Aquapolis row, Pokemon TCG API card and set
+  records, the hand-authored Entei H8 dossier as a local boundary
+  comparator, and bounded Bulbapedia Aquapolis / Entei context. The dossier
+  carries Aquapolis #10, Rare, Basic Fire, 70 HP, Pure Body, Burning Fang,
+  Water weakness, one-Colorless retreat, Atsuko Nishida credit, Wind from
+  the Sea non-holo lineage, D-61-# non-holo e-Reader identity, and the
+  normal/reverse-holo finish lane. Its special identification packet tells
+  agents to keep Entei #10 separate from Entei H8/H32, reverse-holo finish
+  claims, Reverse Holo Jumbo Box Topper 5/12, Japanese Wind from the Sea
+  027/087, and seller-owned physical evidence unless seller scans prove the
+  lane. Validation passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Entei #10 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now `f099d8da3309ca1aeebc25a4f2dd85d04b4a2a0df7442ed9d267da5ed4d2bd4a`;
+  generated card dossiers decreased to 3,676, hand-authored card dossiers
+  increased to 873.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-fourteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/aquapolis_v0_1.json`:

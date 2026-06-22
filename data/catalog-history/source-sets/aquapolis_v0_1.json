@@ -9581,6 +9581,353 @@
       }
     },
     {
+      "uid": "en_wotc_aquapolis_20030115:ecard2-10",
+      "type": "card",
+      "context": {
+        "name_en": "Entei",
+        "name_ja": "エンテイ",
+        "romaji": "Entei",
+        "release_family_id": "en_wotc_aquapolis_20030115",
+        "row_id": "en_wotc_aquapolis_20030115:ecard2-10",
+        "catalog_row_id": "ecard2-10",
+        "card_number": "10",
+        "release_name": "Aquapolis",
+        "source_expansion_lineage": "English Aquapolis / E-Card Series / numbered Rare row / Japanese Wind from the Sea non-holo lineage",
+        "variant_lane": "numbered Rare non-Holo with reverse-holo market lane",
+        "holo_counterpart": "en_wotc_aquapolis_20030115:ecard2-H8",
+        "japanese_lineage_card_number": "Wind from the Sea 026/087"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:en_wotc_aquapolis_20030115:ecard2-10",
+          "title": "Local English WoC card row: Entei #10",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard2-10",
+          "title": "Pokemon TCG API v2 card record: Entei ecard2-10",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard2",
+          "title": "Pokemon TCG API v2 set record: Aquapolis",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Entei_(Aquapolis_H8)",
+          "title": "Bulbapedia: Entei (Aquapolis H8)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)",
+          "title": "Bulbapedia: Aquapolis (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_hand_authored_dossier",
+          "ref": "data/catalog-history/source-sets/aquapolis_v0_1.json#en_wotc_aquapolis_20030115:ecard2-H8",
+          "title": "Local hand-authored Aquapolis Entei H8 dossier",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Entei as Aquapolis card #10, a Rare Basic Fire Pokemon in the English e-Card Series.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia connects the Non Holofoil Entei print to English Aquapolis 10/147 and Japanese Wind from the Sea 026/087, while the Holofoil print maps to Aquapolis H8/H32 and Wind from the Sea 027/087.",
+          "sources": [
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Entei #10 with 70 HP, Fire type, Water weakness, one-Colorless retreat, the Poke-Body Pure Body, and Burning Fang for 40 damage with an optional coin flip that can discard Fire Energy and Burn the Defending Pokemon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Aquapolis Entei #10 to Atsuko Nishida, matching the artist credited on the adjacent Entei H8 row in the local hand-authored dossier.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Aquapolis as set id ecard2 in the E-Card Series with releaseDate 2003/01/15, printedTotal 147, and total 182; Bulbapedia describes Aquapolis as the English e-Card expansion drawing from The Town on No Map and Wind from the Sea.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "The local catalog has two Aquapolis Entei rows: card #10 as a numbered Rare row and H8 as the H-number Rare Holo row; Bulbapedia also records a Reverse Holo Jumbo Box Topper print numbered 5/12, so agents must keep #10, H8, reverse-holo finish, and Box Topper/Jumbo lanes separate before comparing images, prices, wants, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries both normal and reverseHolofoil price lanes for Entei #10, so a listing described as reverse holo must be treated as a finish lane inside card #10, not as the H8 Rare Holo row and not as the Jumbo Box Topper.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.context",
+          "text": "Bulbapedia says Aquapolis used e-Reader-era Dot-Code strips and that some lettered variants carried different strip data; Bulbapedia's Entei H8 page records card ID D-61 for Holofoil and Box Topper prints and D-61-# for the Non Holofoil print.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says the Non Holofoil short strip contains Pokedex information, a brief card summary, and information on the content of the long strip; the Holofoil and Box Topper prints carry species, height, and weight data.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Entei #10 matters because it keeps the Volcano Pokemon's Aquapolis machinery visible without the H8 halo: Pure Body still taxes Fire attachment, Burning Fang still turns fire into Burn, and D-61-# still marks the non-holo e-Reader route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Special identification instructions must pin this row to Aquapolis #10 / ecard2-10 / 10/147, Rare, non-Holo base row with possible reverse-holo finish lane, Atsuko Nishida credit, Pure Body / Burning Fang text, D-61-# non-holo e-Reader identity, and non-equivalence with H8, Box Topper 5/12, Japanese Wind from the Sea 027/087, and seller-owned physical evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "aquapolis_entei_10_numbered_rare_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Aquapolis Entei, Entei #10, 10/147, ecard2-10, reverse holo Entei, H8/H32, Entei H8, Atsuko Nishida, Pure Body, Burning Fang, D-61, D-61-#, Wind from the Sea, 026/087, 027/087, Box Topper, Jumbo, or 5/12.",
+          "summary": "Identify Entei #10 as the numbered Aquapolis Rare row, then keep it separate from the H8/H32 Rare Holo row, reverse-holo finish claims, and Reverse Holo Jumbo Box Topper 5/12 until seller evidence proves the lane.",
+          "steps": [
+            "Confirm English Aquapolis / Pokemon TCG API card id ecard2-10 / printed number 10 before accepting this as the numbered Rare row.",
+            "Record whether the seller is offering normal, reverse holo, or another finish; do not promote a reverse-holo price lane into H8/H32 identity.",
+            "Keep Entei H8/H32 adjacent but separate; shared species, artist, Pure Body, Burning Fang, and Fire typing do not make #10 the H-number Rare Holo.",
+            "Keep Reverse Holo Jumbo Box Topper 5/12 separate; oversized format, Box Topper route, and D-61 card ID must not collapse into standard Aquapolis #10 or H8.",
+            "Preserve the Japanese lineage split when relevant: Non Holofoil #10 maps to Wind from the Sea 026/087, while Holofoil H8 maps to Wind from the Sea 027/087.",
+            "Use Atsuko Nishida credit, Basic Fire profile, Water weakness, one-retreat cost, Pure Body, Burning Fang, and D-61-# non-holo e-Reader ID as supporting row evidence, not substitutes for card number, finish, format, and set identity.",
+            "Treat e-Reader, Dot-Code, Volcano Pokemon species label, Pokemon Crystal Pokedex source, Construction: Action map-data context, and D-61/D-61-# IDs as identification texture, not proof that a seller's physical card scans, is authentic, or is condition-accurate.",
+            "For transaction use, request seller front/back photos, finish-angle photos, card-number closeup, size/format confirmation if Box Topper is mentioned, and provenance or grading evidence before promoting this catalog identity into any physical-card claim."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "image rights approval",
+            "seller-card image match",
+            "e-Reader scan success",
+            "reverse-holo equivalence",
+            "Jumbo equivalence",
+            "long-strip data readability",
+            "Construction: Action data readability",
+            "spendability"
+          ],
+          "source_refs": [
+            {
+              "source": "Pokemon TCG API v2",
+              "source_page_url": "https://api.pokemontcg.io/v2/cards/ecard2-10"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Entei_(Aquapolis_H8)"
+            },
+            {
+              "source": "Bulbapedia",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            }
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "10",
+        "artist": "Atsuko Nishida",
+        "rarity_signal": "Rare; numbered Aquapolis #10 row, separate from Entei H8/H32, reverse-holo finish claims, and Reverse Holo Jumbo Box Topper 5/12",
+        "assembly_themes": [
+          "Aquapolis numbered Rare",
+          "Wind from the Sea non-holo lineage",
+          "Atsuko Nishida art trace",
+          "legendary beast without H-number halo",
+          "Pure Body fire-energy cost",
+          "Burning Fang burn fork",
+          "D-61-# non-holo e-Reader object",
+          "Box Topper format boundary",
+          "normal vs reverse-holo finish lane"
+        ],
+        "collector_texture_note": "Entei #10 is the card that keeps the legendary beast honest: same volcanic engine, different lane, with the proof living in number, finish, format, and e-Reader identity."
+      },
+      "narrative": {
+        "human_title": "Entei #10 — the volcano without the halo",
+        "why_it_matters": "Aquapolis Entei #10 has the same mythic pressure as H8, but the catalog lesson is different. This is Entei without the H-number halo: numbered Rare, normal and reverse-holo finish paths, D-61-# e-Reader identity, and a Box Topper shadow nearby trying to confuse the room. Atsuko Nishida's Volcano Pokemon still spends fire as a cost and threat, but the agent's job is to keep that fire inside the correct lane.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights approval",
+          "e-Reader scan success",
+          "reverse-holo equivalence",
+          "Jumbo equivalence",
+          "long-strip data readability",
+          "Construction: Action data readability",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
       "uid": "en_wotc_aquapolis_20030115:ecard2-H28",
       "type": "card",
       "context": {
