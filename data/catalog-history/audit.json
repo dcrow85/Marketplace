@@ -1,8 +1,8 @@
 {
-  "corpus_hash": "fd178835d9b2e601badd1bfa0ed7ce2928f998e925a2370b0fcc040bb132c92d",
+  "corpus_hash": "69a9d7100e78ee35905033069a730f524f16134d56b85d75d64f5b9419c63178",
   "counts": {
     "card_dossier_count": 4549,
-    "claim_count": 24402,
+    "claim_count": 24411,
     "coverage_by_dimension": {
       "art": {
         "A": 0,
@@ -12,8 +12,8 @@
       },
       "history": {
         "A": 0,
-        "B": 1094,
-        "C": 3664,
+        "B": 1095,
+        "C": 3663,
         "none": 0
       },
       "identification": {
@@ -29,22 +29,22 @@
         "none": 0
       }
     },
-    "generated_card_dossier_count": 3664,
+    "generated_card_dossier_count": 3663,
     "generated_release_dossier_count": 0,
-    "hand_authored_card_dossier_count": 885,
+    "hand_authored_card_dossier_count": 886,
     "hand_authored_release_dossier_count": 209,
     "modeled_catalog_releases": 209,
     "modeled_catalog_rows": 4549,
     "not_complete": {
       "card_dossiers_remaining_minimum": 0,
-      "deep_researched_card_dossiers_remaining_minimum": 3664,
+      "deep_researched_card_dossiers_remaining_minimum": 3663,
       "deep_researched_release_dossiers_remaining_minimum": 0,
       "note": "Every modeled release and card now has a baseline dossier; generated dossiers are first-pass local-catalog footholds, not complete researched histories.",
       "release_dossiers_remaining_minimum": 0
     },
     "release_dossier_count": 209,
-    "source_count": 7471,
-    "special_identification_instruction_dossiers": 1091,
+    "source_count": 7482,
+    "special_identification_instruction_dossiers": 1092,
     "status": "baseline_full_corpus_with_deep_research_gap",
     "uids": [
       "en_wotc_aquapolis_20030115:ecard2-1",
@@ -4807,10 +4807,10 @@
       "jp_tcg_wind_from_the_sea_20020524"
     ]
   },
-  "generated_at": "2026-06-22T15:10:25Z",
-  "index_hash": "3824cad3b0dea37fdf982cce490a9e8fbefb8f175eb36e760f9a417031e36cb0",
+  "generated_at": "2026-06-22T15:14:50Z",
+  "index_hash": "1f607a550d8ca355d44621c42982de8234947ed3c479be9c6323938993ab925b",
   "passed": true,
-  "queue_hash": "9432cff9b5d64cafd816b00be28c0ec7438335a5145f83e80ee1e12cc1c6868c",
+  "queue_hash": "3be761009b11b0005b1b8a2b6ba9b96c22daa074fc16ce8f775ff480c2d18133",
   "residuals": [
     {
       "description": "Every modeled release and card has a baseline sourced dossier, but most are generated from local catalog facts. The requested end state still requires deeper fact-checked history, lore, artist context, and card-specific collector texture across the full corpus.",

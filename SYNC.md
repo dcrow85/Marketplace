@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 327: Expedition Meganium #18 deepened; corpus fd178835)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 328: Expedition Ampharos #2 deepened; corpus 69a9d710)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,42 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-2` Ampharos #2 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition row, local Ampharos #34 /
+  Flaaffy #77 / Mareep #119 comparison rows, local Neo Genesis and Aquapolis
+  Ampharos context, Pokemon TCG API card and set records, bounded Bulbapedia
+  Ampharos / Expedition / Atsuko Nishida context, and The Art of Pokemon
+  artist-index context. The dossier carries Expedition #2, Rare Holo, Stage
+  2 Lightning, 100 HP, Flaaffy evolution, Energy Connect, Lightning Strike,
+  Fighting weakness, two-Colorless retreat, Atsuko Nishida credit, Japanese
+  Base Expansion Pack lineage, B-81 / B-81-# e-Reader identity, the #2 Rare
+  Holo versus #34 Rare non-holo trap, normal/reverse-holo finish separation,
+  Mareep/Flaaffy lineage boundaries, Neo Genesis / Aquapolis Ampharos memory
+  boundaries, and the Bulbapedia-documented non-holo Wizards test-run marker
+  caveat (`For Position Only`, `Medium`, long strip, missing `ID:` prefix,
+  Wizards copyright) as evidence-needed, not as automatic status. Its special
+  identification packet tells agents to keep Expedition Ampharos #2 separate
+  from #34, reverse-holo finish claims, B-81-# non-holo context, test-run
+  claims, Mareep/Flaaffy lineage context, Neo Genesis Ampharos, Aquapolis
+  Ampharos, Japanese Base Expansion Pack rows, and generic lighthouse/signal
+  memory unless set, number, finish, artist, attack package, B-ID, image, row,
+  and seller evidence align. No-overclaim remains explicit: this is catalog
+  history and agent browsing texture, not seller possession, authenticity,
+  condition, price truth, image rights approval, e-Reader strip readability,
+  test-run status, or spendability. Validation run: `json.tool` OK;
+  `build_catalog_history_dossiers.py` OK and `--check` OK;
+  `build_card_dossiers.py --check` OK; `build_catalog_completion_audit.py
+  --check` OK. Focused assertion passed for hand-authored status, title,
+  special identification packet, Nishida credit, B-81 theme, #2/#34 trap,
+  For Position Only test-run caveat, Energy Connect theme, and lighthouse
+  signal-lore theme. Counts: 209 release dossiers, 4,549 card dossiers,
+  3,663 generated card dossiers, 886 hand-authored card dossiers, 24,411
+  claims, 7,482 sources; corpus hash
+  `69a9d7100e78ee35905033069a730f524f16134d56b85d75d64f5b9419c63178`.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-twenty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
