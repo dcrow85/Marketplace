@@ -1000,8 +1000,7 @@ contract MarketplaceEscrowTest {
         uint256 secondTradeId = _createAndBond(1 ether, 0.1 ether, 0.01 ether);
         bytes32 secondWallBundleHash = _routeWallBundleRoot(secondTradeId, secondRouteHash);
         bytes32 secondAssemblyHistoryHash = _routeAssemblyHistory(secondTradeId, secondRouteHash);
-        bytes32 expectedSecondSpendabilityHash =
-            _routeSpendability(secondTradeId, secondRouteHash);
+        bytes32 expectedSecondSpendabilityHash = _routeSpendability(secondTradeId, secondRouteHash);
         bytes32 secondWitnessHash = _routeAssemblyWitness(
             secondTradeId,
             secondRouteHash,
@@ -1789,6 +1788,162 @@ contract MarketplaceEscrowTest {
         _assertEq(buyer.balance - buyerBefore, 0.79 ether, "JSC-bound ruling moved funds");
     }
 
+    function testG3VerifierSettlementRequiresCommittedJscRoute() public {
+        uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 rulingHash = _h("ruling:g3-missing-jsc-route");
+        bytes memory verifierSignature =
+            _verifierRulingSignature(tradeId, rulingHash, bytes32(0), 5_000, 0, true);
+        vm.expectRevert(MarketplaceEscrow.JscVerifierRouteRequired.selector);
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId, rulingHash, bytes32(0), 5_000, 0, true, verifierSignature
+        );
+    }
+
+    function testG3PrivateAdvisorRouteCannotCreateSellerLiability() public {
+        MarketplaceEscrow.JscVerifierRoute memory route = _privateAdvisorRoute();
+        (uint256 tradeId,) = _openClaimWithVerifierRoute(route);
+
+        bytes32 rulingHash = _h("ruling:g3-advisor-cannot-settle");
+        bytes memory verifierSignature =
+            _verifierRulingSignature(tradeId, rulingHash, route.scopeHash, 5_000, 0, true);
+        vm.expectRevert(MarketplaceEscrow.VerifierSettlementNotAuthorized.selector);
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId, rulingHash, route.scopeHash, 5_000, 0, true, verifierSignature
+        );
+    }
+
+    function testG3VerifierRouteRequiresExplicitSellerAcceptance() public {
+        uint256 tradeId = _createPendingTrade(1 ether, 0.1 ether, 0.01 ether);
+        MarketplaceEscrow.JscVerifierRoute memory route = _settlementVerifierRoute(0.01 ether);
+        bytes32 routeHash = _commitVerifierRoute(tradeId, route);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadState.selector, MarketplaceEscrow.State.EscrowFunded
+            )
+        );
+        vm.prank(verifier);
+        escrow.lockVerifierSettlementBond{ value: route.verifierBondRequired }(tradeId, routeHash);
+
+        vm.expectRevert(MarketplaceEscrow.JscVerifierRouteAcceptanceRequired.selector);
+        vm.prank(seller);
+        escrow.acceptAndBond{ value: 0.1 ether }(tradeId);
+
+        bytes32 wrongRouteHash = _h("jsc-route:g3-front-run-wrong-route");
+        bytes memory wrongAcceptanceSignature =
+            _jscRouteAcceptanceSignature(tradeId, wrongRouteHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.JscVerifierRouteMismatch.selector, routeHash, wrongRouteHash
+            )
+        );
+        vm.prank(seller);
+        escrow.acceptAndBondWithJscVerifierRoute{ value: 0.1 ether }(
+            tradeId, wrongRouteHash, wrongAcceptanceSignature
+        );
+
+        bytes memory routeAcceptanceSignature = _jscRouteAcceptanceSignature(tradeId, routeHash);
+        vm.prank(seller);
+        escrow.acceptAndBondWithJscVerifierRoute{ value: 0.1 ether }(
+            tradeId, routeHash, routeAcceptanceSignature
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.EvidencePending);
+    }
+
+    function testG3SettlementVerifierRequiresAcceptedScopeAndLockedBond() public {
+        MarketplaceEscrow.JscVerifierRoute memory route = _settlementVerifierRoute(0.01 ether);
+        (uint256 tradeId, bytes32 routeHash) = _openClaimWithVerifierRoute(route);
+
+        bytes32 wrongRouteHash = _h("jsc-route:g3-wrong-route");
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.JscVerifierRouteMismatch.selector, routeHash, wrongRouteHash
+            )
+        );
+        vm.prank(verifier);
+        escrow.lockVerifierSettlementBond{ value: route.verifierBondRequired }(
+            tradeId, wrongRouteHash
+        );
+
+        bytes32 rulingHash = _h("ruling:g3-bond-required");
+        bytes32 wrongScopeHash = _h("scope:g3-wrong");
+        bytes memory wrongScopeSignature =
+            _verifierRulingSignature(tradeId, rulingHash, wrongScopeHash, 5_000, 0, true);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.JscScopeMismatch.selector, route.scopeHash, wrongScopeHash
+            )
+        );
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId, rulingHash, wrongScopeHash, 5_000, 0, true, wrongScopeSignature
+        );
+
+        bytes memory verifierSignature =
+            _verifierRulingSignature(tradeId, rulingHash, route.scopeHash, 5_000, 0, true);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.VerifierBondRequired.selector, route.verifierBondRequired, 0
+            )
+        );
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId, rulingHash, route.scopeHash, 5_000, 0, true, verifierSignature
+        );
+    }
+
+    function testG3SettlementVerifierCanResolveOnlyThroughAcceptedJscRuling() public {
+        MarketplaceEscrow.JscVerifierRoute memory route = _settlementVerifierRoute(0.01 ether);
+        (uint256 tradeId, bytes32 routeHash) = _openClaimWithVerifierRoute(route);
+
+        vm.prank(verifier);
+        escrow.lockVerifierSettlementBond{ value: route.verifierBondRequired }(tradeId, routeHash);
+
+        bytes32 rulingHash = _h("ruling:g3-accepted-verifier-settlement");
+        bytes32 rulingBinding = escrow.verifierSettlementRulingHash(
+            tradeId, rulingHash, route.scopeHash, 5_000, 0, true
+        );
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.BadSignature.selector, verifier, rulingBinding)
+        );
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId, rulingHash, route.scopeHash, 5_000, 0, true, _sig(sellerKey, rulingBinding)
+        );
+
+        uint256 buyerBefore = buyer.balance;
+        escrow.resolveClaimWithVerifierRuling(
+            tradeId,
+            rulingHash,
+            route.scopeHash,
+            5_000,
+            0,
+            true,
+            _verifierRulingSignature(tradeId, rulingHash, route.scopeHash, 5_000, 0, true)
+        );
+
+        _assertState(tradeId, MarketplaceEscrow.State.Settled);
+        _assertEq(buyer.balance - buyerBefore, 0.51 ether, "verifier ruling moves bounded funds");
+        _assertEq(address(escrow).balance, route.verifierBondRequired, "verifier bond tail held");
+
+        uint256 releaseAt = block.timestamp + route.verifierBondTailSeconds;
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.VerifierBondReleasePending.selector, releaseAt)
+        );
+        vm.prank(verifier);
+        escrow.withdrawVerifierSettlementBond(tradeId);
+
+        uint256 verifierBefore = verifier.balance;
+        vm.warp(releaseAt + 1);
+        vm.prank(verifier);
+        escrow.withdrawVerifierSettlementBond(tradeId);
+
+        _assertEq(
+            verifier.balance - verifierBefore,
+            route.verifierBondRequired,
+            "verifier bond releases after tail"
+        );
+    }
+
     function testAuditD6RulingPayoutBoundsRejectOverCap() public {
         uint256 tradeId = _openClaim(1 ether, 0.1 ether, 0.01 ether);
 
@@ -1796,24 +1951,14 @@ contract MarketplaceEscrowTest {
         vm.expectRevert(MarketplaceEscrow.BadAmount.selector);
         vm.prank(arbiter);
         escrow.resolveClaim(
-            tradeId,
-            overRefundRulingHash,
-            10_001,
-            0,
-            true,
-            _sig(arbiterKey, overRefundRulingHash)
+            tradeId, overRefundRulingHash, 10_001, 0, true, _sig(arbiterKey, overRefundRulingHash)
         );
 
         bytes32 overPenaltyRulingHash = _h("ruling:audit-d6-over-penalty-cap");
         vm.expectRevert(MarketplaceEscrow.BadAmount.selector);
         vm.prank(arbiter);
         escrow.resolveClaim(
-            tradeId,
-            overPenaltyRulingHash,
-            0,
-            10_001,
-            true,
-            _sig(arbiterKey, overPenaltyRulingHash)
+            tradeId, overPenaltyRulingHash, 0, 10_001, true, _sig(arbiterKey, overPenaltyRulingHash)
         );
     }
 
@@ -2080,9 +2225,8 @@ contract MarketplaceEscrowTest {
             uint96(1 ether)
         );
 
-        uint256 tradeId = _createAndBondWithArbiter(
-            conflictedArbiter, 1 ether, 0.1 ether, 0.01 ether
-        );
+        uint256 tradeId =
+            _createAndBondWithArbiter(conflictedArbiter, 1 ether, 0.1 ether, 0.01 ether);
         _commitItemFingerprint(tradeId, _h("fingerprint:audit-d6-conflicted-arbiter"));
         _commitInventoryLock(tradeId, _h("inventory:audit-d6-conflicted-arbiter"));
         bytes32 routeHash = _h("route:audit-d6-conflicted-arbiter");
@@ -2096,12 +2240,7 @@ contract MarketplaceEscrowTest {
         bytes32 rulingHash = _h("ruling:audit-d6-conflicted-arbiter");
         vm.prank(conflictedArbiter);
         escrow.resolveClaim(
-            tradeId,
-            rulingHash,
-            5_000,
-            5_000,
-            true,
-            _sig(conflictedArbiterKey, rulingHash)
+            tradeId, rulingHash, 5_000, 5_000, true, _sig(conflictedArbiterKey, rulingHash)
         );
 
         _assertState(tradeId, MarketplaceEscrow.State.Settled);
@@ -2166,6 +2305,119 @@ contract MarketplaceEscrowTest {
         escrow.acceptAndBond{ value: sellerBond }(tradeId);
     }
 
+    function _createPendingTrade(uint256 escrowAmount, uint256 sellerBond, uint256 disputeBond)
+        internal
+        returns (uint256 tradeId)
+    {
+        bytes32 intentHash = _h("intent:vintage-card");
+        bytes32 termsHash = _h("terms:v1");
+        vm.prank(buyer);
+        tradeId = escrow.createTrade{ value: escrowAmount }(
+            seller,
+            arbiter,
+            sellerBond,
+            disputeBond,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function _openClaimWithVerifierRoute(MarketplaceEscrow.JscVerifierRoute memory route)
+        internal
+        returns (uint256 tradeId, bytes32 routeHash)
+    {
+        tradeId = _createPendingTrade(1 ether, 0.1 ether, 0.01 ether);
+        routeHash = _commitVerifierRoute(tradeId, route);
+
+        bytes memory routeAcceptanceSignature = _jscRouteAcceptanceSignature(tradeId, routeHash);
+        vm.prank(seller);
+        escrow.acceptAndBondWithJscVerifierRoute{ value: 0.1 ether }(
+            tradeId, routeHash, routeAcceptanceSignature
+        );
+
+        _commitItemFingerprint(
+            tradeId, keccak256(abi.encodePacked("fingerprint:vintage-card:", tradeId))
+        );
+        _commitInventoryLock(
+            tradeId, keccak256(abi.encodePacked("inventory:vintage-card:", tradeId))
+        );
+
+        bytes32 routeCommitmentHash = _h("route:g3-verifier-route");
+        _commitRoute(tradeId, routeCommitmentHash, false, true, 1 ether);
+        _markDeliveredBySeller(tradeId, "delivery:g3-verifier-route");
+
+        bytes32 claimHash = _h("claim:g3-verifier-route");
+        vm.prank(buyer);
+        escrow.openClaim{ value: 0.01 ether }(tradeId, claimHash, _sig(buyerKey, claimHash));
+    }
+
+    function _commitVerifierRoute(uint256 tradeId, MarketplaceEscrow.JscVerifierRoute memory route)
+        internal
+        returns (bytes32 routeHash)
+    {
+        routeHash = escrow.jscVerifierRouteHash(tradeId, route);
+        vm.prank(buyer);
+        escrow.commitJscVerifierRoute(tradeId, route, _sig(buyerKey, routeHash));
+    }
+
+    function _jscRouteAcceptanceSignature(uint256 tradeId, bytes32 routeHash)
+        internal
+        returns (bytes memory)
+    {
+        return _sig(sellerKey, escrow.jscVerifierRouteAcceptanceHash(tradeId, routeHash));
+    }
+
+    function _privateAdvisorRoute()
+        internal
+        view
+        returns (MarketplaceEscrow.JscVerifierRoute memory)
+    {
+        return MarketplaceEscrow.JscVerifierRoute({
+            routeClass: MarketplaceEscrow.VerifierRouteClass.BuyerDesignated,
+            authorityLevel: MarketplaceEscrow.VerifierAuthorityLevel.PrivateAdvisor,
+            acceptedVerifier: verifier,
+            scopeHash: _h("scope:g3-buyer-advisor"),
+            evidenceFloorHash: _h("evidence-floor:g3-buyer-advisor"),
+            feeScheduleHash: bytes32(0),
+            feePayer: MarketplaceEscrow.FeePayer.None,
+            feeOutcomeIndependent: false,
+            buyerDisputeBondRequired: 0,
+            verifierBondRequired: 0,
+            verifierExposureCap: 0,
+            verifierBondTailSeconds: 0,
+            appealHash: bytes32(0),
+            witnessCanSettle: false
+        });
+    }
+
+    function _settlementVerifierRoute(uint256 disputeBond)
+        internal
+        view
+        returns (MarketplaceEscrow.JscVerifierRoute memory)
+    {
+        return MarketplaceEscrow.JscVerifierRoute({
+            routeClass: MarketplaceEscrow.VerifierRouteClass.BuyerDesignated,
+            authorityLevel: MarketplaceEscrow.VerifierAuthorityLevel.SettlementVerifier,
+            acceptedVerifier: verifier,
+            scopeHash: _h("scope:g3-settlement-verifier"),
+            evidenceFloorHash: _h("evidence-floor:g3-settlement-verifier"),
+            feeScheduleHash: _h("fee:g3-flat-buyer-paid"),
+            feePayer: MarketplaceEscrow.FeePayer.Buyer,
+            feeOutcomeIndependent: true,
+            buyerDisputeBondRequired: disputeBond,
+            verifierBondRequired: 0.05 ether,
+            verifierExposureCap: 0.05 ether,
+            verifierBondTailSeconds: uint64(1 days),
+            appealHash: _h("appeal:g3-neutral-panel"),
+            witnessCanSettle: true
+        });
+    }
+
     function _defaultJscHash(bytes32 intentHash, bytes32 termsHash, address arbiter_)
         internal
         view
@@ -2198,8 +2450,25 @@ contract MarketplaceEscrowTest {
         return _sig(
             replacementArbiterKey,
             escrow.floorRulingHash(
+                tradeId, rulingHash, buyerRefundBps, sellerBondPenaltyBps, returnDisputeBondToBuyer
+            )
+        );
+    }
+
+    function _verifierRulingSignature(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 scopeHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer
+    ) internal returns (bytes memory) {
+        return _sig(
+            verifierKey,
+            escrow.verifierSettlementRulingHash(
                 tradeId,
                 rulingHash,
+                scopeHash,
                 buyerRefundBps,
                 sellerBondPenaltyBps,
                 returnDisputeBondToBuyer
@@ -2304,7 +2573,11 @@ contract MarketplaceEscrowTest {
         returns (bytes32)
     {
         return _routeSpendability(
-            tradeId, routeHash, _routeWallBundleRoot(tradeId, routeHash), assemblyHistoryHash, seller
+            tradeId,
+            routeHash,
+            _routeWallBundleRoot(tradeId, routeHash),
+            assemblyHistoryHash,
+            seller
         );
     }
 

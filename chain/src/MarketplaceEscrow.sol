@@ -51,6 +51,42 @@ contract MarketplaceEscrow {
         PrivatePredicate
     }
 
+    enum VerifierRouteClass {
+        None,
+        Neutral,
+        BuyerDesignated
+    }
+
+    enum VerifierAuthorityLevel {
+        None,
+        PrivateAdvisor,
+        SettlementVerifier,
+        DisputeWitness
+    }
+
+    enum FeePayer {
+        None,
+        Buyer,
+        Escrow
+    }
+
+    struct JscVerifierRoute {
+        VerifierRouteClass routeClass;
+        VerifierAuthorityLevel authorityLevel;
+        address acceptedVerifier;
+        bytes32 scopeHash;
+        bytes32 evidenceFloorHash;
+        bytes32 feeScheduleHash;
+        FeePayer feePayer;
+        bool feeOutcomeIndependent;
+        uint256 buyerDisputeBondRequired;
+        uint256 verifierBondRequired;
+        uint256 verifierExposureCap;
+        uint64 verifierBondTailSeconds;
+        bytes32 appealHash;
+        bool witnessCanSettle;
+    }
+
     struct Trade {
         address buyer;
         address seller;
@@ -65,11 +101,30 @@ contract MarketplaceEscrow {
         uint256 deliveredAt;
         uint256 claimOpenedAt;
         bool postDeliveryClaim;
+        bytes32 claimHash;
         State state;
         bytes32 intentHash;
         bytes32 termsHash;
         bytes32 jscHash;
         address floorExecutor;
+        bytes32 jscVerifierRouteHash;
+        VerifierRouteClass verifierRouteClass;
+        VerifierAuthorityLevel verifierAuthorityLevel;
+        address acceptedVerifier;
+        bytes32 acceptedVerifierScopeHash;
+        bytes32 verifierEvidenceFloorHash;
+        bytes32 verifierFeeScheduleHash;
+        FeePayer verifierFeePayer;
+        bool verifierFeeOutcomeIndependent;
+        uint256 jscBuyerDisputeBondRequired;
+        uint256 verifierBondRequired;
+        uint256 verifierBondLocked;
+        address verifierBondOwner;
+        uint64 verifierBondTailSeconds;
+        uint64 verifierBondReleaseAt;
+        uint256 verifierExposureCap;
+        bytes32 verifierAppealHash;
+        bool verifierWitnessCanSettle;
         bytes32 itemFingerprintHash;
         bytes32 inventoryLockHash;
         bytes32 fingerprintChallengeHash;
@@ -146,6 +201,13 @@ contract MarketplaceEscrow {
         bytes32 expectedScopeSetHash, bytes32 providedScopeSetHash
     );
     error JudgmentSupplyRequired();
+    error JscVerifierRouteRequired();
+    error JscVerifierRouteAcceptanceRequired();
+    error JscVerifierRouteMismatch(bytes32 expectedRouteHash, bytes32 providedRouteHash);
+    error JscScopeMismatch(bytes32 expectedScopeHash, bytes32 providedScopeHash);
+    error VerifierSettlementNotAuthorized();
+    error VerifierBondRequired(uint256 requiredAmount, uint256 lockedAmount);
+    error VerifierBondReleasePending(uint256 availableAt);
     error FloorResolutionTimeoutOpen(uint256 availableAt);
     error PostDeliveryDefaultRequiresFloorReceipt();
     error PostDeliveryClaimRequired();
@@ -157,11 +219,11 @@ contract MarketplaceEscrow {
     error WallBundleRequired();
     error AssemblyHistoryRequired();
     error RouteAssemblyWitnessRequired();
-    error RouteAssemblyWitnessMismatch(
-        bytes32 expectedWitnessHash, bytes32 providedWitnessHash
-    );
+    error RouteAssemblyWitnessMismatch(bytes32 expectedWitnessHash, bytes32 providedWitnessHash);
     error DeliveryWitnessRequired();
-    error DeliveryWitnessMismatch(bytes32 expectedDeliveryWitnessHash, bytes32 providedDeliveryWitnessHash);
+    error DeliveryWitnessMismatch(
+        bytes32 expectedDeliveryWitnessHash, bytes32 providedDeliveryWitnessHash
+    );
 
     uint256 public nextTradeId = 1;
     IMarketplaceActorRegistry public immutable actorRegistry;
@@ -195,6 +257,15 @@ contract MarketplaceEscrow {
     );
     bytes32 public constant UNRESOLVABLE_CLAIM_RECEIPT_TYPEHASH = keccak256(
         "UnresolvableClaimReceipt(address escrow,uint256 chainId,uint256 tradeId,bytes32 rulingHash,bytes32 receiptHash,bytes32 jscHash,address floorExecutor)"
+    );
+    bytes32 public constant JSC_VERIFIER_ROUTE_TYPEHASH = keccak256(
+        "JudgmentSupplyVerifierRoute(address escrow,uint256 chainId,uint256 tradeId,bytes32 jscHash,uint8 routeClass,uint8 authorityLevel,address acceptedVerifier,bytes32 scopeHash,bytes32 evidenceFloorHash,bytes32 feeScheduleHash,uint8 feePayer,bool feeOutcomeIndependent,uint256 buyerDisputeBondRequired,uint256 verifierBondRequired,uint256 verifierExposureCap,uint64 verifierBondTailSeconds,bytes32 appealHash,bool witnessCanSettle)"
+    );
+    bytes32 public constant JSC_VERIFIER_ROUTE_ACCEPTANCE_TYPEHASH = keccak256(
+        "JudgmentSupplyVerifierRouteAcceptance(address escrow,uint256 chainId,uint256 tradeId,bytes32 jscHash,bytes32 routeHash,address seller)"
+    );
+    bytes32 public constant VERIFIER_SETTLEMENT_RULING_TYPEHASH = keccak256(
+        "VerifierSettlementRuling(address escrow,uint256 chainId,uint256 tradeId,bytes32 rulingHash,bytes32 claimHash,bytes32 jscHash,bytes32 verifierRouteHash,address acceptedVerifier,bytes32 scopeHash,uint16 buyerRefundBps,uint16 sellerBondPenaltyBps,bool returnDisputeBondToBuyer)"
     );
     bytes32 public constant ROUTE_ASSEMBLY_WITNESS_TYPEHASH = keccak256(
         "RouteAssemblyWitness(address escrow,uint256 chainId,uint256 tradeId,bytes32 routeHash,bytes32 routeSpendabilityHash,bytes32 wallBundleHash,bytes32 assemblyHistoryHash,bytes32 itemFingerprintHash,bytes32 inventoryLockHash,bytes32 gateHash)"
@@ -313,9 +384,7 @@ contract MarketplaceEscrow {
         uint256 declaredInsurance
     );
     event RouteWallBundleCommitted(
-        uint256 indexed tradeId,
-        bytes32 indexed wallBundleHash,
-        bytes32 indexed spendabilityHash
+        uint256 indexed tradeId, bytes32 indexed wallBundleHash, bytes32 indexed spendabilityHash
     );
     event RouteAssemblyCommitted(
         uint256 indexed tradeId,
@@ -342,6 +411,22 @@ contract MarketplaceEscrow {
     event RouteClaimOpened(uint256 indexed tradeId, bytes32 claimHash, uint256 disputeBondLocked);
     event BuyerAccepted(uint256 indexed tradeId, bytes32 receiptHash);
     event ClaimOpened(uint256 indexed tradeId, bytes32 claimHash, uint256 disputeBondLocked);
+    event JscVerifierRouteCommitted(
+        uint256 indexed tradeId,
+        bytes32 indexed routeHash,
+        VerifierRouteClass routeClass,
+        VerifierAuthorityLevel authorityLevel,
+        address indexed acceptedVerifier,
+        bytes32 scopeHash,
+        bytes32 appealHash
+    );
+    event JscVerifierRouteAccepted(uint256 indexed tradeId, bytes32 indexed routeHash);
+    event VerifierSettlementBondLocked(
+        uint256 indexed tradeId, address indexed verifier, uint256 amount
+    );
+    event VerifierSettlementBondWithdrawn(
+        uint256 indexed tradeId, address indexed verifier, uint256 amount
+    );
     event FloorClaimResolved(
         uint256 indexed tradeId,
         address indexed floorExecutor,
@@ -353,6 +438,15 @@ contract MarketplaceEscrow {
     );
     event DefaultClaimResolved(
         uint256 indexed tradeId,
+        bytes32 rulingHash,
+        uint256 buyerRefund,
+        uint256 sellerEscrowPayout,
+        uint256 sellerBondPenalty,
+        bool disputeBondReturnedToBuyer
+    );
+    event VerifierClaimResolved(
+        uint256 indexed tradeId,
+        address indexed verifier,
         bytes32 rulingHash,
         uint256 buyerRefund,
         uint256 sellerEscrowPayout,
@@ -468,11 +562,30 @@ contract MarketplaceEscrow {
             deliveredAt: 0,
             claimOpenedAt: 0,
             postDeliveryClaim: false,
+            claimHash: bytes32(0),
             state: State.EscrowFunded,
             intentHash: intentHash,
             termsHash: termsHash,
             jscHash: jscHash,
             floorExecutor: floorExecutor,
+            jscVerifierRouteHash: bytes32(0),
+            verifierRouteClass: VerifierRouteClass.None,
+            verifierAuthorityLevel: VerifierAuthorityLevel.None,
+            acceptedVerifier: address(0),
+            acceptedVerifierScopeHash: bytes32(0),
+            verifierEvidenceFloorHash: bytes32(0),
+            verifierFeeScheduleHash: bytes32(0),
+            verifierFeePayer: FeePayer.None,
+            verifierFeeOutcomeIndependent: false,
+            jscBuyerDisputeBondRequired: 0,
+            verifierBondRequired: 0,
+            verifierBondLocked: 0,
+            verifierBondOwner: address(0),
+            verifierBondTailSeconds: 0,
+            verifierBondReleaseAt: 0,
+            verifierExposureCap: 0,
+            verifierAppealHash: bytes32(0),
+            verifierWitnessCanSettle: false,
             itemFingerprintHash: bytes32(0),
             inventoryLockHash: bytes32(0),
             fingerprintChallengeHash: bytes32(0),
@@ -535,12 +648,111 @@ contract MarketplaceEscrow {
         inState(tradeId, State.EscrowFunded)
     {
         Trade storage trade = trades[tradeId];
-        if (msg.value != trade.sellerBondRequired) revert WrongBondAmount();
+        if (trade.jscVerifierRouteHash != bytes32(0)) {
+            revert JscVerifierRouteAcceptanceRequired();
+        }
+        _acceptAndBond(tradeId, trade);
+    }
 
-        trade.sellerBondLocked = msg.value;
-        trade.state = State.EvidencePending;
+    function acceptAndBondWithJscVerifierRoute(
+        uint256 tradeId,
+        bytes32 routeHash,
+        bytes calldata acceptanceSignature
+    ) external payable onlySeller(tradeId) inState(tradeId, State.EscrowFunded) {
+        Trade storage trade = trades[tradeId];
+        if (trade.jscVerifierRouteHash == bytes32(0)) revert JscVerifierRouteRequired();
+        if (routeHash != trade.jscVerifierRouteHash) {
+            revert JscVerifierRouteMismatch(trade.jscVerifierRouteHash, routeHash);
+        }
 
-        emit SellerBonded(tradeId, msg.value);
+        _requireSignature(
+            msg.sender, jscVerifierRouteAcceptanceHash(tradeId, routeHash), acceptanceSignature
+        );
+        _anchorPacketHash(tradeId, jscVerifierRouteAcceptanceHash(tradeId, routeHash));
+        _acceptAndBond(tradeId, trade);
+
+        emit JscVerifierRouteAccepted(tradeId, routeHash);
+    }
+
+    function commitJscVerifierRoute(
+        uint256 tradeId,
+        JscVerifierRoute calldata route,
+        bytes calldata routeSignature
+    ) external onlyBuyer(tradeId) inState(tradeId, State.EscrowFunded) {
+        Trade storage trade = trades[tradeId];
+        bytes32 routeHash = jscVerifierRouteHash(tradeId, route);
+
+        _validateJscVerifierRoute(trade, route);
+        _requireSignature(msg.sender, routeHash, routeSignature);
+        _anchorPacketHash(tradeId, routeHash);
+
+        trade.jscVerifierRouteHash = routeHash;
+        trade.verifierRouteClass = route.routeClass;
+        trade.verifierAuthorityLevel = route.authorityLevel;
+        trade.acceptedVerifier = route.acceptedVerifier;
+        trade.acceptedVerifierScopeHash = route.scopeHash;
+        trade.verifierEvidenceFloorHash = route.evidenceFloorHash;
+        trade.verifierFeeScheduleHash = route.feeScheduleHash;
+        trade.verifierFeePayer = route.feePayer;
+        trade.verifierFeeOutcomeIndependent = route.feeOutcomeIndependent;
+        trade.jscBuyerDisputeBondRequired = route.buyerDisputeBondRequired;
+        trade.verifierBondRequired = route.verifierBondRequired;
+        trade.verifierExposureCap = route.verifierExposureCap;
+        trade.verifierBondTailSeconds = route.verifierBondTailSeconds;
+        trade.verifierAppealHash = route.appealHash;
+        trade.verifierWitnessCanSettle = route.witnessCanSettle;
+
+        emit JscVerifierRouteCommitted(
+            tradeId,
+            routeHash,
+            route.routeClass,
+            route.authorityLevel,
+            route.acceptedVerifier,
+            route.scopeHash,
+            route.appealHash
+        );
+    }
+
+    function lockVerifierSettlementBond(uint256 tradeId, bytes32 routeHash) external payable {
+        Trade storage trade = trades[tradeId];
+        _onlyOpen(trade);
+        if (trade.jscVerifierRouteHash == bytes32(0)) revert JscVerifierRouteRequired();
+        if (routeHash != trade.jscVerifierRouteHash) {
+            revert JscVerifierRouteMismatch(trade.jscVerifierRouteHash, routeHash);
+        }
+        if (trade.state == State.EscrowFunded) revert BadState(trade.state);
+        if (msg.sender != trade.acceptedVerifier) revert Unauthorized();
+        if (!actorRegistry.isVerifierActive(msg.sender)) revert UnregisteredActor(msg.sender);
+        if (trade.verifierBondRequired == 0) revert BadAmount();
+
+        uint256 missingBond = trade.verifierBondRequired - trade.verifierBondLocked;
+        if (missingBond == 0) revert BadAmount();
+        if (msg.value != missingBond) revert WrongBondAmount();
+
+        trade.verifierBondLocked += msg.value;
+        trade.verifierBondOwner = msg.sender;
+
+        emit VerifierSettlementBondLocked(tradeId, msg.sender, msg.value);
+    }
+
+    function withdrawVerifierSettlementBond(uint256 tradeId) external {
+        Trade storage trade = trades[tradeId];
+        if (msg.sender != trade.verifierBondOwner) revert Unauthorized();
+        if (trade.state != State.Settled && trade.state != State.Cancelled) {
+            revert BadState(trade.state);
+        }
+        uint256 releaseAt = trade.verifierBondReleaseAt;
+        if (releaseAt != 0 && block.timestamp <= releaseAt) {
+            revert VerifierBondReleasePending(releaseAt);
+        }
+
+        uint256 bond = trade.verifierBondLocked;
+        if (bond == 0) revert BadAmount();
+        trade.verifierBondLocked = 0;
+        trade.verifierBondReleaseAt = 0;
+
+        emit VerifierSettlementBondWithdrawn(tradeId, msg.sender, bond);
+        _send(payable(msg.sender), bond);
     }
 
     function attachProof(uint256 tradeId, bytes32 proofHash, bytes calldata proofSignature)
@@ -925,10 +1137,9 @@ contract MarketplaceEscrow {
         if (spendabilityHash != expectedSpendabilityHash) {
             revert SpendabilityDigestMismatch(expectedSpendabilityHash, spendabilityHash);
         }
-        bytes32 expectedRouteAssemblyWitnessHash =
-            routeAssemblyWitnessHash(
-                tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash
-            );
+        bytes32 expectedRouteAssemblyWitnessHash = routeAssemblyWitnessHash(
+            tradeId, routeHash, spendabilityHash, wallBundleHash, assemblyHistoryHash
+        );
         if (routeAssemblyWitnessHash_ != expectedRouteAssemblyWitnessHash) {
             revert RouteAssemblyWitnessMismatch(
                 expectedRouteAssemblyWitnessHash, routeAssemblyWitnessHash_
@@ -1071,6 +1282,7 @@ contract MarketplaceEscrow {
         trade.disputeBondLocked = msg.value;
         trade.claimOpenedAt = block.timestamp;
         trade.postDeliveryClaim = true;
+        trade.claimHash = claimHash;
         trade.state = State.ClaimOrDisputePending;
 
         emit ClaimOpened(tradeId, claimHash, msg.value);
@@ -1096,6 +1308,7 @@ contract MarketplaceEscrow {
         trade.disputeBondLocked = msg.value;
         trade.claimOpenedAt = block.timestamp;
         trade.postDeliveryClaim = false;
+        trade.claimHash = claimHash;
         trade.state = State.ClaimOrDisputePending;
 
         emit RouteClaimOpened(tradeId, claimHash, msg.value);
@@ -1115,12 +1328,48 @@ contract MarketplaceEscrow {
         if (buyerRefundBps > 10_000 || sellerBondPenaltyBps > 10_000) revert BadAmount();
 
         _resolveClaim(
-            tradeId,
-            rulingHash,
-            buyerRefundBps,
-            sellerBondPenaltyBps,
-            returnDisputeBondToBuyer,
-            0
+            tradeId, rulingHash, buyerRefundBps, sellerBondPenaltyBps, returnDisputeBondToBuyer, 0
+        );
+    }
+
+    function resolveClaimWithVerifierRuling(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 scopeHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer,
+        bytes calldata verifierSignature
+    ) external inState(tradeId, State.ClaimOrDisputePending) {
+        Trade storage trade = trades[tradeId];
+        if (rulingHash == bytes32(0)) revert BadHash();
+        if (scopeHash != trade.acceptedVerifierScopeHash) {
+            revert JscScopeMismatch(trade.acceptedVerifierScopeHash, scopeHash);
+        }
+        if (buyerRefundBps > 10_000 || sellerBondPenaltyBps > 10_000) revert BadAmount();
+        if (!_verifierSettlementAuthorized(trade)) revert VerifierSettlementNotAuthorized();
+        if (!actorRegistry.isVerifierActive(trade.acceptedVerifier)) {
+            revert UnregisteredActor(trade.acceptedVerifier);
+        }
+        if (trade.verifierBondLocked < trade.verifierBondRequired) {
+            revert VerifierBondRequired(trade.verifierBondRequired, trade.verifierBondLocked);
+        }
+
+        _requireSignature(
+            trade.acceptedVerifier,
+            verifierSettlementRulingHash(
+                tradeId,
+                rulingHash,
+                scopeHash,
+                buyerRefundBps,
+                sellerBondPenaltyBps,
+                returnDisputeBondToBuyer
+            ),
+            verifierSignature
+        );
+
+        _resolveClaim(
+            tradeId, rulingHash, buyerRefundBps, sellerBondPenaltyBps, returnDisputeBondToBuyer, 3
         );
     }
 
@@ -1141,22 +1390,13 @@ contract MarketplaceEscrow {
         _requireSignature(
             trade.floorExecutor,
             floorRulingHash(
-                tradeId,
-                rulingHash,
-                buyerRefundBps,
-                sellerBondPenaltyBps,
-                returnDisputeBondToBuyer
+                tradeId, rulingHash, buyerRefundBps, sellerBondPenaltyBps, returnDisputeBondToBuyer
             ),
             floorSignature
         );
 
         _resolveClaim(
-            tradeId,
-            rulingHash,
-            buyerRefundBps,
-            sellerBondPenaltyBps,
-            returnDisputeBondToBuyer,
-            1
+            tradeId, rulingHash, buyerRefundBps, sellerBondPenaltyBps, returnDisputeBondToBuyer, 1
         );
     }
 
@@ -1356,11 +1596,7 @@ contract MarketplaceEscrow {
             )
         );
         return _spendabilityDigest(
-            tradeId,
-            ROUTE_COMMITMENT_GATE,
-            ROUTE_COMMITMENT_LEG,
-            boundArtifactsHash,
-            issuer
+            tradeId, ROUTE_COMMITMENT_GATE, ROUTE_COMMITMENT_LEG, boundArtifactsHash, issuer
         );
     }
 
@@ -1381,11 +1617,11 @@ contract MarketplaceEscrow {
         );
     }
 
-    function deliveryWitnessHash(
-        uint256 tradeId,
-        bytes32 deliveryHash,
-        bytes32 spendabilityHash
-    ) public view returns (bytes32) {
+    function deliveryWitnessHash(uint256 tradeId, bytes32 deliveryHash, bytes32 spendabilityHash)
+        public
+        view
+        returns (bytes32)
+    {
         Trade storage trade = trades[tradeId];
         return keccak256(
             abi.encode(
@@ -1458,6 +1694,84 @@ contract MarketplaceEscrow {
         );
     }
 
+    function jscVerifierRouteHash(uint256 tradeId, JscVerifierRoute calldata route)
+        public
+        view
+        returns (bytes32)
+    {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                JSC_VERIFIER_ROUTE_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                trade.jscHash,
+                route.routeClass,
+                route.authorityLevel,
+                route.acceptedVerifier,
+                route.scopeHash,
+                route.evidenceFloorHash,
+                route.feeScheduleHash,
+                route.feePayer,
+                route.feeOutcomeIndependent,
+                route.buyerDisputeBondRequired,
+                route.verifierBondRequired,
+                route.verifierExposureCap,
+                route.verifierBondTailSeconds,
+                route.appealHash,
+                route.witnessCanSettle
+            )
+        );
+    }
+
+    function jscVerifierRouteAcceptanceHash(uint256 tradeId, bytes32 routeHash)
+        public
+        view
+        returns (bytes32)
+    {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                JSC_VERIFIER_ROUTE_ACCEPTANCE_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                trade.jscHash,
+                routeHash,
+                trade.seller
+            )
+        );
+    }
+
+    function verifierSettlementRulingHash(
+        uint256 tradeId,
+        bytes32 rulingHash,
+        bytes32 scopeHash,
+        uint16 buyerRefundBps,
+        uint16 sellerBondPenaltyBps,
+        bool returnDisputeBondToBuyer
+    ) public view returns (bytes32) {
+        Trade storage trade = trades[tradeId];
+        return keccak256(
+            abi.encode(
+                VERIFIER_SETTLEMENT_RULING_TYPEHASH,
+                address(this),
+                block.chainid,
+                tradeId,
+                rulingHash,
+                trade.claimHash,
+                trade.jscHash,
+                trade.jscVerifierRouteHash,
+                trade.acceptedVerifier,
+                scopeHash,
+                buyerRefundBps,
+                sellerBondPenaltyBps,
+                returnDisputeBondToBuyer
+            )
+        );
+    }
+
     function fingerprintChallengeResolutionHash(
         uint256 tradeId,
         bytes32 resolutionHash,
@@ -1501,11 +1815,11 @@ contract MarketplaceEscrow {
         );
     }
 
-    function unresolvableClaimReceiptHash(
-        uint256 tradeId,
-        bytes32 rulingHash,
-        bytes32 receiptHash
-    ) public view returns (bytes32) {
+    function unresolvableClaimReceiptHash(uint256 tradeId, bytes32 rulingHash, bytes32 receiptHash)
+        public
+        view
+        returns (bytes32)
+    {
         Trade storage trade = trades[tradeId];
         return keccak256(
             abi.encode(
@@ -1541,6 +1855,73 @@ contract MarketplaceEscrow {
         ) {
             revert ClosedTrade();
         }
+    }
+
+    function _acceptAndBond(uint256 tradeId, Trade storage trade) internal {
+        if (msg.value != trade.sellerBondRequired) revert WrongBondAmount();
+
+        trade.sellerBondLocked = msg.value;
+        trade.state = State.EvidencePending;
+
+        emit SellerBonded(tradeId, msg.value);
+    }
+
+    function _validateJscVerifierRoute(Trade storage trade, JscVerifierRoute calldata route)
+        internal
+        view
+    {
+        if (
+            route.routeClass == VerifierRouteClass.None
+                || route.authorityLevel == VerifierAuthorityLevel.None
+        ) {
+            revert JudgmentSupplyRequired();
+        }
+        if (!actorRegistry.isVerifierActive(route.acceptedVerifier)) {
+            revert UnregisteredActor(route.acceptedVerifier);
+        }
+        if (
+            route.acceptedVerifier == trade.buyer || route.acceptedVerifier == trade.seller
+                || route.acceptedVerifier == trade.arbiter
+                || route.acceptedVerifier == trade.floorExecutor
+        ) {
+            revert BadAddress();
+        }
+        if (route.scopeHash == bytes32(0) || route.evidenceFloorHash == bytes32(0)) {
+            revert BadHash();
+        }
+
+        if (route.authorityLevel == VerifierAuthorityLevel.PrivateAdvisor) {
+            if (
+                route.buyerDisputeBondRequired != 0 || route.verifierBondRequired != 0
+                    || route.verifierExposureCap != 0 || route.witnessCanSettle
+            ) {
+                revert BadAmount();
+            }
+            return;
+        }
+
+        if (route.feeScheduleHash == bytes32(0) || route.appealHash == bytes32(0)) {
+            revert BadHash();
+        }
+        if (route.feePayer != FeePayer.Buyer && route.feePayer != FeePayer.Escrow) {
+            revert BadAmount();
+        }
+        if (!route.feeOutcomeIndependent) revert BadAmount();
+        if (route.buyerDisputeBondRequired != trade.disputeBondRequired) {
+            revert WrongBondAmount();
+        }
+        if (route.verifierBondRequired == 0 || route.verifierExposureCap == 0) {
+            revert BadAmount();
+        }
+    }
+
+    function _verifierSettlementAuthorized(Trade storage trade) internal view returns (bool) {
+        if (trade.jscVerifierRouteHash == bytes32(0)) revert JscVerifierRouteRequired();
+        if (trade.verifierAuthorityLevel == VerifierAuthorityLevel.SettlementVerifier) {
+            return true;
+        }
+        return trade.verifierAuthorityLevel == VerifierAuthorityLevel.DisputeWitness
+            && trade.verifierWitnessCanSettle;
     }
 
     function _spendabilityDigest(
@@ -1599,8 +1980,13 @@ contract MarketplaceEscrow {
         uint256 sellerBondPenalty = (trade.sellerBondLocked * sellerBondPenaltyBps) / 10_000;
         uint256 sellerBondReturn = trade.sellerBondLocked - sellerBondPenalty;
         uint256 disputeBond = trade.disputeBondLocked;
+        uint256 verifierBond = trade.verifierBondLocked;
+        address verifierBondOwner = trade.verifierBondOwner;
 
         trade.state = State.Settled;
+        if (verifierBond != 0) {
+            trade.verifierBondReleaseAt = uint64(block.timestamp) + trade.verifierBondTailSeconds;
+        }
         _releaseTradeObjectLocks(tradeId);
 
         if (resolutionMode == 1) {
@@ -1616,6 +2002,16 @@ contract MarketplaceEscrow {
         } else if (resolutionMode == 2) {
             emit DefaultClaimResolved(
                 tradeId,
+                rulingHash,
+                buyerRefund,
+                sellerEscrowPayout,
+                sellerBondPenalty,
+                returnDisputeBondToBuyer
+            );
+        } else if (resolutionMode == 3) {
+            emit VerifierClaimResolved(
+                tradeId,
+                trade.acceptedVerifier,
                 rulingHash,
                 buyerRefund,
                 sellerEscrowPayout,
@@ -1641,6 +2037,13 @@ contract MarketplaceEscrow {
             _send(payable(trade.buyer), disputeBond);
         } else {
             _send(payable(trade.seller), disputeBond);
+        }
+
+        if (verifierBond != 0 && trade.verifierBondTailSeconds == 0) {
+            trade.verifierBondLocked = 0;
+            trade.verifierBondReleaseAt = 0;
+            emit VerifierSettlementBondWithdrawn(tradeId, verifierBondOwner, verifierBond);
+            _send(payable(verifierBondOwner), verifierBond);
         }
     }
 

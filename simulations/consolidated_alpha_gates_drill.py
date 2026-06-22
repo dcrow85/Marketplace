@@ -5,9 +5,7 @@ Deterministic, model-free.
 
 Each in-lane gate is a rule that MUST block a specific attack context, paired with a
 MUTATION CONTROL (drop the one guard → the attack must flip to admit, proving teeth).
-G1 is modeled at the SPEC-RULE level only; the actual chain fix
-(`resolveUnresolvableClaimByDefault`) is Codex's lane — this tests the rule the chain must
-implement, not the Solidity. Nothing here is live enforcement.
+This is not live enforcement; it mirrors the admission rules the Solidity surface must bind.
 
 Run: python3 simulations/consolidated_alpha_gates_drill.py
 """
@@ -36,6 +34,36 @@ def g2_admit_route(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
         if c["mode"] == "custodian_physical" and not c["non_custodian_verifier_available"] \
                 and c["mode"] not in c["downgrade_ladder"]:
             reasons.append("no non-custodian verifier available and route did not downgrade")
+    return (not reasons, reasons)
+
+
+# G3 — verifier settlement power requires a seller-accepted JSC route schema, not prose
+def g3_admit_verifier_settlement(c: dict, *, disabled=False) -> tuple[bool, list[str]]:
+    reasons = []
+    settlement_power = c["authority_level"] == "settlement_verifier" or (
+        c["authority_level"] == "dispute_witness" and c["witness_can_settle"]
+    )
+    if not disabled:
+        if c["authority_level"] == "private_advisor" and c["creates_seller_liability"]:
+            reasons.append("private advisor route attempted to create seller liability")
+        if c["creates_seller_liability"] and not settlement_power:
+            reasons.append("route lacks settlement authority")
+        if settlement_power:
+            required = {
+                "seller_accepted_route",
+                "accepted_verifier_active",
+                "scope_matches",
+                "fee_outcome_independent",
+                "buyer_dispute_bond_locked",
+                "verifier_bond_locked",
+                "appeal_path_named",
+                "verifier_signed_ruling",
+            }
+            missing = sorted(field for field in required if not c[field])
+            if c["fee_payer"] not in {"buyer", "escrow"}:
+                missing.append("fee_payer_buyer_or_escrow")
+            if missing:
+                reasons.append("JSC settlement route missing: " + ", ".join(missing))
     return (not reasons, reasons)
 
 
@@ -82,6 +110,18 @@ def run() -> int:
           "non_custodian_verifier_available": True, "downgrade_ladder": ["non_custodian_remote", "advisor_only"]},
          {"mode": "custodian_physical", "verifier_is_custodian": True,
           "non_custodian_verifier_available": False, "downgrade_ladder": ["advisor_only"]}),
+
+        ("G3 verifier settlement requires seller-accepted JSC schema", g3_admit_verifier_settlement,
+         {"authority_level": "settlement_verifier", "witness_can_settle": False,
+          "creates_seller_liability": True, "seller_accepted_route": True,
+          "accepted_verifier_active": True, "scope_matches": True, "fee_payer": "buyer",
+          "fee_outcome_independent": True, "buyer_dispute_bond_locked": True,
+          "verifier_bond_locked": True, "appeal_path_named": True, "verifier_signed_ruling": True},
+         {"authority_level": "settlement_verifier", "witness_can_settle": False,
+          "creates_seller_liability": True, "seller_accepted_route": False,
+          "accepted_verifier_active": True, "scope_matches": False, "fee_payer": "seller",
+          "fee_outcome_independent": False, "buyer_dispute_bond_locked": True,
+          "verifier_bond_locked": False, "appeal_path_named": False, "verifier_signed_ruling": True}),
 
         ("G4 bond relief is non-additive", g4_admit_relief,
          {"import_relief": 0.30, "bootstrap_relief": 0.30, "applied_relief": 0.30, "cap": 0.50},
