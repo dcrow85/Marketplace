@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 318: Expedition Alakazam #1 deepened; corpus 37916f25)
+UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (catalog-history pass 319: Expedition Dugtrio #10 deepened; corpus 5d930edb)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-22 · Codex — completed the three-hundred-nineteenth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-10` Dugtrio #10 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass uses the local English WoC Expedition row, local #44 comparison
+  row, Pokemon TCG API card and set records, bounded Bulbapedia Dugtrio /
+  Expedition / Masako Yamashita context, local Asobikata Dugtrio teaching
+  memory, and local Base Set Dugtrio earthquake context. The dossier carries
+  Expedition #10, Rare Holo, Stage 1 Fighting, 70 HP, Diglett evolution, Mud
+  Slap, Magnitude, Grass weakness, Lightning resistance, one-Colorless
+  retreat, Masako Yamashita credit, Japanese Base Expansion Pack lineage,
+  A-17 / A-17-# e-Reader identity, Pokemon Crystal earthquake Pokedex
+  texture, and the #10 Rare Holo versus #44 Rare non-holo trap. Its special
+  identification packet tells agents to keep Expedition Dugtrio #10 separate
+  from Expedition #44, reverse-holo finish claims, Base Set Dugtrio, Dark
+  Dugtrio, Asobikata Dugtrio, Vending / Expansion Sheet Dugtrio, Dugtrio Team
+  Battle event objects, and seller-owned physical evidence unless set,
+  number, finish, strip, and image evidence prove the lane. Validation
+  passed: `python3 -m json.tool`,
+  `scripts/build_catalog_history_dossiers.py`,
+  `scripts/build_catalog_history_dossiers.py --check`,
+  `scripts/build_card_dossiers.py --check`,
+  `scripts/build_catalog_completion_audit.py --check`, plus a focused
+  index assertion for the Dugtrio #10 hand-authored title, themes, artist,
+  and special-identification count. Corpus hash is now
+  `5d930edb8f265d50ff31908583de38329f7fcfb663494471722f0a11de02d883`;
+  generated card dossiers decreased to 3,672, hand-authored card dossiers
+  increased to 877.
 - `[passive]` 2026-06-22 · Codex — completed the three-hundred-eighteenth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:

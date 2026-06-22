@@ -8,6 +8,7 @@
       "Blastoise 4",
       "Charizard 6",
       "Charizard 39",
+      "Dugtrio 10",
       "Mew 19",
       "Tyranitar 29"
     ],
@@ -560,6 +561,385 @@
           "Hajime Kusajima",
           "B-84",
           "Psymimic"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_expedition_base_set_20020915:ecard1-10",
+      "type": "card",
+      "context": {
+        "name_en": "Dugtrio",
+        "name_ja": "ダグトリオ",
+        "romaji": "Dugtrio",
+        "release_family_id": "en_wotc_expedition_base_set_20020915",
+        "row_id": "en_wotc_expedition_base_set_20020915:ecard1-10",
+        "catalog_row_id": "ecard1-10",
+        "card_number": "10",
+        "release_name": "Expedition Base Set",
+        "source_expansion_lineage": "English Expedition Base Set / E-Card Series / Japanese Base Expansion Pack lineage",
+        "variant_lane": "Rare Holo with non-holo #44 and reverse-holo finish boundaries"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-10",
+          "title": "Local English WoC card row: Dugtrio #10",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_expedition_base_set_20020915.json#row:en_wotc_expedition_base_set_20020915:ecard1-44",
+          "title": "Local English WoC comparison row: Dugtrio #44",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/ecard1-10",
+          "title": "Pokemon TCG API v2 card record: Dugtrio ecard1-10",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/ecard1",
+          "title": "Pokemon TCG API v2 set record: Expedition Base Set",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Expedition_10)",
+          "title": "Bulbapedia: Dugtrio (Expedition 10)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Expedition_Base_Set_(TCG)",
+          "title": "Bulbapedia: Expedition Base Set (TCG)",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Masako_Yamashita",
+          "title": "Bulbapedia: Masako Yamashita",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_comparison_dossier",
+          "ref": "data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json#Dugtrio",
+          "title": "Local Asobikata Dugtrio teaching-line dossier",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#Dugtrio",
+          "title": "Local English WoC comparison row: Base Set Dugtrio",
+          "retrieved": "2026-06-22",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Dugtrio as Expedition Base Set card #10, a Rare Holo Stage 1 Fighting Pokemon credited to Masako Yamashita.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Dugtrio / ダグトリオ / Dugtrio, English Expedition Base Set 10/165, first released in Japan through Base Expansion Pack.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia record Expedition Dugtrio #10 with 70 HP, Stage 1 evolution from Diglett, Fighting type, Grass weakness, Lightning resistance, one-Colorless retreat, Mud Slap for 20, and Magnitude for 40 plus 10 damage to each Benched Pokemon on both sides.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Dugtrio #10 to Masako Yamashita; the local catalog also carries Yamashita across early vending-sheet and English WoC rows, making the credit an artist trace rather than seller-card proof.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Expedition Base Set as set id ecard1 in the E-Card Series with releaseDate 2002/09/15 and total 165; Bulbapedia describes Expedition Base Set as the first main English e-Card Series expansion and the English counterpart to Japan's Base Expansion Pack.",
+          "sources": [
+            "s3",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Bulbapedia says Expedition Base Set introduced the e-Reader-oriented card frame, enlarged left and bottom borders for Dot Code technology, Technical Machine cards, and the Poké-Power / Poké-Body split.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "The local catalog has two Expedition Dugtrio rows with matching artist and attack package: #10 Rare Holo and #44 Rare non-holo; Bulbapedia likewise presents the Expedition Dugtrio page across the 10/165 and 44/165 lanes.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia says the card ID of the Holofoil and Box Topper prints is A-17, while the Non Holofoil print is A-17-#; agents should preserve those as e-Reader identifiers, not physical-strip readability proof.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia says Dugtrio #10's e-Reader Pokédex entry comes from Pokemon Crystal and describes huge earthquakes triggered by burrowing 60 miles underground; that ties the Magnitude attack package to the species' long-running earthquake identity.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "The local Base Set row already carries Dugtrio's earthquake flavor, while the local Asobikata dossier treats Dugtrio as a teaching-line object paired with Diglett; Expedition #10 turns that old subterranean lesson into a holo e-Reader interface with bench-wide Magnitude pressure.",
+          "sources": [
+            "s1",
+            "s5",
+            "s8",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c7",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "The local provider row carries holofoil and reverseHolofoil price lanes for Expedition Dugtrio #10, while the local catalog also carries non-holo #44; therefore finish, row number, and e-Reader ID must stay separate before comparing wants, images, or seller evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "expedition_dugtrio_10_vs_44_a17_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "e-Reader strip readability",
+            "holo/non-holo equivalence"
+          ],
+          "steps": [
+            "Start with Expedition Base Set #10/165, set id ecard1, and row id ecard1-10 before importing Rare Holo context.",
+            "Keep Expedition Dugtrio #10 separate from Expedition Dugtrio #44 even though both share Masako Yamashita, Mud Slap, Magnitude, and Diglett evolution context.",
+            "Preserve finish lane separately: holofoil, reverse holo, non-holo #44, and any Box Topper language are not interchangeable.",
+            "Use A-17 and A-17-# as supporting e-Reader identifiers; do not infer that a seller's physical strip is readable without clear left/bottom border scans.",
+            "Keep Expedition Dugtrio separate from Base Set Dugtrio, Dark Dugtrio, Asobikata Dugtrio, Vending / Expansion Sheet Dugtrio, and Dugtrio Team Battle event objects unless set, number, finish, and image evidence align."
+          ],
+          "summary": "Expedition Dugtrio #10 is a row-and-finish trap: #10 Rare Holo and #44 Rare non-holo look semantically close, but the catalog must preserve row, finish, A-17/A-17-#, and seller evidence separately.",
+          "trigger": "A listing, want, scan, or agent memory says Expedition Dugtrio, Dugtrio #10, Dugtrio #44, ecard1-10, ecard1-44, Masako Yamashita, Mud Slap, Magnitude, A-17, A-17-#, reverse holo, Base Set Dugtrio, Dark Dugtrio, Asobikata, Vending, or Dugtrio Team Battle."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Dugtrio #10 — earthquake in the border",
+        "why_it_matters": "Expedition Dugtrio #10 is wonderful because it is humble and dangerous at the same time. It is not a mascot, not a legendary, not the front-window chase. It is three heads in the dirt carrying one of Pokemon's oldest physical ideas: the ground moves underneath everything. Magnitude hits both Benches, the Crystal Pokedex text talks about earthquakes sixty miles down, and the e-Reader frame gives that underground force an A-17 machine address. The agent lesson is perfect: this is not just Dugtrio, and not even just Expedition Dugtrio. It is #10 Rare Holo, beside #44 non-holo, with the same artist and attacks but a different evidence lane.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller-card strip readability"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Masako Yamashita",
+        "assembly_note": "Expedition Dugtrio #10 turns a familiar subterranean Pokemon into a Rare Holo e-Reader object: Masako Yamashita art, Mud Slap, bench-wide Magnitude, and A-17 identity beside the deceptively similar non-holo #44 lane.",
+        "assembly_themes": [
+          "Expedition Rare Holo row",
+          "Masako Yamashita art trace",
+          "Dugtrio earthquake lineage",
+          "Mud Slap / Magnitude pressure",
+          "bench-wide damage",
+          "A-17 e-Reader identity",
+          "A-17-# non-holo boundary",
+          "Dugtrio #10 vs #44 trap",
+          "Pokemon Crystal Pokedex text",
+          "Asobikata teaching-line echo",
+          "normal vs reverse-holo finish lane"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Dugtrio #10 is a perfect e-Card discipline card: modest character gravity, real holo status, and a row/finish trap sharp enough to punish lazy matching.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "e-Reader strip readability"
+        ],
+        "number": "10",
+        "rarity_signal": "Rare Holo with non-holo #44 and reverse-holo finish boundaries",
+        "signals": [
+          "Expedition Base Set",
+          "2002/09/15",
+          "10",
+          "Rare Holo",
+          "Pokémon",
+          "Stage 1",
+          "Masako Yamashita",
+          "A-17",
+          "Magnitude"
         ]
       },
       "coverage": {
