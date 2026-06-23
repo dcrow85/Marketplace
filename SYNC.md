@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 347: Fossil Ditto #3 deepened; corpus 565b669)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 348: Fossil Haunter #6 deepened; corpus 95a5e7a)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,48 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-6` Haunter #6 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  repairs the source-set scope list so Haunter holo is declared in the file
+  header. Haunter uses local English WoC Fossil #6, #21, Gastly #33, and
+  Gengar #5/#20 rows, local Japanese Mystery of the Fossils ゴースト / Ghost
+  row, local Base Set Haunter boundary context, local Legendary Collection
+  Haunter boundary context, local Gym Challenge Sabrina's Haunter boundary
+  context, local Skyridge Haunter boundary context, Pokemon TCG API Fossil
+  card and set records, and bounded Bulbapedia Haunter / Haunter TCG /
+  Haunter species / Ken Sugimori context. The dossier carries Rare Holo,
+  Stage 1 Psychic, 50 HP, Fighting resistance, no Weakness, no retreat cost,
+  Transparency, Nightmare, Sleep, conditional contact, status effects
+  collapsing the Power, Ken Sugimori core species art, Japanese Mystery
+  source lane, the #6 holo versus #21 non-holo trap, Fossil's multi-artist
+  Gastly / Haunter / Gengar evolution line, Legendary Collection #46 later-
+  reprint boundary, Base / Sabrina / Skyridge boundaries, wall-passing and
+  other-dimension flavor, level-17 evolution oddity, later Nightmare move
+  resonance, and the likely Game Boy TCG / Pokemon Card GB2 programmability
+  boundary. Its special identification packet tells agents to keep #6, #21,
+  Gastly, Gengar, Japanese Mystery, Legendary Collection, Base Set,
+  Sabrina's Haunter, Skyridge Haunter, and generic ghost memory separate
+  unless set, number, finish, image, and packet evidence align. No price,
+  condition, seller possession, authenticity, holo/non-holo equivalence,
+  Japanese Mystery equivalence, Legendary Collection equivalence, Base Set
+  equivalence, Sabrina's Haunter equivalence, Skyridge Haunter equivalence,
+  Gastly equivalence, Gengar equivalence, or physical-card verification is
+  promoted from catalog texture. Validation passed: catalog-history 209
+  release dossiers, 4549 card dossiers, 3643 generated card dossiers, 24604
+  claims, 7766 sources, card queue 100, corpus
+  `95a5e7ac3c6585d16e047d271cfb70f0edfc888ff77fe2058171be1bb1f65a0b`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed Transparency, Nightmare, Ken Sugimori, block walls, another
+  dimension, level 17, Game Boy TCG, base3-6, base3-21, base3-33, Gengar,
+  Mystery of the Fossils, ゴースト, Legendary Collection, Base Set Haunter,
+  Sabrina's Haunter, Skyridge Haunter, and conditional contact are present;
+  Haunter #6 has left the deepening queue. Next card queue target is
+  `en_wotc_fossil_19991010:base3-7` Hitmonlee #7.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
