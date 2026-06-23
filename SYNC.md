@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 354: Gym Challenge Lt. Surge's Raichu #11 deepened; corpus df1b76d)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 355: Gym Challenge Misty's Golduck #12 deepened; corpus ecd7d14)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
+  `en_wotc_gym_challenge_20001016:gym2-12` Misty's Golduck #12 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass also adds Misty's Golduck to the Gym Challenge source-set scope
+  list. Misty's Golduck uses local English WoC Gym Challenge #12, Misty's
+  Psyduck #90, Sabrina's Golduck/Psyduck boundary rows, Misty owner-context
+  rows, local Japanese Leaders' Stadium Misty's Golduck #032 source lane,
+  local Japanese Hanada City Gym Misty's Psyduck #001 ancestry lane, Fossil
+  Golduck/Psyduck boundaries, Legendary Collection Golduck/Psyduck
+  boundaries, Aquapolis Golduck/Psyduck boundaries, live Pokemon TCG API Gym
+  Challenge card and set records, and bounded Bulbapedia Misty's Golduck /
+  Golduck TCG / Golduck species / Misty / Ken Sugimori context. The dossier
+  carries Rare Holo, card number 12, 70 HP, Stage 1 Water, Electro Beam,
+  Super Removal, Psychic Energy on a Water owner card, self-discard risk,
+  energy-denial effect, Golduck psychic-water lore, Misty owner-Pokemon
+  grammar, Leaders' Stadium source lineage, Hanada deck ancestry, and
+  explicit no-collapse rules for generic Golduck, Sabrina's Golduck,
+  Leaders' Stadium, Hanada City Gym, Fossil, Legendary Collection,
+  Aquapolis, and Misty's Psyduck. Validation passed:
+  `build_catalog_history_dossiers.py` wrote corpus
+  `ecd7d14358d2a19d48657a0527d804dd6f6d6624271ff4c20846a5416f3390fd`
+  with 209 release dossiers, 4549 card dossiers, 3636 generated card
+  dossiers, 24657 claims, 7866 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Misty's Golduck boundary assertion all passed.
+  Next catalog-history queue target is Gym Challenge Sabrina's Alakazam #16.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
