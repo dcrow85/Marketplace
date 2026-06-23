@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 337: Expedition Arbok #3 deepened; corpus 576de82)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 338: Expedition Vileplume #31 deepened; corpus 877b0bd)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,44 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-eighth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-31` Vileplume #31 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Venusaur #30 and Vileplume
+  #31 are declared in the file header. Vileplume uses local English WoC
+  Expedition #31, #69, #78, and #122 rows, local Japanese Base Expansion
+  Pack e E1-100 and E1-068 rows, local Base Expansion Pack e Vileplume
+  context, Jungle / Aquapolis Vileplume boundary context, Pokemon TCG API
+  card and set records, bounded Bulbapedia Vileplume / Expedition /
+  Miki Tanaka / Vileplume TCG context, and The Art of Pokemon's Miki Tanaka
+  illustrator index. The dossier carries Rare Holo, Stage 2 Grass, 90 HP,
+  Poison Pollen, Petal Dance, Psychic weakness, two-Colorless retreat,
+  Miki Tanaka credit, Japanese Base Expansion Pack 100/128 and 068/128
+  mirrors, B-67 / B-67-# e-Reader identities, short-strip Pokedex/card
+  summary data, long-strip Sweet Scent animation data, Pokemon Crystal
+  pollen-air Pokedex texture, the #31 versus #69 same-artist/same-mechanics
+  trap, the E1-100 versus E1-068 mirror split, and Oddish / Gloom
+  evolution-line context. Its special identification packet tells agents to
+  keep #31, #69, reverse-holo finish lanes, B-67 / B-67-#, short-strip
+  readability, long-strip Sweet Scent playback, E1-100, E1-068, Expedition
+  Oddish #122, Expedition Gloom #78, Jungle Vileplume, Aquapolis Vileplume
+  H31 / #43, and generic flower-pollen memory separate. No price, condition,
+  seller possession, authenticity, strip readability, long-strip animation
+  playback, or physical-card verification is promoted from catalog texture.
+  Validation passed: catalog-history 209 release dossiers, 4549 card
+  dossiers, 3653 generated card dossiers, 24502 claims, 7616 sources, card
+  queue 100, corpus `877b0bd4a882895d706ab68c95cef4138b339ada914b7220b1e548ecf9614864`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-67, B-67-#, short-strip, long-strip Sweet Scent animation,
+  Miki Tanaka, hand-painted watercolor illustrator lane, Vileplume #31
+  versus #69 trap, E1-100, E1-068, Poison Pollen, Petal Dance, and
+  Aquapolis Vileplume H31 boundary are present, and Vileplume #31 has left
+  the deepening queue. Next card queue target is
+  `en_wotc_expedition_base_set_20020915:ecard1-32` Weezing #32.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-seventh
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
