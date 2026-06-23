@@ -1,5 +1,11 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 
+// Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
+// the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
+// and under a '/app/' base path on the deployed site.
+const API_BASE = import.meta.env.VITE_API_BASE || ''
+const CATALOG_URL = import.meta.env.BASE_URL + 'catalog-sample.json'
+
 const nm = (c) => c.name_ja || c.name_en || c.uid
 
 function effStance(c, store) {
@@ -252,7 +258,7 @@ export default function Binder({ accountId, agentName }) {
   const [selected, setSelected] = useState(null)
   const storeKey = accountId ? `cairn-cards:${accountId}` : 'cairn-cards'
 
-  useEffect(() => { fetch('/catalog-sample.json').then((r) => r.json()).then(setData).catch((e) => setErr(String(e))) }, [])
+  useEffect(() => { fetch(CATALOG_URL).then((r) => r.json()).then(setData).catch((e) => setErr(String(e))) }, [])
   useEffect(() => { try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { setStore({}) } }, [storeKey])
 
   const setById = useMemo(() => Object.fromEntries((data?.sets || []).map((s) => [s.id, s])), [data])
@@ -282,7 +288,7 @@ export default function Binder({ accountId, agentName }) {
   const askAgent = useCallback(async (call) => {
     setAgentBusy(true)
     try {
-      const r = await fetch('/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call }) })
+      const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call }) })
       setAgentRes({ ok: r.ok, data: await r.json() })
     } catch { setAgentRes({ ok: false, data: { error: 'network' } }) }
     finally { setAgentBusy(false) }
