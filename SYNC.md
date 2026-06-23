@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 341: Expedition Clefable #7 deepened; corpus 5ad2d14)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 342: Expedition Cloyster #8 deepened; corpus e143f59)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,48 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-8` Cloyster #8 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Cloyster #8 is declared in
+  the file header. Cloyster uses local English WoC Expedition #8 and #42
+  rows, local Japanese Base Expansion Pack e Shellder E1-009 as
+  evolution-line context, local Fossil Cloyster boundary context, Pokemon
+  TCG API card and set records, bounded Bulbapedia Cloyster / Kingler's Day /
+  Kyoko Umemoto / Expedition / Fossil Cloyster / species context, and The
+  Art of Pokemon's Kyoko Umemoto illustrator context. The dossier carries
+  Rare Holo, Stage 1 Water, 80 HP, Lick, Auto Fire, Metal weakness,
+  two-Colorless retreat, Kyoko Umemoto credit, Japanese Base Expansion Pack
+  110/128 and 078/128 mirrors, B-80 / B-80-# e-Reader identities,
+  short-strip Pokedex and card summary data, Kingler's Day long-strip
+  mini-game data, Pokemon Crystal missile-resistant-spike Pokedex texture,
+  the #8 versus #42 same-artist/same-mechanics trap, the Japanese 110/128
+  versus 078/128 mirror split, Shellder E1-009 evolution context, Fossil
+  Cloyster boundary context, and the Lick attack oddity: Bulbapedia says
+  Lick is a game move but Cloyster cannot learn it in the games. Its special
+  identification packet tells agents to keep #8, #42, reverse-holo finish
+  lanes, B-80 / B-80-#, short-strip readability, long-strip mini-game
+  playback, the full Kingler's Day four-card assembly
+  (Cloyster/Kingler/Goldeen/Magikarp), Japanese 110/128, Japanese 078/128,
+  Shellder-only rows, Fossil Cloyster, and generic hard-shell species memory
+  separate. No price, condition, seller possession, authenticity, strip
+  readability, long-strip mini-game playback, complete Kingler's Day
+  four-card possession, species-move legality equivalence, or physical-card
+  verification is promoted from catalog texture. Validation passed:
+  catalog-history 209 release dossiers, 4549 card dossiers, 3649 generated
+  card dossiers, 24546 claims, 7679 sources, card queue 100, corpus
+  `e143f59fdfdca0795ca47c878744a6537aee9a753bf518873d78de9a97611edd`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-80, B-80-#, Kingler's Day, Cloyster #8 versus #42 trap,
+  Kyoko Umemoto, illustrator-and-graphic-designer context, 110/128, 078/128,
+  Lick attack oddity, Auto Fire, four-card mini-game assembly, the complete-
+  Kingler's-Day-four-card-possession non-claim, and Fossil Cloyster boundary
+  are present, and Cloyster #8 has left the deepening queue. Next card queue
+  target is `en_wotc_expedition_base_set_20020915:ecard1-9` Dragonite #9.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
