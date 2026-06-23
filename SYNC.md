@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 345: Fossil Muk #13 deepened; corpus ede3b8f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 346: Fossil Raichu #14 deepened; corpus 92f7069)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,46 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-14` Raichu #14 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  repairs the source-set scope list so Raichu holo is declared in the file
+  header. Raichu uses local English WoC Fossil #14 and #29 rows, local
+  Japanese Mystery of the Fossils ライチュウ / Raichu row, local Base Set and
+  Base Set 2 Ken Sugimori Raichu boundary rows, local Legendary Collection
+  Dark Raichu boundary context, local Gym Challenge Lt. Surge's Raichu
+  boundary context, local Neo Destiny Shining Raichu boundary context, local
+  Expedition Raichu boundary context, Pokemon TCG API Fossil card and set
+  records, and bounded Bulbapedia Raichu / Raichu TCG / Raichu species /
+  Mitsuhiro Arita context. The dossier carries Rare Holo, Stage 1 Lightning,
+  90 HP, Fighting weakness, one-Colorless retreat, Gigashock, four-Lightning
+  attack cost, bench spread, Mitsuhiro Arita credit, Japanese Mystery source
+  lane, tail-grounding high-voltage flavor, the #14 holo versus #29 non-holo
+  trap, the Base/Base 2 Sugimori branch boundary, and Dark / Lt. Surge /
+  Shining / Expedition branches that must not collapse into a Fossil want.
+  Its special identification packet tells agents to keep #14, #29, Japanese
+  Mystery, Base Set, Base Set 2, Dark Raichu, Lt. Surge's Raichu, Shining
+  Raichu, Expedition Raichu, Pikachu, and generic Raichu species memory
+  separate unless set, number, finish, image, and packet evidence align. No
+  price, condition, seller possession, authenticity, holo/non-holo
+  equivalence, Japanese Mystery equivalence, Base Set equivalence, Dark
+  Raichu equivalence, Lt. Surge's Raichu equivalence, Shining Raichu
+  equivalence, Expedition Raichu equivalence, Pikachu equivalence, or
+  physical-card verification is promoted from catalog texture. Validation
+  passed: catalog-history 209 release dossiers, 4549 card dossiers, 3645
+  generated card dossiers, 24585 claims, 7740 sources, card queue 100,
+  corpus
+  `92f70698a4f04db4176e42855259e4d1f786d4d96e9d2a1089b7b7394d3dd279`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed Gigashock, Mitsuhiro Arita, tail-grounding flavor, base3-14,
+  base3-29, Mystery of the Fossils, ライチュウ, Base Set, Dark Raichu,
+  Lt. Surge's Raichu, Shining Raichu, Expedition Raichu, Pikachu, and bench
+  spread are present; Raichu #14 has left the deepening queue. Next card
+  queue target is `en_wotc_fossil_19991010:base3-3` Ditto #3.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
