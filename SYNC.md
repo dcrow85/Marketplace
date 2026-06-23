@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 353: Gym Challenge Koga's Ditto #10 deepened; corpus 22403c8)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 354: Gym Challenge Lt. Surge's Raichu #11 deepened; corpus df1b76d)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
+  `en_wotc_gym_challenge_20001016:gym2-11` Lt. Surge's Raichu #11 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass also adds Lt. Surge's Raichu to the Gym Challenge source-set
+  scope list. Lt. Surge's Raichu uses local English WoC Gym Challenge #11,
+  Lt. Surge's Pikachu #84, Lt. Surge trainer/electric boundary rows, Gym
+  Heroes Lt. Surge's Raichu/Pikachu boundaries, Base Set Raichu/Pikachu
+  boundaries, Fossil Raichu #14/#29 boundaries, Legendary Collection Dark
+  Raichu/Pikachu boundaries, local Japanese Challenge from the Darkness
+  PMCG6-041 source lane, local Japanese Kuchiba City Gym Lt. Surge's Raichu
+  003 deck lane, live Pokemon TCG API Gym Challenge card and set records,
+  and bounded Bulbapedia Lt. Surge's Raichu / Raichu TCG / Raichu species /
+  Lt. Surge / Ken Sugimori context. The dossier carries Rare Holo, card
+  number 11, 80 HP, Stage 1 Lightning, Kerzap, Thundertackle, energy-discard
+  gamble, paralysis/self-damage branch, Fighting Weakness, Lt. Surge owner-
+  Pokemon grammar, commanded-electricity apparatus, Kuchiba deck ancestry,
+  Challenge from the Darkness lineage, and explicit no-collapse rules for
+  generic Raichu, Base Set, Fossil, Legendary Collection, Gym Heroes,
+  Kuchiba City Gym, Challenge from the Darkness, and Lt. Surge's Pikachu.
+  Validation passed: `build_catalog_history_dossiers.py` wrote corpus
+  `df1b76d010d25fe600d420e505896e8d20a70cb19a7ab05948e6cc6666fb5988`
+  with 209 release dossiers, 4549 card dossiers, 3637 generated card
+  dossiers, 24650 claims, 7851 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Lt. Surge's Raichu boundary assertion all passed.
+  Next catalog-history queue target is Gym Challenge Misty's Golduck #12.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
