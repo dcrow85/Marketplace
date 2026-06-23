@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 343: Expedition Dragonite #9 deepened; corpus 26e3660)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 344: Fossil Magneton #11 deepened; corpus 94be05f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,47 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-fourth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-11` Magneton #11 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  repairs the source-set scope list so Magneton holo is declared in the file
+  header. Magneton uses local English WoC Fossil #11 and #26 rows, local
+  Japanese Mystery of the Fossils レアコイル / Reakoiru row, local Base Set
+  and Base Set 2 Keiji Kinebuchi Magneton boundary rows, local Team Rocket
+  Dark Magneton boundary rows, local Gym Heroes Lt. Surge's Magneton
+  boundary row, local Legendary Collection Magneton boundary row, Pokemon
+  TCG API Fossil card and set records, and bounded Bulbapedia Magneton /
+  Fossil / Ken Sugimori / Magneton species / Magneton TCG context. The
+  dossier carries Rare Holo, Stage 1 Lightning, 80 HP, Fighting weakness,
+  two-Colorless retreat, Sonicboom, Selfdestruct, bench splash and self-
+  damage, Ken Sugimori credit, Japanese Mystery source-lineage memory,
+  linked-Magnemite and sunspots flavor, the Bulbapedia origin oddity that
+  Sonic Boom is a game move Magneton can learn while Self-Destruct is not,
+  the #11 holo versus #26 non-holo trap, the Legendary Collection later-
+  reprint boundary, the Base/Base 2 Keiji Kinebuchi 60 HP branch boundary,
+  and the Dark / Lt. Surge branches that must not collapse into a Fossil
+  want. Its special identification packet tells agents to keep #11, #26,
+  Japanese Mystery, Legendary Collection, Base Set, Base Set 2, Dark
+  Magneton, Lt. Surge's Magneton, Magnemite, and generic Magneton species
+  memory separate unless set, number, finish, image, and packet evidence
+  align. No price, condition, seller possession, authenticity, holo/non-holo
+  equivalence, Japanese Mystery equivalence, Legendary Collection
+  equivalence, Base Set equivalence, Dark Magneton equivalence, Lt. Surge's
+  Magneton equivalence, or physical-card verification is promoted from
+  catalog texture. Validation passed: catalog-history 209 release dossiers,
+  4549 card dossiers, 3647 generated card dossiers, 24568 claims, 7709
+  sources, card queue 100, corpus
+  `94be05f17c691422f5087258d3a8ca148a52bfd06b34f731f5ca17fea45575d6`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed Sonicboom, Selfdestruct, Ken Sugimori, sunspots, base3-11,
+  base3-26, Dark Magneton, Lt. Surge, Base Set, Mystery of the Fossils,
+  Keiji Kinebuchi, Legendary Collection, and レアコイル are present; Magneton
+  #11 has left the deepening queue. Next card queue target is
+  `en_wotc_fossil_19991010:base3-13` Muk #13.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-third
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:

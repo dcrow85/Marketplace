@@ -9,6 +9,7 @@
       "Dragonite holo",
       "Gengar holo",
       "Lapras holo",
+      "Magneton holo",
       "Moltres holo",
       "Zapdos holo",
       "Mysterious Fossil"
@@ -864,6 +865,578 @@
           "price truth",
           "condition truth",
           "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-11",
+      "type": "card",
+      "context": {
+        "name_en": "Magneton",
+        "name_ja": "レアコイル",
+        "romaji": "Reakoiru",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-11",
+        "catalog_row_id": "base3-11",
+        "card_number": "11",
+        "release_name": "Fossil",
+        "source_expansion_lineage": "English Fossil / Japanese Mystery of the Fossils lineage",
+        "variant_lane": "Rare Holo #11 with non-holo #26, Japanese Mystery of the Fossils source lane, Legendary Collection later reprint boundary, Base Set / Base Set 2 Keiji Kinebuchi boundary, Dark Magneton boundary, and Lt. Surge's Magneton boundary"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-11",
+          "title": "Local English WoC card row: Magneton #11",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-26",
+          "title": "Local English WoC card row: Magneton #26",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "holo row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:025",
+          "title": "Local Japanese pre-English row: Mystery of the Fossils Magneton",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English print equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-9",
+          "title": "Local English WoC Base Set Magneton boundary row",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/base_set_2_v0_1.json#en_wotc_base_set_2_20000224:base4-9",
+          "title": "Hand-authored Base Set 2 Magneton dossier boundary",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_team_rocket_20000424.json#row:Dark Magneton",
+          "title": "Local English WoC Team Rocket Dark Magneton boundary rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-8",
+          "title": "Local English WoC Gym Heroes Lt. Surge's Magneton boundary row",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-28",
+          "title": "Local English WoC Legendary Collection Magneton boundary row",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil first-release proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-11",
+          "title": "Pokemon TCG API v2 card record: Magneton base3-11",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-26",
+          "title": "Pokemon TCG API v2 card record: Magneton base3-26",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "holo row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base3",
+          "title": "Pokemon TCG API v2 set record: Fossil",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magneton_(Fossil_11)",
+          "title": "Bulbapedia: Magneton (Fossil 11)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Fossil_(TCG)",
+          "title": "Bulbapedia: Fossil (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s14",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s15",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magneton_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Magneton (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "TCG-specific print identity",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s16",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magneton_(TCG)",
+          "title": "Bulbapedia: Magneton (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete TCG lineage",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Magneton as Fossil card #11, a Rare Holo Stage 1 Lightning Pokemon evolving from Magnemite and credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s9",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia and the local Japanese pre-English catalog identify the Japanese source lane as Mystery of the Fossils Magneton, レアコイル / Reakoiru, before the English Fossil release.",
+          "sources": [
+            "s3",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Fossil Magneton #11 with 80 HP, Fighting weakness, two-Colorless retreat, Sonicboom for 20 that ignores Weakness and Resistance, and Selfdestruct for 100 that also deals 20 to each Benched Pokemon and 100 to Magneton itself.",
+          "sources": [
+            "s1",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify a matching Fossil non-holo Magneton as #26, Rare, with the same Ken Sugimori credit, Stage 1 Lightning profile, Sonicboom, Selfdestruct, and 80 HP.",
+          "sources": [
+            "s2",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local Legendary Collection row preserves a later English Magneton branch credited to Ken Sugimori; it should be treated as a later reprint boundary, not evidence that a seller has the Fossil #11 holo.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Fossil as set id base3 with releaseDate 1999/10/10 and total 62; Bulbapedia describes Fossil as the English expansion corresponding to Japan's Mystery of the Fossils.",
+          "sources": [
+            "s11",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, local Japanese pre-English row, and Bulbapedia credit Fossil Magneton #11/#26 and the Mystery of the Fossils Magneton source lane to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s9",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Bulbapedia describes Ken Sugimori as a Japanese video game designer, illustrator, manga artist, co-founder of Game Freak, and central Pokemon franchise art director / character designer; this makes a Sugimori Fossil Magneton a core species-model memory rather than a late decorative reinterpretation.",
+          "sources": [
+            "s14"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "The local Fossil flavor text says Magneton is formed by several Magnemites linked together and frequently appears when sunspots flare up; Bulbapedia's species page preserves the broader linked-Magnemite, magnetism, and electronics-disruption identity around Magneton.",
+          "sources": [
+            "s1",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.lineage",
+          "text": "Local Base Set and Base Set 2 Magneton branches are Keiji Kinebuchi cards with 60 HP, Thunder Wave, and Selfdestruct; Fossil Magneton is a Ken Sugimori 80 HP Sonicboom / Selfdestruct branch.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Local Team Rocket Dark Magneton and Gym Heroes Lt. Surge's Magneton rows are separate character-and-trainer branches with their own artists, attacks, and narrative charge; they should not be folded into Fossil Magneton by name alone.",
+          "sources": [
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c12",
+          "field": "history.significance",
+          "text": "Bulbapedia's Origin note says Sonic Boom is a move in the Pokemon games that Magneton can learn, while Self-Destruct is a move in the games that Magneton cannot learn; the Fossil card therefore carries both species resonance and early-TCG mechanical exaggeration.",
+          "sources": [
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c13",
+          "field": "history.significance",
+          "text": "Fossil Magneton matters because it brings a non-organic, assembled, unstable machine life into a set otherwise remembered for bones, birds, ghosts, and recovered ancient bodies: Sonicboom names controlled signal, while Selfdestruct turns linked energy into a risk event.",
+          "sources": [
+            "s1",
+            "s3",
+            "s9",
+            "s12",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c7",
+            "c9",
+            "c12"
+          ]
+        },
+        {
+          "id": "c14",
+          "field": "identification.special_instructions",
+          "text": "Because Magneton routes through Fossil #11, Fossil #26, Japanese Mystery of the Fossils, Legendary Collection, Base Set / Base Set 2, Dark Magneton, Lt. Surge's Magneton, Magnemite, and generic species memory, agents must keep row, finish, expansion, artist branch, and trainer/dark variants separate before any trade action.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8",
+            "s9",
+            "s10",
+            "s12",
+            "s16"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c5",
+            "c10",
+            "c11"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_magneton_11_holo_nonholo_and_branch_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Fossil Magneton, Magneton #11, Magneton #26, base3-11, base3-26, Mystery of the Fossils Magneton, レアコイル, Reakoiru, Sonicboom, Selfdestruct, Ken Sugimori Magneton, Base Set Magneton, Legendary Collection Magneton, Dark Magneton, Lt. Surge's Magneton, or Magnemite.",
+          "summary": "Fossil Magneton #11 is the Rare Holo Ken Sugimori row; keep #11, #26, Japanese Mystery, Legendary Collection, Base/Base 2, Dark, Lt. Surge, and Magnemite branches distinct.",
+          "steps": [
+            "Start with Fossil set id base3, card #11/62, Rare Holo, Stage 1 Lightning, 80 HP, Ken Sugimori, Sonicboom, and Selfdestruct before importing Magneton lore.",
+            "Preserve Fossil #11 Rare Holo and Fossil #26 non-holo Rare as sibling catalog rows, not the same physical print or finish.",
+            "Treat Japanese Mystery of the Fossils レアコイル / Reakoiru as source-lineage context, not English-card equivalence without print evidence.",
+            "Treat Legendary Collection Magneton as a later reprint boundary; do not use it to satisfy a Fossil #11 holo want.",
+            "Separate Base Set / Base Set 2 Keiji Kinebuchi Magneton, Team Rocket Dark Magneton, Gym Heroes Lt. Surge's Magneton, Magnemite, and generic Magneton species memory unless set, number, finish, image, and packet evidence align.",
+            "For a trade packet, ask for front/back images showing set symbol, card number, holo surface, border/corner condition, and any slab/cert if graded before treating the claim as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holo/non-holo equivalence",
+            "Japanese Mystery of the Fossils equivalence",
+            "Legendary Collection equivalence",
+            "Base Set equivalence",
+            "Base Set 2 equivalence",
+            "Dark Magneton equivalence",
+            "Lt. Surge's Magneton equivalence",
+            "Magnemite equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Magneton #11 - sunspots in the fossil bed",
+        "why_it_matters": "Fossil Magneton is not ancient in the obvious way. It is not a shell, bone, ghost, or bird. It is three machine lives locked into one magnetic event, and that makes it one of the set's strangest inhabitants: a little storm sitting in the same binder pocket as revived prehistory. Sugimori's credit matters here because it keeps the card close to the franchise's original visual grammar; this is not a later remix of Magneton, it is the species model brought into Fossil's cave air. The attacks make the row even better. Sonicboom is clean signal: damage that slips past Weakness and Resistance. Selfdestruct is the opposite: 100 damage, bench splash, and Magneton destroying itself. Bulbapedia's origin note adds the tiny historical burr that Sonic Boom is a game move Magneton can learn while Self-Destruct is not, so the card sits right at the edge where early TCG design translates species feeling into game drama rather than simply copying the cartridge. For an agent, the romance only helps if the boundaries stay sharp: #11 holo is not #26 non-holo, Japanese Mystery is not automatic English equivalence, Legendary Collection is later, Base/Base 2 are Keiji Kinebuchi 60 HP cards, and Dark or Lt. Surge's Magneton are different branches entirely.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12",
+          "c13",
+          "c14"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "holo/non-holo equivalence",
+          "Japanese Mystery of the Fossils equivalence",
+          "Legendary Collection equivalence",
+          "Base Set equivalence",
+          "Dark Magneton equivalence",
+          "Lt. Surge's Magneton equivalence"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Fossil Magneton #11 is a Sugimori machine-life row inside the excavation set: Rare Holo, 80 HP, Sonicboom, Selfdestruct, linked-Magnemite sunspot flavor, a #26 non-holo sibling, Japanese Mystery of the Fossils source lane, and Base / Legendary / Dark / Lt. Surge boundaries that must not collapse into the holo want.",
+        "assembly_themes": [
+          "Fossil Rare Holo row",
+          "Ken Sugimori original species-model art",
+          "レアコイル / Reakoiru Japanese name lane",
+          "Mystery of the Fossils source lineage",
+          "Fossil #11 holo vs #26 non-holo trap",
+          "Legendary Collection later reprint boundary",
+          "Base Set Keiji Kinebuchi boundary",
+          "Base Set 2 Keiji Kinebuchi boundary",
+          "Team Rocket Dark Magneton boundary",
+          "Gym Heroes Lt. Surge's Magneton boundary",
+          "Magnemite evolution boundary",
+          "Stage 1 Lightning Pokemon",
+          "Sonicboom ignores Weakness and Resistance",
+          "Selfdestruct 100 self-damage and bench splash",
+          "sunspots flavor text",
+          "linked Magnemite assembly",
+          "magnetism and electronics-disruption lore",
+          "early TCG mechanical exaggeration"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Magneton #11 is Fossil's little electrical weather system: Sugimori art, 80 HP, Sonicboom, Selfdestruct, sunspots, a #26 sibling, Japanese Mystery memory, and several easy-to-collapse Magneton branches that need proof.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "holo/non-holo equivalence",
+          "Japanese Mystery of the Fossils equivalence",
+          "Legendary Collection equivalence",
+          "Base Set equivalence",
+          "Dark Magneton equivalence",
+          "Lt. Surge's Magneton equivalence"
+        ],
+        "number": "11",
+        "rarity_signal": "Rare Holo with non-holo #26, Japanese Mystery of the Fossils source lane, Legendary Collection later reprint boundary, Base/Base 2 Keiji Kinebuchi boundary, Dark Magneton boundary, and Lt. Surge's Magneton boundary",
+        "signals": [
+          "Fossil",
+          "1999/10/10",
+          "11",
+          "Rare Holo",
+          "Pokemon",
+          "Stage 1",
+          "Lightning",
+          "Ken Sugimori",
+          "Sonicboom",
+          "Selfdestruct",
+          "レアコイル"
         ]
       },
       "coverage": {
