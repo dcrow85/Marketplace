@@ -1,0 +1,13 @@
+# Keep the build context lean — the image only needs simulations/ + the catalog json.
+.git
+**/__pycache__
+**/*.pyc
+node_modules
+web
+runs
+chain
+models
+agent_instructions
+*.zip
+.venv*
+.DS_Store

@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -100,7 +101,11 @@ def call_model(model: str, system: str, user: str, endpoint: str, timeout: int =
         # message with NO content field at all (KeyError downstream).
         "chat_template_kwargs": {"enable_thinking": False},
     }).encode()
-    req = urllib.request.Request(endpoint, data=body, headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json"}
+    _key = os.environ.get("CAIRN_MODEL_API_KEY", "")
+    if _key:
+        headers["Authorization"] = f"Bearer {_key}"
+    req = urllib.request.Request(endpoint, data=body, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         resp = json.loads(r.read())
     msg = resp["choices"][0]["message"]

@@ -34,6 +34,7 @@ import threading
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 MOCKUPS = ROOT / "mockups"
@@ -46,10 +47,19 @@ from cairn_browse import browse, ENDPOINT  # noqa: E402  (reuse the proven loop)
 MAX_CALL_CHARS = 280
 _MODEL_LOCK = threading.Lock()  # single-flight: serialize calls to the one local model
 
+# Cloud-deploy config (all env-gated; unset = current local behavior).
+ALLOW_ORIGIN = os.environ.get("CAIRN_ALLOW_ORIGIN", "")  # frontend origin for CORS, e.g. https://cairn.cards; empty = same-origin only
+_EP = urlparse(ENDPOINT)
+LOCAL_MODEL = (_EP.hostname or "127.0.0.1") in ("127.0.0.1", "localhost", "::1")  # remote (DeepInfra) -> skip single-flight + socket liveness
+
 
 def _load_demo_password() -> str | None:
-    """Shared-password gate. Read from the Keychain so the secret is never in the repo,
-    args, or env. If unset, the gate is OFF (local dev serves freely)."""
+    """Shared-password gate. Prefer the CAIRN_DEMO_PASSWORD env var (cloud hosts have no
+    Keychain); else read the macOS Keychain so the secret is never in the repo or args.
+    If neither is set, the gate is OFF (local dev serves freely)."""
+    env = os.environ.get("CAIRN_DEMO_PASSWORD")
+    if env:
+        return env.strip() or None
     try:
         out = subprocess.run(
             ["security", "find-generic-password", "-a", "cairn", "-s", "cairn-demo-password", "-w"],
@@ -64,9 +74,13 @@ DEMO_PASSWORD = None if os.environ.get("CAIRN_NO_AUTH") else _load_demo_password
 
 
 def qwen_up(timeout: float = 0.4) -> bool:
-    """Cheap liveness probe — can we open a socket to the local Qwen port?"""
-    host, port = "127.0.0.1", 8081
-    # ENDPOINT is http://127.0.0.1:8081/...; trust the known default but stay defensive.
+    """Liveness for the model endpoint. Local MLX server -> cheap socket probe to its
+    port. A remote/hosted endpoint (DeepInfra) is assumed reachable; a real outage
+    surfaces as a clean 502 from the browse path rather than a false 'offline'."""
+    if not LOCAL_MODEL:
+        return True
+    host = _EP.hostname or "127.0.0.1"
+    port = _EP.port or 8081
     try:
         with socket.create_connection((host, port), timeout=timeout):
             return True
@@ -92,6 +106,7 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             if hmac.compare_digest(pw, DEMO_PASSWORD):
                 return True
         self.send_response(401)
+        self._send_cors()
         self.send_header("WWW-Authenticate", 'Basic realm="Cairn demo", charset="UTF-8"')
         self.send_header("Content-Length", "0")
         self.end_headers()
@@ -99,13 +114,13 @@ class BrowseHandler(SimpleHTTPRequestHandler):
 
     # serve the binder at "/" too
     def do_GET(self) -> None:
+        if self.path == "/api/health":  # public liveness — no auth (frontend + host healthchecks)
+            self.send_json({"qwen": qwen_up()})
+            return
         if not self._authorized():
             return
         if self.path == "/" and not (STATIC_DIR / "index.html").exists():
             self.path = "/cairn-inventory.html"  # mockups has no index.html; an SPA build does
-        elif self.path == "/api/health":
-            self.send_json({"qwen": qwen_up()})
-            return
         super().do_GET()
 
     def do_POST(self) -> None:
@@ -134,16 +149,34 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": "agent_offline", "detail": "The local model is not running."}, status=503)
             return
         try:
-            with _MODEL_LOCK:
-                result = browse(call)
+            if LOCAL_MODEL:
+                with _MODEL_LOCK:  # single-flight: the local 35B is single-GPU
+                    result = browse(call)
+            else:
+                result = browse(call)  # hosted endpoint scales; allow concurrent visitors
         except Exception as exc:  # noqa: BLE001 — never leak a stack trace to the demo
             self.send_json({"error": "browse_failed", "detail": type(exc).__name__}, status=502)
             return
         self.send_json(result)
 
+    def _send_cors(self) -> None:
+        if ALLOW_ORIGIN:
+            self.send_header("Access-Control-Allow-Origin", ALLOW_ORIGIN)
+            self.send_header("Access-Control-Allow-Credentials", "true")
+            self.send_header("Vary", "Origin")
+            self.send_header("Access-Control-Allow-Headers", "Authorization, Content-Type")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+
+    def do_OPTIONS(self) -> None:  # CORS preflight — never auth-gated
+        self.send_response(204)
+        self._send_cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def send_json(self, payload: dict[str, Any], status: int = 200) -> None:
         body = json.dumps(payload).encode("utf-8")
         self.send_response(status)
+        self._send_cors()
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")

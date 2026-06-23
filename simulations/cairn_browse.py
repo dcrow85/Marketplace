@@ -19,6 +19,7 @@ Requires the Qwen3.6 mlx_lm.server running on :8081 (see session notes).
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -54,8 +55,11 @@ def commentary_flags(*texts: str) -> list[str]:
 sys.path.insert(0, str(ROOT / "simulations"))
 from interrupt_bar_probe import call_model  # noqa: E402  (reuse the proven mlx call)
 
-MODEL = "/Users/che/models/mlx/Qwen3.6-35B-A3B-4bit"
-ENDPOINT = "http://127.0.0.1:8081/v1/chat/completions"
+# Model endpoint is env-overridable so the same loop runs against the local MLX server
+# (default) OR a hosted OpenAI-compatible endpoint (DeepInfra) for the off-Mac deploy.
+# CAIRN_MODEL_API_KEY (read in interrupt_bar_probe.call_model) adds the bearer header when set.
+MODEL = os.environ.get("CAIRN_MODEL_ID", "/Users/che/models/mlx/Qwen3.6-35B-A3B-4bit")
+ENDPOINT = os.environ.get("CAIRN_MODEL_ENDPOINT", "http://127.0.0.1:8081/v1/chat/completions")
 
 # the standing cost field (the editable dashboard the human browses through)
 COST_FIELD = {
