@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 340: Expedition Butterfree #5 deepened; corpus 63b40f5)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 341: Expedition Clefable #7 deepened; corpus 5ad2d14)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,47 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-7` Clefable #7 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Clefable #7 is declared in
+  the file header. Clefable uses local English WoC Expedition #7, #41, and
+  #101 rows, local Japanese Base Expansion Pack e E1-125 and E1-093 rows,
+  local Jungle and Base Set 2 Clefable boundary context, Pokemon TCG API
+  card and set records, bounded Bulbapedia Clefable / Clefairy /
+  Kagemaru Himeno / Clefable TCG / e-Reader context, and The Art of
+  Pokemon's Kagemaru Himeno illustrator context. The dossier carries Rare
+  Holo, Stage 1 Colorless, 70 HP, Moonlight, Doubleslap, Fighting weakness,
+  one-Colorless retreat, Kagemaru Himeno credit, Japanese Base Expansion
+  Pack 125/128 and 093/128 mirrors, B-91 / B-91-# e-Reader identities,
+  short-strip Pokedex and card summary data, a Clefairy-dependent Metronome
+  long-strip animation, Pokemon Crystal quiet-mountain Pokedex texture, the
+  #7 versus #41 same-artist/same-mechanics trap, the E1-125 versus E1-093
+  mirror split, Expedition Clefairy #101 / B-27-# animation context, and
+  Wizards test-card markers including For Position Only / Medium / no-ID /
+  Wizards-copyright language. Its special identification packet tells agents
+  to keep #7, #41, reverse-holo finish lanes, B-91 / B-91-#, short-strip
+  readability, long-strip animation playback, Clefairy #101 / B-27-#
+  pairing, E1-125, E1-093, test-card status, Jungle Clefable, Base Set 2
+  Clefable, Legendary Collection Clefable, and generic moon-fairy memory
+  separate. No price, condition, seller possession, authenticity, strip
+  readability, long-strip animation playback, complete Clefairy-plus-
+  Clefable animation pair possession, test-print status, or physical-card
+  verification is promoted from catalog texture. Validation passed:
+  catalog-history 209 release dossiers, 4549 card dossiers, 3650 generated
+  card dossiers, 24535 claims, 7666 sources, card queue 100, corpus
+  `5ad2d14ebdf81d3f96c50a163a2239f4c1c98a2909e3b175fd1609e3d4903908`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-91, B-91-#, Metronome animation, Clefairy #101, B-27-#,
+  Kagemaru Himeno, watercolor, girls' comics context, Clefable #7 versus
+  #41 trap, E1-125, E1-093, Moonlight, Doubleslap, test-card, For Position
+  Only, and the complete-Clefairy-plus-Clefable-animation-pair non-claim are
+  present, and Clefable #7 has left the deepening queue. Next card queue
+  target is `en_wotc_expedition_base_set_20020915:ecard1-8` Cloyster #8.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fortieth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
