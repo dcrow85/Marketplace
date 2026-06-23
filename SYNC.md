@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 350: Fossil Hypno #8 deepened; corpus bf14d12)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 351: Fossil Kabutops #9 deepened; corpus ff8d8ca)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,32 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-first
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-9` Kabutops #9 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  adds Kabutops holo to the Fossil source-set scope list. Kabutops uses
+  local English WoC Fossil #9 and #24 rows, Fossil Kabuto #50, Fossil
+  Mysterious Fossil #62, local Japanese Mystery of the Fossils カブトプス
+  #040 plus Kabuto #035 and Mysterious Fossil #046 source-apparatus rows,
+  Legendary Collection Kabutops / Kabuto / Mysterious Fossil boundaries,
+  Skyridge Kabutops / Kabuto / secret-rare boundaries, Pokemon TCG API
+  Fossil card and set records, and bounded Bulbapedia Kabutops / Kabutops
+  TCG / Kabutops species / Ken Sugimori context. The dossier carries Rare
+  Holo, Stage 2 Fighting, Sharp Sickle, Absorb, scythe-claw and swimming
+  predator lore, Ken Sugimori core species art, the #9 holo versus #24
+  non-holo trap, Japanese Mystery source lineage, the Mysterious Fossil →
+  Kabuto → Kabutops play apparatus, Legendary Collection and Skyridge
+  boundaries, and the level-30-versus-game-evolution texture. Validation
+  passed: `build_catalog_history_dossiers.py` wrote corpus
+  `ff8d8ca235fe8d067bee0f5aa7cc7fa650dcc5b96f82c308f2810ec478f63de3`
+  with 209 release dossiers, 4549 card dossiers, 3640 generated card
+  dossiers, 24629 claims, 7811 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Kabutops boundary assertion all passed. Next
+  catalog-history queue target is Gym Challenge Blaine's Arcanine #1.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fiftieth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
