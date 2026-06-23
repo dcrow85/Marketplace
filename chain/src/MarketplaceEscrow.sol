@@ -97,6 +97,7 @@ contract MarketplaceEscrow {
 
     struct AlphaAdmissionPolicy {
         bytes32 policyHash;
+        address policyAuthority;
         uint64 version;
         uint64 effectiveBlock;
         bytes32 routeClass;
@@ -211,6 +212,20 @@ contract MarketplaceEscrow {
         bytes32 alphaDisputeBranch;
         bytes32 alphaRegistryVersionHash;
         uint64 alphaEpochId;
+        bytes32 alphaPolicyHash;
+        address alphaPolicyAuthority;
+        bytes32 alphaControlClusterId;
+        bytes32 alphaCustodianId;
+        address alphaVerifier;
+        address alphaJudgmentAuthority;
+        uint256 alphaMaxVerifierExposure;
+        uint256 alphaPrincipalExposureReserved;
+        uint256 alphaControlClusterExposureReserved;
+        uint256 alphaCustodianExposureReserved;
+        uint256 alphaVerifierExposureReserved;
+        uint256 alphaJudgmentAuthorityExposureReserved;
+        uint256 alphaRegistryVersionExposureReserved;
+        uint256 alphaEpochExposureReserved;
         bytes32 jscVerifierRouteHash;
         VerifierRouteClass verifierRouteClass;
         VerifierAuthorityLevel verifierAuthorityLevel;
@@ -356,7 +371,7 @@ contract MarketplaceEscrow {
         keccak256("marketplace.source_basis.reputation_score.v0.1");
     bytes32 public constant SUMMARY_SOURCE_BASIS_HASH = keccak256("marketplace.source_basis.summary.v0.1");
     bytes32 public constant ALPHA_ADMISSION_POLICY_TYPEHASH = keccak256(
-        "AlphaAdmissionPolicy(address escrow,uint256 chainId,uint256 tradeId,bytes32 policyHash,uint64 version,uint64 effectiveBlock,bytes32 routeClass,uint256 maxTradeValue,uint256 principalExposureAfter,uint256 maxPrincipalExposure,bytes32 controlClusterId,uint256 controlClusterExposureAfter,uint256 maxControlClusterExposure,bytes32 custodianId,uint256 custodianExposureAfter,uint256 maxCustodianExposure,address verifier,uint256 verifierExposureAfter,uint256 maxVerifierExposure,address judgmentAuthority,uint256 judgmentAuthorityExposureAfter,uint256 maxJudgmentAuthorityExposure,bytes32 registryVersionHash,uint256 registryVersionExposureAfter,uint256 maxRegistryVersionExposure,uint64 epochId,uint256 globalEpochLossAfter,uint256 maxGlobalEpochLoss,bytes32 deliveryMode,bytes32 disputeBranch,bool manualOverride,address manualAuthority,address manualSecondApprover,bytes32 manualReasonHash,uint256 manualOverrideLoss,uint256 manualRemainingLossBudget)"
+        "AlphaAdmissionPolicy(address escrow,uint256 chainId,uint256 tradeId,bytes32 policyHash,address policyAuthority,uint64 version,uint64 effectiveBlock,bytes32 routeClass,uint256 maxTradeValue,uint256 principalExposureAfter,uint256 maxPrincipalExposure,bytes32 controlClusterId,uint256 controlClusterExposureAfter,uint256 maxControlClusterExposure,bytes32 custodianId,uint256 custodianExposureAfter,uint256 maxCustodianExposure,address verifier,uint256 verifierExposureAfter,uint256 maxVerifierExposure,address judgmentAuthority,uint256 judgmentAuthorityExposureAfter,uint256 maxJudgmentAuthorityExposure,bytes32 registryVersionHash,uint256 registryVersionExposureAfter,uint256 maxRegistryVersionExposure,uint64 epochId,uint256 globalEpochLossAfter,uint256 maxGlobalEpochLoss,bytes32 deliveryMode,bytes32 disputeBranch,bool manualOverride,address manualAuthority,address manualSecondApprover,bytes32 manualReasonHash,uint256 manualOverrideLoss,uint256 manualRemainingLossBudget)"
     );
     bytes32 public constant SPENDABILITY_DIGEST_TYPEHASH = keccak256(
         "SpendabilityDigest(address escrow,uint256 chainId,uint256 tradeId,bytes32 gateHash,bytes32 legHash,bytes32 boundArtifactsHash,address issuer)"
@@ -422,6 +437,13 @@ contract MarketplaceEscrow {
         verifierAttestations;
     mapping(bytes32 itemFingerprintHash => uint256 tradeId) public activeItemFingerprints;
     mapping(bytes32 inventoryLockHash => uint256 tradeId) public activeInventoryLocks;
+    mapping(address principal => uint256 exposure) public alphaPrincipalExposure;
+    mapping(bytes32 controlClusterId => uint256 exposure) public alphaControlClusterExposure;
+    mapping(bytes32 custodianId => uint256 exposure) public alphaCustodianExposure;
+    mapping(address verifier => uint256 exposure) public alphaVerifierExposure;
+    mapping(address judgmentAuthority => uint256 exposure) public alphaJudgmentAuthorityExposure;
+    mapping(bytes32 registryVersionHash => uint256 exposure) public alphaRegistryVersionExposure;
+    mapping(uint64 epochId => uint256 exposure) public alphaEpochExposure;
 
     event TradeCreated(
         uint256 indexed tradeId,
@@ -506,6 +528,8 @@ contract MarketplaceEscrow {
     event AlphaAdmissionPolicyCommitted(
         uint256 indexed tradeId, bytes32 indexed policyHash, uint64 version, bytes32 snapshotHash
     );
+    event AlphaExposureReserved(uint256 indexed tradeId, bytes32 indexed policyHash, uint256 amount);
+    event AlphaExposureReleased(uint256 indexed tradeId, bytes32 indexed policyHash);
     event DeliveryPolicyCommitted(uint256 indexed tradeId, bytes32 indexed policyHash, bytes32 indexed scopeHash);
     event PostHandoffRemedyCommitted(uint256 indexed tradeId, bytes32 indexed remedyHash, uint256 maxAmount);
     event InspectionOpened(
@@ -623,6 +647,23 @@ contract MarketplaceEscrow {
     }
 
     function createTrade(
+        address,
+        address,
+        uint256,
+        uint256,
+        uint256,
+        bytes32,
+        bytes32,
+        bytes32,
+        address,
+        AlphaAdmissionPolicy calldata,
+        bytes calldata,
+        bytes calldata
+    ) external payable returns (uint256) {
+        revert AlphaAdmissionPolicyRequired();
+    }
+
+    function createTrade(
         address seller,
         address arbiter,
         uint256 sellerBondRequired,
@@ -633,6 +674,7 @@ contract MarketplaceEscrow {
         bytes32 jscHash,
         address floorExecutor,
         AlphaAdmissionPolicy calldata alphaPolicy,
+        bytes calldata alphaPolicySignature,
         bytes calldata intentSignature,
         bytes calldata termsSignature
     ) external payable returns (uint256 tradeId) {
@@ -664,7 +706,9 @@ contract MarketplaceEscrow {
 
         tradeId = nextTradeId++;
         bytes32 alphaPolicySnapshotHash = alphaAdmissionPolicyHash(tradeId, alphaPolicy);
-        _validateAlphaAdmissionPolicy(tradeId, msg.value, alphaPolicy, arbiter, floorExecutor);
+        _validateAlphaAdmissionPolicy(
+            tradeId, msg.value, alphaPolicy, msg.sender, seller, arbiter, floorExecutor, alphaPolicySignature
+        );
         trades[tradeId] = Trade({
             buyer: msg.sender,
             seller: seller,
@@ -699,6 +743,20 @@ contract MarketplaceEscrow {
             alphaDisputeBranch: alphaPolicy.disputeBranch,
             alphaRegistryVersionHash: alphaPolicy.registryVersionHash,
             alphaEpochId: alphaPolicy.epochId,
+            alphaPolicyHash: alphaPolicy.policyHash,
+            alphaPolicyAuthority: alphaPolicy.policyAuthority,
+            alphaControlClusterId: alphaPolicy.controlClusterId,
+            alphaCustodianId: alphaPolicy.custodianId,
+            alphaVerifier: alphaPolicy.verifier,
+            alphaJudgmentAuthority: alphaPolicy.judgmentAuthority,
+            alphaMaxVerifierExposure: alphaPolicy.maxVerifierExposure,
+            alphaPrincipalExposureReserved: msg.value,
+            alphaControlClusterExposureReserved: msg.value,
+            alphaCustodianExposureReserved: msg.value,
+            alphaVerifierExposureReserved: 0,
+            alphaJudgmentAuthorityExposureReserved: msg.value,
+            alphaRegistryVersionExposureReserved: msg.value,
+            alphaEpochExposureReserved: msg.value,
             jscVerifierRouteHash: bytes32(0),
             verifierRouteClass: VerifierRouteClass.None,
             verifierAuthorityLevel: VerifierAuthorityLevel.None,
@@ -748,6 +806,7 @@ contract MarketplaceEscrow {
         _anchorPacketHash(tradeId, termsHash);
         _anchorPacketHash(tradeId, jscHash);
         _anchorPacketHash(tradeId, alphaPolicySnapshotHash);
+        _reserveAlphaAdmissionExposure(tradeId, trades[tradeId]);
 
         emit TradeCreated(
             tradeId,
@@ -815,10 +874,12 @@ contract MarketplaceEscrow {
         inState(tradeId, State.EscrowFunded)
     {
         Trade storage trade = trades[tradeId];
+        if (trade.jscVerifierRouteHash != bytes32(0)) revert DuplicatePacket(trade.jscVerifierRouteHash);
         bytes32 routeHash = jscVerifierRouteHash(tradeId, route);
 
         _validateJscVerifierRoute(tradeId, trade, route);
         _requireSignature(msg.sender, routeHash, routeSignature);
+        _reserveAlphaVerifierExposure(trade, route.acceptedVerifier, route.verifierExposureCap);
         _anchorPacketHash(tradeId, routeHash);
 
         trade.jscVerifierRouteHash = routeHash;
@@ -1721,6 +1782,7 @@ contract MarketplaceEscrow {
                 block.chainid,
                 tradeId,
                 policy.policyHash,
+                policy.policyAuthority,
                 policy.version,
                 policy.effectiveBlock,
                 policy.routeClass,
@@ -2155,29 +2217,58 @@ contract MarketplaceEscrow {
         uint256 tradeId,
         uint256 tradeValue,
         AlphaAdmissionPolicy calldata policy,
+        address buyer,
+        address seller,
         address arbiter,
-        address floorExecutor
+        address floorExecutor,
+        bytes calldata policySignature
     ) internal view {
         bytes32 policySnapshotHash = alphaAdmissionPolicyHash(tradeId, policy);
         if (policy.policyHash == bytes32(0) || policySnapshotHash == bytes32(0)) {
             revert AlphaAdmissionPolicyRequired();
         }
         if (
+            policy.policyAuthority == address(0) || policy.policyAuthority == buyer || policy.policyAuthority == seller
+                || (!actorRegistry.isArbiterActive(policy.policyAuthority)
+                    && !actorRegistry.isVerifierActive(policy.policyAuthority))
+        ) {
+            revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        }
+        _requireSignature(policy.policyAuthority, policySnapshotHash, policySignature);
+        if (
             policy.version != ALPHA_POLICY_VERSION || block.number < policy.effectiveBlock
                 || policy.routeClass == bytes32(0) || policy.deliveryMode == bytes32(0)
                 || policy.disputeBranch == bytes32(0) || policy.registryVersionHash == bytes32(0)
+                || policy.epochId == 0
         ) {
             revert AlphaAdmissionPolicyRejected(policy.policyHash);
         }
         if (
-            tradeValue > policy.maxTradeValue || policy.principalExposureAfter > policy.maxPrincipalExposure
+            tradeValue > policy.maxTradeValue
+                || policy.principalExposureAfter != alphaPrincipalExposure[buyer] + tradeValue
+                || policy.principalExposureAfter > policy.maxPrincipalExposure
                 || policy.controlClusterId == bytes32(0)
+                || policy.controlClusterExposureAfter != alphaControlClusterExposure[policy.controlClusterId] + tradeValue
                 || policy.controlClusterExposureAfter > policy.maxControlClusterExposure
-                || policy.custodianId == bytes32(0) || policy.custodianExposureAfter > policy.maxCustodianExposure
+                || policy.custodianId == bytes32(0)
+                || policy.custodianExposureAfter != alphaCustodianExposure[policy.custodianId] + tradeValue
+                || policy.custodianExposureAfter > policy.maxCustodianExposure
                 || policy.verifierExposureAfter > policy.maxVerifierExposure
+                || policy.judgmentAuthorityExposureAfter
+                    != alphaJudgmentAuthorityExposure[policy.judgmentAuthority] + tradeValue
                 || policy.judgmentAuthorityExposureAfter > policy.maxJudgmentAuthorityExposure
+                || policy.registryVersionExposureAfter != alphaRegistryVersionExposure[policy.registryVersionHash] + tradeValue
                 || policy.registryVersionExposureAfter > policy.maxRegistryVersionExposure
+                || policy.globalEpochLossAfter != alphaEpochExposure[policy.epochId] + tradeValue
                 || policy.globalEpochLossAfter > policy.maxGlobalEpochLoss
+        ) {
+            revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        }
+        if (policy.verifier == address(0)) {
+            if (policy.verifierExposureAfter != 0) revert AlphaAdmissionPolicyRejected(policy.policyHash);
+        } else if (
+            !actorRegistry.isVerifierActive(policy.verifier)
+                || policy.verifierExposureAfter != alphaVerifierExposure[policy.verifier]
         ) {
             revert AlphaAdmissionPolicyRejected(policy.policyHash);
         }
@@ -2196,6 +2287,33 @@ contract MarketplaceEscrow {
                 revert AlphaAdmissionPolicyRejected(policy.policyHash);
             }
         }
+    }
+
+    function _reserveAlphaAdmissionExposure(uint256 tradeId, Trade storage trade) internal {
+        alphaPrincipalExposure[trade.buyer] += trade.alphaPrincipalExposureReserved;
+        alphaControlClusterExposure[trade.alphaControlClusterId] += trade.alphaControlClusterExposureReserved;
+        alphaCustodianExposure[trade.alphaCustodianId] += trade.alphaCustodianExposureReserved;
+        alphaJudgmentAuthorityExposure[trade.alphaJudgmentAuthority] += trade.alphaJudgmentAuthorityExposureReserved;
+        alphaRegistryVersionExposure[trade.alphaRegistryVersionHash] += trade.alphaRegistryVersionExposureReserved;
+        alphaEpochExposure[trade.alphaEpochId] += trade.alphaEpochExposureReserved;
+
+        emit AlphaExposureReserved(tradeId, trade.alphaPolicyHash, trade.alphaPrincipalExposureReserved);
+    }
+
+    function _reserveAlphaVerifierExposure(Trade storage trade, address verifier, uint256 amount) internal {
+        if (amount == 0) return;
+        if (trade.alphaMaxVerifierExposure == 0) revert AlphaAdmissionPolicyRejected(trade.alphaPolicyHash);
+        if (trade.alphaVerifier != address(0) && trade.alphaVerifier != verifier) {
+            revert AlphaAdmissionPolicyRejected(trade.alphaPolicyHash);
+        }
+        uint256 verifierExposureAfter = alphaVerifierExposure[verifier] + amount;
+        if (verifierExposureAfter > trade.alphaMaxVerifierExposure) {
+            revert AlphaAdmissionPolicyRejected(trade.alphaPolicyHash);
+        }
+
+        trade.alphaVerifier = verifier;
+        trade.alphaVerifierExposureReserved += amount;
+        alphaVerifierExposure[verifier] = verifierExposureAfter;
     }
 
     function _validateJscVerifierRoute(uint256 tradeId, Trade storage trade, JscVerifierRoute calldata route)
@@ -2587,6 +2705,8 @@ contract MarketplaceEscrow {
 
     function _releaseTradeObjectLocks(uint256 tradeId) internal {
         Trade storage trade = trades[tradeId];
+        _releaseAlphaExposure(tradeId, trade);
+
         bytes32 itemFingerprintHash = trade.itemFingerprintHash;
         if (itemFingerprintHash != bytes32(0) && activeItemFingerprints[itemFingerprintHash] == tradeId) {
             delete activeItemFingerprints[itemFingerprintHash];
@@ -2599,6 +2719,33 @@ contract MarketplaceEscrow {
             delete activeInventoryLocks[inventoryLockHash];
             emit InventoryLockReleased(tradeId, inventoryLockHash);
         }
+    }
+
+    function _releaseAlphaExposure(uint256 tradeId, Trade storage trade) internal {
+        uint256 principalExposure = trade.alphaPrincipalExposureReserved;
+        if (principalExposure == 0) return;
+
+        alphaPrincipalExposure[trade.buyer] -= principalExposure;
+        alphaControlClusterExposure[trade.alphaControlClusterId] -= trade.alphaControlClusterExposureReserved;
+        alphaCustodianExposure[trade.alphaCustodianId] -= trade.alphaCustodianExposureReserved;
+        alphaJudgmentAuthorityExposure[trade.alphaJudgmentAuthority] -= trade.alphaJudgmentAuthorityExposureReserved;
+        alphaRegistryVersionExposure[trade.alphaRegistryVersionHash] -= trade.alphaRegistryVersionExposureReserved;
+        alphaEpochExposure[trade.alphaEpochId] -= trade.alphaEpochExposureReserved;
+
+        uint256 verifierExposure = trade.alphaVerifierExposureReserved;
+        if (verifierExposure != 0) {
+            alphaVerifierExposure[trade.alphaVerifier] -= verifierExposure;
+            trade.alphaVerifierExposureReserved = 0;
+        }
+
+        trade.alphaPrincipalExposureReserved = 0;
+        trade.alphaControlClusterExposureReserved = 0;
+        trade.alphaCustodianExposureReserved = 0;
+        trade.alphaJudgmentAuthorityExposureReserved = 0;
+        trade.alphaRegistryVersionExposureReserved = 0;
+        trade.alphaEpochExposureReserved = 0;
+
+        emit AlphaExposureReleased(tradeId, trade.alphaPolicyHash);
     }
 
     function _send(address payable to, uint256 amount) internal {

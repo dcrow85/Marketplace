@@ -997,8 +997,10 @@ contract MarketplaceEscrowTest {
     function testUnderfundedSellerBondIsRejected() public {
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.prank(buyer);
         uint256 tradeId = escrow.createTrade{value: 1 ether}(
             seller,
@@ -1011,6 +1013,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1024,8 +1027,10 @@ contract MarketplaceEscrowTest {
     function testUnregisteredArbiterCannotBeSelected() public {
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, stranger);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, stranger);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, stranger));
         vm.prank(buyer);
         escrow.createTrade{value: 1 ether}(
@@ -1039,6 +1044,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, stranger),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1047,8 +1053,10 @@ contract MarketplaceEscrowTest {
     function testUnregisteredBuyerCannotCreateTrade() public {
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, stranger));
         vm.prank(stranger);
         escrow.createTrade{value: 1 ether}(
@@ -1062,6 +1070,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1072,8 +1081,10 @@ contract MarketplaceEscrowTest {
 
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.UnregisteredArbiter.selector, arbiter));
         vm.prank(buyer);
         escrow.createTrade{value: 1 ether}(
@@ -1087,6 +1098,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1095,8 +1107,10 @@ contract MarketplaceEscrowTest {
     function testUnregisteredSellerCannotBeSelected() public {
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, stranger));
         vm.prank(buyer);
         escrow.createTrade{value: 1 ether}(
@@ -1110,6 +1124,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1120,8 +1135,10 @@ contract MarketplaceEscrowTest {
 
         bytes32 intentHash = _h("intent");
         bytes32 termsHash = _h("terms");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.UnregisteredActor.selector, seller));
         vm.prank(buyer);
         escrow.createTrade{value: 1 ether}(
@@ -1135,6 +1152,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1580,8 +1598,10 @@ contract MarketplaceEscrowTest {
     function testAuditD6TradeCreationRequiresJudgmentSupplyCommitment() public {
         bytes32 intentHash = _h("intent:audit-d6-missing-jsc");
         bytes32 termsHash = _h("terms:audit-d6-missing-jsc");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
 
         vm.expectRevert(MarketplaceEscrow.JudgmentSupplyRequired.selector);
         vm.prank(buyer);
@@ -1596,6 +1616,7 @@ contract MarketplaceEscrowTest {
             bytes32(0),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1917,8 +1938,10 @@ contract MarketplaceEscrowTest {
     function testG5CreateTradeRejectsPartyFloorExecutor() public {
         bytes32 intentHash = _h("intent:g5-party-floor");
         bytes32 termsHash = _h("terms:g5-party-floor");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
 
         vm.expectRevert(abi.encodeWithSelector(MarketplaceEscrow.JudgmentAuthorityConflict.selector, seller));
         vm.prank(buyer);
@@ -1933,6 +1956,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             seller,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -1941,9 +1965,11 @@ contract MarketplaceEscrowTest {
     function testA1CreateTradeRejectsOverEpochLossBudget() public {
         bytes32 intentHash = _h("intent:a1-over-epoch-budget");
         bytes32 termsHash = _h("terms:a1-over-epoch-budget");
+        uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
-            _defaultAlphaPolicy(escrow.nextTradeId(), 1 ether, arbiter);
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
         alphaPolicy.globalEpochLossAfter = alphaPolicy.maxGlobalEpochLoss + 1;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
 
         vm.expectRevert(
             abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
@@ -1960,9 +1986,138 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
+    }
+
+    function testA1CreateTradeRequiresPolicyAuthoritySignature() public {
+        bytes32 intentHash = _h("intent:a1-authority-signature");
+        bytes32 termsHash = _h("terms:a1-authority-signature");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        bytes32 policySnapshotHash = escrow.alphaAdmissionPolicyHash(expectedTradeId, alphaPolicy);
+        bytes memory buyerPolicySignature = _sig(buyerKey, policySnapshotHash);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                MarketplaceEscrow.BadSignature.selector, alphaPolicy.policyAuthority, policySnapshotHash
+            )
+        );
+        vm.prank(buyer);
+        escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            buyerPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testA1CreateTradeRejectsStaleExposureAfterValue() public {
+        _createPendingTrade(1 ether, 0.1 ether, 0.01 ether);
+
+        bytes32 intentHash = _h("intent:a1-stale-exposure");
+        bytes32 termsHash = _h("terms:a1-stale-exposure");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        alphaPolicy.principalExposureAfter = 1 ether;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
+        );
+        vm.prank(buyer);
+        escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            alphaPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testA1ExposureLedgerReleasesOnBuyerAcceptance() public {
+        uint256 tradeId = _deliverTrade(1 ether, 0.1 ether, 0.01 ether);
+
+        _assertEq(escrow.alphaPrincipalExposure(buyer), 1 ether, "principal exposure reserved");
+        _assertEq(escrow.alphaJudgmentAuthorityExposure(arbiter), 1 ether, "judgment exposure reserved");
+        _assertEq(escrow.alphaEpochExposure(1), 1 ether, "epoch exposure reserved");
+
+        bytes32 receiptHash = _h("receipt:a1-release-exposure");
+        vm.prank(buyer);
+        escrow.buyerAccept(tradeId, receiptHash, _sig(buyerKey, receiptHash));
+
+        _assertEq(escrow.alphaPrincipalExposure(buyer), 0, "principal exposure released");
+        _assertEq(escrow.alphaJudgmentAuthorityExposure(arbiter), 0, "judgment exposure released");
+        _assertEq(escrow.alphaEpochExposure(1), 0, "epoch exposure released");
+    }
+
+    function testA1JscVerifierRouteReservesVerifierExposure() public {
+        uint256 tradeId = _createPendingTrade(1 ether, 0.1 ether, 0.01 ether);
+        MarketplaceEscrow.JscVerifierRoute memory route = _settlementVerifierRoute(0.01 ether);
+
+        _commitVerifierRoute(tradeId, route);
+
+        _assertEq(
+            escrow.alphaVerifierExposure(verifier), route.verifierExposureCap, "verifier exposure reserved at JSC"
+        );
+    }
+
+    function testA1JscVerifierRouteRejectsVerifierExposureOverPolicyCap() public {
+        bytes32 intentHash = _h("intent:a1-verifier-over-cap");
+        bytes32 termsHash = _h("terms:a1-verifier-over-cap");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        alphaPolicy.maxVerifierExposure = 0.01 ether;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
+
+        vm.prank(buyer);
+        uint256 tradeId = escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            alphaPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+        committedAlphaPolicySnapshots[tradeId] = escrow.alphaAdmissionPolicyHash(tradeId, alphaPolicy);
+
+        MarketplaceEscrow.JscVerifierRoute memory route = _settlementVerifierRoute(0.01 ether);
+        bytes32 routeHash = escrow.jscVerifierRouteHash(tradeId, route);
+        bytes memory routeSignature = _sig(buyerKey, routeHash);
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
+        );
+        vm.prank(buyer);
+        escrow.commitJscVerifierRoute(tradeId, route, routeSignature);
     }
 
     function testA2DeliveryRejectsSellerSingletonWitness() public {
@@ -2387,6 +2542,7 @@ contract MarketplaceEscrowTest {
         uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
             _defaultAlphaPolicy(expectedTradeId, escrowAmount, arbiter_);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.prank(buyer);
         tradeId = escrow.createTrade{value: escrowAmount}(
             seller,
@@ -2399,6 +2555,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter_),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -2417,6 +2574,7 @@ contract MarketplaceEscrowTest {
         uint256 expectedTradeId = escrow.nextTradeId();
         MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
             _defaultAlphaPolicy(expectedTradeId, escrowAmount, arbiter);
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
         vm.prank(buyer);
         tradeId = escrow.createTrade{value: escrowAmount}(
             seller,
@@ -2429,6 +2587,7 @@ contract MarketplaceEscrowTest {
             _defaultJscHash(intentHash, termsHash, arbiter),
             replacementArbiter,
             alphaPolicy,
+            alphaPolicySignature,
             _sig(buyerKey, intentHash),
             _sig(buyerKey, termsHash)
         );
@@ -2543,29 +2702,31 @@ contract MarketplaceEscrowTest {
     {
         return MarketplaceEscrow.AlphaAdmissionPolicy({
             policyHash: keccak256(abi.encodePacked("alpha-policy:v1:", tradeId)),
+            policyAuthority: replacementArbiter,
             version: escrow.ALPHA_POLICY_VERSION(),
             effectiveBlock: uint64(block.number),
             routeClass: _h("route-class:curated-low-value"),
             maxTradeValue: escrowAmount,
-            principalExposureAfter: escrowAmount,
+            principalExposureAfter: escrow.alphaPrincipalExposure(buyer) + escrowAmount,
             maxPrincipalExposure: 100 ether,
             controlClusterId: _h("cluster:buyer-seller-low-value"),
-            controlClusterExposureAfter: escrowAmount,
+            controlClusterExposureAfter: escrow.alphaControlClusterExposure(_h("cluster:buyer-seller-low-value"))
+                + escrowAmount,
             maxControlClusterExposure: 100 ether,
             custodianId: _h("custodian:self-ship-low-value"),
-            custodianExposureAfter: escrowAmount,
+            custodianExposureAfter: escrow.alphaCustodianExposure(_h("custodian:self-ship-low-value")) + escrowAmount,
             maxCustodianExposure: 100 ether,
             verifier: address(0),
             verifierExposureAfter: 0,
-            maxVerifierExposure: 0,
+            maxVerifierExposure: 1 ether,
             judgmentAuthority: arbiter_,
-            judgmentAuthorityExposureAfter: escrowAmount,
+            judgmentAuthorityExposureAfter: escrow.alphaJudgmentAuthorityExposure(arbiter_) + escrowAmount,
             maxJudgmentAuthorityExposure: 100 ether,
             registryVersionHash: _h("registry:alpha:v1"),
-            registryVersionExposureAfter: escrowAmount,
+            registryVersionExposureAfter: escrow.alphaRegistryVersionExposure(_h("registry:alpha:v1")) + escrowAmount,
             maxRegistryVersionExposure: 100 ether,
             epochId: 1,
-            globalEpochLossAfter: escrowAmount,
+            globalEpochLossAfter: escrow.alphaEpochExposure(1) + escrowAmount,
             maxGlobalEpochLoss: 100 ether,
             deliveryMode: _h("delivery:tracked-or-cowitnessed"),
             disputeBranch: _h("dispute:manual-dual-control"),
@@ -2576,6 +2737,13 @@ contract MarketplaceEscrowTest {
             manualOverrideLoss: 0,
             manualRemainingLossBudget: 0
         });
+    }
+
+    function _alphaPolicySignature(uint256 tradeId, MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy)
+        internal
+        returns (bytes memory)
+    {
+        return _sig(replacementArbiterKey, escrow.alphaAdmissionPolicyHash(tradeId, alphaPolicy));
     }
 
     function _defaultJscHash(bytes32 intentHash, bytes32 termsHash, address arbiter_) internal view returns (bytes32) {
