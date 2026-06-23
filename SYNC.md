@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 352: Gym Challenge Blaine's Arcanine #1 deepened; corpus ed072c3)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 353: Gym Challenge Koga's Ditto #10 deepened; corpus 22403c8)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
+  `en_wotc_gym_challenge_20001016:gym2-10` Koga's Ditto #10 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass also adds Koga's Ditto to the Gym Challenge source-set scope
+  list. Koga's Ditto uses local English WoC Gym Challenge #10, Koga trainer
+  and Koga-owned boundary rows, Koga's Beedrill #9 owner-neighbor context,
+  Fossil Ditto #3/#18 transformation boundaries, Skyridge Ditto #51
+  boundary, live Pokemon TCG API Gym Challenge card and set records, and
+  bounded Bulbapedia Koga's Ditto / Ditto TCG / Ditto species / Koga / Ken
+  Sugimori context. The dossier carries Rare Holo, card number 10, Basic
+  Colorless, 40 HP, Giant Growth temporary body change, Pound, the 80 HP and
+  30-base-damage state, bench-ending-the-effect rule, Fighting Weakness,
+  Psychic Resistance, Koga owner-Pokemon grammar, Ditto transformation lore,
+  the Pound game-model mismatch note, and explicit no-collapse rules for
+  generic Ditto, Fossil Ditto, Skyridge Ditto, Koga trainer rows, and Koga's
+  Beedrill. Validation passed: `build_catalog_history_dossiers.py` wrote
+  corpus `22403c86b75b029cfe58b9e5574ad4838211a2e92f95fe59fc921b771c107f60`
+  with 209 release dossiers, 4549 card dossiers, 3638 generated card
+  dossiers, 24643 claims, 7836 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Koga's Ditto boundary assertion all passed. Next
+  catalog-history queue target is Gym Challenge Lt. Surge's Raichu #11.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
