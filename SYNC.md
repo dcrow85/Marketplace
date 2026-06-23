@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 344: Fossil Magneton #11 deepened; corpus 94be05f)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 345: Fossil Muk #13 deepened; corpus ede3b8f)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,45 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-13` Muk #13 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  repairs the source-set scope list so Muk holo is declared in the file
+  header. Muk uses local English WoC Fossil #13, #28, and Grimer #48 rows,
+  local Japanese Mystery of the Fossils ベトベトン / Betbeton and Grimer
+  rows, local Legendary Collection Muk boundary context, local Team Rocket
+  Dark Muk boundary context, local Gym Challenge Koga's Muk boundary
+  context, local Aquapolis Muk boundary context, Pokemon TCG API Fossil card
+  and set records, and bounded Bulbapedia Muk / Muk TCG / Muk species /
+  Mitsuhiro Arita context. The dossier carries Rare Holo, Stage 1 Grass, 70
+  HP, Psychic weakness, two-Colorless retreat, Toxic Gas, Sludge, coin-flip
+  Poison, Pokemon Power suppression, Mitsuhiro Arita credit, same-set Grimer
+  #48 context, factory-sludge Grimer lineage, filthy-footprints Muk flavor,
+  the #13 holo versus #28 non-holo trap, the Japanese Mystery source lane,
+  the Legendary Collection later-reprint boundary, and the Dark Muk / Koga's
+  Muk / Aquapolis Muk branches that must not collapse into a Fossil want. Its
+  special identification packet tells agents to keep #13, #28, Grimer #48,
+  Japanese Mystery, Legendary Collection, Dark Muk, Koga's Muk, Aquapolis
+  Muk, and generic pollution-species memory separate unless set, number,
+  finish, image, and packet evidence align. No price, condition, seller
+  possession, authenticity, holo/non-holo equivalence, Japanese Mystery
+  equivalence, Legendary Collection equivalence, Dark Muk equivalence,
+  Koga's Muk equivalence, Aquapolis Muk equivalence, Grimer equivalence, or
+  physical-card verification is promoted from catalog texture. Validation
+  passed: catalog-history 209 release dossiers, 4549 card dossiers, 3646
+  generated card dossiers, 24577 claims, 7725 sources, card queue 100,
+  corpus
+  `ede3b8ff7cc7b0fe6f0f856fd934cbc29a8db98e34f66d498b57c3d74b7ccda8`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed Toxic Gas, Sludge, Mitsuhiro Arita, filthy-footprints flavor,
+  base3-13, base3-28, base3-48, Dark Muk, Koga, Aquapolis, Legendary
+  Collection, Mystery of the Fossils, ベトベトン, Betbeton, and Pokemon Power
+  are present; Muk #13 has left the deepening queue. Next card queue target
+  is `en_wotc_fossil_19991010:base3-14` Raichu #14.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-fourth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
