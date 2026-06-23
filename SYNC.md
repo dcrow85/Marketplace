@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 349: Fossil Hitmonlee #7 deepened; corpus aa5696e)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 350: Fossil Hypno #8 deepened; corpus bf14d12)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fiftieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-8` Hypno #8 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  adds Hypno holo to the Fossil source-set scope list. Hypno uses local
+  English WoC Fossil #8 and #23 rows, local Japanese Mystery of the Fossils
+  スリーパー / Sleeper #032 source lane, Base Set Drowzee ancestor context,
+  Team Rocket Dark Hypno and Drowzee boundary rows, Legendary Collection
+  Hypno and Drowzee boundary rows, Aquapolis Hypno e-Reader boundary rows,
+  Pokemon TCG API Fossil card and set records, and bounded Bulbapedia Hypno
+  / Hypno TCG / Hypno species / Ken Sugimori context. The dossier carries
+  Rare Holo, Stage 1 Psychic, Prophecy, Dark Mind, pendulum and hypnosis
+  lore, sleep and dream-feeding texture, Ken Sugimori core species art, the
+  #8 holo versus #23 non-holo trap, Japanese Mystery source lineage, and
+  explicit no-collapse rules for Drowzee, Dark Hypno, Legendary Collection
+  Hypno, and Aquapolis Hypno. Validation passed:
+  `build_catalog_history_dossiers.py` wrote corpus
+  `bf14d12b1c30d584d5bb48c30a16e544821c5c103c802a9c671ad37cd4b3c31e`
+  with 209 release dossiers, 4549 card dossiers, 3641 generated card
+  dossiers, 24620 claims, 7796 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Hypno boundary assertion all passed. Next
+  catalog-history queue target is Fossil Kabutops #9.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
