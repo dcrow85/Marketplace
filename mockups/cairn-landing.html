@@ -82,14 +82,25 @@
   .frow.zero .fl{color:var(--ink)}
   .field .note{font-family:var(--mono);font-size:10px;color:var(--faint);padding-top:11px;letter-spacing:.02em;line-height:1.5}
 
-  /* steps */
-  .steps{margin-top:34px;border-top:0.5px solid var(--rule)}
-  .step{display:grid;grid-template-columns:64px 200px 1fr;gap:24px;align-items:baseline;
-    padding:24px 0;border-bottom:0.5px solid var(--rule2)}
-  .step .no{font-family:var(--mono);font-size:13px;color:var(--faint)}
-  .step h3{font-size:21px;font-weight:600;color:var(--ink);margin:0;letter-spacing:-.01em}
-  .step p{margin:0;font-size:15.5px;color:var(--ink2);line-height:1.5}
-  .step p .en{color:var(--dim)}
+  /* the stack — the cairn */
+  .stacklede{font-weight:500;font-size:19px;color:var(--ink);letter-spacing:-.01em;margin:14px 0 0;max-width:46ch;line-height:1.45}
+  .stack{display:grid;grid-template-columns:170px 1fr;gap:50px;align-items:center;margin-top:34px}
+  .cairn{display:flex;justify-content:center}
+  .cairn svg{width:150px;height:auto}
+  .layers{display:flex;flex-direction:column}
+  .layer{padding:17px 0;border-top:0.5px solid var(--rule2)}
+  .layer:first-child{border-top:0;padding-top:0}
+  .lhead{display:flex;align-items:baseline;gap:11px;margin-bottom:5px}
+  .lhead h3{font-size:19px;font-weight:600;color:var(--ink);margin:0;letter-spacing:-.01em}
+  .ltag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:0.5px solid var(--rule);border-radius:3px;padding:2px 6px;color:var(--dim);flex:none}
+  .ltag.t-you{color:var(--ink);border-color:var(--ink2)}
+  .ltag.t-judged{color:var(--agent);border-color:var(--agent)}
+  .ltag.t-enforced{color:var(--ink);border-color:var(--ink)}
+  .layer p{margin:0;font-size:15px;color:var(--ink2);line-height:1.5}
+  .layer p .en{color:var(--dim)}
+  .layer p .unproven{color:var(--signal)}
+  .stacknote{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:26px;letter-spacing:.01em}
+  @media(max-width:720px){.stack{grid-template-columns:1fr;gap:18px}.cairn{order:-1}.cairn svg{width:118px}}
 
   /* artifact / specimen */
   .show{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-top:38px}
@@ -187,7 +198,7 @@
       <a href="#how">how it works</a>
       <a href="#see">what you see</a>
       <a href="cairn-protocol.html">protocol</a>
-      <a href="#start" class="go">start a hunt</a>
+      <a href="/app/" class="go">start a hunt</a>
       <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
     </span>
   </div>
@@ -207,7 +218,7 @@
     <h1>Your agent hunts.<br>The protocol holds.<br><span class="you">You decide.</span></h1>
     <p class="lede">Cairn is where your agent buys, sells, and trades collectibles for you — and the protocol keeps every deal accountable. Starting with vintage Pokémon. It finds the card or the swap, reads the evidence, and locks the money, the terms, and the other side's accountability before anything moves. You just see the deal and make the call.</p>
     <div class="cta">
-      <a href="#start" class="btn">Start a hunt</a>
+      <a href="/app/" class="btn">Start a hunt</a>
       <a href="#how" class="btn-ghost">see how it works ↓</a>
     </div>
   </div>
@@ -217,8 +228,9 @@
 <section class="problem">
   <div class="wrap">
     <div class="ek">The problem</div>
-    <p class="big">Trust isn't free. And the price is all over the place.</p>
-    <p class="pbody">Buy a pricey card from a stranger, and you're really paying someone to vouch that it's real — a marketplace, an auction house, a grader. Here's what that runs on one $6,000 card:</p>
+    <p class="big">Buying something real from a stranger is a leap — taken with real money, and rarely one you can take back.</p>
+    <p class="pbody">Is the card genuine? Is the grade honest? Will it even ship? You're trusting a stranger on all of it at once — and if any part is a lie, you usually learn it after the money's gone and the card's in hand. There's no undo.</p>
+    <p class="pbody">The usual fix is to rent someone else's trust — a marketplace, an auction house, a grader. It works, but it's priced all over the map, and none of it tells you whether <i>this</i> seller is safe. Here's what trusting one $6,000 card can run:</p>
     <div class="field">
       <div class="fk">the cost of trusting one $6,000 card</div>
       <div class="frow"><span class="fl">eBay</span><span class="fv">~13%</span></div>
@@ -228,7 +240,7 @@
       <div class="frow zero"><span class="fl">a seller you already trust</span><span class="fv">nothing</span></div>
       <div class="note">U.S. rates, early 2026 — and that's just the money.</div>
     </div>
-    <p class="pbody">Same card, wildly different cost. The cheapest option is the one nobody sells you — a seller you already trust. And no one adds it up for you, so you either overpay to feel safe, or skip a check you actually needed.</p>
+    <p class="pbody">Same card, wildly different cost — and the cheapest is the one nobody sells you: a seller you already trust. No one adds it up for you, so you overpay to feel safe, skip a check you needed, or just take the leap and hope.</p>
   </div>
 </section>
 
@@ -258,24 +270,37 @@
 <section id="how">
   <div class="wrap">
     <div class="ek">How it works</div>
-    <div class="steps">
-      <div class="step">
-        <span class="no">01</span><h3>Hunt</h3>
-        <p>Tell your agent the card, the condition, and your budget. It finds candidates, reads the seller's evidence, and ranks what it can and can't yet vouch for. <span class="en">Out-of-scope and overpriced offers never reach you.</span></p>
+    <div class="stacklede">A trade is a cairn — each layer resting on the one below. You see the top stone; you can trace it all the way down to the contract.</div>
+    <div class="stack">
+      <div class="cairn">
+        <svg viewBox="0 0 150 452" fill="none" aria-hidden="true">
+          <line x1="20" y1="414" x2="130" y2="414" stroke="var(--faint)" stroke-width="1"/>
+          <ellipse cx="75" cy="387" rx="55" ry="23" fill="var(--ink)" transform="rotate(-2 75 387)"/>
+          <ellipse cx="77" cy="263" rx="46" ry="20" fill="var(--ink2)" transform="rotate(3 77 263)"/>
+          <ellipse cx="73" cy="150" rx="37" ry="17" fill="var(--dim)" transform="rotate(-3 73 150)"/>
+          <ellipse cx="75" cy="45" rx="26" ry="13.5" fill="var(--paper)" stroke="var(--ink2)" stroke-width="1.3" transform="rotate(2 75 45)"/>
+        </svg>
       </div>
-      <div class="step">
-        <span class="no">02</span><h3>Lock</h3>
-        <p>Before the card moves, the protocol holds the money in escrow, locks the terms, binds the seller's bond, and anchors every photo and claim. <span class="en">Nothing depends on the seller keeping their word — only on the record.</span></p>
-      </div>
-      <div class="step">
-        <span class="no">03</span><h3>See</h3>
-        <p>You get one card and one honest read: what it is, who's selling, what it's worth, and the one thing still unproven. <span class="en">You're only interrupted when something spends money or needs your eyes.</span></p>
-      </div>
-      <div class="step">
-        <span class="no">04</span><h3>Settle</h3>
-        <p>Accept on arrival and the funds release. If something's wrong, open a claim that's already on the record, with the evidence to compare. <span class="en">A bad trade becomes answerable, not a shrug.</span></p>
+      <div class="layers">
+        <div class="layer">
+          <div class="lhead"><h3>Your glance</h3><span class="ltag t-you">you</span></div>
+          <p>One card, one honest read: what it is, who's selling, what it's worth, and <span class="unproven">the one thing still unproven</span>. You're only interrupted when something spends money or needs your eyes.</p>
+        </div>
+        <div class="layer">
+          <div class="lhead"><h3>The agent's read</h3><span class="ltag t-judged">judged</span></div>
+          <p>It hunts, reads the seller's evidence, and ranks what it can and can't yet vouch for — <span class="en">out-of-scope and overpriced offers never reach you</span>. Judgment, labeled as judgment, never dressed up as proof.</p>
+        </div>
+        <div class="layer">
+          <div class="lhead"><h3>The evidence</h3><span class="ltag t-legible">legible</span></div>
+          <p>Every photo, scan, and claim — and the seller's bond — signed and pinned to the record so it can't be quietly changed. <span class="en">Readable, but still yours, or an arbiter's, to weigh.</span></p>
+        </div>
+        <div class="layer">
+          <div class="lhead"><h3>The record</h3><span class="ltag t-enforced">enforced</span></div>
+          <p>The contract holds the money in escrow, locks the terms, and anchors every claim by hash. Accept on arrival and the funds release; if something's wrong, the claim is already on the record, with the evidence to compare. <span class="en">Nothing rests on the seller's word — only on this, and it outlives the trade.</span></p>
+        </div>
       </div>
     </div>
+    <div class="stacknote">Lift any layer and the one beneath holds. A bad trade stays answerable for as long as the record does.</div>
   </div>
 </section>
 
@@ -324,8 +349,8 @@
     <h2 class="lead">Cairn doesn't judge. It hosts the judges.</h2>
     <p class="lead2">Is the card authentic? Is the grade right? Who's at fault? A protocol can't answer those — so Cairn doesn't pretend to. It opens a market of ways to establish trust — human and machine — competing on price, turnaround, and a calibration record you can see: a shop in hand, an AI grade, an LLM ruling, a specialist, or simply the seller you already trust. Your agent maps them to your cost for this trade; you approve.</p>
     <div class="two">
-      <div><h4>Verifiers</h4><p>Inspect, authenticate, grade — before your money moves, by a shop in hand or an AI in seconds. <span class="en">A shop in Osaka can vouch for a card for a buyer in Ohio — the one gap no protocol crosses.</span></p></div>
-      <div><h4>Arbiters</h4><p>Rule on a dispute from the record. <span class="en">A free LLM baseline runs on every trade; a human expert is one tier up, when the value justifies it.</span></p></div>
+      <div><h4>Verifiers</h4><p>Inspect, grade, and vouch — each for a stated scope, never a blanket "it's real" — by a shop in hand or a model in seconds. <span class="en">A shop in Osaka can vouch for a card for a buyer in Ohio — the one gap no protocol crosses.</span></p></div>
+      <div><h4>Arbiters</h4><p>Rule on a dispute from the record. <span class="en">A free LLM baseline sits at the floor; a human expert is one tier up, when the value justifies it.</span></p></div>
     </div>
     <p class="lead2" style="margin-top:26px">For shops and specialists, it's a new income stream — paid for expertise, not just inventory. Every call is on the record, and a wrong one costs their standing.</p>
   </div>
@@ -352,7 +377,7 @@
     <h2>Tell your agent what you're hunting.</h2>
     <p>Cairn is in alpha, scoped to vintage Pokémon singles — the set that started it.</p>
     <div class="cta">
-      <a href="#" class="btn">Start a hunt</a>
+      <a href="/app/" class="btn">Start a hunt</a>
       <a href="cairn-protocol.html" class="btn-ghost">read the protocol →</a>
     </div>
   </div>
