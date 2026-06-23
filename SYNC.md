@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 342: Expedition Cloyster #8 deepened; corpus e143f59)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 343: Expedition Dragonite #9 deepened; corpus 26e3660)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,51 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-third
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-9` Dragonite #9 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Dragonite #9 is declared in
+  the file header. Dragonite uses local English WoC Expedition #9, #43, and
+  Dragonair #75 rows, local Fossil Dragonite boundary rows, local Team
+  Rocket / Legendary Collection Dark Dragonite boundary rows, Pokemon TCG
+  API card and set records, bounded Bulbapedia Dragonite / Flying Journey /
+  Dragonite TCG / Kagemaru Himeno / Expedition / species context, and The
+  Art of Pokemon's Kagemaru Himeno illustrator context. The dossier carries
+  Rare Holo, Stage 2 Colorless, 100 HP, Tailwind, Dragon Tail, two-Colorless
+  retreat, mixed Lightning/Water/Fighting attack cost, Kagemaru Himeno
+  credit, Japanese Base Expansion Pack 126/128 and 094/128 mirrors,
+  B-93 / B-93-# e-Reader identities, short-strip Pokedex and card summary
+  data, Flying Journey long-strip animation data, Pokemon Crystal ocean-
+  island Pokedex texture, the #9 versus #43 same-artist/same-mechanics trap,
+  the Japanese 126/128 versus 094/128 mirror split, Dragonair #75 same-
+  artist context, Fossil Dragonite boundary context, Dark Dragonite boundary
+  context, and the later-move-name caveat: Tailwind and Dragon Tail later
+  became game moves, but that does not make the later games the naming
+  source for this Expedition card. Its special identification packet tells
+  agents to keep #9, #43, reverse-holo finish lanes, B-93 / B-93-#,
+  short-strip readability, Flying Journey long-strip animation playback, the
+  non-holo #43 / B-93-# playback lane, Japanese 126/128, Japanese 094/128,
+  Fossil Dragonite, Dark Dragonite, Dragonair, Dratini, Pokemon Web
+  Dragonite, and generic ocean-travel Dragonite memory separate. No price,
+  condition, seller possession, authenticity, strip readability, long-strip
+  animation playback, non-holo Flying Journey card possession, later-game
+  move naming equivalence, or physical-card verification is promoted from
+  catalog texture. Validation passed: catalog-history 209 release dossiers,
+  4549 card dossiers, 3648 generated card dossiers, 24559 claims, 7694
+  sources, card queue 100, corpus
+  `26e3660461eb4d7e39d8522404a8dfbebb54817f8938d6455a1aa92d5e9a05bf`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-93, B-93-#, Flying Journey, non-holo-only animation
+  application, Dragonite #9 versus #43 trap, Kagemaru Himeno, Pokemon Tales,
+  How I Became a Pokemon Card, 126/128, 094/128, Tailwind, Dragon Tail,
+  Fossil Dragonite boundary, Dark Dragonite boundary, later-game move notes,
+  and the non-holo-Flying-Journey-card-possession non-claim are present, and
+  Dragonite #9 has left the deepening queue. Next card queue target is
+  `en_wotc_fossil_19991010:base3-11` Magneton #11.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-second
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
