@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 336: Expedition Typhlosion #28 deepened; corpus 718bf28)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 337: Expedition Arbok #3 deepened; corpus 576de82)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,44 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-3` Arbok #3 is now upgraded
+  from generated first-pass texture to a hand-authored dossier. The pass
+  also repairs the source-set scope list so Arbok #3, Skarmory #27, and
+  Typhlosion #28 are declared in the file header. Arbok uses local English
+  WoC Expedition #3, #35, and #108 rows, local Japanese Base Expansion Pack
+  e E1-099 and E1-067 rows, local Base Expansion Pack e Arbok dossier
+  context, Mystery of the Fossils / Rocket Gang Arbok boundary context,
+  Pokemon TCG API card and set records, and bounded Bulbapedia Arbok /
+  Expedition / Kyoko Umemoto / Arbok TCG context. The dossier carries Rare
+  Holo, Stage 1 Grass, 70 HP, Poison Spray, Poison Reaction, Psychic
+  weakness, one-Colorless retreat, Kyoko Umemoto credit, Japanese Base
+  Expansion Pack 099/128 and 067/128 mirrors, B-69 / B-69-# e-Reader
+  identities, short-strip-only normal-release data, no-long-strip boundary,
+  Pokemon Crystal Pokedex intimidation texture, the #3 versus #35
+  same-artist/same-mechanics trap, the E1-099 versus E1-067 mirror split,
+  and Bulbapedia's note that the non-holo print was among Wizards of the
+  Coast pre-release test cards with For Position Only / Medium / long-strip
+  differences. Its special identification packet tells agents to keep #3,
+  #35, reverse-holo finish lanes, B-69 / B-69-#, short-strip readability,
+  no-long-strip status, E1-099, E1-067, Expedition Ekans #108, Fossil /
+  Mystery of the Fossils Arbok, Dark / Rocket Gang Arbok, W-stamped Dark
+  Arbok, test-card caveats, and generic poison-snake memory separate. No
+  price, condition, seller possession, authenticity, strip readability, test
+  card equivalence, or physical-card verification is promoted from catalog
+  texture. Validation passed: catalog-history 209 release dossiers, 4549
+  card dossiers, 3654 generated card dossiers, 24491 claims, 7599 sources,
+  card queue 100, corpus `576de8278811bd4e10a03bf0107a9fbdf0e3430ae63db6dcf2a470d1968c7ffe`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-69, B-69-#, short-strip, no-long-strip, Kyoko Umemoto,
+  artist first-work marker, Arbok #3 versus #35 trap, E1-099, E1-067,
+  Poison Reaction, and the For Position Only test-card caveat are present,
+  and Arbok #3 has left the deepening queue. Next card queue target is
+  `en_wotc_expedition_base_set_20020915:ecard1-31` Vileplume #31.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
