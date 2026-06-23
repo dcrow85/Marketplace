@@ -64,6 +64,12 @@ contract MarketplaceEscrowTest {
         registry.registerArbiter(replacementArbiter, _h("replacement-arbiter-authority"), uint96(1 ether));
         registry.registerArbiter(floorPanelMember, _h("floor-panel-member-authority"), uint96(1 ether));
         registry.registerVerifier(verifier, _h("verifier-authority"), uint96(0.5 ether));
+        registry.registerControlCluster(_h("cluster:buyer-alpha"), _h("cluster-meta:buyer-alpha"));
+        registry.registerControlCluster(_h("cluster:seller-alpha"), _h("cluster-meta:seller-alpha"));
+        registry.registerCustodian(_h("custodian:seller-self-ship"), _h("custodian-meta:seller-self-ship"));
+        registry.setActorControlCluster(buyer, _h("cluster:buyer-alpha"));
+        registry.setActorControlCluster(seller, _h("cluster:seller-alpha"));
+        registry.setActorCustodian(seller, _h("custodian:seller-self-ship"));
 
         escrow = new MarketplaceEscrow(address(registry));
         predicateVerifier = new MarketplacePredicateVerifierStub();
@@ -2023,6 +2029,74 @@ contract MarketplaceEscrowTest {
         );
     }
 
+    function testA1CreateTradeRejectsRotatedControlClusterId() public {
+        bytes32 rotatedClusterId = _h("cluster:rotated-alpha");
+        registry.registerControlCluster(rotatedClusterId, _h("cluster-meta:rotated-alpha"));
+
+        bytes32 intentHash = _h("intent:a1-rotated-control-cluster");
+        bytes32 termsHash = _h("terms:a1-rotated-control-cluster");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        alphaPolicy.controlClusterId = rotatedClusterId;
+        alphaPolicy.controlClusterExposureAfter = escrow.alphaControlClusterExposure(rotatedClusterId) + 1 ether;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
+        );
+        vm.prank(buyer);
+        escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            alphaPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
+    function testA1CreateTradeRejectsRotatedCustodianId() public {
+        bytes32 rotatedCustodianId = _h("custodian:rotated-alpha");
+        registry.registerCustodian(rotatedCustodianId, _h("custodian-meta:rotated-alpha"));
+
+        bytes32 intentHash = _h("intent:a1-rotated-custodian");
+        bytes32 termsHash = _h("terms:a1-rotated-custodian");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        alphaPolicy.custodianId = rotatedCustodianId;
+        alphaPolicy.custodianExposureAfter = escrow.alphaCustodianExposure(rotatedCustodianId) + 1 ether;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
+        );
+        vm.prank(buyer);
+        escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            alphaPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
     function testA1CreateTradeRequiresPolicyAuthoritySignature() public {
         bytes32 intentHash = _h("intent:a1-authority-signature");
         bytes32 termsHash = _h("terms:a1-authority-signature");
@@ -2733,6 +2807,8 @@ contract MarketplaceEscrowTest {
         returns (MarketplaceEscrow.AlphaAdmissionPolicy memory)
     {
         uint64 epochId = escrow.currentAlphaEpochId();
+        bytes32 controlClusterId = escrow.currentAlphaControlClusterId(buyer, seller);
+        bytes32 custodianId = escrow.currentAlphaCustodianId(seller);
         return MarketplaceEscrow.AlphaAdmissionPolicy({
             policyHash: keccak256(abi.encodePacked("alpha-policy:v1:", tradeId)),
             policyAuthority: replacementArbiter,
@@ -2742,12 +2818,11 @@ contract MarketplaceEscrowTest {
             maxTradeValue: escrowAmount,
             principalExposureAfter: escrow.alphaPrincipalExposure(buyer) + escrowAmount,
             maxPrincipalExposure: 100 ether,
-            controlClusterId: _h("cluster:buyer-seller-low-value"),
-            controlClusterExposureAfter: escrow.alphaControlClusterExposure(_h("cluster:buyer-seller-low-value"))
-                + escrowAmount,
+            controlClusterId: controlClusterId,
+            controlClusterExposureAfter: escrow.alphaControlClusterExposure(controlClusterId) + escrowAmount,
             maxControlClusterExposure: 100 ether,
-            custodianId: _h("custodian:self-ship-low-value"),
-            custodianExposureAfter: escrow.alphaCustodianExposure(_h("custodian:self-ship-low-value")) + escrowAmount,
+            custodianId: custodianId,
+            custodianExposureAfter: escrow.alphaCustodianExposure(custodianId) + escrowAmount,
             maxCustodianExposure: 100 ether,
             verifier: address(0),
             verifierExposureAfter: 0,

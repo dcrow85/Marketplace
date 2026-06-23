@@ -30,6 +30,13 @@ contract MarketplaceActorRegistry {
         uint64 revokedAt;
     }
 
+    struct LabelRecord {
+        bytes32 metadataHash;
+        bool active;
+        uint64 registeredAt;
+        uint64 revokedAt;
+    }
+
     error Unauthorized();
     error BadAddress();
     error BadRole();
@@ -42,6 +49,10 @@ contract MarketplaceActorRegistry {
     mapping(address verifier => AuthorityRecord) public verifiers;
     mapping(address arbiter => AuthorityRecord) public arbiters;
     mapping(address verifierContract => AuthorityRecord) public predicateVerifiers;
+    mapping(bytes32 clusterId => LabelRecord) public controlClusters;
+    mapping(bytes32 custodianId => LabelRecord) public custodians;
+    mapping(address actor => bytes32 clusterId) private actorControlClusterIds;
+    mapping(address actor => bytes32 custodianId) private actorCustodianIds;
 
     event ActorRegistered(address indexed actor, Role indexed role, bytes32 metadataHash);
     event ActorRevoked(address indexed actor);
@@ -53,6 +64,12 @@ contract MarketplaceActorRegistry {
         address indexed verifierContract, bytes32 metadataHash, uint96 bond
     );
     event PredicateVerifierRevoked(address indexed verifierContract);
+    event ControlClusterRegistered(bytes32 indexed clusterId, bytes32 metadataHash);
+    event ControlClusterRevoked(bytes32 indexed clusterId);
+    event ActorControlClusterSet(address indexed actor, bytes32 indexed clusterId);
+    event CustodianRegistered(bytes32 indexed custodianId, bytes32 metadataHash);
+    event CustodianRevoked(bytes32 indexed custodianId);
+    event ActorCustodianSet(address indexed actor, bytes32 indexed custodianId);
 
     modifier onlyOwner() {
         if (msg.sender != owner) revert Unauthorized();
@@ -173,6 +190,70 @@ contract MarketplaceActorRegistry {
         emit PredicateVerifierRevoked(verifierContract);
     }
 
+    function registerControlCluster(bytes32 clusterId, bytes32 metadataHash) external onlyOwner {
+        if (clusterId == bytes32(0) || metadataHash == bytes32(0)) revert BadHash();
+
+        controlClusters[clusterId] = LabelRecord({
+            metadataHash: metadataHash,
+            active: true,
+            registeredAt: uint64(block.timestamp),
+            revokedAt: 0
+        });
+
+        emit ControlClusterRegistered(clusterId, metadataHash);
+    }
+
+    function revokeControlCluster(bytes32 clusterId) external onlyOwner {
+        LabelRecord storage record = controlClusters[clusterId];
+        if (!record.active) revert BadHash();
+
+        record.active = false;
+        record.revokedAt = uint64(block.timestamp);
+
+        emit ControlClusterRevoked(clusterId);
+    }
+
+    function setActorControlCluster(address actor, bytes32 clusterId) external onlyOwner {
+        if (!actors[actor].active) revert BadRole();
+        if (!controlClusters[clusterId].active) revert BadHash();
+
+        actorControlClusterIds[actor] = clusterId;
+
+        emit ActorControlClusterSet(actor, clusterId);
+    }
+
+    function registerCustodian(bytes32 custodianId, bytes32 metadataHash) external onlyOwner {
+        if (custodianId == bytes32(0) || metadataHash == bytes32(0)) revert BadHash();
+
+        custodians[custodianId] = LabelRecord({
+            metadataHash: metadataHash,
+            active: true,
+            registeredAt: uint64(block.timestamp),
+            revokedAt: 0
+        });
+
+        emit CustodianRegistered(custodianId, metadataHash);
+    }
+
+    function revokeCustodian(bytes32 custodianId) external onlyOwner {
+        LabelRecord storage record = custodians[custodianId];
+        if (!record.active) revert BadHash();
+
+        record.active = false;
+        record.revokedAt = uint64(block.timestamp);
+
+        emit CustodianRevoked(custodianId);
+    }
+
+    function setActorCustodian(address actor, bytes32 custodianId) external onlyOwner {
+        if (!actors[actor].active) revert BadRole();
+        if (!custodians[custodianId].active) revert BadHash();
+
+        actorCustodianIds[actor] = custodianId;
+
+        emit ActorCustodianSet(actor, custodianId);
+    }
+
     function isActorActive(address actor, Role role) public view returns (bool) {
         ActorRecord storage record = actors[actor];
         return record.active && record.role == role;
@@ -188,6 +269,22 @@ contract MarketplaceActorRegistry {
 
     function isPredicateVerifierActive(address verifierContract) external view returns (bool) {
         return predicateVerifiers[verifierContract].active;
+    }
+
+    function isControlClusterActive(bytes32 clusterId) external view returns (bool) {
+        return controlClusters[clusterId].active;
+    }
+
+    function isCustodianActive(bytes32 custodianId) external view returns (bool) {
+        return custodians[custodianId].active;
+    }
+
+    function actorControlClusterId(address actor) external view returns (bytes32) {
+        return actorControlClusterIds[actor];
+    }
+
+    function actorCustodianId(address actor) external view returns (bytes32) {
+        return actorCustodianIds[actor];
     }
 
     function verifyActorSignature(address actor, bytes32 payloadHash, bytes calldata signature)

@@ -6,6 +6,10 @@ interface IMarketplaceActorRegistry {
     function isArbiterActive(address arbiter) external view returns (bool);
     function isVerifierActive(address verifier) external view returns (bool);
     function isPredicateVerifierActive(address verifierContract) external view returns (bool);
+    function isControlClusterActive(bytes32 clusterId) external view returns (bool);
+    function isCustodianActive(bytes32 custodianId) external view returns (bool);
+    function actorControlClusterId(address actor) external view returns (bytes32);
+    function actorCustodianId(address actor) external view returns (bytes32);
     function verifyActorSignature(address actor, bytes32 payloadHash, bytes calldata signature)
         external
         view
@@ -371,6 +375,8 @@ contract MarketplaceEscrow {
     bytes32 public constant REPUTATION_SCORE_SOURCE_BASIS_HASH =
         keccak256("marketplace.source_basis.reputation_score.v0.1");
     bytes32 public constant SUMMARY_SOURCE_BASIS_HASH = keccak256("marketplace.source_basis.summary.v0.1");
+    bytes32 public constant ALPHA_CONTROL_CLUSTER_PAIR_DOMAIN =
+        keccak256("marketplace.alpha.control_cluster_pair.v0.1");
     bytes32 public constant ALPHA_ADMISSION_POLICY_TYPEHASH = keccak256(
         "AlphaAdmissionPolicy(address escrow,uint256 chainId,uint256 tradeId,bytes32 policyHash,address policyAuthority,uint64 version,uint64 effectiveBlock,bytes32 routeClass,uint256 maxTradeValue,uint256 principalExposureAfter,uint256 maxPrincipalExposure,bytes32 controlClusterId,uint256 controlClusterExposureAfter,uint256 maxControlClusterExposure,bytes32 custodianId,uint256 custodianExposureAfter,uint256 maxCustodianExposure,address verifier,uint256 verifierExposureAfter,uint256 maxVerifierExposure,address judgmentAuthority,uint256 judgmentAuthorityExposureAfter,uint256 maxJudgmentAuthorityExposure,bytes32 registryVersionHash,uint256 registryVersionExposureAfter,uint256 maxRegistryVersionExposure,uint64 epochId,uint256 globalEpochLossAfter,uint256 maxGlobalEpochLoss,bytes32 deliveryMode,bytes32 disputeBranch,bool manualOverride,address manualAuthority,address manualSecondApprover,bytes32 manualReasonHash,uint256 manualOverrideLoss,uint256 manualRemainingLossBudget)"
     );
@@ -1824,6 +1830,35 @@ contract MarketplaceEscrow {
         return _alphaEpochIdAtBlock(block.number);
     }
 
+    function currentAlphaControlClusterId(address buyer, address seller) public view returns (bytes32) {
+        bytes32 buyerClusterId = actorRegistry.actorControlClusterId(buyer);
+        bytes32 sellerClusterId = actorRegistry.actorControlClusterId(seller);
+        if (
+            buyerClusterId == bytes32(0) || sellerClusterId == bytes32(0)
+                || !actorRegistry.isControlClusterActive(buyerClusterId)
+                || !actorRegistry.isControlClusterActive(sellerClusterId)
+        ) {
+            return bytes32(0);
+        }
+        if (buyerClusterId == sellerClusterId) return buyerClusterId;
+
+        bytes32 lowClusterId = buyerClusterId;
+        bytes32 highClusterId = sellerClusterId;
+        if (uint256(sellerClusterId) < uint256(buyerClusterId)) {
+            lowClusterId = sellerClusterId;
+            highClusterId = buyerClusterId;
+        }
+        return keccak256(abi.encode(ALPHA_CONTROL_CLUSTER_PAIR_DOMAIN, lowClusterId, highClusterId));
+    }
+
+    function currentAlphaCustodianId(address seller) public view returns (bytes32) {
+        bytes32 custodianId = actorRegistry.actorCustodianId(seller);
+        if (custodianId == bytes32(0) || !actorRegistry.isCustodianActive(custodianId)) {
+            return bytes32(0);
+        }
+        return custodianId;
+    }
+
     function routeAssemblyWitnessHash(
         uint256 tradeId,
         bytes32 routeHash,
@@ -2252,9 +2287,11 @@ contract MarketplaceEscrow {
             tradeValue > policy.maxTradeValue
                 || policy.principalExposureAfter != alphaPrincipalExposure[buyer] + tradeValue
                 || policy.principalExposureAfter > policy.maxPrincipalExposure
+                || policy.controlClusterId != currentAlphaControlClusterId(buyer, seller)
                 || policy.controlClusterId == bytes32(0)
                 || policy.controlClusterExposureAfter != alphaControlClusterExposure[policy.controlClusterId] + tradeValue
                 || policy.controlClusterExposureAfter > policy.maxControlClusterExposure
+                || policy.custodianId != currentAlphaCustodianId(seller)
                 || policy.custodianId == bytes32(0)
                 || policy.custodianExposureAfter != alphaCustodianExposure[policy.custodianId] + tradeValue
                 || policy.custodianExposureAfter > policy.maxCustodianExposure
