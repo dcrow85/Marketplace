@@ -1,34 +1,63 @@
 {
   "artifacts": {
+    "alpha_master_sheet_release": {
+      "path": "data/azuki-tcg/releases/azuki_tcg_alpha_master_sheet.json",
+      "sha256": "002c75924614baf629ee54e5130817d98a18445f1baf13edf9f46a114e529b4a"
+    },
     "index": {
       "path": "data/azuki-tcg/index.json",
-      "sha256": "3404b3fd35ce0868b31c5050a197a1cc916c5b0b5b5a68bbd3c6d7f96ab77a0b"
+      "sha256": "706bd8cb181737d443a52d3594ed55e9f1f6ab1e3847f3c6d7c7b71b4bcbc599"
     },
-    "release": {
+    "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
       "sha256": "cf157aee2c171089b7f942925a26ad9d3bef74c5ebb14d371b3516ccbbd26a6a"
     }
   },
   "counts": {
-    "gallery_entries": 234,
-    "multi_entry_card_ids": 27,
-    "official_api_count": 234,
-    "unique_card_ids": 202
+    "alpha_master_sheet": {
+      "catalog_cards": 104,
+      "gallery_crosswalk_matched_cards": 104,
+      "gallery_crosswalk_unmatched_cards": 0,
+      "sheet_rows": 104,
+      "unique_card_ids": 104
+    },
+    "official_gallery": {
+      "gallery_entries": 234,
+      "multi_entry_card_ids": 27,
+      "official_api_count": 234,
+      "unique_card_ids": 202
+    }
   },
   "generated_at": "2026-06-23T00:00:00+00:00",
   "not_claiming": [
+    "complete physical-product checklist beyond the linked Alpha Master Sheet",
     "complete physical-product checklist beyond the official gallery endpoint",
-    "seller possession",
-    "physical-card authenticity",
     "condition truth",
-    "market value",
+    "errata adjudication beyond source text",
+    "gallery-image equivalence unless crosswalked by card ID",
     "image rights approval",
-    "errata adjudication beyond source text"
+    "market value",
+    "physical-card authenticity",
+    "rules adjudication beyond source text",
+    "seller possession"
   ],
-  "schema": "azuki_tcg_catalog_manifest_v0.1",
-  "source_snapshot": {
-    "api_url": "https://tcg.azuki.com/api/cards",
-    "path": "data/azuki-tcg/source-snapshots/cards_api_2026-06-23.json",
-    "sha256": "d064834f0988fd070d4495eb5e1f46c7331bd20ab86a370b041961a6b20e815c"
+  "schema": "azuki_tcg_catalog_manifest_v0.2",
+  "source_snapshots": {
+    "alpha_master_sheet": {
+      "companion_image_snapshot": {
+        "csv_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/gviz/tq?tqx=out:csv&gid=1096719524",
+        "path": "data/azuki-tcg/source-snapshots/alpha_image_sheet_gid1096719524_2026-06-23.csv",
+        "sha256": "5db051a5e8f01d65e49eb02ea8b91a818acb660588032edcc1e4a117e30567d1"
+      },
+      "csv_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/gviz/tq?tqx=out:csv&gid=0",
+      "path": "data/azuki-tcg/source-snapshots/alpha_master_sheet_gid0_2026-06-23.csv",
+      "sha256": "bf8cbe5164ed837a607ba615b42b2ef41b9bd3e703c95d89e314acb598599349",
+      "sheet_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/edit?gid=0#gid=0"
+    },
+    "official_gallery": {
+      "api_url": "https://tcg.azuki.com/api/cards",
+      "path": "data/azuki-tcg/source-snapshots/cards_api_2026-06-23.json",
+      "sha256": "d064834f0988fd070d4495eb5e1f46c7331bd20ab86a370b041961a6b20e815c"
+    }
   }
 }
